@@ -38,6 +38,8 @@ type Conversation struct {
 	Medium pulumi.StringOutput `pulumi:"medium"`
 	// Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Obfuscated user ID which the customer sent to us.
+	ObfuscatedUserId pulumi.StringOutput `pulumi:"obfuscatedUserId"`
 	// The annotations that were generated during the customer and agent interaction.
 	RuntimeAnnotations GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseArrayOutput `pulumi:"runtimeAnnotations"`
 	// The time at which the conversation started.
@@ -108,8 +110,10 @@ type conversationArgs struct {
 	// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
 	Medium *ConversationMedium `pulumi:"medium"`
 	// Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
-	Name    *string `pulumi:"name"`
-	Project *string `pulumi:"project"`
+	Name *string `pulumi:"name"`
+	// Obfuscated user ID which the customer sent to us.
+	ObfuscatedUserId *string `pulumi:"obfuscatedUserId"`
+	Project          *string `pulumi:"project"`
 	// The time at which the conversation started.
 	StartTime *string `pulumi:"startTime"`
 	// Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
@@ -135,8 +139,10 @@ type ConversationArgs struct {
 	// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
 	Medium ConversationMediumPtrInput
 	// Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Obfuscated user ID which the customer sent to us.
+	ObfuscatedUserId pulumi.StringPtrInput
+	Project          pulumi.StringPtrInput
 	// The time at which the conversation started.
 	StartTime pulumi.StringPtrInput
 	// Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.

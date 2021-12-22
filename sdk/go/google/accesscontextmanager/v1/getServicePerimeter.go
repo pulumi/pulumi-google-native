@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get a Service Perimeter by resource name.
+// Gets a service perimeter based on the resource name.
 func LookupServicePerimeter(ctx *pulumi.Context, args *LookupServicePerimeterArgs, opts ...pulumi.InvokeOption) (*LookupServicePerimeterResult, error) {
 	var rv LookupServicePerimeterResult
 	err := ctx.Invoke("google-native:accesscontextmanager/v1:getServicePerimeter", args, &rv, opts...)

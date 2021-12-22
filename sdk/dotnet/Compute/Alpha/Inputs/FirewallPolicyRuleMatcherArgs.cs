@@ -51,6 +51,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             set => _destIpRanges = value;
         }
 
+        [Input("destRegionCodes")]
+        private InputList<string>? _destRegionCodes;
+
+        /// <summary>
+        /// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+        /// </summary>
+        public InputList<string> DestRegionCodes
+        {
+            get => _destRegionCodes ?? (_destRegionCodes = new InputList<string>());
+            set => _destRegionCodes = value;
+        }
+
         [Input("layer4Configs")]
         private InputList<Inputs.FirewallPolicyRuleMatcherLayer4ConfigArgs>? _layer4Configs;
 
@@ -97,6 +109,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         {
             get => _srcIpRanges ?? (_srcIpRanges = new InputList<string>());
             set => _srcIpRanges = value;
+        }
+
+        [Input("srcRegionCodes")]
+        private InputList<string>? _srcRegionCodes;
+
+        /// <summary>
+        /// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+        /// </summary>
+        public InputList<string> SrcRegionCodes
+        {
+            get => _srcRegionCodes ?? (_srcRegionCodes = new InputList<string>());
+            set => _srcRegionCodes = value;
         }
 
         [Input("srcSecureTags")]

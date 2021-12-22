@@ -95,6 +95,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly string DeployEndTime;
         /// <summary>
+        /// The reason this deploy failed. This will always be unspecified while the deploy in progress.
+        /// </summary>
+        public readonly string DeployFailureCause;
+        /// <summary>
         /// Time at which the `Rollout` started deploying.
         /// </summary>
         public readonly string DeployStartTime;
@@ -151,6 +155,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 
             string deployEndTime,
 
+            string deployFailureCause,
+
             string deployStartTime,
 
             string deployingBuild,
@@ -178,6 +184,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
             ApproveTime = approveTime;
             CreateTime = createTime;
             DeployEndTime = deployEndTime;
+            DeployFailureCause = deployFailureCause;
             DeployStartTime = deployStartTime;
             DeployingBuild = deployingBuild;
             Description = description;

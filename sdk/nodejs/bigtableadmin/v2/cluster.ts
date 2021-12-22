@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a cluster within an instance.
+ * Creates a cluster within an instance. Note that exactly one of Cluster.serve_nodes and Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero, then the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then autoscaling is enabled.
  */
 export class Cluster extends pulumi.CustomResource {
     /**
@@ -81,9 +81,6 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.serveNodes === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serveNodes'");
-            }
             resourceInputs["clusterConfig"] = args ? args.clusterConfig : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["defaultStorageType"] = args ? args.defaultStorageType : undefined;
@@ -140,5 +137,5 @@ export interface ClusterArgs {
     /**
      * The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
      */
-    serveNodes: pulumi.Input<number>;
+    serveNodes?: pulumi.Input<number>;
 }

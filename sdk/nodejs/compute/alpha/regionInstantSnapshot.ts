@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -75,6 +76,10 @@ export class RegionInstantSnapshot extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * Status information for the instant snapshot resource.
+     */
+    public /*out*/ readonly resourceStatus!: pulumi.Output<outputs.compute.alpha.InstantSnapshotResourceStatusResponse>;
+    /**
      * Reserved for future use.
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
@@ -130,6 +135,7 @@ export class RegionInstantSnapshot extends pulumi.CustomResource {
             resourceInputs["diskSizeGb"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -147,6 +153,7 @@ export class RegionInstantSnapshot extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;

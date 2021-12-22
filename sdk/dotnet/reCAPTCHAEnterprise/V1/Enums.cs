@@ -49,6 +49,88 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
     }
 
     /// <summary>
+    /// Required. The WAF feature for which this key is enabled.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature : IEquatable<GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature>
+    {
+        private readonly string _value;
+
+        private GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Undefined feature.
+        /// </summary>
+        public static GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature WafFeatureUnspecified { get; } = new GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature("WAF_FEATURE_UNSPECIFIED");
+        /// <summary>
+        /// Redirects suspicious traffic to reCAPTCHA.
+        /// </summary>
+        public static GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature ChallengePage { get; } = new GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature("CHALLENGE_PAGE");
+        /// <summary>
+        /// Use reCAPTCHA session-tokens to protect the whole user session on the site's domain.
+        /// </summary>
+        public static GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature SessionToken { get; } = new GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature("SESSION_TOKEN");
+        /// <summary>
+        /// Use reCAPTCHA action-tokens to protect user actions.
+        /// </summary>
+        public static GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature ActionToken { get; } = new GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature("ACTION_TOKEN");
+
+        public static bool operator ==(GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature left, GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature left, GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature other && Equals(other);
+        public bool Equals(GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. The WAF service that uses this key.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudRecaptchaenterpriseV1WafSettingsWafService : IEquatable<GoogleCloudRecaptchaenterpriseV1WafSettingsWafService>
+    {
+        private readonly string _value;
+
+        private GoogleCloudRecaptchaenterpriseV1WafSettingsWafService(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Undefined WAF
+        /// </summary>
+        public static GoogleCloudRecaptchaenterpriseV1WafSettingsWafService WafServiceUnspecified { get; } = new GoogleCloudRecaptchaenterpriseV1WafSettingsWafService("WAF_SERVICE_UNSPECIFIED");
+        /// <summary>
+        /// Cloud Armor
+        /// </summary>
+        public static GoogleCloudRecaptchaenterpriseV1WafSettingsWafService Ca { get; } = new GoogleCloudRecaptchaenterpriseV1WafSettingsWafService("CA");
+
+        public static bool operator ==(GoogleCloudRecaptchaenterpriseV1WafSettingsWafService left, GoogleCloudRecaptchaenterpriseV1WafSettingsWafService right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudRecaptchaenterpriseV1WafSettingsWafService left, GoogleCloudRecaptchaenterpriseV1WafSettingsWafService right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudRecaptchaenterpriseV1WafSettingsWafService value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudRecaptchaenterpriseV1WafSettingsWafService other && Equals(other);
+        public bool Equals(GoogleCloudRecaptchaenterpriseV1WafSettingsWafService other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
     /// </summary>
     [EnumType]

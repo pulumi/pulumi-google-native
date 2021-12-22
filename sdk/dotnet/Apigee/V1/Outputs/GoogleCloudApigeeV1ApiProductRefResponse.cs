@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly string Apiproduct;
         /// <summary>
-        /// Status of the API product.
+        /// Status of the API product. Valid values are `approved` or `revoked`.
         /// </summary>
         public readonly string Status;
 

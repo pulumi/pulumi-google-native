@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// </summary>
         public readonly bool AutoStorageIncrease;
         /// <summary>
+        /// The KMS key name used for the csql instance.
+        /// </summary>
+        public readonly string CmekKeyName;
+        /// <summary>
         /// The Cloud SQL default instance level collation.
         /// </summary>
         public readonly string Collation;
@@ -83,6 +87,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
             bool autoStorageIncrease,
 
+            string cmekKeyName,
+
             string collation,
 
             string dataDiskSizeGb,
@@ -111,6 +117,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         {
             ActivationPolicy = activationPolicy;
             AutoStorageIncrease = autoStorageIncrease;
+            CmekKeyName = cmekKeyName;
             Collation = collation;
             DataDiskSizeGb = dataDiskSizeGb;
             DataDiskType = dataDiskType;

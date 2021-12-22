@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1
         /// </summary>
         public readonly string KmsKeyName;
         /// <summary>
-        /// Immutable. The resource name of the processor. Format: projects/{project}/locations/{location}/processors/{processor}
+        /// Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
         /// </summary>
         public readonly string Name;
         /// <summary>

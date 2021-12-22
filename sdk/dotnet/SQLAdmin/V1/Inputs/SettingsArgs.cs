@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         }
 
         /// <summary>
-        /// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+        /// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
         /// </summary>
         [Input("databaseReplicationEnabled")]
         public Input<bool>? DatabaseReplicationEnabled { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public Input<string>? StorageAutoResizeLimit { get; set; }
 
         /// <summary>
-        /// The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+        /// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }

@@ -26,6 +26,7 @@ class ConversationArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  medium: Optional[pulumi.Input['ConversationMedium']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 obfuscated_user_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None):
@@ -39,6 +40,7 @@ class ConversationArgs:
         :param pulumi.Input[str] language_code: A user-specified language code for the conversation.
         :param pulumi.Input['ConversationMedium'] medium: Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         :param pulumi.Input[str] name: Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
+        :param pulumi.Input[str] obfuscated_user_id: Obfuscated user ID which the customer sent to us.
         :param pulumi.Input[str] start_time: The time at which the conversation started.
         :param pulumi.Input[str] ttl: Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
         """
@@ -62,6 +64,8 @@ class ConversationArgs:
             pulumi.set(__self__, "medium", medium)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if obfuscated_user_id is not None:
+            pulumi.set(__self__, "obfuscated_user_id", obfuscated_user_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if start_time is not None:
@@ -184,6 +188,18 @@ class ConversationArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="obfuscatedUserId")
+    def obfuscated_user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Obfuscated user ID which the customer sent to us.
+        """
+        return pulumi.get(self, "obfuscated_user_id")
+
+    @obfuscated_user_id.setter
+    def obfuscated_user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "obfuscated_user_id", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -232,6 +248,7 @@ class Conversation(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  medium: Optional[pulumi.Input['ConversationMedium']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 obfuscated_user_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
@@ -249,6 +266,7 @@ class Conversation(pulumi.CustomResource):
         :param pulumi.Input[str] language_code: A user-specified language code for the conversation.
         :param pulumi.Input['ConversationMedium'] medium: Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         :param pulumi.Input[str] name: Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
+        :param pulumi.Input[str] obfuscated_user_id: Obfuscated user ID which the customer sent to us.
         :param pulumi.Input[str] start_time: The time at which the conversation started.
         :param pulumi.Input[str] ttl: Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
         """
@@ -286,6 +304,7 @@ class Conversation(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  medium: Optional[pulumi.Input['ConversationMedium']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 obfuscated_user_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
@@ -311,6 +330,7 @@ class Conversation(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["medium"] = medium
             __props__.__dict__["name"] = name
+            __props__.__dict__["obfuscated_user_id"] = obfuscated_user_id
             __props__.__dict__["project"] = project
             __props__.__dict__["start_time"] = start_time
             __props__.__dict__["ttl"] = ttl
@@ -356,6 +376,7 @@ class Conversation(pulumi.CustomResource):
         __props__.__dict__["latest_analysis"] = None
         __props__.__dict__["medium"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["obfuscated_user_id"] = None
         __props__.__dict__["runtime_annotations"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["transcript"] = None
@@ -459,6 +480,14 @@ class Conversation(pulumi.CustomResource):
         Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="obfuscatedUserId")
+    def obfuscated_user_id(self) -> pulumi.Output[str]:
+        """
+        Obfuscated user ID which the customer sent to us.
+        """
+        return pulumi.get(self, "obfuscated_user_id")
 
     @property
     @pulumi.getter(name="runtimeAnnotations")

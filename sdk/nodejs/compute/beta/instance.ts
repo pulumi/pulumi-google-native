@@ -130,6 +130,10 @@ export class Instance extends pulumi.CustomResource {
     public readonly networkInterfaces!: pulumi.Output<outputs.compute.beta.NetworkInterfaceResponse[]>;
     public readonly networkPerformanceConfig!: pulumi.Output<outputs.compute.beta.NetworkPerformanceConfigResponse>;
     /**
+     * Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+     */
+    public readonly params!: pulumi.Output<outputs.compute.beta.InstanceParamsResponse>;
+    /**
      * PostKeyRevocationActionType of the instance.
      */
     public readonly postKeyRevocationActionType!: pulumi.Output<string>;
@@ -228,6 +232,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["postKeyRevocationActionType"] = args ? args.postKeyRevocationActionType : undefined;
             resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -284,6 +289,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkInterfaces"] = undefined /*out*/;
             resourceInputs["networkPerformanceConfig"] = undefined /*out*/;
+            resourceInputs["params"] = undefined /*out*/;
             resourceInputs["postKeyRevocationActionType"] = undefined /*out*/;
             resourceInputs["privateIpv6GoogleAccess"] = undefined /*out*/;
             resourceInputs["reservationAffinity"] = undefined /*out*/;
@@ -377,6 +383,10 @@ export interface InstanceArgs {
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.beta.NetworkInterfaceArgs>[]>;
     networkPerformanceConfig?: pulumi.Input<inputs.compute.beta.NetworkPerformanceConfigArgs>;
+    /**
+     * Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+     */
+    params?: pulumi.Input<inputs.compute.beta.InstanceParamsArgs>;
     /**
      * PostKeyRevocationActionType of the instance.
      */

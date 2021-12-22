@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a snapshot in the specified project using the data included in the request.
+ * Creates a snapshot in the specified project using the data included in the request. For regular snapshot creation, consider using this method instead of disks.createSnapshot, as this method supports more features, such as creating snapshots in a project different from the source disk project.
  */
 export class Snapshot extends pulumi.CustomResource {
     /**
@@ -116,6 +116,10 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly snapshotEncryptionKey!: pulumi.Output<outputs.compute.alpha.CustomerEncryptionKeyResponse>;
     /**
+     * Indicates the type of the snapshot.
+     */
+    public readonly snapshotType!: pulumi.Output<string>;
+    /**
      * The source disk used to create this snapshot.
      */
     public readonly sourceDisk!: pulumi.Output<string>;
@@ -176,6 +180,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["snapshotEncryptionKey"] = args ? args.snapshotEncryptionKey : undefined;
+            resourceInputs["snapshotType"] = args ? args.snapshotType : undefined;
             resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             resourceInputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
             resourceInputs["sourceInstantSnapshot"] = args ? args.sourceInstantSnapshot : undefined;
@@ -220,6 +225,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["snapshotEncryptionKey"] = undefined /*out*/;
+            resourceInputs["snapshotType"] = undefined /*out*/;
             resourceInputs["sourceDisk"] = undefined /*out*/;
             resourceInputs["sourceDiskEncryptionKey"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
@@ -272,6 +278,10 @@ export interface SnapshotArgs {
      * Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
      */
     snapshotEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
+    /**
+     * Indicates the type of the snapshot.
+     */
+    snapshotType?: pulumi.Input<enums.compute.alpha.SnapshotSnapshotType>;
     /**
      * The source disk used to create this snapshot.
      */

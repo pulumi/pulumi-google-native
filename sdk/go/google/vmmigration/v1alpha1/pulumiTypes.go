@@ -316,6 +316,8 @@ func (o CloneJobResponseArrayOutput) Index(i pulumi.IntInput) CloneJobResponseOu
 
 // ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
 type ComputeEngineTargetDefaults struct {
+	// Additional licenses to assign to the VM.
+	AdditionalLicenses []string `pulumi:"additionalLicenses"`
 	// Compute instance scheduling information (if empty default is used).
 	ComputeScheduling *ComputeScheduling `pulumi:"computeScheduling"`
 	// The disk type to use in the VM.
@@ -359,6 +361,8 @@ type ComputeEngineTargetDefaultsInput interface {
 
 // ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
 type ComputeEngineTargetDefaultsArgs struct {
+	// Additional licenses to assign to the VM.
+	AdditionalLicenses pulumi.StringArrayInput `pulumi:"additionalLicenses"`
 	// Compute instance scheduling information (if empty default is used).
 	ComputeScheduling ComputeSchedulingPtrInput `pulumi:"computeScheduling"`
 	// The disk type to use in the VM.
@@ -467,6 +471,11 @@ func (o ComputeEngineTargetDefaultsOutput) ToComputeEngineTargetDefaultsPtrOutpu
 	}).(ComputeEngineTargetDefaultsPtrOutput)
 }
 
+// Additional licenses to assign to the VM.
+func (o ComputeEngineTargetDefaultsOutput) AdditionalLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeEngineTargetDefaults) []string { return v.AdditionalLicenses }).(pulumi.StringArrayOutput)
+}
+
 // Compute instance scheduling information (if empty default is used).
 func (o ComputeEngineTargetDefaultsOutput) ComputeScheduling() ComputeSchedulingPtrOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDefaults) *ComputeScheduling { return v.ComputeScheduling }).(ComputeSchedulingPtrOutput)
@@ -559,6 +568,16 @@ func (o ComputeEngineTargetDefaultsPtrOutput) Elem() ComputeEngineTargetDefaults
 		var ret ComputeEngineTargetDefaults
 		return ret
 	}).(ComputeEngineTargetDefaultsOutput)
+}
+
+// Additional licenses to assign to the VM.
+func (o ComputeEngineTargetDefaultsPtrOutput) AdditionalLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeEngineTargetDefaults) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalLicenses
+	}).(pulumi.StringArrayOutput)
 }
 
 // Compute instance scheduling information (if empty default is used).
@@ -703,6 +722,8 @@ func (o ComputeEngineTargetDefaultsPtrOutput) Zone() pulumi.StringPtrOutput {
 
 // ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
 type ComputeEngineTargetDefaultsResponse struct {
+	// Additional licenses to assign to the VM.
+	AdditionalLicenses []string `pulumi:"additionalLicenses"`
 	// The OS license returned from the adaptation module report.
 	AppliedLicense AppliedLicenseResponse `pulumi:"appliedLicense"`
 	// The VM Boot Option, as set in the source vm.
@@ -750,6 +771,8 @@ type ComputeEngineTargetDefaultsResponseInput interface {
 
 // ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
 type ComputeEngineTargetDefaultsResponseArgs struct {
+	// Additional licenses to assign to the VM.
+	AdditionalLicenses pulumi.StringArrayInput `pulumi:"additionalLicenses"`
 	// The OS license returned from the adaptation module report.
 	AppliedLicense AppliedLicenseResponseInput `pulumi:"appliedLicense"`
 	// The VM Boot Option, as set in the source vm.
@@ -862,6 +885,11 @@ func (o ComputeEngineTargetDefaultsResponseOutput) ToComputeEngineTargetDefaults
 	}).(ComputeEngineTargetDefaultsResponsePtrOutput)
 }
 
+// Additional licenses to assign to the VM.
+func (o ComputeEngineTargetDefaultsResponseOutput) AdditionalLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeEngineTargetDefaultsResponse) []string { return v.AdditionalLicenses }).(pulumi.StringArrayOutput)
+}
+
 // The OS license returned from the adaptation module report.
 func (o ComputeEngineTargetDefaultsResponseOutput) AppliedLicense() AppliedLicenseResponseOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDefaultsResponse) AppliedLicenseResponse { return v.AppliedLicense }).(AppliedLicenseResponseOutput)
@@ -964,6 +992,16 @@ func (o ComputeEngineTargetDefaultsResponsePtrOutput) Elem() ComputeEngineTarget
 		var ret ComputeEngineTargetDefaultsResponse
 		return ret
 	}).(ComputeEngineTargetDefaultsResponseOutput)
+}
+
+// Additional licenses to assign to the VM.
+func (o ComputeEngineTargetDefaultsResponsePtrOutput) AdditionalLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalLicenses
+	}).(pulumi.StringArrayOutput)
 }
 
 // The OS license returned from the adaptation module report.
@@ -1128,6 +1166,8 @@ func (o ComputeEngineTargetDefaultsResponsePtrOutput) Zone() pulumi.StringPtrOut
 
 // ComputeEngineTargetDetails is a collection of details for creating a VM in a target Compute Engine project.
 type ComputeEngineTargetDetailsResponse struct {
+	// Additional licenses to assign to the VM.
+	AdditionalLicenses []string `pulumi:"additionalLicenses"`
 	// The OS license returned from the adaptation module report.
 	AppliedLicense AppliedLicenseResponse `pulumi:"appliedLicense"`
 	// The VM Boot Option, as set in the source vm.
@@ -1175,6 +1215,8 @@ type ComputeEngineTargetDetailsResponseInput interface {
 
 // ComputeEngineTargetDetails is a collection of details for creating a VM in a target Compute Engine project.
 type ComputeEngineTargetDetailsResponseArgs struct {
+	// Additional licenses to assign to the VM.
+	AdditionalLicenses pulumi.StringArrayInput `pulumi:"additionalLicenses"`
 	// The OS license returned from the adaptation module report.
 	AppliedLicense AppliedLicenseResponseInput `pulumi:"appliedLicense"`
 	// The VM Boot Option, as set in the source vm.
@@ -1287,6 +1329,11 @@ func (o ComputeEngineTargetDetailsResponseOutput) ToComputeEngineTargetDetailsRe
 	}).(ComputeEngineTargetDetailsResponsePtrOutput)
 }
 
+// Additional licenses to assign to the VM.
+func (o ComputeEngineTargetDetailsResponseOutput) AdditionalLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) []string { return v.AdditionalLicenses }).(pulumi.StringArrayOutput)
+}
+
 // The OS license returned from the adaptation module report.
 func (o ComputeEngineTargetDetailsResponseOutput) AppliedLicense() AppliedLicenseResponseOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) AppliedLicenseResponse { return v.AppliedLicense }).(AppliedLicenseResponseOutput)
@@ -1389,6 +1436,16 @@ func (o ComputeEngineTargetDetailsResponsePtrOutput) Elem() ComputeEngineTargetD
 		var ret ComputeEngineTargetDetailsResponse
 		return ret
 	}).(ComputeEngineTargetDetailsResponseOutput)
+}
+
+// Additional licenses to assign to the VM.
+func (o ComputeEngineTargetDetailsResponsePtrOutput) AdditionalLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalLicenses
+	}).(pulumi.StringArrayOutput)
 }
 
 // The OS license returned from the adaptation module report.

@@ -20,6 +20,7 @@ class WorkloadArgs:
                  display_name: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  billing_account: Optional[pulumi.Input[str]] = None,
+                 enable_sovereign_controls: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  kms_settings: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']] = None,
@@ -33,6 +34,7 @@ class WorkloadArgs:
         :param pulumi.Input['WorkloadComplianceRegime'] compliance_regime: Immutable. Compliance Regime associated with this workload.
         :param pulumi.Input[str] display_name: The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         :param pulumi.Input[str] billing_account: Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        :param pulumi.Input[bool] enable_sovereign_controls: Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
         :param pulumi.Input[str] etag: Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
         :param pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs'] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
@@ -45,6 +47,8 @@ class WorkloadArgs:
         pulumi.set(__self__, "organization_id", organization_id)
         if billing_account is not None:
             pulumi.set(__self__, "billing_account", billing_account)
+        if enable_sovereign_controls is not None:
+            pulumi.set(__self__, "enable_sovereign_controls", enable_sovereign_controls)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if external_id is not None:
@@ -106,6 +110,18 @@ class WorkloadArgs:
     @billing_account.setter
     def billing_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "billing_account", value)
+
+    @property
+    @pulumi.getter(name="enableSovereignControls")
+    def enable_sovereign_controls(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+        """
+        return pulumi.get(self, "enable_sovereign_controls")
+
+    @enable_sovereign_controls.setter
+    def enable_sovereign_controls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_sovereign_controls", value)
 
     @property
     @pulumi.getter
@@ -206,6 +222,7 @@ class Workload(pulumi.CustomResource):
                  billing_account: Optional[pulumi.Input[str]] = None,
                  compliance_regime: Optional[pulumi.Input['WorkloadComplianceRegime']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enable_sovereign_controls: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  kms_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']]] = None,
@@ -224,6 +241,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[str] billing_account: Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
         :param pulumi.Input['WorkloadComplianceRegime'] compliance_regime: Immutable. Compliance Regime associated with this workload.
         :param pulumi.Input[str] display_name: The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+        :param pulumi.Input[bool] enable_sovereign_controls: Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
         :param pulumi.Input[str] etag: Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
         :param pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
@@ -258,6 +276,7 @@ class Workload(pulumi.CustomResource):
                  billing_account: Optional[pulumi.Input[str]] = None,
                  compliance_regime: Optional[pulumi.Input['WorkloadComplianceRegime']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enable_sovereign_controls: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  kms_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']]] = None,
@@ -286,6 +305,7 @@ class Workload(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["enable_sovereign_controls"] = enable_sovereign_controls
             __props__.__dict__["etag"] = etag
             __props__.__dict__["external_id"] = external_id
             __props__.__dict__["kms_settings"] = kms_settings
@@ -298,7 +318,9 @@ class Workload(pulumi.CustomResource):
             __props__.__dict__["provisioned_resources_parent"] = provisioned_resources_parent
             __props__.__dict__["resource_settings"] = resource_settings
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["kaj_enrollment_state"] = None
             __props__.__dict__["resources"] = None
+            __props__.__dict__["saa_enrollment_response"] = None
         super(Workload, __self__).__init__(
             'google-native:assuredworkloads/v1:Workload',
             resource_name,
@@ -325,13 +347,16 @@ class Workload(pulumi.CustomResource):
         __props__.__dict__["compliance_regime"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["enable_sovereign_controls"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["kaj_enrollment_state"] = None
         __props__.__dict__["kms_settings"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["provisioned_resources_parent"] = None
         __props__.__dict__["resource_settings"] = None
         __props__.__dict__["resources"] = None
+        __props__.__dict__["saa_enrollment_response"] = None
         return Workload(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -367,12 +392,28 @@ class Workload(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="enableSovereignControls")
+    def enable_sovereign_controls(self) -> pulumi.Output[bool]:
+        """
+        Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+        """
+        return pulumi.get(self, "enable_sovereign_controls")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
         Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="kajEnrollmentState")
+    def kaj_enrollment_state(self) -> pulumi.Output[str]:
+        """
+        Represents the KAJ enrollment state of the given workload.
+        """
+        return pulumi.get(self, "kaj_enrollment_state")
 
     @property
     @pulumi.getter(name="kmsSettings")
@@ -421,4 +462,12 @@ class Workload(pulumi.CustomResource):
         The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         """
         return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter(name="saaEnrollmentResponse")
+    def saa_enrollment_response(self) -> pulumi.Output['outputs.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse']:
+        """
+        Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
+        """
+        return pulumi.get(self, "saa_enrollment_response")
 

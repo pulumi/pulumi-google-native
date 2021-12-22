@@ -35,8 +35,12 @@ type LookupWorkloadResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName string `pulumi:"displayName"`
+	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+	EnableSovereignControls bool `pulumi:"enableSovereignControls"`
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
 	Etag string `pulumi:"etag"`
+	// Represents the KAJ enrollment state of the given workload.
+	KajEnrollmentState string `pulumi:"kajEnrollmentState"`
 	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
 	KmsSettings GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
@@ -49,6 +53,8 @@ type LookupWorkloadResult struct {
 	ResourceSettings []GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse `pulumi:"resourceSettings"`
 	// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources []GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse `pulumi:"resources"`
+	// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
+	SaaEnrollmentResponse GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse `pulumi:"saaEnrollmentResponse"`
 }
 
 func LookupWorkloadOutput(ctx *pulumi.Context, args LookupWorkloadOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadResultOutput {
@@ -104,9 +110,19 @@ func (o LookupWorkloadResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+func (o LookupWorkloadResultOutput) EnableSovereignControls() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWorkloadResult) bool { return v.EnableSovereignControls }).(pulumi.BoolOutput)
+}
+
 // Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
 func (o LookupWorkloadResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Represents the KAJ enrollment state of the given workload.
+func (o LookupWorkloadResultOutput) KajEnrollmentState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadResult) string { return v.KajEnrollmentState }).(pulumi.StringOutput)
 }
 
 // Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
@@ -143,6 +159,13 @@ func (o LookupWorkloadResultOutput) Resources() GoogleCloudAssuredworkloadsV1Wor
 	return o.ApplyT(func(v LookupWorkloadResult) []GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse {
 		return v.Resources
 	}).(GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput)
+}
+
+// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
+func (o LookupWorkloadResultOutput) SaaEnrollmentResponse() GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput {
+	return o.ApplyT(func(v LookupWorkloadResult) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse {
+		return v.SaaEnrollmentResponse
+	}).(GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput)
 }
 
 func init() {

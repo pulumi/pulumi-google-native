@@ -2141,6 +2141,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static GlobalNetworkEndpointGroupNetworkEndpointType NonGcpPrivateIpPort { get; } = new GlobalNetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT");
         /// <summary>
+        /// The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+        /// </summary>
+        public static GlobalNetworkEndpointGroupNetworkEndpointType PrivateServiceConnect { get; } = new GlobalNetworkEndpointGroupNetworkEndpointType("PRIVATE_SERVICE_CONNECT");
+        /// <summary>
         /// The network endpoint is handled by specified serverless infrastructure.
         /// </summary>
         public static GlobalNetworkEndpointGroupNetworkEndpointType Serverless { get; } = new GlobalNetworkEndpointGroupNetworkEndpointType("SERVERLESS");
@@ -2988,6 +2992,43 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
+    /// The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+    /// </summary>
+    [EnumType]
+    public readonly struct InterconnectAttachmentStackType : IEquatable<InterconnectAttachmentStackType>
+    {
+        private readonly string _value;
+
+        private InterconnectAttachmentStackType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The interconnect attachment can have both IPv4 and IPv6 addresses.
+        /// </summary>
+        public static InterconnectAttachmentStackType Ipv4Ipv6 { get; } = new InterconnectAttachmentStackType("IPV4_IPV6");
+        /// <summary>
+        /// The interconnect attachment will only be assigned IPv4 addresses.
+        /// </summary>
+        public static InterconnectAttachmentStackType Ipv4Only { get; } = new InterconnectAttachmentStackType("IPV4_ONLY");
+
+        public static bool operator ==(InterconnectAttachmentStackType left, InterconnectAttachmentStackType right) => left.Equals(right);
+        public static bool operator !=(InterconnectAttachmentStackType left, InterconnectAttachmentStackType right) => !left.Equals(right);
+
+        public static explicit operator string(InterconnectAttachmentStackType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InterconnectAttachmentStackType other && Equals(other);
+        public bool Equals(InterconnectAttachmentStackType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
     /// </summary>
     [EnumType]
@@ -3258,6 +3299,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
         /// </summary>
         public static NetworkEndpointGroupNetworkEndpointType NonGcpPrivateIpPort { get; } = new NetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT");
+        /// <summary>
+        /// The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+        /// </summary>
+        public static NetworkEndpointGroupNetworkEndpointType PrivateServiceConnect { get; } = new NetworkEndpointGroupNetworkEndpointType("PRIVATE_SERVICE_CONNECT");
         /// <summary>
         /// The network endpoint is handled by specified serverless infrastructure.
         /// </summary>
@@ -4116,6 +4161,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
         /// </summary>
         public static RegionNetworkEndpointGroupNetworkEndpointType NonGcpPrivateIpPort { get; } = new RegionNetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT");
+        /// <summary>
+        /// The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+        /// </summary>
+        public static RegionNetworkEndpointGroupNetworkEndpointType PrivateServiceConnect { get; } = new RegionNetworkEndpointGroupNetworkEndpointType("PRIVATE_SERVICE_CONNECT");
         /// <summary>
         /// The network endpoint is handled by specified serverless infrastructure.
         /// </summary>

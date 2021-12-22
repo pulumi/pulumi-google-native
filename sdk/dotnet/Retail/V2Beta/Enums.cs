@@ -8,7 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Retail.V2Beta
 {
     /// <summary>
-    /// The online availability of the Product. Default to Availability.IN_STOCK. Google Merchant Center Property [availability](https://support.google.com/merchants/answer/6324448). Schema.org Property [Offer.availability](https://schema.org/availability).
+    /// The online availability of the Product. Default to Availability.IN_STOCK. Corresponding properties: Google Merchant Center property [availability](https://support.google.com/merchants/answer/6324448). Schema.org property [Offer.availability](https://schema.org/availability).
     /// </summary>
     [EnumType]
     public readonly struct ProductAvailability : IEquatable<ProductAvailability>

@@ -62,6 +62,8 @@ type Instance struct {
 	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
 	NetworkInterfaces        NetworkInterfaceResponseArrayOutput    `pulumi:"networkInterfaces"`
 	NetworkPerformanceConfig NetworkPerformanceConfigResponseOutput `pulumi:"networkPerformanceConfig"`
+	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+	Params InstanceParamsResponseOutput `pulumi:"params"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType pulumi.StringOutput `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
@@ -171,6 +173,8 @@ type instanceArgs struct {
 	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
 	NetworkInterfaces        []NetworkInterface        `pulumi:"networkInterfaces"`
 	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+	Params *InstanceParams `pulumi:"params"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType *InstancePostKeyRevocationActionType `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
@@ -235,6 +239,8 @@ type InstanceArgs struct {
 	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
 	NetworkInterfaces        NetworkInterfaceArrayInput
 	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput
+	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+	Params InstanceParamsPtrInput
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType InstancePostKeyRevocationActionTypePtrInput
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.

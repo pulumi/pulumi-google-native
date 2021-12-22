@@ -28,6 +28,8 @@ type Rollout struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Time at which the `Rollout` finished deploying.
 	DeployEndTime pulumi.StringOutput `pulumi:"deployEndTime"`
+	// The reason this deploy failed. This will always be unspecified while the deploy in progress.
+	DeployFailureCause pulumi.StringOutput `pulumi:"deployFailureCause"`
 	// Time at which the `Rollout` started deploying.
 	DeployStartTime pulumi.StringOutput `pulumi:"deployStartTime"`
 	// The resource name of the Cloud Build `Build` object that is used to deploy the Rollout. Format is `projects/{project}/locations/{location}/builds/{build}`.

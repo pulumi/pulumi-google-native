@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<string>? CpuCfsQuotaPeriod { get; set; }
 
         /// <summary>
-        /// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+        /// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
         /// </summary>
         [Input("cpuManagerPolicy")]
         public Input<string>? CpuManagerPolicy { get; set; }

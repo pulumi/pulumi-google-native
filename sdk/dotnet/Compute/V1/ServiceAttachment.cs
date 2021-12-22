@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
+        /// </summary>
+        [Output("domainNames")]
+        public Output<ImmutableArray<string>> DomainNames { get; private set; } = null!;
+
+        /// <summary>
         /// If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
         /// </summary>
         [Output("enableProxyProtocol")]
@@ -191,6 +197,18 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("domainNames")]
+        private InputList<string>? _domainNames;
+
+        /// <summary>
+        /// If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
+        /// </summary>
+        public InputList<string> DomainNames
+        {
+            get => _domainNames ?? (_domainNames = new InputList<string>());
+            set => _domainNames = value;
+        }
 
         /// <summary>
         /// If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.

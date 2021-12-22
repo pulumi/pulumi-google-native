@@ -65,6 +65,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly bool AllowGlobalAccess;
         /// <summary>
+        /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        /// </summary>
+        public readonly bool AllowPscGlobalAccess;
+        /// <summary>
         /// Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
         /// </summary>
         public readonly string BackendService;
@@ -181,6 +185,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             bool allowGlobalAccess,
 
+            bool allowPscGlobalAccess,
+
             string backendService,
 
             string creationTimestamp,
@@ -241,6 +247,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         {
             AllPorts = allPorts;
             AllowGlobalAccess = allowGlobalAccess;
+            AllowPscGlobalAccess = allowPscGlobalAccess;
             BackendService = backendService;
             CreationTimestamp = creationTimestamp;
             Description = description;

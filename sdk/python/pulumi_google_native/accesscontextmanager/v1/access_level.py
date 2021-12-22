@@ -125,7 +125,7 @@ class AccessLevel(pulumi.CustomResource):
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create an Access Level. The longrunning operation from this RPC will have a successful status once the Access Level has propagated to long-lasting storage. Access Levels containing errors will result in an error response for the first error encountered.
+        Creates an access level. The long-running operation from this RPC has a successful status after the access level propagates to long-lasting storage. If access levels contain errors, an error response is returned for the first error encountered.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -142,7 +142,7 @@ class AccessLevel(pulumi.CustomResource):
                  args: AccessLevelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create an Access Level. The longrunning operation from this RPC will have a successful status once the Access Level has propagated to long-lasting storage. Access Levels containing errors will result in an error response for the first error encountered.
+        Creates an access level. The long-running operation from this RPC has a successful status after the access level propagates to long-lasting storage. If access levels contain errors, an error response is returned for the first error encountered.
 
         :param str resource_name: The name of the resource.
         :param AccessLevelArgs args: The arguments to use to populate this resource's properties.

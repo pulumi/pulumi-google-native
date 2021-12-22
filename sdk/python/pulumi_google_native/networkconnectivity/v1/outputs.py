@@ -430,13 +430,41 @@ class RoutingVPCResponse(dict):
     """
     RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requiredForNewSiteToSiteDataTransferSpokes":
+            suggest = "required_for_new_site_to_site_data_transfer_spokes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RoutingVPCResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RoutingVPCResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RoutingVPCResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 required_for_new_site_to_site_data_transfer_spokes: bool,
                  uri: str):
         """
         RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
+        :param bool required_for_new_site_to_site_data_transfer_spokes: If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network.
         :param str uri: The URI of the VPC network.
         """
+        pulumi.set(__self__, "required_for_new_site_to_site_data_transfer_spokes", required_for_new_site_to_site_data_transfer_spokes)
         pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="requiredForNewSiteToSiteDataTransferSpokes")
+    def required_for_new_site_to_site_data_transfer_spokes(self) -> bool:
+        """
+        If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network.
+        """
+        return pulumi.get(self, "required_for_new_site_to_site_data_transfer_spokes")
 
     @property
     @pulumi.getter

@@ -2235,6 +2235,8 @@ func (o RoutingVPCArrayOutput) Index(i pulumi.IntInput) RoutingVPCOutput {
 
 // RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
 type RoutingVPCResponse struct {
+	// If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network.
+	RequiredForNewSiteToSiteDataTransferSpokes bool `pulumi:"requiredForNewSiteToSiteDataTransferSpokes"`
 	// The URI of the VPC network.
 	Uri string `pulumi:"uri"`
 }
@@ -2252,6 +2254,8 @@ type RoutingVPCResponseInput interface {
 
 // RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
 type RoutingVPCResponseArgs struct {
+	// If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network.
+	RequiredForNewSiteToSiteDataTransferSpokes pulumi.BoolInput `pulumi:"requiredForNewSiteToSiteDataTransferSpokes"`
 	// The URI of the VPC network.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
@@ -2306,6 +2310,11 @@ func (o RoutingVPCResponseOutput) ToRoutingVPCResponseOutput() RoutingVPCRespons
 
 func (o RoutingVPCResponseOutput) ToRoutingVPCResponseOutputWithContext(ctx context.Context) RoutingVPCResponseOutput {
 	return o
+}
+
+// If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network.
+func (o RoutingVPCResponseOutput) RequiredForNewSiteToSiteDataTransferSpokes() pulumi.BoolOutput {
+	return o.ApplyT(func(v RoutingVPCResponse) bool { return v.RequiredForNewSiteToSiteDataTransferSpokes }).(pulumi.BoolOutput)
 }
 
 // The URI of the VPC network.

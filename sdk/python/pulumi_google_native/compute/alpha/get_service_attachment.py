@@ -123,7 +123,7 @@ class GetServiceAttachmentResult:
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> Sequence[str]:
         """
-        If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com".
+        If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
         """
         return pulumi.get(self, "domain_names")
 

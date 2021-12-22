@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConversationResult:
-    def __init__(__self__, agent_id=None, call_metadata=None, create_time=None, data_source=None, dialogflow_intents=None, duration=None, expire_time=None, labels=None, language_code=None, latest_analysis=None, medium=None, name=None, runtime_annotations=None, start_time=None, transcript=None, ttl=None, turn_count=None, update_time=None):
+    def __init__(__self__, agent_id=None, call_metadata=None, create_time=None, data_source=None, dialogflow_intents=None, duration=None, expire_time=None, labels=None, language_code=None, latest_analysis=None, medium=None, name=None, obfuscated_user_id=None, runtime_annotations=None, start_time=None, transcript=None, ttl=None, turn_count=None, update_time=None):
         if agent_id and not isinstance(agent_id, str):
             raise TypeError("Expected argument 'agent_id' to be a str")
         pulumi.set(__self__, "agent_id", agent_id)
@@ -55,6 +55,9 @@ class GetConversationResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if obfuscated_user_id and not isinstance(obfuscated_user_id, str):
+            raise TypeError("Expected argument 'obfuscated_user_id' to be a str")
+        pulumi.set(__self__, "obfuscated_user_id", obfuscated_user_id)
         if runtime_annotations and not isinstance(runtime_annotations, list):
             raise TypeError("Expected argument 'runtime_annotations' to be a list")
         pulumi.set(__self__, "runtime_annotations", runtime_annotations)
@@ -171,6 +174,14 @@ class GetConversationResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="obfuscatedUserId")
+    def obfuscated_user_id(self) -> str:
+        """
+        Obfuscated user ID which the customer sent to us.
+        """
+        return pulumi.get(self, "obfuscated_user_id")
+
+    @property
     @pulumi.getter(name="runtimeAnnotations")
     def runtime_annotations(self) -> Sequence['outputs.GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse']:
         """
@@ -237,6 +248,7 @@ class AwaitableGetConversationResult(GetConversationResult):
             latest_analysis=self.latest_analysis,
             medium=self.medium,
             name=self.name,
+            obfuscated_user_id=self.obfuscated_user_id,
             runtime_annotations=self.runtime_annotations,
             start_time=self.start_time,
             transcript=self.transcript,
@@ -277,6 +289,7 @@ def get_conversation(conversation_id: Optional[str] = None,
         latest_analysis=__ret__.latest_analysis,
         medium=__ret__.medium,
         name=__ret__.name,
+        obfuscated_user_id=__ret__.obfuscated_user_id,
         runtime_annotations=__ret__.runtime_annotations,
         start_time=__ret__.start_time,
         transcript=__ret__.transcript,

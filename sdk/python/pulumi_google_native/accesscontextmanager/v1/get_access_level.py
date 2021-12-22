@@ -94,7 +94,7 @@ def get_access_level(access_level_format: Optional[str] = None,
                      access_policy_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccessLevelResult:
     """
-    Get an Access Level by resource name.
+    Gets an access level based on the resource name.
     """
     __args__ = dict()
     __args__['accessLevelFormat'] = access_level_format
@@ -120,6 +120,6 @@ def get_access_level_output(access_level_format: Optional[pulumi.Input[Optional[
                             access_policy_id: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessLevelResult]:
     """
-    Get an Access Level by resource name.
+    Gets an access level based on the resource name.
     """
     ...

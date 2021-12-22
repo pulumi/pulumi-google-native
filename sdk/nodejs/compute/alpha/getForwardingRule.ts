@@ -39,6 +39,10 @@ export interface GetForwardingRuleResult {
      */
     readonly allowGlobalAccess: boolean;
     /**
+     * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+     */
+    readonly allowPscGlobalAccess: boolean;
+    /**
      * Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
      */
     readonly backendService: string;

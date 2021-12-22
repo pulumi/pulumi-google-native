@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         public Input<string>? ConnectVersion { get; set; }
 
         /// <summary>
+        /// Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+        /// </summary>
+        [Input("k8sVersion")]
+        public Input<string>? K8sVersion { get; set; }
+
+        /// <summary>
         /// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions &lt;1.16.
         /// </summary>
         [Input("v1beta1Crd")]

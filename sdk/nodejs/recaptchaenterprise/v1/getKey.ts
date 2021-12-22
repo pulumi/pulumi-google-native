@@ -57,6 +57,10 @@ export interface GetKeyResult {
      */
     readonly testingOptions: outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse;
     /**
+     * Settings for WAF
+     */
+    readonly wafSettings: outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1WafSettingsResponse;
+    /**
      * Settings for keys that can be used by websites.
      */
     readonly webSettings: outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse;

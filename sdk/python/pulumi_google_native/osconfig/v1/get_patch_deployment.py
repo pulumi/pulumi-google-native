@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetPatchDeploymentResult:
-    def __init__(__self__, create_time=None, description=None, duration=None, instance_filter=None, last_execute_time=None, name=None, one_time_schedule=None, patch_config=None, recurring_schedule=None, rollout=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, duration=None, instance_filter=None, last_execute_time=None, name=None, one_time_schedule=None, patch_config=None, recurring_schedule=None, rollout=None, state=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -49,6 +49,9 @@ class GetPatchDeploymentResult:
         if rollout and not isinstance(rollout, dict):
             raise TypeError("Expected argument 'rollout' to be a dict")
         pulumi.set(__self__, "rollout", rollout)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -134,6 +137,14 @@ class GetPatchDeploymentResult:
         return pulumi.get(self, "rollout")
 
     @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Current state of the patch deployment.
+        """
+        return pulumi.get(self, "state")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -158,6 +169,7 @@ class AwaitableGetPatchDeploymentResult(GetPatchDeploymentResult):
             patch_config=self.patch_config,
             recurring_schedule=self.recurring_schedule,
             rollout=self.rollout,
+            state=self.state,
             update_time=self.update_time)
 
 
@@ -187,6 +199,7 @@ def get_patch_deployment(patch_deployment_id: Optional[str] = None,
         patch_config=__ret__.patch_config,
         recurring_schedule=__ret__.recurring_schedule,
         rollout=__ret__.rollout,
+        state=__ret__.state,
         update_time=__ret__.update_time)
 
 

@@ -3608,6 +3608,165 @@ func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput) SampleGcsFileSp
 	}).(GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput)
 }
 
+// Entry metadata relevant only to the user and private to them.
+type GoogleCloudDatacatalogV1PersonalDetailsResponse struct {
+	// Set if the entry is starred; unset otherwise.
+	StarTime string `pulumi:"starTime"`
+	// True if the entry is starred by the user; false otherwise.
+	Starred bool `pulumi:"starred"`
+}
+
+// GoogleCloudDatacatalogV1PersonalDetailsResponseInput is an input type that accepts GoogleCloudDatacatalogV1PersonalDetailsResponseArgs and GoogleCloudDatacatalogV1PersonalDetailsResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PersonalDetailsResponseInput` via:
+//
+//          GoogleCloudDatacatalogV1PersonalDetailsResponseArgs{...}
+type GoogleCloudDatacatalogV1PersonalDetailsResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PersonalDetailsResponseOutput() GoogleCloudDatacatalogV1PersonalDetailsResponseOutput
+	ToGoogleCloudDatacatalogV1PersonalDetailsResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1PersonalDetailsResponseOutput
+}
+
+// Entry metadata relevant only to the user and private to them.
+type GoogleCloudDatacatalogV1PersonalDetailsResponseArgs struct {
+	// Set if the entry is starred; unset otherwise.
+	StarTime pulumi.StringInput `pulumi:"starTime"`
+	// True if the entry is starred by the user; false otherwise.
+	Starred pulumi.BoolInput `pulumi:"starred"`
+}
+
+func (GoogleCloudDatacatalogV1PersonalDetailsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PersonalDetailsResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1PersonalDetailsResponseArgs) ToGoogleCloudDatacatalogV1PersonalDetailsResponseOutput() GoogleCloudDatacatalogV1PersonalDetailsResponseOutput {
+	return i.ToGoogleCloudDatacatalogV1PersonalDetailsResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PersonalDetailsResponseArgs) ToGoogleCloudDatacatalogV1PersonalDetailsResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PersonalDetailsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PersonalDetailsResponseOutput)
+}
+
+func (i GoogleCloudDatacatalogV1PersonalDetailsResponseArgs) ToGoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput() GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PersonalDetailsResponseArgs) ToGoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PersonalDetailsResponseOutput).ToGoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1PersonalDetailsResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1PersonalDetailsResponseArgs, GoogleCloudDatacatalogV1PersonalDetailsResponsePtr and GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PersonalDetailsResponsePtrInput` via:
+//
+//          GoogleCloudDatacatalogV1PersonalDetailsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1PersonalDetailsResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput() GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput
+	ToGoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput
+}
+
+type googleCloudDatacatalogV1PersonalDetailsResponsePtrType GoogleCloudDatacatalogV1PersonalDetailsResponseArgs
+
+func GoogleCloudDatacatalogV1PersonalDetailsResponsePtr(v *GoogleCloudDatacatalogV1PersonalDetailsResponseArgs) GoogleCloudDatacatalogV1PersonalDetailsResponsePtrInput {
+	return (*googleCloudDatacatalogV1PersonalDetailsResponsePtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1PersonalDetailsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PersonalDetailsResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1PersonalDetailsResponsePtrType) ToGoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput() GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1PersonalDetailsResponsePtrType) ToGoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput)
+}
+
+// Entry metadata relevant only to the user and private to them.
+type GoogleCloudDatacatalogV1PersonalDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PersonalDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PersonalDetailsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PersonalDetailsResponseOutput) ToGoogleCloudDatacatalogV1PersonalDetailsResponseOutput() GoogleCloudDatacatalogV1PersonalDetailsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PersonalDetailsResponseOutput) ToGoogleCloudDatacatalogV1PersonalDetailsResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PersonalDetailsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PersonalDetailsResponseOutput) ToGoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput() GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1PersonalDetailsResponseOutput) ToGoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1PersonalDetailsResponse) *GoogleCloudDatacatalogV1PersonalDetailsResponse {
+		return &v
+	}).(GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput)
+}
+
+// Set if the entry is starred; unset otherwise.
+func (o GoogleCloudDatacatalogV1PersonalDetailsResponseOutput) StarTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PersonalDetailsResponse) string { return v.StarTime }).(pulumi.StringOutput)
+}
+
+// True if the entry is starred by the user; false otherwise.
+func (o GoogleCloudDatacatalogV1PersonalDetailsResponseOutput) Starred() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PersonalDetailsResponse) bool { return v.Starred }).(pulumi.BoolOutput)
+}
+
+type GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PersonalDetailsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput) ToGoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput() GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput) ToGoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput) Elem() GoogleCloudDatacatalogV1PersonalDetailsResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PersonalDetailsResponse) GoogleCloudDatacatalogV1PersonalDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1PersonalDetailsResponse
+		return ret
+	}).(GoogleCloudDatacatalogV1PersonalDetailsResponseOutput)
+}
+
+// Set if the entry is starred; unset otherwise.
+func (o GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput) StarTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PersonalDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StarTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// True if the entry is starred by the user; false otherwise.
+func (o GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput) Starred() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PersonalDetailsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Starred
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Specification that applies to a routine. Valid only for entries with the `ROUTINE` type.
 type GoogleCloudDatacatalogV1RoutineSpec struct {
 	// Fields specific for BigQuery routines.
@@ -5674,6 +5833,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFilesetSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1GcsFilesetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFilesetSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PersonalDetailsResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1PersonalDetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PersonalDetailsResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1PersonalDetailsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgumentArgs{})
@@ -5747,6 +5908,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFilesetSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PersonalDetailsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PersonalDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecArgumentOutput{})

@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRolloutResult:
-    def __init__(__self__, annotations=None, approval_state=None, approve_time=None, create_time=None, deploy_end_time=None, deploy_start_time=None, deploying_build=None, description=None, enqueue_time=None, etag=None, failure_reason=None, labels=None, name=None, state=None, target_id=None, uid=None):
+    def __init__(__self__, annotations=None, approval_state=None, approve_time=None, create_time=None, deploy_end_time=None, deploy_failure_cause=None, deploy_start_time=None, deploying_build=None, description=None, enqueue_time=None, etag=None, failure_reason=None, labels=None, name=None, state=None, target_id=None, uid=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -33,6 +33,9 @@ class GetRolloutResult:
         if deploy_end_time and not isinstance(deploy_end_time, str):
             raise TypeError("Expected argument 'deploy_end_time' to be a str")
         pulumi.set(__self__, "deploy_end_time", deploy_end_time)
+        if deploy_failure_cause and not isinstance(deploy_failure_cause, str):
+            raise TypeError("Expected argument 'deploy_failure_cause' to be a str")
+        pulumi.set(__self__, "deploy_failure_cause", deploy_failure_cause)
         if deploy_start_time and not isinstance(deploy_start_time, str):
             raise TypeError("Expected argument 'deploy_start_time' to be a str")
         pulumi.set(__self__, "deploy_start_time", deploy_start_time)
@@ -106,6 +109,14 @@ class GetRolloutResult:
         Time at which the `Rollout` finished deploying.
         """
         return pulumi.get(self, "deploy_end_time")
+
+    @property
+    @pulumi.getter(name="deployFailureCause")
+    def deploy_failure_cause(self) -> str:
+        """
+        The reason this deploy failed. This will always be unspecified while the deploy in progress.
+        """
+        return pulumi.get(self, "deploy_failure_cause")
 
     @property
     @pulumi.getter(name="deployStartTime")
@@ -207,6 +218,7 @@ class AwaitableGetRolloutResult(GetRolloutResult):
             approve_time=self.approve_time,
             create_time=self.create_time,
             deploy_end_time=self.deploy_end_time,
+            deploy_failure_cause=self.deploy_failure_cause,
             deploy_start_time=self.deploy_start_time,
             deploying_build=self.deploying_build,
             description=self.description,
@@ -247,6 +259,7 @@ def get_rollout(delivery_pipeline_id: Optional[str] = None,
         approve_time=__ret__.approve_time,
         create_time=__ret__.create_time,
         deploy_end_time=__ret__.deploy_end_time,
+        deploy_failure_cause=__ret__.deploy_failure_cause,
         deploy_start_time=__ret__.deploy_start_time,
         deploying_build=__ret__.deploying_build,
         description=__ret__.description,

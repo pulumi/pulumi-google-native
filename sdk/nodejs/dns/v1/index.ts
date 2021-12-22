@@ -10,6 +10,8 @@ export * from "./getChange";
 export * from "./getManagedZone";
 export * from "./getPolicy";
 export * from "./getResourceRecordSet";
+export * from "./getResponsePolicy";
+export * from "./getResponsePolicyRule";
 export * from "./managedZone";
 export * from "./policy";
 export * from "./resourceRecordSet";

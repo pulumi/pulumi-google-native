@@ -29,10 +29,6 @@ class RepositoryFormat(str, Enum):
     """
     NPM package format.
     """
-    PYPI = "PYPI"
-    """
-    PyPI package format. Deprecated, use PYTHON instead.
-    """
     APT = "APT"
     """
     APT package format.

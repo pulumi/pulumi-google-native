@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
     public sealed class ComputeEngineTargetDefaultsResponse
     {
         /// <summary>
+        /// Additional licenses to assign to the VM.
+        /// </summary>
+        public readonly ImmutableArray<string> AdditionalLicenses;
+        /// <summary>
         /// The OS license returned from the adaptation module report.
         /// </summary>
         public readonly Outputs.AppliedLicenseResponse AppliedLicense;
@@ -83,6 +87,8 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
 
         [OutputConstructor]
         private ComputeEngineTargetDefaultsResponse(
+            ImmutableArray<string> additionalLicenses,
+
             Outputs.AppliedLicenseResponse appliedLicense,
 
             string bootOption,
@@ -115,6 +121,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
 
             string zone)
         {
+            AdditionalLicenses = additionalLicenses;
             AppliedLicense = appliedLicense;
             BootOption = bootOption;
             ComputeScheduling = computeScheduling;

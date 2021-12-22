@@ -81,6 +81,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SourceImageEncryptionKey;
         /// <summary>
+        /// The source instant-snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceInstantSnapshot initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: us-central1-a/instantSnapshots/my-backup If the source instant-snapshot is deleted later, this field will not be set.
+        /// </summary>
+        public readonly string SourceInstantSnapshot;
+        /// <summary>
         /// The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
         /// </summary>
         public readonly string SourceSnapshot;
@@ -123,6 +127,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             Outputs.CustomerEncryptionKeyResponse sourceImageEncryptionKey,
 
+            string sourceInstantSnapshot,
+
             string sourceSnapshot,
 
             Outputs.CustomerEncryptionKeyResponse sourceSnapshotEncryptionKey)
@@ -143,6 +149,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             ResourcePolicies = resourcePolicies;
             SourceImage = sourceImage;
             SourceImageEncryptionKey = sourceImageEncryptionKey;
+            SourceInstantSnapshot = sourceInstantSnapshot;
             SourceSnapshot = sourceSnapshot;
             SourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
         }

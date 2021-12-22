@@ -89,6 +89,10 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// </summary>
         public readonly Outputs.QueryInterpretationConfigResponse QueryInterpretationConfig;
         /// <summary>
+        /// With each result we should return the URI for its thumbnail (when applicable)
+        /// </summary>
+        public readonly bool ReturnResultThumbnailUrls;
+        /// <summary>
         /// Configuration for ranking results.
         /// </summary>
         public readonly Outputs.ScoringConfigResponse ScoringConfig;
@@ -115,6 +119,8 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
 
             Outputs.QueryInterpretationConfigResponse queryInterpretationConfig,
 
+            bool returnResultThumbnailUrls,
+
             Outputs.ScoringConfigResponse scoringConfig,
 
             ImmutableArray<Outputs.SourceConfigResponse> sourceConfig)
@@ -127,6 +133,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
             Name = name;
             OperationIds = operationIds;
             QueryInterpretationConfig = queryInterpretationConfig;
+            ReturnResultThumbnailUrls = returnResultThumbnailUrls;
             ScoringConfig = scoringConfig;
             SourceConfig = sourceConfig;
         }

@@ -121,6 +121,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Additional information related to the entry. Private to the current user.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1PersonalDetailsResponse PersonalDetails;
+        /// <summary>
         /// Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1RoutineSpecResponse RoutineSpec;
@@ -177,6 +181,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 
             string name,
 
+            Outputs.GoogleCloudDatacatalogV1PersonalDetailsResponse personalDetails,
+
             Outputs.GoogleCloudDatacatalogV1RoutineSpecResponse routineSpec,
 
             Outputs.GoogleCloudDatacatalogV1SchemaResponse schema,
@@ -204,6 +210,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
             Labels = labels;
             LinkedResource = linkedResource;
             Name = name;
+            PersonalDetails = personalDetails;
             RoutineSpec = routineSpec;
             Schema = schema;
             SourceSystemTimestamps = sourceSystemTimestamps;

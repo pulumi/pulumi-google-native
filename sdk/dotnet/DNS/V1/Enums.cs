@@ -279,4 +279,38 @@ namespace Pulumi.GoogleNative.DNS.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Answer this query with a behavior rather than DNS data.
+    /// </summary>
+    [EnumType]
+    public readonly struct ResponsePolicyRuleBehavior : IEquatable<ResponsePolicyRuleBehavior>
+    {
+        private readonly string _value;
+
+        private ResponsePolicyRuleBehavior(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static ResponsePolicyRuleBehavior BehaviorUnspecified { get; } = new ResponsePolicyRuleBehavior("behaviorUnspecified");
+        /// <summary>
+        /// Skip a less-specific ResponsePolicyRule and continue normal query logic. This can be used in conjunction with a wildcard to exempt a subset of the wildcard ResponsePolicyRule from the ResponsePolicy behavior and e.g., query the public internet instead. For instance, if these rules exist: *.example.com -&gt; 1.2.3.4 foo.example.com -&gt; PASSTHRU Then a query for 'foo.example.com' skips the wildcard.
+        /// </summary>
+        public static ResponsePolicyRuleBehavior BypassResponsePolicy { get; } = new ResponsePolicyRuleBehavior("bypassResponsePolicy");
+
+        public static bool operator ==(ResponsePolicyRuleBehavior left, ResponsePolicyRuleBehavior right) => left.Equals(right);
+        public static bool operator !=(ResponsePolicyRuleBehavior left, ResponsePolicyRuleBehavior right) => !left.Equals(right);
+
+        public static explicit operator string(ResponsePolicyRuleBehavior value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ResponsePolicyRuleBehavior other && Equals(other);
+        public bool Equals(ResponsePolicyRuleBehavior other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

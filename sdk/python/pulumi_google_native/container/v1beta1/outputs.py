@@ -34,6 +34,7 @@ __all__ = [
     'DefaultSnatStatusResponse',
     'DnsCacheConfigResponse',
     'EphemeralStorageConfigResponse',
+    'FilterResponse',
     'GcePersistentDiskCsiDriverConfigResponse',
     'GcfsConfigResponse',
     'GcpFilestoreCsiDriverConfigResponse',
@@ -48,6 +49,7 @@ __all__ = [
     'LinuxNodeConfigResponse',
     'LoggingComponentConfigResponse',
     'LoggingConfigResponse',
+    'MaintenanceExclusionOptionsResponse',
     'MaintenancePolicyResponse',
     'MaintenanceWindowResponse',
     'ManagedPrometheusConfigResponse',
@@ -1274,6 +1276,45 @@ class EphemeralStorageConfigResponse(dict):
 
 
 @pulumi.output_type
+class FilterResponse(dict):
+    """
+    Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventType":
+            suggest = "event_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FilterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event_type: Sequence[str]):
+        """
+        Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+        :param Sequence[str] event_type: Event types to allowlist.
+        """
+        pulumi.set(__self__, "event_type", event_type)
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> Sequence[str]:
+        """
+        Event types to allowlist.
+        """
+        return pulumi.get(self, "event_type")
+
+
+@pulumi.output_type
 class GcePersistentDiskCsiDriverConfigResponse(dict):
     """
     Configuration for the Compute Engine PD CSI driver.
@@ -1758,6 +1799,28 @@ class LoggingConfigResponse(dict):
         Logging components configuration
         """
         return pulumi.get(self, "component_config")
+
+
+@pulumi.output_type
+class MaintenanceExclusionOptionsResponse(dict):
+    """
+    Represents the Maintenance exclusion option.
+    """
+    def __init__(__self__, *,
+                 scope: str):
+        """
+        Represents the Maintenance exclusion option.
+        :param str scope: Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+        """
+        pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+        """
+        return pulumi.get(self, "scope")
 
 
 @pulumi.output_type
@@ -2852,7 +2915,7 @@ class NodeKubeletConfigResponse(dict):
         Node kubelet configs.
         :param bool cpu_cfs_quota: Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified.
         :param str cpu_cfs_quota_period: Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
-        :param str cpu_manager_policy: Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+        :param str cpu_manager_policy: Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
         """
         pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
         pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
@@ -2878,7 +2941,7 @@ class NodeKubeletConfigResponse(dict):
     @pulumi.getter(name="cpuManagerPolicy")
     def cpu_manager_policy(self) -> str:
         """
-        Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+        Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
         """
         return pulumi.get(self, "cpu_manager_policy")
 
@@ -3565,13 +3628,16 @@ class PubSubResponse(dict):
     """
     def __init__(__self__, *,
                  enabled: bool,
+                 filter: 'outputs.FilterResponse',
                  topic: str):
         """
         Pub/Sub specific notification config.
         :param bool enabled: Enable notifications for Pub/Sub.
+        :param 'FilterResponse' filter: Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
         :param str topic: The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
         """
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "topic", topic)
 
     @property
@@ -3581,6 +3647,14 @@ class PubSubResponse(dict):
         Enable notifications for Pub/Sub.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> 'outputs.FilterResponse':
+        """
+        Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
+        """
+        return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter
@@ -4039,6 +4113,8 @@ class TimeWindowResponse(dict):
         suggest = None
         if key == "endTime":
             suggest = "end_time"
+        elif key == "maintenanceExclusionOptions":
+            suggest = "maintenance_exclusion_options"
         elif key == "startTime":
             suggest = "start_time"
 
@@ -4055,13 +4131,16 @@ class TimeWindowResponse(dict):
 
     def __init__(__self__, *,
                  end_time: str,
+                 maintenance_exclusion_options: 'outputs.MaintenanceExclusionOptionsResponse',
                  start_time: str):
         """
         Represents an arbitrary window of time.
         :param str end_time: The time that the window ends. The end time should take place after the start time.
+        :param 'MaintenanceExclusionOptionsResponse' maintenance_exclusion_options: MaintenanceExclusionOptions provides maintenance exclusion related options.
         :param str start_time: The time that the window first starts.
         """
         pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "maintenance_exclusion_options", maintenance_exclusion_options)
         pulumi.set(__self__, "start_time", start_time)
 
     @property
@@ -4071,6 +4150,14 @@ class TimeWindowResponse(dict):
         The time that the window ends. The end time should take place after the start time.
         """
         return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="maintenanceExclusionOptions")
+    def maintenance_exclusion_options(self) -> 'outputs.MaintenanceExclusionOptionsResponse':
+        """
+        MaintenanceExclusionOptions provides maintenance exclusion related options.
+        """
+        return pulumi.get(self, "maintenance_exclusion_options")
 
     @property
     @pulumi.getter(name="startTime")

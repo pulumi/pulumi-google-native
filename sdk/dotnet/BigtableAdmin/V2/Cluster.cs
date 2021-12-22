@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigtableAdmin.V2
 {
     /// <summary>
-    /// Creates a cluster within an instance.
+    /// Creates a cluster within an instance. Note that exactly one of Cluster.serve_nodes and Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero, then the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then autoscaling is enabled.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigtableadmin/v2:Cluster")]
     public partial class Cluster : Pulumi.CustomResource
@@ -144,8 +144,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// <summary>
         /// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
         /// </summary>
-        [Input("serveNodes", required: true)]
-        public Input<int> ServeNodes { get; set; } = null!;
+        [Input("serveNodes")]
+        public Input<int>? ServeNodes { get; set; }
 
         public ClusterArgs()
         {

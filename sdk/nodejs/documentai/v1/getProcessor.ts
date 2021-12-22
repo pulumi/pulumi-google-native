@@ -46,7 +46,7 @@ export interface GetProcessorResult {
      */
     readonly kmsKeyName: string;
     /**
-     * Immutable. The resource name of the processor. Format: projects/{project}/locations/{location}/processors/{processor}
+     * Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
      */
     readonly name: string;
     /**

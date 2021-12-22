@@ -1194,6 +1194,8 @@ type GooglePrivacyDlpV2BigQueryOptions struct {
 	ExcludedFields []GooglePrivacyDlpV2FieldId `pulumi:"excludedFields"`
 	// Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
 	IdentifyingFields []GooglePrivacyDlpV2FieldId `pulumi:"identifyingFields"`
+	// Limit scanning only to these fields.
+	IncludedFields []GooglePrivacyDlpV2FieldId `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 	RowsLimit *string `pulumi:"rowsLimit"`
 	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
@@ -1220,6 +1222,8 @@ type GooglePrivacyDlpV2BigQueryOptionsArgs struct {
 	ExcludedFields GooglePrivacyDlpV2FieldIdArrayInput `pulumi:"excludedFields"`
 	// Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
 	IdentifyingFields GooglePrivacyDlpV2FieldIdArrayInput `pulumi:"identifyingFields"`
+	// Limit scanning only to these fields.
+	IncludedFields GooglePrivacyDlpV2FieldIdArrayInput `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 	RowsLimit pulumi.StringPtrInput `pulumi:"rowsLimit"`
 	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
@@ -1317,6 +1321,11 @@ func (o GooglePrivacyDlpV2BigQueryOptionsOutput) IdentifyingFields() GooglePriva
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptions) []GooglePrivacyDlpV2FieldId { return v.IdentifyingFields }).(GooglePrivacyDlpV2FieldIdArrayOutput)
 }
 
+// Limit scanning only to these fields.
+func (o GooglePrivacyDlpV2BigQueryOptionsOutput) IncludedFields() GooglePrivacyDlpV2FieldIdArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptions) []GooglePrivacyDlpV2FieldId { return v.IncludedFields }).(GooglePrivacyDlpV2FieldIdArrayOutput)
+}
+
 // Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 func (o GooglePrivacyDlpV2BigQueryOptionsOutput) RowsLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptions) *string { return v.RowsLimit }).(pulumi.StringPtrOutput)
@@ -1382,6 +1391,16 @@ func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) IdentifyingFields() GooglePr
 	}).(GooglePrivacyDlpV2FieldIdArrayOutput)
 }
 
+// Limit scanning only to these fields.
+func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) IncludedFields() GooglePrivacyDlpV2FieldIdArrayOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptions) []GooglePrivacyDlpV2FieldId {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedFields
+	}).(GooglePrivacyDlpV2FieldIdArrayOutput)
+}
+
 // Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) RowsLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptions) *string {
@@ -1427,6 +1446,8 @@ type GooglePrivacyDlpV2BigQueryOptionsResponse struct {
 	ExcludedFields []GooglePrivacyDlpV2FieldIdResponse `pulumi:"excludedFields"`
 	// Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
 	IdentifyingFields []GooglePrivacyDlpV2FieldIdResponse `pulumi:"identifyingFields"`
+	// Limit scanning only to these fields.
+	IncludedFields []GooglePrivacyDlpV2FieldIdResponse `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 	RowsLimit string `pulumi:"rowsLimit"`
 	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
@@ -1453,6 +1474,8 @@ type GooglePrivacyDlpV2BigQueryOptionsResponseArgs struct {
 	ExcludedFields GooglePrivacyDlpV2FieldIdResponseArrayInput `pulumi:"excludedFields"`
 	// Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
 	IdentifyingFields GooglePrivacyDlpV2FieldIdResponseArrayInput `pulumi:"identifyingFields"`
+	// Limit scanning only to these fields.
+	IncludedFields GooglePrivacyDlpV2FieldIdResponseArrayInput `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 	RowsLimit pulumi.StringInput `pulumi:"rowsLimit"`
 	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
@@ -1554,6 +1577,13 @@ func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) IdentifyingFields() Goo
 	}).(GooglePrivacyDlpV2FieldIdResponseArrayOutput)
 }
 
+// Limit scanning only to these fields.
+func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) IncludedFields() GooglePrivacyDlpV2FieldIdResponseArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptionsResponse) []GooglePrivacyDlpV2FieldIdResponse {
+		return v.IncludedFields
+	}).(GooglePrivacyDlpV2FieldIdResponseArrayOutput)
+}
+
 // Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) RowsLimit() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptionsResponse) string { return v.RowsLimit }).(pulumi.StringOutput)
@@ -1616,6 +1646,16 @@ func (o GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput) IdentifyingFields() 
 			return nil
 		}
 		return v.IdentifyingFields
+	}).(GooglePrivacyDlpV2FieldIdResponseArrayOutput)
+}
+
+// Limit scanning only to these fields.
+func (o GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput) IncludedFields() GooglePrivacyDlpV2FieldIdResponseArrayOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptionsResponse) []GooglePrivacyDlpV2FieldIdResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedFields
 	}).(GooglePrivacyDlpV2FieldIdResponseArrayOutput)
 }
 

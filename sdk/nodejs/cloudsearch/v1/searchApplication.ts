@@ -68,6 +68,10 @@ export class SearchApplication extends pulumi.CustomResource {
      */
     public readonly queryInterpretationConfig!: pulumi.Output<outputs.cloudsearch.v1.QueryInterpretationConfigResponse>;
     /**
+     * With each result we should return the URI for its thumbnail (when applicable)
+     */
+    public readonly returnResultThumbnailUrls!: pulumi.Output<boolean>;
+    /**
      * Configuration for ranking results.
      */
     public readonly scoringConfig!: pulumi.Output<outputs.cloudsearch.v1.ScoringConfigResponse>;
@@ -94,6 +98,7 @@ export class SearchApplication extends pulumi.CustomResource {
             resourceInputs["enableAuditLog"] = args ? args.enableAuditLog : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["queryInterpretationConfig"] = args ? args.queryInterpretationConfig : undefined;
+            resourceInputs["returnResultThumbnailUrls"] = args ? args.returnResultThumbnailUrls : undefined;
             resourceInputs["scoringConfig"] = args ? args.scoringConfig : undefined;
             resourceInputs["sourceConfig"] = args ? args.sourceConfig : undefined;
             resourceInputs["operationIds"] = undefined /*out*/;
@@ -106,6 +111,7 @@ export class SearchApplication extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["operationIds"] = undefined /*out*/;
             resourceInputs["queryInterpretationConfig"] = undefined /*out*/;
+            resourceInputs["returnResultThumbnailUrls"] = undefined /*out*/;
             resourceInputs["scoringConfig"] = undefined /*out*/;
             resourceInputs["sourceConfig"] = undefined /*out*/;
         }
@@ -148,6 +154,10 @@ export interface SearchApplicationArgs {
      * The default options for query interpretation
      */
     queryInterpretationConfig?: pulumi.Input<inputs.cloudsearch.v1.QueryInterpretationConfigArgs>;
+    /**
+     * With each result we should return the URI for its thumbnail (when applicable)
+     */
+    returnResultThumbnailUrls?: pulumi.Input<boolean>;
     /**
      * Configuration for ranking results.
      */

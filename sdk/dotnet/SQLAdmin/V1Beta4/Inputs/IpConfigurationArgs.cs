@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         private InputList<Inputs.AclEntryArgs>? _authorizedNetworks;
 
         /// <summary>
-        /// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+        /// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
         /// </summary>
         public InputList<Inputs.AclEntryArgs> AuthorizedNetworks
         {

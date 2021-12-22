@@ -34,7 +34,7 @@ type LookupInstanceResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see [this announcement](https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ) for details.
 	CurrentDiskSize string `pulumi:"currentDiskSize"`
-	// The databaseInstalledVersion stores the current fully resolved database version running on the instance including minor version such as MYSQL_5_6_50
+	// Stores the current database version running on the instance including minor version such as **MYSQL_8_0_18**.
 	DatabaseInstalledVersion string `pulumi:"databaseInstalledVersion"`
 	// The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
 	DatabaseVersion string `pulumi:"databaseVersion"`
@@ -44,7 +44,7 @@ type LookupInstanceResult struct {
 	DiskEncryptionStatus DiskEncryptionStatusResponse `pulumi:"diskEncryptionStatus"`
 	// The name and status of the failover replica.
 	FailoverReplica InstanceFailoverReplicaResponse `pulumi:"failoverReplica"`
-	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
 	GceZone string `pulumi:"gceZone"`
 	// The instance type.
 	InstanceType string `pulumi:"instanceType"`
@@ -144,7 +144,7 @@ func (o LookupInstanceResultOutput) CurrentDiskSize() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CurrentDiskSize }).(pulumi.StringOutput)
 }
 
-// The databaseInstalledVersion stores the current fully resolved database version running on the instance including minor version such as MYSQL_5_6_50
+// Stores the current database version running on the instance including minor version such as **MYSQL_8_0_18**.
 func (o LookupInstanceResultOutput) DatabaseInstalledVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.DatabaseInstalledVersion }).(pulumi.StringOutput)
 }
@@ -169,7 +169,7 @@ func (o LookupInstanceResultOutput) FailoverReplica() InstanceFailoverReplicaRes
 	return o.ApplyT(func(v LookupInstanceResult) InstanceFailoverReplicaResponse { return v.FailoverReplica }).(InstanceFailoverReplicaResponseOutput)
 }
 
-// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
 func (o LookupInstanceResultOutput) GceZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.GceZone }).(pulumi.StringOutput)
 }

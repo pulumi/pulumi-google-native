@@ -35,7 +35,7 @@ type LookupProcessorResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
 	KmsKeyName string `pulumi:"kmsKeyName"`
-	// Immutable. The resource name of the processor. Format: projects/{project}/locations/{location}/processors/{processor}
+	// Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
 	Name string `pulumi:"name"`
 	// Immutable. The http endpoint that can be called to invoke processing.
 	ProcessEndpoint string `pulumi:"processEndpoint"`
@@ -98,7 +98,7 @@ func (o LookupProcessorResultOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProcessorResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-// Immutable. The resource name of the processor. Format: projects/{project}/locations/{location}/processors/{processor}
+// Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
 func (o LookupProcessorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProcessorResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -64,6 +64,10 @@ export class Key extends pulumi.CustomResource {
      */
     public readonly testingOptions!: pulumi.Output<outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse>;
     /**
+     * Settings for WAF
+     */
+    public readonly wafSettings!: pulumi.Output<outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1WafSettingsResponse>;
+    /**
      * Settings for keys that can be used by websites.
      */
     public readonly webSettings!: pulumi.Output<outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse>;
@@ -87,6 +91,7 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["testingOptions"] = args ? args.testingOptions : undefined;
+            resourceInputs["wafSettings"] = args ? args.wafSettings : undefined;
             resourceInputs["webSettings"] = args ? args.webSettings : undefined;
         } else {
             resourceInputs["androidSettings"] = undefined /*out*/;
@@ -96,6 +101,7 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["testingOptions"] = undefined /*out*/;
+            resourceInputs["wafSettings"] = undefined /*out*/;
             resourceInputs["webSettings"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -138,6 +144,10 @@ export interface KeyArgs {
      * Options for user acceptance testing.
      */
     testingOptions?: pulumi.Input<inputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs>;
+    /**
+     * Settings for WAF
+     */
+    wafSettings?: pulumi.Input<inputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1WafSettingsArgs>;
     /**
      * Settings for keys that can be used by websites.
      */

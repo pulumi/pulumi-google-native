@@ -675,6 +675,169 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput
 	}).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput)
 }
 
+// Signed Access Approvals (SAA) enrollment response.
+type GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse struct {
+	// Indicates SAA enrollment setup error if any.
+	SetupErrors []string `pulumi:"setupErrors"`
+	// Indicates SAA enrollment status of a given workload.
+	SetupStatus string `pulumi:"setupStatus"`
+}
+
+// GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseArgs and GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseInput` via:
+//
+//          GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseArgs{...}
+type GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput() GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput
+	ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput
+}
+
+// Signed Access Approvals (SAA) enrollment response.
+type GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseArgs struct {
+	// Indicates SAA enrollment setup error if any.
+	SetupErrors pulumi.StringArrayInput `pulumi:"setupErrors"`
+	// Indicates SAA enrollment status of a given workload.
+	SetupStatus pulumi.StringInput `pulumi:"setupStatus"`
+}
+
+func (GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseArgs) ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput() GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseArgs) ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput)
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseArgs) ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseArgs) ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput).ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseArgs, GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtr and GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrInput` via:
+//
+//          GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput
+	ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput
+}
+
+type googleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrType GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseArgs
+
+func GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtr(v *GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseArgs) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrInput {
+	return (*googleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrType)(v)
+}
+
+func (*googleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse)(nil)).Elem()
+}
+
+func (i *googleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrType) ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrType) ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput)
+}
+
+// Signed Access Approvals (SAA) enrollment response.
+type GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput() GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput {
+	return o.ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse) *GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse {
+		return &v
+	}).(GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput)
+}
+
+// Indicates SAA enrollment setup error if any.
+func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput) SetupErrors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse) []string {
+		return v.SetupErrors
+	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates SAA enrollment status of a given workload.
+func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput) SetupStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse) string {
+		return v.SetupStatus
+	}).(pulumi.StringOutput)
+}
+
+type GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput) Elem() GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse
+		return ret
+	}).(GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput)
+}
+
+// Indicates SAA enrollment setup error if any.
+func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput) SetupErrors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SetupErrors
+	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates SAA enrollment status of a given workload.
+func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput) SetupStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SetupStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{})
@@ -686,6 +849,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseArgs{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput{})
@@ -696,4 +861,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponsePtrOutput{})
 }

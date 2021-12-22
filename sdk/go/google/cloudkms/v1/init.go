@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CryptoKey{}
 	case "google-native:cloudkms/v1:CryptoKeyVersion":
 		r = &CryptoKeyVersion{}
+	case "google-native:cloudkms/v1:EkmConnectionIamPolicy":
+		r = &EkmConnectionIamPolicy{}
 	case "google-native:cloudkms/v1:ImportJob":
 		r = &ImportJob{}
 	case "google-native:cloudkms/v1:KeyRing":

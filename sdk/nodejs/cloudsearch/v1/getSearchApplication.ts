@@ -61,6 +61,10 @@ export interface GetSearchApplicationResult {
      */
     readonly queryInterpretationConfig: outputs.cloudsearch.v1.QueryInterpretationConfigResponse;
     /**
+     * With each result we should return the URI for its thumbnail (when applicable)
+     */
+    readonly returnResultThumbnailUrls: boolean;
+    /**
      * Configuration for ranking results.
      */
     readonly scoringConfig: outputs.cloudsearch.v1.ScoringConfigResponse;

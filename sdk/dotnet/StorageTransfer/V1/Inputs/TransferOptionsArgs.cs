@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public Input<bool>? DeleteObjectsUniqueInSink { get; set; }
 
         /// <summary>
+        /// Represents the selected metadata options for a transfer job.
+        /// </summary>
+        [Input("metadataOptions")]
+        public Input<Inputs.MetadataOptionsArgs>? MetadataOptions { get; set; }
+
+        /// <summary>
         /// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
         /// </summary>
         [Input("overwriteObjectsAlreadyExistingInSink")]

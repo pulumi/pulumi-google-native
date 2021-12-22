@@ -165,7 +165,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="ipv6CidrRange")
     def ipv6_cidr_range(self) -> str:
         """
-        The range of internal IPv6 addresses that are owned by this subnetwork.
+        The range of internal IPv6 addresses that are owned by this subnetwork. Note this will be for private google access only eventually.
         """
         return pulumi.get(self, "ipv6_cidr_range")
 

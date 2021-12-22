@@ -201,7 +201,7 @@ class GoogleCloudApigeeV1ApiProductRefResponse(dict):
                  status: str):
         """
         :param str apiproduct: Name of the API product.
-        :param str status: Status of the API product.
+        :param str status: Status of the API product. Valid values are `approved` or `revoked`.
         """
         pulumi.set(__self__, "apiproduct", apiproduct)
         pulumi.set(__self__, "status", status)
@@ -218,7 +218,7 @@ class GoogleCloudApigeeV1ApiProductRefResponse(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Status of the API product.
+        Status of the API product. Valid values are `approved` or `revoked`.
         """
         return pulumi.get(self, "status")
 

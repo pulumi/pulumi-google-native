@@ -13,6 +13,7 @@ __all__ = [
     'GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse',
     'GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse',
     'GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse',
+    'GoogleCloudRecaptchaenterpriseV1WafSettingsResponse',
     'GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse',
 ]
 
@@ -170,6 +171,58 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse(dict):
         All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
         """
         return pulumi.get(self, "testing_score")
+
+
+@pulumi.output_type
+class GoogleCloudRecaptchaenterpriseV1WafSettingsResponse(dict):
+    """
+    Settings specific to keys that can be used for WAF (Web Application Firewall).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "wafFeature":
+            suggest = "waf_feature"
+        elif key == "wafService":
+            suggest = "waf_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRecaptchaenterpriseV1WafSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRecaptchaenterpriseV1WafSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRecaptchaenterpriseV1WafSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 waf_feature: str,
+                 waf_service: str):
+        """
+        Settings specific to keys that can be used for WAF (Web Application Firewall).
+        :param str waf_feature: The WAF feature for which this key is enabled.
+        :param str waf_service: The WAF service that uses this key.
+        """
+        pulumi.set(__self__, "waf_feature", waf_feature)
+        pulumi.set(__self__, "waf_service", waf_service)
+
+    @property
+    @pulumi.getter(name="wafFeature")
+    def waf_feature(self) -> str:
+        """
+        The WAF feature for which this key is enabled.
+        """
+        return pulumi.get(self, "waf_feature")
+
+    @property
+    @pulumi.getter(name="wafService")
+    def waf_service(self) -> str:
+        """
+        The WAF service that uses this key.
+        """
+        return pulumi.get(self, "waf_service")
 
 
 @pulumi.output_type

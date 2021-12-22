@@ -263,6 +263,8 @@ class CloudSqlSettingsResponse(dict):
             suggest = "activation_policy"
         elif key == "autoStorageIncrease":
             suggest = "auto_storage_increase"
+        elif key == "cmekKeyName":
+            suggest = "cmek_key_name"
         elif key == "dataDiskSizeGb":
             suggest = "data_disk_size_gb"
         elif key == "dataDiskType":
@@ -298,6 +300,7 @@ class CloudSqlSettingsResponse(dict):
     def __init__(__self__, *,
                  activation_policy: str,
                  auto_storage_increase: bool,
+                 cmek_key_name: str,
                  collation: str,
                  data_disk_size_gb: str,
                  data_disk_type: str,
@@ -315,6 +318,7 @@ class CloudSqlSettingsResponse(dict):
         Settings for creating a Cloud SQL database instance.
         :param str activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
         :param bool auto_storage_increase: [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
+        :param str cmek_key_name: The KMS key name used for the csql instance.
         :param str collation: The Cloud SQL default instance level collation.
         :param str data_disk_size_gb: The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
         :param str data_disk_type: The type of storage: `PD_SSD` (default) or `PD_HDD`.
@@ -331,6 +335,7 @@ class CloudSqlSettingsResponse(dict):
         """
         pulumi.set(__self__, "activation_policy", activation_policy)
         pulumi.set(__self__, "auto_storage_increase", auto_storage_increase)
+        pulumi.set(__self__, "cmek_key_name", cmek_key_name)
         pulumi.set(__self__, "collation", collation)
         pulumi.set(__self__, "data_disk_size_gb", data_disk_size_gb)
         pulumi.set(__self__, "data_disk_type", data_disk_type)
@@ -360,6 +365,14 @@ class CloudSqlSettingsResponse(dict):
         [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
         """
         return pulumi.get(self, "auto_storage_increase")
+
+    @property
+    @pulumi.getter(name="cmekKeyName")
+    def cmek_key_name(self) -> str:
+        """
+        The KMS key name used for the csql instance.
+        """
+        return pulumi.get(self, "cmek_key_name")
 
     @property
     @pulumi.getter

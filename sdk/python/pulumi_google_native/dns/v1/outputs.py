@@ -27,6 +27,8 @@ __all__ = [
     'PolicyAlternativeNameServerConfigTargetNameServerResponse',
     'PolicyNetworkResponse',
     'ResourceRecordSetResponse',
+    'ResponsePolicyNetworkResponse',
+    'ResponsePolicyRuleLocalDataResponse',
 ]
 
 @pulumi.output_type
@@ -795,5 +797,48 @@ class ResourceRecordSetResponse(dict):
         The identifier of a supported record type. See the list of Supported DNS record types.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ResponsePolicyNetworkResponse(dict):
+    def __init__(__self__, *,
+                 kind: str,
+                 network_url: str):
+        """
+        :param str network_url: The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        """
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "network_url", network_url)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="networkUrl")
+    def network_url(self) -> str:
+        """
+        The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        """
+        return pulumi.get(self, "network_url")
+
+
+@pulumi.output_type
+class ResponsePolicyRuleLocalDataResponse(dict):
+    def __init__(__self__, *,
+                 local_datas: Sequence['outputs.ResourceRecordSetResponse']):
+        """
+        :param Sequence['ResourceRecordSetResponse'] local_datas: All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+        """
+        pulumi.set(__self__, "local_datas", local_datas)
+
+    @property
+    @pulumi.getter(name="localDatas")
+    def local_datas(self) -> Sequence['outputs.ResourceRecordSetResponse']:
+        """
+        All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+        """
+        return pulumi.get(self, "local_datas")
 
 

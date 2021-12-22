@@ -3190,7 +3190,7 @@ class GoogleCloudDialogflowV2SpeechToTextConfigResponse(dict):
                  speech_model_variant: str):
         """
         Configures speech transcription for ConversationProfile.
-        :param str speech_model_variant: Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+        :param str speech_model_variant: The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
         """
         pulumi.set(__self__, "speech_model_variant", speech_model_variant)
 
@@ -3198,7 +3198,7 @@ class GoogleCloudDialogflowV2SpeechToTextConfigResponse(dict):
     @pulumi.getter(name="speechModelVariant")
     def speech_model_variant(self) -> str:
         """
-        Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+        The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
         """
         return pulumi.get(self, "speech_model_variant")
 

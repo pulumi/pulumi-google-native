@@ -53,6 +53,277 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
     }
 
     [EnumType]
+    public readonly struct CVSSAttackComplexity : IEquatable<CVSSAttackComplexity>
+    {
+        private readonly string _value;
+
+        private CVSSAttackComplexity(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static CVSSAttackComplexity AttackComplexityUnspecified { get; } = new CVSSAttackComplexity("ATTACK_COMPLEXITY_UNSPECIFIED");
+        public static CVSSAttackComplexity AttackComplexityLow { get; } = new CVSSAttackComplexity("ATTACK_COMPLEXITY_LOW");
+        public static CVSSAttackComplexity AttackComplexityHigh { get; } = new CVSSAttackComplexity("ATTACK_COMPLEXITY_HIGH");
+
+        public static bool operator ==(CVSSAttackComplexity left, CVSSAttackComplexity right) => left.Equals(right);
+        public static bool operator !=(CVSSAttackComplexity left, CVSSAttackComplexity right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSAttackComplexity value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSAttackComplexity other && Equals(other);
+        public bool Equals(CVSSAttackComplexity other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+    /// </summary>
+    [EnumType]
+    public readonly struct CVSSAttackVector : IEquatable<CVSSAttackVector>
+    {
+        private readonly string _value;
+
+        private CVSSAttackVector(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static CVSSAttackVector AttackVectorUnspecified { get; } = new CVSSAttackVector("ATTACK_VECTOR_UNSPECIFIED");
+        public static CVSSAttackVector AttackVectorNetwork { get; } = new CVSSAttackVector("ATTACK_VECTOR_NETWORK");
+        public static CVSSAttackVector AttackVectorAdjacent { get; } = new CVSSAttackVector("ATTACK_VECTOR_ADJACENT");
+        public static CVSSAttackVector AttackVectorLocal { get; } = new CVSSAttackVector("ATTACK_VECTOR_LOCAL");
+        public static CVSSAttackVector AttackVectorPhysical { get; } = new CVSSAttackVector("ATTACK_VECTOR_PHYSICAL");
+
+        public static bool operator ==(CVSSAttackVector left, CVSSAttackVector right) => left.Equals(right);
+        public static bool operator !=(CVSSAttackVector left, CVSSAttackVector right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSAttackVector value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSAttackVector other && Equals(other);
+        public bool Equals(CVSSAttackVector other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct CVSSAuthentication : IEquatable<CVSSAuthentication>
+    {
+        private readonly string _value;
+
+        private CVSSAuthentication(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static CVSSAuthentication AuthenticationUnspecified { get; } = new CVSSAuthentication("AUTHENTICATION_UNSPECIFIED");
+        public static CVSSAuthentication AuthenticationMultiple { get; } = new CVSSAuthentication("AUTHENTICATION_MULTIPLE");
+        public static CVSSAuthentication AuthenticationSingle { get; } = new CVSSAuthentication("AUTHENTICATION_SINGLE");
+        public static CVSSAuthentication AuthenticationNone { get; } = new CVSSAuthentication("AUTHENTICATION_NONE");
+
+        public static bool operator ==(CVSSAuthentication left, CVSSAuthentication right) => left.Equals(right);
+        public static bool operator !=(CVSSAuthentication left, CVSSAuthentication right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSAuthentication value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSAuthentication other && Equals(other);
+        public bool Equals(CVSSAuthentication other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct CVSSAvailabilityImpact : IEquatable<CVSSAvailabilityImpact>
+    {
+        private readonly string _value;
+
+        private CVSSAvailabilityImpact(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static CVSSAvailabilityImpact ImpactUnspecified { get; } = new CVSSAvailabilityImpact("IMPACT_UNSPECIFIED");
+        public static CVSSAvailabilityImpact ImpactHigh { get; } = new CVSSAvailabilityImpact("IMPACT_HIGH");
+        public static CVSSAvailabilityImpact ImpactLow { get; } = new CVSSAvailabilityImpact("IMPACT_LOW");
+        public static CVSSAvailabilityImpact ImpactNone { get; } = new CVSSAvailabilityImpact("IMPACT_NONE");
+
+        public static bool operator ==(CVSSAvailabilityImpact left, CVSSAvailabilityImpact right) => left.Equals(right);
+        public static bool operator !=(CVSSAvailabilityImpact left, CVSSAvailabilityImpact right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSAvailabilityImpact value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSAvailabilityImpact other && Equals(other);
+        public bool Equals(CVSSAvailabilityImpact other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct CVSSConfidentialityImpact : IEquatable<CVSSConfidentialityImpact>
+    {
+        private readonly string _value;
+
+        private CVSSConfidentialityImpact(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static CVSSConfidentialityImpact ImpactUnspecified { get; } = new CVSSConfidentialityImpact("IMPACT_UNSPECIFIED");
+        public static CVSSConfidentialityImpact ImpactHigh { get; } = new CVSSConfidentialityImpact("IMPACT_HIGH");
+        public static CVSSConfidentialityImpact ImpactLow { get; } = new CVSSConfidentialityImpact("IMPACT_LOW");
+        public static CVSSConfidentialityImpact ImpactNone { get; } = new CVSSConfidentialityImpact("IMPACT_NONE");
+
+        public static bool operator ==(CVSSConfidentialityImpact left, CVSSConfidentialityImpact right) => left.Equals(right);
+        public static bool operator !=(CVSSConfidentialityImpact left, CVSSConfidentialityImpact right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSConfidentialityImpact value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSConfidentialityImpact other && Equals(other);
+        public bool Equals(CVSSConfidentialityImpact other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct CVSSIntegrityImpact : IEquatable<CVSSIntegrityImpact>
+    {
+        private readonly string _value;
+
+        private CVSSIntegrityImpact(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static CVSSIntegrityImpact ImpactUnspecified { get; } = new CVSSIntegrityImpact("IMPACT_UNSPECIFIED");
+        public static CVSSIntegrityImpact ImpactHigh { get; } = new CVSSIntegrityImpact("IMPACT_HIGH");
+        public static CVSSIntegrityImpact ImpactLow { get; } = new CVSSIntegrityImpact("IMPACT_LOW");
+        public static CVSSIntegrityImpact ImpactNone { get; } = new CVSSIntegrityImpact("IMPACT_NONE");
+
+        public static bool operator ==(CVSSIntegrityImpact left, CVSSIntegrityImpact right) => left.Equals(right);
+        public static bool operator !=(CVSSIntegrityImpact left, CVSSIntegrityImpact right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSIntegrityImpact value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSIntegrityImpact other && Equals(other);
+        public bool Equals(CVSSIntegrityImpact other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct CVSSPrivilegesRequired : IEquatable<CVSSPrivilegesRequired>
+    {
+        private readonly string _value;
+
+        private CVSSPrivilegesRequired(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static CVSSPrivilegesRequired PrivilegesRequiredUnspecified { get; } = new CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_UNSPECIFIED");
+        public static CVSSPrivilegesRequired PrivilegesRequiredNone { get; } = new CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_NONE");
+        public static CVSSPrivilegesRequired PrivilegesRequiredLow { get; } = new CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_LOW");
+        public static CVSSPrivilegesRequired PrivilegesRequiredHigh { get; } = new CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_HIGH");
+
+        public static bool operator ==(CVSSPrivilegesRequired left, CVSSPrivilegesRequired right) => left.Equals(right);
+        public static bool operator !=(CVSSPrivilegesRequired left, CVSSPrivilegesRequired right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSPrivilegesRequired value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSPrivilegesRequired other && Equals(other);
+        public bool Equals(CVSSPrivilegesRequired other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct CVSSScope : IEquatable<CVSSScope>
+    {
+        private readonly string _value;
+
+        private CVSSScope(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static CVSSScope ScopeUnspecified { get; } = new CVSSScope("SCOPE_UNSPECIFIED");
+        public static CVSSScope ScopeUnchanged { get; } = new CVSSScope("SCOPE_UNCHANGED");
+        public static CVSSScope ScopeChanged { get; } = new CVSSScope("SCOPE_CHANGED");
+
+        public static bool operator ==(CVSSScope left, CVSSScope right) => left.Equals(right);
+        public static bool operator !=(CVSSScope left, CVSSScope right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSScope value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSScope other && Equals(other);
+        public bool Equals(CVSSScope other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct CVSSUserInteraction : IEquatable<CVSSUserInteraction>
+    {
+        private readonly string _value;
+
+        private CVSSUserInteraction(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static CVSSUserInteraction UserInteractionUnspecified { get; } = new CVSSUserInteraction("USER_INTERACTION_UNSPECIFIED");
+        public static CVSSUserInteraction UserInteractionNone { get; } = new CVSSUserInteraction("USER_INTERACTION_NONE");
+        public static CVSSUserInteraction UserInteractionRequired { get; } = new CVSSUserInteraction("USER_INTERACTION_REQUIRED");
+
+        public static bool operator ==(CVSSUserInteraction left, CVSSUserInteraction right) => left.Equals(right);
+        public static bool operator !=(CVSSUserInteraction left, CVSSUserInteraction right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSUserInteraction value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSUserInteraction other && Equals(other);
+        public bool Equals(CVSSUserInteraction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
     public readonly struct CVSSv3AttackComplexity : IEquatable<CVSSv3AttackComplexity>
     {
         private readonly string _value;

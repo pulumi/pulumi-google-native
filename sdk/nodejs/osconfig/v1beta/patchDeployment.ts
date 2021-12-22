@@ -76,6 +76,10 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     public readonly rollout!: pulumi.Output<outputs.osconfig.v1beta.PatchRolloutResponse>;
     /**
+     * Current state of the patch deployment.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
      * Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -115,6 +119,7 @@ export class PatchDeployment extends pulumi.CustomResource {
             resourceInputs["rollout"] = args ? args.rollout : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastExecuteTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
@@ -127,6 +132,7 @@ export class PatchDeployment extends pulumi.CustomResource {
             resourceInputs["patchConfig"] = undefined /*out*/;
             resourceInputs["recurringSchedule"] = undefined /*out*/;
             resourceInputs["rollout"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {

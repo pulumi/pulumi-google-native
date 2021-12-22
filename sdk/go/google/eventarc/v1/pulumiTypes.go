@@ -1040,7 +1040,7 @@ func (o CloudRunResponsePtrOutput) Service() pulumi.StringPtrOutput {
 
 // Represents a target of an invocation over HTTP.
 type Destination struct {
-	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun *CloudRun `pulumi:"cloudRun"`
 	// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
 	Gke *GKE `pulumi:"gke"`
@@ -1059,7 +1059,7 @@ type DestinationInput interface {
 
 // Represents a target of an invocation over HTTP.
 type DestinationArgs struct {
-	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun CloudRunPtrInput `pulumi:"cloudRun"`
 	// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
 	Gke GKEPtrInput `pulumi:"gke"`
@@ -1143,7 +1143,7 @@ func (o DestinationOutput) ToDestinationPtrOutputWithContext(ctx context.Context
 	}).(DestinationPtrOutput)
 }
 
-// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 func (o DestinationOutput) CloudRun() CloudRunPtrOutput {
 	return o.ApplyT(func(v Destination) *CloudRun { return v.CloudRun }).(CloudRunPtrOutput)
 }
@@ -1177,7 +1177,7 @@ func (o DestinationPtrOutput) Elem() DestinationOutput {
 	}).(DestinationOutput)
 }
 
-// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 func (o DestinationPtrOutput) CloudRun() CloudRunPtrOutput {
 	return o.ApplyT(func(v *Destination) *CloudRun {
 		if v == nil {
@@ -1199,7 +1199,7 @@ func (o DestinationPtrOutput) Gke() GKEPtrOutput {
 
 // Represents a target of an invocation over HTTP.
 type DestinationResponse struct {
-	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun CloudRunResponse `pulumi:"cloudRun"`
 	// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
 	Gke GKEResponse `pulumi:"gke"`
@@ -1218,7 +1218,7 @@ type DestinationResponseInput interface {
 
 // Represents a target of an invocation over HTTP.
 type DestinationResponseArgs struct {
-	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun CloudRunResponseInput `pulumi:"cloudRun"`
 	// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
 	Gke GKEResponseInput `pulumi:"gke"`
@@ -1302,7 +1302,7 @@ func (o DestinationResponseOutput) ToDestinationResponsePtrOutputWithContext(ctx
 	}).(DestinationResponsePtrOutput)
 }
 
-// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 func (o DestinationResponseOutput) CloudRun() CloudRunResponseOutput {
 	return o.ApplyT(func(v DestinationResponse) CloudRunResponse { return v.CloudRun }).(CloudRunResponseOutput)
 }
@@ -1336,7 +1336,7 @@ func (o DestinationResponsePtrOutput) Elem() DestinationResponseOutput {
 	}).(DestinationResponseOutput)
 }
 
-// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 func (o DestinationResponsePtrOutput) CloudRun() CloudRunResponsePtrOutput {
 	return o.ApplyT(func(v *DestinationResponse) *CloudRunResponse {
 		if v == nil {

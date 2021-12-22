@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNetworkEndpointGroupResult:
-    def __init__(__self__, annotations=None, app_engine=None, cloud_function=None, cloud_run=None, creation_timestamp=None, default_port=None, description=None, kind=None, name=None, network=None, network_endpoint_type=None, region=None, self_link=None, size=None, subnetwork=None, zone=None):
+    def __init__(__self__, annotations=None, app_engine=None, cloud_function=None, cloud_run=None, creation_timestamp=None, default_port=None, description=None, kind=None, name=None, network=None, network_endpoint_type=None, psc_target_service=None, region=None, self_link=None, size=None, subnetwork=None, zone=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -52,6 +52,9 @@ class GetNetworkEndpointGroupResult:
         if network_endpoint_type and not isinstance(network_endpoint_type, str):
             raise TypeError("Expected argument 'network_endpoint_type' to be a str")
         pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
+        if psc_target_service and not isinstance(psc_target_service, str):
+            raise TypeError("Expected argument 'psc_target_service' to be a str")
+        pulumi.set(__self__, "psc_target_service", psc_target_service)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -157,6 +160,14 @@ class GetNetworkEndpointGroupResult:
         return pulumi.get(self, "network_endpoint_type")
 
     @property
+    @pulumi.getter(name="pscTargetService")
+    def psc_target_service(self) -> str:
+        """
+        The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        """
+        return pulumi.get(self, "psc_target_service")
+
+    @property
     @pulumi.getter
     def region(self) -> str:
         """
@@ -214,6 +225,7 @@ class AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
             name=self.name,
             network=self.network,
             network_endpoint_type=self.network_endpoint_type,
+            psc_target_service=self.psc_target_service,
             region=self.region,
             self_link=self.self_link,
             size=self.size,
@@ -250,6 +262,7 @@ def get_network_endpoint_group(network_endpoint_group: Optional[str] = None,
         name=__ret__.name,
         network=__ret__.network,
         network_endpoint_type=__ret__.network_endpoint_type,
+        psc_target_service=__ret__.psc_target_service,
         region=__ret__.region,
         self_link=__ret__.self_link,
         size=__ret__.size,

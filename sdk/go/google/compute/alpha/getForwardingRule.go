@@ -31,6 +31,8 @@ type LookupForwardingRuleResult struct {
 	AllPorts bool `pulumi:"allPorts"`
 	// This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
 	AllowGlobalAccess bool `pulumi:"allowGlobalAccess"`
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	AllowPscGlobalAccess bool `pulumi:"allowPscGlobalAccess"`
 	// Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
 	BackendService string `pulumi:"backendService"`
 	// Creation timestamp in RFC3339 text format.
@@ -130,6 +132,11 @@ func (o LookupForwardingRuleResultOutput) AllPorts() pulumi.BoolOutput {
 // This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
 func (o LookupForwardingRuleResultOutput) AllowGlobalAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) bool { return v.AllowGlobalAccess }).(pulumi.BoolOutput)
+}
+
+// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+func (o LookupForwardingRuleResultOutput) AllowPscGlobalAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) bool { return v.AllowPscGlobalAccess }).(pulumi.BoolOutput)
 }
 
 // Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.

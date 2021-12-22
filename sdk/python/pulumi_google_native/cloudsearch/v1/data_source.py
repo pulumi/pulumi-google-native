@@ -22,6 +22,7 @@ class DataSourceArgs:
                  items_visibility: Optional[pulumi.Input[Sequence[pulumi.Input['GSuitePrincipalArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operation_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 return_thumbnail_urls: Optional[pulumi.Input[bool]] = None,
                  short_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DataSource resource.
@@ -32,6 +33,7 @@ class DataSourceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GSuitePrincipalArgs']]] items_visibility: This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
         :param pulumi.Input[str] name: Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_ids: IDs of the Long Running Operations (LROs) currently running for this schema.
+        :param pulumi.Input[bool] return_thumbnail_urls: Can a user request to get thumbnail URI for Items indexed in this data source.
         :param pulumi.Input[str] short_name: A short name or alias for the source. This value will be used to match the 'source' operator. For example, if the short name is *<value>* then queries like *source:<value>* will only return results for this source. The value must be unique across all datasources. The value must only contain alphanumeric characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32 characters.
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -47,6 +49,8 @@ class DataSourceArgs:
             pulumi.set(__self__, "name", name)
         if operation_ids is not None:
             pulumi.set(__self__, "operation_ids", operation_ids)
+        if return_thumbnail_urls is not None:
+            pulumi.set(__self__, "return_thumbnail_urls", return_thumbnail_urls)
         if short_name is not None:
             pulumi.set(__self__, "short_name", short_name)
 
@@ -135,6 +139,18 @@ class DataSourceArgs:
         pulumi.set(self, "operation_ids", value)
 
     @property
+    @pulumi.getter(name="returnThumbnailUrls")
+    def return_thumbnail_urls(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Can a user request to get thumbnail URI for Items indexed in this data source.
+        """
+        return pulumi.get(self, "return_thumbnail_urls")
+
+    @return_thumbnail_urls.setter
+    def return_thumbnail_urls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "return_thumbnail_urls", value)
+
+    @property
     @pulumi.getter(name="shortName")
     def short_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -159,6 +175,7 @@ class DataSource(pulumi.CustomResource):
                  items_visibility: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GSuitePrincipalArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operation_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 return_thumbnail_urls: Optional[pulumi.Input[bool]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -173,6 +190,7 @@ class DataSource(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GSuitePrincipalArgs']]]] items_visibility: This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
         :param pulumi.Input[str] name: Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_ids: IDs of the Long Running Operations (LROs) currently running for this schema.
+        :param pulumi.Input[bool] return_thumbnail_urls: Can a user request to get thumbnail URI for Items indexed in this data source.
         :param pulumi.Input[str] short_name: A short name or alias for the source. This value will be used to match the 'source' operator. For example, if the short name is *<value>* then queries like *source:<value>* will only return results for this source. The value must be unique across all datasources. The value must only contain alphanumeric characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32 characters.
         """
         ...
@@ -206,6 +224,7 @@ class DataSource(pulumi.CustomResource):
                  items_visibility: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GSuitePrincipalArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operation_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 return_thumbnail_urls: Optional[pulumi.Input[bool]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -228,6 +247,7 @@ class DataSource(pulumi.CustomResource):
             __props__.__dict__["items_visibility"] = items_visibility
             __props__.__dict__["name"] = name
             __props__.__dict__["operation_ids"] = operation_ids
+            __props__.__dict__["return_thumbnail_urls"] = return_thumbnail_urls
             __props__.__dict__["short_name"] = short_name
         super(DataSource, __self__).__init__(
             'google-native:cloudsearch/v1:DataSource',
@@ -258,6 +278,7 @@ class DataSource(pulumi.CustomResource):
         __props__.__dict__["items_visibility"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["operation_ids"] = None
+        __props__.__dict__["return_thumbnail_urls"] = None
         __props__.__dict__["short_name"] = None
         return DataSource(resource_name, opts=opts, __props__=__props__)
 
@@ -316,6 +337,14 @@ class DataSource(pulumi.CustomResource):
         IDs of the Long Running Operations (LROs) currently running for this schema.
         """
         return pulumi.get(self, "operation_ids")
+
+    @property
+    @pulumi.getter(name="returnThumbnailUrls")
+    def return_thumbnail_urls(self) -> pulumi.Output[bool]:
+        """
+        Can a user request to get thumbnail URI for Items indexed in this data source.
+        """
+        return pulumi.get(self, "return_thumbnail_urls")
 
     @property
     @pulumi.getter(name="shortName")

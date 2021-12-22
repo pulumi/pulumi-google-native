@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public Output<string> CurrentDiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// The databaseInstalledVersion stores the current fully resolved database version running on the instance including minor version such as MYSQL_5_6_50
+        /// Stores the current database version running on the instance including minor version such as **MYSQL_8_0_18**.
         /// </summary>
         [Output("databaseInstalledVersion")]
         public Output<string> DatabaseInstalledVersion { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public Output<Outputs.InstanceFailoverReplicaResponse> FailoverReplica { get; private set; } = null!;
 
         /// <summary>
-        /// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+        /// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
         /// </summary>
         [Output("gceZone")]
         public Output<string> GceZone { get; private set; } = null!;
@@ -295,7 +295,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public Input<Inputs.InstanceFailoverReplicaArgs>? FailoverReplica { get; set; }
 
         /// <summary>
-        /// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+        /// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
         /// </summary>
         [Input("gceZone")]
         public Input<string>? GceZone { get; set; }

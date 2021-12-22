@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSubscriptionResult:
-    def __init__(__self__, ack_deadline_seconds=None, dead_letter_policy=None, detached=None, enable_message_ordering=None, expiration_policy=None, filter=None, labels=None, message_retention_duration=None, name=None, push_config=None, retain_acked_messages=None, retry_policy=None, topic=None, topic_message_retention_duration=None):
+    def __init__(__self__, ack_deadline_seconds=None, dead_letter_policy=None, detached=None, enable_message_ordering=None, expiration_policy=None, filter=None, labels=None, message_retention_duration=None, name=None, push_config=None, retain_acked_messages=None, retry_policy=None, state=None, topic=None, topic_message_retention_duration=None):
         if ack_deadline_seconds and not isinstance(ack_deadline_seconds, int):
             raise TypeError("Expected argument 'ack_deadline_seconds' to be a int")
         pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
@@ -55,6 +55,9 @@ class GetSubscriptionResult:
         if retry_policy and not isinstance(retry_policy, dict):
             raise TypeError("Expected argument 'retry_policy' to be a dict")
         pulumi.set(__self__, "retry_policy", retry_policy)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
         if topic and not isinstance(topic, str):
             raise TypeError("Expected argument 'topic' to be a str")
         pulumi.set(__self__, "topic", topic)
@@ -138,7 +141,7 @@ class GetSubscriptionResult:
     @pulumi.getter(name="pushConfig")
     def push_config(self) -> 'outputs.PushConfigResponse':
         """
-        If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
+        If push delivery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
         """
         return pulumi.get(self, "push_config")
 
@@ -157,6 +160,14 @@ class GetSubscriptionResult:
         A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
         """
         return pulumi.get(self, "retry_policy")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        An output-only field indicating whether or not the subscription can receive messages.
+        """
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
@@ -193,6 +204,7 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
             push_config=self.push_config,
             retain_acked_messages=self.retain_acked_messages,
             retry_policy=self.retry_policy,
+            state=self.state,
             topic=self.topic,
             topic_message_retention_duration=self.topic_message_retention_duration)
 
@@ -225,6 +237,7 @@ def get_subscription(project: Optional[str] = None,
         push_config=__ret__.push_config,
         retain_acked_messages=__ret__.retain_acked_messages,
         retry_policy=__ret__.retry_policy,
+        state=__ret__.state,
         topic=__ret__.topic,
         topic_message_retention_duration=__ret__.topic_message_retention_duration)
 

@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3ResponseMessagePlayAudioResponse PlayAudio;
         /// <summary>
+        /// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponse TelephonyTransferCall;
+        /// <summary>
         /// Returns a text response.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3ResponseMessageTextResponse Text;
@@ -65,6 +69,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 
             Outputs.GoogleCloudDialogflowCxV3ResponseMessagePlayAudioResponse playAudio,
 
+            Outputs.GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponse telephonyTransferCall,
+
             Outputs.GoogleCloudDialogflowCxV3ResponseMessageTextResponse text)
         {
             ConversationSuccess = conversationSuccess;
@@ -74,6 +80,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
             OutputAudioText = outputAudioText;
             Payload = payload;
             PlayAudio = playAudio;
+            TelephonyTransferCall = telephonyTransferCall;
             Text = text;
         }
     }

@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Evaluations of restrictions applied to parent group on this membership.
+        /// </summary>
+        [Input("restrictionEvaluations")]
+        public Input<Inputs.RestrictionEvaluationsArgs>? RestrictionEvaluations { get; set; }
+
         public MembershipRoleArgs()
         {
         }

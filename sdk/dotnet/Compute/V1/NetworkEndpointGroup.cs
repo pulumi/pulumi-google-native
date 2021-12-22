@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> NetworkEndpointType { get; private set; } = null!;
 
         /// <summary>
+        /// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        /// </summary>
+        [Output("pscTargetService")]
+        public Output<string> PscTargetService { get; private set; } = null!;
+
+        /// <summary>
         /// The URL of the region where the network endpoint group is located.
         /// </summary>
         [Output("region")]
@@ -218,6 +224,12 @@ namespace Pulumi.GoogleNative.Compute.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        /// </summary>
+        [Input("pscTargetService")]
+        public Input<string>? PscTargetService { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

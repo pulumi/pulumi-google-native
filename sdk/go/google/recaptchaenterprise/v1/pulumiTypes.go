@@ -968,6 +968,328 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsResponsePtrOutput) Testing
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Settings specific to keys that can be used for WAF (Web Application Firewall).
+type GoogleCloudRecaptchaenterpriseV1WafSettings struct {
+	// The WAF feature for which this key is enabled.
+	WafFeature GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature `pulumi:"wafFeature"`
+	// The WAF service that uses this key.
+	WafService GoogleCloudRecaptchaenterpriseV1WafSettingsWafService `pulumi:"wafService"`
+}
+
+// GoogleCloudRecaptchaenterpriseV1WafSettingsInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WafSettingsArgs and GoogleCloudRecaptchaenterpriseV1WafSettingsOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1WafSettingsInput` via:
+//
+//          GoogleCloudRecaptchaenterpriseV1WafSettingsArgs{...}
+type GoogleCloudRecaptchaenterpriseV1WafSettingsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1WafSettingsOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsOutput
+	ToGoogleCloudRecaptchaenterpriseV1WafSettingsOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsOutput
+}
+
+// Settings specific to keys that can be used for WAF (Web Application Firewall).
+type GoogleCloudRecaptchaenterpriseV1WafSettingsArgs struct {
+	// The WAF feature for which this key is enabled.
+	WafFeature GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureInput `pulumi:"wafFeature"`
+	// The WAF service that uses this key.
+	WafService GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceInput `pulumi:"wafService"`
+}
+
+func (GoogleCloudRecaptchaenterpriseV1WafSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WafSettings)(nil)).Elem()
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1WafSettingsArgs) ToGoogleCloudRecaptchaenterpriseV1WafSettingsOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1WafSettingsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1WafSettingsArgs) ToGoogleCloudRecaptchaenterpriseV1WafSettingsOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1WafSettingsOutput)
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1WafSettingsArgs) ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1WafSettingsArgs) ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1WafSettingsOutput).ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecaptchaenterpriseV1WafSettingsPtrInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WafSettingsArgs, GoogleCloudRecaptchaenterpriseV1WafSettingsPtr and GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1WafSettingsPtrInput` via:
+//
+//          GoogleCloudRecaptchaenterpriseV1WafSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRecaptchaenterpriseV1WafSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput
+	ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput
+}
+
+type googleCloudRecaptchaenterpriseV1WafSettingsPtrType GoogleCloudRecaptchaenterpriseV1WafSettingsArgs
+
+func GoogleCloudRecaptchaenterpriseV1WafSettingsPtr(v *GoogleCloudRecaptchaenterpriseV1WafSettingsArgs) GoogleCloudRecaptchaenterpriseV1WafSettingsPtrInput {
+	return (*googleCloudRecaptchaenterpriseV1WafSettingsPtrType)(v)
+}
+
+func (*googleCloudRecaptchaenterpriseV1WafSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1WafSettings)(nil)).Elem()
+}
+
+func (i *googleCloudRecaptchaenterpriseV1WafSettingsPtrType) ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecaptchaenterpriseV1WafSettingsPtrType) ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput)
+}
+
+// Settings specific to keys that can be used for WAF (Web Application Firewall).
+type GoogleCloudRecaptchaenterpriseV1WafSettingsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1WafSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WafSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsOutput) ToGoogleCloudRecaptchaenterpriseV1WafSettingsOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsOutput) ToGoogleCloudRecaptchaenterpriseV1WafSettingsOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsOutput) ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput {
+	return o.ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsOutput) ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1WafSettings) *GoogleCloudRecaptchaenterpriseV1WafSettings {
+		return &v
+	}).(GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput)
+}
+
+// The WAF feature for which this key is enabled.
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsOutput) WafFeature() GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WafSettings) GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature {
+		return v.WafFeature
+	}).(GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureOutput)
+}
+
+// The WAF service that uses this key.
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsOutput) WafService() GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WafSettings) GoogleCloudRecaptchaenterpriseV1WafSettingsWafService {
+		return v.WafService
+	}).(GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceOutput)
+}
+
+type GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1WafSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput) ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput) ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1WafSettingsOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WafSettings) GoogleCloudRecaptchaenterpriseV1WafSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1WafSettings
+		return ret
+	}).(GoogleCloudRecaptchaenterpriseV1WafSettingsOutput)
+}
+
+// The WAF feature for which this key is enabled.
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput) WafFeature() GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeaturePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WafSettings) *GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature {
+		if v == nil {
+			return nil
+		}
+		return &v.WafFeature
+	}).(GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeaturePtrOutput)
+}
+
+// The WAF service that uses this key.
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput) WafService() GoogleCloudRecaptchaenterpriseV1WafSettingsWafServicePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WafSettings) *GoogleCloudRecaptchaenterpriseV1WafSettingsWafService {
+		if v == nil {
+			return nil
+		}
+		return &v.WafService
+	}).(GoogleCloudRecaptchaenterpriseV1WafSettingsWafServicePtrOutput)
+}
+
+// Settings specific to keys that can be used for WAF (Web Application Firewall).
+type GoogleCloudRecaptchaenterpriseV1WafSettingsResponse struct {
+	// The WAF feature for which this key is enabled.
+	WafFeature string `pulumi:"wafFeature"`
+	// The WAF service that uses this key.
+	WafService string `pulumi:"wafService"`
+}
+
+// GoogleCloudRecaptchaenterpriseV1WafSettingsResponseInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WafSettingsResponseArgs and GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1WafSettingsResponseInput` via:
+//
+//          GoogleCloudRecaptchaenterpriseV1WafSettingsResponseArgs{...}
+type GoogleCloudRecaptchaenterpriseV1WafSettingsResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput
+	ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput
+}
+
+// Settings specific to keys that can be used for WAF (Web Application Firewall).
+type GoogleCloudRecaptchaenterpriseV1WafSettingsResponseArgs struct {
+	// The WAF feature for which this key is enabled.
+	WafFeature pulumi.StringInput `pulumi:"wafFeature"`
+	// The WAF service that uses this key.
+	WafService pulumi.StringInput `pulumi:"wafService"`
+}
+
+func (GoogleCloudRecaptchaenterpriseV1WafSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WafSettingsResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1WafSettingsResponseArgs) ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1WafSettingsResponseArgs) ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput)
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1WafSettingsResponseArgs) ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1WafSettingsResponseArgs) ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput).ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WafSettingsResponseArgs, GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtr and GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrInput` via:
+//
+//          GoogleCloudRecaptchaenterpriseV1WafSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput
+	ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput
+}
+
+type googleCloudRecaptchaenterpriseV1WafSettingsResponsePtrType GoogleCloudRecaptchaenterpriseV1WafSettingsResponseArgs
+
+func GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtr(v *GoogleCloudRecaptchaenterpriseV1WafSettingsResponseArgs) GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrInput {
+	return (*googleCloudRecaptchaenterpriseV1WafSettingsResponsePtrType)(v)
+}
+
+func (*googleCloudRecaptchaenterpriseV1WafSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1WafSettingsResponse)(nil)).Elem()
+}
+
+func (i *googleCloudRecaptchaenterpriseV1WafSettingsResponsePtrType) ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecaptchaenterpriseV1WafSettingsResponsePtrType) ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput)
+}
+
+// Settings specific to keys that can be used for WAF (Web Application Firewall).
+type GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WafSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput) ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput) ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput) ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput {
+	return o.ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput) ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1WafSettingsResponse) *GoogleCloudRecaptchaenterpriseV1WafSettingsResponse {
+		return &v
+	}).(GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput)
+}
+
+// The WAF feature for which this key is enabled.
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput) WafFeature() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WafSettingsResponse) string { return v.WafFeature }).(pulumi.StringOutput)
+}
+
+// The WAF service that uses this key.
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput) WafService() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WafSettingsResponse) string { return v.WafService }).(pulumi.StringOutput)
+}
+
+type GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1WafSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput) ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput) ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WafSettingsResponse) GoogleCloudRecaptchaenterpriseV1WafSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1WafSettingsResponse
+		return ret
+	}).(GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput)
+}
+
+// The WAF feature for which this key is enabled.
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput) WafFeature() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WafSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WafFeature
+	}).(pulumi.StringPtrOutput)
+}
+
+// The WAF service that uses this key.
+func (o GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput) WafService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WafSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WafService
+	}).(pulumi.StringPtrOutput)
+}
+
 // Settings specific to keys that can be used by websites.
 type GoogleCloudRecaptchaenterpriseV1WebKeySettings struct {
 	// If set to true, it means allowed_domains will not be enforced.
@@ -1419,6 +1741,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1TestingOptionsResponsePtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WafSettingsInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WafSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WafSettingsPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WafSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WafSettingsResponseInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WafSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WafSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WebKeySettingsInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseArgs{})
@@ -1435,6 +1761,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1TestingOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1WafSettingsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1WafSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput{})

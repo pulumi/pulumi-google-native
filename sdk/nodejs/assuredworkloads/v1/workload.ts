@@ -52,9 +52,17 @@ export class Workload extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+     */
+    public readonly enableSovereignControls!: pulumi.Output<boolean>;
+    /**
      * Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
      */
     public readonly etag!: pulumi.Output<string>;
+    /**
+     * Represents the KAJ enrollment state of the given workload.
+     */
+    public /*out*/ readonly kajEnrollmentState!: pulumi.Output<string>;
     /**
      * Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
      */
@@ -79,6 +87,10 @@ export class Workload extends pulumi.CustomResource {
      * The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
      */
     public /*out*/ readonly resources!: pulumi.Output<outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse[]>;
+    /**
+     * Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
+     */
+    public /*out*/ readonly saaEnrollmentResponse!: pulumi.Output<outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse>;
 
     /**
      * Create a Workload resource with the given unique name, arguments, and options.
@@ -103,6 +115,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
             resourceInputs["complianceRegime"] = args ? args.complianceRegime : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enableSovereignControls"] = args ? args.enableSovereignControls : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["externalId"] = args ? args.externalId : undefined;
             resourceInputs["kmsSettings"] = args ? args.kmsSettings : undefined;
@@ -113,19 +126,24 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
             resourceInputs["resourceSettings"] = args ? args.resourceSettings : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["kajEnrollmentState"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;
+            resourceInputs["saaEnrollmentResponse"] = undefined /*out*/;
         } else {
             resourceInputs["billingAccount"] = undefined /*out*/;
             resourceInputs["complianceRegime"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["enableSovereignControls"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["kajEnrollmentState"] = undefined /*out*/;
             resourceInputs["kmsSettings"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisionedResourcesParent"] = undefined /*out*/;
             resourceInputs["resourceSettings"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;
+            resourceInputs["saaEnrollmentResponse"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -150,6 +168,10 @@ export interface WorkloadArgs {
      * The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
      */
     displayName: pulumi.Input<string>;
+    /**
+     * Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+     */
+    enableSovereignControls?: pulumi.Input<boolean>;
     /**
      * Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
      */

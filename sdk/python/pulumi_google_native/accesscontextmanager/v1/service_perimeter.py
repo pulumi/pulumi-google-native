@@ -159,7 +159,7 @@ class ServicePerimeter(pulumi.CustomResource):
                  use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a Service Perimeter. The longrunning operation from this RPC will have a successful status once the Service Perimeter has propagated to long-lasting storage. Service Perimeters containing errors will result in an error response for the first error encountered.
+        Creates a service perimeter. The long-running operation from this RPC has a successful status after the service perimeter propagates to long-lasting storage. If a service perimeter contains errors, an error response is returned for the first error encountered.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -178,7 +178,7 @@ class ServicePerimeter(pulumi.CustomResource):
                  args: ServicePerimeterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Service Perimeter. The longrunning operation from this RPC will have a successful status once the Service Perimeter has propagated to long-lasting storage. Service Perimeters containing errors will result in an error response for the first error encountered.
+        Creates a service perimeter. The long-running operation from this RPC has a successful status after the service perimeter propagates to long-lasting storage. If a service perimeter contains errors, an error response is returned for the first error encountered.
 
         :param str resource_name: The name of the resource.
         :param ServicePerimeterArgs args: The arguments to use to populate this resource's properties.

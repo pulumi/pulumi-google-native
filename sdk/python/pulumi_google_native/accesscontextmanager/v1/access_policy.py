@@ -14,14 +14,18 @@ __all__ = ['AccessPolicyArgs', 'AccessPolicy']
 class AccessPolicyArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
-                 title: pulumi.Input[str]):
+                 title: pulumi.Input[str],
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AccessPolicy resource.
         :param pulumi.Input[str] parent: The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of a policy define which resources an ACM policy can restrict, and where ACM resources can be referenced. For example, a policy with scopes=["folders/123"] has the following behavior: - vpcsc perimeters can only restrict projects within folders/123 - access levels can only be referenced by resources within folders/123. If empty, there are no limitations on which resources can be restricted by an ACM policy, and there are no limitations on where ACM resources can be referenced. Only one policy can include a given scope (attempting to create a second policy which includes "folders/123" will result in an error). Currently, scopes cannot be modified after a policy is created. Currently, policies can only have a single scope. Format: list of `folders/{folder_number}` or `projects/{project_number}`
         """
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "title", title)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
 
     @property
     @pulumi.getter
@@ -47,6 +51,18 @@ class AccessPolicyArgs:
     def title(self, value: pulumi.Input[str]):
         pulumi.set(self, "title", value)
 
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The scopes of a policy define which resources an ACM policy can restrict, and where ACM resources can be referenced. For example, a policy with scopes=["folders/123"] has the following behavior: - vpcsc perimeters can only restrict projects within folders/123 - access levels can only be referenced by resources within folders/123. If empty, there are no limitations on which resources can be restricted by an ACM policy, and there are no limitations on where ACM resources can be referenced. Only one policy can include a given scope (attempting to create a second policy which includes "folders/123" will result in an error). Currently, scopes cannot be modified after a policy is created. Currently, policies can only have a single scope. Format: list of `folders/{folder_number}` or `projects/{project_number}`
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scopes", value)
+
 
 class AccessPolicy(pulumi.CustomResource):
     @overload
@@ -54,15 +70,17 @@ class AccessPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create an `AccessPolicy`. Fails if this organization already has a `AccessPolicy`. The longrunning Operation will have a successful status once the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic semantic errors will be returned in `metadata` as a BadRequest proto.
+        Creates an access policy. This method fails if the organization already has an access policy. The long-running operation has a successful status after the access policy propagates to long-lasting storage. Syntactic and basic semantic errors are returned in `metadata` as a BadRequest proto.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] parent: The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of a policy define which resources an ACM policy can restrict, and where ACM resources can be referenced. For example, a policy with scopes=["folders/123"] has the following behavior: - vpcsc perimeters can only restrict projects within folders/123 - access levels can only be referenced by resources within folders/123. If empty, there are no limitations on which resources can be restricted by an ACM policy, and there are no limitations on where ACM resources can be referenced. Only one policy can include a given scope (attempting to create a second policy which includes "folders/123" will result in an error). Currently, scopes cannot be modified after a policy is created. Currently, policies can only have a single scope. Format: list of `folders/{folder_number}` or `projects/{project_number}`
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
         """
         ...
@@ -72,7 +90,7 @@ class AccessPolicy(pulumi.CustomResource):
                  args: AccessPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create an `AccessPolicy`. Fails if this organization already has a `AccessPolicy`. The longrunning Operation will have a successful status once the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic semantic errors will be returned in `metadata` as a BadRequest proto.
+        Creates an access policy. This method fails if the organization already has an access policy. The long-running operation has a successful status after the access policy propagates to long-lasting storage. Syntactic and basic semantic errors are returned in `metadata` as a BadRequest proto.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -91,6 +109,7 @@ class AccessPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -107,6 +126,7 @@ class AccessPolicy(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["scopes"] = scopes
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
@@ -137,6 +157,7 @@ class AccessPolicy(pulumi.CustomResource):
         __props__.__dict__["etag"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["parent"] = None
+        __props__.__dict__["scopes"] = None
         __props__.__dict__["title"] = None
         return AccessPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -163,6 +184,14 @@ class AccessPolicy(pulumi.CustomResource):
         The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
         """
         return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The scopes of a policy define which resources an ACM policy can restrict, and where ACM resources can be referenced. For example, a policy with scopes=["folders/123"] has the following behavior: - vpcsc perimeters can only restrict projects within folders/123 - access levels can only be referenced by resources within folders/123. If empty, there are no limitations on which resources can be restricted by an ACM policy, and there are no limitations on where ACM resources can be referenced. Only one policy can include a given scope (attempting to create a second policy which includes "folders/123" will result in an error). Currently, scopes cannot be modified after a policy is created. Currently, policies can only have a single scope. Format: list of `folders/{folder_number}` or `projects/{project_number}`
+        """
+        return pulumi.get(self, "scopes")
 
     @property
     @pulumi.getter

@@ -55,6 +55,10 @@ export interface GetServiceAttachmentResult {
      */
     readonly description: string;
     /**
+     * If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
+     */
+    readonly domainNames: string[];
+    /**
      * If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
      */
     readonly enableProxyProtocol: boolean;
