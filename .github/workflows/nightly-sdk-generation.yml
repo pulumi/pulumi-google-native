@@ -1,10 +1,8 @@
 name: nightly-sdk-generation
 "on":
   pull_request:
-    branches:
-      - master
-#  schedule:
-#    - cron: 35 4 * * 1-5
+  schedule:
+    - cron: 35 4 * * 1-5
   workflow_dispatch: {}
 
 env:
@@ -42,7 +40,7 @@ jobs:
           git config --local user.email "bot@pulumi.com"
           git config --local user.name "pulumi-bot"
           git checkout -b generate-sdk/${{ github.run_id }}-${{ github.run_number }}
-      - name: commit changes
+      - name: Commit empty SDK
         run: |
           git add .
           git commit -m "Preparing the SDK folder for regeneration"
@@ -64,16 +62,10 @@ jobs:
       - name: Commit changes
         if: steps.discovery.outputs.changes != 0
         run: |
-          git add sdk/nodejs
-          git commit -m "Regenerating Node.js SDK based on updated modules"
-          git add sdk/python
-          git commit -m "Regenerating Python SDK based on updated modules"
-          git add sdk/dotnet
-          git commit -m "Regenerating .NET SDK based on updated modules"
-          git add sdk/go
-          git commit -m "Regenerating Go SDK based on updated modules"
+          git add discovery
+          git commit -m "Discovery documents"
           git add .
-          git commit -m "Updated discovery"
+          git commit -m "Regenerating SDKs based on updated modules"
           git push origin generate-sdk/${{ github.run_id }}-${{ github.run_number }}
       - name: Open pull request
         if: steps.discovery.outputs.changes != 0
