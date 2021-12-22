@@ -49,11 +49,12 @@ jobs:
           git push origin generate-sdk/${{ github.run_id }}-${{ github.run_number }}
       - name: Discovery
         id: discovery
-        run: make discovery
-             git update-index -q --refresh
-             if ! git diff-files --quiet; then
-               echo ::set-output name=changes::1
-             fi
+        run: |
+          make discovery
+          git update-index -q --refresh
+          if ! git diff-files --quiet; then
+            echo ::set-output name=changes::1
+          fi
       - name: Build codegen binaries
         if: steps.discovery.outputs.changes != 0
         run: make codegen
