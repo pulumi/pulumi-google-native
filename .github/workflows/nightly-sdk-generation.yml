@@ -1,6 +1,5 @@
 name: nightly-sdk-generation
 "on":
-  pull_request:
   schedule:
     - cron: 35 4 * * 1-5
   workflow_dispatch: {}
