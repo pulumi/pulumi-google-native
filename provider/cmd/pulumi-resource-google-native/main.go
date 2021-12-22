@@ -10,5 +10,6 @@ import (
 var providerName = "google-native"
 
 func main() {
+
 	provider.Serve(providerName, version.Version, pulumiSchema, cloudApiResources)
 }

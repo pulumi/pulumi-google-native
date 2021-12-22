@@ -7,7 +7,6 @@ import (
 	"compress/gzip"
 	"encoding/json"
 	"fmt"
-	"google.golang.org/api/discovery/v1"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -15,6 +14,8 @@ import (
 	"path"
 	"regexp"
 	"strings"
+
+	"google.golang.org/api/discovery/v1"
 
 	"github.com/pkg/errors"
 
@@ -161,19 +162,13 @@ func emitSchema(pkgSpec schema.PackageSpec, version, outDir string, goPackageNam
 	// Ensure the spec is stamped with a version.
 	pkgSpec.Version = version
 
-	compressedSchema := bytes.Buffer{}
-	compressedWriter := gzip.NewWriter(&compressedSchema)
-	err = json.NewEncoder(compressedWriter).Encode(pkgSpec)
+	compressedSchema, err := gen.CompressSchema(pkgSpec)
 	if err != nil {
-		return errors.Wrap(err, "marshaling metadata")
+		return errors.Wrapf(err, "failed to compress schema")
 	}
-	if err = compressedWriter.Close(); err != nil {
-		return err
-	}
-
 	err = emitFile(outDir, "schema.go", []byte(fmt.Sprintf(`package %s
 var pulumiSchema = %#v
-`, goPackageName, compressedSchema.Bytes())))
+`, goPackageName, compressedSchema)))
 	if err != nil {
 		return errors.Wrap(err, "saving metadata")
 	}
