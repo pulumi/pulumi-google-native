@@ -19,6 +19,7 @@ import (
 	structpb "github.com/golang/protobuf/ptypes/struct"
 	"github.com/jpillora/backoff"
 	"github.com/pkg/errors"
+	"github.com/pulumi/pulumi-google-native/provider/pkg/gen"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/googleclient"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/version"
@@ -297,7 +298,11 @@ func (p *googleCloudProvider) GetSchema(_ context.Context, req *rpc.GetSchemaReq
 		return nil, fmt.Errorf("unsupported schema version %d", v)
 	}
 
-	return &rpc.GetSchemaResponse{Schema: string(p.schemaBytes)}, nil
+	decompressed, err := gen.DecompressSchema(p.schemaBytes)
+	if err != nil {
+		return nil, errors.New("failure loading schema")
+	}
+	return &rpc.GetSchemaResponse{Schema: string(decompressed)}, nil
 }
 
 // CheckConfig validates the configuration for this provider.

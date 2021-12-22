@@ -3,7 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-(None)
+- Serve valid (decompressed schema) from GetSchema RPC calls
 
 ---
 
