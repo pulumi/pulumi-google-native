@@ -2,7 +2,10 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+(None)
 
+## 0.10.1 (2021-12-22)
+Bug fixes:
 - Serve valid (decompressed schema) from GetSchema RPC calls
 
 ---
