@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public Input<Inputs.GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs>? PlayAudio { get; set; }
 
         /// <summary>
+        /// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+        /// </summary>
+        [Input("telephonyTransferCall")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs>? TelephonyTransferCall { get; set; }
+
+        /// <summary>
         /// Returns a text response.
         /// </summary>
         [Input("text")]

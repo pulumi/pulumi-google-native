@@ -22,11 +22,11 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         public static LoggingConfigLogActionStatesItem LoggableActionStateUnspecified { get; } = new LoggingConfigLogActionStatesItem("LOGGABLE_ACTION_STATE_UNSPECIFIED");
         /// <summary>
-        /// `LoggableAction` is completed successfully. `SUCCEEDED` actions are logged as INFO.
+        /// `LoggableAction` completed successfully. `SUCCEEDED` actions are logged as INFO.
         /// </summary>
         public static LoggingConfigLogActionStatesItem Succeeded { get; } = new LoggingConfigLogActionStatesItem("SUCCEEDED");
         /// <summary>
-        /// `LoggableAction` is terminated in an error state. `FAILED` actions are logged as ERROR.
+        /// `LoggableAction` terminated in an error state. `FAILED` actions are logged as ERROR.
         /// </summary>
         public static LoggingConfigLogActionStatesItem Failed { get; } = new LoggingConfigLogActionStatesItem("FAILED");
 
@@ -60,15 +60,15 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         public static LoggingConfigLogActionsItem LoggableActionUnspecified { get; } = new LoggingConfigLogActionsItem("LOGGABLE_ACTION_UNSPECIFIED");
         /// <summary>
-        /// Finding objects to transfer e.g. listing objects of the source bucket.
+        /// Listing objects in a bucket.
         /// </summary>
         public static LoggingConfigLogActionsItem Find { get; } = new LoggingConfigLogActionsItem("FIND");
         /// <summary>
-        /// Deleting objects at source or destination.
+        /// Deleting objects at the source or the destination.
         /// </summary>
         public static LoggingConfigLogActionsItem Delete { get; } = new LoggingConfigLogActionsItem("DELETE");
         /// <summary>
-        /// Copying objects from source to destination.
+        /// Copying objects to Google Cloud Storage.
         /// </summary>
         public static LoggingConfigLogActionsItem Copy { get; } = new LoggingConfigLogActionsItem("COPY");
 
@@ -80,6 +80,170 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is LoggingConfigLogActionsItem other && Equals(other);
         public bool Equals(LoggingConfigLogActionsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+    /// </summary>
+    [EnumType]
+    public readonly struct MetadataOptionsGid : IEquatable<MetadataOptionsGid>
+    {
+        private readonly string _value;
+
+        private MetadataOptionsGid(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// GID behavior is unspecified.
+        /// </summary>
+        public static MetadataOptionsGid GidUnspecified { get; } = new MetadataOptionsGid("GID_UNSPECIFIED");
+        /// <summary>
+        /// Skip GID during a transfer job.
+        /// </summary>
+        public static MetadataOptionsGid GidSkip { get; } = new MetadataOptionsGid("GID_SKIP");
+        /// <summary>
+        /// Preserve GID during a transfer job.
+        /// </summary>
+        public static MetadataOptionsGid GidNumber { get; } = new MetadataOptionsGid("GID_NUMBER");
+
+        public static bool operator ==(MetadataOptionsGid left, MetadataOptionsGid right) => left.Equals(right);
+        public static bool operator !=(MetadataOptionsGid left, MetadataOptionsGid right) => !left.Equals(right);
+
+        public static explicit operator string(MetadataOptionsGid value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MetadataOptionsGid other && Equals(other);
+        public bool Equals(MetadataOptionsGid other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+    /// </summary>
+    [EnumType]
+    public readonly struct MetadataOptionsMode : IEquatable<MetadataOptionsMode>
+    {
+        private readonly string _value;
+
+        private MetadataOptionsMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Mode behavior is unspecified.
+        /// </summary>
+        public static MetadataOptionsMode ModeUnspecified { get; } = new MetadataOptionsMode("MODE_UNSPECIFIED");
+        /// <summary>
+        /// Skip mode during a transfer job.
+        /// </summary>
+        public static MetadataOptionsMode ModeSkip { get; } = new MetadataOptionsMode("MODE_SKIP");
+        /// <summary>
+        /// Preserve mode during a transfer job.
+        /// </summary>
+        public static MetadataOptionsMode ModePreserve { get; } = new MetadataOptionsMode("MODE_PRESERVE");
+
+        public static bool operator ==(MetadataOptionsMode left, MetadataOptionsMode right) => left.Equals(right);
+        public static bool operator !=(MetadataOptionsMode left, MetadataOptionsMode right) => !left.Equals(right);
+
+        public static explicit operator string(MetadataOptionsMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MetadataOptionsMode other && Equals(other);
+        public bool Equals(MetadataOptionsMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+    /// </summary>
+    [EnumType]
+    public readonly struct MetadataOptionsSymlink : IEquatable<MetadataOptionsSymlink>
+    {
+        private readonly string _value;
+
+        private MetadataOptionsSymlink(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Symlink behavior is unspecified. The default behavior is to skip symlinks during a transfer job.
+        /// </summary>
+        public static MetadataOptionsSymlink SymlinkUnspecified { get; } = new MetadataOptionsSymlink("SYMLINK_UNSPECIFIED");
+        /// <summary>
+        /// Skip symlinks during a transfer job.
+        /// </summary>
+        public static MetadataOptionsSymlink SymlinkSkip { get; } = new MetadataOptionsSymlink("SYMLINK_SKIP");
+        /// <summary>
+        /// Preserve symlinks during a transfer job.
+        /// </summary>
+        public static MetadataOptionsSymlink SymlinkPreserve { get; } = new MetadataOptionsSymlink("SYMLINK_PRESERVE");
+
+        public static bool operator ==(MetadataOptionsSymlink left, MetadataOptionsSymlink right) => left.Equals(right);
+        public static bool operator !=(MetadataOptionsSymlink left, MetadataOptionsSymlink right) => !left.Equals(right);
+
+        public static explicit operator string(MetadataOptionsSymlink value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MetadataOptionsSymlink other && Equals(other);
+        public bool Equals(MetadataOptionsSymlink other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+    /// </summary>
+    [EnumType]
+    public readonly struct MetadataOptionsUid : IEquatable<MetadataOptionsUid>
+    {
+        private readonly string _value;
+
+        private MetadataOptionsUid(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// UID behavior is unspecified.
+        /// </summary>
+        public static MetadataOptionsUid UidUnspecified { get; } = new MetadataOptionsUid("UID_UNSPECIFIED");
+        /// <summary>
+        /// Skip UID during a transfer job.
+        /// </summary>
+        public static MetadataOptionsUid UidSkip { get; } = new MetadataOptionsUid("UID_SKIP");
+        /// <summary>
+        /// Preserve UID during a transfer job.
+        /// </summary>
+        public static MetadataOptionsUid UidNumber { get; } = new MetadataOptionsUid("UID_NUMBER");
+
+        public static bool operator ==(MetadataOptionsUid left, MetadataOptionsUid right) => left.Equals(right);
+        public static bool operator !=(MetadataOptionsUid left, MetadataOptionsUid right) => !left.Equals(right);
+
+        public static explicit operator string(MetadataOptionsUid value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MetadataOptionsUid other && Equals(other);
+        public bool Equals(MetadataOptionsUid other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -58,6 +58,10 @@ export class Rollout extends pulumi.CustomResource {
      */
     public /*out*/ readonly deployEndTime!: pulumi.Output<string>;
     /**
+     * The reason this deploy failed. This will always be unspecified while the deploy in progress.
+     */
+    public /*out*/ readonly deployFailureCause!: pulumi.Output<string>;
+    /**
      * Time at which the `Rollout` started deploying.
      */
     public /*out*/ readonly deployStartTime!: pulumi.Output<string>;
@@ -142,6 +146,7 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["approveTime"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deployEndTime"] = undefined /*out*/;
+            resourceInputs["deployFailureCause"] = undefined /*out*/;
             resourceInputs["deployStartTime"] = undefined /*out*/;
             resourceInputs["deployingBuild"] = undefined /*out*/;
             resourceInputs["enqueueTime"] = undefined /*out*/;
@@ -154,6 +159,7 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["approveTime"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deployEndTime"] = undefined /*out*/;
+            resourceInputs["deployFailureCause"] = undefined /*out*/;
             resourceInputs["deployStartTime"] = undefined /*out*/;
             resourceInputs["deployingBuild"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;

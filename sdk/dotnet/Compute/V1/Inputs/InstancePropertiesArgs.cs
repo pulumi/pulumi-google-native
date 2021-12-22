@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         private InputList<string>? _resourcePolicies;
 
         /// <summary>
-        /// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+        /// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public InputList<string> ResourcePolicies
         {

@@ -85,6 +85,10 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         /// </summary>
         public readonly Outputs.GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse TestingOptions;
         /// <summary>
+        /// Settings for WAF
+        /// </summary>
+        public readonly Outputs.GoogleCloudRecaptchaenterpriseV1WafSettingsResponse WafSettings;
+        /// <summary>
         /// Settings for keys that can be used by websites.
         /// </summary>
         public readonly Outputs.GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse WebSettings;
@@ -105,6 +109,8 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
 
             Outputs.GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse testingOptions,
 
+            Outputs.GoogleCloudRecaptchaenterpriseV1WafSettingsResponse wafSettings,
+
             Outputs.GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse webSettings)
         {
             AndroidSettings = androidSettings;
@@ -114,6 +120,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
             Labels = labels;
             Name = name;
             TestingOptions = testingOptions;
+            WafSettings = wafSettings;
             WebSettings = webSettings;
         }
     }

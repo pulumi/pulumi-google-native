@@ -172,6 +172,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.NetworkPerformanceConfigResponse> NetworkPerformanceConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.InstanceParamsResponse> Params { get; private set; } = null!;
+
+        /// <summary>
         /// PostKeyRevocationActionType of the instance.
         /// </summary>
         [Output("postKeyRevocationActionType")]
@@ -485,6 +491,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [Input("networkPerformanceConfig")]
         public Input<Inputs.NetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
+        /// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InstanceParamsArgs>? Params { get; set; }
 
         /// <summary>
         /// PostKeyRevocationActionType of the instance.

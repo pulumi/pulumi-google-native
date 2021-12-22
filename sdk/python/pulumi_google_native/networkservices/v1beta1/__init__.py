@@ -10,5 +10,7 @@ from .endpoint_policy import *
 from .endpoint_policy_iam_policy import *
 from .get_endpoint_policy import *
 from .get_endpoint_policy_iam_policy import *
+from .get_service_binding_iam_policy import *
+from .service_binding_iam_policy import *
 from ._inputs import *
 from . import outputs

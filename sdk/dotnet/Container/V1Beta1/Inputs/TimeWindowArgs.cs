@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
+        /// MaintenanceExclusionOptions provides maintenance exclusion related options.
+        /// </summary>
+        [Input("maintenanceExclusionOptions")]
+        public Input<Inputs.MaintenanceExclusionOptionsArgs>? MaintenanceExclusionOptions { get; set; }
+
+        /// <summary>
         /// The time that the window first starts.
         /// </summary>
         [Input("startTime")]

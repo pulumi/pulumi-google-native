@@ -44,6 +44,10 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly bandwidth!: pulumi.Output<string>;
     /**
+     * Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
+     */
+    public readonly candidateIpv6Subnets!: pulumi.Output<string[]>;
+    /**
      * Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
      */
     public readonly candidateSubnets!: pulumi.Output<string[]>;
@@ -52,6 +56,14 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly cloudRouterIpAddress!: pulumi.Output<string>;
     /**
+     * IPv6 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+     */
+    public /*out*/ readonly cloudRouterIpv6Address!: pulumi.Output<string>;
+    /**
+     * If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+     */
+    public readonly cloudRouterIpv6InterfaceId!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -59,6 +71,14 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
      */
     public /*out*/ readonly customerRouterIpAddress!: pulumi.Output<string>;
+    /**
+     * IPv6 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+     */
+    public /*out*/ readonly customerRouterIpv6Address!: pulumi.Output<string>;
+    /**
+     * If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+     */
+    public readonly customerRouterIpv6InterfaceId!: pulumi.Output<string>;
     /**
      * [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
      */
@@ -140,6 +160,10 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+     */
+    public readonly stackType!: pulumi.Output<string>;
+    /**
      * The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: - ACTIVE: The attachment has been turned up and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted. 
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -168,7 +192,10 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             }
             resourceInputs["adminEnabled"] = args ? args.adminEnabled : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["candidateIpv6Subnets"] = args ? args.candidateIpv6Subnets : undefined;
             resourceInputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
+            resourceInputs["cloudRouterIpv6InterfaceId"] = args ? args.cloudRouterIpv6InterfaceId : undefined;
+            resourceInputs["customerRouterIpv6InterfaceId"] = args ? args.customerRouterIpv6InterfaceId : undefined;
             resourceInputs["dataplaneVersion"] = args ? args.dataplaneVersion : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
@@ -185,12 +212,15 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["router"] = args ? args.router : undefined;
+            resourceInputs["stackType"] = args ? args.stackType : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
             resourceInputs["cloudRouterIpAddress"] = undefined /*out*/;
+            resourceInputs["cloudRouterIpv6Address"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["customerRouterIpAddress"] = undefined /*out*/;
+            resourceInputs["customerRouterIpv6Address"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["operationalStatus"] = undefined /*out*/;
@@ -201,10 +231,15 @@ export class InterconnectAttachment extends pulumi.CustomResource {
         } else {
             resourceInputs["adminEnabled"] = undefined /*out*/;
             resourceInputs["bandwidth"] = undefined /*out*/;
+            resourceInputs["candidateIpv6Subnets"] = undefined /*out*/;
             resourceInputs["candidateSubnets"] = undefined /*out*/;
             resourceInputs["cloudRouterIpAddress"] = undefined /*out*/;
+            resourceInputs["cloudRouterIpv6Address"] = undefined /*out*/;
+            resourceInputs["cloudRouterIpv6InterfaceId"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["customerRouterIpAddress"] = undefined /*out*/;
+            resourceInputs["customerRouterIpv6Address"] = undefined /*out*/;
+            resourceInputs["customerRouterIpv6InterfaceId"] = undefined /*out*/;
             resourceInputs["dataplaneVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["edgeAvailabilityDomain"] = undefined /*out*/;
@@ -225,6 +260,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["router"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["stackType"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["vlanTag8021q"] = undefined /*out*/;
@@ -249,9 +285,21 @@ export interface InterconnectAttachmentArgs {
      */
     bandwidth?: pulumi.Input<enums.compute.beta.InterconnectAttachmentBandwidth>;
     /**
+     * Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
+     */
+    candidateIpv6Subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
      */
     candidateSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+     */
+    cloudRouterIpv6InterfaceId?: pulumi.Input<string>;
+    /**
+     * If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+     */
+    customerRouterIpv6InterfaceId?: pulumi.Input<string>;
     /**
      * [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
      */
@@ -307,6 +355,10 @@ export interface InterconnectAttachmentArgs {
      * URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
      */
     router?: pulumi.Input<string>;
+    /**
+     * The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+     */
+    stackType?: pulumi.Input<enums.compute.beta.InterconnectAttachmentStackType>;
     /**
      * The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
      */

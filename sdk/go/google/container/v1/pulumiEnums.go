@@ -1193,6 +1193,221 @@ func (in *databaseEncryptionStatePtr) ToDatabaseEncryptionStatePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseEncryptionStatePtrOutput)
 }
 
+type FilterEventTypeItem string
+
+const (
+	// Not set, will be ignored.
+	FilterEventTypeItemEventTypeUnspecified = FilterEventTypeItem("EVENT_TYPE_UNSPECIFIED")
+	// Corresponds with UpgradeAvailableEvent.
+	FilterEventTypeItemUpgradeAvailableEvent = FilterEventTypeItem("UPGRADE_AVAILABLE_EVENT")
+	// Corresponds with UpgradeEvent.
+	FilterEventTypeItemUpgradeEvent = FilterEventTypeItem("UPGRADE_EVENT")
+	// Corresponds with SecurityBulletinEvent.
+	FilterEventTypeItemSecurityBulletinEvent = FilterEventTypeItem("SECURITY_BULLETIN_EVENT")
+)
+
+func (FilterEventTypeItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterEventTypeItem)(nil)).Elem()
+}
+
+func (e FilterEventTypeItem) ToFilterEventTypeItemOutput() FilterEventTypeItemOutput {
+	return pulumi.ToOutput(e).(FilterEventTypeItemOutput)
+}
+
+func (e FilterEventTypeItem) ToFilterEventTypeItemOutputWithContext(ctx context.Context) FilterEventTypeItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FilterEventTypeItemOutput)
+}
+
+func (e FilterEventTypeItem) ToFilterEventTypeItemPtrOutput() FilterEventTypeItemPtrOutput {
+	return e.ToFilterEventTypeItemPtrOutputWithContext(context.Background())
+}
+
+func (e FilterEventTypeItem) ToFilterEventTypeItemPtrOutputWithContext(ctx context.Context) FilterEventTypeItemPtrOutput {
+	return FilterEventTypeItem(e).ToFilterEventTypeItemOutputWithContext(ctx).ToFilterEventTypeItemPtrOutputWithContext(ctx)
+}
+
+func (e FilterEventTypeItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FilterEventTypeItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FilterEventTypeItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FilterEventTypeItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FilterEventTypeItemOutput struct{ *pulumi.OutputState }
+
+func (FilterEventTypeItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterEventTypeItem)(nil)).Elem()
+}
+
+func (o FilterEventTypeItemOutput) ToFilterEventTypeItemOutput() FilterEventTypeItemOutput {
+	return o
+}
+
+func (o FilterEventTypeItemOutput) ToFilterEventTypeItemOutputWithContext(ctx context.Context) FilterEventTypeItemOutput {
+	return o
+}
+
+func (o FilterEventTypeItemOutput) ToFilterEventTypeItemPtrOutput() FilterEventTypeItemPtrOutput {
+	return o.ToFilterEventTypeItemPtrOutputWithContext(context.Background())
+}
+
+func (o FilterEventTypeItemOutput) ToFilterEventTypeItemPtrOutputWithContext(ctx context.Context) FilterEventTypeItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FilterEventTypeItem) *FilterEventTypeItem {
+		return &v
+	}).(FilterEventTypeItemPtrOutput)
+}
+
+func (o FilterEventTypeItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FilterEventTypeItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FilterEventTypeItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FilterEventTypeItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FilterEventTypeItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FilterEventTypeItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FilterEventTypeItemPtrOutput struct{ *pulumi.OutputState }
+
+func (FilterEventTypeItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FilterEventTypeItem)(nil)).Elem()
+}
+
+func (o FilterEventTypeItemPtrOutput) ToFilterEventTypeItemPtrOutput() FilterEventTypeItemPtrOutput {
+	return o
+}
+
+func (o FilterEventTypeItemPtrOutput) ToFilterEventTypeItemPtrOutputWithContext(ctx context.Context) FilterEventTypeItemPtrOutput {
+	return o
+}
+
+func (o FilterEventTypeItemPtrOutput) Elem() FilterEventTypeItemOutput {
+	return o.ApplyT(func(v *FilterEventTypeItem) FilterEventTypeItem {
+		if v != nil {
+			return *v
+		}
+		var ret FilterEventTypeItem
+		return ret
+	}).(FilterEventTypeItemOutput)
+}
+
+func (o FilterEventTypeItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FilterEventTypeItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FilterEventTypeItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FilterEventTypeItemInput is an input type that accepts FilterEventTypeItemArgs and FilterEventTypeItemOutput values.
+// You can construct a concrete instance of `FilterEventTypeItemInput` via:
+//
+//          FilterEventTypeItemArgs{...}
+type FilterEventTypeItemInput interface {
+	pulumi.Input
+
+	ToFilterEventTypeItemOutput() FilterEventTypeItemOutput
+	ToFilterEventTypeItemOutputWithContext(context.Context) FilterEventTypeItemOutput
+}
+
+var filterEventTypeItemPtrType = reflect.TypeOf((**FilterEventTypeItem)(nil)).Elem()
+
+type FilterEventTypeItemPtrInput interface {
+	pulumi.Input
+
+	ToFilterEventTypeItemPtrOutput() FilterEventTypeItemPtrOutput
+	ToFilterEventTypeItemPtrOutputWithContext(context.Context) FilterEventTypeItemPtrOutput
+}
+
+type filterEventTypeItemPtr string
+
+func FilterEventTypeItemPtr(v string) FilterEventTypeItemPtrInput {
+	return (*filterEventTypeItemPtr)(&v)
+}
+
+func (*filterEventTypeItemPtr) ElementType() reflect.Type {
+	return filterEventTypeItemPtrType
+}
+
+func (in *filterEventTypeItemPtr) ToFilterEventTypeItemPtrOutput() FilterEventTypeItemPtrOutput {
+	return pulumi.ToOutput(in).(FilterEventTypeItemPtrOutput)
+}
+
+func (in *filterEventTypeItemPtr) ToFilterEventTypeItemPtrOutputWithContext(ctx context.Context) FilterEventTypeItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FilterEventTypeItemPtrOutput)
+}
+
+// FilterEventTypeItemArrayInput is an input type that accepts FilterEventTypeItemArray and FilterEventTypeItemArrayOutput values.
+// You can construct a concrete instance of `FilterEventTypeItemArrayInput` via:
+//
+//          FilterEventTypeItemArray{ FilterEventTypeItemArgs{...} }
+type FilterEventTypeItemArrayInput interface {
+	pulumi.Input
+
+	ToFilterEventTypeItemArrayOutput() FilterEventTypeItemArrayOutput
+	ToFilterEventTypeItemArrayOutputWithContext(context.Context) FilterEventTypeItemArrayOutput
+}
+
+type FilterEventTypeItemArray []FilterEventTypeItem
+
+func (FilterEventTypeItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FilterEventTypeItem)(nil)).Elem()
+}
+
+func (i FilterEventTypeItemArray) ToFilterEventTypeItemArrayOutput() FilterEventTypeItemArrayOutput {
+	return i.ToFilterEventTypeItemArrayOutputWithContext(context.Background())
+}
+
+func (i FilterEventTypeItemArray) ToFilterEventTypeItemArrayOutputWithContext(ctx context.Context) FilterEventTypeItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterEventTypeItemArrayOutput)
+}
+
+type FilterEventTypeItemArrayOutput struct{ *pulumi.OutputState }
+
+func (FilterEventTypeItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FilterEventTypeItem)(nil)).Elem()
+}
+
+func (o FilterEventTypeItemArrayOutput) ToFilterEventTypeItemArrayOutput() FilterEventTypeItemArrayOutput {
+	return o
+}
+
+func (o FilterEventTypeItemArrayOutput) ToFilterEventTypeItemArrayOutputWithContext(ctx context.Context) FilterEventTypeItemArrayOutput {
+	return o
+}
+
+func (o FilterEventTypeItemArrayOutput) Index(i pulumi.IntInput) FilterEventTypeItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FilterEventTypeItem {
+		return vs[0].([]FilterEventTypeItem)[vs[1].(int)]
+	}).(FilterEventTypeItemOutput)
+}
+
 type LoggingComponentConfigEnableComponentsItem string
 
 const (
@@ -1404,6 +1619,175 @@ func (o LoggingComponentConfigEnableComponentsItemArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingComponentConfigEnableComponentsItem {
 		return vs[0].([]LoggingComponentConfigEnableComponentsItem)[vs[1].(int)]
 	}).(LoggingComponentConfigEnableComponentsItemOutput)
+}
+
+// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+type MaintenanceExclusionOptionsScope string
+
+const (
+	// NO_UPGRADES excludes all upgrades, including patch upgrades and minor upgrades across control planes and nodes. This is the default exclusion behavior.
+	MaintenanceExclusionOptionsScopeNoUpgrades = MaintenanceExclusionOptionsScope("NO_UPGRADES")
+	// NO_MINOR_UPGRADES excludes all minor upgrades for the cluster, only patches are allowed.
+	MaintenanceExclusionOptionsScopeNoMinorUpgrades = MaintenanceExclusionOptionsScope("NO_MINOR_UPGRADES")
+	// NO_MINOR_OR_NODE_UPGRADES excludes all minor upgrades for the cluster, and also exclude all node pool upgrades. Only control plane patches are allowed.
+	MaintenanceExclusionOptionsScopeNoMinorOrNodeUpgrades = MaintenanceExclusionOptionsScope("NO_MINOR_OR_NODE_UPGRADES")
+)
+
+func (MaintenanceExclusionOptionsScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceExclusionOptionsScope)(nil)).Elem()
+}
+
+func (e MaintenanceExclusionOptionsScope) ToMaintenanceExclusionOptionsScopeOutput() MaintenanceExclusionOptionsScopeOutput {
+	return pulumi.ToOutput(e).(MaintenanceExclusionOptionsScopeOutput)
+}
+
+func (e MaintenanceExclusionOptionsScope) ToMaintenanceExclusionOptionsScopeOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MaintenanceExclusionOptionsScopeOutput)
+}
+
+func (e MaintenanceExclusionOptionsScope) ToMaintenanceExclusionOptionsScopePtrOutput() MaintenanceExclusionOptionsScopePtrOutput {
+	return e.ToMaintenanceExclusionOptionsScopePtrOutputWithContext(context.Background())
+}
+
+func (e MaintenanceExclusionOptionsScope) ToMaintenanceExclusionOptionsScopePtrOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsScopePtrOutput {
+	return MaintenanceExclusionOptionsScope(e).ToMaintenanceExclusionOptionsScopeOutputWithContext(ctx).ToMaintenanceExclusionOptionsScopePtrOutputWithContext(ctx)
+}
+
+func (e MaintenanceExclusionOptionsScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MaintenanceExclusionOptionsScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MaintenanceExclusionOptionsScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MaintenanceExclusionOptionsScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MaintenanceExclusionOptionsScopeOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceExclusionOptionsScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceExclusionOptionsScope)(nil)).Elem()
+}
+
+func (o MaintenanceExclusionOptionsScopeOutput) ToMaintenanceExclusionOptionsScopeOutput() MaintenanceExclusionOptionsScopeOutput {
+	return o
+}
+
+func (o MaintenanceExclusionOptionsScopeOutput) ToMaintenanceExclusionOptionsScopeOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsScopeOutput {
+	return o
+}
+
+func (o MaintenanceExclusionOptionsScopeOutput) ToMaintenanceExclusionOptionsScopePtrOutput() MaintenanceExclusionOptionsScopePtrOutput {
+	return o.ToMaintenanceExclusionOptionsScopePtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceExclusionOptionsScopeOutput) ToMaintenanceExclusionOptionsScopePtrOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceExclusionOptionsScope) *MaintenanceExclusionOptionsScope {
+		return &v
+	}).(MaintenanceExclusionOptionsScopePtrOutput)
+}
+
+func (o MaintenanceExclusionOptionsScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MaintenanceExclusionOptionsScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MaintenanceExclusionOptionsScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MaintenanceExclusionOptionsScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceExclusionOptionsScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MaintenanceExclusionOptionsScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MaintenanceExclusionOptionsScopePtrOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceExclusionOptionsScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceExclusionOptionsScope)(nil)).Elem()
+}
+
+func (o MaintenanceExclusionOptionsScopePtrOutput) ToMaintenanceExclusionOptionsScopePtrOutput() MaintenanceExclusionOptionsScopePtrOutput {
+	return o
+}
+
+func (o MaintenanceExclusionOptionsScopePtrOutput) ToMaintenanceExclusionOptionsScopePtrOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsScopePtrOutput {
+	return o
+}
+
+func (o MaintenanceExclusionOptionsScopePtrOutput) Elem() MaintenanceExclusionOptionsScopeOutput {
+	return o.ApplyT(func(v *MaintenanceExclusionOptionsScope) MaintenanceExclusionOptionsScope {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceExclusionOptionsScope
+		return ret
+	}).(MaintenanceExclusionOptionsScopeOutput)
+}
+
+func (o MaintenanceExclusionOptionsScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceExclusionOptionsScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MaintenanceExclusionOptionsScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MaintenanceExclusionOptionsScopeInput is an input type that accepts MaintenanceExclusionOptionsScopeArgs and MaintenanceExclusionOptionsScopeOutput values.
+// You can construct a concrete instance of `MaintenanceExclusionOptionsScopeInput` via:
+//
+//          MaintenanceExclusionOptionsScopeArgs{...}
+type MaintenanceExclusionOptionsScopeInput interface {
+	pulumi.Input
+
+	ToMaintenanceExclusionOptionsScopeOutput() MaintenanceExclusionOptionsScopeOutput
+	ToMaintenanceExclusionOptionsScopeOutputWithContext(context.Context) MaintenanceExclusionOptionsScopeOutput
+}
+
+var maintenanceExclusionOptionsScopePtrType = reflect.TypeOf((**MaintenanceExclusionOptionsScope)(nil)).Elem()
+
+type MaintenanceExclusionOptionsScopePtrInput interface {
+	pulumi.Input
+
+	ToMaintenanceExclusionOptionsScopePtrOutput() MaintenanceExclusionOptionsScopePtrOutput
+	ToMaintenanceExclusionOptionsScopePtrOutputWithContext(context.Context) MaintenanceExclusionOptionsScopePtrOutput
+}
+
+type maintenanceExclusionOptionsScopePtr string
+
+func MaintenanceExclusionOptionsScopePtr(v string) MaintenanceExclusionOptionsScopePtrInput {
+	return (*maintenanceExclusionOptionsScopePtr)(&v)
+}
+
+func (*maintenanceExclusionOptionsScopePtr) ElementType() reflect.Type {
+	return maintenanceExclusionOptionsScopePtrType
+}
+
+func (in *maintenanceExclusionOptionsScopePtr) ToMaintenanceExclusionOptionsScopePtrOutput() MaintenanceExclusionOptionsScopePtrOutput {
+	return pulumi.ToOutput(in).(MaintenanceExclusionOptionsScopePtrOutput)
+}
+
+func (in *maintenanceExclusionOptionsScopePtr) ToMaintenanceExclusionOptionsScopePtrOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceExclusionOptionsScopePtrOutput)
 }
 
 type MonitoringComponentConfigEnableComponentsItem string
@@ -3185,9 +3569,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigClusterDnsScopePtrInput)(nil)).Elem(), DNSConfigClusterDnsScope("DNS_SCOPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEncryptionStateInput)(nil)).Elem(), DatabaseEncryptionState("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEncryptionStatePtrInput)(nil)).Elem(), DatabaseEncryptionState("UNKNOWN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FilterEventTypeItemInput)(nil)).Elem(), FilterEventTypeItem("EVENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FilterEventTypeItemPtrInput)(nil)).Elem(), FilterEventTypeItem("EVENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FilterEventTypeItemArrayInput)(nil)).Elem(), FilterEventTypeItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemPtrInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemArrayInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceExclusionOptionsScopeInput)(nil)).Elem(), MaintenanceExclusionOptionsScope("NO_UPGRADES"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceExclusionOptionsScopePtrInput)(nil)).Elem(), MaintenanceExclusionOptionsScope("NO_UPGRADES"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringComponentConfigEnableComponentsItemInput)(nil)).Elem(), MonitoringComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringComponentConfigEnableComponentsItemPtrInput)(nil)).Elem(), MonitoringComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringComponentConfigEnableComponentsItemArrayInput)(nil)).Elem(), MonitoringComponentConfigEnableComponentsItemArray{})
@@ -3223,9 +3612,14 @@ func init() {
 	pulumi.RegisterOutputType(DNSConfigClusterDnsScopePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseEncryptionStateOutput{})
 	pulumi.RegisterOutputType(DatabaseEncryptionStatePtrOutput{})
+	pulumi.RegisterOutputType(FilterEventTypeItemOutput{})
+	pulumi.RegisterOutputType(FilterEventTypeItemPtrOutput{})
+	pulumi.RegisterOutputType(FilterEventTypeItemArrayOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemPtrOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemArrayOutput{})
+	pulumi.RegisterOutputType(MaintenanceExclusionOptionsScopeOutput{})
+	pulumi.RegisterOutputType(MaintenanceExclusionOptionsScopePtrOutput{})
 	pulumi.RegisterOutputType(MonitoringComponentConfigEnableComponentsItemOutput{})
 	pulumi.RegisterOutputType(MonitoringComponentConfigEnableComponentsItemPtrOutput{})
 	pulumi.RegisterOutputType(MonitoringComponentConfigEnableComponentsItemArrayOutput{})

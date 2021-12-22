@@ -52,7 +52,7 @@ export class Processor extends pulumi.CustomResource {
      */
     public readonly kmsKeyName!: pulumi.Output<string>;
     /**
-     * Immutable. The resource name of the processor. Format: projects/{project}/locations/{location}/processors/{processor}
+     * Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**

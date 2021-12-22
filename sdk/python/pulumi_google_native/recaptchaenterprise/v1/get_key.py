@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetKeyResult:
-    def __init__(__self__, android_settings=None, create_time=None, display_name=None, ios_settings=None, labels=None, name=None, testing_options=None, web_settings=None):
+    def __init__(__self__, android_settings=None, create_time=None, display_name=None, ios_settings=None, labels=None, name=None, testing_options=None, waf_settings=None, web_settings=None):
         if android_settings and not isinstance(android_settings, dict):
             raise TypeError("Expected argument 'android_settings' to be a dict")
         pulumi.set(__self__, "android_settings", android_settings)
@@ -40,6 +40,9 @@ class GetKeyResult:
         if testing_options and not isinstance(testing_options, dict):
             raise TypeError("Expected argument 'testing_options' to be a dict")
         pulumi.set(__self__, "testing_options", testing_options)
+        if waf_settings and not isinstance(waf_settings, dict):
+            raise TypeError("Expected argument 'waf_settings' to be a dict")
+        pulumi.set(__self__, "waf_settings", waf_settings)
         if web_settings and not isinstance(web_settings, dict):
             raise TypeError("Expected argument 'web_settings' to be a dict")
         pulumi.set(__self__, "web_settings", web_settings)
@@ -101,6 +104,14 @@ class GetKeyResult:
         return pulumi.get(self, "testing_options")
 
     @property
+    @pulumi.getter(name="wafSettings")
+    def waf_settings(self) -> 'outputs.GoogleCloudRecaptchaenterpriseV1WafSettingsResponse':
+        """
+        Settings for WAF
+        """
+        return pulumi.get(self, "waf_settings")
+
+    @property
     @pulumi.getter(name="webSettings")
     def web_settings(self) -> 'outputs.GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse':
         """
@@ -122,6 +133,7 @@ class AwaitableGetKeyResult(GetKeyResult):
             labels=self.labels,
             name=self.name,
             testing_options=self.testing_options,
+            waf_settings=self.waf_settings,
             web_settings=self.web_settings)
 
 
@@ -148,6 +160,7 @@ def get_key(key_id: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         testing_options=__ret__.testing_options,
+        waf_settings=__ret__.waf_settings,
         web_settings=__ret__.web_settings)
 
 

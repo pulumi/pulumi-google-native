@@ -52,6 +52,8 @@ type LookupConversationResult struct {
 	Medium string `pulumi:"medium"`
 	// Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
 	Name string `pulumi:"name"`
+	// Obfuscated user ID which the customer sent to us.
+	ObfuscatedUserId string `pulumi:"obfuscatedUserId"`
 	// The annotations that were generated during the customer and agent interaction.
 	RuntimeAnnotations []GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse `pulumi:"runtimeAnnotations"`
 	// The time at which the conversation started.
@@ -164,6 +166,11 @@ func (o LookupConversationResultOutput) Medium() pulumi.StringOutput {
 // Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
 func (o LookupConversationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConversationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Obfuscated user ID which the customer sent to us.
+func (o LookupConversationResultOutput) ObfuscatedUserId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationResult) string { return v.ObfuscatedUserId }).(pulumi.StringOutput)
 }
 
 // The annotations that were generated during the customer and agent interaction.

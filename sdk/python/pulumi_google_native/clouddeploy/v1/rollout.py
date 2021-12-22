@@ -305,6 +305,7 @@ class Rollout(pulumi.CustomResource):
             __props__.__dict__["approve_time"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["deploy_end_time"] = None
+            __props__.__dict__["deploy_failure_cause"] = None
             __props__.__dict__["deploy_start_time"] = None
             __props__.__dict__["deploying_build"] = None
             __props__.__dict__["enqueue_time"] = None
@@ -338,6 +339,7 @@ class Rollout(pulumi.CustomResource):
         __props__.__dict__["approve_time"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["deploy_end_time"] = None
+        __props__.__dict__["deploy_failure_cause"] = None
         __props__.__dict__["deploy_start_time"] = None
         __props__.__dict__["deploying_build"] = None
         __props__.__dict__["description"] = None
@@ -390,6 +392,14 @@ class Rollout(pulumi.CustomResource):
         Time at which the `Rollout` finished deploying.
         """
         return pulumi.get(self, "deploy_end_time")
+
+    @property
+    @pulumi.getter(name="deployFailureCause")
+    def deploy_failure_cause(self) -> pulumi.Output[str]:
+        """
+        The reason this deploy failed. This will always be unspecified while the deploy in progress.
+        """
+        return pulumi.get(self, "deploy_failure_cause")
 
     @property
     @pulumi.getter(name="deployStartTime")

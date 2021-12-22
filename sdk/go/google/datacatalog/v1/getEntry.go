@@ -54,6 +54,8 @@ type LookupEntryResult struct {
 	LinkedResource string `pulumi:"linkedResource"`
 	// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
 	Name string `pulumi:"name"`
+	// Additional information related to the entry. Private to the current user.
+	PersonalDetails GoogleCloudDatacatalogV1PersonalDetailsResponse `pulumi:"personalDetails"`
 	// Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
 	RoutineSpec GoogleCloudDatacatalogV1RoutineSpecResponse `pulumi:"routineSpec"`
 	// Schema of the entry. An entry might not have any schema attached to it.
@@ -175,6 +177,11 @@ func (o LookupEntryResultOutput) LinkedResource() pulumi.StringOutput {
 // The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
 func (o LookupEntryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntryResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Additional information related to the entry. Private to the current user.
+func (o LookupEntryResultOutput) PersonalDetails() GoogleCloudDatacatalogV1PersonalDetailsResponseOutput {
+	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1PersonalDetailsResponse { return v.PersonalDetails }).(GoogleCloudDatacatalogV1PersonalDetailsResponseOutput)
 }
 
 // Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.

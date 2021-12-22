@@ -42,6 +42,8 @@ type LookupSearchApplicationResult struct {
 	OperationIds []string `pulumi:"operationIds"`
 	// The default options for query interpretation
 	QueryInterpretationConfig QueryInterpretationConfigResponse `pulumi:"queryInterpretationConfig"`
+	// With each result we should return the URI for its thumbnail (when applicable)
+	ReturnResultThumbnailUrls bool `pulumi:"returnResultThumbnailUrls"`
 	// Configuration for ranking results.
 	ScoringConfig ScoringConfigResponse `pulumi:"scoringConfig"`
 	// Configuration for a sources specified in data_source_restrictions.
@@ -120,6 +122,11 @@ func (o LookupSearchApplicationResultOutput) QueryInterpretationConfig() QueryIn
 	return o.ApplyT(func(v LookupSearchApplicationResult) QueryInterpretationConfigResponse {
 		return v.QueryInterpretationConfig
 	}).(QueryInterpretationConfigResponseOutput)
+}
+
+// With each result we should return the URI for its thumbnail (when applicable)
+func (o LookupSearchApplicationResultOutput) ReturnResultThumbnailUrls() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSearchApplicationResult) bool { return v.ReturnResultThumbnailUrls }).(pulumi.BoolOutput)
 }
 
 // Configuration for ranking results.

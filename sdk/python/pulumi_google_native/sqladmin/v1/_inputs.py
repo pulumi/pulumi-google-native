@@ -673,7 +673,7 @@ class IpConfigurationArgs:
         """
         IP Management configuration.
         :param pulumi.Input[str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
-        :param pulumi.Input[Sequence[pulumi.Input['AclEntryArgs']]] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+        :param pulumi.Input[Sequence[pulumi.Input['AclEntryArgs']]] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
         :param pulumi.Input[bool] ipv4_enabled: Whether the instance is assigned a public IP address or not.
         :param pulumi.Input[str] private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **/projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
         :param pulumi.Input[bool] require_ssl: Whether SSL connections over IP are enforced or not.
@@ -705,7 +705,7 @@ class IpConfigurationArgs:
     @pulumi.getter(name="authorizedNetworks")
     def authorized_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclEntryArgs']]]]:
         """
-        The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+        The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
         """
         return pulumi.get(self, "authorized_networks")
 
@@ -815,10 +815,10 @@ class LocationPreferenceArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
-        :param pulumi.Input[str] follow_gae_application: The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+        :param pulumi.Input[str] follow_gae_application: The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
         :param pulumi.Input[str] kind: This is always **sql#locationPreference**.
         :param pulumi.Input[str] secondary_zone: The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
-        :param pulumi.Input[str] zone: The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+        :param pulumi.Input[str] zone: The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
         """
         if follow_gae_application is not None:
             pulumi.set(__self__, "follow_gae_application", follow_gae_application)
@@ -833,7 +833,7 @@ class LocationPreferenceArgs:
     @pulumi.getter(name="followGaeApplication")
     def follow_gae_application(self) -> Optional[pulumi.Input[str]]:
         """
-        The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+        The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
         """
         return pulumi.get(self, "follow_gae_application")
 
@@ -869,7 +869,7 @@ class LocationPreferenceArgs:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+        The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
         """
         return pulumi.get(self, "zone")
 
@@ -1524,7 +1524,7 @@ class SettingsArgs:
         :param pulumi.Input[str] data_disk_size_gb: The size of data disk, in GB. The data disk size minimum is 10GB.
         :param pulumi.Input['SettingsDataDiskType'] data_disk_type: The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseFlagsArgs']]] database_flags: The database flags passed to the instance at startup.
-        :param pulumi.Input[bool] database_replication_enabled: Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+        :param pulumi.Input[bool] database_replication_enabled: Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
         :param pulumi.Input[Sequence[pulumi.Input['DenyMaintenancePeriodArgs']]] deny_maintenance_periods: Deny maintenance periods
         :param pulumi.Input['InsightsConfigArgs'] insights_config: Insights configuration, for now relevant only for Postgres.
         :param pulumi.Input['IpConfigurationArgs'] ip_configuration: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
@@ -1537,7 +1537,7 @@ class SettingsArgs:
         :param pulumi.Input['SqlServerAuditConfigArgs'] sql_server_audit_config: SQL Server specific audit configuration.
         :param pulumi.Input[bool] storage_auto_resize: Configuration to increase storage size automatically. The default value is true.
         :param pulumi.Input[str] storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-        :param pulumi.Input[str] tier: The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+        :param pulumi.Input[str] tier: The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-provided labels, represented as a dictionary where each label is a single key value pair.
         """
         if activation_policy is not None:
@@ -1701,7 +1701,7 @@ class SettingsArgs:
     @pulumi.getter(name="databaseReplicationEnabled")
     def database_replication_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+        Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
         """
         return pulumi.get(self, "database_replication_enabled")
 
@@ -1857,7 +1857,7 @@ class SettingsArgs:
     @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
-        The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+        The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
         """
         return pulumi.get(self, "tier")
 

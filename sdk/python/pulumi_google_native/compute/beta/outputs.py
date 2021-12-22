@@ -100,6 +100,7 @@ __all__ = [
     'InstanceGroupManagerStatusVersionTargetResponse',
     'InstanceGroupManagerUpdatePolicyResponse',
     'InstanceGroupManagerVersionResponse',
+    'InstanceParamsResponse',
     'InstancePropertiesResponse',
     'Int64RangeMatchResponse',
     'InterconnectAttachmentPartnerMetadataResponse',
@@ -795,6 +796,7 @@ class AttachedDiskInitializeParamsResponse(dict):
                  disk_type: str,
                  guest_os_features: Sequence['outputs.GuestOsFeatureResponse'],
                  labels: Mapping[str, str],
+                 licenses: Sequence[str],
                  multi_writer: bool,
                  on_update_action: str,
                  provisioned_iops: str,
@@ -811,6 +813,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         :param str disk_type: Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you define this field, you can provide either the full or partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this is the name of the disk type, not URL.
         :param Sequence['GuestOsFeatureResponse'] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
         :param Mapping[str, str] labels: Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
+        :param Sequence[str] licenses: A list of publicly visible licenses. Reserved for Google's use.
         :param bool multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param str on_update_action: Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         :param str provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
@@ -826,6 +829,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "guest_os_features", guest_os_features)
         pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "licenses", licenses)
         pulumi.set(__self__, "multi_writer", multi_writer)
         pulumi.set(__self__, "on_update_action", on_update_action)
         pulumi.set(__self__, "provisioned_iops", provisioned_iops)
@@ -882,6 +886,14 @@ class AttachedDiskInitializeParamsResponse(dict):
         Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> Sequence[str]:
+        """
+        A list of publicly visible licenses. Reserved for Google's use.
+        """
+        return pulumi.get(self, "licenses")
 
     @property
     @pulumi.getter(name="multiWriter")
@@ -6830,6 +6842,45 @@ class InstanceGroupManagerVersionResponse(dict):
 
 
 @pulumi.output_type
+class InstanceParamsResponse(dict):
+    """
+    Additional instance params.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceParamsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceParamsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceParamsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, str]):
+        """
+        Additional instance params.
+        :param Mapping[str, str] resource_manager_tags: Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, str]:
+        """
+        Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
 class InstancePropertiesResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6858,6 +6909,8 @@ class InstancePropertiesResponse(dict):
             suggest = "private_ipv6_google_access"
         elif key == "reservationAffinity":
             suggest = "reservation_affinity"
+        elif key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
         elif key == "resourcePolicies":
             suggest = "resource_policies"
         elif key == "serviceAccounts":
@@ -6895,6 +6948,7 @@ class InstancePropertiesResponse(dict):
                  post_key_revocation_action_type: str,
                  private_ipv6_google_access: str,
                  reservation_affinity: 'outputs.ReservationAffinityResponse',
+                 resource_manager_tags: Mapping[str, str],
                  resource_policies: Sequence[str],
                  scheduling: 'outputs.SchedulingResponse',
                  service_accounts: Sequence['outputs.ServiceAccountResponse'],
@@ -6918,7 +6972,8 @@ class InstancePropertiesResponse(dict):
         :param str post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
         :param str private_ipv6_google_access: The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
         :param 'ReservationAffinityResponse' reservation_affinity: Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
-        :param Sequence[str] resource_policies: Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+        :param Mapping[str, str] resource_manager_tags: Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        :param Sequence[str] resource_policies: Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         :param 'SchedulingResponse' scheduling: Specifies the scheduling options for the instances that are created from these properties.
         :param Sequence['ServiceAccountResponse'] service_accounts: A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
         :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Note that for MachineImage, this is not supported yet.
@@ -6941,6 +6996,7 @@ class InstancePropertiesResponse(dict):
         pulumi.set(__self__, "post_key_revocation_action_type", post_key_revocation_action_type)
         pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "scheduling", scheduling)
         pulumi.set(__self__, "service_accounts", service_accounts)
@@ -7077,10 +7133,18 @@ class InstancePropertiesResponse(dict):
         return pulumi.get(self, "reservation_affinity")
 
     @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, str]:
+        """
+        Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @property
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Sequence[str]:
         """
-        Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+        Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         """
         return pulumi.get(self, "resource_policies")
 

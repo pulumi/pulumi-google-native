@@ -79,9 +79,17 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+        /// </summary>
+        public readonly bool EnableSovereignControls;
+        /// <summary>
         /// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update &amp; Delete operations.
         /// </summary>
         public readonly string Etag;
+        /// <summary>
+        /// Represents the KAJ enrollment state of the given workload.
+        /// </summary>
+        public readonly string KajEnrollmentState;
         /// <summary>
         /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         /// </summary>
@@ -106,6 +114,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse> Resources;
+        /// <summary>
+        /// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
+        /// </summary>
+        public readonly Outputs.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse SaaEnrollmentResponse;
 
         [OutputConstructor]
         private GetWorkloadResult(
@@ -117,7 +129,11 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
 
             string displayName,
 
+            bool enableSovereignControls,
+
             string etag,
+
+            string kajEnrollmentState,
 
             Outputs.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse kmsSettings,
 
@@ -129,19 +145,24 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
 
             ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse> resourceSettings,
 
-            ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse> resources)
+            ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse> resources,
+
+            Outputs.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse saaEnrollmentResponse)
         {
             BillingAccount = billingAccount;
             ComplianceRegime = complianceRegime;
             CreateTime = createTime;
             DisplayName = displayName;
+            EnableSovereignControls = enableSovereignControls;
             Etag = etag;
+            KajEnrollmentState = kajEnrollmentState;
             KmsSettings = kmsSettings;
             Labels = labels;
             Name = name;
             ProvisionedResourcesParent = provisionedResourcesParent;
             ResourceSettings = resourceSettings;
             Resources = resources;
+            SaaEnrollmentResponse = saaEnrollmentResponse;
         }
     }
 }

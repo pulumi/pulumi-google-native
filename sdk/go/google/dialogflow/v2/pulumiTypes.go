@@ -14311,7 +14311,7 @@ func (o GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput) Topic() pulu
 
 // Configures speech transcription for ConversationProfile.
 type GoogleCloudDialogflowV2SpeechToTextConfig struct {
-	// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+	// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 	SpeechModelVariant *GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant `pulumi:"speechModelVariant"`
 }
 
@@ -14328,7 +14328,7 @@ type GoogleCloudDialogflowV2SpeechToTextConfigInput interface {
 
 // Configures speech transcription for ConversationProfile.
 type GoogleCloudDialogflowV2SpeechToTextConfigArgs struct {
-	// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+	// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 	SpeechModelVariant GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrInput `pulumi:"speechModelVariant"`
 }
 
@@ -14410,7 +14410,7 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigOutput) ToGoogleCloudDialogflow
 	}).(GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput)
 }
 
-// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 func (o GoogleCloudDialogflowV2SpeechToTextConfigOutput) SpeechModelVariant() GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2SpeechToTextConfig) *GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant {
 		return v.SpeechModelVariant
@@ -14441,7 +14441,7 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput) Elem() GoogleCloudDi
 	}).(GoogleCloudDialogflowV2SpeechToTextConfigOutput)
 }
 
-// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 func (o GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput) SpeechModelVariant() GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2SpeechToTextConfig) *GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant {
 		if v == nil {
@@ -14453,7 +14453,7 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput) SpeechModelVariant()
 
 // Configures speech transcription for ConversationProfile.
 type GoogleCloudDialogflowV2SpeechToTextConfigResponse struct {
-	// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+	// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 	SpeechModelVariant string `pulumi:"speechModelVariant"`
 }
 
@@ -14470,7 +14470,7 @@ type GoogleCloudDialogflowV2SpeechToTextConfigResponseInput interface {
 
 // Configures speech transcription for ConversationProfile.
 type GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs struct {
-	// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+	// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 	SpeechModelVariant pulumi.StringInput `pulumi:"speechModelVariant"`
 }
 
@@ -14552,7 +14552,7 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput) ToGoogleCloudDi
 	}).(GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput)
 }
 
-// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 func (o GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput) SpeechModelVariant() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2SpeechToTextConfigResponse) string { return v.SpeechModelVariant }).(pulumi.StringOutput)
 }
@@ -14581,7 +14581,7 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput) Elem() Googl
 	}).(GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput)
 }
 
-// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 func (o GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput) SpeechModelVariant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2SpeechToTextConfigResponse) *string {
 		if v == nil {

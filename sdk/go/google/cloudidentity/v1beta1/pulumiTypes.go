@@ -208,7 +208,7 @@ func (o AndroidAttributesResponsePtrOutput) SupportsWorkProfile() pulumi.BoolPtr
 }
 
 // Stores information about a certificate.
-type CertificateInfoResponse struct {
+type CertificateAttributesResponse struct {
 	// The X.509 extension for CertificateTemplate.
 	CertificateTemplate CertificateTemplateResponse `pulumi:"certificateTemplate"`
 	// The encoded certificate fingerprint.
@@ -229,19 +229,19 @@ type CertificateInfoResponse struct {
 	ValidityStartTime string `pulumi:"validityStartTime"`
 }
 
-// CertificateInfoResponseInput is an input type that accepts CertificateInfoResponseArgs and CertificateInfoResponseOutput values.
-// You can construct a concrete instance of `CertificateInfoResponseInput` via:
+// CertificateAttributesResponseInput is an input type that accepts CertificateAttributesResponseArgs and CertificateAttributesResponseOutput values.
+// You can construct a concrete instance of `CertificateAttributesResponseInput` via:
 //
-//          CertificateInfoResponseArgs{...}
-type CertificateInfoResponseInput interface {
+//          CertificateAttributesResponseArgs{...}
+type CertificateAttributesResponseInput interface {
 	pulumi.Input
 
-	ToCertificateInfoResponseOutput() CertificateInfoResponseOutput
-	ToCertificateInfoResponseOutputWithContext(context.Context) CertificateInfoResponseOutput
+	ToCertificateAttributesResponseOutput() CertificateAttributesResponseOutput
+	ToCertificateAttributesResponseOutputWithContext(context.Context) CertificateAttributesResponseOutput
 }
 
 // Stores information about a certificate.
-type CertificateInfoResponseArgs struct {
+type CertificateAttributesResponseArgs struct {
 	// The X.509 extension for CertificateTemplate.
 	CertificateTemplate CertificateTemplateResponseInput `pulumi:"certificateTemplate"`
 	// The encoded certificate fingerprint.
@@ -262,121 +262,121 @@ type CertificateInfoResponseArgs struct {
 	ValidityStartTime pulumi.StringInput `pulumi:"validityStartTime"`
 }
 
-func (CertificateInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateInfoResponse)(nil)).Elem()
+func (CertificateAttributesResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAttributesResponse)(nil)).Elem()
 }
 
-func (i CertificateInfoResponseArgs) ToCertificateInfoResponseOutput() CertificateInfoResponseOutput {
-	return i.ToCertificateInfoResponseOutputWithContext(context.Background())
+func (i CertificateAttributesResponseArgs) ToCertificateAttributesResponseOutput() CertificateAttributesResponseOutput {
+	return i.ToCertificateAttributesResponseOutputWithContext(context.Background())
 }
 
-func (i CertificateInfoResponseArgs) ToCertificateInfoResponseOutputWithContext(ctx context.Context) CertificateInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateInfoResponseOutput)
+func (i CertificateAttributesResponseArgs) ToCertificateAttributesResponseOutputWithContext(ctx context.Context) CertificateAttributesResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateAttributesResponseOutput)
 }
 
-// CertificateInfoResponseArrayInput is an input type that accepts CertificateInfoResponseArray and CertificateInfoResponseArrayOutput values.
-// You can construct a concrete instance of `CertificateInfoResponseArrayInput` via:
+// CertificateAttributesResponseArrayInput is an input type that accepts CertificateAttributesResponseArray and CertificateAttributesResponseArrayOutput values.
+// You can construct a concrete instance of `CertificateAttributesResponseArrayInput` via:
 //
-//          CertificateInfoResponseArray{ CertificateInfoResponseArgs{...} }
-type CertificateInfoResponseArrayInput interface {
+//          CertificateAttributesResponseArray{ CertificateAttributesResponseArgs{...} }
+type CertificateAttributesResponseArrayInput interface {
 	pulumi.Input
 
-	ToCertificateInfoResponseArrayOutput() CertificateInfoResponseArrayOutput
-	ToCertificateInfoResponseArrayOutputWithContext(context.Context) CertificateInfoResponseArrayOutput
+	ToCertificateAttributesResponseArrayOutput() CertificateAttributesResponseArrayOutput
+	ToCertificateAttributesResponseArrayOutputWithContext(context.Context) CertificateAttributesResponseArrayOutput
 }
 
-type CertificateInfoResponseArray []CertificateInfoResponseInput
+type CertificateAttributesResponseArray []CertificateAttributesResponseInput
 
-func (CertificateInfoResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CertificateInfoResponse)(nil)).Elem()
+func (CertificateAttributesResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateAttributesResponse)(nil)).Elem()
 }
 
-func (i CertificateInfoResponseArray) ToCertificateInfoResponseArrayOutput() CertificateInfoResponseArrayOutput {
-	return i.ToCertificateInfoResponseArrayOutputWithContext(context.Background())
+func (i CertificateAttributesResponseArray) ToCertificateAttributesResponseArrayOutput() CertificateAttributesResponseArrayOutput {
+	return i.ToCertificateAttributesResponseArrayOutputWithContext(context.Background())
 }
 
-func (i CertificateInfoResponseArray) ToCertificateInfoResponseArrayOutputWithContext(ctx context.Context) CertificateInfoResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateInfoResponseArrayOutput)
+func (i CertificateAttributesResponseArray) ToCertificateAttributesResponseArrayOutputWithContext(ctx context.Context) CertificateAttributesResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateAttributesResponseArrayOutput)
 }
 
 // Stores information about a certificate.
-type CertificateInfoResponseOutput struct{ *pulumi.OutputState }
+type CertificateAttributesResponseOutput struct{ *pulumi.OutputState }
 
-func (CertificateInfoResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateInfoResponse)(nil)).Elem()
+func (CertificateAttributesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAttributesResponse)(nil)).Elem()
 }
 
-func (o CertificateInfoResponseOutput) ToCertificateInfoResponseOutput() CertificateInfoResponseOutput {
+func (o CertificateAttributesResponseOutput) ToCertificateAttributesResponseOutput() CertificateAttributesResponseOutput {
 	return o
 }
 
-func (o CertificateInfoResponseOutput) ToCertificateInfoResponseOutputWithContext(ctx context.Context) CertificateInfoResponseOutput {
+func (o CertificateAttributesResponseOutput) ToCertificateAttributesResponseOutputWithContext(ctx context.Context) CertificateAttributesResponseOutput {
 	return o
 }
 
 // The X.509 extension for CertificateTemplate.
-func (o CertificateInfoResponseOutput) CertificateTemplate() CertificateTemplateResponseOutput {
-	return o.ApplyT(func(v CertificateInfoResponse) CertificateTemplateResponse { return v.CertificateTemplate }).(CertificateTemplateResponseOutput)
+func (o CertificateAttributesResponseOutput) CertificateTemplate() CertificateTemplateResponseOutput {
+	return o.ApplyT(func(v CertificateAttributesResponse) CertificateTemplateResponse { return v.CertificateTemplate }).(CertificateTemplateResponseOutput)
 }
 
 // The encoded certificate fingerprint.
-func (o CertificateInfoResponseOutput) Fingerprint() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificateInfoResponse) string { return v.Fingerprint }).(pulumi.StringOutput)
+func (o CertificateAttributesResponseOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAttributesResponse) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
 // The name of the issuer of this certificate.
-func (o CertificateInfoResponseOutput) Issuer() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificateInfoResponse) string { return v.Issuer }).(pulumi.StringOutput)
+func (o CertificateAttributesResponseOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAttributesResponse) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
 // Serial number of the certificate, Example: "123456789".
-func (o CertificateInfoResponseOutput) SerialNumber() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificateInfoResponse) string { return v.SerialNumber }).(pulumi.StringOutput)
+func (o CertificateAttributesResponseOutput) SerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAttributesResponse) string { return v.SerialNumber }).(pulumi.StringOutput)
 }
 
 // The subject name of this certificate.
-func (o CertificateInfoResponseOutput) Subject() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificateInfoResponse) string { return v.Subject }).(pulumi.StringOutput)
+func (o CertificateAttributesResponseOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAttributesResponse) string { return v.Subject }).(pulumi.StringOutput)
 }
 
 // The certificate thumbprint.
-func (o CertificateInfoResponseOutput) Thumbprint() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificateInfoResponse) string { return v.Thumbprint }).(pulumi.StringOutput)
+func (o CertificateAttributesResponseOutput) Thumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAttributesResponse) string { return v.Thumbprint }).(pulumi.StringOutput)
 }
 
 // Validation state of this certificate.
-func (o CertificateInfoResponseOutput) ValidationState() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificateInfoResponse) string { return v.ValidationState }).(pulumi.StringOutput)
+func (o CertificateAttributesResponseOutput) ValidationState() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAttributesResponse) string { return v.ValidationState }).(pulumi.StringOutput)
 }
 
 // Certificate not valid at or after this timestamp.
-func (o CertificateInfoResponseOutput) ValidityExpirationTime() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificateInfoResponse) string { return v.ValidityExpirationTime }).(pulumi.StringOutput)
+func (o CertificateAttributesResponseOutput) ValidityExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAttributesResponse) string { return v.ValidityExpirationTime }).(pulumi.StringOutput)
 }
 
 // Certificate not valid before this timestamp.
-func (o CertificateInfoResponseOutput) ValidityStartTime() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificateInfoResponse) string { return v.ValidityStartTime }).(pulumi.StringOutput)
+func (o CertificateAttributesResponseOutput) ValidityStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAttributesResponse) string { return v.ValidityStartTime }).(pulumi.StringOutput)
 }
 
-type CertificateInfoResponseArrayOutput struct{ *pulumi.OutputState }
+type CertificateAttributesResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (CertificateInfoResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CertificateInfoResponse)(nil)).Elem()
+func (CertificateAttributesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateAttributesResponse)(nil)).Elem()
 }
 
-func (o CertificateInfoResponseArrayOutput) ToCertificateInfoResponseArrayOutput() CertificateInfoResponseArrayOutput {
+func (o CertificateAttributesResponseArrayOutput) ToCertificateAttributesResponseArrayOutput() CertificateAttributesResponseArrayOutput {
 	return o
 }
 
-func (o CertificateInfoResponseArrayOutput) ToCertificateInfoResponseArrayOutputWithContext(ctx context.Context) CertificateInfoResponseArrayOutput {
+func (o CertificateAttributesResponseArrayOutput) ToCertificateAttributesResponseArrayOutputWithContext(ctx context.Context) CertificateAttributesResponseArrayOutput {
 	return o
 }
 
-func (o CertificateInfoResponseArrayOutput) Index(i pulumi.IntInput) CertificateInfoResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateInfoResponse {
-		return vs[0].([]CertificateInfoResponse)[vs[1].(int)]
-	}).(CertificateInfoResponseOutput)
+func (o CertificateAttributesResponseArrayOutput) Index(i pulumi.IntInput) CertificateAttributesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateAttributesResponse {
+		return vs[0].([]CertificateAttributesResponse)[vs[1].(int)]
+	}).(CertificateAttributesResponseOutput)
 }
 
 // CertificateTemplate (v3 Extension in X.509).
@@ -1113,10 +1113,10 @@ func (o DynamicGroupStatusResponsePtrOutput) StatusTime() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource representing the Endpoint Verification-specific attributes of a Device.
+// Resource representing the Endpoint Verification-specific attributes of a Device. https://cloud.google.com/endpoint-verification/docs/overview
 type EndpointVerificationSpecificAttributesResponse struct {
 	// Details of certificates.
-	CertificateInfo []CertificateInfoResponse `pulumi:"certificateInfo"`
+	CertificateAttributes []CertificateAttributesResponse `pulumi:"certificateAttributes"`
 }
 
 // EndpointVerificationSpecificAttributesResponseInput is an input type that accepts EndpointVerificationSpecificAttributesResponseArgs and EndpointVerificationSpecificAttributesResponseOutput values.
@@ -1130,10 +1130,10 @@ type EndpointVerificationSpecificAttributesResponseInput interface {
 	ToEndpointVerificationSpecificAttributesResponseOutputWithContext(context.Context) EndpointVerificationSpecificAttributesResponseOutput
 }
 
-// Resource representing the Endpoint Verification-specific attributes of a Device.
+// Resource representing the Endpoint Verification-specific attributes of a Device. https://cloud.google.com/endpoint-verification/docs/overview
 type EndpointVerificationSpecificAttributesResponseArgs struct {
 	// Details of certificates.
-	CertificateInfo CertificateInfoResponseArrayInput `pulumi:"certificateInfo"`
+	CertificateAttributes CertificateAttributesResponseArrayInput `pulumi:"certificateAttributes"`
 }
 
 func (EndpointVerificationSpecificAttributesResponseArgs) ElementType() reflect.Type {
@@ -1189,7 +1189,7 @@ func (i *endpointVerificationSpecificAttributesResponsePtrType) ToEndpointVerifi
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointVerificationSpecificAttributesResponsePtrOutput)
 }
 
-// Resource representing the Endpoint Verification-specific attributes of a Device.
+// Resource representing the Endpoint Verification-specific attributes of a Device. https://cloud.google.com/endpoint-verification/docs/overview
 type EndpointVerificationSpecificAttributesResponseOutput struct{ *pulumi.OutputState }
 
 func (EndpointVerificationSpecificAttributesResponseOutput) ElementType() reflect.Type {
@@ -1215,10 +1215,10 @@ func (o EndpointVerificationSpecificAttributesResponseOutput) ToEndpointVerifica
 }
 
 // Details of certificates.
-func (o EndpointVerificationSpecificAttributesResponseOutput) CertificateInfo() CertificateInfoResponseArrayOutput {
-	return o.ApplyT(func(v EndpointVerificationSpecificAttributesResponse) []CertificateInfoResponse {
-		return v.CertificateInfo
-	}).(CertificateInfoResponseArrayOutput)
+func (o EndpointVerificationSpecificAttributesResponseOutput) CertificateAttributes() CertificateAttributesResponseArrayOutput {
+	return o.ApplyT(func(v EndpointVerificationSpecificAttributesResponse) []CertificateAttributesResponse {
+		return v.CertificateAttributes
+	}).(CertificateAttributesResponseArrayOutput)
 }
 
 type EndpointVerificationSpecificAttributesResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1246,13 +1246,13 @@ func (o EndpointVerificationSpecificAttributesResponsePtrOutput) Elem() Endpoint
 }
 
 // Details of certificates.
-func (o EndpointVerificationSpecificAttributesResponsePtrOutput) CertificateInfo() CertificateInfoResponseArrayOutput {
-	return o.ApplyT(func(v *EndpointVerificationSpecificAttributesResponse) []CertificateInfoResponse {
+func (o EndpointVerificationSpecificAttributesResponsePtrOutput) CertificateAttributes() CertificateAttributesResponseArrayOutput {
+	return o.ApplyT(func(v *EndpointVerificationSpecificAttributesResponse) []CertificateAttributesResponse {
 		if v == nil {
 			return nil
 		}
-		return v.CertificateInfo
-	}).(CertificateInfoResponseArrayOutput)
+		return v.CertificateAttributes
+	}).(CertificateAttributesResponseArrayOutput)
 }
 
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
@@ -2689,8 +2689,8 @@ func (o RestrictionEvaluationsResponseOutput) MemberRestrictionEvaluation() Memb
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidAttributesResponseInput)(nil)).Elem(), AndroidAttributesResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidAttributesResponsePtrInput)(nil)).Elem(), AndroidAttributesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateInfoResponseInput)(nil)).Elem(), CertificateInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateInfoResponseArrayInput)(nil)).Elem(), CertificateInfoResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAttributesResponseInput)(nil)).Elem(), CertificateAttributesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAttributesResponseArrayInput)(nil)).Elem(), CertificateAttributesResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplateResponseInput)(nil)).Elem(), CertificateTemplateResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataInput)(nil)).Elem(), DynamicGroupMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataPtrInput)(nil)).Elem(), DynamicGroupMetadataArgs{})
@@ -2729,8 +2729,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RestrictionEvaluationsResponseInput)(nil)).Elem(), RestrictionEvaluationsResponseArgs{})
 	pulumi.RegisterOutputType(AndroidAttributesResponseOutput{})
 	pulumi.RegisterOutputType(AndroidAttributesResponsePtrOutput{})
-	pulumi.RegisterOutputType(CertificateInfoResponseOutput{})
-	pulumi.RegisterOutputType(CertificateInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(CertificateAttributesResponseOutput{})
+	pulumi.RegisterOutputType(CertificateAttributesResponseArrayOutput{})
 	pulumi.RegisterOutputType(CertificateTemplateResponseOutput{})
 	pulumi.RegisterOutputType(DynamicGroupMetadataOutput{})
 	pulumi.RegisterOutputType(DynamicGroupMetadataPtrOutput{})

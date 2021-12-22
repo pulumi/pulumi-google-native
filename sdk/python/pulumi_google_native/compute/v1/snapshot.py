@@ -206,7 +206,7 @@ class Snapshot(pulumi.CustomResource):
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Creates a snapshot in the specified project using the data included in the request.
+        Creates a snapshot in the specified project using the data included in the request. For regular snapshot creation, consider using this method instead of disks.createSnapshot, as this method supports more features, such as creating snapshots in a project different from the source disk project.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -227,7 +227,7 @@ class Snapshot(pulumi.CustomResource):
                  args: Optional[SnapshotArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a snapshot in the specified project using the data included in the request.
+        Creates a snapshot in the specified project using the data included in the request. For regular snapshot creation, consider using this method instead of disks.createSnapshot, as this method supports more features, such as creating snapshots in a project different from the source disk project.
 
         :param str resource_name: The name of the resource.
         :param SnapshotArgs args: The arguments to use to populate this resource's properties.

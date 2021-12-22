@@ -35,6 +35,8 @@ type PatchDeployment struct {
 	RecurringSchedule RecurringScheduleResponseOutput `pulumi:"recurringSchedule"`
 	// Optional. Rollout strategy of the patch job.
 	Rollout PatchRolloutResponseOutput `pulumi:"rollout"`
+	// Current state of the patch deployment.
+	State pulumi.StringOutput `pulumi:"state"`
 	// Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDataSourceResult:
-    def __init__(__self__, disable_modifications=None, disable_serving=None, display_name=None, indexing_service_accounts=None, items_visibility=None, name=None, operation_ids=None, short_name=None):
+    def __init__(__self__, disable_modifications=None, disable_serving=None, display_name=None, indexing_service_accounts=None, items_visibility=None, name=None, operation_ids=None, return_thumbnail_urls=None, short_name=None):
         if disable_modifications and not isinstance(disable_modifications, bool):
             raise TypeError("Expected argument 'disable_modifications' to be a bool")
         pulumi.set(__self__, "disable_modifications", disable_modifications)
@@ -40,6 +40,9 @@ class GetDataSourceResult:
         if operation_ids and not isinstance(operation_ids, list):
             raise TypeError("Expected argument 'operation_ids' to be a list")
         pulumi.set(__self__, "operation_ids", operation_ids)
+        if return_thumbnail_urls and not isinstance(return_thumbnail_urls, bool):
+            raise TypeError("Expected argument 'return_thumbnail_urls' to be a bool")
+        pulumi.set(__self__, "return_thumbnail_urls", return_thumbnail_urls)
         if short_name and not isinstance(short_name, str):
             raise TypeError("Expected argument 'short_name' to be a str")
         pulumi.set(__self__, "short_name", short_name)
@@ -101,6 +104,14 @@ class GetDataSourceResult:
         return pulumi.get(self, "operation_ids")
 
     @property
+    @pulumi.getter(name="returnThumbnailUrls")
+    def return_thumbnail_urls(self) -> bool:
+        """
+        Can a user request to get thumbnail URI for Items indexed in this data source.
+        """
+        return pulumi.get(self, "return_thumbnail_urls")
+
+    @property
     @pulumi.getter(name="shortName")
     def short_name(self) -> str:
         """
@@ -122,6 +133,7 @@ class AwaitableGetDataSourceResult(GetDataSourceResult):
             items_visibility=self.items_visibility,
             name=self.name,
             operation_ids=self.operation_ids,
+            return_thumbnail_urls=self.return_thumbnail_urls,
             short_name=self.short_name)
 
 
@@ -148,6 +160,7 @@ def get_data_source(datasource_id: Optional[str] = None,
         items_visibility=__ret__.items_visibility,
         name=__ret__.name,
         operation_ids=__ret__.operation_ids,
+        return_thumbnail_urls=__ret__.return_thumbnail_urls,
         short_name=__ret__.short_name)
 
 

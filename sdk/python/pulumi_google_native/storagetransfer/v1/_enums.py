@@ -7,6 +7,10 @@ from enum import Enum
 __all__ = [
     'LoggingConfigLogActionStatesItem',
     'LoggingConfigLogActionsItem',
+    'MetadataOptionsGid',
+    'MetadataOptionsMode',
+    'MetadataOptionsSymlink',
+    'MetadataOptionsUid',
     'NotificationConfigEventTypesItem',
     'NotificationConfigPayloadFormat',
     'TransferJobStatus',
@@ -20,11 +24,11 @@ class LoggingConfigLogActionStatesItem(str, Enum):
     """
     SUCCEEDED = "SUCCEEDED"
     """
-    `LoggableAction` is completed successfully. `SUCCEEDED` actions are logged as INFO.
+    `LoggableAction` completed successfully. `SUCCEEDED` actions are logged as INFO.
     """
     FAILED = "FAILED"
     """
-    `LoggableAction` is terminated in an error state. `FAILED` actions are logged as ERROR.
+    `LoggableAction` terminated in an error state. `FAILED` actions are logged as ERROR.
     """
 
 
@@ -35,15 +39,87 @@ class LoggingConfigLogActionsItem(str, Enum):
     """
     FIND = "FIND"
     """
-    Finding objects to transfer e.g. listing objects of the source bucket.
+    Listing objects in a bucket.
     """
     DELETE = "DELETE"
     """
-    Deleting objects at source or destination.
+    Deleting objects at the source or the destination.
     """
     COPY = "COPY"
     """
-    Copying objects from source to destination.
+    Copying objects to Google Cloud Storage.
+    """
+
+
+class MetadataOptionsGid(str, Enum):
+    """
+    Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+    """
+    GID_UNSPECIFIED = "GID_UNSPECIFIED"
+    """
+    GID behavior is unspecified.
+    """
+    GID_SKIP = "GID_SKIP"
+    """
+    Skip GID during a transfer job.
+    """
+    GID_NUMBER = "GID_NUMBER"
+    """
+    Preserve GID during a transfer job.
+    """
+
+
+class MetadataOptionsMode(str, Enum):
+    """
+    Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+    """
+    MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """
+    Mode behavior is unspecified.
+    """
+    MODE_SKIP = "MODE_SKIP"
+    """
+    Skip mode during a transfer job.
+    """
+    MODE_PRESERVE = "MODE_PRESERVE"
+    """
+    Preserve mode during a transfer job.
+    """
+
+
+class MetadataOptionsSymlink(str, Enum):
+    """
+    Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+    """
+    SYMLINK_UNSPECIFIED = "SYMLINK_UNSPECIFIED"
+    """
+    Symlink behavior is unspecified. The default behavior is to skip symlinks during a transfer job.
+    """
+    SYMLINK_SKIP = "SYMLINK_SKIP"
+    """
+    Skip symlinks during a transfer job.
+    """
+    SYMLINK_PRESERVE = "SYMLINK_PRESERVE"
+    """
+    Preserve symlinks during a transfer job.
+    """
+
+
+class MetadataOptionsUid(str, Enum):
+    """
+    Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+    """
+    UID_UNSPECIFIED = "UID_UNSPECIFIED"
+    """
+    UID behavior is unspecified.
+    """
+    UID_SKIP = "UID_SKIP"
+    """
+    Skip UID during a transfer job.
+    """
+    UID_NUMBER = "UID_NUMBER"
+    """
+    Preserve UID during a transfer job.
     """
 
 

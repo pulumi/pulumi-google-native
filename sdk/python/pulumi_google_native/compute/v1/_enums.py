@@ -78,6 +78,7 @@ __all__ = [
     'InterconnectAttachmentBandwidth',
     'InterconnectAttachmentEdgeAvailabilityDomain',
     'InterconnectAttachmentEncryption',
+    'InterconnectAttachmentStackType',
     'InterconnectAttachmentType',
     'InterconnectInterconnectType',
     'InterconnectLinkType',
@@ -1113,6 +1114,10 @@ class GlobalNetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
     The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
     """
+    PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
+    """
+    The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+    """
     SERVERLESS = "SERVERLESS"
     """
     The network endpoint is handled by specified serverless infrastructure.
@@ -1463,6 +1468,20 @@ class InterconnectAttachmentEncryption(str, Enum):
     """
 
 
+class InterconnectAttachmentStackType(str, Enum):
+    """
+    The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+    """
+    IPV4_IPV6 = "IPV4_IPV6"
+    """
+    The interconnect attachment can have both IPv4 and IPv6 addresses.
+    """
+    IPV4_ONLY = "IPV4_ONLY"
+    """
+    The interconnect attachment will only be assigned IPv4 addresses.
+    """
+
+
 class InterconnectAttachmentType(str, Enum):
     """
     The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
@@ -1586,6 +1605,10 @@ class NetworkEndpointGroupNetworkEndpointType(str, Enum):
     NON_GCP_PRIVATE_IP_PORT = "NON_GCP_PRIVATE_IP_PORT"
     """
     The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
+    """
+    PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
+    """
+    The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
     """
     SERVERLESS = "SERVERLESS"
     """
@@ -1961,6 +1984,10 @@ class RegionNetworkEndpointGroupNetworkEndpointType(str, Enum):
     NON_GCP_PRIVATE_IP_PORT = "NON_GCP_PRIVATE_IP_PORT"
     """
     The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
+    """
+    PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
+    """
+    The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
     """
     SERVERLESS = "SERVERLESS"
     """

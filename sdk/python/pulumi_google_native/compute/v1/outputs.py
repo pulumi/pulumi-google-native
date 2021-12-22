@@ -756,6 +756,7 @@ class AttachedDiskInitializeParamsResponse(dict):
                  disk_size_gb: str,
                  disk_type: str,
                  labels: Mapping[str, str],
+                 licenses: Sequence[str],
                  on_update_action: str,
                  provisioned_iops: str,
                  resource_policies: Sequence[str],
@@ -770,6 +771,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         :param str disk_size_gb: Specifies the size of the disk in base-2 GB. The size must be at least 10 GB. If you specify a sourceImage, which is required for boot disks, the default size is the size of the sourceImage. If you do not specify a sourceImage, the default disk size is 500 GB.
         :param str disk_type: Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you define this field, you can provide either the full or partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this is the name of the disk type, not URL.
         :param Mapping[str, str] labels: Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
+        :param Sequence[str] licenses: A list of publicly visible licenses. Reserved for Google's use.
         :param str on_update_action: Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         :param str provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
         :param Sequence[str] resource_policies: Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -783,6 +785,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "licenses", licenses)
         pulumi.set(__self__, "on_update_action", on_update_action)
         pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         pulumi.set(__self__, "resource_policies", resource_policies)
@@ -830,6 +833,14 @@ class AttachedDiskInitializeParamsResponse(dict):
         Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> Sequence[str]:
+        """
+        A list of publicly visible licenses. Reserved for Google's use.
+        """
+        return pulumi.get(self, "licenses")
 
     @property
     @pulumi.getter(name="onUpdateAction")
@@ -6606,7 +6617,7 @@ class InstancePropertiesResponse(dict):
         :param 'NetworkPerformanceConfigResponse' network_performance_config: Note that for MachineImage, this is not supported yet.
         :param str private_ipv6_google_access: The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
         :param 'ReservationAffinityResponse' reservation_affinity: Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
-        :param Sequence[str] resource_policies: Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+        :param Sequence[str] resource_policies: Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         :param 'SchedulingResponse' scheduling: Specifies the scheduling options for the instances that are created from these properties.
         :param Sequence['ServiceAccountResponse'] service_accounts: A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
         :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Note that for MachineImage, this is not supported yet.
@@ -6748,7 +6759,7 @@ class InstancePropertiesResponse(dict):
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Sequence[str]:
         """
-        Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+        Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         """
         return pulumi.get(self, "resource_policies")
 

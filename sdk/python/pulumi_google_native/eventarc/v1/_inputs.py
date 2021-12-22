@@ -219,7 +219,7 @@ class DestinationArgs:
                  gke: Optional[pulumi.Input['GKEArgs']] = None):
         """
         Represents a target of an invocation over HTTP.
-        :param pulumi.Input['CloudRunArgs'] cloud_run: Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+        :param pulumi.Input['CloudRunArgs'] cloud_run: Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
         :param pulumi.Input['GKEArgs'] gke: A GKE service capable of receiving events. The service should be running in the same project of the trigger.
         """
         if cloud_run is not None:
@@ -231,7 +231,7 @@ class DestinationArgs:
     @pulumi.getter(name="cloudRun")
     def cloud_run(self) -> Optional[pulumi.Input['CloudRunArgs']]:
         """
-        Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+        Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
         """
         return pulumi.get(self, "cloud_run")
 

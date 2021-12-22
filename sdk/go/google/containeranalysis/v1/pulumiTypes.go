@@ -3031,6 +3031,624 @@ func (o BuilderConfigResponsePtrOutput) Elem() BuilderConfigResponseOutput {
 	}).(BuilderConfigResponseOutput)
 }
 
+// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+type CVSS struct {
+	AttackComplexity *CVSSAttackComplexity `pulumi:"attackComplexity"`
+	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+	AttackVector       *CVSSAttackVector       `pulumi:"attackVector"`
+	Authentication     *CVSSAuthentication     `pulumi:"authentication"`
+	AvailabilityImpact *CVSSAvailabilityImpact `pulumi:"availabilityImpact"`
+	// The base score is a function of the base metric scores.
+	BaseScore             *float64                   `pulumi:"baseScore"`
+	ConfidentialityImpact *CVSSConfidentialityImpact `pulumi:"confidentialityImpact"`
+	ExploitabilityScore   *float64                   `pulumi:"exploitabilityScore"`
+	ImpactScore           *float64                   `pulumi:"impactScore"`
+	IntegrityImpact       *CVSSIntegrityImpact       `pulumi:"integrityImpact"`
+	PrivilegesRequired    *CVSSPrivilegesRequired    `pulumi:"privilegesRequired"`
+	Scope                 *CVSSScope                 `pulumi:"scope"`
+	UserInteraction       *CVSSUserInteraction       `pulumi:"userInteraction"`
+}
+
+// CVSSInput is an input type that accepts CVSSArgs and CVSSOutput values.
+// You can construct a concrete instance of `CVSSInput` via:
+//
+//          CVSSArgs{...}
+type CVSSInput interface {
+	pulumi.Input
+
+	ToCVSSOutput() CVSSOutput
+	ToCVSSOutputWithContext(context.Context) CVSSOutput
+}
+
+// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+type CVSSArgs struct {
+	AttackComplexity CVSSAttackComplexityPtrInput `pulumi:"attackComplexity"`
+	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+	AttackVector       CVSSAttackVectorPtrInput       `pulumi:"attackVector"`
+	Authentication     CVSSAuthenticationPtrInput     `pulumi:"authentication"`
+	AvailabilityImpact CVSSAvailabilityImpactPtrInput `pulumi:"availabilityImpact"`
+	// The base score is a function of the base metric scores.
+	BaseScore             pulumi.Float64PtrInput            `pulumi:"baseScore"`
+	ConfidentialityImpact CVSSConfidentialityImpactPtrInput `pulumi:"confidentialityImpact"`
+	ExploitabilityScore   pulumi.Float64PtrInput            `pulumi:"exploitabilityScore"`
+	ImpactScore           pulumi.Float64PtrInput            `pulumi:"impactScore"`
+	IntegrityImpact       CVSSIntegrityImpactPtrInput       `pulumi:"integrityImpact"`
+	PrivilegesRequired    CVSSPrivilegesRequiredPtrInput    `pulumi:"privilegesRequired"`
+	Scope                 CVSSScopePtrInput                 `pulumi:"scope"`
+	UserInteraction       CVSSUserInteractionPtrInput       `pulumi:"userInteraction"`
+}
+
+func (CVSSArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSS)(nil)).Elem()
+}
+
+func (i CVSSArgs) ToCVSSOutput() CVSSOutput {
+	return i.ToCVSSOutputWithContext(context.Background())
+}
+
+func (i CVSSArgs) ToCVSSOutputWithContext(ctx context.Context) CVSSOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CVSSOutput)
+}
+
+func (i CVSSArgs) ToCVSSPtrOutput() CVSSPtrOutput {
+	return i.ToCVSSPtrOutputWithContext(context.Background())
+}
+
+func (i CVSSArgs) ToCVSSPtrOutputWithContext(ctx context.Context) CVSSPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CVSSOutput).ToCVSSPtrOutputWithContext(ctx)
+}
+
+// CVSSPtrInput is an input type that accepts CVSSArgs, CVSSPtr and CVSSPtrOutput values.
+// You can construct a concrete instance of `CVSSPtrInput` via:
+//
+//          CVSSArgs{...}
+//
+//  or:
+//
+//          nil
+type CVSSPtrInput interface {
+	pulumi.Input
+
+	ToCVSSPtrOutput() CVSSPtrOutput
+	ToCVSSPtrOutputWithContext(context.Context) CVSSPtrOutput
+}
+
+type cvssPtrType CVSSArgs
+
+func CVSSPtr(v *CVSSArgs) CVSSPtrInput {
+	return (*cvssPtrType)(v)
+}
+
+func (*cvssPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSS)(nil)).Elem()
+}
+
+func (i *cvssPtrType) ToCVSSPtrOutput() CVSSPtrOutput {
+	return i.ToCVSSPtrOutputWithContext(context.Background())
+}
+
+func (i *cvssPtrType) ToCVSSPtrOutputWithContext(ctx context.Context) CVSSPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CVSSPtrOutput)
+}
+
+// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+type CVSSOutput struct{ *pulumi.OutputState }
+
+func (CVSSOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSS)(nil)).Elem()
+}
+
+func (o CVSSOutput) ToCVSSOutput() CVSSOutput {
+	return o
+}
+
+func (o CVSSOutput) ToCVSSOutputWithContext(ctx context.Context) CVSSOutput {
+	return o
+}
+
+func (o CVSSOutput) ToCVSSPtrOutput() CVSSPtrOutput {
+	return o.ToCVSSPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSOutput) ToCVSSPtrOutputWithContext(ctx context.Context) CVSSPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSS) *CVSS {
+		return &v
+	}).(CVSSPtrOutput)
+}
+
+func (o CVSSOutput) AttackComplexity() CVSSAttackComplexityPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSAttackComplexity { return v.AttackComplexity }).(CVSSAttackComplexityPtrOutput)
+}
+
+// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+func (o CVSSOutput) AttackVector() CVSSAttackVectorPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSAttackVector { return v.AttackVector }).(CVSSAttackVectorPtrOutput)
+}
+
+func (o CVSSOutput) Authentication() CVSSAuthenticationPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSAuthentication { return v.Authentication }).(CVSSAuthenticationPtrOutput)
+}
+
+func (o CVSSOutput) AvailabilityImpact() CVSSAvailabilityImpactPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSAvailabilityImpact { return v.AvailabilityImpact }).(CVSSAvailabilityImpactPtrOutput)
+}
+
+// The base score is a function of the base metric scores.
+func (o CVSSOutput) BaseScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CVSS) *float64 { return v.BaseScore }).(pulumi.Float64PtrOutput)
+}
+
+func (o CVSSOutput) ConfidentialityImpact() CVSSConfidentialityImpactPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSConfidentialityImpact { return v.ConfidentialityImpact }).(CVSSConfidentialityImpactPtrOutput)
+}
+
+func (o CVSSOutput) ExploitabilityScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CVSS) *float64 { return v.ExploitabilityScore }).(pulumi.Float64PtrOutput)
+}
+
+func (o CVSSOutput) ImpactScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CVSS) *float64 { return v.ImpactScore }).(pulumi.Float64PtrOutput)
+}
+
+func (o CVSSOutput) IntegrityImpact() CVSSIntegrityImpactPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSIntegrityImpact { return v.IntegrityImpact }).(CVSSIntegrityImpactPtrOutput)
+}
+
+func (o CVSSOutput) PrivilegesRequired() CVSSPrivilegesRequiredPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSPrivilegesRequired { return v.PrivilegesRequired }).(CVSSPrivilegesRequiredPtrOutput)
+}
+
+func (o CVSSOutput) Scope() CVSSScopePtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSScope { return v.Scope }).(CVSSScopePtrOutput)
+}
+
+func (o CVSSOutput) UserInteraction() CVSSUserInteractionPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSUserInteraction { return v.UserInteraction }).(CVSSUserInteractionPtrOutput)
+}
+
+type CVSSPtrOutput struct{ *pulumi.OutputState }
+
+func (CVSSPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSS)(nil)).Elem()
+}
+
+func (o CVSSPtrOutput) ToCVSSPtrOutput() CVSSPtrOutput {
+	return o
+}
+
+func (o CVSSPtrOutput) ToCVSSPtrOutputWithContext(ctx context.Context) CVSSPtrOutput {
+	return o
+}
+
+func (o CVSSPtrOutput) Elem() CVSSOutput {
+	return o.ApplyT(func(v *CVSS) CVSS {
+		if v != nil {
+			return *v
+		}
+		var ret CVSS
+		return ret
+	}).(CVSSOutput)
+}
+
+func (o CVSSPtrOutput) AttackComplexity() CVSSAttackComplexityPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSAttackComplexity {
+		if v == nil {
+			return nil
+		}
+		return v.AttackComplexity
+	}).(CVSSAttackComplexityPtrOutput)
+}
+
+// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+func (o CVSSPtrOutput) AttackVector() CVSSAttackVectorPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSAttackVector {
+		if v == nil {
+			return nil
+		}
+		return v.AttackVector
+	}).(CVSSAttackVectorPtrOutput)
+}
+
+func (o CVSSPtrOutput) Authentication() CVSSAuthenticationPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(CVSSAuthenticationPtrOutput)
+}
+
+func (o CVSSPtrOutput) AvailabilityImpact() CVSSAvailabilityImpactPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSAvailabilityImpact {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityImpact
+	}).(CVSSAvailabilityImpactPtrOutput)
+}
+
+// The base score is a function of the base metric scores.
+func (o CVSSPtrOutput) BaseScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CVSS) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.BaseScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o CVSSPtrOutput) ConfidentialityImpact() CVSSConfidentialityImpactPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSConfidentialityImpact {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialityImpact
+	}).(CVSSConfidentialityImpactPtrOutput)
+}
+
+func (o CVSSPtrOutput) ExploitabilityScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CVSS) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ExploitabilityScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o CVSSPtrOutput) ImpactScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CVSS) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ImpactScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o CVSSPtrOutput) IntegrityImpact() CVSSIntegrityImpactPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSIntegrityImpact {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrityImpact
+	}).(CVSSIntegrityImpactPtrOutput)
+}
+
+func (o CVSSPtrOutput) PrivilegesRequired() CVSSPrivilegesRequiredPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSPrivilegesRequired {
+		if v == nil {
+			return nil
+		}
+		return v.PrivilegesRequired
+	}).(CVSSPrivilegesRequiredPtrOutput)
+}
+
+func (o CVSSPtrOutput) Scope() CVSSScopePtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSScope {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(CVSSScopePtrOutput)
+}
+
+func (o CVSSPtrOutput) UserInteraction() CVSSUserInteractionPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSUserInteraction {
+		if v == nil {
+			return nil
+		}
+		return v.UserInteraction
+	}).(CVSSUserInteractionPtrOutput)
+}
+
+// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+type CVSSResponse struct {
+	AttackComplexity string `pulumi:"attackComplexity"`
+	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+	AttackVector       string `pulumi:"attackVector"`
+	Authentication     string `pulumi:"authentication"`
+	AvailabilityImpact string `pulumi:"availabilityImpact"`
+	// The base score is a function of the base metric scores.
+	BaseScore             float64 `pulumi:"baseScore"`
+	ConfidentialityImpact string  `pulumi:"confidentialityImpact"`
+	ExploitabilityScore   float64 `pulumi:"exploitabilityScore"`
+	ImpactScore           float64 `pulumi:"impactScore"`
+	IntegrityImpact       string  `pulumi:"integrityImpact"`
+	PrivilegesRequired    string  `pulumi:"privilegesRequired"`
+	Scope                 string  `pulumi:"scope"`
+	UserInteraction       string  `pulumi:"userInteraction"`
+}
+
+// CVSSResponseInput is an input type that accepts CVSSResponseArgs and CVSSResponseOutput values.
+// You can construct a concrete instance of `CVSSResponseInput` via:
+//
+//          CVSSResponseArgs{...}
+type CVSSResponseInput interface {
+	pulumi.Input
+
+	ToCVSSResponseOutput() CVSSResponseOutput
+	ToCVSSResponseOutputWithContext(context.Context) CVSSResponseOutput
+}
+
+// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+type CVSSResponseArgs struct {
+	AttackComplexity pulumi.StringInput `pulumi:"attackComplexity"`
+	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+	AttackVector       pulumi.StringInput `pulumi:"attackVector"`
+	Authentication     pulumi.StringInput `pulumi:"authentication"`
+	AvailabilityImpact pulumi.StringInput `pulumi:"availabilityImpact"`
+	// The base score is a function of the base metric scores.
+	BaseScore             pulumi.Float64Input `pulumi:"baseScore"`
+	ConfidentialityImpact pulumi.StringInput  `pulumi:"confidentialityImpact"`
+	ExploitabilityScore   pulumi.Float64Input `pulumi:"exploitabilityScore"`
+	ImpactScore           pulumi.Float64Input `pulumi:"impactScore"`
+	IntegrityImpact       pulumi.StringInput  `pulumi:"integrityImpact"`
+	PrivilegesRequired    pulumi.StringInput  `pulumi:"privilegesRequired"`
+	Scope                 pulumi.StringInput  `pulumi:"scope"`
+	UserInteraction       pulumi.StringInput  `pulumi:"userInteraction"`
+}
+
+func (CVSSResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSResponse)(nil)).Elem()
+}
+
+func (i CVSSResponseArgs) ToCVSSResponseOutput() CVSSResponseOutput {
+	return i.ToCVSSResponseOutputWithContext(context.Background())
+}
+
+func (i CVSSResponseArgs) ToCVSSResponseOutputWithContext(ctx context.Context) CVSSResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CVSSResponseOutput)
+}
+
+func (i CVSSResponseArgs) ToCVSSResponsePtrOutput() CVSSResponsePtrOutput {
+	return i.ToCVSSResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CVSSResponseArgs) ToCVSSResponsePtrOutputWithContext(ctx context.Context) CVSSResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CVSSResponseOutput).ToCVSSResponsePtrOutputWithContext(ctx)
+}
+
+// CVSSResponsePtrInput is an input type that accepts CVSSResponseArgs, CVSSResponsePtr and CVSSResponsePtrOutput values.
+// You can construct a concrete instance of `CVSSResponsePtrInput` via:
+//
+//          CVSSResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CVSSResponsePtrInput interface {
+	pulumi.Input
+
+	ToCVSSResponsePtrOutput() CVSSResponsePtrOutput
+	ToCVSSResponsePtrOutputWithContext(context.Context) CVSSResponsePtrOutput
+}
+
+type cvssresponsePtrType CVSSResponseArgs
+
+func CVSSResponsePtr(v *CVSSResponseArgs) CVSSResponsePtrInput {
+	return (*cvssresponsePtrType)(v)
+}
+
+func (*cvssresponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSSResponse)(nil)).Elem()
+}
+
+func (i *cvssresponsePtrType) ToCVSSResponsePtrOutput() CVSSResponsePtrOutput {
+	return i.ToCVSSResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *cvssresponsePtrType) ToCVSSResponsePtrOutputWithContext(ctx context.Context) CVSSResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CVSSResponsePtrOutput)
+}
+
+// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+type CVSSResponseOutput struct{ *pulumi.OutputState }
+
+func (CVSSResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSResponse)(nil)).Elem()
+}
+
+func (o CVSSResponseOutput) ToCVSSResponseOutput() CVSSResponseOutput {
+	return o
+}
+
+func (o CVSSResponseOutput) ToCVSSResponseOutputWithContext(ctx context.Context) CVSSResponseOutput {
+	return o
+}
+
+func (o CVSSResponseOutput) ToCVSSResponsePtrOutput() CVSSResponsePtrOutput {
+	return o.ToCVSSResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CVSSResponseOutput) ToCVSSResponsePtrOutputWithContext(ctx context.Context) CVSSResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSSResponse) *CVSSResponse {
+		return &v
+	}).(CVSSResponsePtrOutput)
+}
+
+func (o CVSSResponseOutput) AttackComplexity() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.AttackComplexity }).(pulumi.StringOutput)
+}
+
+// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+func (o CVSSResponseOutput) AttackVector() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.AttackVector }).(pulumi.StringOutput)
+}
+
+func (o CVSSResponseOutput) Authentication() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.Authentication }).(pulumi.StringOutput)
+}
+
+func (o CVSSResponseOutput) AvailabilityImpact() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.AvailabilityImpact }).(pulumi.StringOutput)
+}
+
+// The base score is a function of the base metric scores.
+func (o CVSSResponseOutput) BaseScore() pulumi.Float64Output {
+	return o.ApplyT(func(v CVSSResponse) float64 { return v.BaseScore }).(pulumi.Float64Output)
+}
+
+func (o CVSSResponseOutput) ConfidentialityImpact() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.ConfidentialityImpact }).(pulumi.StringOutput)
+}
+
+func (o CVSSResponseOutput) ExploitabilityScore() pulumi.Float64Output {
+	return o.ApplyT(func(v CVSSResponse) float64 { return v.ExploitabilityScore }).(pulumi.Float64Output)
+}
+
+func (o CVSSResponseOutput) ImpactScore() pulumi.Float64Output {
+	return o.ApplyT(func(v CVSSResponse) float64 { return v.ImpactScore }).(pulumi.Float64Output)
+}
+
+func (o CVSSResponseOutput) IntegrityImpact() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.IntegrityImpact }).(pulumi.StringOutput)
+}
+
+func (o CVSSResponseOutput) PrivilegesRequired() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.PrivilegesRequired }).(pulumi.StringOutput)
+}
+
+func (o CVSSResponseOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+func (o CVSSResponseOutput) UserInteraction() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.UserInteraction }).(pulumi.StringOutput)
+}
+
+type CVSSResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CVSSResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSSResponse)(nil)).Elem()
+}
+
+func (o CVSSResponsePtrOutput) ToCVSSResponsePtrOutput() CVSSResponsePtrOutput {
+	return o
+}
+
+func (o CVSSResponsePtrOutput) ToCVSSResponsePtrOutputWithContext(ctx context.Context) CVSSResponsePtrOutput {
+	return o
+}
+
+func (o CVSSResponsePtrOutput) Elem() CVSSResponseOutput {
+	return o.ApplyT(func(v *CVSSResponse) CVSSResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CVSSResponse
+		return ret
+	}).(CVSSResponseOutput)
+}
+
+func (o CVSSResponsePtrOutput) AttackComplexity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CVSSResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AttackComplexity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+func (o CVSSResponsePtrOutput) AttackVector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CVSSResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AttackVector
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CVSSResponsePtrOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CVSSResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Authentication
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CVSSResponsePtrOutput) AvailabilityImpact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CVSSResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AvailabilityImpact
+	}).(pulumi.StringPtrOutput)
+}
+
+// The base score is a function of the base metric scores.
+func (o CVSSResponsePtrOutput) BaseScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CVSSResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o CVSSResponsePtrOutput) ConfidentialityImpact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CVSSResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfidentialityImpact
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CVSSResponsePtrOutput) ExploitabilityScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CVSSResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ExploitabilityScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o CVSSResponsePtrOutput) ImpactScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CVSSResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ImpactScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o CVSSResponsePtrOutput) IntegrityImpact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CVSSResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IntegrityImpact
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CVSSResponsePtrOutput) PrivilegesRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CVSSResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivilegesRequired
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CVSSResponsePtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CVSSResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CVSSResponsePtrOutput) UserInteraction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CVSSResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserInteraction
+	}).(pulumi.StringPtrOutput)
+}
+
 // Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
 type CVSSv3 struct {
 	AttackComplexity *CVSSv3AttackComplexity `pulumi:"attackComplexity"`
@@ -22815,6 +23433,8 @@ func (o VulnerabilityNoteResponsePtrOutput) WindowsDetails() WindowsDetailRespon
 
 // An occurrence of a severity vulnerability on a resource.
 type VulnerabilityOccurrence struct {
+	// The cvss v3 score for the vulnerability.
+	Cvssv3 *CVSS `pulumi:"cvssv3"`
 	// The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
 	EffectiveSeverity *VulnerabilityOccurrenceEffectiveSeverity `pulumi:"effectiveSeverity"`
 	// The set of affected locations and their fixes (if available) within the associated resource.
@@ -22836,6 +23456,8 @@ type VulnerabilityOccurrenceInput interface {
 
 // An occurrence of a severity vulnerability on a resource.
 type VulnerabilityOccurrenceArgs struct {
+	// The cvss v3 score for the vulnerability.
+	Cvssv3 CVSSPtrInput `pulumi:"cvssv3"`
 	// The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
 	EffectiveSeverity VulnerabilityOccurrenceEffectiveSeverityPtrInput `pulumi:"effectiveSeverity"`
 	// The set of affected locations and their fixes (if available) within the associated resource.
@@ -22922,6 +23544,11 @@ func (o VulnerabilityOccurrenceOutput) ToVulnerabilityOccurrencePtrOutputWithCon
 	}).(VulnerabilityOccurrencePtrOutput)
 }
 
+// The cvss v3 score for the vulnerability.
+func (o VulnerabilityOccurrenceOutput) Cvssv3() CVSSPtrOutput {
+	return o.ApplyT(func(v VulnerabilityOccurrence) *CVSS { return v.Cvssv3 }).(CVSSPtrOutput)
+}
+
 // The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
 func (o VulnerabilityOccurrenceOutput) EffectiveSeverity() VulnerabilityOccurrenceEffectiveSeverityPtrOutput {
 	return o.ApplyT(func(v VulnerabilityOccurrence) *VulnerabilityOccurrenceEffectiveSeverity { return v.EffectiveSeverity }).(VulnerabilityOccurrenceEffectiveSeverityPtrOutput)
@@ -22961,6 +23588,16 @@ func (o VulnerabilityOccurrencePtrOutput) Elem() VulnerabilityOccurrenceOutput {
 	}).(VulnerabilityOccurrenceOutput)
 }
 
+// The cvss v3 score for the vulnerability.
+func (o VulnerabilityOccurrencePtrOutput) Cvssv3() CVSSPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityOccurrence) *CVSS {
+		if v == nil {
+			return nil
+		}
+		return v.Cvssv3
+	}).(CVSSPtrOutput)
+}
+
 // The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
 func (o VulnerabilityOccurrencePtrOutput) EffectiveSeverity() VulnerabilityOccurrenceEffectiveSeverityPtrOutput {
 	return o.ApplyT(func(v *VulnerabilityOccurrence) *VulnerabilityOccurrenceEffectiveSeverity {
@@ -22995,6 +23632,8 @@ func (o VulnerabilityOccurrencePtrOutput) Type() pulumi.StringPtrOutput {
 type VulnerabilityOccurrenceResponse struct {
 	// The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
 	CvssScore float64 `pulumi:"cvssScore"`
+	// The cvss v3 score for the vulnerability.
+	Cvssv3 CVSSResponse `pulumi:"cvssv3"`
 	// The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
 	EffectiveSeverity string `pulumi:"effectiveSeverity"`
 	// Whether at least one of the affected packages has a fix available.
@@ -23028,6 +23667,8 @@ type VulnerabilityOccurrenceResponseInput interface {
 type VulnerabilityOccurrenceResponseArgs struct {
 	// The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
 	CvssScore pulumi.Float64Input `pulumi:"cvssScore"`
+	// The cvss v3 score for the vulnerability.
+	Cvssv3 CVSSResponseInput `pulumi:"cvssv3"`
 	// The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
 	EffectiveSeverity pulumi.StringInput `pulumi:"effectiveSeverity"`
 	// Whether at least one of the affected packages has a fix available.
@@ -23129,6 +23770,11 @@ func (o VulnerabilityOccurrenceResponseOutput) CvssScore() pulumi.Float64Output 
 	return o.ApplyT(func(v VulnerabilityOccurrenceResponse) float64 { return v.CvssScore }).(pulumi.Float64Output)
 }
 
+// The cvss v3 score for the vulnerability.
+func (o VulnerabilityOccurrenceResponseOutput) Cvssv3() CVSSResponseOutput {
+	return o.ApplyT(func(v VulnerabilityOccurrenceResponse) CVSSResponse { return v.Cvssv3 }).(CVSSResponseOutput)
+}
+
 // The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
 func (o VulnerabilityOccurrenceResponseOutput) EffectiveSeverity() pulumi.StringOutput {
 	return o.ApplyT(func(v VulnerabilityOccurrenceResponse) string { return v.EffectiveSeverity }).(pulumi.StringOutput)
@@ -23201,6 +23847,16 @@ func (o VulnerabilityOccurrenceResponsePtrOutput) CvssScore() pulumi.Float64PtrO
 		}
 		return &v.CvssScore
 	}).(pulumi.Float64PtrOutput)
+}
+
+// The cvss v3 score for the vulnerability.
+func (o VulnerabilityOccurrenceResponsePtrOutput) Cvssv3() CVSSResponsePtrOutput {
+	return o.ApplyT(func(v *VulnerabilityOccurrenceResponse) *CVSSResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Cvssv3
+	}).(CVSSResponsePtrOutput)
 }
 
 // The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
@@ -24076,6 +24732,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BuilderConfigPtrInput)(nil)).Elem(), BuilderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuilderConfigResponseInput)(nil)).Elem(), BuilderConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuilderConfigResponsePtrInput)(nil)).Elem(), BuilderConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSInput)(nil)).Elem(), CVSSArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSPtrInput)(nil)).Elem(), CVSSArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSResponseInput)(nil)).Elem(), CVSSResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSResponsePtrInput)(nil)).Elem(), CVSSResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSv3Input)(nil)).Elem(), CVSSv3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSv3PtrInput)(nil)).Elem(), CVSSv3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSv3ResponseInput)(nil)).Elem(), CVSSv3ResponseArgs{})
@@ -24363,6 +25023,10 @@ func init() {
 	pulumi.RegisterOutputType(BuilderConfigPtrOutput{})
 	pulumi.RegisterOutputType(BuilderConfigResponseOutput{})
 	pulumi.RegisterOutputType(BuilderConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(CVSSOutput{})
+	pulumi.RegisterOutputType(CVSSPtrOutput{})
+	pulumi.RegisterOutputType(CVSSResponseOutput{})
+	pulumi.RegisterOutputType(CVSSResponsePtrOutput{})
 	pulumi.RegisterOutputType(CVSSv3Output{})
 	pulumi.RegisterOutputType(CVSSv3PtrOutput{})
 	pulumi.RegisterOutputType(CVSSv3ResponseOutput{})

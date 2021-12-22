@@ -105,6 +105,7 @@ __all__ = [
     'InstanceGroupManagerStandbyPolicyArgs',
     'InstanceGroupManagerUpdatePolicyArgs',
     'InstanceGroupManagerVersionArgs',
+    'InstanceParamsArgs',
     'InstancePropertiesPatchArgs',
     'InstancePropertiesArgs',
     'Int64RangeMatchArgs',
@@ -275,6 +276,8 @@ class AcceleratorConfigArgs:
 @pulumi.input_type
 class AccessConfigArgs:
     def __init__(__self__, *,
+                 external_ipv6: Optional[pulumi.Input[str]] = None,
+                 external_ipv6_prefix_length: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat_ip: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input['AccessConfigNetworkTier']] = None,
@@ -284,6 +287,8 @@ class AccessConfigArgs:
                  type: Optional[pulumi.Input['AccessConfigType']] = None):
         """
         An access configuration attached to an instance's network interface. Only one access config per instance is supported.
+        :param pulumi.Input[str] external_ipv6: The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        :param pulumi.Input[int] external_ipv6_prefix_length: The prefix length of the external IPv6 range.
         :param pulumi.Input[str] name: The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
         :param pulumi.Input[str] nat_ip: An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
         :param pulumi.Input['AccessConfigNetworkTier'] network_tier: This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
@@ -292,6 +297,10 @@ class AccessConfigArgs:
         :param pulumi.Input[bool] set_public_ptr: Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
         :param pulumi.Input['AccessConfigType'] type: The type of configuration. The default and only option is ONE_TO_ONE_NAT.
         """
+        if external_ipv6 is not None:
+            pulumi.set(__self__, "external_ipv6", external_ipv6)
+        if external_ipv6_prefix_length is not None:
+            pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nat_ip is not None:
@@ -306,6 +315,30 @@ class AccessConfigArgs:
             pulumi.set(__self__, "set_public_ptr", set_public_ptr)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="externalIpv6")
+    def external_ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        """
+        return pulumi.get(self, "external_ipv6")
+
+    @external_ipv6.setter
+    def external_ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_ipv6", value)
+
+    @property
+    @pulumi.getter(name="externalIpv6PrefixLength")
+    def external_ipv6_prefix_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The prefix length of the external IPv6 range.
+        """
+        return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @external_ipv6_prefix_length.setter
+    def external_ipv6_prefix_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "external_ipv6_prefix_length", value)
 
     @property
     @pulumi.getter
@@ -738,6 +771,7 @@ class AttachedDiskInitializeParamsArgs:
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None):
         """
@@ -758,6 +792,7 @@ class AttachedDiskInitializeParamsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
         :param pulumi.Input[str] source_image: The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+        :param pulumi.Input[str] source_instant_snapshot: The source instant-snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceInstantSnapshot initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: us-central1-a/instantSnapshots/my-backup If the source instant-snapshot is deleted later, this field will not be set.
         :param pulumi.Input[str] source_snapshot: The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot.
         """
@@ -793,6 +828,8 @@ class AttachedDiskInitializeParamsArgs:
             pulumi.set(__self__, "source_image", source_image)
         if source_image_encryption_key is not None:
             pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
+        if source_instant_snapshot is not None:
+            pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
         if source_snapshot is not None:
             pulumi.set(__self__, "source_snapshot", source_snapshot)
         if source_snapshot_encryption_key is not None:
@@ -989,6 +1026,18 @@ class AttachedDiskInitializeParamsArgs:
     @source_image_encryption_key.setter
     def source_image_encryption_key(self, value: Optional[pulumi.Input['CustomerEncryptionKeyArgs']]):
         pulumi.set(self, "source_image_encryption_key", value)
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source instant-snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceInstantSnapshot initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: us-central1-a/instantSnapshots/my-backup If the source instant-snapshot is deleted later, this field will not be set.
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @source_instant_snapshot.setter
+    def source_instant_snapshot(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instant_snapshot", value)
 
     @property
     @pulumi.getter(name="sourceSnapshot")
@@ -4276,20 +4325,24 @@ class FirewallPolicyRuleMatcherArgs:
                  dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  layer4_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]]] = None,
                  src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]] = None):
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
         """
         if dest_address_groups is not None:
@@ -4298,6 +4351,8 @@ class FirewallPolicyRuleMatcherArgs:
             pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_region_codes is not None:
+            pulumi.set(__self__, "dest_region_codes", dest_region_codes)
         if layer4_configs is not None:
             pulumi.set(__self__, "layer4_configs", layer4_configs)
         if src_address_groups is not None:
@@ -4306,6 +4361,8 @@ class FirewallPolicyRuleMatcherArgs:
             pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_region_codes is not None:
+            pulumi.set(__self__, "src_region_codes", src_region_codes)
         if src_secure_tags is not None:
             pulumi.set(__self__, "src_secure_tags", src_secure_tags)
 
@@ -4344,6 +4401,18 @@ class FirewallPolicyRuleMatcherArgs:
     @dest_ip_ranges.setter
     def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="destRegionCodes")
+    def dest_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+        """
+        return pulumi.get(self, "dest_region_codes")
+
+    @dest_region_codes.setter
+    def dest_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_region_codes", value)
 
     @property
     @pulumi.getter(name="layer4Configs")
@@ -4392,6 +4461,18 @@ class FirewallPolicyRuleMatcherArgs:
     @src_ip_ranges.setter
     def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "src_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+        """
+        return pulumi.get(self, "src_region_codes")
+
+    @src_region_codes.setter
+    def src_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_region_codes", value)
 
     @property
     @pulumi.getter(name="srcSecureTags")
@@ -6989,6 +7070,30 @@ class InstanceGroupManagerVersionArgs:
 
 
 @pulumi.input_type
+class InstanceParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Additional instance params.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
+
+
+@pulumi.input_type
 class InstancePropertiesPatchArgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -7048,6 +7153,7 @@ class InstancePropertiesArgs:
                  post_key_revocation_action_type: Optional[pulumi.Input['InstancePropertiesPostKeyRevocationActionType']] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePropertiesPrivateIpv6GoogleAccess']] = None,
                  reservation_affinity: Optional[pulumi.Input['ReservationAffinityArgs']] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scheduling: Optional[pulumi.Input['SchedulingArgs']] = None,
                  secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -7073,7 +7179,8 @@ class InstancePropertiesArgs:
         :param pulumi.Input['InstancePropertiesPostKeyRevocationActionType'] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
         :param pulumi.Input['InstancePropertiesPrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
         :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         :param pulumi.Input['SchedulingArgs'] scheduling: Specifies the scheduling options for the instances that are created from these properties.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_tags: [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50. Note that for MachineImage, this is not supported yet.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
@@ -7115,6 +7222,8 @@ class InstancePropertiesArgs:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         if reservation_affinity is not None:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if scheduling is not None:
@@ -7335,10 +7444,22 @@ class InstancePropertiesArgs:
         pulumi.set(self, "reservation_affinity", value)
 
     @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
+
+    @property
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+        Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         """
         return pulumi.get(self, "resource_policies")
 
@@ -8479,7 +8600,9 @@ class NetworkInterfaceArgs:
     def __init__(__self__, *,
                  access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]]] = None,
                  alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['AliasIpRangeArgs']]]] = None,
+                 internal_ipv6_prefix_length: Optional[pulumi.Input[int]] = None,
                  ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]]] = None,
+                 ipv6_address: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input['NetworkInterfaceNicType']] = None,
@@ -8491,7 +8614,9 @@ class NetworkInterfaceArgs:
         A network interface resource attached to an instance.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]] access_configs: An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs specified, then this instance will have no external internet access.
         :param pulumi.Input[Sequence[pulumi.Input['AliasIpRangeArgs']]] alias_ip_ranges: An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks.
+        :param pulumi.Input[int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+        :param pulumi.Input[str] ipv6_address: An IPv6 internal network address for this network interface.
         :param pulumi.Input[str] network: URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
         :param pulumi.Input[str] network_ip: An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         :param pulumi.Input['NetworkInterfaceNicType'] nic_type: The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -8504,8 +8629,12 @@ class NetworkInterfaceArgs:
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if internal_ipv6_prefix_length is not None:
+            pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         if ipv6_access_configs is not None:
             pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if network_ip is not None:
@@ -8546,6 +8675,18 @@ class NetworkInterfaceArgs:
         pulumi.set(self, "alias_ip_ranges", value)
 
     @property
+    @pulumi.getter(name="internalIpv6PrefixLength")
+    def internal_ipv6_prefix_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The prefix length of the primary internal IPv6 range.
+        """
+        return pulumi.get(self, "internal_ipv6_prefix_length")
+
+    @internal_ipv6_prefix_length.setter
+    def internal_ipv6_prefix_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "internal_ipv6_prefix_length", value)
+
+    @property
     @pulumi.getter(name="ipv6AccessConfigs")
     def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]]]:
         """
@@ -8556,6 +8697,18 @@ class NetworkInterfaceArgs:
     @ipv6_access_configs.setter
     def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]]]):
         pulumi.set(self, "ipv6_access_configs", value)
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        An IPv6 internal network address for this network interface.
+        """
+        return pulumi.get(self, "ipv6_address")
+
+    @ipv6_address.setter
+    def ipv6_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_address", value)
 
     @property
     @pulumi.getter

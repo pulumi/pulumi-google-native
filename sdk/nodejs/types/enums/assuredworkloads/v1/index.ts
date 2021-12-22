@@ -8,9 +8,13 @@ export const GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType =
      */
     ResourceTypeUnspecified: "RESOURCE_TYPE_UNSPECIFIED",
     /**
-     * Consumer project.
+     * Consumer project. AssuredWorkloads Projects are no longer supported. This field will be ignored only in CreateWorkload requests. ListWorkloads and GetWorkload will continue to provide projects information. Use CONSUMER_FOLDER instead.
      */
     ConsumerProject: "CONSUMER_PROJECT",
+    /**
+     * Consumer Folder.
+     */
+    ConsumerFolder: "CONSUMER_FOLDER",
     /**
      * Consumer project containing encryption keys.
      */

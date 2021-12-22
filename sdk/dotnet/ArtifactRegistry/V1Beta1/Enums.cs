@@ -37,10 +37,6 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         /// </summary>
         public static RepositoryFormat Npm { get; } = new RepositoryFormat("NPM");
         /// <summary>
-        /// PyPI package format. Deprecated, use PYTHON instead.
-        /// </summary>
-        public static RepositoryFormat Pypi { get; } = new RepositoryFormat("PYPI");
-        /// <summary>
         /// APT package format.
         /// </summary>
         public static RepositoryFormat Apt { get; } = new RepositoryFormat("APT");

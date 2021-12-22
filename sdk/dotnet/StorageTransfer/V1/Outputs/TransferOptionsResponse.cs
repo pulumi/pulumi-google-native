@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly bool DeleteObjectsUniqueInSink;
         /// <summary>
+        /// Represents the selected metadata options for a transfer job.
+        /// </summary>
+        public readonly Outputs.MetadataOptionsResponse MetadataOptions;
+        /// <summary>
         /// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
         /// </summary>
         public readonly bool OverwriteObjectsAlreadyExistingInSink;
@@ -35,10 +39,13 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 
             bool deleteObjectsUniqueInSink,
 
+            Outputs.MetadataOptionsResponse metadataOptions,
+
             bool overwriteObjectsAlreadyExistingInSink)
         {
             DeleteObjectsFromSourceAfterTransfer = deleteObjectsFromSourceAfterTransfer;
             DeleteObjectsUniqueInSink = deleteObjectsUniqueInSink;
+            MetadataOptions = metadataOptions;
             OverwriteObjectsAlreadyExistingInSink = overwriteObjectsAlreadyExistingInSink;
         }
     }

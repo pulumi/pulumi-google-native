@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1.Outputs
         /// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Evaluations of restrictions applied to parent group on this membership.
+        /// </summary>
+        public readonly Outputs.RestrictionEvaluationsResponse RestrictionEvaluations;
 
         [OutputConstructor]
         private MembershipRoleResponse(
             Outputs.ExpiryDetailResponse expiryDetail,
 
-            string name)
+            string name,
+
+            Outputs.RestrictionEvaluationsResponse restrictionEvaluations)
         {
             ExpiryDetail = expiryDetail;
             Name = name;
+            RestrictionEvaluations = restrictionEvaluations;
         }
     }
 }

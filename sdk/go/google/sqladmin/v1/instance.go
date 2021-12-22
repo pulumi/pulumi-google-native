@@ -22,7 +22,7 @@ type Instance struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see [this announcement](https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ) for details.
 	CurrentDiskSize pulumi.StringOutput `pulumi:"currentDiskSize"`
-	// The databaseInstalledVersion stores the current fully resolved database version running on the instance including minor version such as MYSQL_5_6_50
+	// Stores the current database version running on the instance including minor version such as **MYSQL_8_0_18**.
 	DatabaseInstalledVersion pulumi.StringOutput `pulumi:"databaseInstalledVersion"`
 	// The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
@@ -32,7 +32,7 @@ type Instance struct {
 	DiskEncryptionStatus DiskEncryptionStatusResponseOutput `pulumi:"diskEncryptionStatus"`
 	// The name and status of the failover replica.
 	FailoverReplica InstanceFailoverReplicaResponseOutput `pulumi:"failoverReplica"`
-	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
 	GceZone pulumi.StringOutput `pulumi:"gceZone"`
 	// The instance type.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
@@ -133,7 +133,7 @@ type instanceArgs struct {
 	DiskEncryptionStatus *DiskEncryptionStatus `pulumi:"diskEncryptionStatus"`
 	// The name and status of the failover replica.
 	FailoverReplica *InstanceFailoverReplica `pulumi:"failoverReplica"`
-	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
 	GceZone *string `pulumi:"gceZone"`
 	// The instance type.
 	InstanceType *InstanceInstanceType `pulumi:"instanceType"`
@@ -197,7 +197,7 @@ type InstanceArgs struct {
 	DiskEncryptionStatus DiskEncryptionStatusPtrInput
 	// The name and status of the failover replica.
 	FailoverReplica InstanceFailoverReplicaPtrInput
-	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
 	GceZone pulumi.StringPtrInput
 	// The instance type.
 	InstanceType InstanceInstanceTypePtrInput

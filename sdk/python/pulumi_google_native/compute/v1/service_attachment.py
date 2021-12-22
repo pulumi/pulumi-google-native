@@ -21,6 +21,7 @@ class ServiceAttachmentArgs:
                  consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerProjectLimitArgs']]]] = None,
                  consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -34,6 +35,7 @@ class ServiceAttachmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerProjectLimitArgs']]] consumer_accept_lists: Projects that are allowed to connect to this service attachment.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_reject_lists: Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_names: If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
         :param pulumi.Input[bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_subnets: An array of URLs where each entry is the URL of a subnet provided by the service producer to use for NAT in this service attachment.
@@ -49,6 +51,8 @@ class ServiceAttachmentArgs:
             pulumi.set(__self__, "consumer_reject_lists", consumer_reject_lists)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if domain_names is not None:
+            pulumi.set(__self__, "domain_names", domain_names)
         if enable_proxy_protocol is not None:
             pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
         if name is not None:
@@ -120,6 +124,18 @@ class ServiceAttachmentArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="domainNames")
+    def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
+        """
+        return pulumi.get(self, "domain_names")
+
+    @domain_names.setter
+    def domain_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "domain_names", value)
 
     @property
     @pulumi.getter(name="enableProxyProtocol")
@@ -209,6 +225,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerProjectLimitArgs']]]]] = None,
                  consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -227,6 +244,7 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerProjectLimitArgs']]]] consumer_accept_lists: Projects that are allowed to connect to this service attachment.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_reject_lists: Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_names: If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
         :param pulumi.Input[bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_subnets: An array of URLs where each entry is the URL of a subnet provided by the service producer to use for NAT in this service attachment.
@@ -261,6 +279,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerProjectLimitArgs']]]]] = None,
                  consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -285,6 +304,7 @@ class ServiceAttachment(pulumi.CustomResource):
             __props__.__dict__["consumer_accept_lists"] = consumer_accept_lists
             __props__.__dict__["consumer_reject_lists"] = consumer_reject_lists
             __props__.__dict__["description"] = description
+            __props__.__dict__["domain_names"] = domain_names
             __props__.__dict__["enable_proxy_protocol"] = enable_proxy_protocol
             __props__.__dict__["name"] = name
             __props__.__dict__["nat_subnets"] = nat_subnets
@@ -329,6 +349,7 @@ class ServiceAttachment(pulumi.CustomResource):
         __props__.__dict__["consumer_reject_lists"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["domain_names"] = None
         __props__.__dict__["enable_proxy_protocol"] = None
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["kind"] = None
@@ -388,6 +409,14 @@ class ServiceAttachment(pulumi.CustomResource):
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="domainNames")
+    def domain_names(self) -> pulumi.Output[Sequence[str]]:
+        """
+        If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
+        """
+        return pulumi.get(self, "domain_names")
 
     @property
     @pulumi.getter(name="enableProxyProtocol")

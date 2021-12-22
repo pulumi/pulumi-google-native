@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Outputs
 {
 
     /// <summary>
-    /// Resource representing the Endpoint Verification-specific attributes of a Device.
+    /// Resource representing the Endpoint Verification-specific attributes of a Device. https://cloud.google.com/endpoint-verification/docs/overview
     /// </summary>
     [OutputType]
     public sealed class EndpointVerificationSpecificAttributesResponse
@@ -19,12 +19,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Outputs
         /// <summary>
         /// Details of certificates.
         /// </summary>
-        public readonly ImmutableArray<Outputs.CertificateInfoResponse> CertificateInfo;
+        public readonly ImmutableArray<Outputs.CertificateAttributesResponse> CertificateAttributes;
 
         [OutputConstructor]
-        private EndpointVerificationSpecificAttributesResponse(ImmutableArray<Outputs.CertificateInfoResponse> certificateInfo)
+        private EndpointVerificationSpecificAttributesResponse(ImmutableArray<Outputs.CertificateAttributesResponse> certificateAttributes)
         {
-            CertificateInfo = certificateInfo;
+            CertificateAttributes = certificateAttributes;
         }
     }
 }

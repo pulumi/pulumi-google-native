@@ -16,6 +16,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class AccessConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        /// </summary>
+        [Input("externalIpv6")]
+        public Input<string>? ExternalIpv6 { get; set; }
+
+        /// <summary>
+        /// The prefix length of the external IPv6 range.
+        /// </summary>
+        [Input("externalIpv6PrefixLength")]
+        public Input<int>? ExternalIpv6PrefixLength { get; set; }
+
+        /// <summary>
         /// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
         /// </summary>
         [Input("name")]

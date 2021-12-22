@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
+        /// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
+        /// </summary>
+        public readonly Outputs.FilterResponse Filter;
+        /// <summary>
         /// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
         /// </summary>
         public readonly string Topic;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         private PubSubResponse(
             bool enabled,
 
+            Outputs.FilterResponse filter,
+
             string topic)
         {
             Enabled = enabled;
+            Filter = filter;
             Topic = topic;
         }
     }

@@ -7,8 +7,10 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./cryptoKey";
 export * from "./cryptoKeyVersion";
+export * from "./ekmConnectionIamPolicy";
 export * from "./getCryptoKey";
 export * from "./getCryptoKeyVersion";
+export * from "./getEkmConnectionIamPolicy";
 export * from "./getImportJob";
 export * from "./getKeyRing";
 export * from "./getKeyRingCryptoKeyIamPolicy";
@@ -26,6 +28,7 @@ export * from "../../types/enums/cloudkms/v1";
 // Import resources to register:
 import { CryptoKey } from "./cryptoKey";
 import { CryptoKeyVersion } from "./cryptoKeyVersion";
+import { EkmConnectionIamPolicy } from "./ekmConnectionIamPolicy";
 import { ImportJob } from "./importJob";
 import { KeyRing } from "./keyRing";
 import { KeyRingCryptoKeyIamPolicy } from "./keyRingCryptoKeyIamPolicy";
@@ -40,6 +43,8 @@ const _module = {
                 return new CryptoKey(name, <any>undefined, { urn })
             case "google-native:cloudkms/v1:CryptoKeyVersion":
                 return new CryptoKeyVersion(name, <any>undefined, { urn })
+            case "google-native:cloudkms/v1:EkmConnectionIamPolicy":
+                return new EkmConnectionIamPolicy(name, <any>undefined, { urn })
             case "google-native:cloudkms/v1:ImportJob":
                 return new ImportJob(name, <any>undefined, { urn })
             case "google-native:cloudkms/v1:KeyRing":

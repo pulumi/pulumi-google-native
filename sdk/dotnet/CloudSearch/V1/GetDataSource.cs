@@ -85,6 +85,10 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// </summary>
         public readonly ImmutableArray<string> OperationIds;
         /// <summary>
+        /// Can a user request to get thumbnail URI for Items indexed in this data source.
+        /// </summary>
+        public readonly bool ReturnThumbnailUrls;
+        /// <summary>
         /// A short name or alias for the source. This value will be used to match the 'source' operator. For example, if the short name is *&lt;value&gt;* then queries like *source:&lt;value&gt;* will only return results for this source. The value must be unique across all datasources. The value must only contain alphanumeric characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32 characters.
         /// </summary>
         public readonly string ShortName;
@@ -105,6 +109,8 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
 
             ImmutableArray<string> operationIds,
 
+            bool returnThumbnailUrls,
+
             string shortName)
         {
             DisableModifications = disableModifications;
@@ -114,6 +120,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
             ItemsVisibility = itemsVisibility;
             Name = name;
             OperationIds = operationIds;
+            ReturnThumbnailUrls = returnThumbnailUrls;
             ShortName = shortName;
         }
     }

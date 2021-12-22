@@ -19,6 +19,7 @@ class ForwardingRuleArgs:
                  region: pulumi.Input[str],
                  all_ports: Optional[pulumi.Input[bool]] = None,
                  allow_global_access: Optional[pulumi.Input[bool]] = None,
+                 allow_psc_global_access: Optional[pulumi.Input[bool]] = None,
                  backend_service: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
@@ -45,6 +46,7 @@ class ForwardingRuleArgs:
         The set of arguments for constructing a ForwardingRule resource.
         :param pulumi.Input[bool] all_ports: This field is used along with the backend_service field for Internal TCP/UDP Load Balancing or Network Load Balancing, or with the target field for internal and external TargetInstance. You can only use one of ports and port_range, or allPorts. The three are mutually exclusive. For TCP, UDP and SCTP traffic, packets addressed to any ports will be forwarded to the target or backendService.
         :param pulumi.Input[bool] allow_global_access: This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
+        :param pulumi.Input[bool] allow_psc_global_access: This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         :param pulumi.Input[str] backend_service: Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] ip_address: IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule. If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address: * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.googleapis.com/compute/v1/projects/project_id/regions/region /addresses/address-name * Partial URL or by name, as in: - projects/project_id/regions/region/addresses/address-name - regions/region/addresses/address-name - global/addresses/address-name - address-name The loadBalancingScheme and the forwarding rule's target determine the type of IP address that you can use. For detailed information, see [IP address specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). Must be set to `0.0.0.0` when the target is targetGrpcProxy that has validateForProxyless field set to true. For Private Service Connect forwarding rules that forward traffic to Google APIs, IP address must be provided.
@@ -69,6 +71,8 @@ class ForwardingRuleArgs:
             pulumi.set(__self__, "all_ports", all_ports)
         if allow_global_access is not None:
             pulumi.set(__self__, "allow_global_access", allow_global_access)
+        if allow_psc_global_access is not None:
+            pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
         if backend_service is not None:
             pulumi.set(__self__, "backend_service", backend_service)
         if description is not None:
@@ -146,6 +150,18 @@ class ForwardingRuleArgs:
     @allow_global_access.setter
     def allow_global_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_global_access", value)
+
+    @property
+    @pulumi.getter(name="allowPscGlobalAccess")
+    def allow_psc_global_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        """
+        return pulumi.get(self, "allow_psc_global_access")
+
+    @allow_psc_global_access.setter
+    def allow_psc_global_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_psc_global_access", value)
 
     @property
     @pulumi.getter(name="backendService")
@@ -407,6 +423,7 @@ class ForwardingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  all_ports: Optional[pulumi.Input[bool]] = None,
                  allow_global_access: Optional[pulumi.Input[bool]] = None,
+                 allow_psc_global_access: Optional[pulumi.Input[bool]] = None,
                  backend_service: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
@@ -438,6 +455,7 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] all_ports: This field is used along with the backend_service field for Internal TCP/UDP Load Balancing or Network Load Balancing, or with the target field for internal and external TargetInstance. You can only use one of ports and port_range, or allPorts. The three are mutually exclusive. For TCP, UDP and SCTP traffic, packets addressed to any ports will be forwarded to the target or backendService.
         :param pulumi.Input[bool] allow_global_access: This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
+        :param pulumi.Input[bool] allow_psc_global_access: This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         :param pulumi.Input[str] backend_service: Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] ip_address: IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule. If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address: * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.googleapis.com/compute/v1/projects/project_id/regions/region /addresses/address-name * Partial URL or by name, as in: - projects/project_id/regions/region/addresses/address-name - regions/region/addresses/address-name - global/addresses/address-name - address-name The loadBalancingScheme and the forwarding rule's target determine the type of IP address that you can use. For detailed information, see [IP address specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). Must be set to `0.0.0.0` when the target is targetGrpcProxy that has validateForProxyless field set to true. For Private Service Connect forwarding rules that forward traffic to Google APIs, IP address must be provided.
@@ -483,6 +501,7 @@ class ForwardingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  all_ports: Optional[pulumi.Input[bool]] = None,
                  allow_global_access: Optional[pulumi.Input[bool]] = None,
+                 allow_psc_global_access: Optional[pulumi.Input[bool]] = None,
                  backend_service: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
@@ -520,6 +539,7 @@ class ForwardingRule(pulumi.CustomResource):
 
             __props__.__dict__["all_ports"] = all_ports
             __props__.__dict__["allow_global_access"] = allow_global_access
+            __props__.__dict__["allow_psc_global_access"] = allow_psc_global_access
             __props__.__dict__["backend_service"] = backend_service
             __props__.__dict__["description"] = description
             __props__.__dict__["ip_address"] = ip_address
@@ -577,6 +597,7 @@ class ForwardingRule(pulumi.CustomResource):
 
         __props__.__dict__["all_ports"] = None
         __props__.__dict__["allow_global_access"] = None
+        __props__.__dict__["allow_psc_global_access"] = None
         __props__.__dict__["backend_service"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
@@ -623,6 +644,14 @@ class ForwardingRule(pulumi.CustomResource):
         This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
         """
         return pulumi.get(self, "allow_global_access")
+
+    @property
+    @pulumi.getter(name="allowPscGlobalAccess")
+    def allow_psc_global_access(self) -> pulumi.Output[bool]:
+        """
+        This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        """
+        return pulumi.get(self, "allow_psc_global_access")
 
     @property
     @pulumi.getter(name="backendService")

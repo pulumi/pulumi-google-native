@@ -81,6 +81,10 @@ export interface GetConversationResult {
      */
     readonly name: string;
     /**
+     * Obfuscated user ID which the customer sent to us.
+     */
+    readonly obfuscatedUserId: string;
+    /**
      * The annotations that were generated during the customer and agent interaction.
      */
     readonly runtimeAnnotations: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse[];

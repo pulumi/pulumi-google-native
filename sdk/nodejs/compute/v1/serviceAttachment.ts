@@ -60,6 +60,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
+     */
+    public readonly domainNames!: pulumi.Output<string[]>;
+    /**
      * If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
      */
     public readonly enableProxyProtocol!: pulumi.Output<boolean>;
@@ -118,6 +122,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["consumerAcceptLists"] = args ? args.consumerAcceptLists : undefined;
             resourceInputs["consumerRejectLists"] = args ? args.consumerRejectLists : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["domainNames"] = args ? args.domainNames : undefined;
             resourceInputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["natSubnets"] = args ? args.natSubnets : undefined;
@@ -139,6 +144,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["consumerRejectLists"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["domainNames"] = undefined /*out*/;
             resourceInputs["enableProxyProtocol"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -177,6 +183,10 @@ export interface ServiceAttachmentArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
+     */
+    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
      */

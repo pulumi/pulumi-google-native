@@ -170,6 +170,27 @@ export const DatabaseEncryptionState = {
  */
 export type DatabaseEncryptionState = (typeof DatabaseEncryptionState)[keyof typeof DatabaseEncryptionState];
 
+export const FilterEventTypeItem = {
+    /**
+     * Not set, will be ignored.
+     */
+    EventTypeUnspecified: "EVENT_TYPE_UNSPECIFIED",
+    /**
+     * Corresponds with UpgradeAvailableEvent.
+     */
+    UpgradeAvailableEvent: "UPGRADE_AVAILABLE_EVENT",
+    /**
+     * Corresponds with UpgradeEvent.
+     */
+    UpgradeEvent: "UPGRADE_EVENT",
+    /**
+     * Corresponds with SecurityBulletinEvent.
+     */
+    SecurityBulletinEvent: "SECURITY_BULLETIN_EVENT",
+} as const;
+
+export type FilterEventTypeItem = (typeof FilterEventTypeItem)[keyof typeof FilterEventTypeItem];
+
 export const IstioConfigAuth = {
     /**
      * auth not enabled
@@ -202,6 +223,26 @@ export const LoggingComponentConfigEnableComponentsItem = {
 } as const;
 
 export type LoggingComponentConfigEnableComponentsItem = (typeof LoggingComponentConfigEnableComponentsItem)[keyof typeof LoggingComponentConfigEnableComponentsItem];
+
+export const MaintenanceExclusionOptionsScope = {
+    /**
+     * NO_UPGRADES excludes all upgrades, including patch upgrades and minor upgrades across control planes and nodes. This is the default exclusion behavior.
+     */
+    NoUpgrades: "NO_UPGRADES",
+    /**
+     * NO_MINOR_UPGRADES excludes all minor upgrades for the cluster, only patches are allowed.
+     */
+    NoMinorUpgrades: "NO_MINOR_UPGRADES",
+    /**
+     * NO_MINOR_OR_NODE_UPGRADES excludes all minor upgrades for the cluster, and also exclude all node pool upgrades. Only control plane patches are allowed.
+     */
+    NoMinorOrNodeUpgrades: "NO_MINOR_OR_NODE_UPGRADES",
+} as const;
+
+/**
+ * Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+ */
+export type MaintenanceExclusionOptionsScope = (typeof MaintenanceExclusionOptionsScope)[keyof typeof MaintenanceExclusionOptionsScope];
 
 export const MonitoringComponentConfigEnableComponentsItem = {
     /**

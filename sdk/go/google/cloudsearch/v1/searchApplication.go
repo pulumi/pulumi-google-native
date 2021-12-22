@@ -30,6 +30,8 @@ type SearchApplication struct {
 	OperationIds pulumi.StringArrayOutput `pulumi:"operationIds"`
 	// The default options for query interpretation
 	QueryInterpretationConfig QueryInterpretationConfigResponseOutput `pulumi:"queryInterpretationConfig"`
+	// With each result we should return the URI for its thumbnail (when applicable)
+	ReturnResultThumbnailUrls pulumi.BoolOutput `pulumi:"returnResultThumbnailUrls"`
 	// Configuration for ranking results.
 	ScoringConfig ScoringConfigResponseOutput `pulumi:"scoringConfig"`
 	// Configuration for a sources specified in data_source_restrictions.
@@ -89,6 +91,8 @@ type searchApplicationArgs struct {
 	Name *string `pulumi:"name"`
 	// The default options for query interpretation
 	QueryInterpretationConfig *QueryInterpretationConfig `pulumi:"queryInterpretationConfig"`
+	// With each result we should return the URI for its thumbnail (when applicable)
+	ReturnResultThumbnailUrls *bool `pulumi:"returnResultThumbnailUrls"`
 	// Configuration for ranking results.
 	ScoringConfig *ScoringConfig `pulumi:"scoringConfig"`
 	// Configuration for a sources specified in data_source_restrictions.
@@ -111,6 +115,8 @@ type SearchApplicationArgs struct {
 	Name pulumi.StringPtrInput
 	// The default options for query interpretation
 	QueryInterpretationConfig QueryInterpretationConfigPtrInput
+	// With each result we should return the URI for its thumbnail (when applicable)
+	ReturnResultThumbnailUrls pulumi.BoolPtrInput
 	// Configuration for ranking results.
 	ScoringConfig ScoringConfigPtrInput
 	// Configuration for a sources specified in data_source_restrictions.

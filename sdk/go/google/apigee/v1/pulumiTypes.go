@@ -776,7 +776,7 @@ func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) UpdateTime() pulumi.St
 type GoogleCloudApigeeV1ApiProductRefResponse struct {
 	// Name of the API product.
 	Apiproduct string `pulumi:"apiproduct"`
-	// Status of the API product.
+	// Status of the API product. Valid values are `approved` or `revoked`.
 	Status string `pulumi:"status"`
 }
 
@@ -794,7 +794,7 @@ type GoogleCloudApigeeV1ApiProductRefResponseInput interface {
 type GoogleCloudApigeeV1ApiProductRefResponseArgs struct {
 	// Name of the API product.
 	Apiproduct pulumi.StringInput `pulumi:"apiproduct"`
-	// Status of the API product.
+	// Status of the API product. Valid values are `approved` or `revoked`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -854,7 +854,7 @@ func (o GoogleCloudApigeeV1ApiProductRefResponseOutput) Apiproduct() pulumi.Stri
 	return o.ApplyT(func(v GoogleCloudApigeeV1ApiProductRefResponse) string { return v.Apiproduct }).(pulumi.StringOutput)
 }
 
-// Status of the API product.
+// Status of the API product. Valid values are `approved` or `revoked`.
 func (o GoogleCloudApigeeV1ApiProductRefResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1ApiProductRefResponse) string { return v.Status }).(pulumi.StringOutput)
 }

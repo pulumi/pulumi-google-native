@@ -171,6 +171,8 @@ if typing.TYPE_CHECKING:
     orgpolicy = __orgpolicy
     import pulumi_google_native.osconfig as __osconfig
     osconfig = __osconfig
+    import pulumi_google_native.oslogin as __oslogin
+    oslogin = __oslogin
     import pulumi_google_native.policysimulator as __policysimulator
     policysimulator = __policysimulator
     import pulumi_google_native.privateca as __privateca
@@ -317,6 +319,7 @@ else:
     notebooks = _utilities.lazy_import('pulumi_google_native.notebooks')
     orgpolicy = _utilities.lazy_import('pulumi_google_native.orgpolicy')
     osconfig = _utilities.lazy_import('pulumi_google_native.osconfig')
+    oslogin = _utilities.lazy_import('pulumi_google_native.oslogin')
     policysimulator = _utilities.lazy_import('pulumi_google_native.policysimulator')
     privateca = _utilities.lazy_import('pulumi_google_native.privateca')
     pubsub = _utilities.lazy_import('pulumi_google_native.pubsub')
@@ -360,6 +363,7 @@ _utilities.register(
   "classes": {
    "google-native:accesscontextmanager/v1:AccessLevel": "AccessLevel",
    "google-native:accesscontextmanager/v1:AccessPolicy": "AccessPolicy",
+   "google-native:accesscontextmanager/v1:AccessPolicyIamPolicy": "AccessPolicyIamPolicy",
    "google-native:accesscontextmanager/v1:GcpUserAccessBinding": "GcpUserAccessBinding",
    "google-native:accesscontextmanager/v1:ServicePerimeter": "ServicePerimeter"
   }
@@ -728,6 +732,7 @@ _utilities.register(
   "classes": {
    "google-native:cloudkms/v1:CryptoKey": "CryptoKey",
    "google-native:cloudkms/v1:CryptoKeyVersion": "CryptoKeyVersion",
+   "google-native:cloudkms/v1:EkmConnectionIamPolicy": "EkmConnectionIamPolicy",
    "google-native:cloudkms/v1:ImportJob": "ImportJob",
    "google-native:cloudkms/v1:KeyRing": "KeyRing",
    "google-native:cloudkms/v1:KeyRingCryptoKeyIamPolicy": "KeyRingCryptoKeyIamPolicy",
@@ -2109,7 +2114,8 @@ _utilities.register(
   "fqn": "pulumi_google_native.networkservices.v1beta1",
   "classes": {
    "google-native:networkservices/v1beta1:EndpointPolicy": "EndpointPolicy",
-   "google-native:networkservices/v1beta1:EndpointPolicyIamPolicy": "EndpointPolicyIamPolicy"
+   "google-native:networkservices/v1beta1:EndpointPolicyIamPolicy": "EndpointPolicyIamPolicy",
+   "google-native:networkservices/v1beta1:ServiceBindingIamPolicy": "ServiceBindingIamPolicy"
   }
  },
  {
@@ -2160,6 +2166,30 @@ _utilities.register(
   "classes": {
    "google-native:osconfig/v1beta:GuestPolicy": "GuestPolicy",
    "google-native:osconfig/v1beta:PatchDeployment": "PatchDeployment"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "oslogin/v1",
+  "fqn": "pulumi_google_native.oslogin.v1",
+  "classes": {
+   "google-native:oslogin/v1:SshPublicKey": "SshPublicKey"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "oslogin/v1alpha",
+  "fqn": "pulumi_google_native.oslogin.v1alpha",
+  "classes": {
+   "google-native:oslogin/v1alpha:SshPublicKey": "SshPublicKey"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "oslogin/v1beta",
+  "fqn": "pulumi_google_native.oslogin.v1beta",
+  "classes": {
+   "google-native:oslogin/v1beta:SshPublicKey": "SshPublicKey"
   }
  },
  {
@@ -2542,6 +2572,15 @@ _utilities.register(
   "fqn": "pulumi_google_native.tpu.v2alpha1",
   "classes": {
    "google-native:tpu/v2alpha1:Node": "Node"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "transcoder/v1",
+  "fqn": "pulumi_google_native.transcoder.v1",
+  "classes": {
+   "google-native:transcoder/v1:Job": "Job",
+   "google-native:transcoder/v1:JobTemplate": "JobTemplate"
   }
  },
  {

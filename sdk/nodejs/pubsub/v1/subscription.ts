@@ -72,7 +72,7 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
+     * If push delivery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
      */
     public readonly pushConfig!: pulumi.Output<outputs.pubsub.v1.PushConfigResponse>;
     /**
@@ -83,6 +83,10 @@ export class Subscription extends pulumi.CustomResource {
      * A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
      */
     public readonly retryPolicy!: pulumi.Output<outputs.pubsub.v1.RetryPolicyResponse>;
+    /**
+     * An output-only field indicating whether or not the subscription can receive messages.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
      */
@@ -124,6 +128,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["retryPolicy"] = args ? args.retryPolicy : undefined;
             resourceInputs["subscriptionId"] = args ? args.subscriptionId : undefined;
             resourceInputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["state"] = undefined /*out*/;
             resourceInputs["topicMessageRetentionDuration"] = undefined /*out*/;
         } else {
             resourceInputs["ackDeadlineSeconds"] = undefined /*out*/;
@@ -138,6 +143,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["pushConfig"] = undefined /*out*/;
             resourceInputs["retainAckedMessages"] = undefined /*out*/;
             resourceInputs["retryPolicy"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
             resourceInputs["topic"] = undefined /*out*/;
             resourceInputs["topicMessageRetentionDuration"] = undefined /*out*/;
         }
@@ -190,7 +196,7 @@ export interface SubscriptionArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
+     * If push delivery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
      */
     pushConfig?: pulumi.Input<inputs.pubsub.v1.PushConfigArgs>;
     /**

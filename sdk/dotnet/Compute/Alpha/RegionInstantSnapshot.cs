@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// Status information for the instant snapshot resource.
+        /// </summary>
+        [Output("resourceStatus")]
+        public Output<Outputs.InstantSnapshotResourceStatusResponse> ResourceStatus { get; private set; } = null!;
+
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]

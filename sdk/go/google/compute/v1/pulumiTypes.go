@@ -230,6 +230,10 @@ func (o AcceleratorConfigResponseArrayOutput) Index(i pulumi.IntInput) Accelerat
 
 // An access configuration attached to an instance's network interface. Only one access config per instance is supported.
 type AccessConfig struct {
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	ExternalIpv6 *string `pulumi:"externalIpv6"`
+	// The prefix length of the external IPv6 range.
+	ExternalIpv6PrefixLength *int `pulumi:"externalIpv6PrefixLength"`
 	// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
 	Name *string `pulumi:"name"`
 	// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
@@ -257,6 +261,10 @@ type AccessConfigInput interface {
 
 // An access configuration attached to an instance's network interface. Only one access config per instance is supported.
 type AccessConfigArgs struct {
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	ExternalIpv6 pulumi.StringPtrInput `pulumi:"externalIpv6"`
+	// The prefix length of the external IPv6 range.
+	ExternalIpv6PrefixLength pulumi.IntPtrInput `pulumi:"externalIpv6PrefixLength"`
 	// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
@@ -321,6 +329,16 @@ func (o AccessConfigOutput) ToAccessConfigOutput() AccessConfigOutput {
 
 func (o AccessConfigOutput) ToAccessConfigOutputWithContext(ctx context.Context) AccessConfigOutput {
 	return o
+}
+
+// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+func (o AccessConfigOutput) ExternalIpv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessConfig) *string { return v.ExternalIpv6 }).(pulumi.StringPtrOutput)
+}
+
+// The prefix length of the external IPv6 range.
+func (o AccessConfigOutput) ExternalIpv6PrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessConfig) *int { return v.ExternalIpv6PrefixLength }).(pulumi.IntPtrOutput)
 }
 
 // The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
@@ -2288,6 +2306,8 @@ type AttachedDiskInitializeParams struct {
 	DiskType *string `pulumi:"diskType"`
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels map[string]string `pulumi:"labels"`
+	// A list of publicly visible licenses. Reserved for Google's use.
+	Licenses []string `pulumi:"licenses"`
 	// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
 	OnUpdateAction *AttachedDiskInitializeParamsOnUpdateAction `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
@@ -2327,6 +2347,8 @@ type AttachedDiskInitializeParamsArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// A list of publicly visible licenses. Reserved for Google's use.
+	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
 	// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
 	OnUpdateAction AttachedDiskInitializeParamsOnUpdateActionPtrInput `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
@@ -2446,6 +2468,11 @@ func (o AttachedDiskInitializeParamsOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// A list of publicly visible licenses. Reserved for Google's use.
+func (o AttachedDiskInitializeParamsOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParams) []string { return v.Licenses }).(pulumi.StringArrayOutput)
+}
+
 // Specifies which action to take on instance update with this disk. Default is to use the existing disk.
 func (o AttachedDiskInitializeParamsOutput) OnUpdateAction() AttachedDiskInitializeParamsOnUpdateActionPtrOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *AttachedDiskInitializeParamsOnUpdateAction {
@@ -2557,6 +2584,16 @@ func (o AttachedDiskInitializeParamsPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// A list of publicly visible licenses. Reserved for Google's use.
+func (o AttachedDiskInitializeParamsPtrOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Licenses
+	}).(pulumi.StringArrayOutput)
+}
+
 // Specifies which action to take on instance update with this disk. Default is to use the existing disk.
 func (o AttachedDiskInitializeParamsPtrOutput) OnUpdateAction() AttachedDiskInitializeParamsOnUpdateActionPtrOutput {
 	return o.ApplyT(func(v *AttachedDiskInitializeParams) *AttachedDiskInitializeParamsOnUpdateAction {
@@ -2639,6 +2676,8 @@ type AttachedDiskInitializeParamsResponse struct {
 	DiskType string `pulumi:"diskType"`
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels map[string]string `pulumi:"labels"`
+	// A list of publicly visible licenses. Reserved for Google's use.
+	Licenses []string `pulumi:"licenses"`
 	// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
 	OnUpdateAction string `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
@@ -2678,6 +2717,8 @@ type AttachedDiskInitializeParamsResponseArgs struct {
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// A list of publicly visible licenses. Reserved for Google's use.
+	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
 	// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
 	OnUpdateAction pulumi.StringInput `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
@@ -2744,6 +2785,11 @@ func (o AttachedDiskInitializeParamsResponseOutput) DiskType() pulumi.StringOutp
 // Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 func (o AttachedDiskInitializeParamsResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// A list of publicly visible licenses. Reserved for Google's use.
+func (o AttachedDiskInitializeParamsResponseOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) []string { return v.Licenses }).(pulumi.StringArrayOutput)
 }
 
 // Specifies which action to take on instance update with this disk. Default is to use the existing disk.
@@ -28025,7 +28071,7 @@ type InstanceProperties struct {
 	PrivateIpv6GoogleAccess *InstancePropertiesPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
-	// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+	// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
 	Scheduling *Scheduling `pulumi:"scheduling"`
@@ -28077,7 +28123,7 @@ type InstancePropertiesArgs struct {
 	PrivateIpv6GoogleAccess InstancePropertiesPrivateIpv6GoogleAccessPtrInput `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity ReservationAffinityPtrInput `pulumi:"reservationAffinity"`
-	// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+	// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
 	Scheduling SchedulingPtrInput `pulumi:"scheduling"`
@@ -28238,7 +28284,7 @@ func (o InstancePropertiesOutput) ReservationAffinity() ReservationAffinityPtrOu
 	return o.ApplyT(func(v InstanceProperties) *ReservationAffinity { return v.ReservationAffinity }).(ReservationAffinityPtrOutput)
 }
 
-// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceProperties) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
 }
@@ -28427,7 +28473,7 @@ func (o InstancePropertiesPtrOutput) ReservationAffinity() ReservationAffinityPt
 	}).(ReservationAffinityPtrOutput)
 }
 
-// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesPtrOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceProperties) []string {
 		if v == nil {
@@ -28506,7 +28552,7 @@ type InstancePropertiesResponse struct {
 	PrivateIpv6GoogleAccess string `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity ReservationAffinityResponse `pulumi:"reservationAffinity"`
-	// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+	// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
 	Scheduling SchedulingResponse `pulumi:"scheduling"`
@@ -28558,7 +28604,7 @@ type InstancePropertiesResponseArgs struct {
 	PrivateIpv6GoogleAccess pulumi.StringInput `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity ReservationAffinityResponseInput `pulumi:"reservationAffinity"`
-	// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+	// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
 	Scheduling SchedulingResponseInput `pulumi:"scheduling"`
@@ -28719,7 +28765,7 @@ func (o InstancePropertiesResponseOutput) ReservationAffinity() ReservationAffin
 	return o.ApplyT(func(v InstancePropertiesResponse) ReservationAffinityResponse { return v.ReservationAffinity }).(ReservationAffinityResponseOutput)
 }
 
-// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponseOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
 }
@@ -28908,7 +28954,7 @@ func (o InstancePropertiesResponsePtrOutput) ReservationAffinity() ReservationAf
 	}).(ReservationAffinityResponsePtrOutput)
 }
 
-// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponsePtrOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstancePropertiesResponse) []string {
 		if v == nil {
@@ -34211,6 +34257,8 @@ type NetworkInterface struct {
 	AliasIpRanges []AliasIpRange `pulumi:"aliasIpRanges"`
 	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 	Ipv6AccessConfigs []AccessConfig `pulumi:"ipv6AccessConfigs"`
+	// An IPv6 internal network address for this network interface.
+	Ipv6Address *string `pulumi:"ipv6Address"`
 	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network *string `pulumi:"network"`
 	// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
@@ -34244,6 +34292,8 @@ type NetworkInterfaceArgs struct {
 	AliasIpRanges AliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
 	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 	Ipv6AccessConfigs AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
+	// An IPv6 internal network address for this network interface.
+	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
 	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
@@ -34323,6 +34373,11 @@ func (o NetworkInterfaceOutput) AliasIpRanges() AliasIpRangeArrayOutput {
 // An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 func (o NetworkInterfaceOutput) Ipv6AccessConfigs() AccessConfigArrayOutput {
 	return o.ApplyT(func(v NetworkInterface) []AccessConfig { return v.Ipv6AccessConfigs }).(AccessConfigArrayOutput)
+}
+
+// An IPv6 internal network address for this network interface.
+func (o NetworkInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
 
 // URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default

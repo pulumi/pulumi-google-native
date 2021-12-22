@@ -47,9 +47,17 @@ export interface GetWorkloadResult {
      */
     readonly displayName: string;
     /**
+     * Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+     */
+    readonly enableSovereignControls: boolean;
+    /**
      * Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
      */
     readonly etag: string;
+    /**
+     * Represents the KAJ enrollment state of the given workload.
+     */
+    readonly kajEnrollmentState: string;
     /**
      * Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
      */
@@ -74,6 +82,10 @@ export interface GetWorkloadResult {
      * The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
      */
     readonly resources: outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse[];
+    /**
+     * Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
+     */
+    readonly saaEnrollmentResponse: outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse;
 }
 
 export function getWorkloadOutput(args: GetWorkloadOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadResult> {

@@ -23,6 +23,7 @@ class SearchApplicationArgs:
                  enable_audit_log: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  query_interpretation_config: Optional[pulumi.Input['QueryInterpretationConfigArgs']] = None,
+                 return_result_thumbnail_urls: Optional[pulumi.Input[bool]] = None,
                  scoring_config: Optional[pulumi.Input['ScoringConfigArgs']] = None,
                  source_config: Optional[pulumi.Input[Sequence[pulumi.Input['SourceConfigArgs']]]] = None):
         """
@@ -34,6 +35,7 @@ class SearchApplicationArgs:
         :param pulumi.Input[bool] enable_audit_log: Indicates whether audit logging is on/off for requests made for the search application in query APIs.
         :param pulumi.Input[str] name: Name of the Search Application. Format: searchapplications/{application_id}.
         :param pulumi.Input['QueryInterpretationConfigArgs'] query_interpretation_config: The default options for query interpretation
+        :param pulumi.Input[bool] return_result_thumbnail_urls: With each result we should return the URI for its thumbnail (when applicable)
         :param pulumi.Input['ScoringConfigArgs'] scoring_config: Configuration for ranking results.
         :param pulumi.Input[Sequence[pulumi.Input['SourceConfigArgs']]] source_config: Configuration for a sources specified in data_source_restrictions.
         """
@@ -51,6 +53,8 @@ class SearchApplicationArgs:
             pulumi.set(__self__, "name", name)
         if query_interpretation_config is not None:
             pulumi.set(__self__, "query_interpretation_config", query_interpretation_config)
+        if return_result_thumbnail_urls is not None:
+            pulumi.set(__self__, "return_result_thumbnail_urls", return_result_thumbnail_urls)
         if scoring_config is not None:
             pulumi.set(__self__, "scoring_config", scoring_config)
         if source_config is not None:
@@ -141,6 +145,18 @@ class SearchApplicationArgs:
         pulumi.set(self, "query_interpretation_config", value)
 
     @property
+    @pulumi.getter(name="returnResultThumbnailUrls")
+    def return_result_thumbnail_urls(self) -> Optional[pulumi.Input[bool]]:
+        """
+        With each result we should return the URI for its thumbnail (when applicable)
+        """
+        return pulumi.get(self, "return_result_thumbnail_urls")
+
+    @return_result_thumbnail_urls.setter
+    def return_result_thumbnail_urls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "return_result_thumbnail_urls", value)
+
+    @property
     @pulumi.getter(name="scoringConfig")
     def scoring_config(self) -> Optional[pulumi.Input['ScoringConfigArgs']]:
         """
@@ -177,6 +193,7 @@ class SearchApplication(pulumi.CustomResource):
                  enable_audit_log: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  query_interpretation_config: Optional[pulumi.Input[pulumi.InputType['QueryInterpretationConfigArgs']]] = None,
+                 return_result_thumbnail_urls: Optional[pulumi.Input[bool]] = None,
                  scoring_config: Optional[pulumi.Input[pulumi.InputType['ScoringConfigArgs']]] = None,
                  source_config: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceConfigArgs']]]]] = None,
                  __props__=None):
@@ -192,6 +209,7 @@ class SearchApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_audit_log: Indicates whether audit logging is on/off for requests made for the search application in query APIs.
         :param pulumi.Input[str] name: Name of the Search Application. Format: searchapplications/{application_id}.
         :param pulumi.Input[pulumi.InputType['QueryInterpretationConfigArgs']] query_interpretation_config: The default options for query interpretation
+        :param pulumi.Input[bool] return_result_thumbnail_urls: With each result we should return the URI for its thumbnail (when applicable)
         :param pulumi.Input[pulumi.InputType['ScoringConfigArgs']] scoring_config: Configuration for ranking results.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceConfigArgs']]]] source_config: Configuration for a sources specified in data_source_restrictions.
         """
@@ -226,6 +244,7 @@ class SearchApplication(pulumi.CustomResource):
                  enable_audit_log: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  query_interpretation_config: Optional[pulumi.Input[pulumi.InputType['QueryInterpretationConfigArgs']]] = None,
+                 return_result_thumbnail_urls: Optional[pulumi.Input[bool]] = None,
                  scoring_config: Optional[pulumi.Input[pulumi.InputType['ScoringConfigArgs']]] = None,
                  source_config: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceConfigArgs']]]]] = None,
                  __props__=None):
@@ -247,6 +266,7 @@ class SearchApplication(pulumi.CustomResource):
             __props__.__dict__["enable_audit_log"] = enable_audit_log
             __props__.__dict__["name"] = name
             __props__.__dict__["query_interpretation_config"] = query_interpretation_config
+            __props__.__dict__["return_result_thumbnail_urls"] = return_result_thumbnail_urls
             __props__.__dict__["scoring_config"] = scoring_config
             __props__.__dict__["source_config"] = source_config
             __props__.__dict__["operation_ids"] = None
@@ -280,6 +300,7 @@ class SearchApplication(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["operation_ids"] = None
         __props__.__dict__["query_interpretation_config"] = None
+        __props__.__dict__["return_result_thumbnail_urls"] = None
         __props__.__dict__["scoring_config"] = None
         __props__.__dict__["source_config"] = None
         return SearchApplication(resource_name, opts=opts, __props__=__props__)
@@ -347,6 +368,14 @@ class SearchApplication(pulumi.CustomResource):
         The default options for query interpretation
         """
         return pulumi.get(self, "query_interpretation_config")
+
+    @property
+    @pulumi.getter(name="returnResultThumbnailUrls")
+    def return_result_thumbnail_urls(self) -> pulumi.Output[bool]:
+        """
+        With each result we should return the URI for its thumbnail (when applicable)
+        """
+        return pulumi.get(self, "return_result_thumbnail_urls")
 
     @property
     @pulumi.getter(name="scoringConfig")

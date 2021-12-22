@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
+        /// If push delivery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
         /// </summary>
         public readonly Outputs.PushConfigResponse PushConfig;
         /// <summary>
@@ -104,6 +104,10 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
         /// </summary>
         public readonly Outputs.RetryPolicyResponse RetryPolicy;
+        /// <summary>
+        /// An output-only field indicating whether or not the subscription can receive messages.
+        /// </summary>
+        public readonly string State;
         /// <summary>
         /// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
         /// </summary>
@@ -139,6 +143,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1
 
             Outputs.RetryPolicyResponse retryPolicy,
 
+            string state,
+
             string topic,
 
             string topicMessageRetentionDuration)
@@ -155,6 +161,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
             PushConfig = pushConfig;
             RetainAckedMessages = retainAckedMessages;
             RetryPolicy = retryPolicy;
+            State = state;
             Topic = topic;
             TopicMessageRetentionDuration = topicMessageRetentionDuration;
         }

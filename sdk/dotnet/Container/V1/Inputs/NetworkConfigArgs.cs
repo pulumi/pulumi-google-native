@@ -51,6 +51,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         [Input("privateIpv6GoogleAccess")]
         public Input<Pulumi.GoogleNative.Container.V1.NetworkConfigPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
 
+        /// <summary>
+        /// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+        /// </summary>
+        [Input("serviceExternalIpsConfig")]
+        public Input<Inputs.ServiceExternalIPsConfigArgs>? ServiceExternalIpsConfig { get; set; }
+
         public NetworkConfigArgs()
         {
         }

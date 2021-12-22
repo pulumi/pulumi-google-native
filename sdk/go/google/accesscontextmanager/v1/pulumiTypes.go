@@ -228,6 +228,442 @@ func (o ApiOperationResponseArrayOutput) Index(i pulumi.IntInput) ApiOperationRe
 	}).(ApiOperationResponseOutput)
 }
 
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfig struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs []AuditLogConfig `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service *string `pulumi:"service"`
+}
+
+// AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
+// You can construct a concrete instance of `AuditConfigInput` via:
+//
+//          AuditConfigArgs{...}
+type AuditConfigInput interface {
+	pulumi.Input
+
+	ToAuditConfigOutput() AuditConfigOutput
+	ToAuditConfigOutputWithContext(context.Context) AuditConfigOutput
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigArgs struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs AuditLogConfigArrayInput `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (AuditConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfig)(nil)).Elem()
+}
+
+func (i AuditConfigArgs) ToAuditConfigOutput() AuditConfigOutput {
+	return i.ToAuditConfigOutputWithContext(context.Background())
+}
+
+func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
+}
+
+// AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
+// You can construct a concrete instance of `AuditConfigArrayInput` via:
+//
+//          AuditConfigArray{ AuditConfigArgs{...} }
+type AuditConfigArrayInput interface {
+	pulumi.Input
+
+	ToAuditConfigArrayOutput() AuditConfigArrayOutput
+	ToAuditConfigArrayOutputWithContext(context.Context) AuditConfigArrayOutput
+}
+
+type AuditConfigArray []AuditConfigInput
+
+func (AuditConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfig)(nil)).Elem()
+}
+
+func (i AuditConfigArray) ToAuditConfigArrayOutput() AuditConfigArrayOutput {
+	return i.ToAuditConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfig)(nil)).Elem()
+}
+
+func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
+	return o
+}
+
+func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
+	return o
+}
+
+// The configuration for logging of each type of permission.
+func (o AuditConfigOutput) AuditLogConfigs() AuditLogConfigArrayOutput {
+	return o.ApplyT(func(v AuditConfig) []AuditLogConfig { return v.AuditLogConfigs }).(AuditLogConfigArrayOutput)
+}
+
+// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+func (o AuditConfigOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuditConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type AuditConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfig)(nil)).Elem()
+}
+
+func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutput {
+	return o
+}
+
+func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
+	return o
+}
+
+func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditConfig {
+		return vs[0].([]AuditConfig)[vs[1].(int)]
+	}).(AuditConfigOutput)
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponse struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs []AuditLogConfigResponse `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service string `pulumi:"service"`
+}
+
+// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
+// You can construct a concrete instance of `AuditConfigResponseInput` via:
+//
+//          AuditConfigResponseArgs{...}
+type AuditConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseOutput() AuditConfigResponseOutput
+	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseArgs struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (AuditConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return i.ToAuditConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
+}
+
+// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
+//
+//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
+type AuditConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
+	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
+}
+
+type AuditConfigResponseArray []AuditConfigResponseInput
+
+func (AuditConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return o
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return o
+}
+
+// The configuration for logging of each type of permission.
+func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
+	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
+}
+
+// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+func (o AuditConfigResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditConfigResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type AuditConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditConfigResponse {
+		return vs[0].([]AuditConfigResponse)[vs[1].(int)]
+	}).(AuditConfigResponseOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfig struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
+}
+
+// AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
+// You can construct a concrete instance of `AuditLogConfigInput` via:
+//
+//          AuditLogConfigArgs{...}
+type AuditLogConfigInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigOutput() AuditLogConfigOutput
+	ToAuditLogConfigOutputWithContext(context.Context) AuditLogConfigOutput
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigArgs struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
+}
+
+func (AuditLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfig)(nil)).Elem()
+}
+
+func (i AuditLogConfigArgs) ToAuditLogConfigOutput() AuditLogConfigOutput {
+	return i.ToAuditLogConfigOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
+}
+
+// AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
+// You can construct a concrete instance of `AuditLogConfigArrayInput` via:
+//
+//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+type AuditLogConfigArrayInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigArrayOutput() AuditLogConfigArrayOutput
+	ToAuditLogConfigArrayOutputWithContext(context.Context) AuditLogConfigArrayOutput
+}
+
+type AuditLogConfigArray []AuditLogConfigInput
+
+func (AuditLogConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfig)(nil)).Elem()
+}
+
+func (i AuditLogConfigArray) ToAuditLogConfigArrayOutput() AuditLogConfigArrayOutput {
+	return i.ToAuditLogConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfig)(nil)).Elem()
+}
+
+func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
+	return o
+}
+
+func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
+	return o
+}
+
+// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditLogConfig) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+// The log type that this config enables.
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
+}
+
+type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfig)(nil)).Elem()
+}
+
+func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfig {
+		return vs[0].([]AuditLogConfig)[vs[1].(int)]
+	}).(AuditLogConfigOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponse struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType string `pulumi:"logType"`
+}
+
+// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
+//
+//          AuditLogConfigResponseArgs{...}
+type AuditLogConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
+	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseArgs struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType pulumi.StringInput `pulumi:"logType"`
+}
+
+func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
+}
+
+// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
+//
+//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
+type AuditLogConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
+	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
+}
+
+type AuditLogConfigResponseArray []AuditLogConfigResponseInput
+
+func (AuditLogConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return o
+}
+
+// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+// The log type that this config enables.
+func (o AuditLogConfigResponseOutput) LogType() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) string { return v.LogType }).(pulumi.StringOutput)
+}
+
+type AuditLogConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfigResponse {
+		return vs[0].([]AuditLogConfigResponse)[vs[1].(int)]
+	}).(AuditLogConfigResponseOutput)
+}
+
 // `BasicLevel` is an `AccessLevel` using a set of recommended features.
 type BasicLevel struct {
 	// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
@@ -544,6 +980,242 @@ func (o BasicLevelResponsePtrOutput) Conditions() ConditionResponseArrayOutput {
 		}
 		return v.Conditions
 	}).(ConditionResponseArrayOutput)
+}
+
+// Associates `members`, or principals, with a `role`.
+type Binding struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition *Expr `pulumi:"condition"`
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role *string `pulumi:"role"`
+}
+
+// BindingInput is an input type that accepts BindingArgs and BindingOutput values.
+// You can construct a concrete instance of `BindingInput` via:
+//
+//          BindingArgs{...}
+type BindingInput interface {
+	pulumi.Input
+
+	ToBindingOutput() BindingOutput
+	ToBindingOutputWithContext(context.Context) BindingOutput
+}
+
+// Associates `members`, or principals, with a `role`.
+type BindingArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprPtrInput `pulumi:"condition"`
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+}
+
+func (BindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Binding)(nil)).Elem()
+}
+
+func (i BindingArgs) ToBindingOutput() BindingOutput {
+	return i.ToBindingOutputWithContext(context.Background())
+}
+
+func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
+}
+
+// BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
+// You can construct a concrete instance of `BindingArrayInput` via:
+//
+//          BindingArray{ BindingArgs{...} }
+type BindingArrayInput interface {
+	pulumi.Input
+
+	ToBindingArrayOutput() BindingArrayOutput
+	ToBindingArrayOutputWithContext(context.Context) BindingArrayOutput
+}
+
+type BindingArray []BindingInput
+
+func (BindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Binding)(nil)).Elem()
+}
+
+func (i BindingArray) ToBindingArrayOutput() BindingArrayOutput {
+	return i.ToBindingArrayOutputWithContext(context.Background())
+}
+
+func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
+}
+
+// Associates `members`, or principals, with a `role`.
+type BindingOutput struct{ *pulumi.OutputState }
+
+func (BindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Binding)(nil)).Elem()
+}
+
+func (o BindingOutput) ToBindingOutput() BindingOutput {
+	return o
+}
+
+func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingOutput) Condition() ExprPtrOutput {
+	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
+}
+
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type BindingArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Binding)(nil)).Elem()
+}
+
+func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
+	return o
+}
+
+func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
+	return o
+}
+
+func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Binding {
+		return vs[0].([]Binding)[vs[1].(int)]
+	}).(BindingOutput)
+}
+
+// Associates `members`, or principals, with a `role`.
+type BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates `members`, or principals, with a `role`.
+type BindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates `members`, or principals, with a `role`.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
 }
 
 // A condition necessary for an `AccessLevel` to be granted. The Condition is an AND over its fields. So a Condition is true if: 1) the request IP is from one of the listed subnetworks AND 2) the originating device complies with the listed device policy AND 3) all listed access levels are granted AND 4) the request was sent at a time allowed by the DateTimeRestriction.
@@ -4668,10 +5340,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiOperationArrayInput)(nil)).Elem(), ApiOperationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiOperationResponseInput)(nil)).Elem(), ApiOperationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiOperationResponseArrayInput)(nil)).Elem(), ApiOperationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicLevelInput)(nil)).Elem(), BasicLevelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicLevelPtrInput)(nil)).Elem(), BasicLevelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicLevelResponseInput)(nil)).Elem(), BasicLevelResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicLevelResponsePtrInput)(nil)).Elem(), BasicLevelResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionInput)(nil)).Elem(), ConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionArrayInput)(nil)).Elem(), ConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionResponseInput)(nil)).Elem(), ConditionResponseArgs{})
@@ -4731,10 +5415,22 @@ func init() {
 	pulumi.RegisterOutputType(ApiOperationArrayOutput{})
 	pulumi.RegisterOutputType(ApiOperationResponseOutput{})
 	pulumi.RegisterOutputType(ApiOperationResponseArrayOutput{})
+	pulumi.RegisterOutputType(AuditConfigOutput{})
+	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(BasicLevelOutput{})
 	pulumi.RegisterOutputType(BasicLevelPtrOutput{})
 	pulumi.RegisterOutputType(BasicLevelResponseOutput{})
 	pulumi.RegisterOutputType(BasicLevelResponsePtrOutput{})
+	pulumi.RegisterOutputType(BindingOutput{})
+	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConditionOutput{})
 	pulumi.RegisterOutputType(ConditionArrayOutput{})
 	pulumi.RegisterOutputType(ConditionResponseOutput{})

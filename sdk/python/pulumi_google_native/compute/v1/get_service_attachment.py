@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceAttachmentResult:
-    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_reject_lists=None, creation_timestamp=None, description=None, enable_proxy_protocol=None, fingerprint=None, kind=None, name=None, nat_subnets=None, producer_forwarding_rule=None, psc_service_attachment_id=None, region=None, self_link=None, target_service=None):
+    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_reject_lists=None, creation_timestamp=None, description=None, domain_names=None, enable_proxy_protocol=None, fingerprint=None, kind=None, name=None, nat_subnets=None, producer_forwarding_rule=None, psc_service_attachment_id=None, region=None, self_link=None, target_service=None):
         if connected_endpoints and not isinstance(connected_endpoints, list):
             raise TypeError("Expected argument 'connected_endpoints' to be a list")
         pulumi.set(__self__, "connected_endpoints", connected_endpoints)
@@ -37,6 +37,9 @@ class GetServiceAttachmentResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if domain_names and not isinstance(domain_names, list):
+            raise TypeError("Expected argument 'domain_names' to be a list")
+        pulumi.set(__self__, "domain_names", domain_names)
         if enable_proxy_protocol and not isinstance(enable_proxy_protocol, bool):
             raise TypeError("Expected argument 'enable_proxy_protocol' to be a bool")
         pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
@@ -115,6 +118,14 @@ class GetServiceAttachmentResult:
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="domainNames")
+    def domain_names(self) -> Sequence[str]:
+        """
+        If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
+        """
+        return pulumi.get(self, "domain_names")
 
     @property
     @pulumi.getter(name="enableProxyProtocol")
@@ -209,6 +220,7 @@ class AwaitableGetServiceAttachmentResult(GetServiceAttachmentResult):
             consumer_reject_lists=self.consumer_reject_lists,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            domain_names=self.domain_names,
             enable_proxy_protocol=self.enable_proxy_protocol,
             fingerprint=self.fingerprint,
             kind=self.kind,
@@ -245,6 +257,7 @@ def get_service_attachment(project: Optional[str] = None,
         consumer_reject_lists=__ret__.consumer_reject_lists,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        domain_names=__ret__.domain_names,
         enable_proxy_protocol=__ret__.enable_proxy_protocol,
         fingerprint=__ret__.fingerprint,
         kind=__ret__.kind,

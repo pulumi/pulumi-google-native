@@ -456,6 +456,7 @@ class Entry(pulumi.CustomResource):
             __props__.__dict__["data_source"] = None
             __props__.__dict__["integrated_system"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["personal_details"] = None
             __props__.__dict__["usage_signal"] = None
         super(Entry, __self__).__init__(
             'google-native:datacatalog/v1:Entry',
@@ -492,6 +493,7 @@ class Entry(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["linked_resource"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["personal_details"] = None
         __props__.__dict__["routine_spec"] = None
         __props__.__dict__["schema"] = None
         __props__.__dict__["source_system_timestamps"] = None
@@ -604,6 +606,14 @@ class Entry(pulumi.CustomResource):
         The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="personalDetails")
+    def personal_details(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1PersonalDetailsResponse']:
+        """
+        Additional information related to the entry. Private to the current user.
+        """
+        return pulumi.get(self, "personal_details")
 
     @property
     @pulumi.getter(name="routineSpec")

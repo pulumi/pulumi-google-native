@@ -31,6 +31,7 @@ __all__ = [
     'DatabaseEncryptionArgs',
     'DefaultSnatStatusArgs',
     'DnsCacheConfigArgs',
+    'FilterArgs',
     'GcePersistentDiskCsiDriverConfigArgs',
     'GcfsConfigArgs',
     'GcpFilestoreCsiDriverConfigArgs',
@@ -42,6 +43,7 @@ __all__ = [
     'LinuxNodeConfigArgs',
     'LoggingComponentConfigArgs',
     'LoggingConfigArgs',
+    'MaintenanceExclusionOptionsArgs',
     'MaintenancePolicyArgs',
     'MaintenanceWindowArgs',
     'MasterAuthorizedNetworksConfigArgs',
@@ -72,6 +74,7 @@ __all__ = [
     'ResourceLimitArgs',
     'ResourceUsageExportConfigArgs',
     'SandboxConfigArgs',
+    'ServiceExternalIPsConfigArgs',
     'ShieldedInstanceConfigArgs',
     'ShieldedNodesArgs',
     'StatusConditionArgs',
@@ -1037,6 +1040,30 @@ class DnsCacheConfigArgs:
 
 
 @pulumi.input_type
+class FilterArgs:
+    def __init__(__self__, *,
+                 event_type: Optional[pulumi.Input[Sequence[pulumi.Input['FilterEventTypeItem']]]] = None):
+        """
+        Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+        :param pulumi.Input[Sequence[pulumi.Input['FilterEventTypeItem']]] event_type: Event types to allowlist.
+        """
+        if event_type is not None:
+            pulumi.set(__self__, "event_type", event_type)
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FilterEventTypeItem']]]]:
+        """
+        Event types to allowlist.
+        """
+        return pulumi.get(self, "event_type")
+
+    @event_type.setter
+    def event_type(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FilterEventTypeItem']]]]):
+        pulumi.set(self, "event_type", value)
+
+
+@pulumi.input_type
 class GcePersistentDiskCsiDriverConfigArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
@@ -1445,6 +1472,30 @@ class LoggingConfigArgs:
 
 
 @pulumi.input_type
+class MaintenanceExclusionOptionsArgs:
+    def __init__(__self__, *,
+                 scope: Optional[pulumi.Input['MaintenanceExclusionOptionsScope']] = None):
+        """
+        Represents the Maintenance exclusion option.
+        :param pulumi.Input['MaintenanceExclusionOptionsScope'] scope: Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+        """
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input['MaintenanceExclusionOptionsScope']]:
+        """
+        Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input['MaintenanceExclusionOptionsScope']]):
+        pulumi.set(self, "scope", value)
+
+
+@pulumi.input_type
 class MaintenancePolicyArgs:
     def __init__(__self__, *,
                  resource_version: Optional[pulumi.Input[str]] = None,
@@ -1740,7 +1791,8 @@ class NetworkConfigArgs:
                  dns_config: Optional[pulumi.Input['DNSConfigArgs']] = None,
                  enable_intra_node_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_l4ilb_subsetting: Optional[pulumi.Input[bool]] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']] = None):
+                 private_ipv6_google_access: Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']] = None,
+                 service_external_ips_config: Optional[pulumi.Input['ServiceExternalIPsConfigArgs']] = None):
         """
         NetworkConfig reports the relative names of network & subnetwork.
         :param pulumi.Input['NetworkConfigDatapathProvider'] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -1749,6 +1801,7 @@ class NetworkConfigArgs:
         :param pulumi.Input[bool] enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_l4ilb_subsetting: Whether L4ILB Subsetting is enabled for this cluster.
         :param pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess'] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
+        :param pulumi.Input['ServiceExternalIPsConfigArgs'] service_external_ips_config: ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
         """
         if datapath_provider is not None:
             pulumi.set(__self__, "datapath_provider", datapath_provider)
@@ -1762,6 +1815,8 @@ class NetworkConfigArgs:
             pulumi.set(__self__, "enable_l4ilb_subsetting", enable_l4ilb_subsetting)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+        if service_external_ips_config is not None:
+            pulumi.set(__self__, "service_external_ips_config", service_external_ips_config)
 
     @property
     @pulumi.getter(name="datapathProvider")
@@ -1834,6 +1889,18 @@ class NetworkConfigArgs:
     @private_ipv6_google_access.setter
     def private_ipv6_google_access(self, value: Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']]):
         pulumi.set(self, "private_ipv6_google_access", value)
+
+    @property
+    @pulumi.getter(name="serviceExternalIpsConfig")
+    def service_external_ips_config(self) -> Optional[pulumi.Input['ServiceExternalIPsConfigArgs']]:
+        """
+        ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+        """
+        return pulumi.get(self, "service_external_ips_config")
+
+    @service_external_ips_config.setter
+    def service_external_ips_config(self, value: Optional[pulumi.Input['ServiceExternalIPsConfigArgs']]):
+        pulumi.set(self, "service_external_ips_config", value)
 
 
 @pulumi.input_type
@@ -2342,7 +2409,7 @@ class NodeKubeletConfigArgs:
         Node kubelet configs.
         :param pulumi.Input[bool] cpu_cfs_quota: Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified.
         :param pulumi.Input[str] cpu_cfs_quota_period: Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
-        :param pulumi.Input[str] cpu_manager_policy: Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+        :param pulumi.Input[str] cpu_manager_policy: Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
         """
         if cpu_cfs_quota is not None:
             pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
@@ -2379,7 +2446,7 @@ class NodeKubeletConfigArgs:
     @pulumi.getter(name="cpuManagerPolicy")
     def cpu_manager_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+        Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
         """
         return pulumi.get(self, "cpu_manager_policy")
 
@@ -2960,14 +3027,18 @@ class PrivateClusterMasterGlobalAccessConfigArgs:
 class PubSubArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 filter: Optional[pulumi.Input['FilterArgs']] = None,
                  topic: Optional[pulumi.Input[str]] = None):
         """
         Pub/Sub specific notification config.
         :param pulumi.Input[bool] enabled: Enable notifications for Pub/Sub.
+        :param pulumi.Input['FilterArgs'] filter: Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
         :param pulumi.Input[str] topic: The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if topic is not None:
             pulumi.set(__self__, "topic", topic)
 
@@ -2982,6 +3053,18 @@ class PubSubArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input['FilterArgs']]:
+        """
+        Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input['FilterArgs']]):
+        pulumi.set(self, "filter", value)
 
     @property
     @pulumi.getter
@@ -3253,6 +3336,30 @@ class SandboxConfigArgs:
 
 
 @pulumi.input_type
+class ServiceExternalIPsConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Config to block services with externalIPs field.
+        :param pulumi.Input[bool] enabled: Whether Services with ExternalIPs field are allowed or not.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Services with ExternalIPs field are allowed or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
 class ShieldedInstanceConfigArgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
@@ -3360,14 +3467,18 @@ class StatusConditionArgs:
 class TimeWindowArgs:
     def __init__(__self__, *,
                  end_time: Optional[pulumi.Input[str]] = None,
+                 maintenance_exclusion_options: Optional[pulumi.Input['MaintenanceExclusionOptionsArgs']] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
         """
         Represents an arbitrary window of time.
         :param pulumi.Input[str] end_time: The time that the window ends. The end time should take place after the start time.
+        :param pulumi.Input['MaintenanceExclusionOptionsArgs'] maintenance_exclusion_options: MaintenanceExclusionOptions provides maintenance exclusion related options.
         :param pulumi.Input[str] start_time: The time that the window first starts.
         """
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
+        if maintenance_exclusion_options is not None:
+            pulumi.set(__self__, "maintenance_exclusion_options", maintenance_exclusion_options)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
 
@@ -3382,6 +3493,18 @@ class TimeWindowArgs:
     @end_time.setter
     def end_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="maintenanceExclusionOptions")
+    def maintenance_exclusion_options(self) -> Optional[pulumi.Input['MaintenanceExclusionOptionsArgs']]:
+        """
+        MaintenanceExclusionOptions provides maintenance exclusion related options.
+        """
+        return pulumi.get(self, "maintenance_exclusion_options")
+
+    @maintenance_exclusion_options.setter
+    def maintenance_exclusion_options(self, value: Optional[pulumi.Input['MaintenanceExclusionOptionsArgs']]):
+        pulumi.set(self, "maintenance_exclusion_options", value)
 
     @property
     @pulumi.getter(name="startTime")

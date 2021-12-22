@@ -89,6 +89,7 @@ import * as networkservices from "./networkservices";
 import * as notebooks from "./notebooks";
 import * as orgpolicy from "./orgpolicy";
 import * as osconfig from "./osconfig";
+import * as oslogin from "./oslogin";
 import * as policysimulator from "./policysimulator";
 import * as privateca from "./privateca";
 import * as pubsub from "./pubsub";
@@ -205,6 +206,7 @@ export {
     notebooks,
     orgpolicy,
     osconfig,
+    oslogin,
     policysimulator,
     privateca,
     pubsub,

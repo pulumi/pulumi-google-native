@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AccessContextManager.V1
 {
     /// <summary>
-    /// Create a Service Perimeter. The longrunning operation from this RPC will have a successful status once the Service Perimeter has propagated to long-lasting storage. Service Perimeters containing errors will result in an error response for the first error encountered.
+    /// Creates a service perimeter. The long-running operation from this RPC has a successful status after the service perimeter propagates to long-lasting storage. If a service perimeter contains errors, an error response is returned for the first error encountered.
     /// </summary>
     [GoogleNativeResourceType("google-native:accesscontextmanager/v1:ServicePerimeter")]
     public partial class ServicePerimeter : Pulumi.CustomResource

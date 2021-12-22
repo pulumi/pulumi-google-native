@@ -23,8 +23,12 @@ type Workload struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+	EnableSovereignControls pulumi.BoolOutput `pulumi:"enableSovereignControls"`
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Represents the KAJ enrollment state of the given workload.
+	KajEnrollmentState pulumi.StringOutput `pulumi:"kajEnrollmentState"`
 	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
 	KmsSettings GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
@@ -37,6 +41,8 @@ type Workload struct {
 	ResourceSettings GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput `pulumi:"resourceSettings"`
 	// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput `pulumi:"resources"`
+	// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
+	SaaEnrollmentResponse GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput `pulumi:"saaEnrollmentResponse"`
 }
 
 // NewWorkload registers a new resource with the given unique name, arguments, and options.
@@ -93,6 +99,8 @@ type workloadArgs struct {
 	ComplianceRegime WorkloadComplianceRegime `pulumi:"complianceRegime"`
 	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName string `pulumi:"displayName"`
+	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+	EnableSovereignControls *bool `pulumi:"enableSovereignControls"`
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
 	Etag       *string `pulumi:"etag"`
 	ExternalId *string `pulumi:"externalId"`
@@ -118,6 +126,8 @@ type WorkloadArgs struct {
 	ComplianceRegime WorkloadComplianceRegimeInput
 	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName pulumi.StringInput
+	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+	EnableSovereignControls pulumi.BoolPtrInput
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
 	Etag       pulumi.StringPtrInput
 	ExternalId pulumi.StringPtrInput

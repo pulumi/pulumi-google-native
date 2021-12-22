@@ -26,6 +26,7 @@ class NetworkEndpointGroupArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input['NetworkEndpointGroupNetworkEndpointType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_target_service: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -40,6 +41,7 @@ class NetworkEndpointGroupArgs:
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
         :param pulumi.Input['NetworkEndpointGroupNetworkEndpointType'] network_endpoint_type: Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+        :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         """
         if annotations is not None:
@@ -62,6 +64,8 @@ class NetworkEndpointGroupArgs:
             pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_target_service is not None:
+            pulumi.set(__self__, "psc_target_service", psc_target_service)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if subnetwork is not None:
@@ -187,6 +191,18 @@ class NetworkEndpointGroupArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pscTargetService")
+    def psc_target_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        """
+        return pulumi.get(self, "psc_target_service")
+
+    @psc_target_service.setter
+    def psc_target_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "psc_target_service", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -232,6 +248,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input['NetworkEndpointGroupNetworkEndpointType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_target_service: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -250,6 +267,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
         :param pulumi.Input['NetworkEndpointGroupNetworkEndpointType'] network_endpoint_type: Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+        :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         """
         ...
@@ -286,6 +304,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input['NetworkEndpointGroupNetworkEndpointType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_target_service: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -311,6 +330,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["network_endpoint_type"] = network_endpoint_type
             __props__.__dict__["project"] = project
+            __props__.__dict__["psc_target_service"] = psc_target_service
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["zone"] = zone
@@ -352,6 +372,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
         __props__.__dict__["network_endpoint_type"] = None
+        __props__.__dict__["psc_target_service"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["size"] = None
@@ -446,6 +467,14 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
         """
         return pulumi.get(self, "network_endpoint_type")
+
+    @property
+    @pulumi.getter(name="pscTargetService")
+    def psc_target_service(self) -> pulumi.Output[str]:
+        """
+        The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        """
+        return pulumi.get(self, "psc_target_service")
 
     @property
     @pulumi.getter

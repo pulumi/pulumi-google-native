@@ -26,7 +26,7 @@ export const ProductAvailability = {
 } as const;
 
 /**
- * The online availability of the Product. Default to Availability.IN_STOCK. Google Merchant Center Property [availability](https://support.google.com/merchants/answer/6324448). Schema.org Property [Offer.availability](https://schema.org/availability).
+ * The online availability of the Product. Default to Availability.IN_STOCK. Corresponding properties: Google Merchant Center property [availability](https://support.google.com/merchants/answer/6324448). Schema.org property [Offer.availability](https://schema.org/availability).
  */
 export type ProductAvailability = (typeof ProductAvailability)[keyof typeof ProductAvailability];
 

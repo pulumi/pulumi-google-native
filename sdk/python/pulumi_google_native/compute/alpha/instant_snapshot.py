@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = ['InstantSnapshotArgs', 'InstantSnapshot']
 
@@ -217,6 +218,7 @@ class InstantSnapshot(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["region"] = None
+            __props__.__dict__["resource_status"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
@@ -254,6 +256,7 @@ class InstantSnapshot(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["resource_status"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
@@ -342,6 +345,14 @@ class InstantSnapshot(pulumi.CustomResource):
         URL of the region where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> pulumi.Output['outputs.InstantSnapshotResourceStatusResponse']:
+        """
+        Status information for the instant snapshot resource.
+        """
+        return pulumi.get(self, "resource_status")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

@@ -75,6 +75,8 @@ type LookupInstanceResult struct {
 	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
 	NetworkInterfaces        []NetworkInterfaceResponse       `pulumi:"networkInterfaces"`
 	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
+	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+	Params InstanceParamsResponse `pulumi:"params"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType string `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
@@ -267,6 +269,11 @@ func (o LookupInstanceResultOutput) NetworkInterfaces() NetworkInterfaceResponse
 
 func (o LookupInstanceResultOutput) NetworkPerformanceConfig() NetworkPerformanceConfigResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) NetworkPerformanceConfigResponse { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigResponseOutput)
+}
+
+// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+func (o LookupInstanceResultOutput) Params() InstanceParamsResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) InstanceParamsResponse { return v.Params }).(InstanceParamsResponseOutput)
 }
 
 // PostKeyRevocationActionType of the instance.

@@ -185,6 +185,7 @@ __all__ = [
     'ServerTlsSettingsTlsMode',
     'ServiceAttachmentConnectionPreference',
     'ShareSettingsShareType',
+    'SnapshotSnapshotType',
     'SslCertificateType',
     'SslPolicyMinTlsVersion',
     'SslPolicyProfile',
@@ -3138,6 +3139,14 @@ class ShareSettingsShareType(str, Enum):
     """
     Shared-reservation is open to specific projects
     """
+
+
+class SnapshotSnapshotType(str, Enum):
+    """
+    Indicates the type of the snapshot.
+    """
+    ARCHIVE = "ARCHIVE"
+    STANDARD = "STANDARD"
 
 
 class SslCertificateType(str, Enum):

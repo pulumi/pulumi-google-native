@@ -18,6 +18,8 @@ __all__ = [
     'ExpiryDetailResponse',
     'GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse',
     'MembershipRoleResponse',
+    'MembershipRoleRestrictionEvaluationResponse',
+    'RestrictionEvaluationsResponse',
 ]
 
 @pulumi.output_type
@@ -302,6 +304,8 @@ class MembershipRoleResponse(dict):
         suggest = None
         if key == "expiryDetail":
             suggest = "expiry_detail"
+        elif key == "restrictionEvaluations":
+            suggest = "restriction_evaluations"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MembershipRoleResponse. Access the value via the '{suggest}' property getter instead.")
@@ -316,14 +320,17 @@ class MembershipRoleResponse(dict):
 
     def __init__(__self__, *,
                  expiry_detail: 'outputs.ExpiryDetailResponse',
-                 name: str):
+                 name: str,
+                 restriction_evaluations: 'outputs.RestrictionEvaluationsResponse'):
         """
         A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
         :param 'ExpiryDetailResponse' expiry_detail: The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
         :param str name: The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
+        :param 'RestrictionEvaluationsResponse' restriction_evaluations: Evaluations of restrictions applied to parent group on this membership.
         """
         pulumi.set(__self__, "expiry_detail", expiry_detail)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "restriction_evaluations", restriction_evaluations)
 
     @property
     @pulumi.getter(name="expiryDetail")
@@ -340,5 +347,74 @@ class MembershipRoleResponse(dict):
         The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="restrictionEvaluations")
+    def restriction_evaluations(self) -> 'outputs.RestrictionEvaluationsResponse':
+        """
+        Evaluations of restrictions applied to parent group on this membership.
+        """
+        return pulumi.get(self, "restriction_evaluations")
+
+
+@pulumi.output_type
+class MembershipRoleRestrictionEvaluationResponse(dict):
+    """
+    The evaluated state of this restriction.
+    """
+    def __init__(__self__, *,
+                 state: str):
+        """
+        The evaluated state of this restriction.
+        :param str state: The current state of the restriction
+        """
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The current state of the restriction
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class RestrictionEvaluationsResponse(dict):
+    """
+    Evaluations of restrictions applied to parent group on this membership.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memberRestrictionEvaluation":
+            suggest = "member_restriction_evaluation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RestrictionEvaluationsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RestrictionEvaluationsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RestrictionEvaluationsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 member_restriction_evaluation: 'outputs.MembershipRoleRestrictionEvaluationResponse'):
+        """
+        Evaluations of restrictions applied to parent group on this membership.
+        :param 'MembershipRoleRestrictionEvaluationResponse' member_restriction_evaluation: Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
+        """
+        pulumi.set(__self__, "member_restriction_evaluation", member_restriction_evaluation)
+
+    @property
+    @pulumi.getter(name="memberRestrictionEvaluation")
+    def member_restriction_evaluation(self) -> 'outputs.MembershipRoleRestrictionEvaluationResponse':
+        """
+        Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
+        """
+        return pulumi.get(self, "member_restriction_evaluation")
 
 

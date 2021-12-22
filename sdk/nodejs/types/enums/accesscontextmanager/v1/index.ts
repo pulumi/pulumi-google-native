@@ -2,6 +2,30 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AuditLogConfigLogType = {
+    /**
+     * Default case. Should never be this.
+     */
+    LogTypeUnspecified: "LOG_TYPE_UNSPECIFIED",
+    /**
+     * Admin reads. Example: CloudIAM getIamPolicy
+     */
+    AdminRead: "ADMIN_READ",
+    /**
+     * Data writes. Example: CloudSQL Users create
+     */
+    DataWrite: "DATA_WRITE",
+    /**
+     * Data reads. Example: CloudSQL Users list
+     */
+    DataRead: "DATA_READ",
+} as const;
+
+/**
+ * The log type that this config enables.
+ */
+export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
+
 export const BasicLevelCombiningFunction = {
     /**
      * All `Conditions` must be true for the `BasicLevel` to be true.
