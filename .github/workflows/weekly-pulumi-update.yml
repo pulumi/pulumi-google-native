@@ -57,13 +57,13 @@ jobs:
         if: steps.gomod.outputs.changes != 0
         run: |
           git add sdk/nodejs
-          git commit -m "Regenerating Node.js SDK based on updated modules"
+          git diff-index --quiet HEAD || git commit -m "Regenerating Node.js SDK based on updated modules"
           git add sdk/python
-          git commit -m "Regenerating Python SDK based on updated modules"
+          git diff-index --quiet HEAD || git commit -m "Regenerating Python SDK based on updated modules"
           git add sdk/dotnet
-          git commit -m "Regenerating .NET SDK based on updated modules"
+          git diff-index --quiet HEAD || git commit -m "Regenerating .NET SDK based on updated modules"
           git add sdk/go
-          git commit -m "Regenerating Go SDK based on updated modules"
+          git diff-index --quiet HEAD || git commit -m "Regenerating Go SDK based on updated modules"
           git add .
           git commit -m "Updated modules"
           git push origin update-pulumi/${{ github.run_id }}-${{ github.run_number }}
