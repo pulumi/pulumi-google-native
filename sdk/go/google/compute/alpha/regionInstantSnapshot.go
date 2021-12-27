@@ -35,6 +35,8 @@ type RegionInstantSnapshot struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// URL of the region where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Status information for the instant snapshot resource.
+	ResourceStatus InstantSnapshotResourceStatusResponseOutput `pulumi:"resourceStatus"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Server-defined URL for the resource.

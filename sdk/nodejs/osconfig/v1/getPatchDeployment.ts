@@ -69,6 +69,10 @@ export interface GetPatchDeploymentResult {
      */
     readonly rollout: outputs.osconfig.v1.PatchRolloutResponse;
     /**
+     * Current state of the patch deployment.
+     */
+    readonly state: string;
+    /**
      * Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
      */
     readonly updateTime: string;

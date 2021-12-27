@@ -138,11 +138,23 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("reservationAffinity")]
         public Input<Inputs.ReservationAffinityArgs>? ReservationAffinity { get; set; }
 
+        [Input("resourceManagerTags")]
+        private InputMap<string>? _resourceManagerTags;
+
+        /// <summary>
+        /// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
+        public InputMap<string> ResourceManagerTags
+        {
+            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<string>());
+            set => _resourceManagerTags = value;
+        }
+
         [Input("resourcePolicies")]
         private InputList<string>? _resourcePolicies;
 
         /// <summary>
-        /// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+        /// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public InputList<string> ResourcePolicies
         {

@@ -114,8 +114,10 @@ __all__ = [
     'InstanceGroupManagerStatusVersionTargetResponse',
     'InstanceGroupManagerUpdatePolicyResponse',
     'InstanceGroupManagerVersionResponse',
+    'InstanceParamsResponse',
     'InstancePropertiesPatchResponse',
     'InstancePropertiesResponse',
+    'InstantSnapshotResourceStatusResponse',
     'Int64RangeMatchResponse',
     'InterconnectAttachmentPartnerMetadataResponse',
     'InterconnectAttachmentPrivateInfoResponse',
@@ -893,6 +895,8 @@ class AttachedDiskInitializeParamsResponse(dict):
             suggest = "source_image"
         elif key == "sourceImageEncryptionKey":
             suggest = "source_image_encryption_key"
+        elif key == "sourceInstantSnapshot":
+            suggest = "source_instant_snapshot"
         elif key == "sourceSnapshot":
             suggest = "source_snapshot"
         elif key == "sourceSnapshotEncryptionKey":
@@ -926,6 +930,7 @@ class AttachedDiskInitializeParamsResponse(dict):
                  resource_policies: Sequence[str],
                  source_image: str,
                  source_image_encryption_key: 'outputs.CustomerEncryptionKeyResponse',
+                 source_instant_snapshot: str,
                  source_snapshot: str,
                  source_snapshot_encryption_key: 'outputs.CustomerEncryptionKeyResponse'):
         """
@@ -946,6 +951,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         :param Sequence[str] resource_policies: Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
         :param str source_image: The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
         :param 'CustomerEncryptionKeyResponse' source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+        :param str source_instant_snapshot: The source instant-snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceInstantSnapshot initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: us-central1-a/instantSnapshots/my-backup If the source instant-snapshot is deleted later, this field will not be set.
         :param str source_snapshot: The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
         :param 'CustomerEncryptionKeyResponse' source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot.
         """
@@ -965,6 +971,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "source_image", source_image)
         pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
+        pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
         pulumi.set(__self__, "source_snapshot", source_snapshot)
         pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
 
@@ -1095,6 +1102,14 @@ class AttachedDiskInitializeParamsResponse(dict):
         The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
         """
         return pulumi.get(self, "source_image_encryption_key")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> str:
+        """
+        The source instant-snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceInstantSnapshot initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: us-central1-a/instantSnapshots/my-backup If the source instant-snapshot is deleted later, this field will not be set.
+        """
+        return pulumi.get(self, "source_instant_snapshot")
 
     @property
     @pulumi.getter(name="sourceSnapshot")
@@ -4650,6 +4665,8 @@ class FirewallPolicyRuleMatcherResponse(dict):
             suggest = "dest_fqdns"
         elif key == "destIpRanges":
             suggest = "dest_ip_ranges"
+        elif key == "destRegionCodes":
+            suggest = "dest_region_codes"
         elif key == "layer4Configs":
             suggest = "layer4_configs"
         elif key == "srcAddressGroups":
@@ -4658,6 +4675,8 @@ class FirewallPolicyRuleMatcherResponse(dict):
             suggest = "src_fqdns"
         elif key == "srcIpRanges":
             suggest = "src_ip_ranges"
+        elif key == "srcRegionCodes":
+            suggest = "src_region_codes"
         elif key == "srcSecureTags":
             suggest = "src_secure_tags"
 
@@ -4676,29 +4695,35 @@ class FirewallPolicyRuleMatcherResponse(dict):
                  dest_address_groups: Sequence[str],
                  dest_fqdns: Sequence[str],
                  dest_ip_ranges: Sequence[str],
+                 dest_region_codes: Sequence[str],
                  layer4_configs: Sequence['outputs.FirewallPolicyRuleMatcherLayer4ConfigResponse'],
                  src_address_groups: Sequence[str],
                  src_fqdns: Sequence[str],
                  src_ip_ranges: Sequence[str],
+                 src_region_codes: Sequence[str],
                  src_secure_tags: Sequence['outputs.FirewallPolicyRuleSecureTagResponse']):
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
         :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         :param Sequence[str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
         :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param Sequence[str] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param Sequence['FirewallPolicyRuleMatcherLayer4ConfigResponse'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param Sequence[str] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         :param Sequence[str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
         :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param Sequence[str] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param Sequence['FirewallPolicyRuleSecureTagResponse'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
         """
         pulumi.set(__self__, "dest_address_groups", dest_address_groups)
         pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        pulumi.set(__self__, "dest_region_codes", dest_region_codes)
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         pulumi.set(__self__, "src_address_groups", src_address_groups)
         pulumi.set(__self__, "src_fqdns", src_fqdns)
         pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        pulumi.set(__self__, "src_region_codes", src_region_codes)
         pulumi.set(__self__, "src_secure_tags", src_secure_tags)
 
     @property
@@ -4724,6 +4749,14 @@ class FirewallPolicyRuleMatcherResponse(dict):
         CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         """
         return pulumi.get(self, "dest_ip_ranges")
+
+    @property
+    @pulumi.getter(name="destRegionCodes")
+    def dest_region_codes(self) -> Sequence[str]:
+        """
+        Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+        """
+        return pulumi.get(self, "dest_region_codes")
 
     @property
     @pulumi.getter(name="layer4Configs")
@@ -4756,6 +4789,14 @@ class FirewallPolicyRuleMatcherResponse(dict):
         CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         """
         return pulumi.get(self, "src_ip_ranges")
+
+    @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Sequence[str]:
+        """
+        Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+        """
+        return pulumi.get(self, "src_region_codes")
 
     @property
     @pulumi.getter(name="srcSecureTags")
@@ -7875,6 +7916,45 @@ class InstanceGroupManagerVersionResponse(dict):
 
 
 @pulumi.output_type
+class InstanceParamsResponse(dict):
+    """
+    Additional instance params.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceParamsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceParamsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceParamsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, str]):
+        """
+        Additional instance params.
+        :param Mapping[str, str] resource_manager_tags: Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, str]:
+        """
+        Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
 class InstancePropertiesPatchResponse(dict):
     """
     Represents the change that you want to make to the instance properties.
@@ -7938,6 +8018,8 @@ class InstancePropertiesResponse(dict):
             suggest = "private_ipv6_google_access"
         elif key == "reservationAffinity":
             suggest = "reservation_affinity"
+        elif key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
         elif key == "resourcePolicies":
             suggest = "resource_policies"
         elif key == "secureTags":
@@ -7978,6 +8060,7 @@ class InstancePropertiesResponse(dict):
                  post_key_revocation_action_type: str,
                  private_ipv6_google_access: str,
                  reservation_affinity: 'outputs.ReservationAffinityResponse',
+                 resource_manager_tags: Mapping[str, str],
                  resource_policies: Sequence[str],
                  scheduling: 'outputs.SchedulingResponse',
                  secure_tags: Sequence[str],
@@ -8003,7 +8086,8 @@ class InstancePropertiesResponse(dict):
         :param str post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
         :param str private_ipv6_google_access: The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
         :param 'ReservationAffinityResponse' reservation_affinity: Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
-        :param Sequence[str] resource_policies: Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+        :param Mapping[str, str] resource_manager_tags: Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        :param Sequence[str] resource_policies: Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         :param 'SchedulingResponse' scheduling: Specifies the scheduling options for the instances that are created from these properties.
         :param Sequence[str] secure_tags: [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50. Note that for MachineImage, this is not supported yet.
         :param Sequence['ServiceAccountResponse'] service_accounts: A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
@@ -8028,6 +8112,7 @@ class InstancePropertiesResponse(dict):
         pulumi.set(__self__, "post_key_revocation_action_type", post_key_revocation_action_type)
         pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "scheduling", scheduling)
         pulumi.set(__self__, "secure_tags", secure_tags)
@@ -8173,10 +8258,18 @@ class InstancePropertiesResponse(dict):
         return pulumi.get(self, "reservation_affinity")
 
     @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, str]:
+        """
+        Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @property
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Sequence[str]:
         """
-        Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+        Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         """
         return pulumi.get(self, "resource_policies")
 
@@ -8227,6 +8320,41 @@ class InstancePropertiesResponse(dict):
         A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class InstantSnapshotResourceStatusResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageSizeBytes":
+            suggest = "storage_size_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstantSnapshotResourceStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstantSnapshotResourceStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstantSnapshotResourceStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 storage_size_bytes: str):
+        """
+        :param str storage_size_bytes: The storage size of this instant snapshot.
+        """
+        pulumi.set(__self__, "storage_size_bytes", storage_size_bytes)
+
+    @property
+    @pulumi.getter(name="storageSizeBytes")
+    def storage_size_bytes(self) -> str:
+        """
+        The storage size of this instant snapshot.
+        """
+        return pulumi.get(self, "storage_size_bytes")
 
 
 @pulumi.output_type

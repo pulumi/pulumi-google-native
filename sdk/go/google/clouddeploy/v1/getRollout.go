@@ -39,6 +39,8 @@ type LookupRolloutResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Time at which the `Rollout` finished deploying.
 	DeployEndTime string `pulumi:"deployEndTime"`
+	// The reason this deploy failed. This will always be unspecified while the deploy in progress.
+	DeployFailureCause string `pulumi:"deployFailureCause"`
 	// Time at which the `Rollout` started deploying.
 	DeployStartTime string `pulumi:"deployStartTime"`
 	// The resource name of the Cloud Build `Build` object that is used to deploy the Rollout. Format is `projects/{project}/locations/{location}/builds/{build}`.
@@ -121,6 +123,11 @@ func (o LookupRolloutResultOutput) CreateTime() pulumi.StringOutput {
 // Time at which the `Rollout` finished deploying.
 func (o LookupRolloutResultOutput) DeployEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRolloutResult) string { return v.DeployEndTime }).(pulumi.StringOutput)
+}
+
+// The reason this deploy failed. This will always be unspecified while the deploy in progress.
+func (o LookupRolloutResultOutput) DeployFailureCause() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRolloutResult) string { return v.DeployFailureCause }).(pulumi.StringOutput)
 }
 
 // Time at which the `Rollout` started deploying.

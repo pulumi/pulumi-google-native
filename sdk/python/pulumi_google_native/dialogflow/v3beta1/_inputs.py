@@ -49,6 +49,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffArgs',
     'GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextArgs',
     'GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioArgs',
+    'GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallArgs',
     'GoogleCloudDialogflowCxV3beta1ResponseMessageTextArgs',
     'GoogleCloudDialogflowCxV3beta1ResponseMessageArgs',
     'GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStepArgs',
@@ -2200,6 +2201,30 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallArgs:
+    def __init__(__self__, *,
+                 phone_number: Optional[pulumi.Input[str]] = None):
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param pulumi.Input[str] phone_number: Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+        """
+        if phone_number is not None:
+            pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "phone_number", value)
+
+
+@pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1ResponseMessageTextArgs:
     def __init__(__self__, *,
                  text: pulumi.Input[Sequence[pulumi.Input[str]]]):
@@ -2230,6 +2255,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageArgs:
                  output_audio_text: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextArgs']] = None,
                  payload: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  play_audio: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioArgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallArgs']] = None,
                  text: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageTextArgs']] = None):
         """
         Represents a response message that can be returned by a conversational agent. Response messages are also used for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is present, then all OutputAudioText responses are linearly concatenated, and the result is used for output audio synthesis. * If the OutputAudioText responses are a mixture of text and SSML, then the concatenated result is treated as SSML; otherwise, the result is treated as either text or SSML as appropriate. The agent designer should ideally use either text or SSML consistently throughout the bot design. * Otherwise, all Text responses are linearly concatenated, and the result is used for output audio synthesis. This approach allows for more sophisticated user experience scenarios, where the text displayed to the user may differ from what is heard.
@@ -2238,6 +2264,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageArgs:
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] payload: Returns a response containing a custom, platform-specific payload.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioArgs'] play_audio: Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallArgs'] telephony_transfer_call: A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageTextArgs'] text: Returns a text response.
         """
         if conversation_success is not None:
@@ -2250,6 +2277,8 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageArgs:
             pulumi.set(__self__, "payload", payload)
         if play_audio is not None:
             pulumi.set(__self__, "play_audio", play_audio)
+        if telephony_transfer_call is not None:
+            pulumi.set(__self__, "telephony_transfer_call", telephony_transfer_call)
         if text is not None:
             pulumi.set(__self__, "text", text)
 
@@ -2312,6 +2341,18 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageArgs:
     @play_audio.setter
     def play_audio(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioArgs']]):
         pulumi.set(self, "play_audio", value)
+
+    @property
+    @pulumi.getter(name="telephonyTransferCall")
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallArgs']]:
+        """
+        A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+        """
+        return pulumi.get(self, "telephony_transfer_call")
+
+    @telephony_transfer_call.setter
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallArgs']]):
+        pulumi.set(self, "telephony_transfer_call", value)
 
     @property
     @pulumi.getter

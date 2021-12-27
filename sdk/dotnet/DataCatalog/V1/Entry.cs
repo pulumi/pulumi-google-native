@@ -95,6 +95,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Additional information related to the entry. Private to the current user.
+        /// </summary>
+        [Output("personalDetails")]
+        public Output<Outputs.GoogleCloudDatacatalogV1PersonalDetailsResponse> PersonalDetails { get; private set; } = null!;
+
+        /// <summary>
         /// Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
         /// </summary>
         [Output("routineSpec")]

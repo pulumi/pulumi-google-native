@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
+        /// If push delivery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
         /// </summary>
         [Output("pushConfig")]
         public Output<Outputs.PushConfigResponse> PushConfig { get; private set; } = null!;
@@ -86,6 +86,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// </summary>
         [Output("retryPolicy")]
         public Output<Outputs.RetryPolicyResponse> RetryPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// An output-only field indicating whether or not the subscription can receive messages.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
         /// <summary>
         /// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
@@ -208,7 +214,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
+        /// If push delivery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
         /// </summary>
         [Input("pushConfig")]
         public Input<Inputs.PushConfigArgs>? PushConfig { get; set; }

@@ -6,6 +6,8 @@ from enum import Enum
 
 __all__ = [
     'GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge',
+    'GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature',
+    'GoogleCloudRecaptchaenterpriseV1WafSettingsWafService',
     'GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference',
     'GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType',
 ]
@@ -26,6 +28,42 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge(str, Enum):
     UNSOLVABLE_CHALLENGE = "UNSOLVABLE_CHALLENGE"
     """
     Challenge requests for this key always return an unsolvable challenge.
+    """
+
+
+class GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature(str, Enum):
+    """
+    Required. The WAF feature for which this key is enabled.
+    """
+    WAF_FEATURE_UNSPECIFIED = "WAF_FEATURE_UNSPECIFIED"
+    """
+    Undefined feature.
+    """
+    CHALLENGE_PAGE = "CHALLENGE_PAGE"
+    """
+    Redirects suspicious traffic to reCAPTCHA.
+    """
+    SESSION_TOKEN = "SESSION_TOKEN"
+    """
+    Use reCAPTCHA session-tokens to protect the whole user session on the site's domain.
+    """
+    ACTION_TOKEN = "ACTION_TOKEN"
+    """
+    Use reCAPTCHA action-tokens to protect user actions.
+    """
+
+
+class GoogleCloudRecaptchaenterpriseV1WafSettingsWafService(str, Enum):
+    """
+    Required. The WAF service that uses this key.
+    """
+    WAF_SERVICE_UNSPECIFIED = "WAF_SERVICE_UNSPECIFIED"
+    """
+    Undefined WAF
+    """
+    CA = "CA"
+    """
+    Cloud Armor
     """
 
 

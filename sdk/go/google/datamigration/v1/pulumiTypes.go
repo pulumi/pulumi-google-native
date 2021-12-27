@@ -1025,6 +1025,8 @@ type CloudSqlSettings struct {
 	ActivationPolicy *CloudSqlSettingsActivationPolicy `pulumi:"activationPolicy"`
 	// [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
 	AutoStorageIncrease *bool `pulumi:"autoStorageIncrease"`
+	// The KMS key name used for the csql instance.
+	CmekKeyName *string `pulumi:"cmekKeyName"`
 	// The Cloud SQL default instance level collation.
 	Collation *string `pulumi:"collation"`
 	// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
@@ -1068,6 +1070,8 @@ type CloudSqlSettingsArgs struct {
 	ActivationPolicy CloudSqlSettingsActivationPolicyPtrInput `pulumi:"activationPolicy"`
 	// [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
 	AutoStorageIncrease pulumi.BoolPtrInput `pulumi:"autoStorageIncrease"`
+	// The KMS key name used for the csql instance.
+	CmekKeyName pulumi.StringPtrInput `pulumi:"cmekKeyName"`
 	// The Cloud SQL default instance level collation.
 	Collation pulumi.StringPtrInput `pulumi:"collation"`
 	// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
@@ -1182,6 +1186,11 @@ func (o CloudSqlSettingsOutput) AutoStorageIncrease() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CloudSqlSettings) *bool { return v.AutoStorageIncrease }).(pulumi.BoolPtrOutput)
 }
 
+// The KMS key name used for the csql instance.
+func (o CloudSqlSettingsOutput) CmekKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSqlSettings) *string { return v.CmekKeyName }).(pulumi.StringPtrOutput)
+}
+
 // The Cloud SQL default instance level collation.
 func (o CloudSqlSettingsOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudSqlSettings) *string { return v.Collation }).(pulumi.StringPtrOutput)
@@ -1284,6 +1293,16 @@ func (o CloudSqlSettingsPtrOutput) AutoStorageIncrease() pulumi.BoolPtrOutput {
 		}
 		return v.AutoStorageIncrease
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The KMS key name used for the csql instance.
+func (o CloudSqlSettingsPtrOutput) CmekKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudSqlSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CmekKeyName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The Cloud SQL default instance level collation.
@@ -1412,6 +1431,8 @@ type CloudSqlSettingsResponse struct {
 	ActivationPolicy string `pulumi:"activationPolicy"`
 	// [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
 	AutoStorageIncrease bool `pulumi:"autoStorageIncrease"`
+	// The KMS key name used for the csql instance.
+	CmekKeyName string `pulumi:"cmekKeyName"`
 	// The Cloud SQL default instance level collation.
 	Collation string `pulumi:"collation"`
 	// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
@@ -1457,6 +1478,8 @@ type CloudSqlSettingsResponseArgs struct {
 	ActivationPolicy pulumi.StringInput `pulumi:"activationPolicy"`
 	// [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
 	AutoStorageIncrease pulumi.BoolInput `pulumi:"autoStorageIncrease"`
+	// The KMS key name used for the csql instance.
+	CmekKeyName pulumi.StringInput `pulumi:"cmekKeyName"`
 	// The Cloud SQL default instance level collation.
 	Collation pulumi.StringInput `pulumi:"collation"`
 	// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
@@ -1573,6 +1596,11 @@ func (o CloudSqlSettingsResponseOutput) AutoStorageIncrease() pulumi.BoolOutput 
 	return o.ApplyT(func(v CloudSqlSettingsResponse) bool { return v.AutoStorageIncrease }).(pulumi.BoolOutput)
 }
 
+// The KMS key name used for the csql instance.
+func (o CloudSqlSettingsResponseOutput) CmekKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudSqlSettingsResponse) string { return v.CmekKeyName }).(pulumi.StringOutput)
+}
+
 // The Cloud SQL default instance level collation.
 func (o CloudSqlSettingsResponseOutput) Collation() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudSqlSettingsResponse) string { return v.Collation }).(pulumi.StringOutput)
@@ -1680,6 +1708,16 @@ func (o CloudSqlSettingsResponsePtrOutput) AutoStorageIncrease() pulumi.BoolPtrO
 		}
 		return &v.AutoStorageIncrease
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The KMS key name used for the csql instance.
+func (o CloudSqlSettingsResponsePtrOutput) CmekKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudSqlSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CmekKeyName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The Cloud SQL default instance level collation.

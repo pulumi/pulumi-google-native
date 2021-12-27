@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// A list of publicly visible licenses. Reserved for Google's use.
+        /// </summary>
+        public readonly ImmutableArray<string> Licenses;
+        /// <summary>
         /// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         /// </summary>
         public readonly string OnUpdateAction;
@@ -77,6 +81,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             ImmutableDictionary<string, string> labels,
 
+            ImmutableArray<string> licenses,
+
             string onUpdateAction,
 
             string provisionedIops,
@@ -96,6 +102,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             Labels = labels;
+            Licenses = licenses;
             OnUpdateAction = onUpdateAction;
             ProvisionedIops = provisionedIops;
             ResourcePolicies = resourcePolicies;

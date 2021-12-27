@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetAccessPolicyResult:
-    def __init__(__self__, etag=None, name=None, parent=None, title=None):
+    def __init__(__self__, etag=None, name=None, parent=None, scopes=None, title=None):
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -27,6 +27,9 @@ class GetAccessPolicyResult:
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         pulumi.set(__self__, "parent", parent)
+        if scopes and not isinstance(scopes, list):
+            raise TypeError("Expected argument 'scopes' to be a list")
+        pulumi.set(__self__, "scopes", scopes)
         if title and not isinstance(title, str):
             raise TypeError("Expected argument 'title' to be a str")
         pulumi.set(__self__, "title", title)
@@ -57,6 +60,14 @@ class GetAccessPolicyResult:
 
     @property
     @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        """
+        The scopes of a policy define which resources an ACM policy can restrict, and where ACM resources can be referenced. For example, a policy with scopes=["folders/123"] has the following behavior: - vpcsc perimeters can only restrict projects within folders/123 - access levels can only be referenced by resources within folders/123. If empty, there are no limitations on which resources can be restricted by an ACM policy, and there are no limitations on where ACM resources can be referenced. Only one policy can include a given scope (attempting to create a second policy which includes "folders/123" will result in an error). Currently, scopes cannot be modified after a policy is created. Currently, policies can only have a single scope. Format: list of `folders/{folder_number}` or `projects/{project_number}`
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter
     def title(self) -> str:
         """
         Human readable title. Does not affect behavior.
@@ -73,13 +84,14 @@ class AwaitableGetAccessPolicyResult(GetAccessPolicyResult):
             etag=self.etag,
             name=self.name,
             parent=self.parent,
+            scopes=self.scopes,
             title=self.title)
 
 
 def get_access_policy(access_policy_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccessPolicyResult:
     """
-    Get an AccessPolicy by name.
+    Returns an access policy based on the name.
     """
     __args__ = dict()
     __args__['accessPolicyId'] = access_policy_id
@@ -93,6 +105,7 @@ def get_access_policy(access_policy_id: Optional[str] = None,
         etag=__ret__.etag,
         name=__ret__.name,
         parent=__ret__.parent,
+        scopes=__ret__.scopes,
         title=__ret__.title)
 
 
@@ -100,6 +113,6 @@ def get_access_policy(access_policy_id: Optional[str] = None,
 def get_access_policy_output(access_policy_id: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessPolicyResult]:
     """
-    Get an AccessPolicy by name.
+    Returns an access policy based on the name.
     """
     ...

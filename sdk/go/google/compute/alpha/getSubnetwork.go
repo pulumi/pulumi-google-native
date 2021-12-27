@@ -51,7 +51,7 @@ type LookupSubnetworkResult struct {
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
 	Ipv6AccessType string `pulumi:"ipv6AccessType"`
-	// The range of internal IPv6 addresses that are owned by this subnetwork.
+	// The range of internal IPv6 addresses that are owned by this subnetwork. Note this will be for private google access only eventually.
 	Ipv6CidrRange string `pulumi:"ipv6CidrRange"`
 	// Type of the resource. Always compute#subnetwork for Subnetwork resources.
 	Kind string `pulumi:"kind"`
@@ -182,7 +182,7 @@ func (o LookupSubnetworkResultOutput) Ipv6AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
 }
 
-// The range of internal IPv6 addresses that are owned by this subnetwork.
+// The range of internal IPv6 addresses that are owned by this subnetwork. Note this will be for private google access only eventually.
 func (o LookupSubnetworkResultOutput) Ipv6CidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.Ipv6CidrRange }).(pulumi.StringOutput)
 }

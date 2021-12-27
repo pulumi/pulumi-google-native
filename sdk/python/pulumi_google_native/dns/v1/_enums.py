@@ -13,6 +13,7 @@ __all__ = [
     'ManagedZoneForwardingConfigNameServerTargetForwardingPath',
     'ManagedZoneVisibility',
     'PolicyAlternativeNameServerConfigTargetNameServerForwardingPath',
+    'ResponsePolicyRuleBehavior',
 ]
 
 
@@ -102,4 +103,15 @@ class PolicyAlternativeNameServerConfigTargetNameServerForwardingPath(str, Enum)
     PRIVATE = "private"
     """
     Cloud DNS always forwards to this target through the VPC.
+    """
+
+
+class ResponsePolicyRuleBehavior(str, Enum):
+    """
+    Answer this query with a behavior rather than DNS data.
+    """
+    BEHAVIOR_UNSPECIFIED = "behaviorUnspecified"
+    BYPASS_RESPONSE_POLICY = "bypassResponsePolicy"
+    """
+    Skip a less-specific ResponsePolicyRule and continue normal query logic. This can be used in conjunction with a wildcard to exempt a subset of the wildcard ResponsePolicyRule from the ResponsePolicy behavior and e.g., query the public internet instead. For instance, if these rules exist: *.example.com -> 1.2.3.4 foo.example.com -> PASSTHRU Then a query for 'foo.example.com' skips the wildcard.
     """

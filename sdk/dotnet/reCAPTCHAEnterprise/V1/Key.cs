@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         public Output<Outputs.GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse> TestingOptions { get; private set; } = null!;
 
         /// <summary>
+        /// Settings for WAF
+        /// </summary>
+        [Output("wafSettings")]
+        public Output<Outputs.GoogleCloudRecaptchaenterpriseV1WafSettingsResponse> WafSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Settings for keys that can be used by websites.
         /// </summary>
         [Output("webSettings")]
@@ -158,6 +164,12 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         /// </summary>
         [Input("testingOptions")]
         public Input<Inputs.GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs>? TestingOptions { get; set; }
+
+        /// <summary>
+        /// Settings for WAF
+        /// </summary>
+        [Input("wafSettings")]
+        public Input<Inputs.GoogleCloudRecaptchaenterpriseV1WafSettingsArgs>? WafSettings { get; set; }
 
         /// <summary>
         /// Settings for keys that can be used by websites.

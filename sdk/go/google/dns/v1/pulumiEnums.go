@@ -1341,6 +1341,172 @@ func (in *policyAlternativeNameServerConfigTargetNameServerForwardingPathPtr) To
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput)
 }
 
+// Answer this query with a behavior rather than DNS data.
+type ResponsePolicyRuleBehavior string
+
+const (
+	ResponsePolicyRuleBehaviorBehaviorUnspecified = ResponsePolicyRuleBehavior("behaviorUnspecified")
+	// Skip a less-specific ResponsePolicyRule and continue normal query logic. This can be used in conjunction with a wildcard to exempt a subset of the wildcard ResponsePolicyRule from the ResponsePolicy behavior and e.g., query the public internet instead. For instance, if these rules exist: *.example.com -> 1.2.3.4 foo.example.com -> PASSTHRU Then a query for 'foo.example.com' skips the wildcard.
+	ResponsePolicyRuleBehaviorBypassResponsePolicy = ResponsePolicyRuleBehavior("bypassResponsePolicy")
+)
+
+func (ResponsePolicyRuleBehavior) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyRuleBehavior)(nil)).Elem()
+}
+
+func (e ResponsePolicyRuleBehavior) ToResponsePolicyRuleBehaviorOutput() ResponsePolicyRuleBehaviorOutput {
+	return pulumi.ToOutput(e).(ResponsePolicyRuleBehaviorOutput)
+}
+
+func (e ResponsePolicyRuleBehavior) ToResponsePolicyRuleBehaviorOutputWithContext(ctx context.Context) ResponsePolicyRuleBehaviorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ResponsePolicyRuleBehaviorOutput)
+}
+
+func (e ResponsePolicyRuleBehavior) ToResponsePolicyRuleBehaviorPtrOutput() ResponsePolicyRuleBehaviorPtrOutput {
+	return e.ToResponsePolicyRuleBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (e ResponsePolicyRuleBehavior) ToResponsePolicyRuleBehaviorPtrOutputWithContext(ctx context.Context) ResponsePolicyRuleBehaviorPtrOutput {
+	return ResponsePolicyRuleBehavior(e).ToResponsePolicyRuleBehaviorOutputWithContext(ctx).ToResponsePolicyRuleBehaviorPtrOutputWithContext(ctx)
+}
+
+func (e ResponsePolicyRuleBehavior) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ResponsePolicyRuleBehavior) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ResponsePolicyRuleBehavior) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ResponsePolicyRuleBehavior) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ResponsePolicyRuleBehaviorOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyRuleBehaviorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyRuleBehavior)(nil)).Elem()
+}
+
+func (o ResponsePolicyRuleBehaviorOutput) ToResponsePolicyRuleBehaviorOutput() ResponsePolicyRuleBehaviorOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleBehaviorOutput) ToResponsePolicyRuleBehaviorOutputWithContext(ctx context.Context) ResponsePolicyRuleBehaviorOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleBehaviorOutput) ToResponsePolicyRuleBehaviorPtrOutput() ResponsePolicyRuleBehaviorPtrOutput {
+	return o.ToResponsePolicyRuleBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (o ResponsePolicyRuleBehaviorOutput) ToResponsePolicyRuleBehaviorPtrOutputWithContext(ctx context.Context) ResponsePolicyRuleBehaviorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResponsePolicyRuleBehavior) *ResponsePolicyRuleBehavior {
+		return &v
+	}).(ResponsePolicyRuleBehaviorPtrOutput)
+}
+
+func (o ResponsePolicyRuleBehaviorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ResponsePolicyRuleBehaviorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ResponsePolicyRuleBehavior) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ResponsePolicyRuleBehaviorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ResponsePolicyRuleBehaviorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ResponsePolicyRuleBehavior) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResponsePolicyRuleBehaviorPtrOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyRuleBehaviorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResponsePolicyRuleBehavior)(nil)).Elem()
+}
+
+func (o ResponsePolicyRuleBehaviorPtrOutput) ToResponsePolicyRuleBehaviorPtrOutput() ResponsePolicyRuleBehaviorPtrOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleBehaviorPtrOutput) ToResponsePolicyRuleBehaviorPtrOutputWithContext(ctx context.Context) ResponsePolicyRuleBehaviorPtrOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleBehaviorPtrOutput) Elem() ResponsePolicyRuleBehaviorOutput {
+	return o.ApplyT(func(v *ResponsePolicyRuleBehavior) ResponsePolicyRuleBehavior {
+		if v != nil {
+			return *v
+		}
+		var ret ResponsePolicyRuleBehavior
+		return ret
+	}).(ResponsePolicyRuleBehaviorOutput)
+}
+
+func (o ResponsePolicyRuleBehaviorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ResponsePolicyRuleBehaviorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ResponsePolicyRuleBehavior) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ResponsePolicyRuleBehaviorInput is an input type that accepts ResponsePolicyRuleBehaviorArgs and ResponsePolicyRuleBehaviorOutput values.
+// You can construct a concrete instance of `ResponsePolicyRuleBehaviorInput` via:
+//
+//          ResponsePolicyRuleBehaviorArgs{...}
+type ResponsePolicyRuleBehaviorInput interface {
+	pulumi.Input
+
+	ToResponsePolicyRuleBehaviorOutput() ResponsePolicyRuleBehaviorOutput
+	ToResponsePolicyRuleBehaviorOutputWithContext(context.Context) ResponsePolicyRuleBehaviorOutput
+}
+
+var responsePolicyRuleBehaviorPtrType = reflect.TypeOf((**ResponsePolicyRuleBehavior)(nil)).Elem()
+
+type ResponsePolicyRuleBehaviorPtrInput interface {
+	pulumi.Input
+
+	ToResponsePolicyRuleBehaviorPtrOutput() ResponsePolicyRuleBehaviorPtrOutput
+	ToResponsePolicyRuleBehaviorPtrOutputWithContext(context.Context) ResponsePolicyRuleBehaviorPtrOutput
+}
+
+type responsePolicyRuleBehaviorPtr string
+
+func ResponsePolicyRuleBehaviorPtr(v string) ResponsePolicyRuleBehaviorPtrInput {
+	return (*responsePolicyRuleBehaviorPtr)(&v)
+}
+
+func (*responsePolicyRuleBehaviorPtr) ElementType() reflect.Type {
+	return responsePolicyRuleBehaviorPtrType
+}
+
+func (in *responsePolicyRuleBehaviorPtr) ToResponsePolicyRuleBehaviorPtrOutput() ResponsePolicyRuleBehaviorPtrOutput {
+	return pulumi.ToOutput(in).(ResponsePolicyRuleBehaviorPtrOutput)
+}
+
+func (in *responsePolicyRuleBehaviorPtr) ToResponsePolicyRuleBehaviorPtrOutputWithContext(ctx context.Context) ResponsePolicyRuleBehaviorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ResponsePolicyRuleBehaviorPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChangeStatusInput)(nil)).Elem(), ChangeStatus("pending"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ChangeStatusPtrInput)(nil)).Elem(), ChangeStatus("pending"))
@@ -1358,6 +1524,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneVisibilityPtrInput)(nil)).Elem(), ManagedZoneVisibility("public"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAlternativeNameServerConfigTargetNameServerForwardingPathInput)(nil)).Elem(), PolicyAlternativeNameServerConfigTargetNameServerForwardingPath("default"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrInput)(nil)).Elem(), PolicyAlternativeNameServerConfigTargetNameServerForwardingPath("default"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleBehaviorInput)(nil)).Elem(), ResponsePolicyRuleBehavior("behaviorUnspecified"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleBehaviorPtrInput)(nil)).Elem(), ResponsePolicyRuleBehavior("behaviorUnspecified"))
 	pulumi.RegisterOutputType(ChangeStatusOutput{})
 	pulumi.RegisterOutputType(ChangeStatusPtrOutput{})
 	pulumi.RegisterOutputType(DnsKeySpecAlgorithmOutput{})
@@ -1374,4 +1542,6 @@ func init() {
 	pulumi.RegisterOutputType(ManagedZoneVisibilityPtrOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerForwardingPathOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyRuleBehaviorOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyRuleBehaviorPtrOutput{})
 }

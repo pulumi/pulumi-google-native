@@ -46,6 +46,8 @@ type LookupPatchDeploymentResult struct {
 	RecurringSchedule RecurringScheduleResponse `pulumi:"recurringSchedule"`
 	// Optional. Rollout strategy of the patch job.
 	Rollout PatchRolloutResponse `pulumi:"rollout"`
+	// Current state of the patch deployment.
+	State string `pulumi:"state"`
 	// Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -130,6 +132,11 @@ func (o LookupPatchDeploymentResultOutput) RecurringSchedule() RecurringSchedule
 // Optional. Rollout strategy of the patch job.
 func (o LookupPatchDeploymentResultOutput) Rollout() PatchRolloutResponseOutput {
 	return o.ApplyT(func(v LookupPatchDeploymentResult) PatchRolloutResponse { return v.Rollout }).(PatchRolloutResponseOutput)
+}
+
+// Current state of the patch deployment.
+func (o LookupPatchDeploymentResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPatchDeploymentResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 // Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.

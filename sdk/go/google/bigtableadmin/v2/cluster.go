@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a cluster within an instance.
+// Creates a cluster within an instance. Note that exactly one of Cluster.serve_nodes and Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero, then the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then autoscaling is enabled.
 type Cluster struct {
 	pulumi.CustomResourceState
 
@@ -43,9 +43,6 @@ func NewCluster(ctx *pulumi.Context,
 	}
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
-	}
-	if args.ServeNodes == nil {
-		return nil, errors.New("invalid value for required argument 'ServeNodes'")
 	}
 	var resource Cluster
 	err := ctx.RegisterResource("google-native:bigtableadmin/v2:Cluster", name, args, &resource, opts...)
@@ -93,7 +90,7 @@ type clusterArgs struct {
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
-	ServeNodes int `pulumi:"serveNodes"`
+	ServeNodes *int `pulumi:"serveNodes"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -112,7 +109,7 @@ type ClusterArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
-	ServeNodes pulumi.IntInput
+	ServeNodes pulumi.IntPtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {

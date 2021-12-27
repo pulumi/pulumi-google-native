@@ -9739,6 +9739,8 @@ type GoogleCloudDialogflowCxV3ResponseMessage struct {
 	Payload map[string]string `pulumi:"payload"`
 	// Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
 	PlayAudio *GoogleCloudDialogflowCxV3ResponseMessagePlayAudio `pulumi:"playAudio"`
+	// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+	TelephonyTransferCall *GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
 	// Returns a text response.
 	Text *GoogleCloudDialogflowCxV3ResponseMessageText `pulumi:"text"`
 }
@@ -9766,6 +9768,8 @@ type GoogleCloudDialogflowCxV3ResponseMessageArgs struct {
 	Payload pulumi.StringMapInput `pulumi:"payload"`
 	// Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
 	PlayAudio GoogleCloudDialogflowCxV3ResponseMessagePlayAudioPtrInput `pulumi:"playAudio"`
+	// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+	TelephonyTransferCall GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
 	// Returns a text response.
 	Text GoogleCloudDialogflowCxV3ResponseMessageTextPtrInput `pulumi:"text"`
 }
@@ -9906,6 +9910,13 @@ func (o GoogleCloudDialogflowCxV3ResponseMessageOutput) PlayAudio() GoogleCloudD
 	}).(GoogleCloudDialogflowCxV3ResponseMessagePlayAudioPtrOutput)
 }
 
+// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+func (o GoogleCloudDialogflowCxV3ResponseMessageOutput) TelephonyTransferCall() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3ResponseMessage) *GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall {
+		return v.TelephonyTransferCall
+	}).(GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput)
+}
+
 // Returns a text response.
 func (o GoogleCloudDialogflowCxV3ResponseMessageOutput) Text() GoogleCloudDialogflowCxV3ResponseMessageTextPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3ResponseMessage) *GoogleCloudDialogflowCxV3ResponseMessageText {
@@ -9985,6 +9996,16 @@ func (o GoogleCloudDialogflowCxV3ResponseMessagePtrOutput) PlayAudio() GoogleClo
 		}
 		return v.PlayAudio
 	}).(GoogleCloudDialogflowCxV3ResponseMessagePlayAudioPtrOutput)
+}
+
+// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+func (o GoogleCloudDialogflowCxV3ResponseMessagePtrOutput) TelephonyTransferCall() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3ResponseMessage) *GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall {
+		if v == nil {
+			return nil
+		}
+		return v.TelephonyTransferCall
+	}).(GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput)
 }
 
 // Returns a text response.
@@ -11092,6 +11113,8 @@ type GoogleCloudDialogflowCxV3ResponseMessageResponse struct {
 	Payload map[string]string `pulumi:"payload"`
 	// Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
 	PlayAudio GoogleCloudDialogflowCxV3ResponseMessagePlayAudioResponse `pulumi:"playAudio"`
+	// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+	TelephonyTransferCall GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponse `pulumi:"telephonyTransferCall"`
 	// Returns a text response.
 	Text GoogleCloudDialogflowCxV3ResponseMessageTextResponse `pulumi:"text"`
 }
@@ -11123,6 +11146,8 @@ type GoogleCloudDialogflowCxV3ResponseMessageResponseArgs struct {
 	Payload pulumi.StringMapInput `pulumi:"payload"`
 	// Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
 	PlayAudio GoogleCloudDialogflowCxV3ResponseMessagePlayAudioResponseInput `pulumi:"playAudio"`
+	// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+	TelephonyTransferCall GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseInput `pulumi:"telephonyTransferCall"`
 	// Returns a text response.
 	Text GoogleCloudDialogflowCxV3ResponseMessageTextResponseInput `pulumi:"text"`
 }
@@ -11226,6 +11251,13 @@ func (o GoogleCloudDialogflowCxV3ResponseMessageResponseOutput) PlayAudio() Goog
 	}).(GoogleCloudDialogflowCxV3ResponseMessagePlayAudioResponseOutput)
 }
 
+// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+func (o GoogleCloudDialogflowCxV3ResponseMessageResponseOutput) TelephonyTransferCall() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3ResponseMessageResponse) GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponse {
+		return v.TelephonyTransferCall
+	}).(GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput)
+}
+
 // Returns a text response.
 func (o GoogleCloudDialogflowCxV3ResponseMessageResponseOutput) Text() GoogleCloudDialogflowCxV3ResponseMessageTextResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3ResponseMessageResponse) GoogleCloudDialogflowCxV3ResponseMessageTextResponse {
@@ -11251,6 +11283,203 @@ func (o GoogleCloudDialogflowCxV3ResponseMessageResponseArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3ResponseMessageResponse {
 		return vs[0].([]GoogleCloudDialogflowCxV3ResponseMessageResponse)[vs[1].(int)]
 	}).(GoogleCloudDialogflowCxV3ResponseMessageResponseOutput)
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+type GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall struct {
+	// Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+	PhoneNumber *string `pulumi:"phoneNumber"`
+}
+
+// GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs and GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallInput` via:
+//
+//          GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs{...}
+type GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput
+	ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutputWithContext(context.Context) GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+type GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs struct {
+	// Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+	PhoneNumber pulumi.StringPtrInput `pulumi:"phoneNumber"`
+}
+
+func (GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput {
+	return i.ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput).ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs, GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtr and GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput
+	ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput
+}
+
+type googleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrType GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs
+
+func GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtr(v *GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs) GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrInput {
+	return (*googleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrType) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrType) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput)
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+type GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall) *GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall {
+		return &v
+	}).(GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput)
+}
+
+// Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+func (o GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput) Elem() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall) GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall
+		return ret
+	}).(GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput)
+}
+
+// Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+func (o GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+type GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponse struct {
+	// Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+	PhoneNumber string `pulumi:"phoneNumber"`
+}
+
+// GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseArgs and GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseInput` via:
+//
+//          GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseArgs{...}
+type GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput
+	ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutputWithContext(context.Context) GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+type GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseArgs struct {
+	// Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+}
+
+func (GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseArgs) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput {
+	return i.ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseArgs) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput)
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+type GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput() GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput) ToGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput {
+	return o
+}
+
+// Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+func (o GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponse) string {
+		return v.PhoneNumber
+	}).(pulumi.StringOutput)
 }
 
 // The text response message.
@@ -16307,6 +16536,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessagePlayAudioResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessagePlayAudioResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTextInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTextPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTextArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageTextArray{})
@@ -16521,6 +16753,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ResponseMessagePlayAudioResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ResponseMessageResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ResponseMessageResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ResponseMessageTextOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ResponseMessageTextPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ResponseMessageTextArrayOutput{})

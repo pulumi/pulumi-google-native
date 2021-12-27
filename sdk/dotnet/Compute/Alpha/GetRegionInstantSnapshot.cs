@@ -103,6 +103,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Region;
         /// <summary>
+        /// Status information for the instant snapshot resource.
+        /// </summary>
+        public readonly Outputs.InstantSnapshotResourceStatusResponse ResourceStatus;
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
@@ -153,6 +157,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string region,
 
+            Outputs.InstantSnapshotResourceStatusResponse resourceStatus,
+
             bool satisfiesPzs,
 
             string selfLink,
@@ -177,6 +183,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Labels = labels;
             Name = name;
             Region = region;
+            ResourceStatus = resourceStatus;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;

@@ -117,6 +117,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Obfuscated user ID which the customer sent to us.
+        /// </summary>
+        public readonly string ObfuscatedUserId;
+        /// <summary>
         /// The annotations that were generated during the customer and agent interaction.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse> RuntimeAnnotations;
@@ -167,6 +171,8 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
 
             string name,
 
+            string obfuscatedUserId,
+
             ImmutableArray<Outputs.GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse> runtimeAnnotations,
 
             string startTime,
@@ -191,6 +197,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
             LatestAnalysis = latestAnalysis;
             Medium = medium;
             Name = name;
+            ObfuscatedUserId = obfuscatedUserId;
             RuntimeAnnotations = runtimeAnnotations;
             StartTime = startTime;
             Transcript = transcript;

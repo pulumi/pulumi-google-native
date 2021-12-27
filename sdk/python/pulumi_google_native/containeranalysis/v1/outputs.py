@@ -20,6 +20,7 @@ __all__ = [
     'BuildOccurrenceResponse',
     'BuildProvenanceResponse',
     'BuilderConfigResponse',
+    'CVSSResponse',
     'CVSSv3Response',
     'CategoryResponse',
     'CisBenchmarkResponse',
@@ -559,6 +560,144 @@ class BuildProvenanceResponse(dict):
 class BuilderConfigResponse(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class CVSSResponse(dict):
+    """
+    Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attackComplexity":
+            suggest = "attack_complexity"
+        elif key == "attackVector":
+            suggest = "attack_vector"
+        elif key == "availabilityImpact":
+            suggest = "availability_impact"
+        elif key == "baseScore":
+            suggest = "base_score"
+        elif key == "confidentialityImpact":
+            suggest = "confidentiality_impact"
+        elif key == "exploitabilityScore":
+            suggest = "exploitability_score"
+        elif key == "impactScore":
+            suggest = "impact_score"
+        elif key == "integrityImpact":
+            suggest = "integrity_impact"
+        elif key == "privilegesRequired":
+            suggest = "privileges_required"
+        elif key == "userInteraction":
+            suggest = "user_interaction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CVSSResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CVSSResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CVSSResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attack_complexity: str,
+                 attack_vector: str,
+                 authentication: str,
+                 availability_impact: str,
+                 base_score: float,
+                 confidentiality_impact: str,
+                 exploitability_score: float,
+                 impact_score: float,
+                 integrity_impact: str,
+                 privileges_required: str,
+                 scope: str,
+                 user_interaction: str):
+        """
+        Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+        :param str attack_vector: Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+        :param float base_score: The base score is a function of the base metric scores.
+        """
+        pulumi.set(__self__, "attack_complexity", attack_complexity)
+        pulumi.set(__self__, "attack_vector", attack_vector)
+        pulumi.set(__self__, "authentication", authentication)
+        pulumi.set(__self__, "availability_impact", availability_impact)
+        pulumi.set(__self__, "base_score", base_score)
+        pulumi.set(__self__, "confidentiality_impact", confidentiality_impact)
+        pulumi.set(__self__, "exploitability_score", exploitability_score)
+        pulumi.set(__self__, "impact_score", impact_score)
+        pulumi.set(__self__, "integrity_impact", integrity_impact)
+        pulumi.set(__self__, "privileges_required", privileges_required)
+        pulumi.set(__self__, "scope", scope)
+        pulumi.set(__self__, "user_interaction", user_interaction)
+
+    @property
+    @pulumi.getter(name="attackComplexity")
+    def attack_complexity(self) -> str:
+        return pulumi.get(self, "attack_complexity")
+
+    @property
+    @pulumi.getter(name="attackVector")
+    def attack_vector(self) -> str:
+        """
+        Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+        """
+        return pulumi.get(self, "attack_vector")
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> str:
+        return pulumi.get(self, "authentication")
+
+    @property
+    @pulumi.getter(name="availabilityImpact")
+    def availability_impact(self) -> str:
+        return pulumi.get(self, "availability_impact")
+
+    @property
+    @pulumi.getter(name="baseScore")
+    def base_score(self) -> float:
+        """
+        The base score is a function of the base metric scores.
+        """
+        return pulumi.get(self, "base_score")
+
+    @property
+    @pulumi.getter(name="confidentialityImpact")
+    def confidentiality_impact(self) -> str:
+        return pulumi.get(self, "confidentiality_impact")
+
+    @property
+    @pulumi.getter(name="exploitabilityScore")
+    def exploitability_score(self) -> float:
+        return pulumi.get(self, "exploitability_score")
+
+    @property
+    @pulumi.getter(name="impactScore")
+    def impact_score(self) -> float:
+        return pulumi.get(self, "impact_score")
+
+    @property
+    @pulumi.getter(name="integrityImpact")
+    def integrity_impact(self) -> str:
+        return pulumi.get(self, "integrity_impact")
+
+    @property
+    @pulumi.getter(name="privilegesRequired")
+    def privileges_required(self) -> str:
+        return pulumi.get(self, "privileges_required")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter(name="userInteraction")
+    def user_interaction(self) -> str:
+        return pulumi.get(self, "user_interaction")
 
 
 @pulumi.output_type
@@ -4233,6 +4372,7 @@ class VulnerabilityOccurrenceResponse(dict):
 
     def __init__(__self__, *,
                  cvss_score: float,
+                 cvssv3: 'outputs.CVSSResponse',
                  effective_severity: str,
                  fix_available: bool,
                  long_description: str,
@@ -4244,6 +4384,7 @@ class VulnerabilityOccurrenceResponse(dict):
         """
         An occurrence of a severity vulnerability on a resource.
         :param float cvss_score: The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
+        :param 'CVSSResponse' cvssv3: The cvss v3 score for the vulnerability.
         :param str effective_severity: The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
         :param bool fix_available: Whether at least one of the affected packages has a fix available.
         :param str long_description: A detailed description of this vulnerability.
@@ -4254,6 +4395,7 @@ class VulnerabilityOccurrenceResponse(dict):
         :param str type: The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
         """
         pulumi.set(__self__, "cvss_score", cvss_score)
+        pulumi.set(__self__, "cvssv3", cvssv3)
         pulumi.set(__self__, "effective_severity", effective_severity)
         pulumi.set(__self__, "fix_available", fix_available)
         pulumi.set(__self__, "long_description", long_description)
@@ -4270,6 +4412,14 @@ class VulnerabilityOccurrenceResponse(dict):
         The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
         """
         return pulumi.get(self, "cvss_score")
+
+    @property
+    @pulumi.getter
+    def cvssv3(self) -> 'outputs.CVSSResponse':
+        """
+        The cvss v3 score for the vulnerability.
+        """
+        return pulumi.get(self, "cvssv3")
 
     @property
     @pulumi.getter(name="effectiveSeverity")

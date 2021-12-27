@@ -9,6 +9,8 @@ export * from "./endpointPolicy";
 export * from "./endpointPolicyIamPolicy";
 export * from "./getEndpointPolicy";
 export * from "./getEndpointPolicyIamPolicy";
+export * from "./getServiceBindingIamPolicy";
+export * from "./serviceBindingIamPolicy";
 
 // Export enums:
 export * from "../../types/enums/networkservices/v1beta1";
@@ -16,6 +18,7 @@ export * from "../../types/enums/networkservices/v1beta1";
 // Import resources to register:
 import { EndpointPolicy } from "./endpointPolicy";
 import { EndpointPolicyIamPolicy } from "./endpointPolicyIamPolicy";
+import { ServiceBindingIamPolicy } from "./serviceBindingIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -25,6 +28,8 @@ const _module = {
                 return new EndpointPolicy(name, <any>undefined, { urn })
             case "google-native:networkservices/v1beta1:EndpointPolicyIamPolicy":
                 return new EndpointPolicyIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1beta1:ServiceBindingIamPolicy":
+                return new ServiceBindingIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -23,7 +23,7 @@ type Processor struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
-	// Immutable. The resource name of the processor. Format: projects/{project}/locations/{location}/processors/{processor}
+	// Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The http endpoint that can be called to invoke processing.
 	ProcessEndpoint pulumi.StringOutput `pulumi:"processEndpoint"`

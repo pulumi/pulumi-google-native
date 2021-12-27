@@ -24,6 +24,7 @@ __all__ = [
     'GoogleCloudDatacatalogV1DatabaseTableSpecResponse',
     'GoogleCloudDatacatalogV1GcsFileSpecResponse',
     'GoogleCloudDatacatalogV1GcsFilesetSpecResponse',
+    'GoogleCloudDatacatalogV1PersonalDetailsResponse',
     'GoogleCloudDatacatalogV1RoutineSpecArgumentResponse',
     'GoogleCloudDatacatalogV1RoutineSpecResponse',
     'GoogleCloudDatacatalogV1SchemaResponse',
@@ -713,6 +714,56 @@ class GoogleCloudDatacatalogV1GcsFilesetSpecResponse(dict):
         Sample files contained in this fileset, not all files contained in this fileset are represented here.
         """
         return pulumi.get(self, "sample_gcs_file_specs")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1PersonalDetailsResponse(dict):
+    """
+    Entry metadata relevant only to the user and private to them.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "starTime":
+            suggest = "star_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1PersonalDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1PersonalDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1PersonalDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 star_time: str,
+                 starred: bool):
+        """
+        Entry metadata relevant only to the user and private to them.
+        :param str star_time: Set if the entry is starred; unset otherwise.
+        :param bool starred: True if the entry is starred by the user; false otherwise.
+        """
+        pulumi.set(__self__, "star_time", star_time)
+        pulumi.set(__self__, "starred", starred)
+
+    @property
+    @pulumi.getter(name="starTime")
+    def star_time(self) -> str:
+        """
+        Set if the entry is starred; unset otherwise.
+        """
+        return pulumi.get(self, "star_time")
+
+    @property
+    @pulumi.getter
+    def starred(self) -> bool:
+        """
+        True if the entry is starred by the user; false otherwise.
+        """
+        return pulumi.get(self, "starred")
 
 
 @pulumi.output_type

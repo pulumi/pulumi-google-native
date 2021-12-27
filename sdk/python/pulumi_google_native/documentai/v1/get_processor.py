@@ -79,7 +79,7 @@ class GetProcessorResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Immutable. The resource name of the processor. Format: projects/{project}/locations/{location}/processors/{processor}
+        Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
         """
         return pulumi.get(self, "name")
 

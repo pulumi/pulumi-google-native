@@ -4802,7 +4802,7 @@ type ClusterUpdate struct {
 	DesiredDefaultSnatStatus *DefaultSnatStatus `pulumi:"desiredDefaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DesiredDnsConfig *DNSConfig `pulumi:"desiredDnsConfig"`
-	// The desired GCFS config for the cluster
+	// The desired GCFS config for the cluster.
 	DesiredGcfsConfig *GcfsConfig `pulumi:"desiredGcfsConfig"`
 	// The desired Identity Service component configuration.
 	DesiredIdentityServiceConfig *IdentityServiceConfig `pulumi:"desiredIdentityServiceConfig"`
@@ -4893,7 +4893,7 @@ type ClusterUpdateArgs struct {
 	DesiredDefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"desiredDefaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DesiredDnsConfig DNSConfigPtrInput `pulumi:"desiredDnsConfig"`
-	// The desired GCFS config for the cluster
+	// The desired GCFS config for the cluster.
 	DesiredGcfsConfig GcfsConfigPtrInput `pulumi:"desiredGcfsConfig"`
 	// The desired Identity Service component configuration.
 	DesiredIdentityServiceConfig IdentityServiceConfigPtrInput `pulumi:"desiredIdentityServiceConfig"`
@@ -5025,7 +5025,7 @@ func (o ClusterUpdateOutput) DesiredDnsConfig() DNSConfigPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *DNSConfig { return v.DesiredDnsConfig }).(DNSConfigPtrOutput)
 }
 
-// The desired GCFS config for the cluster
+// The desired GCFS config for the cluster.
 func (o ClusterUpdateOutput) DesiredGcfsConfig() GcfsConfigPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *GcfsConfig { return v.DesiredGcfsConfig }).(GcfsConfigPtrOutput)
 }
@@ -7823,6 +7823,286 @@ func (o EphemeralStorageConfigResponsePtrOutput) LocalSsdCount() pulumi.IntPtrOu
 		}
 		return &v.LocalSsdCount
 	}).(pulumi.IntPtrOutput)
+}
+
+// Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+type Filter struct {
+	// Event types to allowlist.
+	EventType []FilterEventTypeItem `pulumi:"eventType"`
+}
+
+// FilterInput is an input type that accepts FilterArgs and FilterOutput values.
+// You can construct a concrete instance of `FilterInput` via:
+//
+//          FilterArgs{...}
+type FilterInput interface {
+	pulumi.Input
+
+	ToFilterOutput() FilterOutput
+	ToFilterOutputWithContext(context.Context) FilterOutput
+}
+
+// Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+type FilterArgs struct {
+	// Event types to allowlist.
+	EventType FilterEventTypeItemArrayInput `pulumi:"eventType"`
+}
+
+func (FilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Filter)(nil)).Elem()
+}
+
+func (i FilterArgs) ToFilterOutput() FilterOutput {
+	return i.ToFilterOutputWithContext(context.Background())
+}
+
+func (i FilterArgs) ToFilterOutputWithContext(ctx context.Context) FilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterOutput)
+}
+
+func (i FilterArgs) ToFilterPtrOutput() FilterPtrOutput {
+	return i.ToFilterPtrOutputWithContext(context.Background())
+}
+
+func (i FilterArgs) ToFilterPtrOutputWithContext(ctx context.Context) FilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterOutput).ToFilterPtrOutputWithContext(ctx)
+}
+
+// FilterPtrInput is an input type that accepts FilterArgs, FilterPtr and FilterPtrOutput values.
+// You can construct a concrete instance of `FilterPtrInput` via:
+//
+//          FilterArgs{...}
+//
+//  or:
+//
+//          nil
+type FilterPtrInput interface {
+	pulumi.Input
+
+	ToFilterPtrOutput() FilterPtrOutput
+	ToFilterPtrOutputWithContext(context.Context) FilterPtrOutput
+}
+
+type filterPtrType FilterArgs
+
+func FilterPtr(v *FilterArgs) FilterPtrInput {
+	return (*filterPtrType)(v)
+}
+
+func (*filterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Filter)(nil)).Elem()
+}
+
+func (i *filterPtrType) ToFilterPtrOutput() FilterPtrOutput {
+	return i.ToFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *filterPtrType) ToFilterPtrOutputWithContext(ctx context.Context) FilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterPtrOutput)
+}
+
+// Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+type FilterOutput struct{ *pulumi.OutputState }
+
+func (FilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Filter)(nil)).Elem()
+}
+
+func (o FilterOutput) ToFilterOutput() FilterOutput {
+	return o
+}
+
+func (o FilterOutput) ToFilterOutputWithContext(ctx context.Context) FilterOutput {
+	return o
+}
+
+func (o FilterOutput) ToFilterPtrOutput() FilterPtrOutput {
+	return o.ToFilterPtrOutputWithContext(context.Background())
+}
+
+func (o FilterOutput) ToFilterPtrOutputWithContext(ctx context.Context) FilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Filter) *Filter {
+		return &v
+	}).(FilterPtrOutput)
+}
+
+// Event types to allowlist.
+func (o FilterOutput) EventType() FilterEventTypeItemArrayOutput {
+	return o.ApplyT(func(v Filter) []FilterEventTypeItem { return v.EventType }).(FilterEventTypeItemArrayOutput)
+}
+
+type FilterPtrOutput struct{ *pulumi.OutputState }
+
+func (FilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Filter)(nil)).Elem()
+}
+
+func (o FilterPtrOutput) ToFilterPtrOutput() FilterPtrOutput {
+	return o
+}
+
+func (o FilterPtrOutput) ToFilterPtrOutputWithContext(ctx context.Context) FilterPtrOutput {
+	return o
+}
+
+func (o FilterPtrOutput) Elem() FilterOutput {
+	return o.ApplyT(func(v *Filter) Filter {
+		if v != nil {
+			return *v
+		}
+		var ret Filter
+		return ret
+	}).(FilterOutput)
+}
+
+// Event types to allowlist.
+func (o FilterPtrOutput) EventType() FilterEventTypeItemArrayOutput {
+	return o.ApplyT(func(v *Filter) []FilterEventTypeItem {
+		if v == nil {
+			return nil
+		}
+		return v.EventType
+	}).(FilterEventTypeItemArrayOutput)
+}
+
+// Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+type FilterResponse struct {
+	// Event types to allowlist.
+	EventType []string `pulumi:"eventType"`
+}
+
+// FilterResponseInput is an input type that accepts FilterResponseArgs and FilterResponseOutput values.
+// You can construct a concrete instance of `FilterResponseInput` via:
+//
+//          FilterResponseArgs{...}
+type FilterResponseInput interface {
+	pulumi.Input
+
+	ToFilterResponseOutput() FilterResponseOutput
+	ToFilterResponseOutputWithContext(context.Context) FilterResponseOutput
+}
+
+// Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+type FilterResponseArgs struct {
+	// Event types to allowlist.
+	EventType pulumi.StringArrayInput `pulumi:"eventType"`
+}
+
+func (FilterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterResponse)(nil)).Elem()
+}
+
+func (i FilterResponseArgs) ToFilterResponseOutput() FilterResponseOutput {
+	return i.ToFilterResponseOutputWithContext(context.Background())
+}
+
+func (i FilterResponseArgs) ToFilterResponseOutputWithContext(ctx context.Context) FilterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterResponseOutput)
+}
+
+func (i FilterResponseArgs) ToFilterResponsePtrOutput() FilterResponsePtrOutput {
+	return i.ToFilterResponsePtrOutputWithContext(context.Background())
+}
+
+func (i FilterResponseArgs) ToFilterResponsePtrOutputWithContext(ctx context.Context) FilterResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterResponseOutput).ToFilterResponsePtrOutputWithContext(ctx)
+}
+
+// FilterResponsePtrInput is an input type that accepts FilterResponseArgs, FilterResponsePtr and FilterResponsePtrOutput values.
+// You can construct a concrete instance of `FilterResponsePtrInput` via:
+//
+//          FilterResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type FilterResponsePtrInput interface {
+	pulumi.Input
+
+	ToFilterResponsePtrOutput() FilterResponsePtrOutput
+	ToFilterResponsePtrOutputWithContext(context.Context) FilterResponsePtrOutput
+}
+
+type filterResponsePtrType FilterResponseArgs
+
+func FilterResponsePtr(v *FilterResponseArgs) FilterResponsePtrInput {
+	return (*filterResponsePtrType)(v)
+}
+
+func (*filterResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FilterResponse)(nil)).Elem()
+}
+
+func (i *filterResponsePtrType) ToFilterResponsePtrOutput() FilterResponsePtrOutput {
+	return i.ToFilterResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *filterResponsePtrType) ToFilterResponsePtrOutputWithContext(ctx context.Context) FilterResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterResponsePtrOutput)
+}
+
+// Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+type FilterResponseOutput struct{ *pulumi.OutputState }
+
+func (FilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterResponse)(nil)).Elem()
+}
+
+func (o FilterResponseOutput) ToFilterResponseOutput() FilterResponseOutput {
+	return o
+}
+
+func (o FilterResponseOutput) ToFilterResponseOutputWithContext(ctx context.Context) FilterResponseOutput {
+	return o
+}
+
+func (o FilterResponseOutput) ToFilterResponsePtrOutput() FilterResponsePtrOutput {
+	return o.ToFilterResponsePtrOutputWithContext(context.Background())
+}
+
+func (o FilterResponseOutput) ToFilterResponsePtrOutputWithContext(ctx context.Context) FilterResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FilterResponse) *FilterResponse {
+		return &v
+	}).(FilterResponsePtrOutput)
+}
+
+// Event types to allowlist.
+func (o FilterResponseOutput) EventType() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FilterResponse) []string { return v.EventType }).(pulumi.StringArrayOutput)
+}
+
+type FilterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FilterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FilterResponse)(nil)).Elem()
+}
+
+func (o FilterResponsePtrOutput) ToFilterResponsePtrOutput() FilterResponsePtrOutput {
+	return o
+}
+
+func (o FilterResponsePtrOutput) ToFilterResponsePtrOutputWithContext(ctx context.Context) FilterResponsePtrOutput {
+	return o
+}
+
+func (o FilterResponsePtrOutput) Elem() FilterResponseOutput {
+	return o.ApplyT(func(v *FilterResponse) FilterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FilterResponse
+		return ret
+	}).(FilterResponseOutput)
+}
+
+// Event types to allowlist.
+func (o FilterResponsePtrOutput) EventType() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FilterResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EventType
+	}).(pulumi.StringArrayOutput)
 }
 
 // Configuration for the Compute Engine PD CSI driver.
@@ -12403,6 +12683,286 @@ func (o LoggingConfigResponsePtrOutput) ComponentConfig() LoggingComponentConfig
 		}
 		return &v.ComponentConfig
 	}).(LoggingComponentConfigResponsePtrOutput)
+}
+
+// Represents the Maintenance exclusion option.
+type MaintenanceExclusionOptions struct {
+	// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+	Scope *MaintenanceExclusionOptionsScope `pulumi:"scope"`
+}
+
+// MaintenanceExclusionOptionsInput is an input type that accepts MaintenanceExclusionOptionsArgs and MaintenanceExclusionOptionsOutput values.
+// You can construct a concrete instance of `MaintenanceExclusionOptionsInput` via:
+//
+//          MaintenanceExclusionOptionsArgs{...}
+type MaintenanceExclusionOptionsInput interface {
+	pulumi.Input
+
+	ToMaintenanceExclusionOptionsOutput() MaintenanceExclusionOptionsOutput
+	ToMaintenanceExclusionOptionsOutputWithContext(context.Context) MaintenanceExclusionOptionsOutput
+}
+
+// Represents the Maintenance exclusion option.
+type MaintenanceExclusionOptionsArgs struct {
+	// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+	Scope MaintenanceExclusionOptionsScopePtrInput `pulumi:"scope"`
+}
+
+func (MaintenanceExclusionOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceExclusionOptions)(nil)).Elem()
+}
+
+func (i MaintenanceExclusionOptionsArgs) ToMaintenanceExclusionOptionsOutput() MaintenanceExclusionOptionsOutput {
+	return i.ToMaintenanceExclusionOptionsOutputWithContext(context.Background())
+}
+
+func (i MaintenanceExclusionOptionsArgs) ToMaintenanceExclusionOptionsOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceExclusionOptionsOutput)
+}
+
+func (i MaintenanceExclusionOptionsArgs) ToMaintenanceExclusionOptionsPtrOutput() MaintenanceExclusionOptionsPtrOutput {
+	return i.ToMaintenanceExclusionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i MaintenanceExclusionOptionsArgs) ToMaintenanceExclusionOptionsPtrOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceExclusionOptionsOutput).ToMaintenanceExclusionOptionsPtrOutputWithContext(ctx)
+}
+
+// MaintenanceExclusionOptionsPtrInput is an input type that accepts MaintenanceExclusionOptionsArgs, MaintenanceExclusionOptionsPtr and MaintenanceExclusionOptionsPtrOutput values.
+// You can construct a concrete instance of `MaintenanceExclusionOptionsPtrInput` via:
+//
+//          MaintenanceExclusionOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type MaintenanceExclusionOptionsPtrInput interface {
+	pulumi.Input
+
+	ToMaintenanceExclusionOptionsPtrOutput() MaintenanceExclusionOptionsPtrOutput
+	ToMaintenanceExclusionOptionsPtrOutputWithContext(context.Context) MaintenanceExclusionOptionsPtrOutput
+}
+
+type maintenanceExclusionOptionsPtrType MaintenanceExclusionOptionsArgs
+
+func MaintenanceExclusionOptionsPtr(v *MaintenanceExclusionOptionsArgs) MaintenanceExclusionOptionsPtrInput {
+	return (*maintenanceExclusionOptionsPtrType)(v)
+}
+
+func (*maintenanceExclusionOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceExclusionOptions)(nil)).Elem()
+}
+
+func (i *maintenanceExclusionOptionsPtrType) ToMaintenanceExclusionOptionsPtrOutput() MaintenanceExclusionOptionsPtrOutput {
+	return i.ToMaintenanceExclusionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *maintenanceExclusionOptionsPtrType) ToMaintenanceExclusionOptionsPtrOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceExclusionOptionsPtrOutput)
+}
+
+// Represents the Maintenance exclusion option.
+type MaintenanceExclusionOptionsOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceExclusionOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceExclusionOptions)(nil)).Elem()
+}
+
+func (o MaintenanceExclusionOptionsOutput) ToMaintenanceExclusionOptionsOutput() MaintenanceExclusionOptionsOutput {
+	return o
+}
+
+func (o MaintenanceExclusionOptionsOutput) ToMaintenanceExclusionOptionsOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsOutput {
+	return o
+}
+
+func (o MaintenanceExclusionOptionsOutput) ToMaintenanceExclusionOptionsPtrOutput() MaintenanceExclusionOptionsPtrOutput {
+	return o.ToMaintenanceExclusionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceExclusionOptionsOutput) ToMaintenanceExclusionOptionsPtrOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceExclusionOptions) *MaintenanceExclusionOptions {
+		return &v
+	}).(MaintenanceExclusionOptionsPtrOutput)
+}
+
+// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+func (o MaintenanceExclusionOptionsOutput) Scope() MaintenanceExclusionOptionsScopePtrOutput {
+	return o.ApplyT(func(v MaintenanceExclusionOptions) *MaintenanceExclusionOptionsScope { return v.Scope }).(MaintenanceExclusionOptionsScopePtrOutput)
+}
+
+type MaintenanceExclusionOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceExclusionOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceExclusionOptions)(nil)).Elem()
+}
+
+func (o MaintenanceExclusionOptionsPtrOutput) ToMaintenanceExclusionOptionsPtrOutput() MaintenanceExclusionOptionsPtrOutput {
+	return o
+}
+
+func (o MaintenanceExclusionOptionsPtrOutput) ToMaintenanceExclusionOptionsPtrOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsPtrOutput {
+	return o
+}
+
+func (o MaintenanceExclusionOptionsPtrOutput) Elem() MaintenanceExclusionOptionsOutput {
+	return o.ApplyT(func(v *MaintenanceExclusionOptions) MaintenanceExclusionOptions {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceExclusionOptions
+		return ret
+	}).(MaintenanceExclusionOptionsOutput)
+}
+
+// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+func (o MaintenanceExclusionOptionsPtrOutput) Scope() MaintenanceExclusionOptionsScopePtrOutput {
+	return o.ApplyT(func(v *MaintenanceExclusionOptions) *MaintenanceExclusionOptionsScope {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(MaintenanceExclusionOptionsScopePtrOutput)
+}
+
+// Represents the Maintenance exclusion option.
+type MaintenanceExclusionOptionsResponse struct {
+	// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+	Scope string `pulumi:"scope"`
+}
+
+// MaintenanceExclusionOptionsResponseInput is an input type that accepts MaintenanceExclusionOptionsResponseArgs and MaintenanceExclusionOptionsResponseOutput values.
+// You can construct a concrete instance of `MaintenanceExclusionOptionsResponseInput` via:
+//
+//          MaintenanceExclusionOptionsResponseArgs{...}
+type MaintenanceExclusionOptionsResponseInput interface {
+	pulumi.Input
+
+	ToMaintenanceExclusionOptionsResponseOutput() MaintenanceExclusionOptionsResponseOutput
+	ToMaintenanceExclusionOptionsResponseOutputWithContext(context.Context) MaintenanceExclusionOptionsResponseOutput
+}
+
+// Represents the Maintenance exclusion option.
+type MaintenanceExclusionOptionsResponseArgs struct {
+	// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (MaintenanceExclusionOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceExclusionOptionsResponse)(nil)).Elem()
+}
+
+func (i MaintenanceExclusionOptionsResponseArgs) ToMaintenanceExclusionOptionsResponseOutput() MaintenanceExclusionOptionsResponseOutput {
+	return i.ToMaintenanceExclusionOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i MaintenanceExclusionOptionsResponseArgs) ToMaintenanceExclusionOptionsResponseOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceExclusionOptionsResponseOutput)
+}
+
+func (i MaintenanceExclusionOptionsResponseArgs) ToMaintenanceExclusionOptionsResponsePtrOutput() MaintenanceExclusionOptionsResponsePtrOutput {
+	return i.ToMaintenanceExclusionOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MaintenanceExclusionOptionsResponseArgs) ToMaintenanceExclusionOptionsResponsePtrOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceExclusionOptionsResponseOutput).ToMaintenanceExclusionOptionsResponsePtrOutputWithContext(ctx)
+}
+
+// MaintenanceExclusionOptionsResponsePtrInput is an input type that accepts MaintenanceExclusionOptionsResponseArgs, MaintenanceExclusionOptionsResponsePtr and MaintenanceExclusionOptionsResponsePtrOutput values.
+// You can construct a concrete instance of `MaintenanceExclusionOptionsResponsePtrInput` via:
+//
+//          MaintenanceExclusionOptionsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MaintenanceExclusionOptionsResponsePtrInput interface {
+	pulumi.Input
+
+	ToMaintenanceExclusionOptionsResponsePtrOutput() MaintenanceExclusionOptionsResponsePtrOutput
+	ToMaintenanceExclusionOptionsResponsePtrOutputWithContext(context.Context) MaintenanceExclusionOptionsResponsePtrOutput
+}
+
+type maintenanceExclusionOptionsResponsePtrType MaintenanceExclusionOptionsResponseArgs
+
+func MaintenanceExclusionOptionsResponsePtr(v *MaintenanceExclusionOptionsResponseArgs) MaintenanceExclusionOptionsResponsePtrInput {
+	return (*maintenanceExclusionOptionsResponsePtrType)(v)
+}
+
+func (*maintenanceExclusionOptionsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceExclusionOptionsResponse)(nil)).Elem()
+}
+
+func (i *maintenanceExclusionOptionsResponsePtrType) ToMaintenanceExclusionOptionsResponsePtrOutput() MaintenanceExclusionOptionsResponsePtrOutput {
+	return i.ToMaintenanceExclusionOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *maintenanceExclusionOptionsResponsePtrType) ToMaintenanceExclusionOptionsResponsePtrOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceExclusionOptionsResponsePtrOutput)
+}
+
+// Represents the Maintenance exclusion option.
+type MaintenanceExclusionOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceExclusionOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceExclusionOptionsResponse)(nil)).Elem()
+}
+
+func (o MaintenanceExclusionOptionsResponseOutput) ToMaintenanceExclusionOptionsResponseOutput() MaintenanceExclusionOptionsResponseOutput {
+	return o
+}
+
+func (o MaintenanceExclusionOptionsResponseOutput) ToMaintenanceExclusionOptionsResponseOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsResponseOutput {
+	return o
+}
+
+func (o MaintenanceExclusionOptionsResponseOutput) ToMaintenanceExclusionOptionsResponsePtrOutput() MaintenanceExclusionOptionsResponsePtrOutput {
+	return o.ToMaintenanceExclusionOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceExclusionOptionsResponseOutput) ToMaintenanceExclusionOptionsResponsePtrOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceExclusionOptionsResponse) *MaintenanceExclusionOptionsResponse {
+		return &v
+	}).(MaintenanceExclusionOptionsResponsePtrOutput)
+}
+
+// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+func (o MaintenanceExclusionOptionsResponseOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceExclusionOptionsResponse) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type MaintenanceExclusionOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceExclusionOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceExclusionOptionsResponse)(nil)).Elem()
+}
+
+func (o MaintenanceExclusionOptionsResponsePtrOutput) ToMaintenanceExclusionOptionsResponsePtrOutput() MaintenanceExclusionOptionsResponsePtrOutput {
+	return o
+}
+
+func (o MaintenanceExclusionOptionsResponsePtrOutput) ToMaintenanceExclusionOptionsResponsePtrOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsResponsePtrOutput {
+	return o
+}
+
+func (o MaintenanceExclusionOptionsResponsePtrOutput) Elem() MaintenanceExclusionOptionsResponseOutput {
+	return o.ApplyT(func(v *MaintenanceExclusionOptionsResponse) MaintenanceExclusionOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceExclusionOptionsResponse
+		return ret
+	}).(MaintenanceExclusionOptionsResponseOutput)
+}
+
+// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+func (o MaintenanceExclusionOptionsResponsePtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenanceExclusionOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Scope
+	}).(pulumi.StringPtrOutput)
 }
 
 // MaintenancePolicy defines the maintenance policy to be used for the cluster.
@@ -18256,7 +18816,7 @@ type NodeKubeletConfig struct {
 	CpuCfsQuota *bool `pulumi:"cpuCfsQuota"`
 	// Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
 	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
-	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
 }
 
@@ -18277,7 +18837,7 @@ type NodeKubeletConfigArgs struct {
 	CpuCfsQuota pulumi.BoolPtrInput `pulumi:"cpuCfsQuota"`
 	// Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
 	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
-	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
 }
 
@@ -18369,7 +18929,7 @@ func (o NodeKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeKubeletConfig) *string { return v.CpuCfsQuotaPeriod }).(pulumi.StringPtrOutput)
 }
 
-// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 func (o NodeKubeletConfigOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeKubeletConfig) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
 }
@@ -18418,7 +18978,7 @@ func (o NodeKubeletConfigPtrOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 func (o NodeKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeKubeletConfig) *string {
 		if v == nil {
@@ -18434,7 +18994,7 @@ type NodeKubeletConfigResponse struct {
 	CpuCfsQuota bool `pulumi:"cpuCfsQuota"`
 	// Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
 	CpuCfsQuotaPeriod string `pulumi:"cpuCfsQuotaPeriod"`
-	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
 }
 
@@ -18455,7 +19015,7 @@ type NodeKubeletConfigResponseArgs struct {
 	CpuCfsQuota pulumi.BoolInput `pulumi:"cpuCfsQuota"`
 	// Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
 	CpuCfsQuotaPeriod pulumi.StringInput `pulumi:"cpuCfsQuotaPeriod"`
-	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
 }
 
@@ -18547,7 +19107,7 @@ func (o NodeKubeletConfigResponseOutput) CpuCfsQuotaPeriod() pulumi.StringOutput
 	return o.ApplyT(func(v NodeKubeletConfigResponse) string { return v.CpuCfsQuotaPeriod }).(pulumi.StringOutput)
 }
 
-// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 func (o NodeKubeletConfigResponseOutput) CpuManagerPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeKubeletConfigResponse) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
 }
@@ -18596,7 +19156,7 @@ func (o NodeKubeletConfigResponsePtrOutput) CpuCfsQuotaPeriod() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 func (o NodeKubeletConfigResponsePtrOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeKubeletConfigResponse) *string {
 		if v == nil {
@@ -22053,6 +22613,8 @@ func (o PrivateClusterMasterGlobalAccessConfigResponsePtrOutput) Enabled() pulum
 type PubSub struct {
 	// Enable notifications for Pub/Sub.
 	Enabled *bool `pulumi:"enabled"`
+	// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
+	Filter *Filter `pulumi:"filter"`
 	// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
 	Topic *string `pulumi:"topic"`
 }
@@ -22072,6 +22634,8 @@ type PubSubInput interface {
 type PubSubArgs struct {
 	// Enable notifications for Pub/Sub.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
+	Filter FilterPtrInput `pulumi:"filter"`
 	// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
 }
@@ -22159,6 +22723,11 @@ func (o PubSubOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PubSub) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
+func (o PubSubOutput) Filter() FilterPtrOutput {
+	return o.ApplyT(func(v PubSub) *Filter { return v.Filter }).(FilterPtrOutput)
+}
+
 // The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
 func (o PubSubOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PubSub) *string { return v.Topic }).(pulumi.StringPtrOutput)
@@ -22198,6 +22767,16 @@ func (o PubSubPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
+func (o PubSubPtrOutput) Filter() FilterPtrOutput {
+	return o.ApplyT(func(v *PubSub) *Filter {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(FilterPtrOutput)
+}
+
 // The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
 func (o PubSubPtrOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PubSub) *string {
@@ -22212,6 +22791,8 @@ func (o PubSubPtrOutput) Topic() pulumi.StringPtrOutput {
 type PubSubResponse struct {
 	// Enable notifications for Pub/Sub.
 	Enabled bool `pulumi:"enabled"`
+	// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
+	Filter FilterResponse `pulumi:"filter"`
 	// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
 	Topic string `pulumi:"topic"`
 }
@@ -22231,6 +22812,8 @@ type PubSubResponseInput interface {
 type PubSubResponseArgs struct {
 	// Enable notifications for Pub/Sub.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
+	Filter FilterResponseInput `pulumi:"filter"`
 	// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
 	Topic pulumi.StringInput `pulumi:"topic"`
 }
@@ -22318,6 +22901,11 @@ func (o PubSubResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PubSubResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
+func (o PubSubResponseOutput) Filter() FilterResponseOutput {
+	return o.ApplyT(func(v PubSubResponse) FilterResponse { return v.Filter }).(FilterResponseOutput)
+}
+
 // The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
 func (o PubSubResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v PubSubResponse) string { return v.Topic }).(pulumi.StringOutput)
@@ -22355,6 +22943,16 @@ func (o PubSubResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
+func (o PubSubResponsePtrOutput) Filter() FilterResponsePtrOutput {
+	return o.ApplyT(func(v *PubSubResponse) *FilterResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Filter
+	}).(FilterResponsePtrOutput)
 }
 
 // The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
@@ -25335,6 +25933,8 @@ func (o StatusConditionResponseArrayOutput) Index(i pulumi.IntInput) StatusCondi
 type TimeWindow struct {
 	// The time that the window ends. The end time should take place after the start time.
 	EndTime *string `pulumi:"endTime"`
+	// MaintenanceExclusionOptions provides maintenance exclusion related options.
+	MaintenanceExclusionOptions *MaintenanceExclusionOptions `pulumi:"maintenanceExclusionOptions"`
 	// The time that the window first starts.
 	StartTime *string `pulumi:"startTime"`
 }
@@ -25354,6 +25954,8 @@ type TimeWindowInput interface {
 type TimeWindowArgs struct {
 	// The time that the window ends. The end time should take place after the start time.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// MaintenanceExclusionOptions provides maintenance exclusion related options.
+	MaintenanceExclusionOptions MaintenanceExclusionOptionsPtrInput `pulumi:"maintenanceExclusionOptions"`
 	// The time that the window first starts.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
@@ -25441,6 +26043,11 @@ func (o TimeWindowOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeWindow) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// MaintenanceExclusionOptions provides maintenance exclusion related options.
+func (o TimeWindowOutput) MaintenanceExclusionOptions() MaintenanceExclusionOptionsPtrOutput {
+	return o.ApplyT(func(v TimeWindow) *MaintenanceExclusionOptions { return v.MaintenanceExclusionOptions }).(MaintenanceExclusionOptionsPtrOutput)
+}
+
 // The time that the window first starts.
 func (o TimeWindowOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeWindow) *string { return v.StartTime }).(pulumi.StringPtrOutput)
@@ -25480,6 +26087,16 @@ func (o TimeWindowPtrOutput) EndTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// MaintenanceExclusionOptions provides maintenance exclusion related options.
+func (o TimeWindowPtrOutput) MaintenanceExclusionOptions() MaintenanceExclusionOptionsPtrOutput {
+	return o.ApplyT(func(v *TimeWindow) *MaintenanceExclusionOptions {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceExclusionOptions
+	}).(MaintenanceExclusionOptionsPtrOutput)
+}
+
 // The time that the window first starts.
 func (o TimeWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeWindow) *string {
@@ -25494,6 +26111,8 @@ func (o TimeWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
 type TimeWindowResponse struct {
 	// The time that the window ends. The end time should take place after the start time.
 	EndTime string `pulumi:"endTime"`
+	// MaintenanceExclusionOptions provides maintenance exclusion related options.
+	MaintenanceExclusionOptions MaintenanceExclusionOptionsResponse `pulumi:"maintenanceExclusionOptions"`
 	// The time that the window first starts.
 	StartTime string `pulumi:"startTime"`
 }
@@ -25513,6 +26132,8 @@ type TimeWindowResponseInput interface {
 type TimeWindowResponseArgs struct {
 	// The time that the window ends. The end time should take place after the start time.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// MaintenanceExclusionOptions provides maintenance exclusion related options.
+	MaintenanceExclusionOptions MaintenanceExclusionOptionsResponseInput `pulumi:"maintenanceExclusionOptions"`
 	// The time that the window first starts.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
@@ -25600,6 +26221,11 @@ func (o TimeWindowResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeWindowResponse) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
+// MaintenanceExclusionOptions provides maintenance exclusion related options.
+func (o TimeWindowResponseOutput) MaintenanceExclusionOptions() MaintenanceExclusionOptionsResponseOutput {
+	return o.ApplyT(func(v TimeWindowResponse) MaintenanceExclusionOptionsResponse { return v.MaintenanceExclusionOptions }).(MaintenanceExclusionOptionsResponseOutput)
+}
+
 // The time that the window first starts.
 func (o TimeWindowResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeWindowResponse) string { return v.StartTime }).(pulumi.StringOutput)
@@ -25637,6 +26263,16 @@ func (o TimeWindowResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
 		}
 		return &v.EndTime
 	}).(pulumi.StringPtrOutput)
+}
+
+// MaintenanceExclusionOptions provides maintenance exclusion related options.
+func (o TimeWindowResponsePtrOutput) MaintenanceExclusionOptions() MaintenanceExclusionOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *TimeWindowResponse) *MaintenanceExclusionOptionsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MaintenanceExclusionOptions
+	}).(MaintenanceExclusionOptionsResponsePtrOutput)
 }
 
 // The time that the window first starts.
@@ -27925,6 +28561,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralStorageConfigPtrInput)(nil)).Elem(), EphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralStorageConfigResponseInput)(nil)).Elem(), EphemeralStorageConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralStorageConfigResponsePtrInput)(nil)).Elem(), EphemeralStorageConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FilterInput)(nil)).Elem(), FilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FilterPtrInput)(nil)).Elem(), FilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FilterResponseInput)(nil)).Elem(), FilterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FilterResponsePtrInput)(nil)).Elem(), FilterResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigPtrInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigResponseInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigResponseArgs{})
@@ -27985,6 +28625,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigPtrInput)(nil)).Elem(), LoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigResponseInput)(nil)).Elem(), LoggingConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigResponsePtrInput)(nil)).Elem(), LoggingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceExclusionOptionsInput)(nil)).Elem(), MaintenanceExclusionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceExclusionOptionsPtrInput)(nil)).Elem(), MaintenanceExclusionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceExclusionOptionsResponseInput)(nil)).Elem(), MaintenanceExclusionOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceExclusionOptionsResponsePtrInput)(nil)).Elem(), MaintenanceExclusionOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyInput)(nil)).Elem(), MaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyPtrInput)(nil)).Elem(), MaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyResponseInput)(nil)).Elem(), MaintenancePolicyResponseArgs{})
@@ -28261,6 +28905,10 @@ func init() {
 	pulumi.RegisterOutputType(EphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(EphemeralStorageConfigResponseOutput{})
 	pulumi.RegisterOutputType(EphemeralStorageConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(FilterOutput{})
+	pulumi.RegisterOutputType(FilterPtrOutput{})
+	pulumi.RegisterOutputType(FilterResponseOutput{})
+	pulumi.RegisterOutputType(FilterResponsePtrOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigResponseOutput{})
@@ -28321,6 +28969,10 @@ func init() {
 	pulumi.RegisterOutputType(LoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoggingConfigResponseOutput{})
 	pulumi.RegisterOutputType(LoggingConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(MaintenanceExclusionOptionsOutput{})
+	pulumi.RegisterOutputType(MaintenanceExclusionOptionsPtrOutput{})
+	pulumi.RegisterOutputType(MaintenanceExclusionOptionsResponseOutput{})
+	pulumi.RegisterOutputType(MaintenanceExclusionOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyResponseOutput{})

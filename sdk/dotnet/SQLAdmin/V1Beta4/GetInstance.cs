@@ -73,7 +73,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly string CurrentDiskSize;
         /// <summary>
-        /// The databaseInstalledVersion stores the current fully resolved database version running on the instance including minor version such as MYSQL_5_6_50
+        /// Stores the current database version running on the instance including minor version such as **MYSQL_8_0_18**.
         /// </summary>
         public readonly string DatabaseInstalledVersion;
         /// <summary>
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly Outputs.InstanceFailoverReplicaResponse FailoverReplica;
         /// <summary>
-        /// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+        /// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
         /// </summary>
         public readonly string GceZone;
         /// <summary>

@@ -42,6 +42,8 @@ type Entry struct {
 	LinkedResource pulumi.StringOutput `pulumi:"linkedResource"`
 	// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Additional information related to the entry. Private to the current user.
+	PersonalDetails GoogleCloudDatacatalogV1PersonalDetailsResponseOutput `pulumi:"personalDetails"`
 	// Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
 	RoutineSpec GoogleCloudDatacatalogV1RoutineSpecResponseOutput `pulumi:"routineSpec"`
 	// Schema of the entry. An entry might not have any schema attached to it.

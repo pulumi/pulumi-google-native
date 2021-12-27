@@ -192,6 +192,7 @@ class CloudSqlSettingsArgs:
     def __init__(__self__, *,
                  activation_policy: Optional[pulumi.Input['CloudSqlSettingsActivationPolicy']] = None,
                  auto_storage_increase: Optional[pulumi.Input[bool]] = None,
+                 cmek_key_name: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[str]] = None,
                  data_disk_type: Optional[pulumi.Input['CloudSqlSettingsDataDiskType']] = None,
@@ -208,6 +209,7 @@ class CloudSqlSettingsArgs:
         Settings for creating a Cloud SQL database instance.
         :param pulumi.Input['CloudSqlSettingsActivationPolicy'] activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
         :param pulumi.Input[bool] auto_storage_increase: [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
+        :param pulumi.Input[str] cmek_key_name: The KMS key name used for the csql instance.
         :param pulumi.Input[str] collation: The Cloud SQL default instance level collation.
         :param pulumi.Input[str] data_disk_size_gb: The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
         :param pulumi.Input['CloudSqlSettingsDataDiskType'] data_disk_type: The type of storage: `PD_SSD` (default) or `PD_HDD`.
@@ -225,6 +227,8 @@ class CloudSqlSettingsArgs:
             pulumi.set(__self__, "activation_policy", activation_policy)
         if auto_storage_increase is not None:
             pulumi.set(__self__, "auto_storage_increase", auto_storage_increase)
+        if cmek_key_name is not None:
+            pulumi.set(__self__, "cmek_key_name", cmek_key_name)
         if collation is not None:
             pulumi.set(__self__, "collation", collation)
         if data_disk_size_gb is not None:
@@ -273,6 +277,18 @@ class CloudSqlSettingsArgs:
     @auto_storage_increase.setter
     def auto_storage_increase(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_storage_increase", value)
+
+    @property
+    @pulumi.getter(name="cmekKeyName")
+    def cmek_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The KMS key name used for the csql instance.
+        """
+        return pulumi.get(self, "cmek_key_name")
+
+    @cmek_key_name.setter
+    def cmek_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cmek_key_name", value)
 
     @property
     @pulumi.getter

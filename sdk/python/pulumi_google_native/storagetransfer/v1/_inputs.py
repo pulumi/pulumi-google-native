@@ -19,6 +19,7 @@ __all__ = [
     'GcsDataArgs',
     'HttpDataArgs',
     'LoggingConfigArgs',
+    'MetadataOptionsArgs',
     'NotificationConfigArgs',
     'ObjectConditionsArgs',
     'PosixFilesystemArgs',
@@ -213,7 +214,7 @@ class AzureCredentialsArgs:
                  sas_token: pulumi.Input[str]):
         """
         Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
-        :param pulumi.Input[str] sas_token: Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+        :param pulumi.Input[str] sas_token: Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
         """
         pulumi.set(__self__, "sas_token", sas_token)
 
@@ -221,7 +222,7 @@ class AzureCredentialsArgs:
     @pulumi.getter(name="sasToken")
     def sas_token(self) -> pulumi.Input[str]:
         """
-        Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+        Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
         """
         return pulumi.get(self, "sas_token")
 
@@ -379,10 +380,10 @@ class LoggingConfigArgs:
                  log_action_states: Optional[pulumi.Input[Sequence[pulumi.Input['LoggingConfigLogActionStatesItem']]]] = None,
                  log_actions: Optional[pulumi.Input[Sequence[pulumi.Input['LoggingConfigLogActionsItem']]]] = None):
         """
-        Logging configuration.
-        :param pulumi.Input[bool] enable_onprem_gcs_transfer_logs: Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
-        :param pulumi.Input[Sequence[pulumi.Input['LoggingConfigLogActionStatesItem']]] log_action_states: States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
-        :param pulumi.Input[Sequence[pulumi.Input['LoggingConfigLogActionsItem']]] log_actions: Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+        Specifies the logging behavior for transfer operations. For cloud-to-cloud transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For transfers to or from a POSIX file system, logs are stored in the Cloud Storage bucket that is the source or sink of the transfer. See [Managing Transfer for on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-prem-jobs#viewing-logs) for details.
+        :param pulumi.Input[bool] enable_onprem_gcs_transfer_logs: For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
+        :param pulumi.Input[Sequence[pulumi.Input['LoggingConfigLogActionStatesItem']]] log_action_states: States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
+        :param pulumi.Input[Sequence[pulumi.Input['LoggingConfigLogActionsItem']]] log_actions: Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
         """
         if enable_onprem_gcs_transfer_logs is not None:
             pulumi.set(__self__, "enable_onprem_gcs_transfer_logs", enable_onprem_gcs_transfer_logs)
@@ -395,7 +396,7 @@ class LoggingConfigArgs:
     @pulumi.getter(name="enableOnpremGcsTransferLogs")
     def enable_onprem_gcs_transfer_logs(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+        For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
         """
         return pulumi.get(self, "enable_onprem_gcs_transfer_logs")
 
@@ -407,7 +408,7 @@ class LoggingConfigArgs:
     @pulumi.getter(name="logActionStates")
     def log_action_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoggingConfigLogActionStatesItem']]]]:
         """
-        States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+        States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
         """
         return pulumi.get(self, "log_action_states")
 
@@ -419,13 +420,85 @@ class LoggingConfigArgs:
     @pulumi.getter(name="logActions")
     def log_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoggingConfigLogActionsItem']]]]:
         """
-        Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+        Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
         """
         return pulumi.get(self, "log_actions")
 
     @log_actions.setter
     def log_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoggingConfigLogActionsItem']]]]):
         pulumi.set(self, "log_actions", value)
+
+
+@pulumi.input_type
+class MetadataOptionsArgs:
+    def __init__(__self__, *,
+                 gid: Optional[pulumi.Input['MetadataOptionsGid']] = None,
+                 mode: Optional[pulumi.Input['MetadataOptionsMode']] = None,
+                 symlink: Optional[pulumi.Input['MetadataOptionsSymlink']] = None,
+                 uid: Optional[pulumi.Input['MetadataOptionsUid']] = None):
+        """
+        Specifies the metadata options for running a transfer.
+        :param pulumi.Input['MetadataOptionsGid'] gid: Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+        :param pulumi.Input['MetadataOptionsMode'] mode: Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+        :param pulumi.Input['MetadataOptionsSymlink'] symlink: Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+        :param pulumi.Input['MetadataOptionsUid'] uid: Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+        """
+        if gid is not None:
+            pulumi.set(__self__, "gid", gid)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if symlink is not None:
+            pulumi.set(__self__, "symlink", symlink)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def gid(self) -> Optional[pulumi.Input['MetadataOptionsGid']]:
+        """
+        Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+        """
+        return pulumi.get(self, "gid")
+
+    @gid.setter
+    def gid(self, value: Optional[pulumi.Input['MetadataOptionsGid']]):
+        pulumi.set(self, "gid", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input['MetadataOptionsMode']]:
+        """
+        Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input['MetadataOptionsMode']]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def symlink(self) -> Optional[pulumi.Input['MetadataOptionsSymlink']]:
+        """
+        Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+        """
+        return pulumi.get(self, "symlink")
+
+    @symlink.setter
+    def symlink(self, value: Optional[pulumi.Input['MetadataOptionsSymlink']]):
+        pulumi.set(self, "symlink", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input['MetadataOptionsUid']]:
+        """
+        Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input['MetadataOptionsUid']]):
+        pulumi.set(self, "uid", value)
 
 
 @pulumi.input_type
@@ -497,8 +570,8 @@ class ObjectConditionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_prefixes: If you specify `include_prefixes`, Storage Transfer Service uses the items in the `include_prefixes` array to determine which objects to include in a transfer. Objects must start with one of the matching `include_prefixes` for inclusion in the transfer. If exclude_prefixes is specified, objects must not start with any of the `exclude_prefixes` specified for inclusion in the transfer. The following are requirements of `include_prefixes`: * Each include-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each include-prefix must omit the leading slash. For example, to include the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include-prefix as `logs/y=2015/requests.gz`. * None of the include-prefix values can be empty, if specified. * Each include-prefix must include a distinct portion of the object namespace. No include-prefix may be a prefix of another include-prefix. The max size of `include_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
         :param pulumi.Input[str] last_modified_before: If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred.
         :param pulumi.Input[str] last_modified_since: If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. The `last_modified_since` and `last_modified_before` fields can be used together for chunked data processing. For example, consider a script that processes each day's worth of data at a time. For that you'd set each of the fields as follows: * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day
-        :param pulumi.Input[str] max_time_elapsed_since_last_modification: If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
-        :param pulumi.Input[str] min_time_elapsed_since_last_modification: If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+        :param pulumi.Input[str] max_time_elapsed_since_last_modification: Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation`and the "last modification time" of the object is less than the value of max_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
+        :param pulumi.Input[str] min_time_elapsed_since_last_modification: Ensures that objects are not transferred until a specific minimum time has elapsed after the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation` and the "last modification time" of the object is equal to or greater than the value of min_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
         """
         if exclude_prefixes is not None:
             pulumi.set(__self__, "exclude_prefixes", exclude_prefixes)
@@ -565,7 +638,7 @@ class ObjectConditionsArgs:
     @pulumi.getter(name="maxTimeElapsedSinceLastModification")
     def max_time_elapsed_since_last_modification(self) -> Optional[pulumi.Input[str]]:
         """
-        If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+        Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation`and the "last modification time" of the object is less than the value of max_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
         """
         return pulumi.get(self, "max_time_elapsed_since_last_modification")
 
@@ -577,7 +650,7 @@ class ObjectConditionsArgs:
     @pulumi.getter(name="minTimeElapsedSinceLastModification")
     def min_time_elapsed_since_last_modification(self) -> Optional[pulumi.Input[str]]:
         """
-        If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+        Ensures that objects are not transferred until a specific minimum time has elapsed after the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation` and the "last modification time" of the object is equal to or greater than the value of min_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
         """
         return pulumi.get(self, "min_time_elapsed_since_last_modification")
 
@@ -798,17 +871,21 @@ class TransferOptionsArgs:
     def __init__(__self__, *,
                  delete_objects_from_source_after_transfer: Optional[pulumi.Input[bool]] = None,
                  delete_objects_unique_in_sink: Optional[pulumi.Input[bool]] = None,
+                 metadata_options: Optional[pulumi.Input['MetadataOptionsArgs']] = None,
                  overwrite_objects_already_existing_in_sink: Optional[pulumi.Input[bool]] = None):
         """
         TransferOptions define the actions to be performed on objects in a transfer.
         :param pulumi.Input[bool] delete_objects_from_source_after_transfer: Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
         :param pulumi.Input[bool] delete_objects_unique_in_sink: Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
+        :param pulumi.Input['MetadataOptionsArgs'] metadata_options: Represents the selected metadata options for a transfer job.
         :param pulumi.Input[bool] overwrite_objects_already_existing_in_sink: When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
         """
         if delete_objects_from_source_after_transfer is not None:
             pulumi.set(__self__, "delete_objects_from_source_after_transfer", delete_objects_from_source_after_transfer)
         if delete_objects_unique_in_sink is not None:
             pulumi.set(__self__, "delete_objects_unique_in_sink", delete_objects_unique_in_sink)
+        if metadata_options is not None:
+            pulumi.set(__self__, "metadata_options", metadata_options)
         if overwrite_objects_already_existing_in_sink is not None:
             pulumi.set(__self__, "overwrite_objects_already_existing_in_sink", overwrite_objects_already_existing_in_sink)
 
@@ -837,6 +914,18 @@ class TransferOptionsArgs:
         pulumi.set(self, "delete_objects_unique_in_sink", value)
 
     @property
+    @pulumi.getter(name="metadataOptions")
+    def metadata_options(self) -> Optional[pulumi.Input['MetadataOptionsArgs']]:
+        """
+        Represents the selected metadata options for a transfer job.
+        """
+        return pulumi.get(self, "metadata_options")
+
+    @metadata_options.setter
+    def metadata_options(self, value: Optional[pulumi.Input['MetadataOptionsArgs']]):
+        pulumi.set(self, "metadata_options", value)
+
+    @property
     @pulumi.getter(name="overwriteObjectsAlreadyExistingInSink")
     def overwrite_objects_already_existing_in_sink(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -856,6 +945,7 @@ class TransferSpecArgs:
                  azure_blob_storage_data_source: Optional[pulumi.Input['AzureBlobStorageDataArgs']] = None,
                  gcs_data_sink: Optional[pulumi.Input['GcsDataArgs']] = None,
                  gcs_data_source: Optional[pulumi.Input['GcsDataArgs']] = None,
+                 gcs_intermediate_data_location: Optional[pulumi.Input['GcsDataArgs']] = None,
                  http_data_source: Optional[pulumi.Input['HttpDataArgs']] = None,
                  object_conditions: Optional[pulumi.Input['ObjectConditionsArgs']] = None,
                  posix_data_sink: Optional[pulumi.Input['PosixFilesystemArgs']] = None,
@@ -870,6 +960,7 @@ class TransferSpecArgs:
         :param pulumi.Input['AzureBlobStorageDataArgs'] azure_blob_storage_data_source: An Azure Blob Storage data source.
         :param pulumi.Input['GcsDataArgs'] gcs_data_sink: A Cloud Storage data sink.
         :param pulumi.Input['GcsDataArgs'] gcs_data_source: A Cloud Storage data source.
+        :param pulumi.Input['GcsDataArgs'] gcs_intermediate_data_location: Cloud Storage intermediate data location.
         :param pulumi.Input['HttpDataArgs'] http_data_source: An HTTP URL data source.
         :param pulumi.Input['ObjectConditionsArgs'] object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
         :param pulumi.Input['PosixFilesystemArgs'] posix_data_sink: A POSIX Filesystem data sink.
@@ -887,6 +978,8 @@ class TransferSpecArgs:
             pulumi.set(__self__, "gcs_data_sink", gcs_data_sink)
         if gcs_data_source is not None:
             pulumi.set(__self__, "gcs_data_source", gcs_data_source)
+        if gcs_intermediate_data_location is not None:
+            pulumi.set(__self__, "gcs_intermediate_data_location", gcs_intermediate_data_location)
         if http_data_source is not None:
             pulumi.set(__self__, "http_data_source", http_data_source)
         if object_conditions is not None:
@@ -951,6 +1044,18 @@ class TransferSpecArgs:
     @gcs_data_source.setter
     def gcs_data_source(self, value: Optional[pulumi.Input['GcsDataArgs']]):
         pulumi.set(self, "gcs_data_source", value)
+
+    @property
+    @pulumi.getter(name="gcsIntermediateDataLocation")
+    def gcs_intermediate_data_location(self) -> Optional[pulumi.Input['GcsDataArgs']]:
+        """
+        Cloud Storage intermediate data location.
+        """
+        return pulumi.get(self, "gcs_intermediate_data_location")
+
+    @gcs_intermediate_data_location.setter
+    def gcs_intermediate_data_location(self, value: Optional[pulumi.Input['GcsDataArgs']]):
+        pulumi.set(self, "gcs_intermediate_data_location", value)
 
     @property
     @pulumi.getter(name="httpDataSource")

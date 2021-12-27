@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Outputs
     public sealed class ClusterConfigResponse
     {
         /// <summary>
-        /// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+        /// Autoscaling configuration for this cluster.
         /// </summary>
         public readonly Outputs.ClusterAutoscalingConfigResponse ClusterAutoscalingConfig;
 

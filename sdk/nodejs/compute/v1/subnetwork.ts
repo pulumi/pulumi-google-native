@@ -68,7 +68,7 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly ipv6AccessType!: pulumi.Output<string>;
     /**
-     * The range of internal IPv6 addresses that are owned by this subnetwork.
+     * The range of internal IPv6 addresses that are owned by this subnetwork. Note this will be for private google access only eventually.
      */
     public /*out*/ readonly ipv6CidrRange!: pulumi.Output<string>;
     /**

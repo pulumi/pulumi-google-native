@@ -8,11 +8,11 @@ export const LoggingConfigLogActionStatesItem = {
      */
     LoggableActionStateUnspecified: "LOGGABLE_ACTION_STATE_UNSPECIFIED",
     /**
-     * `LoggableAction` is completed successfully. `SUCCEEDED` actions are logged as INFO.
+     * `LoggableAction` completed successfully. `SUCCEEDED` actions are logged as INFO.
      */
     Succeeded: "SUCCEEDED",
     /**
-     * `LoggableAction` is terminated in an error state. `FAILED` actions are logged as ERROR.
+     * `LoggableAction` terminated in an error state. `FAILED` actions are logged as ERROR.
      */
     Failed: "FAILED",
 } as const;
@@ -25,20 +25,100 @@ export const LoggingConfigLogActionsItem = {
      */
     LoggableActionUnspecified: "LOGGABLE_ACTION_UNSPECIFIED",
     /**
-     * Finding objects to transfer e.g. listing objects of the source bucket.
+     * Listing objects in a bucket.
      */
     Find: "FIND",
     /**
-     * Deleting objects at source or destination.
+     * Deleting objects at the source or the destination.
      */
     Delete: "DELETE",
     /**
-     * Copying objects from source to destination.
+     * Copying objects to Google Cloud Storage.
      */
     Copy: "COPY",
 } as const;
 
 export type LoggingConfigLogActionsItem = (typeof LoggingConfigLogActionsItem)[keyof typeof LoggingConfigLogActionsItem];
+
+export const MetadataOptionsGid = {
+    /**
+     * GID behavior is unspecified.
+     */
+    GidUnspecified: "GID_UNSPECIFIED",
+    /**
+     * Skip GID during a transfer job.
+     */
+    GidSkip: "GID_SKIP",
+    /**
+     * Preserve GID during a transfer job.
+     */
+    GidNumber: "GID_NUMBER",
+} as const;
+
+/**
+ * Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+ */
+export type MetadataOptionsGid = (typeof MetadataOptionsGid)[keyof typeof MetadataOptionsGid];
+
+export const MetadataOptionsMode = {
+    /**
+     * Mode behavior is unspecified.
+     */
+    ModeUnspecified: "MODE_UNSPECIFIED",
+    /**
+     * Skip mode during a transfer job.
+     */
+    ModeSkip: "MODE_SKIP",
+    /**
+     * Preserve mode during a transfer job.
+     */
+    ModePreserve: "MODE_PRESERVE",
+} as const;
+
+/**
+ * Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+ */
+export type MetadataOptionsMode = (typeof MetadataOptionsMode)[keyof typeof MetadataOptionsMode];
+
+export const MetadataOptionsSymlink = {
+    /**
+     * Symlink behavior is unspecified. The default behavior is to skip symlinks during a transfer job.
+     */
+    SymlinkUnspecified: "SYMLINK_UNSPECIFIED",
+    /**
+     * Skip symlinks during a transfer job.
+     */
+    SymlinkSkip: "SYMLINK_SKIP",
+    /**
+     * Preserve symlinks during a transfer job.
+     */
+    SymlinkPreserve: "SYMLINK_PRESERVE",
+} as const;
+
+/**
+ * Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+ */
+export type MetadataOptionsSymlink = (typeof MetadataOptionsSymlink)[keyof typeof MetadataOptionsSymlink];
+
+export const MetadataOptionsUid = {
+    /**
+     * UID behavior is unspecified.
+     */
+    UidUnspecified: "UID_UNSPECIFIED",
+    /**
+     * Skip UID during a transfer job.
+     */
+    UidSkip: "UID_SKIP",
+    /**
+     * Preserve UID during a transfer job.
+     */
+    UidNumber: "UID_NUMBER",
+} as const;
+
+/**
+ * Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+ */
+export type MetadataOptionsUid = (typeof MetadataOptionsUid)[keyof typeof MetadataOptionsUid];
 
 export const NotificationConfigEventTypesItem = {
     /**

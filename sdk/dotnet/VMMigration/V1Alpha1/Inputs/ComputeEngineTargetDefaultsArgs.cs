@@ -15,6 +15,18 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
     /// </summary>
     public sealed class ComputeEngineTargetDefaultsArgs : Pulumi.ResourceArgs
     {
+        [Input("additionalLicenses")]
+        private InputList<string>? _additionalLicenses;
+
+        /// <summary>
+        /// Additional licenses to assign to the VM.
+        /// </summary>
+        public InputList<string> AdditionalLicenses
+        {
+            get => _additionalLicenses ?? (_additionalLicenses = new InputList<string>());
+            set => _additionalLicenses = value;
+        }
+
         /// <summary>
         /// Compute instance scheduling information (if empty default is used).
         /// </summary>

@@ -152,7 +152,7 @@ class GetInstanceResult:
     @pulumi.getter(name="databaseInstalledVersion")
     def database_installed_version(self) -> str:
         """
-        The databaseInstalledVersion stores the current fully resolved database version running on the instance including minor version such as MYSQL_5_6_50
+        Stores the current database version running on the instance including minor version such as **MYSQL_8_0_18**.
         """
         return pulumi.get(self, "database_installed_version")
 
@@ -192,7 +192,7 @@ class GetInstanceResult:
     @pulumi.getter(name="gceZone")
     def gce_zone(self) -> str:
         """
-        The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+        The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
         """
         return pulumi.get(self, "gce_zone")
 

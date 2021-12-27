@@ -12,7 +12,7 @@ from ._enums import *
 
 __all__ = [
     'AndroidAttributesResponse',
-    'CertificateInfoResponse',
+    'CertificateAttributesResponse',
     'CertificateTemplateResponse',
     'DynamicGroupMetadataResponse',
     'DynamicGroupQueryResponse',
@@ -105,7 +105,7 @@ class AndroidAttributesResponse(dict):
 
 
 @pulumi.output_type
-class CertificateInfoResponse(dict):
+class CertificateAttributesResponse(dict):
     """
     Stores information about a certificate.
     """
@@ -124,14 +124,14 @@ class CertificateInfoResponse(dict):
             suggest = "validity_start_time"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CertificateInfoResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in CertificateAttributesResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        CertificateInfoResponse.__key_warning(key)
+        CertificateAttributesResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        CertificateInfoResponse.__key_warning(key)
+        CertificateAttributesResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -423,13 +423,13 @@ class DynamicGroupStatusResponse(dict):
 @pulumi.output_type
 class EndpointVerificationSpecificAttributesResponse(dict):
     """
-    Resource representing the Endpoint Verification-specific attributes of a Device.
+    Resource representing the Endpoint Verification-specific attributes of a Device. https://cloud.google.com/endpoint-verification/docs/overview
     """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "certificateInfo":
-            suggest = "certificate_info"
+        if key == "certificateAttributes":
+            suggest = "certificate_attributes"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in EndpointVerificationSpecificAttributesResponse. Access the value via the '{suggest}' property getter instead.")
@@ -443,20 +443,20 @@ class EndpointVerificationSpecificAttributesResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 certificate_info: Sequence['outputs.CertificateInfoResponse']):
+                 certificate_attributes: Sequence['outputs.CertificateAttributesResponse']):
         """
-        Resource representing the Endpoint Verification-specific attributes of a Device.
-        :param Sequence['CertificateInfoResponse'] certificate_info: Details of certificates.
+        Resource representing the Endpoint Verification-specific attributes of a Device. https://cloud.google.com/endpoint-verification/docs/overview
+        :param Sequence['CertificateAttributesResponse'] certificate_attributes: Details of certificates.
         """
-        pulumi.set(__self__, "certificate_info", certificate_info)
+        pulumi.set(__self__, "certificate_attributes", certificate_attributes)
 
     @property
-    @pulumi.getter(name="certificateInfo")
-    def certificate_info(self) -> Sequence['outputs.CertificateInfoResponse']:
+    @pulumi.getter(name="certificateAttributes")
+    def certificate_attributes(self) -> Sequence['outputs.CertificateAttributesResponse']:
         """
         Details of certificates.
         """
-        return pulumi.get(self, "certificate_info")
+        return pulumi.get(self, "certificate_attributes")
 
 
 @pulumi.output_type

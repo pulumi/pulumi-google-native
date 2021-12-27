@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
         /// <summary>
+        /// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+        /// </summary>
+        public readonly ImmutableArray<string> DestRegionCodes;
+        /// <summary>
         /// Pairs of IP protocols and ports that the rule should match.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleMatcherLayer4ConfigResponse> Layer4Configs;
@@ -45,6 +49,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
         /// <summary>
+        /// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+        /// </summary>
+        public readonly ImmutableArray<string> SrcRegionCodes;
+        /// <summary>
         /// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> SrcSecureTags;
@@ -57,6 +65,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableArray<string> destIpRanges,
 
+            ImmutableArray<string> destRegionCodes,
+
             ImmutableArray<Outputs.FirewallPolicyRuleMatcherLayer4ConfigResponse> layer4Configs,
 
             ImmutableArray<string> srcAddressGroups,
@@ -65,15 +75,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableArray<string> srcIpRanges,
 
+            ImmutableArray<string> srcRegionCodes,
+
             ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> srcSecureTags)
         {
             DestAddressGroups = destAddressGroups;
             DestFqdns = destFqdns;
             DestIpRanges = destIpRanges;
+            DestRegionCodes = destRegionCodes;
             Layer4Configs = layer4Configs;
             SrcAddressGroups = srcAddressGroups;
             SrcFqdns = srcFqdns;
             SrcIpRanges = srcIpRanges;
+            SrcRegionCodes = srcRegionCodes;
             SrcSecureTags = srcSecureTags;
         }
     }

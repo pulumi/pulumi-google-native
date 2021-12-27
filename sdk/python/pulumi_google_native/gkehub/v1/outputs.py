@@ -1075,6 +1075,8 @@ class ResourceOptionsResponse(dict):
         suggest = None
         if key == "connectVersion":
             suggest = "connect_version"
+        elif key == "k8sVersion":
+            suggest = "k8s_version"
         elif key == "v1beta1Crd":
             suggest = "v1beta1_crd"
 
@@ -1091,13 +1093,16 @@ class ResourceOptionsResponse(dict):
 
     def __init__(__self__, *,
                  connect_version: str,
+                 k8s_version: str,
                  v1beta1_crd: bool):
         """
         ResourceOptions represent options for Kubernetes resource generation.
         :param str connect_version: Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+        :param str k8s_version: Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
         :param bool v1beta1_crd: Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
         """
         pulumi.set(__self__, "connect_version", connect_version)
+        pulumi.set(__self__, "k8s_version", k8s_version)
         pulumi.set(__self__, "v1beta1_crd", v1beta1_crd)
 
     @property
@@ -1107,6 +1112,14 @@ class ResourceOptionsResponse(dict):
         Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
         """
         return pulumi.get(self, "connect_version")
+
+    @property
+    @pulumi.getter(name="k8sVersion")
+    def k8s_version(self) -> str:
+        """
+        Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+        """
+        return pulumi.get(self, "k8s_version")
 
     @property
     @pulumi.getter(name="v1beta1Crd")

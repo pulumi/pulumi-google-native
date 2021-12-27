@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Outputs
         /// </summary>
         public readonly double OriginalPrice;
         /// <summary>
-        /// Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.priceSpecification](https://schema.org/priceSpecification).
+        /// Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.price](https://schema.org/price).
         /// </summary>
         public readonly double Price;
         /// <summary>

@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly string PrivateIpv6GoogleAccess;
         /// <summary>
+        /// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+        /// </summary>
+        public readonly Outputs.ServiceExternalIPsConfigResponse ServiceExternalIpsConfig;
+        /// <summary>
         /// The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
         /// </summary>
         public readonly string Subnetwork;
@@ -65,6 +69,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             string privateIpv6GoogleAccess,
 
+            Outputs.ServiceExternalIPsConfigResponse serviceExternalIpsConfig,
+
             string subnetwork)
         {
             DatapathProvider = datapathProvider;
@@ -74,6 +80,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             EnableL4ilbSubsetting = enableL4ilbSubsetting;
             Network = network;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
+            ServiceExternalIpsConfig = serviceExternalIpsConfig;
             Subnetwork = subnetwork;
         }
     }

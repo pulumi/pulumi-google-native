@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Get an Access Level by resource name.
+ * Gets an access level based on the resource name.
  */
 export function getAccessLevel(args: GetAccessLevelArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessLevelResult> {
     if (!opts) {

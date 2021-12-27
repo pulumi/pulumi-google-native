@@ -18,6 +18,8 @@ type GlobalForwardingRule struct {
 	AllPorts pulumi.BoolOutput `pulumi:"allPorts"`
 	// This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
 	AllowGlobalAccess pulumi.BoolOutput `pulumi:"allowGlobalAccess"`
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	AllowPscGlobalAccess pulumi.BoolOutput `pulumi:"allowPscGlobalAccess"`
 	// Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
 	BackendService pulumi.StringOutput `pulumi:"backendService"`
 	// Creation timestamp in RFC3339 text format.
@@ -119,6 +121,8 @@ type globalForwardingRuleArgs struct {
 	AllPorts *bool `pulumi:"allPorts"`
 	// This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
 	AllowGlobalAccess *bool `pulumi:"allowGlobalAccess"`
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	AllowPscGlobalAccess *bool `pulumi:"allowPscGlobalAccess"`
 	// Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
 	BackendService *string `pulumi:"backendService"`
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -167,6 +171,8 @@ type GlobalForwardingRuleArgs struct {
 	AllPorts pulumi.BoolPtrInput
 	// This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
 	AllowGlobalAccess pulumi.BoolPtrInput
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	AllowPscGlobalAccess pulumi.BoolPtrInput
 	// Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
 	BackendService pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.

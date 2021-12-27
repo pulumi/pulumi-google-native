@@ -89,6 +89,10 @@ export class Entry extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Additional information related to the entry. Private to the current user.
+     */
+    public /*out*/ readonly personalDetails!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1PersonalDetailsResponse>;
+    /**
      * Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
      */
     public readonly routineSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1RoutineSpecResponse>;
@@ -157,6 +161,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["dataSource"] = undefined /*out*/;
             resourceInputs["integratedSystem"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["personalDetails"] = undefined /*out*/;
             resourceInputs["usageSignal"] = undefined /*out*/;
         } else {
             resourceInputs["bigqueryDateShardedSpec"] = undefined /*out*/;
@@ -172,6 +177,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["linkedResource"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["personalDetails"] = undefined /*out*/;
             resourceInputs["routineSpec"] = undefined /*out*/;
             resourceInputs["schema"] = undefined /*out*/;
             resourceInputs["sourceSystemTimestamps"] = undefined /*out*/;

@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Ipv6AccessType { get; private set; } = null!;
 
         /// <summary>
-        /// The range of internal IPv6 addresses that are owned by this subnetwork.
+        /// The range of internal IPv6 addresses that are owned by this subnetwork. Note this will be for private google access only eventually.
         /// </summary>
         [Output("ipv6CidrRange")]
         public Output<string> Ipv6CidrRange { get; private set; } = null!;

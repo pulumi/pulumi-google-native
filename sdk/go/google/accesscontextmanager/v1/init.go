@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessLevel{}
 	case "google-native:accesscontextmanager/v1:AccessPolicy":
 		r = &AccessPolicy{}
+	case "google-native:accesscontextmanager/v1:AccessPolicyIamPolicy":
+		r = &AccessPolicyIamPolicy{}
 	case "google-native:accesscontextmanager/v1:GcpUserAccessBinding":
 		r = &GcpUserAccessBinding{}
 	case "google-native:accesscontextmanager/v1:ServicePerimeter":

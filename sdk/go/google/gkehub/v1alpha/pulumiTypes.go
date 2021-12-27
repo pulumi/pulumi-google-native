@@ -5303,6 +5303,8 @@ func (o ResourceManifestResponseArrayOutput) Index(i pulumi.IntInput) ResourceMa
 type ResourceOptions struct {
 	// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
 	ConnectVersion *string `pulumi:"connectVersion"`
+	// Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+	K8sVersion *string `pulumi:"k8sVersion"`
 	// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
 	V1beta1Crd *bool `pulumi:"v1beta1Crd"`
 }
@@ -5322,6 +5324,8 @@ type ResourceOptionsInput interface {
 type ResourceOptionsArgs struct {
 	// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
 	ConnectVersion pulumi.StringPtrInput `pulumi:"connectVersion"`
+	// Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+	K8sVersion pulumi.StringPtrInput `pulumi:"k8sVersion"`
 	// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
 	V1beta1Crd pulumi.BoolPtrInput `pulumi:"v1beta1Crd"`
 }
@@ -5409,6 +5413,11 @@ func (o ResourceOptionsOutput) ConnectVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceOptions) *string { return v.ConnectVersion }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+func (o ResourceOptionsOutput) K8sVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceOptions) *string { return v.K8sVersion }).(pulumi.StringPtrOutput)
+}
+
 // Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
 func (o ResourceOptionsOutput) V1beta1Crd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ResourceOptions) *bool { return v.V1beta1Crd }).(pulumi.BoolPtrOutput)
@@ -5448,6 +5457,16 @@ func (o ResourceOptionsPtrOutput) ConnectVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+func (o ResourceOptionsPtrOutput) K8sVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.K8sVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
 func (o ResourceOptionsPtrOutput) V1beta1Crd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ResourceOptions) *bool {
@@ -5462,6 +5481,8 @@ func (o ResourceOptionsPtrOutput) V1beta1Crd() pulumi.BoolPtrOutput {
 type ResourceOptionsResponse struct {
 	// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
 	ConnectVersion string `pulumi:"connectVersion"`
+	// Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+	K8sVersion string `pulumi:"k8sVersion"`
 	// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
 	V1beta1Crd bool `pulumi:"v1beta1Crd"`
 }
@@ -5481,6 +5502,8 @@ type ResourceOptionsResponseInput interface {
 type ResourceOptionsResponseArgs struct {
 	// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
 	ConnectVersion pulumi.StringInput `pulumi:"connectVersion"`
+	// Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+	K8sVersion pulumi.StringInput `pulumi:"k8sVersion"`
 	// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
 	V1beta1Crd pulumi.BoolInput `pulumi:"v1beta1Crd"`
 }
@@ -5568,6 +5591,11 @@ func (o ResourceOptionsResponseOutput) ConnectVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceOptionsResponse) string { return v.ConnectVersion }).(pulumi.StringOutput)
 }
 
+// Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+func (o ResourceOptionsResponseOutput) K8sVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceOptionsResponse) string { return v.K8sVersion }).(pulumi.StringOutput)
+}
+
 // Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
 func (o ResourceOptionsResponseOutput) V1beta1Crd() pulumi.BoolOutput {
 	return o.ApplyT(func(v ResourceOptionsResponse) bool { return v.V1beta1Crd }).(pulumi.BoolOutput)
@@ -5604,6 +5632,16 @@ func (o ResourceOptionsResponsePtrOutput) ConnectVersion() pulumi.StringPtrOutpu
 			return nil
 		}
 		return &v.ConnectVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+func (o ResourceOptionsResponsePtrOutput) K8sVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.K8sVersion
 	}).(pulumi.StringPtrOutput)
 }
 

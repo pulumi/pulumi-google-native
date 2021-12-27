@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     public sealed class LocationPreferenceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+        /// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
         /// </summary>
         [Input("followGaeApplication")]
         public Input<string>? FollowGaeApplication { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public Input<string>? SecondaryZone { get; set; }
 
         /// <summary>
-        /// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+        /// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

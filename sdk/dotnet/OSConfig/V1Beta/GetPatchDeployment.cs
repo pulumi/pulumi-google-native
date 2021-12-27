@@ -97,6 +97,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         /// </summary>
         public readonly Outputs.PatchRolloutResponse Rollout;
         /// <summary>
+        /// Current state of the patch deployment.
+        /// </summary>
+        public readonly string State;
+        /// <summary>
         /// Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         /// </summary>
         public readonly string UpdateTime;
@@ -123,6 +127,8 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
 
             Outputs.PatchRolloutResponse rollout,
 
+            string state,
+
             string updateTime)
         {
             CreateTime = createTime;
@@ -135,6 +141,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
             PatchConfig = patchConfig;
             RecurringSchedule = recurringSchedule;
             Rollout = rollout;
+            State = state;
             UpdateTime = updateTime;
         }
     }

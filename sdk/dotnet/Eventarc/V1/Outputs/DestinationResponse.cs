@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
     public sealed class DestinationResponse
     {
         /// <summary>
-        /// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+        /// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
         /// </summary>
         public readonly Outputs.CloudRunResponse CloudRun;
         /// <summary>

@@ -79,7 +79,7 @@ export interface GetSubnetworkResult {
      */
     readonly ipv6AccessType: string;
     /**
-     * The range of internal IPv6 addresses that are owned by this subnetwork.
+     * The range of internal IPv6 addresses that are owned by this subnetwork. Note this will be for private google access only eventually.
      */
     readonly ipv6CidrRange: string;
     /**

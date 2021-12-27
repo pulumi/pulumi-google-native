@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetRegionInstantSnapshotResult',
@@ -17,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionInstantSnapshotResult:
-    def __init__(__self__, architecture=None, creation_timestamp=None, description=None, disk_size_gb=None, guest_flush=None, kind=None, label_fingerprint=None, labels=None, name=None, region=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, source_disk=None, source_disk_id=None, status=None, zone=None):
+    def __init__(__self__, architecture=None, creation_timestamp=None, description=None, disk_size_gb=None, guest_flush=None, kind=None, label_fingerprint=None, labels=None, name=None, region=None, resource_status=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, source_disk=None, source_disk_id=None, status=None, zone=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -48,6 +49,9 @@ class GetRegionInstantSnapshotResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if resource_status and not isinstance(resource_status, dict):
+            raise TypeError("Expected argument 'resource_status' to be a dict")
+        pulumi.set(__self__, "resource_status", resource_status)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -151,6 +155,14 @@ class GetRegionInstantSnapshotResult:
         return pulumi.get(self, "region")
 
     @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> 'outputs.InstantSnapshotResourceStatusResponse':
+        """
+        Status information for the instant snapshot resource.
+        """
+        return pulumi.get(self, "resource_status")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -223,6 +235,7 @@ class AwaitableGetRegionInstantSnapshotResult(GetRegionInstantSnapshotResult):
             labels=self.labels,
             name=self.name,
             region=self.region,
+            resource_status=self.resource_status,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
@@ -260,6 +273,7 @@ def get_region_instant_snapshot(instant_snapshot: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         region=__ret__.region,
+        resource_status=__ret__.resource_status,
         satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,

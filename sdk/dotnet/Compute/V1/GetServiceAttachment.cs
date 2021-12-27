@@ -87,6 +87,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
+        /// </summary>
+        public readonly ImmutableArray<string> DomainNames;
+        /// <summary>
         /// If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
         /// </summary>
         public readonly bool EnableProxyProtocol;
@@ -141,6 +145,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string description,
 
+            ImmutableArray<string> domainNames,
+
             bool enableProxyProtocol,
 
             string fingerprint,
@@ -167,6 +173,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             ConsumerRejectLists = consumerRejectLists;
             CreationTimestamp = creationTimestamp;
             Description = description;
+            DomainNames = domainNames;
             EnableProxyProtocol = enableProxyProtocol;
             Fingerprint = fingerprint;
             Kind = kind;

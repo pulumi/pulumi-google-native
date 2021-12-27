@@ -18,25 +18,40 @@ __all__ = [
 
 @pulumi.output_type
 class GetInterconnectAttachmentResult:
-    def __init__(__self__, admin_enabled=None, bandwidth=None, candidate_subnets=None, cloud_router_ip_address=None, creation_timestamp=None, customer_router_ip_address=None, dataplane_version=None, description=None, edge_availability_domain=None, encryption=None, interconnect=None, ipsec_internal_addresses=None, kind=None, label_fingerprint=None, labels=None, mtu=None, name=None, operational_status=None, pairing_key=None, partner_asn=None, partner_metadata=None, private_interconnect_info=None, region=None, router=None, satisfies_pzs=None, self_link=None, state=None, type=None, vlan_tag8021q=None):
+    def __init__(__self__, admin_enabled=None, bandwidth=None, candidate_ipv6_subnets=None, candidate_subnets=None, cloud_router_ip_address=None, cloud_router_ipv6_address=None, cloud_router_ipv6_interface_id=None, creation_timestamp=None, customer_router_ip_address=None, customer_router_ipv6_address=None, customer_router_ipv6_interface_id=None, dataplane_version=None, description=None, edge_availability_domain=None, encryption=None, interconnect=None, ipsec_internal_addresses=None, kind=None, label_fingerprint=None, labels=None, mtu=None, name=None, operational_status=None, pairing_key=None, partner_asn=None, partner_metadata=None, private_interconnect_info=None, region=None, router=None, satisfies_pzs=None, self_link=None, stack_type=None, state=None, type=None, vlan_tag8021q=None):
         if admin_enabled and not isinstance(admin_enabled, bool):
             raise TypeError("Expected argument 'admin_enabled' to be a bool")
         pulumi.set(__self__, "admin_enabled", admin_enabled)
         if bandwidth and not isinstance(bandwidth, str):
             raise TypeError("Expected argument 'bandwidth' to be a str")
         pulumi.set(__self__, "bandwidth", bandwidth)
+        if candidate_ipv6_subnets and not isinstance(candidate_ipv6_subnets, list):
+            raise TypeError("Expected argument 'candidate_ipv6_subnets' to be a list")
+        pulumi.set(__self__, "candidate_ipv6_subnets", candidate_ipv6_subnets)
         if candidate_subnets and not isinstance(candidate_subnets, list):
             raise TypeError("Expected argument 'candidate_subnets' to be a list")
         pulumi.set(__self__, "candidate_subnets", candidate_subnets)
         if cloud_router_ip_address and not isinstance(cloud_router_ip_address, str):
             raise TypeError("Expected argument 'cloud_router_ip_address' to be a str")
         pulumi.set(__self__, "cloud_router_ip_address", cloud_router_ip_address)
+        if cloud_router_ipv6_address and not isinstance(cloud_router_ipv6_address, str):
+            raise TypeError("Expected argument 'cloud_router_ipv6_address' to be a str")
+        pulumi.set(__self__, "cloud_router_ipv6_address", cloud_router_ipv6_address)
+        if cloud_router_ipv6_interface_id and not isinstance(cloud_router_ipv6_interface_id, str):
+            raise TypeError("Expected argument 'cloud_router_ipv6_interface_id' to be a str")
+        pulumi.set(__self__, "cloud_router_ipv6_interface_id", cloud_router_ipv6_interface_id)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if customer_router_ip_address and not isinstance(customer_router_ip_address, str):
             raise TypeError("Expected argument 'customer_router_ip_address' to be a str")
         pulumi.set(__self__, "customer_router_ip_address", customer_router_ip_address)
+        if customer_router_ipv6_address and not isinstance(customer_router_ipv6_address, str):
+            raise TypeError("Expected argument 'customer_router_ipv6_address' to be a str")
+        pulumi.set(__self__, "customer_router_ipv6_address", customer_router_ipv6_address)
+        if customer_router_ipv6_interface_id and not isinstance(customer_router_ipv6_interface_id, str):
+            raise TypeError("Expected argument 'customer_router_ipv6_interface_id' to be a str")
+        pulumi.set(__self__, "customer_router_ipv6_interface_id", customer_router_ipv6_interface_id)
         if dataplane_version and not isinstance(dataplane_version, int):
             raise TypeError("Expected argument 'dataplane_version' to be a int")
         pulumi.set(__self__, "dataplane_version", dataplane_version)
@@ -97,6 +112,9 @@ class GetInterconnectAttachmentResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if stack_type and not isinstance(stack_type, str):
+            raise TypeError("Expected argument 'stack_type' to be a str")
+        pulumi.set(__self__, "stack_type", stack_type)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -124,6 +142,14 @@ class GetInterconnectAttachmentResult:
         return pulumi.get(self, "bandwidth")
 
     @property
+    @pulumi.getter(name="candidateIpv6Subnets")
+    def candidate_ipv6_subnets(self) -> Sequence[str]:
+        """
+        Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
+        """
+        return pulumi.get(self, "candidate_ipv6_subnets")
+
+    @property
     @pulumi.getter(name="candidateSubnets")
     def candidate_subnets(self) -> Sequence[str]:
         """
@@ -140,6 +166,22 @@ class GetInterconnectAttachmentResult:
         return pulumi.get(self, "cloud_router_ip_address")
 
     @property
+    @pulumi.getter(name="cloudRouterIpv6Address")
+    def cloud_router_ipv6_address(self) -> str:
+        """
+        IPv6 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+        """
+        return pulumi.get(self, "cloud_router_ipv6_address")
+
+    @property
+    @pulumi.getter(name="cloudRouterIpv6InterfaceId")
+    def cloud_router_ipv6_interface_id(self) -> str:
+        """
+        If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        """
+        return pulumi.get(self, "cloud_router_ipv6_interface_id")
+
+    @property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
@@ -154,6 +196,22 @@ class GetInterconnectAttachmentResult:
         IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
         """
         return pulumi.get(self, "customer_router_ip_address")
+
+    @property
+    @pulumi.getter(name="customerRouterIpv6Address")
+    def customer_router_ipv6_address(self) -> str:
+        """
+        IPv6 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+        """
+        return pulumi.get(self, "customer_router_ipv6_address")
+
+    @property
+    @pulumi.getter(name="customerRouterIpv6InterfaceId")
+    def customer_router_ipv6_interface_id(self) -> str:
+        """
+        If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        """
+        return pulumi.get(self, "customer_router_ipv6_interface_id")
 
     @property
     @pulumi.getter(name="dataplaneVersion")
@@ -316,6 +374,14 @@ class GetInterconnectAttachmentResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> str:
+        """
+        The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -348,10 +414,15 @@ class AwaitableGetInterconnectAttachmentResult(GetInterconnectAttachmentResult):
         return GetInterconnectAttachmentResult(
             admin_enabled=self.admin_enabled,
             bandwidth=self.bandwidth,
+            candidate_ipv6_subnets=self.candidate_ipv6_subnets,
             candidate_subnets=self.candidate_subnets,
             cloud_router_ip_address=self.cloud_router_ip_address,
+            cloud_router_ipv6_address=self.cloud_router_ipv6_address,
+            cloud_router_ipv6_interface_id=self.cloud_router_ipv6_interface_id,
             creation_timestamp=self.creation_timestamp,
             customer_router_ip_address=self.customer_router_ip_address,
+            customer_router_ipv6_address=self.customer_router_ipv6_address,
+            customer_router_ipv6_interface_id=self.customer_router_ipv6_interface_id,
             dataplane_version=self.dataplane_version,
             description=self.description,
             edge_availability_domain=self.edge_availability_domain,
@@ -372,6 +443,7 @@ class AwaitableGetInterconnectAttachmentResult(GetInterconnectAttachmentResult):
             router=self.router,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
+            stack_type=self.stack_type,
             state=self.state,
             type=self.type,
             vlan_tag8021q=self.vlan_tag8021q)
@@ -397,10 +469,15 @@ def get_interconnect_attachment(interconnect_attachment: Optional[str] = None,
     return AwaitableGetInterconnectAttachmentResult(
         admin_enabled=__ret__.admin_enabled,
         bandwidth=__ret__.bandwidth,
+        candidate_ipv6_subnets=__ret__.candidate_ipv6_subnets,
         candidate_subnets=__ret__.candidate_subnets,
         cloud_router_ip_address=__ret__.cloud_router_ip_address,
+        cloud_router_ipv6_address=__ret__.cloud_router_ipv6_address,
+        cloud_router_ipv6_interface_id=__ret__.cloud_router_ipv6_interface_id,
         creation_timestamp=__ret__.creation_timestamp,
         customer_router_ip_address=__ret__.customer_router_ip_address,
+        customer_router_ipv6_address=__ret__.customer_router_ipv6_address,
+        customer_router_ipv6_interface_id=__ret__.customer_router_ipv6_interface_id,
         dataplane_version=__ret__.dataplane_version,
         description=__ret__.description,
         edge_availability_domain=__ret__.edge_availability_domain,
@@ -421,6 +498,7 @@ def get_interconnect_attachment(interconnect_attachment: Optional[str] = None,
         router=__ret__.router,
         satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,
+        stack_type=__ret__.stack_type,
         state=__ret__.state,
         type=__ret__.type,
         vlan_tag8021q=__ret__.vlan_tag8021q)

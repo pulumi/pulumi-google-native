@@ -24,6 +24,7 @@ __all__ = [
 @pulumi.input_type
 class ComputeEngineTargetDefaultsArgs:
     def __init__(__self__, *,
+                 additional_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  compute_scheduling: Optional[pulumi.Input['ComputeSchedulingArgs']] = None,
                  disk_type: Optional[pulumi.Input['ComputeEngineTargetDefaultsDiskType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -40,6 +41,7 @@ class ComputeEngineTargetDefaultsArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_licenses: Additional licenses to assign to the VM.
         :param pulumi.Input['ComputeSchedulingArgs'] compute_scheduling: Compute instance scheduling information (if empty default is used).
         :param pulumi.Input['ComputeEngineTargetDefaultsDiskType'] disk_type: The disk type to use in the VM.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of labels to associate with the VM.
@@ -55,6 +57,8 @@ class ComputeEngineTargetDefaultsArgs:
         :param pulumi.Input[str] vm_name: The name of the VM to create.
         :param pulumi.Input[str] zone: The zone in which to create the VM.
         """
+        if additional_licenses is not None:
+            pulumi.set(__self__, "additional_licenses", additional_licenses)
         if compute_scheduling is not None:
             pulumi.set(__self__, "compute_scheduling", compute_scheduling)
         if disk_type is not None:
@@ -83,6 +87,18 @@ class ComputeEngineTargetDefaultsArgs:
             pulumi.set(__self__, "vm_name", vm_name)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="additionalLicenses")
+    def additional_licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Additional licenses to assign to the VM.
+        """
+        return pulumi.get(self, "additional_licenses")
+
+    @additional_licenses.setter
+    def additional_licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "additional_licenses", value)
 
     @property
     @pulumi.getter(name="computeScheduling")
