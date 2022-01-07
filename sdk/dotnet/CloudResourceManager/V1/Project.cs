@@ -48,8 +48,8 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1
         /// <summary>
         /// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         /// </summary>
-        [Output("project")]
-        public Output<string> ProjectValue { get; private set; } = null!;
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
         /// The number uniquely identifying the project. Example: `415104041262` Read-only.
@@ -141,8 +141,8 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1
         /// <summary>
         /// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// The number uniquely identifying the project. Example: `415104041262` Read-only.

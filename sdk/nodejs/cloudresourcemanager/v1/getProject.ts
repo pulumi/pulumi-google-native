@@ -50,7 +50,7 @@ export interface GetProjectResult {
     /**
      * The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
      */
-    readonly project: string;
+    readonly projectId: string;
     /**
      * The number uniquely identifying the project. Example: `415104041262` Read-only.
      */

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetProjectResult:
-    def __init__(__self__, create_time=None, labels=None, lifecycle_state=None, name=None, parent=None, project=None, project_number=None):
+    def __init__(__self__, create_time=None, labels=None, lifecycle_state=None, name=None, parent=None, project_id=None, project_number=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -34,9 +34,9 @@ class GetProjectResult:
         if parent and not isinstance(parent, dict):
             raise TypeError("Expected argument 'parent' to be a dict")
         pulumi.set(__self__, "parent", parent)
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        pulumi.set(__self__, "project", project)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
         if project_number and not isinstance(project_number, str):
             raise TypeError("Expected argument 'project_number' to be a str")
         pulumi.set(__self__, "project_number", project_number)
@@ -82,12 +82,12 @@ class GetProjectResult:
         return pulumi.get(self, "parent")
 
     @property
-    @pulumi.getter
-    def project(self) -> str:
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
         """
         The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         """
-        return pulumi.get(self, "project")
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="projectNumber")
@@ -109,7 +109,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             lifecycle_state=self.lifecycle_state,
             name=self.name,
             parent=self.parent,
-            project=self.project,
+            project_id=self.project_id,
             project_number=self.project_number)
 
 
@@ -132,7 +132,7 @@ def get_project(project: Optional[str] = None,
         lifecycle_state=__ret__.lifecycle_state,
         name=__ret__.name,
         parent=__ret__.parent,
-        project=__ret__.project,
+        project_id=__ret__.project_id,
         project_number=__ret__.project_number)
 
 

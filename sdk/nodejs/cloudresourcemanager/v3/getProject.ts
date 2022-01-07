@@ -57,7 +57,7 @@ export interface GetProjectResult {
     /**
      * Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
      */
-    readonly project: string;
+    readonly projectId: string;
     /**
      * The project lifecycle state.
      */

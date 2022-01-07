@@ -81,7 +81,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// <summary>
         /// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
         /// </summary>
-        public readonly string Project;
+        public readonly string ProjectId;
         /// <summary>
         /// The project lifecycle state.
         /// </summary>
@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
 
             string parent,
 
-            string project,
+            string projectId,
 
             string state,
 
@@ -120,7 +120,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
             Labels = labels;
             Name = name;
             Parent = parent;
-            Project = project;
+            ProjectId = projectId;
             State = state;
             UpdateTime = updateTime;
         }

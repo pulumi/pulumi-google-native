@@ -36,7 +36,7 @@ type LookupProjectResult struct {
 	// An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent.
 	Parent ResourceIdResponse `pulumi:"parent"`
 	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
-	Project string `pulumi:"project"`
+	ProjectId string `pulumi:"projectId"`
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber string `pulumi:"projectNumber"`
 }
@@ -98,8 +98,8 @@ func (o LookupProjectResultOutput) Parent() ResourceIdResponseOutput {
 }
 
 // The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
-func (o LookupProjectResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectResult) string { return v.Project }).(pulumi.StringOutput)
+func (o LookupProjectResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // The number uniquely identifying the project. Example: `415104041262` Read-only.
