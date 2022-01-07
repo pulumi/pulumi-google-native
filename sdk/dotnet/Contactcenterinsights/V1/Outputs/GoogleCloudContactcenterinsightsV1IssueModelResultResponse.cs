@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
     public sealed class GoogleCloudContactcenterinsightsV1IssueModelResultResponse
     {
         /// <summary>
-        /// Issue model that generates the result.
+        /// Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
         /// </summary>
         public readonly string IssueModel;
         /// <summary>

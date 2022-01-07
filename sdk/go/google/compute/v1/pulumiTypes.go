@@ -567,6 +567,8 @@ func (o AccessConfigResponseArrayOutput) Index(i pulumi.IntInput) AccessConfigRe
 type AdvancedMachineFeatures struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking for instance creation.
+	EnableUefiNetworking *bool `pulumi:"enableUefiNetworking"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore *int `pulumi:"threadsPerCore"`
 }
@@ -586,6 +588,8 @@ type AdvancedMachineFeaturesInput interface {
 type AdvancedMachineFeaturesArgs struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking for instance creation.
+	EnableUefiNetworking pulumi.BoolPtrInput `pulumi:"enableUefiNetworking"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
 }
@@ -673,6 +677,11 @@ func (o AdvancedMachineFeaturesOutput) EnableNestedVirtualization() pulumi.BoolP
 	return o.ApplyT(func(v AdvancedMachineFeatures) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to enable UEFI networking for instance creation.
+func (o AdvancedMachineFeaturesOutput) EnableUefiNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AdvancedMachineFeatures) *bool { return v.EnableUefiNetworking }).(pulumi.BoolPtrOutput)
+}
+
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o AdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AdvancedMachineFeatures) *int { return v.ThreadsPerCore }).(pulumi.IntPtrOutput)
@@ -712,6 +721,16 @@ func (o AdvancedMachineFeaturesPtrOutput) EnableNestedVirtualization() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether to enable UEFI networking for instance creation.
+func (o AdvancedMachineFeaturesPtrOutput) EnableUefiNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableUefiNetworking
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o AdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AdvancedMachineFeatures) *int {
@@ -726,6 +745,8 @@ func (o AdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
 type AdvancedMachineFeaturesResponse struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking for instance creation.
+	EnableUefiNetworking bool `pulumi:"enableUefiNetworking"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 }
@@ -745,6 +766,8 @@ type AdvancedMachineFeaturesResponseInput interface {
 type AdvancedMachineFeaturesResponseArgs struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking for instance creation.
+	EnableUefiNetworking pulumi.BoolInput `pulumi:"enableUefiNetworking"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 }
@@ -832,6 +855,11 @@ func (o AdvancedMachineFeaturesResponseOutput) EnableNestedVirtualization() pulu
 	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
 }
 
+// Whether to enable UEFI networking for instance creation.
+func (o AdvancedMachineFeaturesResponseOutput) EnableUefiNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) bool { return v.EnableUefiNetworking }).(pulumi.BoolOutput)
+}
+
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o AdvancedMachineFeaturesResponseOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
@@ -868,6 +896,16 @@ func (o AdvancedMachineFeaturesResponsePtrOutput) EnableNestedVirtualization() p
 			return nil
 		}
 		return &v.EnableNestedVirtualization
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable UEFI networking for instance creation.
+func (o AdvancedMachineFeaturesResponsePtrOutput) EnableUefiNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeaturesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableUefiNetworking
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -26188,6 +26226,14 @@ type InstanceGroupManagerActionsSummaryResponse struct {
 	Refreshing int `pulumi:"refreshing"`
 	// The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
 	Restarting int `pulumi:"restarting"`
+	// The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+	Resuming int `pulumi:"resuming"`
+	// The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+	Starting int `pulumi:"starting"`
+	// The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+	Stopping int `pulumi:"stopping"`
+	// The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
+	Suspending int `pulumi:"suspending"`
 	// The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
 	Verifying int `pulumi:"verifying"`
 }
@@ -26220,6 +26266,14 @@ type InstanceGroupManagerActionsSummaryResponseArgs struct {
 	Refreshing pulumi.IntInput `pulumi:"refreshing"`
 	// The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
 	Restarting pulumi.IntInput `pulumi:"restarting"`
+	// The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+	Resuming pulumi.IntInput `pulumi:"resuming"`
+	// The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+	Starting pulumi.IntInput `pulumi:"starting"`
+	// The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+	Stopping pulumi.IntInput `pulumi:"stopping"`
+	// The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
+	Suspending pulumi.IntInput `pulumi:"suspending"`
 	// The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
 	Verifying pulumi.IntInput `pulumi:"verifying"`
 }
@@ -26341,6 +26395,26 @@ func (o InstanceGroupManagerActionsSummaryResponseOutput) Restarting() pulumi.In
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Restarting }).(pulumi.IntOutput)
 }
 
+// The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+func (o InstanceGroupManagerActionsSummaryResponseOutput) Resuming() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Resuming }).(pulumi.IntOutput)
+}
+
+// The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+func (o InstanceGroupManagerActionsSummaryResponseOutput) Starting() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Starting }).(pulumi.IntOutput)
+}
+
+// The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+func (o InstanceGroupManagerActionsSummaryResponseOutput) Stopping() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Stopping }).(pulumi.IntOutput)
+}
+
+// The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
+func (o InstanceGroupManagerActionsSummaryResponseOutput) Suspending() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Suspending }).(pulumi.IntOutput)
+}
+
 // The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
 func (o InstanceGroupManagerActionsSummaryResponseOutput) Verifying() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Verifying }).(pulumi.IntOutput)
@@ -26447,6 +26521,46 @@ func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Restarting() pulumi
 			return nil
 		}
 		return &v.Restarting
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Resuming() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Resuming
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Starting() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Starting
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Stopping() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Stopping
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
+func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Suspending() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Suspending
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -28071,6 +28185,8 @@ type InstanceProperties struct {
 	PrivateIpv6GoogleAccess *InstancePropertiesPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
+	// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
@@ -28123,6 +28239,8 @@ type InstancePropertiesArgs struct {
 	PrivateIpv6GoogleAccess InstancePropertiesPrivateIpv6GoogleAccessPtrInput `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity ReservationAffinityPtrInput `pulumi:"reservationAffinity"`
+	// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 	// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
@@ -28282,6 +28400,11 @@ func (o InstancePropertiesOutput) PrivateIpv6GoogleAccess() InstancePropertiesPr
 // Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesOutput) ReservationAffinity() ReservationAffinityPtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *ReservationAffinity { return v.ReservationAffinity }).(ReservationAffinityPtrOutput)
+}
+
+// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o InstancePropertiesOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceProperties) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
 // Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
@@ -28473,6 +28596,16 @@ func (o InstancePropertiesPtrOutput) ReservationAffinity() ReservationAffinityPt
 	}).(ReservationAffinityPtrOutput)
 }
 
+// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o InstancePropertiesPtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.StringMapOutput)
+}
+
 // Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesPtrOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceProperties) []string {
@@ -28552,6 +28685,8 @@ type InstancePropertiesResponse struct {
 	PrivateIpv6GoogleAccess string `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity ReservationAffinityResponse `pulumi:"reservationAffinity"`
+	// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
@@ -28604,6 +28739,8 @@ type InstancePropertiesResponseArgs struct {
 	PrivateIpv6GoogleAccess pulumi.StringInput `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity ReservationAffinityResponseInput `pulumi:"reservationAffinity"`
+	// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 	// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
@@ -28763,6 +28900,11 @@ func (o InstancePropertiesResponseOutput) PrivateIpv6GoogleAccess() pulumi.Strin
 // Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponseOutput) ReservationAffinity() ReservationAffinityResponseOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) ReservationAffinityResponse { return v.ReservationAffinity }).(ReservationAffinityResponseOutput)
+}
+
+// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o InstancePropertiesResponseOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstancePropertiesResponse) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
 // Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
@@ -28952,6 +29094,16 @@ func (o InstancePropertiesResponsePtrOutput) ReservationAffinity() ReservationAf
 		}
 		return &v.ReservationAffinity
 	}).(ReservationAffinityResponsePtrOutput)
+}
+
+// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o InstancePropertiesResponsePtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstancePropertiesResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.StringMapOutput)
 }
 
 // Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.

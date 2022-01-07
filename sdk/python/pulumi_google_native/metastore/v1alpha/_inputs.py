@@ -412,7 +412,7 @@ class HiveMetastoreConfigArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         Specifies configuration information specific to running Hive metastore software as the metastore service.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
         :param pulumi.Input['HiveMetastoreConfigEndpointProtocol'] endpoint_protocol: The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
         :param pulumi.Input['KerberosConfigArgs'] kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
         :param pulumi.Input[str] version: Immutable. The Hive metastore schema version.
@@ -430,7 +430,7 @@ class HiveMetastoreConfigArgs:
     @pulumi.getter(name="configOverrides")
     def config_overrides(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
+        A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
         """
         return pulumi.get(self, "config_overrides")
 

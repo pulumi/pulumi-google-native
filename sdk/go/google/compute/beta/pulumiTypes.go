@@ -567,6 +567,8 @@ func (o AccessConfigResponseArrayOutput) Index(i pulumi.IntInput) AccessConfigRe
 type AdvancedMachineFeatures struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking for instance creation.
+	EnableUefiNetworking *bool `pulumi:"enableUefiNetworking"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore *int `pulumi:"threadsPerCore"`
 }
@@ -586,6 +588,8 @@ type AdvancedMachineFeaturesInput interface {
 type AdvancedMachineFeaturesArgs struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking for instance creation.
+	EnableUefiNetworking pulumi.BoolPtrInput `pulumi:"enableUefiNetworking"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
 }
@@ -673,6 +677,11 @@ func (o AdvancedMachineFeaturesOutput) EnableNestedVirtualization() pulumi.BoolP
 	return o.ApplyT(func(v AdvancedMachineFeatures) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to enable UEFI networking for instance creation.
+func (o AdvancedMachineFeaturesOutput) EnableUefiNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AdvancedMachineFeatures) *bool { return v.EnableUefiNetworking }).(pulumi.BoolPtrOutput)
+}
+
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o AdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AdvancedMachineFeatures) *int { return v.ThreadsPerCore }).(pulumi.IntPtrOutput)
@@ -712,6 +721,16 @@ func (o AdvancedMachineFeaturesPtrOutput) EnableNestedVirtualization() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether to enable UEFI networking for instance creation.
+func (o AdvancedMachineFeaturesPtrOutput) EnableUefiNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableUefiNetworking
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o AdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AdvancedMachineFeatures) *int {
@@ -726,6 +745,8 @@ func (o AdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
 type AdvancedMachineFeaturesResponse struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking for instance creation.
+	EnableUefiNetworking bool `pulumi:"enableUefiNetworking"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 }
@@ -745,6 +766,8 @@ type AdvancedMachineFeaturesResponseInput interface {
 type AdvancedMachineFeaturesResponseArgs struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking for instance creation.
+	EnableUefiNetworking pulumi.BoolInput `pulumi:"enableUefiNetworking"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 }
@@ -832,6 +855,11 @@ func (o AdvancedMachineFeaturesResponseOutput) EnableNestedVirtualization() pulu
 	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
 }
 
+// Whether to enable UEFI networking for instance creation.
+func (o AdvancedMachineFeaturesResponseOutput) EnableUefiNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) bool { return v.EnableUefiNetworking }).(pulumi.BoolOutput)
+}
+
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o AdvancedMachineFeaturesResponseOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
@@ -868,6 +896,16 @@ func (o AdvancedMachineFeaturesResponsePtrOutput) EnableNestedVirtualization() p
 			return nil
 		}
 		return &v.EnableNestedVirtualization
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable UEFI networking for instance creation.
+func (o AdvancedMachineFeaturesResponsePtrOutput) EnableUefiNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeaturesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableUefiNetworking
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -2010,6 +2048,8 @@ func (o AllocationSpecificSKUReservationPtrOutput) InstanceProperties() Allocati
 
 // This reservation type allows to pre allocate specific instance configuration. Next ID: 5
 type AllocationSpecificSKUReservationResponse struct {
+	// Indicates how many instances are actually usable currently.
+	AssuredCount string `pulumi:"assuredCount"`
 	// Specifies the number of resources that are allocated.
 	Count string `pulumi:"count"`
 	// Indicates how many instances are in use.
@@ -2031,6 +2071,8 @@ type AllocationSpecificSKUReservationResponseInput interface {
 
 // This reservation type allows to pre allocate specific instance configuration. Next ID: 5
 type AllocationSpecificSKUReservationResponseArgs struct {
+	// Indicates how many instances are actually usable currently.
+	AssuredCount pulumi.StringInput `pulumi:"assuredCount"`
 	// Specifies the number of resources that are allocated.
 	Count pulumi.StringInput `pulumi:"count"`
 	// Indicates how many instances are in use.
@@ -2117,6 +2159,11 @@ func (o AllocationSpecificSKUReservationResponseOutput) ToAllocationSpecificSKUR
 	}).(AllocationSpecificSKUReservationResponsePtrOutput)
 }
 
+// Indicates how many instances are actually usable currently.
+func (o AllocationSpecificSKUReservationResponseOutput) AssuredCount() pulumi.StringOutput {
+	return o.ApplyT(func(v AllocationSpecificSKUReservationResponse) string { return v.AssuredCount }).(pulumi.StringOutput)
+}
+
 // Specifies the number of resources that are allocated.
 func (o AllocationSpecificSKUReservationResponseOutput) Count() pulumi.StringOutput {
 	return o.ApplyT(func(v AllocationSpecificSKUReservationResponse) string { return v.Count }).(pulumi.StringOutput)
@@ -2156,6 +2203,16 @@ func (o AllocationSpecificSKUReservationResponsePtrOutput) Elem() AllocationSpec
 		var ret AllocationSpecificSKUReservationResponse
 		return ret
 	}).(AllocationSpecificSKUReservationResponseOutput)
+}
+
+// Indicates how many instances are actually usable currently.
+func (o AllocationSpecificSKUReservationResponsePtrOutput) AssuredCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AllocationSpecificSKUReservationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AssuredCount
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies the number of resources that are allocated.
@@ -27082,6 +27139,14 @@ type InstanceGroupManagerActionsSummaryResponse struct {
 	Refreshing int `pulumi:"refreshing"`
 	// The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
 	Restarting int `pulumi:"restarting"`
+	// The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+	Resuming int `pulumi:"resuming"`
+	// The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+	Starting int `pulumi:"starting"`
+	// The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+	Stopping int `pulumi:"stopping"`
+	// The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
+	Suspending int `pulumi:"suspending"`
 	// The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
 	Verifying int `pulumi:"verifying"`
 }
@@ -27114,6 +27179,14 @@ type InstanceGroupManagerActionsSummaryResponseArgs struct {
 	Refreshing pulumi.IntInput `pulumi:"refreshing"`
 	// The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
 	Restarting pulumi.IntInput `pulumi:"restarting"`
+	// The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+	Resuming pulumi.IntInput `pulumi:"resuming"`
+	// The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+	Starting pulumi.IntInput `pulumi:"starting"`
+	// The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+	Stopping pulumi.IntInput `pulumi:"stopping"`
+	// The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
+	Suspending pulumi.IntInput `pulumi:"suspending"`
 	// The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
 	Verifying pulumi.IntInput `pulumi:"verifying"`
 }
@@ -27235,6 +27308,26 @@ func (o InstanceGroupManagerActionsSummaryResponseOutput) Restarting() pulumi.In
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Restarting }).(pulumi.IntOutput)
 }
 
+// The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+func (o InstanceGroupManagerActionsSummaryResponseOutput) Resuming() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Resuming }).(pulumi.IntOutput)
+}
+
+// The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+func (o InstanceGroupManagerActionsSummaryResponseOutput) Starting() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Starting }).(pulumi.IntOutput)
+}
+
+// The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+func (o InstanceGroupManagerActionsSummaryResponseOutput) Stopping() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Stopping }).(pulumi.IntOutput)
+}
+
+// The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
+func (o InstanceGroupManagerActionsSummaryResponseOutput) Suspending() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Suspending }).(pulumi.IntOutput)
+}
+
 // The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
 func (o InstanceGroupManagerActionsSummaryResponseOutput) Verifying() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Verifying }).(pulumi.IntOutput)
@@ -27341,6 +27434,46 @@ func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Restarting() pulumi
 			return nil
 		}
 		return &v.Restarting
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Resuming() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Resuming
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Starting() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Starting
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Stopping() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Stopping
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
+func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Suspending() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Suspending
 	}).(pulumi.IntPtrOutput)
 }
 

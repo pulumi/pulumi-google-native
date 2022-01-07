@@ -32,6 +32,8 @@ type LookupEntryResult struct {
 	BigqueryDateShardedSpec GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse `pulumi:"bigqueryDateShardedSpec"`
 	// Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
 	BigqueryTableSpec GoogleCloudDatacatalogV1BigQueryTableSpecResponse `pulumi:"bigqueryTableSpec"`
+	// Business Context of the entry.
+	BusinessContext GoogleCloudDatacatalogV1BusinessContextResponse `pulumi:"businessContext"`
 	// Physical location of the entry.
 	DataSource GoogleCloudDatacatalogV1DataSourceResponse `pulumi:"dataSource"`
 	// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
@@ -118,6 +120,11 @@ func (o LookupEntryResultOutput) BigqueryTableSpec() GoogleCloudDatacatalogV1Big
 	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1BigQueryTableSpecResponse {
 		return v.BigqueryTableSpec
 	}).(GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput)
+}
+
+// Business Context of the entry.
+func (o LookupEntryResultOutput) BusinessContext() GoogleCloudDatacatalogV1BusinessContextResponseOutput {
+	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1BusinessContextResponse { return v.BusinessContext }).(GoogleCloudDatacatalogV1BusinessContextResponseOutput)
 }
 
 // Physical location of the entry.

@@ -390,8 +390,6 @@ class AndroidRoboTestArgs:
                  app_bundle: Optional[pulumi.Input['AppBundleArgs']] = None,
                  app_initial_activity: Optional[pulumi.Input[str]] = None,
                  app_package_id: Optional[pulumi.Input[str]] = None,
-                 max_depth: Optional[pulumi.Input[int]] = None,
-                 max_steps: Optional[pulumi.Input[int]] = None,
                  robo_directives: Optional[pulumi.Input[Sequence[pulumi.Input['RoboDirectiveArgs']]]] = None,
                  robo_mode: Optional[pulumi.Input['AndroidRoboTestRoboMode']] = None,
                  robo_script: Optional[pulumi.Input['FileReferenceArgs']] = None,
@@ -402,8 +400,6 @@ class AndroidRoboTestArgs:
         :param pulumi.Input['AppBundleArgs'] app_bundle: A multi-apk app bundle for the application under test.
         :param pulumi.Input[str] app_initial_activity: The initial activity that should be used to start the app.
         :param pulumi.Input[str] app_package_id: The java package for the application under test. The default value is determined by examining the application's manifest.
-        :param pulumi.Input[int] max_depth: The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
-        :param pulumi.Input[int] max_steps: The max number of steps Robo can execute. Default is no limit.
         :param pulumi.Input[Sequence[pulumi.Input['RoboDirectiveArgs']]] robo_directives: A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
         :param pulumi.Input['AndroidRoboTestRoboMode'] robo_mode: The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
         :param pulumi.Input['FileReferenceArgs'] robo_script: A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
@@ -417,10 +413,6 @@ class AndroidRoboTestArgs:
             pulumi.set(__self__, "app_initial_activity", app_initial_activity)
         if app_package_id is not None:
             pulumi.set(__self__, "app_package_id", app_package_id)
-        if max_depth is not None:
-            pulumi.set(__self__, "max_depth", max_depth)
-        if max_steps is not None:
-            pulumi.set(__self__, "max_steps", max_steps)
         if robo_directives is not None:
             pulumi.set(__self__, "robo_directives", robo_directives)
         if robo_mode is not None:
@@ -477,30 +469,6 @@ class AndroidRoboTestArgs:
     @app_package_id.setter
     def app_package_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "app_package_id", value)
-
-    @property
-    @pulumi.getter(name="maxDepth")
-    def max_depth(self) -> Optional[pulumi.Input[int]]:
-        """
-        The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
-        """
-        return pulumi.get(self, "max_depth")
-
-    @max_depth.setter
-    def max_depth(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "max_depth", value)
-
-    @property
-    @pulumi.getter(name="maxSteps")
-    def max_steps(self) -> Optional[pulumi.Input[int]]:
-        """
-        The max number of steps Robo can execute. Default is no limit.
-        """
-        return pulumi.get(self, "max_steps")
-
-    @max_steps.setter
-    def max_steps(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "max_steps", value)
 
     @property
     @pulumi.getter(name="roboDirectives")

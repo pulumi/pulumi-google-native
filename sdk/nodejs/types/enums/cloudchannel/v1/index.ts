@@ -4,7 +4,7 @@
 
 export const ChannelPartnerLinkLinkState = {
     /**
-     * The state is not specified.
+     * Not used.
      */
     ChannelPartnerLinkStateUnspecified: "CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED",
     /**

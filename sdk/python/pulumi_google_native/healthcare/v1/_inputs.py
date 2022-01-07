@@ -677,7 +677,7 @@ class ParserConfigArgs:
         :param pulumi.Input[bool] allow_null_header: Determines whether messages with no header are allowed.
         :param pulumi.Input['SchemaPackageArgs'] schema: Schemas used to parse messages in this store, if schematized parsing is desired.
         :param pulumi.Input[str] segment_terminator: Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
-        :param pulumi.Input['ParserConfigVersion'] version: Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+        :param pulumi.Input['ParserConfigVersion'] version: Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
         """
         if allow_null_header is not None:
             pulumi.set(__self__, "allow_null_header", allow_null_header)
@@ -728,7 +728,7 @@ class ParserConfigArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input['ParserConfigVersion']]:
         """
-        Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+        Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
         """
         return pulumi.get(self, "version")
 
@@ -1116,20 +1116,28 @@ class TypeArgs:
 class ValidationConfigArgs:
     def __init__(__self__, *,
                  disable_fhirpath_validation: Optional[pulumi.Input[bool]] = None,
+                 disable_profile_validation: Optional[pulumi.Input[bool]] = None,
                  disable_reference_type_validation: Optional[pulumi.Input[bool]] = None,
-                 disable_required_field_validation: Optional[pulumi.Input[bool]] = None):
+                 disable_required_field_validation: Optional[pulumi.Input[bool]] = None,
+                 enabled_implementation_guides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Contains the configuration for FHIR profiles and validation.
         :param pulumi.Input[bool] disable_fhirpath_validation: Whether to disable FHIRPath validation for incoming resources. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+        :param pulumi.Input[bool] disable_profile_validation: Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
         :param pulumi.Input[bool] disable_reference_type_validation: Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
         :param pulumi.Input[bool] disable_required_field_validation: Whether to disable required fields validation for incoming resources. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_implementation_guides: A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
         """
         if disable_fhirpath_validation is not None:
             pulumi.set(__self__, "disable_fhirpath_validation", disable_fhirpath_validation)
+        if disable_profile_validation is not None:
+            pulumi.set(__self__, "disable_profile_validation", disable_profile_validation)
         if disable_reference_type_validation is not None:
             pulumi.set(__self__, "disable_reference_type_validation", disable_reference_type_validation)
         if disable_required_field_validation is not None:
             pulumi.set(__self__, "disable_required_field_validation", disable_required_field_validation)
+        if enabled_implementation_guides is not None:
+            pulumi.set(__self__, "enabled_implementation_guides", enabled_implementation_guides)
 
     @property
     @pulumi.getter(name="disableFhirpathValidation")
@@ -1142,6 +1150,18 @@ class ValidationConfigArgs:
     @disable_fhirpath_validation.setter
     def disable_fhirpath_validation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_fhirpath_validation", value)
+
+    @property
+    @pulumi.getter(name="disableProfileValidation")
+    def disable_profile_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+        """
+        return pulumi.get(self, "disable_profile_validation")
+
+    @disable_profile_validation.setter
+    def disable_profile_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_profile_validation", value)
 
     @property
     @pulumi.getter(name="disableReferenceTypeValidation")
@@ -1166,6 +1186,18 @@ class ValidationConfigArgs:
     @disable_required_field_validation.setter
     def disable_required_field_validation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_required_field_validation", value)
+
+    @property
+    @pulumi.getter(name="enabledImplementationGuides")
+    def enabled_implementation_guides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+        """
+        return pulumi.get(self, "enabled_implementation_guides")
+
+    @enabled_implementation_guides.setter
+    def enabled_implementation_guides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enabled_implementation_guides", value)
 
 
 @pulumi.input_type

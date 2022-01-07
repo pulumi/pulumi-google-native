@@ -850,6 +850,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static BackendServiceLoadBalancingScheme External { get; } = new BackendServiceLoadBalancingScheme("EXTERNAL");
         /// <summary>
+        /// Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+        /// </summary>
+        public static BackendServiceLoadBalancingScheme ExternalManaged { get; } = new BackendServiceLoadBalancingScheme("EXTERNAL_MANAGED");
+        /// <summary>
         /// Signifies that this will be used for Internal TCP/UDP Load Balancing.
         /// </summary>
         public static BackendServiceLoadBalancingScheme Internal { get; } = new BackendServiceLoadBalancingScheme("INTERNAL");
@@ -1596,6 +1600,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         public static ForwardingRuleLoadBalancingScheme External { get; } = new ForwardingRuleLoadBalancingScheme("EXTERNAL");
+        public static ForwardingRuleLoadBalancingScheme ExternalManaged { get; } = new ForwardingRuleLoadBalancingScheme("EXTERNAL_MANAGED");
         public static ForwardingRuleLoadBalancingScheme Internal { get; } = new ForwardingRuleLoadBalancingScheme("INTERNAL");
         public static ForwardingRuleLoadBalancingScheme InternalManaged { get; } = new ForwardingRuleLoadBalancingScheme("INTERNAL_MANAGED");
         public static ForwardingRuleLoadBalancingScheme InternalSelfManaged { get; } = new ForwardingRuleLoadBalancingScheme("INTERNAL_SELF_MANAGED");
@@ -1999,6 +2004,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         public static GlobalForwardingRuleLoadBalancingScheme External { get; } = new GlobalForwardingRuleLoadBalancingScheme("EXTERNAL");
+        public static GlobalForwardingRuleLoadBalancingScheme ExternalManaged { get; } = new GlobalForwardingRuleLoadBalancingScheme("EXTERNAL_MANAGED");
         public static GlobalForwardingRuleLoadBalancingScheme Internal { get; } = new GlobalForwardingRuleLoadBalancingScheme("INTERNAL");
         public static GlobalForwardingRuleLoadBalancingScheme InternalManaged { get; } = new GlobalForwardingRuleLoadBalancingScheme("INTERNAL_MANAGED");
         public static GlobalForwardingRuleLoadBalancingScheme InternalSelfManaged { get; } = new GlobalForwardingRuleLoadBalancingScheme("INTERNAL_SELF_MANAGED");
@@ -3753,6 +3759,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
         /// </summary>
         public static RegionBackendServiceLoadBalancingScheme External { get; } = new RegionBackendServiceLoadBalancingScheme("EXTERNAL");
+        /// <summary>
+        /// Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+        /// </summary>
+        public static RegionBackendServiceLoadBalancingScheme ExternalManaged { get; } = new RegionBackendServiceLoadBalancingScheme("EXTERNAL_MANAGED");
         /// <summary>
         /// Signifies that this will be used for Internal TCP/UDP Load Balancing.
         /// </summary>

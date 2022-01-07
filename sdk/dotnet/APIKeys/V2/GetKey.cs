@@ -75,7 +75,7 @@ namespace Pulumi.GoogleNative.APIKeys.V2
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// A checksum computed by the server based on the current value of the Key resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// A checksum computed by the server based on the current value of the Key resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. See https://google.aip.dev/154.
         /// </summary>
         public readonly string Etag;
         /// <summary>

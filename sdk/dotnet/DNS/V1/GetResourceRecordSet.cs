@@ -80,6 +80,10 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+        /// </summary>
+        public readonly Outputs.RRSetRoutingPolicyResponse RoutingPolicy;
+        /// <summary>
         /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
         /// </summary>
         public readonly ImmutableArray<string> Rrdatas;
@@ -102,6 +106,8 @@ namespace Pulumi.GoogleNative.DNS.V1
 
             string name,
 
+            Outputs.RRSetRoutingPolicyResponse routingPolicy,
+
             ImmutableArray<string> rrdatas,
 
             ImmutableArray<string> signatureRrdatas,
@@ -112,6 +118,7 @@ namespace Pulumi.GoogleNative.DNS.V1
         {
             Kind = kind;
             Name = name;
+            RoutingPolicy = routingPolicy;
             Rrdatas = rrdatas;
             SignatureRrdatas = signatureRrdatas;
             Ttl = ttl;

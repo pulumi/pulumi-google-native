@@ -157,7 +157,7 @@ class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition(str, E
 
 class ParserConfigVersion(str, Enum):
     """
-    Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+    Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
     """
     PARSER_VERSION_UNSPECIFIED = "PARSER_VERSION_UNSPECIFIED"
     """

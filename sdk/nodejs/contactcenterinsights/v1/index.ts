@@ -11,8 +11,10 @@ export * from "./getAnalysis";
 export * from "./getConversation";
 export * from "./getIssueModel";
 export * from "./getPhraseMatcher";
+export * from "./getView";
 export * from "./issueModel";
 export * from "./phraseMatcher";
+export * from "./view";
 
 // Export enums:
 export * from "../../types/enums/contactcenterinsights/v1";
@@ -22,6 +24,7 @@ import { Analysis } from "./analysis";
 import { Conversation } from "./conversation";
 import { IssueModel } from "./issueModel";
 import { PhraseMatcher } from "./phraseMatcher";
+import { View } from "./view";
 
 const _module = {
     version: utilities.getVersion(),
@@ -35,6 +38,8 @@ const _module = {
                 return new IssueModel(name, <any>undefined, { urn })
             case "google-native:contactcenterinsights/v1:PhraseMatcher":
                 return new PhraseMatcher(name, <any>undefined, { urn })
+            case "google-native:contactcenterinsights/v1:View":
+                return new View(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

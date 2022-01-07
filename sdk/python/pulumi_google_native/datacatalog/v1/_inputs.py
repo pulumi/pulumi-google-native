@@ -16,10 +16,14 @@ __all__ = [
     'GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs',
     'GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs',
     'GoogleCloudDatacatalogV1BigQueryTableSpecArgs',
+    'GoogleCloudDatacatalogV1BusinessContextArgs',
     'GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs',
     'GoogleCloudDatacatalogV1ColumnSchemaArgs',
+    'GoogleCloudDatacatalogV1ContactsPersonArgs',
+    'GoogleCloudDatacatalogV1ContactsArgs',
     'GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs',
     'GoogleCloudDatacatalogV1DatabaseTableSpecArgs',
+    'GoogleCloudDatacatalogV1EntryOverviewArgs',
     'GoogleCloudDatacatalogV1GcsFilesetSpecArgs',
     'GoogleCloudDatacatalogV1RoutineSpecArgumentArgs',
     'GoogleCloudDatacatalogV1RoutineSpecArgs',
@@ -287,6 +291,46 @@ class GoogleCloudDatacatalogV1BigQueryTableSpecArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDatacatalogV1BusinessContextArgs:
+    def __init__(__self__, *,
+                 contacts: Optional[pulumi.Input['GoogleCloudDatacatalogV1ContactsArgs']] = None,
+                 entry_overview: Optional[pulumi.Input['GoogleCloudDatacatalogV1EntryOverviewArgs']] = None):
+        """
+        Business Context of the entry.
+        :param pulumi.Input['GoogleCloudDatacatalogV1ContactsArgs'] contacts: Contact people for the entry.
+        :param pulumi.Input['GoogleCloudDatacatalogV1EntryOverviewArgs'] entry_overview: Entry overview fields for rich text descriptions of entries.
+        """
+        if contacts is not None:
+            pulumi.set(__self__, "contacts", contacts)
+        if entry_overview is not None:
+            pulumi.set(__self__, "entry_overview", entry_overview)
+
+    @property
+    @pulumi.getter
+    def contacts(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1ContactsArgs']]:
+        """
+        Contact people for the entry.
+        """
+        return pulumi.get(self, "contacts")
+
+    @contacts.setter
+    def contacts(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1ContactsArgs']]):
+        pulumi.set(self, "contacts", value)
+
+    @property
+    @pulumi.getter(name="entryOverview")
+    def entry_overview(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1EntryOverviewArgs']]:
+        """
+        Entry overview fields for rich text descriptions of entries.
+        """
+        return pulumi.get(self, "entry_overview")
+
+    @entry_overview.setter
+    def entry_overview(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1EntryOverviewArgs']]):
+        pulumi.set(self, "entry_overview", value)
+
+
+@pulumi.input_type
 class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs:
     def __init__(__self__, *,
                  database: Optional[pulumi.Input[str]] = None,
@@ -429,6 +473,70 @@ class GoogleCloudDatacatalogV1ColumnSchemaArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDatacatalogV1ContactsPersonArgs:
+    def __init__(__self__, *,
+                 designation: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None):
+        """
+        A contact person for the entry.
+        :param pulumi.Input[str] designation: Designation of the person, for example, Data Steward.
+        :param pulumi.Input[str] email: Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+        """
+        if designation is not None:
+            pulumi.set(__self__, "designation", designation)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def designation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Designation of the person, for example, Data Steward.
+        """
+        return pulumi.get(self, "designation")
+
+    @designation.setter
+    def designation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "designation", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1ContactsArgs:
+    def __init__(__self__, *,
+                 people: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1ContactsPersonArgs']]]] = None):
+        """
+        Contact people for the entry.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1ContactsPersonArgs']]] people: The list of contact people for the entry.
+        """
+        if people is not None:
+            pulumi.set(__self__, "people", people)
+
+    @property
+    @pulumi.getter
+    def people(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1ContactsPersonArgs']]]]:
+        """
+        The list of contact people for the entry.
+        """
+        return pulumi.get(self, "people")
+
+    @people.setter
+    def people(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1ContactsPersonArgs']]]]):
+        pulumi.set(self, "people", value)
+
+
+@pulumi.input_type
 class GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs:
     def __init__(__self__, *,
                  bigquery_connection_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs']] = None):
@@ -474,6 +582,30 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecType']]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1EntryOverviewArgs:
+    def __init__(__self__, *,
+                 overview: Optional[pulumi.Input[str]] = None):
+        """
+        Entry overview fields for rich text descriptions of entries.
+        :param pulumi.Input[str] overview: Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+        """
+        if overview is not None:
+            pulumi.set(__self__, "overview", overview)
+
+    @property
+    @pulumi.getter
+    def overview(self) -> Optional[pulumi.Input[str]]:
+        """
+        Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+        """
+        return pulumi.get(self, "overview")
+
+    @overview.setter
+    def overview(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "overview", value)
 
 
 @pulumi.input_type

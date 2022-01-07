@@ -17,11 +17,15 @@ __all__ = [
     'GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse',
     'GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse',
     'GoogleCloudDatacatalogV1BigQueryTableSpecResponse',
+    'GoogleCloudDatacatalogV1BusinessContextResponse',
     'GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse',
     'GoogleCloudDatacatalogV1ColumnSchemaResponse',
+    'GoogleCloudDatacatalogV1ContactsPersonResponse',
+    'GoogleCloudDatacatalogV1ContactsResponse',
     'GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse',
     'GoogleCloudDatacatalogV1DataSourceResponse',
     'GoogleCloudDatacatalogV1DatabaseTableSpecResponse',
+    'GoogleCloudDatacatalogV1EntryOverviewResponse',
     'GoogleCloudDatacatalogV1GcsFileSpecResponse',
     'GoogleCloudDatacatalogV1GcsFilesetSpecResponse',
     'GoogleCloudDatacatalogV1PersonalDetailsResponse',
@@ -379,6 +383,56 @@ class GoogleCloudDatacatalogV1BigQueryTableSpecResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDatacatalogV1BusinessContextResponse(dict):
+    """
+    Business Context of the entry.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryOverview":
+            suggest = "entry_overview"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1BusinessContextResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1BusinessContextResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1BusinessContextResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contacts: 'outputs.GoogleCloudDatacatalogV1ContactsResponse',
+                 entry_overview: 'outputs.GoogleCloudDatacatalogV1EntryOverviewResponse'):
+        """
+        Business Context of the entry.
+        :param 'GoogleCloudDatacatalogV1ContactsResponse' contacts: Contact people for the entry.
+        :param 'GoogleCloudDatacatalogV1EntryOverviewResponse' entry_overview: Entry overview fields for rich text descriptions of entries.
+        """
+        pulumi.set(__self__, "contacts", contacts)
+        pulumi.set(__self__, "entry_overview", entry_overview)
+
+    @property
+    @pulumi.getter
+    def contacts(self) -> 'outputs.GoogleCloudDatacatalogV1ContactsResponse':
+        """
+        Contact people for the entry.
+        """
+        return pulumi.get(self, "contacts")
+
+    @property
+    @pulumi.getter(name="entryOverview")
+    def entry_overview(self) -> 'outputs.GoogleCloudDatacatalogV1EntryOverviewResponse':
+        """
+        Entry overview fields for rich text descriptions of entries.
+        """
+        return pulumi.get(self, "entry_overview")
+
+
+@pulumi.output_type
 class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse(dict):
     """
     Specification for the BigQuery connection to a Cloud SQL instance.
@@ -506,6 +560,61 @@ class GoogleCloudDatacatalogV1ColumnSchemaResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDatacatalogV1ContactsPersonResponse(dict):
+    """
+    A contact person for the entry.
+    """
+    def __init__(__self__, *,
+                 designation: str,
+                 email: str):
+        """
+        A contact person for the entry.
+        :param str designation: Designation of the person, for example, Data Steward.
+        :param str email: Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+        """
+        pulumi.set(__self__, "designation", designation)
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def designation(self) -> str:
+        """
+        Designation of the person, for example, Data Steward.
+        """
+        return pulumi.get(self, "designation")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+        """
+        return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1ContactsResponse(dict):
+    """
+    Contact people for the entry.
+    """
+    def __init__(__self__, *,
+                 people: Sequence['outputs.GoogleCloudDatacatalogV1ContactsPersonResponse']):
+        """
+        Contact people for the entry.
+        :param Sequence['GoogleCloudDatacatalogV1ContactsPersonResponse'] people: The list of contact people for the entry.
+        """
+        pulumi.set(__self__, "people", people)
+
+    @property
+    @pulumi.getter
+    def people(self) -> Sequence['outputs.GoogleCloudDatacatalogV1ContactsPersonResponse']:
+        """
+        The list of contact people for the entry.
+        """
+        return pulumi.get(self, "people")
+
+
+@pulumi.output_type
 class GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse(dict):
     """
     Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
@@ -597,6 +706,28 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecResponse(dict):
         Type of this table.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1EntryOverviewResponse(dict):
+    """
+    Entry overview fields for rich text descriptions of entries.
+    """
+    def __init__(__self__, *,
+                 overview: str):
+        """
+        Entry overview fields for rich text descriptions of entries.
+        :param str overview: Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+        """
+        pulumi.set(__self__, "overview", overview)
+
+    @property
+    @pulumi.getter
+    def overview(self) -> str:
+        """
+        Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+        """
+        return pulumi.get(self, "overview")
 
 
 @pulumi.output_type

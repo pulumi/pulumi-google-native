@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly Outputs.ReservationAffinityResponse ReservationAffinity;
         /// <summary>
+        /// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ResourceManagerTags;
+        /// <summary>
         /// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public readonly ImmutableArray<string> ResourcePolicies;
@@ -120,6 +124,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             Outputs.ReservationAffinityResponse reservationAffinity,
 
+            ImmutableDictionary<string, string> resourceManagerTags,
+
             ImmutableArray<string> resourcePolicies,
 
             Outputs.SchedulingResponse scheduling,
@@ -144,6 +150,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             NetworkPerformanceConfig = networkPerformanceConfig;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             ReservationAffinity = reservationAffinity;
+            ResourceManagerTags = resourceManagerTags;
             ResourcePolicies = resourcePolicies;
             Scheduling = scheduling;
             ServiceAccounts = serviceAccounts;

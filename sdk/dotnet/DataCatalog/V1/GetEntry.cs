@@ -77,6 +77,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1BigQueryTableSpecResponse BigqueryTableSpec;
         /// <summary>
+        /// Business Context of the entry.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1BusinessContextResponse BusinessContext;
+        /// <summary>
         /// Physical location of the entry.
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1DataSourceResponse DataSource;
@@ -159,6 +163,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 
             Outputs.GoogleCloudDatacatalogV1BigQueryTableSpecResponse bigqueryTableSpec,
 
+            Outputs.GoogleCloudDatacatalogV1BusinessContextResponse businessContext,
+
             Outputs.GoogleCloudDatacatalogV1DataSourceResponse dataSource,
 
             Outputs.GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse dataSourceConnectionSpec,
@@ -199,6 +205,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         {
             BigqueryDateShardedSpec = bigqueryDateShardedSpec;
             BigqueryTableSpec = bigqueryTableSpec;
+            BusinessContext = businessContext;
             DataSource = dataSource;
             DataSourceConnectionSpec = dataSourceConnectionSpec;
             DatabaseTableSpec = databaseTableSpec;

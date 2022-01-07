@@ -18,6 +18,8 @@ type ResourceRecordSet struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// For example, www.example.com.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+	RoutingPolicy RRSetRoutingPolicyResponseOutput `pulumi:"routingPolicy"`
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas pulumi.StringArrayOutput `pulumi:"rrdatas"`
 	// As defined in RFC 4034 (section 3.2).
@@ -76,6 +78,8 @@ type resourceRecordSetArgs struct {
 	// For example, www.example.com.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
+	// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+	RoutingPolicy *RRSetRoutingPolicy `pulumi:"routingPolicy"`
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas []string `pulumi:"rrdatas"`
 	// As defined in RFC 4034 (section 3.2).
@@ -94,6 +98,8 @@ type ResourceRecordSetArgs struct {
 	// For example, www.example.com.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
+	// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+	RoutingPolicy RRSetRoutingPolicyPtrInput
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas pulumi.StringArrayInput
 	// As defined in RFC 4034 (section 3.2).

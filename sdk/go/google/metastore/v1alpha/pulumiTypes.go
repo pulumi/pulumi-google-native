@@ -2406,7 +2406,7 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfig struct {
-	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
+	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides map[string]string `pulumi:"configOverrides"`
 	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
 	EndpointProtocol *HiveMetastoreConfigEndpointProtocol `pulumi:"endpointProtocol"`
@@ -2429,7 +2429,7 @@ type HiveMetastoreConfigInput interface {
 
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfigArgs struct {
-	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
+	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
 	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
 	EndpointProtocol HiveMetastoreConfigEndpointProtocolPtrInput `pulumi:"endpointProtocol"`
@@ -2517,7 +2517,7 @@ func (o HiveMetastoreConfigOutput) ToHiveMetastoreConfigPtrOutputWithContext(ctx
 	}).(HiveMetastoreConfigPtrOutput)
 }
 
-// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
+// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 func (o HiveMetastoreConfigOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HiveMetastoreConfig) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
 }
@@ -2561,7 +2561,7 @@ func (o HiveMetastoreConfigPtrOutput) Elem() HiveMetastoreConfigOutput {
 	}).(HiveMetastoreConfigOutput)
 }
 
-// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
+// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 func (o HiveMetastoreConfigPtrOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HiveMetastoreConfig) map[string]string {
 		if v == nil {
@@ -2603,7 +2603,7 @@ func (o HiveMetastoreConfigPtrOutput) Version() pulumi.StringPtrOutput {
 
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfigResponse struct {
-	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
+	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides map[string]string `pulumi:"configOverrides"`
 	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
 	EndpointProtocol string `pulumi:"endpointProtocol"`
@@ -2626,7 +2626,7 @@ type HiveMetastoreConfigResponseInput interface {
 
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfigResponseArgs struct {
-	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
+	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
 	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
 	EndpointProtocol pulumi.StringInput `pulumi:"endpointProtocol"`
@@ -2714,7 +2714,7 @@ func (o HiveMetastoreConfigResponseOutput) ToHiveMetastoreConfigResponsePtrOutpu
 	}).(HiveMetastoreConfigResponsePtrOutput)
 }
 
-// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
+// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 func (o HiveMetastoreConfigResponseOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HiveMetastoreConfigResponse) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
 }
@@ -2758,7 +2758,7 @@ func (o HiveMetastoreConfigResponsePtrOutput) Elem() HiveMetastoreConfigResponse
 	}).(HiveMetastoreConfigResponseOutput)
 }
 
-// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
+// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 func (o HiveMetastoreConfigResponsePtrOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HiveMetastoreConfigResponse) map[string]string {
 		if v == nil {

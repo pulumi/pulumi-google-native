@@ -20,6 +20,8 @@ type Entry struct {
 	BigqueryDateShardedSpec GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput `pulumi:"bigqueryDateShardedSpec"`
 	// Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
 	BigqueryTableSpec GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput `pulumi:"bigqueryTableSpec"`
+	// Business Context of the entry.
+	BusinessContext GoogleCloudDatacatalogV1BusinessContextResponseOutput `pulumi:"businessContext"`
 	// Physical location of the entry.
 	DataSource GoogleCloudDatacatalogV1DataSourceResponseOutput `pulumi:"dataSource"`
 	// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
@@ -109,6 +111,8 @@ type entryArgs struct {
 	BigqueryDateShardedSpec *GoogleCloudDatacatalogV1BigQueryDateShardedSpec `pulumi:"bigqueryDateShardedSpec"`
 	// Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
 	BigqueryTableSpec *GoogleCloudDatacatalogV1BigQueryTableSpec `pulumi:"bigqueryTableSpec"`
+	// Business Context of the entry.
+	BusinessContext *GoogleCloudDatacatalogV1BusinessContext `pulumi:"businessContext"`
 	// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
 	DataSourceConnectionSpec *GoogleCloudDatacatalogV1DataSourceConnectionSpec `pulumi:"dataSourceConnectionSpec"`
 	// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
@@ -149,6 +153,8 @@ type EntryArgs struct {
 	BigqueryDateShardedSpec GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrInput
 	// Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
 	BigqueryTableSpec GoogleCloudDatacatalogV1BigQueryTableSpecPtrInput
+	// Business Context of the entry.
+	BusinessContext GoogleCloudDatacatalogV1BusinessContextPtrInput
 	// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
 	DataSourceConnectionSpec GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrInput
 	// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.

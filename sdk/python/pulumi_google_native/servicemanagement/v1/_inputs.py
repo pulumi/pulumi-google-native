@@ -915,8 +915,8 @@ class ControlArgs:
     def __init__(__self__, *,
                  environment: Optional[pulumi.Input[str]] = None):
         """
-        Selects and configures the service controller used by the service. The service controller handles features like abuse, quota, billing, logging, monitoring, etc.
-        :param pulumi.Input[str] environment: The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+        Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
+        :param pulumi.Input[str] environment: The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
         """
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
@@ -925,7 +925,7 @@ class ControlArgs:
     @pulumi.getter
     def environment(self) -> Optional[pulumi.Input[str]]:
         """
-        The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+        The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
         """
         return pulumi.get(self, "environment")
 

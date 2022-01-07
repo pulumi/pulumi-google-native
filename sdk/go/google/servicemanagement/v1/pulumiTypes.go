@@ -3711,9 +3711,9 @@ func (o ContextRuleResponseArrayOutput) Index(i pulumi.IntInput) ContextRuleResp
 	}).(ContextRuleResponseOutput)
 }
 
-// Selects and configures the service controller used by the service. The service controller handles features like abuse, quota, billing, logging, monitoring, etc.
+// Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
 type Control struct {
-	// The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+	// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 	Environment *string `pulumi:"environment"`
 }
 
@@ -3728,9 +3728,9 @@ type ControlInput interface {
 	ToControlOutputWithContext(context.Context) ControlOutput
 }
 
-// Selects and configures the service controller used by the service. The service controller handles features like abuse, quota, billing, logging, monitoring, etc.
+// Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
 type ControlArgs struct {
-	// The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+	// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 	Environment pulumi.StringPtrInput `pulumi:"environment"`
 }
 
@@ -3787,7 +3787,7 @@ func (i *controlPtrType) ToControlPtrOutputWithContext(ctx context.Context) Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ControlPtrOutput)
 }
 
-// Selects and configures the service controller used by the service. The service controller handles features like abuse, quota, billing, logging, monitoring, etc.
+// Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
 type ControlOutput struct{ *pulumi.OutputState }
 
 func (ControlOutput) ElementType() reflect.Type {
@@ -3812,7 +3812,7 @@ func (o ControlOutput) ToControlPtrOutputWithContext(ctx context.Context) Contro
 	}).(ControlPtrOutput)
 }
 
-// The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 func (o ControlOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Control) *string { return v.Environment }).(pulumi.StringPtrOutput)
 }
@@ -3841,7 +3841,7 @@ func (o ControlPtrOutput) Elem() ControlOutput {
 	}).(ControlOutput)
 }
 
-// The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 func (o ControlPtrOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Control) *string {
 		if v == nil {
@@ -3851,9 +3851,9 @@ func (o ControlPtrOutput) Environment() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Selects and configures the service controller used by the service. The service controller handles features like abuse, quota, billing, logging, monitoring, etc.
+// Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
 type ControlResponse struct {
-	// The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+	// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 	Environment string `pulumi:"environment"`
 }
 
@@ -3868,9 +3868,9 @@ type ControlResponseInput interface {
 	ToControlResponseOutputWithContext(context.Context) ControlResponseOutput
 }
 
-// Selects and configures the service controller used by the service. The service controller handles features like abuse, quota, billing, logging, monitoring, etc.
+// Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
 type ControlResponseArgs struct {
-	// The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+	// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 	Environment pulumi.StringInput `pulumi:"environment"`
 }
 
@@ -3927,7 +3927,7 @@ func (i *controlResponsePtrType) ToControlResponsePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ControlResponsePtrOutput)
 }
 
-// Selects and configures the service controller used by the service. The service controller handles features like abuse, quota, billing, logging, monitoring, etc.
+// Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
 type ControlResponseOutput struct{ *pulumi.OutputState }
 
 func (ControlResponseOutput) ElementType() reflect.Type {
@@ -3952,7 +3952,7 @@ func (o ControlResponseOutput) ToControlResponsePtrOutputWithContext(ctx context
 	}).(ControlResponsePtrOutput)
 }
 
-// The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 func (o ControlResponseOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v ControlResponse) string { return v.Environment }).(pulumi.StringOutput)
 }
@@ -3981,7 +3981,7 @@ func (o ControlResponsePtrOutput) Elem() ControlResponseOutput {
 	}).(ControlResponseOutput)
 }
 
-// The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 func (o ControlResponsePtrOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ControlResponse) *string {
 		if v == nil {

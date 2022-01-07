@@ -11,7 +11,10 @@ if typing.TYPE_CHECKING:
     v1 = __v1
     import pulumi_google_native.run.v1alpha1 as __v1alpha1
     v1alpha1 = __v1alpha1
+    import pulumi_google_native.run.v2 as __v2
+    v2 = __v2
 else:
     v1 = _utilities.lazy_import('pulumi_google_native.run.v1')
     v1alpha1 = _utilities.lazy_import('pulumi_google_native.run.v1alpha1')
+    v2 = _utilities.lazy_import('pulumi_google_native.run.v2')
 

@@ -41,6 +41,10 @@ export interface GetEntryResult {
      */
     readonly bigqueryTableSpec: outputs.datacatalog.v1.GoogleCloudDatacatalogV1BigQueryTableSpecResponse;
     /**
+     * Business Context of the entry.
+     */
+    readonly businessContext: outputs.datacatalog.v1.GoogleCloudDatacatalogV1BusinessContextResponse;
+    /**
      * Physical location of the entry.
      */
     readonly dataSource: outputs.datacatalog.v1.GoogleCloudDatacatalogV1DataSourceResponse;

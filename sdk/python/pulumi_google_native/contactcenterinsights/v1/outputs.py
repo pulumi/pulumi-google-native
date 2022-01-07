@@ -1785,7 +1785,7 @@ class GoogleCloudContactcenterinsightsV1IssueModelResultResponse(dict):
                  issues: Sequence['outputs.GoogleCloudContactcenterinsightsV1IssueAssignmentResponse']):
         """
         Issue Modeling result on a conversation.
-        :param str issue_model: Issue model that generates the result.
+        :param str issue_model: Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
         :param Sequence['GoogleCloudContactcenterinsightsV1IssueAssignmentResponse'] issues: All the matched issues.
         """
         pulumi.set(__self__, "issue_model", issue_model)
@@ -1795,7 +1795,7 @@ class GoogleCloudContactcenterinsightsV1IssueModelResultResponse(dict):
     @pulumi.getter(name="issueModel")
     def issue_model(self) -> str:
         """
-        Issue model that generates the result.
+        Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
         """
         return pulumi.get(self, "issue_model")
 

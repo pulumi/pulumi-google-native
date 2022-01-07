@@ -3438,7 +3438,7 @@ type ParserConfig struct {
 	Schema *SchemaPackage `pulumi:"schema"`
 	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 	SegmentTerminator *string `pulumi:"segmentTerminator"`
-	// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+	// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 	Version *ParserConfigVersion `pulumi:"version"`
 }
 
@@ -3461,7 +3461,7 @@ type ParserConfigArgs struct {
 	Schema SchemaPackagePtrInput `pulumi:"schema"`
 	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 	SegmentTerminator pulumi.StringPtrInput `pulumi:"segmentTerminator"`
-	// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+	// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 	Version ParserConfigVersionPtrInput `pulumi:"version"`
 }
 
@@ -3558,7 +3558,7 @@ func (o ParserConfigOutput) SegmentTerminator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParserConfig) *string { return v.SegmentTerminator }).(pulumi.StringPtrOutput)
 }
 
-// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 func (o ParserConfigOutput) Version() ParserConfigVersionPtrOutput {
 	return o.ApplyT(func(v ParserConfig) *ParserConfigVersion { return v.Version }).(ParserConfigVersionPtrOutput)
 }
@@ -3617,7 +3617,7 @@ func (o ParserConfigPtrOutput) SegmentTerminator() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 func (o ParserConfigPtrOutput) Version() ParserConfigVersionPtrOutput {
 	return o.ApplyT(func(v *ParserConfig) *ParserConfigVersion {
 		if v == nil {
@@ -3635,7 +3635,7 @@ type ParserConfigResponse struct {
 	Schema SchemaPackageResponse `pulumi:"schema"`
 	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 	SegmentTerminator string `pulumi:"segmentTerminator"`
-	// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+	// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 	Version string `pulumi:"version"`
 }
 
@@ -3658,7 +3658,7 @@ type ParserConfigResponseArgs struct {
 	Schema SchemaPackageResponseInput `pulumi:"schema"`
 	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 	SegmentTerminator pulumi.StringInput `pulumi:"segmentTerminator"`
-	// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+	// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -3755,7 +3755,7 @@ func (o ParserConfigResponseOutput) SegmentTerminator() pulumi.StringOutput {
 	return o.ApplyT(func(v ParserConfigResponse) string { return v.SegmentTerminator }).(pulumi.StringOutput)
 }
 
-// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 func (o ParserConfigResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v ParserConfigResponse) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -3814,7 +3814,7 @@ func (o ParserConfigResponsePtrOutput) SegmentTerminator() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 func (o ParserConfigResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ParserConfigResponse) *string {
 		if v == nil {
@@ -5987,10 +5987,14 @@ func (o TypeResponseArrayOutput) Index(i pulumi.IntInput) TypeResponseOutput {
 type ValidationConfig struct {
 	// Whether to disable FHIRPath validation for incoming resources. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 	DisableFhirpathValidation *bool `pulumi:"disableFhirpathValidation"`
+	// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+	DisableProfileValidation *bool `pulumi:"disableProfileValidation"`
 	// Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 	DisableReferenceTypeValidation *bool `pulumi:"disableReferenceTypeValidation"`
 	// Whether to disable required fields validation for incoming resources. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 	DisableRequiredFieldValidation *bool `pulumi:"disableRequiredFieldValidation"`
+	// A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+	EnabledImplementationGuides []string `pulumi:"enabledImplementationGuides"`
 }
 
 // ValidationConfigInput is an input type that accepts ValidationConfigArgs and ValidationConfigOutput values.
@@ -6008,10 +6012,14 @@ type ValidationConfigInput interface {
 type ValidationConfigArgs struct {
 	// Whether to disable FHIRPath validation for incoming resources. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 	DisableFhirpathValidation pulumi.BoolPtrInput `pulumi:"disableFhirpathValidation"`
+	// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+	DisableProfileValidation pulumi.BoolPtrInput `pulumi:"disableProfileValidation"`
 	// Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 	DisableReferenceTypeValidation pulumi.BoolPtrInput `pulumi:"disableReferenceTypeValidation"`
 	// Whether to disable required fields validation for incoming resources. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 	DisableRequiredFieldValidation pulumi.BoolPtrInput `pulumi:"disableRequiredFieldValidation"`
+	// A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+	EnabledImplementationGuides pulumi.StringArrayInput `pulumi:"enabledImplementationGuides"`
 }
 
 func (ValidationConfigArgs) ElementType() reflect.Type {
@@ -6097,6 +6105,11 @@ func (o ValidationConfigOutput) DisableFhirpathValidation() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v ValidationConfig) *bool { return v.DisableFhirpathValidation }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+func (o ValidationConfigOutput) DisableProfileValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ValidationConfig) *bool { return v.DisableProfileValidation }).(pulumi.BoolPtrOutput)
+}
+
 // Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 func (o ValidationConfigOutput) DisableReferenceTypeValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ValidationConfig) *bool { return v.DisableReferenceTypeValidation }).(pulumi.BoolPtrOutput)
@@ -6105,6 +6118,11 @@ func (o ValidationConfigOutput) DisableReferenceTypeValidation() pulumi.BoolPtrO
 // Whether to disable required fields validation for incoming resources. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 func (o ValidationConfigOutput) DisableRequiredFieldValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ValidationConfig) *bool { return v.DisableRequiredFieldValidation }).(pulumi.BoolPtrOutput)
+}
+
+// A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+func (o ValidationConfigOutput) EnabledImplementationGuides() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ValidationConfig) []string { return v.EnabledImplementationGuides }).(pulumi.StringArrayOutput)
 }
 
 type ValidationConfigPtrOutput struct{ *pulumi.OutputState }
@@ -6141,6 +6159,16 @@ func (o ValidationConfigPtrOutput) DisableFhirpathValidation() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+func (o ValidationConfigPtrOutput) DisableProfileValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ValidationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableProfileValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 func (o ValidationConfigPtrOutput) DisableReferenceTypeValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ValidationConfig) *bool {
@@ -6161,14 +6189,28 @@ func (o ValidationConfigPtrOutput) DisableRequiredFieldValidation() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+func (o ValidationConfigPtrOutput) EnabledImplementationGuides() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ValidationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledImplementationGuides
+	}).(pulumi.StringArrayOutput)
+}
+
 // Contains the configuration for FHIR profiles and validation.
 type ValidationConfigResponse struct {
 	// Whether to disable FHIRPath validation for incoming resources. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 	DisableFhirpathValidation bool `pulumi:"disableFhirpathValidation"`
+	// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+	DisableProfileValidation bool `pulumi:"disableProfileValidation"`
 	// Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 	DisableReferenceTypeValidation bool `pulumi:"disableReferenceTypeValidation"`
 	// Whether to disable required fields validation for incoming resources. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 	DisableRequiredFieldValidation bool `pulumi:"disableRequiredFieldValidation"`
+	// A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+	EnabledImplementationGuides []string `pulumi:"enabledImplementationGuides"`
 }
 
 // ValidationConfigResponseInput is an input type that accepts ValidationConfigResponseArgs and ValidationConfigResponseOutput values.
@@ -6186,10 +6228,14 @@ type ValidationConfigResponseInput interface {
 type ValidationConfigResponseArgs struct {
 	// Whether to disable FHIRPath validation for incoming resources. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 	DisableFhirpathValidation pulumi.BoolInput `pulumi:"disableFhirpathValidation"`
+	// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+	DisableProfileValidation pulumi.BoolInput `pulumi:"disableProfileValidation"`
 	// Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 	DisableReferenceTypeValidation pulumi.BoolInput `pulumi:"disableReferenceTypeValidation"`
 	// Whether to disable required fields validation for incoming resources. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 	DisableRequiredFieldValidation pulumi.BoolInput `pulumi:"disableRequiredFieldValidation"`
+	// A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+	EnabledImplementationGuides pulumi.StringArrayInput `pulumi:"enabledImplementationGuides"`
 }
 
 func (ValidationConfigResponseArgs) ElementType() reflect.Type {
@@ -6275,6 +6321,11 @@ func (o ValidationConfigResponseOutput) DisableFhirpathValidation() pulumi.BoolO
 	return o.ApplyT(func(v ValidationConfigResponse) bool { return v.DisableFhirpathValidation }).(pulumi.BoolOutput)
 }
 
+// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+func (o ValidationConfigResponseOutput) DisableProfileValidation() pulumi.BoolOutput {
+	return o.ApplyT(func(v ValidationConfigResponse) bool { return v.DisableProfileValidation }).(pulumi.BoolOutput)
+}
+
 // Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 func (o ValidationConfigResponseOutput) DisableReferenceTypeValidation() pulumi.BoolOutput {
 	return o.ApplyT(func(v ValidationConfigResponse) bool { return v.DisableReferenceTypeValidation }).(pulumi.BoolOutput)
@@ -6283,6 +6334,11 @@ func (o ValidationConfigResponseOutput) DisableReferenceTypeValidation() pulumi.
 // Whether to disable required fields validation for incoming resources. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 func (o ValidationConfigResponseOutput) DisableRequiredFieldValidation() pulumi.BoolOutput {
 	return o.ApplyT(func(v ValidationConfigResponse) bool { return v.DisableRequiredFieldValidation }).(pulumi.BoolOutput)
+}
+
+// A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+func (o ValidationConfigResponseOutput) EnabledImplementationGuides() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ValidationConfigResponse) []string { return v.EnabledImplementationGuides }).(pulumi.StringArrayOutput)
 }
 
 type ValidationConfigResponsePtrOutput struct{ *pulumi.OutputState }
@@ -6319,6 +6375,16 @@ func (o ValidationConfigResponsePtrOutput) DisableFhirpathValidation() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+func (o ValidationConfigResponsePtrOutput) DisableProfileValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ValidationConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.DisableProfileValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
 func (o ValidationConfigResponsePtrOutput) DisableReferenceTypeValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ValidationConfigResponse) *bool {
@@ -6337,6 +6403,16 @@ func (o ValidationConfigResponsePtrOutput) DisableRequiredFieldValidation() pulu
 		}
 		return &v.DisableRequiredFieldValidation
 	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+func (o ValidationConfigResponsePtrOutput) EnabledImplementationGuides() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ValidationConfigResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledImplementationGuides
+	}).(pulumi.StringArrayOutput)
 }
 
 // Describes a selector for extracting and matching an MSH field to a value.

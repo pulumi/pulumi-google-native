@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly bool EnableNestedVirtualization;
         /// <summary>
+        /// Whether to enable UEFI networking for instance creation.
+        /// </summary>
+        public readonly bool EnableUefiNetworking;
+        /// <summary>
         /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         /// </summary>
         public readonly int ThreadsPerCore;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         private AdvancedMachineFeaturesResponse(
             bool enableNestedVirtualization,
 
+            bool enableUefiNetworking,
+
             int threadsPerCore)
         {
             EnableNestedVirtualization = enableNestedVirtualization;
+            EnableUefiNetworking = enableUefiNetworking;
             ThreadsPerCore = threadsPerCore;
         }
     }

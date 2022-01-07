@@ -3557,6 +3557,8 @@ type BackendServiceLoadBalancingScheme string
 const (
 	// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
 	BackendServiceLoadBalancingSchemeExternal = BackendServiceLoadBalancingScheme("EXTERNAL")
+	// Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+	BackendServiceLoadBalancingSchemeExternalManaged = BackendServiceLoadBalancingScheme("EXTERNAL_MANAGED")
 	// Signifies that this will be used for Internal TCP/UDP Load Balancing.
 	BackendServiceLoadBalancingSchemeInternal = BackendServiceLoadBalancingScheme("INTERNAL")
 	// Signifies that this will be used for Internal HTTP(S) Load Balancing.
@@ -6468,6 +6470,7 @@ type ForwardingRuleLoadBalancingScheme string
 
 const (
 	ForwardingRuleLoadBalancingSchemeExternal            = ForwardingRuleLoadBalancingScheme("EXTERNAL")
+	ForwardingRuleLoadBalancingSchemeExternalManaged     = ForwardingRuleLoadBalancingScheme("EXTERNAL_MANAGED")
 	ForwardingRuleLoadBalancingSchemeInternal            = ForwardingRuleLoadBalancingScheme("INTERNAL")
 	ForwardingRuleLoadBalancingSchemeInternalManaged     = ForwardingRuleLoadBalancingScheme("INTERNAL_MANAGED")
 	ForwardingRuleLoadBalancingSchemeInternalSelfManaged = ForwardingRuleLoadBalancingScheme("INTERNAL_SELF_MANAGED")
@@ -8165,6 +8168,7 @@ type GlobalForwardingRuleLoadBalancingScheme string
 
 const (
 	GlobalForwardingRuleLoadBalancingSchemeExternal            = GlobalForwardingRuleLoadBalancingScheme("EXTERNAL")
+	GlobalForwardingRuleLoadBalancingSchemeExternalManaged     = GlobalForwardingRuleLoadBalancingScheme("EXTERNAL_MANAGED")
 	GlobalForwardingRuleLoadBalancingSchemeInternal            = GlobalForwardingRuleLoadBalancingScheme("INTERNAL")
 	GlobalForwardingRuleLoadBalancingSchemeInternalManaged     = GlobalForwardingRuleLoadBalancingScheme("INTERNAL_MANAGED")
 	GlobalForwardingRuleLoadBalancingSchemeInternalSelfManaged = GlobalForwardingRuleLoadBalancingScheme("INTERNAL_SELF_MANAGED")
@@ -15601,6 +15605,8 @@ type RegionBackendServiceLoadBalancingScheme string
 const (
 	// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
 	RegionBackendServiceLoadBalancingSchemeExternal = RegionBackendServiceLoadBalancingScheme("EXTERNAL")
+	// Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+	RegionBackendServiceLoadBalancingSchemeExternalManaged = RegionBackendServiceLoadBalancingScheme("EXTERNAL_MANAGED")
 	// Signifies that this will be used for Internal TCP/UDP Load Balancing.
 	RegionBackendServiceLoadBalancingSchemeInternal = RegionBackendServiceLoadBalancingScheme("INTERNAL")
 	// Signifies that this will be used for Internal HTTP(S) Load Balancing.

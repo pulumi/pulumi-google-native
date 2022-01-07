@@ -237,7 +237,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     }
 
     /// <summary>
-    /// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+    /// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
     /// </summary>
     [EnumType]
     public readonly struct ParserConfigVersion : IEquatable<ParserConfigVersion>

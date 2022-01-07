@@ -425,6 +425,8 @@ class AdvancedMachineFeaturesResponse(dict):
         suggest = None
         if key == "enableNestedVirtualization":
             suggest = "enable_nested_virtualization"
+        elif key == "enableUefiNetworking":
+            suggest = "enable_uefi_networking"
         elif key == "threadsPerCore":
             suggest = "threads_per_core"
 
@@ -441,13 +443,16 @@ class AdvancedMachineFeaturesResponse(dict):
 
     def __init__(__self__, *,
                  enable_nested_virtualization: bool,
+                 enable_uefi_networking: bool,
                  threads_per_core: int):
         """
         Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
         :param bool enable_nested_virtualization: Whether to enable nested virtualization or not (default is false).
+        :param bool enable_uefi_networking: Whether to enable UEFI networking for instance creation.
         :param int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        pulumi.set(__self__, "enable_uefi_networking", enable_uefi_networking)
         pulumi.set(__self__, "threads_per_core", threads_per_core)
 
     @property
@@ -457,6 +462,14 @@ class AdvancedMachineFeaturesResponse(dict):
         Whether to enable nested virtualization or not (default is false).
         """
         return pulumi.get(self, "enable_nested_virtualization")
+
+    @property
+    @pulumi.getter(name="enableUefiNetworking")
+    def enable_uefi_networking(self) -> bool:
+        """
+        Whether to enable UEFI networking for instance creation.
+        """
+        return pulumi.get(self, "enable_uefi_networking")
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -690,7 +703,9 @@ class AllocationSpecificSKUReservationResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "inUseCount":
+        if key == "assuredCount":
+            suggest = "assured_count"
+        elif key == "inUseCount":
             suggest = "in_use_count"
         elif key == "instanceProperties":
             suggest = "instance_properties"
@@ -707,18 +722,29 @@ class AllocationSpecificSKUReservationResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 assured_count: str,
                  count: str,
                  in_use_count: str,
                  instance_properties: 'outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse'):
         """
         This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+        :param str assured_count: Indicates how many instances are actually usable currently.
         :param str count: Specifies the number of resources that are allocated.
         :param str in_use_count: Indicates how many instances are in use.
         :param 'AllocationSpecificSKUAllocationReservedInstancePropertiesResponse' instance_properties: The instance properties for the reservation.
         """
+        pulumi.set(__self__, "assured_count", assured_count)
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "in_use_count", in_use_count)
         pulumi.set(__self__, "instance_properties", instance_properties)
+
+    @property
+    @pulumi.getter(name="assuredCount")
+    def assured_count(self) -> str:
+        """
+        Indicates how many instances are actually usable currently.
+        """
+        return pulumi.get(self, "assured_count")
 
     @property
     @pulumi.getter
@@ -6327,6 +6353,10 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
                  recreating: int,
                  refreshing: int,
                  restarting: int,
+                 resuming: int,
+                 starting: int,
+                 stopping: int,
+                 suspending: int,
                  verifying: int):
         """
         :param int abandoning: The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
@@ -6337,6 +6367,10 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
         :param int recreating: The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
         :param int refreshing: The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
         :param int restarting: The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
+        :param int resuming: The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+        :param int starting: The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+        :param int stopping: The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+        :param int suspending: The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
         :param int verifying: The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
         """
         pulumi.set(__self__, "abandoning", abandoning)
@@ -6347,6 +6381,10 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
         pulumi.set(__self__, "recreating", recreating)
         pulumi.set(__self__, "refreshing", refreshing)
         pulumi.set(__self__, "restarting", restarting)
+        pulumi.set(__self__, "resuming", resuming)
+        pulumi.set(__self__, "starting", starting)
+        pulumi.set(__self__, "stopping", stopping)
+        pulumi.set(__self__, "suspending", suspending)
         pulumi.set(__self__, "verifying", verifying)
 
     @property
@@ -6412,6 +6450,38 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
         The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
         """
         return pulumi.get(self, "restarting")
+
+    @property
+    @pulumi.getter
+    def resuming(self) -> int:
+        """
+        The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+        """
+        return pulumi.get(self, "resuming")
+
+    @property
+    @pulumi.getter
+    def starting(self) -> int:
+        """
+        The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+        """
+        return pulumi.get(self, "starting")
+
+    @property
+    @pulumi.getter
+    def stopping(self) -> int:
+        """
+        The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+        """
+        return pulumi.get(self, "stopping")
+
+    @property
+    @pulumi.getter
+    def suspending(self) -> int:
+        """
+        The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
+        """
+        return pulumi.get(self, "suspending")
 
     @property
     @pulumi.getter

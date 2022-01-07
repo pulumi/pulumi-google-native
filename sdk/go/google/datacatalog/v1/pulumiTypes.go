@@ -1828,6 +1828,330 @@ func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput) ViewSpec() G
 	}).(GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput)
 }
 
+// Business Context of the entry.
+type GoogleCloudDatacatalogV1BusinessContext struct {
+	// Contact people for the entry.
+	Contacts *GoogleCloudDatacatalogV1Contacts `pulumi:"contacts"`
+	// Entry overview fields for rich text descriptions of entries.
+	EntryOverview *GoogleCloudDatacatalogV1EntryOverview `pulumi:"entryOverview"`
+}
+
+// GoogleCloudDatacatalogV1BusinessContextInput is an input type that accepts GoogleCloudDatacatalogV1BusinessContextArgs and GoogleCloudDatacatalogV1BusinessContextOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1BusinessContextInput` via:
+//
+//          GoogleCloudDatacatalogV1BusinessContextArgs{...}
+type GoogleCloudDatacatalogV1BusinessContextInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1BusinessContextOutput() GoogleCloudDatacatalogV1BusinessContextOutput
+	ToGoogleCloudDatacatalogV1BusinessContextOutputWithContext(context.Context) GoogleCloudDatacatalogV1BusinessContextOutput
+}
+
+// Business Context of the entry.
+type GoogleCloudDatacatalogV1BusinessContextArgs struct {
+	// Contact people for the entry.
+	Contacts GoogleCloudDatacatalogV1ContactsPtrInput `pulumi:"contacts"`
+	// Entry overview fields for rich text descriptions of entries.
+	EntryOverview GoogleCloudDatacatalogV1EntryOverviewPtrInput `pulumi:"entryOverview"`
+}
+
+func (GoogleCloudDatacatalogV1BusinessContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContext)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1BusinessContextArgs) ToGoogleCloudDatacatalogV1BusinessContextOutput() GoogleCloudDatacatalogV1BusinessContextOutput {
+	return i.ToGoogleCloudDatacatalogV1BusinessContextOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1BusinessContextArgs) ToGoogleCloudDatacatalogV1BusinessContextOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BusinessContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BusinessContextOutput)
+}
+
+func (i GoogleCloudDatacatalogV1BusinessContextArgs) ToGoogleCloudDatacatalogV1BusinessContextPtrOutput() GoogleCloudDatacatalogV1BusinessContextPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1BusinessContextPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1BusinessContextArgs) ToGoogleCloudDatacatalogV1BusinessContextPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BusinessContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BusinessContextOutput).ToGoogleCloudDatacatalogV1BusinessContextPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1BusinessContextPtrInput is an input type that accepts GoogleCloudDatacatalogV1BusinessContextArgs, GoogleCloudDatacatalogV1BusinessContextPtr and GoogleCloudDatacatalogV1BusinessContextPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1BusinessContextPtrInput` via:
+//
+//          GoogleCloudDatacatalogV1BusinessContextArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1BusinessContextPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1BusinessContextPtrOutput() GoogleCloudDatacatalogV1BusinessContextPtrOutput
+	ToGoogleCloudDatacatalogV1BusinessContextPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1BusinessContextPtrOutput
+}
+
+type googleCloudDatacatalogV1BusinessContextPtrType GoogleCloudDatacatalogV1BusinessContextArgs
+
+func GoogleCloudDatacatalogV1BusinessContextPtr(v *GoogleCloudDatacatalogV1BusinessContextArgs) GoogleCloudDatacatalogV1BusinessContextPtrInput {
+	return (*googleCloudDatacatalogV1BusinessContextPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1BusinessContextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1BusinessContext)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1BusinessContextPtrType) ToGoogleCloudDatacatalogV1BusinessContextPtrOutput() GoogleCloudDatacatalogV1BusinessContextPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1BusinessContextPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1BusinessContextPtrType) ToGoogleCloudDatacatalogV1BusinessContextPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BusinessContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BusinessContextPtrOutput)
+}
+
+// Business Context of the entry.
+type GoogleCloudDatacatalogV1BusinessContextOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1BusinessContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContext)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextOutput) ToGoogleCloudDatacatalogV1BusinessContextOutput() GoogleCloudDatacatalogV1BusinessContextOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextOutput) ToGoogleCloudDatacatalogV1BusinessContextOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BusinessContextOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextOutput) ToGoogleCloudDatacatalogV1BusinessContextPtrOutput() GoogleCloudDatacatalogV1BusinessContextPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1BusinessContextPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextOutput) ToGoogleCloudDatacatalogV1BusinessContextPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BusinessContextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1BusinessContext) *GoogleCloudDatacatalogV1BusinessContext {
+		return &v
+	}).(GoogleCloudDatacatalogV1BusinessContextPtrOutput)
+}
+
+// Contact people for the entry.
+func (o GoogleCloudDatacatalogV1BusinessContextOutput) Contacts() GoogleCloudDatacatalogV1ContactsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1BusinessContext) *GoogleCloudDatacatalogV1Contacts { return v.Contacts }).(GoogleCloudDatacatalogV1ContactsPtrOutput)
+}
+
+// Entry overview fields for rich text descriptions of entries.
+func (o GoogleCloudDatacatalogV1BusinessContextOutput) EntryOverview() GoogleCloudDatacatalogV1EntryOverviewPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1BusinessContext) *GoogleCloudDatacatalogV1EntryOverview {
+		return v.EntryOverview
+	}).(GoogleCloudDatacatalogV1EntryOverviewPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1BusinessContextPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1BusinessContextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1BusinessContext)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextPtrOutput) ToGoogleCloudDatacatalogV1BusinessContextPtrOutput() GoogleCloudDatacatalogV1BusinessContextPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextPtrOutput) ToGoogleCloudDatacatalogV1BusinessContextPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BusinessContextPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextPtrOutput) Elem() GoogleCloudDatacatalogV1BusinessContextOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BusinessContext) GoogleCloudDatacatalogV1BusinessContext {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1BusinessContext
+		return ret
+	}).(GoogleCloudDatacatalogV1BusinessContextOutput)
+}
+
+// Contact people for the entry.
+func (o GoogleCloudDatacatalogV1BusinessContextPtrOutput) Contacts() GoogleCloudDatacatalogV1ContactsPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BusinessContext) *GoogleCloudDatacatalogV1Contacts {
+		if v == nil {
+			return nil
+		}
+		return v.Contacts
+	}).(GoogleCloudDatacatalogV1ContactsPtrOutput)
+}
+
+// Entry overview fields for rich text descriptions of entries.
+func (o GoogleCloudDatacatalogV1BusinessContextPtrOutput) EntryOverview() GoogleCloudDatacatalogV1EntryOverviewPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BusinessContext) *GoogleCloudDatacatalogV1EntryOverview {
+		if v == nil {
+			return nil
+		}
+		return v.EntryOverview
+	}).(GoogleCloudDatacatalogV1EntryOverviewPtrOutput)
+}
+
+// Business Context of the entry.
+type GoogleCloudDatacatalogV1BusinessContextResponse struct {
+	// Contact people for the entry.
+	Contacts GoogleCloudDatacatalogV1ContactsResponse `pulumi:"contacts"`
+	// Entry overview fields for rich text descriptions of entries.
+	EntryOverview GoogleCloudDatacatalogV1EntryOverviewResponse `pulumi:"entryOverview"`
+}
+
+// GoogleCloudDatacatalogV1BusinessContextResponseInput is an input type that accepts GoogleCloudDatacatalogV1BusinessContextResponseArgs and GoogleCloudDatacatalogV1BusinessContextResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1BusinessContextResponseInput` via:
+//
+//          GoogleCloudDatacatalogV1BusinessContextResponseArgs{...}
+type GoogleCloudDatacatalogV1BusinessContextResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1BusinessContextResponseOutput() GoogleCloudDatacatalogV1BusinessContextResponseOutput
+	ToGoogleCloudDatacatalogV1BusinessContextResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1BusinessContextResponseOutput
+}
+
+// Business Context of the entry.
+type GoogleCloudDatacatalogV1BusinessContextResponseArgs struct {
+	// Contact people for the entry.
+	Contacts GoogleCloudDatacatalogV1ContactsResponseInput `pulumi:"contacts"`
+	// Entry overview fields for rich text descriptions of entries.
+	EntryOverview GoogleCloudDatacatalogV1EntryOverviewResponseInput `pulumi:"entryOverview"`
+}
+
+func (GoogleCloudDatacatalogV1BusinessContextResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContextResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1BusinessContextResponseArgs) ToGoogleCloudDatacatalogV1BusinessContextResponseOutput() GoogleCloudDatacatalogV1BusinessContextResponseOutput {
+	return i.ToGoogleCloudDatacatalogV1BusinessContextResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1BusinessContextResponseArgs) ToGoogleCloudDatacatalogV1BusinessContextResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BusinessContextResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BusinessContextResponseOutput)
+}
+
+func (i GoogleCloudDatacatalogV1BusinessContextResponseArgs) ToGoogleCloudDatacatalogV1BusinessContextResponsePtrOutput() GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput {
+	return i.ToGoogleCloudDatacatalogV1BusinessContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1BusinessContextResponseArgs) ToGoogleCloudDatacatalogV1BusinessContextResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BusinessContextResponseOutput).ToGoogleCloudDatacatalogV1BusinessContextResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1BusinessContextResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1BusinessContextResponseArgs, GoogleCloudDatacatalogV1BusinessContextResponsePtr and GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1BusinessContextResponsePtrInput` via:
+//
+//          GoogleCloudDatacatalogV1BusinessContextResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1BusinessContextResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1BusinessContextResponsePtrOutput() GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput
+	ToGoogleCloudDatacatalogV1BusinessContextResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput
+}
+
+type googleCloudDatacatalogV1BusinessContextResponsePtrType GoogleCloudDatacatalogV1BusinessContextResponseArgs
+
+func GoogleCloudDatacatalogV1BusinessContextResponsePtr(v *GoogleCloudDatacatalogV1BusinessContextResponseArgs) GoogleCloudDatacatalogV1BusinessContextResponsePtrInput {
+	return (*googleCloudDatacatalogV1BusinessContextResponsePtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1BusinessContextResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1BusinessContextResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1BusinessContextResponsePtrType) ToGoogleCloudDatacatalogV1BusinessContextResponsePtrOutput() GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput {
+	return i.ToGoogleCloudDatacatalogV1BusinessContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1BusinessContextResponsePtrType) ToGoogleCloudDatacatalogV1BusinessContextResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput)
+}
+
+// Business Context of the entry.
+type GoogleCloudDatacatalogV1BusinessContextResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1BusinessContextResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContextResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextResponseOutput) ToGoogleCloudDatacatalogV1BusinessContextResponseOutput() GoogleCloudDatacatalogV1BusinessContextResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextResponseOutput) ToGoogleCloudDatacatalogV1BusinessContextResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BusinessContextResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextResponseOutput) ToGoogleCloudDatacatalogV1BusinessContextResponsePtrOutput() GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1BusinessContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextResponseOutput) ToGoogleCloudDatacatalogV1BusinessContextResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1BusinessContextResponse) *GoogleCloudDatacatalogV1BusinessContextResponse {
+		return &v
+	}).(GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput)
+}
+
+// Contact people for the entry.
+func (o GoogleCloudDatacatalogV1BusinessContextResponseOutput) Contacts() GoogleCloudDatacatalogV1ContactsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1BusinessContextResponse) GoogleCloudDatacatalogV1ContactsResponse {
+		return v.Contacts
+	}).(GoogleCloudDatacatalogV1ContactsResponseOutput)
+}
+
+// Entry overview fields for rich text descriptions of entries.
+func (o GoogleCloudDatacatalogV1BusinessContextResponseOutput) EntryOverview() GoogleCloudDatacatalogV1EntryOverviewResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1BusinessContextResponse) GoogleCloudDatacatalogV1EntryOverviewResponse {
+		return v.EntryOverview
+	}).(GoogleCloudDatacatalogV1EntryOverviewResponseOutput)
+}
+
+type GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1BusinessContextResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput) ToGoogleCloudDatacatalogV1BusinessContextResponsePtrOutput() GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput) ToGoogleCloudDatacatalogV1BusinessContextResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput) Elem() GoogleCloudDatacatalogV1BusinessContextResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BusinessContextResponse) GoogleCloudDatacatalogV1BusinessContextResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1BusinessContextResponse
+		return ret
+	}).(GoogleCloudDatacatalogV1BusinessContextResponseOutput)
+}
+
+// Contact people for the entry.
+func (o GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput) Contacts() GoogleCloudDatacatalogV1ContactsResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BusinessContextResponse) *GoogleCloudDatacatalogV1ContactsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Contacts
+	}).(GoogleCloudDatacatalogV1ContactsResponsePtrOutput)
+}
+
+// Entry overview fields for rich text descriptions of entries.
+func (o GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput) EntryOverview() GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BusinessContextResponse) *GoogleCloudDatacatalogV1EntryOverviewResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.EntryOverview
+	}).(GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput)
+}
+
 // Specification for the BigQuery connection to a Cloud SQL instance.
 type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec struct {
 	// Database name.
@@ -2460,6 +2784,506 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1ColumnSchemaResponse {
 		return vs[0].([]GoogleCloudDatacatalogV1ColumnSchemaResponse)[vs[1].(int)]
 	}).(GoogleCloudDatacatalogV1ColumnSchemaResponseOutput)
+}
+
+// Contact people for the entry.
+type GoogleCloudDatacatalogV1Contacts struct {
+	// The list of contact people for the entry.
+	People []GoogleCloudDatacatalogV1ContactsPerson `pulumi:"people"`
+}
+
+// GoogleCloudDatacatalogV1ContactsInput is an input type that accepts GoogleCloudDatacatalogV1ContactsArgs and GoogleCloudDatacatalogV1ContactsOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1ContactsInput` via:
+//
+//          GoogleCloudDatacatalogV1ContactsArgs{...}
+type GoogleCloudDatacatalogV1ContactsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1ContactsOutput() GoogleCloudDatacatalogV1ContactsOutput
+	ToGoogleCloudDatacatalogV1ContactsOutputWithContext(context.Context) GoogleCloudDatacatalogV1ContactsOutput
+}
+
+// Contact people for the entry.
+type GoogleCloudDatacatalogV1ContactsArgs struct {
+	// The list of contact people for the entry.
+	People GoogleCloudDatacatalogV1ContactsPersonArrayInput `pulumi:"people"`
+}
+
+func (GoogleCloudDatacatalogV1ContactsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1Contacts)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1ContactsArgs) ToGoogleCloudDatacatalogV1ContactsOutput() GoogleCloudDatacatalogV1ContactsOutput {
+	return i.ToGoogleCloudDatacatalogV1ContactsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1ContactsArgs) ToGoogleCloudDatacatalogV1ContactsOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ContactsOutput)
+}
+
+func (i GoogleCloudDatacatalogV1ContactsArgs) ToGoogleCloudDatacatalogV1ContactsPtrOutput() GoogleCloudDatacatalogV1ContactsPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1ContactsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1ContactsArgs) ToGoogleCloudDatacatalogV1ContactsPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ContactsOutput).ToGoogleCloudDatacatalogV1ContactsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1ContactsPtrInput is an input type that accepts GoogleCloudDatacatalogV1ContactsArgs, GoogleCloudDatacatalogV1ContactsPtr and GoogleCloudDatacatalogV1ContactsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1ContactsPtrInput` via:
+//
+//          GoogleCloudDatacatalogV1ContactsArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1ContactsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1ContactsPtrOutput() GoogleCloudDatacatalogV1ContactsPtrOutput
+	ToGoogleCloudDatacatalogV1ContactsPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1ContactsPtrOutput
+}
+
+type googleCloudDatacatalogV1ContactsPtrType GoogleCloudDatacatalogV1ContactsArgs
+
+func GoogleCloudDatacatalogV1ContactsPtr(v *GoogleCloudDatacatalogV1ContactsArgs) GoogleCloudDatacatalogV1ContactsPtrInput {
+	return (*googleCloudDatacatalogV1ContactsPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1ContactsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1Contacts)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1ContactsPtrType) ToGoogleCloudDatacatalogV1ContactsPtrOutput() GoogleCloudDatacatalogV1ContactsPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1ContactsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1ContactsPtrType) ToGoogleCloudDatacatalogV1ContactsPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ContactsPtrOutput)
+}
+
+// Contact people for the entry.
+type GoogleCloudDatacatalogV1ContactsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ContactsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1Contacts)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ContactsOutput) ToGoogleCloudDatacatalogV1ContactsOutput() GoogleCloudDatacatalogV1ContactsOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsOutput) ToGoogleCloudDatacatalogV1ContactsOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsOutput) ToGoogleCloudDatacatalogV1ContactsPtrOutput() GoogleCloudDatacatalogV1ContactsPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1ContactsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1ContactsOutput) ToGoogleCloudDatacatalogV1ContactsPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1Contacts) *GoogleCloudDatacatalogV1Contacts {
+		return &v
+	}).(GoogleCloudDatacatalogV1ContactsPtrOutput)
+}
+
+// The list of contact people for the entry.
+func (o GoogleCloudDatacatalogV1ContactsOutput) People() GoogleCloudDatacatalogV1ContactsPersonArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1Contacts) []GoogleCloudDatacatalogV1ContactsPerson { return v.People }).(GoogleCloudDatacatalogV1ContactsPersonArrayOutput)
+}
+
+type GoogleCloudDatacatalogV1ContactsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ContactsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1Contacts)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPtrOutput) ToGoogleCloudDatacatalogV1ContactsPtrOutput() GoogleCloudDatacatalogV1ContactsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPtrOutput) ToGoogleCloudDatacatalogV1ContactsPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPtrOutput) Elem() GoogleCloudDatacatalogV1ContactsOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1Contacts) GoogleCloudDatacatalogV1Contacts {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1Contacts
+		return ret
+	}).(GoogleCloudDatacatalogV1ContactsOutput)
+}
+
+// The list of contact people for the entry.
+func (o GoogleCloudDatacatalogV1ContactsPtrOutput) People() GoogleCloudDatacatalogV1ContactsPersonArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1Contacts) []GoogleCloudDatacatalogV1ContactsPerson {
+		if v == nil {
+			return nil
+		}
+		return v.People
+	}).(GoogleCloudDatacatalogV1ContactsPersonArrayOutput)
+}
+
+// A contact person for the entry.
+type GoogleCloudDatacatalogV1ContactsPerson struct {
+	// Designation of the person, for example, Data Steward.
+	Designation *string `pulumi:"designation"`
+	// Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+	Email *string `pulumi:"email"`
+}
+
+// GoogleCloudDatacatalogV1ContactsPersonInput is an input type that accepts GoogleCloudDatacatalogV1ContactsPersonArgs and GoogleCloudDatacatalogV1ContactsPersonOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1ContactsPersonInput` via:
+//
+//          GoogleCloudDatacatalogV1ContactsPersonArgs{...}
+type GoogleCloudDatacatalogV1ContactsPersonInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1ContactsPersonOutput() GoogleCloudDatacatalogV1ContactsPersonOutput
+	ToGoogleCloudDatacatalogV1ContactsPersonOutputWithContext(context.Context) GoogleCloudDatacatalogV1ContactsPersonOutput
+}
+
+// A contact person for the entry.
+type GoogleCloudDatacatalogV1ContactsPersonArgs struct {
+	// Designation of the person, for example, Data Steward.
+	Designation pulumi.StringPtrInput `pulumi:"designation"`
+	// Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+}
+
+func (GoogleCloudDatacatalogV1ContactsPersonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsPerson)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1ContactsPersonArgs) ToGoogleCloudDatacatalogV1ContactsPersonOutput() GoogleCloudDatacatalogV1ContactsPersonOutput {
+	return i.ToGoogleCloudDatacatalogV1ContactsPersonOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1ContactsPersonArgs) ToGoogleCloudDatacatalogV1ContactsPersonOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPersonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ContactsPersonOutput)
+}
+
+// GoogleCloudDatacatalogV1ContactsPersonArrayInput is an input type that accepts GoogleCloudDatacatalogV1ContactsPersonArray and GoogleCloudDatacatalogV1ContactsPersonArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1ContactsPersonArrayInput` via:
+//
+//          GoogleCloudDatacatalogV1ContactsPersonArray{ GoogleCloudDatacatalogV1ContactsPersonArgs{...} }
+type GoogleCloudDatacatalogV1ContactsPersonArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1ContactsPersonArrayOutput() GoogleCloudDatacatalogV1ContactsPersonArrayOutput
+	ToGoogleCloudDatacatalogV1ContactsPersonArrayOutputWithContext(context.Context) GoogleCloudDatacatalogV1ContactsPersonArrayOutput
+}
+
+type GoogleCloudDatacatalogV1ContactsPersonArray []GoogleCloudDatacatalogV1ContactsPersonInput
+
+func (GoogleCloudDatacatalogV1ContactsPersonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1ContactsPerson)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1ContactsPersonArray) ToGoogleCloudDatacatalogV1ContactsPersonArrayOutput() GoogleCloudDatacatalogV1ContactsPersonArrayOutput {
+	return i.ToGoogleCloudDatacatalogV1ContactsPersonArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1ContactsPersonArray) ToGoogleCloudDatacatalogV1ContactsPersonArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPersonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ContactsPersonArrayOutput)
+}
+
+// A contact person for the entry.
+type GoogleCloudDatacatalogV1ContactsPersonOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ContactsPersonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsPerson)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPersonOutput) ToGoogleCloudDatacatalogV1ContactsPersonOutput() GoogleCloudDatacatalogV1ContactsPersonOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPersonOutput) ToGoogleCloudDatacatalogV1ContactsPersonOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPersonOutput {
+	return o
+}
+
+// Designation of the person, for example, Data Steward.
+func (o GoogleCloudDatacatalogV1ContactsPersonOutput) Designation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1ContactsPerson) *string { return v.Designation }).(pulumi.StringPtrOutput)
+}
+
+// Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+func (o GoogleCloudDatacatalogV1ContactsPersonOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1ContactsPerson) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1ContactsPersonArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ContactsPersonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1ContactsPerson)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPersonArrayOutput) ToGoogleCloudDatacatalogV1ContactsPersonArrayOutput() GoogleCloudDatacatalogV1ContactsPersonArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPersonArrayOutput) ToGoogleCloudDatacatalogV1ContactsPersonArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPersonArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPersonArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1ContactsPersonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1ContactsPerson {
+		return vs[0].([]GoogleCloudDatacatalogV1ContactsPerson)[vs[1].(int)]
+	}).(GoogleCloudDatacatalogV1ContactsPersonOutput)
+}
+
+// A contact person for the entry.
+type GoogleCloudDatacatalogV1ContactsPersonResponse struct {
+	// Designation of the person, for example, Data Steward.
+	Designation string `pulumi:"designation"`
+	// Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+	Email string `pulumi:"email"`
+}
+
+// GoogleCloudDatacatalogV1ContactsPersonResponseInput is an input type that accepts GoogleCloudDatacatalogV1ContactsPersonResponseArgs and GoogleCloudDatacatalogV1ContactsPersonResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1ContactsPersonResponseInput` via:
+//
+//          GoogleCloudDatacatalogV1ContactsPersonResponseArgs{...}
+type GoogleCloudDatacatalogV1ContactsPersonResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1ContactsPersonResponseOutput() GoogleCloudDatacatalogV1ContactsPersonResponseOutput
+	ToGoogleCloudDatacatalogV1ContactsPersonResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1ContactsPersonResponseOutput
+}
+
+// A contact person for the entry.
+type GoogleCloudDatacatalogV1ContactsPersonResponseArgs struct {
+	// Designation of the person, for example, Data Steward.
+	Designation pulumi.StringInput `pulumi:"designation"`
+	// Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GoogleCloudDatacatalogV1ContactsPersonResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsPersonResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1ContactsPersonResponseArgs) ToGoogleCloudDatacatalogV1ContactsPersonResponseOutput() GoogleCloudDatacatalogV1ContactsPersonResponseOutput {
+	return i.ToGoogleCloudDatacatalogV1ContactsPersonResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1ContactsPersonResponseArgs) ToGoogleCloudDatacatalogV1ContactsPersonResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPersonResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ContactsPersonResponseOutput)
+}
+
+// GoogleCloudDatacatalogV1ContactsPersonResponseArrayInput is an input type that accepts GoogleCloudDatacatalogV1ContactsPersonResponseArray and GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1ContactsPersonResponseArrayInput` via:
+//
+//          GoogleCloudDatacatalogV1ContactsPersonResponseArray{ GoogleCloudDatacatalogV1ContactsPersonResponseArgs{...} }
+type GoogleCloudDatacatalogV1ContactsPersonResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput() GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput
+	ToGoogleCloudDatacatalogV1ContactsPersonResponseArrayOutputWithContext(context.Context) GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput
+}
+
+type GoogleCloudDatacatalogV1ContactsPersonResponseArray []GoogleCloudDatacatalogV1ContactsPersonResponseInput
+
+func (GoogleCloudDatacatalogV1ContactsPersonResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1ContactsPersonResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1ContactsPersonResponseArray) ToGoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput() GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput {
+	return i.ToGoogleCloudDatacatalogV1ContactsPersonResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1ContactsPersonResponseArray) ToGoogleCloudDatacatalogV1ContactsPersonResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput)
+}
+
+// A contact person for the entry.
+type GoogleCloudDatacatalogV1ContactsPersonResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ContactsPersonResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsPersonResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPersonResponseOutput) ToGoogleCloudDatacatalogV1ContactsPersonResponseOutput() GoogleCloudDatacatalogV1ContactsPersonResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPersonResponseOutput) ToGoogleCloudDatacatalogV1ContactsPersonResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPersonResponseOutput {
+	return o
+}
+
+// Designation of the person, for example, Data Steward.
+func (o GoogleCloudDatacatalogV1ContactsPersonResponseOutput) Designation() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1ContactsPersonResponse) string { return v.Designation }).(pulumi.StringOutput)
+}
+
+// Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+func (o GoogleCloudDatacatalogV1ContactsPersonResponseOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1ContactsPersonResponse) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1ContactsPersonResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput) ToGoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput() GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput) ToGoogleCloudDatacatalogV1ContactsPersonResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1ContactsPersonResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1ContactsPersonResponse {
+		return vs[0].([]GoogleCloudDatacatalogV1ContactsPersonResponse)[vs[1].(int)]
+	}).(GoogleCloudDatacatalogV1ContactsPersonResponseOutput)
+}
+
+// Contact people for the entry.
+type GoogleCloudDatacatalogV1ContactsResponse struct {
+	// The list of contact people for the entry.
+	People []GoogleCloudDatacatalogV1ContactsPersonResponse `pulumi:"people"`
+}
+
+// GoogleCloudDatacatalogV1ContactsResponseInput is an input type that accepts GoogleCloudDatacatalogV1ContactsResponseArgs and GoogleCloudDatacatalogV1ContactsResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1ContactsResponseInput` via:
+//
+//          GoogleCloudDatacatalogV1ContactsResponseArgs{...}
+type GoogleCloudDatacatalogV1ContactsResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1ContactsResponseOutput() GoogleCloudDatacatalogV1ContactsResponseOutput
+	ToGoogleCloudDatacatalogV1ContactsResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1ContactsResponseOutput
+}
+
+// Contact people for the entry.
+type GoogleCloudDatacatalogV1ContactsResponseArgs struct {
+	// The list of contact people for the entry.
+	People GoogleCloudDatacatalogV1ContactsPersonResponseArrayInput `pulumi:"people"`
+}
+
+func (GoogleCloudDatacatalogV1ContactsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1ContactsResponseArgs) ToGoogleCloudDatacatalogV1ContactsResponseOutput() GoogleCloudDatacatalogV1ContactsResponseOutput {
+	return i.ToGoogleCloudDatacatalogV1ContactsResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1ContactsResponseArgs) ToGoogleCloudDatacatalogV1ContactsResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ContactsResponseOutput)
+}
+
+func (i GoogleCloudDatacatalogV1ContactsResponseArgs) ToGoogleCloudDatacatalogV1ContactsResponsePtrOutput() GoogleCloudDatacatalogV1ContactsResponsePtrOutput {
+	return i.ToGoogleCloudDatacatalogV1ContactsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1ContactsResponseArgs) ToGoogleCloudDatacatalogV1ContactsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ContactsResponseOutput).ToGoogleCloudDatacatalogV1ContactsResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1ContactsResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1ContactsResponseArgs, GoogleCloudDatacatalogV1ContactsResponsePtr and GoogleCloudDatacatalogV1ContactsResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1ContactsResponsePtrInput` via:
+//
+//          GoogleCloudDatacatalogV1ContactsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1ContactsResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1ContactsResponsePtrOutput() GoogleCloudDatacatalogV1ContactsResponsePtrOutput
+	ToGoogleCloudDatacatalogV1ContactsResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1ContactsResponsePtrOutput
+}
+
+type googleCloudDatacatalogV1ContactsResponsePtrType GoogleCloudDatacatalogV1ContactsResponseArgs
+
+func GoogleCloudDatacatalogV1ContactsResponsePtr(v *GoogleCloudDatacatalogV1ContactsResponseArgs) GoogleCloudDatacatalogV1ContactsResponsePtrInput {
+	return (*googleCloudDatacatalogV1ContactsResponsePtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1ContactsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1ContactsResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1ContactsResponsePtrType) ToGoogleCloudDatacatalogV1ContactsResponsePtrOutput() GoogleCloudDatacatalogV1ContactsResponsePtrOutput {
+	return i.ToGoogleCloudDatacatalogV1ContactsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1ContactsResponsePtrType) ToGoogleCloudDatacatalogV1ContactsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ContactsResponsePtrOutput)
+}
+
+// Contact people for the entry.
+type GoogleCloudDatacatalogV1ContactsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ContactsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ContactsResponseOutput) ToGoogleCloudDatacatalogV1ContactsResponseOutput() GoogleCloudDatacatalogV1ContactsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsResponseOutput) ToGoogleCloudDatacatalogV1ContactsResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsResponseOutput) ToGoogleCloudDatacatalogV1ContactsResponsePtrOutput() GoogleCloudDatacatalogV1ContactsResponsePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1ContactsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1ContactsResponseOutput) ToGoogleCloudDatacatalogV1ContactsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1ContactsResponse) *GoogleCloudDatacatalogV1ContactsResponse {
+		return &v
+	}).(GoogleCloudDatacatalogV1ContactsResponsePtrOutput)
+}
+
+// The list of contact people for the entry.
+func (o GoogleCloudDatacatalogV1ContactsResponseOutput) People() GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1ContactsResponse) []GoogleCloudDatacatalogV1ContactsPersonResponse {
+		return v.People
+	}).(GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput)
+}
+
+type GoogleCloudDatacatalogV1ContactsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ContactsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1ContactsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ContactsResponsePtrOutput) ToGoogleCloudDatacatalogV1ContactsResponsePtrOutput() GoogleCloudDatacatalogV1ContactsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsResponsePtrOutput) ToGoogleCloudDatacatalogV1ContactsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsResponsePtrOutput) Elem() GoogleCloudDatacatalogV1ContactsResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1ContactsResponse) GoogleCloudDatacatalogV1ContactsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1ContactsResponse
+		return ret
+	}).(GoogleCloudDatacatalogV1ContactsResponseOutput)
+}
+
+// The list of contact people for the entry.
+func (o GoogleCloudDatacatalogV1ContactsResponsePtrOutput) People() GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1ContactsResponse) []GoogleCloudDatacatalogV1ContactsPersonResponse {
+		if v == nil {
+			return nil
+		}
+		return v.People
+	}).(GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput)
 }
 
 // Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
@@ -3184,6 +4008,286 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput) Type() pulum
 			return nil
 		}
 		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Entry overview fields for rich text descriptions of entries.
+type GoogleCloudDatacatalogV1EntryOverview struct {
+	// Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+	Overview *string `pulumi:"overview"`
+}
+
+// GoogleCloudDatacatalogV1EntryOverviewInput is an input type that accepts GoogleCloudDatacatalogV1EntryOverviewArgs and GoogleCloudDatacatalogV1EntryOverviewOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1EntryOverviewInput` via:
+//
+//          GoogleCloudDatacatalogV1EntryOverviewArgs{...}
+type GoogleCloudDatacatalogV1EntryOverviewInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1EntryOverviewOutput() GoogleCloudDatacatalogV1EntryOverviewOutput
+	ToGoogleCloudDatacatalogV1EntryOverviewOutputWithContext(context.Context) GoogleCloudDatacatalogV1EntryOverviewOutput
+}
+
+// Entry overview fields for rich text descriptions of entries.
+type GoogleCloudDatacatalogV1EntryOverviewArgs struct {
+	// Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+	Overview pulumi.StringPtrInput `pulumi:"overview"`
+}
+
+func (GoogleCloudDatacatalogV1EntryOverviewArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1EntryOverview)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1EntryOverviewArgs) ToGoogleCloudDatacatalogV1EntryOverviewOutput() GoogleCloudDatacatalogV1EntryOverviewOutput {
+	return i.ToGoogleCloudDatacatalogV1EntryOverviewOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1EntryOverviewArgs) ToGoogleCloudDatacatalogV1EntryOverviewOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1EntryOverviewOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1EntryOverviewOutput)
+}
+
+func (i GoogleCloudDatacatalogV1EntryOverviewArgs) ToGoogleCloudDatacatalogV1EntryOverviewPtrOutput() GoogleCloudDatacatalogV1EntryOverviewPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1EntryOverviewPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1EntryOverviewArgs) ToGoogleCloudDatacatalogV1EntryOverviewPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1EntryOverviewPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1EntryOverviewOutput).ToGoogleCloudDatacatalogV1EntryOverviewPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1EntryOverviewPtrInput is an input type that accepts GoogleCloudDatacatalogV1EntryOverviewArgs, GoogleCloudDatacatalogV1EntryOverviewPtr and GoogleCloudDatacatalogV1EntryOverviewPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1EntryOverviewPtrInput` via:
+//
+//          GoogleCloudDatacatalogV1EntryOverviewArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1EntryOverviewPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1EntryOverviewPtrOutput() GoogleCloudDatacatalogV1EntryOverviewPtrOutput
+	ToGoogleCloudDatacatalogV1EntryOverviewPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1EntryOverviewPtrOutput
+}
+
+type googleCloudDatacatalogV1EntryOverviewPtrType GoogleCloudDatacatalogV1EntryOverviewArgs
+
+func GoogleCloudDatacatalogV1EntryOverviewPtr(v *GoogleCloudDatacatalogV1EntryOverviewArgs) GoogleCloudDatacatalogV1EntryOverviewPtrInput {
+	return (*googleCloudDatacatalogV1EntryOverviewPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1EntryOverviewPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1EntryOverview)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1EntryOverviewPtrType) ToGoogleCloudDatacatalogV1EntryOverviewPtrOutput() GoogleCloudDatacatalogV1EntryOverviewPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1EntryOverviewPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1EntryOverviewPtrType) ToGoogleCloudDatacatalogV1EntryOverviewPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1EntryOverviewPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1EntryOverviewPtrOutput)
+}
+
+// Entry overview fields for rich text descriptions of entries.
+type GoogleCloudDatacatalogV1EntryOverviewOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1EntryOverviewOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1EntryOverview)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewOutput) ToGoogleCloudDatacatalogV1EntryOverviewOutput() GoogleCloudDatacatalogV1EntryOverviewOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewOutput) ToGoogleCloudDatacatalogV1EntryOverviewOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1EntryOverviewOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewOutput) ToGoogleCloudDatacatalogV1EntryOverviewPtrOutput() GoogleCloudDatacatalogV1EntryOverviewPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1EntryOverviewPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewOutput) ToGoogleCloudDatacatalogV1EntryOverviewPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1EntryOverviewPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1EntryOverview) *GoogleCloudDatacatalogV1EntryOverview {
+		return &v
+	}).(GoogleCloudDatacatalogV1EntryOverviewPtrOutput)
+}
+
+// Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+func (o GoogleCloudDatacatalogV1EntryOverviewOutput) Overview() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1EntryOverview) *string { return v.Overview }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1EntryOverviewPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1EntryOverviewPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1EntryOverview)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewPtrOutput) ToGoogleCloudDatacatalogV1EntryOverviewPtrOutput() GoogleCloudDatacatalogV1EntryOverviewPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewPtrOutput) ToGoogleCloudDatacatalogV1EntryOverviewPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1EntryOverviewPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewPtrOutput) Elem() GoogleCloudDatacatalogV1EntryOverviewOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1EntryOverview) GoogleCloudDatacatalogV1EntryOverview {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1EntryOverview
+		return ret
+	}).(GoogleCloudDatacatalogV1EntryOverviewOutput)
+}
+
+// Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+func (o GoogleCloudDatacatalogV1EntryOverviewPtrOutput) Overview() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1EntryOverview) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Overview
+	}).(pulumi.StringPtrOutput)
+}
+
+// Entry overview fields for rich text descriptions of entries.
+type GoogleCloudDatacatalogV1EntryOverviewResponse struct {
+	// Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+	Overview string `pulumi:"overview"`
+}
+
+// GoogleCloudDatacatalogV1EntryOverviewResponseInput is an input type that accepts GoogleCloudDatacatalogV1EntryOverviewResponseArgs and GoogleCloudDatacatalogV1EntryOverviewResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1EntryOverviewResponseInput` via:
+//
+//          GoogleCloudDatacatalogV1EntryOverviewResponseArgs{...}
+type GoogleCloudDatacatalogV1EntryOverviewResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1EntryOverviewResponseOutput() GoogleCloudDatacatalogV1EntryOverviewResponseOutput
+	ToGoogleCloudDatacatalogV1EntryOverviewResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1EntryOverviewResponseOutput
+}
+
+// Entry overview fields for rich text descriptions of entries.
+type GoogleCloudDatacatalogV1EntryOverviewResponseArgs struct {
+	// Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+	Overview pulumi.StringInput `pulumi:"overview"`
+}
+
+func (GoogleCloudDatacatalogV1EntryOverviewResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1EntryOverviewResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1EntryOverviewResponseArgs) ToGoogleCloudDatacatalogV1EntryOverviewResponseOutput() GoogleCloudDatacatalogV1EntryOverviewResponseOutput {
+	return i.ToGoogleCloudDatacatalogV1EntryOverviewResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1EntryOverviewResponseArgs) ToGoogleCloudDatacatalogV1EntryOverviewResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1EntryOverviewResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1EntryOverviewResponseOutput)
+}
+
+func (i GoogleCloudDatacatalogV1EntryOverviewResponseArgs) ToGoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput() GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput {
+	return i.ToGoogleCloudDatacatalogV1EntryOverviewResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1EntryOverviewResponseArgs) ToGoogleCloudDatacatalogV1EntryOverviewResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1EntryOverviewResponseOutput).ToGoogleCloudDatacatalogV1EntryOverviewResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1EntryOverviewResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1EntryOverviewResponseArgs, GoogleCloudDatacatalogV1EntryOverviewResponsePtr and GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1EntryOverviewResponsePtrInput` via:
+//
+//          GoogleCloudDatacatalogV1EntryOverviewResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1EntryOverviewResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput() GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput
+	ToGoogleCloudDatacatalogV1EntryOverviewResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput
+}
+
+type googleCloudDatacatalogV1EntryOverviewResponsePtrType GoogleCloudDatacatalogV1EntryOverviewResponseArgs
+
+func GoogleCloudDatacatalogV1EntryOverviewResponsePtr(v *GoogleCloudDatacatalogV1EntryOverviewResponseArgs) GoogleCloudDatacatalogV1EntryOverviewResponsePtrInput {
+	return (*googleCloudDatacatalogV1EntryOverviewResponsePtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1EntryOverviewResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1EntryOverviewResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1EntryOverviewResponsePtrType) ToGoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput() GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput {
+	return i.ToGoogleCloudDatacatalogV1EntryOverviewResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1EntryOverviewResponsePtrType) ToGoogleCloudDatacatalogV1EntryOverviewResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput)
+}
+
+// Entry overview fields for rich text descriptions of entries.
+type GoogleCloudDatacatalogV1EntryOverviewResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1EntryOverviewResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1EntryOverviewResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewResponseOutput) ToGoogleCloudDatacatalogV1EntryOverviewResponseOutput() GoogleCloudDatacatalogV1EntryOverviewResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewResponseOutput) ToGoogleCloudDatacatalogV1EntryOverviewResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1EntryOverviewResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewResponseOutput) ToGoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput() GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1EntryOverviewResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewResponseOutput) ToGoogleCloudDatacatalogV1EntryOverviewResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1EntryOverviewResponse) *GoogleCloudDatacatalogV1EntryOverviewResponse {
+		return &v
+	}).(GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput)
+}
+
+// Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+func (o GoogleCloudDatacatalogV1EntryOverviewResponseOutput) Overview() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1EntryOverviewResponse) string { return v.Overview }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1EntryOverviewResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput) ToGoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput() GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput) ToGoogleCloudDatacatalogV1EntryOverviewResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput) Elem() GoogleCloudDatacatalogV1EntryOverviewResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1EntryOverviewResponse) GoogleCloudDatacatalogV1EntryOverviewResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1EntryOverviewResponse
+		return ret
+	}).(GoogleCloudDatacatalogV1EntryOverviewResponseOutput)
+}
+
+// Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+func (o GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput) Overview() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1EntryOverviewResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Overview
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5809,6 +6913,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryTableSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryTableSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryTableSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContextInput)(nil)).Elem(), GoogleCloudDatacatalogV1BusinessContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContextPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BusinessContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContextResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1BusinessContextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContextResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BusinessContextResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs{})
@@ -5817,6 +6925,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaResponseArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsInput)(nil)).Elem(), GoogleCloudDatacatalogV1ContactsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1ContactsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsPersonInput)(nil)).Elem(), GoogleCloudDatacatalogV1ContactsPersonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsPersonArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1ContactsPersonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsPersonResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1ContactsPersonResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsPersonResponseArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1ContactsPersonResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1ContactsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1ContactsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataSourceConnectionSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs{})
@@ -5827,6 +6943,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1EntryOverviewInput)(nil)).Elem(), GoogleCloudDatacatalogV1EntryOverviewArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1EntryOverviewPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1EntryOverviewArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1EntryOverviewResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1EntryOverviewResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1EntryOverviewResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1EntryOverviewResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFileSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1GcsFileSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFileSpecResponseArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1GcsFileSpecResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFilesetSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1GcsFilesetSpecArgs{})
@@ -5884,6 +7004,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BusinessContextOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BusinessContextPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BusinessContextResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BusinessContextResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput{})
@@ -5892,6 +7016,14 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ContactsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ContactsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ContactsPersonOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ContactsPersonArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ContactsPersonResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ContactsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ContactsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput{})
@@ -5902,6 +7034,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1EntryOverviewOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1EntryOverviewPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1EntryOverviewResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1EntryOverviewResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFileSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFilesetSpecOutput{})

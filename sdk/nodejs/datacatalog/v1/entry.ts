@@ -45,6 +45,10 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly bigqueryTableSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1BigQueryTableSpecResponse>;
     /**
+     * Business Context of the entry.
+     */
+    public readonly businessContext!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1BusinessContextResponse>;
+    /**
      * Physical location of the entry.
      */
     public /*out*/ readonly dataSource!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1DataSourceResponse>;
@@ -140,6 +144,7 @@ export class Entry extends pulumi.CustomResource {
             }
             resourceInputs["bigqueryDateShardedSpec"] = args ? args.bigqueryDateShardedSpec : undefined;
             resourceInputs["bigqueryTableSpec"] = args ? args.bigqueryTableSpec : undefined;
+            resourceInputs["businessContext"] = args ? args.businessContext : undefined;
             resourceInputs["dataSourceConnectionSpec"] = args ? args.dataSourceConnectionSpec : undefined;
             resourceInputs["databaseTableSpec"] = args ? args.databaseTableSpec : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -166,6 +171,7 @@ export class Entry extends pulumi.CustomResource {
         } else {
             resourceInputs["bigqueryDateShardedSpec"] = undefined /*out*/;
             resourceInputs["bigqueryTableSpec"] = undefined /*out*/;
+            resourceInputs["businessContext"] = undefined /*out*/;
             resourceInputs["dataSource"] = undefined /*out*/;
             resourceInputs["dataSourceConnectionSpec"] = undefined /*out*/;
             resourceInputs["databaseTableSpec"] = undefined /*out*/;
@@ -205,6 +211,10 @@ export interface EntryArgs {
      * Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
      */
     bigqueryTableSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1BigQueryTableSpecArgs>;
+    /**
+     * Business Context of the entry.
+     */
+    businessContext?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1BusinessContextArgs>;
     /**
      * Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
      */

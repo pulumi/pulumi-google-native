@@ -4273,7 +4273,7 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponsePtrOutput)
 
 // Issue Modeling result on a conversation.
 type GoogleCloudContactcenterinsightsV1IssueModelResultResponse struct {
-	// Issue model that generates the result.
+	// Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
 	IssueModel string `pulumi:"issueModel"`
 	// All the matched issues.
 	Issues []GoogleCloudContactcenterinsightsV1IssueAssignmentResponse `pulumi:"issues"`
@@ -4292,7 +4292,7 @@ type GoogleCloudContactcenterinsightsV1IssueModelResultResponseInput interface {
 
 // Issue Modeling result on a conversation.
 type GoogleCloudContactcenterinsightsV1IssueModelResultResponseArgs struct {
-	// Issue model that generates the result.
+	// Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
 	IssueModel pulumi.StringInput `pulumi:"issueModel"`
 	// All the matched issues.
 	Issues GoogleCloudContactcenterinsightsV1IssueAssignmentResponseArrayInput `pulumi:"issues"`
@@ -4376,7 +4376,7 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelResultResponseOutput) ToGoog
 	}).(GoogleCloudContactcenterinsightsV1IssueModelResultResponsePtrOutput)
 }
 
-// Issue model that generates the result.
+// Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
 func (o GoogleCloudContactcenterinsightsV1IssueModelResultResponseOutput) IssueModel() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelResultResponse) string { return v.IssueModel }).(pulumi.StringOutput)
 }
@@ -4412,7 +4412,7 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelResultResponsePtrOutput) Ele
 	}).(GoogleCloudContactcenterinsightsV1IssueModelResultResponseOutput)
 }
 
-// Issue model that generates the result.
+// Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
 func (o GoogleCloudContactcenterinsightsV1IssueModelResultResponsePtrOutput) IssueModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1IssueModelResultResponse) *string {
 		if v == nil {

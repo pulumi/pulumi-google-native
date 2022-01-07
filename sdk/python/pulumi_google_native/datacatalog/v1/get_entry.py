@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetEntryResult:
-    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, data_source=None, data_source_connection_spec=None, database_table_spec=None, description=None, display_name=None, fully_qualified_name=None, gcs_fileset_spec=None, integrated_system=None, labels=None, linked_resource=None, name=None, personal_details=None, routine_spec=None, schema=None, source_system_timestamps=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
+    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, business_context=None, data_source=None, data_source_connection_spec=None, database_table_spec=None, description=None, display_name=None, fully_qualified_name=None, gcs_fileset_spec=None, integrated_system=None, labels=None, linked_resource=None, name=None, personal_details=None, routine_spec=None, schema=None, source_system_timestamps=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
         if bigquery_date_sharded_spec and not isinstance(bigquery_date_sharded_spec, dict):
             raise TypeError("Expected argument 'bigquery_date_sharded_spec' to be a dict")
         pulumi.set(__self__, "bigquery_date_sharded_spec", bigquery_date_sharded_spec)
         if bigquery_table_spec and not isinstance(bigquery_table_spec, dict):
             raise TypeError("Expected argument 'bigquery_table_spec' to be a dict")
         pulumi.set(__self__, "bigquery_table_spec", bigquery_table_spec)
+        if business_context and not isinstance(business_context, dict):
+            raise TypeError("Expected argument 'business_context' to be a dict")
+        pulumi.set(__self__, "business_context", business_context)
         if data_source and not isinstance(data_source, dict):
             raise TypeError("Expected argument 'data_source' to be a dict")
         pulumi.set(__self__, "data_source", data_source)
@@ -98,6 +101,14 @@ class GetEntryResult:
         Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
         """
         return pulumi.get(self, "bigquery_table_spec")
+
+    @property
+    @pulumi.getter(name="businessContext")
+    def business_context(self) -> 'outputs.GoogleCloudDatacatalogV1BusinessContextResponse':
+        """
+        Business Context of the entry.
+        """
+        return pulumi.get(self, "business_context")
 
     @property
     @pulumi.getter(name="dataSource")
@@ -260,6 +271,7 @@ class AwaitableGetEntryResult(GetEntryResult):
         return GetEntryResult(
             bigquery_date_sharded_spec=self.bigquery_date_sharded_spec,
             bigquery_table_spec=self.bigquery_table_spec,
+            business_context=self.business_context,
             data_source=self.data_source,
             data_source_connection_spec=self.data_source_connection_spec,
             database_table_spec=self.database_table_spec,
@@ -303,6 +315,7 @@ def get_entry(entry_group_id: Optional[str] = None,
     return AwaitableGetEntryResult(
         bigquery_date_sharded_spec=__ret__.bigquery_date_sharded_spec,
         bigquery_table_spec=__ret__.bigquery_table_spec,
+        business_context=__ret__.business_context,
         data_source=__ret__.data_source,
         data_source_connection_spec=__ret__.data_source_connection_spec,
         database_table_spec=__ret__.database_table_spec,

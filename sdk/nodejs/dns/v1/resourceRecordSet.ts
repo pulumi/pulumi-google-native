@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -40,6 +41,10 @@ export class ResourceRecordSet extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+     */
+    public readonly routingPolicy!: pulumi.Output<outputs.dns.v1.RRSetRoutingPolicyResponse>;
+    /**
      * As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
      */
     public readonly rrdatas!: pulumi.Output<string[]>;
@@ -75,6 +80,7 @@ export class ResourceRecordSet extends pulumi.CustomResource {
             resourceInputs["managedZone"] = args ? args.managedZone : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["routingPolicy"] = args ? args.routingPolicy : undefined;
             resourceInputs["rrdatas"] = args ? args.rrdatas : undefined;
             resourceInputs["signatureRrdatas"] = args ? args.signatureRrdatas : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
@@ -82,6 +88,7 @@ export class ResourceRecordSet extends pulumi.CustomResource {
         } else {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["routingPolicy"] = undefined /*out*/;
             resourceInputs["rrdatas"] = undefined /*out*/;
             resourceInputs["signatureRrdatas"] = undefined /*out*/;
             resourceInputs["ttl"] = undefined /*out*/;
@@ -106,6 +113,10 @@ export interface ResourceRecordSetArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+     */
+    routingPolicy?: pulumi.Input<inputs.dns.v1.RRSetRoutingPolicyArgs>;
     /**
      * As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
      */

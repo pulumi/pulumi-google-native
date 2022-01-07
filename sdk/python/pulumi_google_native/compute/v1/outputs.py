@@ -416,6 +416,8 @@ class AdvancedMachineFeaturesResponse(dict):
         suggest = None
         if key == "enableNestedVirtualization":
             suggest = "enable_nested_virtualization"
+        elif key == "enableUefiNetworking":
+            suggest = "enable_uefi_networking"
         elif key == "threadsPerCore":
             suggest = "threads_per_core"
 
@@ -432,13 +434,16 @@ class AdvancedMachineFeaturesResponse(dict):
 
     def __init__(__self__, *,
                  enable_nested_virtualization: bool,
+                 enable_uefi_networking: bool,
                  threads_per_core: int):
         """
         Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
         :param bool enable_nested_virtualization: Whether to enable nested virtualization or not (default is false).
+        :param bool enable_uefi_networking: Whether to enable UEFI networking for instance creation.
         :param int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        pulumi.set(__self__, "enable_uefi_networking", enable_uefi_networking)
         pulumi.set(__self__, "threads_per_core", threads_per_core)
 
     @property
@@ -448,6 +453,14 @@ class AdvancedMachineFeaturesResponse(dict):
         Whether to enable nested virtualization or not (default is false).
         """
         return pulumi.get(self, "enable_nested_virtualization")
+
+    @property
+    @pulumi.getter(name="enableUefiNetworking")
+    def enable_uefi_networking(self) -> bool:
+        """
+        Whether to enable UEFI networking for instance creation.
+        """
+        return pulumi.get(self, "enable_uefi_networking")
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -6038,6 +6051,10 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
                  recreating: int,
                  refreshing: int,
                  restarting: int,
+                 resuming: int,
+                 starting: int,
+                 stopping: int,
+                 suspending: int,
                  verifying: int):
         """
         :param int abandoning: The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
@@ -6048,6 +6065,10 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
         :param int recreating: The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
         :param int refreshing: The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
         :param int restarting: The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
+        :param int resuming: The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+        :param int starting: The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+        :param int stopping: The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+        :param int suspending: The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
         :param int verifying: The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
         """
         pulumi.set(__self__, "abandoning", abandoning)
@@ -6058,6 +6079,10 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
         pulumi.set(__self__, "recreating", recreating)
         pulumi.set(__self__, "refreshing", refreshing)
         pulumi.set(__self__, "restarting", restarting)
+        pulumi.set(__self__, "resuming", resuming)
+        pulumi.set(__self__, "starting", starting)
+        pulumi.set(__self__, "stopping", stopping)
+        pulumi.set(__self__, "suspending", suspending)
         pulumi.set(__self__, "verifying", verifying)
 
     @property
@@ -6123,6 +6148,38 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
         The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
         """
         return pulumi.get(self, "restarting")
+
+    @property
+    @pulumi.getter
+    def resuming(self) -> int:
+        """
+        The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+        """
+        return pulumi.get(self, "resuming")
+
+    @property
+    @pulumi.getter
+    def starting(self) -> int:
+        """
+        The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+        """
+        return pulumi.get(self, "starting")
+
+    @property
+    @pulumi.getter
+    def stopping(self) -> int:
+        """
+        The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+        """
+        return pulumi.get(self, "stopping")
+
+    @property
+    @pulumi.getter
+    def suspending(self) -> int:
+        """
+        The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
+        """
+        return pulumi.get(self, "suspending")
 
     @property
     @pulumi.getter
@@ -6564,6 +6621,8 @@ class InstancePropertiesResponse(dict):
             suggest = "private_ipv6_google_access"
         elif key == "reservationAffinity":
             suggest = "reservation_affinity"
+        elif key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
         elif key == "resourcePolicies":
             suggest = "resource_policies"
         elif key == "serviceAccounts":
@@ -6597,6 +6656,7 @@ class InstancePropertiesResponse(dict):
                  network_performance_config: 'outputs.NetworkPerformanceConfigResponse',
                  private_ipv6_google_access: str,
                  reservation_affinity: 'outputs.ReservationAffinityResponse',
+                 resource_manager_tags: Mapping[str, str],
                  resource_policies: Sequence[str],
                  scheduling: 'outputs.SchedulingResponse',
                  service_accounts: Sequence['outputs.ServiceAccountResponse'],
@@ -6617,6 +6677,7 @@ class InstancePropertiesResponse(dict):
         :param 'NetworkPerformanceConfigResponse' network_performance_config: Note that for MachineImage, this is not supported yet.
         :param str private_ipv6_google_access: The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
         :param 'ReservationAffinityResponse' reservation_affinity: Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
+        :param Mapping[str, str] resource_manager_tags: Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence[str] resource_policies: Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         :param 'SchedulingResponse' scheduling: Specifies the scheduling options for the instances that are created from these properties.
         :param Sequence['ServiceAccountResponse'] service_accounts: A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
@@ -6637,6 +6698,7 @@ class InstancePropertiesResponse(dict):
         pulumi.set(__self__, "network_performance_config", network_performance_config)
         pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "scheduling", scheduling)
         pulumi.set(__self__, "service_accounts", service_accounts)
@@ -6754,6 +6816,14 @@ class InstancePropertiesResponse(dict):
         Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
         """
         return pulumi.get(self, "reservation_affinity")
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, str]:
+        """
+        Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
     @property
     @pulumi.getter(name="resourcePolicies")

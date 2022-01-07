@@ -20,6 +20,7 @@ class EntryArgs:
                  entry_id: pulumi.Input[str],
                  bigquery_date_sharded_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs']] = None,
                  bigquery_table_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryTableSpecArgs']] = None,
+                 business_context: Optional[pulumi.Input['GoogleCloudDatacatalogV1BusinessContextArgs']] = None,
                  data_source_connection_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']] = None,
                  database_table_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,7 @@ class EntryArgs:
         The set of arguments for constructing a Entry resource.
         :param pulumi.Input['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs'] bigquery_date_sharded_spec: Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
         :param pulumi.Input['GoogleCloudDatacatalogV1BigQueryTableSpecArgs'] bigquery_table_spec: Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
+        :param pulumi.Input['GoogleCloudDatacatalogV1BusinessContextArgs'] business_context: Business Context of the entry.
         :param pulumi.Input['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs'] data_source_connection_spec: Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
         :param pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecArgs'] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
         :param pulumi.Input[str] description: Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
@@ -61,6 +63,8 @@ class EntryArgs:
             pulumi.set(__self__, "bigquery_date_sharded_spec", bigquery_date_sharded_spec)
         if bigquery_table_spec is not None:
             pulumi.set(__self__, "bigquery_table_spec", bigquery_table_spec)
+        if business_context is not None:
+            pulumi.set(__self__, "business_context", business_context)
         if data_source_connection_spec is not None:
             pulumi.set(__self__, "data_source_connection_spec", data_source_connection_spec)
         if database_table_spec is not None:
@@ -135,6 +139,18 @@ class EntryArgs:
     @bigquery_table_spec.setter
     def bigquery_table_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryTableSpecArgs']]):
         pulumi.set(self, "bigquery_table_spec", value)
+
+    @property
+    @pulumi.getter(name="businessContext")
+    def business_context(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1BusinessContextArgs']]:
+        """
+        Business Context of the entry.
+        """
+        return pulumi.get(self, "business_context")
+
+    @business_context.setter
+    def business_context(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1BusinessContextArgs']]):
+        pulumi.set(self, "business_context", value)
 
     @property
     @pulumi.getter(name="dataSourceConnectionSpec")
@@ -330,6 +346,7 @@ class Entry(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_date_sharded_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs']]] = None,
                  bigquery_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BigQueryTableSpecArgs']]] = None,
+                 business_context: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BusinessContextArgs']]] = None,
                  data_source_connection_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']]] = None,
                  database_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -357,6 +374,7 @@ class Entry(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs']] bigquery_date_sharded_spec: Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BigQueryTableSpecArgs']] bigquery_table_spec: Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BusinessContextArgs']] business_context: Business Context of the entry.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']] data_source_connection_spec: Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
         :param pulumi.Input[str] description: Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
@@ -399,6 +417,7 @@ class Entry(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_date_sharded_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs']]] = None,
                  bigquery_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BigQueryTableSpecArgs']]] = None,
+                 business_context: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BusinessContextArgs']]] = None,
                  data_source_connection_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']]] = None,
                  database_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -431,6 +450,7 @@ class Entry(pulumi.CustomResource):
 
             __props__.__dict__["bigquery_date_sharded_spec"] = bigquery_date_sharded_spec
             __props__.__dict__["bigquery_table_spec"] = bigquery_table_spec
+            __props__.__dict__["business_context"] = business_context
             __props__.__dict__["data_source_connection_spec"] = data_source_connection_spec
             __props__.__dict__["database_table_spec"] = database_table_spec
             __props__.__dict__["description"] = description
@@ -482,6 +502,7 @@ class Entry(pulumi.CustomResource):
 
         __props__.__dict__["bigquery_date_sharded_spec"] = None
         __props__.__dict__["bigquery_table_spec"] = None
+        __props__.__dict__["business_context"] = None
         __props__.__dict__["data_source"] = None
         __props__.__dict__["data_source_connection_spec"] = None
         __props__.__dict__["database_table_spec"] = None
@@ -518,6 +539,14 @@ class Entry(pulumi.CustomResource):
         Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
         """
         return pulumi.get(self, "bigquery_table_spec")
+
+    @property
+    @pulumi.getter(name="businessContext")
+    def business_context(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1BusinessContextResponse']:
+        """
+        Business Context of the entry.
+        """
+        return pulumi.get(self, "business_context")
 
     @property
     @pulumi.getter(name="dataSource")

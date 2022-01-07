@@ -25,6 +25,11 @@ __all__ = [
     'PolicyAlternativeNameServerConfigTargetNameServerArgs',
     'PolicyAlternativeNameServerConfigArgs',
     'PolicyNetworkArgs',
+    'RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs',
+    'RRSetRoutingPolicyGeoPolicyArgs',
+    'RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs',
+    'RRSetRoutingPolicyWrrPolicyArgs',
+    'RRSetRoutingPolicyArgs',
     'ResourceRecordSetArgs',
 ]
 
@@ -667,10 +672,245 @@ class PolicyNetworkArgs:
 
 
 @pulumi.input_type
+class RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs:
+    def __init__(__self__, *,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] location: The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: DNSSEC generated signatures for the above geo_rrdata.
+        """
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if rrdatas is not None:
+            pulumi.set(__self__, "rrdatas", rrdatas)
+        if signature_rrdatas is not None:
+            pulumi.set(__self__, "signature_rrdatas", signature_rrdatas)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "rrdatas")
+
+    @rrdatas.setter
+    def rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "rrdatas", value)
+
+    @property
+    @pulumi.getter(name="signatureRrdatas")
+    def signature_rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        DNSSEC generated signatures for the above geo_rrdata.
+        """
+        return pulumi.get(self, "signature_rrdatas")
+
+    @signature_rrdatas.setter
+    def signature_rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "signature_rrdatas", value)
+
+
+@pulumi.input_type
+class RRSetRoutingPolicyGeoPolicyArgs:
+    def __init__(__self__, *,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]]] = None,
+                 kind: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]] items: The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
+        """
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]]]:
+        """
+        The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
+        """
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]]]):
+        pulumi.set(self, "items", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+
+@pulumi.input_type
+class RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs:
+    def __init__(__self__, *,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 weight: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: DNSSEC generated signatures for the above wrr_rrdata.
+        :param pulumi.Input[float] weight: The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+        """
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if rrdatas is not None:
+            pulumi.set(__self__, "rrdatas", rrdatas)
+        if signature_rrdatas is not None:
+            pulumi.set(__self__, "signature_rrdatas", signature_rrdatas)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "rrdatas")
+
+    @rrdatas.setter
+    def rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "rrdatas", value)
+
+    @property
+    @pulumi.getter(name="signatureRrdatas")
+    def signature_rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        DNSSEC generated signatures for the above wrr_rrdata.
+        """
+        return pulumi.get(self, "signature_rrdatas")
+
+    @signature_rrdatas.setter
+    def signature_rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "signature_rrdatas", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[float]]:
+        """
+        The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "weight", value)
+
+
+@pulumi.input_type
+class RRSetRoutingPolicyWrrPolicyArgs:
+    def __init__(__self__, *,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs']]]] = None,
+                 kind: Optional[pulumi.Input[str]] = None):
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs']]]]:
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs']]]]):
+        pulumi.set(self, "items", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+
+@pulumi.input_type
+class RRSetRoutingPolicyArgs:
+    def __init__(__self__, *,
+                 geo: Optional[pulumi.Input['RRSetRoutingPolicyGeoPolicyArgs']] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 wrr: Optional[pulumi.Input['RRSetRoutingPolicyWrrPolicyArgs']] = None):
+        """
+        A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
+        """
+        if geo is not None:
+            pulumi.set(__self__, "geo", geo)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if wrr is not None:
+            pulumi.set(__self__, "wrr", wrr)
+
+    @property
+    @pulumi.getter
+    def geo(self) -> Optional[pulumi.Input['RRSetRoutingPolicyGeoPolicyArgs']]:
+        return pulumi.get(self, "geo")
+
+    @geo.setter
+    def geo(self, value: Optional[pulumi.Input['RRSetRoutingPolicyGeoPolicyArgs']]):
+        pulumi.set(self, "geo", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def wrr(self) -> Optional[pulumi.Input['RRSetRoutingPolicyWrrPolicyArgs']]:
+        return pulumi.get(self, "wrr")
+
+    @wrr.setter
+    def wrr(self, value: Optional[pulumi.Input['RRSetRoutingPolicyWrrPolicyArgs']]):
+        pulumi.set(self, "wrr", value)
+
+
+@pulumi.input_type
 class ResourceRecordSetArgs:
     def __init__(__self__, *,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 routing_policy: Optional[pulumi.Input['RRSetRoutingPolicyArgs']] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
@@ -678,6 +918,7 @@ class ResourceRecordSetArgs:
         """
         A unit of data that is returned by the DNS servers.
         :param pulumi.Input[str] name: For example, www.example.com.
+        :param pulumi.Input['RRSetRoutingPolicyArgs'] routing_policy: Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: As defined in RFC 4034 (section 3.2).
         :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by resolvers.
@@ -687,6 +928,8 @@ class ResourceRecordSetArgs:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if routing_policy is not None:
+            pulumi.set(__self__, "routing_policy", routing_policy)
         if rrdatas is not None:
             pulumi.set(__self__, "rrdatas", rrdatas)
         if signature_rrdatas is not None:
@@ -716,6 +959,18 @@ class ResourceRecordSetArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="routingPolicy")
+    def routing_policy(self) -> Optional[pulumi.Input['RRSetRoutingPolicyArgs']]:
+        """
+        Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+        """
+        return pulumi.get(self, "routing_policy")
+
+    @routing_policy.setter
+    def routing_policy(self, value: Optional[pulumi.Input['RRSetRoutingPolicyArgs']]):
+        pulumi.set(self, "routing_policy", value)
 
     @property
     @pulumi.getter

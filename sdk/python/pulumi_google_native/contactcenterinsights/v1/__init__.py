@@ -12,7 +12,9 @@ from .get_analysis import *
 from .get_conversation import *
 from .get_issue_model import *
 from .get_phrase_matcher import *
+from .get_view import *
 from .issue_model import *
 from .phrase_matcher import *
+from .view import *
 from ._inputs import *
 from . import outputs

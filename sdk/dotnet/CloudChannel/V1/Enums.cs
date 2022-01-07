@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         }
 
         /// <summary>
-        /// The state is not specified.
+        /// Not used.
         /// </summary>
         public static ChannelPartnerLinkLinkState ChannelPartnerLinkStateUnspecified { get; } = new ChannelPartnerLinkLinkState("CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED");
         /// <summary>

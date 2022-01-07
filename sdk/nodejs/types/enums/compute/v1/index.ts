@@ -392,6 +392,10 @@ export const BackendServiceLoadBalancingScheme = {
      */
     External: "EXTERNAL",
     /**
+     * Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+     */
+    ExternalManaged: "EXTERNAL_MANAGED",
+    /**
      * Signifies that this will be used for Internal TCP/UDP Load Balancing.
      */
     Internal: "INTERNAL",
@@ -781,6 +785,7 @@ export type ForwardingRuleIpVersion = (typeof ForwardingRuleIpVersion)[keyof typ
 
 export const ForwardingRuleLoadBalancingScheme = {
     External: "EXTERNAL",
+    ExternalManaged: "EXTERNAL_MANAGED",
     Internal: "INTERNAL",
     InternalManaged: "INTERNAL_MANAGED",
     InternalSelfManaged: "INTERNAL_SELF_MANAGED",
@@ -974,6 +979,7 @@ export type GlobalForwardingRuleIpVersion = (typeof GlobalForwardingRuleIpVersio
 
 export const GlobalForwardingRuleLoadBalancingScheme = {
     External: "EXTERNAL",
+    ExternalManaged: "EXTERNAL_MANAGED",
     Internal: "INTERNAL",
     InternalManaged: "INTERNAL_MANAGED",
     InternalSelfManaged: "INTERNAL_SELF_MANAGED",
@@ -1804,6 +1810,10 @@ export const RegionBackendServiceLoadBalancingScheme = {
      * Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
      */
     External: "EXTERNAL",
+    /**
+     * Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+     */
+    ExternalManaged: "EXTERNAL_MANAGED",
     /**
      * Signifies that this will be used for Internal TCP/UDP Load Balancing.
      */

@@ -1050,7 +1050,7 @@ class ParserConfigResponse(dict):
         :param bool allow_null_header: Determines whether messages with no header are allowed.
         :param 'SchemaPackageResponse' schema: Schemas used to parse messages in this store, if schematized parsing is desired.
         :param str segment_terminator: Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
-        :param str version: Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+        :param str version: Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
         """
         pulumi.set(__self__, "allow_null_header", allow_null_header)
         pulumi.set(__self__, "schema", schema)
@@ -1085,7 +1085,7 @@ class ParserConfigResponse(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+        Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
         """
         return pulumi.get(self, "version")
 

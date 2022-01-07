@@ -33,7 +33,7 @@ type LookupKeyResult struct {
 	DeleteTime string `pulumi:"deleteTime"`
 	// Human-readable display name of this key that you can modify. The maximum length is 63 characters.
 	DisplayName string `pulumi:"displayName"`
-	// A checksum computed by the server based on the current value of the Key resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	// A checksum computed by the server based on the current value of the Key resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. See https://google.aip.dev/154.
 	Etag string `pulumi:"etag"`
 	// An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
 	KeyString string `pulumi:"keyString"`
@@ -95,7 +95,7 @@ func (o LookupKeyResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// A checksum computed by the server based on the current value of the Key resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+// A checksum computed by the server based on the current value of the Key resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. See https://google.aip.dev/154.
 func (o LookupKeyResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyResult) string { return v.Etag }).(pulumi.StringOutput)
 }

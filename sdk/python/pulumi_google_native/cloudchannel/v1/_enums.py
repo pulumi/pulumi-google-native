@@ -17,7 +17,7 @@ class ChannelPartnerLinkLinkState(str, Enum):
     """
     CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED = "CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED"
     """
-    The state is not specified.
+    Not used.
     """
     INVITED = "INVITED"
     """

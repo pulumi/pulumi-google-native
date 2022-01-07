@@ -374,14 +374,18 @@ class AccessConfigArgs:
 class AdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
+                 enable_uefi_networking: Optional[pulumi.Input[bool]] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None):
         """
         Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
         :param pulumi.Input[bool] enable_nested_virtualization: Whether to enable nested virtualization or not (default is false).
+        :param pulumi.Input[bool] enable_uefi_networking: Whether to enable UEFI networking for instance creation.
         :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if enable_uefi_networking is not None:
+            pulumi.set(__self__, "enable_uefi_networking", enable_uefi_networking)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
 
@@ -396,6 +400,18 @@ class AdvancedMachineFeaturesArgs:
     @enable_nested_virtualization.setter
     def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_nested_virtualization", value)
+
+    @property
+    @pulumi.getter(name="enableUefiNetworking")
+    def enable_uefi_networking(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable UEFI networking for instance creation.
+        """
+        return pulumi.get(self, "enable_uefi_networking")
+
+    @enable_uefi_networking.setter
+    def enable_uefi_networking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_uefi_networking", value)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -5974,6 +5990,7 @@ class InstancePropertiesArgs:
                  network_performance_config: Optional[pulumi.Input['NetworkPerformanceConfigArgs']] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePropertiesPrivateIpv6GoogleAccess']] = None,
                  reservation_affinity: Optional[pulumi.Input['ReservationAffinityArgs']] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scheduling: Optional[pulumi.Input['SchedulingArgs']] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]] = None,
@@ -5994,6 +6011,7 @@ class InstancePropertiesArgs:
         :param pulumi.Input['NetworkPerformanceConfigArgs'] network_performance_config: Note that for MachineImage, this is not supported yet.
         :param pulumi.Input['InstancePropertiesPrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
         :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         :param pulumi.Input['SchedulingArgs'] scheduling: Specifies the scheduling options for the instances that are created from these properties.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
@@ -6028,6 +6046,8 @@ class InstancePropertiesArgs:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         if reservation_affinity is not None:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if scheduling is not None:
@@ -6206,6 +6226,18 @@ class InstancePropertiesArgs:
     @reservation_affinity.setter
     def reservation_affinity(self, value: Optional[pulumi.Input['ReservationAffinityArgs']]):
         pulumi.set(self, "reservation_affinity", value)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
     @property
     @pulumi.getter(name="resourcePolicies")

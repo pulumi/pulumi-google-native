@@ -29,6 +29,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<Outputs.GoogleCloudDatacatalogV1BigQueryTableSpecResponse> BigqueryTableSpec { get; private set; } = null!;
 
         /// <summary>
+        /// Business Context of the entry.
+        /// </summary>
+        [Output("businessContext")]
+        public Output<Outputs.GoogleCloudDatacatalogV1BusinessContextResponse> BusinessContext { get; private set; } = null!;
+
+        /// <summary>
         /// Physical location of the entry.
         /// </summary>
         [Output("dataSource")]
@@ -198,6 +204,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         [Input("bigqueryTableSpec")]
         public Input<Inputs.GoogleCloudDatacatalogV1BigQueryTableSpecArgs>? BigqueryTableSpec { get; set; }
+
+        /// <summary>
+        /// Business Context of the entry.
+        /// </summary>
+        [Input("businessContext")]
+        public Input<Inputs.GoogleCloudDatacatalogV1BusinessContextArgs>? BusinessContext { get; set; }
 
         /// <summary>
         /// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.

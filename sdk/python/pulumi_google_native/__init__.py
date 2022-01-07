@@ -1188,7 +1188,8 @@ _utilities.register(
    "google-native:contactcenterinsights/v1:Analysis": "Analysis",
    "google-native:contactcenterinsights/v1:Conversation": "Conversation",
    "google-native:contactcenterinsights/v1:IssueModel": "IssueModel",
-   "google-native:contactcenterinsights/v1:PhraseMatcher": "PhraseMatcher"
+   "google-native:contactcenterinsights/v1:PhraseMatcher": "PhraseMatcher",
+   "google-native:contactcenterinsights/v1:View": "View"
   }
  },
  {
@@ -2115,6 +2116,7 @@ _utilities.register(
   "classes": {
    "google-native:networkservices/v1beta1:EndpointPolicy": "EndpointPolicy",
    "google-native:networkservices/v1beta1:EndpointPolicyIamPolicy": "EndpointPolicyIamPolicy",
+   "google-native:networkservices/v1beta1:ServiceBinding": "ServiceBinding",
    "google-native:networkservices/v1beta1:ServiceBindingIamPolicy": "ServiceBindingIamPolicy"
   }
  },
@@ -2364,6 +2366,15 @@ _utilities.register(
   "fqn": "pulumi_google_native.run.v1alpha1",
   "classes": {
    "google-native:run/v1alpha1:Job": "Job"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "run/v2",
+  "fqn": "pulumi_google_native.run.v2",
+  "classes": {
+   "google-native:run/v2:Service": "Service",
+   "google-native:run/v2:ServiceIamPolicy": "ServiceIamPolicy"
   }
  },
  {

@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IssueModel{}
 	case "google-native:contactcenterinsights/v1:PhraseMatcher":
 		r = &PhraseMatcher{}
+	case "google-native:contactcenterinsights/v1:View":
+		r = &View{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

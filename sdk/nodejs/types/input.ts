@@ -13463,6 +13463,10 @@ export namespace compute {
              */
             enableNestedVirtualization?: pulumi.Input<boolean>;
             /**
+             * Whether to enable UEFI networking for instance creation.
+             */
+            enableUefiNetworking?: pulumi.Input<boolean>;
+            /**
              * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
              */
             threadsPerCore?: pulumi.Input<number>;
@@ -17227,6 +17231,10 @@ export namespace compute {
              */
             enableNestedVirtualization?: pulumi.Input<boolean>;
             /**
+             * Whether to enable UEFI networking for instance creation.
+             */
+            enableUefiNetworking?: pulumi.Input<boolean>;
+            /**
              * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
              */
             threadsPerCore?: pulumi.Input<number>;
@@ -18939,6 +18947,10 @@ export namespace compute {
              * Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
              */
             reservationAffinity?: pulumi.Input<inputs.compute.v1.ReservationAffinityArgs>;
+            /**
+             * Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+             */
+            resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
              * Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
              */
@@ -27875,6 +27887,20 @@ export namespace datacatalog {
         }
 
         /**
+         * Business Context of the entry.
+         */
+        export interface GoogleCloudDatacatalogV1BusinessContextArgs {
+            /**
+             * Contact people for the entry.
+             */
+            contacts?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1ContactsArgs>;
+            /**
+             * Entry overview fields for rich text descriptions of entries.
+             */
+            entryOverview?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1EntryOverviewArgs>;
+        }
+
+        /**
          * Specification for the BigQuery connection to a Cloud SQL instance.
          */
         export interface GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs {
@@ -27919,6 +27945,30 @@ export namespace datacatalog {
         }
 
         /**
+         * Contact people for the entry.
+         */
+        export interface GoogleCloudDatacatalogV1ContactsArgs {
+            /**
+             * The list of contact people for the entry.
+             */
+            people?: pulumi.Input<pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1ContactsPersonArgs>[]>;
+        }
+
+        /**
+         * A contact person for the entry.
+         */
+        export interface GoogleCloudDatacatalogV1ContactsPersonArgs {
+            /**
+             * Designation of the person, for example, Data Steward.
+             */
+            designation?: pulumi.Input<string>;
+            /**
+             * Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+             */
+            email?: pulumi.Input<string>;
+        }
+
+        /**
          * Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
          */
         export interface GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs {
@@ -27936,6 +27986,16 @@ export namespace datacatalog {
              * Type of this table.
              */
             type?: pulumi.Input<enums.datacatalog.v1.GoogleCloudDatacatalogV1DatabaseTableSpecType>;
+        }
+
+        /**
+         * Entry overview fields for rich text descriptions of entries.
+         */
+        export interface GoogleCloudDatacatalogV1EntryOverviewArgs {
+            /**
+             * Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+             */
+            overview?: pulumi.Input<string>;
         }
 
         /**
@@ -40054,6 +40114,54 @@ export namespace dns {
         }
 
         /**
+         * A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
+         */
+        export interface RRSetRoutingPolicyArgs {
+            geo?: pulumi.Input<inputs.dns.v1.RRSetRoutingPolicyGeoPolicyArgs>;
+            kind?: pulumi.Input<string>;
+            wrr?: pulumi.Input<inputs.dns.v1.RRSetRoutingPolicyWrrPolicyArgs>;
+        }
+
+        export interface RRSetRoutingPolicyGeoPolicyArgs {
+            /**
+             * The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
+             */
+            items?: pulumi.Input<pulumi.Input<inputs.dns.v1.RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs>[]>;
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs {
+            kind?: pulumi.Input<string>;
+            /**
+             * The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
+             */
+            location?: pulumi.Input<string>;
+            rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * DNSSEC generated signatures for the above geo_rrdata.
+             */
+            signatureRrdatas?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        export interface RRSetRoutingPolicyWrrPolicyArgs {
+            items?: pulumi.Input<pulumi.Input<inputs.dns.v1.RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs>[]>;
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs {
+            kind?: pulumi.Input<string>;
+            rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * DNSSEC generated signatures for the above wrr_rrdata.
+             */
+            signatureRrdatas?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+             */
+            weight?: pulumi.Input<number>;
+        }
+
+        /**
          * A unit of data that is returned by the DNS servers.
          */
         export interface ResourceRecordSetArgs {
@@ -40062,6 +40170,10 @@ export namespace dns {
              * For example, www.example.com.
              */
             name?: pulumi.Input<string>;
+            /**
+             * Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+             */
+            routingPolicy?: pulumi.Input<inputs.dns.v1.RRSetRoutingPolicyArgs>;
             /**
              * As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
              */
@@ -43603,7 +43715,7 @@ export namespace healthcare {
              */
             segmentTerminator?: pulumi.Input<string>;
             /**
-             * Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+             * Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
              */
             version?: pulumi.Input<enums.healthcare.v1.ParserConfigVersion>;
         }
@@ -43739,6 +43851,10 @@ export namespace healthcare {
              */
             disableFhirpathValidation?: pulumi.Input<boolean>;
             /**
+             * Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+             */
+            disableProfileValidation?: pulumi.Input<boolean>;
+            /**
              * Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
              */
             disableReferenceTypeValidation?: pulumi.Input<boolean>;
@@ -43746,6 +43862,10 @@ export namespace healthcare {
              * Whether to disable required fields validation for incoming resources. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
              */
             disableRequiredFieldValidation?: pulumi.Input<boolean>;
+            /**
+             * A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+             */
+            enabledImplementationGuides?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -44072,7 +44192,7 @@ export namespace healthcare {
              */
             segmentTerminator?: pulumi.Input<string>;
             /**
-             * Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+             * Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
              */
             version?: pulumi.Input<enums.healthcare.v1beta1.ParserConfigVersion>;
         }
@@ -45078,7 +45198,7 @@ export namespace metastore {
          */
         export interface HiveMetastoreConfigArgs {
             /**
-             * A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
+             * A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
              */
             configOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
@@ -55051,6 +55171,385 @@ export namespace run {
         }
 
     }
+
+    export namespace v2 {
+        /**
+         * Settings for Binary Authorization feature.
+         */
+        export interface GoogleCloudRunOpV2BinaryAuthorizationArgs {
+            /**
+             * If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+             */
+            breakglassJustification?: pulumi.Input<string>;
+            /**
+             * If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+             */
+            useDefault?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Represents a specific Cloud SQL instance.
+         */
+        export interface GoogleCloudRunOpV2CloudSqlInstanceArgs {
+            /**
+             * The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+             */
+            connections?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
+         */
+        export interface GoogleCloudRunOpV2ContainerArgs {
+            /**
+             * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+             */
+            args?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+             */
+            command?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * List of environment variables to set in the container.
+             */
+            env?: pulumi.Input<pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2EnvVarArgs>[]>;
+            /**
+             * URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
+             */
+            image: pulumi.Input<string>;
+            /**
+             * Name of the container specified as a DNS_LABEL.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
+             */
+            ports?: pulumi.Input<pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2ContainerPortArgs>[]>;
+            /**
+             * Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+             */
+            resources?: pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2ResourceRequirementsArgs>;
+            /**
+             * Volume to mount into the container's filesystem.
+             */
+            volumeMounts?: pulumi.Input<pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2VolumeMountArgs>[]>;
+        }
+
+        /**
+         * ContainerPort represents a network port in a single container.
+         */
+        export interface GoogleCloudRunOpV2ContainerPortArgs {
+            /**
+             * Port number the container listens on. This must be a valid TCP port number, 0 < container_port < 65536.
+             */
+            containerPort?: pulumi.Input<number>;
+            /**
+             * If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * EnvVar represents an environment variable present in a Container.
+         */
+        export interface GoogleCloudRunOpV2EnvVarArgs {
+            /**
+             * Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes.
+             */
+            value?: pulumi.Input<string>;
+            /**
+             * Source for the environment variable's value.
+             */
+            valueSource?: pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2EnvVarSourceArgs>;
+        }
+
+        /**
+         * EnvVarSource represents a source for the value of an EnvVar.
+         */
+        export interface GoogleCloudRunOpV2EnvVarSourceArgs {
+            /**
+             * Selects a secret and a specific version from Cloud Secret Manager.
+             */
+            secretKeyRef?: pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2SecretKeySelectorArgs>;
+        }
+
+        /**
+         * ResourceRequirements describes the compute resource requirements.
+         */
+        export interface GoogleCloudRunOpV2ResourceRequirementsArgs {
+            /**
+             * Determines whether CPU should be throttled or not outside of requests.
+             */
+            cpuIdle?: pulumi.Input<boolean>;
+            /**
+             * Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+             */
+            limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        /**
+         * Settings for revision-level scaling settings.
+         */
+        export interface GoogleCloudRunOpV2RevisionScalingArgs {
+            /**
+             * Maximum number of serving instances that this resource should have.
+             */
+            maxInstanceCount?: pulumi.Input<number>;
+            /**
+             * Minimum number of serving instances that this resource should have.
+             */
+            minInstanceCount?: pulumi.Input<number>;
+        }
+
+        /**
+         * RevisionTemplate describes the data a revision should have when created from a template.
+         */
+        export interface GoogleCloudRunOpV2RevisionTemplateArgs {
+            /**
+             * KRM-style annotations for the resource.
+             */
+            annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Enables Confidential Cloud Run in Revisions created using this template.
+             */
+            confidential?: pulumi.Input<boolean>;
+            /**
+             * Sets the maximum number of requests that each serving instance can receive.
+             */
+            containerConcurrency?: pulumi.Input<number>;
+            /**
+             * Holds the single container that defines the unit of execution for this Revision.
+             */
+            containers?: pulumi.Input<pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2ContainerArgs>[]>;
+            /**
+             * A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+             */
+            encryptionKey?: pulumi.Input<string>;
+            /**
+             * The sandbox environment to host this Revision.
+             */
+            executionEnvironment?: pulumi.Input<enums.run.v2.GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment>;
+            /**
+             * KRM-style labels for the resource.
+             */
+            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+             */
+            revision?: pulumi.Input<string>;
+            /**
+             * Scaling settings for this Revision.
+             */
+            scaling?: pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2RevisionScalingArgs>;
+            /**
+             * Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+             */
+            serviceAccount?: pulumi.Input<string>;
+            /**
+             * Max allowed time for an instance to respond to a request.
+             */
+            timeout?: pulumi.Input<string>;
+            /**
+             * A list of Volumes to make available to containers.
+             */
+            volumes?: pulumi.Input<pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2VolumeArgs>[]>;
+            /**
+             * VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+             */
+            vpcAccess?: pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2VpcAccessArgs>;
+        }
+
+        /**
+         * SecretEnvVarSource represents a source for the value of an EnvVar.
+         */
+        export interface GoogleCloudRunOpV2SecretKeySelectorArgs {
+            /**
+             * The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
+             */
+            secret: pulumi.Input<string>;
+            /**
+             * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+        /**
+         * The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret.
+         */
+        export interface GoogleCloudRunOpV2SecretVolumeSourceArgs {
+            /**
+             * Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
+             */
+            defaultMode?: pulumi.Input<number>;
+            /**
+             * If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+             */
+            items?: pulumi.Input<pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2VersionToPathArgs>[]>;
+            /**
+             * The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+             */
+            secret: pulumi.Input<string>;
+        }
+
+        /**
+         * Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision.
+         */
+        export interface GoogleCloudRunOpV2TrafficTargetArgs {
+            /**
+             * Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single TrafficTarget entry.
+             */
+            percent?: pulumi.Input<number>;
+            /**
+             * Revision to which to send this portion of traffic, if traffic allocation is by revision.
+             */
+            revision?: pulumi.Input<string>;
+            /**
+             * Indicates a string to be part of the URI to exclusively reference this target.
+             */
+            tag?: pulumi.Input<string>;
+            /**
+             * The allocation type for this traffic target.
+             */
+            type?: pulumi.Input<enums.run.v2.GoogleCloudRunOpV2TrafficTargetType>;
+        }
+
+        /**
+         * VersionToPath maps a specific version of a secret to a relative file to mount to, relative to VolumeMount's mount_path.
+         */
+        export interface GoogleCloudRunOpV2VersionToPathArgs {
+            /**
+             * Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+             */
+            mode?: pulumi.Input<number>;
+            /**
+             * The relative path of the secret in the container.
+             */
+            path: pulumi.Input<string>;
+            /**
+             * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+        /**
+         * Volume represents a named volume in a container.
+         */
+        export interface GoogleCloudRunOpV2VolumeArgs {
+            /**
+             * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+             */
+            cloudSqlInstance?: pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2CloudSqlInstanceArgs>;
+            /**
+             * Volume's name.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+             */
+            secret?: pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2SecretVolumeSourceArgs>;
+        }
+
+        /**
+         * VolumeMount describes a mounting of a Volume within a container.
+         */
+        export interface GoogleCloudRunOpV2VolumeMountArgs {
+            /**
+             * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be `/cloudsql`. All instances defined in the Volume will be available as `/cloudsql/[instance]`. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+             */
+            mountPath: pulumi.Input<string>;
+            /**
+             * This must match the Name of a Volume.
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+         */
+        export interface GoogleCloudRunOpV2VpcAccessArgs {
+            /**
+             * VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
+             */
+            connector?: pulumi.Input<string>;
+            /**
+             * Traffic VPC egress settings.
+             */
+            egress?: pulumi.Input<enums.run.v2.GoogleCloudRunOpV2VpcAccessEgress>;
+        }
+
+        /**
+         * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+         */
+        export interface GoogleIamV1AuditConfigArgs {
+            /**
+             * The configuration for logging of each type of permission.
+             */
+            auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.run.v2.GoogleIamV1AuditLogConfigArgs>[]>;
+            /**
+             * Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+             */
+            service?: pulumi.Input<string>;
+        }
+
+        /**
+         * Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+         */
+        export interface GoogleIamV1AuditLogConfigArgs {
+            /**
+             * Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+             */
+            exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The log type that this config enables.
+             */
+            logType?: pulumi.Input<enums.run.v2.GoogleIamV1AuditLogConfigLogType>;
+        }
+
+        /**
+         * Associates `members`, or principals, with a `role`.
+         */
+        export interface GoogleIamV1BindingArgs {
+            /**
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             */
+            condition?: pulumi.Input<inputs.run.v2.GoogleTypeExprArgs>;
+            /**
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             */
+            members?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             */
+            role?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+         */
+        export interface GoogleTypeExprArgs {
+            /**
+             * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Textual representation of an expression in Common Expression Language syntax.
+             */
+            expression?: pulumi.Input<string>;
+            /**
+             * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+             */
+            title?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace runtimeconfig {
@@ -55898,11 +56397,11 @@ export namespace servicemanagement {
         }
 
         /**
-         * Selects and configures the service controller used by the service. The service controller handles features like abuse, quota, billing, logging, monitoring, etc.
+         * Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
          */
         export interface ControlArgs {
             /**
-             * The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+             * The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
              */
             environment?: pulumi.Input<string>;
         }
@@ -59237,14 +59736,6 @@ export namespace testing {
              * The java package for the application under test. The default value is determined by examining the application's manifest.
              */
             appPackageId?: pulumi.Input<string>;
-            /**
-             * The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
-             */
-            maxDepth?: pulumi.Input<number>;
-            /**
-             * The max number of steps Robo can execute. Default is no limit.
-             */
-            maxSteps?: pulumi.Input<number>;
             /**
              * A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
              */

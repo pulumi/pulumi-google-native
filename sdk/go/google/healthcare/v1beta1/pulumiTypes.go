@@ -5031,7 +5031,7 @@ type ParserConfig struct {
 	Schema *SchemaPackage `pulumi:"schema"`
 	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 	SegmentTerminator *string `pulumi:"segmentTerminator"`
-	// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+	// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 	Version *ParserConfigVersion `pulumi:"version"`
 }
 
@@ -5054,7 +5054,7 @@ type ParserConfigArgs struct {
 	Schema SchemaPackagePtrInput `pulumi:"schema"`
 	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 	SegmentTerminator pulumi.StringPtrInput `pulumi:"segmentTerminator"`
-	// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+	// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 	Version ParserConfigVersionPtrInput `pulumi:"version"`
 }
 
@@ -5151,7 +5151,7 @@ func (o ParserConfigOutput) SegmentTerminator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParserConfig) *string { return v.SegmentTerminator }).(pulumi.StringPtrOutput)
 }
 
-// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 func (o ParserConfigOutput) Version() ParserConfigVersionPtrOutput {
 	return o.ApplyT(func(v ParserConfig) *ParserConfigVersion { return v.Version }).(ParserConfigVersionPtrOutput)
 }
@@ -5210,7 +5210,7 @@ func (o ParserConfigPtrOutput) SegmentTerminator() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 func (o ParserConfigPtrOutput) Version() ParserConfigVersionPtrOutput {
 	return o.ApplyT(func(v *ParserConfig) *ParserConfigVersion {
 		if v == nil {
@@ -5228,7 +5228,7 @@ type ParserConfigResponse struct {
 	Schema SchemaPackageResponse `pulumi:"schema"`
 	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 	SegmentTerminator string `pulumi:"segmentTerminator"`
-	// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+	// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 	Version string `pulumi:"version"`
 }
 
@@ -5251,7 +5251,7 @@ type ParserConfigResponseArgs struct {
 	Schema SchemaPackageResponseInput `pulumi:"schema"`
 	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 	SegmentTerminator pulumi.StringInput `pulumi:"segmentTerminator"`
-	// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+	// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -5348,7 +5348,7 @@ func (o ParserConfigResponseOutput) SegmentTerminator() pulumi.StringOutput {
 	return o.ApplyT(func(v ParserConfigResponse) string { return v.SegmentTerminator }).(pulumi.StringOutput)
 }
 
-// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 func (o ParserConfigResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v ParserConfigResponse) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -5407,7 +5407,7 @@ func (o ParserConfigResponsePtrOutput) SegmentTerminator() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
 func (o ParserConfigResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ParserConfigResponse) *string {
 		if v == nil {

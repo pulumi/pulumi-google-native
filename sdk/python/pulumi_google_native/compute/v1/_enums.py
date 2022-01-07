@@ -513,6 +513,10 @@ class BackendServiceLoadBalancingScheme(str, Enum):
     """
     Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
     """
+    EXTERNAL_MANAGED = "EXTERNAL_MANAGED"
+    """
+    Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+    """
     INTERNAL = "INTERNAL"
     """
     Signifies that this will be used for Internal TCP/UDP Load Balancing.
@@ -869,6 +873,7 @@ class ForwardingRuleLoadBalancingScheme(str, Enum):
     Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
     """
     EXTERNAL = "EXTERNAL"
+    EXTERNAL_MANAGED = "EXTERNAL_MANAGED"
     INTERNAL = "INTERNAL"
     INTERNAL_MANAGED = "INTERNAL_MANAGED"
     INTERNAL_SELF_MANAGED = "INTERNAL_SELF_MANAGED"
@@ -1042,6 +1047,7 @@ class GlobalForwardingRuleLoadBalancingScheme(str, Enum):
     Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
     """
     EXTERNAL = "EXTERNAL"
+    EXTERNAL_MANAGED = "EXTERNAL_MANAGED"
     INTERNAL = "INTERNAL"
     INTERNAL_MANAGED = "INTERNAL_MANAGED"
     INTERNAL_SELF_MANAGED = "INTERNAL_SELF_MANAGED"
@@ -1783,6 +1789,10 @@ class RegionBackendServiceLoadBalancingScheme(str, Enum):
     EXTERNAL = "EXTERNAL"
     """
     Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+    """
+    EXTERNAL_MANAGED = "EXTERNAL_MANAGED"
+    """
+    Signifies that this will be used for External Managed HTTP(S) Load Balancing.
     """
     INTERNAL = "INTERNAL"
     """

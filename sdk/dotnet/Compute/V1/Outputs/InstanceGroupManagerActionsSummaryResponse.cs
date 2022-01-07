@@ -46,6 +46,22 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly int Restarting;
         /// <summary>
+        /// The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+        /// </summary>
+        public readonly int Resuming;
+        /// <summary>
+        /// The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+        /// </summary>
+        public readonly int Starting;
+        /// <summary>
+        /// The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+        /// </summary>
+        public readonly int Stopping;
+        /// <summary>
+        /// The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
+        /// </summary>
+        public readonly int Suspending;
+        /// <summary>
         /// The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
         /// </summary>
         public readonly int Verifying;
@@ -68,6 +84,14 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             int restarting,
 
+            int resuming,
+
+            int starting,
+
+            int stopping,
+
+            int suspending,
+
             int verifying)
         {
             Abandoning = abandoning;
@@ -78,6 +102,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             Recreating = recreating;
             Refreshing = refreshing;
             Restarting = restarting;
+            Resuming = resuming;
+            Starting = starting;
+            Stopping = stopping;
+            Suspending = suspending;
             Verifying = verifying;
         }
     }

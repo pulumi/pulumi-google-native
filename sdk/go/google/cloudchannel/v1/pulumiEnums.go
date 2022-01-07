@@ -14,7 +14,7 @@ import (
 type ChannelPartnerLinkLinkState string
 
 const (
-	// The state is not specified.
+	// Not used.
 	ChannelPartnerLinkLinkStateChannelPartnerLinkStateUnspecified = ChannelPartnerLinkLinkState("CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED")
 	// An invitation has been sent to the reseller to create a channel partner link.
 	ChannelPartnerLinkLinkStateInvited = ChannelPartnerLinkLinkState("INVITED")
