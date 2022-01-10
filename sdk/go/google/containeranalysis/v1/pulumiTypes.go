@@ -177,78 +177,6 @@ type AliasContextResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// AliasContextResponseInput is an input type that accepts AliasContextResponseArgs and AliasContextResponseOutput values.
-// You can construct a concrete instance of `AliasContextResponseInput` via:
-//
-//          AliasContextResponseArgs{...}
-type AliasContextResponseInput interface {
-	pulumi.Input
-
-	ToAliasContextResponseOutput() AliasContextResponseOutput
-	ToAliasContextResponseOutputWithContext(context.Context) AliasContextResponseOutput
-}
-
-// An alias to a repo revision.
-type AliasContextResponseArgs struct {
-	// The alias kind.
-	Kind pulumi.StringInput `pulumi:"kind"`
-	// The alias name.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (AliasContextResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AliasContextResponse)(nil)).Elem()
-}
-
-func (i AliasContextResponseArgs) ToAliasContextResponseOutput() AliasContextResponseOutput {
-	return i.ToAliasContextResponseOutputWithContext(context.Background())
-}
-
-func (i AliasContextResponseArgs) ToAliasContextResponseOutputWithContext(ctx context.Context) AliasContextResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AliasContextResponseOutput)
-}
-
-func (i AliasContextResponseArgs) ToAliasContextResponsePtrOutput() AliasContextResponsePtrOutput {
-	return i.ToAliasContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AliasContextResponseArgs) ToAliasContextResponsePtrOutputWithContext(ctx context.Context) AliasContextResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AliasContextResponseOutput).ToAliasContextResponsePtrOutputWithContext(ctx)
-}
-
-// AliasContextResponsePtrInput is an input type that accepts AliasContextResponseArgs, AliasContextResponsePtr and AliasContextResponsePtrOutput values.
-// You can construct a concrete instance of `AliasContextResponsePtrInput` via:
-//
-//          AliasContextResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AliasContextResponsePtrInput interface {
-	pulumi.Input
-
-	ToAliasContextResponsePtrOutput() AliasContextResponsePtrOutput
-	ToAliasContextResponsePtrOutputWithContext(context.Context) AliasContextResponsePtrOutput
-}
-
-type aliasContextResponsePtrType AliasContextResponseArgs
-
-func AliasContextResponsePtr(v *AliasContextResponseArgs) AliasContextResponsePtrInput {
-	return (*aliasContextResponsePtrType)(v)
-}
-
-func (*aliasContextResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AliasContextResponse)(nil)).Elem()
-}
-
-func (i *aliasContextResponsePtrType) ToAliasContextResponsePtrOutput() AliasContextResponsePtrOutput {
-	return i.ToAliasContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *aliasContextResponsePtrType) ToAliasContextResponsePtrOutputWithContext(ctx context.Context) AliasContextResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AliasContextResponsePtrOutput)
-}
-
 // An alias to a repo revision.
 type AliasContextResponseOutput struct{ *pulumi.OutputState }
 
@@ -264,16 +192,6 @@ func (o AliasContextResponseOutput) ToAliasContextResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o AliasContextResponseOutput) ToAliasContextResponsePtrOutput() AliasContextResponsePtrOutput {
-	return o.ToAliasContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AliasContextResponseOutput) ToAliasContextResponsePtrOutputWithContext(ctx context.Context) AliasContextResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AliasContextResponse) *AliasContextResponse {
-		return &v
-	}).(AliasContextResponsePtrOutput)
-}
-
 // The alias kind.
 func (o AliasContextResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v AliasContextResponse) string { return v.Kind }).(pulumi.StringOutput)
@@ -282,50 +200,6 @@ func (o AliasContextResponseOutput) Kind() pulumi.StringOutput {
 // The alias name.
 func (o AliasContextResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AliasContextResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type AliasContextResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AliasContextResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AliasContextResponse)(nil)).Elem()
-}
-
-func (o AliasContextResponsePtrOutput) ToAliasContextResponsePtrOutput() AliasContextResponsePtrOutput {
-	return o
-}
-
-func (o AliasContextResponsePtrOutput) ToAliasContextResponsePtrOutputWithContext(ctx context.Context) AliasContextResponsePtrOutput {
-	return o
-}
-
-func (o AliasContextResponsePtrOutput) Elem() AliasContextResponseOutput {
-	return o.ApplyT(func(v *AliasContextResponse) AliasContextResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AliasContextResponse
-		return ret
-	}).(AliasContextResponseOutput)
-}
-
-// The alias kind.
-func (o AliasContextResponsePtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AliasContextResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-// The alias name.
-func (o AliasContextResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AliasContextResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // Artifact describes a build product.
@@ -452,62 +326,6 @@ type ArtifactResponse struct {
 	Checksum string `pulumi:"checksum"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names []string `pulumi:"names"`
-}
-
-// ArtifactResponseInput is an input type that accepts ArtifactResponseArgs and ArtifactResponseOutput values.
-// You can construct a concrete instance of `ArtifactResponseInput` via:
-//
-//          ArtifactResponseArgs{...}
-type ArtifactResponseInput interface {
-	pulumi.Input
-
-	ToArtifactResponseOutput() ArtifactResponseOutput
-	ToArtifactResponseOutputWithContext(context.Context) ArtifactResponseOutput
-}
-
-// Artifact describes a build product.
-type ArtifactResponseArgs struct {
-	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
-	Checksum pulumi.StringInput `pulumi:"checksum"`
-	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
-	Names pulumi.StringArrayInput `pulumi:"names"`
-}
-
-func (ArtifactResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ArtifactResponse)(nil)).Elem()
-}
-
-func (i ArtifactResponseArgs) ToArtifactResponseOutput() ArtifactResponseOutput {
-	return i.ToArtifactResponseOutputWithContext(context.Background())
-}
-
-func (i ArtifactResponseArgs) ToArtifactResponseOutputWithContext(ctx context.Context) ArtifactResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArtifactResponseOutput)
-}
-
-// ArtifactResponseArrayInput is an input type that accepts ArtifactResponseArray and ArtifactResponseArrayOutput values.
-// You can construct a concrete instance of `ArtifactResponseArrayInput` via:
-//
-//          ArtifactResponseArray{ ArtifactResponseArgs{...} }
-type ArtifactResponseArrayInput interface {
-	pulumi.Input
-
-	ToArtifactResponseArrayOutput() ArtifactResponseArrayOutput
-	ToArtifactResponseArrayOutputWithContext(context.Context) ArtifactResponseArrayOutput
-}
-
-type ArtifactResponseArray []ArtifactResponseInput
-
-func (ArtifactResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ArtifactResponse)(nil)).Elem()
-}
-
-func (i ArtifactResponseArray) ToArtifactResponseArrayOutput() ArtifactResponseArrayOutput {
-	return i.ToArtifactResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ArtifactResponseArray) ToArtifactResponseArrayOutputWithContext(ctx context.Context) ArtifactResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArtifactResponseArrayOutput)
 }
 
 // Artifact describes a build product.
@@ -701,76 +519,6 @@ type AttestationNoteResponse struct {
 	Hint HintResponse `pulumi:"hint"`
 }
 
-// AttestationNoteResponseInput is an input type that accepts AttestationNoteResponseArgs and AttestationNoteResponseOutput values.
-// You can construct a concrete instance of `AttestationNoteResponseInput` via:
-//
-//          AttestationNoteResponseArgs{...}
-type AttestationNoteResponseInput interface {
-	pulumi.Input
-
-	ToAttestationNoteResponseOutput() AttestationNoteResponseOutput
-	ToAttestationNoteResponseOutputWithContext(context.Context) AttestationNoteResponseOutput
-}
-
-// Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one `Authority` for "QA" and one for "build". This note is intended to act strictly as a grouping mechanism for the attached occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the ability for a principle to attach an occurrence to a given note. It also provides a single point of lookup to find all attached attestation occurrences, even if they don't all live in the same project.
-type AttestationNoteResponseArgs struct {
-	// Hint hints at the purpose of the attestation authority.
-	Hint HintResponseInput `pulumi:"hint"`
-}
-
-func (AttestationNoteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttestationNoteResponse)(nil)).Elem()
-}
-
-func (i AttestationNoteResponseArgs) ToAttestationNoteResponseOutput() AttestationNoteResponseOutput {
-	return i.ToAttestationNoteResponseOutputWithContext(context.Background())
-}
-
-func (i AttestationNoteResponseArgs) ToAttestationNoteResponseOutputWithContext(ctx context.Context) AttestationNoteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttestationNoteResponseOutput)
-}
-
-func (i AttestationNoteResponseArgs) ToAttestationNoteResponsePtrOutput() AttestationNoteResponsePtrOutput {
-	return i.ToAttestationNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AttestationNoteResponseArgs) ToAttestationNoteResponsePtrOutputWithContext(ctx context.Context) AttestationNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttestationNoteResponseOutput).ToAttestationNoteResponsePtrOutputWithContext(ctx)
-}
-
-// AttestationNoteResponsePtrInput is an input type that accepts AttestationNoteResponseArgs, AttestationNoteResponsePtr and AttestationNoteResponsePtrOutput values.
-// You can construct a concrete instance of `AttestationNoteResponsePtrInput` via:
-//
-//          AttestationNoteResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AttestationNoteResponsePtrInput interface {
-	pulumi.Input
-
-	ToAttestationNoteResponsePtrOutput() AttestationNoteResponsePtrOutput
-	ToAttestationNoteResponsePtrOutputWithContext(context.Context) AttestationNoteResponsePtrOutput
-}
-
-type attestationNoteResponsePtrType AttestationNoteResponseArgs
-
-func AttestationNoteResponsePtr(v *AttestationNoteResponseArgs) AttestationNoteResponsePtrInput {
-	return (*attestationNoteResponsePtrType)(v)
-}
-
-func (*attestationNoteResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AttestationNoteResponse)(nil)).Elem()
-}
-
-func (i *attestationNoteResponsePtrType) ToAttestationNoteResponsePtrOutput() AttestationNoteResponsePtrOutput {
-	return i.ToAttestationNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *attestationNoteResponsePtrType) ToAttestationNoteResponsePtrOutputWithContext(ctx context.Context) AttestationNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttestationNoteResponsePtrOutput)
-}
-
 // Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one `Authority` for "QA" and one for "build". This note is intended to act strictly as a grouping mechanism for the attached occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the ability for a principle to attach an occurrence to a given note. It also provides a single point of lookup to find all attached attestation occurrences, even if they don't all live in the same project.
 type AttestationNoteResponseOutput struct{ *pulumi.OutputState }
 
@@ -786,53 +534,9 @@ func (o AttestationNoteResponseOutput) ToAttestationNoteResponseOutputWithContex
 	return o
 }
 
-func (o AttestationNoteResponseOutput) ToAttestationNoteResponsePtrOutput() AttestationNoteResponsePtrOutput {
-	return o.ToAttestationNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AttestationNoteResponseOutput) ToAttestationNoteResponsePtrOutputWithContext(ctx context.Context) AttestationNoteResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestationNoteResponse) *AttestationNoteResponse {
-		return &v
-	}).(AttestationNoteResponsePtrOutput)
-}
-
 // Hint hints at the purpose of the attestation authority.
 func (o AttestationNoteResponseOutput) Hint() HintResponseOutput {
 	return o.ApplyT(func(v AttestationNoteResponse) HintResponse { return v.Hint }).(HintResponseOutput)
-}
-
-type AttestationNoteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AttestationNoteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AttestationNoteResponse)(nil)).Elem()
-}
-
-func (o AttestationNoteResponsePtrOutput) ToAttestationNoteResponsePtrOutput() AttestationNoteResponsePtrOutput {
-	return o
-}
-
-func (o AttestationNoteResponsePtrOutput) ToAttestationNoteResponsePtrOutputWithContext(ctx context.Context) AttestationNoteResponsePtrOutput {
-	return o
-}
-
-func (o AttestationNoteResponsePtrOutput) Elem() AttestationNoteResponseOutput {
-	return o.ApplyT(func(v *AttestationNoteResponse) AttestationNoteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AttestationNoteResponse
-		return ret
-	}).(AttestationNoteResponseOutput)
-}
-
-// Hint hints at the purpose of the attestation authority.
-func (o AttestationNoteResponsePtrOutput) Hint() HintResponsePtrOutput {
-	return o.ApplyT(func(v *AttestationNoteResponse) *HintResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Hint
-	}).(HintResponsePtrOutput)
 }
 
 // Occurrence that represents a single "attestation". The authenticity of an attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is primarily useful for lookup (how to find this attestation if you already know the authority and artifact to be verified) and intent (for which authority this attestation was intended to sign.
@@ -1023,80 +727,6 @@ type AttestationOccurrenceResponse struct {
 	Signatures []SignatureResponse `pulumi:"signatures"`
 }
 
-// AttestationOccurrenceResponseInput is an input type that accepts AttestationOccurrenceResponseArgs and AttestationOccurrenceResponseOutput values.
-// You can construct a concrete instance of `AttestationOccurrenceResponseInput` via:
-//
-//          AttestationOccurrenceResponseArgs{...}
-type AttestationOccurrenceResponseInput interface {
-	pulumi.Input
-
-	ToAttestationOccurrenceResponseOutput() AttestationOccurrenceResponseOutput
-	ToAttestationOccurrenceResponseOutputWithContext(context.Context) AttestationOccurrenceResponseOutput
-}
-
-// Occurrence that represents a single "attestation". The authenticity of an attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is primarily useful for lookup (how to find this attestation if you already know the authority and artifact to be verified) and intent (for which authority this attestation was intended to sign.
-type AttestationOccurrenceResponseArgs struct {
-	// One or more JWTs encoding a self-contained attestation. Each JWT encodes the payload that it verifies within the JWT itself. Verifier implementation SHOULD ignore the `serialized_payload` field when verifying these JWTs. If only JWTs are present on this AttestationOccurrence, then the `serialized_payload` SHOULD be left empty. Each JWT SHOULD encode a claim specific to the `resource_uri` of this Occurrence, but this is not validated by Grafeas metadata API implementations. The JWT itself is opaque to Grafeas.
-	Jwts JwtResponseArrayInput `pulumi:"jwts"`
-	// The serialized payload that is verified by one or more `signatures`.
-	SerializedPayload pulumi.StringInput `pulumi:"serializedPayload"`
-	// One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification.
-	Signatures SignatureResponseArrayInput `pulumi:"signatures"`
-}
-
-func (AttestationOccurrenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttestationOccurrenceResponse)(nil)).Elem()
-}
-
-func (i AttestationOccurrenceResponseArgs) ToAttestationOccurrenceResponseOutput() AttestationOccurrenceResponseOutput {
-	return i.ToAttestationOccurrenceResponseOutputWithContext(context.Background())
-}
-
-func (i AttestationOccurrenceResponseArgs) ToAttestationOccurrenceResponseOutputWithContext(ctx context.Context) AttestationOccurrenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttestationOccurrenceResponseOutput)
-}
-
-func (i AttestationOccurrenceResponseArgs) ToAttestationOccurrenceResponsePtrOutput() AttestationOccurrenceResponsePtrOutput {
-	return i.ToAttestationOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AttestationOccurrenceResponseArgs) ToAttestationOccurrenceResponsePtrOutputWithContext(ctx context.Context) AttestationOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttestationOccurrenceResponseOutput).ToAttestationOccurrenceResponsePtrOutputWithContext(ctx)
-}
-
-// AttestationOccurrenceResponsePtrInput is an input type that accepts AttestationOccurrenceResponseArgs, AttestationOccurrenceResponsePtr and AttestationOccurrenceResponsePtrOutput values.
-// You can construct a concrete instance of `AttestationOccurrenceResponsePtrInput` via:
-//
-//          AttestationOccurrenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AttestationOccurrenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToAttestationOccurrenceResponsePtrOutput() AttestationOccurrenceResponsePtrOutput
-	ToAttestationOccurrenceResponsePtrOutputWithContext(context.Context) AttestationOccurrenceResponsePtrOutput
-}
-
-type attestationOccurrenceResponsePtrType AttestationOccurrenceResponseArgs
-
-func AttestationOccurrenceResponsePtr(v *AttestationOccurrenceResponseArgs) AttestationOccurrenceResponsePtrInput {
-	return (*attestationOccurrenceResponsePtrType)(v)
-}
-
-func (*attestationOccurrenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AttestationOccurrenceResponse)(nil)).Elem()
-}
-
-func (i *attestationOccurrenceResponsePtrType) ToAttestationOccurrenceResponsePtrOutput() AttestationOccurrenceResponsePtrOutput {
-	return i.ToAttestationOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *attestationOccurrenceResponsePtrType) ToAttestationOccurrenceResponsePtrOutputWithContext(ctx context.Context) AttestationOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttestationOccurrenceResponsePtrOutput)
-}
-
 // Occurrence that represents a single "attestation". The authenticity of an attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is primarily useful for lookup (how to find this attestation if you already know the authority and artifact to be verified) and intent (for which authority this attestation was intended to sign.
 type AttestationOccurrenceResponseOutput struct{ *pulumi.OutputState }
 
@@ -1112,16 +742,6 @@ func (o AttestationOccurrenceResponseOutput) ToAttestationOccurrenceResponseOutp
 	return o
 }
 
-func (o AttestationOccurrenceResponseOutput) ToAttestationOccurrenceResponsePtrOutput() AttestationOccurrenceResponsePtrOutput {
-	return o.ToAttestationOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AttestationOccurrenceResponseOutput) ToAttestationOccurrenceResponsePtrOutputWithContext(ctx context.Context) AttestationOccurrenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestationOccurrenceResponse) *AttestationOccurrenceResponse {
-		return &v
-	}).(AttestationOccurrenceResponsePtrOutput)
-}
-
 // One or more JWTs encoding a self-contained attestation. Each JWT encodes the payload that it verifies within the JWT itself. Verifier implementation SHOULD ignore the `serialized_payload` field when verifying these JWTs. If only JWTs are present on this AttestationOccurrence, then the `serialized_payload` SHOULD be left empty. Each JWT SHOULD encode a claim specific to the `resource_uri` of this Occurrence, but this is not validated by Grafeas metadata API implementations. The JWT itself is opaque to Grafeas.
 func (o AttestationOccurrenceResponseOutput) Jwts() JwtResponseArrayOutput {
 	return o.ApplyT(func(v AttestationOccurrenceResponse) []JwtResponse { return v.Jwts }).(JwtResponseArrayOutput)
@@ -1135,60 +755,6 @@ func (o AttestationOccurrenceResponseOutput) SerializedPayload() pulumi.StringOu
 // One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification.
 func (o AttestationOccurrenceResponseOutput) Signatures() SignatureResponseArrayOutput {
 	return o.ApplyT(func(v AttestationOccurrenceResponse) []SignatureResponse { return v.Signatures }).(SignatureResponseArrayOutput)
-}
-
-type AttestationOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AttestationOccurrenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AttestationOccurrenceResponse)(nil)).Elem()
-}
-
-func (o AttestationOccurrenceResponsePtrOutput) ToAttestationOccurrenceResponsePtrOutput() AttestationOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o AttestationOccurrenceResponsePtrOutput) ToAttestationOccurrenceResponsePtrOutputWithContext(ctx context.Context) AttestationOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o AttestationOccurrenceResponsePtrOutput) Elem() AttestationOccurrenceResponseOutput {
-	return o.ApplyT(func(v *AttestationOccurrenceResponse) AttestationOccurrenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AttestationOccurrenceResponse
-		return ret
-	}).(AttestationOccurrenceResponseOutput)
-}
-
-// One or more JWTs encoding a self-contained attestation. Each JWT encodes the payload that it verifies within the JWT itself. Verifier implementation SHOULD ignore the `serialized_payload` field when verifying these JWTs. If only JWTs are present on this AttestationOccurrence, then the `serialized_payload` SHOULD be left empty. Each JWT SHOULD encode a claim specific to the `resource_uri` of this Occurrence, but this is not validated by Grafeas metadata API implementations. The JWT itself is opaque to Grafeas.
-func (o AttestationOccurrenceResponsePtrOutput) Jwts() JwtResponseArrayOutput {
-	return o.ApplyT(func(v *AttestationOccurrenceResponse) []JwtResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Jwts
-	}).(JwtResponseArrayOutput)
-}
-
-// The serialized payload that is verified by one or more `signatures`.
-func (o AttestationOccurrenceResponsePtrOutput) SerializedPayload() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AttestationOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SerializedPayload
-	}).(pulumi.StringPtrOutput)
-}
-
-// One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification.
-func (o AttestationOccurrenceResponsePtrOutput) Signatures() SignatureResponseArrayOutput {
-	return o.ApplyT(func(v *AttestationOccurrenceResponse) []SignatureResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Signatures
-	}).(SignatureResponseArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -1317,64 +883,6 @@ type BindingResponse struct {
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
-}
-
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -1573,76 +1081,6 @@ type BuildNoteResponse struct {
 	BuilderVersion string `pulumi:"builderVersion"`
 }
 
-// BuildNoteResponseInput is an input type that accepts BuildNoteResponseArgs and BuildNoteResponseOutput values.
-// You can construct a concrete instance of `BuildNoteResponseInput` via:
-//
-//          BuildNoteResponseArgs{...}
-type BuildNoteResponseInput interface {
-	pulumi.Input
-
-	ToBuildNoteResponseOutput() BuildNoteResponseOutput
-	ToBuildNoteResponseOutputWithContext(context.Context) BuildNoteResponseOutput
-}
-
-// Note holding the version of the provider's builder and the signature of the provenance message in the build details occurrence.
-type BuildNoteResponseArgs struct {
-	// Immutable. Version of the builder which produced this build.
-	BuilderVersion pulumi.StringInput `pulumi:"builderVersion"`
-}
-
-func (BuildNoteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BuildNoteResponse)(nil)).Elem()
-}
-
-func (i BuildNoteResponseArgs) ToBuildNoteResponseOutput() BuildNoteResponseOutput {
-	return i.ToBuildNoteResponseOutputWithContext(context.Background())
-}
-
-func (i BuildNoteResponseArgs) ToBuildNoteResponseOutputWithContext(ctx context.Context) BuildNoteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildNoteResponseOutput)
-}
-
-func (i BuildNoteResponseArgs) ToBuildNoteResponsePtrOutput() BuildNoteResponsePtrOutput {
-	return i.ToBuildNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BuildNoteResponseArgs) ToBuildNoteResponsePtrOutputWithContext(ctx context.Context) BuildNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildNoteResponseOutput).ToBuildNoteResponsePtrOutputWithContext(ctx)
-}
-
-// BuildNoteResponsePtrInput is an input type that accepts BuildNoteResponseArgs, BuildNoteResponsePtr and BuildNoteResponsePtrOutput values.
-// You can construct a concrete instance of `BuildNoteResponsePtrInput` via:
-//
-//          BuildNoteResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BuildNoteResponsePtrInput interface {
-	pulumi.Input
-
-	ToBuildNoteResponsePtrOutput() BuildNoteResponsePtrOutput
-	ToBuildNoteResponsePtrOutputWithContext(context.Context) BuildNoteResponsePtrOutput
-}
-
-type buildNoteResponsePtrType BuildNoteResponseArgs
-
-func BuildNoteResponsePtr(v *BuildNoteResponseArgs) BuildNoteResponsePtrInput {
-	return (*buildNoteResponsePtrType)(v)
-}
-
-func (*buildNoteResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BuildNoteResponse)(nil)).Elem()
-}
-
-func (i *buildNoteResponsePtrType) ToBuildNoteResponsePtrOutput() BuildNoteResponsePtrOutput {
-	return i.ToBuildNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *buildNoteResponsePtrType) ToBuildNoteResponsePtrOutputWithContext(ctx context.Context) BuildNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildNoteResponsePtrOutput)
-}
-
 // Note holding the version of the provider's builder and the signature of the provenance message in the build details occurrence.
 type BuildNoteResponseOutput struct{ *pulumi.OutputState }
 
@@ -1658,53 +1096,9 @@ func (o BuildNoteResponseOutput) ToBuildNoteResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o BuildNoteResponseOutput) ToBuildNoteResponsePtrOutput() BuildNoteResponsePtrOutput {
-	return o.ToBuildNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BuildNoteResponseOutput) ToBuildNoteResponsePtrOutputWithContext(ctx context.Context) BuildNoteResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildNoteResponse) *BuildNoteResponse {
-		return &v
-	}).(BuildNoteResponsePtrOutput)
-}
-
 // Immutable. Version of the builder which produced this build.
 func (o BuildNoteResponseOutput) BuilderVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildNoteResponse) string { return v.BuilderVersion }).(pulumi.StringOutput)
-}
-
-type BuildNoteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BuildNoteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BuildNoteResponse)(nil)).Elem()
-}
-
-func (o BuildNoteResponsePtrOutput) ToBuildNoteResponsePtrOutput() BuildNoteResponsePtrOutput {
-	return o
-}
-
-func (o BuildNoteResponsePtrOutput) ToBuildNoteResponsePtrOutputWithContext(ctx context.Context) BuildNoteResponsePtrOutput {
-	return o
-}
-
-func (o BuildNoteResponsePtrOutput) Elem() BuildNoteResponseOutput {
-	return o.ApplyT(func(v *BuildNoteResponse) BuildNoteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BuildNoteResponse
-		return ret
-	}).(BuildNoteResponseOutput)
-}
-
-// Immutable. Version of the builder which produced this build.
-func (o BuildNoteResponsePtrOutput) BuilderVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BuilderVersion
-	}).(pulumi.StringPtrOutput)
 }
 
 // Details of a build occurrence.
@@ -1895,80 +1289,6 @@ type BuildOccurrenceResponse struct {
 	ProvenanceBytes string `pulumi:"provenanceBytes"`
 }
 
-// BuildOccurrenceResponseInput is an input type that accepts BuildOccurrenceResponseArgs and BuildOccurrenceResponseOutput values.
-// You can construct a concrete instance of `BuildOccurrenceResponseInput` via:
-//
-//          BuildOccurrenceResponseArgs{...}
-type BuildOccurrenceResponseInput interface {
-	pulumi.Input
-
-	ToBuildOccurrenceResponseOutput() BuildOccurrenceResponseOutput
-	ToBuildOccurrenceResponseOutputWithContext(context.Context) BuildOccurrenceResponseOutput
-}
-
-// Details of a build occurrence.
-type BuildOccurrenceResponseArgs struct {
-	// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
-	IntotoStatement InTotoStatementResponseInput `pulumi:"intotoStatement"`
-	// The actual provenance for the build.
-	Provenance BuildProvenanceResponseInput `pulumi:"provenance"`
-	// Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
-	ProvenanceBytes pulumi.StringInput `pulumi:"provenanceBytes"`
-}
-
-func (BuildOccurrenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BuildOccurrenceResponse)(nil)).Elem()
-}
-
-func (i BuildOccurrenceResponseArgs) ToBuildOccurrenceResponseOutput() BuildOccurrenceResponseOutput {
-	return i.ToBuildOccurrenceResponseOutputWithContext(context.Background())
-}
-
-func (i BuildOccurrenceResponseArgs) ToBuildOccurrenceResponseOutputWithContext(ctx context.Context) BuildOccurrenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildOccurrenceResponseOutput)
-}
-
-func (i BuildOccurrenceResponseArgs) ToBuildOccurrenceResponsePtrOutput() BuildOccurrenceResponsePtrOutput {
-	return i.ToBuildOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BuildOccurrenceResponseArgs) ToBuildOccurrenceResponsePtrOutputWithContext(ctx context.Context) BuildOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildOccurrenceResponseOutput).ToBuildOccurrenceResponsePtrOutputWithContext(ctx)
-}
-
-// BuildOccurrenceResponsePtrInput is an input type that accepts BuildOccurrenceResponseArgs, BuildOccurrenceResponsePtr and BuildOccurrenceResponsePtrOutput values.
-// You can construct a concrete instance of `BuildOccurrenceResponsePtrInput` via:
-//
-//          BuildOccurrenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BuildOccurrenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToBuildOccurrenceResponsePtrOutput() BuildOccurrenceResponsePtrOutput
-	ToBuildOccurrenceResponsePtrOutputWithContext(context.Context) BuildOccurrenceResponsePtrOutput
-}
-
-type buildOccurrenceResponsePtrType BuildOccurrenceResponseArgs
-
-func BuildOccurrenceResponsePtr(v *BuildOccurrenceResponseArgs) BuildOccurrenceResponsePtrInput {
-	return (*buildOccurrenceResponsePtrType)(v)
-}
-
-func (*buildOccurrenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BuildOccurrenceResponse)(nil)).Elem()
-}
-
-func (i *buildOccurrenceResponsePtrType) ToBuildOccurrenceResponsePtrOutput() BuildOccurrenceResponsePtrOutput {
-	return i.ToBuildOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *buildOccurrenceResponsePtrType) ToBuildOccurrenceResponsePtrOutputWithContext(ctx context.Context) BuildOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildOccurrenceResponsePtrOutput)
-}
-
 // Details of a build occurrence.
 type BuildOccurrenceResponseOutput struct{ *pulumi.OutputState }
 
@@ -1984,16 +1304,6 @@ func (o BuildOccurrenceResponseOutput) ToBuildOccurrenceResponseOutputWithContex
 	return o
 }
 
-func (o BuildOccurrenceResponseOutput) ToBuildOccurrenceResponsePtrOutput() BuildOccurrenceResponsePtrOutput {
-	return o.ToBuildOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BuildOccurrenceResponseOutput) ToBuildOccurrenceResponsePtrOutputWithContext(ctx context.Context) BuildOccurrenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildOccurrenceResponse) *BuildOccurrenceResponse {
-		return &v
-	}).(BuildOccurrenceResponsePtrOutput)
-}
-
 // In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
 func (o BuildOccurrenceResponseOutput) IntotoStatement() InTotoStatementResponseOutput {
 	return o.ApplyT(func(v BuildOccurrenceResponse) InTotoStatementResponse { return v.IntotoStatement }).(InTotoStatementResponseOutput)
@@ -2007,60 +1317,6 @@ func (o BuildOccurrenceResponseOutput) Provenance() BuildProvenanceResponseOutpu
 // Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
 func (o BuildOccurrenceResponseOutput) ProvenanceBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildOccurrenceResponse) string { return v.ProvenanceBytes }).(pulumi.StringOutput)
-}
-
-type BuildOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BuildOccurrenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BuildOccurrenceResponse)(nil)).Elem()
-}
-
-func (o BuildOccurrenceResponsePtrOutput) ToBuildOccurrenceResponsePtrOutput() BuildOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o BuildOccurrenceResponsePtrOutput) ToBuildOccurrenceResponsePtrOutputWithContext(ctx context.Context) BuildOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o BuildOccurrenceResponsePtrOutput) Elem() BuildOccurrenceResponseOutput {
-	return o.ApplyT(func(v *BuildOccurrenceResponse) BuildOccurrenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BuildOccurrenceResponse
-		return ret
-	}).(BuildOccurrenceResponseOutput)
-}
-
-// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
-func (o BuildOccurrenceResponsePtrOutput) IntotoStatement() InTotoStatementResponsePtrOutput {
-	return o.ApplyT(func(v *BuildOccurrenceResponse) *InTotoStatementResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IntotoStatement
-	}).(InTotoStatementResponsePtrOutput)
-}
-
-// The actual provenance for the build.
-func (o BuildOccurrenceResponsePtrOutput) Provenance() BuildProvenanceResponsePtrOutput {
-	return o.ApplyT(func(v *BuildOccurrenceResponse) *BuildProvenanceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Provenance
-	}).(BuildProvenanceResponsePtrOutput)
-}
-
-// Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
-func (o BuildOccurrenceResponsePtrOutput) ProvenanceBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProvenanceBytes
-	}).(pulumi.StringPtrOutput)
 }
 
 // Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
@@ -2459,98 +1715,6 @@ type BuildProvenanceResponse struct {
 	TriggerId string `pulumi:"triggerId"`
 }
 
-// BuildProvenanceResponseInput is an input type that accepts BuildProvenanceResponseArgs and BuildProvenanceResponseOutput values.
-// You can construct a concrete instance of `BuildProvenanceResponseInput` via:
-//
-//          BuildProvenanceResponseArgs{...}
-type BuildProvenanceResponseInput interface {
-	pulumi.Input
-
-	ToBuildProvenanceResponseOutput() BuildProvenanceResponseOutput
-	ToBuildProvenanceResponseOutputWithContext(context.Context) BuildProvenanceResponseOutput
-}
-
-// Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
-type BuildProvenanceResponseArgs struct {
-	// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
-	BuildOptions pulumi.StringMapInput `pulumi:"buildOptions"`
-	// Version string of the builder at the time this build was executed.
-	BuilderVersion pulumi.StringInput `pulumi:"builderVersion"`
-	// Output of the build.
-	BuiltArtifacts ArtifactResponseArrayInput `pulumi:"builtArtifacts"`
-	// Commands requested by the build.
-	Commands CommandResponseArrayInput `pulumi:"commands"`
-	// Time at which the build was created.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
-	Creator pulumi.StringInput `pulumi:"creator"`
-	// Time at which execution of the build was finished.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// URI where any logs for this provenance were written.
-	LogsUri pulumi.StringInput `pulumi:"logsUri"`
-	// ID of the project.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Details of the Source input to the build.
-	SourceProvenance SourceResponseInput `pulumi:"sourceProvenance"`
-	// Time at which execution of the build was started.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// Trigger identifier if the build was triggered automatically; empty if not.
-	TriggerId pulumi.StringInput `pulumi:"triggerId"`
-}
-
-func (BuildProvenanceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BuildProvenanceResponse)(nil)).Elem()
-}
-
-func (i BuildProvenanceResponseArgs) ToBuildProvenanceResponseOutput() BuildProvenanceResponseOutput {
-	return i.ToBuildProvenanceResponseOutputWithContext(context.Background())
-}
-
-func (i BuildProvenanceResponseArgs) ToBuildProvenanceResponseOutputWithContext(ctx context.Context) BuildProvenanceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildProvenanceResponseOutput)
-}
-
-func (i BuildProvenanceResponseArgs) ToBuildProvenanceResponsePtrOutput() BuildProvenanceResponsePtrOutput {
-	return i.ToBuildProvenanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BuildProvenanceResponseArgs) ToBuildProvenanceResponsePtrOutputWithContext(ctx context.Context) BuildProvenanceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildProvenanceResponseOutput).ToBuildProvenanceResponsePtrOutputWithContext(ctx)
-}
-
-// BuildProvenanceResponsePtrInput is an input type that accepts BuildProvenanceResponseArgs, BuildProvenanceResponsePtr and BuildProvenanceResponsePtrOutput values.
-// You can construct a concrete instance of `BuildProvenanceResponsePtrInput` via:
-//
-//          BuildProvenanceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BuildProvenanceResponsePtrInput interface {
-	pulumi.Input
-
-	ToBuildProvenanceResponsePtrOutput() BuildProvenanceResponsePtrOutput
-	ToBuildProvenanceResponsePtrOutputWithContext(context.Context) BuildProvenanceResponsePtrOutput
-}
-
-type buildProvenanceResponsePtrType BuildProvenanceResponseArgs
-
-func BuildProvenanceResponsePtr(v *BuildProvenanceResponseArgs) BuildProvenanceResponsePtrInput {
-	return (*buildProvenanceResponsePtrType)(v)
-}
-
-func (*buildProvenanceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BuildProvenanceResponse)(nil)).Elem()
-}
-
-func (i *buildProvenanceResponsePtrType) ToBuildProvenanceResponsePtrOutput() BuildProvenanceResponsePtrOutput {
-	return i.ToBuildProvenanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *buildProvenanceResponsePtrType) ToBuildProvenanceResponsePtrOutputWithContext(ctx context.Context) BuildProvenanceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildProvenanceResponsePtrOutput)
-}
-
 // Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
 type BuildProvenanceResponseOutput struct{ *pulumi.OutputState }
 
@@ -2564,16 +1728,6 @@ func (o BuildProvenanceResponseOutput) ToBuildProvenanceResponseOutput() BuildPr
 
 func (o BuildProvenanceResponseOutput) ToBuildProvenanceResponseOutputWithContext(ctx context.Context) BuildProvenanceResponseOutput {
 	return o
-}
-
-func (o BuildProvenanceResponseOutput) ToBuildProvenanceResponsePtrOutput() BuildProvenanceResponsePtrOutput {
-	return o.ToBuildProvenanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BuildProvenanceResponseOutput) ToBuildProvenanceResponsePtrOutputWithContext(ctx context.Context) BuildProvenanceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildProvenanceResponse) *BuildProvenanceResponse {
-		return &v
-	}).(BuildProvenanceResponsePtrOutput)
 }
 
 // Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
@@ -2634,150 +1788,6 @@ func (o BuildProvenanceResponseOutput) StartTime() pulumi.StringOutput {
 // Trigger identifier if the build was triggered automatically; empty if not.
 func (o BuildProvenanceResponseOutput) TriggerId() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.TriggerId }).(pulumi.StringOutput)
-}
-
-type BuildProvenanceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BuildProvenanceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BuildProvenanceResponse)(nil)).Elem()
-}
-
-func (o BuildProvenanceResponsePtrOutput) ToBuildProvenanceResponsePtrOutput() BuildProvenanceResponsePtrOutput {
-	return o
-}
-
-func (o BuildProvenanceResponsePtrOutput) ToBuildProvenanceResponsePtrOutputWithContext(ctx context.Context) BuildProvenanceResponsePtrOutput {
-	return o
-}
-
-func (o BuildProvenanceResponsePtrOutput) Elem() BuildProvenanceResponseOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) BuildProvenanceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BuildProvenanceResponse
-		return ret
-	}).(BuildProvenanceResponseOutput)
-}
-
-// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
-func (o BuildProvenanceResponsePtrOutput) BuildOptions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.BuildOptions
-	}).(pulumi.StringMapOutput)
-}
-
-// Version string of the builder at the time this build was executed.
-func (o BuildProvenanceResponsePtrOutput) BuilderVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BuilderVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// Output of the build.
-func (o BuildProvenanceResponsePtrOutput) BuiltArtifacts() ArtifactResponseArrayOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) []ArtifactResponse {
-		if v == nil {
-			return nil
-		}
-		return v.BuiltArtifacts
-	}).(ArtifactResponseArrayOutput)
-}
-
-// Commands requested by the build.
-func (o BuildProvenanceResponsePtrOutput) Commands() CommandResponseArrayOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) []CommandResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Commands
-	}).(CommandResponseArrayOutput)
-}
-
-// Time at which the build was created.
-func (o BuildProvenanceResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
-func (o BuildProvenanceResponsePtrOutput) Creator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Creator
-	}).(pulumi.StringPtrOutput)
-}
-
-// Time at which execution of the build was finished.
-func (o BuildProvenanceResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// URI where any logs for this provenance were written.
-func (o BuildProvenanceResponsePtrOutput) LogsUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LogsUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// ID of the project.
-func (o BuildProvenanceResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// Details of the Source input to the build.
-func (o BuildProvenanceResponsePtrOutput) SourceProvenance() SourceResponsePtrOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) *SourceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceProvenance
-	}).(SourceResponsePtrOutput)
-}
-
-// Time at which execution of the build was started.
-func (o BuildProvenanceResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Trigger identifier if the build was triggered automatically; empty if not.
-func (o BuildProvenanceResponsePtrOutput) TriggerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TriggerId
-	}).(pulumi.StringPtrOutput)
 }
 
 type BuilderConfig struct {
@@ -2916,73 +1926,6 @@ func (o BuilderConfigPtrOutput) Id() pulumi.StringPtrOutput {
 type BuilderConfigResponse struct {
 }
 
-// BuilderConfigResponseInput is an input type that accepts BuilderConfigResponseArgs and BuilderConfigResponseOutput values.
-// You can construct a concrete instance of `BuilderConfigResponseInput` via:
-//
-//          BuilderConfigResponseArgs{...}
-type BuilderConfigResponseInput interface {
-	pulumi.Input
-
-	ToBuilderConfigResponseOutput() BuilderConfigResponseOutput
-	ToBuilderConfigResponseOutputWithContext(context.Context) BuilderConfigResponseOutput
-}
-
-type BuilderConfigResponseArgs struct {
-}
-
-func (BuilderConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BuilderConfigResponse)(nil)).Elem()
-}
-
-func (i BuilderConfigResponseArgs) ToBuilderConfigResponseOutput() BuilderConfigResponseOutput {
-	return i.ToBuilderConfigResponseOutputWithContext(context.Background())
-}
-
-func (i BuilderConfigResponseArgs) ToBuilderConfigResponseOutputWithContext(ctx context.Context) BuilderConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuilderConfigResponseOutput)
-}
-
-func (i BuilderConfigResponseArgs) ToBuilderConfigResponsePtrOutput() BuilderConfigResponsePtrOutput {
-	return i.ToBuilderConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BuilderConfigResponseArgs) ToBuilderConfigResponsePtrOutputWithContext(ctx context.Context) BuilderConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuilderConfigResponseOutput).ToBuilderConfigResponsePtrOutputWithContext(ctx)
-}
-
-// BuilderConfigResponsePtrInput is an input type that accepts BuilderConfigResponseArgs, BuilderConfigResponsePtr and BuilderConfigResponsePtrOutput values.
-// You can construct a concrete instance of `BuilderConfigResponsePtrInput` via:
-//
-//          BuilderConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BuilderConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToBuilderConfigResponsePtrOutput() BuilderConfigResponsePtrOutput
-	ToBuilderConfigResponsePtrOutputWithContext(context.Context) BuilderConfigResponsePtrOutput
-}
-
-type builderConfigResponsePtrType BuilderConfigResponseArgs
-
-func BuilderConfigResponsePtr(v *BuilderConfigResponseArgs) BuilderConfigResponsePtrInput {
-	return (*builderConfigResponsePtrType)(v)
-}
-
-func (*builderConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BuilderConfigResponse)(nil)).Elem()
-}
-
-func (i *builderConfigResponsePtrType) ToBuilderConfigResponsePtrOutput() BuilderConfigResponsePtrOutput {
-	return i.ToBuilderConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *builderConfigResponsePtrType) ToBuilderConfigResponsePtrOutputWithContext(ctx context.Context) BuilderConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuilderConfigResponsePtrOutput)
-}
-
 type BuilderConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (BuilderConfigResponseOutput) ElementType() reflect.Type {
@@ -2995,40 +1938,6 @@ func (o BuilderConfigResponseOutput) ToBuilderConfigResponseOutput() BuilderConf
 
 func (o BuilderConfigResponseOutput) ToBuilderConfigResponseOutputWithContext(ctx context.Context) BuilderConfigResponseOutput {
 	return o
-}
-
-func (o BuilderConfigResponseOutput) ToBuilderConfigResponsePtrOutput() BuilderConfigResponsePtrOutput {
-	return o.ToBuilderConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BuilderConfigResponseOutput) ToBuilderConfigResponsePtrOutputWithContext(ctx context.Context) BuilderConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuilderConfigResponse) *BuilderConfigResponse {
-		return &v
-	}).(BuilderConfigResponsePtrOutput)
-}
-
-type BuilderConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BuilderConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BuilderConfigResponse)(nil)).Elem()
-}
-
-func (o BuilderConfigResponsePtrOutput) ToBuilderConfigResponsePtrOutput() BuilderConfigResponsePtrOutput {
-	return o
-}
-
-func (o BuilderConfigResponsePtrOutput) ToBuilderConfigResponsePtrOutputWithContext(ctx context.Context) BuilderConfigResponsePtrOutput {
-	return o
-}
-
-func (o BuilderConfigResponsePtrOutput) Elem() BuilderConfigResponseOutput {
-	return o.ApplyT(func(v *BuilderConfigResponse) BuilderConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BuilderConfigResponse
-		return ret
-	}).(BuilderConfigResponseOutput)
 }
 
 // Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
@@ -3358,88 +2267,6 @@ type CVSSResponse struct {
 	UserInteraction       string  `pulumi:"userInteraction"`
 }
 
-// CVSSResponseInput is an input type that accepts CVSSResponseArgs and CVSSResponseOutput values.
-// You can construct a concrete instance of `CVSSResponseInput` via:
-//
-//          CVSSResponseArgs{...}
-type CVSSResponseInput interface {
-	pulumi.Input
-
-	ToCVSSResponseOutput() CVSSResponseOutput
-	ToCVSSResponseOutputWithContext(context.Context) CVSSResponseOutput
-}
-
-// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
-type CVSSResponseArgs struct {
-	AttackComplexity pulumi.StringInput `pulumi:"attackComplexity"`
-	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
-	AttackVector       pulumi.StringInput `pulumi:"attackVector"`
-	Authentication     pulumi.StringInput `pulumi:"authentication"`
-	AvailabilityImpact pulumi.StringInput `pulumi:"availabilityImpact"`
-	// The base score is a function of the base metric scores.
-	BaseScore             pulumi.Float64Input `pulumi:"baseScore"`
-	ConfidentialityImpact pulumi.StringInput  `pulumi:"confidentialityImpact"`
-	ExploitabilityScore   pulumi.Float64Input `pulumi:"exploitabilityScore"`
-	ImpactScore           pulumi.Float64Input `pulumi:"impactScore"`
-	IntegrityImpact       pulumi.StringInput  `pulumi:"integrityImpact"`
-	PrivilegesRequired    pulumi.StringInput  `pulumi:"privilegesRequired"`
-	Scope                 pulumi.StringInput  `pulumi:"scope"`
-	UserInteraction       pulumi.StringInput  `pulumi:"userInteraction"`
-}
-
-func (CVSSResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CVSSResponse)(nil)).Elem()
-}
-
-func (i CVSSResponseArgs) ToCVSSResponseOutput() CVSSResponseOutput {
-	return i.ToCVSSResponseOutputWithContext(context.Background())
-}
-
-func (i CVSSResponseArgs) ToCVSSResponseOutputWithContext(ctx context.Context) CVSSResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CVSSResponseOutput)
-}
-
-func (i CVSSResponseArgs) ToCVSSResponsePtrOutput() CVSSResponsePtrOutput {
-	return i.ToCVSSResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CVSSResponseArgs) ToCVSSResponsePtrOutputWithContext(ctx context.Context) CVSSResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CVSSResponseOutput).ToCVSSResponsePtrOutputWithContext(ctx)
-}
-
-// CVSSResponsePtrInput is an input type that accepts CVSSResponseArgs, CVSSResponsePtr and CVSSResponsePtrOutput values.
-// You can construct a concrete instance of `CVSSResponsePtrInput` via:
-//
-//          CVSSResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CVSSResponsePtrInput interface {
-	pulumi.Input
-
-	ToCVSSResponsePtrOutput() CVSSResponsePtrOutput
-	ToCVSSResponsePtrOutputWithContext(context.Context) CVSSResponsePtrOutput
-}
-
-type cvssresponsePtrType CVSSResponseArgs
-
-func CVSSResponsePtr(v *CVSSResponseArgs) CVSSResponsePtrInput {
-	return (*cvssresponsePtrType)(v)
-}
-
-func (*cvssresponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CVSSResponse)(nil)).Elem()
-}
-
-func (i *cvssresponsePtrType) ToCVSSResponsePtrOutput() CVSSResponsePtrOutput {
-	return i.ToCVSSResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *cvssresponsePtrType) ToCVSSResponsePtrOutputWithContext(ctx context.Context) CVSSResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CVSSResponsePtrOutput)
-}
-
 // Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
 type CVSSResponseOutput struct{ *pulumi.OutputState }
 
@@ -3453,16 +2280,6 @@ func (o CVSSResponseOutput) ToCVSSResponseOutput() CVSSResponseOutput {
 
 func (o CVSSResponseOutput) ToCVSSResponseOutputWithContext(ctx context.Context) CVSSResponseOutput {
 	return o
-}
-
-func (o CVSSResponseOutput) ToCVSSResponsePtrOutput() CVSSResponsePtrOutput {
-	return o.ToCVSSResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CVSSResponseOutput) ToCVSSResponsePtrOutputWithContext(ctx context.Context) CVSSResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSSResponse) *CVSSResponse {
-		return &v
-	}).(CVSSResponsePtrOutput)
 }
 
 func (o CVSSResponseOutput) AttackComplexity() pulumi.StringOutput {
@@ -3513,140 +2330,6 @@ func (o CVSSResponseOutput) Scope() pulumi.StringOutput {
 
 func (o CVSSResponseOutput) UserInteraction() pulumi.StringOutput {
 	return o.ApplyT(func(v CVSSResponse) string { return v.UserInteraction }).(pulumi.StringOutput)
-}
-
-type CVSSResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CVSSResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CVSSResponse)(nil)).Elem()
-}
-
-func (o CVSSResponsePtrOutput) ToCVSSResponsePtrOutput() CVSSResponsePtrOutput {
-	return o
-}
-
-func (o CVSSResponsePtrOutput) ToCVSSResponsePtrOutputWithContext(ctx context.Context) CVSSResponsePtrOutput {
-	return o
-}
-
-func (o CVSSResponsePtrOutput) Elem() CVSSResponseOutput {
-	return o.ApplyT(func(v *CVSSResponse) CVSSResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CVSSResponse
-		return ret
-	}).(CVSSResponseOutput)
-}
-
-func (o CVSSResponsePtrOutput) AttackComplexity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AttackComplexity
-	}).(pulumi.StringPtrOutput)
-}
-
-// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
-func (o CVSSResponsePtrOutput) AttackVector() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AttackVector
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o CVSSResponsePtrOutput) Authentication() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Authentication
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o CVSSResponsePtrOutput) AvailabilityImpact() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AvailabilityImpact
-	}).(pulumi.StringPtrOutput)
-}
-
-// The base score is a function of the base metric scores.
-func (o CVSSResponsePtrOutput) BaseScore() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *CVSSResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.BaseScore
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o CVSSResponsePtrOutput) ConfidentialityImpact() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ConfidentialityImpact
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o CVSSResponsePtrOutput) ExploitabilityScore() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *CVSSResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.ExploitabilityScore
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o CVSSResponsePtrOutput) ImpactScore() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *CVSSResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.ImpactScore
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o CVSSResponsePtrOutput) IntegrityImpact() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IntegrityImpact
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o CVSSResponsePtrOutput) PrivilegesRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivilegesRequired
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o CVSSResponsePtrOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Scope
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o CVSSResponsePtrOutput) UserInteraction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UserInteraction
-	}).(pulumi.StringPtrOutput)
 }
 
 // Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
@@ -3960,87 +2643,6 @@ type CVSSv3Response struct {
 	UserInteraction       string  `pulumi:"userInteraction"`
 }
 
-// CVSSv3ResponseInput is an input type that accepts CVSSv3ResponseArgs and CVSSv3ResponseOutput values.
-// You can construct a concrete instance of `CVSSv3ResponseInput` via:
-//
-//          CVSSv3ResponseArgs{...}
-type CVSSv3ResponseInput interface {
-	pulumi.Input
-
-	ToCVSSv3ResponseOutput() CVSSv3ResponseOutput
-	ToCVSSv3ResponseOutputWithContext(context.Context) CVSSv3ResponseOutput
-}
-
-// Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
-type CVSSv3ResponseArgs struct {
-	AttackComplexity pulumi.StringInput `pulumi:"attackComplexity"`
-	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
-	AttackVector       pulumi.StringInput `pulumi:"attackVector"`
-	AvailabilityImpact pulumi.StringInput `pulumi:"availabilityImpact"`
-	// The base score is a function of the base metric scores.
-	BaseScore             pulumi.Float64Input `pulumi:"baseScore"`
-	ConfidentialityImpact pulumi.StringInput  `pulumi:"confidentialityImpact"`
-	ExploitabilityScore   pulumi.Float64Input `pulumi:"exploitabilityScore"`
-	ImpactScore           pulumi.Float64Input `pulumi:"impactScore"`
-	IntegrityImpact       pulumi.StringInput  `pulumi:"integrityImpact"`
-	PrivilegesRequired    pulumi.StringInput  `pulumi:"privilegesRequired"`
-	Scope                 pulumi.StringInput  `pulumi:"scope"`
-	UserInteraction       pulumi.StringInput  `pulumi:"userInteraction"`
-}
-
-func (CVSSv3ResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CVSSv3Response)(nil)).Elem()
-}
-
-func (i CVSSv3ResponseArgs) ToCVSSv3ResponseOutput() CVSSv3ResponseOutput {
-	return i.ToCVSSv3ResponseOutputWithContext(context.Background())
-}
-
-func (i CVSSv3ResponseArgs) ToCVSSv3ResponseOutputWithContext(ctx context.Context) CVSSv3ResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CVSSv3ResponseOutput)
-}
-
-func (i CVSSv3ResponseArgs) ToCVSSv3ResponsePtrOutput() CVSSv3ResponsePtrOutput {
-	return i.ToCVSSv3ResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CVSSv3ResponseArgs) ToCVSSv3ResponsePtrOutputWithContext(ctx context.Context) CVSSv3ResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CVSSv3ResponseOutput).ToCVSSv3ResponsePtrOutputWithContext(ctx)
-}
-
-// CVSSv3ResponsePtrInput is an input type that accepts CVSSv3ResponseArgs, CVSSv3ResponsePtr and CVSSv3ResponsePtrOutput values.
-// You can construct a concrete instance of `CVSSv3ResponsePtrInput` via:
-//
-//          CVSSv3ResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CVSSv3ResponsePtrInput interface {
-	pulumi.Input
-
-	ToCVSSv3ResponsePtrOutput() CVSSv3ResponsePtrOutput
-	ToCVSSv3ResponsePtrOutputWithContext(context.Context) CVSSv3ResponsePtrOutput
-}
-
-type cvssv3ResponsePtrType CVSSv3ResponseArgs
-
-func CVSSv3ResponsePtr(v *CVSSv3ResponseArgs) CVSSv3ResponsePtrInput {
-	return (*cvssv3ResponsePtrType)(v)
-}
-
-func (*cvssv3ResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CVSSv3Response)(nil)).Elem()
-}
-
-func (i *cvssv3ResponsePtrType) ToCVSSv3ResponsePtrOutput() CVSSv3ResponsePtrOutput {
-	return i.ToCVSSv3ResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *cvssv3ResponsePtrType) ToCVSSv3ResponsePtrOutputWithContext(ctx context.Context) CVSSv3ResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CVSSv3ResponsePtrOutput)
-}
-
 // Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
 type CVSSv3ResponseOutput struct{ *pulumi.OutputState }
 
@@ -4054,16 +2656,6 @@ func (o CVSSv3ResponseOutput) ToCVSSv3ResponseOutput() CVSSv3ResponseOutput {
 
 func (o CVSSv3ResponseOutput) ToCVSSv3ResponseOutputWithContext(ctx context.Context) CVSSv3ResponseOutput {
 	return o
-}
-
-func (o CVSSv3ResponseOutput) ToCVSSv3ResponsePtrOutput() CVSSv3ResponsePtrOutput {
-	return o.ToCVSSv3ResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CVSSv3ResponseOutput) ToCVSSv3ResponsePtrOutputWithContext(ctx context.Context) CVSSv3ResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSSv3Response) *CVSSv3Response {
-		return &v
-	}).(CVSSv3ResponsePtrOutput)
 }
 
 func (o CVSSv3ResponseOutput) AttackComplexity() pulumi.StringOutput {
@@ -4110,131 +2702,6 @@ func (o CVSSv3ResponseOutput) Scope() pulumi.StringOutput {
 
 func (o CVSSv3ResponseOutput) UserInteraction() pulumi.StringOutput {
 	return o.ApplyT(func(v CVSSv3Response) string { return v.UserInteraction }).(pulumi.StringOutput)
-}
-
-type CVSSv3ResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CVSSv3ResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CVSSv3Response)(nil)).Elem()
-}
-
-func (o CVSSv3ResponsePtrOutput) ToCVSSv3ResponsePtrOutput() CVSSv3ResponsePtrOutput {
-	return o
-}
-
-func (o CVSSv3ResponsePtrOutput) ToCVSSv3ResponsePtrOutputWithContext(ctx context.Context) CVSSv3ResponsePtrOutput {
-	return o
-}
-
-func (o CVSSv3ResponsePtrOutput) Elem() CVSSv3ResponseOutput {
-	return o.ApplyT(func(v *CVSSv3Response) CVSSv3Response {
-		if v != nil {
-			return *v
-		}
-		var ret CVSSv3Response
-		return ret
-	}).(CVSSv3ResponseOutput)
-}
-
-func (o CVSSv3ResponsePtrOutput) AttackComplexity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSv3Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AttackComplexity
-	}).(pulumi.StringPtrOutput)
-}
-
-// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
-func (o CVSSv3ResponsePtrOutput) AttackVector() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSv3Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AttackVector
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o CVSSv3ResponsePtrOutput) AvailabilityImpact() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSv3Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AvailabilityImpact
-	}).(pulumi.StringPtrOutput)
-}
-
-// The base score is a function of the base metric scores.
-func (o CVSSv3ResponsePtrOutput) BaseScore() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *CVSSv3Response) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.BaseScore
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o CVSSv3ResponsePtrOutput) ConfidentialityImpact() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSv3Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ConfidentialityImpact
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o CVSSv3ResponsePtrOutput) ExploitabilityScore() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *CVSSv3Response) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.ExploitabilityScore
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o CVSSv3ResponsePtrOutput) ImpactScore() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *CVSSv3Response) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.ImpactScore
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o CVSSv3ResponsePtrOutput) IntegrityImpact() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSv3Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IntegrityImpact
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o CVSSv3ResponsePtrOutput) PrivilegesRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSv3Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivilegesRequired
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o CVSSv3ResponsePtrOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSv3Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Scope
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o CVSSv3ResponsePtrOutput) UserInteraction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CVSSv3Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UserInteraction
-	}).(pulumi.StringPtrOutput)
 }
 
 // The category to which the update belongs.
@@ -4352,62 +2819,6 @@ type CategoryResponse struct {
 	CategoryId string `pulumi:"categoryId"`
 	// The localized name of the category.
 	Name string `pulumi:"name"`
-}
-
-// CategoryResponseInput is an input type that accepts CategoryResponseArgs and CategoryResponseOutput values.
-// You can construct a concrete instance of `CategoryResponseInput` via:
-//
-//          CategoryResponseArgs{...}
-type CategoryResponseInput interface {
-	pulumi.Input
-
-	ToCategoryResponseOutput() CategoryResponseOutput
-	ToCategoryResponseOutputWithContext(context.Context) CategoryResponseOutput
-}
-
-// The category to which the update belongs.
-type CategoryResponseArgs struct {
-	// The identifier of the category.
-	CategoryId pulumi.StringInput `pulumi:"categoryId"`
-	// The localized name of the category.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (CategoryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CategoryResponse)(nil)).Elem()
-}
-
-func (i CategoryResponseArgs) ToCategoryResponseOutput() CategoryResponseOutput {
-	return i.ToCategoryResponseOutputWithContext(context.Background())
-}
-
-func (i CategoryResponseArgs) ToCategoryResponseOutputWithContext(ctx context.Context) CategoryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CategoryResponseOutput)
-}
-
-// CategoryResponseArrayInput is an input type that accepts CategoryResponseArray and CategoryResponseArrayOutput values.
-// You can construct a concrete instance of `CategoryResponseArrayInput` via:
-//
-//          CategoryResponseArray{ CategoryResponseArgs{...} }
-type CategoryResponseArrayInput interface {
-	pulumi.Input
-
-	ToCategoryResponseArrayOutput() CategoryResponseArrayOutput
-	ToCategoryResponseArrayOutputWithContext(context.Context) CategoryResponseArrayOutput
-}
-
-type CategoryResponseArray []CategoryResponseInput
-
-func (CategoryResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CategoryResponse)(nil)).Elem()
-}
-
-func (i CategoryResponseArray) ToCategoryResponseArrayOutput() CategoryResponseArrayOutput {
-	return i.ToCategoryResponseArrayOutputWithContext(context.Background())
-}
-
-func (i CategoryResponseArray) ToCategoryResponseArrayOutputWithContext(ctx context.Context) CategoryResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CategoryResponseArrayOutput)
 }
 
 // The category to which the update belongs.
@@ -4612,76 +3023,6 @@ type CisBenchmarkResponse struct {
 	Severity     string `pulumi:"severity"`
 }
 
-// CisBenchmarkResponseInput is an input type that accepts CisBenchmarkResponseArgs and CisBenchmarkResponseOutput values.
-// You can construct a concrete instance of `CisBenchmarkResponseInput` via:
-//
-//          CisBenchmarkResponseArgs{...}
-type CisBenchmarkResponseInput interface {
-	pulumi.Input
-
-	ToCisBenchmarkResponseOutput() CisBenchmarkResponseOutput
-	ToCisBenchmarkResponseOutputWithContext(context.Context) CisBenchmarkResponseOutput
-}
-
-// A compliance check that is a CIS benchmark.
-type CisBenchmarkResponseArgs struct {
-	ProfileLevel pulumi.IntInput    `pulumi:"profileLevel"`
-	Severity     pulumi.StringInput `pulumi:"severity"`
-}
-
-func (CisBenchmarkResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CisBenchmarkResponse)(nil)).Elem()
-}
-
-func (i CisBenchmarkResponseArgs) ToCisBenchmarkResponseOutput() CisBenchmarkResponseOutput {
-	return i.ToCisBenchmarkResponseOutputWithContext(context.Background())
-}
-
-func (i CisBenchmarkResponseArgs) ToCisBenchmarkResponseOutputWithContext(ctx context.Context) CisBenchmarkResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CisBenchmarkResponseOutput)
-}
-
-func (i CisBenchmarkResponseArgs) ToCisBenchmarkResponsePtrOutput() CisBenchmarkResponsePtrOutput {
-	return i.ToCisBenchmarkResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CisBenchmarkResponseArgs) ToCisBenchmarkResponsePtrOutputWithContext(ctx context.Context) CisBenchmarkResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CisBenchmarkResponseOutput).ToCisBenchmarkResponsePtrOutputWithContext(ctx)
-}
-
-// CisBenchmarkResponsePtrInput is an input type that accepts CisBenchmarkResponseArgs, CisBenchmarkResponsePtr and CisBenchmarkResponsePtrOutput values.
-// You can construct a concrete instance of `CisBenchmarkResponsePtrInput` via:
-//
-//          CisBenchmarkResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CisBenchmarkResponsePtrInput interface {
-	pulumi.Input
-
-	ToCisBenchmarkResponsePtrOutput() CisBenchmarkResponsePtrOutput
-	ToCisBenchmarkResponsePtrOutputWithContext(context.Context) CisBenchmarkResponsePtrOutput
-}
-
-type cisBenchmarkResponsePtrType CisBenchmarkResponseArgs
-
-func CisBenchmarkResponsePtr(v *CisBenchmarkResponseArgs) CisBenchmarkResponsePtrInput {
-	return (*cisBenchmarkResponsePtrType)(v)
-}
-
-func (*cisBenchmarkResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CisBenchmarkResponse)(nil)).Elem()
-}
-
-func (i *cisBenchmarkResponsePtrType) ToCisBenchmarkResponsePtrOutput() CisBenchmarkResponsePtrOutput {
-	return i.ToCisBenchmarkResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *cisBenchmarkResponsePtrType) ToCisBenchmarkResponsePtrOutputWithContext(ctx context.Context) CisBenchmarkResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CisBenchmarkResponsePtrOutput)
-}
-
 // A compliance check that is a CIS benchmark.
 type CisBenchmarkResponseOutput struct{ *pulumi.OutputState }
 
@@ -4697,64 +3038,12 @@ func (o CisBenchmarkResponseOutput) ToCisBenchmarkResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o CisBenchmarkResponseOutput) ToCisBenchmarkResponsePtrOutput() CisBenchmarkResponsePtrOutput {
-	return o.ToCisBenchmarkResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CisBenchmarkResponseOutput) ToCisBenchmarkResponsePtrOutputWithContext(ctx context.Context) CisBenchmarkResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CisBenchmarkResponse) *CisBenchmarkResponse {
-		return &v
-	}).(CisBenchmarkResponsePtrOutput)
-}
-
 func (o CisBenchmarkResponseOutput) ProfileLevel() pulumi.IntOutput {
 	return o.ApplyT(func(v CisBenchmarkResponse) int { return v.ProfileLevel }).(pulumi.IntOutput)
 }
 
 func (o CisBenchmarkResponseOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v CisBenchmarkResponse) string { return v.Severity }).(pulumi.StringOutput)
-}
-
-type CisBenchmarkResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CisBenchmarkResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CisBenchmarkResponse)(nil)).Elem()
-}
-
-func (o CisBenchmarkResponsePtrOutput) ToCisBenchmarkResponsePtrOutput() CisBenchmarkResponsePtrOutput {
-	return o
-}
-
-func (o CisBenchmarkResponsePtrOutput) ToCisBenchmarkResponsePtrOutputWithContext(ctx context.Context) CisBenchmarkResponsePtrOutput {
-	return o
-}
-
-func (o CisBenchmarkResponsePtrOutput) Elem() CisBenchmarkResponseOutput {
-	return o.ApplyT(func(v *CisBenchmarkResponse) CisBenchmarkResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CisBenchmarkResponse
-		return ret
-	}).(CisBenchmarkResponseOutput)
-}
-
-func (o CisBenchmarkResponsePtrOutput) ProfileLevel() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CisBenchmarkResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.ProfileLevel
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o CisBenchmarkResponsePtrOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CisBenchmarkResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Severity
-	}).(pulumi.StringPtrOutput)
 }
 
 // A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
@@ -4945,80 +3234,6 @@ type CloudRepoSourceContextResponse struct {
 	RevisionId string `pulumi:"revisionId"`
 }
 
-// CloudRepoSourceContextResponseInput is an input type that accepts CloudRepoSourceContextResponseArgs and CloudRepoSourceContextResponseOutput values.
-// You can construct a concrete instance of `CloudRepoSourceContextResponseInput` via:
-//
-//          CloudRepoSourceContextResponseArgs{...}
-type CloudRepoSourceContextResponseInput interface {
-	pulumi.Input
-
-	ToCloudRepoSourceContextResponseOutput() CloudRepoSourceContextResponseOutput
-	ToCloudRepoSourceContextResponseOutputWithContext(context.Context) CloudRepoSourceContextResponseOutput
-}
-
-// A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
-type CloudRepoSourceContextResponseArgs struct {
-	// An alias, which may be a branch or tag.
-	AliasContext AliasContextResponseInput `pulumi:"aliasContext"`
-	// The ID of the repo.
-	RepoId RepoIdResponseInput `pulumi:"repoId"`
-	// A revision ID.
-	RevisionId pulumi.StringInput `pulumi:"revisionId"`
-}
-
-func (CloudRepoSourceContextResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudRepoSourceContextResponse)(nil)).Elem()
-}
-
-func (i CloudRepoSourceContextResponseArgs) ToCloudRepoSourceContextResponseOutput() CloudRepoSourceContextResponseOutput {
-	return i.ToCloudRepoSourceContextResponseOutputWithContext(context.Background())
-}
-
-func (i CloudRepoSourceContextResponseArgs) ToCloudRepoSourceContextResponseOutputWithContext(ctx context.Context) CloudRepoSourceContextResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudRepoSourceContextResponseOutput)
-}
-
-func (i CloudRepoSourceContextResponseArgs) ToCloudRepoSourceContextResponsePtrOutput() CloudRepoSourceContextResponsePtrOutput {
-	return i.ToCloudRepoSourceContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CloudRepoSourceContextResponseArgs) ToCloudRepoSourceContextResponsePtrOutputWithContext(ctx context.Context) CloudRepoSourceContextResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudRepoSourceContextResponseOutput).ToCloudRepoSourceContextResponsePtrOutputWithContext(ctx)
-}
-
-// CloudRepoSourceContextResponsePtrInput is an input type that accepts CloudRepoSourceContextResponseArgs, CloudRepoSourceContextResponsePtr and CloudRepoSourceContextResponsePtrOutput values.
-// You can construct a concrete instance of `CloudRepoSourceContextResponsePtrInput` via:
-//
-//          CloudRepoSourceContextResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudRepoSourceContextResponsePtrInput interface {
-	pulumi.Input
-
-	ToCloudRepoSourceContextResponsePtrOutput() CloudRepoSourceContextResponsePtrOutput
-	ToCloudRepoSourceContextResponsePtrOutputWithContext(context.Context) CloudRepoSourceContextResponsePtrOutput
-}
-
-type cloudRepoSourceContextResponsePtrType CloudRepoSourceContextResponseArgs
-
-func CloudRepoSourceContextResponsePtr(v *CloudRepoSourceContextResponseArgs) CloudRepoSourceContextResponsePtrInput {
-	return (*cloudRepoSourceContextResponsePtrType)(v)
-}
-
-func (*cloudRepoSourceContextResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudRepoSourceContextResponse)(nil)).Elem()
-}
-
-func (i *cloudRepoSourceContextResponsePtrType) ToCloudRepoSourceContextResponsePtrOutput() CloudRepoSourceContextResponsePtrOutput {
-	return i.ToCloudRepoSourceContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *cloudRepoSourceContextResponsePtrType) ToCloudRepoSourceContextResponsePtrOutputWithContext(ctx context.Context) CloudRepoSourceContextResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudRepoSourceContextResponsePtrOutput)
-}
-
 // A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
 type CloudRepoSourceContextResponseOutput struct{ *pulumi.OutputState }
 
@@ -5034,16 +3249,6 @@ func (o CloudRepoSourceContextResponseOutput) ToCloudRepoSourceContextResponseOu
 	return o
 }
 
-func (o CloudRepoSourceContextResponseOutput) ToCloudRepoSourceContextResponsePtrOutput() CloudRepoSourceContextResponsePtrOutput {
-	return o.ToCloudRepoSourceContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CloudRepoSourceContextResponseOutput) ToCloudRepoSourceContextResponsePtrOutputWithContext(ctx context.Context) CloudRepoSourceContextResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRepoSourceContextResponse) *CloudRepoSourceContextResponse {
-		return &v
-	}).(CloudRepoSourceContextResponsePtrOutput)
-}
-
 // An alias, which may be a branch or tag.
 func (o CloudRepoSourceContextResponseOutput) AliasContext() AliasContextResponseOutput {
 	return o.ApplyT(func(v CloudRepoSourceContextResponse) AliasContextResponse { return v.AliasContext }).(AliasContextResponseOutput)
@@ -5057,60 +3262,6 @@ func (o CloudRepoSourceContextResponseOutput) RepoId() RepoIdResponseOutput {
 // A revision ID.
 func (o CloudRepoSourceContextResponseOutput) RevisionId() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRepoSourceContextResponse) string { return v.RevisionId }).(pulumi.StringOutput)
-}
-
-type CloudRepoSourceContextResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CloudRepoSourceContextResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudRepoSourceContextResponse)(nil)).Elem()
-}
-
-func (o CloudRepoSourceContextResponsePtrOutput) ToCloudRepoSourceContextResponsePtrOutput() CloudRepoSourceContextResponsePtrOutput {
-	return o
-}
-
-func (o CloudRepoSourceContextResponsePtrOutput) ToCloudRepoSourceContextResponsePtrOutputWithContext(ctx context.Context) CloudRepoSourceContextResponsePtrOutput {
-	return o
-}
-
-func (o CloudRepoSourceContextResponsePtrOutput) Elem() CloudRepoSourceContextResponseOutput {
-	return o.ApplyT(func(v *CloudRepoSourceContextResponse) CloudRepoSourceContextResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CloudRepoSourceContextResponse
-		return ret
-	}).(CloudRepoSourceContextResponseOutput)
-}
-
-// An alias, which may be a branch or tag.
-func (o CloudRepoSourceContextResponsePtrOutput) AliasContext() AliasContextResponsePtrOutput {
-	return o.ApplyT(func(v *CloudRepoSourceContextResponse) *AliasContextResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AliasContext
-	}).(AliasContextResponsePtrOutput)
-}
-
-// The ID of the repo.
-func (o CloudRepoSourceContextResponsePtrOutput) RepoId() RepoIdResponsePtrOutput {
-	return o.ApplyT(func(v *CloudRepoSourceContextResponse) *RepoIdResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.RepoId
-	}).(RepoIdResponsePtrOutput)
-}
-
-// A revision ID.
-func (o CloudRepoSourceContextResponsePtrOutput) RevisionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudRepoSourceContextResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RevisionId
-	}).(pulumi.StringPtrOutput)
 }
 
 // Command describes a step performed as part of the build pipeline.
@@ -5270,68 +3421,6 @@ type CommandResponse struct {
 	Name string `pulumi:"name"`
 	// The ID(s) of the command(s) that this command depends on.
 	WaitFor []string `pulumi:"waitFor"`
-}
-
-// CommandResponseInput is an input type that accepts CommandResponseArgs and CommandResponseOutput values.
-// You can construct a concrete instance of `CommandResponseInput` via:
-//
-//          CommandResponseArgs{...}
-type CommandResponseInput interface {
-	pulumi.Input
-
-	ToCommandResponseOutput() CommandResponseOutput
-	ToCommandResponseOutputWithContext(context.Context) CommandResponseOutput
-}
-
-// Command describes a step performed as part of the build pipeline.
-type CommandResponseArgs struct {
-	// Command-line arguments used when executing this command.
-	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Working directory (relative to project source root) used when running this command.
-	Dir pulumi.StringInput `pulumi:"dir"`
-	// Environment variables set before running this command.
-	Env pulumi.StringArrayInput `pulumi:"env"`
-	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The ID(s) of the command(s) that this command depends on.
-	WaitFor pulumi.StringArrayInput `pulumi:"waitFor"`
-}
-
-func (CommandResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CommandResponse)(nil)).Elem()
-}
-
-func (i CommandResponseArgs) ToCommandResponseOutput() CommandResponseOutput {
-	return i.ToCommandResponseOutputWithContext(context.Background())
-}
-
-func (i CommandResponseArgs) ToCommandResponseOutputWithContext(ctx context.Context) CommandResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CommandResponseOutput)
-}
-
-// CommandResponseArrayInput is an input type that accepts CommandResponseArray and CommandResponseArrayOutput values.
-// You can construct a concrete instance of `CommandResponseArrayInput` via:
-//
-//          CommandResponseArray{ CommandResponseArgs{...} }
-type CommandResponseArrayInput interface {
-	pulumi.Input
-
-	ToCommandResponseArrayOutput() CommandResponseArrayOutput
-	ToCommandResponseArrayOutputWithContext(context.Context) CommandResponseArrayOutput
-}
-
-type CommandResponseArray []CommandResponseInput
-
-func (CommandResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CommandResponse)(nil)).Elem()
-}
-
-func (i CommandResponseArray) ToCommandResponseArrayOutput() CommandResponseArrayOutput {
-	return i.ToCommandResponseArrayOutputWithContext(context.Background())
-}
-
-func (i CommandResponseArray) ToCommandResponseArrayOutputWithContext(ctx context.Context) CommandResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CommandResponseArrayOutput)
 }
 
 // Command describes a step performed as part of the build pipeline.
@@ -5582,80 +3671,6 @@ type CompletenessResponse struct {
 	Materials bool `pulumi:"materials"`
 }
 
-// CompletenessResponseInput is an input type that accepts CompletenessResponseArgs and CompletenessResponseOutput values.
-// You can construct a concrete instance of `CompletenessResponseInput` via:
-//
-//          CompletenessResponseArgs{...}
-type CompletenessResponseInput interface {
-	pulumi.Input
-
-	ToCompletenessResponseOutput() CompletenessResponseOutput
-	ToCompletenessResponseOutputWithContext(context.Context) CompletenessResponseOutput
-}
-
-// Indicates that the builder claims certain fields in this message to be complete.
-type CompletenessResponseArgs struct {
-	// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
-	Arguments pulumi.BoolInput `pulumi:"arguments"`
-	// If true, the builder claims that recipe.environment is claimed to be complete.
-	Environment pulumi.BoolInput `pulumi:"environment"`
-	// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
-	Materials pulumi.BoolInput `pulumi:"materials"`
-}
-
-func (CompletenessResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompletenessResponse)(nil)).Elem()
-}
-
-func (i CompletenessResponseArgs) ToCompletenessResponseOutput() CompletenessResponseOutput {
-	return i.ToCompletenessResponseOutputWithContext(context.Background())
-}
-
-func (i CompletenessResponseArgs) ToCompletenessResponseOutputWithContext(ctx context.Context) CompletenessResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompletenessResponseOutput)
-}
-
-func (i CompletenessResponseArgs) ToCompletenessResponsePtrOutput() CompletenessResponsePtrOutput {
-	return i.ToCompletenessResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CompletenessResponseArgs) ToCompletenessResponsePtrOutputWithContext(ctx context.Context) CompletenessResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompletenessResponseOutput).ToCompletenessResponsePtrOutputWithContext(ctx)
-}
-
-// CompletenessResponsePtrInput is an input type that accepts CompletenessResponseArgs, CompletenessResponsePtr and CompletenessResponsePtrOutput values.
-// You can construct a concrete instance of `CompletenessResponsePtrInput` via:
-//
-//          CompletenessResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CompletenessResponsePtrInput interface {
-	pulumi.Input
-
-	ToCompletenessResponsePtrOutput() CompletenessResponsePtrOutput
-	ToCompletenessResponsePtrOutputWithContext(context.Context) CompletenessResponsePtrOutput
-}
-
-type completenessResponsePtrType CompletenessResponseArgs
-
-func CompletenessResponsePtr(v *CompletenessResponseArgs) CompletenessResponsePtrInput {
-	return (*completenessResponsePtrType)(v)
-}
-
-func (*completenessResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CompletenessResponse)(nil)).Elem()
-}
-
-func (i *completenessResponsePtrType) ToCompletenessResponsePtrOutput() CompletenessResponsePtrOutput {
-	return i.ToCompletenessResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *completenessResponsePtrType) ToCompletenessResponsePtrOutputWithContext(ctx context.Context) CompletenessResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompletenessResponsePtrOutput)
-}
-
 // Indicates that the builder claims certain fields in this message to be complete.
 type CompletenessResponseOutput struct{ *pulumi.OutputState }
 
@@ -5671,16 +3686,6 @@ func (o CompletenessResponseOutput) ToCompletenessResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o CompletenessResponseOutput) ToCompletenessResponsePtrOutput() CompletenessResponsePtrOutput {
-	return o.ToCompletenessResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CompletenessResponseOutput) ToCompletenessResponsePtrOutputWithContext(ctx context.Context) CompletenessResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompletenessResponse) *CompletenessResponse {
-		return &v
-	}).(CompletenessResponsePtrOutput)
-}
-
 // If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
 func (o CompletenessResponseOutput) Arguments() pulumi.BoolOutput {
 	return o.ApplyT(func(v CompletenessResponse) bool { return v.Arguments }).(pulumi.BoolOutput)
@@ -5694,60 +3699,6 @@ func (o CompletenessResponseOutput) Environment() pulumi.BoolOutput {
 // If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
 func (o CompletenessResponseOutput) Materials() pulumi.BoolOutput {
 	return o.ApplyT(func(v CompletenessResponse) bool { return v.Materials }).(pulumi.BoolOutput)
-}
-
-type CompletenessResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CompletenessResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CompletenessResponse)(nil)).Elem()
-}
-
-func (o CompletenessResponsePtrOutput) ToCompletenessResponsePtrOutput() CompletenessResponsePtrOutput {
-	return o
-}
-
-func (o CompletenessResponsePtrOutput) ToCompletenessResponsePtrOutputWithContext(ctx context.Context) CompletenessResponsePtrOutput {
-	return o
-}
-
-func (o CompletenessResponsePtrOutput) Elem() CompletenessResponseOutput {
-	return o.ApplyT(func(v *CompletenessResponse) CompletenessResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CompletenessResponse
-		return ret
-	}).(CompletenessResponseOutput)
-}
-
-// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
-func (o CompletenessResponsePtrOutput) Arguments() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CompletenessResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Arguments
-	}).(pulumi.BoolPtrOutput)
-}
-
-// If true, the builder claims that recipe.environment is claimed to be complete.
-func (o CompletenessResponsePtrOutput) Environment() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CompletenessResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Environment
-	}).(pulumi.BoolPtrOutput)
-}
-
-// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
-func (o CompletenessResponsePtrOutput) Materials() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CompletenessResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Materials
-	}).(pulumi.BoolPtrOutput)
 }
 
 type ComplianceNote struct {
@@ -6013,86 +3964,6 @@ type ComplianceNoteResponse struct {
 	Version []ComplianceVersionResponse `pulumi:"version"`
 }
 
-// ComplianceNoteResponseInput is an input type that accepts ComplianceNoteResponseArgs and ComplianceNoteResponseOutput values.
-// You can construct a concrete instance of `ComplianceNoteResponseInput` via:
-//
-//          ComplianceNoteResponseArgs{...}
-type ComplianceNoteResponseInput interface {
-	pulumi.Input
-
-	ToComplianceNoteResponseOutput() ComplianceNoteResponseOutput
-	ToComplianceNoteResponseOutputWithContext(context.Context) ComplianceNoteResponseOutput
-}
-
-type ComplianceNoteResponseArgs struct {
-	CisBenchmark CisBenchmarkResponseInput `pulumi:"cisBenchmark"`
-	// A description about this compliance check.
-	Description pulumi.StringInput `pulumi:"description"`
-	// A rationale for the existence of this compliance check.
-	Rationale pulumi.StringInput `pulumi:"rationale"`
-	// A description of remediation steps if the compliance check fails.
-	Remediation pulumi.StringInput `pulumi:"remediation"`
-	// Serialized scan instructions with a predefined format.
-	ScanInstructions pulumi.StringInput `pulumi:"scanInstructions"`
-	// The title that identifies this compliance check.
-	Title pulumi.StringInput `pulumi:"title"`
-	// The OS and config versions the benchmark applies to.
-	Version ComplianceVersionResponseArrayInput `pulumi:"version"`
-}
-
-func (ComplianceNoteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComplianceNoteResponse)(nil)).Elem()
-}
-
-func (i ComplianceNoteResponseArgs) ToComplianceNoteResponseOutput() ComplianceNoteResponseOutput {
-	return i.ToComplianceNoteResponseOutputWithContext(context.Background())
-}
-
-func (i ComplianceNoteResponseArgs) ToComplianceNoteResponseOutputWithContext(ctx context.Context) ComplianceNoteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComplianceNoteResponseOutput)
-}
-
-func (i ComplianceNoteResponseArgs) ToComplianceNoteResponsePtrOutput() ComplianceNoteResponsePtrOutput {
-	return i.ToComplianceNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ComplianceNoteResponseArgs) ToComplianceNoteResponsePtrOutputWithContext(ctx context.Context) ComplianceNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComplianceNoteResponseOutput).ToComplianceNoteResponsePtrOutputWithContext(ctx)
-}
-
-// ComplianceNoteResponsePtrInput is an input type that accepts ComplianceNoteResponseArgs, ComplianceNoteResponsePtr and ComplianceNoteResponsePtrOutput values.
-// You can construct a concrete instance of `ComplianceNoteResponsePtrInput` via:
-//
-//          ComplianceNoteResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ComplianceNoteResponsePtrInput interface {
-	pulumi.Input
-
-	ToComplianceNoteResponsePtrOutput() ComplianceNoteResponsePtrOutput
-	ToComplianceNoteResponsePtrOutputWithContext(context.Context) ComplianceNoteResponsePtrOutput
-}
-
-type complianceNoteResponsePtrType ComplianceNoteResponseArgs
-
-func ComplianceNoteResponsePtr(v *ComplianceNoteResponseArgs) ComplianceNoteResponsePtrInput {
-	return (*complianceNoteResponsePtrType)(v)
-}
-
-func (*complianceNoteResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComplianceNoteResponse)(nil)).Elem()
-}
-
-func (i *complianceNoteResponsePtrType) ToComplianceNoteResponsePtrOutput() ComplianceNoteResponsePtrOutput {
-	return i.ToComplianceNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *complianceNoteResponsePtrType) ToComplianceNoteResponsePtrOutputWithContext(ctx context.Context) ComplianceNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComplianceNoteResponsePtrOutput)
-}
-
 type ComplianceNoteResponseOutput struct{ *pulumi.OutputState }
 
 func (ComplianceNoteResponseOutput) ElementType() reflect.Type {
@@ -6105,16 +3976,6 @@ func (o ComplianceNoteResponseOutput) ToComplianceNoteResponseOutput() Complianc
 
 func (o ComplianceNoteResponseOutput) ToComplianceNoteResponseOutputWithContext(ctx context.Context) ComplianceNoteResponseOutput {
 	return o
-}
-
-func (o ComplianceNoteResponseOutput) ToComplianceNoteResponsePtrOutput() ComplianceNoteResponsePtrOutput {
-	return o.ToComplianceNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ComplianceNoteResponseOutput) ToComplianceNoteResponsePtrOutputWithContext(ctx context.Context) ComplianceNoteResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComplianceNoteResponse) *ComplianceNoteResponse {
-		return &v
-	}).(ComplianceNoteResponsePtrOutput)
 }
 
 func (o ComplianceNoteResponseOutput) CisBenchmark() CisBenchmarkResponseOutput {
@@ -6149,99 +4010,6 @@ func (o ComplianceNoteResponseOutput) Title() pulumi.StringOutput {
 // The OS and config versions the benchmark applies to.
 func (o ComplianceNoteResponseOutput) Version() ComplianceVersionResponseArrayOutput {
 	return o.ApplyT(func(v ComplianceNoteResponse) []ComplianceVersionResponse { return v.Version }).(ComplianceVersionResponseArrayOutput)
-}
-
-type ComplianceNoteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ComplianceNoteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComplianceNoteResponse)(nil)).Elem()
-}
-
-func (o ComplianceNoteResponsePtrOutput) ToComplianceNoteResponsePtrOutput() ComplianceNoteResponsePtrOutput {
-	return o
-}
-
-func (o ComplianceNoteResponsePtrOutput) ToComplianceNoteResponsePtrOutputWithContext(ctx context.Context) ComplianceNoteResponsePtrOutput {
-	return o
-}
-
-func (o ComplianceNoteResponsePtrOutput) Elem() ComplianceNoteResponseOutput {
-	return o.ApplyT(func(v *ComplianceNoteResponse) ComplianceNoteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ComplianceNoteResponse
-		return ret
-	}).(ComplianceNoteResponseOutput)
-}
-
-func (o ComplianceNoteResponsePtrOutput) CisBenchmark() CisBenchmarkResponsePtrOutput {
-	return o.ApplyT(func(v *ComplianceNoteResponse) *CisBenchmarkResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CisBenchmark
-	}).(CisBenchmarkResponsePtrOutput)
-}
-
-// A description about this compliance check.
-func (o ComplianceNoteResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComplianceNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// A rationale for the existence of this compliance check.
-func (o ComplianceNoteResponsePtrOutput) Rationale() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComplianceNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Rationale
-	}).(pulumi.StringPtrOutput)
-}
-
-// A description of remediation steps if the compliance check fails.
-func (o ComplianceNoteResponsePtrOutput) Remediation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComplianceNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Remediation
-	}).(pulumi.StringPtrOutput)
-}
-
-// Serialized scan instructions with a predefined format.
-func (o ComplianceNoteResponsePtrOutput) ScanInstructions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComplianceNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ScanInstructions
-	}).(pulumi.StringPtrOutput)
-}
-
-// The title that identifies this compliance check.
-func (o ComplianceNoteResponsePtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComplianceNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
-// The OS and config versions the benchmark applies to.
-func (o ComplianceNoteResponsePtrOutput) Version() ComplianceVersionResponseArrayOutput {
-	return o.ApplyT(func(v *ComplianceNoteResponse) []ComplianceVersionResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(ComplianceVersionResponseArrayOutput)
 }
 
 // An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
@@ -6401,76 +4169,6 @@ type ComplianceOccurrenceResponse struct {
 	NonCompliantFiles   []NonCompliantFileResponse `pulumi:"nonCompliantFiles"`
 }
 
-// ComplianceOccurrenceResponseInput is an input type that accepts ComplianceOccurrenceResponseArgs and ComplianceOccurrenceResponseOutput values.
-// You can construct a concrete instance of `ComplianceOccurrenceResponseInput` via:
-//
-//          ComplianceOccurrenceResponseArgs{...}
-type ComplianceOccurrenceResponseInput interface {
-	pulumi.Input
-
-	ToComplianceOccurrenceResponseOutput() ComplianceOccurrenceResponseOutput
-	ToComplianceOccurrenceResponseOutputWithContext(context.Context) ComplianceOccurrenceResponseOutput
-}
-
-// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
-type ComplianceOccurrenceResponseArgs struct {
-	NonComplianceReason pulumi.StringInput                 `pulumi:"nonComplianceReason"`
-	NonCompliantFiles   NonCompliantFileResponseArrayInput `pulumi:"nonCompliantFiles"`
-}
-
-func (ComplianceOccurrenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComplianceOccurrenceResponse)(nil)).Elem()
-}
-
-func (i ComplianceOccurrenceResponseArgs) ToComplianceOccurrenceResponseOutput() ComplianceOccurrenceResponseOutput {
-	return i.ToComplianceOccurrenceResponseOutputWithContext(context.Background())
-}
-
-func (i ComplianceOccurrenceResponseArgs) ToComplianceOccurrenceResponseOutputWithContext(ctx context.Context) ComplianceOccurrenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComplianceOccurrenceResponseOutput)
-}
-
-func (i ComplianceOccurrenceResponseArgs) ToComplianceOccurrenceResponsePtrOutput() ComplianceOccurrenceResponsePtrOutput {
-	return i.ToComplianceOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ComplianceOccurrenceResponseArgs) ToComplianceOccurrenceResponsePtrOutputWithContext(ctx context.Context) ComplianceOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComplianceOccurrenceResponseOutput).ToComplianceOccurrenceResponsePtrOutputWithContext(ctx)
-}
-
-// ComplianceOccurrenceResponsePtrInput is an input type that accepts ComplianceOccurrenceResponseArgs, ComplianceOccurrenceResponsePtr and ComplianceOccurrenceResponsePtrOutput values.
-// You can construct a concrete instance of `ComplianceOccurrenceResponsePtrInput` via:
-//
-//          ComplianceOccurrenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ComplianceOccurrenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToComplianceOccurrenceResponsePtrOutput() ComplianceOccurrenceResponsePtrOutput
-	ToComplianceOccurrenceResponsePtrOutputWithContext(context.Context) ComplianceOccurrenceResponsePtrOutput
-}
-
-type complianceOccurrenceResponsePtrType ComplianceOccurrenceResponseArgs
-
-func ComplianceOccurrenceResponsePtr(v *ComplianceOccurrenceResponseArgs) ComplianceOccurrenceResponsePtrInput {
-	return (*complianceOccurrenceResponsePtrType)(v)
-}
-
-func (*complianceOccurrenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComplianceOccurrenceResponse)(nil)).Elem()
-}
-
-func (i *complianceOccurrenceResponsePtrType) ToComplianceOccurrenceResponsePtrOutput() ComplianceOccurrenceResponsePtrOutput {
-	return i.ToComplianceOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *complianceOccurrenceResponsePtrType) ToComplianceOccurrenceResponsePtrOutputWithContext(ctx context.Context) ComplianceOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComplianceOccurrenceResponsePtrOutput)
-}
-
 // An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
 type ComplianceOccurrenceResponseOutput struct{ *pulumi.OutputState }
 
@@ -6486,64 +4184,12 @@ func (o ComplianceOccurrenceResponseOutput) ToComplianceOccurrenceResponseOutput
 	return o
 }
 
-func (o ComplianceOccurrenceResponseOutput) ToComplianceOccurrenceResponsePtrOutput() ComplianceOccurrenceResponsePtrOutput {
-	return o.ToComplianceOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ComplianceOccurrenceResponseOutput) ToComplianceOccurrenceResponsePtrOutputWithContext(ctx context.Context) ComplianceOccurrenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComplianceOccurrenceResponse) *ComplianceOccurrenceResponse {
-		return &v
-	}).(ComplianceOccurrenceResponsePtrOutput)
-}
-
 func (o ComplianceOccurrenceResponseOutput) NonComplianceReason() pulumi.StringOutput {
 	return o.ApplyT(func(v ComplianceOccurrenceResponse) string { return v.NonComplianceReason }).(pulumi.StringOutput)
 }
 
 func (o ComplianceOccurrenceResponseOutput) NonCompliantFiles() NonCompliantFileResponseArrayOutput {
 	return o.ApplyT(func(v ComplianceOccurrenceResponse) []NonCompliantFileResponse { return v.NonCompliantFiles }).(NonCompliantFileResponseArrayOutput)
-}
-
-type ComplianceOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ComplianceOccurrenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComplianceOccurrenceResponse)(nil)).Elem()
-}
-
-func (o ComplianceOccurrenceResponsePtrOutput) ToComplianceOccurrenceResponsePtrOutput() ComplianceOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o ComplianceOccurrenceResponsePtrOutput) ToComplianceOccurrenceResponsePtrOutputWithContext(ctx context.Context) ComplianceOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o ComplianceOccurrenceResponsePtrOutput) Elem() ComplianceOccurrenceResponseOutput {
-	return o.ApplyT(func(v *ComplianceOccurrenceResponse) ComplianceOccurrenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ComplianceOccurrenceResponse
-		return ret
-	}).(ComplianceOccurrenceResponseOutput)
-}
-
-func (o ComplianceOccurrenceResponsePtrOutput) NonComplianceReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComplianceOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NonComplianceReason
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ComplianceOccurrenceResponsePtrOutput) NonCompliantFiles() NonCompliantFileResponseArrayOutput {
-	return o.ApplyT(func(v *ComplianceOccurrenceResponse) []NonCompliantFileResponse {
-		if v == nil {
-			return nil
-		}
-		return v.NonCompliantFiles
-	}).(NonCompliantFileResponseArrayOutput)
 }
 
 // Describes the CIS benchmark version that is applicable to a given OS and os version.
@@ -6661,62 +4307,6 @@ type ComplianceVersionResponse struct {
 	CpeUri string `pulumi:"cpeUri"`
 	// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
 	Version string `pulumi:"version"`
-}
-
-// ComplianceVersionResponseInput is an input type that accepts ComplianceVersionResponseArgs and ComplianceVersionResponseOutput values.
-// You can construct a concrete instance of `ComplianceVersionResponseInput` via:
-//
-//          ComplianceVersionResponseArgs{...}
-type ComplianceVersionResponseInput interface {
-	pulumi.Input
-
-	ToComplianceVersionResponseOutput() ComplianceVersionResponseOutput
-	ToComplianceVersionResponseOutputWithContext(context.Context) ComplianceVersionResponseOutput
-}
-
-// Describes the CIS benchmark version that is applicable to a given OS and os version.
-type ComplianceVersionResponseArgs struct {
-	// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
-	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
-	// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (ComplianceVersionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComplianceVersionResponse)(nil)).Elem()
-}
-
-func (i ComplianceVersionResponseArgs) ToComplianceVersionResponseOutput() ComplianceVersionResponseOutput {
-	return i.ToComplianceVersionResponseOutputWithContext(context.Background())
-}
-
-func (i ComplianceVersionResponseArgs) ToComplianceVersionResponseOutputWithContext(ctx context.Context) ComplianceVersionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComplianceVersionResponseOutput)
-}
-
-// ComplianceVersionResponseArrayInput is an input type that accepts ComplianceVersionResponseArray and ComplianceVersionResponseArrayOutput values.
-// You can construct a concrete instance of `ComplianceVersionResponseArrayInput` via:
-//
-//          ComplianceVersionResponseArray{ ComplianceVersionResponseArgs{...} }
-type ComplianceVersionResponseArrayInput interface {
-	pulumi.Input
-
-	ToComplianceVersionResponseArrayOutput() ComplianceVersionResponseArrayOutput
-	ToComplianceVersionResponseArrayOutputWithContext(context.Context) ComplianceVersionResponseArrayOutput
-}
-
-type ComplianceVersionResponseArray []ComplianceVersionResponseInput
-
-func (ComplianceVersionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ComplianceVersionResponse)(nil)).Elem()
-}
-
-func (i ComplianceVersionResponseArray) ToComplianceVersionResponseArrayOutput() ComplianceVersionResponseArrayOutput {
-	return i.ToComplianceVersionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ComplianceVersionResponseArray) ToComplianceVersionResponseArrayOutputWithContext(ctx context.Context) ComplianceVersionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComplianceVersionResponseArrayOutput)
 }
 
 // Describes the CIS benchmark version that is applicable to a given OS and os version.
@@ -6906,75 +4496,6 @@ type DSSEAttestationNoteResponse struct {
 	Hint DSSEHintResponse `pulumi:"hint"`
 }
 
-// DSSEAttestationNoteResponseInput is an input type that accepts DSSEAttestationNoteResponseArgs and DSSEAttestationNoteResponseOutput values.
-// You can construct a concrete instance of `DSSEAttestationNoteResponseInput` via:
-//
-//          DSSEAttestationNoteResponseArgs{...}
-type DSSEAttestationNoteResponseInput interface {
-	pulumi.Input
-
-	ToDSSEAttestationNoteResponseOutput() DSSEAttestationNoteResponseOutput
-	ToDSSEAttestationNoteResponseOutputWithContext(context.Context) DSSEAttestationNoteResponseOutput
-}
-
-type DSSEAttestationNoteResponseArgs struct {
-	// DSSEHint hints at the purpose of the attestation authority.
-	Hint DSSEHintResponseInput `pulumi:"hint"`
-}
-
-func (DSSEAttestationNoteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DSSEAttestationNoteResponse)(nil)).Elem()
-}
-
-func (i DSSEAttestationNoteResponseArgs) ToDSSEAttestationNoteResponseOutput() DSSEAttestationNoteResponseOutput {
-	return i.ToDSSEAttestationNoteResponseOutputWithContext(context.Background())
-}
-
-func (i DSSEAttestationNoteResponseArgs) ToDSSEAttestationNoteResponseOutputWithContext(ctx context.Context) DSSEAttestationNoteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DSSEAttestationNoteResponseOutput)
-}
-
-func (i DSSEAttestationNoteResponseArgs) ToDSSEAttestationNoteResponsePtrOutput() DSSEAttestationNoteResponsePtrOutput {
-	return i.ToDSSEAttestationNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DSSEAttestationNoteResponseArgs) ToDSSEAttestationNoteResponsePtrOutputWithContext(ctx context.Context) DSSEAttestationNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DSSEAttestationNoteResponseOutput).ToDSSEAttestationNoteResponsePtrOutputWithContext(ctx)
-}
-
-// DSSEAttestationNoteResponsePtrInput is an input type that accepts DSSEAttestationNoteResponseArgs, DSSEAttestationNoteResponsePtr and DSSEAttestationNoteResponsePtrOutput values.
-// You can construct a concrete instance of `DSSEAttestationNoteResponsePtrInput` via:
-//
-//          DSSEAttestationNoteResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DSSEAttestationNoteResponsePtrInput interface {
-	pulumi.Input
-
-	ToDSSEAttestationNoteResponsePtrOutput() DSSEAttestationNoteResponsePtrOutput
-	ToDSSEAttestationNoteResponsePtrOutputWithContext(context.Context) DSSEAttestationNoteResponsePtrOutput
-}
-
-type dsseattestationNoteResponsePtrType DSSEAttestationNoteResponseArgs
-
-func DSSEAttestationNoteResponsePtr(v *DSSEAttestationNoteResponseArgs) DSSEAttestationNoteResponsePtrInput {
-	return (*dsseattestationNoteResponsePtrType)(v)
-}
-
-func (*dsseattestationNoteResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DSSEAttestationNoteResponse)(nil)).Elem()
-}
-
-func (i *dsseattestationNoteResponsePtrType) ToDSSEAttestationNoteResponsePtrOutput() DSSEAttestationNoteResponsePtrOutput {
-	return i.ToDSSEAttestationNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *dsseattestationNoteResponsePtrType) ToDSSEAttestationNoteResponsePtrOutputWithContext(ctx context.Context) DSSEAttestationNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DSSEAttestationNoteResponsePtrOutput)
-}
-
 type DSSEAttestationNoteResponseOutput struct{ *pulumi.OutputState }
 
 func (DSSEAttestationNoteResponseOutput) ElementType() reflect.Type {
@@ -6989,53 +4510,9 @@ func (o DSSEAttestationNoteResponseOutput) ToDSSEAttestationNoteResponseOutputWi
 	return o
 }
 
-func (o DSSEAttestationNoteResponseOutput) ToDSSEAttestationNoteResponsePtrOutput() DSSEAttestationNoteResponsePtrOutput {
-	return o.ToDSSEAttestationNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DSSEAttestationNoteResponseOutput) ToDSSEAttestationNoteResponsePtrOutputWithContext(ctx context.Context) DSSEAttestationNoteResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DSSEAttestationNoteResponse) *DSSEAttestationNoteResponse {
-		return &v
-	}).(DSSEAttestationNoteResponsePtrOutput)
-}
-
 // DSSEHint hints at the purpose of the attestation authority.
 func (o DSSEAttestationNoteResponseOutput) Hint() DSSEHintResponseOutput {
 	return o.ApplyT(func(v DSSEAttestationNoteResponse) DSSEHintResponse { return v.Hint }).(DSSEHintResponseOutput)
-}
-
-type DSSEAttestationNoteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DSSEAttestationNoteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DSSEAttestationNoteResponse)(nil)).Elem()
-}
-
-func (o DSSEAttestationNoteResponsePtrOutput) ToDSSEAttestationNoteResponsePtrOutput() DSSEAttestationNoteResponsePtrOutput {
-	return o
-}
-
-func (o DSSEAttestationNoteResponsePtrOutput) ToDSSEAttestationNoteResponsePtrOutputWithContext(ctx context.Context) DSSEAttestationNoteResponsePtrOutput {
-	return o
-}
-
-func (o DSSEAttestationNoteResponsePtrOutput) Elem() DSSEAttestationNoteResponseOutput {
-	return o.ApplyT(func(v *DSSEAttestationNoteResponse) DSSEAttestationNoteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DSSEAttestationNoteResponse
-		return ret
-	}).(DSSEAttestationNoteResponseOutput)
-}
-
-// DSSEHint hints at the purpose of the attestation authority.
-func (o DSSEAttestationNoteResponsePtrOutput) Hint() DSSEHintResponsePtrOutput {
-	return o.ApplyT(func(v *DSSEAttestationNoteResponse) *DSSEHintResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Hint
-	}).(DSSEHintResponsePtrOutput)
 }
 
 // Deprecated. Prefer to use a regular Occurrence, and populate the Envelope at the top level of the Occurrence.
@@ -7200,77 +4677,6 @@ type DSSEAttestationOccurrenceResponse struct {
 	Statement InTotoStatementResponse `pulumi:"statement"`
 }
 
-// DSSEAttestationOccurrenceResponseInput is an input type that accepts DSSEAttestationOccurrenceResponseArgs and DSSEAttestationOccurrenceResponseOutput values.
-// You can construct a concrete instance of `DSSEAttestationOccurrenceResponseInput` via:
-//
-//          DSSEAttestationOccurrenceResponseArgs{...}
-type DSSEAttestationOccurrenceResponseInput interface {
-	pulumi.Input
-
-	ToDSSEAttestationOccurrenceResponseOutput() DSSEAttestationOccurrenceResponseOutput
-	ToDSSEAttestationOccurrenceResponseOutputWithContext(context.Context) DSSEAttestationOccurrenceResponseOutput
-}
-
-// Deprecated. Prefer to use a regular Occurrence, and populate the Envelope at the top level of the Occurrence.
-type DSSEAttestationOccurrenceResponseArgs struct {
-	// If doing something security critical, make sure to verify the signatures in this metadata.
-	Envelope  EnvelopeResponseInput        `pulumi:"envelope"`
-	Statement InTotoStatementResponseInput `pulumi:"statement"`
-}
-
-func (DSSEAttestationOccurrenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DSSEAttestationOccurrenceResponse)(nil)).Elem()
-}
-
-func (i DSSEAttestationOccurrenceResponseArgs) ToDSSEAttestationOccurrenceResponseOutput() DSSEAttestationOccurrenceResponseOutput {
-	return i.ToDSSEAttestationOccurrenceResponseOutputWithContext(context.Background())
-}
-
-func (i DSSEAttestationOccurrenceResponseArgs) ToDSSEAttestationOccurrenceResponseOutputWithContext(ctx context.Context) DSSEAttestationOccurrenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DSSEAttestationOccurrenceResponseOutput)
-}
-
-func (i DSSEAttestationOccurrenceResponseArgs) ToDSSEAttestationOccurrenceResponsePtrOutput() DSSEAttestationOccurrenceResponsePtrOutput {
-	return i.ToDSSEAttestationOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DSSEAttestationOccurrenceResponseArgs) ToDSSEAttestationOccurrenceResponsePtrOutputWithContext(ctx context.Context) DSSEAttestationOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DSSEAttestationOccurrenceResponseOutput).ToDSSEAttestationOccurrenceResponsePtrOutputWithContext(ctx)
-}
-
-// DSSEAttestationOccurrenceResponsePtrInput is an input type that accepts DSSEAttestationOccurrenceResponseArgs, DSSEAttestationOccurrenceResponsePtr and DSSEAttestationOccurrenceResponsePtrOutput values.
-// You can construct a concrete instance of `DSSEAttestationOccurrenceResponsePtrInput` via:
-//
-//          DSSEAttestationOccurrenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DSSEAttestationOccurrenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToDSSEAttestationOccurrenceResponsePtrOutput() DSSEAttestationOccurrenceResponsePtrOutput
-	ToDSSEAttestationOccurrenceResponsePtrOutputWithContext(context.Context) DSSEAttestationOccurrenceResponsePtrOutput
-}
-
-type dsseattestationOccurrenceResponsePtrType DSSEAttestationOccurrenceResponseArgs
-
-func DSSEAttestationOccurrenceResponsePtr(v *DSSEAttestationOccurrenceResponseArgs) DSSEAttestationOccurrenceResponsePtrInput {
-	return (*dsseattestationOccurrenceResponsePtrType)(v)
-}
-
-func (*dsseattestationOccurrenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DSSEAttestationOccurrenceResponse)(nil)).Elem()
-}
-
-func (i *dsseattestationOccurrenceResponsePtrType) ToDSSEAttestationOccurrenceResponsePtrOutput() DSSEAttestationOccurrenceResponsePtrOutput {
-	return i.ToDSSEAttestationOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *dsseattestationOccurrenceResponsePtrType) ToDSSEAttestationOccurrenceResponsePtrOutputWithContext(ctx context.Context) DSSEAttestationOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DSSEAttestationOccurrenceResponsePtrOutput)
-}
-
 // Deprecated. Prefer to use a regular Occurrence, and populate the Envelope at the top level of the Occurrence.
 type DSSEAttestationOccurrenceResponseOutput struct{ *pulumi.OutputState }
 
@@ -7286,16 +4692,6 @@ func (o DSSEAttestationOccurrenceResponseOutput) ToDSSEAttestationOccurrenceResp
 	return o
 }
 
-func (o DSSEAttestationOccurrenceResponseOutput) ToDSSEAttestationOccurrenceResponsePtrOutput() DSSEAttestationOccurrenceResponsePtrOutput {
-	return o.ToDSSEAttestationOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DSSEAttestationOccurrenceResponseOutput) ToDSSEAttestationOccurrenceResponsePtrOutputWithContext(ctx context.Context) DSSEAttestationOccurrenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DSSEAttestationOccurrenceResponse) *DSSEAttestationOccurrenceResponse {
-		return &v
-	}).(DSSEAttestationOccurrenceResponsePtrOutput)
-}
-
 // If doing something security critical, make sure to verify the signatures in this metadata.
 func (o DSSEAttestationOccurrenceResponseOutput) Envelope() EnvelopeResponseOutput {
 	return o.ApplyT(func(v DSSEAttestationOccurrenceResponse) EnvelopeResponse { return v.Envelope }).(EnvelopeResponseOutput)
@@ -7303,49 +4699,6 @@ func (o DSSEAttestationOccurrenceResponseOutput) Envelope() EnvelopeResponseOutp
 
 func (o DSSEAttestationOccurrenceResponseOutput) Statement() InTotoStatementResponseOutput {
 	return o.ApplyT(func(v DSSEAttestationOccurrenceResponse) InTotoStatementResponse { return v.Statement }).(InTotoStatementResponseOutput)
-}
-
-type DSSEAttestationOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DSSEAttestationOccurrenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DSSEAttestationOccurrenceResponse)(nil)).Elem()
-}
-
-func (o DSSEAttestationOccurrenceResponsePtrOutput) ToDSSEAttestationOccurrenceResponsePtrOutput() DSSEAttestationOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o DSSEAttestationOccurrenceResponsePtrOutput) ToDSSEAttestationOccurrenceResponsePtrOutputWithContext(ctx context.Context) DSSEAttestationOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o DSSEAttestationOccurrenceResponsePtrOutput) Elem() DSSEAttestationOccurrenceResponseOutput {
-	return o.ApplyT(func(v *DSSEAttestationOccurrenceResponse) DSSEAttestationOccurrenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DSSEAttestationOccurrenceResponse
-		return ret
-	}).(DSSEAttestationOccurrenceResponseOutput)
-}
-
-// If doing something security critical, make sure to verify the signatures in this metadata.
-func (o DSSEAttestationOccurrenceResponsePtrOutput) Envelope() EnvelopeResponsePtrOutput {
-	return o.ApplyT(func(v *DSSEAttestationOccurrenceResponse) *EnvelopeResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Envelope
-	}).(EnvelopeResponsePtrOutput)
-}
-
-func (o DSSEAttestationOccurrenceResponsePtrOutput) Statement() InTotoStatementResponsePtrOutput {
-	return o.ApplyT(func(v *DSSEAttestationOccurrenceResponse) *InTotoStatementResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Statement
-	}).(InTotoStatementResponsePtrOutput)
 }
 
 // This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
@@ -7494,76 +4847,6 @@ type DSSEHintResponse struct {
 	HumanReadableName string `pulumi:"humanReadableName"`
 }
 
-// DSSEHintResponseInput is an input type that accepts DSSEHintResponseArgs and DSSEHintResponseOutput values.
-// You can construct a concrete instance of `DSSEHintResponseInput` via:
-//
-//          DSSEHintResponseArgs{...}
-type DSSEHintResponseInput interface {
-	pulumi.Input
-
-	ToDSSEHintResponseOutput() DSSEHintResponseOutput
-	ToDSSEHintResponseOutputWithContext(context.Context) DSSEHintResponseOutput
-}
-
-// This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
-type DSSEHintResponseArgs struct {
-	// The human readable name of this attestation authority, for example "cloudbuild-prod".
-	HumanReadableName pulumi.StringInput `pulumi:"humanReadableName"`
-}
-
-func (DSSEHintResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DSSEHintResponse)(nil)).Elem()
-}
-
-func (i DSSEHintResponseArgs) ToDSSEHintResponseOutput() DSSEHintResponseOutput {
-	return i.ToDSSEHintResponseOutputWithContext(context.Background())
-}
-
-func (i DSSEHintResponseArgs) ToDSSEHintResponseOutputWithContext(ctx context.Context) DSSEHintResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DSSEHintResponseOutput)
-}
-
-func (i DSSEHintResponseArgs) ToDSSEHintResponsePtrOutput() DSSEHintResponsePtrOutput {
-	return i.ToDSSEHintResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DSSEHintResponseArgs) ToDSSEHintResponsePtrOutputWithContext(ctx context.Context) DSSEHintResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DSSEHintResponseOutput).ToDSSEHintResponsePtrOutputWithContext(ctx)
-}
-
-// DSSEHintResponsePtrInput is an input type that accepts DSSEHintResponseArgs, DSSEHintResponsePtr and DSSEHintResponsePtrOutput values.
-// You can construct a concrete instance of `DSSEHintResponsePtrInput` via:
-//
-//          DSSEHintResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DSSEHintResponsePtrInput interface {
-	pulumi.Input
-
-	ToDSSEHintResponsePtrOutput() DSSEHintResponsePtrOutput
-	ToDSSEHintResponsePtrOutputWithContext(context.Context) DSSEHintResponsePtrOutput
-}
-
-type dssehintResponsePtrType DSSEHintResponseArgs
-
-func DSSEHintResponsePtr(v *DSSEHintResponseArgs) DSSEHintResponsePtrInput {
-	return (*dssehintResponsePtrType)(v)
-}
-
-func (*dssehintResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DSSEHintResponse)(nil)).Elem()
-}
-
-func (i *dssehintResponsePtrType) ToDSSEHintResponsePtrOutput() DSSEHintResponsePtrOutput {
-	return i.ToDSSEHintResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *dssehintResponsePtrType) ToDSSEHintResponsePtrOutputWithContext(ctx context.Context) DSSEHintResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DSSEHintResponsePtrOutput)
-}
-
 // This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
 type DSSEHintResponseOutput struct{ *pulumi.OutputState }
 
@@ -7579,53 +4862,9 @@ func (o DSSEHintResponseOutput) ToDSSEHintResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o DSSEHintResponseOutput) ToDSSEHintResponsePtrOutput() DSSEHintResponsePtrOutput {
-	return o.ToDSSEHintResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DSSEHintResponseOutput) ToDSSEHintResponsePtrOutputWithContext(ctx context.Context) DSSEHintResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DSSEHintResponse) *DSSEHintResponse {
-		return &v
-	}).(DSSEHintResponsePtrOutput)
-}
-
 // The human readable name of this attestation authority, for example "cloudbuild-prod".
 func (o DSSEHintResponseOutput) HumanReadableName() pulumi.StringOutput {
 	return o.ApplyT(func(v DSSEHintResponse) string { return v.HumanReadableName }).(pulumi.StringOutput)
-}
-
-type DSSEHintResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DSSEHintResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DSSEHintResponse)(nil)).Elem()
-}
-
-func (o DSSEHintResponsePtrOutput) ToDSSEHintResponsePtrOutput() DSSEHintResponsePtrOutput {
-	return o
-}
-
-func (o DSSEHintResponsePtrOutput) ToDSSEHintResponsePtrOutputWithContext(ctx context.Context) DSSEHintResponsePtrOutput {
-	return o
-}
-
-func (o DSSEHintResponsePtrOutput) Elem() DSSEHintResponseOutput {
-	return o.ApplyT(func(v *DSSEHintResponse) DSSEHintResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DSSEHintResponse
-		return ret
-	}).(DSSEHintResponseOutput)
-}
-
-// The human readable name of this attestation authority, for example "cloudbuild-prod".
-func (o DSSEHintResponsePtrOutput) HumanReadableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DSSEHintResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HumanReadableName
-	}).(pulumi.StringPtrOutput)
 }
 
 // An artifact that can be deployed in some runtime.
@@ -7774,76 +5013,6 @@ type DeploymentNoteResponse struct {
 	ResourceUri []string `pulumi:"resourceUri"`
 }
 
-// DeploymentNoteResponseInput is an input type that accepts DeploymentNoteResponseArgs and DeploymentNoteResponseOutput values.
-// You can construct a concrete instance of `DeploymentNoteResponseInput` via:
-//
-//          DeploymentNoteResponseArgs{...}
-type DeploymentNoteResponseInput interface {
-	pulumi.Input
-
-	ToDeploymentNoteResponseOutput() DeploymentNoteResponseOutput
-	ToDeploymentNoteResponseOutputWithContext(context.Context) DeploymentNoteResponseOutput
-}
-
-// An artifact that can be deployed in some runtime.
-type DeploymentNoteResponseArgs struct {
-	// Resource URI for the artifact being deployed.
-	ResourceUri pulumi.StringArrayInput `pulumi:"resourceUri"`
-}
-
-func (DeploymentNoteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentNoteResponse)(nil)).Elem()
-}
-
-func (i DeploymentNoteResponseArgs) ToDeploymentNoteResponseOutput() DeploymentNoteResponseOutput {
-	return i.ToDeploymentNoteResponseOutputWithContext(context.Background())
-}
-
-func (i DeploymentNoteResponseArgs) ToDeploymentNoteResponseOutputWithContext(ctx context.Context) DeploymentNoteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentNoteResponseOutput)
-}
-
-func (i DeploymentNoteResponseArgs) ToDeploymentNoteResponsePtrOutput() DeploymentNoteResponsePtrOutput {
-	return i.ToDeploymentNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DeploymentNoteResponseArgs) ToDeploymentNoteResponsePtrOutputWithContext(ctx context.Context) DeploymentNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentNoteResponseOutput).ToDeploymentNoteResponsePtrOutputWithContext(ctx)
-}
-
-// DeploymentNoteResponsePtrInput is an input type that accepts DeploymentNoteResponseArgs, DeploymentNoteResponsePtr and DeploymentNoteResponsePtrOutput values.
-// You can construct a concrete instance of `DeploymentNoteResponsePtrInput` via:
-//
-//          DeploymentNoteResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DeploymentNoteResponsePtrInput interface {
-	pulumi.Input
-
-	ToDeploymentNoteResponsePtrOutput() DeploymentNoteResponsePtrOutput
-	ToDeploymentNoteResponsePtrOutputWithContext(context.Context) DeploymentNoteResponsePtrOutput
-}
-
-type deploymentNoteResponsePtrType DeploymentNoteResponseArgs
-
-func DeploymentNoteResponsePtr(v *DeploymentNoteResponseArgs) DeploymentNoteResponsePtrInput {
-	return (*deploymentNoteResponsePtrType)(v)
-}
-
-func (*deploymentNoteResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeploymentNoteResponse)(nil)).Elem()
-}
-
-func (i *deploymentNoteResponsePtrType) ToDeploymentNoteResponsePtrOutput() DeploymentNoteResponsePtrOutput {
-	return i.ToDeploymentNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *deploymentNoteResponsePtrType) ToDeploymentNoteResponsePtrOutputWithContext(ctx context.Context) DeploymentNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentNoteResponsePtrOutput)
-}
-
 // An artifact that can be deployed in some runtime.
 type DeploymentNoteResponseOutput struct{ *pulumi.OutputState }
 
@@ -7859,53 +5028,9 @@ func (o DeploymentNoteResponseOutput) ToDeploymentNoteResponseOutputWithContext(
 	return o
 }
 
-func (o DeploymentNoteResponseOutput) ToDeploymentNoteResponsePtrOutput() DeploymentNoteResponsePtrOutput {
-	return o.ToDeploymentNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DeploymentNoteResponseOutput) ToDeploymentNoteResponsePtrOutputWithContext(ctx context.Context) DeploymentNoteResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentNoteResponse) *DeploymentNoteResponse {
-		return &v
-	}).(DeploymentNoteResponsePtrOutput)
-}
-
 // Resource URI for the artifact being deployed.
 func (o DeploymentNoteResponseOutput) ResourceUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeploymentNoteResponse) []string { return v.ResourceUri }).(pulumi.StringArrayOutput)
-}
-
-type DeploymentNoteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DeploymentNoteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeploymentNoteResponse)(nil)).Elem()
-}
-
-func (o DeploymentNoteResponsePtrOutput) ToDeploymentNoteResponsePtrOutput() DeploymentNoteResponsePtrOutput {
-	return o
-}
-
-func (o DeploymentNoteResponsePtrOutput) ToDeploymentNoteResponsePtrOutputWithContext(ctx context.Context) DeploymentNoteResponsePtrOutput {
-	return o
-}
-
-func (o DeploymentNoteResponsePtrOutput) Elem() DeploymentNoteResponseOutput {
-	return o.ApplyT(func(v *DeploymentNoteResponse) DeploymentNoteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DeploymentNoteResponse
-		return ret
-	}).(DeploymentNoteResponseOutput)
-}
-
-// Resource URI for the artifact being deployed.
-func (o DeploymentNoteResponsePtrOutput) ResourceUri() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DeploymentNoteResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceUri
-	}).(pulumi.StringArrayOutput)
 }
 
 // The period during which some deployable was active in a runtime.
@@ -8161,88 +5286,6 @@ type DeploymentOccurrenceResponse struct {
 	UserEmail string `pulumi:"userEmail"`
 }
 
-// DeploymentOccurrenceResponseInput is an input type that accepts DeploymentOccurrenceResponseArgs and DeploymentOccurrenceResponseOutput values.
-// You can construct a concrete instance of `DeploymentOccurrenceResponseInput` via:
-//
-//          DeploymentOccurrenceResponseArgs{...}
-type DeploymentOccurrenceResponseInput interface {
-	pulumi.Input
-
-	ToDeploymentOccurrenceResponseOutput() DeploymentOccurrenceResponseOutput
-	ToDeploymentOccurrenceResponseOutputWithContext(context.Context) DeploymentOccurrenceResponseOutput
-}
-
-// The period during which some deployable was active in a runtime.
-type DeploymentOccurrenceResponseArgs struct {
-	// Address of the runtime element hosting this deployment.
-	Address pulumi.StringInput `pulumi:"address"`
-	// Configuration used to create this deployment.
-	Config pulumi.StringInput `pulumi:"config"`
-	// Beginning of the lifetime of this deployment.
-	DeployTime pulumi.StringInput `pulumi:"deployTime"`
-	// Platform hosting this deployment.
-	Platform pulumi.StringInput `pulumi:"platform"`
-	// Resource URI for the artifact being deployed taken from the deployable field with the same name.
-	ResourceUri pulumi.StringArrayInput `pulumi:"resourceUri"`
-	// End of the lifetime of this deployment.
-	UndeployTime pulumi.StringInput `pulumi:"undeployTime"`
-	// Identity of the user that triggered this deployment.
-	UserEmail pulumi.StringInput `pulumi:"userEmail"`
-}
-
-func (DeploymentOccurrenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentOccurrenceResponse)(nil)).Elem()
-}
-
-func (i DeploymentOccurrenceResponseArgs) ToDeploymentOccurrenceResponseOutput() DeploymentOccurrenceResponseOutput {
-	return i.ToDeploymentOccurrenceResponseOutputWithContext(context.Background())
-}
-
-func (i DeploymentOccurrenceResponseArgs) ToDeploymentOccurrenceResponseOutputWithContext(ctx context.Context) DeploymentOccurrenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentOccurrenceResponseOutput)
-}
-
-func (i DeploymentOccurrenceResponseArgs) ToDeploymentOccurrenceResponsePtrOutput() DeploymentOccurrenceResponsePtrOutput {
-	return i.ToDeploymentOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DeploymentOccurrenceResponseArgs) ToDeploymentOccurrenceResponsePtrOutputWithContext(ctx context.Context) DeploymentOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentOccurrenceResponseOutput).ToDeploymentOccurrenceResponsePtrOutputWithContext(ctx)
-}
-
-// DeploymentOccurrenceResponsePtrInput is an input type that accepts DeploymentOccurrenceResponseArgs, DeploymentOccurrenceResponsePtr and DeploymentOccurrenceResponsePtrOutput values.
-// You can construct a concrete instance of `DeploymentOccurrenceResponsePtrInput` via:
-//
-//          DeploymentOccurrenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DeploymentOccurrenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToDeploymentOccurrenceResponsePtrOutput() DeploymentOccurrenceResponsePtrOutput
-	ToDeploymentOccurrenceResponsePtrOutputWithContext(context.Context) DeploymentOccurrenceResponsePtrOutput
-}
-
-type deploymentOccurrenceResponsePtrType DeploymentOccurrenceResponseArgs
-
-func DeploymentOccurrenceResponsePtr(v *DeploymentOccurrenceResponseArgs) DeploymentOccurrenceResponsePtrInput {
-	return (*deploymentOccurrenceResponsePtrType)(v)
-}
-
-func (*deploymentOccurrenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeploymentOccurrenceResponse)(nil)).Elem()
-}
-
-func (i *deploymentOccurrenceResponsePtrType) ToDeploymentOccurrenceResponsePtrOutput() DeploymentOccurrenceResponsePtrOutput {
-	return i.ToDeploymentOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *deploymentOccurrenceResponsePtrType) ToDeploymentOccurrenceResponsePtrOutputWithContext(ctx context.Context) DeploymentOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentOccurrenceResponsePtrOutput)
-}
-
 // The period during which some deployable was active in a runtime.
 type DeploymentOccurrenceResponseOutput struct{ *pulumi.OutputState }
 
@@ -8256,16 +5299,6 @@ func (o DeploymentOccurrenceResponseOutput) ToDeploymentOccurrenceResponseOutput
 
 func (o DeploymentOccurrenceResponseOutput) ToDeploymentOccurrenceResponseOutputWithContext(ctx context.Context) DeploymentOccurrenceResponseOutput {
 	return o
-}
-
-func (o DeploymentOccurrenceResponseOutput) ToDeploymentOccurrenceResponsePtrOutput() DeploymentOccurrenceResponsePtrOutput {
-	return o.ToDeploymentOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DeploymentOccurrenceResponseOutput) ToDeploymentOccurrenceResponsePtrOutputWithContext(ctx context.Context) DeploymentOccurrenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentOccurrenceResponse) *DeploymentOccurrenceResponse {
-		return &v
-	}).(DeploymentOccurrenceResponsePtrOutput)
 }
 
 // Address of the runtime element hosting this deployment.
@@ -8301,100 +5334,6 @@ func (o DeploymentOccurrenceResponseOutput) UndeployTime() pulumi.StringOutput {
 // Identity of the user that triggered this deployment.
 func (o DeploymentOccurrenceResponseOutput) UserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v DeploymentOccurrenceResponse) string { return v.UserEmail }).(pulumi.StringOutput)
-}
-
-type DeploymentOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DeploymentOccurrenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeploymentOccurrenceResponse)(nil)).Elem()
-}
-
-func (o DeploymentOccurrenceResponsePtrOutput) ToDeploymentOccurrenceResponsePtrOutput() DeploymentOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o DeploymentOccurrenceResponsePtrOutput) ToDeploymentOccurrenceResponsePtrOutputWithContext(ctx context.Context) DeploymentOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o DeploymentOccurrenceResponsePtrOutput) Elem() DeploymentOccurrenceResponseOutput {
-	return o.ApplyT(func(v *DeploymentOccurrenceResponse) DeploymentOccurrenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DeploymentOccurrenceResponse
-		return ret
-	}).(DeploymentOccurrenceResponseOutput)
-}
-
-// Address of the runtime element hosting this deployment.
-func (o DeploymentOccurrenceResponsePtrOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeploymentOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Address
-	}).(pulumi.StringPtrOutput)
-}
-
-// Configuration used to create this deployment.
-func (o DeploymentOccurrenceResponsePtrOutput) Config() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeploymentOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Config
-	}).(pulumi.StringPtrOutput)
-}
-
-// Beginning of the lifetime of this deployment.
-func (o DeploymentOccurrenceResponsePtrOutput) DeployTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeploymentOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DeployTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Platform hosting this deployment.
-func (o DeploymentOccurrenceResponsePtrOutput) Platform() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeploymentOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Platform
-	}).(pulumi.StringPtrOutput)
-}
-
-// Resource URI for the artifact being deployed taken from the deployable field with the same name.
-func (o DeploymentOccurrenceResponsePtrOutput) ResourceUri() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DeploymentOccurrenceResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceUri
-	}).(pulumi.StringArrayOutput)
-}
-
-// End of the lifetime of this deployment.
-func (o DeploymentOccurrenceResponsePtrOutput) UndeployTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeploymentOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UndeployTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identity of the user that triggered this deployment.
-func (o DeploymentOccurrenceResponsePtrOutput) UserEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeploymentOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UserEmail
-	}).(pulumi.StringPtrOutput)
 }
 
 // A detail for a distro and package affected by this vulnerability and its associated fix (if one is available).
@@ -8644,86 +5583,6 @@ type DetailResponse struct {
 	SourceUpdateTime string `pulumi:"sourceUpdateTime"`
 	// The name of the vendor of the product.
 	Vendor string `pulumi:"vendor"`
-}
-
-// DetailResponseInput is an input type that accepts DetailResponseArgs and DetailResponseOutput values.
-// You can construct a concrete instance of `DetailResponseInput` via:
-//
-//          DetailResponseArgs{...}
-type DetailResponseInput interface {
-	pulumi.Input
-
-	ToDetailResponseOutput() DetailResponseOutput
-	ToDetailResponseOutputWithContext(context.Context) DetailResponseOutput
-}
-
-// A detail for a distro and package affected by this vulnerability and its associated fix (if one is available).
-type DetailResponseArgs struct {
-	// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability affects.
-	AffectedCpeUri pulumi.StringInput `pulumi:"affectedCpeUri"`
-	// The package this vulnerability affects.
-	AffectedPackage pulumi.StringInput `pulumi:"affectedPackage"`
-	// The version number at the end of an interval in which this vulnerability exists. A vulnerability can affect a package between version numbers that are disjoint sets of intervals (example: [1.0.0-1.1.0], [2.4.6-2.4.8] and [4.5.6-4.6.8]) each of which will be represented in its own Detail. If a specific affected version is provided by a vulnerability database, affected_version_start and affected_version_end will be the same in that Detail.
-	AffectedVersionEnd VersionResponseInput `pulumi:"affectedVersionEnd"`
-	// The version number at the start of an interval in which this vulnerability exists. A vulnerability can affect a package between version numbers that are disjoint sets of intervals (example: [1.0.0-1.1.0], [2.4.6-2.4.8] and [4.5.6-4.6.8]) each of which will be represented in its own Detail. If a specific affected version is provided by a vulnerability database, affected_version_start and affected_version_end will be the same in that Detail.
-	AffectedVersionStart VersionResponseInput `pulumi:"affectedVersionStart"`
-	// A vendor-specific description of this vulnerability.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The distro recommended [CPE URI](https://cpe.mitre.org/specification/) to update to that contains a fix for this vulnerability. It is possible for this to be different from the affected_cpe_uri.
-	FixedCpeUri pulumi.StringInput `pulumi:"fixedCpeUri"`
-	// The distro recommended package to update to that contains a fix for this vulnerability. It is possible for this to be different from the affected_package.
-	FixedPackage pulumi.StringInput `pulumi:"fixedPackage"`
-	// The distro recommended version to update to that contains a fix for this vulnerability. Setting this to VersionKind.MAXIMUM means no such version is yet available.
-	FixedVersion VersionResponseInput `pulumi:"fixedVersion"`
-	// Whether this detail is obsolete. Occurrences are expected not to point to obsolete details.
-	IsObsolete pulumi.BoolInput `pulumi:"isObsolete"`
-	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
-	PackageType pulumi.StringInput `pulumi:"packageType"`
-	// The distro assigned severity of this vulnerability.
-	SeverityName pulumi.StringInput `pulumi:"severityName"`
-	// The source from which the information in this Detail was obtained.
-	Source pulumi.StringInput `pulumi:"source"`
-	// The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
-	SourceUpdateTime pulumi.StringInput `pulumi:"sourceUpdateTime"`
-	// The name of the vendor of the product.
-	Vendor pulumi.StringInput `pulumi:"vendor"`
-}
-
-func (DetailResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DetailResponse)(nil)).Elem()
-}
-
-func (i DetailResponseArgs) ToDetailResponseOutput() DetailResponseOutput {
-	return i.ToDetailResponseOutputWithContext(context.Background())
-}
-
-func (i DetailResponseArgs) ToDetailResponseOutputWithContext(ctx context.Context) DetailResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DetailResponseOutput)
-}
-
-// DetailResponseArrayInput is an input type that accepts DetailResponseArray and DetailResponseArrayOutput values.
-// You can construct a concrete instance of `DetailResponseArrayInput` via:
-//
-//          DetailResponseArray{ DetailResponseArgs{...} }
-type DetailResponseArrayInput interface {
-	pulumi.Input
-
-	ToDetailResponseArrayOutput() DetailResponseArrayOutput
-	ToDetailResponseArrayOutputWithContext(context.Context) DetailResponseArrayOutput
-}
-
-type DetailResponseArray []DetailResponseInput
-
-func (DetailResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DetailResponse)(nil)).Elem()
-}
-
-func (i DetailResponseArray) ToDetailResponseArrayOutput() DetailResponseArrayOutput {
-	return i.ToDetailResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DetailResponseArray) ToDetailResponseArrayOutputWithContext(ctx context.Context) DetailResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DetailResponseArrayOutput)
 }
 
 // A detail for a distro and package affected by this vulnerability and its associated fix (if one is available).
@@ -8977,76 +5836,6 @@ type DiscoveryNoteResponse struct {
 	AnalysisKind string `pulumi:"analysisKind"`
 }
 
-// DiscoveryNoteResponseInput is an input type that accepts DiscoveryNoteResponseArgs and DiscoveryNoteResponseOutput values.
-// You can construct a concrete instance of `DiscoveryNoteResponseInput` via:
-//
-//          DiscoveryNoteResponseArgs{...}
-type DiscoveryNoteResponseInput interface {
-	pulumi.Input
-
-	ToDiscoveryNoteResponseOutput() DiscoveryNoteResponseOutput
-	ToDiscoveryNoteResponseOutputWithContext(context.Context) DiscoveryNoteResponseOutput
-}
-
-// A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.
-type DiscoveryNoteResponseArgs struct {
-	// Immutable. The kind of analysis that is handled by this discovery.
-	AnalysisKind pulumi.StringInput `pulumi:"analysisKind"`
-}
-
-func (DiscoveryNoteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiscoveryNoteResponse)(nil)).Elem()
-}
-
-func (i DiscoveryNoteResponseArgs) ToDiscoveryNoteResponseOutput() DiscoveryNoteResponseOutput {
-	return i.ToDiscoveryNoteResponseOutputWithContext(context.Background())
-}
-
-func (i DiscoveryNoteResponseArgs) ToDiscoveryNoteResponseOutputWithContext(ctx context.Context) DiscoveryNoteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryNoteResponseOutput)
-}
-
-func (i DiscoveryNoteResponseArgs) ToDiscoveryNoteResponsePtrOutput() DiscoveryNoteResponsePtrOutput {
-	return i.ToDiscoveryNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DiscoveryNoteResponseArgs) ToDiscoveryNoteResponsePtrOutputWithContext(ctx context.Context) DiscoveryNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryNoteResponseOutput).ToDiscoveryNoteResponsePtrOutputWithContext(ctx)
-}
-
-// DiscoveryNoteResponsePtrInput is an input type that accepts DiscoveryNoteResponseArgs, DiscoveryNoteResponsePtr and DiscoveryNoteResponsePtrOutput values.
-// You can construct a concrete instance of `DiscoveryNoteResponsePtrInput` via:
-//
-//          DiscoveryNoteResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DiscoveryNoteResponsePtrInput interface {
-	pulumi.Input
-
-	ToDiscoveryNoteResponsePtrOutput() DiscoveryNoteResponsePtrOutput
-	ToDiscoveryNoteResponsePtrOutputWithContext(context.Context) DiscoveryNoteResponsePtrOutput
-}
-
-type discoveryNoteResponsePtrType DiscoveryNoteResponseArgs
-
-func DiscoveryNoteResponsePtr(v *DiscoveryNoteResponseArgs) DiscoveryNoteResponsePtrInput {
-	return (*discoveryNoteResponsePtrType)(v)
-}
-
-func (*discoveryNoteResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DiscoveryNoteResponse)(nil)).Elem()
-}
-
-func (i *discoveryNoteResponsePtrType) ToDiscoveryNoteResponsePtrOutput() DiscoveryNoteResponsePtrOutput {
-	return i.ToDiscoveryNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *discoveryNoteResponsePtrType) ToDiscoveryNoteResponsePtrOutputWithContext(ctx context.Context) DiscoveryNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryNoteResponsePtrOutput)
-}
-
 // A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.
 type DiscoveryNoteResponseOutput struct{ *pulumi.OutputState }
 
@@ -9062,53 +5851,9 @@ func (o DiscoveryNoteResponseOutput) ToDiscoveryNoteResponseOutputWithContext(ct
 	return o
 }
 
-func (o DiscoveryNoteResponseOutput) ToDiscoveryNoteResponsePtrOutput() DiscoveryNoteResponsePtrOutput {
-	return o.ToDiscoveryNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DiscoveryNoteResponseOutput) ToDiscoveryNoteResponsePtrOutputWithContext(ctx context.Context) DiscoveryNoteResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscoveryNoteResponse) *DiscoveryNoteResponse {
-		return &v
-	}).(DiscoveryNoteResponsePtrOutput)
-}
-
 // Immutable. The kind of analysis that is handled by this discovery.
 func (o DiscoveryNoteResponseOutput) AnalysisKind() pulumi.StringOutput {
 	return o.ApplyT(func(v DiscoveryNoteResponse) string { return v.AnalysisKind }).(pulumi.StringOutput)
-}
-
-type DiscoveryNoteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DiscoveryNoteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DiscoveryNoteResponse)(nil)).Elem()
-}
-
-func (o DiscoveryNoteResponsePtrOutput) ToDiscoveryNoteResponsePtrOutput() DiscoveryNoteResponsePtrOutput {
-	return o
-}
-
-func (o DiscoveryNoteResponsePtrOutput) ToDiscoveryNoteResponsePtrOutputWithContext(ctx context.Context) DiscoveryNoteResponsePtrOutput {
-	return o
-}
-
-func (o DiscoveryNoteResponsePtrOutput) Elem() DiscoveryNoteResponseOutput {
-	return o.ApplyT(func(v *DiscoveryNoteResponse) DiscoveryNoteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DiscoveryNoteResponse
-		return ret
-	}).(DiscoveryNoteResponseOutput)
-}
-
-// Immutable. The kind of analysis that is handled by this discovery.
-func (o DiscoveryNoteResponsePtrOutput) AnalysisKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DiscoveryNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AnalysisKind
-	}).(pulumi.StringPtrOutput)
 }
 
 // Provides information about the analysis status of a discovered resource.
@@ -9341,84 +6086,6 @@ type DiscoveryOccurrenceResponse struct {
 	LastScanTime string `pulumi:"lastScanTime"`
 }
 
-// DiscoveryOccurrenceResponseInput is an input type that accepts DiscoveryOccurrenceResponseArgs and DiscoveryOccurrenceResponseOutput values.
-// You can construct a concrete instance of `DiscoveryOccurrenceResponseInput` via:
-//
-//          DiscoveryOccurrenceResponseArgs{...}
-type DiscoveryOccurrenceResponseInput interface {
-	pulumi.Input
-
-	ToDiscoveryOccurrenceResponseOutput() DiscoveryOccurrenceResponseOutput
-	ToDiscoveryOccurrenceResponseOutputWithContext(context.Context) DiscoveryOccurrenceResponseOutput
-}
-
-// Provides information about the analysis status of a discovered resource.
-type DiscoveryOccurrenceResponseArgs struct {
-	// The status of discovery for the resource.
-	AnalysisStatus pulumi.StringInput `pulumi:"analysisStatus"`
-	// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
-	AnalysisStatusError StatusResponseInput `pulumi:"analysisStatusError"`
-	// Whether the resource is continuously analyzed.
-	ContinuousAnalysis pulumi.StringInput `pulumi:"continuousAnalysis"`
-	// The CPE of the resource being scanned.
-	Cpe pulumi.StringInput `pulumi:"cpe"`
-	// The last time this resource was scanned.
-	LastScanTime pulumi.StringInput `pulumi:"lastScanTime"`
-}
-
-func (DiscoveryOccurrenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiscoveryOccurrenceResponse)(nil)).Elem()
-}
-
-func (i DiscoveryOccurrenceResponseArgs) ToDiscoveryOccurrenceResponseOutput() DiscoveryOccurrenceResponseOutput {
-	return i.ToDiscoveryOccurrenceResponseOutputWithContext(context.Background())
-}
-
-func (i DiscoveryOccurrenceResponseArgs) ToDiscoveryOccurrenceResponseOutputWithContext(ctx context.Context) DiscoveryOccurrenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryOccurrenceResponseOutput)
-}
-
-func (i DiscoveryOccurrenceResponseArgs) ToDiscoveryOccurrenceResponsePtrOutput() DiscoveryOccurrenceResponsePtrOutput {
-	return i.ToDiscoveryOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DiscoveryOccurrenceResponseArgs) ToDiscoveryOccurrenceResponsePtrOutputWithContext(ctx context.Context) DiscoveryOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryOccurrenceResponseOutput).ToDiscoveryOccurrenceResponsePtrOutputWithContext(ctx)
-}
-
-// DiscoveryOccurrenceResponsePtrInput is an input type that accepts DiscoveryOccurrenceResponseArgs, DiscoveryOccurrenceResponsePtr and DiscoveryOccurrenceResponsePtrOutput values.
-// You can construct a concrete instance of `DiscoveryOccurrenceResponsePtrInput` via:
-//
-//          DiscoveryOccurrenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DiscoveryOccurrenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToDiscoveryOccurrenceResponsePtrOutput() DiscoveryOccurrenceResponsePtrOutput
-	ToDiscoveryOccurrenceResponsePtrOutputWithContext(context.Context) DiscoveryOccurrenceResponsePtrOutput
-}
-
-type discoveryOccurrenceResponsePtrType DiscoveryOccurrenceResponseArgs
-
-func DiscoveryOccurrenceResponsePtr(v *DiscoveryOccurrenceResponseArgs) DiscoveryOccurrenceResponsePtrInput {
-	return (*discoveryOccurrenceResponsePtrType)(v)
-}
-
-func (*discoveryOccurrenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DiscoveryOccurrenceResponse)(nil)).Elem()
-}
-
-func (i *discoveryOccurrenceResponsePtrType) ToDiscoveryOccurrenceResponsePtrOutput() DiscoveryOccurrenceResponsePtrOutput {
-	return i.ToDiscoveryOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *discoveryOccurrenceResponsePtrType) ToDiscoveryOccurrenceResponsePtrOutputWithContext(ctx context.Context) DiscoveryOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryOccurrenceResponsePtrOutput)
-}
-
 // Provides information about the analysis status of a discovered resource.
 type DiscoveryOccurrenceResponseOutput struct{ *pulumi.OutputState }
 
@@ -9432,16 +6099,6 @@ func (o DiscoveryOccurrenceResponseOutput) ToDiscoveryOccurrenceResponseOutput()
 
 func (o DiscoveryOccurrenceResponseOutput) ToDiscoveryOccurrenceResponseOutputWithContext(ctx context.Context) DiscoveryOccurrenceResponseOutput {
 	return o
-}
-
-func (o DiscoveryOccurrenceResponseOutput) ToDiscoveryOccurrenceResponsePtrOutput() DiscoveryOccurrenceResponsePtrOutput {
-	return o.ToDiscoveryOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DiscoveryOccurrenceResponseOutput) ToDiscoveryOccurrenceResponsePtrOutputWithContext(ctx context.Context) DiscoveryOccurrenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscoveryOccurrenceResponse) *DiscoveryOccurrenceResponse {
-		return &v
-	}).(DiscoveryOccurrenceResponsePtrOutput)
 }
 
 // The status of discovery for the resource.
@@ -9467,80 +6124,6 @@ func (o DiscoveryOccurrenceResponseOutput) Cpe() pulumi.StringOutput {
 // The last time this resource was scanned.
 func (o DiscoveryOccurrenceResponseOutput) LastScanTime() pulumi.StringOutput {
 	return o.ApplyT(func(v DiscoveryOccurrenceResponse) string { return v.LastScanTime }).(pulumi.StringOutput)
-}
-
-type DiscoveryOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DiscoveryOccurrenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DiscoveryOccurrenceResponse)(nil)).Elem()
-}
-
-func (o DiscoveryOccurrenceResponsePtrOutput) ToDiscoveryOccurrenceResponsePtrOutput() DiscoveryOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o DiscoveryOccurrenceResponsePtrOutput) ToDiscoveryOccurrenceResponsePtrOutputWithContext(ctx context.Context) DiscoveryOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o DiscoveryOccurrenceResponsePtrOutput) Elem() DiscoveryOccurrenceResponseOutput {
-	return o.ApplyT(func(v *DiscoveryOccurrenceResponse) DiscoveryOccurrenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DiscoveryOccurrenceResponse
-		return ret
-	}).(DiscoveryOccurrenceResponseOutput)
-}
-
-// The status of discovery for the resource.
-func (o DiscoveryOccurrenceResponsePtrOutput) AnalysisStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DiscoveryOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AnalysisStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
-func (o DiscoveryOccurrenceResponsePtrOutput) AnalysisStatusError() StatusResponsePtrOutput {
-	return o.ApplyT(func(v *DiscoveryOccurrenceResponse) *StatusResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AnalysisStatusError
-	}).(StatusResponsePtrOutput)
-}
-
-// Whether the resource is continuously analyzed.
-func (o DiscoveryOccurrenceResponsePtrOutput) ContinuousAnalysis() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DiscoveryOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ContinuousAnalysis
-	}).(pulumi.StringPtrOutput)
-}
-
-// The CPE of the resource being scanned.
-func (o DiscoveryOccurrenceResponsePtrOutput) Cpe() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DiscoveryOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Cpe
-	}).(pulumi.StringPtrOutput)
-}
-
-// The last time this resource was scanned.
-func (o DiscoveryOccurrenceResponsePtrOutput) LastScanTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DiscoveryOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LastScanTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // This represents a particular channel of distribution for a given package. E.g., Debian's jessie-backports dpkg mirror.
@@ -9702,70 +6285,6 @@ type DistributionResponse struct {
 	Maintainer string `pulumi:"maintainer"`
 	// The distribution channel-specific homepage for this package.
 	Url string `pulumi:"url"`
-}
-
-// DistributionResponseInput is an input type that accepts DistributionResponseArgs and DistributionResponseOutput values.
-// You can construct a concrete instance of `DistributionResponseInput` via:
-//
-//          DistributionResponseArgs{...}
-type DistributionResponseInput interface {
-	pulumi.Input
-
-	ToDistributionResponseOutput() DistributionResponseOutput
-	ToDistributionResponseOutputWithContext(context.Context) DistributionResponseOutput
-}
-
-// This represents a particular channel of distribution for a given package. E.g., Debian's jessie-backports dpkg mirror.
-type DistributionResponseArgs struct {
-	// The CPU architecture for which packages in this distribution channel were built.
-	Architecture pulumi.StringInput `pulumi:"architecture"`
-	// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
-	// The distribution channel-specific description of this package.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The latest available version of this package in this distribution channel.
-	LatestVersion VersionResponseInput `pulumi:"latestVersion"`
-	// A freeform string denoting the maintainer of this package.
-	Maintainer pulumi.StringInput `pulumi:"maintainer"`
-	// The distribution channel-specific homepage for this package.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (DistributionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DistributionResponse)(nil)).Elem()
-}
-
-func (i DistributionResponseArgs) ToDistributionResponseOutput() DistributionResponseOutput {
-	return i.ToDistributionResponseOutputWithContext(context.Background())
-}
-
-func (i DistributionResponseArgs) ToDistributionResponseOutputWithContext(ctx context.Context) DistributionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionResponseOutput)
-}
-
-// DistributionResponseArrayInput is an input type that accepts DistributionResponseArray and DistributionResponseArrayOutput values.
-// You can construct a concrete instance of `DistributionResponseArrayInput` via:
-//
-//          DistributionResponseArray{ DistributionResponseArgs{...} }
-type DistributionResponseArrayInput interface {
-	pulumi.Input
-
-	ToDistributionResponseArrayOutput() DistributionResponseArrayOutput
-	ToDistributionResponseArrayOutputWithContext(context.Context) DistributionResponseArrayOutput
-}
-
-type DistributionResponseArray []DistributionResponseInput
-
-func (DistributionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DistributionResponse)(nil)).Elem()
-}
-
-func (i DistributionResponseArray) ToDistributionResponseArrayOutput() DistributionResponseArrayOutput {
-	return i.ToDistributionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DistributionResponseArray) ToDistributionResponseArrayOutputWithContext(ctx context.Context) DistributionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionResponseArrayOutput)
 }
 
 // This represents a particular channel of distribution for a given package. E.g., Debian's jessie-backports dpkg mirror.
@@ -10006,77 +6525,6 @@ type EnvelopeResponse struct {
 	Signatures  []EnvelopeSignatureResponse `pulumi:"signatures"`
 }
 
-// EnvelopeResponseInput is an input type that accepts EnvelopeResponseArgs and EnvelopeResponseOutput values.
-// You can construct a concrete instance of `EnvelopeResponseInput` via:
-//
-//          EnvelopeResponseArgs{...}
-type EnvelopeResponseInput interface {
-	pulumi.Input
-
-	ToEnvelopeResponseOutput() EnvelopeResponseOutput
-	ToEnvelopeResponseOutputWithContext(context.Context) EnvelopeResponseOutput
-}
-
-// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
-type EnvelopeResponseArgs struct {
-	Payload     pulumi.StringInput                  `pulumi:"payload"`
-	PayloadType pulumi.StringInput                  `pulumi:"payloadType"`
-	Signatures  EnvelopeSignatureResponseArrayInput `pulumi:"signatures"`
-}
-
-func (EnvelopeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvelopeResponse)(nil)).Elem()
-}
-
-func (i EnvelopeResponseArgs) ToEnvelopeResponseOutput() EnvelopeResponseOutput {
-	return i.ToEnvelopeResponseOutputWithContext(context.Background())
-}
-
-func (i EnvelopeResponseArgs) ToEnvelopeResponseOutputWithContext(ctx context.Context) EnvelopeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvelopeResponseOutput)
-}
-
-func (i EnvelopeResponseArgs) ToEnvelopeResponsePtrOutput() EnvelopeResponsePtrOutput {
-	return i.ToEnvelopeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EnvelopeResponseArgs) ToEnvelopeResponsePtrOutputWithContext(ctx context.Context) EnvelopeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvelopeResponseOutput).ToEnvelopeResponsePtrOutputWithContext(ctx)
-}
-
-// EnvelopeResponsePtrInput is an input type that accepts EnvelopeResponseArgs, EnvelopeResponsePtr and EnvelopeResponsePtrOutput values.
-// You can construct a concrete instance of `EnvelopeResponsePtrInput` via:
-//
-//          EnvelopeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EnvelopeResponsePtrInput interface {
-	pulumi.Input
-
-	ToEnvelopeResponsePtrOutput() EnvelopeResponsePtrOutput
-	ToEnvelopeResponsePtrOutputWithContext(context.Context) EnvelopeResponsePtrOutput
-}
-
-type envelopeResponsePtrType EnvelopeResponseArgs
-
-func EnvelopeResponsePtr(v *EnvelopeResponseArgs) EnvelopeResponsePtrInput {
-	return (*envelopeResponsePtrType)(v)
-}
-
-func (*envelopeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvelopeResponse)(nil)).Elem()
-}
-
-func (i *envelopeResponsePtrType) ToEnvelopeResponsePtrOutput() EnvelopeResponsePtrOutput {
-	return i.ToEnvelopeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *envelopeResponsePtrType) ToEnvelopeResponsePtrOutputWithContext(ctx context.Context) EnvelopeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvelopeResponsePtrOutput)
-}
-
 // MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
 type EnvelopeResponseOutput struct{ *pulumi.OutputState }
 
@@ -10092,16 +6540,6 @@ func (o EnvelopeResponseOutput) ToEnvelopeResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o EnvelopeResponseOutput) ToEnvelopeResponsePtrOutput() EnvelopeResponsePtrOutput {
-	return o.ToEnvelopeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EnvelopeResponseOutput) ToEnvelopeResponsePtrOutputWithContext(ctx context.Context) EnvelopeResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvelopeResponse) *EnvelopeResponse {
-		return &v
-	}).(EnvelopeResponsePtrOutput)
-}
-
 func (o EnvelopeResponseOutput) Payload() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvelopeResponse) string { return v.Payload }).(pulumi.StringOutput)
 }
@@ -10112,57 +6550,6 @@ func (o EnvelopeResponseOutput) PayloadType() pulumi.StringOutput {
 
 func (o EnvelopeResponseOutput) Signatures() EnvelopeSignatureResponseArrayOutput {
 	return o.ApplyT(func(v EnvelopeResponse) []EnvelopeSignatureResponse { return v.Signatures }).(EnvelopeSignatureResponseArrayOutput)
-}
-
-type EnvelopeResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EnvelopeResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvelopeResponse)(nil)).Elem()
-}
-
-func (o EnvelopeResponsePtrOutput) ToEnvelopeResponsePtrOutput() EnvelopeResponsePtrOutput {
-	return o
-}
-
-func (o EnvelopeResponsePtrOutput) ToEnvelopeResponsePtrOutputWithContext(ctx context.Context) EnvelopeResponsePtrOutput {
-	return o
-}
-
-func (o EnvelopeResponsePtrOutput) Elem() EnvelopeResponseOutput {
-	return o.ApplyT(func(v *EnvelopeResponse) EnvelopeResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EnvelopeResponse
-		return ret
-	}).(EnvelopeResponseOutput)
-}
-
-func (o EnvelopeResponsePtrOutput) Payload() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvelopeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Payload
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o EnvelopeResponsePtrOutput) PayloadType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvelopeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PayloadType
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o EnvelopeResponsePtrOutput) Signatures() EnvelopeSignatureResponseArrayOutput {
-	return o.ApplyT(func(v *EnvelopeResponse) []EnvelopeSignatureResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Signatures
-	}).(EnvelopeSignatureResponseArrayOutput)
 }
 
 type EnvelopeSignature struct {
@@ -10268,59 +6655,6 @@ func (o EnvelopeSignatureArrayOutput) Index(i pulumi.IntInput) EnvelopeSignature
 type EnvelopeSignatureResponse struct {
 	Keyid string `pulumi:"keyid"`
 	Sig   string `pulumi:"sig"`
-}
-
-// EnvelopeSignatureResponseInput is an input type that accepts EnvelopeSignatureResponseArgs and EnvelopeSignatureResponseOutput values.
-// You can construct a concrete instance of `EnvelopeSignatureResponseInput` via:
-//
-//          EnvelopeSignatureResponseArgs{...}
-type EnvelopeSignatureResponseInput interface {
-	pulumi.Input
-
-	ToEnvelopeSignatureResponseOutput() EnvelopeSignatureResponseOutput
-	ToEnvelopeSignatureResponseOutputWithContext(context.Context) EnvelopeSignatureResponseOutput
-}
-
-type EnvelopeSignatureResponseArgs struct {
-	Keyid pulumi.StringInput `pulumi:"keyid"`
-	Sig   pulumi.StringInput `pulumi:"sig"`
-}
-
-func (EnvelopeSignatureResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvelopeSignatureResponse)(nil)).Elem()
-}
-
-func (i EnvelopeSignatureResponseArgs) ToEnvelopeSignatureResponseOutput() EnvelopeSignatureResponseOutput {
-	return i.ToEnvelopeSignatureResponseOutputWithContext(context.Background())
-}
-
-func (i EnvelopeSignatureResponseArgs) ToEnvelopeSignatureResponseOutputWithContext(ctx context.Context) EnvelopeSignatureResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvelopeSignatureResponseOutput)
-}
-
-// EnvelopeSignatureResponseArrayInput is an input type that accepts EnvelopeSignatureResponseArray and EnvelopeSignatureResponseArrayOutput values.
-// You can construct a concrete instance of `EnvelopeSignatureResponseArrayInput` via:
-//
-//          EnvelopeSignatureResponseArray{ EnvelopeSignatureResponseArgs{...} }
-type EnvelopeSignatureResponseArrayInput interface {
-	pulumi.Input
-
-	ToEnvelopeSignatureResponseArrayOutput() EnvelopeSignatureResponseArrayOutput
-	ToEnvelopeSignatureResponseArrayOutputWithContext(context.Context) EnvelopeSignatureResponseArrayOutput
-}
-
-type EnvelopeSignatureResponseArray []EnvelopeSignatureResponseInput
-
-func (EnvelopeSignatureResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnvelopeSignatureResponse)(nil)).Elem()
-}
-
-func (i EnvelopeSignatureResponseArray) ToEnvelopeSignatureResponseArrayOutput() EnvelopeSignatureResponseArrayOutput {
-	return i.ToEnvelopeSignatureResponseArrayOutputWithContext(context.Background())
-}
-
-func (i EnvelopeSignatureResponseArray) ToEnvelopeSignatureResponseArrayOutputWithContext(ctx context.Context) EnvelopeSignatureResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvelopeSignatureResponseArrayOutput)
 }
 
 type EnvelopeSignatureResponseOutput struct{ *pulumi.OutputState }
@@ -10574,41 +6908,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -10813,80 +7112,6 @@ type FingerprintResponse struct {
 	V2Name string `pulumi:"v2Name"`
 }
 
-// FingerprintResponseInput is an input type that accepts FingerprintResponseArgs and FingerprintResponseOutput values.
-// You can construct a concrete instance of `FingerprintResponseInput` via:
-//
-//          FingerprintResponseArgs{...}
-type FingerprintResponseInput interface {
-	pulumi.Input
-
-	ToFingerprintResponseOutput() FingerprintResponseOutput
-	ToFingerprintResponseOutputWithContext(context.Context) FingerprintResponseOutput
-}
-
-// A set of properties that uniquely identify a given Docker image.
-type FingerprintResponseArgs struct {
-	// The layer ID of the final layer in the Docker image's v1 representation.
-	V1Name pulumi.StringInput `pulumi:"v1Name"`
-	// The ordered list of v2 blobs that represent a given image.
-	V2Blob pulumi.StringArrayInput `pulumi:"v2Blob"`
-	// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept.
-	V2Name pulumi.StringInput `pulumi:"v2Name"`
-}
-
-func (FingerprintResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FingerprintResponse)(nil)).Elem()
-}
-
-func (i FingerprintResponseArgs) ToFingerprintResponseOutput() FingerprintResponseOutput {
-	return i.ToFingerprintResponseOutputWithContext(context.Background())
-}
-
-func (i FingerprintResponseArgs) ToFingerprintResponseOutputWithContext(ctx context.Context) FingerprintResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FingerprintResponseOutput)
-}
-
-func (i FingerprintResponseArgs) ToFingerprintResponsePtrOutput() FingerprintResponsePtrOutput {
-	return i.ToFingerprintResponsePtrOutputWithContext(context.Background())
-}
-
-func (i FingerprintResponseArgs) ToFingerprintResponsePtrOutputWithContext(ctx context.Context) FingerprintResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FingerprintResponseOutput).ToFingerprintResponsePtrOutputWithContext(ctx)
-}
-
-// FingerprintResponsePtrInput is an input type that accepts FingerprintResponseArgs, FingerprintResponsePtr and FingerprintResponsePtrOutput values.
-// You can construct a concrete instance of `FingerprintResponsePtrInput` via:
-//
-//          FingerprintResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type FingerprintResponsePtrInput interface {
-	pulumi.Input
-
-	ToFingerprintResponsePtrOutput() FingerprintResponsePtrOutput
-	ToFingerprintResponsePtrOutputWithContext(context.Context) FingerprintResponsePtrOutput
-}
-
-type fingerprintResponsePtrType FingerprintResponseArgs
-
-func FingerprintResponsePtr(v *FingerprintResponseArgs) FingerprintResponsePtrInput {
-	return (*fingerprintResponsePtrType)(v)
-}
-
-func (*fingerprintResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FingerprintResponse)(nil)).Elem()
-}
-
-func (i *fingerprintResponsePtrType) ToFingerprintResponsePtrOutput() FingerprintResponsePtrOutput {
-	return i.ToFingerprintResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *fingerprintResponsePtrType) ToFingerprintResponsePtrOutputWithContext(ctx context.Context) FingerprintResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FingerprintResponsePtrOutput)
-}
-
 // A set of properties that uniquely identify a given Docker image.
 type FingerprintResponseOutput struct{ *pulumi.OutputState }
 
@@ -10902,16 +7127,6 @@ func (o FingerprintResponseOutput) ToFingerprintResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o FingerprintResponseOutput) ToFingerprintResponsePtrOutput() FingerprintResponsePtrOutput {
-	return o.ToFingerprintResponsePtrOutputWithContext(context.Background())
-}
-
-func (o FingerprintResponseOutput) ToFingerprintResponsePtrOutputWithContext(ctx context.Context) FingerprintResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FingerprintResponse) *FingerprintResponse {
-		return &v
-	}).(FingerprintResponsePtrOutput)
-}
-
 // The layer ID of the final layer in the Docker image's v1 representation.
 func (o FingerprintResponseOutput) V1Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FingerprintResponse) string { return v.V1Name }).(pulumi.StringOutput)
@@ -10925,60 +7140,6 @@ func (o FingerprintResponseOutput) V2Blob() pulumi.StringArrayOutput {
 // The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept.
 func (o FingerprintResponseOutput) V2Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FingerprintResponse) string { return v.V2Name }).(pulumi.StringOutput)
-}
-
-type FingerprintResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (FingerprintResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FingerprintResponse)(nil)).Elem()
-}
-
-func (o FingerprintResponsePtrOutput) ToFingerprintResponsePtrOutput() FingerprintResponsePtrOutput {
-	return o
-}
-
-func (o FingerprintResponsePtrOutput) ToFingerprintResponsePtrOutputWithContext(ctx context.Context) FingerprintResponsePtrOutput {
-	return o
-}
-
-func (o FingerprintResponsePtrOutput) Elem() FingerprintResponseOutput {
-	return o.ApplyT(func(v *FingerprintResponse) FingerprintResponse {
-		if v != nil {
-			return *v
-		}
-		var ret FingerprintResponse
-		return ret
-	}).(FingerprintResponseOutput)
-}
-
-// The layer ID of the final layer in the Docker image's v1 representation.
-func (o FingerprintResponsePtrOutput) V1Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FingerprintResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.V1Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ordered list of v2 blobs that represent a given image.
-func (o FingerprintResponsePtrOutput) V2Blob() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FingerprintResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.V2Blob
-	}).(pulumi.StringArrayOutput)
-}
-
-// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept.
-func (o FingerprintResponsePtrOutput) V2Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FingerprintResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.V2Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // A SourceContext referring to a Gerrit project.
@@ -11190,82 +7351,6 @@ type GerritSourceContextResponse struct {
 	RevisionId string `pulumi:"revisionId"`
 }
 
-// GerritSourceContextResponseInput is an input type that accepts GerritSourceContextResponseArgs and GerritSourceContextResponseOutput values.
-// You can construct a concrete instance of `GerritSourceContextResponseInput` via:
-//
-//          GerritSourceContextResponseArgs{...}
-type GerritSourceContextResponseInput interface {
-	pulumi.Input
-
-	ToGerritSourceContextResponseOutput() GerritSourceContextResponseOutput
-	ToGerritSourceContextResponseOutputWithContext(context.Context) GerritSourceContextResponseOutput
-}
-
-// A SourceContext referring to a Gerrit project.
-type GerritSourceContextResponseArgs struct {
-	// An alias, which may be a branch or tag.
-	AliasContext AliasContextResponseInput `pulumi:"aliasContext"`
-	// The full project name within the host. Projects may be nested, so "project/subproject" is a valid project name. The "repo name" is the hostURI/project.
-	GerritProject pulumi.StringInput `pulumi:"gerritProject"`
-	// The URI of a running Gerrit instance.
-	HostUri pulumi.StringInput `pulumi:"hostUri"`
-	// A revision (commit) ID.
-	RevisionId pulumi.StringInput `pulumi:"revisionId"`
-}
-
-func (GerritSourceContextResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GerritSourceContextResponse)(nil)).Elem()
-}
-
-func (i GerritSourceContextResponseArgs) ToGerritSourceContextResponseOutput() GerritSourceContextResponseOutput {
-	return i.ToGerritSourceContextResponseOutputWithContext(context.Background())
-}
-
-func (i GerritSourceContextResponseArgs) ToGerritSourceContextResponseOutputWithContext(ctx context.Context) GerritSourceContextResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GerritSourceContextResponseOutput)
-}
-
-func (i GerritSourceContextResponseArgs) ToGerritSourceContextResponsePtrOutput() GerritSourceContextResponsePtrOutput {
-	return i.ToGerritSourceContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GerritSourceContextResponseArgs) ToGerritSourceContextResponsePtrOutputWithContext(ctx context.Context) GerritSourceContextResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GerritSourceContextResponseOutput).ToGerritSourceContextResponsePtrOutputWithContext(ctx)
-}
-
-// GerritSourceContextResponsePtrInput is an input type that accepts GerritSourceContextResponseArgs, GerritSourceContextResponsePtr and GerritSourceContextResponsePtrOutput values.
-// You can construct a concrete instance of `GerritSourceContextResponsePtrInput` via:
-//
-//          GerritSourceContextResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GerritSourceContextResponsePtrInput interface {
-	pulumi.Input
-
-	ToGerritSourceContextResponsePtrOutput() GerritSourceContextResponsePtrOutput
-	ToGerritSourceContextResponsePtrOutputWithContext(context.Context) GerritSourceContextResponsePtrOutput
-}
-
-type gerritSourceContextResponsePtrType GerritSourceContextResponseArgs
-
-func GerritSourceContextResponsePtr(v *GerritSourceContextResponseArgs) GerritSourceContextResponsePtrInput {
-	return (*gerritSourceContextResponsePtrType)(v)
-}
-
-func (*gerritSourceContextResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GerritSourceContextResponse)(nil)).Elem()
-}
-
-func (i *gerritSourceContextResponsePtrType) ToGerritSourceContextResponsePtrOutput() GerritSourceContextResponsePtrOutput {
-	return i.ToGerritSourceContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *gerritSourceContextResponsePtrType) ToGerritSourceContextResponsePtrOutputWithContext(ctx context.Context) GerritSourceContextResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GerritSourceContextResponsePtrOutput)
-}
-
 // A SourceContext referring to a Gerrit project.
 type GerritSourceContextResponseOutput struct{ *pulumi.OutputState }
 
@@ -11279,16 +7364,6 @@ func (o GerritSourceContextResponseOutput) ToGerritSourceContextResponseOutput()
 
 func (o GerritSourceContextResponseOutput) ToGerritSourceContextResponseOutputWithContext(ctx context.Context) GerritSourceContextResponseOutput {
 	return o
-}
-
-func (o GerritSourceContextResponseOutput) ToGerritSourceContextResponsePtrOutput() GerritSourceContextResponsePtrOutput {
-	return o.ToGerritSourceContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GerritSourceContextResponseOutput) ToGerritSourceContextResponsePtrOutputWithContext(ctx context.Context) GerritSourceContextResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GerritSourceContextResponse) *GerritSourceContextResponse {
-		return &v
-	}).(GerritSourceContextResponsePtrOutput)
 }
 
 // An alias, which may be a branch or tag.
@@ -11309,70 +7384,6 @@ func (o GerritSourceContextResponseOutput) HostUri() pulumi.StringOutput {
 // A revision (commit) ID.
 func (o GerritSourceContextResponseOutput) RevisionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GerritSourceContextResponse) string { return v.RevisionId }).(pulumi.StringOutput)
-}
-
-type GerritSourceContextResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GerritSourceContextResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GerritSourceContextResponse)(nil)).Elem()
-}
-
-func (o GerritSourceContextResponsePtrOutput) ToGerritSourceContextResponsePtrOutput() GerritSourceContextResponsePtrOutput {
-	return o
-}
-
-func (o GerritSourceContextResponsePtrOutput) ToGerritSourceContextResponsePtrOutputWithContext(ctx context.Context) GerritSourceContextResponsePtrOutput {
-	return o
-}
-
-func (o GerritSourceContextResponsePtrOutput) Elem() GerritSourceContextResponseOutput {
-	return o.ApplyT(func(v *GerritSourceContextResponse) GerritSourceContextResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GerritSourceContextResponse
-		return ret
-	}).(GerritSourceContextResponseOutput)
-}
-
-// An alias, which may be a branch or tag.
-func (o GerritSourceContextResponsePtrOutput) AliasContext() AliasContextResponsePtrOutput {
-	return o.ApplyT(func(v *GerritSourceContextResponse) *AliasContextResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AliasContext
-	}).(AliasContextResponsePtrOutput)
-}
-
-// The full project name within the host. Projects may be nested, so "project/subproject" is a valid project name. The "repo name" is the hostURI/project.
-func (o GerritSourceContextResponsePtrOutput) GerritProject() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GerritSourceContextResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.GerritProject
-	}).(pulumi.StringPtrOutput)
-}
-
-// The URI of a running Gerrit instance.
-func (o GerritSourceContextResponsePtrOutput) HostUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GerritSourceContextResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HostUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// A revision (commit) ID.
-func (o GerritSourceContextResponsePtrOutput) RevisionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GerritSourceContextResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RevisionId
-	}).(pulumi.StringPtrOutput)
 }
 
 // A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
@@ -11542,78 +7553,6 @@ type GitSourceContextResponse struct {
 	Url string `pulumi:"url"`
 }
 
-// GitSourceContextResponseInput is an input type that accepts GitSourceContextResponseArgs and GitSourceContextResponseOutput values.
-// You can construct a concrete instance of `GitSourceContextResponseInput` via:
-//
-//          GitSourceContextResponseArgs{...}
-type GitSourceContextResponseInput interface {
-	pulumi.Input
-
-	ToGitSourceContextResponseOutput() GitSourceContextResponseOutput
-	ToGitSourceContextResponseOutputWithContext(context.Context) GitSourceContextResponseOutput
-}
-
-// A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
-type GitSourceContextResponseArgs struct {
-	// Git commit hash.
-	RevisionId pulumi.StringInput `pulumi:"revisionId"`
-	// Git repository URL.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (GitSourceContextResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitSourceContextResponse)(nil)).Elem()
-}
-
-func (i GitSourceContextResponseArgs) ToGitSourceContextResponseOutput() GitSourceContextResponseOutput {
-	return i.ToGitSourceContextResponseOutputWithContext(context.Background())
-}
-
-func (i GitSourceContextResponseArgs) ToGitSourceContextResponseOutputWithContext(ctx context.Context) GitSourceContextResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitSourceContextResponseOutput)
-}
-
-func (i GitSourceContextResponseArgs) ToGitSourceContextResponsePtrOutput() GitSourceContextResponsePtrOutput {
-	return i.ToGitSourceContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GitSourceContextResponseArgs) ToGitSourceContextResponsePtrOutputWithContext(ctx context.Context) GitSourceContextResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitSourceContextResponseOutput).ToGitSourceContextResponsePtrOutputWithContext(ctx)
-}
-
-// GitSourceContextResponsePtrInput is an input type that accepts GitSourceContextResponseArgs, GitSourceContextResponsePtr and GitSourceContextResponsePtrOutput values.
-// You can construct a concrete instance of `GitSourceContextResponsePtrInput` via:
-//
-//          GitSourceContextResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GitSourceContextResponsePtrInput interface {
-	pulumi.Input
-
-	ToGitSourceContextResponsePtrOutput() GitSourceContextResponsePtrOutput
-	ToGitSourceContextResponsePtrOutputWithContext(context.Context) GitSourceContextResponsePtrOutput
-}
-
-type gitSourceContextResponsePtrType GitSourceContextResponseArgs
-
-func GitSourceContextResponsePtr(v *GitSourceContextResponseArgs) GitSourceContextResponsePtrInput {
-	return (*gitSourceContextResponsePtrType)(v)
-}
-
-func (*gitSourceContextResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitSourceContextResponse)(nil)).Elem()
-}
-
-func (i *gitSourceContextResponsePtrType) ToGitSourceContextResponsePtrOutput() GitSourceContextResponsePtrOutput {
-	return i.ToGitSourceContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *gitSourceContextResponsePtrType) ToGitSourceContextResponsePtrOutputWithContext(ctx context.Context) GitSourceContextResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitSourceContextResponsePtrOutput)
-}
-
 // A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
 type GitSourceContextResponseOutput struct{ *pulumi.OutputState }
 
@@ -11629,16 +7568,6 @@ func (o GitSourceContextResponseOutput) ToGitSourceContextResponseOutputWithCont
 	return o
 }
 
-func (o GitSourceContextResponseOutput) ToGitSourceContextResponsePtrOutput() GitSourceContextResponsePtrOutput {
-	return o.ToGitSourceContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GitSourceContextResponseOutput) ToGitSourceContextResponsePtrOutputWithContext(ctx context.Context) GitSourceContextResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitSourceContextResponse) *GitSourceContextResponse {
-		return &v
-	}).(GitSourceContextResponsePtrOutput)
-}
-
 // Git commit hash.
 func (o GitSourceContextResponseOutput) RevisionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GitSourceContextResponse) string { return v.RevisionId }).(pulumi.StringOutput)
@@ -11647,50 +7576,6 @@ func (o GitSourceContextResponseOutput) RevisionId() pulumi.StringOutput {
 // Git repository URL.
 func (o GitSourceContextResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GitSourceContextResponse) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GitSourceContextResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GitSourceContextResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitSourceContextResponse)(nil)).Elem()
-}
-
-func (o GitSourceContextResponsePtrOutput) ToGitSourceContextResponsePtrOutput() GitSourceContextResponsePtrOutput {
-	return o
-}
-
-func (o GitSourceContextResponsePtrOutput) ToGitSourceContextResponsePtrOutputWithContext(ctx context.Context) GitSourceContextResponsePtrOutput {
-	return o
-}
-
-func (o GitSourceContextResponsePtrOutput) Elem() GitSourceContextResponseOutput {
-	return o.ApplyT(func(v *GitSourceContextResponse) GitSourceContextResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GitSourceContextResponse
-		return ret
-	}).(GitSourceContextResponseOutput)
-}
-
-// Git commit hash.
-func (o GitSourceContextResponsePtrOutput) RevisionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitSourceContextResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RevisionId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Git repository URL.
-func (o GitSourceContextResponsePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitSourceContextResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Url
-	}).(pulumi.StringPtrOutput)
 }
 
 // This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
@@ -11839,76 +7724,6 @@ type HintResponse struct {
 	HumanReadableName string `pulumi:"humanReadableName"`
 }
 
-// HintResponseInput is an input type that accepts HintResponseArgs and HintResponseOutput values.
-// You can construct a concrete instance of `HintResponseInput` via:
-//
-//          HintResponseArgs{...}
-type HintResponseInput interface {
-	pulumi.Input
-
-	ToHintResponseOutput() HintResponseOutput
-	ToHintResponseOutputWithContext(context.Context) HintResponseOutput
-}
-
-// This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
-type HintResponseArgs struct {
-	// The human readable name of this attestation authority, for example "qa".
-	HumanReadableName pulumi.StringInput `pulumi:"humanReadableName"`
-}
-
-func (HintResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HintResponse)(nil)).Elem()
-}
-
-func (i HintResponseArgs) ToHintResponseOutput() HintResponseOutput {
-	return i.ToHintResponseOutputWithContext(context.Background())
-}
-
-func (i HintResponseArgs) ToHintResponseOutputWithContext(ctx context.Context) HintResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HintResponseOutput)
-}
-
-func (i HintResponseArgs) ToHintResponsePtrOutput() HintResponsePtrOutput {
-	return i.ToHintResponsePtrOutputWithContext(context.Background())
-}
-
-func (i HintResponseArgs) ToHintResponsePtrOutputWithContext(ctx context.Context) HintResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HintResponseOutput).ToHintResponsePtrOutputWithContext(ctx)
-}
-
-// HintResponsePtrInput is an input type that accepts HintResponseArgs, HintResponsePtr and HintResponsePtrOutput values.
-// You can construct a concrete instance of `HintResponsePtrInput` via:
-//
-//          HintResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type HintResponsePtrInput interface {
-	pulumi.Input
-
-	ToHintResponsePtrOutput() HintResponsePtrOutput
-	ToHintResponsePtrOutputWithContext(context.Context) HintResponsePtrOutput
-}
-
-type hintResponsePtrType HintResponseArgs
-
-func HintResponsePtr(v *HintResponseArgs) HintResponsePtrInput {
-	return (*hintResponsePtrType)(v)
-}
-
-func (*hintResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HintResponse)(nil)).Elem()
-}
-
-func (i *hintResponsePtrType) ToHintResponsePtrOutput() HintResponsePtrOutput {
-	return i.ToHintResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *hintResponsePtrType) ToHintResponsePtrOutputWithContext(ctx context.Context) HintResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HintResponsePtrOutput)
-}
-
 // This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
 type HintResponseOutput struct{ *pulumi.OutputState }
 
@@ -11924,53 +7739,9 @@ func (o HintResponseOutput) ToHintResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o HintResponseOutput) ToHintResponsePtrOutput() HintResponsePtrOutput {
-	return o.ToHintResponsePtrOutputWithContext(context.Background())
-}
-
-func (o HintResponseOutput) ToHintResponsePtrOutputWithContext(ctx context.Context) HintResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HintResponse) *HintResponse {
-		return &v
-	}).(HintResponsePtrOutput)
-}
-
 // The human readable name of this attestation authority, for example "qa".
 func (o HintResponseOutput) HumanReadableName() pulumi.StringOutput {
 	return o.ApplyT(func(v HintResponse) string { return v.HumanReadableName }).(pulumi.StringOutput)
-}
-
-type HintResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (HintResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HintResponse)(nil)).Elem()
-}
-
-func (o HintResponsePtrOutput) ToHintResponsePtrOutput() HintResponsePtrOutput {
-	return o
-}
-
-func (o HintResponsePtrOutput) ToHintResponsePtrOutputWithContext(ctx context.Context) HintResponsePtrOutput {
-	return o
-}
-
-func (o HintResponsePtrOutput) Elem() HintResponseOutput {
-	return o.ApplyT(func(v *HintResponse) HintResponse {
-		if v != nil {
-			return *v
-		}
-		var ret HintResponse
-		return ret
-	}).(HintResponseOutput)
-}
-
-// The human readable name of this attestation authority, for example "qa".
-func (o HintResponsePtrOutput) HumanReadableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HintResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HumanReadableName
-	}).(pulumi.StringPtrOutput)
 }
 
 // The unique identifier of the update.
@@ -12140,78 +7911,6 @@ type IdentityResponse struct {
 	UpdateId string `pulumi:"updateId"`
 }
 
-// IdentityResponseInput is an input type that accepts IdentityResponseArgs and IdentityResponseOutput values.
-// You can construct a concrete instance of `IdentityResponseInput` via:
-//
-//          IdentityResponseArgs{...}
-type IdentityResponseInput interface {
-	pulumi.Input
-
-	ToIdentityResponseOutput() IdentityResponseOutput
-	ToIdentityResponseOutputWithContext(context.Context) IdentityResponseOutput
-}
-
-// The unique identifier of the update.
-type IdentityResponseArgs struct {
-	// The revision number of the update.
-	Revision pulumi.IntInput `pulumi:"revision"`
-	// The revision independent identifier of the update.
-	UpdateId pulumi.StringInput `pulumi:"updateId"`
-}
-
-func (IdentityResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityResponse)(nil)).Elem()
-}
-
-func (i IdentityResponseArgs) ToIdentityResponseOutput() IdentityResponseOutput {
-	return i.ToIdentityResponseOutputWithContext(context.Background())
-}
-
-func (i IdentityResponseArgs) ToIdentityResponseOutputWithContext(ctx context.Context) IdentityResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentityResponseOutput)
-}
-
-func (i IdentityResponseArgs) ToIdentityResponsePtrOutput() IdentityResponsePtrOutput {
-	return i.ToIdentityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i IdentityResponseArgs) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentityResponseOutput).ToIdentityResponsePtrOutputWithContext(ctx)
-}
-
-// IdentityResponsePtrInput is an input type that accepts IdentityResponseArgs, IdentityResponsePtr and IdentityResponsePtrOutput values.
-// You can construct a concrete instance of `IdentityResponsePtrInput` via:
-//
-//          IdentityResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type IdentityResponsePtrInput interface {
-	pulumi.Input
-
-	ToIdentityResponsePtrOutput() IdentityResponsePtrOutput
-	ToIdentityResponsePtrOutputWithContext(context.Context) IdentityResponsePtrOutput
-}
-
-type identityResponsePtrType IdentityResponseArgs
-
-func IdentityResponsePtr(v *IdentityResponseArgs) IdentityResponsePtrInput {
-	return (*identityResponsePtrType)(v)
-}
-
-func (*identityResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IdentityResponse)(nil)).Elem()
-}
-
-func (i *identityResponsePtrType) ToIdentityResponsePtrOutput() IdentityResponsePtrOutput {
-	return i.ToIdentityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *identityResponsePtrType) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentityResponsePtrOutput)
-}
-
 // The unique identifier of the update.
 type IdentityResponseOutput struct{ *pulumi.OutputState }
 
@@ -12227,16 +7926,6 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o IdentityResponseOutput) ToIdentityResponsePtrOutput() IdentityResponsePtrOutput {
-	return o.ToIdentityResponsePtrOutputWithContext(context.Background())
-}
-
-func (o IdentityResponseOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityResponse) *IdentityResponse {
-		return &v
-	}).(IdentityResponsePtrOutput)
-}
-
 // The revision number of the update.
 func (o IdentityResponseOutput) Revision() pulumi.IntOutput {
 	return o.ApplyT(func(v IdentityResponse) int { return v.Revision }).(pulumi.IntOutput)
@@ -12245,50 +7934,6 @@ func (o IdentityResponseOutput) Revision() pulumi.IntOutput {
 // The revision independent identifier of the update.
 func (o IdentityResponseOutput) UpdateId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.UpdateId }).(pulumi.StringOutput)
-}
-
-type IdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IdentityResponse)(nil)).Elem()
-}
-
-func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityResponsePtrOutput {
-	return o
-}
-
-func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
-	return o
-}
-
-func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
-	return o.ApplyT(func(v *IdentityResponse) IdentityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IdentityResponse
-		return ret
-	}).(IdentityResponseOutput)
-}
-
-// The revision number of the update.
-func (o IdentityResponsePtrOutput) Revision() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *IdentityResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Revision
-	}).(pulumi.IntPtrOutput)
-}
-
-// The revision independent identifier of the update.
-func (o IdentityResponsePtrOutput) UpdateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UpdateId
-	}).(pulumi.StringPtrOutput)
 }
 
 // Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g., a tag of the resource_url.
@@ -12458,78 +8103,6 @@ type ImageNoteResponse struct {
 	ResourceUrl string `pulumi:"resourceUrl"`
 }
 
-// ImageNoteResponseInput is an input type that accepts ImageNoteResponseArgs and ImageNoteResponseOutput values.
-// You can construct a concrete instance of `ImageNoteResponseInput` via:
-//
-//          ImageNoteResponseArgs{...}
-type ImageNoteResponseInput interface {
-	pulumi.Input
-
-	ToImageNoteResponseOutput() ImageNoteResponseOutput
-	ToImageNoteResponseOutputWithContext(context.Context) ImageNoteResponseOutput
-}
-
-// Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g., a tag of the resource_url.
-type ImageNoteResponseArgs struct {
-	// Immutable. The fingerprint of the base image.
-	Fingerprint FingerprintResponseInput `pulumi:"fingerprint"`
-	// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
-	ResourceUrl pulumi.StringInput `pulumi:"resourceUrl"`
-}
-
-func (ImageNoteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageNoteResponse)(nil)).Elem()
-}
-
-func (i ImageNoteResponseArgs) ToImageNoteResponseOutput() ImageNoteResponseOutput {
-	return i.ToImageNoteResponseOutputWithContext(context.Background())
-}
-
-func (i ImageNoteResponseArgs) ToImageNoteResponseOutputWithContext(ctx context.Context) ImageNoteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageNoteResponseOutput)
-}
-
-func (i ImageNoteResponseArgs) ToImageNoteResponsePtrOutput() ImageNoteResponsePtrOutput {
-	return i.ToImageNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ImageNoteResponseArgs) ToImageNoteResponsePtrOutputWithContext(ctx context.Context) ImageNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageNoteResponseOutput).ToImageNoteResponsePtrOutputWithContext(ctx)
-}
-
-// ImageNoteResponsePtrInput is an input type that accepts ImageNoteResponseArgs, ImageNoteResponsePtr and ImageNoteResponsePtrOutput values.
-// You can construct a concrete instance of `ImageNoteResponsePtrInput` via:
-//
-//          ImageNoteResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ImageNoteResponsePtrInput interface {
-	pulumi.Input
-
-	ToImageNoteResponsePtrOutput() ImageNoteResponsePtrOutput
-	ToImageNoteResponsePtrOutputWithContext(context.Context) ImageNoteResponsePtrOutput
-}
-
-type imageNoteResponsePtrType ImageNoteResponseArgs
-
-func ImageNoteResponsePtr(v *ImageNoteResponseArgs) ImageNoteResponsePtrInput {
-	return (*imageNoteResponsePtrType)(v)
-}
-
-func (*imageNoteResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageNoteResponse)(nil)).Elem()
-}
-
-func (i *imageNoteResponsePtrType) ToImageNoteResponsePtrOutput() ImageNoteResponsePtrOutput {
-	return i.ToImageNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *imageNoteResponsePtrType) ToImageNoteResponsePtrOutputWithContext(ctx context.Context) ImageNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageNoteResponsePtrOutput)
-}
-
 // Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g., a tag of the resource_url.
 type ImageNoteResponseOutput struct{ *pulumi.OutputState }
 
@@ -12545,16 +8118,6 @@ func (o ImageNoteResponseOutput) ToImageNoteResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o ImageNoteResponseOutput) ToImageNoteResponsePtrOutput() ImageNoteResponsePtrOutput {
-	return o.ToImageNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ImageNoteResponseOutput) ToImageNoteResponsePtrOutputWithContext(ctx context.Context) ImageNoteResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageNoteResponse) *ImageNoteResponse {
-		return &v
-	}).(ImageNoteResponsePtrOutput)
-}
-
 // Immutable. The fingerprint of the base image.
 func (o ImageNoteResponseOutput) Fingerprint() FingerprintResponseOutput {
 	return o.ApplyT(func(v ImageNoteResponse) FingerprintResponse { return v.Fingerprint }).(FingerprintResponseOutput)
@@ -12563,50 +8126,6 @@ func (o ImageNoteResponseOutput) Fingerprint() FingerprintResponseOutput {
 // Immutable. The resource_url for the resource representing the basis of associated occurrence images.
 func (o ImageNoteResponseOutput) ResourceUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageNoteResponse) string { return v.ResourceUrl }).(pulumi.StringOutput)
-}
-
-type ImageNoteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ImageNoteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageNoteResponse)(nil)).Elem()
-}
-
-func (o ImageNoteResponsePtrOutput) ToImageNoteResponsePtrOutput() ImageNoteResponsePtrOutput {
-	return o
-}
-
-func (o ImageNoteResponsePtrOutput) ToImageNoteResponsePtrOutputWithContext(ctx context.Context) ImageNoteResponsePtrOutput {
-	return o
-}
-
-func (o ImageNoteResponsePtrOutput) Elem() ImageNoteResponseOutput {
-	return o.ApplyT(func(v *ImageNoteResponse) ImageNoteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ImageNoteResponse
-		return ret
-	}).(ImageNoteResponseOutput)
-}
-
-// Immutable. The fingerprint of the base image.
-func (o ImageNoteResponsePtrOutput) Fingerprint() FingerprintResponsePtrOutput {
-	return o.ApplyT(func(v *ImageNoteResponse) *FingerprintResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Fingerprint
-	}).(FingerprintResponsePtrOutput)
-}
-
-// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
-func (o ImageNoteResponsePtrOutput) ResourceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourceUrl
-	}).(pulumi.StringPtrOutput)
 }
 
 // Details of the derived image portion of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
@@ -12780,82 +8299,6 @@ type ImageOccurrenceResponse struct {
 	LayerInfo []LayerResponse `pulumi:"layerInfo"`
 }
 
-// ImageOccurrenceResponseInput is an input type that accepts ImageOccurrenceResponseArgs and ImageOccurrenceResponseOutput values.
-// You can construct a concrete instance of `ImageOccurrenceResponseInput` via:
-//
-//          ImageOccurrenceResponseArgs{...}
-type ImageOccurrenceResponseInput interface {
-	pulumi.Input
-
-	ToImageOccurrenceResponseOutput() ImageOccurrenceResponseOutput
-	ToImageOccurrenceResponseOutputWithContext(context.Context) ImageOccurrenceResponseOutput
-}
-
-// Details of the derived image portion of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
-type ImageOccurrenceResponseArgs struct {
-	// This contains the base image URL for the derived image occurrence.
-	BaseResourceUrl pulumi.StringInput `pulumi:"baseResourceUrl"`
-	// The number of layers by which this image differs from the associated image basis.
-	Distance pulumi.IntInput `pulumi:"distance"`
-	// The fingerprint of the derived image.
-	Fingerprint FingerprintResponseInput `pulumi:"fingerprint"`
-	// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
-	LayerInfo LayerResponseArrayInput `pulumi:"layerInfo"`
-}
-
-func (ImageOccurrenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageOccurrenceResponse)(nil)).Elem()
-}
-
-func (i ImageOccurrenceResponseArgs) ToImageOccurrenceResponseOutput() ImageOccurrenceResponseOutput {
-	return i.ToImageOccurrenceResponseOutputWithContext(context.Background())
-}
-
-func (i ImageOccurrenceResponseArgs) ToImageOccurrenceResponseOutputWithContext(ctx context.Context) ImageOccurrenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageOccurrenceResponseOutput)
-}
-
-func (i ImageOccurrenceResponseArgs) ToImageOccurrenceResponsePtrOutput() ImageOccurrenceResponsePtrOutput {
-	return i.ToImageOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ImageOccurrenceResponseArgs) ToImageOccurrenceResponsePtrOutputWithContext(ctx context.Context) ImageOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageOccurrenceResponseOutput).ToImageOccurrenceResponsePtrOutputWithContext(ctx)
-}
-
-// ImageOccurrenceResponsePtrInput is an input type that accepts ImageOccurrenceResponseArgs, ImageOccurrenceResponsePtr and ImageOccurrenceResponsePtrOutput values.
-// You can construct a concrete instance of `ImageOccurrenceResponsePtrInput` via:
-//
-//          ImageOccurrenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ImageOccurrenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToImageOccurrenceResponsePtrOutput() ImageOccurrenceResponsePtrOutput
-	ToImageOccurrenceResponsePtrOutputWithContext(context.Context) ImageOccurrenceResponsePtrOutput
-}
-
-type imageOccurrenceResponsePtrType ImageOccurrenceResponseArgs
-
-func ImageOccurrenceResponsePtr(v *ImageOccurrenceResponseArgs) ImageOccurrenceResponsePtrInput {
-	return (*imageOccurrenceResponsePtrType)(v)
-}
-
-func (*imageOccurrenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageOccurrenceResponse)(nil)).Elem()
-}
-
-func (i *imageOccurrenceResponsePtrType) ToImageOccurrenceResponsePtrOutput() ImageOccurrenceResponsePtrOutput {
-	return i.ToImageOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *imageOccurrenceResponsePtrType) ToImageOccurrenceResponsePtrOutputWithContext(ctx context.Context) ImageOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageOccurrenceResponsePtrOutput)
-}
-
 // Details of the derived image portion of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
 type ImageOccurrenceResponseOutput struct{ *pulumi.OutputState }
 
@@ -12869,16 +8312,6 @@ func (o ImageOccurrenceResponseOutput) ToImageOccurrenceResponseOutput() ImageOc
 
 func (o ImageOccurrenceResponseOutput) ToImageOccurrenceResponseOutputWithContext(ctx context.Context) ImageOccurrenceResponseOutput {
 	return o
-}
-
-func (o ImageOccurrenceResponseOutput) ToImageOccurrenceResponsePtrOutput() ImageOccurrenceResponsePtrOutput {
-	return o.ToImageOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ImageOccurrenceResponseOutput) ToImageOccurrenceResponsePtrOutputWithContext(ctx context.Context) ImageOccurrenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageOccurrenceResponse) *ImageOccurrenceResponse {
-		return &v
-	}).(ImageOccurrenceResponsePtrOutput)
 }
 
 // This contains the base image URL for the derived image occurrence.
@@ -12899,70 +8332,6 @@ func (o ImageOccurrenceResponseOutput) Fingerprint() FingerprintResponseOutput {
 // This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
 func (o ImageOccurrenceResponseOutput) LayerInfo() LayerResponseArrayOutput {
 	return o.ApplyT(func(v ImageOccurrenceResponse) []LayerResponse { return v.LayerInfo }).(LayerResponseArrayOutput)
-}
-
-type ImageOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ImageOccurrenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageOccurrenceResponse)(nil)).Elem()
-}
-
-func (o ImageOccurrenceResponsePtrOutput) ToImageOccurrenceResponsePtrOutput() ImageOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o ImageOccurrenceResponsePtrOutput) ToImageOccurrenceResponsePtrOutputWithContext(ctx context.Context) ImageOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o ImageOccurrenceResponsePtrOutput) Elem() ImageOccurrenceResponseOutput {
-	return o.ApplyT(func(v *ImageOccurrenceResponse) ImageOccurrenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ImageOccurrenceResponse
-		return ret
-	}).(ImageOccurrenceResponseOutput)
-}
-
-// This contains the base image URL for the derived image occurrence.
-func (o ImageOccurrenceResponsePtrOutput) BaseResourceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BaseResourceUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of layers by which this image differs from the associated image basis.
-func (o ImageOccurrenceResponsePtrOutput) Distance() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ImageOccurrenceResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Distance
-	}).(pulumi.IntPtrOutput)
-}
-
-// The fingerprint of the derived image.
-func (o ImageOccurrenceResponsePtrOutput) Fingerprint() FingerprintResponsePtrOutput {
-	return o.ApplyT(func(v *ImageOccurrenceResponse) *FingerprintResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Fingerprint
-	}).(FingerprintResponsePtrOutput)
-}
-
-// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
-func (o ImageOccurrenceResponsePtrOutput) LayerInfo() LayerResponseArrayOutput {
-	return o.ApplyT(func(v *ImageOccurrenceResponse) []LayerResponse {
-		if v == nil {
-			return nil
-		}
-		return v.LayerInfo
-	}).(LayerResponseArrayOutput)
 }
 
 type InTotoProvenance struct {
@@ -13165,80 +8534,6 @@ type InTotoProvenanceResponse struct {
 	Recipe RecipeResponse `pulumi:"recipe"`
 }
 
-// InTotoProvenanceResponseInput is an input type that accepts InTotoProvenanceResponseArgs and InTotoProvenanceResponseOutput values.
-// You can construct a concrete instance of `InTotoProvenanceResponseInput` via:
-//
-//          InTotoProvenanceResponseArgs{...}
-type InTotoProvenanceResponseInput interface {
-	pulumi.Input
-
-	ToInTotoProvenanceResponseOutput() InTotoProvenanceResponseOutput
-	ToInTotoProvenanceResponseOutputWithContext(context.Context) InTotoProvenanceResponseOutput
-}
-
-type InTotoProvenanceResponseArgs struct {
-	// required
-	BuilderConfig BuilderConfigResponseInput `pulumi:"builderConfig"`
-	// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
-	Materials pulumi.StringArrayInput `pulumi:"materials"`
-	Metadata  MetadataResponseInput   `pulumi:"metadata"`
-	// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
-	Recipe RecipeResponseInput `pulumi:"recipe"`
-}
-
-func (InTotoProvenanceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InTotoProvenanceResponse)(nil)).Elem()
-}
-
-func (i InTotoProvenanceResponseArgs) ToInTotoProvenanceResponseOutput() InTotoProvenanceResponseOutput {
-	return i.ToInTotoProvenanceResponseOutputWithContext(context.Background())
-}
-
-func (i InTotoProvenanceResponseArgs) ToInTotoProvenanceResponseOutputWithContext(ctx context.Context) InTotoProvenanceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InTotoProvenanceResponseOutput)
-}
-
-func (i InTotoProvenanceResponseArgs) ToInTotoProvenanceResponsePtrOutput() InTotoProvenanceResponsePtrOutput {
-	return i.ToInTotoProvenanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i InTotoProvenanceResponseArgs) ToInTotoProvenanceResponsePtrOutputWithContext(ctx context.Context) InTotoProvenanceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InTotoProvenanceResponseOutput).ToInTotoProvenanceResponsePtrOutputWithContext(ctx)
-}
-
-// InTotoProvenanceResponsePtrInput is an input type that accepts InTotoProvenanceResponseArgs, InTotoProvenanceResponsePtr and InTotoProvenanceResponsePtrOutput values.
-// You can construct a concrete instance of `InTotoProvenanceResponsePtrInput` via:
-//
-//          InTotoProvenanceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type InTotoProvenanceResponsePtrInput interface {
-	pulumi.Input
-
-	ToInTotoProvenanceResponsePtrOutput() InTotoProvenanceResponsePtrOutput
-	ToInTotoProvenanceResponsePtrOutputWithContext(context.Context) InTotoProvenanceResponsePtrOutput
-}
-
-type inTotoProvenanceResponsePtrType InTotoProvenanceResponseArgs
-
-func InTotoProvenanceResponsePtr(v *InTotoProvenanceResponseArgs) InTotoProvenanceResponsePtrInput {
-	return (*inTotoProvenanceResponsePtrType)(v)
-}
-
-func (*inTotoProvenanceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InTotoProvenanceResponse)(nil)).Elem()
-}
-
-func (i *inTotoProvenanceResponsePtrType) ToInTotoProvenanceResponsePtrOutput() InTotoProvenanceResponsePtrOutput {
-	return i.ToInTotoProvenanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *inTotoProvenanceResponsePtrType) ToInTotoProvenanceResponsePtrOutputWithContext(ctx context.Context) InTotoProvenanceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InTotoProvenanceResponsePtrOutput)
-}
-
 type InTotoProvenanceResponseOutput struct{ *pulumi.OutputState }
 
 func (InTotoProvenanceResponseOutput) ElementType() reflect.Type {
@@ -13251,16 +8546,6 @@ func (o InTotoProvenanceResponseOutput) ToInTotoProvenanceResponseOutput() InTot
 
 func (o InTotoProvenanceResponseOutput) ToInTotoProvenanceResponseOutputWithContext(ctx context.Context) InTotoProvenanceResponseOutput {
 	return o
-}
-
-func (o InTotoProvenanceResponseOutput) ToInTotoProvenanceResponsePtrOutput() InTotoProvenanceResponsePtrOutput {
-	return o.ToInTotoProvenanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o InTotoProvenanceResponseOutput) ToInTotoProvenanceResponsePtrOutputWithContext(ctx context.Context) InTotoProvenanceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InTotoProvenanceResponse) *InTotoProvenanceResponse {
-		return &v
-	}).(InTotoProvenanceResponsePtrOutput)
 }
 
 // required
@@ -13280,69 +8565,6 @@ func (o InTotoProvenanceResponseOutput) Metadata() MetadataResponseOutput {
 // Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
 func (o InTotoProvenanceResponseOutput) Recipe() RecipeResponseOutput {
 	return o.ApplyT(func(v InTotoProvenanceResponse) RecipeResponse { return v.Recipe }).(RecipeResponseOutput)
-}
-
-type InTotoProvenanceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (InTotoProvenanceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InTotoProvenanceResponse)(nil)).Elem()
-}
-
-func (o InTotoProvenanceResponsePtrOutput) ToInTotoProvenanceResponsePtrOutput() InTotoProvenanceResponsePtrOutput {
-	return o
-}
-
-func (o InTotoProvenanceResponsePtrOutput) ToInTotoProvenanceResponsePtrOutputWithContext(ctx context.Context) InTotoProvenanceResponsePtrOutput {
-	return o
-}
-
-func (o InTotoProvenanceResponsePtrOutput) Elem() InTotoProvenanceResponseOutput {
-	return o.ApplyT(func(v *InTotoProvenanceResponse) InTotoProvenanceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret InTotoProvenanceResponse
-		return ret
-	}).(InTotoProvenanceResponseOutput)
-}
-
-// required
-func (o InTotoProvenanceResponsePtrOutput) BuilderConfig() BuilderConfigResponsePtrOutput {
-	return o.ApplyT(func(v *InTotoProvenanceResponse) *BuilderConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BuilderConfig
-	}).(BuilderConfigResponsePtrOutput)
-}
-
-// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
-func (o InTotoProvenanceResponsePtrOutput) Materials() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *InTotoProvenanceResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Materials
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o InTotoProvenanceResponsePtrOutput) Metadata() MetadataResponsePtrOutput {
-	return o.ApplyT(func(v *InTotoProvenanceResponse) *MetadataResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Metadata
-	}).(MetadataResponsePtrOutput)
-}
-
-// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
-func (o InTotoProvenanceResponsePtrOutput) Recipe() RecipeResponsePtrOutput {
-	return o.ApplyT(func(v *InTotoProvenanceResponse) *RecipeResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Recipe
-	}).(RecipeResponsePtrOutput)
 }
 
 // Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
@@ -13560,81 +8782,6 @@ type InTotoStatementResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// InTotoStatementResponseInput is an input type that accepts InTotoStatementResponseArgs and InTotoStatementResponseOutput values.
-// You can construct a concrete instance of `InTotoStatementResponseInput` via:
-//
-//          InTotoStatementResponseArgs{...}
-type InTotoStatementResponseInput interface {
-	pulumi.Input
-
-	ToInTotoStatementResponseOutput() InTotoStatementResponseOutput
-	ToInTotoStatementResponseOutputWithContext(context.Context) InTotoStatementResponseOutput
-}
-
-// Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
-type InTotoStatementResponseArgs struct {
-	// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
-	PredicateType  pulumi.StringInput            `pulumi:"predicateType"`
-	Provenance     InTotoProvenanceResponseInput `pulumi:"provenance"`
-	SlsaProvenance SlsaProvenanceResponseInput   `pulumi:"slsaProvenance"`
-	Subject        SubjectResponseArrayInput     `pulumi:"subject"`
-	// Always "https://in-toto.io/Statement/v0.1".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (InTotoStatementResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InTotoStatementResponse)(nil)).Elem()
-}
-
-func (i InTotoStatementResponseArgs) ToInTotoStatementResponseOutput() InTotoStatementResponseOutput {
-	return i.ToInTotoStatementResponseOutputWithContext(context.Background())
-}
-
-func (i InTotoStatementResponseArgs) ToInTotoStatementResponseOutputWithContext(ctx context.Context) InTotoStatementResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InTotoStatementResponseOutput)
-}
-
-func (i InTotoStatementResponseArgs) ToInTotoStatementResponsePtrOutput() InTotoStatementResponsePtrOutput {
-	return i.ToInTotoStatementResponsePtrOutputWithContext(context.Background())
-}
-
-func (i InTotoStatementResponseArgs) ToInTotoStatementResponsePtrOutputWithContext(ctx context.Context) InTotoStatementResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InTotoStatementResponseOutput).ToInTotoStatementResponsePtrOutputWithContext(ctx)
-}
-
-// InTotoStatementResponsePtrInput is an input type that accepts InTotoStatementResponseArgs, InTotoStatementResponsePtr and InTotoStatementResponsePtrOutput values.
-// You can construct a concrete instance of `InTotoStatementResponsePtrInput` via:
-//
-//          InTotoStatementResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type InTotoStatementResponsePtrInput interface {
-	pulumi.Input
-
-	ToInTotoStatementResponsePtrOutput() InTotoStatementResponsePtrOutput
-	ToInTotoStatementResponsePtrOutputWithContext(context.Context) InTotoStatementResponsePtrOutput
-}
-
-type inTotoStatementResponsePtrType InTotoStatementResponseArgs
-
-func InTotoStatementResponsePtr(v *InTotoStatementResponseArgs) InTotoStatementResponsePtrInput {
-	return (*inTotoStatementResponsePtrType)(v)
-}
-
-func (*inTotoStatementResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InTotoStatementResponse)(nil)).Elem()
-}
-
-func (i *inTotoStatementResponsePtrType) ToInTotoStatementResponsePtrOutput() InTotoStatementResponsePtrOutput {
-	return i.ToInTotoStatementResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *inTotoStatementResponsePtrType) ToInTotoStatementResponsePtrOutputWithContext(ctx context.Context) InTotoStatementResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InTotoStatementResponsePtrOutput)
-}
-
 // Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
 type InTotoStatementResponseOutput struct{ *pulumi.OutputState }
 
@@ -13648,16 +8795,6 @@ func (o InTotoStatementResponseOutput) ToInTotoStatementResponseOutput() InTotoS
 
 func (o InTotoStatementResponseOutput) ToInTotoStatementResponseOutputWithContext(ctx context.Context) InTotoStatementResponseOutput {
 	return o
-}
-
-func (o InTotoStatementResponseOutput) ToInTotoStatementResponsePtrOutput() InTotoStatementResponsePtrOutput {
-	return o.ToInTotoStatementResponsePtrOutputWithContext(context.Background())
-}
-
-func (o InTotoStatementResponseOutput) ToInTotoStatementResponsePtrOutputWithContext(ctx context.Context) InTotoStatementResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InTotoStatementResponse) *InTotoStatementResponse {
-		return &v
-	}).(InTotoStatementResponsePtrOutput)
 }
 
 // "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
@@ -13680,77 +8817,6 @@ func (o InTotoStatementResponseOutput) Subject() SubjectResponseArrayOutput {
 // Always "https://in-toto.io/Statement/v0.1".
 func (o InTotoStatementResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InTotoStatementResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type InTotoStatementResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (InTotoStatementResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InTotoStatementResponse)(nil)).Elem()
-}
-
-func (o InTotoStatementResponsePtrOutput) ToInTotoStatementResponsePtrOutput() InTotoStatementResponsePtrOutput {
-	return o
-}
-
-func (o InTotoStatementResponsePtrOutput) ToInTotoStatementResponsePtrOutputWithContext(ctx context.Context) InTotoStatementResponsePtrOutput {
-	return o
-}
-
-func (o InTotoStatementResponsePtrOutput) Elem() InTotoStatementResponseOutput {
-	return o.ApplyT(func(v *InTotoStatementResponse) InTotoStatementResponse {
-		if v != nil {
-			return *v
-		}
-		var ret InTotoStatementResponse
-		return ret
-	}).(InTotoStatementResponseOutput)
-}
-
-// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
-func (o InTotoStatementResponsePtrOutput) PredicateType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InTotoStatementResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PredicateType
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o InTotoStatementResponsePtrOutput) Provenance() InTotoProvenanceResponsePtrOutput {
-	return o.ApplyT(func(v *InTotoStatementResponse) *InTotoProvenanceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Provenance
-	}).(InTotoProvenanceResponsePtrOutput)
-}
-
-func (o InTotoStatementResponsePtrOutput) SlsaProvenance() SlsaProvenanceResponsePtrOutput {
-	return o.ApplyT(func(v *InTotoStatementResponse) *SlsaProvenanceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SlsaProvenance
-	}).(SlsaProvenanceResponsePtrOutput)
-}
-
-func (o InTotoStatementResponsePtrOutput) Subject() SubjectResponseArrayOutput {
-	return o.ApplyT(func(v *InTotoStatementResponse) []SubjectResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Subject
-	}).(SubjectResponseArrayOutput)
-}
-
-// Always "https://in-toto.io/Statement/v0.1".
-func (o InTotoStatementResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InTotoStatementResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 type Jwt struct {
@@ -13853,59 +8919,6 @@ func (o JwtArrayOutput) Index(i pulumi.IntInput) JwtOutput {
 type JwtResponse struct {
 	// The compact encoding of a JWS, which is always three base64 encoded strings joined by periods. For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1
 	CompactJwt string `pulumi:"compactJwt"`
-}
-
-// JwtResponseInput is an input type that accepts JwtResponseArgs and JwtResponseOutput values.
-// You can construct a concrete instance of `JwtResponseInput` via:
-//
-//          JwtResponseArgs{...}
-type JwtResponseInput interface {
-	pulumi.Input
-
-	ToJwtResponseOutput() JwtResponseOutput
-	ToJwtResponseOutputWithContext(context.Context) JwtResponseOutput
-}
-
-type JwtResponseArgs struct {
-	// The compact encoding of a JWS, which is always three base64 encoded strings joined by periods. For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1
-	CompactJwt pulumi.StringInput `pulumi:"compactJwt"`
-}
-
-func (JwtResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JwtResponse)(nil)).Elem()
-}
-
-func (i JwtResponseArgs) ToJwtResponseOutput() JwtResponseOutput {
-	return i.ToJwtResponseOutputWithContext(context.Background())
-}
-
-func (i JwtResponseArgs) ToJwtResponseOutputWithContext(ctx context.Context) JwtResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JwtResponseOutput)
-}
-
-// JwtResponseArrayInput is an input type that accepts JwtResponseArray and JwtResponseArrayOutput values.
-// You can construct a concrete instance of `JwtResponseArrayInput` via:
-//
-//          JwtResponseArray{ JwtResponseArgs{...} }
-type JwtResponseArrayInput interface {
-	pulumi.Input
-
-	ToJwtResponseArrayOutput() JwtResponseArrayOutput
-	ToJwtResponseArrayOutputWithContext(context.Context) JwtResponseArrayOutput
-}
-
-type JwtResponseArray []JwtResponseInput
-
-func (JwtResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JwtResponse)(nil)).Elem()
-}
-
-func (i JwtResponseArray) ToJwtResponseArrayOutput() JwtResponseArrayOutput {
-	return i.ToJwtResponseArrayOutputWithContext(context.Background())
-}
-
-func (i JwtResponseArray) ToJwtResponseArrayOutputWithContext(ctx context.Context) JwtResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JwtResponseArrayOutput)
 }
 
 type JwtResponseOutput struct{ *pulumi.OutputState }
@@ -14058,61 +9071,6 @@ type KnowledgeBaseResponse struct {
 	Name string `pulumi:"name"`
 	// A link to the KB in the [Windows update catalog] (https://www.catalog.update.microsoft.com/).
 	Url string `pulumi:"url"`
-}
-
-// KnowledgeBaseResponseInput is an input type that accepts KnowledgeBaseResponseArgs and KnowledgeBaseResponseOutput values.
-// You can construct a concrete instance of `KnowledgeBaseResponseInput` via:
-//
-//          KnowledgeBaseResponseArgs{...}
-type KnowledgeBaseResponseInput interface {
-	pulumi.Input
-
-	ToKnowledgeBaseResponseOutput() KnowledgeBaseResponseOutput
-	ToKnowledgeBaseResponseOutputWithContext(context.Context) KnowledgeBaseResponseOutput
-}
-
-type KnowledgeBaseResponseArgs struct {
-	// The KB name (generally of the form KB[0-9]+ (e.g., KB123456)).
-	Name pulumi.StringInput `pulumi:"name"`
-	// A link to the KB in the [Windows update catalog] (https://www.catalog.update.microsoft.com/).
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (KnowledgeBaseResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KnowledgeBaseResponse)(nil)).Elem()
-}
-
-func (i KnowledgeBaseResponseArgs) ToKnowledgeBaseResponseOutput() KnowledgeBaseResponseOutput {
-	return i.ToKnowledgeBaseResponseOutputWithContext(context.Background())
-}
-
-func (i KnowledgeBaseResponseArgs) ToKnowledgeBaseResponseOutputWithContext(ctx context.Context) KnowledgeBaseResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KnowledgeBaseResponseOutput)
-}
-
-// KnowledgeBaseResponseArrayInput is an input type that accepts KnowledgeBaseResponseArray and KnowledgeBaseResponseArrayOutput values.
-// You can construct a concrete instance of `KnowledgeBaseResponseArrayInput` via:
-//
-//          KnowledgeBaseResponseArray{ KnowledgeBaseResponseArgs{...} }
-type KnowledgeBaseResponseArrayInput interface {
-	pulumi.Input
-
-	ToKnowledgeBaseResponseArrayOutput() KnowledgeBaseResponseArrayOutput
-	ToKnowledgeBaseResponseArrayOutputWithContext(context.Context) KnowledgeBaseResponseArrayOutput
-}
-
-type KnowledgeBaseResponseArray []KnowledgeBaseResponseInput
-
-func (KnowledgeBaseResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KnowledgeBaseResponse)(nil)).Elem()
-}
-
-func (i KnowledgeBaseResponseArray) ToKnowledgeBaseResponseArrayOutput() KnowledgeBaseResponseArrayOutput {
-	return i.ToKnowledgeBaseResponseArrayOutputWithContext(context.Background())
-}
-
-func (i KnowledgeBaseResponseArray) ToKnowledgeBaseResponseArrayOutputWithContext(ctx context.Context) KnowledgeBaseResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KnowledgeBaseResponseArrayOutput)
 }
 
 type KnowledgeBaseResponseOutput struct{ *pulumi.OutputState }
@@ -14274,62 +9232,6 @@ type LayerResponse struct {
 	Arguments string `pulumi:"arguments"`
 	// The recovered Dockerfile directive used to construct this layer. See https://docs.docker.com/engine/reference/builder/ for more information.
 	Directive string `pulumi:"directive"`
-}
-
-// LayerResponseInput is an input type that accepts LayerResponseArgs and LayerResponseOutput values.
-// You can construct a concrete instance of `LayerResponseInput` via:
-//
-//          LayerResponseArgs{...}
-type LayerResponseInput interface {
-	pulumi.Input
-
-	ToLayerResponseOutput() LayerResponseOutput
-	ToLayerResponseOutputWithContext(context.Context) LayerResponseOutput
-}
-
-// Layer holds metadata specific to a layer of a Docker image.
-type LayerResponseArgs struct {
-	// The recovered arguments to the Dockerfile directive.
-	Arguments pulumi.StringInput `pulumi:"arguments"`
-	// The recovered Dockerfile directive used to construct this layer. See https://docs.docker.com/engine/reference/builder/ for more information.
-	Directive pulumi.StringInput `pulumi:"directive"`
-}
-
-func (LayerResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LayerResponse)(nil)).Elem()
-}
-
-func (i LayerResponseArgs) ToLayerResponseOutput() LayerResponseOutput {
-	return i.ToLayerResponseOutputWithContext(context.Background())
-}
-
-func (i LayerResponseArgs) ToLayerResponseOutputWithContext(ctx context.Context) LayerResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LayerResponseOutput)
-}
-
-// LayerResponseArrayInput is an input type that accepts LayerResponseArray and LayerResponseArrayOutput values.
-// You can construct a concrete instance of `LayerResponseArrayInput` via:
-//
-//          LayerResponseArray{ LayerResponseArgs{...} }
-type LayerResponseArrayInput interface {
-	pulumi.Input
-
-	ToLayerResponseArrayOutput() LayerResponseArrayOutput
-	ToLayerResponseArrayOutputWithContext(context.Context) LayerResponseArrayOutput
-}
-
-type LayerResponseArray []LayerResponseInput
-
-func (LayerResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LayerResponse)(nil)).Elem()
-}
-
-func (i LayerResponseArray) ToLayerResponseArrayOutput() LayerResponseArrayOutput {
-	return i.ToLayerResponseArrayOutputWithContext(context.Background())
-}
-
-func (i LayerResponseArray) ToLayerResponseArrayOutputWithContext(ctx context.Context) LayerResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LayerResponseArrayOutput)
 }
 
 // Layer holds metadata specific to a layer of a Docker image.
@@ -14505,64 +9407,6 @@ type LocationResponse struct {
 	Version VersionResponse `pulumi:"version"`
 }
 
-// LocationResponseInput is an input type that accepts LocationResponseArgs and LocationResponseOutput values.
-// You can construct a concrete instance of `LocationResponseInput` via:
-//
-//          LocationResponseArgs{...}
-type LocationResponseInput interface {
-	pulumi.Input
-
-	ToLocationResponseOutput() LocationResponseOutput
-	ToLocationResponseOutputWithContext(context.Context) LocationResponseOutput
-}
-
-// An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
-type LocationResponseArgs struct {
-	// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
-	// The path from which we gathered that this package/version is installed.
-	Path pulumi.StringInput `pulumi:"path"`
-	// The version installed at this location.
-	Version VersionResponseInput `pulumi:"version"`
-}
-
-func (LocationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocationResponse)(nil)).Elem()
-}
-
-func (i LocationResponseArgs) ToLocationResponseOutput() LocationResponseOutput {
-	return i.ToLocationResponseOutputWithContext(context.Background())
-}
-
-func (i LocationResponseArgs) ToLocationResponseOutputWithContext(ctx context.Context) LocationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationResponseOutput)
-}
-
-// LocationResponseArrayInput is an input type that accepts LocationResponseArray and LocationResponseArrayOutput values.
-// You can construct a concrete instance of `LocationResponseArrayInput` via:
-//
-//          LocationResponseArray{ LocationResponseArgs{...} }
-type LocationResponseArrayInput interface {
-	pulumi.Input
-
-	ToLocationResponseArrayOutput() LocationResponseArrayOutput
-	ToLocationResponseArrayOutputWithContext(context.Context) LocationResponseArrayOutput
-}
-
-type LocationResponseArray []LocationResponseInput
-
-func (LocationResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LocationResponse)(nil)).Elem()
-}
-
-func (i LocationResponseArray) ToLocationResponseArrayOutput() LocationResponseArrayOutput {
-	return i.ToLocationResponseArrayOutputWithContext(context.Background())
-}
-
-func (i LocationResponseArray) ToLocationResponseArrayOutputWithContext(ctx context.Context) LocationResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationResponseArrayOutput)
-}
-
 // An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 type LocationResponseOutput struct{ *pulumi.OutputState }
 
@@ -14716,59 +9560,6 @@ func (o MaterialArrayOutput) Index(i pulumi.IntInput) MaterialOutput {
 type MaterialResponse struct {
 	Digest map[string]string `pulumi:"digest"`
 	Uri    string            `pulumi:"uri"`
-}
-
-// MaterialResponseInput is an input type that accepts MaterialResponseArgs and MaterialResponseOutput values.
-// You can construct a concrete instance of `MaterialResponseInput` via:
-//
-//          MaterialResponseArgs{...}
-type MaterialResponseInput interface {
-	pulumi.Input
-
-	ToMaterialResponseOutput() MaterialResponseOutput
-	ToMaterialResponseOutputWithContext(context.Context) MaterialResponseOutput
-}
-
-type MaterialResponseArgs struct {
-	Digest pulumi.StringMapInput `pulumi:"digest"`
-	Uri    pulumi.StringInput    `pulumi:"uri"`
-}
-
-func (MaterialResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MaterialResponse)(nil)).Elem()
-}
-
-func (i MaterialResponseArgs) ToMaterialResponseOutput() MaterialResponseOutput {
-	return i.ToMaterialResponseOutputWithContext(context.Background())
-}
-
-func (i MaterialResponseArgs) ToMaterialResponseOutputWithContext(ctx context.Context) MaterialResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaterialResponseOutput)
-}
-
-// MaterialResponseArrayInput is an input type that accepts MaterialResponseArray and MaterialResponseArrayOutput values.
-// You can construct a concrete instance of `MaterialResponseArrayInput` via:
-//
-//          MaterialResponseArray{ MaterialResponseArgs{...} }
-type MaterialResponseArrayInput interface {
-	pulumi.Input
-
-	ToMaterialResponseArrayOutput() MaterialResponseArrayOutput
-	ToMaterialResponseArrayOutputWithContext(context.Context) MaterialResponseArrayOutput
-}
-
-type MaterialResponseArray []MaterialResponseInput
-
-func (MaterialResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MaterialResponse)(nil)).Elem()
-}
-
-func (i MaterialResponseArray) ToMaterialResponseArrayOutput() MaterialResponseArrayOutput {
-	return i.ToMaterialResponseArrayOutputWithContext(context.Background())
-}
-
-func (i MaterialResponseArray) ToMaterialResponseArrayOutputWithContext(ctx context.Context) MaterialResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaterialResponseArrayOutput)
 }
 
 type MaterialResponseOutput struct{ *pulumi.OutputState }
@@ -15043,84 +9834,6 @@ type MetadataResponse struct {
 	Reproducible bool `pulumi:"reproducible"`
 }
 
-// MetadataResponseInput is an input type that accepts MetadataResponseArgs and MetadataResponseOutput values.
-// You can construct a concrete instance of `MetadataResponseInput` via:
-//
-//          MetadataResponseArgs{...}
-type MetadataResponseInput interface {
-	pulumi.Input
-
-	ToMetadataResponseOutput() MetadataResponseOutput
-	ToMetadataResponseOutputWithContext(context.Context) MetadataResponseOutput
-}
-
-// Other properties of the build.
-type MetadataResponseArgs struct {
-	// The timestamp of when the build completed.
-	BuildFinishedOn pulumi.StringInput `pulumi:"buildFinishedOn"`
-	// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
-	BuildInvocationId pulumi.StringInput `pulumi:"buildInvocationId"`
-	// The timestamp of when the build started.
-	BuildStartedOn pulumi.StringInput `pulumi:"buildStartedOn"`
-	// Indicates that the builder claims certain fields in this message to be complete.
-	Completeness CompletenessResponseInput `pulumi:"completeness"`
-	// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
-	Reproducible pulumi.BoolInput `pulumi:"reproducible"`
-}
-
-func (MetadataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetadataResponse)(nil)).Elem()
-}
-
-func (i MetadataResponseArgs) ToMetadataResponseOutput() MetadataResponseOutput {
-	return i.ToMetadataResponseOutputWithContext(context.Background())
-}
-
-func (i MetadataResponseArgs) ToMetadataResponseOutputWithContext(ctx context.Context) MetadataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataResponseOutput)
-}
-
-func (i MetadataResponseArgs) ToMetadataResponsePtrOutput() MetadataResponsePtrOutput {
-	return i.ToMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MetadataResponseArgs) ToMetadataResponsePtrOutputWithContext(ctx context.Context) MetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataResponseOutput).ToMetadataResponsePtrOutputWithContext(ctx)
-}
-
-// MetadataResponsePtrInput is an input type that accepts MetadataResponseArgs, MetadataResponsePtr and MetadataResponsePtrOutput values.
-// You can construct a concrete instance of `MetadataResponsePtrInput` via:
-//
-//          MetadataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MetadataResponsePtrInput interface {
-	pulumi.Input
-
-	ToMetadataResponsePtrOutput() MetadataResponsePtrOutput
-	ToMetadataResponsePtrOutputWithContext(context.Context) MetadataResponsePtrOutput
-}
-
-type metadataResponsePtrType MetadataResponseArgs
-
-func MetadataResponsePtr(v *MetadataResponseArgs) MetadataResponsePtrInput {
-	return (*metadataResponsePtrType)(v)
-}
-
-func (*metadataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetadataResponse)(nil)).Elem()
-}
-
-func (i *metadataResponsePtrType) ToMetadataResponsePtrOutput() MetadataResponsePtrOutput {
-	return i.ToMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *metadataResponsePtrType) ToMetadataResponsePtrOutputWithContext(ctx context.Context) MetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataResponsePtrOutput)
-}
-
 // Other properties of the build.
 type MetadataResponseOutput struct{ *pulumi.OutputState }
 
@@ -15134,16 +9847,6 @@ func (o MetadataResponseOutput) ToMetadataResponseOutput() MetadataResponseOutpu
 
 func (o MetadataResponseOutput) ToMetadataResponseOutputWithContext(ctx context.Context) MetadataResponseOutput {
 	return o
-}
-
-func (o MetadataResponseOutput) ToMetadataResponsePtrOutput() MetadataResponsePtrOutput {
-	return o.ToMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MetadataResponseOutput) ToMetadataResponsePtrOutputWithContext(ctx context.Context) MetadataResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataResponse) *MetadataResponse {
-		return &v
-	}).(MetadataResponsePtrOutput)
 }
 
 // The timestamp of when the build completed.
@@ -15169,80 +9872,6 @@ func (o MetadataResponseOutput) Completeness() CompletenessResponseOutput {
 // If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
 func (o MetadataResponseOutput) Reproducible() pulumi.BoolOutput {
 	return o.ApplyT(func(v MetadataResponse) bool { return v.Reproducible }).(pulumi.BoolOutput)
-}
-
-type MetadataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MetadataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetadataResponse)(nil)).Elem()
-}
-
-func (o MetadataResponsePtrOutput) ToMetadataResponsePtrOutput() MetadataResponsePtrOutput {
-	return o
-}
-
-func (o MetadataResponsePtrOutput) ToMetadataResponsePtrOutputWithContext(ctx context.Context) MetadataResponsePtrOutput {
-	return o
-}
-
-func (o MetadataResponsePtrOutput) Elem() MetadataResponseOutput {
-	return o.ApplyT(func(v *MetadataResponse) MetadataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MetadataResponse
-		return ret
-	}).(MetadataResponseOutput)
-}
-
-// The timestamp of when the build completed.
-func (o MetadataResponsePtrOutput) BuildFinishedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetadataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BuildFinishedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
-func (o MetadataResponsePtrOutput) BuildInvocationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetadataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BuildInvocationId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of when the build started.
-func (o MetadataResponsePtrOutput) BuildStartedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetadataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BuildStartedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates that the builder claims certain fields in this message to be complete.
-func (o MetadataResponsePtrOutput) Completeness() CompletenessResponsePtrOutput {
-	return o.ApplyT(func(v *MetadataResponse) *CompletenessResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Completeness
-	}).(CompletenessResponsePtrOutput)
-}
-
-// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
-func (o MetadataResponsePtrOutput) Reproducible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MetadataResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Reproducible
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Details about files that caused a compliance check to fail.
@@ -15371,64 +10000,6 @@ type NonCompliantFileResponse struct {
 	Path string `pulumi:"path"`
 	// Explains why a file is non compliant for a CIS check.
 	Reason string `pulumi:"reason"`
-}
-
-// NonCompliantFileResponseInput is an input type that accepts NonCompliantFileResponseArgs and NonCompliantFileResponseOutput values.
-// You can construct a concrete instance of `NonCompliantFileResponseInput` via:
-//
-//          NonCompliantFileResponseArgs{...}
-type NonCompliantFileResponseInput interface {
-	pulumi.Input
-
-	ToNonCompliantFileResponseOutput() NonCompliantFileResponseOutput
-	ToNonCompliantFileResponseOutputWithContext(context.Context) NonCompliantFileResponseOutput
-}
-
-// Details about files that caused a compliance check to fail.
-type NonCompliantFileResponseArgs struct {
-	// Command to display the non-compliant files.
-	DisplayCommand pulumi.StringInput `pulumi:"displayCommand"`
-	// display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
-	Path pulumi.StringInput `pulumi:"path"`
-	// Explains why a file is non compliant for a CIS check.
-	Reason pulumi.StringInput `pulumi:"reason"`
-}
-
-func (NonCompliantFileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NonCompliantFileResponse)(nil)).Elem()
-}
-
-func (i NonCompliantFileResponseArgs) ToNonCompliantFileResponseOutput() NonCompliantFileResponseOutput {
-	return i.ToNonCompliantFileResponseOutputWithContext(context.Background())
-}
-
-func (i NonCompliantFileResponseArgs) ToNonCompliantFileResponseOutputWithContext(ctx context.Context) NonCompliantFileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NonCompliantFileResponseOutput)
-}
-
-// NonCompliantFileResponseArrayInput is an input type that accepts NonCompliantFileResponseArray and NonCompliantFileResponseArrayOutput values.
-// You can construct a concrete instance of `NonCompliantFileResponseArrayInput` via:
-//
-//          NonCompliantFileResponseArray{ NonCompliantFileResponseArgs{...} }
-type NonCompliantFileResponseArrayInput interface {
-	pulumi.Input
-
-	ToNonCompliantFileResponseArrayOutput() NonCompliantFileResponseArrayOutput
-	ToNonCompliantFileResponseArrayOutputWithContext(context.Context) NonCompliantFileResponseArrayOutput
-}
-
-type NonCompliantFileResponseArray []NonCompliantFileResponseInput
-
-func (NonCompliantFileResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NonCompliantFileResponse)(nil)).Elem()
-}
-
-func (i NonCompliantFileResponseArray) ToNonCompliantFileResponseArrayOutput() NonCompliantFileResponseArrayOutput {
-	return i.ToNonCompliantFileResponseArrayOutputWithContext(context.Background())
-}
-
-func (i NonCompliantFileResponseArray) ToNonCompliantFileResponseArrayOutputWithContext(ctx context.Context) NonCompliantFileResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NonCompliantFileResponseArrayOutput)
 }
 
 // Details about files that caused a compliance check to fail.
@@ -15655,76 +10226,6 @@ type PackageIssueResponse struct {
 	FixedVersion VersionResponse `pulumi:"fixedVersion"`
 	// The type of package (e.g. OS, MAVEN, GO).
 	PackageType string `pulumi:"packageType"`
-}
-
-// PackageIssueResponseInput is an input type that accepts PackageIssueResponseArgs and PackageIssueResponseOutput values.
-// You can construct a concrete instance of `PackageIssueResponseInput` via:
-//
-//          PackageIssueResponseArgs{...}
-type PackageIssueResponseInput interface {
-	pulumi.Input
-
-	ToPackageIssueResponseOutput() PackageIssueResponseOutput
-	ToPackageIssueResponseOutputWithContext(context.Context) PackageIssueResponseOutput
-}
-
-// A detail for a distro and package this vulnerability occurrence was found in and its associated fix (if one is available).
-type PackageIssueResponseArgs struct {
-	// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was found in.
-	AffectedCpeUri pulumi.StringInput `pulumi:"affectedCpeUri"`
-	// The package this vulnerability was found in.
-	AffectedPackage pulumi.StringInput `pulumi:"affectedPackage"`
-	// The version of the package that is installed on the resource affected by this vulnerability.
-	AffectedVersion VersionResponseInput `pulumi:"affectedVersion"`
-	// The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when it is not available.
-	EffectiveSeverity pulumi.StringInput `pulumi:"effectiveSeverity"`
-	// Whether a fix is available for this package.
-	FixAvailable pulumi.BoolInput `pulumi:"fixAvailable"`
-	// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was fixed in. It is possible for this to be different from the affected_cpe_uri.
-	FixedCpeUri pulumi.StringInput `pulumi:"fixedCpeUri"`
-	// The package this vulnerability was fixed in. It is possible for this to be different from the affected_package.
-	FixedPackage pulumi.StringInput `pulumi:"fixedPackage"`
-	// The version of the package this vulnerability was fixed in. Setting this to VersionKind.MAXIMUM means no fix is yet available.
-	FixedVersion VersionResponseInput `pulumi:"fixedVersion"`
-	// The type of package (e.g. OS, MAVEN, GO).
-	PackageType pulumi.StringInput `pulumi:"packageType"`
-}
-
-func (PackageIssueResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageIssueResponse)(nil)).Elem()
-}
-
-func (i PackageIssueResponseArgs) ToPackageIssueResponseOutput() PackageIssueResponseOutput {
-	return i.ToPackageIssueResponseOutputWithContext(context.Background())
-}
-
-func (i PackageIssueResponseArgs) ToPackageIssueResponseOutputWithContext(ctx context.Context) PackageIssueResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageIssueResponseOutput)
-}
-
-// PackageIssueResponseArrayInput is an input type that accepts PackageIssueResponseArray and PackageIssueResponseArrayOutput values.
-// You can construct a concrete instance of `PackageIssueResponseArrayInput` via:
-//
-//          PackageIssueResponseArray{ PackageIssueResponseArgs{...} }
-type PackageIssueResponseArrayInput interface {
-	pulumi.Input
-
-	ToPackageIssueResponseArrayOutput() PackageIssueResponseArrayOutput
-	ToPackageIssueResponseArrayOutputWithContext(context.Context) PackageIssueResponseArrayOutput
-}
-
-type PackageIssueResponseArray []PackageIssueResponseInput
-
-func (PackageIssueResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PackageIssueResponse)(nil)).Elem()
-}
-
-func (i PackageIssueResponseArray) ToPackageIssueResponseArrayOutput() PackageIssueResponseArrayOutput {
-	return i.ToPackageIssueResponseArrayOutputWithContext(context.Background())
-}
-
-func (i PackageIssueResponseArray) ToPackageIssueResponseArrayOutputWithContext(ctx context.Context) PackageIssueResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageIssueResponseArrayOutput)
 }
 
 // A detail for a distro and package this vulnerability occurrence was found in and its associated fix (if one is available).
@@ -15974,78 +10475,6 @@ type PackageNoteResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// PackageNoteResponseInput is an input type that accepts PackageNoteResponseArgs and PackageNoteResponseOutput values.
-// You can construct a concrete instance of `PackageNoteResponseInput` via:
-//
-//          PackageNoteResponseArgs{...}
-type PackageNoteResponseInput interface {
-	pulumi.Input
-
-	ToPackageNoteResponseOutput() PackageNoteResponseOutput
-	ToPackageNoteResponseOutputWithContext(context.Context) PackageNoteResponseOutput
-}
-
-// This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
-type PackageNoteResponseArgs struct {
-	// The various channels by which a package is distributed.
-	Distribution DistributionResponseArrayInput `pulumi:"distribution"`
-	// Immutable. The name of the package.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (PackageNoteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageNoteResponse)(nil)).Elem()
-}
-
-func (i PackageNoteResponseArgs) ToPackageNoteResponseOutput() PackageNoteResponseOutput {
-	return i.ToPackageNoteResponseOutputWithContext(context.Background())
-}
-
-func (i PackageNoteResponseArgs) ToPackageNoteResponseOutputWithContext(ctx context.Context) PackageNoteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNoteResponseOutput)
-}
-
-func (i PackageNoteResponseArgs) ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput {
-	return i.ToPackageNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PackageNoteResponseArgs) ToPackageNoteResponsePtrOutputWithContext(ctx context.Context) PackageNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNoteResponseOutput).ToPackageNoteResponsePtrOutputWithContext(ctx)
-}
-
-// PackageNoteResponsePtrInput is an input type that accepts PackageNoteResponseArgs, PackageNoteResponsePtr and PackageNoteResponsePtrOutput values.
-// You can construct a concrete instance of `PackageNoteResponsePtrInput` via:
-//
-//          PackageNoteResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PackageNoteResponsePtrInput interface {
-	pulumi.Input
-
-	ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput
-	ToPackageNoteResponsePtrOutputWithContext(context.Context) PackageNoteResponsePtrOutput
-}
-
-type packageNoteResponsePtrType PackageNoteResponseArgs
-
-func PackageNoteResponsePtr(v *PackageNoteResponseArgs) PackageNoteResponsePtrInput {
-	return (*packageNoteResponsePtrType)(v)
-}
-
-func (*packageNoteResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageNoteResponse)(nil)).Elem()
-}
-
-func (i *packageNoteResponsePtrType) ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput {
-	return i.ToPackageNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *packageNoteResponsePtrType) ToPackageNoteResponsePtrOutputWithContext(ctx context.Context) PackageNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNoteResponsePtrOutput)
-}
-
 // This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
 type PackageNoteResponseOutput struct{ *pulumi.OutputState }
 
@@ -16061,16 +10490,6 @@ func (o PackageNoteResponseOutput) ToPackageNoteResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o PackageNoteResponseOutput) ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput {
-	return o.ToPackageNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PackageNoteResponseOutput) ToPackageNoteResponsePtrOutputWithContext(ctx context.Context) PackageNoteResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageNoteResponse) *PackageNoteResponse {
-		return &v
-	}).(PackageNoteResponsePtrOutput)
-}
-
 // The various channels by which a package is distributed.
 func (o PackageNoteResponseOutput) Distribution() DistributionResponseArrayOutput {
 	return o.ApplyT(func(v PackageNoteResponse) []DistributionResponse { return v.Distribution }).(DistributionResponseArrayOutput)
@@ -16079,50 +10498,6 @@ func (o PackageNoteResponseOutput) Distribution() DistributionResponseArrayOutpu
 // Immutable. The name of the package.
 func (o PackageNoteResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageNoteResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type PackageNoteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PackageNoteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageNoteResponse)(nil)).Elem()
-}
-
-func (o PackageNoteResponsePtrOutput) ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput {
-	return o
-}
-
-func (o PackageNoteResponsePtrOutput) ToPackageNoteResponsePtrOutputWithContext(ctx context.Context) PackageNoteResponsePtrOutput {
-	return o
-}
-
-func (o PackageNoteResponsePtrOutput) Elem() PackageNoteResponseOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) PackageNoteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PackageNoteResponse
-		return ret
-	}).(PackageNoteResponseOutput)
-}
-
-// The various channels by which a package is distributed.
-func (o PackageNoteResponsePtrOutput) Distribution() DistributionResponseArrayOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) []DistributionResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Distribution
-	}).(DistributionResponseArrayOutput)
-}
-
-// Immutable. The name of the package.
-func (o PackageNoteResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // Details on how a particular software package was installed on a system.
@@ -16273,78 +10648,6 @@ type PackageOccurrenceResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// PackageOccurrenceResponseInput is an input type that accepts PackageOccurrenceResponseArgs and PackageOccurrenceResponseOutput values.
-// You can construct a concrete instance of `PackageOccurrenceResponseInput` via:
-//
-//          PackageOccurrenceResponseArgs{...}
-type PackageOccurrenceResponseInput interface {
-	pulumi.Input
-
-	ToPackageOccurrenceResponseOutput() PackageOccurrenceResponseOutput
-	ToPackageOccurrenceResponseOutputWithContext(context.Context) PackageOccurrenceResponseOutput
-}
-
-// Details on how a particular software package was installed on a system.
-type PackageOccurrenceResponseArgs struct {
-	// All of the places within the filesystem versions of this package have been found.
-	Location LocationResponseArrayInput `pulumi:"location"`
-	// The name of the installed package.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (PackageOccurrenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageOccurrenceResponse)(nil)).Elem()
-}
-
-func (i PackageOccurrenceResponseArgs) ToPackageOccurrenceResponseOutput() PackageOccurrenceResponseOutput {
-	return i.ToPackageOccurrenceResponseOutputWithContext(context.Background())
-}
-
-func (i PackageOccurrenceResponseArgs) ToPackageOccurrenceResponseOutputWithContext(ctx context.Context) PackageOccurrenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrenceResponseOutput)
-}
-
-func (i PackageOccurrenceResponseArgs) ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput {
-	return i.ToPackageOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PackageOccurrenceResponseArgs) ToPackageOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrenceResponseOutput).ToPackageOccurrenceResponsePtrOutputWithContext(ctx)
-}
-
-// PackageOccurrenceResponsePtrInput is an input type that accepts PackageOccurrenceResponseArgs, PackageOccurrenceResponsePtr and PackageOccurrenceResponsePtrOutput values.
-// You can construct a concrete instance of `PackageOccurrenceResponsePtrInput` via:
-//
-//          PackageOccurrenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PackageOccurrenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput
-	ToPackageOccurrenceResponsePtrOutputWithContext(context.Context) PackageOccurrenceResponsePtrOutput
-}
-
-type packageOccurrenceResponsePtrType PackageOccurrenceResponseArgs
-
-func PackageOccurrenceResponsePtr(v *PackageOccurrenceResponseArgs) PackageOccurrenceResponsePtrInput {
-	return (*packageOccurrenceResponsePtrType)(v)
-}
-
-func (*packageOccurrenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageOccurrenceResponse)(nil)).Elem()
-}
-
-func (i *packageOccurrenceResponsePtrType) ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput {
-	return i.ToPackageOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *packageOccurrenceResponsePtrType) ToPackageOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrenceResponsePtrOutput)
-}
-
 // Details on how a particular software package was installed on a system.
 type PackageOccurrenceResponseOutput struct{ *pulumi.OutputState }
 
@@ -16360,16 +10663,6 @@ func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponseOutputWithCo
 	return o
 }
 
-func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput {
-	return o.ToPackageOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageOccurrenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageOccurrenceResponse) *PackageOccurrenceResponse {
-		return &v
-	}).(PackageOccurrenceResponsePtrOutput)
-}
-
 // All of the places within the filesystem versions of this package have been found.
 func (o PackageOccurrenceResponseOutput) Location() LocationResponseArrayOutput {
 	return o.ApplyT(func(v PackageOccurrenceResponse) []LocationResponse { return v.Location }).(LocationResponseArrayOutput)
@@ -16378,50 +10671,6 @@ func (o PackageOccurrenceResponseOutput) Location() LocationResponseArrayOutput 
 // The name of the installed package.
 func (o PackageOccurrenceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type PackageOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PackageOccurrenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageOccurrenceResponse)(nil)).Elem()
-}
-
-func (o PackageOccurrenceResponsePtrOutput) ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o PackageOccurrenceResponsePtrOutput) ToPackageOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o PackageOccurrenceResponsePtrOutput) Elem() PackageOccurrenceResponseOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) PackageOccurrenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PackageOccurrenceResponse
-		return ret
-	}).(PackageOccurrenceResponseOutput)
-}
-
-// All of the places within the filesystem versions of this package have been found.
-func (o PackageOccurrenceResponsePtrOutput) Location() LocationResponseArrayOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) []LocationResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Location
-	}).(LocationResponseArrayOutput)
-}
-
-// The name of the installed package.
-func (o PackageOccurrenceResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
@@ -16591,78 +10840,6 @@ type ProjectRepoIdResponse struct {
 	RepoName string `pulumi:"repoName"`
 }
 
-// ProjectRepoIdResponseInput is an input type that accepts ProjectRepoIdResponseArgs and ProjectRepoIdResponseOutput values.
-// You can construct a concrete instance of `ProjectRepoIdResponseInput` via:
-//
-//          ProjectRepoIdResponseArgs{...}
-type ProjectRepoIdResponseInput interface {
-	pulumi.Input
-
-	ToProjectRepoIdResponseOutput() ProjectRepoIdResponseOutput
-	ToProjectRepoIdResponseOutputWithContext(context.Context) ProjectRepoIdResponseOutput
-}
-
-// Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
-type ProjectRepoIdResponseArgs struct {
-	// The ID of the project.
-	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the repo. Leave empty for the default repo.
-	RepoName pulumi.StringInput `pulumi:"repoName"`
-}
-
-func (ProjectRepoIdResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectRepoIdResponse)(nil)).Elem()
-}
-
-func (i ProjectRepoIdResponseArgs) ToProjectRepoIdResponseOutput() ProjectRepoIdResponseOutput {
-	return i.ToProjectRepoIdResponseOutputWithContext(context.Background())
-}
-
-func (i ProjectRepoIdResponseArgs) ToProjectRepoIdResponseOutputWithContext(ctx context.Context) ProjectRepoIdResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectRepoIdResponseOutput)
-}
-
-func (i ProjectRepoIdResponseArgs) ToProjectRepoIdResponsePtrOutput() ProjectRepoIdResponsePtrOutput {
-	return i.ToProjectRepoIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ProjectRepoIdResponseArgs) ToProjectRepoIdResponsePtrOutputWithContext(ctx context.Context) ProjectRepoIdResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectRepoIdResponseOutput).ToProjectRepoIdResponsePtrOutputWithContext(ctx)
-}
-
-// ProjectRepoIdResponsePtrInput is an input type that accepts ProjectRepoIdResponseArgs, ProjectRepoIdResponsePtr and ProjectRepoIdResponsePtrOutput values.
-// You can construct a concrete instance of `ProjectRepoIdResponsePtrInput` via:
-//
-//          ProjectRepoIdResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ProjectRepoIdResponsePtrInput interface {
-	pulumi.Input
-
-	ToProjectRepoIdResponsePtrOutput() ProjectRepoIdResponsePtrOutput
-	ToProjectRepoIdResponsePtrOutputWithContext(context.Context) ProjectRepoIdResponsePtrOutput
-}
-
-type projectRepoIdResponsePtrType ProjectRepoIdResponseArgs
-
-func ProjectRepoIdResponsePtr(v *ProjectRepoIdResponseArgs) ProjectRepoIdResponsePtrInput {
-	return (*projectRepoIdResponsePtrType)(v)
-}
-
-func (*projectRepoIdResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectRepoIdResponse)(nil)).Elem()
-}
-
-func (i *projectRepoIdResponsePtrType) ToProjectRepoIdResponsePtrOutput() ProjectRepoIdResponsePtrOutput {
-	return i.ToProjectRepoIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *projectRepoIdResponsePtrType) ToProjectRepoIdResponsePtrOutputWithContext(ctx context.Context) ProjectRepoIdResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectRepoIdResponsePtrOutput)
-}
-
 // Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
 type ProjectRepoIdResponseOutput struct{ *pulumi.OutputState }
 
@@ -16678,16 +10855,6 @@ func (o ProjectRepoIdResponseOutput) ToProjectRepoIdResponseOutputWithContext(ct
 	return o
 }
 
-func (o ProjectRepoIdResponseOutput) ToProjectRepoIdResponsePtrOutput() ProjectRepoIdResponsePtrOutput {
-	return o.ToProjectRepoIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ProjectRepoIdResponseOutput) ToProjectRepoIdResponsePtrOutputWithContext(ctx context.Context) ProjectRepoIdResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectRepoIdResponse) *ProjectRepoIdResponse {
-		return &v
-	}).(ProjectRepoIdResponsePtrOutput)
-}
-
 // The ID of the project.
 func (o ProjectRepoIdResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectRepoIdResponse) string { return v.Project }).(pulumi.StringOutput)
@@ -16696,50 +10863,6 @@ func (o ProjectRepoIdResponseOutput) Project() pulumi.StringOutput {
 // The name of the repo. Leave empty for the default repo.
 func (o ProjectRepoIdResponseOutput) RepoName() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectRepoIdResponse) string { return v.RepoName }).(pulumi.StringOutput)
-}
-
-type ProjectRepoIdResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectRepoIdResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectRepoIdResponse)(nil)).Elem()
-}
-
-func (o ProjectRepoIdResponsePtrOutput) ToProjectRepoIdResponsePtrOutput() ProjectRepoIdResponsePtrOutput {
-	return o
-}
-
-func (o ProjectRepoIdResponsePtrOutput) ToProjectRepoIdResponsePtrOutputWithContext(ctx context.Context) ProjectRepoIdResponsePtrOutput {
-	return o
-}
-
-func (o ProjectRepoIdResponsePtrOutput) Elem() ProjectRepoIdResponseOutput {
-	return o.ApplyT(func(v *ProjectRepoIdResponse) ProjectRepoIdResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectRepoIdResponse
-		return ret
-	}).(ProjectRepoIdResponseOutput)
-}
-
-// The ID of the project.
-func (o ProjectRepoIdResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectRepoIdResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the repo. Leave empty for the default repo.
-func (o ProjectRepoIdResponsePtrOutput) RepoName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectRepoIdResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RepoName
-	}).(pulumi.StringPtrOutput)
 }
 
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
@@ -16972,84 +11095,6 @@ type RecipeResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// RecipeResponseInput is an input type that accepts RecipeResponseArgs and RecipeResponseOutput values.
-// You can construct a concrete instance of `RecipeResponseInput` via:
-//
-//          RecipeResponseArgs{...}
-type RecipeResponseInput interface {
-	pulumi.Input
-
-	ToRecipeResponseOutput() RecipeResponseOutput
-	ToRecipeResponseOutputWithContext(context.Context) RecipeResponseOutput
-}
-
-// Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
-type RecipeResponseArgs struct {
-	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-	Arguments pulumi.StringMapArrayInput `pulumi:"arguments"`
-	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
-	DefinedInMaterial pulumi.StringInput `pulumi:"definedInMaterial"`
-	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
-	EntryPoint pulumi.StringInput `pulumi:"entryPoint"`
-	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Since the environment field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-	Environment pulumi.StringMapArrayInput `pulumi:"environment"`
-	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (RecipeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecipeResponse)(nil)).Elem()
-}
-
-func (i RecipeResponseArgs) ToRecipeResponseOutput() RecipeResponseOutput {
-	return i.ToRecipeResponseOutputWithContext(context.Background())
-}
-
-func (i RecipeResponseArgs) ToRecipeResponseOutputWithContext(ctx context.Context) RecipeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecipeResponseOutput)
-}
-
-func (i RecipeResponseArgs) ToRecipeResponsePtrOutput() RecipeResponsePtrOutput {
-	return i.ToRecipeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RecipeResponseArgs) ToRecipeResponsePtrOutputWithContext(ctx context.Context) RecipeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecipeResponseOutput).ToRecipeResponsePtrOutputWithContext(ctx)
-}
-
-// RecipeResponsePtrInput is an input type that accepts RecipeResponseArgs, RecipeResponsePtr and RecipeResponsePtrOutput values.
-// You can construct a concrete instance of `RecipeResponsePtrInput` via:
-//
-//          RecipeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RecipeResponsePtrInput interface {
-	pulumi.Input
-
-	ToRecipeResponsePtrOutput() RecipeResponsePtrOutput
-	ToRecipeResponsePtrOutputWithContext(context.Context) RecipeResponsePtrOutput
-}
-
-type recipeResponsePtrType RecipeResponseArgs
-
-func RecipeResponsePtr(v *RecipeResponseArgs) RecipeResponsePtrInput {
-	return (*recipeResponsePtrType)(v)
-}
-
-func (*recipeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecipeResponse)(nil)).Elem()
-}
-
-func (i *recipeResponsePtrType) ToRecipeResponsePtrOutput() RecipeResponsePtrOutput {
-	return i.ToRecipeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *recipeResponsePtrType) ToRecipeResponsePtrOutputWithContext(ctx context.Context) RecipeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecipeResponsePtrOutput)
-}
-
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
 type RecipeResponseOutput struct{ *pulumi.OutputState }
 
@@ -17063,16 +11108,6 @@ func (o RecipeResponseOutput) ToRecipeResponseOutput() RecipeResponseOutput {
 
 func (o RecipeResponseOutput) ToRecipeResponseOutputWithContext(ctx context.Context) RecipeResponseOutput {
 	return o
-}
-
-func (o RecipeResponseOutput) ToRecipeResponsePtrOutput() RecipeResponsePtrOutput {
-	return o.ToRecipeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RecipeResponseOutput) ToRecipeResponsePtrOutputWithContext(ctx context.Context) RecipeResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecipeResponse) *RecipeResponse {
-		return &v
-	}).(RecipeResponsePtrOutput)
 }
 
 // Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
@@ -17098,80 +11133,6 @@ func (o RecipeResponseOutput) Environment() pulumi.StringMapArrayOutput {
 // URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
 func (o RecipeResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RecipeResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type RecipeResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RecipeResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecipeResponse)(nil)).Elem()
-}
-
-func (o RecipeResponsePtrOutput) ToRecipeResponsePtrOutput() RecipeResponsePtrOutput {
-	return o
-}
-
-func (o RecipeResponsePtrOutput) ToRecipeResponsePtrOutputWithContext(ctx context.Context) RecipeResponsePtrOutput {
-	return o
-}
-
-func (o RecipeResponsePtrOutput) Elem() RecipeResponseOutput {
-	return o.ApplyT(func(v *RecipeResponse) RecipeResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RecipeResponse
-		return ret
-	}).(RecipeResponseOutput)
-}
-
-// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-func (o RecipeResponsePtrOutput) Arguments() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *RecipeResponse) []map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Arguments
-	}).(pulumi.StringMapArrayOutput)
-}
-
-// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
-func (o RecipeResponsePtrOutput) DefinedInMaterial() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecipeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DefinedInMaterial
-	}).(pulumi.StringPtrOutput)
-}
-
-// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
-func (o RecipeResponsePtrOutput) EntryPoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecipeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EntryPoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Since the environment field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-func (o RecipeResponsePtrOutput) Environment() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *RecipeResponse) []map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Environment
-	}).(pulumi.StringMapArrayOutput)
-}
-
-// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
-func (o RecipeResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecipeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // Metadata for any related URL information.
@@ -17289,62 +11250,6 @@ type RelatedUrlResponse struct {
 	Label string `pulumi:"label"`
 	// Specific URL associated with the resource.
 	Url string `pulumi:"url"`
-}
-
-// RelatedUrlResponseInput is an input type that accepts RelatedUrlResponseArgs and RelatedUrlResponseOutput values.
-// You can construct a concrete instance of `RelatedUrlResponseInput` via:
-//
-//          RelatedUrlResponseArgs{...}
-type RelatedUrlResponseInput interface {
-	pulumi.Input
-
-	ToRelatedUrlResponseOutput() RelatedUrlResponseOutput
-	ToRelatedUrlResponseOutputWithContext(context.Context) RelatedUrlResponseOutput
-}
-
-// Metadata for any related URL information.
-type RelatedUrlResponseArgs struct {
-	// Label to describe usage of the URL.
-	Label pulumi.StringInput `pulumi:"label"`
-	// Specific URL associated with the resource.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (RelatedUrlResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RelatedUrlResponse)(nil)).Elem()
-}
-
-func (i RelatedUrlResponseArgs) ToRelatedUrlResponseOutput() RelatedUrlResponseOutput {
-	return i.ToRelatedUrlResponseOutputWithContext(context.Background())
-}
-
-func (i RelatedUrlResponseArgs) ToRelatedUrlResponseOutputWithContext(ctx context.Context) RelatedUrlResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RelatedUrlResponseOutput)
-}
-
-// RelatedUrlResponseArrayInput is an input type that accepts RelatedUrlResponseArray and RelatedUrlResponseArrayOutput values.
-// You can construct a concrete instance of `RelatedUrlResponseArrayInput` via:
-//
-//          RelatedUrlResponseArray{ RelatedUrlResponseArgs{...} }
-type RelatedUrlResponseArrayInput interface {
-	pulumi.Input
-
-	ToRelatedUrlResponseArrayOutput() RelatedUrlResponseArrayOutput
-	ToRelatedUrlResponseArrayOutputWithContext(context.Context) RelatedUrlResponseArrayOutput
-}
-
-type RelatedUrlResponseArray []RelatedUrlResponseInput
-
-func (RelatedUrlResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RelatedUrlResponse)(nil)).Elem()
-}
-
-func (i RelatedUrlResponseArray) ToRelatedUrlResponseArrayOutput() RelatedUrlResponseArrayOutput {
-	return i.ToRelatedUrlResponseArrayOutputWithContext(context.Background())
-}
-
-func (i RelatedUrlResponseArray) ToRelatedUrlResponseArrayOutputWithContext(ctx context.Context) RelatedUrlResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RelatedUrlResponseArrayOutput)
 }
 
 // Metadata for any related URL information.
@@ -17559,78 +11464,6 @@ type RepoIdResponse struct {
 	Uid string `pulumi:"uid"`
 }
 
-// RepoIdResponseInput is an input type that accepts RepoIdResponseArgs and RepoIdResponseOutput values.
-// You can construct a concrete instance of `RepoIdResponseInput` via:
-//
-//          RepoIdResponseArgs{...}
-type RepoIdResponseInput interface {
-	pulumi.Input
-
-	ToRepoIdResponseOutput() RepoIdResponseOutput
-	ToRepoIdResponseOutputWithContext(context.Context) RepoIdResponseOutput
-}
-
-// A unique identifier for a Cloud Repo.
-type RepoIdResponseArgs struct {
-	// A combination of a project ID and a repo name.
-	ProjectRepoId ProjectRepoIdResponseInput `pulumi:"projectRepoId"`
-	// A server-assigned, globally unique identifier.
-	Uid pulumi.StringInput `pulumi:"uid"`
-}
-
-func (RepoIdResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepoIdResponse)(nil)).Elem()
-}
-
-func (i RepoIdResponseArgs) ToRepoIdResponseOutput() RepoIdResponseOutput {
-	return i.ToRepoIdResponseOutputWithContext(context.Background())
-}
-
-func (i RepoIdResponseArgs) ToRepoIdResponseOutputWithContext(ctx context.Context) RepoIdResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepoIdResponseOutput)
-}
-
-func (i RepoIdResponseArgs) ToRepoIdResponsePtrOutput() RepoIdResponsePtrOutput {
-	return i.ToRepoIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RepoIdResponseArgs) ToRepoIdResponsePtrOutputWithContext(ctx context.Context) RepoIdResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepoIdResponseOutput).ToRepoIdResponsePtrOutputWithContext(ctx)
-}
-
-// RepoIdResponsePtrInput is an input type that accepts RepoIdResponseArgs, RepoIdResponsePtr and RepoIdResponsePtrOutput values.
-// You can construct a concrete instance of `RepoIdResponsePtrInput` via:
-//
-//          RepoIdResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RepoIdResponsePtrInput interface {
-	pulumi.Input
-
-	ToRepoIdResponsePtrOutput() RepoIdResponsePtrOutput
-	ToRepoIdResponsePtrOutputWithContext(context.Context) RepoIdResponsePtrOutput
-}
-
-type repoIdResponsePtrType RepoIdResponseArgs
-
-func RepoIdResponsePtr(v *RepoIdResponseArgs) RepoIdResponsePtrInput {
-	return (*repoIdResponsePtrType)(v)
-}
-
-func (*repoIdResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RepoIdResponse)(nil)).Elem()
-}
-
-func (i *repoIdResponsePtrType) ToRepoIdResponsePtrOutput() RepoIdResponsePtrOutput {
-	return i.ToRepoIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *repoIdResponsePtrType) ToRepoIdResponsePtrOutputWithContext(ctx context.Context) RepoIdResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepoIdResponsePtrOutput)
-}
-
 // A unique identifier for a Cloud Repo.
 type RepoIdResponseOutput struct{ *pulumi.OutputState }
 
@@ -17646,16 +11479,6 @@ func (o RepoIdResponseOutput) ToRepoIdResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o RepoIdResponseOutput) ToRepoIdResponsePtrOutput() RepoIdResponsePtrOutput {
-	return o.ToRepoIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RepoIdResponseOutput) ToRepoIdResponsePtrOutputWithContext(ctx context.Context) RepoIdResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepoIdResponse) *RepoIdResponse {
-		return &v
-	}).(RepoIdResponsePtrOutput)
-}
-
 // A combination of a project ID and a repo name.
 func (o RepoIdResponseOutput) ProjectRepoId() ProjectRepoIdResponseOutput {
 	return o.ApplyT(func(v RepoIdResponse) ProjectRepoIdResponse { return v.ProjectRepoId }).(ProjectRepoIdResponseOutput)
@@ -17664,50 +11487,6 @@ func (o RepoIdResponseOutput) ProjectRepoId() ProjectRepoIdResponseOutput {
 // A server-assigned, globally unique identifier.
 func (o RepoIdResponseOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v RepoIdResponse) string { return v.Uid }).(pulumi.StringOutput)
-}
-
-type RepoIdResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RepoIdResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RepoIdResponse)(nil)).Elem()
-}
-
-func (o RepoIdResponsePtrOutput) ToRepoIdResponsePtrOutput() RepoIdResponsePtrOutput {
-	return o
-}
-
-func (o RepoIdResponsePtrOutput) ToRepoIdResponsePtrOutputWithContext(ctx context.Context) RepoIdResponsePtrOutput {
-	return o
-}
-
-func (o RepoIdResponsePtrOutput) Elem() RepoIdResponseOutput {
-	return o.ApplyT(func(v *RepoIdResponse) RepoIdResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RepoIdResponse
-		return ret
-	}).(RepoIdResponseOutput)
-}
-
-// A combination of a project ID and a repo name.
-func (o RepoIdResponsePtrOutput) ProjectRepoId() ProjectRepoIdResponsePtrOutput {
-	return o.ApplyT(func(v *RepoIdResponse) *ProjectRepoIdResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ProjectRepoId
-	}).(ProjectRepoIdResponsePtrOutput)
-}
-
-// A server-assigned, globally unique identifier.
-func (o RepoIdResponsePtrOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RepoIdResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uid
-	}).(pulumi.StringPtrOutput)
 }
 
 // Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors defined in policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map from `public_key_id` to public key material (and any required parameters, e.g. signing algorithm). In particular, verification implementations MUST NOT treat the signature `public_key_id` as anything more than a key lookup hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a mechanism for quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel. Verification implementations MUST reject signatures in any of the following circumstances: * The `public_key_id` is not recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature with respect to the payload. The `signature` contents SHOULD NOT be "attached" (where the payload is included with the serialized `signature` bytes). Verifiers MUST ignore any "attached" payload and only verify signatures with respect to explicitly provided payload (e.g. a `payload` field on the proto message that holds this Signature, or the canonical serialization of the proto message that holds this signature).
@@ -17825,62 +11604,6 @@ type SignatureResponse struct {
 	PublicKeyId string `pulumi:"publicKeyId"`
 	// The content of the signature, an opaque bytestring. The payload that this signature verifies MUST be unambiguously provided with the Signature during verification. A wrapper message might provide the payload explicitly. Alternatively, a message might have a canonical serialization that can always be unambiguously computed to derive the payload.
 	Signature string `pulumi:"signature"`
-}
-
-// SignatureResponseInput is an input type that accepts SignatureResponseArgs and SignatureResponseOutput values.
-// You can construct a concrete instance of `SignatureResponseInput` via:
-//
-//          SignatureResponseArgs{...}
-type SignatureResponseInput interface {
-	pulumi.Input
-
-	ToSignatureResponseOutput() SignatureResponseOutput
-	ToSignatureResponseOutputWithContext(context.Context) SignatureResponseOutput
-}
-
-// Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors defined in policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map from `public_key_id` to public key material (and any required parameters, e.g. signing algorithm). In particular, verification implementations MUST NOT treat the signature `public_key_id` as anything more than a key lookup hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a mechanism for quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel. Verification implementations MUST reject signatures in any of the following circumstances: * The `public_key_id` is not recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature with respect to the payload. The `signature` contents SHOULD NOT be "attached" (where the payload is included with the serialized `signature` bytes). Verifiers MUST ignore any "attached" payload and only verify signatures with respect to explicitly provided payload (e.g. a `payload` field on the proto message that holds this Signature, or the canonical serialization of the proto message that holds this signature).
-type SignatureResponseArgs struct {
-	// The identifier for the public key that verifies this signature. * The `public_key_id` is required. * The `public_key_id` SHOULD be an RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an immutable reference, such as a cryptographic digest. Examples of valid `public_key_id`s: OpenPGP V4 public key fingerprint: * "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more details on this scheme. RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization): * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" * "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
-	PublicKeyId pulumi.StringInput `pulumi:"publicKeyId"`
-	// The content of the signature, an opaque bytestring. The payload that this signature verifies MUST be unambiguously provided with the Signature during verification. A wrapper message might provide the payload explicitly. Alternatively, a message might have a canonical serialization that can always be unambiguously computed to derive the payload.
-	Signature pulumi.StringInput `pulumi:"signature"`
-}
-
-func (SignatureResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SignatureResponse)(nil)).Elem()
-}
-
-func (i SignatureResponseArgs) ToSignatureResponseOutput() SignatureResponseOutput {
-	return i.ToSignatureResponseOutputWithContext(context.Background())
-}
-
-func (i SignatureResponseArgs) ToSignatureResponseOutputWithContext(ctx context.Context) SignatureResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SignatureResponseOutput)
-}
-
-// SignatureResponseArrayInput is an input type that accepts SignatureResponseArray and SignatureResponseArrayOutput values.
-// You can construct a concrete instance of `SignatureResponseArrayInput` via:
-//
-//          SignatureResponseArray{ SignatureResponseArgs{...} }
-type SignatureResponseArrayInput interface {
-	pulumi.Input
-
-	ToSignatureResponseArrayOutput() SignatureResponseArrayOutput
-	ToSignatureResponseArrayOutputWithContext(context.Context) SignatureResponseArrayOutput
-}
-
-type SignatureResponseArray []SignatureResponseInput
-
-func (SignatureResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SignatureResponse)(nil)).Elem()
-}
-
-func (i SignatureResponseArray) ToSignatureResponseArrayOutput() SignatureResponseArrayOutput {
-	return i.ToSignatureResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SignatureResponseArray) ToSignatureResponseArrayOutputWithContext(ctx context.Context) SignatureResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SignatureResponseArrayOutput)
 }
 
 // Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors defined in policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map from `public_key_id` to public key material (and any required parameters, e.g. signing algorithm). In particular, verification implementations MUST NOT treat the signature `public_key_id` as anything more than a key lookup hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a mechanism for quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel. Verification implementations MUST reject signatures in any of the following circumstances: * The `public_key_id` is not recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature with respect to the payload. The `signature` contents SHOULD NOT be "attached" (where the payload is included with the serialized `signature` bytes). Verifiers MUST ignore any "attached" payload and only verify signatures with respect to explicitly provided payload (e.g. a `payload` field on the proto message that holds this Signature, or the canonical serialization of the proto message that holds this signature).
@@ -18064,73 +11787,6 @@ func (o SlsaBuilderPtrOutput) Id() pulumi.StringPtrOutput {
 type SlsaBuilderResponse struct {
 }
 
-// SlsaBuilderResponseInput is an input type that accepts SlsaBuilderResponseArgs and SlsaBuilderResponseOutput values.
-// You can construct a concrete instance of `SlsaBuilderResponseInput` via:
-//
-//          SlsaBuilderResponseArgs{...}
-type SlsaBuilderResponseInput interface {
-	pulumi.Input
-
-	ToSlsaBuilderResponseOutput() SlsaBuilderResponseOutput
-	ToSlsaBuilderResponseOutputWithContext(context.Context) SlsaBuilderResponseOutput
-}
-
-type SlsaBuilderResponseArgs struct {
-}
-
-func (SlsaBuilderResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SlsaBuilderResponse)(nil)).Elem()
-}
-
-func (i SlsaBuilderResponseArgs) ToSlsaBuilderResponseOutput() SlsaBuilderResponseOutput {
-	return i.ToSlsaBuilderResponseOutputWithContext(context.Background())
-}
-
-func (i SlsaBuilderResponseArgs) ToSlsaBuilderResponseOutputWithContext(ctx context.Context) SlsaBuilderResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaBuilderResponseOutput)
-}
-
-func (i SlsaBuilderResponseArgs) ToSlsaBuilderResponsePtrOutput() SlsaBuilderResponsePtrOutput {
-	return i.ToSlsaBuilderResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SlsaBuilderResponseArgs) ToSlsaBuilderResponsePtrOutputWithContext(ctx context.Context) SlsaBuilderResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaBuilderResponseOutput).ToSlsaBuilderResponsePtrOutputWithContext(ctx)
-}
-
-// SlsaBuilderResponsePtrInput is an input type that accepts SlsaBuilderResponseArgs, SlsaBuilderResponsePtr and SlsaBuilderResponsePtrOutput values.
-// You can construct a concrete instance of `SlsaBuilderResponsePtrInput` via:
-//
-//          SlsaBuilderResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SlsaBuilderResponsePtrInput interface {
-	pulumi.Input
-
-	ToSlsaBuilderResponsePtrOutput() SlsaBuilderResponsePtrOutput
-	ToSlsaBuilderResponsePtrOutputWithContext(context.Context) SlsaBuilderResponsePtrOutput
-}
-
-type slsaBuilderResponsePtrType SlsaBuilderResponseArgs
-
-func SlsaBuilderResponsePtr(v *SlsaBuilderResponseArgs) SlsaBuilderResponsePtrInput {
-	return (*slsaBuilderResponsePtrType)(v)
-}
-
-func (*slsaBuilderResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SlsaBuilderResponse)(nil)).Elem()
-}
-
-func (i *slsaBuilderResponsePtrType) ToSlsaBuilderResponsePtrOutput() SlsaBuilderResponsePtrOutput {
-	return i.ToSlsaBuilderResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *slsaBuilderResponsePtrType) ToSlsaBuilderResponsePtrOutputWithContext(ctx context.Context) SlsaBuilderResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaBuilderResponsePtrOutput)
-}
-
 type SlsaBuilderResponseOutput struct{ *pulumi.OutputState }
 
 func (SlsaBuilderResponseOutput) ElementType() reflect.Type {
@@ -18143,40 +11799,6 @@ func (o SlsaBuilderResponseOutput) ToSlsaBuilderResponseOutput() SlsaBuilderResp
 
 func (o SlsaBuilderResponseOutput) ToSlsaBuilderResponseOutputWithContext(ctx context.Context) SlsaBuilderResponseOutput {
 	return o
-}
-
-func (o SlsaBuilderResponseOutput) ToSlsaBuilderResponsePtrOutput() SlsaBuilderResponsePtrOutput {
-	return o.ToSlsaBuilderResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SlsaBuilderResponseOutput) ToSlsaBuilderResponsePtrOutputWithContext(ctx context.Context) SlsaBuilderResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaBuilderResponse) *SlsaBuilderResponse {
-		return &v
-	}).(SlsaBuilderResponsePtrOutput)
-}
-
-type SlsaBuilderResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SlsaBuilderResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SlsaBuilderResponse)(nil)).Elem()
-}
-
-func (o SlsaBuilderResponsePtrOutput) ToSlsaBuilderResponsePtrOutput() SlsaBuilderResponsePtrOutput {
-	return o
-}
-
-func (o SlsaBuilderResponsePtrOutput) ToSlsaBuilderResponsePtrOutputWithContext(ctx context.Context) SlsaBuilderResponsePtrOutput {
-	return o
-}
-
-func (o SlsaBuilderResponsePtrOutput) Elem() SlsaBuilderResponseOutput {
-	return o.ApplyT(func(v *SlsaBuilderResponse) SlsaBuilderResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SlsaBuilderResponse
-		return ret
-	}).(SlsaBuilderResponseOutput)
 }
 
 // Indicates that the builder claims certain fields in this message to be complete.
@@ -18367,80 +11989,6 @@ type SlsaCompletenessResponse struct {
 	Materials bool `pulumi:"materials"`
 }
 
-// SlsaCompletenessResponseInput is an input type that accepts SlsaCompletenessResponseArgs and SlsaCompletenessResponseOutput values.
-// You can construct a concrete instance of `SlsaCompletenessResponseInput` via:
-//
-//          SlsaCompletenessResponseArgs{...}
-type SlsaCompletenessResponseInput interface {
-	pulumi.Input
-
-	ToSlsaCompletenessResponseOutput() SlsaCompletenessResponseOutput
-	ToSlsaCompletenessResponseOutputWithContext(context.Context) SlsaCompletenessResponseOutput
-}
-
-// Indicates that the builder claims certain fields in this message to be complete.
-type SlsaCompletenessResponseArgs struct {
-	// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
-	Arguments pulumi.BoolInput `pulumi:"arguments"`
-	// If true, the builder claims that recipe.environment is claimed to be complete.
-	Environment pulumi.BoolInput `pulumi:"environment"`
-	// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
-	Materials pulumi.BoolInput `pulumi:"materials"`
-}
-
-func (SlsaCompletenessResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SlsaCompletenessResponse)(nil)).Elem()
-}
-
-func (i SlsaCompletenessResponseArgs) ToSlsaCompletenessResponseOutput() SlsaCompletenessResponseOutput {
-	return i.ToSlsaCompletenessResponseOutputWithContext(context.Background())
-}
-
-func (i SlsaCompletenessResponseArgs) ToSlsaCompletenessResponseOutputWithContext(ctx context.Context) SlsaCompletenessResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaCompletenessResponseOutput)
-}
-
-func (i SlsaCompletenessResponseArgs) ToSlsaCompletenessResponsePtrOutput() SlsaCompletenessResponsePtrOutput {
-	return i.ToSlsaCompletenessResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SlsaCompletenessResponseArgs) ToSlsaCompletenessResponsePtrOutputWithContext(ctx context.Context) SlsaCompletenessResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaCompletenessResponseOutput).ToSlsaCompletenessResponsePtrOutputWithContext(ctx)
-}
-
-// SlsaCompletenessResponsePtrInput is an input type that accepts SlsaCompletenessResponseArgs, SlsaCompletenessResponsePtr and SlsaCompletenessResponsePtrOutput values.
-// You can construct a concrete instance of `SlsaCompletenessResponsePtrInput` via:
-//
-//          SlsaCompletenessResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SlsaCompletenessResponsePtrInput interface {
-	pulumi.Input
-
-	ToSlsaCompletenessResponsePtrOutput() SlsaCompletenessResponsePtrOutput
-	ToSlsaCompletenessResponsePtrOutputWithContext(context.Context) SlsaCompletenessResponsePtrOutput
-}
-
-type slsaCompletenessResponsePtrType SlsaCompletenessResponseArgs
-
-func SlsaCompletenessResponsePtr(v *SlsaCompletenessResponseArgs) SlsaCompletenessResponsePtrInput {
-	return (*slsaCompletenessResponsePtrType)(v)
-}
-
-func (*slsaCompletenessResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SlsaCompletenessResponse)(nil)).Elem()
-}
-
-func (i *slsaCompletenessResponsePtrType) ToSlsaCompletenessResponsePtrOutput() SlsaCompletenessResponsePtrOutput {
-	return i.ToSlsaCompletenessResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *slsaCompletenessResponsePtrType) ToSlsaCompletenessResponsePtrOutputWithContext(ctx context.Context) SlsaCompletenessResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaCompletenessResponsePtrOutput)
-}
-
 // Indicates that the builder claims certain fields in this message to be complete.
 type SlsaCompletenessResponseOutput struct{ *pulumi.OutputState }
 
@@ -18456,16 +12004,6 @@ func (o SlsaCompletenessResponseOutput) ToSlsaCompletenessResponseOutputWithCont
 	return o
 }
 
-func (o SlsaCompletenessResponseOutput) ToSlsaCompletenessResponsePtrOutput() SlsaCompletenessResponsePtrOutput {
-	return o.ToSlsaCompletenessResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SlsaCompletenessResponseOutput) ToSlsaCompletenessResponsePtrOutputWithContext(ctx context.Context) SlsaCompletenessResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaCompletenessResponse) *SlsaCompletenessResponse {
-		return &v
-	}).(SlsaCompletenessResponsePtrOutput)
-}
-
 // If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
 func (o SlsaCompletenessResponseOutput) Arguments() pulumi.BoolOutput {
 	return o.ApplyT(func(v SlsaCompletenessResponse) bool { return v.Arguments }).(pulumi.BoolOutput)
@@ -18479,60 +12017,6 @@ func (o SlsaCompletenessResponseOutput) Environment() pulumi.BoolOutput {
 // If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
 func (o SlsaCompletenessResponseOutput) Materials() pulumi.BoolOutput {
 	return o.ApplyT(func(v SlsaCompletenessResponse) bool { return v.Materials }).(pulumi.BoolOutput)
-}
-
-type SlsaCompletenessResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SlsaCompletenessResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SlsaCompletenessResponse)(nil)).Elem()
-}
-
-func (o SlsaCompletenessResponsePtrOutput) ToSlsaCompletenessResponsePtrOutput() SlsaCompletenessResponsePtrOutput {
-	return o
-}
-
-func (o SlsaCompletenessResponsePtrOutput) ToSlsaCompletenessResponsePtrOutputWithContext(ctx context.Context) SlsaCompletenessResponsePtrOutput {
-	return o
-}
-
-func (o SlsaCompletenessResponsePtrOutput) Elem() SlsaCompletenessResponseOutput {
-	return o.ApplyT(func(v *SlsaCompletenessResponse) SlsaCompletenessResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SlsaCompletenessResponse
-		return ret
-	}).(SlsaCompletenessResponseOutput)
-}
-
-// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
-func (o SlsaCompletenessResponsePtrOutput) Arguments() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SlsaCompletenessResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Arguments
-	}).(pulumi.BoolPtrOutput)
-}
-
-// If true, the builder claims that recipe.environment is claimed to be complete.
-func (o SlsaCompletenessResponsePtrOutput) Environment() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SlsaCompletenessResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Environment
-	}).(pulumi.BoolPtrOutput)
-}
-
-// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
-func (o SlsaCompletenessResponsePtrOutput) Materials() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SlsaCompletenessResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Materials
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Other properties of the build.
@@ -18765,84 +12249,6 @@ type SlsaMetadataResponse struct {
 	Reproducible bool `pulumi:"reproducible"`
 }
 
-// SlsaMetadataResponseInput is an input type that accepts SlsaMetadataResponseArgs and SlsaMetadataResponseOutput values.
-// You can construct a concrete instance of `SlsaMetadataResponseInput` via:
-//
-//          SlsaMetadataResponseArgs{...}
-type SlsaMetadataResponseInput interface {
-	pulumi.Input
-
-	ToSlsaMetadataResponseOutput() SlsaMetadataResponseOutput
-	ToSlsaMetadataResponseOutputWithContext(context.Context) SlsaMetadataResponseOutput
-}
-
-// Other properties of the build.
-type SlsaMetadataResponseArgs struct {
-	// The timestamp of when the build completed.
-	BuildFinishedOn pulumi.StringInput `pulumi:"buildFinishedOn"`
-	// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
-	BuildInvocationId pulumi.StringInput `pulumi:"buildInvocationId"`
-	// The timestamp of when the build started.
-	BuildStartedOn pulumi.StringInput `pulumi:"buildStartedOn"`
-	// Indicates that the builder claims certain fields in this message to be complete.
-	Completeness SlsaCompletenessResponseInput `pulumi:"completeness"`
-	// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
-	Reproducible pulumi.BoolInput `pulumi:"reproducible"`
-}
-
-func (SlsaMetadataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SlsaMetadataResponse)(nil)).Elem()
-}
-
-func (i SlsaMetadataResponseArgs) ToSlsaMetadataResponseOutput() SlsaMetadataResponseOutput {
-	return i.ToSlsaMetadataResponseOutputWithContext(context.Background())
-}
-
-func (i SlsaMetadataResponseArgs) ToSlsaMetadataResponseOutputWithContext(ctx context.Context) SlsaMetadataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaMetadataResponseOutput)
-}
-
-func (i SlsaMetadataResponseArgs) ToSlsaMetadataResponsePtrOutput() SlsaMetadataResponsePtrOutput {
-	return i.ToSlsaMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SlsaMetadataResponseArgs) ToSlsaMetadataResponsePtrOutputWithContext(ctx context.Context) SlsaMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaMetadataResponseOutput).ToSlsaMetadataResponsePtrOutputWithContext(ctx)
-}
-
-// SlsaMetadataResponsePtrInput is an input type that accepts SlsaMetadataResponseArgs, SlsaMetadataResponsePtr and SlsaMetadataResponsePtrOutput values.
-// You can construct a concrete instance of `SlsaMetadataResponsePtrInput` via:
-//
-//          SlsaMetadataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SlsaMetadataResponsePtrInput interface {
-	pulumi.Input
-
-	ToSlsaMetadataResponsePtrOutput() SlsaMetadataResponsePtrOutput
-	ToSlsaMetadataResponsePtrOutputWithContext(context.Context) SlsaMetadataResponsePtrOutput
-}
-
-type slsaMetadataResponsePtrType SlsaMetadataResponseArgs
-
-func SlsaMetadataResponsePtr(v *SlsaMetadataResponseArgs) SlsaMetadataResponsePtrInput {
-	return (*slsaMetadataResponsePtrType)(v)
-}
-
-func (*slsaMetadataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SlsaMetadataResponse)(nil)).Elem()
-}
-
-func (i *slsaMetadataResponsePtrType) ToSlsaMetadataResponsePtrOutput() SlsaMetadataResponsePtrOutput {
-	return i.ToSlsaMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *slsaMetadataResponsePtrType) ToSlsaMetadataResponsePtrOutputWithContext(ctx context.Context) SlsaMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaMetadataResponsePtrOutput)
-}
-
 // Other properties of the build.
 type SlsaMetadataResponseOutput struct{ *pulumi.OutputState }
 
@@ -18856,16 +12262,6 @@ func (o SlsaMetadataResponseOutput) ToSlsaMetadataResponseOutput() SlsaMetadataR
 
 func (o SlsaMetadataResponseOutput) ToSlsaMetadataResponseOutputWithContext(ctx context.Context) SlsaMetadataResponseOutput {
 	return o
-}
-
-func (o SlsaMetadataResponseOutput) ToSlsaMetadataResponsePtrOutput() SlsaMetadataResponsePtrOutput {
-	return o.ToSlsaMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SlsaMetadataResponseOutput) ToSlsaMetadataResponsePtrOutputWithContext(ctx context.Context) SlsaMetadataResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaMetadataResponse) *SlsaMetadataResponse {
-		return &v
-	}).(SlsaMetadataResponsePtrOutput)
 }
 
 // The timestamp of when the build completed.
@@ -18891,80 +12287,6 @@ func (o SlsaMetadataResponseOutput) Completeness() SlsaCompletenessResponseOutpu
 // If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
 func (o SlsaMetadataResponseOutput) Reproducible() pulumi.BoolOutput {
 	return o.ApplyT(func(v SlsaMetadataResponse) bool { return v.Reproducible }).(pulumi.BoolOutput)
-}
-
-type SlsaMetadataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SlsaMetadataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SlsaMetadataResponse)(nil)).Elem()
-}
-
-func (o SlsaMetadataResponsePtrOutput) ToSlsaMetadataResponsePtrOutput() SlsaMetadataResponsePtrOutput {
-	return o
-}
-
-func (o SlsaMetadataResponsePtrOutput) ToSlsaMetadataResponsePtrOutputWithContext(ctx context.Context) SlsaMetadataResponsePtrOutput {
-	return o
-}
-
-func (o SlsaMetadataResponsePtrOutput) Elem() SlsaMetadataResponseOutput {
-	return o.ApplyT(func(v *SlsaMetadataResponse) SlsaMetadataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SlsaMetadataResponse
-		return ret
-	}).(SlsaMetadataResponseOutput)
-}
-
-// The timestamp of when the build completed.
-func (o SlsaMetadataResponsePtrOutput) BuildFinishedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SlsaMetadataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BuildFinishedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
-func (o SlsaMetadataResponsePtrOutput) BuildInvocationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SlsaMetadataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BuildInvocationId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of when the build started.
-func (o SlsaMetadataResponsePtrOutput) BuildStartedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SlsaMetadataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BuildStartedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates that the builder claims certain fields in this message to be complete.
-func (o SlsaMetadataResponsePtrOutput) Completeness() SlsaCompletenessResponsePtrOutput {
-	return o.ApplyT(func(v *SlsaMetadataResponse) *SlsaCompletenessResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Completeness
-	}).(SlsaCompletenessResponsePtrOutput)
-}
-
-// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
-func (o SlsaMetadataResponsePtrOutput) Reproducible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SlsaMetadataResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Reproducible
-	}).(pulumi.BoolPtrOutput)
 }
 
 type SlsaProvenance struct {
@@ -19167,80 +12489,6 @@ type SlsaProvenanceResponse struct {
 	Recipe SlsaRecipeResponse `pulumi:"recipe"`
 }
 
-// SlsaProvenanceResponseInput is an input type that accepts SlsaProvenanceResponseArgs and SlsaProvenanceResponseOutput values.
-// You can construct a concrete instance of `SlsaProvenanceResponseInput` via:
-//
-//          SlsaProvenanceResponseArgs{...}
-type SlsaProvenanceResponseInput interface {
-	pulumi.Input
-
-	ToSlsaProvenanceResponseOutput() SlsaProvenanceResponseOutput
-	ToSlsaProvenanceResponseOutputWithContext(context.Context) SlsaProvenanceResponseOutput
-}
-
-type SlsaProvenanceResponseArgs struct {
-	// required
-	Builder SlsaBuilderResponseInput `pulumi:"builder"`
-	// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
-	Materials MaterialResponseArrayInput `pulumi:"materials"`
-	Metadata  SlsaMetadataResponseInput  `pulumi:"metadata"`
-	// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
-	Recipe SlsaRecipeResponseInput `pulumi:"recipe"`
-}
-
-func (SlsaProvenanceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SlsaProvenanceResponse)(nil)).Elem()
-}
-
-func (i SlsaProvenanceResponseArgs) ToSlsaProvenanceResponseOutput() SlsaProvenanceResponseOutput {
-	return i.ToSlsaProvenanceResponseOutputWithContext(context.Background())
-}
-
-func (i SlsaProvenanceResponseArgs) ToSlsaProvenanceResponseOutputWithContext(ctx context.Context) SlsaProvenanceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceResponseOutput)
-}
-
-func (i SlsaProvenanceResponseArgs) ToSlsaProvenanceResponsePtrOutput() SlsaProvenanceResponsePtrOutput {
-	return i.ToSlsaProvenanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SlsaProvenanceResponseArgs) ToSlsaProvenanceResponsePtrOutputWithContext(ctx context.Context) SlsaProvenanceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceResponseOutput).ToSlsaProvenanceResponsePtrOutputWithContext(ctx)
-}
-
-// SlsaProvenanceResponsePtrInput is an input type that accepts SlsaProvenanceResponseArgs, SlsaProvenanceResponsePtr and SlsaProvenanceResponsePtrOutput values.
-// You can construct a concrete instance of `SlsaProvenanceResponsePtrInput` via:
-//
-//          SlsaProvenanceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SlsaProvenanceResponsePtrInput interface {
-	pulumi.Input
-
-	ToSlsaProvenanceResponsePtrOutput() SlsaProvenanceResponsePtrOutput
-	ToSlsaProvenanceResponsePtrOutputWithContext(context.Context) SlsaProvenanceResponsePtrOutput
-}
-
-type slsaProvenanceResponsePtrType SlsaProvenanceResponseArgs
-
-func SlsaProvenanceResponsePtr(v *SlsaProvenanceResponseArgs) SlsaProvenanceResponsePtrInput {
-	return (*slsaProvenanceResponsePtrType)(v)
-}
-
-func (*slsaProvenanceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SlsaProvenanceResponse)(nil)).Elem()
-}
-
-func (i *slsaProvenanceResponsePtrType) ToSlsaProvenanceResponsePtrOutput() SlsaProvenanceResponsePtrOutput {
-	return i.ToSlsaProvenanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *slsaProvenanceResponsePtrType) ToSlsaProvenanceResponsePtrOutputWithContext(ctx context.Context) SlsaProvenanceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceResponsePtrOutput)
-}
-
 type SlsaProvenanceResponseOutput struct{ *pulumi.OutputState }
 
 func (SlsaProvenanceResponseOutput) ElementType() reflect.Type {
@@ -19253,16 +12501,6 @@ func (o SlsaProvenanceResponseOutput) ToSlsaProvenanceResponseOutput() SlsaProve
 
 func (o SlsaProvenanceResponseOutput) ToSlsaProvenanceResponseOutputWithContext(ctx context.Context) SlsaProvenanceResponseOutput {
 	return o
-}
-
-func (o SlsaProvenanceResponseOutput) ToSlsaProvenanceResponsePtrOutput() SlsaProvenanceResponsePtrOutput {
-	return o.ToSlsaProvenanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SlsaProvenanceResponseOutput) ToSlsaProvenanceResponsePtrOutputWithContext(ctx context.Context) SlsaProvenanceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaProvenanceResponse) *SlsaProvenanceResponse {
-		return &v
-	}).(SlsaProvenanceResponsePtrOutput)
 }
 
 // required
@@ -19282,69 +12520,6 @@ func (o SlsaProvenanceResponseOutput) Metadata() SlsaMetadataResponseOutput {
 // Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
 func (o SlsaProvenanceResponseOutput) Recipe() SlsaRecipeResponseOutput {
 	return o.ApplyT(func(v SlsaProvenanceResponse) SlsaRecipeResponse { return v.Recipe }).(SlsaRecipeResponseOutput)
-}
-
-type SlsaProvenanceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SlsaProvenanceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SlsaProvenanceResponse)(nil)).Elem()
-}
-
-func (o SlsaProvenanceResponsePtrOutput) ToSlsaProvenanceResponsePtrOutput() SlsaProvenanceResponsePtrOutput {
-	return o
-}
-
-func (o SlsaProvenanceResponsePtrOutput) ToSlsaProvenanceResponsePtrOutputWithContext(ctx context.Context) SlsaProvenanceResponsePtrOutput {
-	return o
-}
-
-func (o SlsaProvenanceResponsePtrOutput) Elem() SlsaProvenanceResponseOutput {
-	return o.ApplyT(func(v *SlsaProvenanceResponse) SlsaProvenanceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SlsaProvenanceResponse
-		return ret
-	}).(SlsaProvenanceResponseOutput)
-}
-
-// required
-func (o SlsaProvenanceResponsePtrOutput) Builder() SlsaBuilderResponsePtrOutput {
-	return o.ApplyT(func(v *SlsaProvenanceResponse) *SlsaBuilderResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Builder
-	}).(SlsaBuilderResponsePtrOutput)
-}
-
-// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
-func (o SlsaProvenanceResponsePtrOutput) Materials() MaterialResponseArrayOutput {
-	return o.ApplyT(func(v *SlsaProvenanceResponse) []MaterialResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Materials
-	}).(MaterialResponseArrayOutput)
-}
-
-func (o SlsaProvenanceResponsePtrOutput) Metadata() SlsaMetadataResponsePtrOutput {
-	return o.ApplyT(func(v *SlsaProvenanceResponse) *SlsaMetadataResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Metadata
-	}).(SlsaMetadataResponsePtrOutput)
-}
-
-// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
-func (o SlsaProvenanceResponsePtrOutput) Recipe() SlsaRecipeResponsePtrOutput {
-	return o.ApplyT(func(v *SlsaProvenanceResponse) *SlsaRecipeResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Recipe
-	}).(SlsaRecipeResponsePtrOutput)
 }
 
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
@@ -19577,84 +12752,6 @@ type SlsaRecipeResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// SlsaRecipeResponseInput is an input type that accepts SlsaRecipeResponseArgs and SlsaRecipeResponseOutput values.
-// You can construct a concrete instance of `SlsaRecipeResponseInput` via:
-//
-//          SlsaRecipeResponseArgs{...}
-type SlsaRecipeResponseInput interface {
-	pulumi.Input
-
-	ToSlsaRecipeResponseOutput() SlsaRecipeResponseOutput
-	ToSlsaRecipeResponseOutputWithContext(context.Context) SlsaRecipeResponseOutput
-}
-
-// Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
-type SlsaRecipeResponseArgs struct {
-	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
-	Arguments pulumi.StringMapInput `pulumi:"arguments"`
-	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
-	DefinedInMaterial pulumi.StringInput `pulumi:"definedInMaterial"`
-	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
-	EntryPoint pulumi.StringInput `pulumi:"entryPoint"`
-	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
-	Environment pulumi.StringMapInput `pulumi:"environment"`
-	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (SlsaRecipeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SlsaRecipeResponse)(nil)).Elem()
-}
-
-func (i SlsaRecipeResponseArgs) ToSlsaRecipeResponseOutput() SlsaRecipeResponseOutput {
-	return i.ToSlsaRecipeResponseOutputWithContext(context.Background())
-}
-
-func (i SlsaRecipeResponseArgs) ToSlsaRecipeResponseOutputWithContext(ctx context.Context) SlsaRecipeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaRecipeResponseOutput)
-}
-
-func (i SlsaRecipeResponseArgs) ToSlsaRecipeResponsePtrOutput() SlsaRecipeResponsePtrOutput {
-	return i.ToSlsaRecipeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SlsaRecipeResponseArgs) ToSlsaRecipeResponsePtrOutputWithContext(ctx context.Context) SlsaRecipeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaRecipeResponseOutput).ToSlsaRecipeResponsePtrOutputWithContext(ctx)
-}
-
-// SlsaRecipeResponsePtrInput is an input type that accepts SlsaRecipeResponseArgs, SlsaRecipeResponsePtr and SlsaRecipeResponsePtrOutput values.
-// You can construct a concrete instance of `SlsaRecipeResponsePtrInput` via:
-//
-//          SlsaRecipeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SlsaRecipeResponsePtrInput interface {
-	pulumi.Input
-
-	ToSlsaRecipeResponsePtrOutput() SlsaRecipeResponsePtrOutput
-	ToSlsaRecipeResponsePtrOutputWithContext(context.Context) SlsaRecipeResponsePtrOutput
-}
-
-type slsaRecipeResponsePtrType SlsaRecipeResponseArgs
-
-func SlsaRecipeResponsePtr(v *SlsaRecipeResponseArgs) SlsaRecipeResponsePtrInput {
-	return (*slsaRecipeResponsePtrType)(v)
-}
-
-func (*slsaRecipeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SlsaRecipeResponse)(nil)).Elem()
-}
-
-func (i *slsaRecipeResponsePtrType) ToSlsaRecipeResponsePtrOutput() SlsaRecipeResponsePtrOutput {
-	return i.ToSlsaRecipeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *slsaRecipeResponsePtrType) ToSlsaRecipeResponsePtrOutputWithContext(ctx context.Context) SlsaRecipeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlsaRecipeResponsePtrOutput)
-}
-
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
 type SlsaRecipeResponseOutput struct{ *pulumi.OutputState }
 
@@ -19668,16 +12765,6 @@ func (o SlsaRecipeResponseOutput) ToSlsaRecipeResponseOutput() SlsaRecipeRespons
 
 func (o SlsaRecipeResponseOutput) ToSlsaRecipeResponseOutputWithContext(ctx context.Context) SlsaRecipeResponseOutput {
 	return o
-}
-
-func (o SlsaRecipeResponseOutput) ToSlsaRecipeResponsePtrOutput() SlsaRecipeResponsePtrOutput {
-	return o.ToSlsaRecipeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SlsaRecipeResponseOutput) ToSlsaRecipeResponsePtrOutputWithContext(ctx context.Context) SlsaRecipeResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaRecipeResponse) *SlsaRecipeResponse {
-		return &v
-	}).(SlsaRecipeResponsePtrOutput)
 }
 
 // Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
@@ -19703,80 +12790,6 @@ func (o SlsaRecipeResponseOutput) Environment() pulumi.StringMapOutput {
 // URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
 func (o SlsaRecipeResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SlsaRecipeResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type SlsaRecipeResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SlsaRecipeResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SlsaRecipeResponse)(nil)).Elem()
-}
-
-func (o SlsaRecipeResponsePtrOutput) ToSlsaRecipeResponsePtrOutput() SlsaRecipeResponsePtrOutput {
-	return o
-}
-
-func (o SlsaRecipeResponsePtrOutput) ToSlsaRecipeResponsePtrOutputWithContext(ctx context.Context) SlsaRecipeResponsePtrOutput {
-	return o
-}
-
-func (o SlsaRecipeResponsePtrOutput) Elem() SlsaRecipeResponseOutput {
-	return o.ApplyT(func(v *SlsaRecipeResponse) SlsaRecipeResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SlsaRecipeResponse
-		return ret
-	}).(SlsaRecipeResponseOutput)
-}
-
-// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
-func (o SlsaRecipeResponsePtrOutput) Arguments() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SlsaRecipeResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Arguments
-	}).(pulumi.StringMapOutput)
-}
-
-// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
-func (o SlsaRecipeResponsePtrOutput) DefinedInMaterial() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SlsaRecipeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DefinedInMaterial
-	}).(pulumi.StringPtrOutput)
-}
-
-// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
-func (o SlsaRecipeResponsePtrOutput) EntryPoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SlsaRecipeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EntryPoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
-func (o SlsaRecipeResponsePtrOutput) Environment() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SlsaRecipeResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Environment
-	}).(pulumi.StringMapOutput)
-}
-
-// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
-func (o SlsaRecipeResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SlsaRecipeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // Source describes the location of the source used for the build.
@@ -20230,107 +13243,6 @@ type SourceContextResponse struct {
 	Labels map[string]string `pulumi:"labels"`
 }
 
-// SourceContextResponseInput is an input type that accepts SourceContextResponseArgs and SourceContextResponseOutput values.
-// You can construct a concrete instance of `SourceContextResponseInput` via:
-//
-//          SourceContextResponseArgs{...}
-type SourceContextResponseInput interface {
-	pulumi.Input
-
-	ToSourceContextResponseOutput() SourceContextResponseOutput
-	ToSourceContextResponseOutputWithContext(context.Context) SourceContextResponseOutput
-}
-
-// A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
-type SourceContextResponseArgs struct {
-	// A SourceContext referring to a revision in a Google Cloud Source Repo.
-	CloudRepo CloudRepoSourceContextResponseInput `pulumi:"cloudRepo"`
-	// A SourceContext referring to a Gerrit project.
-	Gerrit GerritSourceContextResponseInput `pulumi:"gerrit"`
-	// A SourceContext referring to any third party Git repo (e.g., GitHub).
-	Git GitSourceContextResponseInput `pulumi:"git"`
-	// Labels with user defined metadata.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-}
-
-func (SourceContextResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceContextResponse)(nil)).Elem()
-}
-
-func (i SourceContextResponseArgs) ToSourceContextResponseOutput() SourceContextResponseOutput {
-	return i.ToSourceContextResponseOutputWithContext(context.Background())
-}
-
-func (i SourceContextResponseArgs) ToSourceContextResponseOutputWithContext(ctx context.Context) SourceContextResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceContextResponseOutput)
-}
-
-func (i SourceContextResponseArgs) ToSourceContextResponsePtrOutput() SourceContextResponsePtrOutput {
-	return i.ToSourceContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SourceContextResponseArgs) ToSourceContextResponsePtrOutputWithContext(ctx context.Context) SourceContextResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceContextResponseOutput).ToSourceContextResponsePtrOutputWithContext(ctx)
-}
-
-// SourceContextResponsePtrInput is an input type that accepts SourceContextResponseArgs, SourceContextResponsePtr and SourceContextResponsePtrOutput values.
-// You can construct a concrete instance of `SourceContextResponsePtrInput` via:
-//
-//          SourceContextResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SourceContextResponsePtrInput interface {
-	pulumi.Input
-
-	ToSourceContextResponsePtrOutput() SourceContextResponsePtrOutput
-	ToSourceContextResponsePtrOutputWithContext(context.Context) SourceContextResponsePtrOutput
-}
-
-type sourceContextResponsePtrType SourceContextResponseArgs
-
-func SourceContextResponsePtr(v *SourceContextResponseArgs) SourceContextResponsePtrInput {
-	return (*sourceContextResponsePtrType)(v)
-}
-
-func (*sourceContextResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceContextResponse)(nil)).Elem()
-}
-
-func (i *sourceContextResponsePtrType) ToSourceContextResponsePtrOutput() SourceContextResponsePtrOutput {
-	return i.ToSourceContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *sourceContextResponsePtrType) ToSourceContextResponsePtrOutputWithContext(ctx context.Context) SourceContextResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceContextResponsePtrOutput)
-}
-
-// SourceContextResponseArrayInput is an input type that accepts SourceContextResponseArray and SourceContextResponseArrayOutput values.
-// You can construct a concrete instance of `SourceContextResponseArrayInput` via:
-//
-//          SourceContextResponseArray{ SourceContextResponseArgs{...} }
-type SourceContextResponseArrayInput interface {
-	pulumi.Input
-
-	ToSourceContextResponseArrayOutput() SourceContextResponseArrayOutput
-	ToSourceContextResponseArrayOutputWithContext(context.Context) SourceContextResponseArrayOutput
-}
-
-type SourceContextResponseArray []SourceContextResponseInput
-
-func (SourceContextResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SourceContextResponse)(nil)).Elem()
-}
-
-func (i SourceContextResponseArray) ToSourceContextResponseArrayOutput() SourceContextResponseArrayOutput {
-	return i.ToSourceContextResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SourceContextResponseArray) ToSourceContextResponseArrayOutputWithContext(ctx context.Context) SourceContextResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceContextResponseArrayOutput)
-}
-
 // A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
 type SourceContextResponseOutput struct{ *pulumi.OutputState }
 
@@ -20344,16 +13256,6 @@ func (o SourceContextResponseOutput) ToSourceContextResponseOutput() SourceConte
 
 func (o SourceContextResponseOutput) ToSourceContextResponseOutputWithContext(ctx context.Context) SourceContextResponseOutput {
 	return o
-}
-
-func (o SourceContextResponseOutput) ToSourceContextResponsePtrOutput() SourceContextResponsePtrOutput {
-	return o.ToSourceContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SourceContextResponseOutput) ToSourceContextResponsePtrOutputWithContext(ctx context.Context) SourceContextResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceContextResponse) *SourceContextResponse {
-		return &v
-	}).(SourceContextResponsePtrOutput)
 }
 
 // A SourceContext referring to a revision in a Google Cloud Source Repo.
@@ -20374,70 +13276,6 @@ func (o SourceContextResponseOutput) Git() GitSourceContextResponseOutput {
 // Labels with user defined metadata.
 func (o SourceContextResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SourceContextResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-type SourceContextResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SourceContextResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceContextResponse)(nil)).Elem()
-}
-
-func (o SourceContextResponsePtrOutput) ToSourceContextResponsePtrOutput() SourceContextResponsePtrOutput {
-	return o
-}
-
-func (o SourceContextResponsePtrOutput) ToSourceContextResponsePtrOutputWithContext(ctx context.Context) SourceContextResponsePtrOutput {
-	return o
-}
-
-func (o SourceContextResponsePtrOutput) Elem() SourceContextResponseOutput {
-	return o.ApplyT(func(v *SourceContextResponse) SourceContextResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SourceContextResponse
-		return ret
-	}).(SourceContextResponseOutput)
-}
-
-// A SourceContext referring to a revision in a Google Cloud Source Repo.
-func (o SourceContextResponsePtrOutput) CloudRepo() CloudRepoSourceContextResponsePtrOutput {
-	return o.ApplyT(func(v *SourceContextResponse) *CloudRepoSourceContextResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudRepo
-	}).(CloudRepoSourceContextResponsePtrOutput)
-}
-
-// A SourceContext referring to a Gerrit project.
-func (o SourceContextResponsePtrOutput) Gerrit() GerritSourceContextResponsePtrOutput {
-	return o.ApplyT(func(v *SourceContextResponse) *GerritSourceContextResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Gerrit
-	}).(GerritSourceContextResponsePtrOutput)
-}
-
-// A SourceContext referring to any third party Git repo (e.g., GitHub).
-func (o SourceContextResponsePtrOutput) Git() GitSourceContextResponsePtrOutput {
-	return o.ApplyT(func(v *SourceContextResponse) *GitSourceContextResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Git
-	}).(GitSourceContextResponsePtrOutput)
-}
-
-// Labels with user defined metadata.
-func (o SourceContextResponsePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SourceContextResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
 }
 
 type SourceContextResponseArrayOutput struct{ *pulumi.OutputState }
@@ -20472,82 +13310,6 @@ type SourceResponse struct {
 	FileHashes map[string]string `pulumi:"fileHashes"`
 }
 
-// SourceResponseInput is an input type that accepts SourceResponseArgs and SourceResponseOutput values.
-// You can construct a concrete instance of `SourceResponseInput` via:
-//
-//          SourceResponseArgs{...}
-type SourceResponseInput interface {
-	pulumi.Input
-
-	ToSourceResponseOutput() SourceResponseOutput
-	ToSourceResponseOutputWithContext(context.Context) SourceResponseOutput
-}
-
-// Source describes the location of the source used for the build.
-type SourceResponseArgs struct {
-	// If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
-	AdditionalContexts SourceContextResponseArrayInput `pulumi:"additionalContexts"`
-	// If provided, the input binary artifacts for the build came from this location.
-	ArtifactStorageSourceUri pulumi.StringInput `pulumi:"artifactStorageSourceUri"`
-	// If provided, the source code used for the build came from this location.
-	Context SourceContextResponseInput `pulumi:"context"`
-	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-	FileHashes pulumi.StringMapInput `pulumi:"fileHashes"`
-}
-
-func (SourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceResponse)(nil)).Elem()
-}
-
-func (i SourceResponseArgs) ToSourceResponseOutput() SourceResponseOutput {
-	return i.ToSourceResponseOutputWithContext(context.Background())
-}
-
-func (i SourceResponseArgs) ToSourceResponseOutputWithContext(ctx context.Context) SourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceResponseOutput)
-}
-
-func (i SourceResponseArgs) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
-	return i.ToSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SourceResponseArgs) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceResponseOutput).ToSourceResponsePtrOutputWithContext(ctx)
-}
-
-// SourceResponsePtrInput is an input type that accepts SourceResponseArgs, SourceResponsePtr and SourceResponsePtrOutput values.
-// You can construct a concrete instance of `SourceResponsePtrInput` via:
-//
-//          SourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToSourceResponsePtrOutput() SourceResponsePtrOutput
-	ToSourceResponsePtrOutputWithContext(context.Context) SourceResponsePtrOutput
-}
-
-type sourceResponsePtrType SourceResponseArgs
-
-func SourceResponsePtr(v *SourceResponseArgs) SourceResponsePtrInput {
-	return (*sourceResponsePtrType)(v)
-}
-
-func (*sourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceResponse)(nil)).Elem()
-}
-
-func (i *sourceResponsePtrType) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
-	return i.ToSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *sourceResponsePtrType) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceResponsePtrOutput)
-}
-
 // Source describes the location of the source used for the build.
 type SourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -20561,16 +13323,6 @@ func (o SourceResponseOutput) ToSourceResponseOutput() SourceResponseOutput {
 
 func (o SourceResponseOutput) ToSourceResponseOutputWithContext(ctx context.Context) SourceResponseOutput {
 	return o
-}
-
-func (o SourceResponseOutput) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
-	return o.ToSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SourceResponseOutput) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceResponse) *SourceResponse {
-		return &v
-	}).(SourceResponsePtrOutput)
 }
 
 // If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
@@ -20591,70 +13343,6 @@ func (o SourceResponseOutput) Context() SourceContextResponseOutput {
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
 func (o SourceResponseOutput) FileHashes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SourceResponse) map[string]string { return v.FileHashes }).(pulumi.StringMapOutput)
-}
-
-type SourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceResponse)(nil)).Elem()
-}
-
-func (o SourceResponsePtrOutput) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
-	return o
-}
-
-func (o SourceResponsePtrOutput) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return o
-}
-
-func (o SourceResponsePtrOutput) Elem() SourceResponseOutput {
-	return o.ApplyT(func(v *SourceResponse) SourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SourceResponse
-		return ret
-	}).(SourceResponseOutput)
-}
-
-// If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
-func (o SourceResponsePtrOutput) AdditionalContexts() SourceContextResponseArrayOutput {
-	return o.ApplyT(func(v *SourceResponse) []SourceContextResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalContexts
-	}).(SourceContextResponseArrayOutput)
-}
-
-// If provided, the input binary artifacts for the build came from this location.
-func (o SourceResponsePtrOutput) ArtifactStorageSourceUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ArtifactStorageSourceUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// If provided, the source code used for the build came from this location.
-func (o SourceResponsePtrOutput) Context() SourceContextResponsePtrOutput {
-	return o.ApplyT(func(v *SourceResponse) *SourceContextResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Context
-	}).(SourceContextResponsePtrOutput)
-}
-
-// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-func (o SourceResponsePtrOutput) FileHashes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SourceResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.FileHashes
-	}).(pulumi.StringMapOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -20845,80 +13533,6 @@ type StatusResponse struct {
 	Message string `pulumi:"message"`
 }
 
-// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
-// You can construct a concrete instance of `StatusResponseInput` via:
-//
-//          StatusResponseArgs{...}
-type StatusResponseInput interface {
-	pulumi.Input
-
-	ToStatusResponseOutput() StatusResponseOutput
-	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusResponseArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (StatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
-	return i.ToStatusResponseOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
-}
-
-// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
-// You can construct a concrete instance of `StatusResponsePtrInput` via:
-//
-//          StatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToStatusResponsePtrOutput() StatusResponsePtrOutput
-	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
-}
-
-type statusResponsePtrType StatusResponseArgs
-
-func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
-	return (*statusResponsePtrType)(v)
-}
-
-func (*statusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
-}
-
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponseOutput struct{ *pulumi.OutputState }
 
@@ -20934,16 +13548,6 @@ func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
-		return &v
-	}).(StatusResponsePtrOutput)
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o StatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -20957,60 +13561,6 @@ func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
-}
-
-type StatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StatusResponse
-		return ret
-	}).(StatusResponseOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Code
-	}).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *StatusResponse) []map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
 }
 
 type Subject struct {
@@ -21120,60 +13670,6 @@ type SubjectResponse struct {
 	// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
 	Digest map[string]string `pulumi:"digest"`
 	Name   string            `pulumi:"name"`
-}
-
-// SubjectResponseInput is an input type that accepts SubjectResponseArgs and SubjectResponseOutput values.
-// You can construct a concrete instance of `SubjectResponseInput` via:
-//
-//          SubjectResponseArgs{...}
-type SubjectResponseInput interface {
-	pulumi.Input
-
-	ToSubjectResponseOutput() SubjectResponseOutput
-	ToSubjectResponseOutputWithContext(context.Context) SubjectResponseOutput
-}
-
-type SubjectResponseArgs struct {
-	// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
-	Digest pulumi.StringMapInput `pulumi:"digest"`
-	Name   pulumi.StringInput    `pulumi:"name"`
-}
-
-func (SubjectResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubjectResponse)(nil)).Elem()
-}
-
-func (i SubjectResponseArgs) ToSubjectResponseOutput() SubjectResponseOutput {
-	return i.ToSubjectResponseOutputWithContext(context.Background())
-}
-
-func (i SubjectResponseArgs) ToSubjectResponseOutputWithContext(ctx context.Context) SubjectResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubjectResponseOutput)
-}
-
-// SubjectResponseArrayInput is an input type that accepts SubjectResponseArray and SubjectResponseArrayOutput values.
-// You can construct a concrete instance of `SubjectResponseArrayInput` via:
-//
-//          SubjectResponseArray{ SubjectResponseArgs{...} }
-type SubjectResponseArrayInput interface {
-	pulumi.Input
-
-	ToSubjectResponseArrayOutput() SubjectResponseArrayOutput
-	ToSubjectResponseArrayOutputWithContext(context.Context) SubjectResponseArrayOutput
-}
-
-type SubjectResponseArray []SubjectResponseInput
-
-func (SubjectResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubjectResponse)(nil)).Elem()
-}
-
-func (i SubjectResponseArray) ToSubjectResponseArrayOutput() SubjectResponseArrayOutput {
-	return i.ToSubjectResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SubjectResponseArray) ToSubjectResponseArrayOutputWithContext(ctx context.Context) SubjectResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubjectResponseArrayOutput)
 }
 
 type SubjectResponseOutput struct{ *pulumi.OutputState }
@@ -21473,107 +13969,6 @@ type UpgradeDistributionResponse struct {
 	Severity string `pulumi:"severity"`
 }
 
-// UpgradeDistributionResponseInput is an input type that accepts UpgradeDistributionResponseArgs and UpgradeDistributionResponseOutput values.
-// You can construct a concrete instance of `UpgradeDistributionResponseInput` via:
-//
-//          UpgradeDistributionResponseArgs{...}
-type UpgradeDistributionResponseInput interface {
-	pulumi.Input
-
-	ToUpgradeDistributionResponseOutput() UpgradeDistributionResponseOutput
-	ToUpgradeDistributionResponseOutputWithContext(context.Context) UpgradeDistributionResponseOutput
-}
-
-// The Upgrade Distribution represents metadata about the Upgrade for each operating system (CPE). Some distributions have additional metadata around updates, classifying them into various categories and severities.
-type UpgradeDistributionResponseArgs struct {
-	// The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed. For Windows the classification is one of the category_ids listed at https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ff357803(v=vs.85)
-	Classification pulumi.StringInput `pulumi:"classification"`
-	// Required - The specific operating system this metadata applies to. See https://cpe.mitre.org/specification/.
-	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
-	// The cve tied to this Upgrade.
-	Cve pulumi.StringArrayInput `pulumi:"cve"`
-	// The severity as specified by the upstream operating system.
-	Severity pulumi.StringInput `pulumi:"severity"`
-}
-
-func (UpgradeDistributionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UpgradeDistributionResponse)(nil)).Elem()
-}
-
-func (i UpgradeDistributionResponseArgs) ToUpgradeDistributionResponseOutput() UpgradeDistributionResponseOutput {
-	return i.ToUpgradeDistributionResponseOutputWithContext(context.Background())
-}
-
-func (i UpgradeDistributionResponseArgs) ToUpgradeDistributionResponseOutputWithContext(ctx context.Context) UpgradeDistributionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UpgradeDistributionResponseOutput)
-}
-
-func (i UpgradeDistributionResponseArgs) ToUpgradeDistributionResponsePtrOutput() UpgradeDistributionResponsePtrOutput {
-	return i.ToUpgradeDistributionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i UpgradeDistributionResponseArgs) ToUpgradeDistributionResponsePtrOutputWithContext(ctx context.Context) UpgradeDistributionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UpgradeDistributionResponseOutput).ToUpgradeDistributionResponsePtrOutputWithContext(ctx)
-}
-
-// UpgradeDistributionResponsePtrInput is an input type that accepts UpgradeDistributionResponseArgs, UpgradeDistributionResponsePtr and UpgradeDistributionResponsePtrOutput values.
-// You can construct a concrete instance of `UpgradeDistributionResponsePtrInput` via:
-//
-//          UpgradeDistributionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type UpgradeDistributionResponsePtrInput interface {
-	pulumi.Input
-
-	ToUpgradeDistributionResponsePtrOutput() UpgradeDistributionResponsePtrOutput
-	ToUpgradeDistributionResponsePtrOutputWithContext(context.Context) UpgradeDistributionResponsePtrOutput
-}
-
-type upgradeDistributionResponsePtrType UpgradeDistributionResponseArgs
-
-func UpgradeDistributionResponsePtr(v *UpgradeDistributionResponseArgs) UpgradeDistributionResponsePtrInput {
-	return (*upgradeDistributionResponsePtrType)(v)
-}
-
-func (*upgradeDistributionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**UpgradeDistributionResponse)(nil)).Elem()
-}
-
-func (i *upgradeDistributionResponsePtrType) ToUpgradeDistributionResponsePtrOutput() UpgradeDistributionResponsePtrOutput {
-	return i.ToUpgradeDistributionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *upgradeDistributionResponsePtrType) ToUpgradeDistributionResponsePtrOutputWithContext(ctx context.Context) UpgradeDistributionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UpgradeDistributionResponsePtrOutput)
-}
-
-// UpgradeDistributionResponseArrayInput is an input type that accepts UpgradeDistributionResponseArray and UpgradeDistributionResponseArrayOutput values.
-// You can construct a concrete instance of `UpgradeDistributionResponseArrayInput` via:
-//
-//          UpgradeDistributionResponseArray{ UpgradeDistributionResponseArgs{...} }
-type UpgradeDistributionResponseArrayInput interface {
-	pulumi.Input
-
-	ToUpgradeDistributionResponseArrayOutput() UpgradeDistributionResponseArrayOutput
-	ToUpgradeDistributionResponseArrayOutputWithContext(context.Context) UpgradeDistributionResponseArrayOutput
-}
-
-type UpgradeDistributionResponseArray []UpgradeDistributionResponseInput
-
-func (UpgradeDistributionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]UpgradeDistributionResponse)(nil)).Elem()
-}
-
-func (i UpgradeDistributionResponseArray) ToUpgradeDistributionResponseArrayOutput() UpgradeDistributionResponseArrayOutput {
-	return i.ToUpgradeDistributionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i UpgradeDistributionResponseArray) ToUpgradeDistributionResponseArrayOutputWithContext(ctx context.Context) UpgradeDistributionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UpgradeDistributionResponseArrayOutput)
-}
-
 // The Upgrade Distribution represents metadata about the Upgrade for each operating system (CPE). Some distributions have additional metadata around updates, classifying them into various categories and severities.
 type UpgradeDistributionResponseOutput struct{ *pulumi.OutputState }
 
@@ -21587,16 +13982,6 @@ func (o UpgradeDistributionResponseOutput) ToUpgradeDistributionResponseOutput()
 
 func (o UpgradeDistributionResponseOutput) ToUpgradeDistributionResponseOutputWithContext(ctx context.Context) UpgradeDistributionResponseOutput {
 	return o
-}
-
-func (o UpgradeDistributionResponseOutput) ToUpgradeDistributionResponsePtrOutput() UpgradeDistributionResponsePtrOutput {
-	return o.ToUpgradeDistributionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o UpgradeDistributionResponseOutput) ToUpgradeDistributionResponsePtrOutputWithContext(ctx context.Context) UpgradeDistributionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeDistributionResponse) *UpgradeDistributionResponse {
-		return &v
-	}).(UpgradeDistributionResponsePtrOutput)
 }
 
 // The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed. For Windows the classification is one of the category_ids listed at https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ff357803(v=vs.85)
@@ -21617,70 +14002,6 @@ func (o UpgradeDistributionResponseOutput) Cve() pulumi.StringArrayOutput {
 // The severity as specified by the upstream operating system.
 func (o UpgradeDistributionResponseOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v UpgradeDistributionResponse) string { return v.Severity }).(pulumi.StringOutput)
-}
-
-type UpgradeDistributionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (UpgradeDistributionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UpgradeDistributionResponse)(nil)).Elem()
-}
-
-func (o UpgradeDistributionResponsePtrOutput) ToUpgradeDistributionResponsePtrOutput() UpgradeDistributionResponsePtrOutput {
-	return o
-}
-
-func (o UpgradeDistributionResponsePtrOutput) ToUpgradeDistributionResponsePtrOutputWithContext(ctx context.Context) UpgradeDistributionResponsePtrOutput {
-	return o
-}
-
-func (o UpgradeDistributionResponsePtrOutput) Elem() UpgradeDistributionResponseOutput {
-	return o.ApplyT(func(v *UpgradeDistributionResponse) UpgradeDistributionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret UpgradeDistributionResponse
-		return ret
-	}).(UpgradeDistributionResponseOutput)
-}
-
-// The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed. For Windows the classification is one of the category_ids listed at https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ff357803(v=vs.85)
-func (o UpgradeDistributionResponsePtrOutput) Classification() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UpgradeDistributionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Classification
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required - The specific operating system this metadata applies to. See https://cpe.mitre.org/specification/.
-func (o UpgradeDistributionResponsePtrOutput) CpeUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UpgradeDistributionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CpeUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The cve tied to this Upgrade.
-func (o UpgradeDistributionResponsePtrOutput) Cve() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *UpgradeDistributionResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Cve
-	}).(pulumi.StringArrayOutput)
-}
-
-// The severity as specified by the upstream operating system.
-func (o UpgradeDistributionResponsePtrOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UpgradeDistributionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Severity
-	}).(pulumi.StringPtrOutput)
 }
 
 type UpgradeDistributionResponseArrayOutput struct{ *pulumi.OutputState }
@@ -21912,82 +14233,6 @@ type UpgradeNoteResponse struct {
 	WindowsUpdate WindowsUpdateResponse `pulumi:"windowsUpdate"`
 }
 
-// UpgradeNoteResponseInput is an input type that accepts UpgradeNoteResponseArgs and UpgradeNoteResponseOutput values.
-// You can construct a concrete instance of `UpgradeNoteResponseInput` via:
-//
-//          UpgradeNoteResponseArgs{...}
-type UpgradeNoteResponseInput interface {
-	pulumi.Input
-
-	ToUpgradeNoteResponseOutput() UpgradeNoteResponseOutput
-	ToUpgradeNoteResponseOutputWithContext(context.Context) UpgradeNoteResponseOutput
-}
-
-// An Upgrade Note represents a potential upgrade of a package to a given version. For each package version combination (i.e. bash 4.0, bash 4.1, bash 4.1.2), there will be an Upgrade Note. For Windows, windows_update field represents the information related to the update.
-type UpgradeNoteResponseArgs struct {
-	// Metadata about the upgrade for each specific operating system.
-	Distributions UpgradeDistributionResponseArrayInput `pulumi:"distributions"`
-	// Required for non-Windows OS. The package this Upgrade is for.
-	Package pulumi.StringInput `pulumi:"package"`
-	// Required for non-Windows OS. The version of the package in machine + human readable form.
-	Version VersionResponseInput `pulumi:"version"`
-	// Required for Windows OS. Represents the metadata about the Windows update.
-	WindowsUpdate WindowsUpdateResponseInput `pulumi:"windowsUpdate"`
-}
-
-func (UpgradeNoteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UpgradeNoteResponse)(nil)).Elem()
-}
-
-func (i UpgradeNoteResponseArgs) ToUpgradeNoteResponseOutput() UpgradeNoteResponseOutput {
-	return i.ToUpgradeNoteResponseOutputWithContext(context.Background())
-}
-
-func (i UpgradeNoteResponseArgs) ToUpgradeNoteResponseOutputWithContext(ctx context.Context) UpgradeNoteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UpgradeNoteResponseOutput)
-}
-
-func (i UpgradeNoteResponseArgs) ToUpgradeNoteResponsePtrOutput() UpgradeNoteResponsePtrOutput {
-	return i.ToUpgradeNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i UpgradeNoteResponseArgs) ToUpgradeNoteResponsePtrOutputWithContext(ctx context.Context) UpgradeNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UpgradeNoteResponseOutput).ToUpgradeNoteResponsePtrOutputWithContext(ctx)
-}
-
-// UpgradeNoteResponsePtrInput is an input type that accepts UpgradeNoteResponseArgs, UpgradeNoteResponsePtr and UpgradeNoteResponsePtrOutput values.
-// You can construct a concrete instance of `UpgradeNoteResponsePtrInput` via:
-//
-//          UpgradeNoteResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type UpgradeNoteResponsePtrInput interface {
-	pulumi.Input
-
-	ToUpgradeNoteResponsePtrOutput() UpgradeNoteResponsePtrOutput
-	ToUpgradeNoteResponsePtrOutputWithContext(context.Context) UpgradeNoteResponsePtrOutput
-}
-
-type upgradeNoteResponsePtrType UpgradeNoteResponseArgs
-
-func UpgradeNoteResponsePtr(v *UpgradeNoteResponseArgs) UpgradeNoteResponsePtrInput {
-	return (*upgradeNoteResponsePtrType)(v)
-}
-
-func (*upgradeNoteResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**UpgradeNoteResponse)(nil)).Elem()
-}
-
-func (i *upgradeNoteResponsePtrType) ToUpgradeNoteResponsePtrOutput() UpgradeNoteResponsePtrOutput {
-	return i.ToUpgradeNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *upgradeNoteResponsePtrType) ToUpgradeNoteResponsePtrOutputWithContext(ctx context.Context) UpgradeNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UpgradeNoteResponsePtrOutput)
-}
-
 // An Upgrade Note represents a potential upgrade of a package to a given version. For each package version combination (i.e. bash 4.0, bash 4.1, bash 4.1.2), there will be an Upgrade Note. For Windows, windows_update field represents the information related to the update.
 type UpgradeNoteResponseOutput struct{ *pulumi.OutputState }
 
@@ -22001,16 +14246,6 @@ func (o UpgradeNoteResponseOutput) ToUpgradeNoteResponseOutput() UpgradeNoteResp
 
 func (o UpgradeNoteResponseOutput) ToUpgradeNoteResponseOutputWithContext(ctx context.Context) UpgradeNoteResponseOutput {
 	return o
-}
-
-func (o UpgradeNoteResponseOutput) ToUpgradeNoteResponsePtrOutput() UpgradeNoteResponsePtrOutput {
-	return o.ToUpgradeNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (o UpgradeNoteResponseOutput) ToUpgradeNoteResponsePtrOutputWithContext(ctx context.Context) UpgradeNoteResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeNoteResponse) *UpgradeNoteResponse {
-		return &v
-	}).(UpgradeNoteResponsePtrOutput)
 }
 
 // Metadata about the upgrade for each specific operating system.
@@ -22031,70 +14266,6 @@ func (o UpgradeNoteResponseOutput) Version() VersionResponseOutput {
 // Required for Windows OS. Represents the metadata about the Windows update.
 func (o UpgradeNoteResponseOutput) WindowsUpdate() WindowsUpdateResponseOutput {
 	return o.ApplyT(func(v UpgradeNoteResponse) WindowsUpdateResponse { return v.WindowsUpdate }).(WindowsUpdateResponseOutput)
-}
-
-type UpgradeNoteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (UpgradeNoteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UpgradeNoteResponse)(nil)).Elem()
-}
-
-func (o UpgradeNoteResponsePtrOutput) ToUpgradeNoteResponsePtrOutput() UpgradeNoteResponsePtrOutput {
-	return o
-}
-
-func (o UpgradeNoteResponsePtrOutput) ToUpgradeNoteResponsePtrOutputWithContext(ctx context.Context) UpgradeNoteResponsePtrOutput {
-	return o
-}
-
-func (o UpgradeNoteResponsePtrOutput) Elem() UpgradeNoteResponseOutput {
-	return o.ApplyT(func(v *UpgradeNoteResponse) UpgradeNoteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret UpgradeNoteResponse
-		return ret
-	}).(UpgradeNoteResponseOutput)
-}
-
-// Metadata about the upgrade for each specific operating system.
-func (o UpgradeNoteResponsePtrOutput) Distributions() UpgradeDistributionResponseArrayOutput {
-	return o.ApplyT(func(v *UpgradeNoteResponse) []UpgradeDistributionResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Distributions
-	}).(UpgradeDistributionResponseArrayOutput)
-}
-
-// Required for non-Windows OS. The package this Upgrade is for.
-func (o UpgradeNoteResponsePtrOutput) Package() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UpgradeNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Package
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required for non-Windows OS. The version of the package in machine + human readable form.
-func (o UpgradeNoteResponsePtrOutput) Version() VersionResponsePtrOutput {
-	return o.ApplyT(func(v *UpgradeNoteResponse) *VersionResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(VersionResponsePtrOutput)
-}
-
-// Required for Windows OS. Represents the metadata about the Windows update.
-func (o UpgradeNoteResponsePtrOutput) WindowsUpdate() WindowsUpdateResponsePtrOutput {
-	return o.ApplyT(func(v *UpgradeNoteResponse) *WindowsUpdateResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.WindowsUpdate
-	}).(WindowsUpdateResponsePtrOutput)
 }
 
 // An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its availability). For Windows, both distribution and windows_update contain information for the Windows update.
@@ -22306,82 +14477,6 @@ type UpgradeOccurrenceResponse struct {
 	WindowsUpdate WindowsUpdateResponse `pulumi:"windowsUpdate"`
 }
 
-// UpgradeOccurrenceResponseInput is an input type that accepts UpgradeOccurrenceResponseArgs and UpgradeOccurrenceResponseOutput values.
-// You can construct a concrete instance of `UpgradeOccurrenceResponseInput` via:
-//
-//          UpgradeOccurrenceResponseArgs{...}
-type UpgradeOccurrenceResponseInput interface {
-	pulumi.Input
-
-	ToUpgradeOccurrenceResponseOutput() UpgradeOccurrenceResponseOutput
-	ToUpgradeOccurrenceResponseOutputWithContext(context.Context) UpgradeOccurrenceResponseOutput
-}
-
-// An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its availability). For Windows, both distribution and windows_update contain information for the Windows update.
-type UpgradeOccurrenceResponseArgs struct {
-	// Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
-	Distribution UpgradeDistributionResponseInput `pulumi:"distribution"`
-	// Required for non-Windows OS. The package this Upgrade is for.
-	Package pulumi.StringInput `pulumi:"package"`
-	// Required for non-Windows OS. The version of the package in a machine + human readable form.
-	ParsedVersion VersionResponseInput `pulumi:"parsedVersion"`
-	// Required for Windows OS. Represents the metadata about the Windows update.
-	WindowsUpdate WindowsUpdateResponseInput `pulumi:"windowsUpdate"`
-}
-
-func (UpgradeOccurrenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UpgradeOccurrenceResponse)(nil)).Elem()
-}
-
-func (i UpgradeOccurrenceResponseArgs) ToUpgradeOccurrenceResponseOutput() UpgradeOccurrenceResponseOutput {
-	return i.ToUpgradeOccurrenceResponseOutputWithContext(context.Background())
-}
-
-func (i UpgradeOccurrenceResponseArgs) ToUpgradeOccurrenceResponseOutputWithContext(ctx context.Context) UpgradeOccurrenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UpgradeOccurrenceResponseOutput)
-}
-
-func (i UpgradeOccurrenceResponseArgs) ToUpgradeOccurrenceResponsePtrOutput() UpgradeOccurrenceResponsePtrOutput {
-	return i.ToUpgradeOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i UpgradeOccurrenceResponseArgs) ToUpgradeOccurrenceResponsePtrOutputWithContext(ctx context.Context) UpgradeOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UpgradeOccurrenceResponseOutput).ToUpgradeOccurrenceResponsePtrOutputWithContext(ctx)
-}
-
-// UpgradeOccurrenceResponsePtrInput is an input type that accepts UpgradeOccurrenceResponseArgs, UpgradeOccurrenceResponsePtr and UpgradeOccurrenceResponsePtrOutput values.
-// You can construct a concrete instance of `UpgradeOccurrenceResponsePtrInput` via:
-//
-//          UpgradeOccurrenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type UpgradeOccurrenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToUpgradeOccurrenceResponsePtrOutput() UpgradeOccurrenceResponsePtrOutput
-	ToUpgradeOccurrenceResponsePtrOutputWithContext(context.Context) UpgradeOccurrenceResponsePtrOutput
-}
-
-type upgradeOccurrenceResponsePtrType UpgradeOccurrenceResponseArgs
-
-func UpgradeOccurrenceResponsePtr(v *UpgradeOccurrenceResponseArgs) UpgradeOccurrenceResponsePtrInput {
-	return (*upgradeOccurrenceResponsePtrType)(v)
-}
-
-func (*upgradeOccurrenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**UpgradeOccurrenceResponse)(nil)).Elem()
-}
-
-func (i *upgradeOccurrenceResponsePtrType) ToUpgradeOccurrenceResponsePtrOutput() UpgradeOccurrenceResponsePtrOutput {
-	return i.ToUpgradeOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *upgradeOccurrenceResponsePtrType) ToUpgradeOccurrenceResponsePtrOutputWithContext(ctx context.Context) UpgradeOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UpgradeOccurrenceResponsePtrOutput)
-}
-
 // An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its availability). For Windows, both distribution and windows_update contain information for the Windows update.
 type UpgradeOccurrenceResponseOutput struct{ *pulumi.OutputState }
 
@@ -22395,16 +14490,6 @@ func (o UpgradeOccurrenceResponseOutput) ToUpgradeOccurrenceResponseOutput() Upg
 
 func (o UpgradeOccurrenceResponseOutput) ToUpgradeOccurrenceResponseOutputWithContext(ctx context.Context) UpgradeOccurrenceResponseOutput {
 	return o
-}
-
-func (o UpgradeOccurrenceResponseOutput) ToUpgradeOccurrenceResponsePtrOutput() UpgradeOccurrenceResponsePtrOutput {
-	return o.ToUpgradeOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o UpgradeOccurrenceResponseOutput) ToUpgradeOccurrenceResponsePtrOutputWithContext(ctx context.Context) UpgradeOccurrenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeOccurrenceResponse) *UpgradeOccurrenceResponse {
-		return &v
-	}).(UpgradeOccurrenceResponsePtrOutput)
 }
 
 // Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
@@ -22425,70 +14510,6 @@ func (o UpgradeOccurrenceResponseOutput) ParsedVersion() VersionResponseOutput {
 // Required for Windows OS. Represents the metadata about the Windows update.
 func (o UpgradeOccurrenceResponseOutput) WindowsUpdate() WindowsUpdateResponseOutput {
 	return o.ApplyT(func(v UpgradeOccurrenceResponse) WindowsUpdateResponse { return v.WindowsUpdate }).(WindowsUpdateResponseOutput)
-}
-
-type UpgradeOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (UpgradeOccurrenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UpgradeOccurrenceResponse)(nil)).Elem()
-}
-
-func (o UpgradeOccurrenceResponsePtrOutput) ToUpgradeOccurrenceResponsePtrOutput() UpgradeOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o UpgradeOccurrenceResponsePtrOutput) ToUpgradeOccurrenceResponsePtrOutputWithContext(ctx context.Context) UpgradeOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o UpgradeOccurrenceResponsePtrOutput) Elem() UpgradeOccurrenceResponseOutput {
-	return o.ApplyT(func(v *UpgradeOccurrenceResponse) UpgradeOccurrenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret UpgradeOccurrenceResponse
-		return ret
-	}).(UpgradeOccurrenceResponseOutput)
-}
-
-// Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
-func (o UpgradeOccurrenceResponsePtrOutput) Distribution() UpgradeDistributionResponsePtrOutput {
-	return o.ApplyT(func(v *UpgradeOccurrenceResponse) *UpgradeDistributionResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Distribution
-	}).(UpgradeDistributionResponsePtrOutput)
-}
-
-// Required for non-Windows OS. The package this Upgrade is for.
-func (o UpgradeOccurrenceResponsePtrOutput) Package() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UpgradeOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Package
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required for non-Windows OS. The version of the package in a machine + human readable form.
-func (o UpgradeOccurrenceResponsePtrOutput) ParsedVersion() VersionResponsePtrOutput {
-	return o.ApplyT(func(v *UpgradeOccurrenceResponse) *VersionResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ParsedVersion
-	}).(VersionResponsePtrOutput)
-}
-
-// Required for Windows OS. Represents the metadata about the Windows update.
-func (o UpgradeOccurrenceResponsePtrOutput) WindowsUpdate() WindowsUpdateResponsePtrOutput {
-	return o.ApplyT(func(v *UpgradeOccurrenceResponse) *WindowsUpdateResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.WindowsUpdate
-	}).(WindowsUpdateResponsePtrOutput)
 }
 
 // Version contains structured information about the version of a package.
@@ -22742,86 +14763,6 @@ type VersionResponse struct {
 	Revision string `pulumi:"revision"`
 }
 
-// VersionResponseInput is an input type that accepts VersionResponseArgs and VersionResponseOutput values.
-// You can construct a concrete instance of `VersionResponseInput` via:
-//
-//          VersionResponseArgs{...}
-type VersionResponseInput interface {
-	pulumi.Input
-
-	ToVersionResponseOutput() VersionResponseOutput
-	ToVersionResponseOutputWithContext(context.Context) VersionResponseOutput
-}
-
-// Version contains structured information about the version of a package.
-type VersionResponseArgs struct {
-	// Used to correct mistakes in the version numbering scheme.
-	Epoch pulumi.IntInput `pulumi:"epoch"`
-	// Human readable version string. This string is of the form :- and is only set when kind is NORMAL.
-	FullName pulumi.StringInput `pulumi:"fullName"`
-	// Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
-	Inclusive pulumi.BoolInput `pulumi:"inclusive"`
-	// Distinguishes between sentinel MIN/MAX versions and normal versions.
-	Kind pulumi.StringInput `pulumi:"kind"`
-	// Required only when version kind is NORMAL. The main part of the version name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The iteration of the package build from the above version.
-	Revision pulumi.StringInput `pulumi:"revision"`
-}
-
-func (VersionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VersionResponse)(nil)).Elem()
-}
-
-func (i VersionResponseArgs) ToVersionResponseOutput() VersionResponseOutput {
-	return i.ToVersionResponseOutputWithContext(context.Background())
-}
-
-func (i VersionResponseArgs) ToVersionResponseOutputWithContext(ctx context.Context) VersionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VersionResponseOutput)
-}
-
-func (i VersionResponseArgs) ToVersionResponsePtrOutput() VersionResponsePtrOutput {
-	return i.ToVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i VersionResponseArgs) ToVersionResponsePtrOutputWithContext(ctx context.Context) VersionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VersionResponseOutput).ToVersionResponsePtrOutputWithContext(ctx)
-}
-
-// VersionResponsePtrInput is an input type that accepts VersionResponseArgs, VersionResponsePtr and VersionResponsePtrOutput values.
-// You can construct a concrete instance of `VersionResponsePtrInput` via:
-//
-//          VersionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type VersionResponsePtrInput interface {
-	pulumi.Input
-
-	ToVersionResponsePtrOutput() VersionResponsePtrOutput
-	ToVersionResponsePtrOutputWithContext(context.Context) VersionResponsePtrOutput
-}
-
-type versionResponsePtrType VersionResponseArgs
-
-func VersionResponsePtr(v *VersionResponseArgs) VersionResponsePtrInput {
-	return (*versionResponsePtrType)(v)
-}
-
-func (*versionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VersionResponse)(nil)).Elem()
-}
-
-func (i *versionResponsePtrType) ToVersionResponsePtrOutput() VersionResponsePtrOutput {
-	return i.ToVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *versionResponsePtrType) ToVersionResponsePtrOutputWithContext(ctx context.Context) VersionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VersionResponsePtrOutput)
-}
-
 // Version contains structured information about the version of a package.
 type VersionResponseOutput struct{ *pulumi.OutputState }
 
@@ -22835,16 +14776,6 @@ func (o VersionResponseOutput) ToVersionResponseOutput() VersionResponseOutput {
 
 func (o VersionResponseOutput) ToVersionResponseOutputWithContext(ctx context.Context) VersionResponseOutput {
 	return o
-}
-
-func (o VersionResponseOutput) ToVersionResponsePtrOutput() VersionResponsePtrOutput {
-	return o.ToVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o VersionResponseOutput) ToVersionResponsePtrOutputWithContext(ctx context.Context) VersionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VersionResponse) *VersionResponse {
-		return &v
-	}).(VersionResponsePtrOutput)
 }
 
 // Used to correct mistakes in the version numbering scheme.
@@ -22875,90 +14806,6 @@ func (o VersionResponseOutput) Name() pulumi.StringOutput {
 // The iteration of the package build from the above version.
 func (o VersionResponseOutput) Revision() pulumi.StringOutput {
 	return o.ApplyT(func(v VersionResponse) string { return v.Revision }).(pulumi.StringOutput)
-}
-
-type VersionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (VersionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VersionResponse)(nil)).Elem()
-}
-
-func (o VersionResponsePtrOutput) ToVersionResponsePtrOutput() VersionResponsePtrOutput {
-	return o
-}
-
-func (o VersionResponsePtrOutput) ToVersionResponsePtrOutputWithContext(ctx context.Context) VersionResponsePtrOutput {
-	return o
-}
-
-func (o VersionResponsePtrOutput) Elem() VersionResponseOutput {
-	return o.ApplyT(func(v *VersionResponse) VersionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret VersionResponse
-		return ret
-	}).(VersionResponseOutput)
-}
-
-// Used to correct mistakes in the version numbering scheme.
-func (o VersionResponsePtrOutput) Epoch() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Epoch
-	}).(pulumi.IntPtrOutput)
-}
-
-// Human readable version string. This string is of the form :- and is only set when kind is NORMAL.
-func (o VersionResponsePtrOutput) FullName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FullName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
-func (o VersionResponsePtrOutput) Inclusive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Inclusive
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Distinguishes between sentinel MIN/MAX versions and normal versions.
-func (o VersionResponsePtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required only when version kind is NORMAL. The main part of the version name.
-func (o VersionResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The iteration of the package build from the above version.
-func (o VersionResponsePtrOutput) Revision() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Revision
-	}).(pulumi.StringPtrOutput)
 }
 
 // A security vulnerability that can be found in resources.
@@ -23212,86 +15059,6 @@ type VulnerabilityNoteResponse struct {
 	WindowsDetails []WindowsDetailResponse `pulumi:"windowsDetails"`
 }
 
-// VulnerabilityNoteResponseInput is an input type that accepts VulnerabilityNoteResponseArgs and VulnerabilityNoteResponseOutput values.
-// You can construct a concrete instance of `VulnerabilityNoteResponseInput` via:
-//
-//          VulnerabilityNoteResponseArgs{...}
-type VulnerabilityNoteResponseInput interface {
-	pulumi.Input
-
-	ToVulnerabilityNoteResponseOutput() VulnerabilityNoteResponseOutput
-	ToVulnerabilityNoteResponseOutputWithContext(context.Context) VulnerabilityNoteResponseOutput
-}
-
-// A security vulnerability that can be found in resources.
-type VulnerabilityNoteResponseArgs struct {
-	// The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
-	CvssScore pulumi.Float64Input `pulumi:"cvssScore"`
-	// The full description of the CVSSv3 for this vulnerability.
-	CvssV3 CVSSv3ResponseInput `pulumi:"cvssV3"`
-	// Details of all known distros and packages affected by this vulnerability.
-	Details DetailResponseArrayInput `pulumi:"details"`
-	// The note provider assigned severity of this vulnerability.
-	Severity pulumi.StringInput `pulumi:"severity"`
-	// The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
-	SourceUpdateTime pulumi.StringInput `pulumi:"sourceUpdateTime"`
-	// Windows details get their own format because the information format and model don't match a normal detail. Specifically Windows updates are done as patches, thus Windows vulnerabilities really are a missing package, rather than a package being at an incorrect version.
-	WindowsDetails WindowsDetailResponseArrayInput `pulumi:"windowsDetails"`
-}
-
-func (VulnerabilityNoteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VulnerabilityNoteResponse)(nil)).Elem()
-}
-
-func (i VulnerabilityNoteResponseArgs) ToVulnerabilityNoteResponseOutput() VulnerabilityNoteResponseOutput {
-	return i.ToVulnerabilityNoteResponseOutputWithContext(context.Background())
-}
-
-func (i VulnerabilityNoteResponseArgs) ToVulnerabilityNoteResponseOutputWithContext(ctx context.Context) VulnerabilityNoteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityNoteResponseOutput)
-}
-
-func (i VulnerabilityNoteResponseArgs) ToVulnerabilityNoteResponsePtrOutput() VulnerabilityNoteResponsePtrOutput {
-	return i.ToVulnerabilityNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i VulnerabilityNoteResponseArgs) ToVulnerabilityNoteResponsePtrOutputWithContext(ctx context.Context) VulnerabilityNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityNoteResponseOutput).ToVulnerabilityNoteResponsePtrOutputWithContext(ctx)
-}
-
-// VulnerabilityNoteResponsePtrInput is an input type that accepts VulnerabilityNoteResponseArgs, VulnerabilityNoteResponsePtr and VulnerabilityNoteResponsePtrOutput values.
-// You can construct a concrete instance of `VulnerabilityNoteResponsePtrInput` via:
-//
-//          VulnerabilityNoteResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type VulnerabilityNoteResponsePtrInput interface {
-	pulumi.Input
-
-	ToVulnerabilityNoteResponsePtrOutput() VulnerabilityNoteResponsePtrOutput
-	ToVulnerabilityNoteResponsePtrOutputWithContext(context.Context) VulnerabilityNoteResponsePtrOutput
-}
-
-type vulnerabilityNoteResponsePtrType VulnerabilityNoteResponseArgs
-
-func VulnerabilityNoteResponsePtr(v *VulnerabilityNoteResponseArgs) VulnerabilityNoteResponsePtrInput {
-	return (*vulnerabilityNoteResponsePtrType)(v)
-}
-
-func (*vulnerabilityNoteResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VulnerabilityNoteResponse)(nil)).Elem()
-}
-
-func (i *vulnerabilityNoteResponsePtrType) ToVulnerabilityNoteResponsePtrOutput() VulnerabilityNoteResponsePtrOutput {
-	return i.ToVulnerabilityNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *vulnerabilityNoteResponsePtrType) ToVulnerabilityNoteResponsePtrOutputWithContext(ctx context.Context) VulnerabilityNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityNoteResponsePtrOutput)
-}
-
 // A security vulnerability that can be found in resources.
 type VulnerabilityNoteResponseOutput struct{ *pulumi.OutputState }
 
@@ -23305,16 +15072,6 @@ func (o VulnerabilityNoteResponseOutput) ToVulnerabilityNoteResponseOutput() Vul
 
 func (o VulnerabilityNoteResponseOutput) ToVulnerabilityNoteResponseOutputWithContext(ctx context.Context) VulnerabilityNoteResponseOutput {
 	return o
-}
-
-func (o VulnerabilityNoteResponseOutput) ToVulnerabilityNoteResponsePtrOutput() VulnerabilityNoteResponsePtrOutput {
-	return o.ToVulnerabilityNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (o VulnerabilityNoteResponseOutput) ToVulnerabilityNoteResponsePtrOutputWithContext(ctx context.Context) VulnerabilityNoteResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityNoteResponse) *VulnerabilityNoteResponse {
-		return &v
-	}).(VulnerabilityNoteResponsePtrOutput)
 }
 
 // The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
@@ -23345,90 +15102,6 @@ func (o VulnerabilityNoteResponseOutput) SourceUpdateTime() pulumi.StringOutput 
 // Windows details get their own format because the information format and model don't match a normal detail. Specifically Windows updates are done as patches, thus Windows vulnerabilities really are a missing package, rather than a package being at an incorrect version.
 func (o VulnerabilityNoteResponseOutput) WindowsDetails() WindowsDetailResponseArrayOutput {
 	return o.ApplyT(func(v VulnerabilityNoteResponse) []WindowsDetailResponse { return v.WindowsDetails }).(WindowsDetailResponseArrayOutput)
-}
-
-type VulnerabilityNoteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (VulnerabilityNoteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VulnerabilityNoteResponse)(nil)).Elem()
-}
-
-func (o VulnerabilityNoteResponsePtrOutput) ToVulnerabilityNoteResponsePtrOutput() VulnerabilityNoteResponsePtrOutput {
-	return o
-}
-
-func (o VulnerabilityNoteResponsePtrOutput) ToVulnerabilityNoteResponsePtrOutputWithContext(ctx context.Context) VulnerabilityNoteResponsePtrOutput {
-	return o
-}
-
-func (o VulnerabilityNoteResponsePtrOutput) Elem() VulnerabilityNoteResponseOutput {
-	return o.ApplyT(func(v *VulnerabilityNoteResponse) VulnerabilityNoteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret VulnerabilityNoteResponse
-		return ret
-	}).(VulnerabilityNoteResponseOutput)
-}
-
-// The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
-func (o VulnerabilityNoteResponsePtrOutput) CvssScore() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *VulnerabilityNoteResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.CvssScore
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The full description of the CVSSv3 for this vulnerability.
-func (o VulnerabilityNoteResponsePtrOutput) CvssV3() CVSSv3ResponsePtrOutput {
-	return o.ApplyT(func(v *VulnerabilityNoteResponse) *CVSSv3Response {
-		if v == nil {
-			return nil
-		}
-		return &v.CvssV3
-	}).(CVSSv3ResponsePtrOutput)
-}
-
-// Details of all known distros and packages affected by this vulnerability.
-func (o VulnerabilityNoteResponsePtrOutput) Details() DetailResponseArrayOutput {
-	return o.ApplyT(func(v *VulnerabilityNoteResponse) []DetailResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(DetailResponseArrayOutput)
-}
-
-// The note provider assigned severity of this vulnerability.
-func (o VulnerabilityNoteResponsePtrOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VulnerabilityNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Severity
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
-func (o VulnerabilityNoteResponsePtrOutput) SourceUpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VulnerabilityNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceUpdateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Windows details get their own format because the information format and model don't match a normal detail. Specifically Windows updates are done as patches, thus Windows vulnerabilities really are a missing package, rather than a package being at an incorrect version.
-func (o VulnerabilityNoteResponsePtrOutput) WindowsDetails() WindowsDetailResponseArrayOutput {
-	return o.ApplyT(func(v *VulnerabilityNoteResponse) []WindowsDetailResponse {
-		if v == nil {
-			return nil
-		}
-		return v.WindowsDetails
-	}).(WindowsDetailResponseArrayOutput)
 }
 
 // An occurrence of a severity vulnerability on a resource.
@@ -23652,94 +15325,6 @@ type VulnerabilityOccurrenceResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// VulnerabilityOccurrenceResponseInput is an input type that accepts VulnerabilityOccurrenceResponseArgs and VulnerabilityOccurrenceResponseOutput values.
-// You can construct a concrete instance of `VulnerabilityOccurrenceResponseInput` via:
-//
-//          VulnerabilityOccurrenceResponseArgs{...}
-type VulnerabilityOccurrenceResponseInput interface {
-	pulumi.Input
-
-	ToVulnerabilityOccurrenceResponseOutput() VulnerabilityOccurrenceResponseOutput
-	ToVulnerabilityOccurrenceResponseOutputWithContext(context.Context) VulnerabilityOccurrenceResponseOutput
-}
-
-// An occurrence of a severity vulnerability on a resource.
-type VulnerabilityOccurrenceResponseArgs struct {
-	// The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
-	CvssScore pulumi.Float64Input `pulumi:"cvssScore"`
-	// The cvss v3 score for the vulnerability.
-	Cvssv3 CVSSResponseInput `pulumi:"cvssv3"`
-	// The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
-	EffectiveSeverity pulumi.StringInput `pulumi:"effectiveSeverity"`
-	// Whether at least one of the affected packages has a fix available.
-	FixAvailable pulumi.BoolInput `pulumi:"fixAvailable"`
-	// A detailed description of this vulnerability.
-	LongDescription pulumi.StringInput `pulumi:"longDescription"`
-	// The set of affected locations and their fixes (if available) within the associated resource.
-	PackageIssue PackageIssueResponseArrayInput `pulumi:"packageIssue"`
-	// URLs related to this vulnerability.
-	RelatedUrls RelatedUrlResponseArrayInput `pulumi:"relatedUrls"`
-	// The note provider assigned severity of this vulnerability.
-	Severity pulumi.StringInput `pulumi:"severity"`
-	// A one sentence description of this vulnerability.
-	ShortDescription pulumi.StringInput `pulumi:"shortDescription"`
-	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (VulnerabilityOccurrenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VulnerabilityOccurrenceResponse)(nil)).Elem()
-}
-
-func (i VulnerabilityOccurrenceResponseArgs) ToVulnerabilityOccurrenceResponseOutput() VulnerabilityOccurrenceResponseOutput {
-	return i.ToVulnerabilityOccurrenceResponseOutputWithContext(context.Background())
-}
-
-func (i VulnerabilityOccurrenceResponseArgs) ToVulnerabilityOccurrenceResponseOutputWithContext(ctx context.Context) VulnerabilityOccurrenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityOccurrenceResponseOutput)
-}
-
-func (i VulnerabilityOccurrenceResponseArgs) ToVulnerabilityOccurrenceResponsePtrOutput() VulnerabilityOccurrenceResponsePtrOutput {
-	return i.ToVulnerabilityOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i VulnerabilityOccurrenceResponseArgs) ToVulnerabilityOccurrenceResponsePtrOutputWithContext(ctx context.Context) VulnerabilityOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityOccurrenceResponseOutput).ToVulnerabilityOccurrenceResponsePtrOutputWithContext(ctx)
-}
-
-// VulnerabilityOccurrenceResponsePtrInput is an input type that accepts VulnerabilityOccurrenceResponseArgs, VulnerabilityOccurrenceResponsePtr and VulnerabilityOccurrenceResponsePtrOutput values.
-// You can construct a concrete instance of `VulnerabilityOccurrenceResponsePtrInput` via:
-//
-//          VulnerabilityOccurrenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type VulnerabilityOccurrenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToVulnerabilityOccurrenceResponsePtrOutput() VulnerabilityOccurrenceResponsePtrOutput
-	ToVulnerabilityOccurrenceResponsePtrOutputWithContext(context.Context) VulnerabilityOccurrenceResponsePtrOutput
-}
-
-type vulnerabilityOccurrenceResponsePtrType VulnerabilityOccurrenceResponseArgs
-
-func VulnerabilityOccurrenceResponsePtr(v *VulnerabilityOccurrenceResponseArgs) VulnerabilityOccurrenceResponsePtrInput {
-	return (*vulnerabilityOccurrenceResponsePtrType)(v)
-}
-
-func (*vulnerabilityOccurrenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VulnerabilityOccurrenceResponse)(nil)).Elem()
-}
-
-func (i *vulnerabilityOccurrenceResponsePtrType) ToVulnerabilityOccurrenceResponsePtrOutput() VulnerabilityOccurrenceResponsePtrOutput {
-	return i.ToVulnerabilityOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *vulnerabilityOccurrenceResponsePtrType) ToVulnerabilityOccurrenceResponsePtrOutputWithContext(ctx context.Context) VulnerabilityOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityOccurrenceResponsePtrOutput)
-}
-
 // An occurrence of a severity vulnerability on a resource.
 type VulnerabilityOccurrenceResponseOutput struct{ *pulumi.OutputState }
 
@@ -23753,16 +15338,6 @@ func (o VulnerabilityOccurrenceResponseOutput) ToVulnerabilityOccurrenceResponse
 
 func (o VulnerabilityOccurrenceResponseOutput) ToVulnerabilityOccurrenceResponseOutputWithContext(ctx context.Context) VulnerabilityOccurrenceResponseOutput {
 	return o
-}
-
-func (o VulnerabilityOccurrenceResponseOutput) ToVulnerabilityOccurrenceResponsePtrOutput() VulnerabilityOccurrenceResponsePtrOutput {
-	return o.ToVulnerabilityOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o VulnerabilityOccurrenceResponseOutput) ToVulnerabilityOccurrenceResponsePtrOutputWithContext(ctx context.Context) VulnerabilityOccurrenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityOccurrenceResponse) *VulnerabilityOccurrenceResponse {
-		return &v
-	}).(VulnerabilityOccurrenceResponsePtrOutput)
 }
 
 // The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
@@ -23813,130 +15388,6 @@ func (o VulnerabilityOccurrenceResponseOutput) ShortDescription() pulumi.StringO
 // The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
 func (o VulnerabilityOccurrenceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VulnerabilityOccurrenceResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type VulnerabilityOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (VulnerabilityOccurrenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VulnerabilityOccurrenceResponse)(nil)).Elem()
-}
-
-func (o VulnerabilityOccurrenceResponsePtrOutput) ToVulnerabilityOccurrenceResponsePtrOutput() VulnerabilityOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o VulnerabilityOccurrenceResponsePtrOutput) ToVulnerabilityOccurrenceResponsePtrOutputWithContext(ctx context.Context) VulnerabilityOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o VulnerabilityOccurrenceResponsePtrOutput) Elem() VulnerabilityOccurrenceResponseOutput {
-	return o.ApplyT(func(v *VulnerabilityOccurrenceResponse) VulnerabilityOccurrenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret VulnerabilityOccurrenceResponse
-		return ret
-	}).(VulnerabilityOccurrenceResponseOutput)
-}
-
-// The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
-func (o VulnerabilityOccurrenceResponsePtrOutput) CvssScore() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *VulnerabilityOccurrenceResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.CvssScore
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The cvss v3 score for the vulnerability.
-func (o VulnerabilityOccurrenceResponsePtrOutput) Cvssv3() CVSSResponsePtrOutput {
-	return o.ApplyT(func(v *VulnerabilityOccurrenceResponse) *CVSSResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Cvssv3
-	}).(CVSSResponsePtrOutput)
-}
-
-// The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
-func (o VulnerabilityOccurrenceResponsePtrOutput) EffectiveSeverity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VulnerabilityOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EffectiveSeverity
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether at least one of the affected packages has a fix available.
-func (o VulnerabilityOccurrenceResponsePtrOutput) FixAvailable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VulnerabilityOccurrenceResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.FixAvailable
-	}).(pulumi.BoolPtrOutput)
-}
-
-// A detailed description of this vulnerability.
-func (o VulnerabilityOccurrenceResponsePtrOutput) LongDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VulnerabilityOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LongDescription
-	}).(pulumi.StringPtrOutput)
-}
-
-// The set of affected locations and their fixes (if available) within the associated resource.
-func (o VulnerabilityOccurrenceResponsePtrOutput) PackageIssue() PackageIssueResponseArrayOutput {
-	return o.ApplyT(func(v *VulnerabilityOccurrenceResponse) []PackageIssueResponse {
-		if v == nil {
-			return nil
-		}
-		return v.PackageIssue
-	}).(PackageIssueResponseArrayOutput)
-}
-
-// URLs related to this vulnerability.
-func (o VulnerabilityOccurrenceResponsePtrOutput) RelatedUrls() RelatedUrlResponseArrayOutput {
-	return o.ApplyT(func(v *VulnerabilityOccurrenceResponse) []RelatedUrlResponse {
-		if v == nil {
-			return nil
-		}
-		return v.RelatedUrls
-	}).(RelatedUrlResponseArrayOutput)
-}
-
-// The note provider assigned severity of this vulnerability.
-func (o VulnerabilityOccurrenceResponsePtrOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VulnerabilityOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Severity
-	}).(pulumi.StringPtrOutput)
-}
-
-// A one sentence description of this vulnerability.
-func (o VulnerabilityOccurrenceResponsePtrOutput) ShortDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VulnerabilityOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ShortDescription
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
-func (o VulnerabilityOccurrenceResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VulnerabilityOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 type WindowsDetail struct {
@@ -24072,65 +15523,6 @@ type WindowsDetailResponse struct {
 	FixingKbs []KnowledgeBaseResponse `pulumi:"fixingKbs"`
 	// The name of this vulnerability.
 	Name string `pulumi:"name"`
-}
-
-// WindowsDetailResponseInput is an input type that accepts WindowsDetailResponseArgs and WindowsDetailResponseOutput values.
-// You can construct a concrete instance of `WindowsDetailResponseInput` via:
-//
-//          WindowsDetailResponseArgs{...}
-type WindowsDetailResponseInput interface {
-	pulumi.Input
-
-	ToWindowsDetailResponseOutput() WindowsDetailResponseOutput
-	ToWindowsDetailResponseOutputWithContext(context.Context) WindowsDetailResponseOutput
-}
-
-type WindowsDetailResponseArgs struct {
-	// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability affects.
-	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
-	// The description of this vulnerability.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed KBs presence is considered a fix.
-	FixingKbs KnowledgeBaseResponseArrayInput `pulumi:"fixingKbs"`
-	// The name of this vulnerability.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (WindowsDetailResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WindowsDetailResponse)(nil)).Elem()
-}
-
-func (i WindowsDetailResponseArgs) ToWindowsDetailResponseOutput() WindowsDetailResponseOutput {
-	return i.ToWindowsDetailResponseOutputWithContext(context.Background())
-}
-
-func (i WindowsDetailResponseArgs) ToWindowsDetailResponseOutputWithContext(ctx context.Context) WindowsDetailResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsDetailResponseOutput)
-}
-
-// WindowsDetailResponseArrayInput is an input type that accepts WindowsDetailResponseArray and WindowsDetailResponseArrayOutput values.
-// You can construct a concrete instance of `WindowsDetailResponseArrayInput` via:
-//
-//          WindowsDetailResponseArray{ WindowsDetailResponseArgs{...} }
-type WindowsDetailResponseArrayInput interface {
-	pulumi.Input
-
-	ToWindowsDetailResponseArrayOutput() WindowsDetailResponseArrayOutput
-	ToWindowsDetailResponseArrayOutputWithContext(context.Context) WindowsDetailResponseArrayOutput
-}
-
-type WindowsDetailResponseArray []WindowsDetailResponseInput
-
-func (WindowsDetailResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WindowsDetailResponse)(nil)).Elem()
-}
-
-func (i WindowsDetailResponseArray) ToWindowsDetailResponseArrayOutput() WindowsDetailResponseArrayOutput {
-	return i.ToWindowsDetailResponseArrayOutputWithContext(context.Background())
-}
-
-func (i WindowsDetailResponseArray) ToWindowsDetailResponseArrayOutputWithContext(ctx context.Context) WindowsDetailResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsDetailResponseArrayOutput)
 }
 
 type WindowsDetailResponseOutput struct{ *pulumi.OutputState }
@@ -24459,88 +15851,6 @@ type WindowsUpdateResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// WindowsUpdateResponseInput is an input type that accepts WindowsUpdateResponseArgs and WindowsUpdateResponseOutput values.
-// You can construct a concrete instance of `WindowsUpdateResponseInput` via:
-//
-//          WindowsUpdateResponseArgs{...}
-type WindowsUpdateResponseInput interface {
-	pulumi.Input
-
-	ToWindowsUpdateResponseOutput() WindowsUpdateResponseOutput
-	ToWindowsUpdateResponseOutputWithContext(context.Context) WindowsUpdateResponseOutput
-}
-
-// Windows Update represents the metadata about the update for the Windows operating system. The fields in this message come from the Windows Update API documented at https://docs.microsoft.com/en-us/windows/win32/api/wuapi/nn-wuapi-iupdate.
-type WindowsUpdateResponseArgs struct {
-	// The list of categories to which the update belongs.
-	Categories CategoryResponseArrayInput `pulumi:"categories"`
-	// The localized description of the update.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Required - The unique identifier for the update.
-	Identity IdentityResponseInput `pulumi:"identity"`
-	// The Microsoft Knowledge Base article IDs that are associated with the update.
-	KbArticleIds pulumi.StringArrayInput `pulumi:"kbArticleIds"`
-	// The last published timestamp of the update.
-	LastPublishedTimestamp pulumi.StringInput `pulumi:"lastPublishedTimestamp"`
-	// The hyperlink to the support information for the update.
-	SupportUrl pulumi.StringInput `pulumi:"supportUrl"`
-	// The localized title of the update.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (WindowsUpdateResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WindowsUpdateResponse)(nil)).Elem()
-}
-
-func (i WindowsUpdateResponseArgs) ToWindowsUpdateResponseOutput() WindowsUpdateResponseOutput {
-	return i.ToWindowsUpdateResponseOutputWithContext(context.Background())
-}
-
-func (i WindowsUpdateResponseArgs) ToWindowsUpdateResponseOutputWithContext(ctx context.Context) WindowsUpdateResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsUpdateResponseOutput)
-}
-
-func (i WindowsUpdateResponseArgs) ToWindowsUpdateResponsePtrOutput() WindowsUpdateResponsePtrOutput {
-	return i.ToWindowsUpdateResponsePtrOutputWithContext(context.Background())
-}
-
-func (i WindowsUpdateResponseArgs) ToWindowsUpdateResponsePtrOutputWithContext(ctx context.Context) WindowsUpdateResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsUpdateResponseOutput).ToWindowsUpdateResponsePtrOutputWithContext(ctx)
-}
-
-// WindowsUpdateResponsePtrInput is an input type that accepts WindowsUpdateResponseArgs, WindowsUpdateResponsePtr and WindowsUpdateResponsePtrOutput values.
-// You can construct a concrete instance of `WindowsUpdateResponsePtrInput` via:
-//
-//          WindowsUpdateResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type WindowsUpdateResponsePtrInput interface {
-	pulumi.Input
-
-	ToWindowsUpdateResponsePtrOutput() WindowsUpdateResponsePtrOutput
-	ToWindowsUpdateResponsePtrOutputWithContext(context.Context) WindowsUpdateResponsePtrOutput
-}
-
-type windowsUpdateResponsePtrType WindowsUpdateResponseArgs
-
-func WindowsUpdateResponsePtr(v *WindowsUpdateResponseArgs) WindowsUpdateResponsePtrInput {
-	return (*windowsUpdateResponsePtrType)(v)
-}
-
-func (*windowsUpdateResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WindowsUpdateResponse)(nil)).Elem()
-}
-
-func (i *windowsUpdateResponsePtrType) ToWindowsUpdateResponsePtrOutput() WindowsUpdateResponsePtrOutput {
-	return i.ToWindowsUpdateResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *windowsUpdateResponsePtrType) ToWindowsUpdateResponsePtrOutputWithContext(ctx context.Context) WindowsUpdateResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsUpdateResponsePtrOutput)
-}
-
 // Windows Update represents the metadata about the update for the Windows operating system. The fields in this message come from the Windows Update API documented at https://docs.microsoft.com/en-us/windows/win32/api/wuapi/nn-wuapi-iupdate.
 type WindowsUpdateResponseOutput struct{ *pulumi.OutputState }
 
@@ -24554,16 +15864,6 @@ func (o WindowsUpdateResponseOutput) ToWindowsUpdateResponseOutput() WindowsUpda
 
 func (o WindowsUpdateResponseOutput) ToWindowsUpdateResponseOutputWithContext(ctx context.Context) WindowsUpdateResponseOutput {
 	return o
-}
-
-func (o WindowsUpdateResponseOutput) ToWindowsUpdateResponsePtrOutput() WindowsUpdateResponsePtrOutput {
-	return o.ToWindowsUpdateResponsePtrOutputWithContext(context.Background())
-}
-
-func (o WindowsUpdateResponseOutput) ToWindowsUpdateResponsePtrOutputWithContext(ctx context.Context) WindowsUpdateResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsUpdateResponse) *WindowsUpdateResponse {
-		return &v
-	}).(WindowsUpdateResponsePtrOutput)
 }
 
 // The list of categories to which the update belongs.
@@ -24601,396 +15901,156 @@ func (o WindowsUpdateResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v WindowsUpdateResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type WindowsUpdateResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WindowsUpdateResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WindowsUpdateResponse)(nil)).Elem()
-}
-
-func (o WindowsUpdateResponsePtrOutput) ToWindowsUpdateResponsePtrOutput() WindowsUpdateResponsePtrOutput {
-	return o
-}
-
-func (o WindowsUpdateResponsePtrOutput) ToWindowsUpdateResponsePtrOutputWithContext(ctx context.Context) WindowsUpdateResponsePtrOutput {
-	return o
-}
-
-func (o WindowsUpdateResponsePtrOutput) Elem() WindowsUpdateResponseOutput {
-	return o.ApplyT(func(v *WindowsUpdateResponse) WindowsUpdateResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WindowsUpdateResponse
-		return ret
-	}).(WindowsUpdateResponseOutput)
-}
-
-// The list of categories to which the update belongs.
-func (o WindowsUpdateResponsePtrOutput) Categories() CategoryResponseArrayOutput {
-	return o.ApplyT(func(v *WindowsUpdateResponse) []CategoryResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Categories
-	}).(CategoryResponseArrayOutput)
-}
-
-// The localized description of the update.
-func (o WindowsUpdateResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsUpdateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required - The unique identifier for the update.
-func (o WindowsUpdateResponsePtrOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v *WindowsUpdateResponse) *IdentityResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Identity
-	}).(IdentityResponsePtrOutput)
-}
-
-// The Microsoft Knowledge Base article IDs that are associated with the update.
-func (o WindowsUpdateResponsePtrOutput) KbArticleIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WindowsUpdateResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.KbArticleIds
-	}).(pulumi.StringArrayOutput)
-}
-
-// The last published timestamp of the update.
-func (o WindowsUpdateResponsePtrOutput) LastPublishedTimestamp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsUpdateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LastPublishedTimestamp
-	}).(pulumi.StringPtrOutput)
-}
-
-// The hyperlink to the support information for the update.
-func (o WindowsUpdateResponsePtrOutput) SupportUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsUpdateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SupportUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// The localized title of the update.
-func (o WindowsUpdateResponsePtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsUpdateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AliasContextInput)(nil)).Elem(), AliasContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AliasContextPtrInput)(nil)).Elem(), AliasContextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AliasContextResponseInput)(nil)).Elem(), AliasContextResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AliasContextResponsePtrInput)(nil)).Elem(), AliasContextResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactInput)(nil)).Elem(), ArtifactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactArrayInput)(nil)).Elem(), ArtifactArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactResponseInput)(nil)).Elem(), ArtifactResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactResponseArrayInput)(nil)).Elem(), ArtifactResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestationNoteInput)(nil)).Elem(), AttestationNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestationNotePtrInput)(nil)).Elem(), AttestationNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AttestationNoteResponseInput)(nil)).Elem(), AttestationNoteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AttestationNoteResponsePtrInput)(nil)).Elem(), AttestationNoteResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestationOccurrenceInput)(nil)).Elem(), AttestationOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestationOccurrencePtrInput)(nil)).Elem(), AttestationOccurrenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AttestationOccurrenceResponseInput)(nil)).Elem(), AttestationOccurrenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AttestationOccurrenceResponsePtrInput)(nil)).Elem(), AttestationOccurrenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildNoteInput)(nil)).Elem(), BuildNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildNotePtrInput)(nil)).Elem(), BuildNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildNoteResponseInput)(nil)).Elem(), BuildNoteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildNoteResponsePtrInput)(nil)).Elem(), BuildNoteResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildOccurrenceInput)(nil)).Elem(), BuildOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildOccurrencePtrInput)(nil)).Elem(), BuildOccurrenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildOccurrenceResponseInput)(nil)).Elem(), BuildOccurrenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildOccurrenceResponsePtrInput)(nil)).Elem(), BuildOccurrenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildProvenanceInput)(nil)).Elem(), BuildProvenanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildProvenancePtrInput)(nil)).Elem(), BuildProvenanceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildProvenanceResponseInput)(nil)).Elem(), BuildProvenanceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildProvenanceResponsePtrInput)(nil)).Elem(), BuildProvenanceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuilderConfigInput)(nil)).Elem(), BuilderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuilderConfigPtrInput)(nil)).Elem(), BuilderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuilderConfigResponseInput)(nil)).Elem(), BuilderConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuilderConfigResponsePtrInput)(nil)).Elem(), BuilderConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSInput)(nil)).Elem(), CVSSArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSPtrInput)(nil)).Elem(), CVSSArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CVSSResponseInput)(nil)).Elem(), CVSSResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CVSSResponsePtrInput)(nil)).Elem(), CVSSResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSv3Input)(nil)).Elem(), CVSSv3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSv3PtrInput)(nil)).Elem(), CVSSv3Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CVSSv3ResponseInput)(nil)).Elem(), CVSSv3ResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CVSSv3ResponsePtrInput)(nil)).Elem(), CVSSv3ResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CategoryInput)(nil)).Elem(), CategoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CategoryArrayInput)(nil)).Elem(), CategoryArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CategoryResponseInput)(nil)).Elem(), CategoryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CategoryResponseArrayInput)(nil)).Elem(), CategoryResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CisBenchmarkInput)(nil)).Elem(), CisBenchmarkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CisBenchmarkPtrInput)(nil)).Elem(), CisBenchmarkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CisBenchmarkResponseInput)(nil)).Elem(), CisBenchmarkResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CisBenchmarkResponsePtrInput)(nil)).Elem(), CisBenchmarkResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRepoSourceContextInput)(nil)).Elem(), CloudRepoSourceContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRepoSourceContextPtrInput)(nil)).Elem(), CloudRepoSourceContextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudRepoSourceContextResponseInput)(nil)).Elem(), CloudRepoSourceContextResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudRepoSourceContextResponsePtrInput)(nil)).Elem(), CloudRepoSourceContextResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommandInput)(nil)).Elem(), CommandArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommandArrayInput)(nil)).Elem(), CommandArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CommandResponseInput)(nil)).Elem(), CommandResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CommandResponseArrayInput)(nil)).Elem(), CommandResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CompletenessInput)(nil)).Elem(), CompletenessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CompletenessPtrInput)(nil)).Elem(), CompletenessArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CompletenessResponseInput)(nil)).Elem(), CompletenessResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CompletenessResponsePtrInput)(nil)).Elem(), CompletenessResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceNoteInput)(nil)).Elem(), ComplianceNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceNotePtrInput)(nil)).Elem(), ComplianceNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceNoteResponseInput)(nil)).Elem(), ComplianceNoteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceNoteResponsePtrInput)(nil)).Elem(), ComplianceNoteResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceOccurrenceInput)(nil)).Elem(), ComplianceOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceOccurrencePtrInput)(nil)).Elem(), ComplianceOccurrenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceOccurrenceResponseInput)(nil)).Elem(), ComplianceOccurrenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceOccurrenceResponsePtrInput)(nil)).Elem(), ComplianceOccurrenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceVersionInput)(nil)).Elem(), ComplianceVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceVersionArrayInput)(nil)).Elem(), ComplianceVersionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceVersionResponseInput)(nil)).Elem(), ComplianceVersionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceVersionResponseArrayInput)(nil)).Elem(), ComplianceVersionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationNoteInput)(nil)).Elem(), DSSEAttestationNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationNotePtrInput)(nil)).Elem(), DSSEAttestationNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationNoteResponseInput)(nil)).Elem(), DSSEAttestationNoteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationNoteResponsePtrInput)(nil)).Elem(), DSSEAttestationNoteResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationOccurrenceInput)(nil)).Elem(), DSSEAttestationOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationOccurrencePtrInput)(nil)).Elem(), DSSEAttestationOccurrenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationOccurrenceResponseInput)(nil)).Elem(), DSSEAttestationOccurrenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationOccurrenceResponsePtrInput)(nil)).Elem(), DSSEAttestationOccurrenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DSSEHintInput)(nil)).Elem(), DSSEHintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DSSEHintPtrInput)(nil)).Elem(), DSSEHintArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DSSEHintResponseInput)(nil)).Elem(), DSSEHintResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DSSEHintResponsePtrInput)(nil)).Elem(), DSSEHintResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentNoteInput)(nil)).Elem(), DeploymentNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentNotePtrInput)(nil)).Elem(), DeploymentNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentNoteResponseInput)(nil)).Elem(), DeploymentNoteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentNoteResponsePtrInput)(nil)).Elem(), DeploymentNoteResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentOccurrenceInput)(nil)).Elem(), DeploymentOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentOccurrencePtrInput)(nil)).Elem(), DeploymentOccurrenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentOccurrenceResponseInput)(nil)).Elem(), DeploymentOccurrenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentOccurrenceResponsePtrInput)(nil)).Elem(), DeploymentOccurrenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DetailInput)(nil)).Elem(), DetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DetailArrayInput)(nil)).Elem(), DetailArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DetailResponseInput)(nil)).Elem(), DetailResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DetailResponseArrayInput)(nil)).Elem(), DetailResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryNoteInput)(nil)).Elem(), DiscoveryNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryNotePtrInput)(nil)).Elem(), DiscoveryNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryNoteResponseInput)(nil)).Elem(), DiscoveryNoteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryNoteResponsePtrInput)(nil)).Elem(), DiscoveryNoteResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryOccurrenceInput)(nil)).Elem(), DiscoveryOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryOccurrencePtrInput)(nil)).Elem(), DiscoveryOccurrenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryOccurrenceResponseInput)(nil)).Elem(), DiscoveryOccurrenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryOccurrenceResponsePtrInput)(nil)).Elem(), DiscoveryOccurrenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DistributionInput)(nil)).Elem(), DistributionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DistributionArrayInput)(nil)).Elem(), DistributionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DistributionResponseInput)(nil)).Elem(), DistributionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DistributionResponseArrayInput)(nil)).Elem(), DistributionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeInput)(nil)).Elem(), EnvelopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopePtrInput)(nil)).Elem(), EnvelopeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeResponseInput)(nil)).Elem(), EnvelopeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeResponsePtrInput)(nil)).Elem(), EnvelopeResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeSignatureInput)(nil)).Elem(), EnvelopeSignatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeSignatureArrayInput)(nil)).Elem(), EnvelopeSignatureArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeSignatureResponseInput)(nil)).Elem(), EnvelopeSignatureResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeSignatureResponseArrayInput)(nil)).Elem(), EnvelopeSignatureResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FingerprintInput)(nil)).Elem(), FingerprintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FingerprintPtrInput)(nil)).Elem(), FingerprintArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FingerprintResponseInput)(nil)).Elem(), FingerprintResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FingerprintResponsePtrInput)(nil)).Elem(), FingerprintResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GerritSourceContextInput)(nil)).Elem(), GerritSourceContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GerritSourceContextPtrInput)(nil)).Elem(), GerritSourceContextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GerritSourceContextResponseInput)(nil)).Elem(), GerritSourceContextResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GerritSourceContextResponsePtrInput)(nil)).Elem(), GerritSourceContextResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitSourceContextInput)(nil)).Elem(), GitSourceContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitSourceContextPtrInput)(nil)).Elem(), GitSourceContextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitSourceContextResponseInput)(nil)).Elem(), GitSourceContextResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitSourceContextResponsePtrInput)(nil)).Elem(), GitSourceContextResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HintInput)(nil)).Elem(), HintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HintPtrInput)(nil)).Elem(), HintArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HintResponseInput)(nil)).Elem(), HintResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HintResponsePtrInput)(nil)).Elem(), HintResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityInput)(nil)).Elem(), IdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityPtrInput)(nil)).Elem(), IdentityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IdentityResponseInput)(nil)).Elem(), IdentityResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IdentityResponsePtrInput)(nil)).Elem(), IdentityResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageNoteInput)(nil)).Elem(), ImageNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageNotePtrInput)(nil)).Elem(), ImageNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageNoteResponseInput)(nil)).Elem(), ImageNoteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageNoteResponsePtrInput)(nil)).Elem(), ImageNoteResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageOccurrenceInput)(nil)).Elem(), ImageOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageOccurrencePtrInput)(nil)).Elem(), ImageOccurrenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageOccurrenceResponseInput)(nil)).Elem(), ImageOccurrenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageOccurrenceResponsePtrInput)(nil)).Elem(), ImageOccurrenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InTotoProvenanceInput)(nil)).Elem(), InTotoProvenanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InTotoProvenancePtrInput)(nil)).Elem(), InTotoProvenanceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InTotoProvenanceResponseInput)(nil)).Elem(), InTotoProvenanceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InTotoProvenanceResponsePtrInput)(nil)).Elem(), InTotoProvenanceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InTotoStatementInput)(nil)).Elem(), InTotoStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InTotoStatementPtrInput)(nil)).Elem(), InTotoStatementArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InTotoStatementResponseInput)(nil)).Elem(), InTotoStatementResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InTotoStatementResponsePtrInput)(nil)).Elem(), InTotoStatementResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JwtInput)(nil)).Elem(), JwtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JwtArrayInput)(nil)).Elem(), JwtArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JwtResponseInput)(nil)).Elem(), JwtResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JwtResponseArrayInput)(nil)).Elem(), JwtResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KnowledgeBaseInput)(nil)).Elem(), KnowledgeBaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KnowledgeBaseArrayInput)(nil)).Elem(), KnowledgeBaseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KnowledgeBaseResponseInput)(nil)).Elem(), KnowledgeBaseResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KnowledgeBaseResponseArrayInput)(nil)).Elem(), KnowledgeBaseResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerInput)(nil)).Elem(), LayerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerArrayInput)(nil)).Elem(), LayerArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LayerResponseInput)(nil)).Elem(), LayerResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LayerResponseArrayInput)(nil)).Elem(), LayerResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationInput)(nil)).Elem(), LocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationArrayInput)(nil)).Elem(), LocationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LocationResponseInput)(nil)).Elem(), LocationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LocationResponseArrayInput)(nil)).Elem(), LocationResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaterialInput)(nil)).Elem(), MaterialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaterialArrayInput)(nil)).Elem(), MaterialArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MaterialResponseInput)(nil)).Elem(), MaterialResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MaterialResponseArrayInput)(nil)).Elem(), MaterialResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataInput)(nil)).Elem(), MetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataPtrInput)(nil)).Elem(), MetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetadataResponseInput)(nil)).Elem(), MetadataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetadataResponsePtrInput)(nil)).Elem(), MetadataResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NonCompliantFileInput)(nil)).Elem(), NonCompliantFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NonCompliantFileArrayInput)(nil)).Elem(), NonCompliantFileArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NonCompliantFileResponseInput)(nil)).Elem(), NonCompliantFileResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NonCompliantFileResponseArrayInput)(nil)).Elem(), NonCompliantFileResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueInput)(nil)).Elem(), PackageIssueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueArrayInput)(nil)).Elem(), PackageIssueArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueResponseInput)(nil)).Elem(), PackageIssueResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueResponseArrayInput)(nil)).Elem(), PackageIssueResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteInput)(nil)).Elem(), PackageNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageNotePtrInput)(nil)).Elem(), PackageNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteResponseInput)(nil)).Elem(), PackageNoteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteResponsePtrInput)(nil)).Elem(), PackageNoteResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrenceInput)(nil)).Elem(), PackageOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrencePtrInput)(nil)).Elem(), PackageOccurrenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrenceResponseInput)(nil)).Elem(), PackageOccurrenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrenceResponsePtrInput)(nil)).Elem(), PackageOccurrenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectRepoIdInput)(nil)).Elem(), ProjectRepoIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectRepoIdPtrInput)(nil)).Elem(), ProjectRepoIdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectRepoIdResponseInput)(nil)).Elem(), ProjectRepoIdResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectRepoIdResponsePtrInput)(nil)).Elem(), ProjectRepoIdResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecipeInput)(nil)).Elem(), RecipeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecipePtrInput)(nil)).Elem(), RecipeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RecipeResponseInput)(nil)).Elem(), RecipeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RecipeResponsePtrInput)(nil)).Elem(), RecipeResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RelatedUrlInput)(nil)).Elem(), RelatedUrlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RelatedUrlArrayInput)(nil)).Elem(), RelatedUrlArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RelatedUrlResponseInput)(nil)).Elem(), RelatedUrlResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RelatedUrlResponseArrayInput)(nil)).Elem(), RelatedUrlResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoIdInput)(nil)).Elem(), RepoIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoIdPtrInput)(nil)).Elem(), RepoIdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RepoIdResponseInput)(nil)).Elem(), RepoIdResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RepoIdResponsePtrInput)(nil)).Elem(), RepoIdResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SignatureInput)(nil)).Elem(), SignatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SignatureArrayInput)(nil)).Elem(), SignatureArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SignatureResponseInput)(nil)).Elem(), SignatureResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SignatureResponseArrayInput)(nil)).Elem(), SignatureResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaBuilderInput)(nil)).Elem(), SlsaBuilderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaBuilderPtrInput)(nil)).Elem(), SlsaBuilderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SlsaBuilderResponseInput)(nil)).Elem(), SlsaBuilderResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SlsaBuilderResponsePtrInput)(nil)).Elem(), SlsaBuilderResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaCompletenessInput)(nil)).Elem(), SlsaCompletenessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaCompletenessPtrInput)(nil)).Elem(), SlsaCompletenessArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SlsaCompletenessResponseInput)(nil)).Elem(), SlsaCompletenessResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SlsaCompletenessResponsePtrInput)(nil)).Elem(), SlsaCompletenessResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaMetadataInput)(nil)).Elem(), SlsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaMetadataPtrInput)(nil)).Elem(), SlsaMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SlsaMetadataResponseInput)(nil)).Elem(), SlsaMetadataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SlsaMetadataResponsePtrInput)(nil)).Elem(), SlsaMetadataResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceInput)(nil)).Elem(), SlsaProvenanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenancePtrInput)(nil)).Elem(), SlsaProvenanceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceResponseInput)(nil)).Elem(), SlsaProvenanceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceResponsePtrInput)(nil)).Elem(), SlsaProvenanceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaRecipeInput)(nil)).Elem(), SlsaRecipeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaRecipePtrInput)(nil)).Elem(), SlsaRecipeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SlsaRecipeResponseInput)(nil)).Elem(), SlsaRecipeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SlsaRecipeResponsePtrInput)(nil)).Elem(), SlsaRecipeResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourcePtrInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceContextInput)(nil)).Elem(), SourceContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceContextPtrInput)(nil)).Elem(), SourceContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceContextArrayInput)(nil)).Elem(), SourceContextArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceContextResponseInput)(nil)).Elem(), SourceContextResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceContextResponsePtrInput)(nil)).Elem(), SourceContextResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceContextResponseArrayInput)(nil)).Elem(), SourceContextResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceResponseInput)(nil)).Elem(), SourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceResponsePtrInput)(nil)).Elem(), SourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusInput)(nil)).Elem(), StatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusPtrInput)(nil)).Elem(), StatusArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectInput)(nil)).Elem(), SubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectArrayInput)(nil)).Elem(), SubjectArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubjectResponseInput)(nil)).Elem(), SubjectResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubjectResponseArrayInput)(nil)).Elem(), SubjectResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDistributionInput)(nil)).Elem(), UpgradeDistributionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDistributionPtrInput)(nil)).Elem(), UpgradeDistributionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDistributionArrayInput)(nil)).Elem(), UpgradeDistributionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDistributionResponseInput)(nil)).Elem(), UpgradeDistributionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDistributionResponsePtrInput)(nil)).Elem(), UpgradeDistributionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDistributionResponseArrayInput)(nil)).Elem(), UpgradeDistributionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeNoteInput)(nil)).Elem(), UpgradeNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeNotePtrInput)(nil)).Elem(), UpgradeNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeNoteResponseInput)(nil)).Elem(), UpgradeNoteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeNoteResponsePtrInput)(nil)).Elem(), UpgradeNoteResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeOccurrenceInput)(nil)).Elem(), UpgradeOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeOccurrencePtrInput)(nil)).Elem(), UpgradeOccurrenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeOccurrenceResponseInput)(nil)).Elem(), UpgradeOccurrenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeOccurrenceResponsePtrInput)(nil)).Elem(), UpgradeOccurrenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionInput)(nil)).Elem(), VersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionPtrInput)(nil)).Elem(), VersionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VersionResponseInput)(nil)).Elem(), VersionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VersionResponsePtrInput)(nil)).Elem(), VersionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityNoteInput)(nil)).Elem(), VulnerabilityNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityNotePtrInput)(nil)).Elem(), VulnerabilityNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityNoteResponseInput)(nil)).Elem(), VulnerabilityNoteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityNoteResponsePtrInput)(nil)).Elem(), VulnerabilityNoteResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityOccurrenceInput)(nil)).Elem(), VulnerabilityOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityOccurrencePtrInput)(nil)).Elem(), VulnerabilityOccurrenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityOccurrenceResponseInput)(nil)).Elem(), VulnerabilityOccurrenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityOccurrenceResponsePtrInput)(nil)).Elem(), VulnerabilityOccurrenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WindowsDetailInput)(nil)).Elem(), WindowsDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WindowsDetailArrayInput)(nil)).Elem(), WindowsDetailArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WindowsDetailResponseInput)(nil)).Elem(), WindowsDetailResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WindowsDetailResponseArrayInput)(nil)).Elem(), WindowsDetailResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WindowsUpdateInput)(nil)).Elem(), WindowsUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WindowsUpdatePtrInput)(nil)).Elem(), WindowsUpdateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WindowsUpdateResponseInput)(nil)).Elem(), WindowsUpdateResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WindowsUpdateResponsePtrInput)(nil)).Elem(), WindowsUpdateResponseArgs{})
 	pulumi.RegisterOutputType(AliasContextOutput{})
 	pulumi.RegisterOutputType(AliasContextPtrOutput{})
 	pulumi.RegisterOutputType(AliasContextResponseOutput{})
-	pulumi.RegisterOutputType(AliasContextResponsePtrOutput{})
 	pulumi.RegisterOutputType(ArtifactOutput{})
 	pulumi.RegisterOutputType(ArtifactArrayOutput{})
 	pulumi.RegisterOutputType(ArtifactResponseOutput{})
@@ -24998,11 +16058,9 @@ func init() {
 	pulumi.RegisterOutputType(AttestationNoteOutput{})
 	pulumi.RegisterOutputType(AttestationNotePtrOutput{})
 	pulumi.RegisterOutputType(AttestationNoteResponseOutput{})
-	pulumi.RegisterOutputType(AttestationNoteResponsePtrOutput{})
 	pulumi.RegisterOutputType(AttestationOccurrenceOutput{})
 	pulumi.RegisterOutputType(AttestationOccurrencePtrOutput{})
 	pulumi.RegisterOutputType(AttestationOccurrenceResponseOutput{})
-	pulumi.RegisterOutputType(AttestationOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -25010,27 +16068,21 @@ func init() {
 	pulumi.RegisterOutputType(BuildNoteOutput{})
 	pulumi.RegisterOutputType(BuildNotePtrOutput{})
 	pulumi.RegisterOutputType(BuildNoteResponseOutput{})
-	pulumi.RegisterOutputType(BuildNoteResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildOccurrenceOutput{})
 	pulumi.RegisterOutputType(BuildOccurrencePtrOutput{})
 	pulumi.RegisterOutputType(BuildOccurrenceResponseOutput{})
-	pulumi.RegisterOutputType(BuildOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildProvenanceOutput{})
 	pulumi.RegisterOutputType(BuildProvenancePtrOutput{})
 	pulumi.RegisterOutputType(BuildProvenanceResponseOutput{})
-	pulumi.RegisterOutputType(BuildProvenanceResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuilderConfigOutput{})
 	pulumi.RegisterOutputType(BuilderConfigPtrOutput{})
 	pulumi.RegisterOutputType(BuilderConfigResponseOutput{})
-	pulumi.RegisterOutputType(BuilderConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(CVSSOutput{})
 	pulumi.RegisterOutputType(CVSSPtrOutput{})
 	pulumi.RegisterOutputType(CVSSResponseOutput{})
-	pulumi.RegisterOutputType(CVSSResponsePtrOutput{})
 	pulumi.RegisterOutputType(CVSSv3Output{})
 	pulumi.RegisterOutputType(CVSSv3PtrOutput{})
 	pulumi.RegisterOutputType(CVSSv3ResponseOutput{})
-	pulumi.RegisterOutputType(CVSSv3ResponsePtrOutput{})
 	pulumi.RegisterOutputType(CategoryOutput{})
 	pulumi.RegisterOutputType(CategoryArrayOutput{})
 	pulumi.RegisterOutputType(CategoryResponseOutput{})
@@ -25038,11 +16090,9 @@ func init() {
 	pulumi.RegisterOutputType(CisBenchmarkOutput{})
 	pulumi.RegisterOutputType(CisBenchmarkPtrOutput{})
 	pulumi.RegisterOutputType(CisBenchmarkResponseOutput{})
-	pulumi.RegisterOutputType(CisBenchmarkResponsePtrOutput{})
 	pulumi.RegisterOutputType(CloudRepoSourceContextOutput{})
 	pulumi.RegisterOutputType(CloudRepoSourceContextPtrOutput{})
 	pulumi.RegisterOutputType(CloudRepoSourceContextResponseOutput{})
-	pulumi.RegisterOutputType(CloudRepoSourceContextResponsePtrOutput{})
 	pulumi.RegisterOutputType(CommandOutput{})
 	pulumi.RegisterOutputType(CommandArrayOutput{})
 	pulumi.RegisterOutputType(CommandResponseOutput{})
@@ -25050,15 +16100,12 @@ func init() {
 	pulumi.RegisterOutputType(CompletenessOutput{})
 	pulumi.RegisterOutputType(CompletenessPtrOutput{})
 	pulumi.RegisterOutputType(CompletenessResponseOutput{})
-	pulumi.RegisterOutputType(CompletenessResponsePtrOutput{})
 	pulumi.RegisterOutputType(ComplianceNoteOutput{})
 	pulumi.RegisterOutputType(ComplianceNotePtrOutput{})
 	pulumi.RegisterOutputType(ComplianceNoteResponseOutput{})
-	pulumi.RegisterOutputType(ComplianceNoteResponsePtrOutput{})
 	pulumi.RegisterOutputType(ComplianceOccurrenceOutput{})
 	pulumi.RegisterOutputType(ComplianceOccurrencePtrOutput{})
 	pulumi.RegisterOutputType(ComplianceOccurrenceResponseOutput{})
-	pulumi.RegisterOutputType(ComplianceOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(ComplianceVersionOutput{})
 	pulumi.RegisterOutputType(ComplianceVersionArrayOutput{})
 	pulumi.RegisterOutputType(ComplianceVersionResponseOutput{})
@@ -25066,23 +16113,18 @@ func init() {
 	pulumi.RegisterOutputType(DSSEAttestationNoteOutput{})
 	pulumi.RegisterOutputType(DSSEAttestationNotePtrOutput{})
 	pulumi.RegisterOutputType(DSSEAttestationNoteResponseOutput{})
-	pulumi.RegisterOutputType(DSSEAttestationNoteResponsePtrOutput{})
 	pulumi.RegisterOutputType(DSSEAttestationOccurrenceOutput{})
 	pulumi.RegisterOutputType(DSSEAttestationOccurrencePtrOutput{})
 	pulumi.RegisterOutputType(DSSEAttestationOccurrenceResponseOutput{})
-	pulumi.RegisterOutputType(DSSEAttestationOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(DSSEHintOutput{})
 	pulumi.RegisterOutputType(DSSEHintPtrOutput{})
 	pulumi.RegisterOutputType(DSSEHintResponseOutput{})
-	pulumi.RegisterOutputType(DSSEHintResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentNoteOutput{})
 	pulumi.RegisterOutputType(DeploymentNotePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentNoteResponseOutput{})
-	pulumi.RegisterOutputType(DeploymentNoteResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentOccurrenceOutput{})
 	pulumi.RegisterOutputType(DeploymentOccurrencePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentOccurrenceResponseOutput{})
-	pulumi.RegisterOutputType(DeploymentOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(DetailOutput{})
 	pulumi.RegisterOutputType(DetailArrayOutput{})
 	pulumi.RegisterOutputType(DetailResponseOutput{})
@@ -25090,11 +16132,9 @@ func init() {
 	pulumi.RegisterOutputType(DiscoveryNoteOutput{})
 	pulumi.RegisterOutputType(DiscoveryNotePtrOutput{})
 	pulumi.RegisterOutputType(DiscoveryNoteResponseOutput{})
-	pulumi.RegisterOutputType(DiscoveryNoteResponsePtrOutput{})
 	pulumi.RegisterOutputType(DiscoveryOccurrenceOutput{})
 	pulumi.RegisterOutputType(DiscoveryOccurrencePtrOutput{})
 	pulumi.RegisterOutputType(DiscoveryOccurrenceResponseOutput{})
-	pulumi.RegisterOutputType(DiscoveryOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(DistributionOutput{})
 	pulumi.RegisterOutputType(DistributionArrayOutput{})
 	pulumi.RegisterOutputType(DistributionResponseOutput{})
@@ -25102,7 +16142,6 @@ func init() {
 	pulumi.RegisterOutputType(EnvelopeOutput{})
 	pulumi.RegisterOutputType(EnvelopePtrOutput{})
 	pulumi.RegisterOutputType(EnvelopeResponseOutput{})
-	pulumi.RegisterOutputType(EnvelopeResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnvelopeSignatureOutput{})
 	pulumi.RegisterOutputType(EnvelopeSignatureArrayOutput{})
 	pulumi.RegisterOutputType(EnvelopeSignatureResponseOutput{})
@@ -25113,39 +16152,30 @@ func init() {
 	pulumi.RegisterOutputType(FingerprintOutput{})
 	pulumi.RegisterOutputType(FingerprintPtrOutput{})
 	pulumi.RegisterOutputType(FingerprintResponseOutput{})
-	pulumi.RegisterOutputType(FingerprintResponsePtrOutput{})
 	pulumi.RegisterOutputType(GerritSourceContextOutput{})
 	pulumi.RegisterOutputType(GerritSourceContextPtrOutput{})
 	pulumi.RegisterOutputType(GerritSourceContextResponseOutput{})
-	pulumi.RegisterOutputType(GerritSourceContextResponsePtrOutput{})
 	pulumi.RegisterOutputType(GitSourceContextOutput{})
 	pulumi.RegisterOutputType(GitSourceContextPtrOutput{})
 	pulumi.RegisterOutputType(GitSourceContextResponseOutput{})
-	pulumi.RegisterOutputType(GitSourceContextResponsePtrOutput{})
 	pulumi.RegisterOutputType(HintOutput{})
 	pulumi.RegisterOutputType(HintPtrOutput{})
 	pulumi.RegisterOutputType(HintResponseOutput{})
-	pulumi.RegisterOutputType(HintResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentityOutput{})
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
-	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ImageNoteOutput{})
 	pulumi.RegisterOutputType(ImageNotePtrOutput{})
 	pulumi.RegisterOutputType(ImageNoteResponseOutput{})
-	pulumi.RegisterOutputType(ImageNoteResponsePtrOutput{})
 	pulumi.RegisterOutputType(ImageOccurrenceOutput{})
 	pulumi.RegisterOutputType(ImageOccurrencePtrOutput{})
 	pulumi.RegisterOutputType(ImageOccurrenceResponseOutput{})
-	pulumi.RegisterOutputType(ImageOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(InTotoProvenanceOutput{})
 	pulumi.RegisterOutputType(InTotoProvenancePtrOutput{})
 	pulumi.RegisterOutputType(InTotoProvenanceResponseOutput{})
-	pulumi.RegisterOutputType(InTotoProvenanceResponsePtrOutput{})
 	pulumi.RegisterOutputType(InTotoStatementOutput{})
 	pulumi.RegisterOutputType(InTotoStatementPtrOutput{})
 	pulumi.RegisterOutputType(InTotoStatementResponseOutput{})
-	pulumi.RegisterOutputType(InTotoStatementResponsePtrOutput{})
 	pulumi.RegisterOutputType(JwtOutput{})
 	pulumi.RegisterOutputType(JwtArrayOutput{})
 	pulumi.RegisterOutputType(JwtResponseOutput{})
@@ -25169,7 +16199,6 @@ func init() {
 	pulumi.RegisterOutputType(MetadataOutput{})
 	pulumi.RegisterOutputType(MetadataPtrOutput{})
 	pulumi.RegisterOutputType(MetadataResponseOutput{})
-	pulumi.RegisterOutputType(MetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(NonCompliantFileOutput{})
 	pulumi.RegisterOutputType(NonCompliantFileArrayOutput{})
 	pulumi.RegisterOutputType(NonCompliantFileResponseOutput{})
@@ -25181,19 +16210,15 @@ func init() {
 	pulumi.RegisterOutputType(PackageNoteOutput{})
 	pulumi.RegisterOutputType(PackageNotePtrOutput{})
 	pulumi.RegisterOutputType(PackageNoteResponseOutput{})
-	pulumi.RegisterOutputType(PackageNoteResponsePtrOutput{})
 	pulumi.RegisterOutputType(PackageOccurrenceOutput{})
 	pulumi.RegisterOutputType(PackageOccurrencePtrOutput{})
 	pulumi.RegisterOutputType(PackageOccurrenceResponseOutput{})
-	pulumi.RegisterOutputType(PackageOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(ProjectRepoIdOutput{})
 	pulumi.RegisterOutputType(ProjectRepoIdPtrOutput{})
 	pulumi.RegisterOutputType(ProjectRepoIdResponseOutput{})
-	pulumi.RegisterOutputType(ProjectRepoIdResponsePtrOutput{})
 	pulumi.RegisterOutputType(RecipeOutput{})
 	pulumi.RegisterOutputType(RecipePtrOutput{})
 	pulumi.RegisterOutputType(RecipeResponseOutput{})
-	pulumi.RegisterOutputType(RecipeResponsePtrOutput{})
 	pulumi.RegisterOutputType(RelatedUrlOutput{})
 	pulumi.RegisterOutputType(RelatedUrlArrayOutput{})
 	pulumi.RegisterOutputType(RelatedUrlResponseOutput{})
@@ -25201,7 +16226,6 @@ func init() {
 	pulumi.RegisterOutputType(RepoIdOutput{})
 	pulumi.RegisterOutputType(RepoIdPtrOutput{})
 	pulumi.RegisterOutputType(RepoIdResponseOutput{})
-	pulumi.RegisterOutputType(RepoIdResponsePtrOutput{})
 	pulumi.RegisterOutputType(SignatureOutput{})
 	pulumi.RegisterOutputType(SignatureArrayOutput{})
 	pulumi.RegisterOutputType(SignatureResponseOutput{})
@@ -25209,37 +16233,29 @@ func init() {
 	pulumi.RegisterOutputType(SlsaBuilderOutput{})
 	pulumi.RegisterOutputType(SlsaBuilderPtrOutput{})
 	pulumi.RegisterOutputType(SlsaBuilderResponseOutput{})
-	pulumi.RegisterOutputType(SlsaBuilderResponsePtrOutput{})
 	pulumi.RegisterOutputType(SlsaCompletenessOutput{})
 	pulumi.RegisterOutputType(SlsaCompletenessPtrOutput{})
 	pulumi.RegisterOutputType(SlsaCompletenessResponseOutput{})
-	pulumi.RegisterOutputType(SlsaCompletenessResponsePtrOutput{})
 	pulumi.RegisterOutputType(SlsaMetadataOutput{})
 	pulumi.RegisterOutputType(SlsaMetadataPtrOutput{})
 	pulumi.RegisterOutputType(SlsaMetadataResponseOutput{})
-	pulumi.RegisterOutputType(SlsaMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(SlsaProvenanceOutput{})
 	pulumi.RegisterOutputType(SlsaProvenancePtrOutput{})
 	pulumi.RegisterOutputType(SlsaProvenanceResponseOutput{})
-	pulumi.RegisterOutputType(SlsaProvenanceResponsePtrOutput{})
 	pulumi.RegisterOutputType(SlsaRecipeOutput{})
 	pulumi.RegisterOutputType(SlsaRecipePtrOutput{})
 	pulumi.RegisterOutputType(SlsaRecipeResponseOutput{})
-	pulumi.RegisterOutputType(SlsaRecipeResponsePtrOutput{})
 	pulumi.RegisterOutputType(SourceOutput{})
 	pulumi.RegisterOutputType(SourcePtrOutput{})
 	pulumi.RegisterOutputType(SourceContextOutput{})
 	pulumi.RegisterOutputType(SourceContextPtrOutput{})
 	pulumi.RegisterOutputType(SourceContextArrayOutput{})
 	pulumi.RegisterOutputType(SourceContextResponseOutput{})
-	pulumi.RegisterOutputType(SourceContextResponsePtrOutput{})
 	pulumi.RegisterOutputType(SourceContextResponseArrayOutput{})
 	pulumi.RegisterOutputType(SourceResponseOutput{})
-	pulumi.RegisterOutputType(SourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(StatusOutput{})
 	pulumi.RegisterOutputType(StatusPtrOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
-	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubjectOutput{})
 	pulumi.RegisterOutputType(SubjectArrayOutput{})
 	pulumi.RegisterOutputType(SubjectResponseOutput{})
@@ -25248,28 +16264,22 @@ func init() {
 	pulumi.RegisterOutputType(UpgradeDistributionPtrOutput{})
 	pulumi.RegisterOutputType(UpgradeDistributionArrayOutput{})
 	pulumi.RegisterOutputType(UpgradeDistributionResponseOutput{})
-	pulumi.RegisterOutputType(UpgradeDistributionResponsePtrOutput{})
 	pulumi.RegisterOutputType(UpgradeDistributionResponseArrayOutput{})
 	pulumi.RegisterOutputType(UpgradeNoteOutput{})
 	pulumi.RegisterOutputType(UpgradeNotePtrOutput{})
 	pulumi.RegisterOutputType(UpgradeNoteResponseOutput{})
-	pulumi.RegisterOutputType(UpgradeNoteResponsePtrOutput{})
 	pulumi.RegisterOutputType(UpgradeOccurrenceOutput{})
 	pulumi.RegisterOutputType(UpgradeOccurrencePtrOutput{})
 	pulumi.RegisterOutputType(UpgradeOccurrenceResponseOutput{})
-	pulumi.RegisterOutputType(UpgradeOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(VersionOutput{})
 	pulumi.RegisterOutputType(VersionPtrOutput{})
 	pulumi.RegisterOutputType(VersionResponseOutput{})
-	pulumi.RegisterOutputType(VersionResponsePtrOutput{})
 	pulumi.RegisterOutputType(VulnerabilityNoteOutput{})
 	pulumi.RegisterOutputType(VulnerabilityNotePtrOutput{})
 	pulumi.RegisterOutputType(VulnerabilityNoteResponseOutput{})
-	pulumi.RegisterOutputType(VulnerabilityNoteResponsePtrOutput{})
 	pulumi.RegisterOutputType(VulnerabilityOccurrenceOutput{})
 	pulumi.RegisterOutputType(VulnerabilityOccurrencePtrOutput{})
 	pulumi.RegisterOutputType(VulnerabilityOccurrenceResponseOutput{})
-	pulumi.RegisterOutputType(VulnerabilityOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(WindowsDetailOutput{})
 	pulumi.RegisterOutputType(WindowsDetailArrayOutput{})
 	pulumi.RegisterOutputType(WindowsDetailResponseOutput{})
@@ -25277,5 +16287,4 @@ func init() {
 	pulumi.RegisterOutputType(WindowsUpdateOutput{})
 	pulumi.RegisterOutputType(WindowsUpdatePtrOutput{})
 	pulumi.RegisterOutputType(WindowsUpdateResponseOutput{})
-	pulumi.RegisterOutputType(WindowsUpdateResponsePtrOutput{})
 }

@@ -101,7 +101,7 @@ type AttestorInput interface {
 }
 
 func (*Attestor) ElementType() reflect.Type {
-	return reflect.TypeOf((*Attestor)(nil))
+	return reflect.TypeOf((**Attestor)(nil)).Elem()
 }
 
 func (i *Attestor) ToAttestorOutput() AttestorOutput {
@@ -115,7 +115,7 @@ func (i *Attestor) ToAttestorOutputWithContext(ctx context.Context) AttestorOutp
 type AttestorOutput struct{ *pulumi.OutputState }
 
 func (AttestorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Attestor)(nil))
+	return reflect.TypeOf((**Attestor)(nil)).Elem()
 }
 
 func (o AttestorOutput) ToAttestorOutput() AttestorOutput {

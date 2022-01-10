@@ -148,7 +148,7 @@ type RegistrationInput interface {
 }
 
 func (*Registration) ElementType() reflect.Type {
-	return reflect.TypeOf((*Registration)(nil))
+	return reflect.TypeOf((**Registration)(nil)).Elem()
 }
 
 func (i *Registration) ToRegistrationOutput() RegistrationOutput {
@@ -162,7 +162,7 @@ func (i *Registration) ToRegistrationOutputWithContext(ctx context.Context) Regi
 type RegistrationOutput struct{ *pulumi.OutputState }
 
 func (RegistrationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Registration)(nil))
+	return reflect.TypeOf((**Registration)(nil)).Elem()
 }
 
 func (o RegistrationOutput) ToRegistrationOutput() RegistrationOutput {

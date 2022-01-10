@@ -117,7 +117,7 @@ type SessionEntityTypeInput interface {
 }
 
 func (*SessionEntityType) ElementType() reflect.Type {
-	return reflect.TypeOf((*SessionEntityType)(nil))
+	return reflect.TypeOf((**SessionEntityType)(nil)).Elem()
 }
 
 func (i *SessionEntityType) ToSessionEntityTypeOutput() SessionEntityTypeOutput {
@@ -131,7 +131,7 @@ func (i *SessionEntityType) ToSessionEntityTypeOutputWithContext(ctx context.Con
 type SessionEntityTypeOutput struct{ *pulumi.OutputState }
 
 func (SessionEntityTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SessionEntityType)(nil))
+	return reflect.TypeOf((**SessionEntityType)(nil)).Elem()
 }
 
 func (o SessionEntityTypeOutput) ToSessionEntityTypeOutput() SessionEntityTypeOutput {

@@ -132,7 +132,7 @@ type DeliveryPipelineInput interface {
 }
 
 func (*DeliveryPipeline) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeliveryPipeline)(nil))
+	return reflect.TypeOf((**DeliveryPipeline)(nil)).Elem()
 }
 
 func (i *DeliveryPipeline) ToDeliveryPipelineOutput() DeliveryPipelineOutput {
@@ -146,7 +146,7 @@ func (i *DeliveryPipeline) ToDeliveryPipelineOutputWithContext(ctx context.Conte
 type DeliveryPipelineOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeliveryPipeline)(nil))
+	return reflect.TypeOf((**DeliveryPipeline)(nil)).Elem()
 }
 
 func (o DeliveryPipelineOutput) ToDeliveryPipelineOutput() DeliveryPipelineOutput {

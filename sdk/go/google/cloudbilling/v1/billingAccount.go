@@ -92,7 +92,7 @@ type BillingAccountInput interface {
 }
 
 func (*BillingAccount) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingAccount)(nil))
+	return reflect.TypeOf((**BillingAccount)(nil)).Elem()
 }
 
 func (i *BillingAccount) ToBillingAccountOutput() BillingAccountOutput {
@@ -106,7 +106,7 @@ func (i *BillingAccount) ToBillingAccountOutputWithContext(ctx context.Context) 
 type BillingAccountOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingAccount)(nil))
+	return reflect.TypeOf((**BillingAccount)(nil)).Elem()
 }
 
 func (o BillingAccountOutput) ToBillingAccountOutput() BillingAccountOutput {

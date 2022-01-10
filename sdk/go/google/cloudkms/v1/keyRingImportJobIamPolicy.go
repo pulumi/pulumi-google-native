@@ -118,7 +118,7 @@ type KeyRingImportJobIamPolicyInput interface {
 }
 
 func (*KeyRingImportJobIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingImportJobIamPolicy)(nil))
+	return reflect.TypeOf((**KeyRingImportJobIamPolicy)(nil)).Elem()
 }
 
 func (i *KeyRingImportJobIamPolicy) ToKeyRingImportJobIamPolicyOutput() KeyRingImportJobIamPolicyOutput {
@@ -132,7 +132,7 @@ func (i *KeyRingImportJobIamPolicy) ToKeyRingImportJobIamPolicyOutputWithContext
 type KeyRingImportJobIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (KeyRingImportJobIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingImportJobIamPolicy)(nil))
+	return reflect.TypeOf((**KeyRingImportJobIamPolicy)(nil)).Elem()
 }
 
 func (o KeyRingImportJobIamPolicyOutput) ToKeyRingImportJobIamPolicyOutput() KeyRingImportJobIamPolicyOutput {

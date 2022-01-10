@@ -102,7 +102,7 @@ type HmacKeyInput interface {
 }
 
 func (*HmacKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*HmacKey)(nil))
+	return reflect.TypeOf((**HmacKey)(nil)).Elem()
 }
 
 func (i *HmacKey) ToHmacKeyOutput() HmacKeyOutput {
@@ -116,7 +116,7 @@ func (i *HmacKey) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOutput 
 type HmacKeyOutput struct{ *pulumi.OutputState }
 
 func (HmacKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HmacKey)(nil))
+	return reflect.TypeOf((**HmacKey)(nil)).Elem()
 }
 
 func (o HmacKeyOutput) ToHmacKeyOutput() HmacKeyOutput {

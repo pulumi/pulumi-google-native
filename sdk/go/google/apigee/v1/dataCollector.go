@@ -103,7 +103,7 @@ type DataCollectorInput interface {
 }
 
 func (*DataCollector) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataCollector)(nil))
+	return reflect.TypeOf((**DataCollector)(nil)).Elem()
 }
 
 func (i *DataCollector) ToDataCollectorOutput() DataCollectorOutput {
@@ -117,7 +117,7 @@ func (i *DataCollector) ToDataCollectorOutputWithContext(ctx context.Context) Da
 type DataCollectorOutput struct{ *pulumi.OutputState }
 
 func (DataCollectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataCollector)(nil))
+	return reflect.TypeOf((**DataCollector)(nil)).Elem()
 }
 
 func (o DataCollectorOutput) ToDataCollectorOutput() DataCollectorOutput {

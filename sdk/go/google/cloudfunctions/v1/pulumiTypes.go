@@ -127,62 +127,6 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
-// You can construct a concrete instance of `AuditConfigResponseInput` via:
-//
-//          AuditConfigResponseArgs{...}
-type AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseOutput() AuditConfigResponseOutput
-	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return i.ToAuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
-}
-
-// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
-//
-//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
-type AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
-	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
-}
-
-type AuditConfigResponseArray []AuditConfigResponseInput
-
-func (AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -343,62 +287,6 @@ type AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
-//
-//          AuditLogConfigResponseArgs{...}
-type AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
-	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
-}
-
-// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
-//
-//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
-type AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
-	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
-}
-
-type AuditLogConfigResponseArray []AuditLogConfigResponseInput
-
-func (AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -572,64 +460,6 @@ type BindingResponse struct {
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
-}
-
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -891,82 +721,6 @@ type EventTriggerResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// EventTriggerResponseInput is an input type that accepts EventTriggerResponseArgs and EventTriggerResponseOutput values.
-// You can construct a concrete instance of `EventTriggerResponseInput` via:
-//
-//          EventTriggerResponseArgs{...}
-type EventTriggerResponseInput interface {
-	pulumi.Input
-
-	ToEventTriggerResponseOutput() EventTriggerResponseOutput
-	ToEventTriggerResponseOutputWithContext(context.Context) EventTriggerResponseOutput
-}
-
-// Describes EventTrigger, used to request events be sent from another service.
-type EventTriggerResponseArgs struct {
-	// The type of event to observe. For example: `providers/cloud.storage/eventTypes/object.change` and `providers/cloud.pubsub/eventTypes/topic.publish`. Event types match pattern `providers/*/eventTypes/*.*`. The pattern contains: 1. namespace: For example, `cloud.storage` and `google.firebase.analytics`. 2. resource type: The type of resource on which event occurs. For example, the Google Cloud Storage API includes the type `object`. 3. action: The action that generates the event. For example, action for a Google Cloud Storage Object is 'change'. These parts are lower case.
-	EventType pulumi.StringInput `pulumi:"eventType"`
-	// Specifies policy for failed executions.
-	FailurePolicy FailurePolicyResponseInput `pulumi:"failurePolicy"`
-	// The resource(s) from which to observe events, for example, `projects/_/buckets/myBucket`. Not all syntactically correct values are accepted by all services. For example: 1. The authorization model must support it. Google Cloud Functions only allows EventTriggers to be deployed that observe resources in the same project as the `CloudFunction`. 2. The resource type must match the pattern expected for an `event_type`. For example, an `EventTrigger` that has an `event_type` of "google.pubsub.topic.publish" should have a resource that matches Google Cloud Pub/Sub topics. Additionally, some services may support short names when creating an `EventTrigger`. These will always be returned in the normalized "long" format. See each *service's* documentation for supported formats.
-	Resource pulumi.StringInput `pulumi:"resource"`
-	// The hostname of the service that should be observed. If no string is provided, the default service implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types in the `google.storage` namespace.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (EventTriggerResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventTriggerResponse)(nil)).Elem()
-}
-
-func (i EventTriggerResponseArgs) ToEventTriggerResponseOutput() EventTriggerResponseOutput {
-	return i.ToEventTriggerResponseOutputWithContext(context.Background())
-}
-
-func (i EventTriggerResponseArgs) ToEventTriggerResponseOutputWithContext(ctx context.Context) EventTriggerResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTriggerResponseOutput)
-}
-
-func (i EventTriggerResponseArgs) ToEventTriggerResponsePtrOutput() EventTriggerResponsePtrOutput {
-	return i.ToEventTriggerResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EventTriggerResponseArgs) ToEventTriggerResponsePtrOutputWithContext(ctx context.Context) EventTriggerResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTriggerResponseOutput).ToEventTriggerResponsePtrOutputWithContext(ctx)
-}
-
-// EventTriggerResponsePtrInput is an input type that accepts EventTriggerResponseArgs, EventTriggerResponsePtr and EventTriggerResponsePtrOutput values.
-// You can construct a concrete instance of `EventTriggerResponsePtrInput` via:
-//
-//          EventTriggerResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EventTriggerResponsePtrInput interface {
-	pulumi.Input
-
-	ToEventTriggerResponsePtrOutput() EventTriggerResponsePtrOutput
-	ToEventTriggerResponsePtrOutputWithContext(context.Context) EventTriggerResponsePtrOutput
-}
-
-type eventTriggerResponsePtrType EventTriggerResponseArgs
-
-func EventTriggerResponsePtr(v *EventTriggerResponseArgs) EventTriggerResponsePtrInput {
-	return (*eventTriggerResponsePtrType)(v)
-}
-
-func (*eventTriggerResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EventTriggerResponse)(nil)).Elem()
-}
-
-func (i *eventTriggerResponsePtrType) ToEventTriggerResponsePtrOutput() EventTriggerResponsePtrOutput {
-	return i.ToEventTriggerResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *eventTriggerResponsePtrType) ToEventTriggerResponsePtrOutputWithContext(ctx context.Context) EventTriggerResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTriggerResponsePtrOutput)
-}
-
 // Describes EventTrigger, used to request events be sent from another service.
 type EventTriggerResponseOutput struct{ *pulumi.OutputState }
 
@@ -980,16 +734,6 @@ func (o EventTriggerResponseOutput) ToEventTriggerResponseOutput() EventTriggerR
 
 func (o EventTriggerResponseOutput) ToEventTriggerResponseOutputWithContext(ctx context.Context) EventTriggerResponseOutput {
 	return o
-}
-
-func (o EventTriggerResponseOutput) ToEventTriggerResponsePtrOutput() EventTriggerResponsePtrOutput {
-	return o.ToEventTriggerResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EventTriggerResponseOutput) ToEventTriggerResponsePtrOutputWithContext(ctx context.Context) EventTriggerResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventTriggerResponse) *EventTriggerResponse {
-		return &v
-	}).(EventTriggerResponsePtrOutput)
 }
 
 // The type of event to observe. For example: `providers/cloud.storage/eventTypes/object.change` and `providers/cloud.pubsub/eventTypes/topic.publish`. Event types match pattern `providers/*/eventTypes/*.*`. The pattern contains: 1. namespace: For example, `cloud.storage` and `google.firebase.analytics`. 2. resource type: The type of resource on which event occurs. For example, the Google Cloud Storage API includes the type `object`. 3. action: The action that generates the event. For example, action for a Google Cloud Storage Object is 'change'. These parts are lower case.
@@ -1010,70 +754,6 @@ func (o EventTriggerResponseOutput) Resource() pulumi.StringOutput {
 // The hostname of the service that should be observed. If no string is provided, the default service implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types in the `google.storage` namespace.
 func (o EventTriggerResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v EventTriggerResponse) string { return v.Service }).(pulumi.StringOutput)
-}
-
-type EventTriggerResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EventTriggerResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EventTriggerResponse)(nil)).Elem()
-}
-
-func (o EventTriggerResponsePtrOutput) ToEventTriggerResponsePtrOutput() EventTriggerResponsePtrOutput {
-	return o
-}
-
-func (o EventTriggerResponsePtrOutput) ToEventTriggerResponsePtrOutputWithContext(ctx context.Context) EventTriggerResponsePtrOutput {
-	return o
-}
-
-func (o EventTriggerResponsePtrOutput) Elem() EventTriggerResponseOutput {
-	return o.ApplyT(func(v *EventTriggerResponse) EventTriggerResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EventTriggerResponse
-		return ret
-	}).(EventTriggerResponseOutput)
-}
-
-// The type of event to observe. For example: `providers/cloud.storage/eventTypes/object.change` and `providers/cloud.pubsub/eventTypes/topic.publish`. Event types match pattern `providers/*/eventTypes/*.*`. The pattern contains: 1. namespace: For example, `cloud.storage` and `google.firebase.analytics`. 2. resource type: The type of resource on which event occurs. For example, the Google Cloud Storage API includes the type `object`. 3. action: The action that generates the event. For example, action for a Google Cloud Storage Object is 'change'. These parts are lower case.
-func (o EventTriggerResponsePtrOutput) EventType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EventTriggerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EventType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies policy for failed executions.
-func (o EventTriggerResponsePtrOutput) FailurePolicy() FailurePolicyResponsePtrOutput {
-	return o.ApplyT(func(v *EventTriggerResponse) *FailurePolicyResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.FailurePolicy
-	}).(FailurePolicyResponsePtrOutput)
-}
-
-// The resource(s) from which to observe events, for example, `projects/_/buckets/myBucket`. Not all syntactically correct values are accepted by all services. For example: 1. The authorization model must support it. Google Cloud Functions only allows EventTriggers to be deployed that observe resources in the same project as the `CloudFunction`. 2. The resource type must match the pattern expected for an `event_type`. For example, an `EventTrigger` that has an `event_type` of "google.pubsub.topic.publish" should have a resource that matches Google Cloud Pub/Sub topics. Additionally, some services may support short names when creating an `EventTrigger`. These will always be returned in the normalized "long" format. See each *service's* documentation for supported formats.
-func (o EventTriggerResponsePtrOutput) Resource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EventTriggerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Resource
-	}).(pulumi.StringPtrOutput)
-}
-
-// The hostname of the service that should be observed. If no string is provided, the default service implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types in the `google.storage` namespace.
-func (o EventTriggerResponsePtrOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EventTriggerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Service
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1285,41 +965,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -1501,76 +1146,6 @@ type FailurePolicyResponse struct {
 	Retry RetryResponse `pulumi:"retry"`
 }
 
-// FailurePolicyResponseInput is an input type that accepts FailurePolicyResponseArgs and FailurePolicyResponseOutput values.
-// You can construct a concrete instance of `FailurePolicyResponseInput` via:
-//
-//          FailurePolicyResponseArgs{...}
-type FailurePolicyResponseInput interface {
-	pulumi.Input
-
-	ToFailurePolicyResponseOutput() FailurePolicyResponseOutput
-	ToFailurePolicyResponseOutputWithContext(context.Context) FailurePolicyResponseOutput
-}
-
-// Describes the policy in case of function's execution failure. If empty, then defaults to ignoring failures (i.e. not retrying them).
-type FailurePolicyResponseArgs struct {
-	// If specified, then the function will be retried in case of a failure.
-	Retry RetryResponseInput `pulumi:"retry"`
-}
-
-func (FailurePolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FailurePolicyResponse)(nil)).Elem()
-}
-
-func (i FailurePolicyResponseArgs) ToFailurePolicyResponseOutput() FailurePolicyResponseOutput {
-	return i.ToFailurePolicyResponseOutputWithContext(context.Background())
-}
-
-func (i FailurePolicyResponseArgs) ToFailurePolicyResponseOutputWithContext(ctx context.Context) FailurePolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FailurePolicyResponseOutput)
-}
-
-func (i FailurePolicyResponseArgs) ToFailurePolicyResponsePtrOutput() FailurePolicyResponsePtrOutput {
-	return i.ToFailurePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i FailurePolicyResponseArgs) ToFailurePolicyResponsePtrOutputWithContext(ctx context.Context) FailurePolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FailurePolicyResponseOutput).ToFailurePolicyResponsePtrOutputWithContext(ctx)
-}
-
-// FailurePolicyResponsePtrInput is an input type that accepts FailurePolicyResponseArgs, FailurePolicyResponsePtr and FailurePolicyResponsePtrOutput values.
-// You can construct a concrete instance of `FailurePolicyResponsePtrInput` via:
-//
-//          FailurePolicyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type FailurePolicyResponsePtrInput interface {
-	pulumi.Input
-
-	ToFailurePolicyResponsePtrOutput() FailurePolicyResponsePtrOutput
-	ToFailurePolicyResponsePtrOutputWithContext(context.Context) FailurePolicyResponsePtrOutput
-}
-
-type failurePolicyResponsePtrType FailurePolicyResponseArgs
-
-func FailurePolicyResponsePtr(v *FailurePolicyResponseArgs) FailurePolicyResponsePtrInput {
-	return (*failurePolicyResponsePtrType)(v)
-}
-
-func (*failurePolicyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FailurePolicyResponse)(nil)).Elem()
-}
-
-func (i *failurePolicyResponsePtrType) ToFailurePolicyResponsePtrOutput() FailurePolicyResponsePtrOutput {
-	return i.ToFailurePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *failurePolicyResponsePtrType) ToFailurePolicyResponsePtrOutputWithContext(ctx context.Context) FailurePolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FailurePolicyResponsePtrOutput)
-}
-
 // Describes the policy in case of function's execution failure. If empty, then defaults to ignoring failures (i.e. not retrying them).
 type FailurePolicyResponseOutput struct{ *pulumi.OutputState }
 
@@ -1586,53 +1161,9 @@ func (o FailurePolicyResponseOutput) ToFailurePolicyResponseOutputWithContext(ct
 	return o
 }
 
-func (o FailurePolicyResponseOutput) ToFailurePolicyResponsePtrOutput() FailurePolicyResponsePtrOutput {
-	return o.ToFailurePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o FailurePolicyResponseOutput) ToFailurePolicyResponsePtrOutputWithContext(ctx context.Context) FailurePolicyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FailurePolicyResponse) *FailurePolicyResponse {
-		return &v
-	}).(FailurePolicyResponsePtrOutput)
-}
-
 // If specified, then the function will be retried in case of a failure.
 func (o FailurePolicyResponseOutput) Retry() RetryResponseOutput {
 	return o.ApplyT(func(v FailurePolicyResponse) RetryResponse { return v.Retry }).(RetryResponseOutput)
-}
-
-type FailurePolicyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (FailurePolicyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FailurePolicyResponse)(nil)).Elem()
-}
-
-func (o FailurePolicyResponsePtrOutput) ToFailurePolicyResponsePtrOutput() FailurePolicyResponsePtrOutput {
-	return o
-}
-
-func (o FailurePolicyResponsePtrOutput) ToFailurePolicyResponsePtrOutputWithContext(ctx context.Context) FailurePolicyResponsePtrOutput {
-	return o
-}
-
-func (o FailurePolicyResponsePtrOutput) Elem() FailurePolicyResponseOutput {
-	return o.ApplyT(func(v *FailurePolicyResponse) FailurePolicyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret FailurePolicyResponse
-		return ret
-	}).(FailurePolicyResponseOutput)
-}
-
-// If specified, then the function will be retried in case of a failure.
-func (o FailurePolicyResponsePtrOutput) Retry() RetryResponsePtrOutput {
-	return o.ApplyT(func(v *FailurePolicyResponse) *RetryResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Retry
-	}).(RetryResponsePtrOutput)
 }
 
 // Describes HttpsTrigger, could be used to connect web hooks to function.
@@ -1783,78 +1314,6 @@ type HttpsTriggerResponse struct {
 	Url string `pulumi:"url"`
 }
 
-// HttpsTriggerResponseInput is an input type that accepts HttpsTriggerResponseArgs and HttpsTriggerResponseOutput values.
-// You can construct a concrete instance of `HttpsTriggerResponseInput` via:
-//
-//          HttpsTriggerResponseArgs{...}
-type HttpsTriggerResponseInput interface {
-	pulumi.Input
-
-	ToHttpsTriggerResponseOutput() HttpsTriggerResponseOutput
-	ToHttpsTriggerResponseOutputWithContext(context.Context) HttpsTriggerResponseOutput
-}
-
-// Describes HttpsTrigger, could be used to connect web hooks to function.
-type HttpsTriggerResponseArgs struct {
-	// The security level for the function.
-	SecurityLevel pulumi.StringInput `pulumi:"securityLevel"`
-	// The deployed url for the function.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (HttpsTriggerResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HttpsTriggerResponse)(nil)).Elem()
-}
-
-func (i HttpsTriggerResponseArgs) ToHttpsTriggerResponseOutput() HttpsTriggerResponseOutput {
-	return i.ToHttpsTriggerResponseOutputWithContext(context.Background())
-}
-
-func (i HttpsTriggerResponseArgs) ToHttpsTriggerResponseOutputWithContext(ctx context.Context) HttpsTriggerResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HttpsTriggerResponseOutput)
-}
-
-func (i HttpsTriggerResponseArgs) ToHttpsTriggerResponsePtrOutput() HttpsTriggerResponsePtrOutput {
-	return i.ToHttpsTriggerResponsePtrOutputWithContext(context.Background())
-}
-
-func (i HttpsTriggerResponseArgs) ToHttpsTriggerResponsePtrOutputWithContext(ctx context.Context) HttpsTriggerResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HttpsTriggerResponseOutput).ToHttpsTriggerResponsePtrOutputWithContext(ctx)
-}
-
-// HttpsTriggerResponsePtrInput is an input type that accepts HttpsTriggerResponseArgs, HttpsTriggerResponsePtr and HttpsTriggerResponsePtrOutput values.
-// You can construct a concrete instance of `HttpsTriggerResponsePtrInput` via:
-//
-//          HttpsTriggerResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type HttpsTriggerResponsePtrInput interface {
-	pulumi.Input
-
-	ToHttpsTriggerResponsePtrOutput() HttpsTriggerResponsePtrOutput
-	ToHttpsTriggerResponsePtrOutputWithContext(context.Context) HttpsTriggerResponsePtrOutput
-}
-
-type httpsTriggerResponsePtrType HttpsTriggerResponseArgs
-
-func HttpsTriggerResponsePtr(v *HttpsTriggerResponseArgs) HttpsTriggerResponsePtrInput {
-	return (*httpsTriggerResponsePtrType)(v)
-}
-
-func (*httpsTriggerResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HttpsTriggerResponse)(nil)).Elem()
-}
-
-func (i *httpsTriggerResponsePtrType) ToHttpsTriggerResponsePtrOutput() HttpsTriggerResponsePtrOutput {
-	return i.ToHttpsTriggerResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *httpsTriggerResponsePtrType) ToHttpsTriggerResponsePtrOutputWithContext(ctx context.Context) HttpsTriggerResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HttpsTriggerResponsePtrOutput)
-}
-
 // Describes HttpsTrigger, could be used to connect web hooks to function.
 type HttpsTriggerResponseOutput struct{ *pulumi.OutputState }
 
@@ -1870,16 +1329,6 @@ func (o HttpsTriggerResponseOutput) ToHttpsTriggerResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o HttpsTriggerResponseOutput) ToHttpsTriggerResponsePtrOutput() HttpsTriggerResponsePtrOutput {
-	return o.ToHttpsTriggerResponsePtrOutputWithContext(context.Background())
-}
-
-func (o HttpsTriggerResponseOutput) ToHttpsTriggerResponsePtrOutputWithContext(ctx context.Context) HttpsTriggerResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpsTriggerResponse) *HttpsTriggerResponse {
-		return &v
-	}).(HttpsTriggerResponsePtrOutput)
-}
-
 // The security level for the function.
 func (o HttpsTriggerResponseOutput) SecurityLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpsTriggerResponse) string { return v.SecurityLevel }).(pulumi.StringOutput)
@@ -1888,50 +1337,6 @@ func (o HttpsTriggerResponseOutput) SecurityLevel() pulumi.StringOutput {
 // The deployed url for the function.
 func (o HttpsTriggerResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpsTriggerResponse) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type HttpsTriggerResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (HttpsTriggerResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HttpsTriggerResponse)(nil)).Elem()
-}
-
-func (o HttpsTriggerResponsePtrOutput) ToHttpsTriggerResponsePtrOutput() HttpsTriggerResponsePtrOutput {
-	return o
-}
-
-func (o HttpsTriggerResponsePtrOutput) ToHttpsTriggerResponsePtrOutputWithContext(ctx context.Context) HttpsTriggerResponsePtrOutput {
-	return o
-}
-
-func (o HttpsTriggerResponsePtrOutput) Elem() HttpsTriggerResponseOutput {
-	return o.ApplyT(func(v *HttpsTriggerResponse) HttpsTriggerResponse {
-		if v != nil {
-			return *v
-		}
-		var ret HttpsTriggerResponse
-		return ret
-	}).(HttpsTriggerResponseOutput)
-}
-
-// The security level for the function.
-func (o HttpsTriggerResponsePtrOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HttpsTriggerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SecurityLevel
-	}).(pulumi.StringPtrOutput)
-}
-
-// The deployed url for the function.
-func (o HttpsTriggerResponsePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HttpsTriggerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Url
-	}).(pulumi.StringPtrOutput)
 }
 
 // Describes the retry policy in case of function's execution failure. A function execution will be retried on any failure. A failed execution will be retried up to 7 days with an exponential backoff (capped at 10 seconds). Retried execution is charged as any other execution.
@@ -2059,74 +1464,6 @@ func (o RetryPtrOutput) Elem() RetryOutput {
 type RetryResponse struct {
 }
 
-// RetryResponseInput is an input type that accepts RetryResponseArgs and RetryResponseOutput values.
-// You can construct a concrete instance of `RetryResponseInput` via:
-//
-//          RetryResponseArgs{...}
-type RetryResponseInput interface {
-	pulumi.Input
-
-	ToRetryResponseOutput() RetryResponseOutput
-	ToRetryResponseOutputWithContext(context.Context) RetryResponseOutput
-}
-
-// Describes the retry policy in case of function's execution failure. A function execution will be retried on any failure. A failed execution will be retried up to 7 days with an exponential backoff (capped at 10 seconds). Retried execution is charged as any other execution.
-type RetryResponseArgs struct {
-}
-
-func (RetryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RetryResponse)(nil)).Elem()
-}
-
-func (i RetryResponseArgs) ToRetryResponseOutput() RetryResponseOutput {
-	return i.ToRetryResponseOutputWithContext(context.Background())
-}
-
-func (i RetryResponseArgs) ToRetryResponseOutputWithContext(ctx context.Context) RetryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetryResponseOutput)
-}
-
-func (i RetryResponseArgs) ToRetryResponsePtrOutput() RetryResponsePtrOutput {
-	return i.ToRetryResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RetryResponseArgs) ToRetryResponsePtrOutputWithContext(ctx context.Context) RetryResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetryResponseOutput).ToRetryResponsePtrOutputWithContext(ctx)
-}
-
-// RetryResponsePtrInput is an input type that accepts RetryResponseArgs, RetryResponsePtr and RetryResponsePtrOutput values.
-// You can construct a concrete instance of `RetryResponsePtrInput` via:
-//
-//          RetryResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RetryResponsePtrInput interface {
-	pulumi.Input
-
-	ToRetryResponsePtrOutput() RetryResponsePtrOutput
-	ToRetryResponsePtrOutputWithContext(context.Context) RetryResponsePtrOutput
-}
-
-type retryResponsePtrType RetryResponseArgs
-
-func RetryResponsePtr(v *RetryResponseArgs) RetryResponsePtrInput {
-	return (*retryResponsePtrType)(v)
-}
-
-func (*retryResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RetryResponse)(nil)).Elem()
-}
-
-func (i *retryResponsePtrType) ToRetryResponsePtrOutput() RetryResponsePtrOutput {
-	return i.ToRetryResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *retryResponsePtrType) ToRetryResponsePtrOutputWithContext(ctx context.Context) RetryResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetryResponsePtrOutput)
-}
-
 // Describes the retry policy in case of function's execution failure. A function execution will be retried on any failure. A failed execution will be retried up to 7 days with an exponential backoff (capped at 10 seconds). Retried execution is charged as any other execution.
 type RetryResponseOutput struct{ *pulumi.OutputState }
 
@@ -2140,40 +1477,6 @@ func (o RetryResponseOutput) ToRetryResponseOutput() RetryResponseOutput {
 
 func (o RetryResponseOutput) ToRetryResponseOutputWithContext(ctx context.Context) RetryResponseOutput {
 	return o
-}
-
-func (o RetryResponseOutput) ToRetryResponsePtrOutput() RetryResponsePtrOutput {
-	return o.ToRetryResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RetryResponseOutput) ToRetryResponsePtrOutputWithContext(ctx context.Context) RetryResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryResponse) *RetryResponse {
-		return &v
-	}).(RetryResponsePtrOutput)
-}
-
-type RetryResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RetryResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RetryResponse)(nil)).Elem()
-}
-
-func (o RetryResponsePtrOutput) ToRetryResponsePtrOutput() RetryResponsePtrOutput {
-	return o
-}
-
-func (o RetryResponsePtrOutput) ToRetryResponsePtrOutputWithContext(ctx context.Context) RetryResponsePtrOutput {
-	return o
-}
-
-func (o RetryResponsePtrOutput) Elem() RetryResponseOutput {
-	return o.ApplyT(func(v *RetryResponse) RetryResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RetryResponse
-		return ret
-	}).(RetryResponseOutput)
 }
 
 // Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
@@ -2313,66 +1616,6 @@ type SecretEnvVarResponse struct {
 	Secret string `pulumi:"secret"`
 	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
 	Version string `pulumi:"version"`
-}
-
-// SecretEnvVarResponseInput is an input type that accepts SecretEnvVarResponseArgs and SecretEnvVarResponseOutput values.
-// You can construct a concrete instance of `SecretEnvVarResponseInput` via:
-//
-//          SecretEnvVarResponseArgs{...}
-type SecretEnvVarResponseInput interface {
-	pulumi.Input
-
-	ToSecretEnvVarResponseOutput() SecretEnvVarResponseOutput
-	ToSecretEnvVarResponseOutputWithContext(context.Context) SecretEnvVarResponseOutput
-}
-
-// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
-type SecretEnvVarResponseArgs struct {
-	// Name of the environment variable.
-	Key pulumi.StringInput `pulumi:"key"`
-	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Name of the secret in secret manager (not the full resource name).
-	Secret pulumi.StringInput `pulumi:"secret"`
-	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (SecretEnvVarResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretEnvVarResponse)(nil)).Elem()
-}
-
-func (i SecretEnvVarResponseArgs) ToSecretEnvVarResponseOutput() SecretEnvVarResponseOutput {
-	return i.ToSecretEnvVarResponseOutputWithContext(context.Background())
-}
-
-func (i SecretEnvVarResponseArgs) ToSecretEnvVarResponseOutputWithContext(ctx context.Context) SecretEnvVarResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvVarResponseOutput)
-}
-
-// SecretEnvVarResponseArrayInput is an input type that accepts SecretEnvVarResponseArray and SecretEnvVarResponseArrayOutput values.
-// You can construct a concrete instance of `SecretEnvVarResponseArrayInput` via:
-//
-//          SecretEnvVarResponseArray{ SecretEnvVarResponseArgs{...} }
-type SecretEnvVarResponseArrayInput interface {
-	pulumi.Input
-
-	ToSecretEnvVarResponseArrayOutput() SecretEnvVarResponseArrayOutput
-	ToSecretEnvVarResponseArrayOutputWithContext(context.Context) SecretEnvVarResponseArrayOutput
-}
-
-type SecretEnvVarResponseArray []SecretEnvVarResponseInput
-
-func (SecretEnvVarResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecretEnvVarResponse)(nil)).Elem()
-}
-
-func (i SecretEnvVarResponseArray) ToSecretEnvVarResponseArrayOutput() SecretEnvVarResponseArrayOutput {
-	return i.ToSecretEnvVarResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SecretEnvVarResponseArray) ToSecretEnvVarResponseArrayOutputWithContext(ctx context.Context) SecretEnvVarResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvVarResponseArrayOutput)
 }
 
 // Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
@@ -2545,62 +1788,6 @@ type SecretVersionResponse struct {
 	Path string `pulumi:"path"`
 	// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
 	Version string `pulumi:"version"`
-}
-
-// SecretVersionResponseInput is an input type that accepts SecretVersionResponseArgs and SecretVersionResponseOutput values.
-// You can construct a concrete instance of `SecretVersionResponseInput` via:
-//
-//          SecretVersionResponseArgs{...}
-type SecretVersionResponseInput interface {
-	pulumi.Input
-
-	ToSecretVersionResponseOutput() SecretVersionResponseOutput
-	ToSecretVersionResponseOutputWithContext(context.Context) SecretVersionResponseOutput
-}
-
-// Configuration for a single version.
-type SecretVersionResponseArgs struct {
-	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `/secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
-	Path pulumi.StringInput `pulumi:"path"`
-	// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (SecretVersionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretVersionResponse)(nil)).Elem()
-}
-
-func (i SecretVersionResponseArgs) ToSecretVersionResponseOutput() SecretVersionResponseOutput {
-	return i.ToSecretVersionResponseOutputWithContext(context.Background())
-}
-
-func (i SecretVersionResponseArgs) ToSecretVersionResponseOutputWithContext(ctx context.Context) SecretVersionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretVersionResponseOutput)
-}
-
-// SecretVersionResponseArrayInput is an input type that accepts SecretVersionResponseArray and SecretVersionResponseArrayOutput values.
-// You can construct a concrete instance of `SecretVersionResponseArrayInput` via:
-//
-//          SecretVersionResponseArray{ SecretVersionResponseArgs{...} }
-type SecretVersionResponseArrayInput interface {
-	pulumi.Input
-
-	ToSecretVersionResponseArrayOutput() SecretVersionResponseArrayOutput
-	ToSecretVersionResponseArrayOutputWithContext(context.Context) SecretVersionResponseArrayOutput
-}
-
-type SecretVersionResponseArray []SecretVersionResponseInput
-
-func (SecretVersionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecretVersionResponse)(nil)).Elem()
-}
-
-func (i SecretVersionResponseArray) ToSecretVersionResponseArrayOutput() SecretVersionResponseArrayOutput {
-	return i.ToSecretVersionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SecretVersionResponseArray) ToSecretVersionResponseArrayOutputWithContext(ctx context.Context) SecretVersionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretVersionResponseArrayOutput)
 }
 
 // Configuration for a single version.
@@ -2785,66 +1972,6 @@ type SecretVolumeResponse struct {
 	Secret string `pulumi:"secret"`
 	// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
 	Versions []SecretVersionResponse `pulumi:"versions"`
-}
-
-// SecretVolumeResponseInput is an input type that accepts SecretVolumeResponseArgs and SecretVolumeResponseOutput values.
-// You can construct a concrete instance of `SecretVolumeResponseInput` via:
-//
-//          SecretVolumeResponseArgs{...}
-type SecretVolumeResponseInput interface {
-	pulumi.Input
-
-	ToSecretVolumeResponseOutput() SecretVolumeResponseOutput
-	ToSecretVolumeResponseOutputWithContext(context.Context) SecretVolumeResponseOutput
-}
-
-// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container. Secret value is not a part of the configuration. Every filesystem read operation performs a lookup in secret manager to retrieve the secret value.
-type SecretVolumeResponseArgs struct {
-	// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: /etc/secrets Restricted mount paths: /cloudsql, /dev/log, /pod, /proc, /var/log
-	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Name of the secret in secret manager (not the full resource name).
-	Secret pulumi.StringInput `pulumi:"secret"`
-	// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
-	Versions SecretVersionResponseArrayInput `pulumi:"versions"`
-}
-
-func (SecretVolumeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretVolumeResponse)(nil)).Elem()
-}
-
-func (i SecretVolumeResponseArgs) ToSecretVolumeResponseOutput() SecretVolumeResponseOutput {
-	return i.ToSecretVolumeResponseOutputWithContext(context.Background())
-}
-
-func (i SecretVolumeResponseArgs) ToSecretVolumeResponseOutputWithContext(ctx context.Context) SecretVolumeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeResponseOutput)
-}
-
-// SecretVolumeResponseArrayInput is an input type that accepts SecretVolumeResponseArray and SecretVolumeResponseArrayOutput values.
-// You can construct a concrete instance of `SecretVolumeResponseArrayInput` via:
-//
-//          SecretVolumeResponseArray{ SecretVolumeResponseArgs{...} }
-type SecretVolumeResponseArrayInput interface {
-	pulumi.Input
-
-	ToSecretVolumeResponseArrayOutput() SecretVolumeResponseArrayOutput
-	ToSecretVolumeResponseArrayOutputWithContext(context.Context) SecretVolumeResponseArrayOutput
-}
-
-type SecretVolumeResponseArray []SecretVolumeResponseInput
-
-func (SecretVolumeResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecretVolumeResponse)(nil)).Elem()
-}
-
-func (i SecretVolumeResponseArray) ToSecretVolumeResponseArrayOutput() SecretVolumeResponseArrayOutput {
-	return i.ToSecretVolumeResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SecretVolumeResponseArray) ToSecretVolumeResponseArrayOutputWithContext(ctx context.Context) SecretVolumeResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeResponseArrayOutput)
 }
 
 // Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container. Secret value is not a part of the configuration. Every filesystem read operation performs a lookup in secret manager to retrieve the secret value.
@@ -3050,78 +2177,6 @@ type SourceRepositoryResponse struct {
 	Url string `pulumi:"url"`
 }
 
-// SourceRepositoryResponseInput is an input type that accepts SourceRepositoryResponseArgs and SourceRepositoryResponseOutput values.
-// You can construct a concrete instance of `SourceRepositoryResponseInput` via:
-//
-//          SourceRepositoryResponseArgs{...}
-type SourceRepositoryResponseInput interface {
-	pulumi.Input
-
-	ToSourceRepositoryResponseOutput() SourceRepositoryResponseOutput
-	ToSourceRepositoryResponseOutputWithContext(context.Context) SourceRepositoryResponseOutput
-}
-
-// Describes SourceRepository, used to represent parameters related to source repository where a function is hosted.
-type SourceRepositoryResponseArgs struct {
-	// The URL pointing to the hosted repository where the function were defined at the time of deployment. It always points to a specific commit in the format described above.
-	DeployedUrl pulumi.StringInput `pulumi:"deployedUrl"`
-	// The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats: To refer to a specific commit: `https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*` To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*` In particular, to refer to HEAD use `master` moveable alias. To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*` You may omit `paths/*` if you want to use the main directory.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (SourceRepositoryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceRepositoryResponse)(nil)).Elem()
-}
-
-func (i SourceRepositoryResponseArgs) ToSourceRepositoryResponseOutput() SourceRepositoryResponseOutput {
-	return i.ToSourceRepositoryResponseOutputWithContext(context.Background())
-}
-
-func (i SourceRepositoryResponseArgs) ToSourceRepositoryResponseOutputWithContext(ctx context.Context) SourceRepositoryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceRepositoryResponseOutput)
-}
-
-func (i SourceRepositoryResponseArgs) ToSourceRepositoryResponsePtrOutput() SourceRepositoryResponsePtrOutput {
-	return i.ToSourceRepositoryResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SourceRepositoryResponseArgs) ToSourceRepositoryResponsePtrOutputWithContext(ctx context.Context) SourceRepositoryResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceRepositoryResponseOutput).ToSourceRepositoryResponsePtrOutputWithContext(ctx)
-}
-
-// SourceRepositoryResponsePtrInput is an input type that accepts SourceRepositoryResponseArgs, SourceRepositoryResponsePtr and SourceRepositoryResponsePtrOutput values.
-// You can construct a concrete instance of `SourceRepositoryResponsePtrInput` via:
-//
-//          SourceRepositoryResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SourceRepositoryResponsePtrInput interface {
-	pulumi.Input
-
-	ToSourceRepositoryResponsePtrOutput() SourceRepositoryResponsePtrOutput
-	ToSourceRepositoryResponsePtrOutputWithContext(context.Context) SourceRepositoryResponsePtrOutput
-}
-
-type sourceRepositoryResponsePtrType SourceRepositoryResponseArgs
-
-func SourceRepositoryResponsePtr(v *SourceRepositoryResponseArgs) SourceRepositoryResponsePtrInput {
-	return (*sourceRepositoryResponsePtrType)(v)
-}
-
-func (*sourceRepositoryResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceRepositoryResponse)(nil)).Elem()
-}
-
-func (i *sourceRepositoryResponsePtrType) ToSourceRepositoryResponsePtrOutput() SourceRepositoryResponsePtrOutput {
-	return i.ToSourceRepositoryResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *sourceRepositoryResponsePtrType) ToSourceRepositoryResponsePtrOutputWithContext(ctx context.Context) SourceRepositoryResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceRepositoryResponsePtrOutput)
-}
-
 // Describes SourceRepository, used to represent parameters related to source repository where a function is hosted.
 type SourceRepositoryResponseOutput struct{ *pulumi.OutputState }
 
@@ -3137,16 +2192,6 @@ func (o SourceRepositoryResponseOutput) ToSourceRepositoryResponseOutputWithCont
 	return o
 }
 
-func (o SourceRepositoryResponseOutput) ToSourceRepositoryResponsePtrOutput() SourceRepositoryResponsePtrOutput {
-	return o.ToSourceRepositoryResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SourceRepositoryResponseOutput) ToSourceRepositoryResponsePtrOutputWithContext(ctx context.Context) SourceRepositoryResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceRepositoryResponse) *SourceRepositoryResponse {
-		return &v
-	}).(SourceRepositoryResponsePtrOutput)
-}
-
 // The URL pointing to the hosted repository where the function were defined at the time of deployment. It always points to a specific commit in the format described above.
 func (o SourceRepositoryResponseOutput) DeployedUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v SourceRepositoryResponse) string { return v.DeployedUrl }).(pulumi.StringOutput)
@@ -3157,98 +2202,31 @@ func (o SourceRepositoryResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v SourceRepositoryResponse) string { return v.Url }).(pulumi.StringOutput)
 }
 
-type SourceRepositoryResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SourceRepositoryResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceRepositoryResponse)(nil)).Elem()
-}
-
-func (o SourceRepositoryResponsePtrOutput) ToSourceRepositoryResponsePtrOutput() SourceRepositoryResponsePtrOutput {
-	return o
-}
-
-func (o SourceRepositoryResponsePtrOutput) ToSourceRepositoryResponsePtrOutputWithContext(ctx context.Context) SourceRepositoryResponsePtrOutput {
-	return o
-}
-
-func (o SourceRepositoryResponsePtrOutput) Elem() SourceRepositoryResponseOutput {
-	return o.ApplyT(func(v *SourceRepositoryResponse) SourceRepositoryResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SourceRepositoryResponse
-		return ret
-	}).(SourceRepositoryResponseOutput)
-}
-
-// The URL pointing to the hosted repository where the function were defined at the time of deployment. It always points to a specific commit in the format described above.
-func (o SourceRepositoryResponsePtrOutput) DeployedUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceRepositoryResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DeployedUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats: To refer to a specific commit: `https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*` To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*` In particular, to refer to HEAD use `master` moveable alias. To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*` You may omit `paths/*` if you want to use the main directory.
-func (o SourceRepositoryResponsePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceRepositoryResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EventTriggerInput)(nil)).Elem(), EventTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EventTriggerPtrInput)(nil)).Elem(), EventTriggerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EventTriggerResponseInput)(nil)).Elem(), EventTriggerResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EventTriggerResponsePtrInput)(nil)).Elem(), EventTriggerResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FailurePolicyInput)(nil)).Elem(), FailurePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FailurePolicyPtrInput)(nil)).Elem(), FailurePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FailurePolicyResponseInput)(nil)).Elem(), FailurePolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FailurePolicyResponsePtrInput)(nil)).Elem(), FailurePolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpsTriggerInput)(nil)).Elem(), HttpsTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpsTriggerPtrInput)(nil)).Elem(), HttpsTriggerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HttpsTriggerResponseInput)(nil)).Elem(), HttpsTriggerResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HttpsTriggerResponsePtrInput)(nil)).Elem(), HttpsTriggerResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryInput)(nil)).Elem(), RetryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryPtrInput)(nil)).Elem(), RetryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RetryResponseInput)(nil)).Elem(), RetryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RetryResponsePtrInput)(nil)).Elem(), RetryResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvVarInput)(nil)).Elem(), SecretEnvVarArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvVarArrayInput)(nil)).Elem(), SecretEnvVarArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvVarResponseInput)(nil)).Elem(), SecretEnvVarResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvVarResponseArrayInput)(nil)).Elem(), SecretEnvVarResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretVersionInput)(nil)).Elem(), SecretVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretVersionArrayInput)(nil)).Elem(), SecretVersionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretVersionResponseInput)(nil)).Elem(), SecretVersionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretVersionResponseArrayInput)(nil)).Elem(), SecretVersionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeInput)(nil)).Elem(), SecretVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeArrayInput)(nil)).Elem(), SecretVolumeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeResponseInput)(nil)).Elem(), SecretVolumeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeResponseArrayInput)(nil)).Elem(), SecretVolumeResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceRepositoryInput)(nil)).Elem(), SourceRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceRepositoryPtrInput)(nil)).Elem(), SourceRepositoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceRepositoryResponseInput)(nil)).Elem(), SourceRepositoryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceRepositoryResponsePtrInput)(nil)).Elem(), SourceRepositoryResponseArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -3264,22 +2242,18 @@ func init() {
 	pulumi.RegisterOutputType(EventTriggerOutput{})
 	pulumi.RegisterOutputType(EventTriggerPtrOutput{})
 	pulumi.RegisterOutputType(EventTriggerResponseOutput{})
-	pulumi.RegisterOutputType(EventTriggerResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(FailurePolicyOutput{})
 	pulumi.RegisterOutputType(FailurePolicyPtrOutput{})
 	pulumi.RegisterOutputType(FailurePolicyResponseOutput{})
-	pulumi.RegisterOutputType(FailurePolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(HttpsTriggerOutput{})
 	pulumi.RegisterOutputType(HttpsTriggerPtrOutput{})
 	pulumi.RegisterOutputType(HttpsTriggerResponseOutput{})
-	pulumi.RegisterOutputType(HttpsTriggerResponsePtrOutput{})
 	pulumi.RegisterOutputType(RetryOutput{})
 	pulumi.RegisterOutputType(RetryPtrOutput{})
 	pulumi.RegisterOutputType(RetryResponseOutput{})
-	pulumi.RegisterOutputType(RetryResponsePtrOutput{})
 	pulumi.RegisterOutputType(SecretEnvVarOutput{})
 	pulumi.RegisterOutputType(SecretEnvVarArrayOutput{})
 	pulumi.RegisterOutputType(SecretEnvVarResponseOutput{})
@@ -3295,5 +2269,4 @@ func init() {
 	pulumi.RegisterOutputType(SourceRepositoryOutput{})
 	pulumi.RegisterOutputType(SourceRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(SourceRepositoryResponseOutput{})
-	pulumi.RegisterOutputType(SourceRepositoryResponsePtrOutput{})
 }

@@ -116,7 +116,7 @@ type CutoverJobInput interface {
 }
 
 func (*CutoverJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*CutoverJob)(nil))
+	return reflect.TypeOf((**CutoverJob)(nil)).Elem()
 }
 
 func (i *CutoverJob) ToCutoverJobOutput() CutoverJobOutput {
@@ -130,7 +130,7 @@ func (i *CutoverJob) ToCutoverJobOutputWithContext(ctx context.Context) CutoverJ
 type CutoverJobOutput struct{ *pulumi.OutputState }
 
 func (CutoverJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CutoverJob)(nil))
+	return reflect.TypeOf((**CutoverJob)(nil)).Elem()
 }
 
 func (o CutoverJobOutput) ToCutoverJobOutput() CutoverJobOutput {

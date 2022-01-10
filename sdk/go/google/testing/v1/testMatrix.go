@@ -142,7 +142,7 @@ type TestMatrixInput interface {
 }
 
 func (*TestMatrix) ElementType() reflect.Type {
-	return reflect.TypeOf((*TestMatrix)(nil))
+	return reflect.TypeOf((**TestMatrix)(nil)).Elem()
 }
 
 func (i *TestMatrix) ToTestMatrixOutput() TestMatrixOutput {
@@ -156,7 +156,7 @@ func (i *TestMatrix) ToTestMatrixOutputWithContext(ctx context.Context) TestMatr
 type TestMatrixOutput struct{ *pulumi.OutputState }
 
 func (TestMatrixOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TestMatrix)(nil))
+	return reflect.TypeOf((**TestMatrix)(nil)).Elem()
 }
 
 func (o TestMatrixOutput) ToTestMatrixOutput() TestMatrixOutput {

@@ -179,7 +179,7 @@ type BucketAccessControlInput interface {
 }
 
 func (*BucketAccessControl) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketAccessControl)(nil))
+	return reflect.TypeOf((**BucketAccessControl)(nil)).Elem()
 }
 
 func (i *BucketAccessControl) ToBucketAccessControlOutput() BucketAccessControlOutput {
@@ -193,7 +193,7 @@ func (i *BucketAccessControl) ToBucketAccessControlOutputWithContext(ctx context
 type BucketAccessControlOutput struct{ *pulumi.OutputState }
 
 func (BucketAccessControlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketAccessControl)(nil))
+	return reflect.TypeOf((**BucketAccessControl)(nil)).Elem()
 }
 
 func (o BucketAccessControlOutput) ToBucketAccessControlOutput() BucketAccessControlOutput {

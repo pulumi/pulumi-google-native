@@ -106,7 +106,7 @@ type InstanceDatabaseIamPolicyInput interface {
 }
 
 func (*InstanceDatabaseIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceDatabaseIamPolicy)(nil))
+	return reflect.TypeOf((**InstanceDatabaseIamPolicy)(nil)).Elem()
 }
 
 func (i *InstanceDatabaseIamPolicy) ToInstanceDatabaseIamPolicyOutput() InstanceDatabaseIamPolicyOutput {
@@ -120,7 +120,7 @@ func (i *InstanceDatabaseIamPolicy) ToInstanceDatabaseIamPolicyOutputWithContext
 type InstanceDatabaseIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (InstanceDatabaseIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceDatabaseIamPolicy)(nil))
+	return reflect.TypeOf((**InstanceDatabaseIamPolicy)(nil)).Elem()
 }
 
 func (o InstanceDatabaseIamPolicyOutput) ToInstanceDatabaseIamPolicyOutput() InstanceDatabaseIamPolicyOutput {

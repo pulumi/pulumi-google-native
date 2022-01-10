@@ -103,7 +103,7 @@ type DicomStoreInput interface {
 }
 
 func (*DicomStore) ElementType() reflect.Type {
-	return reflect.TypeOf((*DicomStore)(nil))
+	return reflect.TypeOf((**DicomStore)(nil)).Elem()
 }
 
 func (i *DicomStore) ToDicomStoreOutput() DicomStoreOutput {
@@ -117,7 +117,7 @@ func (i *DicomStore) ToDicomStoreOutputWithContext(ctx context.Context) DicomSto
 type DicomStoreOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DicomStore)(nil))
+	return reflect.TypeOf((**DicomStore)(nil)).Elem()
 }
 
 func (o DicomStoreOutput) ToDicomStoreOutput() DicomStoreOutput {

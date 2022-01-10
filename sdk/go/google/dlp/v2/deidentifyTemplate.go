@@ -106,7 +106,7 @@ type DeidentifyTemplateInput interface {
 }
 
 func (*DeidentifyTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeidentifyTemplate)(nil))
+	return reflect.TypeOf((**DeidentifyTemplate)(nil)).Elem()
 }
 
 func (i *DeidentifyTemplate) ToDeidentifyTemplateOutput() DeidentifyTemplateOutput {
@@ -120,7 +120,7 @@ func (i *DeidentifyTemplate) ToDeidentifyTemplateOutputWithContext(ctx context.C
 type DeidentifyTemplateOutput struct{ *pulumi.OutputState }
 
 func (DeidentifyTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeidentifyTemplate)(nil))
+	return reflect.TypeOf((**DeidentifyTemplate)(nil)).Elem()
 }
 
 func (o DeidentifyTemplateOutput) ToDeidentifyTemplateOutput() DeidentifyTemplateOutput {

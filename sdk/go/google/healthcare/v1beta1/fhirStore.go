@@ -148,7 +148,7 @@ type FhirStoreInput interface {
 }
 
 func (*FhirStore) ElementType() reflect.Type {
-	return reflect.TypeOf((*FhirStore)(nil))
+	return reflect.TypeOf((**FhirStore)(nil)).Elem()
 }
 
 func (i *FhirStore) ToFhirStoreOutput() FhirStoreOutput {
@@ -162,7 +162,7 @@ func (i *FhirStore) ToFhirStoreOutputWithContext(ctx context.Context) FhirStoreO
 type FhirStoreOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FhirStore)(nil))
+	return reflect.TypeOf((**FhirStore)(nil)).Elem()
 }
 
 func (o FhirStoreOutput) ToFhirStoreOutput() FhirStoreOutput {

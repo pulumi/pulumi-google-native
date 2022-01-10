@@ -115,7 +115,7 @@ type InstructionInput interface {
 }
 
 func (*Instruction) ElementType() reflect.Type {
-	return reflect.TypeOf((*Instruction)(nil))
+	return reflect.TypeOf((**Instruction)(nil)).Elem()
 }
 
 func (i *Instruction) ToInstructionOutput() InstructionOutput {
@@ -129,7 +129,7 @@ func (i *Instruction) ToInstructionOutputWithContext(ctx context.Context) Instru
 type InstructionOutput struct{ *pulumi.OutputState }
 
 func (InstructionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Instruction)(nil))
+	return reflect.TypeOf((**Instruction)(nil)).Elem()
 }
 
 func (o InstructionOutput) ToInstructionOutput() InstructionOutput {

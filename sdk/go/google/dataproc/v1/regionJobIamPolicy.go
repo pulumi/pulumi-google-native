@@ -106,7 +106,7 @@ type RegionJobIamPolicyInput interface {
 }
 
 func (*RegionJobIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionJobIamPolicy)(nil))
+	return reflect.TypeOf((**RegionJobIamPolicy)(nil)).Elem()
 }
 
 func (i *RegionJobIamPolicy) ToRegionJobIamPolicyOutput() RegionJobIamPolicyOutput {
@@ -120,7 +120,7 @@ func (i *RegionJobIamPolicy) ToRegionJobIamPolicyOutputWithContext(ctx context.C
 type RegionJobIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionJobIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionJobIamPolicy)(nil))
+	return reflect.TypeOf((**RegionJobIamPolicy)(nil)).Elem()
 }
 
 func (o RegionJobIamPolicyOutput) ToRegionJobIamPolicyOutput() RegionJobIamPolicyOutput {

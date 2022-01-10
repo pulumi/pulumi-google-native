@@ -117,7 +117,7 @@ type InstanceGroupInput interface {
 }
 
 func (*InstanceGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroup)(nil))
+	return reflect.TypeOf((**InstanceGroup)(nil)).Elem()
 }
 
 func (i *InstanceGroup) ToInstanceGroupOutput() InstanceGroupOutput {
@@ -131,7 +131,7 @@ func (i *InstanceGroup) ToInstanceGroupOutputWithContext(ctx context.Context) In
 type InstanceGroupOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroup)(nil))
+	return reflect.TypeOf((**InstanceGroup)(nil)).Elem()
 }
 
 func (o InstanceGroupOutput) ToInstanceGroupOutput() InstanceGroupOutput {

@@ -93,7 +93,7 @@ type TraceSinkInput interface {
 }
 
 func (*TraceSink) ElementType() reflect.Type {
-	return reflect.TypeOf((*TraceSink)(nil))
+	return reflect.TypeOf((**TraceSink)(nil)).Elem()
 }
 
 func (i *TraceSink) ToTraceSinkOutput() TraceSinkOutput {
@@ -107,7 +107,7 @@ func (i *TraceSink) ToTraceSinkOutputWithContext(ctx context.Context) TraceSinkO
 type TraceSinkOutput struct{ *pulumi.OutputState }
 
 func (TraceSinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TraceSink)(nil))
+	return reflect.TypeOf((**TraceSink)(nil)).Elem()
 }
 
 func (o TraceSinkOutput) ToTraceSinkOutput() TraceSinkOutput {

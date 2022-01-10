@@ -121,7 +121,7 @@ type Hl7V2StoreInput interface {
 }
 
 func (*Hl7V2Store) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hl7V2Store)(nil))
+	return reflect.TypeOf((**Hl7V2Store)(nil)).Elem()
 }
 
 func (i *Hl7V2Store) ToHl7V2StoreOutput() Hl7V2StoreOutput {
@@ -135,7 +135,7 @@ func (i *Hl7V2Store) ToHl7V2StoreOutputWithContext(ctx context.Context) Hl7V2Sto
 type Hl7V2StoreOutput struct{ *pulumi.OutputState }
 
 func (Hl7V2StoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hl7V2Store)(nil))
+	return reflect.TypeOf((**Hl7V2Store)(nil)).Elem()
 }
 
 func (o Hl7V2StoreOutput) ToHl7V2StoreOutput() Hl7V2StoreOutput {

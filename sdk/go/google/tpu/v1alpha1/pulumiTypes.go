@@ -18,62 +18,6 @@ type NetworkEndpointResponse struct {
 	Port int `pulumi:"port"`
 }
 
-// NetworkEndpointResponseInput is an input type that accepts NetworkEndpointResponseArgs and NetworkEndpointResponseOutput values.
-// You can construct a concrete instance of `NetworkEndpointResponseInput` via:
-//
-//          NetworkEndpointResponseArgs{...}
-type NetworkEndpointResponseInput interface {
-	pulumi.Input
-
-	ToNetworkEndpointResponseOutput() NetworkEndpointResponseOutput
-	ToNetworkEndpointResponseOutputWithContext(context.Context) NetworkEndpointResponseOutput
-}
-
-// A network endpoint over which a TPU worker can be reached.
-type NetworkEndpointResponseArgs struct {
-	// The IP address of this network endpoint.
-	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
-	// The port of this network endpoint.
-	Port pulumi.IntInput `pulumi:"port"`
-}
-
-func (NetworkEndpointResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEndpointResponse)(nil)).Elem()
-}
-
-func (i NetworkEndpointResponseArgs) ToNetworkEndpointResponseOutput() NetworkEndpointResponseOutput {
-	return i.ToNetworkEndpointResponseOutputWithContext(context.Background())
-}
-
-func (i NetworkEndpointResponseArgs) ToNetworkEndpointResponseOutputWithContext(ctx context.Context) NetworkEndpointResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointResponseOutput)
-}
-
-// NetworkEndpointResponseArrayInput is an input type that accepts NetworkEndpointResponseArray and NetworkEndpointResponseArrayOutput values.
-// You can construct a concrete instance of `NetworkEndpointResponseArrayInput` via:
-//
-//          NetworkEndpointResponseArray{ NetworkEndpointResponseArgs{...} }
-type NetworkEndpointResponseArrayInput interface {
-	pulumi.Input
-
-	ToNetworkEndpointResponseArrayOutput() NetworkEndpointResponseArrayOutput
-	ToNetworkEndpointResponseArrayOutputWithContext(context.Context) NetworkEndpointResponseArrayOutput
-}
-
-type NetworkEndpointResponseArray []NetworkEndpointResponseInput
-
-func (NetworkEndpointResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkEndpointResponse)(nil)).Elem()
-}
-
-func (i NetworkEndpointResponseArray) ToNetworkEndpointResponseArrayOutput() NetworkEndpointResponseArrayOutput {
-	return i.ToNetworkEndpointResponseArrayOutputWithContext(context.Background())
-}
-
-func (i NetworkEndpointResponseArray) ToNetworkEndpointResponseArrayOutputWithContext(ctx context.Context) NetworkEndpointResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointResponseArrayOutput)
-}
-
 // A network endpoint over which a TPU worker can be reached.
 type NetworkEndpointResponseOutput struct{ *pulumi.OutputState }
 
@@ -286,78 +230,6 @@ type SchedulingConfigResponse struct {
 	Reserved bool `pulumi:"reserved"`
 }
 
-// SchedulingConfigResponseInput is an input type that accepts SchedulingConfigResponseArgs and SchedulingConfigResponseOutput values.
-// You can construct a concrete instance of `SchedulingConfigResponseInput` via:
-//
-//          SchedulingConfigResponseArgs{...}
-type SchedulingConfigResponseInput interface {
-	pulumi.Input
-
-	ToSchedulingConfigResponseOutput() SchedulingConfigResponseOutput
-	ToSchedulingConfigResponseOutputWithContext(context.Context) SchedulingConfigResponseOutput
-}
-
-// Sets the scheduling options for this node.
-type SchedulingConfigResponseArgs struct {
-	// Defines whether the node is preemptible.
-	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
-	// Whether the node is created under a reservation.
-	Reserved pulumi.BoolInput `pulumi:"reserved"`
-}
-
-func (SchedulingConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchedulingConfigResponse)(nil)).Elem()
-}
-
-func (i SchedulingConfigResponseArgs) ToSchedulingConfigResponseOutput() SchedulingConfigResponseOutput {
-	return i.ToSchedulingConfigResponseOutputWithContext(context.Background())
-}
-
-func (i SchedulingConfigResponseArgs) ToSchedulingConfigResponseOutputWithContext(ctx context.Context) SchedulingConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulingConfigResponseOutput)
-}
-
-func (i SchedulingConfigResponseArgs) ToSchedulingConfigResponsePtrOutput() SchedulingConfigResponsePtrOutput {
-	return i.ToSchedulingConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SchedulingConfigResponseArgs) ToSchedulingConfigResponsePtrOutputWithContext(ctx context.Context) SchedulingConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulingConfigResponseOutput).ToSchedulingConfigResponsePtrOutputWithContext(ctx)
-}
-
-// SchedulingConfigResponsePtrInput is an input type that accepts SchedulingConfigResponseArgs, SchedulingConfigResponsePtr and SchedulingConfigResponsePtrOutput values.
-// You can construct a concrete instance of `SchedulingConfigResponsePtrInput` via:
-//
-//          SchedulingConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SchedulingConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToSchedulingConfigResponsePtrOutput() SchedulingConfigResponsePtrOutput
-	ToSchedulingConfigResponsePtrOutputWithContext(context.Context) SchedulingConfigResponsePtrOutput
-}
-
-type schedulingConfigResponsePtrType SchedulingConfigResponseArgs
-
-func SchedulingConfigResponsePtr(v *SchedulingConfigResponseArgs) SchedulingConfigResponsePtrInput {
-	return (*schedulingConfigResponsePtrType)(v)
-}
-
-func (*schedulingConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchedulingConfigResponse)(nil)).Elem()
-}
-
-func (i *schedulingConfigResponsePtrType) ToSchedulingConfigResponsePtrOutput() SchedulingConfigResponsePtrOutput {
-	return i.ToSchedulingConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *schedulingConfigResponsePtrType) ToSchedulingConfigResponsePtrOutputWithContext(ctx context.Context) SchedulingConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulingConfigResponsePtrOutput)
-}
-
 // Sets the scheduling options for this node.
 type SchedulingConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -373,16 +245,6 @@ func (o SchedulingConfigResponseOutput) ToSchedulingConfigResponseOutputWithCont
 	return o
 }
 
-func (o SchedulingConfigResponseOutput) ToSchedulingConfigResponsePtrOutput() SchedulingConfigResponsePtrOutput {
-	return o.ToSchedulingConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SchedulingConfigResponseOutput) ToSchedulingConfigResponsePtrOutputWithContext(ctx context.Context) SchedulingConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulingConfigResponse) *SchedulingConfigResponse {
-		return &v
-	}).(SchedulingConfigResponsePtrOutput)
-}
-
 // Defines whether the node is preemptible.
 func (o SchedulingConfigResponseOutput) Preemptible() pulumi.BoolOutput {
 	return o.ApplyT(func(v SchedulingConfigResponse) bool { return v.Preemptible }).(pulumi.BoolOutput)
@@ -391,50 +253,6 @@ func (o SchedulingConfigResponseOutput) Preemptible() pulumi.BoolOutput {
 // Whether the node is created under a reservation.
 func (o SchedulingConfigResponseOutput) Reserved() pulumi.BoolOutput {
 	return o.ApplyT(func(v SchedulingConfigResponse) bool { return v.Reserved }).(pulumi.BoolOutput)
-}
-
-type SchedulingConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SchedulingConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchedulingConfigResponse)(nil)).Elem()
-}
-
-func (o SchedulingConfigResponsePtrOutput) ToSchedulingConfigResponsePtrOutput() SchedulingConfigResponsePtrOutput {
-	return o
-}
-
-func (o SchedulingConfigResponsePtrOutput) ToSchedulingConfigResponsePtrOutputWithContext(ctx context.Context) SchedulingConfigResponsePtrOutput {
-	return o
-}
-
-func (o SchedulingConfigResponsePtrOutput) Elem() SchedulingConfigResponseOutput {
-	return o.ApplyT(func(v *SchedulingConfigResponse) SchedulingConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SchedulingConfigResponse
-		return ret
-	}).(SchedulingConfigResponseOutput)
-}
-
-// Defines whether the node is preemptible.
-func (o SchedulingConfigResponsePtrOutput) Preemptible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SchedulingConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Preemptible
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether the node is created under a reservation.
-func (o SchedulingConfigResponsePtrOutput) Reserved() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SchedulingConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Reserved
-	}).(pulumi.BoolPtrOutput)
 }
 
 // A Symptom instance.
@@ -447,66 +265,6 @@ type SymptomResponse struct {
 	SymptomType string `pulumi:"symptomType"`
 	// A string used to uniquely distinguish a worker within a TPU node.
 	WorkerId string `pulumi:"workerId"`
-}
-
-// SymptomResponseInput is an input type that accepts SymptomResponseArgs and SymptomResponseOutput values.
-// You can construct a concrete instance of `SymptomResponseInput` via:
-//
-//          SymptomResponseArgs{...}
-type SymptomResponseInput interface {
-	pulumi.Input
-
-	ToSymptomResponseOutput() SymptomResponseOutput
-	ToSymptomResponseOutputWithContext(context.Context) SymptomResponseOutput
-}
-
-// A Symptom instance.
-type SymptomResponseArgs struct {
-	// Timestamp when the Symptom is created.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Detailed information of the current Symptom.
-	Details pulumi.StringInput `pulumi:"details"`
-	// Type of the Symptom.
-	SymptomType pulumi.StringInput `pulumi:"symptomType"`
-	// A string used to uniquely distinguish a worker within a TPU node.
-	WorkerId pulumi.StringInput `pulumi:"workerId"`
-}
-
-func (SymptomResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SymptomResponse)(nil)).Elem()
-}
-
-func (i SymptomResponseArgs) ToSymptomResponseOutput() SymptomResponseOutput {
-	return i.ToSymptomResponseOutputWithContext(context.Background())
-}
-
-func (i SymptomResponseArgs) ToSymptomResponseOutputWithContext(ctx context.Context) SymptomResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SymptomResponseOutput)
-}
-
-// SymptomResponseArrayInput is an input type that accepts SymptomResponseArray and SymptomResponseArrayOutput values.
-// You can construct a concrete instance of `SymptomResponseArrayInput` via:
-//
-//          SymptomResponseArray{ SymptomResponseArgs{...} }
-type SymptomResponseArrayInput interface {
-	pulumi.Input
-
-	ToSymptomResponseArrayOutput() SymptomResponseArrayOutput
-	ToSymptomResponseArrayOutputWithContext(context.Context) SymptomResponseArrayOutput
-}
-
-type SymptomResponseArray []SymptomResponseInput
-
-func (SymptomResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SymptomResponse)(nil)).Elem()
-}
-
-func (i SymptomResponseArray) ToSymptomResponseArrayOutput() SymptomResponseArrayOutput {
-	return i.ToSymptomResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SymptomResponseArray) ToSymptomResponseArrayOutputWithContext(ctx context.Context) SymptomResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SymptomResponseArrayOutput)
 }
 
 // A Symptom instance.
@@ -565,20 +323,13 @@ func (o SymptomResponseArrayOutput) Index(i pulumi.IntInput) SymptomResponseOutp
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointResponseInput)(nil)).Elem(), NetworkEndpointResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointResponseArrayInput)(nil)).Elem(), NetworkEndpointResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingConfigInput)(nil)).Elem(), SchedulingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingConfigPtrInput)(nil)).Elem(), SchedulingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingConfigResponseInput)(nil)).Elem(), SchedulingConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingConfigResponsePtrInput)(nil)).Elem(), SchedulingConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SymptomResponseInput)(nil)).Elem(), SymptomResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SymptomResponseArrayInput)(nil)).Elem(), SymptomResponseArray{})
 	pulumi.RegisterOutputType(NetworkEndpointResponseOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(SchedulingConfigOutput{})
 	pulumi.RegisterOutputType(SchedulingConfigPtrOutput{})
 	pulumi.RegisterOutputType(SchedulingConfigResponseOutput{})
-	pulumi.RegisterOutputType(SchedulingConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(SymptomResponseOutput{})
 	pulumi.RegisterOutputType(SymptomResponseArrayOutput{})
 }

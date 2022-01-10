@@ -113,7 +113,7 @@ type ApiIamPolicyInput interface {
 }
 
 func (*ApiIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiIamPolicy)(nil))
+	return reflect.TypeOf((**ApiIamPolicy)(nil)).Elem()
 }
 
 func (i *ApiIamPolicy) ToApiIamPolicyOutput() ApiIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *ApiIamPolicy) ToApiIamPolicyOutputWithContext(ctx context.Context) ApiI
 type ApiIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ApiIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiIamPolicy)(nil))
+	return reflect.TypeOf((**ApiIamPolicy)(nil)).Elem()
 }
 
 func (o ApiIamPolicyOutput) ToApiIamPolicyOutput() ApiIamPolicyOutput {

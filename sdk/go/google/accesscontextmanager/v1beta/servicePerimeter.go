@@ -109,7 +109,7 @@ type ServicePerimeterInput interface {
 }
 
 func (*ServicePerimeter) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePerimeter)(nil))
+	return reflect.TypeOf((**ServicePerimeter)(nil)).Elem()
 }
 
 func (i *ServicePerimeter) ToServicePerimeterOutput() ServicePerimeterOutput {
@@ -123,7 +123,7 @@ func (i *ServicePerimeter) ToServicePerimeterOutputWithContext(ctx context.Conte
 type ServicePerimeterOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePerimeter)(nil))
+	return reflect.TypeOf((**ServicePerimeter)(nil)).Elem()
 }
 
 func (o ServicePerimeterOutput) ToServicePerimeterOutput() ServicePerimeterOutput {

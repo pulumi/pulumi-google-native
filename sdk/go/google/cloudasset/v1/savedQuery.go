@@ -122,7 +122,7 @@ type SavedQueryInput interface {
 }
 
 func (*SavedQuery) ElementType() reflect.Type {
-	return reflect.TypeOf((*SavedQuery)(nil))
+	return reflect.TypeOf((**SavedQuery)(nil)).Elem()
 }
 
 func (i *SavedQuery) ToSavedQueryOutput() SavedQueryOutput {
@@ -136,7 +136,7 @@ func (i *SavedQuery) ToSavedQueryOutputWithContext(ctx context.Context) SavedQue
 type SavedQueryOutput struct{ *pulumi.OutputState }
 
 func (SavedQueryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SavedQuery)(nil))
+	return reflect.TypeOf((**SavedQuery)(nil)).Elem()
 }
 
 func (o SavedQueryOutput) ToSavedQueryOutput() SavedQueryOutput {

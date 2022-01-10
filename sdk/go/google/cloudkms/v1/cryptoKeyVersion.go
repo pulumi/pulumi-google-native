@@ -127,7 +127,7 @@ type CryptoKeyVersionInput interface {
 }
 
 func (*CryptoKeyVersion) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyVersion)(nil))
+	return reflect.TypeOf((**CryptoKeyVersion)(nil)).Elem()
 }
 
 func (i *CryptoKeyVersion) ToCryptoKeyVersionOutput() CryptoKeyVersionOutput {
@@ -141,7 +141,7 @@ func (i *CryptoKeyVersion) ToCryptoKeyVersionOutputWithContext(ctx context.Conte
 type CryptoKeyVersionOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyVersionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyVersion)(nil))
+	return reflect.TypeOf((**CryptoKeyVersion)(nil)).Elem()
 }
 
 func (o CryptoKeyVersionOutput) ToCryptoKeyVersionOutput() CryptoKeyVersionOutput {

@@ -198,80 +198,6 @@ type AptSettingsResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// AptSettingsResponseInput is an input type that accepts AptSettingsResponseArgs and AptSettingsResponseOutput values.
-// You can construct a concrete instance of `AptSettingsResponseInput` via:
-//
-//          AptSettingsResponseArgs{...}
-type AptSettingsResponseInput interface {
-	pulumi.Input
-
-	ToAptSettingsResponseOutput() AptSettingsResponseOutput
-	ToAptSettingsResponseOutputWithContext(context.Context) AptSettingsResponseOutput
-}
-
-// Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed.
-type AptSettingsResponseArgs struct {
-	// List of packages to exclude from update. These packages will be excluded
-	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
-	// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields.
-	ExclusivePackages pulumi.StringArrayInput `pulumi:"exclusivePackages"`
-	// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (AptSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AptSettingsResponse)(nil)).Elem()
-}
-
-func (i AptSettingsResponseArgs) ToAptSettingsResponseOutput() AptSettingsResponseOutput {
-	return i.ToAptSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i AptSettingsResponseArgs) ToAptSettingsResponseOutputWithContext(ctx context.Context) AptSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AptSettingsResponseOutput)
-}
-
-func (i AptSettingsResponseArgs) ToAptSettingsResponsePtrOutput() AptSettingsResponsePtrOutput {
-	return i.ToAptSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AptSettingsResponseArgs) ToAptSettingsResponsePtrOutputWithContext(ctx context.Context) AptSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AptSettingsResponseOutput).ToAptSettingsResponsePtrOutputWithContext(ctx)
-}
-
-// AptSettingsResponsePtrInput is an input type that accepts AptSettingsResponseArgs, AptSettingsResponsePtr and AptSettingsResponsePtrOutput values.
-// You can construct a concrete instance of `AptSettingsResponsePtrInput` via:
-//
-//          AptSettingsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AptSettingsResponsePtrInput interface {
-	pulumi.Input
-
-	ToAptSettingsResponsePtrOutput() AptSettingsResponsePtrOutput
-	ToAptSettingsResponsePtrOutputWithContext(context.Context) AptSettingsResponsePtrOutput
-}
-
-type aptSettingsResponsePtrType AptSettingsResponseArgs
-
-func AptSettingsResponsePtr(v *AptSettingsResponseArgs) AptSettingsResponsePtrInput {
-	return (*aptSettingsResponsePtrType)(v)
-}
-
-func (*aptSettingsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AptSettingsResponse)(nil)).Elem()
-}
-
-func (i *aptSettingsResponsePtrType) ToAptSettingsResponsePtrOutput() AptSettingsResponsePtrOutput {
-	return i.ToAptSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *aptSettingsResponsePtrType) ToAptSettingsResponsePtrOutputWithContext(ctx context.Context) AptSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AptSettingsResponsePtrOutput)
-}
-
 // Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed.
 type AptSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -287,16 +213,6 @@ func (o AptSettingsResponseOutput) ToAptSettingsResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AptSettingsResponseOutput) ToAptSettingsResponsePtrOutput() AptSettingsResponsePtrOutput {
-	return o.ToAptSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AptSettingsResponseOutput) ToAptSettingsResponsePtrOutputWithContext(ctx context.Context) AptSettingsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AptSettingsResponse) *AptSettingsResponse {
-		return &v
-	}).(AptSettingsResponsePtrOutput)
-}
-
 // List of packages to exclude from update. These packages will be excluded
 func (o AptSettingsResponseOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AptSettingsResponse) []string { return v.Excludes }).(pulumi.StringArrayOutput)
@@ -310,60 +226,6 @@ func (o AptSettingsResponseOutput) ExclusivePackages() pulumi.StringArrayOutput 
 // By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
 func (o AptSettingsResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AptSettingsResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type AptSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AptSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AptSettingsResponse)(nil)).Elem()
-}
-
-func (o AptSettingsResponsePtrOutput) ToAptSettingsResponsePtrOutput() AptSettingsResponsePtrOutput {
-	return o
-}
-
-func (o AptSettingsResponsePtrOutput) ToAptSettingsResponsePtrOutputWithContext(ctx context.Context) AptSettingsResponsePtrOutput {
-	return o
-}
-
-func (o AptSettingsResponsePtrOutput) Elem() AptSettingsResponseOutput {
-	return o.ApplyT(func(v *AptSettingsResponse) AptSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AptSettingsResponse
-		return ret
-	}).(AptSettingsResponseOutput)
-}
-
-// List of packages to exclude from update. These packages will be excluded
-func (o AptSettingsResponsePtrOutput) Excludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AptSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Excludes
-	}).(pulumi.StringArrayOutput)
-}
-
-// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields.
-func (o AptSettingsResponsePtrOutput) ExclusivePackages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AptSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExclusivePackages
-	}).(pulumi.StringArrayOutput)
-}
-
-// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
-func (o AptSettingsResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AptSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // A step that runs an executable for a PatchJob.
@@ -734,82 +596,6 @@ type ExecStepConfigResponse struct {
 	LocalPath string `pulumi:"localPath"`
 }
 
-// ExecStepConfigResponseInput is an input type that accepts ExecStepConfigResponseArgs and ExecStepConfigResponseOutput values.
-// You can construct a concrete instance of `ExecStepConfigResponseInput` via:
-//
-//          ExecStepConfigResponseArgs{...}
-type ExecStepConfigResponseInput interface {
-	pulumi.Input
-
-	ToExecStepConfigResponseOutput() ExecStepConfigResponseOutput
-	ToExecStepConfigResponseOutputWithContext(context.Context) ExecStepConfigResponseOutput
-}
-
-// Common configurations for an ExecStep.
-type ExecStepConfigResponseArgs struct {
-	// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-	AllowedSuccessCodes pulumi.IntArrayInput `pulumi:"allowedSuccessCodes"`
-	// A Cloud Storage object containing the executable.
-	GcsObject GcsObjectResponseInput `pulumi:"gcsObject"`
-	// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-	Interpreter pulumi.StringInput `pulumi:"interpreter"`
-	// An absolute path to the executable on the VM.
-	LocalPath pulumi.StringInput `pulumi:"localPath"`
-}
-
-func (ExecStepConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExecStepConfigResponse)(nil)).Elem()
-}
-
-func (i ExecStepConfigResponseArgs) ToExecStepConfigResponseOutput() ExecStepConfigResponseOutput {
-	return i.ToExecStepConfigResponseOutputWithContext(context.Background())
-}
-
-func (i ExecStepConfigResponseArgs) ToExecStepConfigResponseOutputWithContext(ctx context.Context) ExecStepConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecStepConfigResponseOutput)
-}
-
-func (i ExecStepConfigResponseArgs) ToExecStepConfigResponsePtrOutput() ExecStepConfigResponsePtrOutput {
-	return i.ToExecStepConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ExecStepConfigResponseArgs) ToExecStepConfigResponsePtrOutputWithContext(ctx context.Context) ExecStepConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecStepConfigResponseOutput).ToExecStepConfigResponsePtrOutputWithContext(ctx)
-}
-
-// ExecStepConfigResponsePtrInput is an input type that accepts ExecStepConfigResponseArgs, ExecStepConfigResponsePtr and ExecStepConfigResponsePtrOutput values.
-// You can construct a concrete instance of `ExecStepConfigResponsePtrInput` via:
-//
-//          ExecStepConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ExecStepConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToExecStepConfigResponsePtrOutput() ExecStepConfigResponsePtrOutput
-	ToExecStepConfigResponsePtrOutputWithContext(context.Context) ExecStepConfigResponsePtrOutput
-}
-
-type execStepConfigResponsePtrType ExecStepConfigResponseArgs
-
-func ExecStepConfigResponsePtr(v *ExecStepConfigResponseArgs) ExecStepConfigResponsePtrInput {
-	return (*execStepConfigResponsePtrType)(v)
-}
-
-func (*execStepConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExecStepConfigResponse)(nil)).Elem()
-}
-
-func (i *execStepConfigResponsePtrType) ToExecStepConfigResponsePtrOutput() ExecStepConfigResponsePtrOutput {
-	return i.ToExecStepConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *execStepConfigResponsePtrType) ToExecStepConfigResponsePtrOutputWithContext(ctx context.Context) ExecStepConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecStepConfigResponsePtrOutput)
-}
-
 // Common configurations for an ExecStep.
 type ExecStepConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -823,16 +609,6 @@ func (o ExecStepConfigResponseOutput) ToExecStepConfigResponseOutput() ExecStepC
 
 func (o ExecStepConfigResponseOutput) ToExecStepConfigResponseOutputWithContext(ctx context.Context) ExecStepConfigResponseOutput {
 	return o
-}
-
-func (o ExecStepConfigResponseOutput) ToExecStepConfigResponsePtrOutput() ExecStepConfigResponsePtrOutput {
-	return o.ToExecStepConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ExecStepConfigResponseOutput) ToExecStepConfigResponsePtrOutputWithContext(ctx context.Context) ExecStepConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecStepConfigResponse) *ExecStepConfigResponse {
-		return &v
-	}).(ExecStepConfigResponsePtrOutput)
 }
 
 // Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
@@ -855,148 +631,12 @@ func (o ExecStepConfigResponseOutput) LocalPath() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecStepConfigResponse) string { return v.LocalPath }).(pulumi.StringOutput)
 }
 
-type ExecStepConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ExecStepConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExecStepConfigResponse)(nil)).Elem()
-}
-
-func (o ExecStepConfigResponsePtrOutput) ToExecStepConfigResponsePtrOutput() ExecStepConfigResponsePtrOutput {
-	return o
-}
-
-func (o ExecStepConfigResponsePtrOutput) ToExecStepConfigResponsePtrOutputWithContext(ctx context.Context) ExecStepConfigResponsePtrOutput {
-	return o
-}
-
-func (o ExecStepConfigResponsePtrOutput) Elem() ExecStepConfigResponseOutput {
-	return o.ApplyT(func(v *ExecStepConfigResponse) ExecStepConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ExecStepConfigResponse
-		return ret
-	}).(ExecStepConfigResponseOutput)
-}
-
-// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-func (o ExecStepConfigResponsePtrOutput) AllowedSuccessCodes() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *ExecStepConfigResponse) []int {
-		if v == nil {
-			return nil
-		}
-		return v.AllowedSuccessCodes
-	}).(pulumi.IntArrayOutput)
-}
-
-// A Cloud Storage object containing the executable.
-func (o ExecStepConfigResponsePtrOutput) GcsObject() GcsObjectResponsePtrOutput {
-	return o.ApplyT(func(v *ExecStepConfigResponse) *GcsObjectResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.GcsObject
-	}).(GcsObjectResponsePtrOutput)
-}
-
-// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-func (o ExecStepConfigResponsePtrOutput) Interpreter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExecStepConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Interpreter
-	}).(pulumi.StringPtrOutput)
-}
-
-// An absolute path to the executable on the VM.
-func (o ExecStepConfigResponsePtrOutput) LocalPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExecStepConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LocalPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // A step that runs an executable for a PatchJob.
 type ExecStepResponse struct {
 	// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
 	LinuxExecStepConfig ExecStepConfigResponse `pulumi:"linuxExecStepConfig"`
 	// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
 	WindowsExecStepConfig ExecStepConfigResponse `pulumi:"windowsExecStepConfig"`
-}
-
-// ExecStepResponseInput is an input type that accepts ExecStepResponseArgs and ExecStepResponseOutput values.
-// You can construct a concrete instance of `ExecStepResponseInput` via:
-//
-//          ExecStepResponseArgs{...}
-type ExecStepResponseInput interface {
-	pulumi.Input
-
-	ToExecStepResponseOutput() ExecStepResponseOutput
-	ToExecStepResponseOutputWithContext(context.Context) ExecStepResponseOutput
-}
-
-// A step that runs an executable for a PatchJob.
-type ExecStepResponseArgs struct {
-	// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-	LinuxExecStepConfig ExecStepConfigResponseInput `pulumi:"linuxExecStepConfig"`
-	// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-	WindowsExecStepConfig ExecStepConfigResponseInput `pulumi:"windowsExecStepConfig"`
-}
-
-func (ExecStepResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExecStepResponse)(nil)).Elem()
-}
-
-func (i ExecStepResponseArgs) ToExecStepResponseOutput() ExecStepResponseOutput {
-	return i.ToExecStepResponseOutputWithContext(context.Background())
-}
-
-func (i ExecStepResponseArgs) ToExecStepResponseOutputWithContext(ctx context.Context) ExecStepResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecStepResponseOutput)
-}
-
-func (i ExecStepResponseArgs) ToExecStepResponsePtrOutput() ExecStepResponsePtrOutput {
-	return i.ToExecStepResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ExecStepResponseArgs) ToExecStepResponsePtrOutputWithContext(ctx context.Context) ExecStepResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecStepResponseOutput).ToExecStepResponsePtrOutputWithContext(ctx)
-}
-
-// ExecStepResponsePtrInput is an input type that accepts ExecStepResponseArgs, ExecStepResponsePtr and ExecStepResponsePtrOutput values.
-// You can construct a concrete instance of `ExecStepResponsePtrInput` via:
-//
-//          ExecStepResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ExecStepResponsePtrInput interface {
-	pulumi.Input
-
-	ToExecStepResponsePtrOutput() ExecStepResponsePtrOutput
-	ToExecStepResponsePtrOutputWithContext(context.Context) ExecStepResponsePtrOutput
-}
-
-type execStepResponsePtrType ExecStepResponseArgs
-
-func ExecStepResponsePtr(v *ExecStepResponseArgs) ExecStepResponsePtrInput {
-	return (*execStepResponsePtrType)(v)
-}
-
-func (*execStepResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExecStepResponse)(nil)).Elem()
-}
-
-func (i *execStepResponsePtrType) ToExecStepResponsePtrOutput() ExecStepResponsePtrOutput {
-	return i.ToExecStepResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *execStepResponsePtrType) ToExecStepResponsePtrOutputWithContext(ctx context.Context) ExecStepResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecStepResponsePtrOutput)
 }
 
 // A step that runs an executable for a PatchJob.
@@ -1014,16 +654,6 @@ func (o ExecStepResponseOutput) ToExecStepResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o ExecStepResponseOutput) ToExecStepResponsePtrOutput() ExecStepResponsePtrOutput {
-	return o.ToExecStepResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ExecStepResponseOutput) ToExecStepResponsePtrOutputWithContext(ctx context.Context) ExecStepResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecStepResponse) *ExecStepResponse {
-		return &v
-	}).(ExecStepResponsePtrOutput)
-}
-
 // The ExecStepConfig for all Linux VMs targeted by the PatchJob.
 func (o ExecStepResponseOutput) LinuxExecStepConfig() ExecStepConfigResponseOutput {
 	return o.ApplyT(func(v ExecStepResponse) ExecStepConfigResponse { return v.LinuxExecStepConfig }).(ExecStepConfigResponseOutput)
@@ -1032,50 +662,6 @@ func (o ExecStepResponseOutput) LinuxExecStepConfig() ExecStepConfigResponseOutp
 // The ExecStepConfig for all Windows VMs targeted by the PatchJob.
 func (o ExecStepResponseOutput) WindowsExecStepConfig() ExecStepConfigResponseOutput {
 	return o.ApplyT(func(v ExecStepResponse) ExecStepConfigResponse { return v.WindowsExecStepConfig }).(ExecStepConfigResponseOutput)
-}
-
-type ExecStepResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ExecStepResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExecStepResponse)(nil)).Elem()
-}
-
-func (o ExecStepResponsePtrOutput) ToExecStepResponsePtrOutput() ExecStepResponsePtrOutput {
-	return o
-}
-
-func (o ExecStepResponsePtrOutput) ToExecStepResponsePtrOutputWithContext(ctx context.Context) ExecStepResponsePtrOutput {
-	return o
-}
-
-func (o ExecStepResponsePtrOutput) Elem() ExecStepResponseOutput {
-	return o.ApplyT(func(v *ExecStepResponse) ExecStepResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ExecStepResponse
-		return ret
-	}).(ExecStepResponseOutput)
-}
-
-// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-func (o ExecStepResponsePtrOutput) LinuxExecStepConfig() ExecStepConfigResponsePtrOutput {
-	return o.ApplyT(func(v *ExecStepResponse) *ExecStepConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.LinuxExecStepConfig
-	}).(ExecStepConfigResponsePtrOutput)
-}
-
-// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-func (o ExecStepResponsePtrOutput) WindowsExecStepConfig() ExecStepConfigResponsePtrOutput {
-	return o.ApplyT(func(v *ExecStepResponse) *ExecStepConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.WindowsExecStepConfig
-	}).(ExecStepConfigResponsePtrOutput)
 }
 
 // Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value.
@@ -1245,78 +831,6 @@ type FixedOrPercentResponse struct {
 	Percent int `pulumi:"percent"`
 }
 
-// FixedOrPercentResponseInput is an input type that accepts FixedOrPercentResponseArgs and FixedOrPercentResponseOutput values.
-// You can construct a concrete instance of `FixedOrPercentResponseInput` via:
-//
-//          FixedOrPercentResponseArgs{...}
-type FixedOrPercentResponseInput interface {
-	pulumi.Input
-
-	ToFixedOrPercentResponseOutput() FixedOrPercentResponseOutput
-	ToFixedOrPercentResponseOutputWithContext(context.Context) FixedOrPercentResponseOutput
-}
-
-// Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value.
-type FixedOrPercentResponseArgs struct {
-	// Specifies a fixed value.
-	Fixed pulumi.IntInput `pulumi:"fixed"`
-	// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
-	Percent pulumi.IntInput `pulumi:"percent"`
-}
-
-func (FixedOrPercentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FixedOrPercentResponse)(nil)).Elem()
-}
-
-func (i FixedOrPercentResponseArgs) ToFixedOrPercentResponseOutput() FixedOrPercentResponseOutput {
-	return i.ToFixedOrPercentResponseOutputWithContext(context.Background())
-}
-
-func (i FixedOrPercentResponseArgs) ToFixedOrPercentResponseOutputWithContext(ctx context.Context) FixedOrPercentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FixedOrPercentResponseOutput)
-}
-
-func (i FixedOrPercentResponseArgs) ToFixedOrPercentResponsePtrOutput() FixedOrPercentResponsePtrOutput {
-	return i.ToFixedOrPercentResponsePtrOutputWithContext(context.Background())
-}
-
-func (i FixedOrPercentResponseArgs) ToFixedOrPercentResponsePtrOutputWithContext(ctx context.Context) FixedOrPercentResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FixedOrPercentResponseOutput).ToFixedOrPercentResponsePtrOutputWithContext(ctx)
-}
-
-// FixedOrPercentResponsePtrInput is an input type that accepts FixedOrPercentResponseArgs, FixedOrPercentResponsePtr and FixedOrPercentResponsePtrOutput values.
-// You can construct a concrete instance of `FixedOrPercentResponsePtrInput` via:
-//
-//          FixedOrPercentResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type FixedOrPercentResponsePtrInput interface {
-	pulumi.Input
-
-	ToFixedOrPercentResponsePtrOutput() FixedOrPercentResponsePtrOutput
-	ToFixedOrPercentResponsePtrOutputWithContext(context.Context) FixedOrPercentResponsePtrOutput
-}
-
-type fixedOrPercentResponsePtrType FixedOrPercentResponseArgs
-
-func FixedOrPercentResponsePtr(v *FixedOrPercentResponseArgs) FixedOrPercentResponsePtrInput {
-	return (*fixedOrPercentResponsePtrType)(v)
-}
-
-func (*fixedOrPercentResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FixedOrPercentResponse)(nil)).Elem()
-}
-
-func (i *fixedOrPercentResponsePtrType) ToFixedOrPercentResponsePtrOutput() FixedOrPercentResponsePtrOutput {
-	return i.ToFixedOrPercentResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *fixedOrPercentResponsePtrType) ToFixedOrPercentResponsePtrOutputWithContext(ctx context.Context) FixedOrPercentResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FixedOrPercentResponsePtrOutput)
-}
-
 // Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value.
 type FixedOrPercentResponseOutput struct{ *pulumi.OutputState }
 
@@ -1332,16 +846,6 @@ func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponseOutputWithContext(
 	return o
 }
 
-func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponsePtrOutput() FixedOrPercentResponsePtrOutput {
-	return o.ToFixedOrPercentResponsePtrOutputWithContext(context.Background())
-}
-
-func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponsePtrOutputWithContext(ctx context.Context) FixedOrPercentResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FixedOrPercentResponse) *FixedOrPercentResponse {
-		return &v
-	}).(FixedOrPercentResponsePtrOutput)
-}
-
 // Specifies a fixed value.
 func (o FixedOrPercentResponseOutput) Fixed() pulumi.IntOutput {
 	return o.ApplyT(func(v FixedOrPercentResponse) int { return v.Fixed }).(pulumi.IntOutput)
@@ -1350,50 +854,6 @@ func (o FixedOrPercentResponseOutput) Fixed() pulumi.IntOutput {
 // Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
 func (o FixedOrPercentResponseOutput) Percent() pulumi.IntOutput {
 	return o.ApplyT(func(v FixedOrPercentResponse) int { return v.Percent }).(pulumi.IntOutput)
-}
-
-type FixedOrPercentResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (FixedOrPercentResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FixedOrPercentResponse)(nil)).Elem()
-}
-
-func (o FixedOrPercentResponsePtrOutput) ToFixedOrPercentResponsePtrOutput() FixedOrPercentResponsePtrOutput {
-	return o
-}
-
-func (o FixedOrPercentResponsePtrOutput) ToFixedOrPercentResponsePtrOutputWithContext(ctx context.Context) FixedOrPercentResponsePtrOutput {
-	return o
-}
-
-func (o FixedOrPercentResponsePtrOutput) Elem() FixedOrPercentResponseOutput {
-	return o.ApplyT(func(v *FixedOrPercentResponse) FixedOrPercentResponse {
-		if v != nil {
-			return *v
-		}
-		var ret FixedOrPercentResponse
-		return ret
-	}).(FixedOrPercentResponseOutput)
-}
-
-// Specifies a fixed value.
-func (o FixedOrPercentResponsePtrOutput) Fixed() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *FixedOrPercentResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Fixed
-	}).(pulumi.IntPtrOutput)
-}
-
-// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
-func (o FixedOrPercentResponsePtrOutput) Percent() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *FixedOrPercentResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Percent
-	}).(pulumi.IntPtrOutput)
 }
 
 // Cloud Storage object representation.
@@ -1584,80 +1044,6 @@ type GcsObjectResponse struct {
 	Object string `pulumi:"object"`
 }
 
-// GcsObjectResponseInput is an input type that accepts GcsObjectResponseArgs and GcsObjectResponseOutput values.
-// You can construct a concrete instance of `GcsObjectResponseInput` via:
-//
-//          GcsObjectResponseArgs{...}
-type GcsObjectResponseInput interface {
-	pulumi.Input
-
-	ToGcsObjectResponseOutput() GcsObjectResponseOutput
-	ToGcsObjectResponseOutputWithContext(context.Context) GcsObjectResponseOutput
-}
-
-// Cloud Storage object representation.
-type GcsObjectResponseArgs struct {
-	// Bucket of the Cloud Storage object.
-	Bucket pulumi.StringInput `pulumi:"bucket"`
-	// Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-	GenerationNumber pulumi.StringInput `pulumi:"generationNumber"`
-	// Name of the Cloud Storage object.
-	Object pulumi.StringInput `pulumi:"object"`
-}
-
-func (GcsObjectResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GcsObjectResponse)(nil)).Elem()
-}
-
-func (i GcsObjectResponseArgs) ToGcsObjectResponseOutput() GcsObjectResponseOutput {
-	return i.ToGcsObjectResponseOutputWithContext(context.Background())
-}
-
-func (i GcsObjectResponseArgs) ToGcsObjectResponseOutputWithContext(ctx context.Context) GcsObjectResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GcsObjectResponseOutput)
-}
-
-func (i GcsObjectResponseArgs) ToGcsObjectResponsePtrOutput() GcsObjectResponsePtrOutput {
-	return i.ToGcsObjectResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GcsObjectResponseArgs) ToGcsObjectResponsePtrOutputWithContext(ctx context.Context) GcsObjectResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GcsObjectResponseOutput).ToGcsObjectResponsePtrOutputWithContext(ctx)
-}
-
-// GcsObjectResponsePtrInput is an input type that accepts GcsObjectResponseArgs, GcsObjectResponsePtr and GcsObjectResponsePtrOutput values.
-// You can construct a concrete instance of `GcsObjectResponsePtrInput` via:
-//
-//          GcsObjectResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GcsObjectResponsePtrInput interface {
-	pulumi.Input
-
-	ToGcsObjectResponsePtrOutput() GcsObjectResponsePtrOutput
-	ToGcsObjectResponsePtrOutputWithContext(context.Context) GcsObjectResponsePtrOutput
-}
-
-type gcsObjectResponsePtrType GcsObjectResponseArgs
-
-func GcsObjectResponsePtr(v *GcsObjectResponseArgs) GcsObjectResponsePtrInput {
-	return (*gcsObjectResponsePtrType)(v)
-}
-
-func (*gcsObjectResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GcsObjectResponse)(nil)).Elem()
-}
-
-func (i *gcsObjectResponsePtrType) ToGcsObjectResponsePtrOutput() GcsObjectResponsePtrOutput {
-	return i.ToGcsObjectResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *gcsObjectResponsePtrType) ToGcsObjectResponsePtrOutputWithContext(ctx context.Context) GcsObjectResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GcsObjectResponsePtrOutput)
-}
-
 // Cloud Storage object representation.
 type GcsObjectResponseOutput struct{ *pulumi.OutputState }
 
@@ -1673,16 +1059,6 @@ func (o GcsObjectResponseOutput) ToGcsObjectResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o GcsObjectResponseOutput) ToGcsObjectResponsePtrOutput() GcsObjectResponsePtrOutput {
-	return o.ToGcsObjectResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GcsObjectResponseOutput) ToGcsObjectResponsePtrOutputWithContext(ctx context.Context) GcsObjectResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcsObjectResponse) *GcsObjectResponse {
-		return &v
-	}).(GcsObjectResponsePtrOutput)
-}
-
 // Bucket of the Cloud Storage object.
 func (o GcsObjectResponseOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsObjectResponse) string { return v.Bucket }).(pulumi.StringOutput)
@@ -1696,60 +1072,6 @@ func (o GcsObjectResponseOutput) GenerationNumber() pulumi.StringOutput {
 // Name of the Cloud Storage object.
 func (o GcsObjectResponseOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsObjectResponse) string { return v.Object }).(pulumi.StringOutput)
-}
-
-type GcsObjectResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GcsObjectResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GcsObjectResponse)(nil)).Elem()
-}
-
-func (o GcsObjectResponsePtrOutput) ToGcsObjectResponsePtrOutput() GcsObjectResponsePtrOutput {
-	return o
-}
-
-func (o GcsObjectResponsePtrOutput) ToGcsObjectResponsePtrOutputWithContext(ctx context.Context) GcsObjectResponsePtrOutput {
-	return o
-}
-
-func (o GcsObjectResponsePtrOutput) Elem() GcsObjectResponseOutput {
-	return o.ApplyT(func(v *GcsObjectResponse) GcsObjectResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GcsObjectResponse
-		return ret
-	}).(GcsObjectResponseOutput)
-}
-
-// Bucket of the Cloud Storage object.
-func (o GcsObjectResponsePtrOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GcsObjectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Bucket
-	}).(pulumi.StringPtrOutput)
-}
-
-// Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-func (o GcsObjectResponsePtrOutput) GenerationNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GcsObjectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.GenerationNumber
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the Cloud Storage object.
-func (o GcsObjectResponsePtrOutput) Object() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GcsObjectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Object
-	}).(pulumi.StringPtrOutput)
 }
 
 // Googet patching is performed by running `googet update`.
@@ -1877,74 +1199,6 @@ func (o GooSettingsPtrOutput) Elem() GooSettingsOutput {
 type GooSettingsResponse struct {
 }
 
-// GooSettingsResponseInput is an input type that accepts GooSettingsResponseArgs and GooSettingsResponseOutput values.
-// You can construct a concrete instance of `GooSettingsResponseInput` via:
-//
-//          GooSettingsResponseArgs{...}
-type GooSettingsResponseInput interface {
-	pulumi.Input
-
-	ToGooSettingsResponseOutput() GooSettingsResponseOutput
-	ToGooSettingsResponseOutputWithContext(context.Context) GooSettingsResponseOutput
-}
-
-// Googet patching is performed by running `googet update`.
-type GooSettingsResponseArgs struct {
-}
-
-func (GooSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooSettingsResponse)(nil)).Elem()
-}
-
-func (i GooSettingsResponseArgs) ToGooSettingsResponseOutput() GooSettingsResponseOutput {
-	return i.ToGooSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i GooSettingsResponseArgs) ToGooSettingsResponseOutputWithContext(ctx context.Context) GooSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooSettingsResponseOutput)
-}
-
-func (i GooSettingsResponseArgs) ToGooSettingsResponsePtrOutput() GooSettingsResponsePtrOutput {
-	return i.ToGooSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooSettingsResponseArgs) ToGooSettingsResponsePtrOutputWithContext(ctx context.Context) GooSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooSettingsResponseOutput).ToGooSettingsResponsePtrOutputWithContext(ctx)
-}
-
-// GooSettingsResponsePtrInput is an input type that accepts GooSettingsResponseArgs, GooSettingsResponsePtr and GooSettingsResponsePtrOutput values.
-// You can construct a concrete instance of `GooSettingsResponsePtrInput` via:
-//
-//          GooSettingsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooSettingsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooSettingsResponsePtrOutput() GooSettingsResponsePtrOutput
-	ToGooSettingsResponsePtrOutputWithContext(context.Context) GooSettingsResponsePtrOutput
-}
-
-type gooSettingsResponsePtrType GooSettingsResponseArgs
-
-func GooSettingsResponsePtr(v *GooSettingsResponseArgs) GooSettingsResponsePtrInput {
-	return (*gooSettingsResponsePtrType)(v)
-}
-
-func (*gooSettingsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooSettingsResponse)(nil)).Elem()
-}
-
-func (i *gooSettingsResponsePtrType) ToGooSettingsResponsePtrOutput() GooSettingsResponsePtrOutput {
-	return i.ToGooSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *gooSettingsResponsePtrType) ToGooSettingsResponsePtrOutputWithContext(ctx context.Context) GooSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooSettingsResponsePtrOutput)
-}
-
 // Googet patching is performed by running `googet update`.
 type GooSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -1958,40 +1212,6 @@ func (o GooSettingsResponseOutput) ToGooSettingsResponseOutput() GooSettingsResp
 
 func (o GooSettingsResponseOutput) ToGooSettingsResponseOutputWithContext(ctx context.Context) GooSettingsResponseOutput {
 	return o
-}
-
-func (o GooSettingsResponseOutput) ToGooSettingsResponsePtrOutput() GooSettingsResponsePtrOutput {
-	return o.ToGooSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooSettingsResponseOutput) ToGooSettingsResponsePtrOutputWithContext(ctx context.Context) GooSettingsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooSettingsResponse) *GooSettingsResponse {
-		return &v
-	}).(GooSettingsResponsePtrOutput)
-}
-
-type GooSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooSettingsResponse)(nil)).Elem()
-}
-
-func (o GooSettingsResponsePtrOutput) ToGooSettingsResponsePtrOutput() GooSettingsResponsePtrOutput {
-	return o
-}
-
-func (o GooSettingsResponsePtrOutput) ToGooSettingsResponsePtrOutputWithContext(ctx context.Context) GooSettingsResponsePtrOutput {
-	return o
-}
-
-func (o GooSettingsResponsePtrOutput) Elem() GooSettingsResponseOutput {
-	return o.ApplyT(func(v *GooSettingsResponse) GooSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooSettingsResponse
-		return ret
-	}).(GooSettingsResponseOutput)
 }
 
 // Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
@@ -2033,47 +1253,6 @@ func (i MonthlyScheduleArgs) ToMonthlyScheduleOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MonthlyScheduleOutput)
 }
 
-func (i MonthlyScheduleArgs) ToMonthlySchedulePtrOutput() MonthlySchedulePtrOutput {
-	return i.ToMonthlySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i MonthlyScheduleArgs) ToMonthlySchedulePtrOutputWithContext(ctx context.Context) MonthlySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonthlyScheduleOutput).ToMonthlySchedulePtrOutputWithContext(ctx)
-}
-
-// MonthlySchedulePtrInput is an input type that accepts MonthlyScheduleArgs, MonthlySchedulePtr and MonthlySchedulePtrOutput values.
-// You can construct a concrete instance of `MonthlySchedulePtrInput` via:
-//
-//          MonthlyScheduleArgs{...}
-//
-//  or:
-//
-//          nil
-type MonthlySchedulePtrInput interface {
-	pulumi.Input
-
-	ToMonthlySchedulePtrOutput() MonthlySchedulePtrOutput
-	ToMonthlySchedulePtrOutputWithContext(context.Context) MonthlySchedulePtrOutput
-}
-
-type monthlySchedulePtrType MonthlyScheduleArgs
-
-func MonthlySchedulePtr(v *MonthlyScheduleArgs) MonthlySchedulePtrInput {
-	return (*monthlySchedulePtrType)(v)
-}
-
-func (*monthlySchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MonthlySchedule)(nil)).Elem()
-}
-
-func (i *monthlySchedulePtrType) ToMonthlySchedulePtrOutput() MonthlySchedulePtrOutput {
-	return i.ToMonthlySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *monthlySchedulePtrType) ToMonthlySchedulePtrOutputWithContext(ctx context.Context) MonthlySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonthlySchedulePtrOutput)
-}
-
 // Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
 type MonthlyScheduleOutput struct{ *pulumi.OutputState }
 
@@ -2089,16 +1268,6 @@ func (o MonthlyScheduleOutput) ToMonthlyScheduleOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o MonthlyScheduleOutput) ToMonthlySchedulePtrOutput() MonthlySchedulePtrOutput {
-	return o.ToMonthlySchedulePtrOutputWithContext(context.Background())
-}
-
-func (o MonthlyScheduleOutput) ToMonthlySchedulePtrOutputWithContext(ctx context.Context) MonthlySchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonthlySchedule) *MonthlySchedule {
-		return &v
-	}).(MonthlySchedulePtrOutput)
-}
-
 // One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
 func (o MonthlyScheduleOutput) MonthDay() pulumi.IntOutput {
 	return o.ApplyT(func(v MonthlySchedule) int { return v.MonthDay }).(pulumi.IntOutput)
@@ -2109,128 +1278,12 @@ func (o MonthlyScheduleOutput) WeekDayOfMonth() WeekDayOfMonthOutput {
 	return o.ApplyT(func(v MonthlySchedule) WeekDayOfMonth { return v.WeekDayOfMonth }).(WeekDayOfMonthOutput)
 }
 
-type MonthlySchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (MonthlySchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MonthlySchedule)(nil)).Elem()
-}
-
-func (o MonthlySchedulePtrOutput) ToMonthlySchedulePtrOutput() MonthlySchedulePtrOutput {
-	return o
-}
-
-func (o MonthlySchedulePtrOutput) ToMonthlySchedulePtrOutputWithContext(ctx context.Context) MonthlySchedulePtrOutput {
-	return o
-}
-
-func (o MonthlySchedulePtrOutput) Elem() MonthlyScheduleOutput {
-	return o.ApplyT(func(v *MonthlySchedule) MonthlySchedule {
-		if v != nil {
-			return *v
-		}
-		var ret MonthlySchedule
-		return ret
-	}).(MonthlyScheduleOutput)
-}
-
-// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
-func (o MonthlySchedulePtrOutput) MonthDay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MonthlySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MonthDay
-	}).(pulumi.IntPtrOutput)
-}
-
-// Week day in a month.
-func (o MonthlySchedulePtrOutput) WeekDayOfMonth() WeekDayOfMonthPtrOutput {
-	return o.ApplyT(func(v *MonthlySchedule) *WeekDayOfMonth {
-		if v == nil {
-			return nil
-		}
-		return &v.WeekDayOfMonth
-	}).(WeekDayOfMonthPtrOutput)
-}
-
 // Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
 type MonthlyScheduleResponse struct {
 	// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
 	MonthDay int `pulumi:"monthDay"`
 	// Week day in a month.
 	WeekDayOfMonth WeekDayOfMonthResponse `pulumi:"weekDayOfMonth"`
-}
-
-// MonthlyScheduleResponseInput is an input type that accepts MonthlyScheduleResponseArgs and MonthlyScheduleResponseOutput values.
-// You can construct a concrete instance of `MonthlyScheduleResponseInput` via:
-//
-//          MonthlyScheduleResponseArgs{...}
-type MonthlyScheduleResponseInput interface {
-	pulumi.Input
-
-	ToMonthlyScheduleResponseOutput() MonthlyScheduleResponseOutput
-	ToMonthlyScheduleResponseOutputWithContext(context.Context) MonthlyScheduleResponseOutput
-}
-
-// Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
-type MonthlyScheduleResponseArgs struct {
-	// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
-	MonthDay pulumi.IntInput `pulumi:"monthDay"`
-	// Week day in a month.
-	WeekDayOfMonth WeekDayOfMonthResponseInput `pulumi:"weekDayOfMonth"`
-}
-
-func (MonthlyScheduleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonthlyScheduleResponse)(nil)).Elem()
-}
-
-func (i MonthlyScheduleResponseArgs) ToMonthlyScheduleResponseOutput() MonthlyScheduleResponseOutput {
-	return i.ToMonthlyScheduleResponseOutputWithContext(context.Background())
-}
-
-func (i MonthlyScheduleResponseArgs) ToMonthlyScheduleResponseOutputWithContext(ctx context.Context) MonthlyScheduleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonthlyScheduleResponseOutput)
-}
-
-func (i MonthlyScheduleResponseArgs) ToMonthlyScheduleResponsePtrOutput() MonthlyScheduleResponsePtrOutput {
-	return i.ToMonthlyScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MonthlyScheduleResponseArgs) ToMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) MonthlyScheduleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonthlyScheduleResponseOutput).ToMonthlyScheduleResponsePtrOutputWithContext(ctx)
-}
-
-// MonthlyScheduleResponsePtrInput is an input type that accepts MonthlyScheduleResponseArgs, MonthlyScheduleResponsePtr and MonthlyScheduleResponsePtrOutput values.
-// You can construct a concrete instance of `MonthlyScheduleResponsePtrInput` via:
-//
-//          MonthlyScheduleResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MonthlyScheduleResponsePtrInput interface {
-	pulumi.Input
-
-	ToMonthlyScheduleResponsePtrOutput() MonthlyScheduleResponsePtrOutput
-	ToMonthlyScheduleResponsePtrOutputWithContext(context.Context) MonthlyScheduleResponsePtrOutput
-}
-
-type monthlyScheduleResponsePtrType MonthlyScheduleResponseArgs
-
-func MonthlyScheduleResponsePtr(v *MonthlyScheduleResponseArgs) MonthlyScheduleResponsePtrInput {
-	return (*monthlyScheduleResponsePtrType)(v)
-}
-
-func (*monthlyScheduleResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MonthlyScheduleResponse)(nil)).Elem()
-}
-
-func (i *monthlyScheduleResponsePtrType) ToMonthlyScheduleResponsePtrOutput() MonthlyScheduleResponsePtrOutput {
-	return i.ToMonthlyScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *monthlyScheduleResponsePtrType) ToMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) MonthlyScheduleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonthlyScheduleResponsePtrOutput)
 }
 
 // Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
@@ -2248,16 +1301,6 @@ func (o MonthlyScheduleResponseOutput) ToMonthlyScheduleResponseOutputWithContex
 	return o
 }
 
-func (o MonthlyScheduleResponseOutput) ToMonthlyScheduleResponsePtrOutput() MonthlyScheduleResponsePtrOutput {
-	return o.ToMonthlyScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MonthlyScheduleResponseOutput) ToMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) MonthlyScheduleResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonthlyScheduleResponse) *MonthlyScheduleResponse {
-		return &v
-	}).(MonthlyScheduleResponsePtrOutput)
-}
-
 // One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
 func (o MonthlyScheduleResponseOutput) MonthDay() pulumi.IntOutput {
 	return o.ApplyT(func(v MonthlyScheduleResponse) int { return v.MonthDay }).(pulumi.IntOutput)
@@ -2266,50 +1309,6 @@ func (o MonthlyScheduleResponseOutput) MonthDay() pulumi.IntOutput {
 // Week day in a month.
 func (o MonthlyScheduleResponseOutput) WeekDayOfMonth() WeekDayOfMonthResponseOutput {
 	return o.ApplyT(func(v MonthlyScheduleResponse) WeekDayOfMonthResponse { return v.WeekDayOfMonth }).(WeekDayOfMonthResponseOutput)
-}
-
-type MonthlyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MonthlyScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MonthlyScheduleResponse)(nil)).Elem()
-}
-
-func (o MonthlyScheduleResponsePtrOutput) ToMonthlyScheduleResponsePtrOutput() MonthlyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o MonthlyScheduleResponsePtrOutput) ToMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) MonthlyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o MonthlyScheduleResponsePtrOutput) Elem() MonthlyScheduleResponseOutput {
-	return o.ApplyT(func(v *MonthlyScheduleResponse) MonthlyScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MonthlyScheduleResponse
-		return ret
-	}).(MonthlyScheduleResponseOutput)
-}
-
-// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
-func (o MonthlyScheduleResponsePtrOutput) MonthDay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MonthlyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MonthDay
-	}).(pulumi.IntPtrOutput)
-}
-
-// Week day in a month.
-func (o MonthlyScheduleResponsePtrOutput) WeekDayOfMonth() WeekDayOfMonthResponsePtrOutput {
-	return o.ApplyT(func(v *MonthlyScheduleResponse) *WeekDayOfMonthResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.WeekDayOfMonth
-	}).(WeekDayOfMonthResponsePtrOutput)
 }
 
 // An OS policy defines the desired state configuration for a VM.
@@ -2495,47 +1494,6 @@ func (i OSPolicyAssignmentInstanceFilterArgs) ToOSPolicyAssignmentInstanceFilter
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentInstanceFilterOutput)
 }
 
-func (i OSPolicyAssignmentInstanceFilterArgs) ToOSPolicyAssignmentInstanceFilterPtrOutput() OSPolicyAssignmentInstanceFilterPtrOutput {
-	return i.ToOSPolicyAssignmentInstanceFilterPtrOutputWithContext(context.Background())
-}
-
-func (i OSPolicyAssignmentInstanceFilterArgs) ToOSPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentInstanceFilterOutput).ToOSPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx)
-}
-
-// OSPolicyAssignmentInstanceFilterPtrInput is an input type that accepts OSPolicyAssignmentInstanceFilterArgs, OSPolicyAssignmentInstanceFilterPtr and OSPolicyAssignmentInstanceFilterPtrOutput values.
-// You can construct a concrete instance of `OSPolicyAssignmentInstanceFilterPtrInput` via:
-//
-//          OSPolicyAssignmentInstanceFilterArgs{...}
-//
-//  or:
-//
-//          nil
-type OSPolicyAssignmentInstanceFilterPtrInput interface {
-	pulumi.Input
-
-	ToOSPolicyAssignmentInstanceFilterPtrOutput() OSPolicyAssignmentInstanceFilterPtrOutput
-	ToOSPolicyAssignmentInstanceFilterPtrOutputWithContext(context.Context) OSPolicyAssignmentInstanceFilterPtrOutput
-}
-
-type ospolicyAssignmentInstanceFilterPtrType OSPolicyAssignmentInstanceFilterArgs
-
-func OSPolicyAssignmentInstanceFilterPtr(v *OSPolicyAssignmentInstanceFilterArgs) OSPolicyAssignmentInstanceFilterPtrInput {
-	return (*ospolicyAssignmentInstanceFilterPtrType)(v)
-}
-
-func (*ospolicyAssignmentInstanceFilterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OSPolicyAssignmentInstanceFilter)(nil)).Elem()
-}
-
-func (i *ospolicyAssignmentInstanceFilterPtrType) ToOSPolicyAssignmentInstanceFilterPtrOutput() OSPolicyAssignmentInstanceFilterPtrOutput {
-	return i.ToOSPolicyAssignmentInstanceFilterPtrOutputWithContext(context.Background())
-}
-
-func (i *ospolicyAssignmentInstanceFilterPtrType) ToOSPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentInstanceFilterPtrOutput)
-}
-
 // Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will be selected if and only if it satisfies all of them.
 type OSPolicyAssignmentInstanceFilterOutput struct{ *pulumi.OutputState }
 
@@ -2549,16 +1507,6 @@ func (o OSPolicyAssignmentInstanceFilterOutput) ToOSPolicyAssignmentInstanceFilt
 
 func (o OSPolicyAssignmentInstanceFilterOutput) ToOSPolicyAssignmentInstanceFilterOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterOutput {
 	return o
-}
-
-func (o OSPolicyAssignmentInstanceFilterOutput) ToOSPolicyAssignmentInstanceFilterPtrOutput() OSPolicyAssignmentInstanceFilterPtrOutput {
-	return o.ToOSPolicyAssignmentInstanceFilterPtrOutputWithContext(context.Background())
-}
-
-func (o OSPolicyAssignmentInstanceFilterOutput) ToOSPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyAssignmentInstanceFilter) *OSPolicyAssignmentInstanceFilter {
-		return &v
-	}).(OSPolicyAssignmentInstanceFilterPtrOutput)
 }
 
 // Target all VMs in the project. If true, no other criteria is permitted.
@@ -2579,70 +1527,6 @@ func (o OSPolicyAssignmentInstanceFilterOutput) InclusionLabels() OSPolicyAssign
 // List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
 func (o OSPolicyAssignmentInstanceFilterOutput) Inventories() OSPolicyAssignmentInstanceFilterInventoryArrayOutput {
 	return o.ApplyT(func(v OSPolicyAssignmentInstanceFilter) []OSPolicyAssignmentInstanceFilterInventory {
-		return v.Inventories
-	}).(OSPolicyAssignmentInstanceFilterInventoryArrayOutput)
-}
-
-type OSPolicyAssignmentInstanceFilterPtrOutput struct{ *pulumi.OutputState }
-
-func (OSPolicyAssignmentInstanceFilterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OSPolicyAssignmentInstanceFilter)(nil)).Elem()
-}
-
-func (o OSPolicyAssignmentInstanceFilterPtrOutput) ToOSPolicyAssignmentInstanceFilterPtrOutput() OSPolicyAssignmentInstanceFilterPtrOutput {
-	return o
-}
-
-func (o OSPolicyAssignmentInstanceFilterPtrOutput) ToOSPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterPtrOutput {
-	return o
-}
-
-func (o OSPolicyAssignmentInstanceFilterPtrOutput) Elem() OSPolicyAssignmentInstanceFilterOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentInstanceFilter) OSPolicyAssignmentInstanceFilter {
-		if v != nil {
-			return *v
-		}
-		var ret OSPolicyAssignmentInstanceFilter
-		return ret
-	}).(OSPolicyAssignmentInstanceFilterOutput)
-}
-
-// Target all VMs in the project. If true, no other criteria is permitted.
-func (o OSPolicyAssignmentInstanceFilterPtrOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentInstanceFilter) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.All
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
-func (o OSPolicyAssignmentInstanceFilterPtrOutput) ExclusionLabels() OSPolicyAssignmentLabelSetArrayOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentInstanceFilter) []OSPolicyAssignmentLabelSet {
-		if v == nil {
-			return nil
-		}
-		return v.ExclusionLabels
-	}).(OSPolicyAssignmentLabelSetArrayOutput)
-}
-
-// List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
-func (o OSPolicyAssignmentInstanceFilterPtrOutput) InclusionLabels() OSPolicyAssignmentLabelSetArrayOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentInstanceFilter) []OSPolicyAssignmentLabelSet {
-		if v == nil {
-			return nil
-		}
-		return v.InclusionLabels
-	}).(OSPolicyAssignmentLabelSetArrayOutput)
-}
-
-// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
-func (o OSPolicyAssignmentInstanceFilterPtrOutput) Inventories() OSPolicyAssignmentInstanceFilterInventoryArrayOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentInstanceFilter) []OSPolicyAssignmentInstanceFilterInventory {
-		if v == nil {
-			return nil
-		}
 		return v.Inventories
 	}).(OSPolicyAssignmentInstanceFilterInventoryArrayOutput)
 }
@@ -2764,62 +1648,6 @@ type OSPolicyAssignmentInstanceFilterInventoryResponse struct {
 	OsVersion string `pulumi:"osVersion"`
 }
 
-// OSPolicyAssignmentInstanceFilterInventoryResponseInput is an input type that accepts OSPolicyAssignmentInstanceFilterInventoryResponseArgs and OSPolicyAssignmentInstanceFilterInventoryResponseOutput values.
-// You can construct a concrete instance of `OSPolicyAssignmentInstanceFilterInventoryResponseInput` via:
-//
-//          OSPolicyAssignmentInstanceFilterInventoryResponseArgs{...}
-type OSPolicyAssignmentInstanceFilterInventoryResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyAssignmentInstanceFilterInventoryResponseOutput() OSPolicyAssignmentInstanceFilterInventoryResponseOutput
-	ToOSPolicyAssignmentInstanceFilterInventoryResponseOutputWithContext(context.Context) OSPolicyAssignmentInstanceFilterInventoryResponseOutput
-}
-
-// VM inventory details.
-type OSPolicyAssignmentInstanceFilterInventoryResponseArgs struct {
-	// The OS short name
-	OsShortName pulumi.StringInput `pulumi:"osShortName"`
-	// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
-	OsVersion pulumi.StringInput `pulumi:"osVersion"`
-}
-
-func (OSPolicyAssignmentInstanceFilterInventoryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyAssignmentInstanceFilterInventoryResponse)(nil)).Elem()
-}
-
-func (i OSPolicyAssignmentInstanceFilterInventoryResponseArgs) ToOSPolicyAssignmentInstanceFilterInventoryResponseOutput() OSPolicyAssignmentInstanceFilterInventoryResponseOutput {
-	return i.ToOSPolicyAssignmentInstanceFilterInventoryResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyAssignmentInstanceFilterInventoryResponseArgs) ToOSPolicyAssignmentInstanceFilterInventoryResponseOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterInventoryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentInstanceFilterInventoryResponseOutput)
-}
-
-// OSPolicyAssignmentInstanceFilterInventoryResponseArrayInput is an input type that accepts OSPolicyAssignmentInstanceFilterInventoryResponseArray and OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput values.
-// You can construct a concrete instance of `OSPolicyAssignmentInstanceFilterInventoryResponseArrayInput` via:
-//
-//          OSPolicyAssignmentInstanceFilterInventoryResponseArray{ OSPolicyAssignmentInstanceFilterInventoryResponseArgs{...} }
-type OSPolicyAssignmentInstanceFilterInventoryResponseArrayInput interface {
-	pulumi.Input
-
-	ToOSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput() OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput
-	ToOSPolicyAssignmentInstanceFilterInventoryResponseArrayOutputWithContext(context.Context) OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput
-}
-
-type OSPolicyAssignmentInstanceFilterInventoryResponseArray []OSPolicyAssignmentInstanceFilterInventoryResponseInput
-
-func (OSPolicyAssignmentInstanceFilterInventoryResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OSPolicyAssignmentInstanceFilterInventoryResponse)(nil)).Elem()
-}
-
-func (i OSPolicyAssignmentInstanceFilterInventoryResponseArray) ToOSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput() OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput {
-	return i.ToOSPolicyAssignmentInstanceFilterInventoryResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OSPolicyAssignmentInstanceFilterInventoryResponseArray) ToOSPolicyAssignmentInstanceFilterInventoryResponseArrayOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput)
-}
-
 // VM inventory details.
 type OSPolicyAssignmentInstanceFilterInventoryResponseOutput struct{ *pulumi.OutputState }
 
@@ -2877,82 +1705,6 @@ type OSPolicyAssignmentInstanceFilterResponse struct {
 	Inventories []OSPolicyAssignmentInstanceFilterInventoryResponse `pulumi:"inventories"`
 }
 
-// OSPolicyAssignmentInstanceFilterResponseInput is an input type that accepts OSPolicyAssignmentInstanceFilterResponseArgs and OSPolicyAssignmentInstanceFilterResponseOutput values.
-// You can construct a concrete instance of `OSPolicyAssignmentInstanceFilterResponseInput` via:
-//
-//          OSPolicyAssignmentInstanceFilterResponseArgs{...}
-type OSPolicyAssignmentInstanceFilterResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyAssignmentInstanceFilterResponseOutput() OSPolicyAssignmentInstanceFilterResponseOutput
-	ToOSPolicyAssignmentInstanceFilterResponseOutputWithContext(context.Context) OSPolicyAssignmentInstanceFilterResponseOutput
-}
-
-// Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will be selected if and only if it satisfies all of them.
-type OSPolicyAssignmentInstanceFilterResponseArgs struct {
-	// Target all VMs in the project. If true, no other criteria is permitted.
-	All pulumi.BoolInput `pulumi:"all"`
-	// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
-	ExclusionLabels OSPolicyAssignmentLabelSetResponseArrayInput `pulumi:"exclusionLabels"`
-	// List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
-	InclusionLabels OSPolicyAssignmentLabelSetResponseArrayInput `pulumi:"inclusionLabels"`
-	// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
-	Inventories OSPolicyAssignmentInstanceFilterInventoryResponseArrayInput `pulumi:"inventories"`
-}
-
-func (OSPolicyAssignmentInstanceFilterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyAssignmentInstanceFilterResponse)(nil)).Elem()
-}
-
-func (i OSPolicyAssignmentInstanceFilterResponseArgs) ToOSPolicyAssignmentInstanceFilterResponseOutput() OSPolicyAssignmentInstanceFilterResponseOutput {
-	return i.ToOSPolicyAssignmentInstanceFilterResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyAssignmentInstanceFilterResponseArgs) ToOSPolicyAssignmentInstanceFilterResponseOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentInstanceFilterResponseOutput)
-}
-
-func (i OSPolicyAssignmentInstanceFilterResponseArgs) ToOSPolicyAssignmentInstanceFilterResponsePtrOutput() OSPolicyAssignmentInstanceFilterResponsePtrOutput {
-	return i.ToOSPolicyAssignmentInstanceFilterResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OSPolicyAssignmentInstanceFilterResponseArgs) ToOSPolicyAssignmentInstanceFilterResponsePtrOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentInstanceFilterResponseOutput).ToOSPolicyAssignmentInstanceFilterResponsePtrOutputWithContext(ctx)
-}
-
-// OSPolicyAssignmentInstanceFilterResponsePtrInput is an input type that accepts OSPolicyAssignmentInstanceFilterResponseArgs, OSPolicyAssignmentInstanceFilterResponsePtr and OSPolicyAssignmentInstanceFilterResponsePtrOutput values.
-// You can construct a concrete instance of `OSPolicyAssignmentInstanceFilterResponsePtrInput` via:
-//
-//          OSPolicyAssignmentInstanceFilterResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OSPolicyAssignmentInstanceFilterResponsePtrInput interface {
-	pulumi.Input
-
-	ToOSPolicyAssignmentInstanceFilterResponsePtrOutput() OSPolicyAssignmentInstanceFilterResponsePtrOutput
-	ToOSPolicyAssignmentInstanceFilterResponsePtrOutputWithContext(context.Context) OSPolicyAssignmentInstanceFilterResponsePtrOutput
-}
-
-type ospolicyAssignmentInstanceFilterResponsePtrType OSPolicyAssignmentInstanceFilterResponseArgs
-
-func OSPolicyAssignmentInstanceFilterResponsePtr(v *OSPolicyAssignmentInstanceFilterResponseArgs) OSPolicyAssignmentInstanceFilterResponsePtrInput {
-	return (*ospolicyAssignmentInstanceFilterResponsePtrType)(v)
-}
-
-func (*ospolicyAssignmentInstanceFilterResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OSPolicyAssignmentInstanceFilterResponse)(nil)).Elem()
-}
-
-func (i *ospolicyAssignmentInstanceFilterResponsePtrType) ToOSPolicyAssignmentInstanceFilterResponsePtrOutput() OSPolicyAssignmentInstanceFilterResponsePtrOutput {
-	return i.ToOSPolicyAssignmentInstanceFilterResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *ospolicyAssignmentInstanceFilterResponsePtrType) ToOSPolicyAssignmentInstanceFilterResponsePtrOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentInstanceFilterResponsePtrOutput)
-}
-
 // Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will be selected if and only if it satisfies all of them.
 type OSPolicyAssignmentInstanceFilterResponseOutput struct{ *pulumi.OutputState }
 
@@ -2966,16 +1718,6 @@ func (o OSPolicyAssignmentInstanceFilterResponseOutput) ToOSPolicyAssignmentInst
 
 func (o OSPolicyAssignmentInstanceFilterResponseOutput) ToOSPolicyAssignmentInstanceFilterResponseOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterResponseOutput {
 	return o
-}
-
-func (o OSPolicyAssignmentInstanceFilterResponseOutput) ToOSPolicyAssignmentInstanceFilterResponsePtrOutput() OSPolicyAssignmentInstanceFilterResponsePtrOutput {
-	return o.ToOSPolicyAssignmentInstanceFilterResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OSPolicyAssignmentInstanceFilterResponseOutput) ToOSPolicyAssignmentInstanceFilterResponsePtrOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyAssignmentInstanceFilterResponse) *OSPolicyAssignmentInstanceFilterResponse {
-		return &v
-	}).(OSPolicyAssignmentInstanceFilterResponsePtrOutput)
 }
 
 // Target all VMs in the project. If true, no other criteria is permitted.
@@ -3000,70 +1742,6 @@ func (o OSPolicyAssignmentInstanceFilterResponseOutput) InclusionLabels() OSPoli
 // List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
 func (o OSPolicyAssignmentInstanceFilterResponseOutput) Inventories() OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput {
 	return o.ApplyT(func(v OSPolicyAssignmentInstanceFilterResponse) []OSPolicyAssignmentInstanceFilterInventoryResponse {
-		return v.Inventories
-	}).(OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput)
-}
-
-type OSPolicyAssignmentInstanceFilterResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OSPolicyAssignmentInstanceFilterResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OSPolicyAssignmentInstanceFilterResponse)(nil)).Elem()
-}
-
-func (o OSPolicyAssignmentInstanceFilterResponsePtrOutput) ToOSPolicyAssignmentInstanceFilterResponsePtrOutput() OSPolicyAssignmentInstanceFilterResponsePtrOutput {
-	return o
-}
-
-func (o OSPolicyAssignmentInstanceFilterResponsePtrOutput) ToOSPolicyAssignmentInstanceFilterResponsePtrOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterResponsePtrOutput {
-	return o
-}
-
-func (o OSPolicyAssignmentInstanceFilterResponsePtrOutput) Elem() OSPolicyAssignmentInstanceFilterResponseOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentInstanceFilterResponse) OSPolicyAssignmentInstanceFilterResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OSPolicyAssignmentInstanceFilterResponse
-		return ret
-	}).(OSPolicyAssignmentInstanceFilterResponseOutput)
-}
-
-// Target all VMs in the project. If true, no other criteria is permitted.
-func (o OSPolicyAssignmentInstanceFilterResponsePtrOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentInstanceFilterResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.All
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
-func (o OSPolicyAssignmentInstanceFilterResponsePtrOutput) ExclusionLabels() OSPolicyAssignmentLabelSetResponseArrayOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentInstanceFilterResponse) []OSPolicyAssignmentLabelSetResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ExclusionLabels
-	}).(OSPolicyAssignmentLabelSetResponseArrayOutput)
-}
-
-// List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
-func (o OSPolicyAssignmentInstanceFilterResponsePtrOutput) InclusionLabels() OSPolicyAssignmentLabelSetResponseArrayOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentInstanceFilterResponse) []OSPolicyAssignmentLabelSetResponse {
-		if v == nil {
-			return nil
-		}
-		return v.InclusionLabels
-	}).(OSPolicyAssignmentLabelSetResponseArrayOutput)
-}
-
-// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
-func (o OSPolicyAssignmentInstanceFilterResponsePtrOutput) Inventories() OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentInstanceFilterResponse) []OSPolicyAssignmentInstanceFilterInventoryResponse {
-		if v == nil {
-			return nil
-		}
 		return v.Inventories
 	}).(OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput)
 }
@@ -3174,60 +1852,6 @@ type OSPolicyAssignmentLabelSetResponse struct {
 	Labels map[string]string `pulumi:"labels"`
 }
 
-// OSPolicyAssignmentLabelSetResponseInput is an input type that accepts OSPolicyAssignmentLabelSetResponseArgs and OSPolicyAssignmentLabelSetResponseOutput values.
-// You can construct a concrete instance of `OSPolicyAssignmentLabelSetResponseInput` via:
-//
-//          OSPolicyAssignmentLabelSetResponseArgs{...}
-type OSPolicyAssignmentLabelSetResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyAssignmentLabelSetResponseOutput() OSPolicyAssignmentLabelSetResponseOutput
-	ToOSPolicyAssignmentLabelSetResponseOutputWithContext(context.Context) OSPolicyAssignmentLabelSetResponseOutput
-}
-
-// Message representing label set. * A label is a key value pair set for a VM. * A LabelSet is a set of labels. * Labels within a LabelSet are ANDed. In other words, a LabelSet is applicable for a VM only if it matches all the labels in the LabelSet. * Example: A LabelSet with 2 labels: `env=prod` and `type=webserver` will only be applicable for those VMs with both labels present.
-type OSPolicyAssignmentLabelSetResponseArgs struct {
-	// Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-}
-
-func (OSPolicyAssignmentLabelSetResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyAssignmentLabelSetResponse)(nil)).Elem()
-}
-
-func (i OSPolicyAssignmentLabelSetResponseArgs) ToOSPolicyAssignmentLabelSetResponseOutput() OSPolicyAssignmentLabelSetResponseOutput {
-	return i.ToOSPolicyAssignmentLabelSetResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyAssignmentLabelSetResponseArgs) ToOSPolicyAssignmentLabelSetResponseOutputWithContext(ctx context.Context) OSPolicyAssignmentLabelSetResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentLabelSetResponseOutput)
-}
-
-// OSPolicyAssignmentLabelSetResponseArrayInput is an input type that accepts OSPolicyAssignmentLabelSetResponseArray and OSPolicyAssignmentLabelSetResponseArrayOutput values.
-// You can construct a concrete instance of `OSPolicyAssignmentLabelSetResponseArrayInput` via:
-//
-//          OSPolicyAssignmentLabelSetResponseArray{ OSPolicyAssignmentLabelSetResponseArgs{...} }
-type OSPolicyAssignmentLabelSetResponseArrayInput interface {
-	pulumi.Input
-
-	ToOSPolicyAssignmentLabelSetResponseArrayOutput() OSPolicyAssignmentLabelSetResponseArrayOutput
-	ToOSPolicyAssignmentLabelSetResponseArrayOutputWithContext(context.Context) OSPolicyAssignmentLabelSetResponseArrayOutput
-}
-
-type OSPolicyAssignmentLabelSetResponseArray []OSPolicyAssignmentLabelSetResponseInput
-
-func (OSPolicyAssignmentLabelSetResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OSPolicyAssignmentLabelSetResponse)(nil)).Elem()
-}
-
-func (i OSPolicyAssignmentLabelSetResponseArray) ToOSPolicyAssignmentLabelSetResponseArrayOutput() OSPolicyAssignmentLabelSetResponseArrayOutput {
-	return i.ToOSPolicyAssignmentLabelSetResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OSPolicyAssignmentLabelSetResponseArray) ToOSPolicyAssignmentLabelSetResponseArrayOutputWithContext(ctx context.Context) OSPolicyAssignmentLabelSetResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentLabelSetResponseArrayOutput)
-}
-
 // Message representing label set. * A label is a key value pair set for a VM. * A LabelSet is a set of labels. * Labels within a LabelSet are ANDed. In other words, a LabelSet is applicable for a VM only if it matches all the labels in the LabelSet. * Example: A LabelSet with 2 labels: `env=prod` and `type=webserver` will only be applicable for those VMs with both labels present.
 type OSPolicyAssignmentLabelSetResponseOutput struct{ *pulumi.OutputState }
 
@@ -3307,47 +1931,6 @@ func (i OSPolicyAssignmentRolloutArgs) ToOSPolicyAssignmentRolloutOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentRolloutOutput)
 }
 
-func (i OSPolicyAssignmentRolloutArgs) ToOSPolicyAssignmentRolloutPtrOutput() OSPolicyAssignmentRolloutPtrOutput {
-	return i.ToOSPolicyAssignmentRolloutPtrOutputWithContext(context.Background())
-}
-
-func (i OSPolicyAssignmentRolloutArgs) ToOSPolicyAssignmentRolloutPtrOutputWithContext(ctx context.Context) OSPolicyAssignmentRolloutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentRolloutOutput).ToOSPolicyAssignmentRolloutPtrOutputWithContext(ctx)
-}
-
-// OSPolicyAssignmentRolloutPtrInput is an input type that accepts OSPolicyAssignmentRolloutArgs, OSPolicyAssignmentRolloutPtr and OSPolicyAssignmentRolloutPtrOutput values.
-// You can construct a concrete instance of `OSPolicyAssignmentRolloutPtrInput` via:
-//
-//          OSPolicyAssignmentRolloutArgs{...}
-//
-//  or:
-//
-//          nil
-type OSPolicyAssignmentRolloutPtrInput interface {
-	pulumi.Input
-
-	ToOSPolicyAssignmentRolloutPtrOutput() OSPolicyAssignmentRolloutPtrOutput
-	ToOSPolicyAssignmentRolloutPtrOutputWithContext(context.Context) OSPolicyAssignmentRolloutPtrOutput
-}
-
-type ospolicyAssignmentRolloutPtrType OSPolicyAssignmentRolloutArgs
-
-func OSPolicyAssignmentRolloutPtr(v *OSPolicyAssignmentRolloutArgs) OSPolicyAssignmentRolloutPtrInput {
-	return (*ospolicyAssignmentRolloutPtrType)(v)
-}
-
-func (*ospolicyAssignmentRolloutPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OSPolicyAssignmentRollout)(nil)).Elem()
-}
-
-func (i *ospolicyAssignmentRolloutPtrType) ToOSPolicyAssignmentRolloutPtrOutput() OSPolicyAssignmentRolloutPtrOutput {
-	return i.ToOSPolicyAssignmentRolloutPtrOutputWithContext(context.Background())
-}
-
-func (i *ospolicyAssignmentRolloutPtrType) ToOSPolicyAssignmentRolloutPtrOutputWithContext(ctx context.Context) OSPolicyAssignmentRolloutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentRolloutPtrOutput)
-}
-
 // Message to configure the rollout at the zonal level for the OS policy assignment.
 type OSPolicyAssignmentRolloutOutput struct{ *pulumi.OutputState }
 
@@ -3363,16 +1946,6 @@ func (o OSPolicyAssignmentRolloutOutput) ToOSPolicyAssignmentRolloutOutputWithCo
 	return o
 }
 
-func (o OSPolicyAssignmentRolloutOutput) ToOSPolicyAssignmentRolloutPtrOutput() OSPolicyAssignmentRolloutPtrOutput {
-	return o.ToOSPolicyAssignmentRolloutPtrOutputWithContext(context.Background())
-}
-
-func (o OSPolicyAssignmentRolloutOutput) ToOSPolicyAssignmentRolloutPtrOutputWithContext(ctx context.Context) OSPolicyAssignmentRolloutPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyAssignmentRollout) *OSPolicyAssignmentRollout {
-		return &v
-	}).(OSPolicyAssignmentRolloutPtrOutput)
-}
-
 // The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
 func (o OSPolicyAssignmentRolloutOutput) DisruptionBudget() FixedOrPercentOutput {
 	return o.ApplyT(func(v OSPolicyAssignmentRollout) FixedOrPercent { return v.DisruptionBudget }).(FixedOrPercentOutput)
@@ -3383,128 +1956,12 @@ func (o OSPolicyAssignmentRolloutOutput) MinWaitDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyAssignmentRollout) string { return v.MinWaitDuration }).(pulumi.StringOutput)
 }
 
-type OSPolicyAssignmentRolloutPtrOutput struct{ *pulumi.OutputState }
-
-func (OSPolicyAssignmentRolloutPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OSPolicyAssignmentRollout)(nil)).Elem()
-}
-
-func (o OSPolicyAssignmentRolloutPtrOutput) ToOSPolicyAssignmentRolloutPtrOutput() OSPolicyAssignmentRolloutPtrOutput {
-	return o
-}
-
-func (o OSPolicyAssignmentRolloutPtrOutput) ToOSPolicyAssignmentRolloutPtrOutputWithContext(ctx context.Context) OSPolicyAssignmentRolloutPtrOutput {
-	return o
-}
-
-func (o OSPolicyAssignmentRolloutPtrOutput) Elem() OSPolicyAssignmentRolloutOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentRollout) OSPolicyAssignmentRollout {
-		if v != nil {
-			return *v
-		}
-		var ret OSPolicyAssignmentRollout
-		return ret
-	}).(OSPolicyAssignmentRolloutOutput)
-}
-
-// The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
-func (o OSPolicyAssignmentRolloutPtrOutput) DisruptionBudget() FixedOrPercentPtrOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentRollout) *FixedOrPercent {
-		if v == nil {
-			return nil
-		}
-		return &v.DisruptionBudget
-	}).(FixedOrPercentPtrOutput)
-}
-
-// This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruption_budget` at least until this duration of time has passed after configuration changes are applied.
-func (o OSPolicyAssignmentRolloutPtrOutput) MinWaitDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentRollout) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MinWaitDuration
-	}).(pulumi.StringPtrOutput)
-}
-
 // Message to configure the rollout at the zonal level for the OS policy assignment.
 type OSPolicyAssignmentRolloutResponse struct {
 	// The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
 	DisruptionBudget FixedOrPercentResponse `pulumi:"disruptionBudget"`
 	// This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruption_budget` at least until this duration of time has passed after configuration changes are applied.
 	MinWaitDuration string `pulumi:"minWaitDuration"`
-}
-
-// OSPolicyAssignmentRolloutResponseInput is an input type that accepts OSPolicyAssignmentRolloutResponseArgs and OSPolicyAssignmentRolloutResponseOutput values.
-// You can construct a concrete instance of `OSPolicyAssignmentRolloutResponseInput` via:
-//
-//          OSPolicyAssignmentRolloutResponseArgs{...}
-type OSPolicyAssignmentRolloutResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyAssignmentRolloutResponseOutput() OSPolicyAssignmentRolloutResponseOutput
-	ToOSPolicyAssignmentRolloutResponseOutputWithContext(context.Context) OSPolicyAssignmentRolloutResponseOutput
-}
-
-// Message to configure the rollout at the zonal level for the OS policy assignment.
-type OSPolicyAssignmentRolloutResponseArgs struct {
-	// The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
-	DisruptionBudget FixedOrPercentResponseInput `pulumi:"disruptionBudget"`
-	// This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruption_budget` at least until this duration of time has passed after configuration changes are applied.
-	MinWaitDuration pulumi.StringInput `pulumi:"minWaitDuration"`
-}
-
-func (OSPolicyAssignmentRolloutResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyAssignmentRolloutResponse)(nil)).Elem()
-}
-
-func (i OSPolicyAssignmentRolloutResponseArgs) ToOSPolicyAssignmentRolloutResponseOutput() OSPolicyAssignmentRolloutResponseOutput {
-	return i.ToOSPolicyAssignmentRolloutResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyAssignmentRolloutResponseArgs) ToOSPolicyAssignmentRolloutResponseOutputWithContext(ctx context.Context) OSPolicyAssignmentRolloutResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentRolloutResponseOutput)
-}
-
-func (i OSPolicyAssignmentRolloutResponseArgs) ToOSPolicyAssignmentRolloutResponsePtrOutput() OSPolicyAssignmentRolloutResponsePtrOutput {
-	return i.ToOSPolicyAssignmentRolloutResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OSPolicyAssignmentRolloutResponseArgs) ToOSPolicyAssignmentRolloutResponsePtrOutputWithContext(ctx context.Context) OSPolicyAssignmentRolloutResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentRolloutResponseOutput).ToOSPolicyAssignmentRolloutResponsePtrOutputWithContext(ctx)
-}
-
-// OSPolicyAssignmentRolloutResponsePtrInput is an input type that accepts OSPolicyAssignmentRolloutResponseArgs, OSPolicyAssignmentRolloutResponsePtr and OSPolicyAssignmentRolloutResponsePtrOutput values.
-// You can construct a concrete instance of `OSPolicyAssignmentRolloutResponsePtrInput` via:
-//
-//          OSPolicyAssignmentRolloutResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OSPolicyAssignmentRolloutResponsePtrInput interface {
-	pulumi.Input
-
-	ToOSPolicyAssignmentRolloutResponsePtrOutput() OSPolicyAssignmentRolloutResponsePtrOutput
-	ToOSPolicyAssignmentRolloutResponsePtrOutputWithContext(context.Context) OSPolicyAssignmentRolloutResponsePtrOutput
-}
-
-type ospolicyAssignmentRolloutResponsePtrType OSPolicyAssignmentRolloutResponseArgs
-
-func OSPolicyAssignmentRolloutResponsePtr(v *OSPolicyAssignmentRolloutResponseArgs) OSPolicyAssignmentRolloutResponsePtrInput {
-	return (*ospolicyAssignmentRolloutResponsePtrType)(v)
-}
-
-func (*ospolicyAssignmentRolloutResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OSPolicyAssignmentRolloutResponse)(nil)).Elem()
-}
-
-func (i *ospolicyAssignmentRolloutResponsePtrType) ToOSPolicyAssignmentRolloutResponsePtrOutput() OSPolicyAssignmentRolloutResponsePtrOutput {
-	return i.ToOSPolicyAssignmentRolloutResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *ospolicyAssignmentRolloutResponsePtrType) ToOSPolicyAssignmentRolloutResponsePtrOutputWithContext(ctx context.Context) OSPolicyAssignmentRolloutResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentRolloutResponsePtrOutput)
 }
 
 // Message to configure the rollout at the zonal level for the OS policy assignment.
@@ -3522,16 +1979,6 @@ func (o OSPolicyAssignmentRolloutResponseOutput) ToOSPolicyAssignmentRolloutResp
 	return o
 }
 
-func (o OSPolicyAssignmentRolloutResponseOutput) ToOSPolicyAssignmentRolloutResponsePtrOutput() OSPolicyAssignmentRolloutResponsePtrOutput {
-	return o.ToOSPolicyAssignmentRolloutResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OSPolicyAssignmentRolloutResponseOutput) ToOSPolicyAssignmentRolloutResponsePtrOutputWithContext(ctx context.Context) OSPolicyAssignmentRolloutResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyAssignmentRolloutResponse) *OSPolicyAssignmentRolloutResponse {
-		return &v
-	}).(OSPolicyAssignmentRolloutResponsePtrOutput)
-}
-
 // The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
 func (o OSPolicyAssignmentRolloutResponseOutput) DisruptionBudget() FixedOrPercentResponseOutput {
 	return o.ApplyT(func(v OSPolicyAssignmentRolloutResponse) FixedOrPercentResponse { return v.DisruptionBudget }).(FixedOrPercentResponseOutput)
@@ -3540,50 +1987,6 @@ func (o OSPolicyAssignmentRolloutResponseOutput) DisruptionBudget() FixedOrPerce
 // This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruption_budget` at least until this duration of time has passed after configuration changes are applied.
 func (o OSPolicyAssignmentRolloutResponseOutput) MinWaitDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyAssignmentRolloutResponse) string { return v.MinWaitDuration }).(pulumi.StringOutput)
-}
-
-type OSPolicyAssignmentRolloutResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OSPolicyAssignmentRolloutResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OSPolicyAssignmentRolloutResponse)(nil)).Elem()
-}
-
-func (o OSPolicyAssignmentRolloutResponsePtrOutput) ToOSPolicyAssignmentRolloutResponsePtrOutput() OSPolicyAssignmentRolloutResponsePtrOutput {
-	return o
-}
-
-func (o OSPolicyAssignmentRolloutResponsePtrOutput) ToOSPolicyAssignmentRolloutResponsePtrOutputWithContext(ctx context.Context) OSPolicyAssignmentRolloutResponsePtrOutput {
-	return o
-}
-
-func (o OSPolicyAssignmentRolloutResponsePtrOutput) Elem() OSPolicyAssignmentRolloutResponseOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentRolloutResponse) OSPolicyAssignmentRolloutResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OSPolicyAssignmentRolloutResponse
-		return ret
-	}).(OSPolicyAssignmentRolloutResponseOutput)
-}
-
-// The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
-func (o OSPolicyAssignmentRolloutResponsePtrOutput) DisruptionBudget() FixedOrPercentResponsePtrOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentRolloutResponse) *FixedOrPercentResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DisruptionBudget
-	}).(FixedOrPercentResponsePtrOutput)
-}
-
-// This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruption_budget` at least until this duration of time has passed after configuration changes are applied.
-func (o OSPolicyAssignmentRolloutResponsePtrOutput) MinWaitDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentRolloutResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MinWaitDuration
-	}).(pulumi.StringPtrOutput)
 }
 
 // Filtering criteria to select VMs based on inventory details.
@@ -3701,62 +2104,6 @@ type OSPolicyInventoryFilterResponse struct {
 	OsShortName string `pulumi:"osShortName"`
 	// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
 	OsVersion string `pulumi:"osVersion"`
-}
-
-// OSPolicyInventoryFilterResponseInput is an input type that accepts OSPolicyInventoryFilterResponseArgs and OSPolicyInventoryFilterResponseOutput values.
-// You can construct a concrete instance of `OSPolicyInventoryFilterResponseInput` via:
-//
-//          OSPolicyInventoryFilterResponseArgs{...}
-type OSPolicyInventoryFilterResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyInventoryFilterResponseOutput() OSPolicyInventoryFilterResponseOutput
-	ToOSPolicyInventoryFilterResponseOutputWithContext(context.Context) OSPolicyInventoryFilterResponseOutput
-}
-
-// Filtering criteria to select VMs based on inventory details.
-type OSPolicyInventoryFilterResponseArgs struct {
-	// The OS short name
-	OsShortName pulumi.StringInput `pulumi:"osShortName"`
-	// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
-	OsVersion pulumi.StringInput `pulumi:"osVersion"`
-}
-
-func (OSPolicyInventoryFilterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyInventoryFilterResponse)(nil)).Elem()
-}
-
-func (i OSPolicyInventoryFilterResponseArgs) ToOSPolicyInventoryFilterResponseOutput() OSPolicyInventoryFilterResponseOutput {
-	return i.ToOSPolicyInventoryFilterResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyInventoryFilterResponseArgs) ToOSPolicyInventoryFilterResponseOutputWithContext(ctx context.Context) OSPolicyInventoryFilterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyInventoryFilterResponseOutput)
-}
-
-// OSPolicyInventoryFilterResponseArrayInput is an input type that accepts OSPolicyInventoryFilterResponseArray and OSPolicyInventoryFilterResponseArrayOutput values.
-// You can construct a concrete instance of `OSPolicyInventoryFilterResponseArrayInput` via:
-//
-//          OSPolicyInventoryFilterResponseArray{ OSPolicyInventoryFilterResponseArgs{...} }
-type OSPolicyInventoryFilterResponseArrayInput interface {
-	pulumi.Input
-
-	ToOSPolicyInventoryFilterResponseArrayOutput() OSPolicyInventoryFilterResponseArrayOutput
-	ToOSPolicyInventoryFilterResponseArrayOutputWithContext(context.Context) OSPolicyInventoryFilterResponseArrayOutput
-}
-
-type OSPolicyInventoryFilterResponseArray []OSPolicyInventoryFilterResponseInput
-
-func (OSPolicyInventoryFilterResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OSPolicyInventoryFilterResponse)(nil)).Elem()
-}
-
-func (i OSPolicyInventoryFilterResponseArray) ToOSPolicyInventoryFilterResponseArrayOutput() OSPolicyInventoryFilterResponseArrayOutput {
-	return i.ToOSPolicyInventoryFilterResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OSPolicyInventoryFilterResponseArray) ToOSPolicyInventoryFilterResponseArrayOutputWithContext(ctx context.Context) OSPolicyInventoryFilterResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyInventoryFilterResponseArrayOutput)
 }
 
 // Filtering criteria to select VMs based on inventory details.
@@ -4331,43 +2678,6 @@ type OSPolicyResourceExecResourceExecResponse struct {
 	Script string `pulumi:"script"`
 }
 
-// OSPolicyResourceExecResourceExecResponseInput is an input type that accepts OSPolicyResourceExecResourceExecResponseArgs and OSPolicyResourceExecResourceExecResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourceExecResourceExecResponseInput` via:
-//
-//          OSPolicyResourceExecResourceExecResponseArgs{...}
-type OSPolicyResourceExecResourceExecResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceExecResourceExecResponseOutput() OSPolicyResourceExecResourceExecResponseOutput
-	ToOSPolicyResourceExecResourceExecResponseOutputWithContext(context.Context) OSPolicyResourceExecResourceExecResponseOutput
-}
-
-// A file or script to execute.
-type OSPolicyResourceExecResourceExecResponseArgs struct {
-	// Optional arguments to pass to the source during execution.
-	Args pulumi.StringArrayInput `pulumi:"args"`
-	// A remote or local file.
-	File OSPolicyResourceFileResponseInput `pulumi:"file"`
-	// The script interpreter to use.
-	Interpreter pulumi.StringInput `pulumi:"interpreter"`
-	// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
-	OutputFilePath pulumi.StringInput `pulumi:"outputFilePath"`
-	// An inline script. The size of the script is limited to 1024 characters.
-	Script pulumi.StringInput `pulumi:"script"`
-}
-
-func (OSPolicyResourceExecResourceExecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourceExecResourceExecResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceExecResourceExecResponseArgs) ToOSPolicyResourceExecResourceExecResponseOutput() OSPolicyResourceExecResourceExecResponseOutput {
-	return i.ToOSPolicyResourceExecResourceExecResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceExecResourceExecResponseArgs) ToOSPolicyResourceExecResourceExecResponseOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceExecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceExecResourceExecResponseOutput)
-}
-
 // A file or script to execute.
 type OSPolicyResourceExecResourceExecResponseOutput struct{ *pulumi.OutputState }
 
@@ -4414,37 +2724,6 @@ type OSPolicyResourceExecResourceResponse struct {
 	Enforce OSPolicyResourceExecResourceExecResponse `pulumi:"enforce"`
 	// What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
 	Validate OSPolicyResourceExecResourceExecResponse `pulumi:"validate"`
-}
-
-// OSPolicyResourceExecResourceResponseInput is an input type that accepts OSPolicyResourceExecResourceResponseArgs and OSPolicyResourceExecResourceResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourceExecResourceResponseInput` via:
-//
-//          OSPolicyResourceExecResourceResponseArgs{...}
-type OSPolicyResourceExecResourceResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceExecResourceResponseOutput() OSPolicyResourceExecResourceResponseOutput
-	ToOSPolicyResourceExecResourceResponseOutputWithContext(context.Context) OSPolicyResourceExecResourceResponseOutput
-}
-
-// A resource that allows executing scripts on the VM. The `ExecResource` has 2 stages: `validate` and `enforce` and both stages accept a script as an argument to execute. When the `ExecResource` is applied by the agent, it first executes the script in the `validate` stage. The `validate` stage can signal that the `ExecResource` is already in the desired state by returning an exit code of `100`. If the `ExecResource` is not in the desired state, it should return an exit code of `101`. Any other exit code returned by this stage is considered an error. If the `ExecResource` is not in the desired state based on the exit code from the `validate` stage, the agent proceeds to execute the script from the `enforce` stage. If the `ExecResource` is already in the desired state, the `enforce` stage will not be run. Similar to `validate` stage, the `enforce` stage should return an exit code of `100` to indicate that the resource in now in its desired state. Any other exit code is considered an error. NOTE: An exit code of `100` was chosen over `0` (and `101` vs `1`) to have an explicit indicator of `in desired state`, `not in desired state` and errors. Because, for example, Powershell will always return an exit code of `0` unless an `exit` statement is provided in the script. So, for reasons of consistency and being explicit, exit codes `100` and `101` were chosen.
-type OSPolicyResourceExecResourceResponseArgs struct {
-	// What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
-	Enforce OSPolicyResourceExecResourceExecResponseInput `pulumi:"enforce"`
-	// What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
-	Validate OSPolicyResourceExecResourceExecResponseInput `pulumi:"validate"`
-}
-
-func (OSPolicyResourceExecResourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourceExecResourceResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceExecResourceResponseArgs) ToOSPolicyResourceExecResourceResponseOutput() OSPolicyResourceExecResourceResponseOutput {
-	return i.ToOSPolicyResourceExecResourceResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceExecResourceResponseArgs) ToOSPolicyResourceExecResourceResponseOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceExecResourceResponseOutput)
 }
 
 // A resource that allows executing scripts on the VM. The `ExecResource` has 2 stages: `validate` and `enforce` and both stages accept a script as an argument to execute. When the `ExecResource` is applied by the agent, it first executes the script in the `validate` stage. The `validate` stage can signal that the `ExecResource` is already in the desired state by returning an exit code of `100`. If the `ExecResource` is not in the desired state, it should return an exit code of `101`. Any other exit code returned by this stage is considered an error. If the `ExecResource` is not in the desired state based on the exit code from the `validate` stage, the agent proceeds to execute the script from the `enforce` stage. If the `ExecResource` is already in the desired state, the `enforce` stage will not be run. Similar to `validate` stage, the `enforce` stage should return an exit code of `100` to indicate that the resource in now in its desired state. Any other exit code is considered an error. NOTE: An exit code of `100` was chosen over `0` (and `101` vs `1`) to have an explicit indicator of `in desired state`, `not in desired state` and errors. Because, for example, Powershell will always return an exit code of `0` unless an `exit` statement is provided in the script. So, for reasons of consistency and being explicit, exit codes `100` and `101` were chosen.
@@ -4861,39 +3140,6 @@ type OSPolicyResourceFileGcsResponse struct {
 	Object string `pulumi:"object"`
 }
 
-// OSPolicyResourceFileGcsResponseInput is an input type that accepts OSPolicyResourceFileGcsResponseArgs and OSPolicyResourceFileGcsResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourceFileGcsResponseInput` via:
-//
-//          OSPolicyResourceFileGcsResponseArgs{...}
-type OSPolicyResourceFileGcsResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceFileGcsResponseOutput() OSPolicyResourceFileGcsResponseOutput
-	ToOSPolicyResourceFileGcsResponseOutputWithContext(context.Context) OSPolicyResourceFileGcsResponseOutput
-}
-
-// Specifies a file available as a Cloud Storage Object.
-type OSPolicyResourceFileGcsResponseArgs struct {
-	// Bucket of the Cloud Storage object.
-	Bucket pulumi.StringInput `pulumi:"bucket"`
-	// Generation number of the Cloud Storage object.
-	Generation pulumi.StringInput `pulumi:"generation"`
-	// Name of the Cloud Storage object.
-	Object pulumi.StringInput `pulumi:"object"`
-}
-
-func (OSPolicyResourceFileGcsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourceFileGcsResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceFileGcsResponseArgs) ToOSPolicyResourceFileGcsResponseOutput() OSPolicyResourceFileGcsResponseOutput {
-	return i.ToOSPolicyResourceFileGcsResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceFileGcsResponseArgs) ToOSPolicyResourceFileGcsResponseOutputWithContext(ctx context.Context) OSPolicyResourceFileGcsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceFileGcsResponseOutput)
-}
-
 // Specifies a file available as a Cloud Storage Object.
 type OSPolicyResourceFileGcsResponseOutput struct{ *pulumi.OutputState }
 
@@ -5089,37 +3335,6 @@ type OSPolicyResourceFileRemoteResponse struct {
 	Sha256Checksum string `pulumi:"sha256Checksum"`
 	// URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 	Uri string `pulumi:"uri"`
-}
-
-// OSPolicyResourceFileRemoteResponseInput is an input type that accepts OSPolicyResourceFileRemoteResponseArgs and OSPolicyResourceFileRemoteResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourceFileRemoteResponseInput` via:
-//
-//          OSPolicyResourceFileRemoteResponseArgs{...}
-type OSPolicyResourceFileRemoteResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceFileRemoteResponseOutput() OSPolicyResourceFileRemoteResponseOutput
-	ToOSPolicyResourceFileRemoteResponseOutputWithContext(context.Context) OSPolicyResourceFileRemoteResponseOutput
-}
-
-// Specifies a file available via some URI.
-type OSPolicyResourceFileRemoteResponseArgs struct {
-	// SHA256 checksum of the remote file.
-	Sha256Checksum pulumi.StringInput `pulumi:"sha256Checksum"`
-	// URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (OSPolicyResourceFileRemoteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourceFileRemoteResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceFileRemoteResponseArgs) ToOSPolicyResourceFileRemoteResponseOutput() OSPolicyResourceFileRemoteResponseOutput {
-	return i.ToOSPolicyResourceFileRemoteResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceFileRemoteResponseArgs) ToOSPolicyResourceFileRemoteResponseOutputWithContext(ctx context.Context) OSPolicyResourceFileRemoteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceFileRemoteResponseOutput)
 }
 
 // Specifies a file available via some URI.
@@ -5377,43 +3592,6 @@ type OSPolicyResourceFileResourceResponse struct {
 	State string `pulumi:"state"`
 }
 
-// OSPolicyResourceFileResourceResponseInput is an input type that accepts OSPolicyResourceFileResourceResponseArgs and OSPolicyResourceFileResourceResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourceFileResourceResponseInput` via:
-//
-//          OSPolicyResourceFileResourceResponseArgs{...}
-type OSPolicyResourceFileResourceResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceFileResourceResponseOutput() OSPolicyResourceFileResourceResponseOutput
-	ToOSPolicyResourceFileResourceResponseOutputWithContext(context.Context) OSPolicyResourceFileResourceResponseOutput
-}
-
-// A resource that manages the state of a file.
-type OSPolicyResourceFileResourceResponseArgs struct {
-	// A a file with this content. The size of the content is limited to 1024 characters.
-	Content pulumi.StringInput `pulumi:"content"`
-	// A remote or local source.
-	File OSPolicyResourceFileResponseInput `pulumi:"file"`
-	// The absolute path of the file within the VM.
-	Path pulumi.StringInput `pulumi:"path"`
-	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
-	Permissions pulumi.StringInput `pulumi:"permissions"`
-	// Desired state of the file.
-	State pulumi.StringInput `pulumi:"state"`
-}
-
-func (OSPolicyResourceFileResourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourceFileResourceResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceFileResourceResponseArgs) ToOSPolicyResourceFileResourceResponseOutput() OSPolicyResourceFileResourceResponseOutput {
-	return i.ToOSPolicyResourceFileResourceResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceFileResourceResponseArgs) ToOSPolicyResourceFileResourceResponseOutputWithContext(ctx context.Context) OSPolicyResourceFileResourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceFileResourceResponseOutput)
-}
-
 // A resource that manages the state of a file.
 type OSPolicyResourceFileResourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -5464,41 +3642,6 @@ type OSPolicyResourceFileResponse struct {
 	LocalPath string `pulumi:"localPath"`
 	// A generic remote file.
 	Remote OSPolicyResourceFileRemoteResponse `pulumi:"remote"`
-}
-
-// OSPolicyResourceFileResponseInput is an input type that accepts OSPolicyResourceFileResponseArgs and OSPolicyResourceFileResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourceFileResponseInput` via:
-//
-//          OSPolicyResourceFileResponseArgs{...}
-type OSPolicyResourceFileResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceFileResponseOutput() OSPolicyResourceFileResponseOutput
-	ToOSPolicyResourceFileResponseOutputWithContext(context.Context) OSPolicyResourceFileResponseOutput
-}
-
-// A remote or local file.
-type OSPolicyResourceFileResponseArgs struct {
-	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
-	AllowInsecure pulumi.BoolInput `pulumi:"allowInsecure"`
-	// A Cloud Storage object.
-	Gcs OSPolicyResourceFileGcsResponseInput `pulumi:"gcs"`
-	// A local path within the VM to use.
-	LocalPath pulumi.StringInput `pulumi:"localPath"`
-	// A generic remote file.
-	Remote OSPolicyResourceFileRemoteResponseInput `pulumi:"remote"`
-}
-
-func (OSPolicyResourceFileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourceFileResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceFileResponseArgs) ToOSPolicyResourceFileResponseOutput() OSPolicyResourceFileResponseOutput {
-	return i.ToOSPolicyResourceFileResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceFileResponseArgs) ToOSPolicyResourceFileResponseOutputWithContext(ctx context.Context) OSPolicyResourceFileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceFileResponseOutput)
 }
 
 // A remote or local file.
@@ -5651,62 +3794,6 @@ type OSPolicyResourceGroupResponse struct {
 	InventoryFilters []OSPolicyInventoryFilterResponse `pulumi:"inventoryFilters"`
 	// List of resources configured for this resource group. The resources are executed in the exact order specified here.
 	Resources []OSPolicyResourceResponse `pulumi:"resources"`
-}
-
-// OSPolicyResourceGroupResponseInput is an input type that accepts OSPolicyResourceGroupResponseArgs and OSPolicyResourceGroupResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourceGroupResponseInput` via:
-//
-//          OSPolicyResourceGroupResponseArgs{...}
-type OSPolicyResourceGroupResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceGroupResponseOutput() OSPolicyResourceGroupResponseOutput
-	ToOSPolicyResourceGroupResponseOutputWithContext(context.Context) OSPolicyResourceGroupResponseOutput
-}
-
-// Resource groups provide a mechanism to group OS policy resources. Resource groups enable OS policy authors to create a single OS policy to be applied to VMs running different operating Systems. When the OS policy is applied to a target VM, the appropriate resource group within the OS policy is selected based on the `OSFilter` specified within the resource group.
-type OSPolicyResourceGroupResponseArgs struct {
-	// List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
-	InventoryFilters OSPolicyInventoryFilterResponseArrayInput `pulumi:"inventoryFilters"`
-	// List of resources configured for this resource group. The resources are executed in the exact order specified here.
-	Resources OSPolicyResourceResponseArrayInput `pulumi:"resources"`
-}
-
-func (OSPolicyResourceGroupResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourceGroupResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceGroupResponseArgs) ToOSPolicyResourceGroupResponseOutput() OSPolicyResourceGroupResponseOutput {
-	return i.ToOSPolicyResourceGroupResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceGroupResponseArgs) ToOSPolicyResourceGroupResponseOutputWithContext(ctx context.Context) OSPolicyResourceGroupResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceGroupResponseOutput)
-}
-
-// OSPolicyResourceGroupResponseArrayInput is an input type that accepts OSPolicyResourceGroupResponseArray and OSPolicyResourceGroupResponseArrayOutput values.
-// You can construct a concrete instance of `OSPolicyResourceGroupResponseArrayInput` via:
-//
-//          OSPolicyResourceGroupResponseArray{ OSPolicyResourceGroupResponseArgs{...} }
-type OSPolicyResourceGroupResponseArrayInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceGroupResponseArrayOutput() OSPolicyResourceGroupResponseArrayOutput
-	ToOSPolicyResourceGroupResponseArrayOutputWithContext(context.Context) OSPolicyResourceGroupResponseArrayOutput
-}
-
-type OSPolicyResourceGroupResponseArray []OSPolicyResourceGroupResponseInput
-
-func (OSPolicyResourceGroupResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OSPolicyResourceGroupResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceGroupResponseArray) ToOSPolicyResourceGroupResponseArrayOutput() OSPolicyResourceGroupResponseArrayOutput {
-	return i.ToOSPolicyResourceGroupResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceGroupResponseArray) ToOSPolicyResourceGroupResponseArrayOutputWithContext(ctx context.Context) OSPolicyResourceGroupResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceGroupResponseArrayOutput)
 }
 
 // Resource groups provide a mechanism to group OS policy resources. Resource groups enable OS policy authors to create a single OS policy to be applied to VMs running different operating Systems. When the OS policy is applied to a target VM, the appropriate resource group within the OS policy is selected based on the `OSFilter` specified within the resource group.
@@ -6175,35 +4262,6 @@ type OSPolicyResourcePackageResourceAPTResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// OSPolicyResourcePackageResourceAPTResponseInput is an input type that accepts OSPolicyResourcePackageResourceAPTResponseArgs and OSPolicyResourcePackageResourceAPTResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourcePackageResourceAPTResponseInput` via:
-//
-//          OSPolicyResourcePackageResourceAPTResponseArgs{...}
-type OSPolicyResourcePackageResourceAPTResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourcePackageResourceAPTResponseOutput() OSPolicyResourcePackageResourceAPTResponseOutput
-	ToOSPolicyResourcePackageResourceAPTResponseOutputWithContext(context.Context) OSPolicyResourcePackageResourceAPTResponseOutput
-}
-
-// A package managed by APT. - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get -y remove [name]`
-type OSPolicyResourcePackageResourceAPTResponseArgs struct {
-	// Package name.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (OSPolicyResourcePackageResourceAPTResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourcePackageResourceAPTResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourcePackageResourceAPTResponseArgs) ToOSPolicyResourcePackageResourceAPTResponseOutput() OSPolicyResourcePackageResourceAPTResponseOutput {
-	return i.ToOSPolicyResourcePackageResourceAPTResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourcePackageResourceAPTResponseArgs) ToOSPolicyResourcePackageResourceAPTResponseOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceAPTResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceAPTResponseOutput)
-}
-
 // A package managed by APT. - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get -y remove [name]`
 type OSPolicyResourcePackageResourceAPTResponseOutput struct{ *pulumi.OutputState }
 
@@ -6391,37 +4449,6 @@ type OSPolicyResourcePackageResourceDebResponse struct {
 	Source OSPolicyResourceFileResponse `pulumi:"source"`
 }
 
-// OSPolicyResourcePackageResourceDebResponseInput is an input type that accepts OSPolicyResourcePackageResourceDebResponseArgs and OSPolicyResourcePackageResourceDebResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourcePackageResourceDebResponseInput` via:
-//
-//          OSPolicyResourcePackageResourceDebResponseArgs{...}
-type OSPolicyResourcePackageResourceDebResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourcePackageResourceDebResponseOutput() OSPolicyResourcePackageResourceDebResponseOutput
-	ToOSPolicyResourcePackageResourceDebResponseOutputWithContext(context.Context) OSPolicyResourcePackageResourceDebResponseOutput
-}
-
-// A deb package file. dpkg packages only support INSTALLED state.
-type OSPolicyResourcePackageResourceDebResponseArgs struct {
-	// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
-	PullDeps pulumi.BoolInput `pulumi:"pullDeps"`
-	// A deb package.
-	Source OSPolicyResourceFileResponseInput `pulumi:"source"`
-}
-
-func (OSPolicyResourcePackageResourceDebResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourcePackageResourceDebResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourcePackageResourceDebResponseArgs) ToOSPolicyResourcePackageResourceDebResponseOutput() OSPolicyResourcePackageResourceDebResponseOutput {
-	return i.ToOSPolicyResourcePackageResourceDebResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourcePackageResourceDebResponseArgs) ToOSPolicyResourcePackageResourceDebResponseOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceDebResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceDebResponseOutput)
-}
-
 // A deb package file. dpkg packages only support INSTALLED state.
 type OSPolicyResourcePackageResourceDebResponseOutput struct{ *pulumi.OutputState }
 
@@ -6591,35 +4618,6 @@ func (o OSPolicyResourcePackageResourceGooGetPtrOutput) Name() pulumi.StringPtrO
 type OSPolicyResourcePackageResourceGooGetResponse struct {
 	// Package name.
 	Name string `pulumi:"name"`
-}
-
-// OSPolicyResourcePackageResourceGooGetResponseInput is an input type that accepts OSPolicyResourcePackageResourceGooGetResponseArgs and OSPolicyResourcePackageResourceGooGetResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourcePackageResourceGooGetResponseInput` via:
-//
-//          OSPolicyResourcePackageResourceGooGetResponseArgs{...}
-type OSPolicyResourcePackageResourceGooGetResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourcePackageResourceGooGetResponseOutput() OSPolicyResourcePackageResourceGooGetResponseOutput
-	ToOSPolicyResourcePackageResourceGooGetResponseOutputWithContext(context.Context) OSPolicyResourcePackageResourceGooGetResponseOutput
-}
-
-// A package managed by GooGet. - install: `googet -noconfirm install package` - remove: `googet -noconfirm remove package`
-type OSPolicyResourcePackageResourceGooGetResponseArgs struct {
-	// Package name.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (OSPolicyResourcePackageResourceGooGetResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourcePackageResourceGooGetResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourcePackageResourceGooGetResponseArgs) ToOSPolicyResourcePackageResourceGooGetResponseOutput() OSPolicyResourcePackageResourceGooGetResponseOutput {
-	return i.ToOSPolicyResourcePackageResourceGooGetResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourcePackageResourceGooGetResponseArgs) ToOSPolicyResourcePackageResourceGooGetResponseOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceGooGetResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceGooGetResponseOutput)
 }
 
 // A package managed by GooGet. - install: `googet -noconfirm install package` - remove: `googet -noconfirm remove package`
@@ -6807,37 +4805,6 @@ type OSPolicyResourcePackageResourceMSIResponse struct {
 	Properties []string `pulumi:"properties"`
 	// The MSI package.
 	Source OSPolicyResourceFileResponse `pulumi:"source"`
-}
-
-// OSPolicyResourcePackageResourceMSIResponseInput is an input type that accepts OSPolicyResourcePackageResourceMSIResponseArgs and OSPolicyResourcePackageResourceMSIResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourcePackageResourceMSIResponseInput` via:
-//
-//          OSPolicyResourcePackageResourceMSIResponseArgs{...}
-type OSPolicyResourcePackageResourceMSIResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourcePackageResourceMSIResponseOutput() OSPolicyResourcePackageResourceMSIResponseOutput
-	ToOSPolicyResourcePackageResourceMSIResponseOutputWithContext(context.Context) OSPolicyResourcePackageResourceMSIResponseOutput
-}
-
-// An MSI package. MSI packages only support INSTALLED state.
-type OSPolicyResourcePackageResourceMSIResponseArgs struct {
-	// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
-	Properties pulumi.StringArrayInput `pulumi:"properties"`
-	// The MSI package.
-	Source OSPolicyResourceFileResponseInput `pulumi:"source"`
-}
-
-func (OSPolicyResourcePackageResourceMSIResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourcePackageResourceMSIResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourcePackageResourceMSIResponseArgs) ToOSPolicyResourcePackageResourceMSIResponseOutput() OSPolicyResourcePackageResourceMSIResponseOutput {
-	return i.ToOSPolicyResourcePackageResourceMSIResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourcePackageResourceMSIResponseArgs) ToOSPolicyResourcePackageResourceMSIResponseOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceMSIResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceMSIResponseOutput)
 }
 
 // An MSI package. MSI packages only support INSTALLED state.
@@ -7032,37 +4999,6 @@ type OSPolicyResourcePackageResourceRPMResponse struct {
 	Source OSPolicyResourceFileResponse `pulumi:"source"`
 }
 
-// OSPolicyResourcePackageResourceRPMResponseInput is an input type that accepts OSPolicyResourcePackageResourceRPMResponseArgs and OSPolicyResourcePackageResourceRPMResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourcePackageResourceRPMResponseInput` via:
-//
-//          OSPolicyResourcePackageResourceRPMResponseArgs{...}
-type OSPolicyResourcePackageResourceRPMResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourcePackageResourceRPMResponseOutput() OSPolicyResourcePackageResourceRPMResponseOutput
-	ToOSPolicyResourcePackageResourceRPMResponseOutputWithContext(context.Context) OSPolicyResourcePackageResourceRPMResponseOutput
-}
-
-// An RPM package file. RPM packages only support INSTALLED state.
-type OSPolicyResourcePackageResourceRPMResponseArgs struct {
-	// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
-	PullDeps pulumi.BoolInput `pulumi:"pullDeps"`
-	// An rpm package.
-	Source OSPolicyResourceFileResponseInput `pulumi:"source"`
-}
-
-func (OSPolicyResourcePackageResourceRPMResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourcePackageResourceRPMResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourcePackageResourceRPMResponseArgs) ToOSPolicyResourcePackageResourceRPMResponseOutput() OSPolicyResourcePackageResourceRPMResponseOutput {
-	return i.ToOSPolicyResourcePackageResourceRPMResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourcePackageResourceRPMResponseArgs) ToOSPolicyResourcePackageResourceRPMResponseOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceRPMResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceRPMResponseOutput)
-}
-
 // An RPM package file. RPM packages only support INSTALLED state.
 type OSPolicyResourcePackageResourceRPMResponseOutput struct{ *pulumi.OutputState }
 
@@ -7106,49 +5042,6 @@ type OSPolicyResourcePackageResourceResponse struct {
 	Yum OSPolicyResourcePackageResourceYUMResponse `pulumi:"yum"`
 	// A package managed by Zypper.
 	Zypper OSPolicyResourcePackageResourceZypperResponse `pulumi:"zypper"`
-}
-
-// OSPolicyResourcePackageResourceResponseInput is an input type that accepts OSPolicyResourcePackageResourceResponseArgs and OSPolicyResourcePackageResourceResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourcePackageResourceResponseInput` via:
-//
-//          OSPolicyResourcePackageResourceResponseArgs{...}
-type OSPolicyResourcePackageResourceResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourcePackageResourceResponseOutput() OSPolicyResourcePackageResourceResponseOutput
-	ToOSPolicyResourcePackageResourceResponseOutputWithContext(context.Context) OSPolicyResourcePackageResourceResponseOutput
-}
-
-// A resource that manages a system package.
-type OSPolicyResourcePackageResourceResponseArgs struct {
-	// A package managed by Apt.
-	Apt OSPolicyResourcePackageResourceAPTResponseInput `pulumi:"apt"`
-	// A deb package file.
-	Deb OSPolicyResourcePackageResourceDebResponseInput `pulumi:"deb"`
-	// The desired state the agent should maintain for this package.
-	DesiredState pulumi.StringInput `pulumi:"desiredState"`
-	// A package managed by GooGet.
-	Googet OSPolicyResourcePackageResourceGooGetResponseInput `pulumi:"googet"`
-	// An MSI package.
-	Msi OSPolicyResourcePackageResourceMSIResponseInput `pulumi:"msi"`
-	// An rpm package file.
-	Rpm OSPolicyResourcePackageResourceRPMResponseInput `pulumi:"rpm"`
-	// A package managed by YUM.
-	Yum OSPolicyResourcePackageResourceYUMResponseInput `pulumi:"yum"`
-	// A package managed by Zypper.
-	Zypper OSPolicyResourcePackageResourceZypperResponseInput `pulumi:"zypper"`
-}
-
-func (OSPolicyResourcePackageResourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourcePackageResourceResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourcePackageResourceResponseArgs) ToOSPolicyResourcePackageResourceResponseOutput() OSPolicyResourcePackageResourceResponseOutput {
-	return i.ToOSPolicyResourcePackageResourceResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourcePackageResourceResponseArgs) ToOSPolicyResourcePackageResourceResponseOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceResponseOutput)
 }
 
 // A resource that manages a system package.
@@ -7366,35 +5259,6 @@ type OSPolicyResourcePackageResourceYUMResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// OSPolicyResourcePackageResourceYUMResponseInput is an input type that accepts OSPolicyResourcePackageResourceYUMResponseArgs and OSPolicyResourcePackageResourceYUMResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourcePackageResourceYUMResponseInput` via:
-//
-//          OSPolicyResourcePackageResourceYUMResponseArgs{...}
-type OSPolicyResourcePackageResourceYUMResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourcePackageResourceYUMResponseOutput() OSPolicyResourcePackageResourceYUMResponseOutput
-	ToOSPolicyResourcePackageResourceYUMResponseOutputWithContext(context.Context) OSPolicyResourcePackageResourceYUMResponseOutput
-}
-
-// A package managed by YUM. - install: `yum -y install package` - remove: `yum -y remove package`
-type OSPolicyResourcePackageResourceYUMResponseArgs struct {
-	// Package name.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (OSPolicyResourcePackageResourceYUMResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourcePackageResourceYUMResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourcePackageResourceYUMResponseArgs) ToOSPolicyResourcePackageResourceYUMResponseOutput() OSPolicyResourcePackageResourceYUMResponseOutput {
-	return i.ToOSPolicyResourcePackageResourceYUMResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourcePackageResourceYUMResponseArgs) ToOSPolicyResourcePackageResourceYUMResponseOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceYUMResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceYUMResponseOutput)
-}
-
 // A package managed by YUM. - install: `yum -y install package` - remove: `yum -y remove package`
 type OSPolicyResourcePackageResourceYUMResponseOutput struct{ *pulumi.OutputState }
 
@@ -7559,35 +5423,6 @@ func (o OSPolicyResourcePackageResourceZypperPtrOutput) Name() pulumi.StringPtrO
 type OSPolicyResourcePackageResourceZypperResponse struct {
 	// Package name.
 	Name string `pulumi:"name"`
-}
-
-// OSPolicyResourcePackageResourceZypperResponseInput is an input type that accepts OSPolicyResourcePackageResourceZypperResponseArgs and OSPolicyResourcePackageResourceZypperResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourcePackageResourceZypperResponseInput` via:
-//
-//          OSPolicyResourcePackageResourceZypperResponseArgs{...}
-type OSPolicyResourcePackageResourceZypperResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourcePackageResourceZypperResponseOutput() OSPolicyResourcePackageResourceZypperResponseOutput
-	ToOSPolicyResourcePackageResourceZypperResponseOutputWithContext(context.Context) OSPolicyResourcePackageResourceZypperResponseOutput
-}
-
-// A package managed by Zypper. - install: `zypper -y install package` - remove: `zypper -y rm package`
-type OSPolicyResourcePackageResourceZypperResponseArgs struct {
-	// Package name.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (OSPolicyResourcePackageResourceZypperResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourcePackageResourceZypperResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourcePackageResourceZypperResponseArgs) ToOSPolicyResourcePackageResourceZypperResponseOutput() OSPolicyResourcePackageResourceZypperResponseOutput {
-	return i.ToOSPolicyResourcePackageResourceZypperResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourcePackageResourceZypperResponseArgs) ToOSPolicyResourcePackageResourceZypperResponseOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceZypperResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceZypperResponseOutput)
 }
 
 // A package managed by Zypper. - install: `zypper -y install package` - remove: `zypper -y rm package`
@@ -8047,43 +5882,6 @@ type OSPolicyResourceRepositoryResourceAptRepositoryResponse struct {
 	Uri string `pulumi:"uri"`
 }
 
-// OSPolicyResourceRepositoryResourceAptRepositoryResponseInput is an input type that accepts OSPolicyResourceRepositoryResourceAptRepositoryResponseArgs and OSPolicyResourceRepositoryResourceAptRepositoryResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourceRepositoryResourceAptRepositoryResponseInput` via:
-//
-//          OSPolicyResourceRepositoryResourceAptRepositoryResponseArgs{...}
-type OSPolicyResourceRepositoryResourceAptRepositoryResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceRepositoryResourceAptRepositoryResponseOutput() OSPolicyResourceRepositoryResourceAptRepositoryResponseOutput
-	ToOSPolicyResourceRepositoryResourceAptRepositoryResponseOutputWithContext(context.Context) OSPolicyResourceRepositoryResourceAptRepositoryResponseOutput
-}
-
-// Represents a single apt package repository. These will be added to a repo file that will be managed at `/etc/apt/sources.list.d/google_osconfig.list`.
-type OSPolicyResourceRepositoryResourceAptRepositoryResponseArgs struct {
-	// Type of archive files in this repository.
-	ArchiveType pulumi.StringInput `pulumi:"archiveType"`
-	// List of components for this repository. Must contain at least one item.
-	Components pulumi.StringArrayInput `pulumi:"components"`
-	// Distribution of this repository.
-	Distribution pulumi.StringInput `pulumi:"distribution"`
-	// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
-	GpgKey pulumi.StringInput `pulumi:"gpgKey"`
-	// URI for this repository.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (OSPolicyResourceRepositoryResourceAptRepositoryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourceRepositoryResourceAptRepositoryResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceRepositoryResourceAptRepositoryResponseArgs) ToOSPolicyResourceRepositoryResourceAptRepositoryResponseOutput() OSPolicyResourceRepositoryResourceAptRepositoryResponseOutput {
-	return i.ToOSPolicyResourceRepositoryResourceAptRepositoryResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceRepositoryResourceAptRepositoryResponseArgs) ToOSPolicyResourceRepositoryResourceAptRepositoryResponseOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourceAptRepositoryResponseOutput)
-}
-
 // Represents a single apt package repository. These will be added to a repo file that will be managed at `/etc/apt/sources.list.d/google_osconfig.list`.
 type OSPolicyResourceRepositoryResourceAptRepositoryResponseOutput struct{ *pulumi.OutputState }
 
@@ -8291,37 +6089,6 @@ type OSPolicyResourceRepositoryResourceGooRepositoryResponse struct {
 	Url string `pulumi:"url"`
 }
 
-// OSPolicyResourceRepositoryResourceGooRepositoryResponseInput is an input type that accepts OSPolicyResourceRepositoryResourceGooRepositoryResponseArgs and OSPolicyResourceRepositoryResourceGooRepositoryResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourceRepositoryResourceGooRepositoryResponseInput` via:
-//
-//          OSPolicyResourceRepositoryResourceGooRepositoryResponseArgs{...}
-type OSPolicyResourceRepositoryResourceGooRepositoryResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceRepositoryResourceGooRepositoryResponseOutput() OSPolicyResourceRepositoryResourceGooRepositoryResponseOutput
-	ToOSPolicyResourceRepositoryResourceGooRepositoryResponseOutputWithContext(context.Context) OSPolicyResourceRepositoryResourceGooRepositoryResponseOutput
-}
-
-// Represents a Goo package repository. These are added to a repo file that is managed at `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
-type OSPolicyResourceRepositoryResourceGooRepositoryResponseArgs struct {
-	// The name of the repository.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The url of the repository.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (OSPolicyResourceRepositoryResourceGooRepositoryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourceRepositoryResourceGooRepositoryResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceRepositoryResourceGooRepositoryResponseArgs) ToOSPolicyResourceRepositoryResourceGooRepositoryResponseOutput() OSPolicyResourceRepositoryResourceGooRepositoryResponseOutput {
-	return i.ToOSPolicyResourceRepositoryResourceGooRepositoryResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceRepositoryResourceGooRepositoryResponseArgs) ToOSPolicyResourceRepositoryResourceGooRepositoryResponseOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceGooRepositoryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourceGooRepositoryResponseOutput)
-}
-
 // Represents a Goo package repository. These are added to a repo file that is managed at `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
 type OSPolicyResourceRepositoryResourceGooRepositoryResponseOutput struct{ *pulumi.OutputState }
 
@@ -8357,41 +6124,6 @@ type OSPolicyResourceRepositoryResourceResponse struct {
 	Yum OSPolicyResourceRepositoryResourceYumRepositoryResponse `pulumi:"yum"`
 	// A Zypper Repository.
 	Zypper OSPolicyResourceRepositoryResourceZypperRepositoryResponse `pulumi:"zypper"`
-}
-
-// OSPolicyResourceRepositoryResourceResponseInput is an input type that accepts OSPolicyResourceRepositoryResourceResponseArgs and OSPolicyResourceRepositoryResourceResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourceRepositoryResourceResponseInput` via:
-//
-//          OSPolicyResourceRepositoryResourceResponseArgs{...}
-type OSPolicyResourceRepositoryResourceResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceRepositoryResourceResponseOutput() OSPolicyResourceRepositoryResourceResponseOutput
-	ToOSPolicyResourceRepositoryResourceResponseOutputWithContext(context.Context) OSPolicyResourceRepositoryResourceResponseOutput
-}
-
-// A resource that manages a package repository.
-type OSPolicyResourceRepositoryResourceResponseArgs struct {
-	// An Apt Repository.
-	Apt OSPolicyResourceRepositoryResourceAptRepositoryResponseInput `pulumi:"apt"`
-	// A Goo Repository.
-	Goo OSPolicyResourceRepositoryResourceGooRepositoryResponseInput `pulumi:"goo"`
-	// A Yum Repository.
-	Yum OSPolicyResourceRepositoryResourceYumRepositoryResponseInput `pulumi:"yum"`
-	// A Zypper Repository.
-	Zypper OSPolicyResourceRepositoryResourceZypperRepositoryResponseInput `pulumi:"zypper"`
-}
-
-func (OSPolicyResourceRepositoryResourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourceRepositoryResourceResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceRepositoryResourceResponseArgs) ToOSPolicyResourceRepositoryResourceResponseOutput() OSPolicyResourceRepositoryResourceResponseOutput {
-	return i.ToOSPolicyResourceRepositoryResourceResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceRepositoryResourceResponseArgs) ToOSPolicyResourceRepositoryResourceResponseOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourceResponseOutput)
 }
 
 // A resource that manages a package repository.
@@ -8644,39 +6376,6 @@ type OSPolicyResourceRepositoryResourceYumRepositoryResponse struct {
 	GpgKeys []string `pulumi:"gpgKeys"`
 }
 
-// OSPolicyResourceRepositoryResourceYumRepositoryResponseInput is an input type that accepts OSPolicyResourceRepositoryResourceYumRepositoryResponseArgs and OSPolicyResourceRepositoryResourceYumRepositoryResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourceRepositoryResourceYumRepositoryResponseInput` via:
-//
-//          OSPolicyResourceRepositoryResourceYumRepositoryResponseArgs{...}
-type OSPolicyResourceRepositoryResourceYumRepositoryResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceRepositoryResourceYumRepositoryResponseOutput() OSPolicyResourceRepositoryResourceYumRepositoryResponseOutput
-	ToOSPolicyResourceRepositoryResourceYumRepositoryResponseOutputWithContext(context.Context) OSPolicyResourceRepositoryResourceYumRepositoryResponseOutput
-}
-
-// Represents a single yum package repository. These are added to a repo file that is managed at `/etc/yum.repos.d/google_osconfig.repo`.
-type OSPolicyResourceRepositoryResourceYumRepositoryResponseArgs struct {
-	// The location of the repository directory.
-	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
-	// The display name of the repository.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// URIs of GPG keys.
-	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
-}
-
-func (OSPolicyResourceRepositoryResourceYumRepositoryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourceRepositoryResourceYumRepositoryResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceRepositoryResourceYumRepositoryResponseArgs) ToOSPolicyResourceRepositoryResourceYumRepositoryResponseOutput() OSPolicyResourceRepositoryResourceYumRepositoryResponseOutput {
-	return i.ToOSPolicyResourceRepositoryResourceYumRepositoryResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceRepositoryResourceYumRepositoryResponseArgs) ToOSPolicyResourceRepositoryResourceYumRepositoryResponseOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceYumRepositoryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourceYumRepositoryResponseOutput)
-}
-
 // Represents a single yum package repository. These are added to a repo file that is managed at `/etc/yum.repos.d/google_osconfig.repo`.
 type OSPolicyResourceRepositoryResourceYumRepositoryResponseOutput struct{ *pulumi.OutputState }
 
@@ -8914,39 +6613,6 @@ type OSPolicyResourceRepositoryResourceZypperRepositoryResponse struct {
 	GpgKeys []string `pulumi:"gpgKeys"`
 }
 
-// OSPolicyResourceRepositoryResourceZypperRepositoryResponseInput is an input type that accepts OSPolicyResourceRepositoryResourceZypperRepositoryResponseArgs and OSPolicyResourceRepositoryResourceZypperRepositoryResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourceRepositoryResourceZypperRepositoryResponseInput` via:
-//
-//          OSPolicyResourceRepositoryResourceZypperRepositoryResponseArgs{...}
-type OSPolicyResourceRepositoryResourceZypperRepositoryResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceRepositoryResourceZypperRepositoryResponseOutput() OSPolicyResourceRepositoryResourceZypperRepositoryResponseOutput
-	ToOSPolicyResourceRepositoryResourceZypperRepositoryResponseOutputWithContext(context.Context) OSPolicyResourceRepositoryResourceZypperRepositoryResponseOutput
-}
-
-// Represents a single zypper package repository. These are added to a repo file that is managed at `/etc/zypp/repos.d/google_osconfig.repo`.
-type OSPolicyResourceRepositoryResourceZypperRepositoryResponseArgs struct {
-	// The location of the repository directory.
-	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
-	// The display name of the repository.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// URIs of GPG keys.
-	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
-}
-
-func (OSPolicyResourceRepositoryResourceZypperRepositoryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourceRepositoryResourceZypperRepositoryResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceRepositoryResourceZypperRepositoryResponseArgs) ToOSPolicyResourceRepositoryResourceZypperRepositoryResponseOutput() OSPolicyResourceRepositoryResourceZypperRepositoryResponseOutput {
-	return i.ToOSPolicyResourceRepositoryResourceZypperRepositoryResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceRepositoryResourceZypperRepositoryResponseArgs) ToOSPolicyResourceRepositoryResourceZypperRepositoryResponseOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceZypperRepositoryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourceZypperRepositoryResponseOutput)
-}
-
 // Represents a single zypper package repository. These are added to a repo file that is managed at `/etc/zypp/repos.d/google_osconfig.repo`.
 type OSPolicyResourceRepositoryResourceZypperRepositoryResponseOutput struct{ *pulumi.OutputState }
 
@@ -8987,66 +6653,6 @@ type OSPolicyResourceResponse struct {
 	Pkg OSPolicyResourcePackageResourceResponse `pulumi:"pkg"`
 	// Package repository resource
 	Repository OSPolicyResourceRepositoryResourceResponse `pulumi:"repository"`
-}
-
-// OSPolicyResourceResponseInput is an input type that accepts OSPolicyResourceResponseArgs and OSPolicyResourceResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResourceResponseInput` via:
-//
-//          OSPolicyResourceResponseArgs{...}
-type OSPolicyResourceResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceResponseOutput() OSPolicyResourceResponseOutput
-	ToOSPolicyResourceResponseOutputWithContext(context.Context) OSPolicyResourceResponseOutput
-}
-
-// An OS policy resource is used to define the desired state configuration and provides a specific functionality like installing/removing packages, executing a script etc. The system ensures that resources are always in their desired state by taking necessary actions if they have drifted from their desired state.
-type OSPolicyResourceResponseArgs struct {
-	// Exec resource
-	Exec OSPolicyResourceExecResourceResponseInput `pulumi:"exec"`
-	// File resource
-	File OSPolicyResourceFileResourceResponseInput `pulumi:"file"`
-	// Package resource
-	Pkg OSPolicyResourcePackageResourceResponseInput `pulumi:"pkg"`
-	// Package repository resource
-	Repository OSPolicyResourceRepositoryResourceResponseInput `pulumi:"repository"`
-}
-
-func (OSPolicyResourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResourceResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceResponseArgs) ToOSPolicyResourceResponseOutput() OSPolicyResourceResponseOutput {
-	return i.ToOSPolicyResourceResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceResponseArgs) ToOSPolicyResourceResponseOutputWithContext(ctx context.Context) OSPolicyResourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceResponseOutput)
-}
-
-// OSPolicyResourceResponseArrayInput is an input type that accepts OSPolicyResourceResponseArray and OSPolicyResourceResponseArrayOutput values.
-// You can construct a concrete instance of `OSPolicyResourceResponseArrayInput` via:
-//
-//          OSPolicyResourceResponseArray{ OSPolicyResourceResponseArgs{...} }
-type OSPolicyResourceResponseArrayInput interface {
-	pulumi.Input
-
-	ToOSPolicyResourceResponseArrayOutput() OSPolicyResourceResponseArrayOutput
-	ToOSPolicyResourceResponseArrayOutputWithContext(context.Context) OSPolicyResourceResponseArrayOutput
-}
-
-type OSPolicyResourceResponseArray []OSPolicyResourceResponseInput
-
-func (OSPolicyResourceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OSPolicyResourceResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResourceResponseArray) ToOSPolicyResourceResponseArrayOutput() OSPolicyResourceResponseArrayOutput {
-	return i.ToOSPolicyResourceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResourceResponseArray) ToOSPolicyResourceResponseArrayOutputWithContext(ctx context.Context) OSPolicyResourceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceResponseArrayOutput)
 }
 
 // An OS policy resource is used to define the desired state configuration and provides a specific functionality like installing/removing packages, executing a script etc. The system ensures that resources are always in their desired state by taking necessary actions if they have drifted from their desired state.
@@ -9114,66 +6720,6 @@ type OSPolicyResponse struct {
 	Mode string `pulumi:"mode"`
 	// List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
 	ResourceGroups []OSPolicyResourceGroupResponse `pulumi:"resourceGroups"`
-}
-
-// OSPolicyResponseInput is an input type that accepts OSPolicyResponseArgs and OSPolicyResponseOutput values.
-// You can construct a concrete instance of `OSPolicyResponseInput` via:
-//
-//          OSPolicyResponseArgs{...}
-type OSPolicyResponseInput interface {
-	pulumi.Input
-
-	ToOSPolicyResponseOutput() OSPolicyResponseOutput
-	ToOSPolicyResponseOutputWithContext(context.Context) OSPolicyResponseOutput
-}
-
-// An OS policy defines the desired state configuration for a VM.
-type OSPolicyResponseArgs struct {
-	// This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
-	AllowNoResourceGroupMatch pulumi.BoolInput `pulumi:"allowNoResourceGroupMatch"`
-	// Policy description. Length of the description is limited to 1024 characters.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Policy mode
-	Mode pulumi.StringInput `pulumi:"mode"`
-	// List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
-	ResourceGroups OSPolicyResourceGroupResponseArrayInput `pulumi:"resourceGroups"`
-}
-
-func (OSPolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OSPolicyResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResponseArgs) ToOSPolicyResponseOutput() OSPolicyResponseOutput {
-	return i.ToOSPolicyResponseOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResponseArgs) ToOSPolicyResponseOutputWithContext(ctx context.Context) OSPolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResponseOutput)
-}
-
-// OSPolicyResponseArrayInput is an input type that accepts OSPolicyResponseArray and OSPolicyResponseArrayOutput values.
-// You can construct a concrete instance of `OSPolicyResponseArrayInput` via:
-//
-//          OSPolicyResponseArray{ OSPolicyResponseArgs{...} }
-type OSPolicyResponseArrayInput interface {
-	pulumi.Input
-
-	ToOSPolicyResponseArrayOutput() OSPolicyResponseArrayOutput
-	ToOSPolicyResponseArrayOutputWithContext(context.Context) OSPolicyResponseArrayOutput
-}
-
-type OSPolicyResponseArray []OSPolicyResponseInput
-
-func (OSPolicyResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OSPolicyResponse)(nil)).Elem()
-}
-
-func (i OSPolicyResponseArray) ToOSPolicyResponseArrayOutput() OSPolicyResponseArrayOutput {
-	return i.ToOSPolicyResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OSPolicyResponseArray) ToOSPolicyResponseArrayOutputWithContext(ctx context.Context) OSPolicyResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResponseArrayOutput)
 }
 
 // An OS policy defines the desired state configuration for a VM.
@@ -9266,47 +6812,6 @@ func (i OneTimeScheduleArgs) ToOneTimeScheduleOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(OneTimeScheduleOutput)
 }
 
-func (i OneTimeScheduleArgs) ToOneTimeSchedulePtrOutput() OneTimeSchedulePtrOutput {
-	return i.ToOneTimeSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i OneTimeScheduleArgs) ToOneTimeSchedulePtrOutputWithContext(ctx context.Context) OneTimeSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OneTimeScheduleOutput).ToOneTimeSchedulePtrOutputWithContext(ctx)
-}
-
-// OneTimeSchedulePtrInput is an input type that accepts OneTimeScheduleArgs, OneTimeSchedulePtr and OneTimeSchedulePtrOutput values.
-// You can construct a concrete instance of `OneTimeSchedulePtrInput` via:
-//
-//          OneTimeScheduleArgs{...}
-//
-//  or:
-//
-//          nil
-type OneTimeSchedulePtrInput interface {
-	pulumi.Input
-
-	ToOneTimeSchedulePtrOutput() OneTimeSchedulePtrOutput
-	ToOneTimeSchedulePtrOutputWithContext(context.Context) OneTimeSchedulePtrOutput
-}
-
-type oneTimeSchedulePtrType OneTimeScheduleArgs
-
-func OneTimeSchedulePtr(v *OneTimeScheduleArgs) OneTimeSchedulePtrInput {
-	return (*oneTimeSchedulePtrType)(v)
-}
-
-func (*oneTimeSchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OneTimeSchedule)(nil)).Elem()
-}
-
-func (i *oneTimeSchedulePtrType) ToOneTimeSchedulePtrOutput() OneTimeSchedulePtrOutput {
-	return i.ToOneTimeSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *oneTimeSchedulePtrType) ToOneTimeSchedulePtrOutputWithContext(ctx context.Context) OneTimeSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OneTimeSchedulePtrOutput)
-}
-
 // Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 type OneTimeScheduleOutput struct{ *pulumi.OutputState }
 
@@ -9322,129 +6827,15 @@ func (o OneTimeScheduleOutput) ToOneTimeScheduleOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o OneTimeScheduleOutput) ToOneTimeSchedulePtrOutput() OneTimeSchedulePtrOutput {
-	return o.ToOneTimeSchedulePtrOutputWithContext(context.Background())
-}
-
-func (o OneTimeScheduleOutput) ToOneTimeSchedulePtrOutputWithContext(ctx context.Context) OneTimeSchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OneTimeSchedule) *OneTimeSchedule {
-		return &v
-	}).(OneTimeSchedulePtrOutput)
-}
-
 // The desired patch job execution time.
 func (o OneTimeScheduleOutput) ExecuteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v OneTimeSchedule) string { return v.ExecuteTime }).(pulumi.StringOutput)
-}
-
-type OneTimeSchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (OneTimeSchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OneTimeSchedule)(nil)).Elem()
-}
-
-func (o OneTimeSchedulePtrOutput) ToOneTimeSchedulePtrOutput() OneTimeSchedulePtrOutput {
-	return o
-}
-
-func (o OneTimeSchedulePtrOutput) ToOneTimeSchedulePtrOutputWithContext(ctx context.Context) OneTimeSchedulePtrOutput {
-	return o
-}
-
-func (o OneTimeSchedulePtrOutput) Elem() OneTimeScheduleOutput {
-	return o.ApplyT(func(v *OneTimeSchedule) OneTimeSchedule {
-		if v != nil {
-			return *v
-		}
-		var ret OneTimeSchedule
-		return ret
-	}).(OneTimeScheduleOutput)
-}
-
-// The desired patch job execution time.
-func (o OneTimeSchedulePtrOutput) ExecuteTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OneTimeSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExecuteTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 type OneTimeScheduleResponse struct {
 	// The desired patch job execution time.
 	ExecuteTime string `pulumi:"executeTime"`
-}
-
-// OneTimeScheduleResponseInput is an input type that accepts OneTimeScheduleResponseArgs and OneTimeScheduleResponseOutput values.
-// You can construct a concrete instance of `OneTimeScheduleResponseInput` via:
-//
-//          OneTimeScheduleResponseArgs{...}
-type OneTimeScheduleResponseInput interface {
-	pulumi.Input
-
-	ToOneTimeScheduleResponseOutput() OneTimeScheduleResponseOutput
-	ToOneTimeScheduleResponseOutputWithContext(context.Context) OneTimeScheduleResponseOutput
-}
-
-// Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-type OneTimeScheduleResponseArgs struct {
-	// The desired patch job execution time.
-	ExecuteTime pulumi.StringInput `pulumi:"executeTime"`
-}
-
-func (OneTimeScheduleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OneTimeScheduleResponse)(nil)).Elem()
-}
-
-func (i OneTimeScheduleResponseArgs) ToOneTimeScheduleResponseOutput() OneTimeScheduleResponseOutput {
-	return i.ToOneTimeScheduleResponseOutputWithContext(context.Background())
-}
-
-func (i OneTimeScheduleResponseArgs) ToOneTimeScheduleResponseOutputWithContext(ctx context.Context) OneTimeScheduleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OneTimeScheduleResponseOutput)
-}
-
-func (i OneTimeScheduleResponseArgs) ToOneTimeScheduleResponsePtrOutput() OneTimeScheduleResponsePtrOutput {
-	return i.ToOneTimeScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OneTimeScheduleResponseArgs) ToOneTimeScheduleResponsePtrOutputWithContext(ctx context.Context) OneTimeScheduleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OneTimeScheduleResponseOutput).ToOneTimeScheduleResponsePtrOutputWithContext(ctx)
-}
-
-// OneTimeScheduleResponsePtrInput is an input type that accepts OneTimeScheduleResponseArgs, OneTimeScheduleResponsePtr and OneTimeScheduleResponsePtrOutput values.
-// You can construct a concrete instance of `OneTimeScheduleResponsePtrInput` via:
-//
-//          OneTimeScheduleResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OneTimeScheduleResponsePtrInput interface {
-	pulumi.Input
-
-	ToOneTimeScheduleResponsePtrOutput() OneTimeScheduleResponsePtrOutput
-	ToOneTimeScheduleResponsePtrOutputWithContext(context.Context) OneTimeScheduleResponsePtrOutput
-}
-
-type oneTimeScheduleResponsePtrType OneTimeScheduleResponseArgs
-
-func OneTimeScheduleResponsePtr(v *OneTimeScheduleResponseArgs) OneTimeScheduleResponsePtrInput {
-	return (*oneTimeScheduleResponsePtrType)(v)
-}
-
-func (*oneTimeScheduleResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OneTimeScheduleResponse)(nil)).Elem()
-}
-
-func (i *oneTimeScheduleResponsePtrType) ToOneTimeScheduleResponsePtrOutput() OneTimeScheduleResponsePtrOutput {
-	return i.ToOneTimeScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *oneTimeScheduleResponsePtrType) ToOneTimeScheduleResponsePtrOutputWithContext(ctx context.Context) OneTimeScheduleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OneTimeScheduleResponsePtrOutput)
 }
 
 // Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
@@ -9462,53 +6853,9 @@ func (o OneTimeScheduleResponseOutput) ToOneTimeScheduleResponseOutputWithContex
 	return o
 }
 
-func (o OneTimeScheduleResponseOutput) ToOneTimeScheduleResponsePtrOutput() OneTimeScheduleResponsePtrOutput {
-	return o.ToOneTimeScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OneTimeScheduleResponseOutput) ToOneTimeScheduleResponsePtrOutputWithContext(ctx context.Context) OneTimeScheduleResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OneTimeScheduleResponse) *OneTimeScheduleResponse {
-		return &v
-	}).(OneTimeScheduleResponsePtrOutput)
-}
-
 // The desired patch job execution time.
 func (o OneTimeScheduleResponseOutput) ExecuteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v OneTimeScheduleResponse) string { return v.ExecuteTime }).(pulumi.StringOutput)
-}
-
-type OneTimeScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OneTimeScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OneTimeScheduleResponse)(nil)).Elem()
-}
-
-func (o OneTimeScheduleResponsePtrOutput) ToOneTimeScheduleResponsePtrOutput() OneTimeScheduleResponsePtrOutput {
-	return o
-}
-
-func (o OneTimeScheduleResponsePtrOutput) ToOneTimeScheduleResponsePtrOutputWithContext(ctx context.Context) OneTimeScheduleResponsePtrOutput {
-	return o
-}
-
-func (o OneTimeScheduleResponsePtrOutput) Elem() OneTimeScheduleResponseOutput {
-	return o.ApplyT(func(v *OneTimeScheduleResponse) OneTimeScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OneTimeScheduleResponse
-		return ret
-	}).(OneTimeScheduleResponseOutput)
-}
-
-// The desired patch job execution time.
-func (o OneTimeScheduleResponsePtrOutput) ExecuteTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OneTimeScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExecuteTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
@@ -9804,90 +7151,6 @@ type PatchConfigResponse struct {
 	Zypper ZypperSettingsResponse `pulumi:"zypper"`
 }
 
-// PatchConfigResponseInput is an input type that accepts PatchConfigResponseArgs and PatchConfigResponseOutput values.
-// You can construct a concrete instance of `PatchConfigResponseInput` via:
-//
-//          PatchConfigResponseArgs{...}
-type PatchConfigResponseInput interface {
-	pulumi.Input
-
-	ToPatchConfigResponseOutput() PatchConfigResponseOutput
-	ToPatchConfigResponseOutputWithContext(context.Context) PatchConfigResponseOutput
-}
-
-// Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
-type PatchConfigResponseArgs struct {
-	// Apt update settings. Use this setting to override the default `apt` patch rules.
-	Apt AptSettingsResponseInput `pulumi:"apt"`
-	// Goo update settings. Use this setting to override the default `goo` patch rules.
-	Goo GooSettingsResponseInput `pulumi:"goo"`
-	// The `ExecStep` to run after the patch update.
-	PostStep ExecStepResponseInput `pulumi:"postStep"`
-	// The `ExecStep` to run before the patch update.
-	PreStep ExecStepResponseInput `pulumi:"preStep"`
-	// Post-patch reboot settings.
-	RebootConfig pulumi.StringInput `pulumi:"rebootConfig"`
-	// Windows update settings. Use this override the default windows patch rules.
-	WindowsUpdate WindowsUpdateSettingsResponseInput `pulumi:"windowsUpdate"`
-	// Yum update settings. Use this setting to override the default `yum` patch rules.
-	Yum YumSettingsResponseInput `pulumi:"yum"`
-	// Zypper update settings. Use this setting to override the default `zypper` patch rules.
-	Zypper ZypperSettingsResponseInput `pulumi:"zypper"`
-}
-
-func (PatchConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PatchConfigResponse)(nil)).Elem()
-}
-
-func (i PatchConfigResponseArgs) ToPatchConfigResponseOutput() PatchConfigResponseOutput {
-	return i.ToPatchConfigResponseOutputWithContext(context.Background())
-}
-
-func (i PatchConfigResponseArgs) ToPatchConfigResponseOutputWithContext(ctx context.Context) PatchConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchConfigResponseOutput)
-}
-
-func (i PatchConfigResponseArgs) ToPatchConfigResponsePtrOutput() PatchConfigResponsePtrOutput {
-	return i.ToPatchConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PatchConfigResponseArgs) ToPatchConfigResponsePtrOutputWithContext(ctx context.Context) PatchConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchConfigResponseOutput).ToPatchConfigResponsePtrOutputWithContext(ctx)
-}
-
-// PatchConfigResponsePtrInput is an input type that accepts PatchConfigResponseArgs, PatchConfigResponsePtr and PatchConfigResponsePtrOutput values.
-// You can construct a concrete instance of `PatchConfigResponsePtrInput` via:
-//
-//          PatchConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PatchConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToPatchConfigResponsePtrOutput() PatchConfigResponsePtrOutput
-	ToPatchConfigResponsePtrOutputWithContext(context.Context) PatchConfigResponsePtrOutput
-}
-
-type patchConfigResponsePtrType PatchConfigResponseArgs
-
-func PatchConfigResponsePtr(v *PatchConfigResponseArgs) PatchConfigResponsePtrInput {
-	return (*patchConfigResponsePtrType)(v)
-}
-
-func (*patchConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PatchConfigResponse)(nil)).Elem()
-}
-
-func (i *patchConfigResponsePtrType) ToPatchConfigResponsePtrOutput() PatchConfigResponsePtrOutput {
-	return i.ToPatchConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *patchConfigResponsePtrType) ToPatchConfigResponsePtrOutputWithContext(ctx context.Context) PatchConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchConfigResponsePtrOutput)
-}
-
 // Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
 type PatchConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -9901,16 +7164,6 @@ func (o PatchConfigResponseOutput) ToPatchConfigResponseOutput() PatchConfigResp
 
 func (o PatchConfigResponseOutput) ToPatchConfigResponseOutputWithContext(ctx context.Context) PatchConfigResponseOutput {
 	return o
-}
-
-func (o PatchConfigResponseOutput) ToPatchConfigResponsePtrOutput() PatchConfigResponsePtrOutput {
-	return o.ToPatchConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PatchConfigResponseOutput) ToPatchConfigResponsePtrOutputWithContext(ctx context.Context) PatchConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchConfigResponse) *PatchConfigResponse {
-		return &v
-	}).(PatchConfigResponsePtrOutput)
 }
 
 // Apt update settings. Use this setting to override the default `apt` patch rules.
@@ -9951,110 +7204,6 @@ func (o PatchConfigResponseOutput) Yum() YumSettingsResponseOutput {
 // Zypper update settings. Use this setting to override the default `zypper` patch rules.
 func (o PatchConfigResponseOutput) Zypper() ZypperSettingsResponseOutput {
 	return o.ApplyT(func(v PatchConfigResponse) ZypperSettingsResponse { return v.Zypper }).(ZypperSettingsResponseOutput)
-}
-
-type PatchConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PatchConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PatchConfigResponse)(nil)).Elem()
-}
-
-func (o PatchConfigResponsePtrOutput) ToPatchConfigResponsePtrOutput() PatchConfigResponsePtrOutput {
-	return o
-}
-
-func (o PatchConfigResponsePtrOutput) ToPatchConfigResponsePtrOutputWithContext(ctx context.Context) PatchConfigResponsePtrOutput {
-	return o
-}
-
-func (o PatchConfigResponsePtrOutput) Elem() PatchConfigResponseOutput {
-	return o.ApplyT(func(v *PatchConfigResponse) PatchConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PatchConfigResponse
-		return ret
-	}).(PatchConfigResponseOutput)
-}
-
-// Apt update settings. Use this setting to override the default `apt` patch rules.
-func (o PatchConfigResponsePtrOutput) Apt() AptSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *PatchConfigResponse) *AptSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Apt
-	}).(AptSettingsResponsePtrOutput)
-}
-
-// Goo update settings. Use this setting to override the default `goo` patch rules.
-func (o PatchConfigResponsePtrOutput) Goo() GooSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *PatchConfigResponse) *GooSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Goo
-	}).(GooSettingsResponsePtrOutput)
-}
-
-// The `ExecStep` to run after the patch update.
-func (o PatchConfigResponsePtrOutput) PostStep() ExecStepResponsePtrOutput {
-	return o.ApplyT(func(v *PatchConfigResponse) *ExecStepResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PostStep
-	}).(ExecStepResponsePtrOutput)
-}
-
-// The `ExecStep` to run before the patch update.
-func (o PatchConfigResponsePtrOutput) PreStep() ExecStepResponsePtrOutput {
-	return o.ApplyT(func(v *PatchConfigResponse) *ExecStepResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PreStep
-	}).(ExecStepResponsePtrOutput)
-}
-
-// Post-patch reboot settings.
-func (o PatchConfigResponsePtrOutput) RebootConfig() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PatchConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RebootConfig
-	}).(pulumi.StringPtrOutput)
-}
-
-// Windows update settings. Use this override the default windows patch rules.
-func (o PatchConfigResponsePtrOutput) WindowsUpdate() WindowsUpdateSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *PatchConfigResponse) *WindowsUpdateSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.WindowsUpdate
-	}).(WindowsUpdateSettingsResponsePtrOutput)
-}
-
-// Yum update settings. Use this setting to override the default `yum` patch rules.
-func (o PatchConfigResponsePtrOutput) Yum() YumSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *PatchConfigResponse) *YumSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Yum
-	}).(YumSettingsResponsePtrOutput)
-}
-
-// Zypper update settings. Use this setting to override the default `zypper` patch rules.
-func (o PatchConfigResponsePtrOutput) Zypper() ZypperSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *PatchConfigResponse) *ZypperSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Zypper
-	}).(ZypperSettingsResponsePtrOutput)
 }
 
 // A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if both labels and zones are specified, the patch job targets only VMs with those labels and in those zones.
@@ -10108,47 +7257,6 @@ func (i PatchInstanceFilterArgs) ToPatchInstanceFilterOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterOutput)
 }
 
-func (i PatchInstanceFilterArgs) ToPatchInstanceFilterPtrOutput() PatchInstanceFilterPtrOutput {
-	return i.ToPatchInstanceFilterPtrOutputWithContext(context.Background())
-}
-
-func (i PatchInstanceFilterArgs) ToPatchInstanceFilterPtrOutputWithContext(ctx context.Context) PatchInstanceFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterOutput).ToPatchInstanceFilterPtrOutputWithContext(ctx)
-}
-
-// PatchInstanceFilterPtrInput is an input type that accepts PatchInstanceFilterArgs, PatchInstanceFilterPtr and PatchInstanceFilterPtrOutput values.
-// You can construct a concrete instance of `PatchInstanceFilterPtrInput` via:
-//
-//          PatchInstanceFilterArgs{...}
-//
-//  or:
-//
-//          nil
-type PatchInstanceFilterPtrInput interface {
-	pulumi.Input
-
-	ToPatchInstanceFilterPtrOutput() PatchInstanceFilterPtrOutput
-	ToPatchInstanceFilterPtrOutputWithContext(context.Context) PatchInstanceFilterPtrOutput
-}
-
-type patchInstanceFilterPtrType PatchInstanceFilterArgs
-
-func PatchInstanceFilterPtr(v *PatchInstanceFilterArgs) PatchInstanceFilterPtrInput {
-	return (*patchInstanceFilterPtrType)(v)
-}
-
-func (*patchInstanceFilterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PatchInstanceFilter)(nil)).Elem()
-}
-
-func (i *patchInstanceFilterPtrType) ToPatchInstanceFilterPtrOutput() PatchInstanceFilterPtrOutput {
-	return i.ToPatchInstanceFilterPtrOutputWithContext(context.Background())
-}
-
-func (i *patchInstanceFilterPtrType) ToPatchInstanceFilterPtrOutputWithContext(ctx context.Context) PatchInstanceFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterPtrOutput)
-}
-
 // A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if both labels and zones are specified, the patch job targets only VMs with those labels and in those zones.
 type PatchInstanceFilterOutput struct{ *pulumi.OutputState }
 
@@ -10162,16 +7270,6 @@ func (o PatchInstanceFilterOutput) ToPatchInstanceFilterOutput() PatchInstanceFi
 
 func (o PatchInstanceFilterOutput) ToPatchInstanceFilterOutputWithContext(ctx context.Context) PatchInstanceFilterOutput {
 	return o
-}
-
-func (o PatchInstanceFilterOutput) ToPatchInstanceFilterPtrOutput() PatchInstanceFilterPtrOutput {
-	return o.ToPatchInstanceFilterPtrOutputWithContext(context.Background())
-}
-
-func (o PatchInstanceFilterOutput) ToPatchInstanceFilterPtrOutputWithContext(ctx context.Context) PatchInstanceFilterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchInstanceFilter) *PatchInstanceFilter {
-		return &v
-	}).(PatchInstanceFilterPtrOutput)
 }
 
 // Target all VM instances in the project. If true, no other criteria is permitted.
@@ -10197,80 +7295,6 @@ func (o PatchInstanceFilterOutput) Instances() pulumi.StringArrayOutput {
 // Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
 func (o PatchInstanceFilterOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PatchInstanceFilter) []string { return v.Zones }).(pulumi.StringArrayOutput)
-}
-
-type PatchInstanceFilterPtrOutput struct{ *pulumi.OutputState }
-
-func (PatchInstanceFilterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PatchInstanceFilter)(nil)).Elem()
-}
-
-func (o PatchInstanceFilterPtrOutput) ToPatchInstanceFilterPtrOutput() PatchInstanceFilterPtrOutput {
-	return o
-}
-
-func (o PatchInstanceFilterPtrOutput) ToPatchInstanceFilterPtrOutputWithContext(ctx context.Context) PatchInstanceFilterPtrOutput {
-	return o
-}
-
-func (o PatchInstanceFilterPtrOutput) Elem() PatchInstanceFilterOutput {
-	return o.ApplyT(func(v *PatchInstanceFilter) PatchInstanceFilter {
-		if v != nil {
-			return *v
-		}
-		var ret PatchInstanceFilter
-		return ret
-	}).(PatchInstanceFilterOutput)
-}
-
-// Target all VM instances in the project. If true, no other criteria is permitted.
-func (o PatchInstanceFilterPtrOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PatchInstanceFilter) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.All
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
-func (o PatchInstanceFilterPtrOutput) GroupLabels() PatchInstanceFilterGroupLabelArrayOutput {
-	return o.ApplyT(func(v *PatchInstanceFilter) []PatchInstanceFilterGroupLabel {
-		if v == nil {
-			return nil
-		}
-		return v.GroupLabels
-	}).(PatchInstanceFilterGroupLabelArrayOutput)
-}
-
-// Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group VMs when targeting configs, for example prefix="prod-".
-func (o PatchInstanceFilterPtrOutput) InstanceNamePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PatchInstanceFilter) []string {
-		if v == nil {
-			return nil
-		}
-		return v.InstanceNamePrefixes
-	}).(pulumi.StringArrayOutput)
-}
-
-// Targets any of the VM instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
-func (o PatchInstanceFilterPtrOutput) Instances() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PatchInstanceFilter) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Instances
-	}).(pulumi.StringArrayOutput)
-}
-
-// Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
-func (o PatchInstanceFilterPtrOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PatchInstanceFilter) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Zones
-	}).(pulumi.StringArrayOutput)
 }
 
 // Targets a group of VM instances by using their [assigned labels](https://cloud.google.com/compute/docs/labeling-resources). Labels are key-value pairs. A `GroupLabel` is a combination of labels that is used to target VMs for a patch job. For example, a patch job can target VMs that have the following `GroupLabel`: `{"env":"test", "app":"web"}`. This means that the patch job is applied to VMs that have both the labels `env=test` and `app=web`.
@@ -10379,60 +7403,6 @@ type PatchInstanceFilterGroupLabelResponse struct {
 	Labels map[string]string `pulumi:"labels"`
 }
 
-// PatchInstanceFilterGroupLabelResponseInput is an input type that accepts PatchInstanceFilterGroupLabelResponseArgs and PatchInstanceFilterGroupLabelResponseOutput values.
-// You can construct a concrete instance of `PatchInstanceFilterGroupLabelResponseInput` via:
-//
-//          PatchInstanceFilterGroupLabelResponseArgs{...}
-type PatchInstanceFilterGroupLabelResponseInput interface {
-	pulumi.Input
-
-	ToPatchInstanceFilterGroupLabelResponseOutput() PatchInstanceFilterGroupLabelResponseOutput
-	ToPatchInstanceFilterGroupLabelResponseOutputWithContext(context.Context) PatchInstanceFilterGroupLabelResponseOutput
-}
-
-// Targets a group of VM instances by using their [assigned labels](https://cloud.google.com/compute/docs/labeling-resources). Labels are key-value pairs. A `GroupLabel` is a combination of labels that is used to target VMs for a patch job. For example, a patch job can target VMs that have the following `GroupLabel`: `{"env":"test", "app":"web"}`. This means that the patch job is applied to VMs that have both the labels `env=test` and `app=web`.
-type PatchInstanceFilterGroupLabelResponseArgs struct {
-	// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-}
-
-func (PatchInstanceFilterGroupLabelResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PatchInstanceFilterGroupLabelResponse)(nil)).Elem()
-}
-
-func (i PatchInstanceFilterGroupLabelResponseArgs) ToPatchInstanceFilterGroupLabelResponseOutput() PatchInstanceFilterGroupLabelResponseOutput {
-	return i.ToPatchInstanceFilterGroupLabelResponseOutputWithContext(context.Background())
-}
-
-func (i PatchInstanceFilterGroupLabelResponseArgs) ToPatchInstanceFilterGroupLabelResponseOutputWithContext(ctx context.Context) PatchInstanceFilterGroupLabelResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterGroupLabelResponseOutput)
-}
-
-// PatchInstanceFilterGroupLabelResponseArrayInput is an input type that accepts PatchInstanceFilterGroupLabelResponseArray and PatchInstanceFilterGroupLabelResponseArrayOutput values.
-// You can construct a concrete instance of `PatchInstanceFilterGroupLabelResponseArrayInput` via:
-//
-//          PatchInstanceFilterGroupLabelResponseArray{ PatchInstanceFilterGroupLabelResponseArgs{...} }
-type PatchInstanceFilterGroupLabelResponseArrayInput interface {
-	pulumi.Input
-
-	ToPatchInstanceFilterGroupLabelResponseArrayOutput() PatchInstanceFilterGroupLabelResponseArrayOutput
-	ToPatchInstanceFilterGroupLabelResponseArrayOutputWithContext(context.Context) PatchInstanceFilterGroupLabelResponseArrayOutput
-}
-
-type PatchInstanceFilterGroupLabelResponseArray []PatchInstanceFilterGroupLabelResponseInput
-
-func (PatchInstanceFilterGroupLabelResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PatchInstanceFilterGroupLabelResponse)(nil)).Elem()
-}
-
-func (i PatchInstanceFilterGroupLabelResponseArray) ToPatchInstanceFilterGroupLabelResponseArrayOutput() PatchInstanceFilterGroupLabelResponseArrayOutput {
-	return i.ToPatchInstanceFilterGroupLabelResponseArrayOutputWithContext(context.Background())
-}
-
-func (i PatchInstanceFilterGroupLabelResponseArray) ToPatchInstanceFilterGroupLabelResponseArrayOutputWithContext(ctx context.Context) PatchInstanceFilterGroupLabelResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterGroupLabelResponseArrayOutput)
-}
-
 // Targets a group of VM instances by using their [assigned labels](https://cloud.google.com/compute/docs/labeling-resources). Labels are key-value pairs. A `GroupLabel` is a combination of labels that is used to target VMs for a patch job. For example, a patch job can target VMs that have the following `GroupLabel`: `{"env":"test", "app":"web"}`. This means that the patch job is applied to VMs that have both the labels `env=test` and `app=web`.
 type PatchInstanceFilterGroupLabelResponseOutput struct{ *pulumi.OutputState }
 
@@ -10487,84 +7457,6 @@ type PatchInstanceFilterResponse struct {
 	Zones []string `pulumi:"zones"`
 }
 
-// PatchInstanceFilterResponseInput is an input type that accepts PatchInstanceFilterResponseArgs and PatchInstanceFilterResponseOutput values.
-// You can construct a concrete instance of `PatchInstanceFilterResponseInput` via:
-//
-//          PatchInstanceFilterResponseArgs{...}
-type PatchInstanceFilterResponseInput interface {
-	pulumi.Input
-
-	ToPatchInstanceFilterResponseOutput() PatchInstanceFilterResponseOutput
-	ToPatchInstanceFilterResponseOutputWithContext(context.Context) PatchInstanceFilterResponseOutput
-}
-
-// A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if both labels and zones are specified, the patch job targets only VMs with those labels and in those zones.
-type PatchInstanceFilterResponseArgs struct {
-	// Target all VM instances in the project. If true, no other criteria is permitted.
-	All pulumi.BoolInput `pulumi:"all"`
-	// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
-	GroupLabels PatchInstanceFilterGroupLabelResponseArrayInput `pulumi:"groupLabels"`
-	// Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group VMs when targeting configs, for example prefix="prod-".
-	InstanceNamePrefixes pulumi.StringArrayInput `pulumi:"instanceNamePrefixes"`
-	// Targets any of the VM instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
-	Instances pulumi.StringArrayInput `pulumi:"instances"`
-	// Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
-	Zones pulumi.StringArrayInput `pulumi:"zones"`
-}
-
-func (PatchInstanceFilterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PatchInstanceFilterResponse)(nil)).Elem()
-}
-
-func (i PatchInstanceFilterResponseArgs) ToPatchInstanceFilterResponseOutput() PatchInstanceFilterResponseOutput {
-	return i.ToPatchInstanceFilterResponseOutputWithContext(context.Background())
-}
-
-func (i PatchInstanceFilterResponseArgs) ToPatchInstanceFilterResponseOutputWithContext(ctx context.Context) PatchInstanceFilterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterResponseOutput)
-}
-
-func (i PatchInstanceFilterResponseArgs) ToPatchInstanceFilterResponsePtrOutput() PatchInstanceFilterResponsePtrOutput {
-	return i.ToPatchInstanceFilterResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PatchInstanceFilterResponseArgs) ToPatchInstanceFilterResponsePtrOutputWithContext(ctx context.Context) PatchInstanceFilterResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterResponseOutput).ToPatchInstanceFilterResponsePtrOutputWithContext(ctx)
-}
-
-// PatchInstanceFilterResponsePtrInput is an input type that accepts PatchInstanceFilterResponseArgs, PatchInstanceFilterResponsePtr and PatchInstanceFilterResponsePtrOutput values.
-// You can construct a concrete instance of `PatchInstanceFilterResponsePtrInput` via:
-//
-//          PatchInstanceFilterResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PatchInstanceFilterResponsePtrInput interface {
-	pulumi.Input
-
-	ToPatchInstanceFilterResponsePtrOutput() PatchInstanceFilterResponsePtrOutput
-	ToPatchInstanceFilterResponsePtrOutputWithContext(context.Context) PatchInstanceFilterResponsePtrOutput
-}
-
-type patchInstanceFilterResponsePtrType PatchInstanceFilterResponseArgs
-
-func PatchInstanceFilterResponsePtr(v *PatchInstanceFilterResponseArgs) PatchInstanceFilterResponsePtrInput {
-	return (*patchInstanceFilterResponsePtrType)(v)
-}
-
-func (*patchInstanceFilterResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PatchInstanceFilterResponse)(nil)).Elem()
-}
-
-func (i *patchInstanceFilterResponsePtrType) ToPatchInstanceFilterResponsePtrOutput() PatchInstanceFilterResponsePtrOutput {
-	return i.ToPatchInstanceFilterResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *patchInstanceFilterResponsePtrType) ToPatchInstanceFilterResponsePtrOutputWithContext(ctx context.Context) PatchInstanceFilterResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterResponsePtrOutput)
-}
-
 // A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if both labels and zones are specified, the patch job targets only VMs with those labels and in those zones.
 type PatchInstanceFilterResponseOutput struct{ *pulumi.OutputState }
 
@@ -10578,16 +7470,6 @@ func (o PatchInstanceFilterResponseOutput) ToPatchInstanceFilterResponseOutput()
 
 func (o PatchInstanceFilterResponseOutput) ToPatchInstanceFilterResponseOutputWithContext(ctx context.Context) PatchInstanceFilterResponseOutput {
 	return o
-}
-
-func (o PatchInstanceFilterResponseOutput) ToPatchInstanceFilterResponsePtrOutput() PatchInstanceFilterResponsePtrOutput {
-	return o.ToPatchInstanceFilterResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PatchInstanceFilterResponseOutput) ToPatchInstanceFilterResponsePtrOutputWithContext(ctx context.Context) PatchInstanceFilterResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchInstanceFilterResponse) *PatchInstanceFilterResponse {
-		return &v
-	}).(PatchInstanceFilterResponsePtrOutput)
 }
 
 // Target all VM instances in the project. If true, no other criteria is permitted.
@@ -10613,80 +7495,6 @@ func (o PatchInstanceFilterResponseOutput) Instances() pulumi.StringArrayOutput 
 // Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
 func (o PatchInstanceFilterResponseOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PatchInstanceFilterResponse) []string { return v.Zones }).(pulumi.StringArrayOutput)
-}
-
-type PatchInstanceFilterResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PatchInstanceFilterResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PatchInstanceFilterResponse)(nil)).Elem()
-}
-
-func (o PatchInstanceFilterResponsePtrOutput) ToPatchInstanceFilterResponsePtrOutput() PatchInstanceFilterResponsePtrOutput {
-	return o
-}
-
-func (o PatchInstanceFilterResponsePtrOutput) ToPatchInstanceFilterResponsePtrOutputWithContext(ctx context.Context) PatchInstanceFilterResponsePtrOutput {
-	return o
-}
-
-func (o PatchInstanceFilterResponsePtrOutput) Elem() PatchInstanceFilterResponseOutput {
-	return o.ApplyT(func(v *PatchInstanceFilterResponse) PatchInstanceFilterResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PatchInstanceFilterResponse
-		return ret
-	}).(PatchInstanceFilterResponseOutput)
-}
-
-// Target all VM instances in the project. If true, no other criteria is permitted.
-func (o PatchInstanceFilterResponsePtrOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PatchInstanceFilterResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.All
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
-func (o PatchInstanceFilterResponsePtrOutput) GroupLabels() PatchInstanceFilterGroupLabelResponseArrayOutput {
-	return o.ApplyT(func(v *PatchInstanceFilterResponse) []PatchInstanceFilterGroupLabelResponse {
-		if v == nil {
-			return nil
-		}
-		return v.GroupLabels
-	}).(PatchInstanceFilterGroupLabelResponseArrayOutput)
-}
-
-// Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group VMs when targeting configs, for example prefix="prod-".
-func (o PatchInstanceFilterResponsePtrOutput) InstanceNamePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PatchInstanceFilterResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.InstanceNamePrefixes
-	}).(pulumi.StringArrayOutput)
-}
-
-// Targets any of the VM instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
-func (o PatchInstanceFilterResponsePtrOutput) Instances() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PatchInstanceFilterResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Instances
-	}).(pulumi.StringArrayOutput)
-}
-
-// Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
-func (o PatchInstanceFilterResponsePtrOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PatchInstanceFilterResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Zones
-	}).(pulumi.StringArrayOutput)
 }
 
 // Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs.
@@ -10856,78 +7664,6 @@ type PatchRolloutResponse struct {
 	Mode string `pulumi:"mode"`
 }
 
-// PatchRolloutResponseInput is an input type that accepts PatchRolloutResponseArgs and PatchRolloutResponseOutput values.
-// You can construct a concrete instance of `PatchRolloutResponseInput` via:
-//
-//          PatchRolloutResponseArgs{...}
-type PatchRolloutResponseInput interface {
-	pulumi.Input
-
-	ToPatchRolloutResponseOutput() PatchRolloutResponseOutput
-	ToPatchRolloutResponseOutputWithContext(context.Context) PatchRolloutResponseOutput
-}
-
-// Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs.
-type PatchRolloutResponseArgs struct {
-	// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
-	DisruptionBudget FixedOrPercentResponseInput `pulumi:"disruptionBudget"`
-	// Mode of the patch rollout.
-	Mode pulumi.StringInput `pulumi:"mode"`
-}
-
-func (PatchRolloutResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PatchRolloutResponse)(nil)).Elem()
-}
-
-func (i PatchRolloutResponseArgs) ToPatchRolloutResponseOutput() PatchRolloutResponseOutput {
-	return i.ToPatchRolloutResponseOutputWithContext(context.Background())
-}
-
-func (i PatchRolloutResponseArgs) ToPatchRolloutResponseOutputWithContext(ctx context.Context) PatchRolloutResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchRolloutResponseOutput)
-}
-
-func (i PatchRolloutResponseArgs) ToPatchRolloutResponsePtrOutput() PatchRolloutResponsePtrOutput {
-	return i.ToPatchRolloutResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PatchRolloutResponseArgs) ToPatchRolloutResponsePtrOutputWithContext(ctx context.Context) PatchRolloutResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchRolloutResponseOutput).ToPatchRolloutResponsePtrOutputWithContext(ctx)
-}
-
-// PatchRolloutResponsePtrInput is an input type that accepts PatchRolloutResponseArgs, PatchRolloutResponsePtr and PatchRolloutResponsePtrOutput values.
-// You can construct a concrete instance of `PatchRolloutResponsePtrInput` via:
-//
-//          PatchRolloutResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PatchRolloutResponsePtrInput interface {
-	pulumi.Input
-
-	ToPatchRolloutResponsePtrOutput() PatchRolloutResponsePtrOutput
-	ToPatchRolloutResponsePtrOutputWithContext(context.Context) PatchRolloutResponsePtrOutput
-}
-
-type patchRolloutResponsePtrType PatchRolloutResponseArgs
-
-func PatchRolloutResponsePtr(v *PatchRolloutResponseArgs) PatchRolloutResponsePtrInput {
-	return (*patchRolloutResponsePtrType)(v)
-}
-
-func (*patchRolloutResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PatchRolloutResponse)(nil)).Elem()
-}
-
-func (i *patchRolloutResponsePtrType) ToPatchRolloutResponsePtrOutput() PatchRolloutResponsePtrOutput {
-	return i.ToPatchRolloutResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *patchRolloutResponsePtrType) ToPatchRolloutResponsePtrOutputWithContext(ctx context.Context) PatchRolloutResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchRolloutResponsePtrOutput)
-}
-
 // Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs.
 type PatchRolloutResponseOutput struct{ *pulumi.OutputState }
 
@@ -10943,16 +7679,6 @@ func (o PatchRolloutResponseOutput) ToPatchRolloutResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o PatchRolloutResponseOutput) ToPatchRolloutResponsePtrOutput() PatchRolloutResponsePtrOutput {
-	return o.ToPatchRolloutResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PatchRolloutResponseOutput) ToPatchRolloutResponsePtrOutputWithContext(ctx context.Context) PatchRolloutResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchRolloutResponse) *PatchRolloutResponse {
-		return &v
-	}).(PatchRolloutResponsePtrOutput)
-}
-
 // The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
 func (o PatchRolloutResponseOutput) DisruptionBudget() FixedOrPercentResponseOutput {
 	return o.ApplyT(func(v PatchRolloutResponse) FixedOrPercentResponse { return v.DisruptionBudget }).(FixedOrPercentResponseOutput)
@@ -10961,50 +7687,6 @@ func (o PatchRolloutResponseOutput) DisruptionBudget() FixedOrPercentResponseOut
 // Mode of the patch rollout.
 func (o PatchRolloutResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v PatchRolloutResponse) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-type PatchRolloutResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PatchRolloutResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PatchRolloutResponse)(nil)).Elem()
-}
-
-func (o PatchRolloutResponsePtrOutput) ToPatchRolloutResponsePtrOutput() PatchRolloutResponsePtrOutput {
-	return o
-}
-
-func (o PatchRolloutResponsePtrOutput) ToPatchRolloutResponsePtrOutputWithContext(ctx context.Context) PatchRolloutResponsePtrOutput {
-	return o
-}
-
-func (o PatchRolloutResponsePtrOutput) Elem() PatchRolloutResponseOutput {
-	return o.ApplyT(func(v *PatchRolloutResponse) PatchRolloutResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PatchRolloutResponse
-		return ret
-	}).(PatchRolloutResponseOutput)
-}
-
-// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
-func (o PatchRolloutResponsePtrOutput) DisruptionBudget() FixedOrPercentResponsePtrOutput {
-	return o.ApplyT(func(v *PatchRolloutResponse) *FixedOrPercentResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DisruptionBudget
-	}).(FixedOrPercentResponsePtrOutput)
-}
-
-// Mode of the patch rollout.
-func (o PatchRolloutResponsePtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PatchRolloutResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Mode
-	}).(pulumi.StringPtrOutput)
 }
 
 // Sets the time for recurring patch deployments.
@@ -11066,47 +7748,6 @@ func (i RecurringScheduleArgs) ToRecurringScheduleOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(RecurringScheduleOutput)
 }
 
-func (i RecurringScheduleArgs) ToRecurringSchedulePtrOutput() RecurringSchedulePtrOutput {
-	return i.ToRecurringSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i RecurringScheduleArgs) ToRecurringSchedulePtrOutputWithContext(ctx context.Context) RecurringSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecurringScheduleOutput).ToRecurringSchedulePtrOutputWithContext(ctx)
-}
-
-// RecurringSchedulePtrInput is an input type that accepts RecurringScheduleArgs, RecurringSchedulePtr and RecurringSchedulePtrOutput values.
-// You can construct a concrete instance of `RecurringSchedulePtrInput` via:
-//
-//          RecurringScheduleArgs{...}
-//
-//  or:
-//
-//          nil
-type RecurringSchedulePtrInput interface {
-	pulumi.Input
-
-	ToRecurringSchedulePtrOutput() RecurringSchedulePtrOutput
-	ToRecurringSchedulePtrOutputWithContext(context.Context) RecurringSchedulePtrOutput
-}
-
-type recurringSchedulePtrType RecurringScheduleArgs
-
-func RecurringSchedulePtr(v *RecurringScheduleArgs) RecurringSchedulePtrInput {
-	return (*recurringSchedulePtrType)(v)
-}
-
-func (*recurringSchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecurringSchedule)(nil)).Elem()
-}
-
-func (i *recurringSchedulePtrType) ToRecurringSchedulePtrOutput() RecurringSchedulePtrOutput {
-	return i.ToRecurringSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *recurringSchedulePtrType) ToRecurringSchedulePtrOutputWithContext(ctx context.Context) RecurringSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecurringSchedulePtrOutput)
-}
-
 // Sets the time for recurring patch deployments.
 type RecurringScheduleOutput struct{ *pulumi.OutputState }
 
@@ -11120,16 +7761,6 @@ func (o RecurringScheduleOutput) ToRecurringScheduleOutput() RecurringScheduleOu
 
 func (o RecurringScheduleOutput) ToRecurringScheduleOutputWithContext(ctx context.Context) RecurringScheduleOutput {
 	return o
-}
-
-func (o RecurringScheduleOutput) ToRecurringSchedulePtrOutput() RecurringSchedulePtrOutput {
-	return o.ToRecurringSchedulePtrOutputWithContext(context.Background())
-}
-
-func (o RecurringScheduleOutput) ToRecurringSchedulePtrOutputWithContext(ctx context.Context) RecurringSchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecurringSchedule) *RecurringSchedule {
-		return &v
-	}).(RecurringSchedulePtrOutput)
 }
 
 // Optional. The end time at which a recurring patch deployment schedule is no longer active.
@@ -11167,100 +7798,6 @@ func (o RecurringScheduleOutput) Weekly() WeeklyScheduleOutput {
 	return o.ApplyT(func(v RecurringSchedule) WeeklySchedule { return v.Weekly }).(WeeklyScheduleOutput)
 }
 
-type RecurringSchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (RecurringSchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecurringSchedule)(nil)).Elem()
-}
-
-func (o RecurringSchedulePtrOutput) ToRecurringSchedulePtrOutput() RecurringSchedulePtrOutput {
-	return o
-}
-
-func (o RecurringSchedulePtrOutput) ToRecurringSchedulePtrOutputWithContext(ctx context.Context) RecurringSchedulePtrOutput {
-	return o
-}
-
-func (o RecurringSchedulePtrOutput) Elem() RecurringScheduleOutput {
-	return o.ApplyT(func(v *RecurringSchedule) RecurringSchedule {
-		if v != nil {
-			return *v
-		}
-		var ret RecurringSchedule
-		return ret
-	}).(RecurringScheduleOutput)
-}
-
-// Optional. The end time at which a recurring patch deployment schedule is no longer active.
-func (o RecurringSchedulePtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurringSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The frequency unit of this recurring schedule.
-func (o RecurringSchedulePtrOutput) Frequency() RecurringScheduleFrequencyPtrOutput {
-	return o.ApplyT(func(v *RecurringSchedule) *RecurringScheduleFrequency {
-		if v == nil {
-			return nil
-		}
-		return &v.Frequency
-	}).(RecurringScheduleFrequencyPtrOutput)
-}
-
-// Schedule with monthly executions.
-func (o RecurringSchedulePtrOutput) Monthly() MonthlySchedulePtrOutput {
-	return o.ApplyT(func(v *RecurringSchedule) *MonthlySchedule {
-		if v == nil {
-			return nil
-		}
-		return &v.Monthly
-	}).(MonthlySchedulePtrOutput)
-}
-
-// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
-func (o RecurringSchedulePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurringSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Time of the day to run a recurring deployment.
-func (o RecurringSchedulePtrOutput) TimeOfDay() TimeOfDayPtrOutput {
-	return o.ApplyT(func(v *RecurringSchedule) *TimeOfDay {
-		if v == nil {
-			return nil
-		}
-		return &v.TimeOfDay
-	}).(TimeOfDayPtrOutput)
-}
-
-// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
-func (o RecurringSchedulePtrOutput) TimeZone() TimeZonePtrOutput {
-	return o.ApplyT(func(v *RecurringSchedule) *TimeZone {
-		if v == nil {
-			return nil
-		}
-		return &v.TimeZone
-	}).(TimeZonePtrOutput)
-}
-
-// Schedule with weekly executions.
-func (o RecurringSchedulePtrOutput) Weekly() WeeklySchedulePtrOutput {
-	return o.ApplyT(func(v *RecurringSchedule) *WeeklySchedule {
-		if v == nil {
-			return nil
-		}
-		return &v.Weekly
-	}).(WeeklySchedulePtrOutput)
-}
-
 // Sets the time for recurring patch deployments.
 type RecurringScheduleResponse struct {
 	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
@@ -11283,92 +7820,6 @@ type RecurringScheduleResponse struct {
 	Weekly WeeklyScheduleResponse `pulumi:"weekly"`
 }
 
-// RecurringScheduleResponseInput is an input type that accepts RecurringScheduleResponseArgs and RecurringScheduleResponseOutput values.
-// You can construct a concrete instance of `RecurringScheduleResponseInput` via:
-//
-//          RecurringScheduleResponseArgs{...}
-type RecurringScheduleResponseInput interface {
-	pulumi.Input
-
-	ToRecurringScheduleResponseOutput() RecurringScheduleResponseOutput
-	ToRecurringScheduleResponseOutputWithContext(context.Context) RecurringScheduleResponseOutput
-}
-
-// Sets the time for recurring patch deployments.
-type RecurringScheduleResponseArgs struct {
-	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// The frequency unit of this recurring schedule.
-	Frequency pulumi.StringInput `pulumi:"frequency"`
-	// The time the last patch job ran successfully.
-	LastExecuteTime pulumi.StringInput `pulumi:"lastExecuteTime"`
-	// Schedule with monthly executions.
-	Monthly MonthlyScheduleResponseInput `pulumi:"monthly"`
-	// The time the next patch job is scheduled to run.
-	NextExecuteTime pulumi.StringInput `pulumi:"nextExecuteTime"`
-	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// Time of the day to run a recurring deployment.
-	TimeOfDay TimeOfDayResponseInput `pulumi:"timeOfDay"`
-	// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
-	TimeZone TimeZoneResponseInput `pulumi:"timeZone"`
-	// Schedule with weekly executions.
-	Weekly WeeklyScheduleResponseInput `pulumi:"weekly"`
-}
-
-func (RecurringScheduleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecurringScheduleResponse)(nil)).Elem()
-}
-
-func (i RecurringScheduleResponseArgs) ToRecurringScheduleResponseOutput() RecurringScheduleResponseOutput {
-	return i.ToRecurringScheduleResponseOutputWithContext(context.Background())
-}
-
-func (i RecurringScheduleResponseArgs) ToRecurringScheduleResponseOutputWithContext(ctx context.Context) RecurringScheduleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecurringScheduleResponseOutput)
-}
-
-func (i RecurringScheduleResponseArgs) ToRecurringScheduleResponsePtrOutput() RecurringScheduleResponsePtrOutput {
-	return i.ToRecurringScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RecurringScheduleResponseArgs) ToRecurringScheduleResponsePtrOutputWithContext(ctx context.Context) RecurringScheduleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecurringScheduleResponseOutput).ToRecurringScheduleResponsePtrOutputWithContext(ctx)
-}
-
-// RecurringScheduleResponsePtrInput is an input type that accepts RecurringScheduleResponseArgs, RecurringScheduleResponsePtr and RecurringScheduleResponsePtrOutput values.
-// You can construct a concrete instance of `RecurringScheduleResponsePtrInput` via:
-//
-//          RecurringScheduleResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RecurringScheduleResponsePtrInput interface {
-	pulumi.Input
-
-	ToRecurringScheduleResponsePtrOutput() RecurringScheduleResponsePtrOutput
-	ToRecurringScheduleResponsePtrOutputWithContext(context.Context) RecurringScheduleResponsePtrOutput
-}
-
-type recurringScheduleResponsePtrType RecurringScheduleResponseArgs
-
-func RecurringScheduleResponsePtr(v *RecurringScheduleResponseArgs) RecurringScheduleResponsePtrInput {
-	return (*recurringScheduleResponsePtrType)(v)
-}
-
-func (*recurringScheduleResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecurringScheduleResponse)(nil)).Elem()
-}
-
-func (i *recurringScheduleResponsePtrType) ToRecurringScheduleResponsePtrOutput() RecurringScheduleResponsePtrOutput {
-	return i.ToRecurringScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *recurringScheduleResponsePtrType) ToRecurringScheduleResponsePtrOutputWithContext(ctx context.Context) RecurringScheduleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecurringScheduleResponsePtrOutput)
-}
-
 // Sets the time for recurring patch deployments.
 type RecurringScheduleResponseOutput struct{ *pulumi.OutputState }
 
@@ -11382,16 +7833,6 @@ func (o RecurringScheduleResponseOutput) ToRecurringScheduleResponseOutput() Rec
 
 func (o RecurringScheduleResponseOutput) ToRecurringScheduleResponseOutputWithContext(ctx context.Context) RecurringScheduleResponseOutput {
 	return o
-}
-
-func (o RecurringScheduleResponseOutput) ToRecurringScheduleResponsePtrOutput() RecurringScheduleResponsePtrOutput {
-	return o.ToRecurringScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RecurringScheduleResponseOutput) ToRecurringScheduleResponsePtrOutputWithContext(ctx context.Context) RecurringScheduleResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecurringScheduleResponse) *RecurringScheduleResponse {
-		return &v
-	}).(RecurringScheduleResponsePtrOutput)
 }
 
 // Optional. The end time at which a recurring patch deployment schedule is no longer active.
@@ -11437,120 +7878,6 @@ func (o RecurringScheduleResponseOutput) TimeZone() TimeZoneResponseOutput {
 // Schedule with weekly executions.
 func (o RecurringScheduleResponseOutput) Weekly() WeeklyScheduleResponseOutput {
 	return o.ApplyT(func(v RecurringScheduleResponse) WeeklyScheduleResponse { return v.Weekly }).(WeeklyScheduleResponseOutput)
-}
-
-type RecurringScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RecurringScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecurringScheduleResponse)(nil)).Elem()
-}
-
-func (o RecurringScheduleResponsePtrOutput) ToRecurringScheduleResponsePtrOutput() RecurringScheduleResponsePtrOutput {
-	return o
-}
-
-func (o RecurringScheduleResponsePtrOutput) ToRecurringScheduleResponsePtrOutputWithContext(ctx context.Context) RecurringScheduleResponsePtrOutput {
-	return o
-}
-
-func (o RecurringScheduleResponsePtrOutput) Elem() RecurringScheduleResponseOutput {
-	return o.ApplyT(func(v *RecurringScheduleResponse) RecurringScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RecurringScheduleResponse
-		return ret
-	}).(RecurringScheduleResponseOutput)
-}
-
-// Optional. The end time at which a recurring patch deployment schedule is no longer active.
-func (o RecurringScheduleResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurringScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The frequency unit of this recurring schedule.
-func (o RecurringScheduleResponsePtrOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurringScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Frequency
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time the last patch job ran successfully.
-func (o RecurringScheduleResponsePtrOutput) LastExecuteTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurringScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LastExecuteTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Schedule with monthly executions.
-func (o RecurringScheduleResponsePtrOutput) Monthly() MonthlyScheduleResponsePtrOutput {
-	return o.ApplyT(func(v *RecurringScheduleResponse) *MonthlyScheduleResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Monthly
-	}).(MonthlyScheduleResponsePtrOutput)
-}
-
-// The time the next patch job is scheduled to run.
-func (o RecurringScheduleResponsePtrOutput) NextExecuteTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurringScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NextExecuteTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
-func (o RecurringScheduleResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurringScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Time of the day to run a recurring deployment.
-func (o RecurringScheduleResponsePtrOutput) TimeOfDay() TimeOfDayResponsePtrOutput {
-	return o.ApplyT(func(v *RecurringScheduleResponse) *TimeOfDayResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TimeOfDay
-	}).(TimeOfDayResponsePtrOutput)
-}
-
-// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
-func (o RecurringScheduleResponsePtrOutput) TimeZone() TimeZoneResponsePtrOutput {
-	return o.ApplyT(func(v *RecurringScheduleResponse) *TimeZoneResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TimeZone
-	}).(TimeZoneResponsePtrOutput)
-}
-
-// Schedule with weekly executions.
-func (o RecurringScheduleResponsePtrOutput) Weekly() WeeklyScheduleResponsePtrOutput {
-	return o.ApplyT(func(v *RecurringScheduleResponse) *WeeklyScheduleResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Weekly
-	}).(WeeklyScheduleResponsePtrOutput)
 }
 
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
@@ -11600,47 +7927,6 @@ func (i TimeOfDayArgs) ToTimeOfDayOutputWithContext(ctx context.Context) TimeOfD
 	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayOutput)
 }
 
-func (i TimeOfDayArgs) ToTimeOfDayPtrOutput() TimeOfDayPtrOutput {
-	return i.ToTimeOfDayPtrOutputWithContext(context.Background())
-}
-
-func (i TimeOfDayArgs) ToTimeOfDayPtrOutputWithContext(ctx context.Context) TimeOfDayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayOutput).ToTimeOfDayPtrOutputWithContext(ctx)
-}
-
-// TimeOfDayPtrInput is an input type that accepts TimeOfDayArgs, TimeOfDayPtr and TimeOfDayPtrOutput values.
-// You can construct a concrete instance of `TimeOfDayPtrInput` via:
-//
-//          TimeOfDayArgs{...}
-//
-//  or:
-//
-//          nil
-type TimeOfDayPtrInput interface {
-	pulumi.Input
-
-	ToTimeOfDayPtrOutput() TimeOfDayPtrOutput
-	ToTimeOfDayPtrOutputWithContext(context.Context) TimeOfDayPtrOutput
-}
-
-type timeOfDayPtrType TimeOfDayArgs
-
-func TimeOfDayPtr(v *TimeOfDayArgs) TimeOfDayPtrInput {
-	return (*timeOfDayPtrType)(v)
-}
-
-func (*timeOfDayPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TimeOfDay)(nil)).Elem()
-}
-
-func (i *timeOfDayPtrType) ToTimeOfDayPtrOutput() TimeOfDayPtrOutput {
-	return i.ToTimeOfDayPtrOutputWithContext(context.Background())
-}
-
-func (i *timeOfDayPtrType) ToTimeOfDayPtrOutputWithContext(ctx context.Context) TimeOfDayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayPtrOutput)
-}
-
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
 type TimeOfDayOutput struct{ *pulumi.OutputState }
 
@@ -11654,16 +7940,6 @@ func (o TimeOfDayOutput) ToTimeOfDayOutput() TimeOfDayOutput {
 
 func (o TimeOfDayOutput) ToTimeOfDayOutputWithContext(ctx context.Context) TimeOfDayOutput {
 	return o
-}
-
-func (o TimeOfDayOutput) ToTimeOfDayPtrOutput() TimeOfDayPtrOutput {
-	return o.ToTimeOfDayPtrOutputWithContext(context.Background())
-}
-
-func (o TimeOfDayOutput) ToTimeOfDayPtrOutputWithContext(ctx context.Context) TimeOfDayPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeOfDay) *TimeOfDay {
-		return &v
-	}).(TimeOfDayPtrOutput)
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -11686,70 +7962,6 @@ func (o TimeOfDayOutput) Seconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TimeOfDay) *int { return v.Seconds }).(pulumi.IntPtrOutput)
 }
 
-type TimeOfDayPtrOutput struct{ *pulumi.OutputState }
-
-func (TimeOfDayPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TimeOfDay)(nil)).Elem()
-}
-
-func (o TimeOfDayPtrOutput) ToTimeOfDayPtrOutput() TimeOfDayPtrOutput {
-	return o
-}
-
-func (o TimeOfDayPtrOutput) ToTimeOfDayPtrOutputWithContext(ctx context.Context) TimeOfDayPtrOutput {
-	return o
-}
-
-func (o TimeOfDayPtrOutput) Elem() TimeOfDayOutput {
-	return o.ApplyT(func(v *TimeOfDay) TimeOfDay {
-		if v != nil {
-			return *v
-		}
-		var ret TimeOfDay
-		return ret
-	}).(TimeOfDayOutput)
-}
-
-// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-func (o TimeOfDayPtrOutput) Hours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TimeOfDay) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Hours
-	}).(pulumi.IntPtrOutput)
-}
-
-// Minutes of hour of day. Must be from 0 to 59.
-func (o TimeOfDayPtrOutput) Minutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TimeOfDay) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Minutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-func (o TimeOfDayPtrOutput) Nanos() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TimeOfDay) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Nanos
-	}).(pulumi.IntPtrOutput)
-}
-
-// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-func (o TimeOfDayPtrOutput) Seconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TimeOfDay) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Seconds
-	}).(pulumi.IntPtrOutput)
-}
-
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
 type TimeOfDayResponse struct {
 	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -11760,82 +7972,6 @@ type TimeOfDayResponse struct {
 	Nanos int `pulumi:"nanos"`
 	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
 	Seconds int `pulumi:"seconds"`
-}
-
-// TimeOfDayResponseInput is an input type that accepts TimeOfDayResponseArgs and TimeOfDayResponseOutput values.
-// You can construct a concrete instance of `TimeOfDayResponseInput` via:
-//
-//          TimeOfDayResponseArgs{...}
-type TimeOfDayResponseInput interface {
-	pulumi.Input
-
-	ToTimeOfDayResponseOutput() TimeOfDayResponseOutput
-	ToTimeOfDayResponseOutputWithContext(context.Context) TimeOfDayResponseOutput
-}
-
-// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
-type TimeOfDayResponseArgs struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-	Hours pulumi.IntInput `pulumi:"hours"`
-	// Minutes of hour of day. Must be from 0 to 59.
-	Minutes pulumi.IntInput `pulumi:"minutes"`
-	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-	Nanos pulumi.IntInput `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-	Seconds pulumi.IntInput `pulumi:"seconds"`
-}
-
-func (TimeOfDayResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TimeOfDayResponse)(nil)).Elem()
-}
-
-func (i TimeOfDayResponseArgs) ToTimeOfDayResponseOutput() TimeOfDayResponseOutput {
-	return i.ToTimeOfDayResponseOutputWithContext(context.Background())
-}
-
-func (i TimeOfDayResponseArgs) ToTimeOfDayResponseOutputWithContext(ctx context.Context) TimeOfDayResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayResponseOutput)
-}
-
-func (i TimeOfDayResponseArgs) ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput {
-	return i.ToTimeOfDayResponsePtrOutputWithContext(context.Background())
-}
-
-func (i TimeOfDayResponseArgs) ToTimeOfDayResponsePtrOutputWithContext(ctx context.Context) TimeOfDayResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayResponseOutput).ToTimeOfDayResponsePtrOutputWithContext(ctx)
-}
-
-// TimeOfDayResponsePtrInput is an input type that accepts TimeOfDayResponseArgs, TimeOfDayResponsePtr and TimeOfDayResponsePtrOutput values.
-// You can construct a concrete instance of `TimeOfDayResponsePtrInput` via:
-//
-//          TimeOfDayResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type TimeOfDayResponsePtrInput interface {
-	pulumi.Input
-
-	ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput
-	ToTimeOfDayResponsePtrOutputWithContext(context.Context) TimeOfDayResponsePtrOutput
-}
-
-type timeOfDayResponsePtrType TimeOfDayResponseArgs
-
-func TimeOfDayResponsePtr(v *TimeOfDayResponseArgs) TimeOfDayResponsePtrInput {
-	return (*timeOfDayResponsePtrType)(v)
-}
-
-func (*timeOfDayResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TimeOfDayResponse)(nil)).Elem()
-}
-
-func (i *timeOfDayResponsePtrType) ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput {
-	return i.ToTimeOfDayResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *timeOfDayResponsePtrType) ToTimeOfDayResponsePtrOutputWithContext(ctx context.Context) TimeOfDayResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayResponsePtrOutput)
 }
 
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
@@ -11851,16 +7987,6 @@ func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutput() TimeOfDayResponseOu
 
 func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutputWithContext(ctx context.Context) TimeOfDayResponseOutput {
 	return o
-}
-
-func (o TimeOfDayResponseOutput) ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput {
-	return o.ToTimeOfDayResponsePtrOutputWithContext(context.Background())
-}
-
-func (o TimeOfDayResponseOutput) ToTimeOfDayResponsePtrOutputWithContext(ctx context.Context) TimeOfDayResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeOfDayResponse) *TimeOfDayResponse {
-		return &v
-	}).(TimeOfDayResponsePtrOutput)
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -11881,70 +8007,6 @@ func (o TimeOfDayResponseOutput) Nanos() pulumi.IntOutput {
 // Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
 func (o TimeOfDayResponseOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Seconds }).(pulumi.IntOutput)
-}
-
-type TimeOfDayResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TimeOfDayResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TimeOfDayResponse)(nil)).Elem()
-}
-
-func (o TimeOfDayResponsePtrOutput) ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput {
-	return o
-}
-
-func (o TimeOfDayResponsePtrOutput) ToTimeOfDayResponsePtrOutputWithContext(ctx context.Context) TimeOfDayResponsePtrOutput {
-	return o
-}
-
-func (o TimeOfDayResponsePtrOutput) Elem() TimeOfDayResponseOutput {
-	return o.ApplyT(func(v *TimeOfDayResponse) TimeOfDayResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TimeOfDayResponse
-		return ret
-	}).(TimeOfDayResponseOutput)
-}
-
-// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-func (o TimeOfDayResponsePtrOutput) Hours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TimeOfDayResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Hours
-	}).(pulumi.IntPtrOutput)
-}
-
-// Minutes of hour of day. Must be from 0 to 59.
-func (o TimeOfDayResponsePtrOutput) Minutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TimeOfDayResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Minutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-func (o TimeOfDayResponsePtrOutput) Nanos() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TimeOfDayResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Nanos
-	}).(pulumi.IntPtrOutput)
-}
-
-// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-func (o TimeOfDayResponsePtrOutput) Seconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TimeOfDayResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Seconds
-	}).(pulumi.IntPtrOutput)
 }
 
 // Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
@@ -11986,47 +8048,6 @@ func (i TimeZoneArgs) ToTimeZoneOutputWithContext(ctx context.Context) TimeZoneO
 	return pulumi.ToOutputWithContext(ctx, i).(TimeZoneOutput)
 }
 
-func (i TimeZoneArgs) ToTimeZonePtrOutput() TimeZonePtrOutput {
-	return i.ToTimeZonePtrOutputWithContext(context.Background())
-}
-
-func (i TimeZoneArgs) ToTimeZonePtrOutputWithContext(ctx context.Context) TimeZonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeZoneOutput).ToTimeZonePtrOutputWithContext(ctx)
-}
-
-// TimeZonePtrInput is an input type that accepts TimeZoneArgs, TimeZonePtr and TimeZonePtrOutput values.
-// You can construct a concrete instance of `TimeZonePtrInput` via:
-//
-//          TimeZoneArgs{...}
-//
-//  or:
-//
-//          nil
-type TimeZonePtrInput interface {
-	pulumi.Input
-
-	ToTimeZonePtrOutput() TimeZonePtrOutput
-	ToTimeZonePtrOutputWithContext(context.Context) TimeZonePtrOutput
-}
-
-type timeZonePtrType TimeZoneArgs
-
-func TimeZonePtr(v *TimeZoneArgs) TimeZonePtrInput {
-	return (*timeZonePtrType)(v)
-}
-
-func (*timeZonePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TimeZone)(nil)).Elem()
-}
-
-func (i *timeZonePtrType) ToTimeZonePtrOutput() TimeZonePtrOutput {
-	return i.ToTimeZonePtrOutputWithContext(context.Background())
-}
-
-func (i *timeZonePtrType) ToTimeZonePtrOutputWithContext(ctx context.Context) TimeZonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeZonePtrOutput)
-}
-
 // Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
 type TimeZoneOutput struct{ *pulumi.OutputState }
 
@@ -12042,16 +8063,6 @@ func (o TimeZoneOutput) ToTimeZoneOutputWithContext(ctx context.Context) TimeZon
 	return o
 }
 
-func (o TimeZoneOutput) ToTimeZonePtrOutput() TimeZonePtrOutput {
-	return o.ToTimeZonePtrOutputWithContext(context.Background())
-}
-
-func (o TimeZoneOutput) ToTimeZonePtrOutputWithContext(ctx context.Context) TimeZonePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeZone) *TimeZone {
-		return &v
-	}).(TimeZonePtrOutput)
-}
-
 // IANA Time Zone Database time zone, e.g. "America/New_York".
 func (o TimeZoneOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeZone) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -12062,124 +8073,10 @@ func (o TimeZoneOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeZone) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-type TimeZonePtrOutput struct{ *pulumi.OutputState }
-
-func (TimeZonePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TimeZone)(nil)).Elem()
-}
-
-func (o TimeZonePtrOutput) ToTimeZonePtrOutput() TimeZonePtrOutput {
-	return o
-}
-
-func (o TimeZonePtrOutput) ToTimeZonePtrOutputWithContext(ctx context.Context) TimeZonePtrOutput {
-	return o
-}
-
-func (o TimeZonePtrOutput) Elem() TimeZoneOutput {
-	return o.ApplyT(func(v *TimeZone) TimeZone {
-		if v != nil {
-			return *v
-		}
-		var ret TimeZone
-		return ret
-	}).(TimeZoneOutput)
-}
-
-// IANA Time Zone Database time zone, e.g. "America/New_York".
-func (o TimeZonePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TimeZone) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. IANA Time Zone Database version number, e.g. "2019a".
-func (o TimeZonePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TimeZone) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
 // Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
 type TimeZoneResponse struct {
 	// Optional. IANA Time Zone Database version number, e.g. "2019a".
 	Version string `pulumi:"version"`
-}
-
-// TimeZoneResponseInput is an input type that accepts TimeZoneResponseArgs and TimeZoneResponseOutput values.
-// You can construct a concrete instance of `TimeZoneResponseInput` via:
-//
-//          TimeZoneResponseArgs{...}
-type TimeZoneResponseInput interface {
-	pulumi.Input
-
-	ToTimeZoneResponseOutput() TimeZoneResponseOutput
-	ToTimeZoneResponseOutputWithContext(context.Context) TimeZoneResponseOutput
-}
-
-// Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
-type TimeZoneResponseArgs struct {
-	// Optional. IANA Time Zone Database version number, e.g. "2019a".
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (TimeZoneResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TimeZoneResponse)(nil)).Elem()
-}
-
-func (i TimeZoneResponseArgs) ToTimeZoneResponseOutput() TimeZoneResponseOutput {
-	return i.ToTimeZoneResponseOutputWithContext(context.Background())
-}
-
-func (i TimeZoneResponseArgs) ToTimeZoneResponseOutputWithContext(ctx context.Context) TimeZoneResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeZoneResponseOutput)
-}
-
-func (i TimeZoneResponseArgs) ToTimeZoneResponsePtrOutput() TimeZoneResponsePtrOutput {
-	return i.ToTimeZoneResponsePtrOutputWithContext(context.Background())
-}
-
-func (i TimeZoneResponseArgs) ToTimeZoneResponsePtrOutputWithContext(ctx context.Context) TimeZoneResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeZoneResponseOutput).ToTimeZoneResponsePtrOutputWithContext(ctx)
-}
-
-// TimeZoneResponsePtrInput is an input type that accepts TimeZoneResponseArgs, TimeZoneResponsePtr and TimeZoneResponsePtrOutput values.
-// You can construct a concrete instance of `TimeZoneResponsePtrInput` via:
-//
-//          TimeZoneResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type TimeZoneResponsePtrInput interface {
-	pulumi.Input
-
-	ToTimeZoneResponsePtrOutput() TimeZoneResponsePtrOutput
-	ToTimeZoneResponsePtrOutputWithContext(context.Context) TimeZoneResponsePtrOutput
-}
-
-type timeZoneResponsePtrType TimeZoneResponseArgs
-
-func TimeZoneResponsePtr(v *TimeZoneResponseArgs) TimeZoneResponsePtrInput {
-	return (*timeZoneResponsePtrType)(v)
-}
-
-func (*timeZoneResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TimeZoneResponse)(nil)).Elem()
-}
-
-func (i *timeZoneResponsePtrType) ToTimeZoneResponsePtrOutput() TimeZoneResponsePtrOutput {
-	return i.ToTimeZoneResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *timeZoneResponsePtrType) ToTimeZoneResponsePtrOutputWithContext(ctx context.Context) TimeZoneResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeZoneResponsePtrOutput)
 }
 
 // Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
@@ -12197,53 +8094,9 @@ func (o TimeZoneResponseOutput) ToTimeZoneResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o TimeZoneResponseOutput) ToTimeZoneResponsePtrOutput() TimeZoneResponsePtrOutput {
-	return o.ToTimeZoneResponsePtrOutputWithContext(context.Background())
-}
-
-func (o TimeZoneResponseOutput) ToTimeZoneResponsePtrOutputWithContext(ctx context.Context) TimeZoneResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeZoneResponse) *TimeZoneResponse {
-		return &v
-	}).(TimeZoneResponsePtrOutput)
-}
-
 // Optional. IANA Time Zone Database version number, e.g. "2019a".
 func (o TimeZoneResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeZoneResponse) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type TimeZoneResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TimeZoneResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TimeZoneResponse)(nil)).Elem()
-}
-
-func (o TimeZoneResponsePtrOutput) ToTimeZoneResponsePtrOutput() TimeZoneResponsePtrOutput {
-	return o
-}
-
-func (o TimeZoneResponsePtrOutput) ToTimeZoneResponsePtrOutputWithContext(ctx context.Context) TimeZoneResponsePtrOutput {
-	return o
-}
-
-func (o TimeZoneResponsePtrOutput) Elem() TimeZoneResponseOutput {
-	return o.ApplyT(func(v *TimeZoneResponse) TimeZoneResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TimeZoneResponse
-		return ret
-	}).(TimeZoneResponseOutput)
-}
-
-// Optional. IANA Time Zone Database version number, e.g. "2019a".
-func (o TimeZoneResponsePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TimeZoneResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents one week day in a month. An example is "the 4th Sunday".
@@ -12289,47 +8142,6 @@ func (i WeekDayOfMonthArgs) ToWeekDayOfMonthOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(WeekDayOfMonthOutput)
 }
 
-func (i WeekDayOfMonthArgs) ToWeekDayOfMonthPtrOutput() WeekDayOfMonthPtrOutput {
-	return i.ToWeekDayOfMonthPtrOutputWithContext(context.Background())
-}
-
-func (i WeekDayOfMonthArgs) ToWeekDayOfMonthPtrOutputWithContext(ctx context.Context) WeekDayOfMonthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeekDayOfMonthOutput).ToWeekDayOfMonthPtrOutputWithContext(ctx)
-}
-
-// WeekDayOfMonthPtrInput is an input type that accepts WeekDayOfMonthArgs, WeekDayOfMonthPtr and WeekDayOfMonthPtrOutput values.
-// You can construct a concrete instance of `WeekDayOfMonthPtrInput` via:
-//
-//          WeekDayOfMonthArgs{...}
-//
-//  or:
-//
-//          nil
-type WeekDayOfMonthPtrInput interface {
-	pulumi.Input
-
-	ToWeekDayOfMonthPtrOutput() WeekDayOfMonthPtrOutput
-	ToWeekDayOfMonthPtrOutputWithContext(context.Context) WeekDayOfMonthPtrOutput
-}
-
-type weekDayOfMonthPtrType WeekDayOfMonthArgs
-
-func WeekDayOfMonthPtr(v *WeekDayOfMonthArgs) WeekDayOfMonthPtrInput {
-	return (*weekDayOfMonthPtrType)(v)
-}
-
-func (*weekDayOfMonthPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WeekDayOfMonth)(nil)).Elem()
-}
-
-func (i *weekDayOfMonthPtrType) ToWeekDayOfMonthPtrOutput() WeekDayOfMonthPtrOutput {
-	return i.ToWeekDayOfMonthPtrOutputWithContext(context.Background())
-}
-
-func (i *weekDayOfMonthPtrType) ToWeekDayOfMonthPtrOutputWithContext(ctx context.Context) WeekDayOfMonthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeekDayOfMonthPtrOutput)
-}
-
 // Represents one week day in a month. An example is "the 4th Sunday".
 type WeekDayOfMonthOutput struct{ *pulumi.OutputState }
 
@@ -12343,16 +8155,6 @@ func (o WeekDayOfMonthOutput) ToWeekDayOfMonthOutput() WeekDayOfMonthOutput {
 
 func (o WeekDayOfMonthOutput) ToWeekDayOfMonthOutputWithContext(ctx context.Context) WeekDayOfMonthOutput {
 	return o
-}
-
-func (o WeekDayOfMonthOutput) ToWeekDayOfMonthPtrOutput() WeekDayOfMonthPtrOutput {
-	return o.ToWeekDayOfMonthPtrOutputWithContext(context.Background())
-}
-
-func (o WeekDayOfMonthOutput) ToWeekDayOfMonthPtrOutputWithContext(ctx context.Context) WeekDayOfMonthPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeekDayOfMonth) *WeekDayOfMonth {
-		return &v
-	}).(WeekDayOfMonthPtrOutput)
 }
 
 // A day of the week.
@@ -12370,60 +8172,6 @@ func (o WeekDayOfMonthOutput) WeekOrdinal() pulumi.IntOutput {
 	return o.ApplyT(func(v WeekDayOfMonth) int { return v.WeekOrdinal }).(pulumi.IntOutput)
 }
 
-type WeekDayOfMonthPtrOutput struct{ *pulumi.OutputState }
-
-func (WeekDayOfMonthPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WeekDayOfMonth)(nil)).Elem()
-}
-
-func (o WeekDayOfMonthPtrOutput) ToWeekDayOfMonthPtrOutput() WeekDayOfMonthPtrOutput {
-	return o
-}
-
-func (o WeekDayOfMonthPtrOutput) ToWeekDayOfMonthPtrOutputWithContext(ctx context.Context) WeekDayOfMonthPtrOutput {
-	return o
-}
-
-func (o WeekDayOfMonthPtrOutput) Elem() WeekDayOfMonthOutput {
-	return o.ApplyT(func(v *WeekDayOfMonth) WeekDayOfMonth {
-		if v != nil {
-			return *v
-		}
-		var ret WeekDayOfMonth
-		return ret
-	}).(WeekDayOfMonthOutput)
-}
-
-// A day of the week.
-func (o WeekDayOfMonthPtrOutput) DayOfWeek() WeekDayOfMonthDayOfWeekPtrOutput {
-	return o.ApplyT(func(v *WeekDayOfMonth) *WeekDayOfMonthDayOfWeek {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOfWeek
-	}).(WeekDayOfMonthDayOfWeekPtrOutput)
-}
-
-// Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
-func (o WeekDayOfMonthPtrOutput) DayOffset() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WeekDayOfMonth) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DayOffset
-	}).(pulumi.IntPtrOutput)
-}
-
-// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
-func (o WeekDayOfMonthPtrOutput) WeekOrdinal() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WeekDayOfMonth) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.WeekOrdinal
-	}).(pulumi.IntPtrOutput)
-}
-
 // Represents one week day in a month. An example is "the 4th Sunday".
 type WeekDayOfMonthResponse struct {
 	// A day of the week.
@@ -12432,80 +8180,6 @@ type WeekDayOfMonthResponse struct {
 	DayOffset int `pulumi:"dayOffset"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal int `pulumi:"weekOrdinal"`
-}
-
-// WeekDayOfMonthResponseInput is an input type that accepts WeekDayOfMonthResponseArgs and WeekDayOfMonthResponseOutput values.
-// You can construct a concrete instance of `WeekDayOfMonthResponseInput` via:
-//
-//          WeekDayOfMonthResponseArgs{...}
-type WeekDayOfMonthResponseInput interface {
-	pulumi.Input
-
-	ToWeekDayOfMonthResponseOutput() WeekDayOfMonthResponseOutput
-	ToWeekDayOfMonthResponseOutputWithContext(context.Context) WeekDayOfMonthResponseOutput
-}
-
-// Represents one week day in a month. An example is "the 4th Sunday".
-type WeekDayOfMonthResponseArgs struct {
-	// A day of the week.
-	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
-	// Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
-	DayOffset pulumi.IntInput `pulumi:"dayOffset"`
-	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
-	WeekOrdinal pulumi.IntInput `pulumi:"weekOrdinal"`
-}
-
-func (WeekDayOfMonthResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WeekDayOfMonthResponse)(nil)).Elem()
-}
-
-func (i WeekDayOfMonthResponseArgs) ToWeekDayOfMonthResponseOutput() WeekDayOfMonthResponseOutput {
-	return i.ToWeekDayOfMonthResponseOutputWithContext(context.Background())
-}
-
-func (i WeekDayOfMonthResponseArgs) ToWeekDayOfMonthResponseOutputWithContext(ctx context.Context) WeekDayOfMonthResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeekDayOfMonthResponseOutput)
-}
-
-func (i WeekDayOfMonthResponseArgs) ToWeekDayOfMonthResponsePtrOutput() WeekDayOfMonthResponsePtrOutput {
-	return i.ToWeekDayOfMonthResponsePtrOutputWithContext(context.Background())
-}
-
-func (i WeekDayOfMonthResponseArgs) ToWeekDayOfMonthResponsePtrOutputWithContext(ctx context.Context) WeekDayOfMonthResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeekDayOfMonthResponseOutput).ToWeekDayOfMonthResponsePtrOutputWithContext(ctx)
-}
-
-// WeekDayOfMonthResponsePtrInput is an input type that accepts WeekDayOfMonthResponseArgs, WeekDayOfMonthResponsePtr and WeekDayOfMonthResponsePtrOutput values.
-// You can construct a concrete instance of `WeekDayOfMonthResponsePtrInput` via:
-//
-//          WeekDayOfMonthResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type WeekDayOfMonthResponsePtrInput interface {
-	pulumi.Input
-
-	ToWeekDayOfMonthResponsePtrOutput() WeekDayOfMonthResponsePtrOutput
-	ToWeekDayOfMonthResponsePtrOutputWithContext(context.Context) WeekDayOfMonthResponsePtrOutput
-}
-
-type weekDayOfMonthResponsePtrType WeekDayOfMonthResponseArgs
-
-func WeekDayOfMonthResponsePtr(v *WeekDayOfMonthResponseArgs) WeekDayOfMonthResponsePtrInput {
-	return (*weekDayOfMonthResponsePtrType)(v)
-}
-
-func (*weekDayOfMonthResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WeekDayOfMonthResponse)(nil)).Elem()
-}
-
-func (i *weekDayOfMonthResponsePtrType) ToWeekDayOfMonthResponsePtrOutput() WeekDayOfMonthResponsePtrOutput {
-	return i.ToWeekDayOfMonthResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *weekDayOfMonthResponsePtrType) ToWeekDayOfMonthResponsePtrOutputWithContext(ctx context.Context) WeekDayOfMonthResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeekDayOfMonthResponsePtrOutput)
 }
 
 // Represents one week day in a month. An example is "the 4th Sunday".
@@ -12523,16 +8197,6 @@ func (o WeekDayOfMonthResponseOutput) ToWeekDayOfMonthResponseOutputWithContext(
 	return o
 }
 
-func (o WeekDayOfMonthResponseOutput) ToWeekDayOfMonthResponsePtrOutput() WeekDayOfMonthResponsePtrOutput {
-	return o.ToWeekDayOfMonthResponsePtrOutputWithContext(context.Background())
-}
-
-func (o WeekDayOfMonthResponseOutput) ToWeekDayOfMonthResponsePtrOutputWithContext(ctx context.Context) WeekDayOfMonthResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeekDayOfMonthResponse) *WeekDayOfMonthResponse {
-		return &v
-	}).(WeekDayOfMonthResponsePtrOutput)
-}
-
 // A day of the week.
 func (o WeekDayOfMonthResponseOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v WeekDayOfMonthResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
@@ -12546,60 +8210,6 @@ func (o WeekDayOfMonthResponseOutput) DayOffset() pulumi.IntOutput {
 // Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 func (o WeekDayOfMonthResponseOutput) WeekOrdinal() pulumi.IntOutput {
 	return o.ApplyT(func(v WeekDayOfMonthResponse) int { return v.WeekOrdinal }).(pulumi.IntOutput)
-}
-
-type WeekDayOfMonthResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WeekDayOfMonthResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WeekDayOfMonthResponse)(nil)).Elem()
-}
-
-func (o WeekDayOfMonthResponsePtrOutput) ToWeekDayOfMonthResponsePtrOutput() WeekDayOfMonthResponsePtrOutput {
-	return o
-}
-
-func (o WeekDayOfMonthResponsePtrOutput) ToWeekDayOfMonthResponsePtrOutputWithContext(ctx context.Context) WeekDayOfMonthResponsePtrOutput {
-	return o
-}
-
-func (o WeekDayOfMonthResponsePtrOutput) Elem() WeekDayOfMonthResponseOutput {
-	return o.ApplyT(func(v *WeekDayOfMonthResponse) WeekDayOfMonthResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WeekDayOfMonthResponse
-		return ret
-	}).(WeekDayOfMonthResponseOutput)
-}
-
-// A day of the week.
-func (o WeekDayOfMonthResponsePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WeekDayOfMonthResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
-func (o WeekDayOfMonthResponsePtrOutput) DayOffset() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WeekDayOfMonthResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOffset
-	}).(pulumi.IntPtrOutput)
-}
-
-// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
-func (o WeekDayOfMonthResponsePtrOutput) WeekOrdinal() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WeekDayOfMonthResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.WeekOrdinal
-	}).(pulumi.IntPtrOutput)
 }
 
 // Represents a weekly schedule.
@@ -12637,47 +8247,6 @@ func (i WeeklyScheduleArgs) ToWeeklyScheduleOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleOutput)
 }
 
-func (i WeeklyScheduleArgs) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput {
-	return i.ToWeeklySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i WeeklyScheduleArgs) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleOutput).ToWeeklySchedulePtrOutputWithContext(ctx)
-}
-
-// WeeklySchedulePtrInput is an input type that accepts WeeklyScheduleArgs, WeeklySchedulePtr and WeeklySchedulePtrOutput values.
-// You can construct a concrete instance of `WeeklySchedulePtrInput` via:
-//
-//          WeeklyScheduleArgs{...}
-//
-//  or:
-//
-//          nil
-type WeeklySchedulePtrInput interface {
-	pulumi.Input
-
-	ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput
-	ToWeeklySchedulePtrOutputWithContext(context.Context) WeeklySchedulePtrOutput
-}
-
-type weeklySchedulePtrType WeeklyScheduleArgs
-
-func WeeklySchedulePtr(v *WeeklyScheduleArgs) WeeklySchedulePtrInput {
-	return (*weeklySchedulePtrType)(v)
-}
-
-func (*weeklySchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WeeklySchedule)(nil)).Elem()
-}
-
-func (i *weeklySchedulePtrType) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput {
-	return i.ToWeeklySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *weeklySchedulePtrType) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeeklySchedulePtrOutput)
-}
-
 // Represents a weekly schedule.
 type WeeklyScheduleOutput struct{ *pulumi.OutputState }
 
@@ -12693,129 +8262,15 @@ func (o WeeklyScheduleOutput) ToWeeklyScheduleOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o WeeklyScheduleOutput) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput {
-	return o.ToWeeklySchedulePtrOutputWithContext(context.Background())
-}
-
-func (o WeeklyScheduleOutput) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeeklySchedule) *WeeklySchedule {
-		return &v
-	}).(WeeklySchedulePtrOutput)
-}
-
 // Day of the week.
 func (o WeeklyScheduleOutput) DayOfWeek() WeeklyScheduleDayOfWeekOutput {
 	return o.ApplyT(func(v WeeklySchedule) WeeklyScheduleDayOfWeek { return v.DayOfWeek }).(WeeklyScheduleDayOfWeekOutput)
-}
-
-type WeeklySchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (WeeklySchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WeeklySchedule)(nil)).Elem()
-}
-
-func (o WeeklySchedulePtrOutput) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput {
-	return o
-}
-
-func (o WeeklySchedulePtrOutput) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
-	return o
-}
-
-func (o WeeklySchedulePtrOutput) Elem() WeeklyScheduleOutput {
-	return o.ApplyT(func(v *WeeklySchedule) WeeklySchedule {
-		if v != nil {
-			return *v
-		}
-		var ret WeeklySchedule
-		return ret
-	}).(WeeklyScheduleOutput)
-}
-
-// Day of the week.
-func (o WeeklySchedulePtrOutput) DayOfWeek() WeeklyScheduleDayOfWeekPtrOutput {
-	return o.ApplyT(func(v *WeeklySchedule) *WeeklyScheduleDayOfWeek {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOfWeek
-	}).(WeeklyScheduleDayOfWeekPtrOutput)
 }
 
 // Represents a weekly schedule.
 type WeeklyScheduleResponse struct {
 	// Day of the week.
 	DayOfWeek string `pulumi:"dayOfWeek"`
-}
-
-// WeeklyScheduleResponseInput is an input type that accepts WeeklyScheduleResponseArgs and WeeklyScheduleResponseOutput values.
-// You can construct a concrete instance of `WeeklyScheduleResponseInput` via:
-//
-//          WeeklyScheduleResponseArgs{...}
-type WeeklyScheduleResponseInput interface {
-	pulumi.Input
-
-	ToWeeklyScheduleResponseOutput() WeeklyScheduleResponseOutput
-	ToWeeklyScheduleResponseOutputWithContext(context.Context) WeeklyScheduleResponseOutput
-}
-
-// Represents a weekly schedule.
-type WeeklyScheduleResponseArgs struct {
-	// Day of the week.
-	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
-}
-
-func (WeeklyScheduleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WeeklyScheduleResponse)(nil)).Elem()
-}
-
-func (i WeeklyScheduleResponseArgs) ToWeeklyScheduleResponseOutput() WeeklyScheduleResponseOutput {
-	return i.ToWeeklyScheduleResponseOutputWithContext(context.Background())
-}
-
-func (i WeeklyScheduleResponseArgs) ToWeeklyScheduleResponseOutputWithContext(ctx context.Context) WeeklyScheduleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleResponseOutput)
-}
-
-func (i WeeklyScheduleResponseArgs) ToWeeklyScheduleResponsePtrOutput() WeeklyScheduleResponsePtrOutput {
-	return i.ToWeeklyScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i WeeklyScheduleResponseArgs) ToWeeklyScheduleResponsePtrOutputWithContext(ctx context.Context) WeeklyScheduleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleResponseOutput).ToWeeklyScheduleResponsePtrOutputWithContext(ctx)
-}
-
-// WeeklyScheduleResponsePtrInput is an input type that accepts WeeklyScheduleResponseArgs, WeeklyScheduleResponsePtr and WeeklyScheduleResponsePtrOutput values.
-// You can construct a concrete instance of `WeeklyScheduleResponsePtrInput` via:
-//
-//          WeeklyScheduleResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type WeeklyScheduleResponsePtrInput interface {
-	pulumi.Input
-
-	ToWeeklyScheduleResponsePtrOutput() WeeklyScheduleResponsePtrOutput
-	ToWeeklyScheduleResponsePtrOutputWithContext(context.Context) WeeklyScheduleResponsePtrOutput
-}
-
-type weeklyScheduleResponsePtrType WeeklyScheduleResponseArgs
-
-func WeeklyScheduleResponsePtr(v *WeeklyScheduleResponseArgs) WeeklyScheduleResponsePtrInput {
-	return (*weeklyScheduleResponsePtrType)(v)
-}
-
-func (*weeklyScheduleResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WeeklyScheduleResponse)(nil)).Elem()
-}
-
-func (i *weeklyScheduleResponsePtrType) ToWeeklyScheduleResponsePtrOutput() WeeklyScheduleResponsePtrOutput {
-	return i.ToWeeklyScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *weeklyScheduleResponsePtrType) ToWeeklyScheduleResponsePtrOutputWithContext(ctx context.Context) WeeklyScheduleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleResponsePtrOutput)
 }
 
 // Represents a weekly schedule.
@@ -12833,53 +8288,9 @@ func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponseOutputWithContext(
 	return o
 }
 
-func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponsePtrOutput() WeeklyScheduleResponsePtrOutput {
-	return o.ToWeeklyScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponsePtrOutputWithContext(ctx context.Context) WeeklyScheduleResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeeklyScheduleResponse) *WeeklyScheduleResponse {
-		return &v
-	}).(WeeklyScheduleResponsePtrOutput)
-}
-
 // Day of the week.
 func (o WeeklyScheduleResponseOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v WeeklyScheduleResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
-}
-
-type WeeklyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WeeklyScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WeeklyScheduleResponse)(nil)).Elem()
-}
-
-func (o WeeklyScheduleResponsePtrOutput) ToWeeklyScheduleResponsePtrOutput() WeeklyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o WeeklyScheduleResponsePtrOutput) ToWeeklyScheduleResponsePtrOutputWithContext(ctx context.Context) WeeklyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o WeeklyScheduleResponsePtrOutput) Elem() WeeklyScheduleResponseOutput {
-	return o.ApplyT(func(v *WeeklyScheduleResponse) WeeklyScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WeeklyScheduleResponse
-		return ret
-	}).(WeeklyScheduleResponseOutput)
-}
-
-// Day of the week.
-func (o WeeklyScheduleResponsePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WeeklyScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
 }
 
 // Windows patching is performed using the Windows Update Agent.
@@ -13070,80 +8481,6 @@ type WindowsUpdateSettingsResponse struct {
 	ExclusivePatches []string `pulumi:"exclusivePatches"`
 }
 
-// WindowsUpdateSettingsResponseInput is an input type that accepts WindowsUpdateSettingsResponseArgs and WindowsUpdateSettingsResponseOutput values.
-// You can construct a concrete instance of `WindowsUpdateSettingsResponseInput` via:
-//
-//          WindowsUpdateSettingsResponseArgs{...}
-type WindowsUpdateSettingsResponseInput interface {
-	pulumi.Input
-
-	ToWindowsUpdateSettingsResponseOutput() WindowsUpdateSettingsResponseOutput
-	ToWindowsUpdateSettingsResponseOutputWithContext(context.Context) WindowsUpdateSettingsResponseOutput
-}
-
-// Windows patching is performed using the Windows Update Agent.
-type WindowsUpdateSettingsResponseArgs struct {
-	// Only apply updates of these windows update classifications. If empty, all updates are applied.
-	Classifications pulumi.StringArrayInput `pulumi:"classifications"`
-	// List of KBs to exclude from update.
-	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
-	// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
-	ExclusivePatches pulumi.StringArrayInput `pulumi:"exclusivePatches"`
-}
-
-func (WindowsUpdateSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WindowsUpdateSettingsResponse)(nil)).Elem()
-}
-
-func (i WindowsUpdateSettingsResponseArgs) ToWindowsUpdateSettingsResponseOutput() WindowsUpdateSettingsResponseOutput {
-	return i.ToWindowsUpdateSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i WindowsUpdateSettingsResponseArgs) ToWindowsUpdateSettingsResponseOutputWithContext(ctx context.Context) WindowsUpdateSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsUpdateSettingsResponseOutput)
-}
-
-func (i WindowsUpdateSettingsResponseArgs) ToWindowsUpdateSettingsResponsePtrOutput() WindowsUpdateSettingsResponsePtrOutput {
-	return i.ToWindowsUpdateSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i WindowsUpdateSettingsResponseArgs) ToWindowsUpdateSettingsResponsePtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsUpdateSettingsResponseOutput).ToWindowsUpdateSettingsResponsePtrOutputWithContext(ctx)
-}
-
-// WindowsUpdateSettingsResponsePtrInput is an input type that accepts WindowsUpdateSettingsResponseArgs, WindowsUpdateSettingsResponsePtr and WindowsUpdateSettingsResponsePtrOutput values.
-// You can construct a concrete instance of `WindowsUpdateSettingsResponsePtrInput` via:
-//
-//          WindowsUpdateSettingsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type WindowsUpdateSettingsResponsePtrInput interface {
-	pulumi.Input
-
-	ToWindowsUpdateSettingsResponsePtrOutput() WindowsUpdateSettingsResponsePtrOutput
-	ToWindowsUpdateSettingsResponsePtrOutputWithContext(context.Context) WindowsUpdateSettingsResponsePtrOutput
-}
-
-type windowsUpdateSettingsResponsePtrType WindowsUpdateSettingsResponseArgs
-
-func WindowsUpdateSettingsResponsePtr(v *WindowsUpdateSettingsResponseArgs) WindowsUpdateSettingsResponsePtrInput {
-	return (*windowsUpdateSettingsResponsePtrType)(v)
-}
-
-func (*windowsUpdateSettingsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WindowsUpdateSettingsResponse)(nil)).Elem()
-}
-
-func (i *windowsUpdateSettingsResponsePtrType) ToWindowsUpdateSettingsResponsePtrOutput() WindowsUpdateSettingsResponsePtrOutput {
-	return i.ToWindowsUpdateSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *windowsUpdateSettingsResponsePtrType) ToWindowsUpdateSettingsResponsePtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsUpdateSettingsResponsePtrOutput)
-}
-
 // Windows patching is performed using the Windows Update Agent.
 type WindowsUpdateSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -13159,16 +8496,6 @@ func (o WindowsUpdateSettingsResponseOutput) ToWindowsUpdateSettingsResponseOutp
 	return o
 }
 
-func (o WindowsUpdateSettingsResponseOutput) ToWindowsUpdateSettingsResponsePtrOutput() WindowsUpdateSettingsResponsePtrOutput {
-	return o.ToWindowsUpdateSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o WindowsUpdateSettingsResponseOutput) ToWindowsUpdateSettingsResponsePtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsUpdateSettingsResponse) *WindowsUpdateSettingsResponse {
-		return &v
-	}).(WindowsUpdateSettingsResponsePtrOutput)
-}
-
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
 func (o WindowsUpdateSettingsResponseOutput) Classifications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WindowsUpdateSettingsResponse) []string { return v.Classifications }).(pulumi.StringArrayOutput)
@@ -13182,60 +8509,6 @@ func (o WindowsUpdateSettingsResponseOutput) Excludes() pulumi.StringArrayOutput
 // An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
 func (o WindowsUpdateSettingsResponseOutput) ExclusivePatches() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WindowsUpdateSettingsResponse) []string { return v.ExclusivePatches }).(pulumi.StringArrayOutput)
-}
-
-type WindowsUpdateSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WindowsUpdateSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WindowsUpdateSettingsResponse)(nil)).Elem()
-}
-
-func (o WindowsUpdateSettingsResponsePtrOutput) ToWindowsUpdateSettingsResponsePtrOutput() WindowsUpdateSettingsResponsePtrOutput {
-	return o
-}
-
-func (o WindowsUpdateSettingsResponsePtrOutput) ToWindowsUpdateSettingsResponsePtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsResponsePtrOutput {
-	return o
-}
-
-func (o WindowsUpdateSettingsResponsePtrOutput) Elem() WindowsUpdateSettingsResponseOutput {
-	return o.ApplyT(func(v *WindowsUpdateSettingsResponse) WindowsUpdateSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WindowsUpdateSettingsResponse
-		return ret
-	}).(WindowsUpdateSettingsResponseOutput)
-}
-
-// Only apply updates of these windows update classifications. If empty, all updates are applied.
-func (o WindowsUpdateSettingsResponsePtrOutput) Classifications() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WindowsUpdateSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Classifications
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of KBs to exclude from update.
-func (o WindowsUpdateSettingsResponsePtrOutput) Excludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WindowsUpdateSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Excludes
-	}).(pulumi.StringArrayOutput)
-}
-
-// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
-func (o WindowsUpdateSettingsResponsePtrOutput) ExclusivePatches() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WindowsUpdateSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExclusivePatches
-	}).(pulumi.StringArrayOutput)
 }
 
 // Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms.
@@ -13447,82 +8720,6 @@ type YumSettingsResponse struct {
 	Security bool `pulumi:"security"`
 }
 
-// YumSettingsResponseInput is an input type that accepts YumSettingsResponseArgs and YumSettingsResponseOutput values.
-// You can construct a concrete instance of `YumSettingsResponseInput` via:
-//
-//          YumSettingsResponseArgs{...}
-type YumSettingsResponseInput interface {
-	pulumi.Input
-
-	ToYumSettingsResponseOutput() YumSettingsResponseOutput
-	ToYumSettingsResponseOutputWithContext(context.Context) YumSettingsResponseOutput
-}
-
-// Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms.
-type YumSettingsResponseArgs struct {
-	// List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag.
-	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
-	// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field must not be specified with any other patch configuration fields.
-	ExclusivePackages pulumi.StringArrayInput `pulumi:"exclusivePackages"`
-	// Will cause patch to run `yum update-minimal` instead.
-	Minimal pulumi.BoolInput `pulumi:"minimal"`
-	// Adds the `--security` flag to `yum update`. Not supported on all platforms.
-	Security pulumi.BoolInput `pulumi:"security"`
-}
-
-func (YumSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*YumSettingsResponse)(nil)).Elem()
-}
-
-func (i YumSettingsResponseArgs) ToYumSettingsResponseOutput() YumSettingsResponseOutput {
-	return i.ToYumSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i YumSettingsResponseArgs) ToYumSettingsResponseOutputWithContext(ctx context.Context) YumSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(YumSettingsResponseOutput)
-}
-
-func (i YumSettingsResponseArgs) ToYumSettingsResponsePtrOutput() YumSettingsResponsePtrOutput {
-	return i.ToYumSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i YumSettingsResponseArgs) ToYumSettingsResponsePtrOutputWithContext(ctx context.Context) YumSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(YumSettingsResponseOutput).ToYumSettingsResponsePtrOutputWithContext(ctx)
-}
-
-// YumSettingsResponsePtrInput is an input type that accepts YumSettingsResponseArgs, YumSettingsResponsePtr and YumSettingsResponsePtrOutput values.
-// You can construct a concrete instance of `YumSettingsResponsePtrInput` via:
-//
-//          YumSettingsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type YumSettingsResponsePtrInput interface {
-	pulumi.Input
-
-	ToYumSettingsResponsePtrOutput() YumSettingsResponsePtrOutput
-	ToYumSettingsResponsePtrOutputWithContext(context.Context) YumSettingsResponsePtrOutput
-}
-
-type yumSettingsResponsePtrType YumSettingsResponseArgs
-
-func YumSettingsResponsePtr(v *YumSettingsResponseArgs) YumSettingsResponsePtrInput {
-	return (*yumSettingsResponsePtrType)(v)
-}
-
-func (*yumSettingsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**YumSettingsResponse)(nil)).Elem()
-}
-
-func (i *yumSettingsResponsePtrType) ToYumSettingsResponsePtrOutput() YumSettingsResponsePtrOutput {
-	return i.ToYumSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *yumSettingsResponsePtrType) ToYumSettingsResponsePtrOutputWithContext(ctx context.Context) YumSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(YumSettingsResponsePtrOutput)
-}
-
 // Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms.
 type YumSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -13536,16 +8733,6 @@ func (o YumSettingsResponseOutput) ToYumSettingsResponseOutput() YumSettingsResp
 
 func (o YumSettingsResponseOutput) ToYumSettingsResponseOutputWithContext(ctx context.Context) YumSettingsResponseOutput {
 	return o
-}
-
-func (o YumSettingsResponseOutput) ToYumSettingsResponsePtrOutput() YumSettingsResponsePtrOutput {
-	return o.ToYumSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o YumSettingsResponseOutput) ToYumSettingsResponsePtrOutputWithContext(ctx context.Context) YumSettingsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v YumSettingsResponse) *YumSettingsResponse {
-		return &v
-	}).(YumSettingsResponsePtrOutput)
 }
 
 // List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag.
@@ -13566,70 +8753,6 @@ func (o YumSettingsResponseOutput) Minimal() pulumi.BoolOutput {
 // Adds the `--security` flag to `yum update`. Not supported on all platforms.
 func (o YumSettingsResponseOutput) Security() pulumi.BoolOutput {
 	return o.ApplyT(func(v YumSettingsResponse) bool { return v.Security }).(pulumi.BoolOutput)
-}
-
-type YumSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (YumSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**YumSettingsResponse)(nil)).Elem()
-}
-
-func (o YumSettingsResponsePtrOutput) ToYumSettingsResponsePtrOutput() YumSettingsResponsePtrOutput {
-	return o
-}
-
-func (o YumSettingsResponsePtrOutput) ToYumSettingsResponsePtrOutputWithContext(ctx context.Context) YumSettingsResponsePtrOutput {
-	return o
-}
-
-func (o YumSettingsResponsePtrOutput) Elem() YumSettingsResponseOutput {
-	return o.ApplyT(func(v *YumSettingsResponse) YumSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret YumSettingsResponse
-		return ret
-	}).(YumSettingsResponseOutput)
-}
-
-// List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag.
-func (o YumSettingsResponsePtrOutput) Excludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *YumSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Excludes
-	}).(pulumi.StringArrayOutput)
-}
-
-// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field must not be specified with any other patch configuration fields.
-func (o YumSettingsResponsePtrOutput) ExclusivePackages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *YumSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExclusivePackages
-	}).(pulumi.StringArrayOutput)
-}
-
-// Will cause patch to run `yum update-minimal` instead.
-func (o YumSettingsResponsePtrOutput) Minimal() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *YumSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Minimal
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Adds the `--security` flag to `yum update`. Not supported on all platforms.
-func (o YumSettingsResponsePtrOutput) Security() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *YumSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Security
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual.
@@ -13883,86 +9006,6 @@ type ZypperSettingsResponse struct {
 	WithUpdate bool `pulumi:"withUpdate"`
 }
 
-// ZypperSettingsResponseInput is an input type that accepts ZypperSettingsResponseArgs and ZypperSettingsResponseOutput values.
-// You can construct a concrete instance of `ZypperSettingsResponseInput` via:
-//
-//          ZypperSettingsResponseArgs{...}
-type ZypperSettingsResponseInput interface {
-	pulumi.Input
-
-	ToZypperSettingsResponseOutput() ZypperSettingsResponseOutput
-	ToZypperSettingsResponseOutputWithContext(context.Context) ZypperSettingsResponseOutput
-}
-
-// Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual.
-type ZypperSettingsResponseArgs struct {
-	// Install only patches with these categories. Common categories include security, recommended, and feature.
-	Categories pulumi.StringArrayInput `pulumi:"categories"`
-	// List of patches to exclude from update.
-	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
-	// An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command. This field must not be used with any other patch configuration fields.
-	ExclusivePatches pulumi.StringArrayInput `pulumi:"exclusivePatches"`
-	// Install only patches with these severities. Common severities include critical, important, moderate, and low.
-	Severities pulumi.StringArrayInput `pulumi:"severities"`
-	// Adds the `--with-optional` flag to `zypper patch`.
-	WithOptional pulumi.BoolInput `pulumi:"withOptional"`
-	// Adds the `--with-update` flag, to `zypper patch`.
-	WithUpdate pulumi.BoolInput `pulumi:"withUpdate"`
-}
-
-func (ZypperSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZypperSettingsResponse)(nil)).Elem()
-}
-
-func (i ZypperSettingsResponseArgs) ToZypperSettingsResponseOutput() ZypperSettingsResponseOutput {
-	return i.ToZypperSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i ZypperSettingsResponseArgs) ToZypperSettingsResponseOutputWithContext(ctx context.Context) ZypperSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZypperSettingsResponseOutput)
-}
-
-func (i ZypperSettingsResponseArgs) ToZypperSettingsResponsePtrOutput() ZypperSettingsResponsePtrOutput {
-	return i.ToZypperSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ZypperSettingsResponseArgs) ToZypperSettingsResponsePtrOutputWithContext(ctx context.Context) ZypperSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZypperSettingsResponseOutput).ToZypperSettingsResponsePtrOutputWithContext(ctx)
-}
-
-// ZypperSettingsResponsePtrInput is an input type that accepts ZypperSettingsResponseArgs, ZypperSettingsResponsePtr and ZypperSettingsResponsePtrOutput values.
-// You can construct a concrete instance of `ZypperSettingsResponsePtrInput` via:
-//
-//          ZypperSettingsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ZypperSettingsResponsePtrInput interface {
-	pulumi.Input
-
-	ToZypperSettingsResponsePtrOutput() ZypperSettingsResponsePtrOutput
-	ToZypperSettingsResponsePtrOutputWithContext(context.Context) ZypperSettingsResponsePtrOutput
-}
-
-type zypperSettingsResponsePtrType ZypperSettingsResponseArgs
-
-func ZypperSettingsResponsePtr(v *ZypperSettingsResponseArgs) ZypperSettingsResponsePtrInput {
-	return (*zypperSettingsResponsePtrType)(v)
-}
-
-func (*zypperSettingsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZypperSettingsResponse)(nil)).Elem()
-}
-
-func (i *zypperSettingsResponsePtrType) ToZypperSettingsResponsePtrOutput() ZypperSettingsResponsePtrOutput {
-	return i.ToZypperSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *zypperSettingsResponsePtrType) ToZypperSettingsResponsePtrOutputWithContext(ctx context.Context) ZypperSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZypperSettingsResponsePtrOutput)
-}
-
 // Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual.
 type ZypperSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -13976,16 +9019,6 @@ func (o ZypperSettingsResponseOutput) ToZypperSettingsResponseOutput() ZypperSet
 
 func (o ZypperSettingsResponseOutput) ToZypperSettingsResponseOutputWithContext(ctx context.Context) ZypperSettingsResponseOutput {
 	return o
-}
-
-func (o ZypperSettingsResponseOutput) ToZypperSettingsResponsePtrOutput() ZypperSettingsResponsePtrOutput {
-	return o.ToZypperSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ZypperSettingsResponseOutput) ToZypperSettingsResponsePtrOutputWithContext(ctx context.Context) ZypperSettingsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZypperSettingsResponse) *ZypperSettingsResponse {
-		return &v
-	}).(ZypperSettingsResponsePtrOutput)
 }
 
 // Install only patches with these categories. Common categories include security, recommended, and feature.
@@ -14018,306 +9051,125 @@ func (o ZypperSettingsResponseOutput) WithUpdate() pulumi.BoolOutput {
 	return o.ApplyT(func(v ZypperSettingsResponse) bool { return v.WithUpdate }).(pulumi.BoolOutput)
 }
 
-type ZypperSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ZypperSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZypperSettingsResponse)(nil)).Elem()
-}
-
-func (o ZypperSettingsResponsePtrOutput) ToZypperSettingsResponsePtrOutput() ZypperSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ZypperSettingsResponsePtrOutput) ToZypperSettingsResponsePtrOutputWithContext(ctx context.Context) ZypperSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ZypperSettingsResponsePtrOutput) Elem() ZypperSettingsResponseOutput {
-	return o.ApplyT(func(v *ZypperSettingsResponse) ZypperSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ZypperSettingsResponse
-		return ret
-	}).(ZypperSettingsResponseOutput)
-}
-
-// Install only patches with these categories. Common categories include security, recommended, and feature.
-func (o ZypperSettingsResponsePtrOutput) Categories() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZypperSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Categories
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of patches to exclude from update.
-func (o ZypperSettingsResponsePtrOutput) Excludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZypperSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Excludes
-	}).(pulumi.StringArrayOutput)
-}
-
-// An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command. This field must not be used with any other patch configuration fields.
-func (o ZypperSettingsResponsePtrOutput) ExclusivePatches() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZypperSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExclusivePatches
-	}).(pulumi.StringArrayOutput)
-}
-
-// Install only patches with these severities. Common severities include critical, important, moderate, and low.
-func (o ZypperSettingsResponsePtrOutput) Severities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZypperSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Severities
-	}).(pulumi.StringArrayOutput)
-}
-
-// Adds the `--with-optional` flag to `zypper patch`.
-func (o ZypperSettingsResponsePtrOutput) WithOptional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZypperSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.WithOptional
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Adds the `--with-update` flag, to `zypper patch`.
-func (o ZypperSettingsResponsePtrOutput) WithUpdate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZypperSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.WithUpdate
-	}).(pulumi.BoolPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AptSettingsInput)(nil)).Elem(), AptSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AptSettingsPtrInput)(nil)).Elem(), AptSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AptSettingsResponseInput)(nil)).Elem(), AptSettingsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AptSettingsResponsePtrInput)(nil)).Elem(), AptSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecStepInput)(nil)).Elem(), ExecStepArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecStepPtrInput)(nil)).Elem(), ExecStepArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecStepConfigInput)(nil)).Elem(), ExecStepConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecStepConfigPtrInput)(nil)).Elem(), ExecStepConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExecStepConfigResponseInput)(nil)).Elem(), ExecStepConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExecStepConfigResponsePtrInput)(nil)).Elem(), ExecStepConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExecStepResponseInput)(nil)).Elem(), ExecStepResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExecStepResponsePtrInput)(nil)).Elem(), ExecStepResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FixedOrPercentInput)(nil)).Elem(), FixedOrPercentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FixedOrPercentPtrInput)(nil)).Elem(), FixedOrPercentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FixedOrPercentResponseInput)(nil)).Elem(), FixedOrPercentResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FixedOrPercentResponsePtrInput)(nil)).Elem(), FixedOrPercentResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcsObjectInput)(nil)).Elem(), GcsObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcsObjectPtrInput)(nil)).Elem(), GcsObjectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GcsObjectResponseInput)(nil)).Elem(), GcsObjectResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GcsObjectResponsePtrInput)(nil)).Elem(), GcsObjectResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooSettingsInput)(nil)).Elem(), GooSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooSettingsPtrInput)(nil)).Elem(), GooSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooSettingsResponseInput)(nil)).Elem(), GooSettingsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooSettingsResponsePtrInput)(nil)).Elem(), GooSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonthlyScheduleInput)(nil)).Elem(), MonthlyScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MonthlySchedulePtrInput)(nil)).Elem(), MonthlyScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MonthlyScheduleResponseInput)(nil)).Elem(), MonthlyScheduleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MonthlyScheduleResponsePtrInput)(nil)).Elem(), MonthlyScheduleResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyInput)(nil)).Elem(), OSPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyArrayInput)(nil)).Elem(), OSPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentInstanceFilterInput)(nil)).Elem(), OSPolicyAssignmentInstanceFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentInstanceFilterPtrInput)(nil)).Elem(), OSPolicyAssignmentInstanceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentInstanceFilterInventoryInput)(nil)).Elem(), OSPolicyAssignmentInstanceFilterInventoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentInstanceFilterInventoryArrayInput)(nil)).Elem(), OSPolicyAssignmentInstanceFilterInventoryArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentInstanceFilterInventoryResponseInput)(nil)).Elem(), OSPolicyAssignmentInstanceFilterInventoryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentInstanceFilterInventoryResponseArrayInput)(nil)).Elem(), OSPolicyAssignmentInstanceFilterInventoryResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentInstanceFilterResponseInput)(nil)).Elem(), OSPolicyAssignmentInstanceFilterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentInstanceFilterResponsePtrInput)(nil)).Elem(), OSPolicyAssignmentInstanceFilterResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentLabelSetInput)(nil)).Elem(), OSPolicyAssignmentLabelSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentLabelSetArrayInput)(nil)).Elem(), OSPolicyAssignmentLabelSetArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentLabelSetResponseInput)(nil)).Elem(), OSPolicyAssignmentLabelSetResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentLabelSetResponseArrayInput)(nil)).Elem(), OSPolicyAssignmentLabelSetResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentRolloutInput)(nil)).Elem(), OSPolicyAssignmentRolloutArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentRolloutPtrInput)(nil)).Elem(), OSPolicyAssignmentRolloutArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentRolloutResponseInput)(nil)).Elem(), OSPolicyAssignmentRolloutResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentRolloutResponsePtrInput)(nil)).Elem(), OSPolicyAssignmentRolloutResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyInventoryFilterInput)(nil)).Elem(), OSPolicyInventoryFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyInventoryFilterArrayInput)(nil)).Elem(), OSPolicyInventoryFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyInventoryFilterResponseInput)(nil)).Elem(), OSPolicyInventoryFilterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyInventoryFilterResponseArrayInput)(nil)).Elem(), OSPolicyInventoryFilterResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceInput)(nil)).Elem(), OSPolicyResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceArrayInput)(nil)).Elem(), OSPolicyResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceExecResourceInput)(nil)).Elem(), OSPolicyResourceExecResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceExecResourcePtrInput)(nil)).Elem(), OSPolicyResourceExecResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceExecResourceExecInput)(nil)).Elem(), OSPolicyResourceExecResourceExecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceExecResourceExecPtrInput)(nil)).Elem(), OSPolicyResourceExecResourceExecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceExecResourceExecResponseInput)(nil)).Elem(), OSPolicyResourceExecResourceExecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceExecResourceResponseInput)(nil)).Elem(), OSPolicyResourceExecResourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceFileInput)(nil)).Elem(), OSPolicyResourceFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceFilePtrInput)(nil)).Elem(), OSPolicyResourceFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceFileGcsInput)(nil)).Elem(), OSPolicyResourceFileGcsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceFileGcsPtrInput)(nil)).Elem(), OSPolicyResourceFileGcsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceFileGcsResponseInput)(nil)).Elem(), OSPolicyResourceFileGcsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceFileRemoteInput)(nil)).Elem(), OSPolicyResourceFileRemoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceFileRemotePtrInput)(nil)).Elem(), OSPolicyResourceFileRemoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceFileRemoteResponseInput)(nil)).Elem(), OSPolicyResourceFileRemoteResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceFileResourceInput)(nil)).Elem(), OSPolicyResourceFileResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceFileResourcePtrInput)(nil)).Elem(), OSPolicyResourceFileResourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceFileResourceResponseInput)(nil)).Elem(), OSPolicyResourceFileResourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceFileResponseInput)(nil)).Elem(), OSPolicyResourceFileResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceGroupInput)(nil)).Elem(), OSPolicyResourceGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceGroupArrayInput)(nil)).Elem(), OSPolicyResourceGroupArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceGroupResponseInput)(nil)).Elem(), OSPolicyResourceGroupResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceGroupResponseArrayInput)(nil)).Elem(), OSPolicyResourceGroupResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceInput)(nil)).Elem(), OSPolicyResourcePackageResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourcePtrInput)(nil)).Elem(), OSPolicyResourcePackageResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceAPTInput)(nil)).Elem(), OSPolicyResourcePackageResourceAPTArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceAPTPtrInput)(nil)).Elem(), OSPolicyResourcePackageResourceAPTArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceAPTResponseInput)(nil)).Elem(), OSPolicyResourcePackageResourceAPTResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceDebInput)(nil)).Elem(), OSPolicyResourcePackageResourceDebArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceDebPtrInput)(nil)).Elem(), OSPolicyResourcePackageResourceDebArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceDebResponseInput)(nil)).Elem(), OSPolicyResourcePackageResourceDebResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceGooGetInput)(nil)).Elem(), OSPolicyResourcePackageResourceGooGetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceGooGetPtrInput)(nil)).Elem(), OSPolicyResourcePackageResourceGooGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceGooGetResponseInput)(nil)).Elem(), OSPolicyResourcePackageResourceGooGetResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceMSIInput)(nil)).Elem(), OSPolicyResourcePackageResourceMSIArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceMSIPtrInput)(nil)).Elem(), OSPolicyResourcePackageResourceMSIArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceMSIResponseInput)(nil)).Elem(), OSPolicyResourcePackageResourceMSIResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceRPMInput)(nil)).Elem(), OSPolicyResourcePackageResourceRPMArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceRPMPtrInput)(nil)).Elem(), OSPolicyResourcePackageResourceRPMArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceRPMResponseInput)(nil)).Elem(), OSPolicyResourcePackageResourceRPMResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceResponseInput)(nil)).Elem(), OSPolicyResourcePackageResourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceYUMInput)(nil)).Elem(), OSPolicyResourcePackageResourceYUMArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceYUMPtrInput)(nil)).Elem(), OSPolicyResourcePackageResourceYUMArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceYUMResponseInput)(nil)).Elem(), OSPolicyResourcePackageResourceYUMResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceZypperInput)(nil)).Elem(), OSPolicyResourcePackageResourceZypperArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceZypperPtrInput)(nil)).Elem(), OSPolicyResourcePackageResourceZypperArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceZypperResponseInput)(nil)).Elem(), OSPolicyResourcePackageResourceZypperResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourcePtrInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceAptRepositoryInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceAptRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceAptRepositoryPtrInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceAptRepositoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceAptRepositoryResponseInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceAptRepositoryResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceGooRepositoryInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceGooRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceGooRepositoryPtrInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceGooRepositoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceGooRepositoryResponseInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceGooRepositoryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceResponseInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceYumRepositoryInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceYumRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceYumRepositoryPtrInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceYumRepositoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceYumRepositoryResponseInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceYumRepositoryResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceZypperRepositoryInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceZypperRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceZypperRepositoryPtrInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceZypperRepositoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceZypperRepositoryResponseInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceZypperRepositoryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceResponseInput)(nil)).Elem(), OSPolicyResourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceResponseArrayInput)(nil)).Elem(), OSPolicyResourceResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResponseInput)(nil)).Elem(), OSPolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResponseArrayInput)(nil)).Elem(), OSPolicyResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OneTimeScheduleInput)(nil)).Elem(), OneTimeScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OneTimeSchedulePtrInput)(nil)).Elem(), OneTimeScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OneTimeScheduleResponseInput)(nil)).Elem(), OneTimeScheduleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OneTimeScheduleResponsePtrInput)(nil)).Elem(), OneTimeScheduleResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchConfigInput)(nil)).Elem(), PatchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchConfigPtrInput)(nil)).Elem(), PatchConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PatchConfigResponseInput)(nil)).Elem(), PatchConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PatchConfigResponsePtrInput)(nil)).Elem(), PatchConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchInstanceFilterInput)(nil)).Elem(), PatchInstanceFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PatchInstanceFilterPtrInput)(nil)).Elem(), PatchInstanceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchInstanceFilterGroupLabelInput)(nil)).Elem(), PatchInstanceFilterGroupLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchInstanceFilterGroupLabelArrayInput)(nil)).Elem(), PatchInstanceFilterGroupLabelArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PatchInstanceFilterGroupLabelResponseInput)(nil)).Elem(), PatchInstanceFilterGroupLabelResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PatchInstanceFilterGroupLabelResponseArrayInput)(nil)).Elem(), PatchInstanceFilterGroupLabelResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PatchInstanceFilterResponseInput)(nil)).Elem(), PatchInstanceFilterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PatchInstanceFilterResponsePtrInput)(nil)).Elem(), PatchInstanceFilterResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchRolloutInput)(nil)).Elem(), PatchRolloutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchRolloutPtrInput)(nil)).Elem(), PatchRolloutArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PatchRolloutResponseInput)(nil)).Elem(), PatchRolloutResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PatchRolloutResponsePtrInput)(nil)).Elem(), PatchRolloutResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecurringScheduleInput)(nil)).Elem(), RecurringScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RecurringSchedulePtrInput)(nil)).Elem(), RecurringScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RecurringScheduleResponseInput)(nil)).Elem(), RecurringScheduleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RecurringScheduleResponsePtrInput)(nil)).Elem(), RecurringScheduleResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayInput)(nil)).Elem(), TimeOfDayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayPtrInput)(nil)).Elem(), TimeOfDayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayResponseInput)(nil)).Elem(), TimeOfDayResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayResponsePtrInput)(nil)).Elem(), TimeOfDayResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeZoneInput)(nil)).Elem(), TimeZoneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TimeZonePtrInput)(nil)).Elem(), TimeZoneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TimeZoneResponseInput)(nil)).Elem(), TimeZoneResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TimeZoneResponsePtrInput)(nil)).Elem(), TimeZoneResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeekDayOfMonthInput)(nil)).Elem(), WeekDayOfMonthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WeekDayOfMonthPtrInput)(nil)).Elem(), WeekDayOfMonthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WeekDayOfMonthResponseInput)(nil)).Elem(), WeekDayOfMonthResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WeekDayOfMonthResponsePtrInput)(nil)).Elem(), WeekDayOfMonthResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyScheduleInput)(nil)).Elem(), WeeklyScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WeeklySchedulePtrInput)(nil)).Elem(), WeeklyScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyScheduleResponseInput)(nil)).Elem(), WeeklyScheduleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyScheduleResponsePtrInput)(nil)).Elem(), WeeklyScheduleResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WindowsUpdateSettingsInput)(nil)).Elem(), WindowsUpdateSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WindowsUpdateSettingsPtrInput)(nil)).Elem(), WindowsUpdateSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WindowsUpdateSettingsResponseInput)(nil)).Elem(), WindowsUpdateSettingsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WindowsUpdateSettingsResponsePtrInput)(nil)).Elem(), WindowsUpdateSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*YumSettingsInput)(nil)).Elem(), YumSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*YumSettingsPtrInput)(nil)).Elem(), YumSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*YumSettingsResponseInput)(nil)).Elem(), YumSettingsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*YumSettingsResponsePtrInput)(nil)).Elem(), YumSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZypperSettingsInput)(nil)).Elem(), ZypperSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZypperSettingsPtrInput)(nil)).Elem(), ZypperSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZypperSettingsResponseInput)(nil)).Elem(), ZypperSettingsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZypperSettingsResponsePtrInput)(nil)).Elem(), ZypperSettingsResponseArgs{})
 	pulumi.RegisterOutputType(AptSettingsOutput{})
 	pulumi.RegisterOutputType(AptSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AptSettingsResponseOutput{})
-	pulumi.RegisterOutputType(AptSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExecStepOutput{})
 	pulumi.RegisterOutputType(ExecStepPtrOutput{})
 	pulumi.RegisterOutputType(ExecStepConfigOutput{})
 	pulumi.RegisterOutputType(ExecStepConfigPtrOutput{})
 	pulumi.RegisterOutputType(ExecStepConfigResponseOutput{})
-	pulumi.RegisterOutputType(ExecStepConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExecStepResponseOutput{})
-	pulumi.RegisterOutputType(ExecStepResponsePtrOutput{})
 	pulumi.RegisterOutputType(FixedOrPercentOutput{})
 	pulumi.RegisterOutputType(FixedOrPercentPtrOutput{})
 	pulumi.RegisterOutputType(FixedOrPercentResponseOutput{})
-	pulumi.RegisterOutputType(FixedOrPercentResponsePtrOutput{})
 	pulumi.RegisterOutputType(GcsObjectOutput{})
 	pulumi.RegisterOutputType(GcsObjectPtrOutput{})
 	pulumi.RegisterOutputType(GcsObjectResponseOutput{})
-	pulumi.RegisterOutputType(GcsObjectResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooSettingsOutput{})
 	pulumi.RegisterOutputType(GooSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GooSettingsResponseOutput{})
-	pulumi.RegisterOutputType(GooSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(MonthlyScheduleOutput{})
-	pulumi.RegisterOutputType(MonthlySchedulePtrOutput{})
 	pulumi.RegisterOutputType(MonthlyScheduleResponseOutput{})
-	pulumi.RegisterOutputType(MonthlyScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(OSPolicyOutput{})
 	pulumi.RegisterOutputType(OSPolicyArrayOutput{})
 	pulumi.RegisterOutputType(OSPolicyAssignmentInstanceFilterOutput{})
-	pulumi.RegisterOutputType(OSPolicyAssignmentInstanceFilterPtrOutput{})
 	pulumi.RegisterOutputType(OSPolicyAssignmentInstanceFilterInventoryOutput{})
 	pulumi.RegisterOutputType(OSPolicyAssignmentInstanceFilterInventoryArrayOutput{})
 	pulumi.RegisterOutputType(OSPolicyAssignmentInstanceFilterInventoryResponseOutput{})
 	pulumi.RegisterOutputType(OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput{})
 	pulumi.RegisterOutputType(OSPolicyAssignmentInstanceFilterResponseOutput{})
-	pulumi.RegisterOutputType(OSPolicyAssignmentInstanceFilterResponsePtrOutput{})
 	pulumi.RegisterOutputType(OSPolicyAssignmentLabelSetOutput{})
 	pulumi.RegisterOutputType(OSPolicyAssignmentLabelSetArrayOutput{})
 	pulumi.RegisterOutputType(OSPolicyAssignmentLabelSetResponseOutput{})
 	pulumi.RegisterOutputType(OSPolicyAssignmentLabelSetResponseArrayOutput{})
 	pulumi.RegisterOutputType(OSPolicyAssignmentRolloutOutput{})
-	pulumi.RegisterOutputType(OSPolicyAssignmentRolloutPtrOutput{})
 	pulumi.RegisterOutputType(OSPolicyAssignmentRolloutResponseOutput{})
-	pulumi.RegisterOutputType(OSPolicyAssignmentRolloutResponsePtrOutput{})
 	pulumi.RegisterOutputType(OSPolicyInventoryFilterOutput{})
 	pulumi.RegisterOutputType(OSPolicyInventoryFilterArrayOutput{})
 	pulumi.RegisterOutputType(OSPolicyInventoryFilterResponseOutput{})
@@ -14390,55 +9242,36 @@ func init() {
 	pulumi.RegisterOutputType(OSPolicyResponseOutput{})
 	pulumi.RegisterOutputType(OSPolicyResponseArrayOutput{})
 	pulumi.RegisterOutputType(OneTimeScheduleOutput{})
-	pulumi.RegisterOutputType(OneTimeSchedulePtrOutput{})
 	pulumi.RegisterOutputType(OneTimeScheduleResponseOutput{})
-	pulumi.RegisterOutputType(OneTimeScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(PatchConfigOutput{})
 	pulumi.RegisterOutputType(PatchConfigPtrOutput{})
 	pulumi.RegisterOutputType(PatchConfigResponseOutput{})
-	pulumi.RegisterOutputType(PatchConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PatchInstanceFilterOutput{})
-	pulumi.RegisterOutputType(PatchInstanceFilterPtrOutput{})
 	pulumi.RegisterOutputType(PatchInstanceFilterGroupLabelOutput{})
 	pulumi.RegisterOutputType(PatchInstanceFilterGroupLabelArrayOutput{})
 	pulumi.RegisterOutputType(PatchInstanceFilterGroupLabelResponseOutput{})
 	pulumi.RegisterOutputType(PatchInstanceFilterGroupLabelResponseArrayOutput{})
 	pulumi.RegisterOutputType(PatchInstanceFilterResponseOutput{})
-	pulumi.RegisterOutputType(PatchInstanceFilterResponsePtrOutput{})
 	pulumi.RegisterOutputType(PatchRolloutOutput{})
 	pulumi.RegisterOutputType(PatchRolloutPtrOutput{})
 	pulumi.RegisterOutputType(PatchRolloutResponseOutput{})
-	pulumi.RegisterOutputType(PatchRolloutResponsePtrOutput{})
 	pulumi.RegisterOutputType(RecurringScheduleOutput{})
-	pulumi.RegisterOutputType(RecurringSchedulePtrOutput{})
 	pulumi.RegisterOutputType(RecurringScheduleResponseOutput{})
-	pulumi.RegisterOutputType(RecurringScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(TimeOfDayOutput{})
-	pulumi.RegisterOutputType(TimeOfDayPtrOutput{})
 	pulumi.RegisterOutputType(TimeOfDayResponseOutput{})
-	pulumi.RegisterOutputType(TimeOfDayResponsePtrOutput{})
 	pulumi.RegisterOutputType(TimeZoneOutput{})
-	pulumi.RegisterOutputType(TimeZonePtrOutput{})
 	pulumi.RegisterOutputType(TimeZoneResponseOutput{})
-	pulumi.RegisterOutputType(TimeZoneResponsePtrOutput{})
 	pulumi.RegisterOutputType(WeekDayOfMonthOutput{})
-	pulumi.RegisterOutputType(WeekDayOfMonthPtrOutput{})
 	pulumi.RegisterOutputType(WeekDayOfMonthResponseOutput{})
-	pulumi.RegisterOutputType(WeekDayOfMonthResponsePtrOutput{})
 	pulumi.RegisterOutputType(WeeklyScheduleOutput{})
-	pulumi.RegisterOutputType(WeeklySchedulePtrOutput{})
 	pulumi.RegisterOutputType(WeeklyScheduleResponseOutput{})
-	pulumi.RegisterOutputType(WeeklyScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(WindowsUpdateSettingsOutput{})
 	pulumi.RegisterOutputType(WindowsUpdateSettingsPtrOutput{})
 	pulumi.RegisterOutputType(WindowsUpdateSettingsResponseOutput{})
-	pulumi.RegisterOutputType(WindowsUpdateSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(YumSettingsOutput{})
 	pulumi.RegisterOutputType(YumSettingsPtrOutput{})
 	pulumi.RegisterOutputType(YumSettingsResponseOutput{})
-	pulumi.RegisterOutputType(YumSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ZypperSettingsOutput{})
 	pulumi.RegisterOutputType(ZypperSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ZypperSettingsResponseOutput{})
-	pulumi.RegisterOutputType(ZypperSettingsResponsePtrOutput{})
 }

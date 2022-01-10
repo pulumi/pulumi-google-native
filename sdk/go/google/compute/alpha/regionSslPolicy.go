@@ -135,7 +135,7 @@ type RegionSslPolicyInput interface {
 }
 
 func (*RegionSslPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionSslPolicy)(nil))
+	return reflect.TypeOf((**RegionSslPolicy)(nil)).Elem()
 }
 
 func (i *RegionSslPolicy) ToRegionSslPolicyOutput() RegionSslPolicyOutput {
@@ -149,7 +149,7 @@ func (i *RegionSslPolicy) ToRegionSslPolicyOutputWithContext(ctx context.Context
 type RegionSslPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionSslPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionSslPolicy)(nil))
+	return reflect.TypeOf((**RegionSslPolicy)(nil)).Elem()
 }
 
 func (o RegionSslPolicyOutput) ToRegionSslPolicyOutput() RegionSslPolicyOutput {

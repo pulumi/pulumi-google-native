@@ -127,62 +127,6 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
-// You can construct a concrete instance of `AuditConfigResponseInput` via:
-//
-//          AuditConfigResponseArgs{...}
-type AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseOutput() AuditConfigResponseOutput
-	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return i.ToAuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
-}
-
-// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
-//
-//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
-type AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
-	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
-}
-
-type AuditConfigResponseArray []AuditConfigResponseInput
-
-func (AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -343,62 +287,6 @@ type AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
-//
-//          AuditLogConfigResponseArgs{...}
-type AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
-	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
-}
-
-// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
-//
-//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
-type AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
-	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
-}
-
-type AuditLogConfigResponseArray []AuditLogConfigResponseInput
-
-func (AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -572,64 +460,6 @@ type BindingResponse struct {
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
-}
-
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -824,75 +654,6 @@ type ConfigFileResponse struct {
 	Content string `pulumi:"content"`
 }
 
-// ConfigFileResponseInput is an input type that accepts ConfigFileResponseArgs and ConfigFileResponseOutput values.
-// You can construct a concrete instance of `ConfigFileResponseInput` via:
-//
-//          ConfigFileResponseArgs{...}
-type ConfigFileResponseInput interface {
-	pulumi.Input
-
-	ToConfigFileResponseOutput() ConfigFileResponseOutput
-	ToConfigFileResponseOutputWithContext(context.Context) ConfigFileResponseOutput
-}
-
-type ConfigFileResponseArgs struct {
-	// The contents of the file.
-	Content pulumi.StringInput `pulumi:"content"`
-}
-
-func (ConfigFileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigFileResponse)(nil)).Elem()
-}
-
-func (i ConfigFileResponseArgs) ToConfigFileResponseOutput() ConfigFileResponseOutput {
-	return i.ToConfigFileResponseOutputWithContext(context.Background())
-}
-
-func (i ConfigFileResponseArgs) ToConfigFileResponseOutputWithContext(ctx context.Context) ConfigFileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigFileResponseOutput)
-}
-
-func (i ConfigFileResponseArgs) ToConfigFileResponsePtrOutput() ConfigFileResponsePtrOutput {
-	return i.ToConfigFileResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ConfigFileResponseArgs) ToConfigFileResponsePtrOutputWithContext(ctx context.Context) ConfigFileResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigFileResponseOutput).ToConfigFileResponsePtrOutputWithContext(ctx)
-}
-
-// ConfigFileResponsePtrInput is an input type that accepts ConfigFileResponseArgs, ConfigFileResponsePtr and ConfigFileResponsePtrOutput values.
-// You can construct a concrete instance of `ConfigFileResponsePtrInput` via:
-//
-//          ConfigFileResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ConfigFileResponsePtrInput interface {
-	pulumi.Input
-
-	ToConfigFileResponsePtrOutput() ConfigFileResponsePtrOutput
-	ToConfigFileResponsePtrOutputWithContext(context.Context) ConfigFileResponsePtrOutput
-}
-
-type configFileResponsePtrType ConfigFileResponseArgs
-
-func ConfigFileResponsePtr(v *ConfigFileResponseArgs) ConfigFileResponsePtrInput {
-	return (*configFileResponsePtrType)(v)
-}
-
-func (*configFileResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConfigFileResponse)(nil)).Elem()
-}
-
-func (i *configFileResponsePtrType) ToConfigFileResponsePtrOutput() ConfigFileResponsePtrOutput {
-	return i.ToConfigFileResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *configFileResponsePtrType) ToConfigFileResponsePtrOutputWithContext(ctx context.Context) ConfigFileResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigFileResponsePtrOutput)
-}
-
 type ConfigFileResponseOutput struct{ *pulumi.OutputState }
 
 func (ConfigFileResponseOutput) ElementType() reflect.Type {
@@ -907,53 +668,9 @@ func (o ConfigFileResponseOutput) ToConfigFileResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o ConfigFileResponseOutput) ToConfigFileResponsePtrOutput() ConfigFileResponsePtrOutput {
-	return o.ToConfigFileResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ConfigFileResponseOutput) ToConfigFileResponsePtrOutputWithContext(ctx context.Context) ConfigFileResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigFileResponse) *ConfigFileResponse {
-		return &v
-	}).(ConfigFileResponsePtrOutput)
-}
-
 // The contents of the file.
 func (o ConfigFileResponseOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigFileResponse) string { return v.Content }).(pulumi.StringOutput)
-}
-
-type ConfigFileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ConfigFileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConfigFileResponse)(nil)).Elem()
-}
-
-func (o ConfigFileResponsePtrOutput) ToConfigFileResponsePtrOutput() ConfigFileResponsePtrOutput {
-	return o
-}
-
-func (o ConfigFileResponsePtrOutput) ToConfigFileResponsePtrOutputWithContext(ctx context.Context) ConfigFileResponsePtrOutput {
-	return o
-}
-
-func (o ConfigFileResponsePtrOutput) Elem() ConfigFileResponseOutput {
-	return o.ApplyT(func(v *ConfigFileResponse) ConfigFileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ConfigFileResponse
-		return ret
-	}).(ConfigFileResponseOutput)
-}
-
-// The contents of the file.
-func (o ConfigFileResponsePtrOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConfigFileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Content
-	}).(pulumi.StringPtrOutput)
 }
 
 // Label object for Deployments
@@ -1073,62 +790,6 @@ type DeploymentLabelEntryResponse struct {
 	Value string `pulumi:"value"`
 }
 
-// DeploymentLabelEntryResponseInput is an input type that accepts DeploymentLabelEntryResponseArgs and DeploymentLabelEntryResponseOutput values.
-// You can construct a concrete instance of `DeploymentLabelEntryResponseInput` via:
-//
-//          DeploymentLabelEntryResponseArgs{...}
-type DeploymentLabelEntryResponseInput interface {
-	pulumi.Input
-
-	ToDeploymentLabelEntryResponseOutput() DeploymentLabelEntryResponseOutput
-	ToDeploymentLabelEntryResponseOutputWithContext(context.Context) DeploymentLabelEntryResponseOutput
-}
-
-// Label object for Deployments
-type DeploymentLabelEntryResponseArgs struct {
-	// Key of the label
-	Key pulumi.StringInput `pulumi:"key"`
-	// Value of the label
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (DeploymentLabelEntryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentLabelEntryResponse)(nil)).Elem()
-}
-
-func (i DeploymentLabelEntryResponseArgs) ToDeploymentLabelEntryResponseOutput() DeploymentLabelEntryResponseOutput {
-	return i.ToDeploymentLabelEntryResponseOutputWithContext(context.Background())
-}
-
-func (i DeploymentLabelEntryResponseArgs) ToDeploymentLabelEntryResponseOutputWithContext(ctx context.Context) DeploymentLabelEntryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLabelEntryResponseOutput)
-}
-
-// DeploymentLabelEntryResponseArrayInput is an input type that accepts DeploymentLabelEntryResponseArray and DeploymentLabelEntryResponseArrayOutput values.
-// You can construct a concrete instance of `DeploymentLabelEntryResponseArrayInput` via:
-//
-//          DeploymentLabelEntryResponseArray{ DeploymentLabelEntryResponseArgs{...} }
-type DeploymentLabelEntryResponseArrayInput interface {
-	pulumi.Input
-
-	ToDeploymentLabelEntryResponseArrayOutput() DeploymentLabelEntryResponseArrayOutput
-	ToDeploymentLabelEntryResponseArrayOutputWithContext(context.Context) DeploymentLabelEntryResponseArrayOutput
-}
-
-type DeploymentLabelEntryResponseArray []DeploymentLabelEntryResponseInput
-
-func (DeploymentLabelEntryResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DeploymentLabelEntryResponse)(nil)).Elem()
-}
-
-func (i DeploymentLabelEntryResponseArray) ToDeploymentLabelEntryResponseArrayOutput() DeploymentLabelEntryResponseArrayOutput {
-	return i.ToDeploymentLabelEntryResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DeploymentLabelEntryResponseArray) ToDeploymentLabelEntryResponseArrayOutputWithContext(ctx context.Context) DeploymentLabelEntryResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLabelEntryResponseArrayOutput)
-}
-
 // Label object for Deployments
 type DeploymentLabelEntryResponseOutput struct{ *pulumi.OutputState }
 
@@ -1180,62 +841,6 @@ type DeploymentUpdateLabelEntryResponse struct {
 	Key string `pulumi:"key"`
 	// Value of the label
 	Value string `pulumi:"value"`
-}
-
-// DeploymentUpdateLabelEntryResponseInput is an input type that accepts DeploymentUpdateLabelEntryResponseArgs and DeploymentUpdateLabelEntryResponseOutput values.
-// You can construct a concrete instance of `DeploymentUpdateLabelEntryResponseInput` via:
-//
-//          DeploymentUpdateLabelEntryResponseArgs{...}
-type DeploymentUpdateLabelEntryResponseInput interface {
-	pulumi.Input
-
-	ToDeploymentUpdateLabelEntryResponseOutput() DeploymentUpdateLabelEntryResponseOutput
-	ToDeploymentUpdateLabelEntryResponseOutputWithContext(context.Context) DeploymentUpdateLabelEntryResponseOutput
-}
-
-// Label object for DeploymentUpdate
-type DeploymentUpdateLabelEntryResponseArgs struct {
-	// Key of the label
-	Key pulumi.StringInput `pulumi:"key"`
-	// Value of the label
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (DeploymentUpdateLabelEntryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentUpdateLabelEntryResponse)(nil)).Elem()
-}
-
-func (i DeploymentUpdateLabelEntryResponseArgs) ToDeploymentUpdateLabelEntryResponseOutput() DeploymentUpdateLabelEntryResponseOutput {
-	return i.ToDeploymentUpdateLabelEntryResponseOutputWithContext(context.Background())
-}
-
-func (i DeploymentUpdateLabelEntryResponseArgs) ToDeploymentUpdateLabelEntryResponseOutputWithContext(ctx context.Context) DeploymentUpdateLabelEntryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentUpdateLabelEntryResponseOutput)
-}
-
-// DeploymentUpdateLabelEntryResponseArrayInput is an input type that accepts DeploymentUpdateLabelEntryResponseArray and DeploymentUpdateLabelEntryResponseArrayOutput values.
-// You can construct a concrete instance of `DeploymentUpdateLabelEntryResponseArrayInput` via:
-//
-//          DeploymentUpdateLabelEntryResponseArray{ DeploymentUpdateLabelEntryResponseArgs{...} }
-type DeploymentUpdateLabelEntryResponseArrayInput interface {
-	pulumi.Input
-
-	ToDeploymentUpdateLabelEntryResponseArrayOutput() DeploymentUpdateLabelEntryResponseArrayOutput
-	ToDeploymentUpdateLabelEntryResponseArrayOutputWithContext(context.Context) DeploymentUpdateLabelEntryResponseArrayOutput
-}
-
-type DeploymentUpdateLabelEntryResponseArray []DeploymentUpdateLabelEntryResponseInput
-
-func (DeploymentUpdateLabelEntryResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DeploymentUpdateLabelEntryResponse)(nil)).Elem()
-}
-
-func (i DeploymentUpdateLabelEntryResponseArray) ToDeploymentUpdateLabelEntryResponseArrayOutput() DeploymentUpdateLabelEntryResponseArrayOutput {
-	return i.ToDeploymentUpdateLabelEntryResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DeploymentUpdateLabelEntryResponseArray) ToDeploymentUpdateLabelEntryResponseArrayOutputWithContext(ctx context.Context) DeploymentUpdateLabelEntryResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentUpdateLabelEntryResponseArrayOutput)
 }
 
 // Label object for DeploymentUpdate
@@ -1292,79 +897,6 @@ type DeploymentUpdateResponse struct {
 	Manifest string `pulumi:"manifest"`
 }
 
-// DeploymentUpdateResponseInput is an input type that accepts DeploymentUpdateResponseArgs and DeploymentUpdateResponseOutput values.
-// You can construct a concrete instance of `DeploymentUpdateResponseInput` via:
-//
-//          DeploymentUpdateResponseArgs{...}
-type DeploymentUpdateResponseInput interface {
-	pulumi.Input
-
-	ToDeploymentUpdateResponseOutput() DeploymentUpdateResponseOutput
-	ToDeploymentUpdateResponseOutputWithContext(context.Context) DeploymentUpdateResponseOutput
-}
-
-type DeploymentUpdateResponseArgs struct {
-	// An optional user-provided description of the deployment after the current update has been applied.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-	Labels DeploymentUpdateLabelEntryResponseArrayInput `pulumi:"labels"`
-	// URL of the manifest representing the update configuration of this deployment.
-	Manifest pulumi.StringInput `pulumi:"manifest"`
-}
-
-func (DeploymentUpdateResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentUpdateResponse)(nil)).Elem()
-}
-
-func (i DeploymentUpdateResponseArgs) ToDeploymentUpdateResponseOutput() DeploymentUpdateResponseOutput {
-	return i.ToDeploymentUpdateResponseOutputWithContext(context.Background())
-}
-
-func (i DeploymentUpdateResponseArgs) ToDeploymentUpdateResponseOutputWithContext(ctx context.Context) DeploymentUpdateResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentUpdateResponseOutput)
-}
-
-func (i DeploymentUpdateResponseArgs) ToDeploymentUpdateResponsePtrOutput() DeploymentUpdateResponsePtrOutput {
-	return i.ToDeploymentUpdateResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DeploymentUpdateResponseArgs) ToDeploymentUpdateResponsePtrOutputWithContext(ctx context.Context) DeploymentUpdateResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentUpdateResponseOutput).ToDeploymentUpdateResponsePtrOutputWithContext(ctx)
-}
-
-// DeploymentUpdateResponsePtrInput is an input type that accepts DeploymentUpdateResponseArgs, DeploymentUpdateResponsePtr and DeploymentUpdateResponsePtrOutput values.
-// You can construct a concrete instance of `DeploymentUpdateResponsePtrInput` via:
-//
-//          DeploymentUpdateResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DeploymentUpdateResponsePtrInput interface {
-	pulumi.Input
-
-	ToDeploymentUpdateResponsePtrOutput() DeploymentUpdateResponsePtrOutput
-	ToDeploymentUpdateResponsePtrOutputWithContext(context.Context) DeploymentUpdateResponsePtrOutput
-}
-
-type deploymentUpdateResponsePtrType DeploymentUpdateResponseArgs
-
-func DeploymentUpdateResponsePtr(v *DeploymentUpdateResponseArgs) DeploymentUpdateResponsePtrInput {
-	return (*deploymentUpdateResponsePtrType)(v)
-}
-
-func (*deploymentUpdateResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeploymentUpdateResponse)(nil)).Elem()
-}
-
-func (i *deploymentUpdateResponsePtrType) ToDeploymentUpdateResponsePtrOutput() DeploymentUpdateResponsePtrOutput {
-	return i.ToDeploymentUpdateResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *deploymentUpdateResponsePtrType) ToDeploymentUpdateResponsePtrOutputWithContext(ctx context.Context) DeploymentUpdateResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentUpdateResponsePtrOutput)
-}
-
 type DeploymentUpdateResponseOutput struct{ *pulumi.OutputState }
 
 func (DeploymentUpdateResponseOutput) ElementType() reflect.Type {
@@ -1377,16 +909,6 @@ func (o DeploymentUpdateResponseOutput) ToDeploymentUpdateResponseOutput() Deplo
 
 func (o DeploymentUpdateResponseOutput) ToDeploymentUpdateResponseOutputWithContext(ctx context.Context) DeploymentUpdateResponseOutput {
 	return o
-}
-
-func (o DeploymentUpdateResponseOutput) ToDeploymentUpdateResponsePtrOutput() DeploymentUpdateResponsePtrOutput {
-	return o.ToDeploymentUpdateResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DeploymentUpdateResponseOutput) ToDeploymentUpdateResponsePtrOutputWithContext(ctx context.Context) DeploymentUpdateResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentUpdateResponse) *DeploymentUpdateResponse {
-		return &v
-	}).(DeploymentUpdateResponsePtrOutput)
 }
 
 // An optional user-provided description of the deployment after the current update has been applied.
@@ -1402,60 +924,6 @@ func (o DeploymentUpdateResponseOutput) Labels() DeploymentUpdateLabelEntryRespo
 // URL of the manifest representing the update configuration of this deployment.
 func (o DeploymentUpdateResponseOutput) Manifest() pulumi.StringOutput {
 	return o.ApplyT(func(v DeploymentUpdateResponse) string { return v.Manifest }).(pulumi.StringOutput)
-}
-
-type DeploymentUpdateResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DeploymentUpdateResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeploymentUpdateResponse)(nil)).Elem()
-}
-
-func (o DeploymentUpdateResponsePtrOutput) ToDeploymentUpdateResponsePtrOutput() DeploymentUpdateResponsePtrOutput {
-	return o
-}
-
-func (o DeploymentUpdateResponsePtrOutput) ToDeploymentUpdateResponsePtrOutputWithContext(ctx context.Context) DeploymentUpdateResponsePtrOutput {
-	return o
-}
-
-func (o DeploymentUpdateResponsePtrOutput) Elem() DeploymentUpdateResponseOutput {
-	return o.ApplyT(func(v *DeploymentUpdateResponse) DeploymentUpdateResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DeploymentUpdateResponse
-		return ret
-	}).(DeploymentUpdateResponseOutput)
-}
-
-// An optional user-provided description of the deployment after the current update has been applied.
-func (o DeploymentUpdateResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeploymentUpdateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-func (o DeploymentUpdateResponsePtrOutput) Labels() DeploymentUpdateLabelEntryResponseArrayOutput {
-	return o.ApplyT(func(v *DeploymentUpdateResponse) []DeploymentUpdateLabelEntryResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(DeploymentUpdateLabelEntryResponseArrayOutput)
-}
-
-// URL of the manifest representing the update configuration of this deployment.
-func (o DeploymentUpdateResponsePtrOutput) Manifest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeploymentUpdateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Manifest
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1667,41 +1135,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -1850,61 +1283,6 @@ type ImportFileResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// ImportFileResponseInput is an input type that accepts ImportFileResponseArgs and ImportFileResponseOutput values.
-// You can construct a concrete instance of `ImportFileResponseInput` via:
-//
-//          ImportFileResponseArgs{...}
-type ImportFileResponseInput interface {
-	pulumi.Input
-
-	ToImportFileResponseOutput() ImportFileResponseOutput
-	ToImportFileResponseOutputWithContext(context.Context) ImportFileResponseOutput
-}
-
-type ImportFileResponseArgs struct {
-	// The contents of the file.
-	Content pulumi.StringInput `pulumi:"content"`
-	// The name of the file.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (ImportFileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImportFileResponse)(nil)).Elem()
-}
-
-func (i ImportFileResponseArgs) ToImportFileResponseOutput() ImportFileResponseOutput {
-	return i.ToImportFileResponseOutputWithContext(context.Background())
-}
-
-func (i ImportFileResponseArgs) ToImportFileResponseOutputWithContext(ctx context.Context) ImportFileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImportFileResponseOutput)
-}
-
-// ImportFileResponseArrayInput is an input type that accepts ImportFileResponseArray and ImportFileResponseArrayOutput values.
-// You can construct a concrete instance of `ImportFileResponseArrayInput` via:
-//
-//          ImportFileResponseArray{ ImportFileResponseArgs{...} }
-type ImportFileResponseArrayInput interface {
-	pulumi.Input
-
-	ToImportFileResponseArrayOutput() ImportFileResponseArrayOutput
-	ToImportFileResponseArrayOutputWithContext(context.Context) ImportFileResponseArrayOutput
-}
-
-type ImportFileResponseArray []ImportFileResponseInput
-
-func (ImportFileResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ImportFileResponse)(nil)).Elem()
-}
-
-func (i ImportFileResponseArray) ToImportFileResponseArrayOutput() ImportFileResponseArrayOutput {
-	return i.ToImportFileResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ImportFileResponseArray) ToImportFileResponseArrayOutputWithContext(ctx context.Context) ImportFileResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImportFileResponseArrayOutput)
-}
-
 type ImportFileResponseOutput struct{ *pulumi.OutputState }
 
 func (ImportFileResponseOutput) ElementType() reflect.Type {
@@ -1956,63 +1334,6 @@ type OperationErrorErrorsItemResponse struct {
 	Location string `pulumi:"location"`
 	// An optional, human-readable error message.
 	Message string `pulumi:"message"`
-}
-
-// OperationErrorErrorsItemResponseInput is an input type that accepts OperationErrorErrorsItemResponseArgs and OperationErrorErrorsItemResponseOutput values.
-// You can construct a concrete instance of `OperationErrorErrorsItemResponseInput` via:
-//
-//          OperationErrorErrorsItemResponseArgs{...}
-type OperationErrorErrorsItemResponseInput interface {
-	pulumi.Input
-
-	ToOperationErrorErrorsItemResponseOutput() OperationErrorErrorsItemResponseOutput
-	ToOperationErrorErrorsItemResponseOutputWithContext(context.Context) OperationErrorErrorsItemResponseOutput
-}
-
-type OperationErrorErrorsItemResponseArgs struct {
-	// The error type identifier for this error.
-	Code pulumi.StringInput `pulumi:"code"`
-	// Indicates the field in the request that caused the error. This property is optional.
-	Location pulumi.StringInput `pulumi:"location"`
-	// An optional, human-readable error message.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (OperationErrorErrorsItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationErrorErrorsItemResponse)(nil)).Elem()
-}
-
-func (i OperationErrorErrorsItemResponseArgs) ToOperationErrorErrorsItemResponseOutput() OperationErrorErrorsItemResponseOutput {
-	return i.ToOperationErrorErrorsItemResponseOutputWithContext(context.Background())
-}
-
-func (i OperationErrorErrorsItemResponseArgs) ToOperationErrorErrorsItemResponseOutputWithContext(ctx context.Context) OperationErrorErrorsItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorErrorsItemResponseOutput)
-}
-
-// OperationErrorErrorsItemResponseArrayInput is an input type that accepts OperationErrorErrorsItemResponseArray and OperationErrorErrorsItemResponseArrayOutput values.
-// You can construct a concrete instance of `OperationErrorErrorsItemResponseArrayInput` via:
-//
-//          OperationErrorErrorsItemResponseArray{ OperationErrorErrorsItemResponseArgs{...} }
-type OperationErrorErrorsItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToOperationErrorErrorsItemResponseArrayOutput() OperationErrorErrorsItemResponseArrayOutput
-	ToOperationErrorErrorsItemResponseArrayOutputWithContext(context.Context) OperationErrorErrorsItemResponseArrayOutput
-}
-
-type OperationErrorErrorsItemResponseArray []OperationErrorErrorsItemResponseInput
-
-func (OperationErrorErrorsItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OperationErrorErrorsItemResponse)(nil)).Elem()
-}
-
-func (i OperationErrorErrorsItemResponseArray) ToOperationErrorErrorsItemResponseArrayOutput() OperationErrorErrorsItemResponseArrayOutput {
-	return i.ToOperationErrorErrorsItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OperationErrorErrorsItemResponseArray) ToOperationErrorErrorsItemResponseArrayOutputWithContext(ctx context.Context) OperationErrorErrorsItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorErrorsItemResponseArrayOutput)
 }
 
 type OperationErrorErrorsItemResponseOutput struct{ *pulumi.OutputState }
@@ -2070,76 +1391,6 @@ type OperationErrorResponse struct {
 	Errors []OperationErrorErrorsItemResponse `pulumi:"errors"`
 }
 
-// OperationErrorResponseInput is an input type that accepts OperationErrorResponseArgs and OperationErrorResponseOutput values.
-// You can construct a concrete instance of `OperationErrorResponseInput` via:
-//
-//          OperationErrorResponseArgs{...}
-type OperationErrorResponseInput interface {
-	pulumi.Input
-
-	ToOperationErrorResponseOutput() OperationErrorResponseOutput
-	ToOperationErrorResponseOutputWithContext(context.Context) OperationErrorResponseOutput
-}
-
-// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-type OperationErrorResponseArgs struct {
-	// The array of errors encountered while processing this operation.
-	Errors OperationErrorErrorsItemResponseArrayInput `pulumi:"errors"`
-}
-
-func (OperationErrorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationErrorResponse)(nil)).Elem()
-}
-
-func (i OperationErrorResponseArgs) ToOperationErrorResponseOutput() OperationErrorResponseOutput {
-	return i.ToOperationErrorResponseOutputWithContext(context.Background())
-}
-
-func (i OperationErrorResponseArgs) ToOperationErrorResponseOutputWithContext(ctx context.Context) OperationErrorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorResponseOutput)
-}
-
-func (i OperationErrorResponseArgs) ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput {
-	return i.ToOperationErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OperationErrorResponseArgs) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorResponseOutput).ToOperationErrorResponsePtrOutputWithContext(ctx)
-}
-
-// OperationErrorResponsePtrInput is an input type that accepts OperationErrorResponseArgs, OperationErrorResponsePtr and OperationErrorResponsePtrOutput values.
-// You can construct a concrete instance of `OperationErrorResponsePtrInput` via:
-//
-//          OperationErrorResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OperationErrorResponsePtrInput interface {
-	pulumi.Input
-
-	ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput
-	ToOperationErrorResponsePtrOutputWithContext(context.Context) OperationErrorResponsePtrOutput
-}
-
-type operationErrorResponsePtrType OperationErrorResponseArgs
-
-func OperationErrorResponsePtr(v *OperationErrorResponseArgs) OperationErrorResponsePtrInput {
-	return (*operationErrorResponsePtrType)(v)
-}
-
-func (*operationErrorResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OperationErrorResponse)(nil)).Elem()
-}
-
-func (i *operationErrorResponsePtrType) ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput {
-	return i.ToOperationErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *operationErrorResponsePtrType) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorResponsePtrOutput)
-}
-
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
 type OperationErrorResponseOutput struct{ *pulumi.OutputState }
 
@@ -2155,53 +1406,9 @@ func (o OperationErrorResponseOutput) ToOperationErrorResponseOutputWithContext(
 	return o
 }
 
-func (o OperationErrorResponseOutput) ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput {
-	return o.ToOperationErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OperationErrorResponseOutput) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OperationErrorResponse) *OperationErrorResponse {
-		return &v
-	}).(OperationErrorResponsePtrOutput)
-}
-
 // The array of errors encountered while processing this operation.
 func (o OperationErrorResponseOutput) Errors() OperationErrorErrorsItemResponseArrayOutput {
 	return o.ApplyT(func(v OperationErrorResponse) []OperationErrorErrorsItemResponse { return v.Errors }).(OperationErrorErrorsItemResponseArrayOutput)
-}
-
-type OperationErrorResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OperationErrorResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OperationErrorResponse)(nil)).Elem()
-}
-
-func (o OperationErrorResponsePtrOutput) ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput {
-	return o
-}
-
-func (o OperationErrorResponsePtrOutput) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
-	return o
-}
-
-func (o OperationErrorResponsePtrOutput) Elem() OperationErrorResponseOutput {
-	return o.ApplyT(func(v *OperationErrorResponse) OperationErrorResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OperationErrorResponse
-		return ret
-	}).(OperationErrorResponseOutput)
-}
-
-// The array of errors encountered while processing this operation.
-func (o OperationErrorResponsePtrOutput) Errors() OperationErrorErrorsItemResponseArrayOutput {
-	return o.ApplyT(func(v *OperationErrorResponse) []OperationErrorErrorsItemResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Errors
-	}).(OperationErrorErrorsItemResponseArrayOutput)
 }
 
 // Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
@@ -2252,118 +1459,6 @@ type OperationResponse struct {
 	Zone string `pulumi:"zone"`
 }
 
-// OperationResponseInput is an input type that accepts OperationResponseArgs and OperationResponseOutput values.
-// You can construct a concrete instance of `OperationResponseInput` via:
-//
-//          OperationResponseArgs{...}
-type OperationResponseInput interface {
-	pulumi.Input
-
-	ToOperationResponseOutput() OperationResponseOutput
-	ToOperationResponseOutputWithContext(context.Context) OperationResponseOutput
-}
-
-// Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
-type OperationResponseArgs struct {
-	// The value of `requestId` if you provided it in the request. Not present otherwise.
-	ClientOperationId pulumi.StringInput `pulumi:"clientOperationId"`
-	// A textual description of the operation, which is set when the operation is created.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The time that this operation was completed. This value is in RFC3339 text format.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// If errors are generated during processing of the operation, this field will be populated.
-	Error OperationErrorResponseInput `pulumi:"error"`
-	// If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
-	HttpErrorMessage pulumi.StringInput `pulumi:"httpErrorMessage"`
-	// If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
-	HttpErrorStatusCode pulumi.IntInput `pulumi:"httpErrorStatusCode"`
-	// The time that this operation was requested. This value is in RFC3339 text format.
-	InsertTime pulumi.StringInput `pulumi:"insertTime"`
-	// Type of the resource. Always `compute#operation` for Operation resources.
-	Kind pulumi.StringInput `pulumi:"kind"`
-	// Name of the operation.
-	Name pulumi.StringInput `pulumi:"name"`
-	// An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
-	OperationGroupId pulumi.StringInput `pulumi:"operationGroupId"`
-	// The type of operation, such as `insert`, `update`, or `delete`, and so on.
-	OperationType pulumi.StringInput `pulumi:"operationType"`
-	// An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
-	Progress pulumi.IntInput `pulumi:"progress"`
-	// The URL of the region where the operation resides. Only applicable when performing regional operations.
-	Region pulumi.StringInput `pulumi:"region"`
-	// Server-defined URL for the resource.
-	SelfLink pulumi.StringInput `pulumi:"selfLink"`
-	// The time that this operation was started by the server. This value is in RFC3339 text format.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
-	Status pulumi.StringInput `pulumi:"status"`
-	// An optional textual description of the current status of the operation.
-	StatusMessage pulumi.StringInput `pulumi:"statusMessage"`
-	// The unique target ID, which identifies a specific incarnation of the target resource.
-	TargetId pulumi.StringInput `pulumi:"targetId"`
-	// The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
-	TargetLink pulumi.StringInput `pulumi:"targetLink"`
-	// User who requested the operation, for example: `user@example.com`.
-	User pulumi.StringInput `pulumi:"user"`
-	// If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings OperationWarningsItemResponseArrayInput `pulumi:"warnings"`
-	// The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
-	Zone pulumi.StringInput `pulumi:"zone"`
-}
-
-func (OperationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationResponse)(nil)).Elem()
-}
-
-func (i OperationResponseArgs) ToOperationResponseOutput() OperationResponseOutput {
-	return i.ToOperationResponseOutputWithContext(context.Background())
-}
-
-func (i OperationResponseArgs) ToOperationResponseOutputWithContext(ctx context.Context) OperationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationResponseOutput)
-}
-
-func (i OperationResponseArgs) ToOperationResponsePtrOutput() OperationResponsePtrOutput {
-	return i.ToOperationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OperationResponseArgs) ToOperationResponsePtrOutputWithContext(ctx context.Context) OperationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationResponseOutput).ToOperationResponsePtrOutputWithContext(ctx)
-}
-
-// OperationResponsePtrInput is an input type that accepts OperationResponseArgs, OperationResponsePtr and OperationResponsePtrOutput values.
-// You can construct a concrete instance of `OperationResponsePtrInput` via:
-//
-//          OperationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OperationResponsePtrInput interface {
-	pulumi.Input
-
-	ToOperationResponsePtrOutput() OperationResponsePtrOutput
-	ToOperationResponsePtrOutputWithContext(context.Context) OperationResponsePtrOutput
-}
-
-type operationResponsePtrType OperationResponseArgs
-
-func OperationResponsePtr(v *OperationResponseArgs) OperationResponsePtrInput {
-	return (*operationResponsePtrType)(v)
-}
-
-func (*operationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OperationResponse)(nil)).Elem()
-}
-
-func (i *operationResponsePtrType) ToOperationResponsePtrOutput() OperationResponsePtrOutput {
-	return i.ToOperationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *operationResponsePtrType) ToOperationResponsePtrOutputWithContext(ctx context.Context) OperationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationResponsePtrOutput)
-}
-
 // Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
 type OperationResponseOutput struct{ *pulumi.OutputState }
 
@@ -2377,16 +1472,6 @@ func (o OperationResponseOutput) ToOperationResponseOutput() OperationResponseOu
 
 func (o OperationResponseOutput) ToOperationResponseOutputWithContext(ctx context.Context) OperationResponseOutput {
 	return o
-}
-
-func (o OperationResponseOutput) ToOperationResponsePtrOutput() OperationResponsePtrOutput {
-	return o.ToOperationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OperationResponseOutput) ToOperationResponsePtrOutputWithContext(ctx context.Context) OperationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OperationResponse) *OperationResponse {
-		return &v
-	}).(OperationResponsePtrOutput)
 }
 
 // The value of `requestId` if you provided it in the request. Not present otherwise.
@@ -2499,310 +1584,11 @@ func (o OperationResponseOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.Zone }).(pulumi.StringOutput)
 }
 
-type OperationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OperationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OperationResponse)(nil)).Elem()
-}
-
-func (o OperationResponsePtrOutput) ToOperationResponsePtrOutput() OperationResponsePtrOutput {
-	return o
-}
-
-func (o OperationResponsePtrOutput) ToOperationResponsePtrOutputWithContext(ctx context.Context) OperationResponsePtrOutput {
-	return o
-}
-
-func (o OperationResponsePtrOutput) Elem() OperationResponseOutput {
-	return o.ApplyT(func(v *OperationResponse) OperationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OperationResponse
-		return ret
-	}).(OperationResponseOutput)
-}
-
-// The value of `requestId` if you provided it in the request. Not present otherwise.
-func (o OperationResponsePtrOutput) ClientOperationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientOperationId
-	}).(pulumi.StringPtrOutput)
-}
-
-// A textual description of the operation, which is set when the operation is created.
-func (o OperationResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time that this operation was completed. This value is in RFC3339 text format.
-func (o OperationResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// If errors are generated during processing of the operation, this field will be populated.
-func (o OperationResponsePtrOutput) Error() OperationErrorResponsePtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *OperationErrorResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Error
-	}).(OperationErrorResponsePtrOutput)
-}
-
-// If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
-func (o OperationResponsePtrOutput) HttpErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HttpErrorMessage
-	}).(pulumi.StringPtrOutput)
-}
-
-// If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
-func (o OperationResponsePtrOutput) HttpErrorStatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.HttpErrorStatusCode
-	}).(pulumi.IntPtrOutput)
-}
-
-// The time that this operation was requested. This value is in RFC3339 text format.
-func (o OperationResponsePtrOutput) InsertTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InsertTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of the resource. Always `compute#operation` for Operation resources.
-func (o OperationResponsePtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the operation.
-func (o OperationResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
-func (o OperationResponsePtrOutput) OperationGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OperationGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of operation, such as `insert`, `update`, or `delete`, and so on.
-func (o OperationResponsePtrOutput) OperationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OperationType
-	}).(pulumi.StringPtrOutput)
-}
-
-// An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
-func (o OperationResponsePtrOutput) Progress() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Progress
-	}).(pulumi.IntPtrOutput)
-}
-
-// The URL of the region where the operation resides. Only applicable when performing regional operations.
-func (o OperationResponsePtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Region
-	}).(pulumi.StringPtrOutput)
-}
-
-// Server-defined URL for the resource.
-func (o OperationResponsePtrOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SelfLink
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time that this operation was started by the server. This value is in RFC3339 text format.
-func (o OperationResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
-func (o OperationResponsePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// An optional textual description of the current status of the operation.
-func (o OperationResponsePtrOutput) StatusMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StatusMessage
-	}).(pulumi.StringPtrOutput)
-}
-
-// The unique target ID, which identifies a specific incarnation of the target resource.
-func (o OperationResponsePtrOutput) TargetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TargetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
-func (o OperationResponsePtrOutput) TargetLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TargetLink
-	}).(pulumi.StringPtrOutput)
-}
-
-// User who requested the operation, for example: `user@example.com`.
-func (o OperationResponsePtrOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.User
-	}).(pulumi.StringPtrOutput)
-}
-
-// If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationResponsePtrOutput) Warnings() OperationWarningsItemResponseArrayOutput {
-	return o.ApplyT(func(v *OperationResponse) []OperationWarningsItemResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Warnings
-	}).(OperationWarningsItemResponseArrayOutput)
-}
-
-// The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
-func (o OperationResponsePtrOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Zone
-	}).(pulumi.StringPtrOutput)
-}
-
 type OperationWarningsItemDataItemResponse struct {
 	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
 	Key string `pulumi:"key"`
 	// A warning data value corresponding to the key.
 	Value string `pulumi:"value"`
-}
-
-// OperationWarningsItemDataItemResponseInput is an input type that accepts OperationWarningsItemDataItemResponseArgs and OperationWarningsItemDataItemResponseOutput values.
-// You can construct a concrete instance of `OperationWarningsItemDataItemResponseInput` via:
-//
-//          OperationWarningsItemDataItemResponseArgs{...}
-type OperationWarningsItemDataItemResponseInput interface {
-	pulumi.Input
-
-	ToOperationWarningsItemDataItemResponseOutput() OperationWarningsItemDataItemResponseOutput
-	ToOperationWarningsItemDataItemResponseOutputWithContext(context.Context) OperationWarningsItemDataItemResponseOutput
-}
-
-type OperationWarningsItemDataItemResponseArgs struct {
-	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-	Key pulumi.StringInput `pulumi:"key"`
-	// A warning data value corresponding to the key.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (OperationWarningsItemDataItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationWarningsItemDataItemResponse)(nil)).Elem()
-}
-
-func (i OperationWarningsItemDataItemResponseArgs) ToOperationWarningsItemDataItemResponseOutput() OperationWarningsItemDataItemResponseOutput {
-	return i.ToOperationWarningsItemDataItemResponseOutputWithContext(context.Background())
-}
-
-func (i OperationWarningsItemDataItemResponseArgs) ToOperationWarningsItemDataItemResponseOutputWithContext(ctx context.Context) OperationWarningsItemDataItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemDataItemResponseOutput)
-}
-
-// OperationWarningsItemDataItemResponseArrayInput is an input type that accepts OperationWarningsItemDataItemResponseArray and OperationWarningsItemDataItemResponseArrayOutput values.
-// You can construct a concrete instance of `OperationWarningsItemDataItemResponseArrayInput` via:
-//
-//          OperationWarningsItemDataItemResponseArray{ OperationWarningsItemDataItemResponseArgs{...} }
-type OperationWarningsItemDataItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToOperationWarningsItemDataItemResponseArrayOutput() OperationWarningsItemDataItemResponseArrayOutput
-	ToOperationWarningsItemDataItemResponseArrayOutputWithContext(context.Context) OperationWarningsItemDataItemResponseArrayOutput
-}
-
-type OperationWarningsItemDataItemResponseArray []OperationWarningsItemDataItemResponseInput
-
-func (OperationWarningsItemDataItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OperationWarningsItemDataItemResponse)(nil)).Elem()
-}
-
-func (i OperationWarningsItemDataItemResponseArray) ToOperationWarningsItemDataItemResponseArrayOutput() OperationWarningsItemDataItemResponseArrayOutput {
-	return i.ToOperationWarningsItemDataItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OperationWarningsItemDataItemResponseArray) ToOperationWarningsItemDataItemResponseArrayOutputWithContext(ctx context.Context) OperationWarningsItemDataItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemDataItemResponseArrayOutput)
 }
 
 type OperationWarningsItemDataItemResponseOutput struct{ *pulumi.OutputState }
@@ -2856,63 +1642,6 @@ type OperationWarningsItemResponse struct {
 	Data []OperationWarningsItemDataItemResponse `pulumi:"data"`
 	// A human-readable description of the warning code.
 	Message string `pulumi:"message"`
-}
-
-// OperationWarningsItemResponseInput is an input type that accepts OperationWarningsItemResponseArgs and OperationWarningsItemResponseOutput values.
-// You can construct a concrete instance of `OperationWarningsItemResponseInput` via:
-//
-//          OperationWarningsItemResponseArgs{...}
-type OperationWarningsItemResponseInput interface {
-	pulumi.Input
-
-	ToOperationWarningsItemResponseOutput() OperationWarningsItemResponseOutput
-	ToOperationWarningsItemResponseOutputWithContext(context.Context) OperationWarningsItemResponseOutput
-}
-
-type OperationWarningsItemResponseArgs struct {
-	// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-	Code pulumi.StringInput `pulumi:"code"`
-	// Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-	Data OperationWarningsItemDataItemResponseArrayInput `pulumi:"data"`
-	// A human-readable description of the warning code.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (OperationWarningsItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationWarningsItemResponse)(nil)).Elem()
-}
-
-func (i OperationWarningsItemResponseArgs) ToOperationWarningsItemResponseOutput() OperationWarningsItemResponseOutput {
-	return i.ToOperationWarningsItemResponseOutputWithContext(context.Background())
-}
-
-func (i OperationWarningsItemResponseArgs) ToOperationWarningsItemResponseOutputWithContext(ctx context.Context) OperationWarningsItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemResponseOutput)
-}
-
-// OperationWarningsItemResponseArrayInput is an input type that accepts OperationWarningsItemResponseArray and OperationWarningsItemResponseArrayOutput values.
-// You can construct a concrete instance of `OperationWarningsItemResponseArrayInput` via:
-//
-//          OperationWarningsItemResponseArray{ OperationWarningsItemResponseArgs{...} }
-type OperationWarningsItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToOperationWarningsItemResponseArrayOutput() OperationWarningsItemResponseArrayOutput
-	ToOperationWarningsItemResponseArrayOutputWithContext(context.Context) OperationWarningsItemResponseArrayOutput
-}
-
-type OperationWarningsItemResponseArray []OperationWarningsItemResponseInput
-
-func (OperationWarningsItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OperationWarningsItemResponse)(nil)).Elem()
-}
-
-func (i OperationWarningsItemResponseArray) ToOperationWarningsItemResponseArrayOutput() OperationWarningsItemResponseArrayOutput {
-	return i.ToOperationWarningsItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OperationWarningsItemResponseArray) ToOperationWarningsItemResponseArrayOutputWithContext(ctx context.Context) OperationWarningsItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemResponseArrayOutput)
 }
 
 type OperationWarningsItemResponseOutput struct{ *pulumi.OutputState }
@@ -3127,77 +1856,6 @@ type TargetConfigurationResponse struct {
 	Imports []ImportFileResponse `pulumi:"imports"`
 }
 
-// TargetConfigurationResponseInput is an input type that accepts TargetConfigurationResponseArgs and TargetConfigurationResponseOutput values.
-// You can construct a concrete instance of `TargetConfigurationResponseInput` via:
-//
-//          TargetConfigurationResponseArgs{...}
-type TargetConfigurationResponseInput interface {
-	pulumi.Input
-
-	ToTargetConfigurationResponseOutput() TargetConfigurationResponseOutput
-	ToTargetConfigurationResponseOutputWithContext(context.Context) TargetConfigurationResponseOutput
-}
-
-type TargetConfigurationResponseArgs struct {
-	// The configuration to use for this deployment.
-	Config ConfigFileResponseInput `pulumi:"config"`
-	// Specifies any files to import for this configuration. This can be used to import templates or other files. For example, you might import a text file in order to use the file in a template.
-	Imports ImportFileResponseArrayInput `pulumi:"imports"`
-}
-
-func (TargetConfigurationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetConfigurationResponse)(nil)).Elem()
-}
-
-func (i TargetConfigurationResponseArgs) ToTargetConfigurationResponseOutput() TargetConfigurationResponseOutput {
-	return i.ToTargetConfigurationResponseOutputWithContext(context.Background())
-}
-
-func (i TargetConfigurationResponseArgs) ToTargetConfigurationResponseOutputWithContext(ctx context.Context) TargetConfigurationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetConfigurationResponseOutput)
-}
-
-func (i TargetConfigurationResponseArgs) ToTargetConfigurationResponsePtrOutput() TargetConfigurationResponsePtrOutput {
-	return i.ToTargetConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i TargetConfigurationResponseArgs) ToTargetConfigurationResponsePtrOutputWithContext(ctx context.Context) TargetConfigurationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetConfigurationResponseOutput).ToTargetConfigurationResponsePtrOutputWithContext(ctx)
-}
-
-// TargetConfigurationResponsePtrInput is an input type that accepts TargetConfigurationResponseArgs, TargetConfigurationResponsePtr and TargetConfigurationResponsePtrOutput values.
-// You can construct a concrete instance of `TargetConfigurationResponsePtrInput` via:
-//
-//          TargetConfigurationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type TargetConfigurationResponsePtrInput interface {
-	pulumi.Input
-
-	ToTargetConfigurationResponsePtrOutput() TargetConfigurationResponsePtrOutput
-	ToTargetConfigurationResponsePtrOutputWithContext(context.Context) TargetConfigurationResponsePtrOutput
-}
-
-type targetConfigurationResponsePtrType TargetConfigurationResponseArgs
-
-func TargetConfigurationResponsePtr(v *TargetConfigurationResponseArgs) TargetConfigurationResponsePtrInput {
-	return (*targetConfigurationResponsePtrType)(v)
-}
-
-func (*targetConfigurationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TargetConfigurationResponse)(nil)).Elem()
-}
-
-func (i *targetConfigurationResponsePtrType) ToTargetConfigurationResponsePtrOutput() TargetConfigurationResponsePtrOutput {
-	return i.ToTargetConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *targetConfigurationResponsePtrType) ToTargetConfigurationResponsePtrOutputWithContext(ctx context.Context) TargetConfigurationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetConfigurationResponsePtrOutput)
-}
-
 type TargetConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (TargetConfigurationResponseOutput) ElementType() reflect.Type {
@@ -3212,16 +1870,6 @@ func (o TargetConfigurationResponseOutput) ToTargetConfigurationResponseOutputWi
 	return o
 }
 
-func (o TargetConfigurationResponseOutput) ToTargetConfigurationResponsePtrOutput() TargetConfigurationResponsePtrOutput {
-	return o.ToTargetConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o TargetConfigurationResponseOutput) ToTargetConfigurationResponsePtrOutputWithContext(ctx context.Context) TargetConfigurationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetConfigurationResponse) *TargetConfigurationResponse {
-		return &v
-	}).(TargetConfigurationResponsePtrOutput)
-}
-
 // The configuration to use for this deployment.
 func (o TargetConfigurationResponseOutput) Config() ConfigFileResponseOutput {
 	return o.ApplyT(func(v TargetConfigurationResponse) ConfigFileResponse { return v.Config }).(ConfigFileResponseOutput)
@@ -3232,96 +1880,23 @@ func (o TargetConfigurationResponseOutput) Imports() ImportFileResponseArrayOutp
 	return o.ApplyT(func(v TargetConfigurationResponse) []ImportFileResponse { return v.Imports }).(ImportFileResponseArrayOutput)
 }
 
-type TargetConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TargetConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TargetConfigurationResponse)(nil)).Elem()
-}
-
-func (o TargetConfigurationResponsePtrOutput) ToTargetConfigurationResponsePtrOutput() TargetConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o TargetConfigurationResponsePtrOutput) ToTargetConfigurationResponsePtrOutputWithContext(ctx context.Context) TargetConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o TargetConfigurationResponsePtrOutput) Elem() TargetConfigurationResponseOutput {
-	return o.ApplyT(func(v *TargetConfigurationResponse) TargetConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TargetConfigurationResponse
-		return ret
-	}).(TargetConfigurationResponseOutput)
-}
-
-// The configuration to use for this deployment.
-func (o TargetConfigurationResponsePtrOutput) Config() ConfigFileResponsePtrOutput {
-	return o.ApplyT(func(v *TargetConfigurationResponse) *ConfigFileResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Config
-	}).(ConfigFileResponsePtrOutput)
-}
-
-// Specifies any files to import for this configuration. This can be used to import templates or other files. For example, you might import a text file in order to use the file in a template.
-func (o TargetConfigurationResponsePtrOutput) Imports() ImportFileResponseArrayOutput {
-	return o.ApplyT(func(v *TargetConfigurationResponse) []ImportFileResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Imports
-	}).(ImportFileResponseArrayOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigFileInput)(nil)).Elem(), ConfigFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigFilePtrInput)(nil)).Elem(), ConfigFileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConfigFileResponseInput)(nil)).Elem(), ConfigFileResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConfigFileResponsePtrInput)(nil)).Elem(), ConfigFileResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLabelEntryInput)(nil)).Elem(), DeploymentLabelEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLabelEntryArrayInput)(nil)).Elem(), DeploymentLabelEntryArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLabelEntryResponseInput)(nil)).Elem(), DeploymentLabelEntryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLabelEntryResponseArrayInput)(nil)).Elem(), DeploymentLabelEntryResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentUpdateLabelEntryResponseInput)(nil)).Elem(), DeploymentUpdateLabelEntryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentUpdateLabelEntryResponseArrayInput)(nil)).Elem(), DeploymentUpdateLabelEntryResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentUpdateResponseInput)(nil)).Elem(), DeploymentUpdateResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentUpdateResponsePtrInput)(nil)).Elem(), DeploymentUpdateResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImportFileInput)(nil)).Elem(), ImportFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImportFileArrayInput)(nil)).Elem(), ImportFileArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImportFileResponseInput)(nil)).Elem(), ImportFileResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImportFileResponseArrayInput)(nil)).Elem(), ImportFileResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OperationErrorErrorsItemResponseInput)(nil)).Elem(), OperationErrorErrorsItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OperationErrorErrorsItemResponseArrayInput)(nil)).Elem(), OperationErrorErrorsItemResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OperationErrorResponseInput)(nil)).Elem(), OperationErrorResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OperationErrorResponsePtrInput)(nil)).Elem(), OperationErrorResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OperationResponseInput)(nil)).Elem(), OperationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OperationResponsePtrInput)(nil)).Elem(), OperationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OperationWarningsItemDataItemResponseInput)(nil)).Elem(), OperationWarningsItemDataItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OperationWarningsItemDataItemResponseArrayInput)(nil)).Elem(), OperationWarningsItemDataItemResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OperationWarningsItemResponseInput)(nil)).Elem(), OperationWarningsItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OperationWarningsItemResponseArrayInput)(nil)).Elem(), OperationWarningsItemResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetConfigurationInput)(nil)).Elem(), TargetConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetConfigurationPtrInput)(nil)).Elem(), TargetConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TargetConfigurationResponseInput)(nil)).Elem(), TargetConfigurationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TargetConfigurationResponsePtrInput)(nil)).Elem(), TargetConfigurationResponseArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -3337,7 +1912,6 @@ func init() {
 	pulumi.RegisterOutputType(ConfigFileOutput{})
 	pulumi.RegisterOutputType(ConfigFilePtrOutput{})
 	pulumi.RegisterOutputType(ConfigFileResponseOutput{})
-	pulumi.RegisterOutputType(ConfigFileResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentLabelEntryOutput{})
 	pulumi.RegisterOutputType(DeploymentLabelEntryArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentLabelEntryResponseOutput{})
@@ -3345,7 +1919,6 @@ func init() {
 	pulumi.RegisterOutputType(DeploymentUpdateLabelEntryResponseOutput{})
 	pulumi.RegisterOutputType(DeploymentUpdateLabelEntryResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentUpdateResponseOutput{})
-	pulumi.RegisterOutputType(DeploymentUpdateResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
@@ -3356,9 +1929,7 @@ func init() {
 	pulumi.RegisterOutputType(OperationErrorErrorsItemResponseOutput{})
 	pulumi.RegisterOutputType(OperationErrorErrorsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(OperationErrorResponseOutput{})
-	pulumi.RegisterOutputType(OperationErrorResponsePtrOutput{})
 	pulumi.RegisterOutputType(OperationResponseOutput{})
-	pulumi.RegisterOutputType(OperationResponsePtrOutput{})
 	pulumi.RegisterOutputType(OperationWarningsItemDataItemResponseOutput{})
 	pulumi.RegisterOutputType(OperationWarningsItemDataItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(OperationWarningsItemResponseOutput{})
@@ -3366,5 +1937,4 @@ func init() {
 	pulumi.RegisterOutputType(TargetConfigurationOutput{})
 	pulumi.RegisterOutputType(TargetConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(TargetConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(TargetConfigurationResponsePtrOutput{})
 }

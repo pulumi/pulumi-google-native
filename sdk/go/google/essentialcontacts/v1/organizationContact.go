@@ -119,7 +119,7 @@ type OrganizationContactInput interface {
 }
 
 func (*OrganizationContact) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationContact)(nil))
+	return reflect.TypeOf((**OrganizationContact)(nil)).Elem()
 }
 
 func (i *OrganizationContact) ToOrganizationContactOutput() OrganizationContactOutput {
@@ -133,7 +133,7 @@ func (i *OrganizationContact) ToOrganizationContactOutputWithContext(ctx context
 type OrganizationContactOutput struct{ *pulumi.OutputState }
 
 func (OrganizationContactOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationContact)(nil))
+	return reflect.TypeOf((**OrganizationContact)(nil)).Elem()
 }
 
 func (o OrganizationContactOutput) ToOrganizationContactOutput() OrganizationContactOutput {

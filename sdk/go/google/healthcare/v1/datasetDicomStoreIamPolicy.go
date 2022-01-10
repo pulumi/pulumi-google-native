@@ -118,7 +118,7 @@ type DatasetDicomStoreIamPolicyInput interface {
 }
 
 func (*DatasetDicomStoreIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetDicomStoreIamPolicy)(nil))
+	return reflect.TypeOf((**DatasetDicomStoreIamPolicy)(nil)).Elem()
 }
 
 func (i *DatasetDicomStoreIamPolicy) ToDatasetDicomStoreIamPolicyOutput() DatasetDicomStoreIamPolicyOutput {
@@ -132,7 +132,7 @@ func (i *DatasetDicomStoreIamPolicy) ToDatasetDicomStoreIamPolicyOutputWithConte
 type DatasetDicomStoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DatasetDicomStoreIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetDicomStoreIamPolicy)(nil))
+	return reflect.TypeOf((**DatasetDicomStoreIamPolicy)(nil)).Elem()
 }
 
 func (o DatasetDicomStoreIamPolicyOutput) ToDatasetDicomStoreIamPolicyOutput() DatasetDicomStoreIamPolicyOutput {

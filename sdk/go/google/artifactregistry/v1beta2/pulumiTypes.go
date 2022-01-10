@@ -138,64 +138,6 @@ type BindingResponse struct {
 	Role string `pulumi:"role"`
 }
 
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
@@ -455,41 +397,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -692,78 +599,6 @@ type MavenRepositoryConfigResponse struct {
 	VersionPolicy string `pulumi:"versionPolicy"`
 }
 
-// MavenRepositoryConfigResponseInput is an input type that accepts MavenRepositoryConfigResponseArgs and MavenRepositoryConfigResponseOutput values.
-// You can construct a concrete instance of `MavenRepositoryConfigResponseInput` via:
-//
-//          MavenRepositoryConfigResponseArgs{...}
-type MavenRepositoryConfigResponseInput interface {
-	pulumi.Input
-
-	ToMavenRepositoryConfigResponseOutput() MavenRepositoryConfigResponseOutput
-	ToMavenRepositoryConfigResponseOutputWithContext(context.Context) MavenRepositoryConfigResponseOutput
-}
-
-// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
-type MavenRepositoryConfigResponseArgs struct {
-	// The repository with this flag will allow publishing the same snapshot versions.
-	AllowSnapshotOverwrites pulumi.BoolInput `pulumi:"allowSnapshotOverwrites"`
-	// Version policy defines the versions that the registry will accept.
-	VersionPolicy pulumi.StringInput `pulumi:"versionPolicy"`
-}
-
-func (MavenRepositoryConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MavenRepositoryConfigResponse)(nil)).Elem()
-}
-
-func (i MavenRepositoryConfigResponseArgs) ToMavenRepositoryConfigResponseOutput() MavenRepositoryConfigResponseOutput {
-	return i.ToMavenRepositoryConfigResponseOutputWithContext(context.Background())
-}
-
-func (i MavenRepositoryConfigResponseArgs) ToMavenRepositoryConfigResponseOutputWithContext(ctx context.Context) MavenRepositoryConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryConfigResponseOutput)
-}
-
-func (i MavenRepositoryConfigResponseArgs) ToMavenRepositoryConfigResponsePtrOutput() MavenRepositoryConfigResponsePtrOutput {
-	return i.ToMavenRepositoryConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MavenRepositoryConfigResponseArgs) ToMavenRepositoryConfigResponsePtrOutputWithContext(ctx context.Context) MavenRepositoryConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryConfigResponseOutput).ToMavenRepositoryConfigResponsePtrOutputWithContext(ctx)
-}
-
-// MavenRepositoryConfigResponsePtrInput is an input type that accepts MavenRepositoryConfigResponseArgs, MavenRepositoryConfigResponsePtr and MavenRepositoryConfigResponsePtrOutput values.
-// You can construct a concrete instance of `MavenRepositoryConfigResponsePtrInput` via:
-//
-//          MavenRepositoryConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MavenRepositoryConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToMavenRepositoryConfigResponsePtrOutput() MavenRepositoryConfigResponsePtrOutput
-	ToMavenRepositoryConfigResponsePtrOutputWithContext(context.Context) MavenRepositoryConfigResponsePtrOutput
-}
-
-type mavenRepositoryConfigResponsePtrType MavenRepositoryConfigResponseArgs
-
-func MavenRepositoryConfigResponsePtr(v *MavenRepositoryConfigResponseArgs) MavenRepositoryConfigResponsePtrInput {
-	return (*mavenRepositoryConfigResponsePtrType)(v)
-}
-
-func (*mavenRepositoryConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MavenRepositoryConfigResponse)(nil)).Elem()
-}
-
-func (i *mavenRepositoryConfigResponsePtrType) ToMavenRepositoryConfigResponsePtrOutput() MavenRepositoryConfigResponsePtrOutput {
-	return i.ToMavenRepositoryConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *mavenRepositoryConfigResponsePtrType) ToMavenRepositoryConfigResponsePtrOutputWithContext(ctx context.Context) MavenRepositoryConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryConfigResponsePtrOutput)
-}
-
 // MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
 type MavenRepositoryConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -779,16 +614,6 @@ func (o MavenRepositoryConfigResponseOutput) ToMavenRepositoryConfigResponseOutp
 	return o
 }
 
-func (o MavenRepositoryConfigResponseOutput) ToMavenRepositoryConfigResponsePtrOutput() MavenRepositoryConfigResponsePtrOutput {
-	return o.ToMavenRepositoryConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MavenRepositoryConfigResponseOutput) ToMavenRepositoryConfigResponsePtrOutputWithContext(ctx context.Context) MavenRepositoryConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MavenRepositoryConfigResponse) *MavenRepositoryConfigResponse {
-		return &v
-	}).(MavenRepositoryConfigResponsePtrOutput)
-}
-
 // The repository with this flag will allow publishing the same snapshot versions.
 func (o MavenRepositoryConfigResponseOutput) AllowSnapshotOverwrites() pulumi.BoolOutput {
 	return o.ApplyT(func(v MavenRepositoryConfigResponse) bool { return v.AllowSnapshotOverwrites }).(pulumi.BoolOutput)
@@ -799,62 +624,13 @@ func (o MavenRepositoryConfigResponseOutput) VersionPolicy() pulumi.StringOutput
 	return o.ApplyT(func(v MavenRepositoryConfigResponse) string { return v.VersionPolicy }).(pulumi.StringOutput)
 }
 
-type MavenRepositoryConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MavenRepositoryConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MavenRepositoryConfigResponse)(nil)).Elem()
-}
-
-func (o MavenRepositoryConfigResponsePtrOutput) ToMavenRepositoryConfigResponsePtrOutput() MavenRepositoryConfigResponsePtrOutput {
-	return o
-}
-
-func (o MavenRepositoryConfigResponsePtrOutput) ToMavenRepositoryConfigResponsePtrOutputWithContext(ctx context.Context) MavenRepositoryConfigResponsePtrOutput {
-	return o
-}
-
-func (o MavenRepositoryConfigResponsePtrOutput) Elem() MavenRepositoryConfigResponseOutput {
-	return o.ApplyT(func(v *MavenRepositoryConfigResponse) MavenRepositoryConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MavenRepositoryConfigResponse
-		return ret
-	}).(MavenRepositoryConfigResponseOutput)
-}
-
-// The repository with this flag will allow publishing the same snapshot versions.
-func (o MavenRepositoryConfigResponsePtrOutput) AllowSnapshotOverwrites() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MavenRepositoryConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AllowSnapshotOverwrites
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Version policy defines the versions that the registry will accept.
-func (o MavenRepositoryConfigResponsePtrOutput) VersionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MavenRepositoryConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VersionPolicy
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryConfigInput)(nil)).Elem(), MavenRepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryConfigPtrInput)(nil)).Elem(), MavenRepositoryConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryConfigResponseInput)(nil)).Elem(), MavenRepositoryConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryConfigResponsePtrInput)(nil)).Elem(), MavenRepositoryConfigResponseArgs{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -865,5 +641,4 @@ func init() {
 	pulumi.RegisterOutputType(MavenRepositoryConfigOutput{})
 	pulumi.RegisterOutputType(MavenRepositoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(MavenRepositoryConfigResponseOutput{})
-	pulumi.RegisterOutputType(MavenRepositoryConfigResponsePtrOutput{})
 }

@@ -18,78 +18,6 @@ type AccessUrlsResponse struct {
 	CrlAccessUrls []string `pulumi:"crlAccessUrls"`
 }
 
-// AccessUrlsResponseInput is an input type that accepts AccessUrlsResponseArgs and AccessUrlsResponseOutput values.
-// You can construct a concrete instance of `AccessUrlsResponseInput` via:
-//
-//          AccessUrlsResponseArgs{...}
-type AccessUrlsResponseInput interface {
-	pulumi.Input
-
-	ToAccessUrlsResponseOutput() AccessUrlsResponseOutput
-	ToAccessUrlsResponseOutputWithContext(context.Context) AccessUrlsResponseOutput
-}
-
-// URLs where a CertificateAuthority will publish content.
-type AccessUrlsResponseArgs struct {
-	// The URL where this CertificateAuthority's CA certificate is published. This will only be set for CAs that have been activated.
-	CaCertificateAccessUrl pulumi.StringInput `pulumi:"caCertificateAccessUrl"`
-	// The URLs where this CertificateAuthority's CRLs are published. This will only be set for CAs that have been activated.
-	CrlAccessUrls pulumi.StringArrayInput `pulumi:"crlAccessUrls"`
-}
-
-func (AccessUrlsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessUrlsResponse)(nil)).Elem()
-}
-
-func (i AccessUrlsResponseArgs) ToAccessUrlsResponseOutput() AccessUrlsResponseOutput {
-	return i.ToAccessUrlsResponseOutputWithContext(context.Background())
-}
-
-func (i AccessUrlsResponseArgs) ToAccessUrlsResponseOutputWithContext(ctx context.Context) AccessUrlsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessUrlsResponseOutput)
-}
-
-func (i AccessUrlsResponseArgs) ToAccessUrlsResponsePtrOutput() AccessUrlsResponsePtrOutput {
-	return i.ToAccessUrlsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AccessUrlsResponseArgs) ToAccessUrlsResponsePtrOutputWithContext(ctx context.Context) AccessUrlsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessUrlsResponseOutput).ToAccessUrlsResponsePtrOutputWithContext(ctx)
-}
-
-// AccessUrlsResponsePtrInput is an input type that accepts AccessUrlsResponseArgs, AccessUrlsResponsePtr and AccessUrlsResponsePtrOutput values.
-// You can construct a concrete instance of `AccessUrlsResponsePtrInput` via:
-//
-//          AccessUrlsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AccessUrlsResponsePtrInput interface {
-	pulumi.Input
-
-	ToAccessUrlsResponsePtrOutput() AccessUrlsResponsePtrOutput
-	ToAccessUrlsResponsePtrOutputWithContext(context.Context) AccessUrlsResponsePtrOutput
-}
-
-type accessUrlsResponsePtrType AccessUrlsResponseArgs
-
-func AccessUrlsResponsePtr(v *AccessUrlsResponseArgs) AccessUrlsResponsePtrInput {
-	return (*accessUrlsResponsePtrType)(v)
-}
-
-func (*accessUrlsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessUrlsResponse)(nil)).Elem()
-}
-
-func (i *accessUrlsResponsePtrType) ToAccessUrlsResponsePtrOutput() AccessUrlsResponsePtrOutput {
-	return i.ToAccessUrlsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *accessUrlsResponsePtrType) ToAccessUrlsResponsePtrOutputWithContext(ctx context.Context) AccessUrlsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessUrlsResponsePtrOutput)
-}
-
 // URLs where a CertificateAuthority will publish content.
 type AccessUrlsResponseOutput struct{ *pulumi.OutputState }
 
@@ -105,16 +33,6 @@ func (o AccessUrlsResponseOutput) ToAccessUrlsResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o AccessUrlsResponseOutput) ToAccessUrlsResponsePtrOutput() AccessUrlsResponsePtrOutput {
-	return o.ToAccessUrlsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AccessUrlsResponseOutput) ToAccessUrlsResponsePtrOutputWithContext(ctx context.Context) AccessUrlsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessUrlsResponse) *AccessUrlsResponse {
-		return &v
-	}).(AccessUrlsResponsePtrOutput)
-}
-
 // The URL where this CertificateAuthority's CA certificate is published. This will only be set for CAs that have been activated.
 func (o AccessUrlsResponseOutput) CaCertificateAccessUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessUrlsResponse) string { return v.CaCertificateAccessUrl }).(pulumi.StringOutput)
@@ -123,50 +41,6 @@ func (o AccessUrlsResponseOutput) CaCertificateAccessUrl() pulumi.StringOutput {
 // The URLs where this CertificateAuthority's CRLs are published. This will only be set for CAs that have been activated.
 func (o AccessUrlsResponseOutput) CrlAccessUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessUrlsResponse) []string { return v.CrlAccessUrls }).(pulumi.StringArrayOutput)
-}
-
-type AccessUrlsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AccessUrlsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessUrlsResponse)(nil)).Elem()
-}
-
-func (o AccessUrlsResponsePtrOutput) ToAccessUrlsResponsePtrOutput() AccessUrlsResponsePtrOutput {
-	return o
-}
-
-func (o AccessUrlsResponsePtrOutput) ToAccessUrlsResponsePtrOutputWithContext(ctx context.Context) AccessUrlsResponsePtrOutput {
-	return o
-}
-
-func (o AccessUrlsResponsePtrOutput) Elem() AccessUrlsResponseOutput {
-	return o.ApplyT(func(v *AccessUrlsResponse) AccessUrlsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AccessUrlsResponse
-		return ret
-	}).(AccessUrlsResponseOutput)
-}
-
-// The URL where this CertificateAuthority's CA certificate is published. This will only be set for CAs that have been activated.
-func (o AccessUrlsResponsePtrOutput) CaCertificateAccessUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessUrlsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CaCertificateAccessUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// The URLs where this CertificateAuthority's CRLs are published. This will only be set for CAs that have been activated.
-func (o AccessUrlsResponsePtrOutput) CrlAccessUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AccessUrlsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CrlAccessUrls
-	}).(pulumi.StringArrayOutput)
 }
 
 // Describes a "type" of key that may be used in a Certificate issued from a CaPool. Note that a single AllowedKeyType may refer to either a fully-qualified key algorithm, such as RSA 4096, or a family of key algorithms, such as any RSA key.
@@ -284,62 +158,6 @@ type AllowedKeyTypeResponse struct {
 	EllipticCurve EcKeyTypeResponse `pulumi:"ellipticCurve"`
 	// Represents an allowed RSA key type.
 	Rsa RsaKeyTypeResponse `pulumi:"rsa"`
-}
-
-// AllowedKeyTypeResponseInput is an input type that accepts AllowedKeyTypeResponseArgs and AllowedKeyTypeResponseOutput values.
-// You can construct a concrete instance of `AllowedKeyTypeResponseInput` via:
-//
-//          AllowedKeyTypeResponseArgs{...}
-type AllowedKeyTypeResponseInput interface {
-	pulumi.Input
-
-	ToAllowedKeyTypeResponseOutput() AllowedKeyTypeResponseOutput
-	ToAllowedKeyTypeResponseOutputWithContext(context.Context) AllowedKeyTypeResponseOutput
-}
-
-// Describes a "type" of key that may be used in a Certificate issued from a CaPool. Note that a single AllowedKeyType may refer to either a fully-qualified key algorithm, such as RSA 4096, or a family of key algorithms, such as any RSA key.
-type AllowedKeyTypeResponseArgs struct {
-	// Represents an allowed Elliptic Curve key type.
-	EllipticCurve EcKeyTypeResponseInput `pulumi:"ellipticCurve"`
-	// Represents an allowed RSA key type.
-	Rsa RsaKeyTypeResponseInput `pulumi:"rsa"`
-}
-
-func (AllowedKeyTypeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AllowedKeyTypeResponse)(nil)).Elem()
-}
-
-func (i AllowedKeyTypeResponseArgs) ToAllowedKeyTypeResponseOutput() AllowedKeyTypeResponseOutput {
-	return i.ToAllowedKeyTypeResponseOutputWithContext(context.Background())
-}
-
-func (i AllowedKeyTypeResponseArgs) ToAllowedKeyTypeResponseOutputWithContext(ctx context.Context) AllowedKeyTypeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AllowedKeyTypeResponseOutput)
-}
-
-// AllowedKeyTypeResponseArrayInput is an input type that accepts AllowedKeyTypeResponseArray and AllowedKeyTypeResponseArrayOutput values.
-// You can construct a concrete instance of `AllowedKeyTypeResponseArrayInput` via:
-//
-//          AllowedKeyTypeResponseArray{ AllowedKeyTypeResponseArgs{...} }
-type AllowedKeyTypeResponseArrayInput interface {
-	pulumi.Input
-
-	ToAllowedKeyTypeResponseArrayOutput() AllowedKeyTypeResponseArrayOutput
-	ToAllowedKeyTypeResponseArrayOutputWithContext(context.Context) AllowedKeyTypeResponseArrayOutput
-}
-
-type AllowedKeyTypeResponseArray []AllowedKeyTypeResponseInput
-
-func (AllowedKeyTypeResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AllowedKeyTypeResponse)(nil)).Elem()
-}
-
-func (i AllowedKeyTypeResponseArray) ToAllowedKeyTypeResponseArrayOutput() AllowedKeyTypeResponseArrayOutput {
-	return i.ToAllowedKeyTypeResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AllowedKeyTypeResponseArray) ToAllowedKeyTypeResponseArrayOutputWithContext(ctx context.Context) AllowedKeyTypeResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AllowedKeyTypeResponseArrayOutput)
 }
 
 // Describes a "type" of key that may be used in a Certificate issued from a CaPool. Note that a single AllowedKeyType may refer to either a fully-qualified key algorithm, such as RSA 4096, or a family of key algorithms, such as any RSA key.
@@ -504,62 +322,6 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
-// You can construct a concrete instance of `AuditConfigResponseInput` via:
-//
-//          AuditConfigResponseArgs{...}
-type AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseOutput() AuditConfigResponseOutput
-	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return i.ToAuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
-}
-
-// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
-//
-//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
-type AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
-	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
-}
-
-type AuditConfigResponseArray []AuditConfigResponseInput
-
-func (AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -720,62 +482,6 @@ type AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
-//
-//          AuditLogConfigResponseArgs{...}
-type AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
-	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
-}
-
-// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
-//
-//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
-type AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
-	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
-}
-
-type AuditLogConfigResponseArray []AuditLogConfigResponseInput
-
-func (AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -949,64 +655,6 @@ type BindingResponse struct {
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
-}
-
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -1226,78 +874,6 @@ type CaOptionsResponse struct {
 	MaxIssuerPathLength int `pulumi:"maxIssuerPathLength"`
 }
 
-// CaOptionsResponseInput is an input type that accepts CaOptionsResponseArgs and CaOptionsResponseOutput values.
-// You can construct a concrete instance of `CaOptionsResponseInput` via:
-//
-//          CaOptionsResponseArgs{...}
-type CaOptionsResponseInput interface {
-	pulumi.Input
-
-	ToCaOptionsResponseOutput() CaOptionsResponseOutput
-	ToCaOptionsResponseOutputWithContext(context.Context) CaOptionsResponseOutput
-}
-
-// Describes values that are relevant in a CA certificate.
-type CaOptionsResponseArgs struct {
-	// Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
-	IsCa pulumi.BoolInput `pulumi:"isCa"`
-	// Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
-	MaxIssuerPathLength pulumi.IntInput `pulumi:"maxIssuerPathLength"`
-}
-
-func (CaOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaOptionsResponse)(nil)).Elem()
-}
-
-func (i CaOptionsResponseArgs) ToCaOptionsResponseOutput() CaOptionsResponseOutput {
-	return i.ToCaOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i CaOptionsResponseArgs) ToCaOptionsResponseOutputWithContext(ctx context.Context) CaOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CaOptionsResponseOutput)
-}
-
-func (i CaOptionsResponseArgs) ToCaOptionsResponsePtrOutput() CaOptionsResponsePtrOutput {
-	return i.ToCaOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CaOptionsResponseArgs) ToCaOptionsResponsePtrOutputWithContext(ctx context.Context) CaOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CaOptionsResponseOutput).ToCaOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// CaOptionsResponsePtrInput is an input type that accepts CaOptionsResponseArgs, CaOptionsResponsePtr and CaOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `CaOptionsResponsePtrInput` via:
-//
-//          CaOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CaOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToCaOptionsResponsePtrOutput() CaOptionsResponsePtrOutput
-	ToCaOptionsResponsePtrOutputWithContext(context.Context) CaOptionsResponsePtrOutput
-}
-
-type caOptionsResponsePtrType CaOptionsResponseArgs
-
-func CaOptionsResponsePtr(v *CaOptionsResponseArgs) CaOptionsResponsePtrInput {
-	return (*caOptionsResponsePtrType)(v)
-}
-
-func (*caOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CaOptionsResponse)(nil)).Elem()
-}
-
-func (i *caOptionsResponsePtrType) ToCaOptionsResponsePtrOutput() CaOptionsResponsePtrOutput {
-	return i.ToCaOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *caOptionsResponsePtrType) ToCaOptionsResponsePtrOutputWithContext(ctx context.Context) CaOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CaOptionsResponsePtrOutput)
-}
-
 // Describes values that are relevant in a CA certificate.
 type CaOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -1313,16 +889,6 @@ func (o CaOptionsResponseOutput) ToCaOptionsResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o CaOptionsResponseOutput) ToCaOptionsResponsePtrOutput() CaOptionsResponsePtrOutput {
-	return o.ToCaOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CaOptionsResponseOutput) ToCaOptionsResponsePtrOutputWithContext(ctx context.Context) CaOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaOptionsResponse) *CaOptionsResponse {
-		return &v
-	}).(CaOptionsResponsePtrOutput)
-}
-
 // Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
 func (o CaOptionsResponseOutput) IsCa() pulumi.BoolOutput {
 	return o.ApplyT(func(v CaOptionsResponse) bool { return v.IsCa }).(pulumi.BoolOutput)
@@ -1331,50 +897,6 @@ func (o CaOptionsResponseOutput) IsCa() pulumi.BoolOutput {
 // Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
 func (o CaOptionsResponseOutput) MaxIssuerPathLength() pulumi.IntOutput {
 	return o.ApplyT(func(v CaOptionsResponse) int { return v.MaxIssuerPathLength }).(pulumi.IntOutput)
-}
-
-type CaOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CaOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CaOptionsResponse)(nil)).Elem()
-}
-
-func (o CaOptionsResponsePtrOutput) ToCaOptionsResponsePtrOutput() CaOptionsResponsePtrOutput {
-	return o
-}
-
-func (o CaOptionsResponsePtrOutput) ToCaOptionsResponsePtrOutputWithContext(ctx context.Context) CaOptionsResponsePtrOutput {
-	return o
-}
-
-func (o CaOptionsResponsePtrOutput) Elem() CaOptionsResponseOutput {
-	return o.ApplyT(func(v *CaOptionsResponse) CaOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CaOptionsResponse
-		return ret
-	}).(CaOptionsResponseOutput)
-}
-
-// Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
-func (o CaOptionsResponsePtrOutput) IsCa() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CaOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.IsCa
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
-func (o CaOptionsResponsePtrOutput) MaxIssuerPathLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CaOptionsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxIssuerPathLength
-	}).(pulumi.IntPtrOutput)
 }
 
 // A CertificateConfig describes an X.509 certificate or CSR that is to be created, as an alternative to using ASN.1.
@@ -1565,80 +1087,6 @@ type CertificateConfigResponse struct {
 	X509Config X509ParametersResponse `pulumi:"x509Config"`
 }
 
-// CertificateConfigResponseInput is an input type that accepts CertificateConfigResponseArgs and CertificateConfigResponseOutput values.
-// You can construct a concrete instance of `CertificateConfigResponseInput` via:
-//
-//          CertificateConfigResponseArgs{...}
-type CertificateConfigResponseInput interface {
-	pulumi.Input
-
-	ToCertificateConfigResponseOutput() CertificateConfigResponseOutput
-	ToCertificateConfigResponseOutputWithContext(context.Context) CertificateConfigResponseOutput
-}
-
-// A CertificateConfig describes an X.509 certificate or CSR that is to be created, as an alternative to using ASN.1.
-type CertificateConfigResponseArgs struct {
-	// Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
-	PublicKey PublicKeyResponseInput `pulumi:"publicKey"`
-	// Specifies some of the values in a certificate that are related to the subject.
-	SubjectConfig SubjectConfigResponseInput `pulumi:"subjectConfig"`
-	// Describes how some of the technical X.509 fields in a certificate should be populated.
-	X509Config X509ParametersResponseInput `pulumi:"x509Config"`
-}
-
-func (CertificateConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateConfigResponse)(nil)).Elem()
-}
-
-func (i CertificateConfigResponseArgs) ToCertificateConfigResponseOutput() CertificateConfigResponseOutput {
-	return i.ToCertificateConfigResponseOutputWithContext(context.Background())
-}
-
-func (i CertificateConfigResponseArgs) ToCertificateConfigResponseOutputWithContext(ctx context.Context) CertificateConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigResponseOutput)
-}
-
-func (i CertificateConfigResponseArgs) ToCertificateConfigResponsePtrOutput() CertificateConfigResponsePtrOutput {
-	return i.ToCertificateConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CertificateConfigResponseArgs) ToCertificateConfigResponsePtrOutputWithContext(ctx context.Context) CertificateConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigResponseOutput).ToCertificateConfigResponsePtrOutputWithContext(ctx)
-}
-
-// CertificateConfigResponsePtrInput is an input type that accepts CertificateConfigResponseArgs, CertificateConfigResponsePtr and CertificateConfigResponsePtrOutput values.
-// You can construct a concrete instance of `CertificateConfigResponsePtrInput` via:
-//
-//          CertificateConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CertificateConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToCertificateConfigResponsePtrOutput() CertificateConfigResponsePtrOutput
-	ToCertificateConfigResponsePtrOutputWithContext(context.Context) CertificateConfigResponsePtrOutput
-}
-
-type certificateConfigResponsePtrType CertificateConfigResponseArgs
-
-func CertificateConfigResponsePtr(v *CertificateConfigResponseArgs) CertificateConfigResponsePtrInput {
-	return (*certificateConfigResponsePtrType)(v)
-}
-
-func (*certificateConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateConfigResponse)(nil)).Elem()
-}
-
-func (i *certificateConfigResponsePtrType) ToCertificateConfigResponsePtrOutput() CertificateConfigResponsePtrOutput {
-	return i.ToCertificateConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *certificateConfigResponsePtrType) ToCertificateConfigResponsePtrOutputWithContext(ctx context.Context) CertificateConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigResponsePtrOutput)
-}
-
 // A CertificateConfig describes an X.509 certificate or CSR that is to be created, as an alternative to using ASN.1.
 type CertificateConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -1654,16 +1102,6 @@ func (o CertificateConfigResponseOutput) ToCertificateConfigResponseOutputWithCo
 	return o
 }
 
-func (o CertificateConfigResponseOutput) ToCertificateConfigResponsePtrOutput() CertificateConfigResponsePtrOutput {
-	return o.ToCertificateConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CertificateConfigResponseOutput) ToCertificateConfigResponsePtrOutputWithContext(ctx context.Context) CertificateConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfigResponse) *CertificateConfigResponse {
-		return &v
-	}).(CertificateConfigResponsePtrOutput)
-}
-
 // Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
 func (o CertificateConfigResponseOutput) PublicKey() PublicKeyResponseOutput {
 	return o.ApplyT(func(v CertificateConfigResponse) PublicKeyResponse { return v.PublicKey }).(PublicKeyResponseOutput)
@@ -1677,60 +1115,6 @@ func (o CertificateConfigResponseOutput) SubjectConfig() SubjectConfigResponseOu
 // Describes how some of the technical X.509 fields in a certificate should be populated.
 func (o CertificateConfigResponseOutput) X509Config() X509ParametersResponseOutput {
 	return o.ApplyT(func(v CertificateConfigResponse) X509ParametersResponse { return v.X509Config }).(X509ParametersResponseOutput)
-}
-
-type CertificateConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CertificateConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateConfigResponse)(nil)).Elem()
-}
-
-func (o CertificateConfigResponsePtrOutput) ToCertificateConfigResponsePtrOutput() CertificateConfigResponsePtrOutput {
-	return o
-}
-
-func (o CertificateConfigResponsePtrOutput) ToCertificateConfigResponsePtrOutputWithContext(ctx context.Context) CertificateConfigResponsePtrOutput {
-	return o
-}
-
-func (o CertificateConfigResponsePtrOutput) Elem() CertificateConfigResponseOutput {
-	return o.ApplyT(func(v *CertificateConfigResponse) CertificateConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CertificateConfigResponse
-		return ret
-	}).(CertificateConfigResponseOutput)
-}
-
-// Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
-func (o CertificateConfigResponsePtrOutput) PublicKey() PublicKeyResponsePtrOutput {
-	return o.ApplyT(func(v *CertificateConfigResponse) *PublicKeyResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PublicKey
-	}).(PublicKeyResponsePtrOutput)
-}
-
-// Specifies some of the values in a certificate that are related to the subject.
-func (o CertificateConfigResponsePtrOutput) SubjectConfig() SubjectConfigResponsePtrOutput {
-	return o.ApplyT(func(v *CertificateConfigResponse) *SubjectConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SubjectConfig
-	}).(SubjectConfigResponsePtrOutput)
-}
-
-// Describes how some of the technical X.509 fields in a certificate should be populated.
-func (o CertificateConfigResponsePtrOutput) X509Config() X509ParametersResponsePtrOutput {
-	return o.ApplyT(func(v *CertificateConfigResponse) *X509ParametersResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.X509Config
-	}).(X509ParametersResponsePtrOutput)
 }
 
 // A CertificateDescription describes an X.509 certificate or CSR that has been issued, as an alternative to using ASN.1 / X.509.
@@ -1753,115 +1137,6 @@ type CertificateDescriptionResponse struct {
 	X509Description X509ParametersResponse `pulumi:"x509Description"`
 }
 
-// CertificateDescriptionResponseInput is an input type that accepts CertificateDescriptionResponseArgs and CertificateDescriptionResponseOutput values.
-// You can construct a concrete instance of `CertificateDescriptionResponseInput` via:
-//
-//          CertificateDescriptionResponseArgs{...}
-type CertificateDescriptionResponseInput interface {
-	pulumi.Input
-
-	ToCertificateDescriptionResponseOutput() CertificateDescriptionResponseOutput
-	ToCertificateDescriptionResponseOutputWithContext(context.Context) CertificateDescriptionResponseOutput
-}
-
-// A CertificateDescription describes an X.509 certificate or CSR that has been issued, as an alternative to using ASN.1 / X.509.
-type CertificateDescriptionResponseArgs struct {
-	// Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
-	AiaIssuingCertificateUrls pulumi.StringArrayInput `pulumi:"aiaIssuingCertificateUrls"`
-	// Identifies the subject_key_id of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
-	AuthorityKeyId KeyIdResponseInput `pulumi:"authorityKeyId"`
-	// The hash of the x.509 certificate.
-	CertFingerprint CertificateFingerprintResponseInput `pulumi:"certFingerprint"`
-	// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
-	CrlDistributionPoints pulumi.StringArrayInput `pulumi:"crlDistributionPoints"`
-	// The public key that corresponds to an issued certificate.
-	PublicKey PublicKeyResponseInput `pulumi:"publicKey"`
-	// Describes some of the values in a certificate that are related to the subject and lifetime.
-	SubjectDescription SubjectDescriptionResponseInput `pulumi:"subjectDescription"`
-	// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
-	SubjectKeyId KeyIdResponseInput `pulumi:"subjectKeyId"`
-	// Describes some of the technical X.509 fields in a certificate.
-	X509Description X509ParametersResponseInput `pulumi:"x509Description"`
-}
-
-func (CertificateDescriptionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateDescriptionResponse)(nil)).Elem()
-}
-
-func (i CertificateDescriptionResponseArgs) ToCertificateDescriptionResponseOutput() CertificateDescriptionResponseOutput {
-	return i.ToCertificateDescriptionResponseOutputWithContext(context.Background())
-}
-
-func (i CertificateDescriptionResponseArgs) ToCertificateDescriptionResponseOutputWithContext(ctx context.Context) CertificateDescriptionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateDescriptionResponseOutput)
-}
-
-func (i CertificateDescriptionResponseArgs) ToCertificateDescriptionResponsePtrOutput() CertificateDescriptionResponsePtrOutput {
-	return i.ToCertificateDescriptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CertificateDescriptionResponseArgs) ToCertificateDescriptionResponsePtrOutputWithContext(ctx context.Context) CertificateDescriptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateDescriptionResponseOutput).ToCertificateDescriptionResponsePtrOutputWithContext(ctx)
-}
-
-// CertificateDescriptionResponsePtrInput is an input type that accepts CertificateDescriptionResponseArgs, CertificateDescriptionResponsePtr and CertificateDescriptionResponsePtrOutput values.
-// You can construct a concrete instance of `CertificateDescriptionResponsePtrInput` via:
-//
-//          CertificateDescriptionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CertificateDescriptionResponsePtrInput interface {
-	pulumi.Input
-
-	ToCertificateDescriptionResponsePtrOutput() CertificateDescriptionResponsePtrOutput
-	ToCertificateDescriptionResponsePtrOutputWithContext(context.Context) CertificateDescriptionResponsePtrOutput
-}
-
-type certificateDescriptionResponsePtrType CertificateDescriptionResponseArgs
-
-func CertificateDescriptionResponsePtr(v *CertificateDescriptionResponseArgs) CertificateDescriptionResponsePtrInput {
-	return (*certificateDescriptionResponsePtrType)(v)
-}
-
-func (*certificateDescriptionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateDescriptionResponse)(nil)).Elem()
-}
-
-func (i *certificateDescriptionResponsePtrType) ToCertificateDescriptionResponsePtrOutput() CertificateDescriptionResponsePtrOutput {
-	return i.ToCertificateDescriptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *certificateDescriptionResponsePtrType) ToCertificateDescriptionResponsePtrOutputWithContext(ctx context.Context) CertificateDescriptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateDescriptionResponsePtrOutput)
-}
-
-// CertificateDescriptionResponseArrayInput is an input type that accepts CertificateDescriptionResponseArray and CertificateDescriptionResponseArrayOutput values.
-// You can construct a concrete instance of `CertificateDescriptionResponseArrayInput` via:
-//
-//          CertificateDescriptionResponseArray{ CertificateDescriptionResponseArgs{...} }
-type CertificateDescriptionResponseArrayInput interface {
-	pulumi.Input
-
-	ToCertificateDescriptionResponseArrayOutput() CertificateDescriptionResponseArrayOutput
-	ToCertificateDescriptionResponseArrayOutputWithContext(context.Context) CertificateDescriptionResponseArrayOutput
-}
-
-type CertificateDescriptionResponseArray []CertificateDescriptionResponseInput
-
-func (CertificateDescriptionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CertificateDescriptionResponse)(nil)).Elem()
-}
-
-func (i CertificateDescriptionResponseArray) ToCertificateDescriptionResponseArrayOutput() CertificateDescriptionResponseArrayOutput {
-	return i.ToCertificateDescriptionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i CertificateDescriptionResponseArray) ToCertificateDescriptionResponseArrayOutputWithContext(ctx context.Context) CertificateDescriptionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateDescriptionResponseArrayOutput)
-}
-
 // A CertificateDescription describes an X.509 certificate or CSR that has been issued, as an alternative to using ASN.1 / X.509.
 type CertificateDescriptionResponseOutput struct{ *pulumi.OutputState }
 
@@ -1875,16 +1150,6 @@ func (o CertificateDescriptionResponseOutput) ToCertificateDescriptionResponseOu
 
 func (o CertificateDescriptionResponseOutput) ToCertificateDescriptionResponseOutputWithContext(ctx context.Context) CertificateDescriptionResponseOutput {
 	return o
-}
-
-func (o CertificateDescriptionResponseOutput) ToCertificateDescriptionResponsePtrOutput() CertificateDescriptionResponsePtrOutput {
-	return o.ToCertificateDescriptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CertificateDescriptionResponseOutput) ToCertificateDescriptionResponsePtrOutputWithContext(ctx context.Context) CertificateDescriptionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateDescriptionResponse) *CertificateDescriptionResponse {
-		return &v
-	}).(CertificateDescriptionResponsePtrOutput)
 }
 
 // Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
@@ -1925,110 +1190,6 @@ func (o CertificateDescriptionResponseOutput) SubjectKeyId() KeyIdResponseOutput
 // Describes some of the technical X.509 fields in a certificate.
 func (o CertificateDescriptionResponseOutput) X509Description() X509ParametersResponseOutput {
 	return o.ApplyT(func(v CertificateDescriptionResponse) X509ParametersResponse { return v.X509Description }).(X509ParametersResponseOutput)
-}
-
-type CertificateDescriptionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CertificateDescriptionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateDescriptionResponse)(nil)).Elem()
-}
-
-func (o CertificateDescriptionResponsePtrOutput) ToCertificateDescriptionResponsePtrOutput() CertificateDescriptionResponsePtrOutput {
-	return o
-}
-
-func (o CertificateDescriptionResponsePtrOutput) ToCertificateDescriptionResponsePtrOutputWithContext(ctx context.Context) CertificateDescriptionResponsePtrOutput {
-	return o
-}
-
-func (o CertificateDescriptionResponsePtrOutput) Elem() CertificateDescriptionResponseOutput {
-	return o.ApplyT(func(v *CertificateDescriptionResponse) CertificateDescriptionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CertificateDescriptionResponse
-		return ret
-	}).(CertificateDescriptionResponseOutput)
-}
-
-// Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
-func (o CertificateDescriptionResponsePtrOutput) AiaIssuingCertificateUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CertificateDescriptionResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AiaIssuingCertificateUrls
-	}).(pulumi.StringArrayOutput)
-}
-
-// Identifies the subject_key_id of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
-func (o CertificateDescriptionResponsePtrOutput) AuthorityKeyId() KeyIdResponsePtrOutput {
-	return o.ApplyT(func(v *CertificateDescriptionResponse) *KeyIdResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AuthorityKeyId
-	}).(KeyIdResponsePtrOutput)
-}
-
-// The hash of the x.509 certificate.
-func (o CertificateDescriptionResponsePtrOutput) CertFingerprint() CertificateFingerprintResponsePtrOutput {
-	return o.ApplyT(func(v *CertificateDescriptionResponse) *CertificateFingerprintResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CertFingerprint
-	}).(CertificateFingerprintResponsePtrOutput)
-}
-
-// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
-func (o CertificateDescriptionResponsePtrOutput) CrlDistributionPoints() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CertificateDescriptionResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CrlDistributionPoints
-	}).(pulumi.StringArrayOutput)
-}
-
-// The public key that corresponds to an issued certificate.
-func (o CertificateDescriptionResponsePtrOutput) PublicKey() PublicKeyResponsePtrOutput {
-	return o.ApplyT(func(v *CertificateDescriptionResponse) *PublicKeyResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PublicKey
-	}).(PublicKeyResponsePtrOutput)
-}
-
-// Describes some of the values in a certificate that are related to the subject and lifetime.
-func (o CertificateDescriptionResponsePtrOutput) SubjectDescription() SubjectDescriptionResponsePtrOutput {
-	return o.ApplyT(func(v *CertificateDescriptionResponse) *SubjectDescriptionResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SubjectDescription
-	}).(SubjectDescriptionResponsePtrOutput)
-}
-
-// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
-func (o CertificateDescriptionResponsePtrOutput) SubjectKeyId() KeyIdResponsePtrOutput {
-	return o.ApplyT(func(v *CertificateDescriptionResponse) *KeyIdResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SubjectKeyId
-	}).(KeyIdResponsePtrOutput)
-}
-
-// Describes some of the technical X.509 fields in a certificate.
-func (o CertificateDescriptionResponsePtrOutput) X509Description() X509ParametersResponsePtrOutput {
-	return o.ApplyT(func(v *CertificateDescriptionResponse) *X509ParametersResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.X509Description
-	}).(X509ParametersResponsePtrOutput)
 }
 
 type CertificateDescriptionResponseArrayOutput struct{ *pulumi.OutputState }
@@ -2220,78 +1381,6 @@ type CertificateExtensionConstraintsResponse struct {
 	KnownExtensions []string `pulumi:"knownExtensions"`
 }
 
-// CertificateExtensionConstraintsResponseInput is an input type that accepts CertificateExtensionConstraintsResponseArgs and CertificateExtensionConstraintsResponseOutput values.
-// You can construct a concrete instance of `CertificateExtensionConstraintsResponseInput` via:
-//
-//          CertificateExtensionConstraintsResponseArgs{...}
-type CertificateExtensionConstraintsResponseInput interface {
-	pulumi.Input
-
-	ToCertificateExtensionConstraintsResponseOutput() CertificateExtensionConstraintsResponseOutput
-	ToCertificateExtensionConstraintsResponseOutputWithContext(context.Context) CertificateExtensionConstraintsResponseOutput
-}
-
-// Describes a set of X.509 extensions that may be part of some certificate issuance controls.
-type CertificateExtensionConstraintsResponseArgs struct {
-	// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
-	AdditionalExtensions ObjectIdResponseArrayInput `pulumi:"additionalExtensions"`
-	// Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
-	KnownExtensions pulumi.StringArrayInput `pulumi:"knownExtensions"`
-}
-
-func (CertificateExtensionConstraintsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateExtensionConstraintsResponse)(nil)).Elem()
-}
-
-func (i CertificateExtensionConstraintsResponseArgs) ToCertificateExtensionConstraintsResponseOutput() CertificateExtensionConstraintsResponseOutput {
-	return i.ToCertificateExtensionConstraintsResponseOutputWithContext(context.Background())
-}
-
-func (i CertificateExtensionConstraintsResponseArgs) ToCertificateExtensionConstraintsResponseOutputWithContext(ctx context.Context) CertificateExtensionConstraintsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateExtensionConstraintsResponseOutput)
-}
-
-func (i CertificateExtensionConstraintsResponseArgs) ToCertificateExtensionConstraintsResponsePtrOutput() CertificateExtensionConstraintsResponsePtrOutput {
-	return i.ToCertificateExtensionConstraintsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CertificateExtensionConstraintsResponseArgs) ToCertificateExtensionConstraintsResponsePtrOutputWithContext(ctx context.Context) CertificateExtensionConstraintsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateExtensionConstraintsResponseOutput).ToCertificateExtensionConstraintsResponsePtrOutputWithContext(ctx)
-}
-
-// CertificateExtensionConstraintsResponsePtrInput is an input type that accepts CertificateExtensionConstraintsResponseArgs, CertificateExtensionConstraintsResponsePtr and CertificateExtensionConstraintsResponsePtrOutput values.
-// You can construct a concrete instance of `CertificateExtensionConstraintsResponsePtrInput` via:
-//
-//          CertificateExtensionConstraintsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CertificateExtensionConstraintsResponsePtrInput interface {
-	pulumi.Input
-
-	ToCertificateExtensionConstraintsResponsePtrOutput() CertificateExtensionConstraintsResponsePtrOutput
-	ToCertificateExtensionConstraintsResponsePtrOutputWithContext(context.Context) CertificateExtensionConstraintsResponsePtrOutput
-}
-
-type certificateExtensionConstraintsResponsePtrType CertificateExtensionConstraintsResponseArgs
-
-func CertificateExtensionConstraintsResponsePtr(v *CertificateExtensionConstraintsResponseArgs) CertificateExtensionConstraintsResponsePtrInput {
-	return (*certificateExtensionConstraintsResponsePtrType)(v)
-}
-
-func (*certificateExtensionConstraintsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateExtensionConstraintsResponse)(nil)).Elem()
-}
-
-func (i *certificateExtensionConstraintsResponsePtrType) ToCertificateExtensionConstraintsResponsePtrOutput() CertificateExtensionConstraintsResponsePtrOutput {
-	return i.ToCertificateExtensionConstraintsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *certificateExtensionConstraintsResponsePtrType) ToCertificateExtensionConstraintsResponsePtrOutputWithContext(ctx context.Context) CertificateExtensionConstraintsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateExtensionConstraintsResponsePtrOutput)
-}
-
 // Describes a set of X.509 extensions that may be part of some certificate issuance controls.
 type CertificateExtensionConstraintsResponseOutput struct{ *pulumi.OutputState }
 
@@ -2307,16 +1396,6 @@ func (o CertificateExtensionConstraintsResponseOutput) ToCertificateExtensionCon
 	return o
 }
 
-func (o CertificateExtensionConstraintsResponseOutput) ToCertificateExtensionConstraintsResponsePtrOutput() CertificateExtensionConstraintsResponsePtrOutput {
-	return o.ToCertificateExtensionConstraintsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CertificateExtensionConstraintsResponseOutput) ToCertificateExtensionConstraintsResponsePtrOutputWithContext(ctx context.Context) CertificateExtensionConstraintsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateExtensionConstraintsResponse) *CertificateExtensionConstraintsResponse {
-		return &v
-	}).(CertificateExtensionConstraintsResponsePtrOutput)
-}
-
 // Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
 func (o CertificateExtensionConstraintsResponseOutput) AdditionalExtensions() ObjectIdResponseArrayOutput {
 	return o.ApplyT(func(v CertificateExtensionConstraintsResponse) []ObjectIdResponse { return v.AdditionalExtensions }).(ObjectIdResponseArrayOutput)
@@ -2327,124 +1406,10 @@ func (o CertificateExtensionConstraintsResponseOutput) KnownExtensions() pulumi.
 	return o.ApplyT(func(v CertificateExtensionConstraintsResponse) []string { return v.KnownExtensions }).(pulumi.StringArrayOutput)
 }
 
-type CertificateExtensionConstraintsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CertificateExtensionConstraintsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateExtensionConstraintsResponse)(nil)).Elem()
-}
-
-func (o CertificateExtensionConstraintsResponsePtrOutput) ToCertificateExtensionConstraintsResponsePtrOutput() CertificateExtensionConstraintsResponsePtrOutput {
-	return o
-}
-
-func (o CertificateExtensionConstraintsResponsePtrOutput) ToCertificateExtensionConstraintsResponsePtrOutputWithContext(ctx context.Context) CertificateExtensionConstraintsResponsePtrOutput {
-	return o
-}
-
-func (o CertificateExtensionConstraintsResponsePtrOutput) Elem() CertificateExtensionConstraintsResponseOutput {
-	return o.ApplyT(func(v *CertificateExtensionConstraintsResponse) CertificateExtensionConstraintsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CertificateExtensionConstraintsResponse
-		return ret
-	}).(CertificateExtensionConstraintsResponseOutput)
-}
-
-// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
-func (o CertificateExtensionConstraintsResponsePtrOutput) AdditionalExtensions() ObjectIdResponseArrayOutput {
-	return o.ApplyT(func(v *CertificateExtensionConstraintsResponse) []ObjectIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalExtensions
-	}).(ObjectIdResponseArrayOutput)
-}
-
-// Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
-func (o CertificateExtensionConstraintsResponsePtrOutput) KnownExtensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CertificateExtensionConstraintsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.KnownExtensions
-	}).(pulumi.StringArrayOutput)
-}
-
 // A group of fingerprints for the x509 certificate.
 type CertificateFingerprintResponse struct {
 	// The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
 	Sha256Hash string `pulumi:"sha256Hash"`
-}
-
-// CertificateFingerprintResponseInput is an input type that accepts CertificateFingerprintResponseArgs and CertificateFingerprintResponseOutput values.
-// You can construct a concrete instance of `CertificateFingerprintResponseInput` via:
-//
-//          CertificateFingerprintResponseArgs{...}
-type CertificateFingerprintResponseInput interface {
-	pulumi.Input
-
-	ToCertificateFingerprintResponseOutput() CertificateFingerprintResponseOutput
-	ToCertificateFingerprintResponseOutputWithContext(context.Context) CertificateFingerprintResponseOutput
-}
-
-// A group of fingerprints for the x509 certificate.
-type CertificateFingerprintResponseArgs struct {
-	// The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
-	Sha256Hash pulumi.StringInput `pulumi:"sha256Hash"`
-}
-
-func (CertificateFingerprintResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateFingerprintResponse)(nil)).Elem()
-}
-
-func (i CertificateFingerprintResponseArgs) ToCertificateFingerprintResponseOutput() CertificateFingerprintResponseOutput {
-	return i.ToCertificateFingerprintResponseOutputWithContext(context.Background())
-}
-
-func (i CertificateFingerprintResponseArgs) ToCertificateFingerprintResponseOutputWithContext(ctx context.Context) CertificateFingerprintResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateFingerprintResponseOutput)
-}
-
-func (i CertificateFingerprintResponseArgs) ToCertificateFingerprintResponsePtrOutput() CertificateFingerprintResponsePtrOutput {
-	return i.ToCertificateFingerprintResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CertificateFingerprintResponseArgs) ToCertificateFingerprintResponsePtrOutputWithContext(ctx context.Context) CertificateFingerprintResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateFingerprintResponseOutput).ToCertificateFingerprintResponsePtrOutputWithContext(ctx)
-}
-
-// CertificateFingerprintResponsePtrInput is an input type that accepts CertificateFingerprintResponseArgs, CertificateFingerprintResponsePtr and CertificateFingerprintResponsePtrOutput values.
-// You can construct a concrete instance of `CertificateFingerprintResponsePtrInput` via:
-//
-//          CertificateFingerprintResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CertificateFingerprintResponsePtrInput interface {
-	pulumi.Input
-
-	ToCertificateFingerprintResponsePtrOutput() CertificateFingerprintResponsePtrOutput
-	ToCertificateFingerprintResponsePtrOutputWithContext(context.Context) CertificateFingerprintResponsePtrOutput
-}
-
-type certificateFingerprintResponsePtrType CertificateFingerprintResponseArgs
-
-func CertificateFingerprintResponsePtr(v *CertificateFingerprintResponseArgs) CertificateFingerprintResponsePtrInput {
-	return (*certificateFingerprintResponsePtrType)(v)
-}
-
-func (*certificateFingerprintResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateFingerprintResponse)(nil)).Elem()
-}
-
-func (i *certificateFingerprintResponsePtrType) ToCertificateFingerprintResponsePtrOutput() CertificateFingerprintResponsePtrOutput {
-	return i.ToCertificateFingerprintResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *certificateFingerprintResponsePtrType) ToCertificateFingerprintResponsePtrOutputWithContext(ctx context.Context) CertificateFingerprintResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateFingerprintResponsePtrOutput)
 }
 
 // A group of fingerprints for the x509 certificate.
@@ -2462,53 +1427,9 @@ func (o CertificateFingerprintResponseOutput) ToCertificateFingerprintResponseOu
 	return o
 }
 
-func (o CertificateFingerprintResponseOutput) ToCertificateFingerprintResponsePtrOutput() CertificateFingerprintResponsePtrOutput {
-	return o.ToCertificateFingerprintResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CertificateFingerprintResponseOutput) ToCertificateFingerprintResponsePtrOutputWithContext(ctx context.Context) CertificateFingerprintResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateFingerprintResponse) *CertificateFingerprintResponse {
-		return &v
-	}).(CertificateFingerprintResponsePtrOutput)
-}
-
 // The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
 func (o CertificateFingerprintResponseOutput) Sha256Hash() pulumi.StringOutput {
 	return o.ApplyT(func(v CertificateFingerprintResponse) string { return v.Sha256Hash }).(pulumi.StringOutput)
-}
-
-type CertificateFingerprintResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CertificateFingerprintResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateFingerprintResponse)(nil)).Elem()
-}
-
-func (o CertificateFingerprintResponsePtrOutput) ToCertificateFingerprintResponsePtrOutput() CertificateFingerprintResponsePtrOutput {
-	return o
-}
-
-func (o CertificateFingerprintResponsePtrOutput) ToCertificateFingerprintResponsePtrOutputWithContext(ctx context.Context) CertificateFingerprintResponsePtrOutput {
-	return o
-}
-
-func (o CertificateFingerprintResponsePtrOutput) Elem() CertificateFingerprintResponseOutput {
-	return o.ApplyT(func(v *CertificateFingerprintResponse) CertificateFingerprintResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CertificateFingerprintResponse
-		return ret
-	}).(CertificateFingerprintResponseOutput)
-}
-
-// The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
-func (o CertificateFingerprintResponsePtrOutput) Sha256Hash() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CertificateFingerprintResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Sha256Hash
-	}).(pulumi.StringPtrOutput)
 }
 
 // Describes constraints on a Certificate's Subject and SubjectAltNames.
@@ -2699,80 +1620,6 @@ type CertificateIdentityConstraintsResponse struct {
 	CelExpression ExprResponse `pulumi:"celExpression"`
 }
 
-// CertificateIdentityConstraintsResponseInput is an input type that accepts CertificateIdentityConstraintsResponseArgs and CertificateIdentityConstraintsResponseOutput values.
-// You can construct a concrete instance of `CertificateIdentityConstraintsResponseInput` via:
-//
-//          CertificateIdentityConstraintsResponseArgs{...}
-type CertificateIdentityConstraintsResponseInput interface {
-	pulumi.Input
-
-	ToCertificateIdentityConstraintsResponseOutput() CertificateIdentityConstraintsResponseOutput
-	ToCertificateIdentityConstraintsResponseOutputWithContext(context.Context) CertificateIdentityConstraintsResponseOutput
-}
-
-// Describes constraints on a Certificate's Subject and SubjectAltNames.
-type CertificateIdentityConstraintsResponseArgs struct {
-	// If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
-	AllowSubjectAltNamesPassthrough pulumi.BoolInput `pulumi:"allowSubjectAltNamesPassthrough"`
-	// If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
-	AllowSubjectPassthrough pulumi.BoolInput `pulumi:"allowSubjectPassthrough"`
-	// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
-	CelExpression ExprResponseInput `pulumi:"celExpression"`
-}
-
-func (CertificateIdentityConstraintsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateIdentityConstraintsResponse)(nil)).Elem()
-}
-
-func (i CertificateIdentityConstraintsResponseArgs) ToCertificateIdentityConstraintsResponseOutput() CertificateIdentityConstraintsResponseOutput {
-	return i.ToCertificateIdentityConstraintsResponseOutputWithContext(context.Background())
-}
-
-func (i CertificateIdentityConstraintsResponseArgs) ToCertificateIdentityConstraintsResponseOutputWithContext(ctx context.Context) CertificateIdentityConstraintsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateIdentityConstraintsResponseOutput)
-}
-
-func (i CertificateIdentityConstraintsResponseArgs) ToCertificateIdentityConstraintsResponsePtrOutput() CertificateIdentityConstraintsResponsePtrOutput {
-	return i.ToCertificateIdentityConstraintsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CertificateIdentityConstraintsResponseArgs) ToCertificateIdentityConstraintsResponsePtrOutputWithContext(ctx context.Context) CertificateIdentityConstraintsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateIdentityConstraintsResponseOutput).ToCertificateIdentityConstraintsResponsePtrOutputWithContext(ctx)
-}
-
-// CertificateIdentityConstraintsResponsePtrInput is an input type that accepts CertificateIdentityConstraintsResponseArgs, CertificateIdentityConstraintsResponsePtr and CertificateIdentityConstraintsResponsePtrOutput values.
-// You can construct a concrete instance of `CertificateIdentityConstraintsResponsePtrInput` via:
-//
-//          CertificateIdentityConstraintsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CertificateIdentityConstraintsResponsePtrInput interface {
-	pulumi.Input
-
-	ToCertificateIdentityConstraintsResponsePtrOutput() CertificateIdentityConstraintsResponsePtrOutput
-	ToCertificateIdentityConstraintsResponsePtrOutputWithContext(context.Context) CertificateIdentityConstraintsResponsePtrOutput
-}
-
-type certificateIdentityConstraintsResponsePtrType CertificateIdentityConstraintsResponseArgs
-
-func CertificateIdentityConstraintsResponsePtr(v *CertificateIdentityConstraintsResponseArgs) CertificateIdentityConstraintsResponsePtrInput {
-	return (*certificateIdentityConstraintsResponsePtrType)(v)
-}
-
-func (*certificateIdentityConstraintsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateIdentityConstraintsResponse)(nil)).Elem()
-}
-
-func (i *certificateIdentityConstraintsResponsePtrType) ToCertificateIdentityConstraintsResponsePtrOutput() CertificateIdentityConstraintsResponsePtrOutput {
-	return i.ToCertificateIdentityConstraintsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *certificateIdentityConstraintsResponsePtrType) ToCertificateIdentityConstraintsResponsePtrOutputWithContext(ctx context.Context) CertificateIdentityConstraintsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateIdentityConstraintsResponsePtrOutput)
-}
-
 // Describes constraints on a Certificate's Subject and SubjectAltNames.
 type CertificateIdentityConstraintsResponseOutput struct{ *pulumi.OutputState }
 
@@ -2788,16 +1635,6 @@ func (o CertificateIdentityConstraintsResponseOutput) ToCertificateIdentityConst
 	return o
 }
 
-func (o CertificateIdentityConstraintsResponseOutput) ToCertificateIdentityConstraintsResponsePtrOutput() CertificateIdentityConstraintsResponsePtrOutput {
-	return o.ToCertificateIdentityConstraintsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CertificateIdentityConstraintsResponseOutput) ToCertificateIdentityConstraintsResponsePtrOutputWithContext(ctx context.Context) CertificateIdentityConstraintsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateIdentityConstraintsResponse) *CertificateIdentityConstraintsResponse {
-		return &v
-	}).(CertificateIdentityConstraintsResponsePtrOutput)
-}
-
 // If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
 func (o CertificateIdentityConstraintsResponseOutput) AllowSubjectAltNamesPassthrough() pulumi.BoolOutput {
 	return o.ApplyT(func(v CertificateIdentityConstraintsResponse) bool { return v.AllowSubjectAltNamesPassthrough }).(pulumi.BoolOutput)
@@ -2811,60 +1648,6 @@ func (o CertificateIdentityConstraintsResponseOutput) AllowSubjectPassthrough() 
 // Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
 func (o CertificateIdentityConstraintsResponseOutput) CelExpression() ExprResponseOutput {
 	return o.ApplyT(func(v CertificateIdentityConstraintsResponse) ExprResponse { return v.CelExpression }).(ExprResponseOutput)
-}
-
-type CertificateIdentityConstraintsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CertificateIdentityConstraintsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateIdentityConstraintsResponse)(nil)).Elem()
-}
-
-func (o CertificateIdentityConstraintsResponsePtrOutput) ToCertificateIdentityConstraintsResponsePtrOutput() CertificateIdentityConstraintsResponsePtrOutput {
-	return o
-}
-
-func (o CertificateIdentityConstraintsResponsePtrOutput) ToCertificateIdentityConstraintsResponsePtrOutputWithContext(ctx context.Context) CertificateIdentityConstraintsResponsePtrOutput {
-	return o
-}
-
-func (o CertificateIdentityConstraintsResponsePtrOutput) Elem() CertificateIdentityConstraintsResponseOutput {
-	return o.ApplyT(func(v *CertificateIdentityConstraintsResponse) CertificateIdentityConstraintsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CertificateIdentityConstraintsResponse
-		return ret
-	}).(CertificateIdentityConstraintsResponseOutput)
-}
-
-// If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
-func (o CertificateIdentityConstraintsResponsePtrOutput) AllowSubjectAltNamesPassthrough() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CertificateIdentityConstraintsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AllowSubjectAltNamesPassthrough
-	}).(pulumi.BoolPtrOutput)
-}
-
-// If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
-func (o CertificateIdentityConstraintsResponsePtrOutput) AllowSubjectPassthrough() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CertificateIdentityConstraintsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AllowSubjectPassthrough
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
-func (o CertificateIdentityConstraintsResponsePtrOutput) CelExpression() ExprResponsePtrOutput {
-	return o.ApplyT(func(v *CertificateIdentityConstraintsResponse) *ExprResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CelExpression
-	}).(ExprResponsePtrOutput)
 }
 
 // Describes an Elliptic Curve key that may be used in a Certificate issued from a CaPool.
@@ -3011,35 +1794,6 @@ func (o EcKeyTypePtrOutput) SignatureAlgorithm() EcKeyTypeSignatureAlgorithmPtrO
 type EcKeyTypeResponse struct {
 	// Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
 	SignatureAlgorithm string `pulumi:"signatureAlgorithm"`
-}
-
-// EcKeyTypeResponseInput is an input type that accepts EcKeyTypeResponseArgs and EcKeyTypeResponseOutput values.
-// You can construct a concrete instance of `EcKeyTypeResponseInput` via:
-//
-//          EcKeyTypeResponseArgs{...}
-type EcKeyTypeResponseInput interface {
-	pulumi.Input
-
-	ToEcKeyTypeResponseOutput() EcKeyTypeResponseOutput
-	ToEcKeyTypeResponseOutputWithContext(context.Context) EcKeyTypeResponseOutput
-}
-
-// Describes an Elliptic Curve key that may be used in a Certificate issued from a CaPool.
-type EcKeyTypeResponseArgs struct {
-	// Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
-	SignatureAlgorithm pulumi.StringInput `pulumi:"signatureAlgorithm"`
-}
-
-func (EcKeyTypeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EcKeyTypeResponse)(nil)).Elem()
-}
-
-func (i EcKeyTypeResponseArgs) ToEcKeyTypeResponseOutput() EcKeyTypeResponseOutput {
-	return i.ToEcKeyTypeResponseOutputWithContext(context.Background())
-}
-
-func (i EcKeyTypeResponseArgs) ToEcKeyTypeResponseOutputWithContext(ctx context.Context) EcKeyTypeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EcKeyTypeResponseOutput)
 }
 
 // Describes an Elliptic Curve key that may be used in a Certificate issued from a CaPool.
@@ -3271,82 +2025,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
-func (i ExprResponseArgs) ToExprResponsePtrOutput() ExprResponsePtrOutput {
-	return i.ToExprResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput).ToExprResponsePtrOutputWithContext(ctx)
-}
-
-// ExprResponsePtrInput is an input type that accepts ExprResponseArgs, ExprResponsePtr and ExprResponsePtrOutput values.
-// You can construct a concrete instance of `ExprResponsePtrInput` via:
-//
-//          ExprResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ExprResponsePtrInput interface {
-	pulumi.Input
-
-	ToExprResponsePtrOutput() ExprResponsePtrOutput
-	ToExprResponsePtrOutputWithContext(context.Context) ExprResponsePtrOutput
-}
-
-type exprResponsePtrType ExprResponseArgs
-
-func ExprResponsePtr(v *ExprResponseArgs) ExprResponsePtrInput {
-	return (*exprResponsePtrType)(v)
-}
-
-func (*exprResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExprResponse)(nil)).Elem()
-}
-
-func (i *exprResponsePtrType) ToExprResponsePtrOutput() ExprResponsePtrOutput {
-	return i.ToExprResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *exprResponsePtrType) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponsePtrOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -3360,16 +2038,6 @@ func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
 
 func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
 	return o
-}
-
-func (o ExprResponseOutput) ToExprResponsePtrOutput() ExprResponsePtrOutput {
-	return o.ToExprResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ExprResponseOutput) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExprResponse) *ExprResponse {
-		return &v
-	}).(ExprResponsePtrOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -3390,70 +2058,6 @@ func (o ExprResponseOutput) Location() pulumi.StringOutput {
 // Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
-}
-
-type ExprResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ExprResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExprResponse)(nil)).Elem()
-}
-
-func (o ExprResponsePtrOutput) ToExprResponsePtrOutput() ExprResponsePtrOutput {
-	return o
-}
-
-func (o ExprResponsePtrOutput) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
-	return o
-}
-
-func (o ExprResponsePtrOutput) Elem() ExprResponseOutput {
-	return o.ApplyT(func(v *ExprResponse) ExprResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ExprResponse
-		return ret
-	}).(ExprResponseOutput)
-}
-
-// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-func (o ExprResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExprResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Textual representation of an expression in Common Expression Language syntax.
-func (o ExprResponsePtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExprResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Expression
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-func (o ExprResponsePtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExprResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-func (o ExprResponsePtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExprResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
 }
 
 // KeyUsage.ExtendedKeyUsageOptions has fields that correspond to certain common OIDs that could be specified as an extended key usage value.
@@ -3707,86 +2311,6 @@ type ExtendedKeyUsageOptionsResponse struct {
 	TimeStamping bool `pulumi:"timeStamping"`
 }
 
-// ExtendedKeyUsageOptionsResponseInput is an input type that accepts ExtendedKeyUsageOptionsResponseArgs and ExtendedKeyUsageOptionsResponseOutput values.
-// You can construct a concrete instance of `ExtendedKeyUsageOptionsResponseInput` via:
-//
-//          ExtendedKeyUsageOptionsResponseArgs{...}
-type ExtendedKeyUsageOptionsResponseInput interface {
-	pulumi.Input
-
-	ToExtendedKeyUsageOptionsResponseOutput() ExtendedKeyUsageOptionsResponseOutput
-	ToExtendedKeyUsageOptionsResponseOutputWithContext(context.Context) ExtendedKeyUsageOptionsResponseOutput
-}
-
-// KeyUsage.ExtendedKeyUsageOptions has fields that correspond to certain common OIDs that could be specified as an extended key usage value.
-type ExtendedKeyUsageOptionsResponseArgs struct {
-	// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
-	ClientAuth pulumi.BoolInput `pulumi:"clientAuth"`
-	// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
-	CodeSigning pulumi.BoolInput `pulumi:"codeSigning"`
-	// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
-	EmailProtection pulumi.BoolInput `pulumi:"emailProtection"`
-	// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
-	OcspSigning pulumi.BoolInput `pulumi:"ocspSigning"`
-	// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
-	ServerAuth pulumi.BoolInput `pulumi:"serverAuth"`
-	// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
-	TimeStamping pulumi.BoolInput `pulumi:"timeStamping"`
-}
-
-func (ExtendedKeyUsageOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExtendedKeyUsageOptionsResponse)(nil)).Elem()
-}
-
-func (i ExtendedKeyUsageOptionsResponseArgs) ToExtendedKeyUsageOptionsResponseOutput() ExtendedKeyUsageOptionsResponseOutput {
-	return i.ToExtendedKeyUsageOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i ExtendedKeyUsageOptionsResponseArgs) ToExtendedKeyUsageOptionsResponseOutputWithContext(ctx context.Context) ExtendedKeyUsageOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExtendedKeyUsageOptionsResponseOutput)
-}
-
-func (i ExtendedKeyUsageOptionsResponseArgs) ToExtendedKeyUsageOptionsResponsePtrOutput() ExtendedKeyUsageOptionsResponsePtrOutput {
-	return i.ToExtendedKeyUsageOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ExtendedKeyUsageOptionsResponseArgs) ToExtendedKeyUsageOptionsResponsePtrOutputWithContext(ctx context.Context) ExtendedKeyUsageOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExtendedKeyUsageOptionsResponseOutput).ToExtendedKeyUsageOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// ExtendedKeyUsageOptionsResponsePtrInput is an input type that accepts ExtendedKeyUsageOptionsResponseArgs, ExtendedKeyUsageOptionsResponsePtr and ExtendedKeyUsageOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `ExtendedKeyUsageOptionsResponsePtrInput` via:
-//
-//          ExtendedKeyUsageOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ExtendedKeyUsageOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToExtendedKeyUsageOptionsResponsePtrOutput() ExtendedKeyUsageOptionsResponsePtrOutput
-	ToExtendedKeyUsageOptionsResponsePtrOutputWithContext(context.Context) ExtendedKeyUsageOptionsResponsePtrOutput
-}
-
-type extendedKeyUsageOptionsResponsePtrType ExtendedKeyUsageOptionsResponseArgs
-
-func ExtendedKeyUsageOptionsResponsePtr(v *ExtendedKeyUsageOptionsResponseArgs) ExtendedKeyUsageOptionsResponsePtrInput {
-	return (*extendedKeyUsageOptionsResponsePtrType)(v)
-}
-
-func (*extendedKeyUsageOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExtendedKeyUsageOptionsResponse)(nil)).Elem()
-}
-
-func (i *extendedKeyUsageOptionsResponsePtrType) ToExtendedKeyUsageOptionsResponsePtrOutput() ExtendedKeyUsageOptionsResponsePtrOutput {
-	return i.ToExtendedKeyUsageOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *extendedKeyUsageOptionsResponsePtrType) ToExtendedKeyUsageOptionsResponsePtrOutputWithContext(ctx context.Context) ExtendedKeyUsageOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExtendedKeyUsageOptionsResponsePtrOutput)
-}
-
 // KeyUsage.ExtendedKeyUsageOptions has fields that correspond to certain common OIDs that could be specified as an extended key usage value.
 type ExtendedKeyUsageOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -3800,16 +2324,6 @@ func (o ExtendedKeyUsageOptionsResponseOutput) ToExtendedKeyUsageOptionsResponse
 
 func (o ExtendedKeyUsageOptionsResponseOutput) ToExtendedKeyUsageOptionsResponseOutputWithContext(ctx context.Context) ExtendedKeyUsageOptionsResponseOutput {
 	return o
-}
-
-func (o ExtendedKeyUsageOptionsResponseOutput) ToExtendedKeyUsageOptionsResponsePtrOutput() ExtendedKeyUsageOptionsResponsePtrOutput {
-	return o.ToExtendedKeyUsageOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ExtendedKeyUsageOptionsResponseOutput) ToExtendedKeyUsageOptionsResponsePtrOutputWithContext(ctx context.Context) ExtendedKeyUsageOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtendedKeyUsageOptionsResponse) *ExtendedKeyUsageOptionsResponse {
-		return &v
-	}).(ExtendedKeyUsageOptionsResponsePtrOutput)
 }
 
 // Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
@@ -3840,90 +2354,6 @@ func (o ExtendedKeyUsageOptionsResponseOutput) ServerAuth() pulumi.BoolOutput {
 // Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
 func (o ExtendedKeyUsageOptionsResponseOutput) TimeStamping() pulumi.BoolOutput {
 	return o.ApplyT(func(v ExtendedKeyUsageOptionsResponse) bool { return v.TimeStamping }).(pulumi.BoolOutput)
-}
-
-type ExtendedKeyUsageOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ExtendedKeyUsageOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExtendedKeyUsageOptionsResponse)(nil)).Elem()
-}
-
-func (o ExtendedKeyUsageOptionsResponsePtrOutput) ToExtendedKeyUsageOptionsResponsePtrOutput() ExtendedKeyUsageOptionsResponsePtrOutput {
-	return o
-}
-
-func (o ExtendedKeyUsageOptionsResponsePtrOutput) ToExtendedKeyUsageOptionsResponsePtrOutputWithContext(ctx context.Context) ExtendedKeyUsageOptionsResponsePtrOutput {
-	return o
-}
-
-func (o ExtendedKeyUsageOptionsResponsePtrOutput) Elem() ExtendedKeyUsageOptionsResponseOutput {
-	return o.ApplyT(func(v *ExtendedKeyUsageOptionsResponse) ExtendedKeyUsageOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ExtendedKeyUsageOptionsResponse
-		return ret
-	}).(ExtendedKeyUsageOptionsResponseOutput)
-}
-
-// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
-func (o ExtendedKeyUsageOptionsResponsePtrOutput) ClientAuth() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ExtendedKeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientAuth
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
-func (o ExtendedKeyUsageOptionsResponsePtrOutput) CodeSigning() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ExtendedKeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.CodeSigning
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
-func (o ExtendedKeyUsageOptionsResponsePtrOutput) EmailProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ExtendedKeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EmailProtection
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
-func (o ExtendedKeyUsageOptionsResponsePtrOutput) OcspSigning() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ExtendedKeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.OcspSigning
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
-func (o ExtendedKeyUsageOptionsResponsePtrOutput) ServerAuth() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ExtendedKeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ServerAuth
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
-func (o ExtendedKeyUsageOptionsResponsePtrOutput) TimeStamping() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ExtendedKeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.TimeStamping
-	}).(pulumi.BoolPtrOutput)
 }
 
 // IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
@@ -4093,78 +2523,6 @@ type IssuanceModesResponse struct {
 	AllowCsrBasedIssuance bool `pulumi:"allowCsrBasedIssuance"`
 }
 
-// IssuanceModesResponseInput is an input type that accepts IssuanceModesResponseArgs and IssuanceModesResponseOutput values.
-// You can construct a concrete instance of `IssuanceModesResponseInput` via:
-//
-//          IssuanceModesResponseArgs{...}
-type IssuanceModesResponseInput interface {
-	pulumi.Input
-
-	ToIssuanceModesResponseOutput() IssuanceModesResponseOutput
-	ToIssuanceModesResponseOutputWithContext(context.Context) IssuanceModesResponseOutput
-}
-
-// IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
-type IssuanceModesResponseArgs struct {
-	// Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
-	AllowConfigBasedIssuance pulumi.BoolInput `pulumi:"allowConfigBasedIssuance"`
-	// Optional. When true, allows callers to create Certificates by specifying a CSR.
-	AllowCsrBasedIssuance pulumi.BoolInput `pulumi:"allowCsrBasedIssuance"`
-}
-
-func (IssuanceModesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IssuanceModesResponse)(nil)).Elem()
-}
-
-func (i IssuanceModesResponseArgs) ToIssuanceModesResponseOutput() IssuanceModesResponseOutput {
-	return i.ToIssuanceModesResponseOutputWithContext(context.Background())
-}
-
-func (i IssuanceModesResponseArgs) ToIssuanceModesResponseOutputWithContext(ctx context.Context) IssuanceModesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IssuanceModesResponseOutput)
-}
-
-func (i IssuanceModesResponseArgs) ToIssuanceModesResponsePtrOutput() IssuanceModesResponsePtrOutput {
-	return i.ToIssuanceModesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i IssuanceModesResponseArgs) ToIssuanceModesResponsePtrOutputWithContext(ctx context.Context) IssuanceModesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IssuanceModesResponseOutput).ToIssuanceModesResponsePtrOutputWithContext(ctx)
-}
-
-// IssuanceModesResponsePtrInput is an input type that accepts IssuanceModesResponseArgs, IssuanceModesResponsePtr and IssuanceModesResponsePtrOutput values.
-// You can construct a concrete instance of `IssuanceModesResponsePtrInput` via:
-//
-//          IssuanceModesResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type IssuanceModesResponsePtrInput interface {
-	pulumi.Input
-
-	ToIssuanceModesResponsePtrOutput() IssuanceModesResponsePtrOutput
-	ToIssuanceModesResponsePtrOutputWithContext(context.Context) IssuanceModesResponsePtrOutput
-}
-
-type issuanceModesResponsePtrType IssuanceModesResponseArgs
-
-func IssuanceModesResponsePtr(v *IssuanceModesResponseArgs) IssuanceModesResponsePtrInput {
-	return (*issuanceModesResponsePtrType)(v)
-}
-
-func (*issuanceModesResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IssuanceModesResponse)(nil)).Elem()
-}
-
-func (i *issuanceModesResponsePtrType) ToIssuanceModesResponsePtrOutput() IssuanceModesResponsePtrOutput {
-	return i.ToIssuanceModesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *issuanceModesResponsePtrType) ToIssuanceModesResponsePtrOutputWithContext(ctx context.Context) IssuanceModesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IssuanceModesResponsePtrOutput)
-}
-
 // IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
 type IssuanceModesResponseOutput struct{ *pulumi.OutputState }
 
@@ -4180,16 +2538,6 @@ func (o IssuanceModesResponseOutput) ToIssuanceModesResponseOutputWithContext(ct
 	return o
 }
 
-func (o IssuanceModesResponseOutput) ToIssuanceModesResponsePtrOutput() IssuanceModesResponsePtrOutput {
-	return o.ToIssuanceModesResponsePtrOutputWithContext(context.Background())
-}
-
-func (o IssuanceModesResponseOutput) ToIssuanceModesResponsePtrOutputWithContext(ctx context.Context) IssuanceModesResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IssuanceModesResponse) *IssuanceModesResponse {
-		return &v
-	}).(IssuanceModesResponsePtrOutput)
-}
-
 // Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
 func (o IssuanceModesResponseOutput) AllowConfigBasedIssuance() pulumi.BoolOutput {
 	return o.ApplyT(func(v IssuanceModesResponse) bool { return v.AllowConfigBasedIssuance }).(pulumi.BoolOutput)
@@ -4198,50 +2546,6 @@ func (o IssuanceModesResponseOutput) AllowConfigBasedIssuance() pulumi.BoolOutpu
 // Optional. When true, allows callers to create Certificates by specifying a CSR.
 func (o IssuanceModesResponseOutput) AllowCsrBasedIssuance() pulumi.BoolOutput {
 	return o.ApplyT(func(v IssuanceModesResponse) bool { return v.AllowCsrBasedIssuance }).(pulumi.BoolOutput)
-}
-
-type IssuanceModesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IssuanceModesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IssuanceModesResponse)(nil)).Elem()
-}
-
-func (o IssuanceModesResponsePtrOutput) ToIssuanceModesResponsePtrOutput() IssuanceModesResponsePtrOutput {
-	return o
-}
-
-func (o IssuanceModesResponsePtrOutput) ToIssuanceModesResponsePtrOutputWithContext(ctx context.Context) IssuanceModesResponsePtrOutput {
-	return o
-}
-
-func (o IssuanceModesResponsePtrOutput) Elem() IssuanceModesResponseOutput {
-	return o.ApplyT(func(v *IssuanceModesResponse) IssuanceModesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IssuanceModesResponse
-		return ret
-	}).(IssuanceModesResponseOutput)
-}
-
-// Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
-func (o IssuanceModesResponsePtrOutput) AllowConfigBasedIssuance() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *IssuanceModesResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AllowConfigBasedIssuance
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Optional. When true, allows callers to create Certificates by specifying a CSR.
-func (o IssuanceModesResponsePtrOutput) AllowCsrBasedIssuance() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *IssuanceModesResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AllowCsrBasedIssuance
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Defines controls over all certificate issuance within a CaPool.
@@ -4495,86 +2799,6 @@ type IssuancePolicyResponse struct {
 	PassthroughExtensions CertificateExtensionConstraintsResponse `pulumi:"passthroughExtensions"`
 }
 
-// IssuancePolicyResponseInput is an input type that accepts IssuancePolicyResponseArgs and IssuancePolicyResponseOutput values.
-// You can construct a concrete instance of `IssuancePolicyResponseInput` via:
-//
-//          IssuancePolicyResponseArgs{...}
-type IssuancePolicyResponseInput interface {
-	pulumi.Input
-
-	ToIssuancePolicyResponseOutput() IssuancePolicyResponseOutput
-	ToIssuancePolicyResponseOutputWithContext(context.Context) IssuancePolicyResponseOutput
-}
-
-// Defines controls over all certificate issuance within a CaPool.
-type IssuancePolicyResponseArgs struct {
-	// Optional. If specified, then only methods allowed in the IssuanceModes may be used to issue Certificates.
-	AllowedIssuanceModes IssuanceModesResponseInput `pulumi:"allowedIssuanceModes"`
-	// Optional. If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here. Otherwise, any key may be used.
-	AllowedKeyTypes AllowedKeyTypeResponseArrayInput `pulumi:"allowedKeyTypes"`
-	// Optional. A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate request uses a CertificateTemplate that defines conflicting predefined_values for the same properties, the certificate issuance request will fail.
-	BaselineValues X509ParametersResponseInput `pulumi:"baselineValues"`
-	// Optional. Describes constraints on identities that may appear in Certificates issued through this CaPool. If this is omitted, then this CaPool will not add restrictions on a certificate's identity.
-	IdentityConstraints CertificateIdentityConstraintsResponseInput `pulumi:"identityConstraints"`
-	// Optional. The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
-	MaximumLifetime pulumi.StringInput `pulumi:"maximumLifetime"`
-	// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If a certificate request uses a CertificateTemplate with predefined_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CaPool's baseline_values.
-	PassthroughExtensions CertificateExtensionConstraintsResponseInput `pulumi:"passthroughExtensions"`
-}
-
-func (IssuancePolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IssuancePolicyResponse)(nil)).Elem()
-}
-
-func (i IssuancePolicyResponseArgs) ToIssuancePolicyResponseOutput() IssuancePolicyResponseOutput {
-	return i.ToIssuancePolicyResponseOutputWithContext(context.Background())
-}
-
-func (i IssuancePolicyResponseArgs) ToIssuancePolicyResponseOutputWithContext(ctx context.Context) IssuancePolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IssuancePolicyResponseOutput)
-}
-
-func (i IssuancePolicyResponseArgs) ToIssuancePolicyResponsePtrOutput() IssuancePolicyResponsePtrOutput {
-	return i.ToIssuancePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i IssuancePolicyResponseArgs) ToIssuancePolicyResponsePtrOutputWithContext(ctx context.Context) IssuancePolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IssuancePolicyResponseOutput).ToIssuancePolicyResponsePtrOutputWithContext(ctx)
-}
-
-// IssuancePolicyResponsePtrInput is an input type that accepts IssuancePolicyResponseArgs, IssuancePolicyResponsePtr and IssuancePolicyResponsePtrOutput values.
-// You can construct a concrete instance of `IssuancePolicyResponsePtrInput` via:
-//
-//          IssuancePolicyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type IssuancePolicyResponsePtrInput interface {
-	pulumi.Input
-
-	ToIssuancePolicyResponsePtrOutput() IssuancePolicyResponsePtrOutput
-	ToIssuancePolicyResponsePtrOutputWithContext(context.Context) IssuancePolicyResponsePtrOutput
-}
-
-type issuancePolicyResponsePtrType IssuancePolicyResponseArgs
-
-func IssuancePolicyResponsePtr(v *IssuancePolicyResponseArgs) IssuancePolicyResponsePtrInput {
-	return (*issuancePolicyResponsePtrType)(v)
-}
-
-func (*issuancePolicyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IssuancePolicyResponse)(nil)).Elem()
-}
-
-func (i *issuancePolicyResponsePtrType) ToIssuancePolicyResponsePtrOutput() IssuancePolicyResponsePtrOutput {
-	return i.ToIssuancePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *issuancePolicyResponsePtrType) ToIssuancePolicyResponsePtrOutputWithContext(ctx context.Context) IssuancePolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IssuancePolicyResponsePtrOutput)
-}
-
 // Defines controls over all certificate issuance within a CaPool.
 type IssuancePolicyResponseOutput struct{ *pulumi.OutputState }
 
@@ -4588,16 +2812,6 @@ func (o IssuancePolicyResponseOutput) ToIssuancePolicyResponseOutput() IssuanceP
 
 func (o IssuancePolicyResponseOutput) ToIssuancePolicyResponseOutputWithContext(ctx context.Context) IssuancePolicyResponseOutput {
 	return o
-}
-
-func (o IssuancePolicyResponseOutput) ToIssuancePolicyResponsePtrOutput() IssuancePolicyResponsePtrOutput {
-	return o.ToIssuancePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o IssuancePolicyResponseOutput) ToIssuancePolicyResponsePtrOutputWithContext(ctx context.Context) IssuancePolicyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IssuancePolicyResponse) *IssuancePolicyResponse {
-		return &v
-	}).(IssuancePolicyResponsePtrOutput)
 }
 
 // Optional. If specified, then only methods allowed in the IssuanceModes may be used to issue Certificates.
@@ -4630,164 +2844,10 @@ func (o IssuancePolicyResponseOutput) PassthroughExtensions() CertificateExtensi
 	return o.ApplyT(func(v IssuancePolicyResponse) CertificateExtensionConstraintsResponse { return v.PassthroughExtensions }).(CertificateExtensionConstraintsResponseOutput)
 }
 
-type IssuancePolicyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IssuancePolicyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IssuancePolicyResponse)(nil)).Elem()
-}
-
-func (o IssuancePolicyResponsePtrOutput) ToIssuancePolicyResponsePtrOutput() IssuancePolicyResponsePtrOutput {
-	return o
-}
-
-func (o IssuancePolicyResponsePtrOutput) ToIssuancePolicyResponsePtrOutputWithContext(ctx context.Context) IssuancePolicyResponsePtrOutput {
-	return o
-}
-
-func (o IssuancePolicyResponsePtrOutput) Elem() IssuancePolicyResponseOutput {
-	return o.ApplyT(func(v *IssuancePolicyResponse) IssuancePolicyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IssuancePolicyResponse
-		return ret
-	}).(IssuancePolicyResponseOutput)
-}
-
-// Optional. If specified, then only methods allowed in the IssuanceModes may be used to issue Certificates.
-func (o IssuancePolicyResponsePtrOutput) AllowedIssuanceModes() IssuanceModesResponsePtrOutput {
-	return o.ApplyT(func(v *IssuancePolicyResponse) *IssuanceModesResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AllowedIssuanceModes
-	}).(IssuanceModesResponsePtrOutput)
-}
-
-// Optional. If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here. Otherwise, any key may be used.
-func (o IssuancePolicyResponsePtrOutput) AllowedKeyTypes() AllowedKeyTypeResponseArrayOutput {
-	return o.ApplyT(func(v *IssuancePolicyResponse) []AllowedKeyTypeResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AllowedKeyTypes
-	}).(AllowedKeyTypeResponseArrayOutput)
-}
-
-// Optional. A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate request uses a CertificateTemplate that defines conflicting predefined_values for the same properties, the certificate issuance request will fail.
-func (o IssuancePolicyResponsePtrOutput) BaselineValues() X509ParametersResponsePtrOutput {
-	return o.ApplyT(func(v *IssuancePolicyResponse) *X509ParametersResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BaselineValues
-	}).(X509ParametersResponsePtrOutput)
-}
-
-// Optional. Describes constraints on identities that may appear in Certificates issued through this CaPool. If this is omitted, then this CaPool will not add restrictions on a certificate's identity.
-func (o IssuancePolicyResponsePtrOutput) IdentityConstraints() CertificateIdentityConstraintsResponsePtrOutput {
-	return o.ApplyT(func(v *IssuancePolicyResponse) *CertificateIdentityConstraintsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IdentityConstraints
-	}).(CertificateIdentityConstraintsResponsePtrOutput)
-}
-
-// Optional. The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
-func (o IssuancePolicyResponsePtrOutput) MaximumLifetime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IssuancePolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MaximumLifetime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If a certificate request uses a CertificateTemplate with predefined_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CaPool's baseline_values.
-func (o IssuancePolicyResponsePtrOutput) PassthroughExtensions() CertificateExtensionConstraintsResponsePtrOutput {
-	return o.ApplyT(func(v *IssuancePolicyResponse) *CertificateExtensionConstraintsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PassthroughExtensions
-	}).(CertificateExtensionConstraintsResponsePtrOutput)
-}
-
 // A KeyId identifies a specific public key, usually by hashing the public key.
 type KeyIdResponse struct {
 	// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 	KeyId string `pulumi:"keyId"`
-}
-
-// KeyIdResponseInput is an input type that accepts KeyIdResponseArgs and KeyIdResponseOutput values.
-// You can construct a concrete instance of `KeyIdResponseInput` via:
-//
-//          KeyIdResponseArgs{...}
-type KeyIdResponseInput interface {
-	pulumi.Input
-
-	ToKeyIdResponseOutput() KeyIdResponseOutput
-	ToKeyIdResponseOutputWithContext(context.Context) KeyIdResponseOutput
-}
-
-// A KeyId identifies a specific public key, usually by hashing the public key.
-type KeyIdResponseArgs struct {
-	// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
-	KeyId pulumi.StringInput `pulumi:"keyId"`
-}
-
-func (KeyIdResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyIdResponse)(nil)).Elem()
-}
-
-func (i KeyIdResponseArgs) ToKeyIdResponseOutput() KeyIdResponseOutput {
-	return i.ToKeyIdResponseOutputWithContext(context.Background())
-}
-
-func (i KeyIdResponseArgs) ToKeyIdResponseOutputWithContext(ctx context.Context) KeyIdResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyIdResponseOutput)
-}
-
-func (i KeyIdResponseArgs) ToKeyIdResponsePtrOutput() KeyIdResponsePtrOutput {
-	return i.ToKeyIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (i KeyIdResponseArgs) ToKeyIdResponsePtrOutputWithContext(ctx context.Context) KeyIdResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyIdResponseOutput).ToKeyIdResponsePtrOutputWithContext(ctx)
-}
-
-// KeyIdResponsePtrInput is an input type that accepts KeyIdResponseArgs, KeyIdResponsePtr and KeyIdResponsePtrOutput values.
-// You can construct a concrete instance of `KeyIdResponsePtrInput` via:
-//
-//          KeyIdResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type KeyIdResponsePtrInput interface {
-	pulumi.Input
-
-	ToKeyIdResponsePtrOutput() KeyIdResponsePtrOutput
-	ToKeyIdResponsePtrOutputWithContext(context.Context) KeyIdResponsePtrOutput
-}
-
-type keyIdResponsePtrType KeyIdResponseArgs
-
-func KeyIdResponsePtr(v *KeyIdResponseArgs) KeyIdResponsePtrInput {
-	return (*keyIdResponsePtrType)(v)
-}
-
-func (*keyIdResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyIdResponse)(nil)).Elem()
-}
-
-func (i *keyIdResponsePtrType) ToKeyIdResponsePtrOutput() KeyIdResponsePtrOutput {
-	return i.ToKeyIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *keyIdResponsePtrType) ToKeyIdResponsePtrOutputWithContext(ctx context.Context) KeyIdResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyIdResponsePtrOutput)
 }
 
 // A KeyId identifies a specific public key, usually by hashing the public key.
@@ -4805,53 +2865,9 @@ func (o KeyIdResponseOutput) ToKeyIdResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o KeyIdResponseOutput) ToKeyIdResponsePtrOutput() KeyIdResponsePtrOutput {
-	return o.ToKeyIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (o KeyIdResponseOutput) ToKeyIdResponsePtrOutputWithContext(ctx context.Context) KeyIdResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyIdResponse) *KeyIdResponse {
-		return &v
-	}).(KeyIdResponsePtrOutput)
-}
-
 // Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 func (o KeyIdResponseOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyIdResponse) string { return v.KeyId }).(pulumi.StringOutput)
-}
-
-type KeyIdResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (KeyIdResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyIdResponse)(nil)).Elem()
-}
-
-func (o KeyIdResponsePtrOutput) ToKeyIdResponsePtrOutput() KeyIdResponsePtrOutput {
-	return o
-}
-
-func (o KeyIdResponsePtrOutput) ToKeyIdResponsePtrOutputWithContext(ctx context.Context) KeyIdResponsePtrOutput {
-	return o
-}
-
-func (o KeyIdResponsePtrOutput) Elem() KeyIdResponseOutput {
-	return o.ApplyT(func(v *KeyIdResponse) KeyIdResponse {
-		if v != nil {
-			return *v
-		}
-		var ret KeyIdResponse
-		return ret
-	}).(KeyIdResponseOutput)
-}
-
-// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
-func (o KeyIdResponsePtrOutput) KeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyIdResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyId
-	}).(pulumi.StringPtrOutput)
 }
 
 // A KeyUsage describes key usage values that may appear in an X.509 certificate.
@@ -5346,92 +3362,6 @@ type KeyUsageOptionsResponse struct {
 	KeyEncipherment bool `pulumi:"keyEncipherment"`
 }
 
-// KeyUsageOptionsResponseInput is an input type that accepts KeyUsageOptionsResponseArgs and KeyUsageOptionsResponseOutput values.
-// You can construct a concrete instance of `KeyUsageOptionsResponseInput` via:
-//
-//          KeyUsageOptionsResponseArgs{...}
-type KeyUsageOptionsResponseInput interface {
-	pulumi.Input
-
-	ToKeyUsageOptionsResponseOutput() KeyUsageOptionsResponseOutput
-	ToKeyUsageOptionsResponseOutputWithContext(context.Context) KeyUsageOptionsResponseOutput
-}
-
-// KeyUsage.KeyUsageOptions corresponds to the key usage values described in https://tools.ietf.org/html/rfc5280#section-4.2.1.3.
-type KeyUsageOptionsResponseArgs struct {
-	// The key may be used to sign certificates.
-	CertSign pulumi.BoolInput `pulumi:"certSign"`
-	// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
-	ContentCommitment pulumi.BoolInput `pulumi:"contentCommitment"`
-	// The key may be used sign certificate revocation lists.
-	CrlSign pulumi.BoolInput `pulumi:"crlSign"`
-	// The key may be used to encipher data.
-	DataEncipherment pulumi.BoolInput `pulumi:"dataEncipherment"`
-	// The key may be used to decipher only.
-	DecipherOnly pulumi.BoolInput `pulumi:"decipherOnly"`
-	// The key may be used for digital signatures.
-	DigitalSignature pulumi.BoolInput `pulumi:"digitalSignature"`
-	// The key may be used to encipher only.
-	EncipherOnly pulumi.BoolInput `pulumi:"encipherOnly"`
-	// The key may be used in a key agreement protocol.
-	KeyAgreement pulumi.BoolInput `pulumi:"keyAgreement"`
-	// The key may be used to encipher other keys.
-	KeyEncipherment pulumi.BoolInput `pulumi:"keyEncipherment"`
-}
-
-func (KeyUsageOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyUsageOptionsResponse)(nil)).Elem()
-}
-
-func (i KeyUsageOptionsResponseArgs) ToKeyUsageOptionsResponseOutput() KeyUsageOptionsResponseOutput {
-	return i.ToKeyUsageOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i KeyUsageOptionsResponseArgs) ToKeyUsageOptionsResponseOutputWithContext(ctx context.Context) KeyUsageOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyUsageOptionsResponseOutput)
-}
-
-func (i KeyUsageOptionsResponseArgs) ToKeyUsageOptionsResponsePtrOutput() KeyUsageOptionsResponsePtrOutput {
-	return i.ToKeyUsageOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i KeyUsageOptionsResponseArgs) ToKeyUsageOptionsResponsePtrOutputWithContext(ctx context.Context) KeyUsageOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyUsageOptionsResponseOutput).ToKeyUsageOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// KeyUsageOptionsResponsePtrInput is an input type that accepts KeyUsageOptionsResponseArgs, KeyUsageOptionsResponsePtr and KeyUsageOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `KeyUsageOptionsResponsePtrInput` via:
-//
-//          KeyUsageOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type KeyUsageOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToKeyUsageOptionsResponsePtrOutput() KeyUsageOptionsResponsePtrOutput
-	ToKeyUsageOptionsResponsePtrOutputWithContext(context.Context) KeyUsageOptionsResponsePtrOutput
-}
-
-type keyUsageOptionsResponsePtrType KeyUsageOptionsResponseArgs
-
-func KeyUsageOptionsResponsePtr(v *KeyUsageOptionsResponseArgs) KeyUsageOptionsResponsePtrInput {
-	return (*keyUsageOptionsResponsePtrType)(v)
-}
-
-func (*keyUsageOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyUsageOptionsResponse)(nil)).Elem()
-}
-
-func (i *keyUsageOptionsResponsePtrType) ToKeyUsageOptionsResponsePtrOutput() KeyUsageOptionsResponsePtrOutput {
-	return i.ToKeyUsageOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *keyUsageOptionsResponsePtrType) ToKeyUsageOptionsResponsePtrOutputWithContext(ctx context.Context) KeyUsageOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyUsageOptionsResponsePtrOutput)
-}
-
 // KeyUsage.KeyUsageOptions corresponds to the key usage values described in https://tools.ietf.org/html/rfc5280#section-4.2.1.3.
 type KeyUsageOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -5445,16 +3375,6 @@ func (o KeyUsageOptionsResponseOutput) ToKeyUsageOptionsResponseOutput() KeyUsag
 
 func (o KeyUsageOptionsResponseOutput) ToKeyUsageOptionsResponseOutputWithContext(ctx context.Context) KeyUsageOptionsResponseOutput {
 	return o
-}
-
-func (o KeyUsageOptionsResponseOutput) ToKeyUsageOptionsResponsePtrOutput() KeyUsageOptionsResponsePtrOutput {
-	return o.ToKeyUsageOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o KeyUsageOptionsResponseOutput) ToKeyUsageOptionsResponsePtrOutputWithContext(ctx context.Context) KeyUsageOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyUsageOptionsResponse) *KeyUsageOptionsResponse {
-		return &v
-	}).(KeyUsageOptionsResponsePtrOutput)
 }
 
 // The key may be used to sign certificates.
@@ -5502,120 +3422,6 @@ func (o KeyUsageOptionsResponseOutput) KeyEncipherment() pulumi.BoolOutput {
 	return o.ApplyT(func(v KeyUsageOptionsResponse) bool { return v.KeyEncipherment }).(pulumi.BoolOutput)
 }
 
-type KeyUsageOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (KeyUsageOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyUsageOptionsResponse)(nil)).Elem()
-}
-
-func (o KeyUsageOptionsResponsePtrOutput) ToKeyUsageOptionsResponsePtrOutput() KeyUsageOptionsResponsePtrOutput {
-	return o
-}
-
-func (o KeyUsageOptionsResponsePtrOutput) ToKeyUsageOptionsResponsePtrOutputWithContext(ctx context.Context) KeyUsageOptionsResponsePtrOutput {
-	return o
-}
-
-func (o KeyUsageOptionsResponsePtrOutput) Elem() KeyUsageOptionsResponseOutput {
-	return o.ApplyT(func(v *KeyUsageOptionsResponse) KeyUsageOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret KeyUsageOptionsResponse
-		return ret
-	}).(KeyUsageOptionsResponseOutput)
-}
-
-// The key may be used to sign certificates.
-func (o KeyUsageOptionsResponsePtrOutput) CertSign() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *KeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.CertSign
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
-func (o KeyUsageOptionsResponsePtrOutput) ContentCommitment() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *KeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ContentCommitment
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used sign certificate revocation lists.
-func (o KeyUsageOptionsResponsePtrOutput) CrlSign() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *KeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.CrlSign
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used to encipher data.
-func (o KeyUsageOptionsResponsePtrOutput) DataEncipherment() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *KeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.DataEncipherment
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used to decipher only.
-func (o KeyUsageOptionsResponsePtrOutput) DecipherOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *KeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.DecipherOnly
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used for digital signatures.
-func (o KeyUsageOptionsResponsePtrOutput) DigitalSignature() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *KeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.DigitalSignature
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used to encipher only.
-func (o KeyUsageOptionsResponsePtrOutput) EncipherOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *KeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EncipherOnly
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used in a key agreement protocol.
-func (o KeyUsageOptionsResponsePtrOutput) KeyAgreement() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *KeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyAgreement
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used to encipher other keys.
-func (o KeyUsageOptionsResponsePtrOutput) KeyEncipherment() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *KeyUsageOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyEncipherment
-	}).(pulumi.BoolPtrOutput)
-}
-
 // A KeyUsage describes key usage values that may appear in an X.509 certificate.
 type KeyUsageResponse struct {
 	// Describes high-level ways in which a key may be used.
@@ -5624,80 +3430,6 @@ type KeyUsageResponse struct {
 	ExtendedKeyUsage ExtendedKeyUsageOptionsResponse `pulumi:"extendedKeyUsage"`
 	// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
 	UnknownExtendedKeyUsages []ObjectIdResponse `pulumi:"unknownExtendedKeyUsages"`
-}
-
-// KeyUsageResponseInput is an input type that accepts KeyUsageResponseArgs and KeyUsageResponseOutput values.
-// You can construct a concrete instance of `KeyUsageResponseInput` via:
-//
-//          KeyUsageResponseArgs{...}
-type KeyUsageResponseInput interface {
-	pulumi.Input
-
-	ToKeyUsageResponseOutput() KeyUsageResponseOutput
-	ToKeyUsageResponseOutputWithContext(context.Context) KeyUsageResponseOutput
-}
-
-// A KeyUsage describes key usage values that may appear in an X.509 certificate.
-type KeyUsageResponseArgs struct {
-	// Describes high-level ways in which a key may be used.
-	BaseKeyUsage KeyUsageOptionsResponseInput `pulumi:"baseKeyUsage"`
-	// Detailed scenarios in which a key may be used.
-	ExtendedKeyUsage ExtendedKeyUsageOptionsResponseInput `pulumi:"extendedKeyUsage"`
-	// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
-	UnknownExtendedKeyUsages ObjectIdResponseArrayInput `pulumi:"unknownExtendedKeyUsages"`
-}
-
-func (KeyUsageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyUsageResponse)(nil)).Elem()
-}
-
-func (i KeyUsageResponseArgs) ToKeyUsageResponseOutput() KeyUsageResponseOutput {
-	return i.ToKeyUsageResponseOutputWithContext(context.Background())
-}
-
-func (i KeyUsageResponseArgs) ToKeyUsageResponseOutputWithContext(ctx context.Context) KeyUsageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyUsageResponseOutput)
-}
-
-func (i KeyUsageResponseArgs) ToKeyUsageResponsePtrOutput() KeyUsageResponsePtrOutput {
-	return i.ToKeyUsageResponsePtrOutputWithContext(context.Background())
-}
-
-func (i KeyUsageResponseArgs) ToKeyUsageResponsePtrOutputWithContext(ctx context.Context) KeyUsageResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyUsageResponseOutput).ToKeyUsageResponsePtrOutputWithContext(ctx)
-}
-
-// KeyUsageResponsePtrInput is an input type that accepts KeyUsageResponseArgs, KeyUsageResponsePtr and KeyUsageResponsePtrOutput values.
-// You can construct a concrete instance of `KeyUsageResponsePtrInput` via:
-//
-//          KeyUsageResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type KeyUsageResponsePtrInput interface {
-	pulumi.Input
-
-	ToKeyUsageResponsePtrOutput() KeyUsageResponsePtrOutput
-	ToKeyUsageResponsePtrOutputWithContext(context.Context) KeyUsageResponsePtrOutput
-}
-
-type keyUsageResponsePtrType KeyUsageResponseArgs
-
-func KeyUsageResponsePtr(v *KeyUsageResponseArgs) KeyUsageResponsePtrInput {
-	return (*keyUsageResponsePtrType)(v)
-}
-
-func (*keyUsageResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyUsageResponse)(nil)).Elem()
-}
-
-func (i *keyUsageResponsePtrType) ToKeyUsageResponsePtrOutput() KeyUsageResponsePtrOutput {
-	return i.ToKeyUsageResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *keyUsageResponsePtrType) ToKeyUsageResponsePtrOutputWithContext(ctx context.Context) KeyUsageResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyUsageResponsePtrOutput)
 }
 
 // A KeyUsage describes key usage values that may appear in an X.509 certificate.
@@ -5715,16 +3447,6 @@ func (o KeyUsageResponseOutput) ToKeyUsageResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o KeyUsageResponseOutput) ToKeyUsageResponsePtrOutput() KeyUsageResponsePtrOutput {
-	return o.ToKeyUsageResponsePtrOutputWithContext(context.Background())
-}
-
-func (o KeyUsageResponseOutput) ToKeyUsageResponsePtrOutputWithContext(ctx context.Context) KeyUsageResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyUsageResponse) *KeyUsageResponse {
-		return &v
-	}).(KeyUsageResponsePtrOutput)
-}
-
 // Describes high-level ways in which a key may be used.
 func (o KeyUsageResponseOutput) BaseKeyUsage() KeyUsageOptionsResponseOutput {
 	return o.ApplyT(func(v KeyUsageResponse) KeyUsageOptionsResponse { return v.BaseKeyUsage }).(KeyUsageOptionsResponseOutput)
@@ -5738,60 +3460,6 @@ func (o KeyUsageResponseOutput) ExtendedKeyUsage() ExtendedKeyUsageOptionsRespon
 // Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
 func (o KeyUsageResponseOutput) UnknownExtendedKeyUsages() ObjectIdResponseArrayOutput {
 	return o.ApplyT(func(v KeyUsageResponse) []ObjectIdResponse { return v.UnknownExtendedKeyUsages }).(ObjectIdResponseArrayOutput)
-}
-
-type KeyUsageResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (KeyUsageResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyUsageResponse)(nil)).Elem()
-}
-
-func (o KeyUsageResponsePtrOutput) ToKeyUsageResponsePtrOutput() KeyUsageResponsePtrOutput {
-	return o
-}
-
-func (o KeyUsageResponsePtrOutput) ToKeyUsageResponsePtrOutputWithContext(ctx context.Context) KeyUsageResponsePtrOutput {
-	return o
-}
-
-func (o KeyUsageResponsePtrOutput) Elem() KeyUsageResponseOutput {
-	return o.ApplyT(func(v *KeyUsageResponse) KeyUsageResponse {
-		if v != nil {
-			return *v
-		}
-		var ret KeyUsageResponse
-		return ret
-	}).(KeyUsageResponseOutput)
-}
-
-// Describes high-level ways in which a key may be used.
-func (o KeyUsageResponsePtrOutput) BaseKeyUsage() KeyUsageOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *KeyUsageResponse) *KeyUsageOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BaseKeyUsage
-	}).(KeyUsageOptionsResponsePtrOutput)
-}
-
-// Detailed scenarios in which a key may be used.
-func (o KeyUsageResponsePtrOutput) ExtendedKeyUsage() ExtendedKeyUsageOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *KeyUsageResponse) *ExtendedKeyUsageOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ExtendedKeyUsage
-	}).(ExtendedKeyUsageOptionsResponsePtrOutput)
-}
-
-// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
-func (o KeyUsageResponsePtrOutput) UnknownExtendedKeyUsages() ObjectIdResponseArrayOutput {
-	return o.ApplyT(func(v *KeyUsageResponse) []ObjectIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UnknownExtendedKeyUsages
-	}).(ObjectIdResponseArrayOutput)
 }
 
 // A Cloud KMS key configuration that a CertificateAuthority will use.
@@ -5833,47 +3501,6 @@ func (i KeyVersionSpecArgs) ToKeyVersionSpecOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVersionSpecOutput)
 }
 
-func (i KeyVersionSpecArgs) ToKeyVersionSpecPtrOutput() KeyVersionSpecPtrOutput {
-	return i.ToKeyVersionSpecPtrOutputWithContext(context.Background())
-}
-
-func (i KeyVersionSpecArgs) ToKeyVersionSpecPtrOutputWithContext(ctx context.Context) KeyVersionSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyVersionSpecOutput).ToKeyVersionSpecPtrOutputWithContext(ctx)
-}
-
-// KeyVersionSpecPtrInput is an input type that accepts KeyVersionSpecArgs, KeyVersionSpecPtr and KeyVersionSpecPtrOutput values.
-// You can construct a concrete instance of `KeyVersionSpecPtrInput` via:
-//
-//          KeyVersionSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type KeyVersionSpecPtrInput interface {
-	pulumi.Input
-
-	ToKeyVersionSpecPtrOutput() KeyVersionSpecPtrOutput
-	ToKeyVersionSpecPtrOutputWithContext(context.Context) KeyVersionSpecPtrOutput
-}
-
-type keyVersionSpecPtrType KeyVersionSpecArgs
-
-func KeyVersionSpecPtr(v *KeyVersionSpecArgs) KeyVersionSpecPtrInput {
-	return (*keyVersionSpecPtrType)(v)
-}
-
-func (*keyVersionSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyVersionSpec)(nil)).Elem()
-}
-
-func (i *keyVersionSpecPtrType) ToKeyVersionSpecPtrOutput() KeyVersionSpecPtrOutput {
-	return i.ToKeyVersionSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *keyVersionSpecPtrType) ToKeyVersionSpecPtrOutputWithContext(ctx context.Context) KeyVersionSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyVersionSpecPtrOutput)
-}
-
 // A Cloud KMS key configuration that a CertificateAuthority will use.
 type KeyVersionSpecOutput struct{ *pulumi.OutputState }
 
@@ -5889,16 +3516,6 @@ func (o KeyVersionSpecOutput) ToKeyVersionSpecOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o KeyVersionSpecOutput) ToKeyVersionSpecPtrOutput() KeyVersionSpecPtrOutput {
-	return o.ToKeyVersionSpecPtrOutputWithContext(context.Background())
-}
-
-func (o KeyVersionSpecOutput) ToKeyVersionSpecPtrOutputWithContext(ctx context.Context) KeyVersionSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVersionSpec) *KeyVersionSpec {
-		return &v
-	}).(KeyVersionSpecPtrOutput)
-}
-
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
 func (o KeyVersionSpecOutput) Algorithm() KeyVersionSpecAlgorithmPtrOutput {
 	return o.ApplyT(func(v KeyVersionSpec) *KeyVersionSpecAlgorithm { return v.Algorithm }).(KeyVersionSpecAlgorithmPtrOutput)
@@ -5909,128 +3526,12 @@ func (o KeyVersionSpecOutput) CloudKmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVersionSpec) *string { return v.CloudKmsKeyVersion }).(pulumi.StringPtrOutput)
 }
 
-type KeyVersionSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (KeyVersionSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyVersionSpec)(nil)).Elem()
-}
-
-func (o KeyVersionSpecPtrOutput) ToKeyVersionSpecPtrOutput() KeyVersionSpecPtrOutput {
-	return o
-}
-
-func (o KeyVersionSpecPtrOutput) ToKeyVersionSpecPtrOutputWithContext(ctx context.Context) KeyVersionSpecPtrOutput {
-	return o
-}
-
-func (o KeyVersionSpecPtrOutput) Elem() KeyVersionSpecOutput {
-	return o.ApplyT(func(v *KeyVersionSpec) KeyVersionSpec {
-		if v != nil {
-			return *v
-		}
-		var ret KeyVersionSpec
-		return ret
-	}).(KeyVersionSpecOutput)
-}
-
-// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-func (o KeyVersionSpecPtrOutput) Algorithm() KeyVersionSpecAlgorithmPtrOutput {
-	return o.ApplyT(func(v *KeyVersionSpec) *KeyVersionSpecAlgorithm {
-		if v == nil {
-			return nil
-		}
-		return v.Algorithm
-	}).(KeyVersionSpecAlgorithmPtrOutput)
-}
-
-// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
-func (o KeyVersionSpecPtrOutput) CloudKmsKeyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyVersionSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudKmsKeyVersion
-	}).(pulumi.StringPtrOutput)
-}
-
 // A Cloud KMS key configuration that a CertificateAuthority will use.
 type KeyVersionSpecResponse struct {
 	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
 	Algorithm string `pulumi:"algorithm"`
 	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
 	CloudKmsKeyVersion string `pulumi:"cloudKmsKeyVersion"`
-}
-
-// KeyVersionSpecResponseInput is an input type that accepts KeyVersionSpecResponseArgs and KeyVersionSpecResponseOutput values.
-// You can construct a concrete instance of `KeyVersionSpecResponseInput` via:
-//
-//          KeyVersionSpecResponseArgs{...}
-type KeyVersionSpecResponseInput interface {
-	pulumi.Input
-
-	ToKeyVersionSpecResponseOutput() KeyVersionSpecResponseOutput
-	ToKeyVersionSpecResponseOutputWithContext(context.Context) KeyVersionSpecResponseOutput
-}
-
-// A Cloud KMS key configuration that a CertificateAuthority will use.
-type KeyVersionSpecResponseArgs struct {
-	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-	Algorithm pulumi.StringInput `pulumi:"algorithm"`
-	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
-	CloudKmsKeyVersion pulumi.StringInput `pulumi:"cloudKmsKeyVersion"`
-}
-
-func (KeyVersionSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyVersionSpecResponse)(nil)).Elem()
-}
-
-func (i KeyVersionSpecResponseArgs) ToKeyVersionSpecResponseOutput() KeyVersionSpecResponseOutput {
-	return i.ToKeyVersionSpecResponseOutputWithContext(context.Background())
-}
-
-func (i KeyVersionSpecResponseArgs) ToKeyVersionSpecResponseOutputWithContext(ctx context.Context) KeyVersionSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyVersionSpecResponseOutput)
-}
-
-func (i KeyVersionSpecResponseArgs) ToKeyVersionSpecResponsePtrOutput() KeyVersionSpecResponsePtrOutput {
-	return i.ToKeyVersionSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i KeyVersionSpecResponseArgs) ToKeyVersionSpecResponsePtrOutputWithContext(ctx context.Context) KeyVersionSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyVersionSpecResponseOutput).ToKeyVersionSpecResponsePtrOutputWithContext(ctx)
-}
-
-// KeyVersionSpecResponsePtrInput is an input type that accepts KeyVersionSpecResponseArgs, KeyVersionSpecResponsePtr and KeyVersionSpecResponsePtrOutput values.
-// You can construct a concrete instance of `KeyVersionSpecResponsePtrInput` via:
-//
-//          KeyVersionSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type KeyVersionSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToKeyVersionSpecResponsePtrOutput() KeyVersionSpecResponsePtrOutput
-	ToKeyVersionSpecResponsePtrOutputWithContext(context.Context) KeyVersionSpecResponsePtrOutput
-}
-
-type keyVersionSpecResponsePtrType KeyVersionSpecResponseArgs
-
-func KeyVersionSpecResponsePtr(v *KeyVersionSpecResponseArgs) KeyVersionSpecResponsePtrInput {
-	return (*keyVersionSpecResponsePtrType)(v)
-}
-
-func (*keyVersionSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyVersionSpecResponse)(nil)).Elem()
-}
-
-func (i *keyVersionSpecResponsePtrType) ToKeyVersionSpecResponsePtrOutput() KeyVersionSpecResponsePtrOutput {
-	return i.ToKeyVersionSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *keyVersionSpecResponsePtrType) ToKeyVersionSpecResponsePtrOutputWithContext(ctx context.Context) KeyVersionSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyVersionSpecResponsePtrOutput)
 }
 
 // A Cloud KMS key configuration that a CertificateAuthority will use.
@@ -6048,16 +3549,6 @@ func (o KeyVersionSpecResponseOutput) ToKeyVersionSpecResponseOutputWithContext(
 	return o
 }
 
-func (o KeyVersionSpecResponseOutput) ToKeyVersionSpecResponsePtrOutput() KeyVersionSpecResponsePtrOutput {
-	return o.ToKeyVersionSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o KeyVersionSpecResponseOutput) ToKeyVersionSpecResponsePtrOutputWithContext(ctx context.Context) KeyVersionSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVersionSpecResponse) *KeyVersionSpecResponse {
-		return &v
-	}).(KeyVersionSpecResponsePtrOutput)
-}
-
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
 func (o KeyVersionSpecResponseOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVersionSpecResponse) string { return v.Algorithm }).(pulumi.StringOutput)
@@ -6066,50 +3557,6 @@ func (o KeyVersionSpecResponseOutput) Algorithm() pulumi.StringOutput {
 // The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
 func (o KeyVersionSpecResponseOutput) CloudKmsKeyVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVersionSpecResponse) string { return v.CloudKmsKeyVersion }).(pulumi.StringOutput)
-}
-
-type KeyVersionSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (KeyVersionSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyVersionSpecResponse)(nil)).Elem()
-}
-
-func (o KeyVersionSpecResponsePtrOutput) ToKeyVersionSpecResponsePtrOutput() KeyVersionSpecResponsePtrOutput {
-	return o
-}
-
-func (o KeyVersionSpecResponsePtrOutput) ToKeyVersionSpecResponsePtrOutputWithContext(ctx context.Context) KeyVersionSpecResponsePtrOutput {
-	return o
-}
-
-func (o KeyVersionSpecResponsePtrOutput) Elem() KeyVersionSpecResponseOutput {
-	return o.ApplyT(func(v *KeyVersionSpecResponse) KeyVersionSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret KeyVersionSpecResponse
-		return ret
-	}).(KeyVersionSpecResponseOutput)
-}
-
-// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-func (o KeyVersionSpecResponsePtrOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyVersionSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Algorithm
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
-func (o KeyVersionSpecResponsePtrOutput) CloudKmsKeyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyVersionSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudKmsKeyVersion
-	}).(pulumi.StringPtrOutput)
 }
 
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
@@ -6216,60 +3663,6 @@ func (o ObjectIdArrayOutput) Index(i pulumi.IntInput) ObjectIdOutput {
 type ObjectIdResponse struct {
 	// The parts of an OID path. The most significant parts of the path come first.
 	ObjectIdPath []int `pulumi:"objectIdPath"`
-}
-
-// ObjectIdResponseInput is an input type that accepts ObjectIdResponseArgs and ObjectIdResponseOutput values.
-// You can construct a concrete instance of `ObjectIdResponseInput` via:
-//
-//          ObjectIdResponseArgs{...}
-type ObjectIdResponseInput interface {
-	pulumi.Input
-
-	ToObjectIdResponseOutput() ObjectIdResponseOutput
-	ToObjectIdResponseOutputWithContext(context.Context) ObjectIdResponseOutput
-}
-
-// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-type ObjectIdResponseArgs struct {
-	// The parts of an OID path. The most significant parts of the path come first.
-	ObjectIdPath pulumi.IntArrayInput `pulumi:"objectIdPath"`
-}
-
-func (ObjectIdResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectIdResponse)(nil)).Elem()
-}
-
-func (i ObjectIdResponseArgs) ToObjectIdResponseOutput() ObjectIdResponseOutput {
-	return i.ToObjectIdResponseOutputWithContext(context.Background())
-}
-
-func (i ObjectIdResponseArgs) ToObjectIdResponseOutputWithContext(ctx context.Context) ObjectIdResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectIdResponseOutput)
-}
-
-// ObjectIdResponseArrayInput is an input type that accepts ObjectIdResponseArray and ObjectIdResponseArrayOutput values.
-// You can construct a concrete instance of `ObjectIdResponseArrayInput` via:
-//
-//          ObjectIdResponseArray{ ObjectIdResponseArgs{...} }
-type ObjectIdResponseArrayInput interface {
-	pulumi.Input
-
-	ToObjectIdResponseArrayOutput() ObjectIdResponseArrayOutput
-	ToObjectIdResponseArrayOutputWithContext(context.Context) ObjectIdResponseArrayOutput
-}
-
-type ObjectIdResponseArray []ObjectIdResponseInput
-
-func (ObjectIdResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ObjectIdResponse)(nil)).Elem()
-}
-
-func (i ObjectIdResponseArray) ToObjectIdResponseArrayOutput() ObjectIdResponseArrayOutput {
-	return i.ToObjectIdResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ObjectIdResponseArray) ToObjectIdResponseArrayOutputWithContext(ctx context.Context) ObjectIdResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectIdResponseArrayOutput)
 }
 
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
@@ -6479,78 +3872,6 @@ type PublicKeyResponse struct {
 	Key string `pulumi:"key"`
 }
 
-// PublicKeyResponseInput is an input type that accepts PublicKeyResponseArgs and PublicKeyResponseOutput values.
-// You can construct a concrete instance of `PublicKeyResponseInput` via:
-//
-//          PublicKeyResponseArgs{...}
-type PublicKeyResponseInput interface {
-	pulumi.Input
-
-	ToPublicKeyResponseOutput() PublicKeyResponseOutput
-	ToPublicKeyResponseOutputWithContext(context.Context) PublicKeyResponseOutput
-}
-
-// A PublicKey describes a public key.
-type PublicKeyResponseArgs struct {
-	// The format of the public key.
-	Format pulumi.StringInput `pulumi:"format"`
-	// A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.
-	Key pulumi.StringInput `pulumi:"key"`
-}
-
-func (PublicKeyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicKeyResponse)(nil)).Elem()
-}
-
-func (i PublicKeyResponseArgs) ToPublicKeyResponseOutput() PublicKeyResponseOutput {
-	return i.ToPublicKeyResponseOutputWithContext(context.Background())
-}
-
-func (i PublicKeyResponseArgs) ToPublicKeyResponseOutputWithContext(ctx context.Context) PublicKeyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PublicKeyResponseOutput)
-}
-
-func (i PublicKeyResponseArgs) ToPublicKeyResponsePtrOutput() PublicKeyResponsePtrOutput {
-	return i.ToPublicKeyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PublicKeyResponseArgs) ToPublicKeyResponsePtrOutputWithContext(ctx context.Context) PublicKeyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PublicKeyResponseOutput).ToPublicKeyResponsePtrOutputWithContext(ctx)
-}
-
-// PublicKeyResponsePtrInput is an input type that accepts PublicKeyResponseArgs, PublicKeyResponsePtr and PublicKeyResponsePtrOutput values.
-// You can construct a concrete instance of `PublicKeyResponsePtrInput` via:
-//
-//          PublicKeyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PublicKeyResponsePtrInput interface {
-	pulumi.Input
-
-	ToPublicKeyResponsePtrOutput() PublicKeyResponsePtrOutput
-	ToPublicKeyResponsePtrOutputWithContext(context.Context) PublicKeyResponsePtrOutput
-}
-
-type publicKeyResponsePtrType PublicKeyResponseArgs
-
-func PublicKeyResponsePtr(v *PublicKeyResponseArgs) PublicKeyResponsePtrInput {
-	return (*publicKeyResponsePtrType)(v)
-}
-
-func (*publicKeyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PublicKeyResponse)(nil)).Elem()
-}
-
-func (i *publicKeyResponsePtrType) ToPublicKeyResponsePtrOutput() PublicKeyResponsePtrOutput {
-	return i.ToPublicKeyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *publicKeyResponsePtrType) ToPublicKeyResponsePtrOutputWithContext(ctx context.Context) PublicKeyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PublicKeyResponsePtrOutput)
-}
-
 // A PublicKey describes a public key.
 type PublicKeyResponseOutput struct{ *pulumi.OutputState }
 
@@ -6566,16 +3887,6 @@ func (o PublicKeyResponseOutput) ToPublicKeyResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o PublicKeyResponseOutput) ToPublicKeyResponsePtrOutput() PublicKeyResponsePtrOutput {
-	return o.ToPublicKeyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PublicKeyResponseOutput) ToPublicKeyResponsePtrOutputWithContext(ctx context.Context) PublicKeyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicKeyResponse) *PublicKeyResponse {
-		return &v
-	}).(PublicKeyResponsePtrOutput)
-}
-
 // The format of the public key.
 func (o PublicKeyResponseOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v PublicKeyResponse) string { return v.Format }).(pulumi.StringOutput)
@@ -6584,50 +3895,6 @@ func (o PublicKeyResponseOutput) Format() pulumi.StringOutput {
 // A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.
 func (o PublicKeyResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v PublicKeyResponse) string { return v.Key }).(pulumi.StringOutput)
-}
-
-type PublicKeyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PublicKeyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PublicKeyResponse)(nil)).Elem()
-}
-
-func (o PublicKeyResponsePtrOutput) ToPublicKeyResponsePtrOutput() PublicKeyResponsePtrOutput {
-	return o
-}
-
-func (o PublicKeyResponsePtrOutput) ToPublicKeyResponsePtrOutputWithContext(ctx context.Context) PublicKeyResponsePtrOutput {
-	return o
-}
-
-func (o PublicKeyResponsePtrOutput) Elem() PublicKeyResponseOutput {
-	return o.ApplyT(func(v *PublicKeyResponse) PublicKeyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PublicKeyResponse
-		return ret
-	}).(PublicKeyResponseOutput)
-}
-
-// The format of the public key.
-func (o PublicKeyResponsePtrOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PublicKeyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Format
-	}).(pulumi.StringPtrOutput)
-}
-
-// A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.
-func (o PublicKeyResponsePtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PublicKeyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Key
-	}).(pulumi.StringPtrOutput)
 }
 
 // Options relating to the publication of each CertificateAuthority's CA certificate and CRLs and their inclusion as extensions in issued Certificates. The options set here apply to certificates issued by any CertificateAuthority in the CaPool.
@@ -6797,78 +4064,6 @@ type PublishingOptionsResponse struct {
 	PublishCrl bool `pulumi:"publishCrl"`
 }
 
-// PublishingOptionsResponseInput is an input type that accepts PublishingOptionsResponseArgs and PublishingOptionsResponseOutput values.
-// You can construct a concrete instance of `PublishingOptionsResponseInput` via:
-//
-//          PublishingOptionsResponseArgs{...}
-type PublishingOptionsResponseInput interface {
-	pulumi.Input
-
-	ToPublishingOptionsResponseOutput() PublishingOptionsResponseOutput
-	ToPublishingOptionsResponseOutputWithContext(context.Context) PublishingOptionsResponseOutput
-}
-
-// Options relating to the publication of each CertificateAuthority's CA certificate and CRLs and their inclusion as extensions in issued Certificates. The options set here apply to certificates issued by any CertificateAuthority in the CaPool.
-type PublishingOptionsResponseArgs struct {
-	// Optional. When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access" X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding X.509 extension will not be written in issued certificates.
-	PublishCaCert pulumi.BoolInput `pulumi:"publishCaCert"`
-	// Optional. When true, publishes each CertificateAuthority's CRL and includes its URL in the "CRL Distribution Points" X.509 extension in all issued Certificates. If this is false, CRLs will not be published and the corresponding X.509 extension will not be written in issued certificates. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
-	PublishCrl pulumi.BoolInput `pulumi:"publishCrl"`
-}
-
-func (PublishingOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublishingOptionsResponse)(nil)).Elem()
-}
-
-func (i PublishingOptionsResponseArgs) ToPublishingOptionsResponseOutput() PublishingOptionsResponseOutput {
-	return i.ToPublishingOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i PublishingOptionsResponseArgs) ToPublishingOptionsResponseOutputWithContext(ctx context.Context) PublishingOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PublishingOptionsResponseOutput)
-}
-
-func (i PublishingOptionsResponseArgs) ToPublishingOptionsResponsePtrOutput() PublishingOptionsResponsePtrOutput {
-	return i.ToPublishingOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PublishingOptionsResponseArgs) ToPublishingOptionsResponsePtrOutputWithContext(ctx context.Context) PublishingOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PublishingOptionsResponseOutput).ToPublishingOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// PublishingOptionsResponsePtrInput is an input type that accepts PublishingOptionsResponseArgs, PublishingOptionsResponsePtr and PublishingOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `PublishingOptionsResponsePtrInput` via:
-//
-//          PublishingOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PublishingOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToPublishingOptionsResponsePtrOutput() PublishingOptionsResponsePtrOutput
-	ToPublishingOptionsResponsePtrOutputWithContext(context.Context) PublishingOptionsResponsePtrOutput
-}
-
-type publishingOptionsResponsePtrType PublishingOptionsResponseArgs
-
-func PublishingOptionsResponsePtr(v *PublishingOptionsResponseArgs) PublishingOptionsResponsePtrInput {
-	return (*publishingOptionsResponsePtrType)(v)
-}
-
-func (*publishingOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PublishingOptionsResponse)(nil)).Elem()
-}
-
-func (i *publishingOptionsResponsePtrType) ToPublishingOptionsResponsePtrOutput() PublishingOptionsResponsePtrOutput {
-	return i.ToPublishingOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *publishingOptionsResponsePtrType) ToPublishingOptionsResponsePtrOutputWithContext(ctx context.Context) PublishingOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PublishingOptionsResponsePtrOutput)
-}
-
 // Options relating to the publication of each CertificateAuthority's CA certificate and CRLs and their inclusion as extensions in issued Certificates. The options set here apply to certificates issued by any CertificateAuthority in the CaPool.
 type PublishingOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -6884,16 +4079,6 @@ func (o PublishingOptionsResponseOutput) ToPublishingOptionsResponseOutputWithCo
 	return o
 }
 
-func (o PublishingOptionsResponseOutput) ToPublishingOptionsResponsePtrOutput() PublishingOptionsResponsePtrOutput {
-	return o.ToPublishingOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PublishingOptionsResponseOutput) ToPublishingOptionsResponsePtrOutputWithContext(ctx context.Context) PublishingOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublishingOptionsResponse) *PublishingOptionsResponse {
-		return &v
-	}).(PublishingOptionsResponsePtrOutput)
-}
-
 // Optional. When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access" X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding X.509 extension will not be written in issued certificates.
 func (o PublishingOptionsResponseOutput) PublishCaCert() pulumi.BoolOutput {
 	return o.ApplyT(func(v PublishingOptionsResponse) bool { return v.PublishCaCert }).(pulumi.BoolOutput)
@@ -6904,128 +4089,12 @@ func (o PublishingOptionsResponseOutput) PublishCrl() pulumi.BoolOutput {
 	return o.ApplyT(func(v PublishingOptionsResponse) bool { return v.PublishCrl }).(pulumi.BoolOutput)
 }
 
-type PublishingOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PublishingOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PublishingOptionsResponse)(nil)).Elem()
-}
-
-func (o PublishingOptionsResponsePtrOutput) ToPublishingOptionsResponsePtrOutput() PublishingOptionsResponsePtrOutput {
-	return o
-}
-
-func (o PublishingOptionsResponsePtrOutput) ToPublishingOptionsResponsePtrOutputWithContext(ctx context.Context) PublishingOptionsResponsePtrOutput {
-	return o
-}
-
-func (o PublishingOptionsResponsePtrOutput) Elem() PublishingOptionsResponseOutput {
-	return o.ApplyT(func(v *PublishingOptionsResponse) PublishingOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PublishingOptionsResponse
-		return ret
-	}).(PublishingOptionsResponseOutput)
-}
-
-// Optional. When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access" X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding X.509 extension will not be written in issued certificates.
-func (o PublishingOptionsResponsePtrOutput) PublishCaCert() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PublishingOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.PublishCaCert
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Optional. When true, publishes each CertificateAuthority's CRL and includes its URL in the "CRL Distribution Points" X.509 extension in all issued Certificates. If this is false, CRLs will not be published and the corresponding X.509 extension will not be written in issued certificates. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
-func (o PublishingOptionsResponsePtrOutput) PublishCrl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PublishingOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.PublishCrl
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Describes fields that are relavent to the revocation of a Certificate.
 type RevocationDetailsResponse struct {
 	// Indicates why a Certificate was revoked.
 	RevocationState string `pulumi:"revocationState"`
 	// The time at which this Certificate was revoked.
 	RevocationTime string `pulumi:"revocationTime"`
-}
-
-// RevocationDetailsResponseInput is an input type that accepts RevocationDetailsResponseArgs and RevocationDetailsResponseOutput values.
-// You can construct a concrete instance of `RevocationDetailsResponseInput` via:
-//
-//          RevocationDetailsResponseArgs{...}
-type RevocationDetailsResponseInput interface {
-	pulumi.Input
-
-	ToRevocationDetailsResponseOutput() RevocationDetailsResponseOutput
-	ToRevocationDetailsResponseOutputWithContext(context.Context) RevocationDetailsResponseOutput
-}
-
-// Describes fields that are relavent to the revocation of a Certificate.
-type RevocationDetailsResponseArgs struct {
-	// Indicates why a Certificate was revoked.
-	RevocationState pulumi.StringInput `pulumi:"revocationState"`
-	// The time at which this Certificate was revoked.
-	RevocationTime pulumi.StringInput `pulumi:"revocationTime"`
-}
-
-func (RevocationDetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RevocationDetailsResponse)(nil)).Elem()
-}
-
-func (i RevocationDetailsResponseArgs) ToRevocationDetailsResponseOutput() RevocationDetailsResponseOutput {
-	return i.ToRevocationDetailsResponseOutputWithContext(context.Background())
-}
-
-func (i RevocationDetailsResponseArgs) ToRevocationDetailsResponseOutputWithContext(ctx context.Context) RevocationDetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RevocationDetailsResponseOutput)
-}
-
-func (i RevocationDetailsResponseArgs) ToRevocationDetailsResponsePtrOutput() RevocationDetailsResponsePtrOutput {
-	return i.ToRevocationDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RevocationDetailsResponseArgs) ToRevocationDetailsResponsePtrOutputWithContext(ctx context.Context) RevocationDetailsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RevocationDetailsResponseOutput).ToRevocationDetailsResponsePtrOutputWithContext(ctx)
-}
-
-// RevocationDetailsResponsePtrInput is an input type that accepts RevocationDetailsResponseArgs, RevocationDetailsResponsePtr and RevocationDetailsResponsePtrOutput values.
-// You can construct a concrete instance of `RevocationDetailsResponsePtrInput` via:
-//
-//          RevocationDetailsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RevocationDetailsResponsePtrInput interface {
-	pulumi.Input
-
-	ToRevocationDetailsResponsePtrOutput() RevocationDetailsResponsePtrOutput
-	ToRevocationDetailsResponsePtrOutputWithContext(context.Context) RevocationDetailsResponsePtrOutput
-}
-
-type revocationDetailsResponsePtrType RevocationDetailsResponseArgs
-
-func RevocationDetailsResponsePtr(v *RevocationDetailsResponseArgs) RevocationDetailsResponsePtrInput {
-	return (*revocationDetailsResponsePtrType)(v)
-}
-
-func (*revocationDetailsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RevocationDetailsResponse)(nil)).Elem()
-}
-
-func (i *revocationDetailsResponsePtrType) ToRevocationDetailsResponsePtrOutput() RevocationDetailsResponsePtrOutput {
-	return i.ToRevocationDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *revocationDetailsResponsePtrType) ToRevocationDetailsResponsePtrOutputWithContext(ctx context.Context) RevocationDetailsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RevocationDetailsResponsePtrOutput)
 }
 
 // Describes fields that are relavent to the revocation of a Certificate.
@@ -7043,16 +4112,6 @@ func (o RevocationDetailsResponseOutput) ToRevocationDetailsResponseOutputWithCo
 	return o
 }
 
-func (o RevocationDetailsResponseOutput) ToRevocationDetailsResponsePtrOutput() RevocationDetailsResponsePtrOutput {
-	return o.ToRevocationDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RevocationDetailsResponseOutput) ToRevocationDetailsResponsePtrOutputWithContext(ctx context.Context) RevocationDetailsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RevocationDetailsResponse) *RevocationDetailsResponse {
-		return &v
-	}).(RevocationDetailsResponsePtrOutput)
-}
-
 // Indicates why a Certificate was revoked.
 func (o RevocationDetailsResponseOutput) RevocationState() pulumi.StringOutput {
 	return o.ApplyT(func(v RevocationDetailsResponse) string { return v.RevocationState }).(pulumi.StringOutput)
@@ -7061,50 +4120,6 @@ func (o RevocationDetailsResponseOutput) RevocationState() pulumi.StringOutput {
 // The time at which this Certificate was revoked.
 func (o RevocationDetailsResponseOutput) RevocationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v RevocationDetailsResponse) string { return v.RevocationTime }).(pulumi.StringOutput)
-}
-
-type RevocationDetailsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RevocationDetailsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RevocationDetailsResponse)(nil)).Elem()
-}
-
-func (o RevocationDetailsResponsePtrOutput) ToRevocationDetailsResponsePtrOutput() RevocationDetailsResponsePtrOutput {
-	return o
-}
-
-func (o RevocationDetailsResponsePtrOutput) ToRevocationDetailsResponsePtrOutputWithContext(ctx context.Context) RevocationDetailsResponsePtrOutput {
-	return o
-}
-
-func (o RevocationDetailsResponsePtrOutput) Elem() RevocationDetailsResponseOutput {
-	return o.ApplyT(func(v *RevocationDetailsResponse) RevocationDetailsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RevocationDetailsResponse
-		return ret
-	}).(RevocationDetailsResponseOutput)
-}
-
-// Indicates why a Certificate was revoked.
-func (o RevocationDetailsResponsePtrOutput) RevocationState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RevocationDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RevocationState
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time at which this Certificate was revoked.
-func (o RevocationDetailsResponsePtrOutput) RevocationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RevocationDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RevocationTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // Describes an RSA key that may be used in a Certificate issued from a CaPool.
@@ -7272,37 +4287,6 @@ type RsaKeyTypeResponse struct {
 	MaxModulusSize string `pulumi:"maxModulusSize"`
 	// Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
 	MinModulusSize string `pulumi:"minModulusSize"`
-}
-
-// RsaKeyTypeResponseInput is an input type that accepts RsaKeyTypeResponseArgs and RsaKeyTypeResponseOutput values.
-// You can construct a concrete instance of `RsaKeyTypeResponseInput` via:
-//
-//          RsaKeyTypeResponseArgs{...}
-type RsaKeyTypeResponseInput interface {
-	pulumi.Input
-
-	ToRsaKeyTypeResponseOutput() RsaKeyTypeResponseOutput
-	ToRsaKeyTypeResponseOutputWithContext(context.Context) RsaKeyTypeResponseOutput
-}
-
-// Describes an RSA key that may be used in a Certificate issued from a CaPool.
-type RsaKeyTypeResponseArgs struct {
-	// Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
-	MaxModulusSize pulumi.StringInput `pulumi:"maxModulusSize"`
-	// Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
-	MinModulusSize pulumi.StringInput `pulumi:"minModulusSize"`
-}
-
-func (RsaKeyTypeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RsaKeyTypeResponse)(nil)).Elem()
-}
-
-func (i RsaKeyTypeResponseArgs) ToRsaKeyTypeResponseOutput() RsaKeyTypeResponseOutput {
-	return i.ToRsaKeyTypeResponseOutputWithContext(context.Background())
-}
-
-func (i RsaKeyTypeResponseArgs) ToRsaKeyTypeResponseOutputWithContext(ctx context.Context) RsaKeyTypeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RsaKeyTypeResponseOutput)
 }
 
 // Describes an RSA key that may be used in a Certificate issued from a CaPool.
@@ -7833,84 +4817,6 @@ type SubjectAltNamesResponse struct {
 	Uris []string `pulumi:"uris"`
 }
 
-// SubjectAltNamesResponseInput is an input type that accepts SubjectAltNamesResponseArgs and SubjectAltNamesResponseOutput values.
-// You can construct a concrete instance of `SubjectAltNamesResponseInput` via:
-//
-//          SubjectAltNamesResponseArgs{...}
-type SubjectAltNamesResponseInput interface {
-	pulumi.Input
-
-	ToSubjectAltNamesResponseOutput() SubjectAltNamesResponseOutput
-	ToSubjectAltNamesResponseOutputWithContext(context.Context) SubjectAltNamesResponseOutput
-}
-
-// SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name).
-type SubjectAltNamesResponseArgs struct {
-	// Contains additional subject alternative name values.
-	CustomSans X509ExtensionResponseArrayInput `pulumi:"customSans"`
-	// Contains only valid, fully-qualified host names.
-	DnsNames pulumi.StringArrayInput `pulumi:"dnsNames"`
-	// Contains only valid RFC 2822 E-mail addresses.
-	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
-	// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
-	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
-	// Contains only valid RFC 3986 URIs.
-	Uris pulumi.StringArrayInput `pulumi:"uris"`
-}
-
-func (SubjectAltNamesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubjectAltNamesResponse)(nil)).Elem()
-}
-
-func (i SubjectAltNamesResponseArgs) ToSubjectAltNamesResponseOutput() SubjectAltNamesResponseOutput {
-	return i.ToSubjectAltNamesResponseOutputWithContext(context.Background())
-}
-
-func (i SubjectAltNamesResponseArgs) ToSubjectAltNamesResponseOutputWithContext(ctx context.Context) SubjectAltNamesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubjectAltNamesResponseOutput)
-}
-
-func (i SubjectAltNamesResponseArgs) ToSubjectAltNamesResponsePtrOutput() SubjectAltNamesResponsePtrOutput {
-	return i.ToSubjectAltNamesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SubjectAltNamesResponseArgs) ToSubjectAltNamesResponsePtrOutputWithContext(ctx context.Context) SubjectAltNamesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubjectAltNamesResponseOutput).ToSubjectAltNamesResponsePtrOutputWithContext(ctx)
-}
-
-// SubjectAltNamesResponsePtrInput is an input type that accepts SubjectAltNamesResponseArgs, SubjectAltNamesResponsePtr and SubjectAltNamesResponsePtrOutput values.
-// You can construct a concrete instance of `SubjectAltNamesResponsePtrInput` via:
-//
-//          SubjectAltNamesResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SubjectAltNamesResponsePtrInput interface {
-	pulumi.Input
-
-	ToSubjectAltNamesResponsePtrOutput() SubjectAltNamesResponsePtrOutput
-	ToSubjectAltNamesResponsePtrOutputWithContext(context.Context) SubjectAltNamesResponsePtrOutput
-}
-
-type subjectAltNamesResponsePtrType SubjectAltNamesResponseArgs
-
-func SubjectAltNamesResponsePtr(v *SubjectAltNamesResponseArgs) SubjectAltNamesResponsePtrInput {
-	return (*subjectAltNamesResponsePtrType)(v)
-}
-
-func (*subjectAltNamesResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubjectAltNamesResponse)(nil)).Elem()
-}
-
-func (i *subjectAltNamesResponsePtrType) ToSubjectAltNamesResponsePtrOutput() SubjectAltNamesResponsePtrOutput {
-	return i.ToSubjectAltNamesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *subjectAltNamesResponsePtrType) ToSubjectAltNamesResponsePtrOutputWithContext(ctx context.Context) SubjectAltNamesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubjectAltNamesResponsePtrOutput)
-}
-
 // SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name).
 type SubjectAltNamesResponseOutput struct{ *pulumi.OutputState }
 
@@ -7924,16 +4830,6 @@ func (o SubjectAltNamesResponseOutput) ToSubjectAltNamesResponseOutput() Subject
 
 func (o SubjectAltNamesResponseOutput) ToSubjectAltNamesResponseOutputWithContext(ctx context.Context) SubjectAltNamesResponseOutput {
 	return o
-}
-
-func (o SubjectAltNamesResponseOutput) ToSubjectAltNamesResponsePtrOutput() SubjectAltNamesResponsePtrOutput {
-	return o.ToSubjectAltNamesResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SubjectAltNamesResponseOutput) ToSubjectAltNamesResponsePtrOutputWithContext(ctx context.Context) SubjectAltNamesResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubjectAltNamesResponse) *SubjectAltNamesResponse {
-		return &v
-	}).(SubjectAltNamesResponsePtrOutput)
 }
 
 // Contains additional subject alternative name values.
@@ -7959,80 +4855,6 @@ func (o SubjectAltNamesResponseOutput) IpAddresses() pulumi.StringArrayOutput {
 // Contains only valid RFC 3986 URIs.
 func (o SubjectAltNamesResponseOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SubjectAltNamesResponse) []string { return v.Uris }).(pulumi.StringArrayOutput)
-}
-
-type SubjectAltNamesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SubjectAltNamesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubjectAltNamesResponse)(nil)).Elem()
-}
-
-func (o SubjectAltNamesResponsePtrOutput) ToSubjectAltNamesResponsePtrOutput() SubjectAltNamesResponsePtrOutput {
-	return o
-}
-
-func (o SubjectAltNamesResponsePtrOutput) ToSubjectAltNamesResponsePtrOutputWithContext(ctx context.Context) SubjectAltNamesResponsePtrOutput {
-	return o
-}
-
-func (o SubjectAltNamesResponsePtrOutput) Elem() SubjectAltNamesResponseOutput {
-	return o.ApplyT(func(v *SubjectAltNamesResponse) SubjectAltNamesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SubjectAltNamesResponse
-		return ret
-	}).(SubjectAltNamesResponseOutput)
-}
-
-// Contains additional subject alternative name values.
-func (o SubjectAltNamesResponsePtrOutput) CustomSans() X509ExtensionResponseArrayOutput {
-	return o.ApplyT(func(v *SubjectAltNamesResponse) []X509ExtensionResponse {
-		if v == nil {
-			return nil
-		}
-		return v.CustomSans
-	}).(X509ExtensionResponseArrayOutput)
-}
-
-// Contains only valid, fully-qualified host names.
-func (o SubjectAltNamesResponsePtrOutput) DnsNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SubjectAltNamesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DnsNames
-	}).(pulumi.StringArrayOutput)
-}
-
-// Contains only valid RFC 2822 E-mail addresses.
-func (o SubjectAltNamesResponsePtrOutput) EmailAddresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SubjectAltNamesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.EmailAddresses
-	}).(pulumi.StringArrayOutput)
-}
-
-// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
-func (o SubjectAltNamesResponsePtrOutput) IpAddresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SubjectAltNamesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IpAddresses
-	}).(pulumi.StringArrayOutput)
-}
-
-// Contains only valid RFC 3986 URIs.
-func (o SubjectAltNamesResponsePtrOutput) Uris() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SubjectAltNamesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Uris
-	}).(pulumi.StringArrayOutput)
 }
 
 // These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
@@ -8202,78 +5024,6 @@ type SubjectConfigResponse struct {
 	SubjectAltName SubjectAltNamesResponse `pulumi:"subjectAltName"`
 }
 
-// SubjectConfigResponseInput is an input type that accepts SubjectConfigResponseArgs and SubjectConfigResponseOutput values.
-// You can construct a concrete instance of `SubjectConfigResponseInput` via:
-//
-//          SubjectConfigResponseArgs{...}
-type SubjectConfigResponseInput interface {
-	pulumi.Input
-
-	ToSubjectConfigResponseOutput() SubjectConfigResponseOutput
-	ToSubjectConfigResponseOutputWithContext(context.Context) SubjectConfigResponseOutput
-}
-
-// These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
-type SubjectConfigResponseArgs struct {
-	// Contains distinguished name fields such as the common name, location and organization.
-	Subject SubjectResponseInput `pulumi:"subject"`
-	// Optional. The subject alternative name fields.
-	SubjectAltName SubjectAltNamesResponseInput `pulumi:"subjectAltName"`
-}
-
-func (SubjectConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubjectConfigResponse)(nil)).Elem()
-}
-
-func (i SubjectConfigResponseArgs) ToSubjectConfigResponseOutput() SubjectConfigResponseOutput {
-	return i.ToSubjectConfigResponseOutputWithContext(context.Background())
-}
-
-func (i SubjectConfigResponseArgs) ToSubjectConfigResponseOutputWithContext(ctx context.Context) SubjectConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubjectConfigResponseOutput)
-}
-
-func (i SubjectConfigResponseArgs) ToSubjectConfigResponsePtrOutput() SubjectConfigResponsePtrOutput {
-	return i.ToSubjectConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SubjectConfigResponseArgs) ToSubjectConfigResponsePtrOutputWithContext(ctx context.Context) SubjectConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubjectConfigResponseOutput).ToSubjectConfigResponsePtrOutputWithContext(ctx)
-}
-
-// SubjectConfigResponsePtrInput is an input type that accepts SubjectConfigResponseArgs, SubjectConfigResponsePtr and SubjectConfigResponsePtrOutput values.
-// You can construct a concrete instance of `SubjectConfigResponsePtrInput` via:
-//
-//          SubjectConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SubjectConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToSubjectConfigResponsePtrOutput() SubjectConfigResponsePtrOutput
-	ToSubjectConfigResponsePtrOutputWithContext(context.Context) SubjectConfigResponsePtrOutput
-}
-
-type subjectConfigResponsePtrType SubjectConfigResponseArgs
-
-func SubjectConfigResponsePtr(v *SubjectConfigResponseArgs) SubjectConfigResponsePtrInput {
-	return (*subjectConfigResponsePtrType)(v)
-}
-
-func (*subjectConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubjectConfigResponse)(nil)).Elem()
-}
-
-func (i *subjectConfigResponsePtrType) ToSubjectConfigResponsePtrOutput() SubjectConfigResponsePtrOutput {
-	return i.ToSubjectConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *subjectConfigResponsePtrType) ToSubjectConfigResponsePtrOutputWithContext(ctx context.Context) SubjectConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubjectConfigResponsePtrOutput)
-}
-
 // These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
 type SubjectConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -8289,16 +5039,6 @@ func (o SubjectConfigResponseOutput) ToSubjectConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o SubjectConfigResponseOutput) ToSubjectConfigResponsePtrOutput() SubjectConfigResponsePtrOutput {
-	return o.ToSubjectConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SubjectConfigResponseOutput) ToSubjectConfigResponsePtrOutputWithContext(ctx context.Context) SubjectConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubjectConfigResponse) *SubjectConfigResponse {
-		return &v
-	}).(SubjectConfigResponsePtrOutput)
-}
-
 // Contains distinguished name fields such as the common name, location and organization.
 func (o SubjectConfigResponseOutput) Subject() SubjectResponseOutput {
 	return o.ApplyT(func(v SubjectConfigResponse) SubjectResponse { return v.Subject }).(SubjectResponseOutput)
@@ -8307,50 +5047,6 @@ func (o SubjectConfigResponseOutput) Subject() SubjectResponseOutput {
 // Optional. The subject alternative name fields.
 func (o SubjectConfigResponseOutput) SubjectAltName() SubjectAltNamesResponseOutput {
 	return o.ApplyT(func(v SubjectConfigResponse) SubjectAltNamesResponse { return v.SubjectAltName }).(SubjectAltNamesResponseOutput)
-}
-
-type SubjectConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SubjectConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubjectConfigResponse)(nil)).Elem()
-}
-
-func (o SubjectConfigResponsePtrOutput) ToSubjectConfigResponsePtrOutput() SubjectConfigResponsePtrOutput {
-	return o
-}
-
-func (o SubjectConfigResponsePtrOutput) ToSubjectConfigResponsePtrOutputWithContext(ctx context.Context) SubjectConfigResponsePtrOutput {
-	return o
-}
-
-func (o SubjectConfigResponsePtrOutput) Elem() SubjectConfigResponseOutput {
-	return o.ApplyT(func(v *SubjectConfigResponse) SubjectConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SubjectConfigResponse
-		return ret
-	}).(SubjectConfigResponseOutput)
-}
-
-// Contains distinguished name fields such as the common name, location and organization.
-func (o SubjectConfigResponsePtrOutput) Subject() SubjectResponsePtrOutput {
-	return o.ApplyT(func(v *SubjectConfigResponse) *SubjectResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Subject
-	}).(SubjectResponsePtrOutput)
-}
-
-// Optional. The subject alternative name fields.
-func (o SubjectConfigResponsePtrOutput) SubjectAltName() SubjectAltNamesResponsePtrOutput {
-	return o.ApplyT(func(v *SubjectConfigResponse) *SubjectAltNamesResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SubjectAltName
-	}).(SubjectAltNamesResponsePtrOutput)
 }
 
 // These values describe fields in an issued X.509 certificate such as the distinguished name, subject alternative names, serial number, and lifetime.
@@ -8369,86 +5065,6 @@ type SubjectDescriptionResponse struct {
 	SubjectAltName SubjectAltNamesResponse `pulumi:"subjectAltName"`
 }
 
-// SubjectDescriptionResponseInput is an input type that accepts SubjectDescriptionResponseArgs and SubjectDescriptionResponseOutput values.
-// You can construct a concrete instance of `SubjectDescriptionResponseInput` via:
-//
-//          SubjectDescriptionResponseArgs{...}
-type SubjectDescriptionResponseInput interface {
-	pulumi.Input
-
-	ToSubjectDescriptionResponseOutput() SubjectDescriptionResponseOutput
-	ToSubjectDescriptionResponseOutputWithContext(context.Context) SubjectDescriptionResponseOutput
-}
-
-// These values describe fields in an issued X.509 certificate such as the distinguished name, subject alternative names, serial number, and lifetime.
-type SubjectDescriptionResponseArgs struct {
-	// The serial number encoded in lowercase hexadecimal.
-	HexSerialNumber pulumi.StringInput `pulumi:"hexSerialNumber"`
-	// For convenience, the actual lifetime of an issued certificate.
-	Lifetime pulumi.StringInput `pulumi:"lifetime"`
-	// The time after which the certificate is expired. Per RFC 5280, the validity period for a certificate is the period of time from not_before_time through not_after_time, inclusive. Corresponds to 'not_before_time' + 'lifetime' - 1 second.
-	NotAfterTime pulumi.StringInput `pulumi:"notAfterTime"`
-	// The time at which the certificate becomes valid.
-	NotBeforeTime pulumi.StringInput `pulumi:"notBeforeTime"`
-	// Contains distinguished name fields such as the common name, location and / organization.
-	Subject SubjectResponseInput `pulumi:"subject"`
-	// The subject alternative name fields.
-	SubjectAltName SubjectAltNamesResponseInput `pulumi:"subjectAltName"`
-}
-
-func (SubjectDescriptionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubjectDescriptionResponse)(nil)).Elem()
-}
-
-func (i SubjectDescriptionResponseArgs) ToSubjectDescriptionResponseOutput() SubjectDescriptionResponseOutput {
-	return i.ToSubjectDescriptionResponseOutputWithContext(context.Background())
-}
-
-func (i SubjectDescriptionResponseArgs) ToSubjectDescriptionResponseOutputWithContext(ctx context.Context) SubjectDescriptionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubjectDescriptionResponseOutput)
-}
-
-func (i SubjectDescriptionResponseArgs) ToSubjectDescriptionResponsePtrOutput() SubjectDescriptionResponsePtrOutput {
-	return i.ToSubjectDescriptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SubjectDescriptionResponseArgs) ToSubjectDescriptionResponsePtrOutputWithContext(ctx context.Context) SubjectDescriptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubjectDescriptionResponseOutput).ToSubjectDescriptionResponsePtrOutputWithContext(ctx)
-}
-
-// SubjectDescriptionResponsePtrInput is an input type that accepts SubjectDescriptionResponseArgs, SubjectDescriptionResponsePtr and SubjectDescriptionResponsePtrOutput values.
-// You can construct a concrete instance of `SubjectDescriptionResponsePtrInput` via:
-//
-//          SubjectDescriptionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SubjectDescriptionResponsePtrInput interface {
-	pulumi.Input
-
-	ToSubjectDescriptionResponsePtrOutput() SubjectDescriptionResponsePtrOutput
-	ToSubjectDescriptionResponsePtrOutputWithContext(context.Context) SubjectDescriptionResponsePtrOutput
-}
-
-type subjectDescriptionResponsePtrType SubjectDescriptionResponseArgs
-
-func SubjectDescriptionResponsePtr(v *SubjectDescriptionResponseArgs) SubjectDescriptionResponsePtrInput {
-	return (*subjectDescriptionResponsePtrType)(v)
-}
-
-func (*subjectDescriptionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubjectDescriptionResponse)(nil)).Elem()
-}
-
-func (i *subjectDescriptionResponsePtrType) ToSubjectDescriptionResponsePtrOutput() SubjectDescriptionResponsePtrOutput {
-	return i.ToSubjectDescriptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *subjectDescriptionResponsePtrType) ToSubjectDescriptionResponsePtrOutputWithContext(ctx context.Context) SubjectDescriptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubjectDescriptionResponsePtrOutput)
-}
-
 // These values describe fields in an issued X.509 certificate such as the distinguished name, subject alternative names, serial number, and lifetime.
 type SubjectDescriptionResponseOutput struct{ *pulumi.OutputState }
 
@@ -8462,16 +5078,6 @@ func (o SubjectDescriptionResponseOutput) ToSubjectDescriptionResponseOutput() S
 
 func (o SubjectDescriptionResponseOutput) ToSubjectDescriptionResponseOutputWithContext(ctx context.Context) SubjectDescriptionResponseOutput {
 	return o
-}
-
-func (o SubjectDescriptionResponseOutput) ToSubjectDescriptionResponsePtrOutput() SubjectDescriptionResponsePtrOutput {
-	return o.ToSubjectDescriptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SubjectDescriptionResponseOutput) ToSubjectDescriptionResponsePtrOutputWithContext(ctx context.Context) SubjectDescriptionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubjectDescriptionResponse) *SubjectDescriptionResponse {
-		return &v
-	}).(SubjectDescriptionResponsePtrOutput)
 }
 
 // The serial number encoded in lowercase hexadecimal.
@@ -8504,90 +5110,6 @@ func (o SubjectDescriptionResponseOutput) SubjectAltName() SubjectAltNamesRespon
 	return o.ApplyT(func(v SubjectDescriptionResponse) SubjectAltNamesResponse { return v.SubjectAltName }).(SubjectAltNamesResponseOutput)
 }
 
-type SubjectDescriptionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SubjectDescriptionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubjectDescriptionResponse)(nil)).Elem()
-}
-
-func (o SubjectDescriptionResponsePtrOutput) ToSubjectDescriptionResponsePtrOutput() SubjectDescriptionResponsePtrOutput {
-	return o
-}
-
-func (o SubjectDescriptionResponsePtrOutput) ToSubjectDescriptionResponsePtrOutputWithContext(ctx context.Context) SubjectDescriptionResponsePtrOutput {
-	return o
-}
-
-func (o SubjectDescriptionResponsePtrOutput) Elem() SubjectDescriptionResponseOutput {
-	return o.ApplyT(func(v *SubjectDescriptionResponse) SubjectDescriptionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SubjectDescriptionResponse
-		return ret
-	}).(SubjectDescriptionResponseOutput)
-}
-
-// The serial number encoded in lowercase hexadecimal.
-func (o SubjectDescriptionResponsePtrOutput) HexSerialNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubjectDescriptionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HexSerialNumber
-	}).(pulumi.StringPtrOutput)
-}
-
-// For convenience, the actual lifetime of an issued certificate.
-func (o SubjectDescriptionResponsePtrOutput) Lifetime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubjectDescriptionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Lifetime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time after which the certificate is expired. Per RFC 5280, the validity period for a certificate is the period of time from not_before_time through not_after_time, inclusive. Corresponds to 'not_before_time' + 'lifetime' - 1 second.
-func (o SubjectDescriptionResponsePtrOutput) NotAfterTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubjectDescriptionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NotAfterTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time at which the certificate becomes valid.
-func (o SubjectDescriptionResponsePtrOutput) NotBeforeTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubjectDescriptionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NotBeforeTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Contains distinguished name fields such as the common name, location and / organization.
-func (o SubjectDescriptionResponsePtrOutput) Subject() SubjectResponsePtrOutput {
-	return o.ApplyT(func(v *SubjectDescriptionResponse) *SubjectResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Subject
-	}).(SubjectResponsePtrOutput)
-}
-
-// The subject alternative name fields.
-func (o SubjectDescriptionResponsePtrOutput) SubjectAltName() SubjectAltNamesResponsePtrOutput {
-	return o.ApplyT(func(v *SubjectDescriptionResponse) *SubjectAltNamesResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SubjectAltName
-	}).(SubjectAltNamesResponsePtrOutput)
-}
-
 // Subject describes parts of a distinguished name that, in turn, describes the subject of the certificate.
 type SubjectResponse struct {
 	// The "common name" of the subject.
@@ -8608,90 +5130,6 @@ type SubjectResponse struct {
 	StreetAddress string `pulumi:"streetAddress"`
 }
 
-// SubjectResponseInput is an input type that accepts SubjectResponseArgs and SubjectResponseOutput values.
-// You can construct a concrete instance of `SubjectResponseInput` via:
-//
-//          SubjectResponseArgs{...}
-type SubjectResponseInput interface {
-	pulumi.Input
-
-	ToSubjectResponseOutput() SubjectResponseOutput
-	ToSubjectResponseOutputWithContext(context.Context) SubjectResponseOutput
-}
-
-// Subject describes parts of a distinguished name that, in turn, describes the subject of the certificate.
-type SubjectResponseArgs struct {
-	// The "common name" of the subject.
-	CommonName pulumi.StringInput `pulumi:"commonName"`
-	// The country code of the subject.
-	CountryCode pulumi.StringInput `pulumi:"countryCode"`
-	// The locality or city of the subject.
-	Locality pulumi.StringInput `pulumi:"locality"`
-	// The organization of the subject.
-	Organization pulumi.StringInput `pulumi:"organization"`
-	// The organizational_unit of the subject.
-	OrganizationalUnit pulumi.StringInput `pulumi:"organizationalUnit"`
-	// The postal code of the subject.
-	PostalCode pulumi.StringInput `pulumi:"postalCode"`
-	// The province, territory, or regional state of the subject.
-	Province pulumi.StringInput `pulumi:"province"`
-	// The street address of the subject.
-	StreetAddress pulumi.StringInput `pulumi:"streetAddress"`
-}
-
-func (SubjectResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubjectResponse)(nil)).Elem()
-}
-
-func (i SubjectResponseArgs) ToSubjectResponseOutput() SubjectResponseOutput {
-	return i.ToSubjectResponseOutputWithContext(context.Background())
-}
-
-func (i SubjectResponseArgs) ToSubjectResponseOutputWithContext(ctx context.Context) SubjectResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubjectResponseOutput)
-}
-
-func (i SubjectResponseArgs) ToSubjectResponsePtrOutput() SubjectResponsePtrOutput {
-	return i.ToSubjectResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SubjectResponseArgs) ToSubjectResponsePtrOutputWithContext(ctx context.Context) SubjectResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubjectResponseOutput).ToSubjectResponsePtrOutputWithContext(ctx)
-}
-
-// SubjectResponsePtrInput is an input type that accepts SubjectResponseArgs, SubjectResponsePtr and SubjectResponsePtrOutput values.
-// You can construct a concrete instance of `SubjectResponsePtrInput` via:
-//
-//          SubjectResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SubjectResponsePtrInput interface {
-	pulumi.Input
-
-	ToSubjectResponsePtrOutput() SubjectResponsePtrOutput
-	ToSubjectResponsePtrOutputWithContext(context.Context) SubjectResponsePtrOutput
-}
-
-type subjectResponsePtrType SubjectResponseArgs
-
-func SubjectResponsePtr(v *SubjectResponseArgs) SubjectResponsePtrInput {
-	return (*subjectResponsePtrType)(v)
-}
-
-func (*subjectResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubjectResponse)(nil)).Elem()
-}
-
-func (i *subjectResponsePtrType) ToSubjectResponsePtrOutput() SubjectResponsePtrOutput {
-	return i.ToSubjectResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *subjectResponsePtrType) ToSubjectResponsePtrOutputWithContext(ctx context.Context) SubjectResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubjectResponsePtrOutput)
-}
-
 // Subject describes parts of a distinguished name that, in turn, describes the subject of the certificate.
 type SubjectResponseOutput struct{ *pulumi.OutputState }
 
@@ -8705,16 +5143,6 @@ func (o SubjectResponseOutput) ToSubjectResponseOutput() SubjectResponseOutput {
 
 func (o SubjectResponseOutput) ToSubjectResponseOutputWithContext(ctx context.Context) SubjectResponseOutput {
 	return o
-}
-
-func (o SubjectResponseOutput) ToSubjectResponsePtrOutput() SubjectResponsePtrOutput {
-	return o.ToSubjectResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SubjectResponseOutput) ToSubjectResponsePtrOutputWithContext(ctx context.Context) SubjectResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubjectResponse) *SubjectResponse {
-		return &v
-	}).(SubjectResponsePtrOutput)
 }
 
 // The "common name" of the subject.
@@ -8755,110 +5183,6 @@ func (o SubjectResponseOutput) Province() pulumi.StringOutput {
 // The street address of the subject.
 func (o SubjectResponseOutput) StreetAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v SubjectResponse) string { return v.StreetAddress }).(pulumi.StringOutput)
-}
-
-type SubjectResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SubjectResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubjectResponse)(nil)).Elem()
-}
-
-func (o SubjectResponsePtrOutput) ToSubjectResponsePtrOutput() SubjectResponsePtrOutput {
-	return o
-}
-
-func (o SubjectResponsePtrOutput) ToSubjectResponsePtrOutputWithContext(ctx context.Context) SubjectResponsePtrOutput {
-	return o
-}
-
-func (o SubjectResponsePtrOutput) Elem() SubjectResponseOutput {
-	return o.ApplyT(func(v *SubjectResponse) SubjectResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SubjectResponse
-		return ret
-	}).(SubjectResponseOutput)
-}
-
-// The "common name" of the subject.
-func (o SubjectResponsePtrOutput) CommonName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubjectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CommonName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The country code of the subject.
-func (o SubjectResponsePtrOutput) CountryCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubjectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CountryCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// The locality or city of the subject.
-func (o SubjectResponsePtrOutput) Locality() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubjectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Locality
-	}).(pulumi.StringPtrOutput)
-}
-
-// The organization of the subject.
-func (o SubjectResponsePtrOutput) Organization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubjectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Organization
-	}).(pulumi.StringPtrOutput)
-}
-
-// The organizational_unit of the subject.
-func (o SubjectResponsePtrOutput) OrganizationalUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubjectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OrganizationalUnit
-	}).(pulumi.StringPtrOutput)
-}
-
-// The postal code of the subject.
-func (o SubjectResponsePtrOutput) PostalCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubjectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PostalCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// The province, territory, or regional state of the subject.
-func (o SubjectResponsePtrOutput) Province() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubjectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Province
-	}).(pulumi.StringPtrOutput)
-}
-
-// The street address of the subject.
-func (o SubjectResponsePtrOutput) StreetAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubjectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StreetAddress
-	}).(pulumi.StringPtrOutput)
 }
 
 // Describes a subordinate CA's issuers. This is either a resource name to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
@@ -9166,76 +5490,6 @@ type SubordinateConfigChainResponse struct {
 	PemCertificates []string `pulumi:"pemCertificates"`
 }
 
-// SubordinateConfigChainResponseInput is an input type that accepts SubordinateConfigChainResponseArgs and SubordinateConfigChainResponseOutput values.
-// You can construct a concrete instance of `SubordinateConfigChainResponseInput` via:
-//
-//          SubordinateConfigChainResponseArgs{...}
-type SubordinateConfigChainResponseInput interface {
-	pulumi.Input
-
-	ToSubordinateConfigChainResponseOutput() SubordinateConfigChainResponseOutput
-	ToSubordinateConfigChainResponseOutputWithContext(context.Context) SubordinateConfigChainResponseOutput
-}
-
-// This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
-type SubordinateConfigChainResponseArgs struct {
-	// Expected to be in leaf-to-root order according to RFC 5246.
-	PemCertificates pulumi.StringArrayInput `pulumi:"pemCertificates"`
-}
-
-func (SubordinateConfigChainResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubordinateConfigChainResponse)(nil)).Elem()
-}
-
-func (i SubordinateConfigChainResponseArgs) ToSubordinateConfigChainResponseOutput() SubordinateConfigChainResponseOutput {
-	return i.ToSubordinateConfigChainResponseOutputWithContext(context.Background())
-}
-
-func (i SubordinateConfigChainResponseArgs) ToSubordinateConfigChainResponseOutputWithContext(ctx context.Context) SubordinateConfigChainResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubordinateConfigChainResponseOutput)
-}
-
-func (i SubordinateConfigChainResponseArgs) ToSubordinateConfigChainResponsePtrOutput() SubordinateConfigChainResponsePtrOutput {
-	return i.ToSubordinateConfigChainResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SubordinateConfigChainResponseArgs) ToSubordinateConfigChainResponsePtrOutputWithContext(ctx context.Context) SubordinateConfigChainResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubordinateConfigChainResponseOutput).ToSubordinateConfigChainResponsePtrOutputWithContext(ctx)
-}
-
-// SubordinateConfigChainResponsePtrInput is an input type that accepts SubordinateConfigChainResponseArgs, SubordinateConfigChainResponsePtr and SubordinateConfigChainResponsePtrOutput values.
-// You can construct a concrete instance of `SubordinateConfigChainResponsePtrInput` via:
-//
-//          SubordinateConfigChainResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SubordinateConfigChainResponsePtrInput interface {
-	pulumi.Input
-
-	ToSubordinateConfigChainResponsePtrOutput() SubordinateConfigChainResponsePtrOutput
-	ToSubordinateConfigChainResponsePtrOutputWithContext(context.Context) SubordinateConfigChainResponsePtrOutput
-}
-
-type subordinateConfigChainResponsePtrType SubordinateConfigChainResponseArgs
-
-func SubordinateConfigChainResponsePtr(v *SubordinateConfigChainResponseArgs) SubordinateConfigChainResponsePtrInput {
-	return (*subordinateConfigChainResponsePtrType)(v)
-}
-
-func (*subordinateConfigChainResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubordinateConfigChainResponse)(nil)).Elem()
-}
-
-func (i *subordinateConfigChainResponsePtrType) ToSubordinateConfigChainResponsePtrOutput() SubordinateConfigChainResponsePtrOutput {
-	return i.ToSubordinateConfigChainResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *subordinateConfigChainResponsePtrType) ToSubordinateConfigChainResponsePtrOutputWithContext(ctx context.Context) SubordinateConfigChainResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubordinateConfigChainResponsePtrOutput)
-}
-
 // This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
 type SubordinateConfigChainResponseOutput struct{ *pulumi.OutputState }
 
@@ -9251,53 +5505,9 @@ func (o SubordinateConfigChainResponseOutput) ToSubordinateConfigChainResponseOu
 	return o
 }
 
-func (o SubordinateConfigChainResponseOutput) ToSubordinateConfigChainResponsePtrOutput() SubordinateConfigChainResponsePtrOutput {
-	return o.ToSubordinateConfigChainResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SubordinateConfigChainResponseOutput) ToSubordinateConfigChainResponsePtrOutputWithContext(ctx context.Context) SubordinateConfigChainResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubordinateConfigChainResponse) *SubordinateConfigChainResponse {
-		return &v
-	}).(SubordinateConfigChainResponsePtrOutput)
-}
-
 // Expected to be in leaf-to-root order according to RFC 5246.
 func (o SubordinateConfigChainResponseOutput) PemCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SubordinateConfigChainResponse) []string { return v.PemCertificates }).(pulumi.StringArrayOutput)
-}
-
-type SubordinateConfigChainResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SubordinateConfigChainResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubordinateConfigChainResponse)(nil)).Elem()
-}
-
-func (o SubordinateConfigChainResponsePtrOutput) ToSubordinateConfigChainResponsePtrOutput() SubordinateConfigChainResponsePtrOutput {
-	return o
-}
-
-func (o SubordinateConfigChainResponsePtrOutput) ToSubordinateConfigChainResponsePtrOutputWithContext(ctx context.Context) SubordinateConfigChainResponsePtrOutput {
-	return o
-}
-
-func (o SubordinateConfigChainResponsePtrOutput) Elem() SubordinateConfigChainResponseOutput {
-	return o.ApplyT(func(v *SubordinateConfigChainResponse) SubordinateConfigChainResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SubordinateConfigChainResponse
-		return ret
-	}).(SubordinateConfigChainResponseOutput)
-}
-
-// Expected to be in leaf-to-root order according to RFC 5246.
-func (o SubordinateConfigChainResponsePtrOutput) PemCertificates() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SubordinateConfigChainResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.PemCertificates
-	}).(pulumi.StringArrayOutput)
 }
 
 // Describes a subordinate CA's issuers. This is either a resource name to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
@@ -9306,78 +5516,6 @@ type SubordinateConfigResponse struct {
 	CertificateAuthority string `pulumi:"certificateAuthority"`
 	// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
 	PemIssuerChain SubordinateConfigChainResponse `pulumi:"pemIssuerChain"`
-}
-
-// SubordinateConfigResponseInput is an input type that accepts SubordinateConfigResponseArgs and SubordinateConfigResponseOutput values.
-// You can construct a concrete instance of `SubordinateConfigResponseInput` via:
-//
-//          SubordinateConfigResponseArgs{...}
-type SubordinateConfigResponseInput interface {
-	pulumi.Input
-
-	ToSubordinateConfigResponseOutput() SubordinateConfigResponseOutput
-	ToSubordinateConfigResponseOutputWithContext(context.Context) SubordinateConfigResponseOutput
-}
-
-// Describes a subordinate CA's issuers. This is either a resource name to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
-type SubordinateConfigResponseArgs struct {
-	// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
-	CertificateAuthority pulumi.StringInput `pulumi:"certificateAuthority"`
-	// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
-	PemIssuerChain SubordinateConfigChainResponseInput `pulumi:"pemIssuerChain"`
-}
-
-func (SubordinateConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubordinateConfigResponse)(nil)).Elem()
-}
-
-func (i SubordinateConfigResponseArgs) ToSubordinateConfigResponseOutput() SubordinateConfigResponseOutput {
-	return i.ToSubordinateConfigResponseOutputWithContext(context.Background())
-}
-
-func (i SubordinateConfigResponseArgs) ToSubordinateConfigResponseOutputWithContext(ctx context.Context) SubordinateConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubordinateConfigResponseOutput)
-}
-
-func (i SubordinateConfigResponseArgs) ToSubordinateConfigResponsePtrOutput() SubordinateConfigResponsePtrOutput {
-	return i.ToSubordinateConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SubordinateConfigResponseArgs) ToSubordinateConfigResponsePtrOutputWithContext(ctx context.Context) SubordinateConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubordinateConfigResponseOutput).ToSubordinateConfigResponsePtrOutputWithContext(ctx)
-}
-
-// SubordinateConfigResponsePtrInput is an input type that accepts SubordinateConfigResponseArgs, SubordinateConfigResponsePtr and SubordinateConfigResponsePtrOutput values.
-// You can construct a concrete instance of `SubordinateConfigResponsePtrInput` via:
-//
-//          SubordinateConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SubordinateConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToSubordinateConfigResponsePtrOutput() SubordinateConfigResponsePtrOutput
-	ToSubordinateConfigResponsePtrOutputWithContext(context.Context) SubordinateConfigResponsePtrOutput
-}
-
-type subordinateConfigResponsePtrType SubordinateConfigResponseArgs
-
-func SubordinateConfigResponsePtr(v *SubordinateConfigResponseArgs) SubordinateConfigResponsePtrInput {
-	return (*subordinateConfigResponsePtrType)(v)
-}
-
-func (*subordinateConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubordinateConfigResponse)(nil)).Elem()
-}
-
-func (i *subordinateConfigResponsePtrType) ToSubordinateConfigResponsePtrOutput() SubordinateConfigResponsePtrOutput {
-	return i.ToSubordinateConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *subordinateConfigResponsePtrType) ToSubordinateConfigResponsePtrOutputWithContext(ctx context.Context) SubordinateConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubordinateConfigResponsePtrOutput)
 }
 
 // Describes a subordinate CA's issuers. This is either a resource name to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
@@ -9395,16 +5533,6 @@ func (o SubordinateConfigResponseOutput) ToSubordinateConfigResponseOutputWithCo
 	return o
 }
 
-func (o SubordinateConfigResponseOutput) ToSubordinateConfigResponsePtrOutput() SubordinateConfigResponsePtrOutput {
-	return o.ToSubordinateConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SubordinateConfigResponseOutput) ToSubordinateConfigResponsePtrOutputWithContext(ctx context.Context) SubordinateConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubordinateConfigResponse) *SubordinateConfigResponse {
-		return &v
-	}).(SubordinateConfigResponsePtrOutput)
-}
-
 // This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 func (o SubordinateConfigResponseOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v SubordinateConfigResponse) string { return v.CertificateAuthority }).(pulumi.StringOutput)
@@ -9413,50 +5541,6 @@ func (o SubordinateConfigResponseOutput) CertificateAuthority() pulumi.StringOut
 // Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
 func (o SubordinateConfigResponseOutput) PemIssuerChain() SubordinateConfigChainResponseOutput {
 	return o.ApplyT(func(v SubordinateConfigResponse) SubordinateConfigChainResponse { return v.PemIssuerChain }).(SubordinateConfigChainResponseOutput)
-}
-
-type SubordinateConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SubordinateConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubordinateConfigResponse)(nil)).Elem()
-}
-
-func (o SubordinateConfigResponsePtrOutput) ToSubordinateConfigResponsePtrOutput() SubordinateConfigResponsePtrOutput {
-	return o
-}
-
-func (o SubordinateConfigResponsePtrOutput) ToSubordinateConfigResponsePtrOutputWithContext(ctx context.Context) SubordinateConfigResponsePtrOutput {
-	return o
-}
-
-func (o SubordinateConfigResponsePtrOutput) Elem() SubordinateConfigResponseOutput {
-	return o.ApplyT(func(v *SubordinateConfigResponse) SubordinateConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SubordinateConfigResponse
-		return ret
-	}).(SubordinateConfigResponseOutput)
-}
-
-// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
-func (o SubordinateConfigResponsePtrOutput) CertificateAuthority() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubordinateConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CertificateAuthority
-	}).(pulumi.StringPtrOutput)
-}
-
-// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
-func (o SubordinateConfigResponsePtrOutput) PemIssuerChain() SubordinateConfigChainResponsePtrOutput {
-	return o.ApplyT(func(v *SubordinateConfigResponse) *SubordinateConfigChainResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PemIssuerChain
-	}).(SubordinateConfigChainResponsePtrOutput)
 }
 
 // An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
@@ -9585,64 +5669,6 @@ type X509ExtensionResponse struct {
 	ObjectId ObjectIdResponse `pulumi:"objectId"`
 	// The value of this X.509 extension.
 	Value string `pulumi:"value"`
-}
-
-// X509ExtensionResponseInput is an input type that accepts X509ExtensionResponseArgs and X509ExtensionResponseOutput values.
-// You can construct a concrete instance of `X509ExtensionResponseInput` via:
-//
-//          X509ExtensionResponseArgs{...}
-type X509ExtensionResponseInput interface {
-	pulumi.Input
-
-	ToX509ExtensionResponseOutput() X509ExtensionResponseOutput
-	ToX509ExtensionResponseOutputWithContext(context.Context) X509ExtensionResponseOutput
-}
-
-// An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-type X509ExtensionResponseArgs struct {
-	// Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
-	Critical pulumi.BoolInput `pulumi:"critical"`
-	// The OID for this X.509 extension.
-	ObjectId ObjectIdResponseInput `pulumi:"objectId"`
-	// The value of this X.509 extension.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (X509ExtensionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*X509ExtensionResponse)(nil)).Elem()
-}
-
-func (i X509ExtensionResponseArgs) ToX509ExtensionResponseOutput() X509ExtensionResponseOutput {
-	return i.ToX509ExtensionResponseOutputWithContext(context.Background())
-}
-
-func (i X509ExtensionResponseArgs) ToX509ExtensionResponseOutputWithContext(ctx context.Context) X509ExtensionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(X509ExtensionResponseOutput)
-}
-
-// X509ExtensionResponseArrayInput is an input type that accepts X509ExtensionResponseArray and X509ExtensionResponseArrayOutput values.
-// You can construct a concrete instance of `X509ExtensionResponseArrayInput` via:
-//
-//          X509ExtensionResponseArray{ X509ExtensionResponseArgs{...} }
-type X509ExtensionResponseArrayInput interface {
-	pulumi.Input
-
-	ToX509ExtensionResponseArrayOutput() X509ExtensionResponseArrayOutput
-	ToX509ExtensionResponseArrayOutputWithContext(context.Context) X509ExtensionResponseArrayOutput
-}
-
-type X509ExtensionResponseArray []X509ExtensionResponseInput
-
-func (X509ExtensionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]X509ExtensionResponse)(nil)).Elem()
-}
-
-func (i X509ExtensionResponseArray) ToX509ExtensionResponseArrayOutput() X509ExtensionResponseArrayOutput {
-	return i.ToX509ExtensionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i X509ExtensionResponseArray) ToX509ExtensionResponseArrayOutputWithContext(ctx context.Context) X509ExtensionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(X509ExtensionResponseArrayOutput)
 }
 
 // An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
@@ -9925,84 +5951,6 @@ type X509ParametersResponse struct {
 	PolicyIds []ObjectIdResponse `pulumi:"policyIds"`
 }
 
-// X509ParametersResponseInput is an input type that accepts X509ParametersResponseArgs and X509ParametersResponseOutput values.
-// You can construct a concrete instance of `X509ParametersResponseInput` via:
-//
-//          X509ParametersResponseArgs{...}
-type X509ParametersResponseInput interface {
-	pulumi.Input
-
-	ToX509ParametersResponseOutput() X509ParametersResponseOutput
-	ToX509ParametersResponseOutputWithContext(context.Context) X509ParametersResponseOutput
-}
-
-// An X509Parameters is used to describe certain fields of an X.509 certificate, such as the key usage fields, fields specific to CA certificates, certificate policy extensions and custom extensions.
-type X509ParametersResponseArgs struct {
-	// Optional. Describes custom X.509 extensions.
-	AdditionalExtensions X509ExtensionResponseArrayInput `pulumi:"additionalExtensions"`
-	// Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
-	AiaOcspServers pulumi.StringArrayInput `pulumi:"aiaOcspServers"`
-	// Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
-	CaOptions CaOptionsResponseInput `pulumi:"caOptions"`
-	// Optional. Indicates the intended use for keys that correspond to a certificate.
-	KeyUsage KeyUsageResponseInput `pulumi:"keyUsage"`
-	// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-	PolicyIds ObjectIdResponseArrayInput `pulumi:"policyIds"`
-}
-
-func (X509ParametersResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*X509ParametersResponse)(nil)).Elem()
-}
-
-func (i X509ParametersResponseArgs) ToX509ParametersResponseOutput() X509ParametersResponseOutput {
-	return i.ToX509ParametersResponseOutputWithContext(context.Background())
-}
-
-func (i X509ParametersResponseArgs) ToX509ParametersResponseOutputWithContext(ctx context.Context) X509ParametersResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(X509ParametersResponseOutput)
-}
-
-func (i X509ParametersResponseArgs) ToX509ParametersResponsePtrOutput() X509ParametersResponsePtrOutput {
-	return i.ToX509ParametersResponsePtrOutputWithContext(context.Background())
-}
-
-func (i X509ParametersResponseArgs) ToX509ParametersResponsePtrOutputWithContext(ctx context.Context) X509ParametersResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(X509ParametersResponseOutput).ToX509ParametersResponsePtrOutputWithContext(ctx)
-}
-
-// X509ParametersResponsePtrInput is an input type that accepts X509ParametersResponseArgs, X509ParametersResponsePtr and X509ParametersResponsePtrOutput values.
-// You can construct a concrete instance of `X509ParametersResponsePtrInput` via:
-//
-//          X509ParametersResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type X509ParametersResponsePtrInput interface {
-	pulumi.Input
-
-	ToX509ParametersResponsePtrOutput() X509ParametersResponsePtrOutput
-	ToX509ParametersResponsePtrOutputWithContext(context.Context) X509ParametersResponsePtrOutput
-}
-
-type x509parametersResponsePtrType X509ParametersResponseArgs
-
-func X509ParametersResponsePtr(v *X509ParametersResponseArgs) X509ParametersResponsePtrInput {
-	return (*x509parametersResponsePtrType)(v)
-}
-
-func (*x509parametersResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**X509ParametersResponse)(nil)).Elem()
-}
-
-func (i *x509parametersResponsePtrType) ToX509ParametersResponsePtrOutput() X509ParametersResponsePtrOutput {
-	return i.ToX509ParametersResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *x509parametersResponsePtrType) ToX509ParametersResponsePtrOutputWithContext(ctx context.Context) X509ParametersResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(X509ParametersResponsePtrOutput)
-}
-
 // An X509Parameters is used to describe certain fields of an X.509 certificate, such as the key usage fields, fields specific to CA certificates, certificate policy extensions and custom extensions.
 type X509ParametersResponseOutput struct{ *pulumi.OutputState }
 
@@ -10016,16 +5964,6 @@ func (o X509ParametersResponseOutput) ToX509ParametersResponseOutput() X509Param
 
 func (o X509ParametersResponseOutput) ToX509ParametersResponseOutputWithContext(ctx context.Context) X509ParametersResponseOutput {
 	return o
-}
-
-func (o X509ParametersResponseOutput) ToX509ParametersResponsePtrOutput() X509ParametersResponsePtrOutput {
-	return o.ToX509ParametersResponsePtrOutputWithContext(context.Background())
-}
-
-func (o X509ParametersResponseOutput) ToX509ParametersResponsePtrOutputWithContext(ctx context.Context) X509ParametersResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v X509ParametersResponse) *X509ParametersResponse {
-		return &v
-	}).(X509ParametersResponsePtrOutput)
 }
 
 // Optional. Describes custom X.509 extensions.
@@ -10053,202 +5991,61 @@ func (o X509ParametersResponseOutput) PolicyIds() ObjectIdResponseArrayOutput {
 	return o.ApplyT(func(v X509ParametersResponse) []ObjectIdResponse { return v.PolicyIds }).(ObjectIdResponseArrayOutput)
 }
 
-type X509ParametersResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (X509ParametersResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**X509ParametersResponse)(nil)).Elem()
-}
-
-func (o X509ParametersResponsePtrOutput) ToX509ParametersResponsePtrOutput() X509ParametersResponsePtrOutput {
-	return o
-}
-
-func (o X509ParametersResponsePtrOutput) ToX509ParametersResponsePtrOutputWithContext(ctx context.Context) X509ParametersResponsePtrOutput {
-	return o
-}
-
-func (o X509ParametersResponsePtrOutput) Elem() X509ParametersResponseOutput {
-	return o.ApplyT(func(v *X509ParametersResponse) X509ParametersResponse {
-		if v != nil {
-			return *v
-		}
-		var ret X509ParametersResponse
-		return ret
-	}).(X509ParametersResponseOutput)
-}
-
-// Optional. Describes custom X.509 extensions.
-func (o X509ParametersResponsePtrOutput) AdditionalExtensions() X509ExtensionResponseArrayOutput {
-	return o.ApplyT(func(v *X509ParametersResponse) []X509ExtensionResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalExtensions
-	}).(X509ExtensionResponseArrayOutput)
-}
-
-// Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
-func (o X509ParametersResponsePtrOutput) AiaOcspServers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *X509ParametersResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AiaOcspServers
-	}).(pulumi.StringArrayOutput)
-}
-
-// Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
-func (o X509ParametersResponsePtrOutput) CaOptions() CaOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *X509ParametersResponse) *CaOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CaOptions
-	}).(CaOptionsResponsePtrOutput)
-}
-
-// Optional. Indicates the intended use for keys that correspond to a certificate.
-func (o X509ParametersResponsePtrOutput) KeyUsage() KeyUsageResponsePtrOutput {
-	return o.ApplyT(func(v *X509ParametersResponse) *KeyUsageResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyUsage
-	}).(KeyUsageResponsePtrOutput)
-}
-
-// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-func (o X509ParametersResponsePtrOutput) PolicyIds() ObjectIdResponseArrayOutput {
-	return o.ApplyT(func(v *X509ParametersResponse) []ObjectIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.PolicyIds
-	}).(ObjectIdResponseArrayOutput)
-}
-
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessUrlsResponseInput)(nil)).Elem(), AccessUrlsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessUrlsResponsePtrInput)(nil)).Elem(), AccessUrlsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedKeyTypeInput)(nil)).Elem(), AllowedKeyTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedKeyTypeArrayInput)(nil)).Elem(), AllowedKeyTypeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AllowedKeyTypeResponseInput)(nil)).Elem(), AllowedKeyTypeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AllowedKeyTypeResponseArrayInput)(nil)).Elem(), AllowedKeyTypeResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaOptionsInput)(nil)).Elem(), CaOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaOptionsPtrInput)(nil)).Elem(), CaOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CaOptionsResponseInput)(nil)).Elem(), CaOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CaOptionsResponsePtrInput)(nil)).Elem(), CaOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigInput)(nil)).Elem(), CertificateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigPtrInput)(nil)).Elem(), CertificateConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigResponseInput)(nil)).Elem(), CertificateConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigResponsePtrInput)(nil)).Elem(), CertificateConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateDescriptionResponseInput)(nil)).Elem(), CertificateDescriptionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateDescriptionResponsePtrInput)(nil)).Elem(), CertificateDescriptionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateDescriptionResponseArrayInput)(nil)).Elem(), CertificateDescriptionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateExtensionConstraintsInput)(nil)).Elem(), CertificateExtensionConstraintsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateExtensionConstraintsPtrInput)(nil)).Elem(), CertificateExtensionConstraintsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateExtensionConstraintsResponseInput)(nil)).Elem(), CertificateExtensionConstraintsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateExtensionConstraintsResponsePtrInput)(nil)).Elem(), CertificateExtensionConstraintsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateFingerprintResponseInput)(nil)).Elem(), CertificateFingerprintResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateFingerprintResponsePtrInput)(nil)).Elem(), CertificateFingerprintResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIdentityConstraintsInput)(nil)).Elem(), CertificateIdentityConstraintsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIdentityConstraintsPtrInput)(nil)).Elem(), CertificateIdentityConstraintsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIdentityConstraintsResponseInput)(nil)).Elem(), CertificateIdentityConstraintsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIdentityConstraintsResponsePtrInput)(nil)).Elem(), CertificateIdentityConstraintsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcKeyTypeInput)(nil)).Elem(), EcKeyTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcKeyTypePtrInput)(nil)).Elem(), EcKeyTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EcKeyTypeResponseInput)(nil)).Elem(), EcKeyTypeResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponsePtrInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtendedKeyUsageOptionsInput)(nil)).Elem(), ExtendedKeyUsageOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtendedKeyUsageOptionsPtrInput)(nil)).Elem(), ExtendedKeyUsageOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExtendedKeyUsageOptionsResponseInput)(nil)).Elem(), ExtendedKeyUsageOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExtendedKeyUsageOptionsResponsePtrInput)(nil)).Elem(), ExtendedKeyUsageOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IssuanceModesInput)(nil)).Elem(), IssuanceModesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IssuanceModesPtrInput)(nil)).Elem(), IssuanceModesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IssuanceModesResponseInput)(nil)).Elem(), IssuanceModesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IssuanceModesResponsePtrInput)(nil)).Elem(), IssuanceModesResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IssuancePolicyInput)(nil)).Elem(), IssuancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IssuancePolicyPtrInput)(nil)).Elem(), IssuancePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IssuancePolicyResponseInput)(nil)).Elem(), IssuancePolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IssuancePolicyResponsePtrInput)(nil)).Elem(), IssuancePolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyIdResponseInput)(nil)).Elem(), KeyIdResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyIdResponsePtrInput)(nil)).Elem(), KeyIdResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageInput)(nil)).Elem(), KeyUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsagePtrInput)(nil)).Elem(), KeyUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageOptionsInput)(nil)).Elem(), KeyUsageOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageOptionsPtrInput)(nil)).Elem(), KeyUsageOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageOptionsResponseInput)(nil)).Elem(), KeyUsageOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageOptionsResponsePtrInput)(nil)).Elem(), KeyUsageOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageResponseInput)(nil)).Elem(), KeyUsageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageResponsePtrInput)(nil)).Elem(), KeyUsageResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionSpecInput)(nil)).Elem(), KeyVersionSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionSpecPtrInput)(nil)).Elem(), KeyVersionSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionSpecResponseInput)(nil)).Elem(), KeyVersionSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionSpecResponsePtrInput)(nil)).Elem(), KeyVersionSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectIdInput)(nil)).Elem(), ObjectIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectIdArrayInput)(nil)).Elem(), ObjectIdArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObjectIdResponseInput)(nil)).Elem(), ObjectIdResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObjectIdResponseArrayInput)(nil)).Elem(), ObjectIdResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyInput)(nil)).Elem(), PublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyPtrInput)(nil)).Elem(), PublicKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyResponseInput)(nil)).Elem(), PublicKeyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyResponsePtrInput)(nil)).Elem(), PublicKeyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublishingOptionsInput)(nil)).Elem(), PublishingOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublishingOptionsPtrInput)(nil)).Elem(), PublishingOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PublishingOptionsResponseInput)(nil)).Elem(), PublishingOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PublishingOptionsResponsePtrInput)(nil)).Elem(), PublishingOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RevocationDetailsResponseInput)(nil)).Elem(), RevocationDetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RevocationDetailsResponsePtrInput)(nil)).Elem(), RevocationDetailsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RsaKeyTypeInput)(nil)).Elem(), RsaKeyTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RsaKeyTypePtrInput)(nil)).Elem(), RsaKeyTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RsaKeyTypeResponseInput)(nil)).Elem(), RsaKeyTypeResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectInput)(nil)).Elem(), SubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectPtrInput)(nil)).Elem(), SubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectAltNamesInput)(nil)).Elem(), SubjectAltNamesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectAltNamesPtrInput)(nil)).Elem(), SubjectAltNamesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubjectAltNamesResponseInput)(nil)).Elem(), SubjectAltNamesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubjectAltNamesResponsePtrInput)(nil)).Elem(), SubjectAltNamesResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectConfigInput)(nil)).Elem(), SubjectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectConfigPtrInput)(nil)).Elem(), SubjectConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubjectConfigResponseInput)(nil)).Elem(), SubjectConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubjectConfigResponsePtrInput)(nil)).Elem(), SubjectConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubjectDescriptionResponseInput)(nil)).Elem(), SubjectDescriptionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubjectDescriptionResponsePtrInput)(nil)).Elem(), SubjectDescriptionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubjectResponseInput)(nil)).Elem(), SubjectResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubjectResponsePtrInput)(nil)).Elem(), SubjectResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigInput)(nil)).Elem(), SubordinateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigPtrInput)(nil)).Elem(), SubordinateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigChainInput)(nil)).Elem(), SubordinateConfigChainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigChainPtrInput)(nil)).Elem(), SubordinateConfigChainArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigChainResponseInput)(nil)).Elem(), SubordinateConfigChainResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigChainResponsePtrInput)(nil)).Elem(), SubordinateConfigChainResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigResponseInput)(nil)).Elem(), SubordinateConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigResponsePtrInput)(nil)).Elem(), SubordinateConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*X509ExtensionInput)(nil)).Elem(), X509ExtensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*X509ExtensionArrayInput)(nil)).Elem(), X509ExtensionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*X509ExtensionResponseInput)(nil)).Elem(), X509ExtensionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*X509ExtensionResponseArrayInput)(nil)).Elem(), X509ExtensionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*X509ParametersInput)(nil)).Elem(), X509ParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*X509ParametersPtrInput)(nil)).Elem(), X509ParametersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*X509ParametersResponseInput)(nil)).Elem(), X509ParametersResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*X509ParametersResponsePtrInput)(nil)).Elem(), X509ParametersResponseArgs{})
 	pulumi.RegisterOutputType(AccessUrlsResponseOutput{})
-	pulumi.RegisterOutputType(AccessUrlsResponsePtrOutput{})
 	pulumi.RegisterOutputType(AllowedKeyTypeOutput{})
 	pulumi.RegisterOutputType(AllowedKeyTypeArrayOutput{})
 	pulumi.RegisterOutputType(AllowedKeyTypeResponseOutput{})
@@ -10268,57 +6065,42 @@ func init() {
 	pulumi.RegisterOutputType(CaOptionsOutput{})
 	pulumi.RegisterOutputType(CaOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CaOptionsResponseOutput{})
-	pulumi.RegisterOutputType(CaOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(CertificateConfigOutput{})
 	pulumi.RegisterOutputType(CertificateConfigPtrOutput{})
 	pulumi.RegisterOutputType(CertificateConfigResponseOutput{})
-	pulumi.RegisterOutputType(CertificateConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(CertificateDescriptionResponseOutput{})
-	pulumi.RegisterOutputType(CertificateDescriptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(CertificateDescriptionResponseArrayOutput{})
 	pulumi.RegisterOutputType(CertificateExtensionConstraintsOutput{})
 	pulumi.RegisterOutputType(CertificateExtensionConstraintsPtrOutput{})
 	pulumi.RegisterOutputType(CertificateExtensionConstraintsResponseOutput{})
-	pulumi.RegisterOutputType(CertificateExtensionConstraintsResponsePtrOutput{})
 	pulumi.RegisterOutputType(CertificateFingerprintResponseOutput{})
-	pulumi.RegisterOutputType(CertificateFingerprintResponsePtrOutput{})
 	pulumi.RegisterOutputType(CertificateIdentityConstraintsOutput{})
 	pulumi.RegisterOutputType(CertificateIdentityConstraintsPtrOutput{})
 	pulumi.RegisterOutputType(CertificateIdentityConstraintsResponseOutput{})
-	pulumi.RegisterOutputType(CertificateIdentityConstraintsResponsePtrOutput{})
 	pulumi.RegisterOutputType(EcKeyTypeOutput{})
 	pulumi.RegisterOutputType(EcKeyTypePtrOutput{})
 	pulumi.RegisterOutputType(EcKeyTypeResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
-	pulumi.RegisterOutputType(ExprResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExtendedKeyUsageOptionsOutput{})
 	pulumi.RegisterOutputType(ExtendedKeyUsageOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedKeyUsageOptionsResponseOutput{})
-	pulumi.RegisterOutputType(ExtendedKeyUsageOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(IssuanceModesOutput{})
 	pulumi.RegisterOutputType(IssuanceModesPtrOutput{})
 	pulumi.RegisterOutputType(IssuanceModesResponseOutput{})
-	pulumi.RegisterOutputType(IssuanceModesResponsePtrOutput{})
 	pulumi.RegisterOutputType(IssuancePolicyOutput{})
 	pulumi.RegisterOutputType(IssuancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(IssuancePolicyResponseOutput{})
-	pulumi.RegisterOutputType(IssuancePolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyIdResponseOutput{})
-	pulumi.RegisterOutputType(KeyIdResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyUsageOutput{})
 	pulumi.RegisterOutputType(KeyUsagePtrOutput{})
 	pulumi.RegisterOutputType(KeyUsageOptionsOutput{})
 	pulumi.RegisterOutputType(KeyUsageOptionsPtrOutput{})
 	pulumi.RegisterOutputType(KeyUsageOptionsResponseOutput{})
-	pulumi.RegisterOutputType(KeyUsageOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyUsageResponseOutput{})
-	pulumi.RegisterOutputType(KeyUsageResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyVersionSpecOutput{})
-	pulumi.RegisterOutputType(KeyVersionSpecPtrOutput{})
 	pulumi.RegisterOutputType(KeyVersionSpecResponseOutput{})
-	pulumi.RegisterOutputType(KeyVersionSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(ObjectIdOutput{})
 	pulumi.RegisterOutputType(ObjectIdArrayOutput{})
 	pulumi.RegisterOutputType(ObjectIdResponseOutput{})
@@ -10326,13 +6108,10 @@ func init() {
 	pulumi.RegisterOutputType(PublicKeyOutput{})
 	pulumi.RegisterOutputType(PublicKeyPtrOutput{})
 	pulumi.RegisterOutputType(PublicKeyResponseOutput{})
-	pulumi.RegisterOutputType(PublicKeyResponsePtrOutput{})
 	pulumi.RegisterOutputType(PublishingOptionsOutput{})
 	pulumi.RegisterOutputType(PublishingOptionsPtrOutput{})
 	pulumi.RegisterOutputType(PublishingOptionsResponseOutput{})
-	pulumi.RegisterOutputType(PublishingOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(RevocationDetailsResponseOutput{})
-	pulumi.RegisterOutputType(RevocationDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(RsaKeyTypeOutput{})
 	pulumi.RegisterOutputType(RsaKeyTypePtrOutput{})
 	pulumi.RegisterOutputType(RsaKeyTypeResponseOutput{})
@@ -10341,23 +6120,17 @@ func init() {
 	pulumi.RegisterOutputType(SubjectAltNamesOutput{})
 	pulumi.RegisterOutputType(SubjectAltNamesPtrOutput{})
 	pulumi.RegisterOutputType(SubjectAltNamesResponseOutput{})
-	pulumi.RegisterOutputType(SubjectAltNamesResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubjectConfigOutput{})
 	pulumi.RegisterOutputType(SubjectConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubjectConfigResponseOutput{})
-	pulumi.RegisterOutputType(SubjectConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubjectDescriptionResponseOutput{})
-	pulumi.RegisterOutputType(SubjectDescriptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubjectResponseOutput{})
-	pulumi.RegisterOutputType(SubjectResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubordinateConfigOutput{})
 	pulumi.RegisterOutputType(SubordinateConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubordinateConfigChainOutput{})
 	pulumi.RegisterOutputType(SubordinateConfigChainPtrOutput{})
 	pulumi.RegisterOutputType(SubordinateConfigChainResponseOutput{})
-	pulumi.RegisterOutputType(SubordinateConfigChainResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubordinateConfigResponseOutput{})
-	pulumi.RegisterOutputType(SubordinateConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(X509ExtensionOutput{})
 	pulumi.RegisterOutputType(X509ExtensionArrayOutput{})
 	pulumi.RegisterOutputType(X509ExtensionResponseOutput{})
@@ -10365,5 +6138,4 @@ func init() {
 	pulumi.RegisterOutputType(X509ParametersOutput{})
 	pulumi.RegisterOutputType(X509ParametersPtrOutput{})
 	pulumi.RegisterOutputType(X509ParametersResponseOutput{})
-	pulumi.RegisterOutputType(X509ParametersResponsePtrOutput{})
 }

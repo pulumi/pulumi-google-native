@@ -141,7 +141,7 @@ type ConnectivityTestInput interface {
 }
 
 func (*ConnectivityTest) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectivityTest)(nil))
+	return reflect.TypeOf((**ConnectivityTest)(nil)).Elem()
 }
 
 func (i *ConnectivityTest) ToConnectivityTestOutput() ConnectivityTestOutput {
@@ -155,7 +155,7 @@ func (i *ConnectivityTest) ToConnectivityTestOutputWithContext(ctx context.Conte
 type ConnectivityTestOutput struct{ *pulumi.OutputState }
 
 func (ConnectivityTestOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectivityTest)(nil))
+	return reflect.TypeOf((**ConnectivityTest)(nil)).Elem()
 }
 
 func (o ConnectivityTestOutput) ToConnectivityTestOutput() ConnectivityTestOutput {

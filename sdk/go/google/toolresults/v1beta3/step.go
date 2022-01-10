@@ -180,7 +180,7 @@ type StepInput interface {
 }
 
 func (*Step) ElementType() reflect.Type {
-	return reflect.TypeOf((*Step)(nil))
+	return reflect.TypeOf((**Step)(nil)).Elem()
 }
 
 func (i *Step) ToStepOutput() StepOutput {
@@ -194,7 +194,7 @@ func (i *Step) ToStepOutputWithContext(ctx context.Context) StepOutput {
 type StepOutput struct{ *pulumi.OutputState }
 
 func (StepOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Step)(nil))
+	return reflect.TypeOf((**Step)(nil)).Elem()
 }
 
 func (o StepOutput) ToStepOutput() StepOutput {

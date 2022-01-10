@@ -92,7 +92,7 @@ type OrganizationPolicyInput interface {
 }
 
 func (*OrganizationPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationPolicy)(nil))
+	return reflect.TypeOf((**OrganizationPolicy)(nil)).Elem()
 }
 
 func (i *OrganizationPolicy) ToOrganizationPolicyOutput() OrganizationPolicyOutput {
@@ -106,7 +106,7 @@ func (i *OrganizationPolicy) ToOrganizationPolicyOutputWithContext(ctx context.C
 type OrganizationPolicyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationPolicy)(nil))
+	return reflect.TypeOf((**OrganizationPolicy)(nil)).Elem()
 }
 
 func (o OrganizationPolicyOutput) ToOrganizationPolicyOutput() OrganizationPolicyOutput {

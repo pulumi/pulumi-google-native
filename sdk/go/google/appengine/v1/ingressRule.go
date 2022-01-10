@@ -104,7 +104,7 @@ type IngressRuleInput interface {
 }
 
 func (*IngressRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*IngressRule)(nil))
+	return reflect.TypeOf((**IngressRule)(nil)).Elem()
 }
 
 func (i *IngressRule) ToIngressRuleOutput() IngressRuleOutput {
@@ -118,7 +118,7 @@ func (i *IngressRule) ToIngressRuleOutputWithContext(ctx context.Context) Ingres
 type IngressRuleOutput struct{ *pulumi.OutputState }
 
 func (IngressRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IngressRule)(nil))
+	return reflect.TypeOf((**IngressRule)(nil)).Elem()
 }
 
 func (o IngressRuleOutput) ToIngressRuleOutput() IngressRuleOutput {

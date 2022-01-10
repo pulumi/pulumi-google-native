@@ -181,82 +181,6 @@ type MaintenancePolicyResponse struct {
 	WeeklyMaintenanceWindow []WeeklyMaintenanceWindowResponse `pulumi:"weeklyMaintenanceWindow"`
 }
 
-// MaintenancePolicyResponseInput is an input type that accepts MaintenancePolicyResponseArgs and MaintenancePolicyResponseOutput values.
-// You can construct a concrete instance of `MaintenancePolicyResponseInput` via:
-//
-//          MaintenancePolicyResponseArgs{...}
-type MaintenancePolicyResponseInput interface {
-	pulumi.Input
-
-	ToMaintenancePolicyResponseOutput() MaintenancePolicyResponseOutput
-	ToMaintenancePolicyResponseOutputWithContext(context.Context) MaintenancePolicyResponseOutput
-}
-
-// Maintenance policy for an instance.
-type MaintenancePolicyResponseArgs struct {
-	// The time when the policy was created.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The time when the policy was last updated.
-	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
-	// Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
-	WeeklyMaintenanceWindow WeeklyMaintenanceWindowResponseArrayInput `pulumi:"weeklyMaintenanceWindow"`
-}
-
-func (MaintenancePolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MaintenancePolicyResponse)(nil)).Elem()
-}
-
-func (i MaintenancePolicyResponseArgs) ToMaintenancePolicyResponseOutput() MaintenancePolicyResponseOutput {
-	return i.ToMaintenancePolicyResponseOutputWithContext(context.Background())
-}
-
-func (i MaintenancePolicyResponseArgs) ToMaintenancePolicyResponseOutputWithContext(ctx context.Context) MaintenancePolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenancePolicyResponseOutput)
-}
-
-func (i MaintenancePolicyResponseArgs) ToMaintenancePolicyResponsePtrOutput() MaintenancePolicyResponsePtrOutput {
-	return i.ToMaintenancePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MaintenancePolicyResponseArgs) ToMaintenancePolicyResponsePtrOutputWithContext(ctx context.Context) MaintenancePolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenancePolicyResponseOutput).ToMaintenancePolicyResponsePtrOutputWithContext(ctx)
-}
-
-// MaintenancePolicyResponsePtrInput is an input type that accepts MaintenancePolicyResponseArgs, MaintenancePolicyResponsePtr and MaintenancePolicyResponsePtrOutput values.
-// You can construct a concrete instance of `MaintenancePolicyResponsePtrInput` via:
-//
-//          MaintenancePolicyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MaintenancePolicyResponsePtrInput interface {
-	pulumi.Input
-
-	ToMaintenancePolicyResponsePtrOutput() MaintenancePolicyResponsePtrOutput
-	ToMaintenancePolicyResponsePtrOutputWithContext(context.Context) MaintenancePolicyResponsePtrOutput
-}
-
-type maintenancePolicyResponsePtrType MaintenancePolicyResponseArgs
-
-func MaintenancePolicyResponsePtr(v *MaintenancePolicyResponseArgs) MaintenancePolicyResponsePtrInput {
-	return (*maintenancePolicyResponsePtrType)(v)
-}
-
-func (*maintenancePolicyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MaintenancePolicyResponse)(nil)).Elem()
-}
-
-func (i *maintenancePolicyResponsePtrType) ToMaintenancePolicyResponsePtrOutput() MaintenancePolicyResponsePtrOutput {
-	return i.ToMaintenancePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *maintenancePolicyResponsePtrType) ToMaintenancePolicyResponsePtrOutputWithContext(ctx context.Context) MaintenancePolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenancePolicyResponsePtrOutput)
-}
-
 // Maintenance policy for an instance.
 type MaintenancePolicyResponseOutput struct{ *pulumi.OutputState }
 
@@ -270,16 +194,6 @@ func (o MaintenancePolicyResponseOutput) ToMaintenancePolicyResponseOutput() Mai
 
 func (o MaintenancePolicyResponseOutput) ToMaintenancePolicyResponseOutputWithContext(ctx context.Context) MaintenancePolicyResponseOutput {
 	return o
-}
-
-func (o MaintenancePolicyResponseOutput) ToMaintenancePolicyResponsePtrOutput() MaintenancePolicyResponsePtrOutput {
-	return o.ToMaintenancePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MaintenancePolicyResponseOutput) ToMaintenancePolicyResponsePtrOutputWithContext(ctx context.Context) MaintenancePolicyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenancePolicyResponse) *MaintenancePolicyResponse {
-		return &v
-	}).(MaintenancePolicyResponsePtrOutput)
 }
 
 // The time when the policy was created.
@@ -302,70 +216,6 @@ func (o MaintenancePolicyResponseOutput) WeeklyMaintenanceWindow() WeeklyMainten
 	return o.ApplyT(func(v MaintenancePolicyResponse) []WeeklyMaintenanceWindowResponse { return v.WeeklyMaintenanceWindow }).(WeeklyMaintenanceWindowResponseArrayOutput)
 }
 
-type MaintenancePolicyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MaintenancePolicyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MaintenancePolicyResponse)(nil)).Elem()
-}
-
-func (o MaintenancePolicyResponsePtrOutput) ToMaintenancePolicyResponsePtrOutput() MaintenancePolicyResponsePtrOutput {
-	return o
-}
-
-func (o MaintenancePolicyResponsePtrOutput) ToMaintenancePolicyResponsePtrOutputWithContext(ctx context.Context) MaintenancePolicyResponsePtrOutput {
-	return o
-}
-
-func (o MaintenancePolicyResponsePtrOutput) Elem() MaintenancePolicyResponseOutput {
-	return o.ApplyT(func(v *MaintenancePolicyResponse) MaintenancePolicyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MaintenancePolicyResponse
-		return ret
-	}).(MaintenancePolicyResponseOutput)
-}
-
-// The time when the policy was created.
-func (o MaintenancePolicyResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenancePolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
-func (o MaintenancePolicyResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenancePolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time when the policy was last updated.
-func (o MaintenancePolicyResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenancePolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UpdateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
-func (o MaintenancePolicyResponsePtrOutput) WeeklyMaintenanceWindow() WeeklyMaintenanceWindowResponseArrayOutput {
-	return o.ApplyT(func(v *MaintenancePolicyResponse) []WeeklyMaintenanceWindowResponse {
-		if v == nil {
-			return nil
-		}
-		return v.WeeklyMaintenanceWindow
-	}).(WeeklyMaintenanceWindowResponseArrayOutput)
-}
-
 // Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated.
 type MaintenanceScheduleResponse struct {
 	// If the scheduled maintenance can be rescheduled, default is true.
@@ -376,82 +226,6 @@ type MaintenanceScheduleResponse struct {
 	ScheduleDeadlineTime string `pulumi:"scheduleDeadlineTime"`
 	// The start time of any upcoming scheduled maintenance for this instance.
 	StartTime string `pulumi:"startTime"`
-}
-
-// MaintenanceScheduleResponseInput is an input type that accepts MaintenanceScheduleResponseArgs and MaintenanceScheduleResponseOutput values.
-// You can construct a concrete instance of `MaintenanceScheduleResponseInput` via:
-//
-//          MaintenanceScheduleResponseArgs{...}
-type MaintenanceScheduleResponseInput interface {
-	pulumi.Input
-
-	ToMaintenanceScheduleResponseOutput() MaintenanceScheduleResponseOutput
-	ToMaintenanceScheduleResponseOutputWithContext(context.Context) MaintenanceScheduleResponseOutput
-}
-
-// Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated.
-type MaintenanceScheduleResponseArgs struct {
-	// If the scheduled maintenance can be rescheduled, default is true.
-	CanReschedule pulumi.BoolInput `pulumi:"canReschedule"`
-	// The end time of any upcoming scheduled maintenance for this instance.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
-	ScheduleDeadlineTime pulumi.StringInput `pulumi:"scheduleDeadlineTime"`
-	// The start time of any upcoming scheduled maintenance for this instance.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-}
-
-func (MaintenanceScheduleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MaintenanceScheduleResponse)(nil)).Elem()
-}
-
-func (i MaintenanceScheduleResponseArgs) ToMaintenanceScheduleResponseOutput() MaintenanceScheduleResponseOutput {
-	return i.ToMaintenanceScheduleResponseOutputWithContext(context.Background())
-}
-
-func (i MaintenanceScheduleResponseArgs) ToMaintenanceScheduleResponseOutputWithContext(ctx context.Context) MaintenanceScheduleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceScheduleResponseOutput)
-}
-
-func (i MaintenanceScheduleResponseArgs) ToMaintenanceScheduleResponsePtrOutput() MaintenanceScheduleResponsePtrOutput {
-	return i.ToMaintenanceScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MaintenanceScheduleResponseArgs) ToMaintenanceScheduleResponsePtrOutputWithContext(ctx context.Context) MaintenanceScheduleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceScheduleResponseOutput).ToMaintenanceScheduleResponsePtrOutputWithContext(ctx)
-}
-
-// MaintenanceScheduleResponsePtrInput is an input type that accepts MaintenanceScheduleResponseArgs, MaintenanceScheduleResponsePtr and MaintenanceScheduleResponsePtrOutput values.
-// You can construct a concrete instance of `MaintenanceScheduleResponsePtrInput` via:
-//
-//          MaintenanceScheduleResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MaintenanceScheduleResponsePtrInput interface {
-	pulumi.Input
-
-	ToMaintenanceScheduleResponsePtrOutput() MaintenanceScheduleResponsePtrOutput
-	ToMaintenanceScheduleResponsePtrOutputWithContext(context.Context) MaintenanceScheduleResponsePtrOutput
-}
-
-type maintenanceScheduleResponsePtrType MaintenanceScheduleResponseArgs
-
-func MaintenanceScheduleResponsePtr(v *MaintenanceScheduleResponseArgs) MaintenanceScheduleResponsePtrInput {
-	return (*maintenanceScheduleResponsePtrType)(v)
-}
-
-func (*maintenanceScheduleResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MaintenanceScheduleResponse)(nil)).Elem()
-}
-
-func (i *maintenanceScheduleResponsePtrType) ToMaintenanceScheduleResponsePtrOutput() MaintenanceScheduleResponsePtrOutput {
-	return i.ToMaintenanceScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *maintenanceScheduleResponsePtrType) ToMaintenanceScheduleResponsePtrOutputWithContext(ctx context.Context) MaintenanceScheduleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceScheduleResponsePtrOutput)
 }
 
 // Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated.
@@ -467,16 +241,6 @@ func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponseOutput()
 
 func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponseOutputWithContext(ctx context.Context) MaintenanceScheduleResponseOutput {
 	return o
-}
-
-func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponsePtrOutput() MaintenanceScheduleResponsePtrOutput {
-	return o.ToMaintenanceScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponsePtrOutputWithContext(ctx context.Context) MaintenanceScheduleResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceScheduleResponse) *MaintenanceScheduleResponse {
-		return &v
-	}).(MaintenanceScheduleResponsePtrOutput)
 }
 
 // If the scheduled maintenance can be rescheduled, default is true.
@@ -499,128 +263,10 @@ func (o MaintenanceScheduleResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceScheduleResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-type MaintenanceScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MaintenanceScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MaintenanceScheduleResponse)(nil)).Elem()
-}
-
-func (o MaintenanceScheduleResponsePtrOutput) ToMaintenanceScheduleResponsePtrOutput() MaintenanceScheduleResponsePtrOutput {
-	return o
-}
-
-func (o MaintenanceScheduleResponsePtrOutput) ToMaintenanceScheduleResponsePtrOutputWithContext(ctx context.Context) MaintenanceScheduleResponsePtrOutput {
-	return o
-}
-
-func (o MaintenanceScheduleResponsePtrOutput) Elem() MaintenanceScheduleResponseOutput {
-	return o.ApplyT(func(v *MaintenanceScheduleResponse) MaintenanceScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MaintenanceScheduleResponse
-		return ret
-	}).(MaintenanceScheduleResponseOutput)
-}
-
-// If the scheduled maintenance can be rescheduled, default is true.
-func (o MaintenanceScheduleResponsePtrOutput) CanReschedule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MaintenanceScheduleResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.CanReschedule
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The end time of any upcoming scheduled maintenance for this instance.
-func (o MaintenanceScheduleResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
-func (o MaintenanceScheduleResponsePtrOutput) ScheduleDeadlineTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ScheduleDeadlineTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The start time of any upcoming scheduled maintenance for this instance.
-func (o MaintenanceScheduleResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
 // Node specific properties.
 type NodeInfoResponse struct {
 	// Location of the node.
 	Zone string `pulumi:"zone"`
-}
-
-// NodeInfoResponseInput is an input type that accepts NodeInfoResponseArgs and NodeInfoResponseOutput values.
-// You can construct a concrete instance of `NodeInfoResponseInput` via:
-//
-//          NodeInfoResponseArgs{...}
-type NodeInfoResponseInput interface {
-	pulumi.Input
-
-	ToNodeInfoResponseOutput() NodeInfoResponseOutput
-	ToNodeInfoResponseOutputWithContext(context.Context) NodeInfoResponseOutput
-}
-
-// Node specific properties.
-type NodeInfoResponseArgs struct {
-	// Location of the node.
-	Zone pulumi.StringInput `pulumi:"zone"`
-}
-
-func (NodeInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeInfoResponse)(nil)).Elem()
-}
-
-func (i NodeInfoResponseArgs) ToNodeInfoResponseOutput() NodeInfoResponseOutput {
-	return i.ToNodeInfoResponseOutputWithContext(context.Background())
-}
-
-func (i NodeInfoResponseArgs) ToNodeInfoResponseOutputWithContext(ctx context.Context) NodeInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeInfoResponseOutput)
-}
-
-// NodeInfoResponseArrayInput is an input type that accepts NodeInfoResponseArray and NodeInfoResponseArrayOutput values.
-// You can construct a concrete instance of `NodeInfoResponseArrayInput` via:
-//
-//          NodeInfoResponseArray{ NodeInfoResponseArgs{...} }
-type NodeInfoResponseArrayInput interface {
-	pulumi.Input
-
-	ToNodeInfoResponseArrayOutput() NodeInfoResponseArrayOutput
-	ToNodeInfoResponseArrayOutputWithContext(context.Context) NodeInfoResponseArrayOutput
-}
-
-type NodeInfoResponseArray []NodeInfoResponseInput
-
-func (NodeInfoResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NodeInfoResponse)(nil)).Elem()
-}
-
-func (i NodeInfoResponseArray) ToNodeInfoResponseArrayOutput() NodeInfoResponseArrayOutput {
-	return i.ToNodeInfoResponseArrayOutputWithContext(context.Background())
-}
-
-func (i NodeInfoResponseArray) ToNodeInfoResponseArrayOutputWithContext(ctx context.Context) NodeInfoResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeInfoResponseArrayOutput)
 }
 
 // Node specific properties.
@@ -853,82 +499,6 @@ type PersistenceConfigResponse struct {
 	RdbSnapshotStartTime string `pulumi:"rdbSnapshotStartTime"`
 }
 
-// PersistenceConfigResponseInput is an input type that accepts PersistenceConfigResponseArgs and PersistenceConfigResponseOutput values.
-// You can construct a concrete instance of `PersistenceConfigResponseInput` via:
-//
-//          PersistenceConfigResponseArgs{...}
-type PersistenceConfigResponseInput interface {
-	pulumi.Input
-
-	ToPersistenceConfigResponseOutput() PersistenceConfigResponseOutput
-	ToPersistenceConfigResponseOutputWithContext(context.Context) PersistenceConfigResponseOutput
-}
-
-// Configuration of the persistence functionality.
-type PersistenceConfigResponseArgs struct {
-	// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
-	PersistenceMode pulumi.StringInput `pulumi:"persistenceMode"`
-	// The next time that a snapshot attempt is scheduled to occur.
-	RdbNextSnapshotTime pulumi.StringInput `pulumi:"rdbNextSnapshotTime"`
-	// Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
-	RdbSnapshotPeriod pulumi.StringInput `pulumi:"rdbSnapshotPeriod"`
-	// Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
-	RdbSnapshotStartTime pulumi.StringInput `pulumi:"rdbSnapshotStartTime"`
-}
-
-func (PersistenceConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PersistenceConfigResponse)(nil)).Elem()
-}
-
-func (i PersistenceConfigResponseArgs) ToPersistenceConfigResponseOutput() PersistenceConfigResponseOutput {
-	return i.ToPersistenceConfigResponseOutputWithContext(context.Background())
-}
-
-func (i PersistenceConfigResponseArgs) ToPersistenceConfigResponseOutputWithContext(ctx context.Context) PersistenceConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PersistenceConfigResponseOutput)
-}
-
-func (i PersistenceConfigResponseArgs) ToPersistenceConfigResponsePtrOutput() PersistenceConfigResponsePtrOutput {
-	return i.ToPersistenceConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PersistenceConfigResponseArgs) ToPersistenceConfigResponsePtrOutputWithContext(ctx context.Context) PersistenceConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PersistenceConfigResponseOutput).ToPersistenceConfigResponsePtrOutputWithContext(ctx)
-}
-
-// PersistenceConfigResponsePtrInput is an input type that accepts PersistenceConfigResponseArgs, PersistenceConfigResponsePtr and PersistenceConfigResponsePtrOutput values.
-// You can construct a concrete instance of `PersistenceConfigResponsePtrInput` via:
-//
-//          PersistenceConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PersistenceConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToPersistenceConfigResponsePtrOutput() PersistenceConfigResponsePtrOutput
-	ToPersistenceConfigResponsePtrOutputWithContext(context.Context) PersistenceConfigResponsePtrOutput
-}
-
-type persistenceConfigResponsePtrType PersistenceConfigResponseArgs
-
-func PersistenceConfigResponsePtr(v *PersistenceConfigResponseArgs) PersistenceConfigResponsePtrInput {
-	return (*persistenceConfigResponsePtrType)(v)
-}
-
-func (*persistenceConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PersistenceConfigResponse)(nil)).Elem()
-}
-
-func (i *persistenceConfigResponsePtrType) ToPersistenceConfigResponsePtrOutput() PersistenceConfigResponsePtrOutput {
-	return i.ToPersistenceConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *persistenceConfigResponsePtrType) ToPersistenceConfigResponsePtrOutputWithContext(ctx context.Context) PersistenceConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PersistenceConfigResponsePtrOutput)
-}
-
 // Configuration of the persistence functionality.
 type PersistenceConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -942,16 +512,6 @@ func (o PersistenceConfigResponseOutput) ToPersistenceConfigResponseOutput() Per
 
 func (o PersistenceConfigResponseOutput) ToPersistenceConfigResponseOutputWithContext(ctx context.Context) PersistenceConfigResponseOutput {
 	return o
-}
-
-func (o PersistenceConfigResponseOutput) ToPersistenceConfigResponsePtrOutput() PersistenceConfigResponsePtrOutput {
-	return o.ToPersistenceConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PersistenceConfigResponseOutput) ToPersistenceConfigResponsePtrOutputWithContext(ctx context.Context) PersistenceConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PersistenceConfigResponse) *PersistenceConfigResponse {
-		return &v
-	}).(PersistenceConfigResponsePtrOutput)
 }
 
 // Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
@@ -972,70 +532,6 @@ func (o PersistenceConfigResponseOutput) RdbSnapshotPeriod() pulumi.StringOutput
 // Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
 func (o PersistenceConfigResponseOutput) RdbSnapshotStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v PersistenceConfigResponse) string { return v.RdbSnapshotStartTime }).(pulumi.StringOutput)
-}
-
-type PersistenceConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PersistenceConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PersistenceConfigResponse)(nil)).Elem()
-}
-
-func (o PersistenceConfigResponsePtrOutput) ToPersistenceConfigResponsePtrOutput() PersistenceConfigResponsePtrOutput {
-	return o
-}
-
-func (o PersistenceConfigResponsePtrOutput) ToPersistenceConfigResponsePtrOutputWithContext(ctx context.Context) PersistenceConfigResponsePtrOutput {
-	return o
-}
-
-func (o PersistenceConfigResponsePtrOutput) Elem() PersistenceConfigResponseOutput {
-	return o.ApplyT(func(v *PersistenceConfigResponse) PersistenceConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PersistenceConfigResponse
-		return ret
-	}).(PersistenceConfigResponseOutput)
-}
-
-// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
-func (o PersistenceConfigResponsePtrOutput) PersistenceMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PersistenceConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PersistenceMode
-	}).(pulumi.StringPtrOutput)
-}
-
-// The next time that a snapshot attempt is scheduled to occur.
-func (o PersistenceConfigResponsePtrOutput) RdbNextSnapshotTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PersistenceConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RdbNextSnapshotTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
-func (o PersistenceConfigResponsePtrOutput) RdbSnapshotPeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PersistenceConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RdbSnapshotPeriod
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
-func (o PersistenceConfigResponsePtrOutput) RdbSnapshotStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PersistenceConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RdbSnapshotStartTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
@@ -1132,41 +628,6 @@ type TimeOfDayResponse struct {
 	Seconds int `pulumi:"seconds"`
 }
 
-// TimeOfDayResponseInput is an input type that accepts TimeOfDayResponseArgs and TimeOfDayResponseOutput values.
-// You can construct a concrete instance of `TimeOfDayResponseInput` via:
-//
-//          TimeOfDayResponseArgs{...}
-type TimeOfDayResponseInput interface {
-	pulumi.Input
-
-	ToTimeOfDayResponseOutput() TimeOfDayResponseOutput
-	ToTimeOfDayResponseOutputWithContext(context.Context) TimeOfDayResponseOutput
-}
-
-// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
-type TimeOfDayResponseArgs struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-	Hours pulumi.IntInput `pulumi:"hours"`
-	// Minutes of hour of day. Must be from 0 to 59.
-	Minutes pulumi.IntInput `pulumi:"minutes"`
-	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-	Nanos pulumi.IntInput `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-	Seconds pulumi.IntInput `pulumi:"seconds"`
-}
-
-func (TimeOfDayResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TimeOfDayResponse)(nil)).Elem()
-}
-
-func (i TimeOfDayResponseArgs) ToTimeOfDayResponseOutput() TimeOfDayResponseOutput {
-	return i.ToTimeOfDayResponseOutputWithContext(context.Background())
-}
-
-func (i TimeOfDayResponseArgs) ToTimeOfDayResponseOutputWithContext(ctx context.Context) TimeOfDayResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayResponseOutput)
-}
-
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
 type TimeOfDayResponseOutput struct{ *pulumi.OutputState }
 
@@ -1214,68 +675,6 @@ type TlsCertificateResponse struct {
 	SerialNumber string `pulumi:"serialNumber"`
 	// Sha1 Fingerprint of the certificate.
 	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
-}
-
-// TlsCertificateResponseInput is an input type that accepts TlsCertificateResponseArgs and TlsCertificateResponseOutput values.
-// You can construct a concrete instance of `TlsCertificateResponseInput` via:
-//
-//          TlsCertificateResponseArgs{...}
-type TlsCertificateResponseInput interface {
-	pulumi.Input
-
-	ToTlsCertificateResponseOutput() TlsCertificateResponseOutput
-	ToTlsCertificateResponseOutputWithContext(context.Context) TlsCertificateResponseOutput
-}
-
-// TlsCertificate Resource
-type TlsCertificateResponseArgs struct {
-	// PEM representation.
-	Cert pulumi.StringInput `pulumi:"cert"`
-	// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
-	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
-	// Serial number, as extracted from the certificate.
-	SerialNumber pulumi.StringInput `pulumi:"serialNumber"`
-	// Sha1 Fingerprint of the certificate.
-	Sha1Fingerprint pulumi.StringInput `pulumi:"sha1Fingerprint"`
-}
-
-func (TlsCertificateResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TlsCertificateResponse)(nil)).Elem()
-}
-
-func (i TlsCertificateResponseArgs) ToTlsCertificateResponseOutput() TlsCertificateResponseOutput {
-	return i.ToTlsCertificateResponseOutputWithContext(context.Background())
-}
-
-func (i TlsCertificateResponseArgs) ToTlsCertificateResponseOutputWithContext(ctx context.Context) TlsCertificateResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TlsCertificateResponseOutput)
-}
-
-// TlsCertificateResponseArrayInput is an input type that accepts TlsCertificateResponseArray and TlsCertificateResponseArrayOutput values.
-// You can construct a concrete instance of `TlsCertificateResponseArrayInput` via:
-//
-//          TlsCertificateResponseArray{ TlsCertificateResponseArgs{...} }
-type TlsCertificateResponseArrayInput interface {
-	pulumi.Input
-
-	ToTlsCertificateResponseArrayOutput() TlsCertificateResponseArrayOutput
-	ToTlsCertificateResponseArrayOutputWithContext(context.Context) TlsCertificateResponseArrayOutput
-}
-
-type TlsCertificateResponseArray []TlsCertificateResponseInput
-
-func (TlsCertificateResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TlsCertificateResponse)(nil)).Elem()
-}
-
-func (i TlsCertificateResponseArray) ToTlsCertificateResponseArrayOutput() TlsCertificateResponseArrayOutput {
-	return i.ToTlsCertificateResponseArrayOutputWithContext(context.Background())
-}
-
-func (i TlsCertificateResponseArray) ToTlsCertificateResponseArrayOutputWithContext(ctx context.Context) TlsCertificateResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TlsCertificateResponseArrayOutput)
 }
 
 // TlsCertificate Resource
@@ -1457,64 +856,6 @@ type WeeklyMaintenanceWindowResponse struct {
 	StartTime TimeOfDayResponse `pulumi:"startTime"`
 }
 
-// WeeklyMaintenanceWindowResponseInput is an input type that accepts WeeklyMaintenanceWindowResponseArgs and WeeklyMaintenanceWindowResponseOutput values.
-// You can construct a concrete instance of `WeeklyMaintenanceWindowResponseInput` via:
-//
-//          WeeklyMaintenanceWindowResponseArgs{...}
-type WeeklyMaintenanceWindowResponseInput interface {
-	pulumi.Input
-
-	ToWeeklyMaintenanceWindowResponseOutput() WeeklyMaintenanceWindowResponseOutput
-	ToWeeklyMaintenanceWindowResponseOutputWithContext(context.Context) WeeklyMaintenanceWindowResponseOutput
-}
-
-// Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
-type WeeklyMaintenanceWindowResponseArgs struct {
-	// The day of week that maintenance updates occur.
-	Day pulumi.StringInput `pulumi:"day"`
-	// Duration of the maintenance window. The current window is fixed at 1 hour.
-	Duration pulumi.StringInput `pulumi:"duration"`
-	// Start time of the window in UTC time.
-	StartTime TimeOfDayResponseInput `pulumi:"startTime"`
-}
-
-func (WeeklyMaintenanceWindowResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WeeklyMaintenanceWindowResponse)(nil)).Elem()
-}
-
-func (i WeeklyMaintenanceWindowResponseArgs) ToWeeklyMaintenanceWindowResponseOutput() WeeklyMaintenanceWindowResponseOutput {
-	return i.ToWeeklyMaintenanceWindowResponseOutputWithContext(context.Background())
-}
-
-func (i WeeklyMaintenanceWindowResponseArgs) ToWeeklyMaintenanceWindowResponseOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceWindowResponseOutput)
-}
-
-// WeeklyMaintenanceWindowResponseArrayInput is an input type that accepts WeeklyMaintenanceWindowResponseArray and WeeklyMaintenanceWindowResponseArrayOutput values.
-// You can construct a concrete instance of `WeeklyMaintenanceWindowResponseArrayInput` via:
-//
-//          WeeklyMaintenanceWindowResponseArray{ WeeklyMaintenanceWindowResponseArgs{...} }
-type WeeklyMaintenanceWindowResponseArrayInput interface {
-	pulumi.Input
-
-	ToWeeklyMaintenanceWindowResponseArrayOutput() WeeklyMaintenanceWindowResponseArrayOutput
-	ToWeeklyMaintenanceWindowResponseArrayOutputWithContext(context.Context) WeeklyMaintenanceWindowResponseArrayOutput
-}
-
-type WeeklyMaintenanceWindowResponseArray []WeeklyMaintenanceWindowResponseInput
-
-func (WeeklyMaintenanceWindowResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WeeklyMaintenanceWindowResponse)(nil)).Elem()
-}
-
-func (i WeeklyMaintenanceWindowResponseArray) ToWeeklyMaintenanceWindowResponseArrayOutput() WeeklyMaintenanceWindowResponseArrayOutput {
-	return i.ToWeeklyMaintenanceWindowResponseArrayOutputWithContext(context.Background())
-}
-
-func (i WeeklyMaintenanceWindowResponseArray) ToWeeklyMaintenanceWindowResponseArrayOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceWindowResponseArrayOutput)
-}
-
 // Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
 type WeeklyMaintenanceWindowResponseOutput struct{ *pulumi.OutputState }
 
@@ -1568,36 +909,20 @@ func (o WeeklyMaintenanceWindowResponseArrayOutput) Index(i pulumi.IntInput) Wee
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyInput)(nil)).Elem(), MaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyPtrInput)(nil)).Elem(), MaintenancePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyResponseInput)(nil)).Elem(), MaintenancePolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyResponsePtrInput)(nil)).Elem(), MaintenancePolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceScheduleResponseInput)(nil)).Elem(), MaintenanceScheduleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceScheduleResponsePtrInput)(nil)).Elem(), MaintenanceScheduleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeInfoResponseInput)(nil)).Elem(), NodeInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeInfoResponseArrayInput)(nil)).Elem(), NodeInfoResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigInput)(nil)).Elem(), PersistenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigPtrInput)(nil)).Elem(), PersistenceConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigResponseInput)(nil)).Elem(), PersistenceConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigResponsePtrInput)(nil)).Elem(), PersistenceConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayInput)(nil)).Elem(), TimeOfDayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayResponseInput)(nil)).Elem(), TimeOfDayResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TlsCertificateResponseInput)(nil)).Elem(), TlsCertificateResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TlsCertificateResponseArrayInput)(nil)).Elem(), TlsCertificateResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowInput)(nil)).Elem(), WeeklyMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowArrayInput)(nil)).Elem(), WeeklyMaintenanceWindowArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowResponseInput)(nil)).Elem(), WeeklyMaintenanceWindowResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowResponseArrayInput)(nil)).Elem(), WeeklyMaintenanceWindowResponseArray{})
 	pulumi.RegisterOutputType(MaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyResponseOutput{})
-	pulumi.RegisterOutputType(MaintenancePolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceScheduleResponseOutput{})
-	pulumi.RegisterOutputType(MaintenanceScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodeInfoResponseOutput{})
 	pulumi.RegisterOutputType(NodeInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(PersistenceConfigOutput{})
 	pulumi.RegisterOutputType(PersistenceConfigPtrOutput{})
 	pulumi.RegisterOutputType(PersistenceConfigResponseOutput{})
-	pulumi.RegisterOutputType(PersistenceConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(TimeOfDayOutput{})
 	pulumi.RegisterOutputType(TimeOfDayResponseOutput{})
 	pulumi.RegisterOutputType(TlsCertificateResponseOutput{})

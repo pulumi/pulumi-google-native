@@ -99,7 +99,7 @@ type SourceInput interface {
 }
 
 func (*Source) ElementType() reflect.Type {
-	return reflect.TypeOf((*Source)(nil))
+	return reflect.TypeOf((**Source)(nil)).Elem()
 }
 
 func (i *Source) ToSourceOutput() SourceOutput {
@@ -113,7 +113,7 @@ func (i *Source) ToSourceOutputWithContext(ctx context.Context) SourceOutput {
 type SourceOutput struct{ *pulumi.OutputState }
 
 func (SourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Source)(nil))
+	return reflect.TypeOf((**Source)(nil)).Elem()
 }
 
 func (o SourceOutput) ToSourceOutput() SourceOutput {

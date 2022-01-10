@@ -92,7 +92,7 @@ type KeystoreInput interface {
 }
 
 func (*Keystore) ElementType() reflect.Type {
-	return reflect.TypeOf((*Keystore)(nil))
+	return reflect.TypeOf((**Keystore)(nil)).Elem()
 }
 
 func (i *Keystore) ToKeystoreOutput() KeystoreOutput {
@@ -106,7 +106,7 @@ func (i *Keystore) ToKeystoreOutputWithContext(ctx context.Context) KeystoreOutp
 type KeystoreOutput struct{ *pulumi.OutputState }
 
 func (KeystoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Keystore)(nil))
+	return reflect.TypeOf((**Keystore)(nil)).Elem()
 }
 
 func (o KeystoreOutput) ToKeystoreOutput() KeystoreOutput {

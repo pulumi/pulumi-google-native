@@ -114,7 +114,7 @@ type RuntimeInput interface {
 }
 
 func (*Runtime) ElementType() reflect.Type {
-	return reflect.TypeOf((*Runtime)(nil))
+	return reflect.TypeOf((**Runtime)(nil)).Elem()
 }
 
 func (i *Runtime) ToRuntimeOutput() RuntimeOutput {
@@ -128,7 +128,7 @@ func (i *Runtime) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOutput 
 type RuntimeOutput struct{ *pulumi.OutputState }
 
 func (RuntimeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Runtime)(nil))
+	return reflect.TypeOf((**Runtime)(nil)).Elem()
 }
 
 func (o RuntimeOutput) ToRuntimeOutput() RuntimeOutput {

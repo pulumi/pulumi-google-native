@@ -129,64 +129,6 @@ type GoogleCloudDatalabelingV1beta1AnnotationSpecResponse struct {
 	Index int `pulumi:"index"`
 }
 
-// GoogleCloudDatalabelingV1beta1AnnotationSpecResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArgs and GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1AnnotationSpecResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1AnnotationSpecResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput() GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput
-	ToGoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput
-}
-
-// Container of information related to one possible annotation that can be used in a labeling task. For example, an image classification task where images are labeled as `dog` or `cat` must reference an AnnotationSpec for `dog` and an AnnotationSpec for `cat`.
-type GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArgs struct {
-	// Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The display name of the AnnotationSpec. Maximum of 64 characters.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// This is the integer index of the AnnotationSpec. The index for the whole AnnotationSpecSet is sequential starting from 0. For example, an AnnotationSpecSet with classes `dog` and `cat`, might contain one AnnotationSpec with `{ display_name: "dog", index: 0 }` and one AnnotationSpec with `{ display_name: "cat", index: 1 }`. This is especially useful for model training as it encodes the string labels into numeric values.
-	Index pulumi.IntInput `pulumi:"index"`
-}
-
-func (GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1AnnotationSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArgs) ToGoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput() GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArgs) ToGoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput)
-}
-
-// GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayInput is an input type that accepts GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArray and GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArray{ GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArgs{...} }
-type GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput() GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput
-	ToGoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput
-}
-
-type GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArray []GoogleCloudDatalabelingV1beta1AnnotationSpecResponseInput
-
-func (GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDatalabelingV1beta1AnnotationSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArray) ToGoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput() GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArray) ToGoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput)
-}
-
 // Container of information related to one possible annotation that can be used in a labeling task. For example, an image classification task where images are labeled as `dog` or `cat` must reference an AnnotationSpec for `dog` and an AnnotationSpec for `cat`.
 type GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -242,61 +184,6 @@ type GoogleCloudDatalabelingV1beta1AttemptResponse struct {
 	AttemptTime string `pulumi:"attemptTime"`
 	// Details of errors that occurred.
 	PartialFailures []GoogleRpcStatusResponse `pulumi:"partialFailures"`
-}
-
-// GoogleCloudDatalabelingV1beta1AttemptResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1AttemptResponseArgs and GoogleCloudDatalabelingV1beta1AttemptResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1AttemptResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1AttemptResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1AttemptResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1AttemptResponseOutput() GoogleCloudDatalabelingV1beta1AttemptResponseOutput
-	ToGoogleCloudDatalabelingV1beta1AttemptResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1AttemptResponseOutput
-}
-
-// Records a failed evaluation job run.
-type GoogleCloudDatalabelingV1beta1AttemptResponseArgs struct {
-	AttemptTime pulumi.StringInput `pulumi:"attemptTime"`
-	// Details of errors that occurred.
-	PartialFailures GoogleRpcStatusResponseArrayInput `pulumi:"partialFailures"`
-}
-
-func (GoogleCloudDatalabelingV1beta1AttemptResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1AttemptResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1AttemptResponseArgs) ToGoogleCloudDatalabelingV1beta1AttemptResponseOutput() GoogleCloudDatalabelingV1beta1AttemptResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1AttemptResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1AttemptResponseArgs) ToGoogleCloudDatalabelingV1beta1AttemptResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1AttemptResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1AttemptResponseOutput)
-}
-
-// GoogleCloudDatalabelingV1beta1AttemptResponseArrayInput is an input type that accepts GoogleCloudDatalabelingV1beta1AttemptResponseArray and GoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1AttemptResponseArrayInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1AttemptResponseArray{ GoogleCloudDatalabelingV1beta1AttemptResponseArgs{...} }
-type GoogleCloudDatalabelingV1beta1AttemptResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput() GoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput
-	ToGoogleCloudDatalabelingV1beta1AttemptResponseArrayOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput
-}
-
-type GoogleCloudDatalabelingV1beta1AttemptResponseArray []GoogleCloudDatalabelingV1beta1AttemptResponseInput
-
-func (GoogleCloudDatalabelingV1beta1AttemptResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDatalabelingV1beta1AttemptResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1AttemptResponseArray) ToGoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput() GoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1AttemptResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1AttemptResponseArray) ToGoogleCloudDatalabelingV1beta1AttemptResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput)
 }
 
 // Records a failed evaluation job run.
@@ -491,76 +378,6 @@ type GoogleCloudDatalabelingV1beta1BigQuerySourceResponse struct {
 	InputUri string `pulumi:"inputUri"`
 }
 
-// GoogleCloudDatalabelingV1beta1BigQuerySourceResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs and GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1BigQuerySourceResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1BigQuerySourceResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput() GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput
-	ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput
-}
-
-// The BigQuery location for input data. If used in an EvaluationJob, this is where the service saves the prediction input and output sampled from the model version.
-type GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs struct {
-	// BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
-	InputUri pulumi.StringInput `pulumi:"inputUri"`
-}
-
-func (GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BigQuerySourceResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs) ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput() GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs) ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs) ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput() GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs) ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput).ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs, GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtr and GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput() GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1BigQuerySourceResponsePtrType GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs
-
-func GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtr(v *GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs) GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1BigQuerySourceResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1BigQuerySourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1BigQuerySourceResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1BigQuerySourceResponsePtrType) ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput() GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1BigQuerySourceResponsePtrType) ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput)
-}
-
 // The BigQuery location for input data. If used in an EvaluationJob, this is where the service saves the prediction input and output sampled from the model version.
 type GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -576,53 +393,9 @@ func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput) ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput() GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput) ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1BigQuerySourceResponse) *GoogleCloudDatalabelingV1beta1BigQuerySourceResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput)
-}
-
 // BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
 func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput) InputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BigQuerySourceResponse) string { return v.InputUri }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1BigQuerySourceResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput() GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BigQuerySourceResponse) GoogleCloudDatalabelingV1beta1BigQuerySourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1BigQuerySourceResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput)
-}
-
-// BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
-func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput) InputUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BigQuerySourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InputUri
-	}).(pulumi.StringPtrOutput)
 }
 
 // Options regarding evaluation between bounding boxes.
@@ -771,76 +544,6 @@ type GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse struct {
 	IouThreshold float64 `pulumi:"iouThreshold"`
 }
 
-// GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseArgs and GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput
-	ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput
-}
-
-// Options regarding evaluation between bounding boxes.
-type GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseArgs struct {
-	// Minimum [intersection-over-union (IOU)](/vision/automl/object-detection/docs/evaluate#intersection-over-union) required for 2 bounding boxes to be considered a match. This must be a number between 0 and 1.
-	IouThreshold pulumi.Float64Input `pulumi:"iouThreshold"`
-}
-
-func (GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseArgs) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseArgs) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseArgs) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseArgs) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput).ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseArgs, GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtr and GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrType GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseArgs
-
-func GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtr(v *GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseArgs) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrType) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrType) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput)
-}
-
 // Options regarding evaluation between bounding boxes.
 type GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -856,55 +559,11 @@ func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput
 	return o
 }
 
-func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse) *GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput)
-}
-
 // Minimum [intersection-over-union (IOU)](/vision/automl/object-detection/docs/evaluate#intersection-over-union) required for 2 bounding boxes to be considered a match. This must be a number between 0 and 1.
 func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput) IouThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse) float64 {
 		return v.IouThreshold
 	}).(pulumi.Float64Output)
-}
-
-type GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput)
-}
-
-// Minimum [intersection-over-union (IOU)](/vision/automl/object-detection/docs/evaluate#intersection-over-union) required for 2 bounding boxes to be considered a match. This must be a number between 0 and 1.
-func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput) IouThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.IouThreshold
-	}).(pulumi.Float64PtrOutput)
 }
 
 // Config for image bounding poly (and bounding box) human labeling task.
@@ -1074,78 +733,6 @@ type GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse struct {
 	InstructionMessage string `pulumi:"instructionMessage"`
 }
 
-// GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs and GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput() GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput
-	ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput
-}
-
-// Config for image bounding poly (and bounding box) human labeling task.
-type GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs struct {
-	// Annotation spec set resource name.
-	AnnotationSpecSet pulumi.StringInput `pulumi:"annotationSpecSet"`
-	// Optional. Instruction message showed on contributors UI.
-	InstructionMessage pulumi.StringInput `pulumi:"instructionMessage"`
-}
-
-func (GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput() GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput).ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs, GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtr and GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrType GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs
-
-func GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtr(v *GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs) GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput)
-}
-
 // Config for image bounding poly (and bounding box) human labeling task.
 type GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -1161,16 +748,6 @@ func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput) ToGoogle
 	return o
 }
 
-func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse) *GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput)
-}
-
 // Annotation spec set resource name.
 func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput) AnnotationSpecSet() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse) string { return v.AnnotationSpecSet }).(pulumi.StringOutput)
@@ -1179,50 +756,6 @@ func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput) Annotati
 // Optional. Instruction message showed on contributors UI.
 func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput) InstructionMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse) string { return v.InstructionMessage }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse) GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput)
-}
-
-// Annotation spec set resource name.
-func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput) AnnotationSpecSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AnnotationSpecSet
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Instruction message showed on contributors UI.
-func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput) InstructionMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InstructionMessage
-	}).(pulumi.StringPtrOutput)
 }
 
 // Metadata for classification annotations.
@@ -1371,76 +904,6 @@ type GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse struct {
 	IsMultiLabel bool `pulumi:"isMultiLabel"`
 }
 
-// GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseArgs and GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput() GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput
-	ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput
-}
-
-// Metadata for classification annotations.
-type GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseArgs struct {
-	// Whether the classification task is multi-label or not.
-	IsMultiLabel pulumi.BoolInput `pulumi:"isMultiLabel"`
-}
-
-func (GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput() GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput).ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseArgs, GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtr and GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrType GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseArgs
-
-func GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtr(v *GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseArgs) GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrType) ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrType) ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput)
-}
-
 // Metadata for classification annotations.
 type GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput struct{ *pulumi.OutputState }
 
@@ -1456,53 +919,9 @@ func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput) ToGo
 	return o
 }
 
-func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse) *GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput)
-}
-
 // Whether the classification task is multi-label or not.
 func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput) IsMultiLabel() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse) bool { return v.IsMultiLabel }).(pulumi.BoolOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse) GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput)
-}
-
-// Whether the classification task is multi-label or not.
-func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput) IsMultiLabel() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.IsMultiLabel
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Configuration details used for calculating evaluation metrics and creating an Evaluation.
@@ -1540,47 +959,6 @@ func (i GoogleCloudDatalabelingV1beta1EvaluationConfigArgs) ToGoogleCloudDatalab
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationConfigOutput)
 }
 
-func (i GoogleCloudDatalabelingV1beta1EvaluationConfigArgs) ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput() GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1EvaluationConfigArgs) ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationConfigOutput).ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1EvaluationConfigPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1EvaluationConfigArgs, GoogleCloudDatalabelingV1beta1EvaluationConfigPtr and GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1EvaluationConfigPtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1EvaluationConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1EvaluationConfigPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput() GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput
-	ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput
-}
-
-type googleCloudDatalabelingV1beta1EvaluationConfigPtrType GoogleCloudDatalabelingV1beta1EvaluationConfigArgs
-
-func GoogleCloudDatalabelingV1beta1EvaluationConfigPtr(v *GoogleCloudDatalabelingV1beta1EvaluationConfigArgs) GoogleCloudDatalabelingV1beta1EvaluationConfigPtrInput {
-	return (*googleCloudDatalabelingV1beta1EvaluationConfigPtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1EvaluationConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1EvaluationConfig)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1EvaluationConfigPtrType) ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput() GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1EvaluationConfigPtrType) ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput)
-}
-
 // Configuration details used for calculating evaluation metrics and creating an Evaluation.
 type GoogleCloudDatalabelingV1beta1EvaluationConfigOutput struct{ *pulumi.OutputState }
 
@@ -1596,53 +974,9 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationConfigOutput) ToGoogleCloudDatal
 	return o
 }
 
-func (o GoogleCloudDatalabelingV1beta1EvaluationConfigOutput) ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput() GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationConfigOutput) ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1EvaluationConfig) *GoogleCloudDatalabelingV1beta1EvaluationConfig {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput)
-}
-
 // Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes.
 func (o GoogleCloudDatalabelingV1beta1EvaluationConfigOutput) BoundingBoxEvaluationOptions() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationConfig) *GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions {
-		return v.BoundingBoxEvaluationOptions
-	}).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1EvaluationConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput) ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput() GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput) ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1EvaluationConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationConfig) GoogleCloudDatalabelingV1beta1EvaluationConfig {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1EvaluationConfig
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1EvaluationConfigOutput)
-}
-
-// Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes.
-func (o GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput) BoundingBoxEvaluationOptions() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationConfig) *GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions {
-		if v == nil {
-			return nil
-		}
 		return v.BoundingBoxEvaluationOptions
 	}).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput)
 }
@@ -1651,76 +985,6 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput) BoundingBoxEval
 type GoogleCloudDatalabelingV1beta1EvaluationConfigResponse struct {
 	// Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes.
 	BoundingBoxEvaluationOptions GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse `pulumi:"boundingBoxEvaluationOptions"`
-}
-
-// GoogleCloudDatalabelingV1beta1EvaluationConfigResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1EvaluationConfigResponseArgs and GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1EvaluationConfigResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1EvaluationConfigResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1EvaluationConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput() GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput
-	ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput
-}
-
-// Configuration details used for calculating evaluation metrics and creating an Evaluation.
-type GoogleCloudDatalabelingV1beta1EvaluationConfigResponseArgs struct {
-	// Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes.
-	BoundingBoxEvaluationOptions GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseInput `pulumi:"boundingBoxEvaluationOptions"`
-}
-
-func (GoogleCloudDatalabelingV1beta1EvaluationConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1EvaluationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput() GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1EvaluationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1EvaluationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1EvaluationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput).ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1EvaluationConfigResponseArgs, GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtr and GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1EvaluationConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1EvaluationConfigResponsePtrType GoogleCloudDatalabelingV1beta1EvaluationConfigResponseArgs
-
-func GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtr(v *GoogleCloudDatalabelingV1beta1EvaluationConfigResponseArgs) GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1EvaluationConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1EvaluationConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1EvaluationConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1EvaluationConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1EvaluationConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput)
 }
 
 // Configuration details used for calculating evaluation metrics and creating an Evaluation.
@@ -1738,55 +1002,11 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput) ToGoogleCl
 	return o
 }
 
-func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1EvaluationConfigResponse) *GoogleCloudDatalabelingV1beta1EvaluationConfigResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput)
-}
-
 // Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes.
 func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput) BoundingBoxEvaluationOptions() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationConfigResponse) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse {
 		return v.BoundingBoxEvaluationOptions
 	}).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1EvaluationConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationConfigResponse) GoogleCloudDatalabelingV1beta1EvaluationConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1EvaluationConfigResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput)
-}
-
-// Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes.
-func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput) BoundingBoxEvaluationOptions() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationConfigResponse) *GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BoundingBoxEvaluationOptions
-	}).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput)
 }
 
 // Provides details for how an evaluation job sends email alerts based on the results of a run.
@@ -1958,78 +1178,6 @@ type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse struct {
 	MinAcceptableMeanAveragePrecision float64 `pulumi:"minAcceptableMeanAveragePrecision"`
 }
 
-// GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs and GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput() GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput
-	ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput
-}
-
-// Provides details for how an evaluation job sends email alerts based on the results of a run.
-type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs struct {
-	// An email address to send alerts to.
-	Email pulumi.StringInput `pulumi:"email"`
-	// A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
-	MinAcceptableMeanAveragePrecision pulumi.Float64Input `pulumi:"minAcceptableMeanAveragePrecision"`
-}
-
-func (GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput() GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput).ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs, GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtr and GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrType GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs
-
-func GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtr(v *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput)
-}
-
 // Provides details for how an evaluation job sends email alerts based on the results of a run.
 type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2045,16 +1193,6 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput) To
 	return o
 }
 
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse) *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput)
-}
-
 // An email address to send alerts to.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse) string { return v.Email }).(pulumi.StringOutput)
@@ -2065,50 +1203,6 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput) Mi
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse) float64 {
 		return v.MinAcceptableMeanAveragePrecision
 	}).(pulumi.Float64Output)
-}
-
-type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput)
-}
-
-// An email address to send alerts to.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Email
-	}).(pulumi.StringPtrOutput)
-}
-
-// A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput) MinAcceptableMeanAveragePrecision() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.MinAcceptableMeanAveragePrecision
-	}).(pulumi.Float64PtrOutput)
 }
 
 // Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
@@ -2182,47 +1276,6 @@ func (i GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs) ToGoogleCloudData
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput)
 }
 
-func (i GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput).ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs, GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtr and GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput
-	ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput
-}
-
-type googleCloudDatalabelingV1beta1EvaluationJobConfigPtrType GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs
-
-func GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtr(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs) GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrInput {
-	return (*googleCloudDatalabelingV1beta1EvaluationJobConfigPtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1EvaluationJobConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1EvaluationJobConfig)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1EvaluationJobConfigPtrType) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1EvaluationJobConfigPtrType) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput)
-}
-
 // Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
 type GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput struct{ *pulumi.OutputState }
 
@@ -2236,16 +1289,6 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput {
 	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput)
 }
 
 // Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
@@ -2314,130 +1357,6 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) TextClassificat
 	}).(GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput)
 }
 
-type GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1EvaluationJobConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1EvaluationJobConfig
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput)
-}
-
-// Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) BigqueryImportKeys() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.BigqueryImportKeys
-	}).(pulumi.StringMapOutput)
-}
-
-// Specify this field if your model version performs image object detection (bounding box detection). `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) BoundingPolyConfig() GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *GoogleCloudDatalabelingV1beta1BoundingPolyConfig {
-		if v == nil {
-			return nil
-		}
-		return v.BoundingPolyConfig
-	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput)
-}
-
-// Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) EvaluationConfig() GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *GoogleCloudDatalabelingV1beta1EvaluationConfig {
-		if v == nil {
-			return nil
-		}
-		return &v.EvaluationConfig
-	}).(GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput)
-}
-
-// Optional. Configuration details for evaluation job alerts. Specify this field if you want to receive email alerts if the evaluation job finds that your predictions have low mean average precision during a run.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) EvaluationJobAlertConfig() GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
-		if v == nil {
-			return nil
-		}
-		return v.EvaluationJobAlertConfig
-	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput)
-}
-
-// The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) ExampleCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.ExampleCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) ExampleSamplePercentage() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.ExampleSamplePercentage
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Optional. Details for human annotation of your data. If you set labelMissingGroundTruth to `true` for this evaluation job, then you must specify this field. If you plan to provide your own ground truth labels, then omit this field. Note that you must create an Instruction resource before you can specify this field. Provide the name of the instruction resource in the `instruction` field within this configuration.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) HumanAnnotationConfig() GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
-		if v == nil {
-			return nil
-		}
-		return v.HumanAnnotationConfig
-	}).(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput)
-}
-
-// Specify this field if your model version performs image classification or general classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) ImageClassificationConfig() GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
-		if v == nil {
-			return nil
-		}
-		return v.ImageClassificationConfig
-	}).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput)
-}
-
-// Rquired. Details for the sampled prediction input. Within this configuration, there are requirements for several fields: * `dataType` must be one of `IMAGE`, `TEXT`, or `GENERAL_DATA`. * `annotationType` must be one of `IMAGE_CLASSIFICATION_ANNOTATION`, `TEXT_CLASSIFICATION_ANNOTATION`, `GENERAL_CLASSIFICATION_ANNOTATION`, or `IMAGE_BOUNDING_BOX_ANNOTATION` (image object detection). * If your machine learning model performs classification, you must specify `classificationMetadata.isMultiLabel`. * You must specify `bigquerySource` (not `gcsSource`).
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) InputConfig() GoogleCloudDatalabelingV1beta1InputConfigPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *GoogleCloudDatalabelingV1beta1InputConfig {
-		if v == nil {
-			return nil
-		}
-		return v.InputConfig
-	}).(GoogleCloudDatalabelingV1beta1InputConfigPtrOutput)
-}
-
-// Specify this field if your model version performs text classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) TextClassificationConfig() GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *GoogleCloudDatalabelingV1beta1TextClassificationConfig {
-		if v == nil {
-			return nil
-		}
-		return v.TextClassificationConfig
-	}).(GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput)
-}
-
 // Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
 type GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse struct {
 	// Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
@@ -2462,94 +1381,6 @@ type GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse struct {
 	TextClassificationConfig GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse `pulumi:"textClassificationConfig"`
 }
 
-// GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs and GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput() GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput
-	ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput
-}
-
-// Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
-type GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs struct {
-	// Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
-	BigqueryImportKeys pulumi.StringMapInput `pulumi:"bigqueryImportKeys"`
-	// Specify this field if your model version performs image object detection (bounding box detection). `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet.
-	BoundingPolyConfig GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseInput `pulumi:"boundingPolyConfig"`
-	// Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
-	EvaluationConfig GoogleCloudDatalabelingV1beta1EvaluationConfigResponseInput `pulumi:"evaluationConfig"`
-	// Optional. Configuration details for evaluation job alerts. Specify this field if you want to receive email alerts if the evaluation job finds that your predictions have low mean average precision during a run.
-	EvaluationJobAlertConfig GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseInput `pulumi:"evaluationJobAlertConfig"`
-	// The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
-	ExampleCount pulumi.IntInput `pulumi:"exampleCount"`
-	// Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
-	ExampleSamplePercentage pulumi.Float64Input `pulumi:"exampleSamplePercentage"`
-	// Optional. Details for human annotation of your data. If you set labelMissingGroundTruth to `true` for this evaluation job, then you must specify this field. If you plan to provide your own ground truth labels, then omit this field. Note that you must create an Instruction resource before you can specify this field. Provide the name of the instruction resource in the `instruction` field within this configuration.
-	HumanAnnotationConfig GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseInput `pulumi:"humanAnnotationConfig"`
-	// Specify this field if your model version performs image classification or general classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config.
-	ImageClassificationConfig GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseInput `pulumi:"imageClassificationConfig"`
-	// Rquired. Details for the sampled prediction input. Within this configuration, there are requirements for several fields: * `dataType` must be one of `IMAGE`, `TEXT`, or `GENERAL_DATA`. * `annotationType` must be one of `IMAGE_CLASSIFICATION_ANNOTATION`, `TEXT_CLASSIFICATION_ANNOTATION`, `GENERAL_CLASSIFICATION_ANNOTATION`, or `IMAGE_BOUNDING_BOX_ANNOTATION` (image object detection). * If your machine learning model performs classification, you must specify `classificationMetadata.isMultiLabel`. * You must specify `bigquerySource` (not `gcsSource`).
-	InputConfig GoogleCloudDatalabelingV1beta1InputConfigResponseInput `pulumi:"inputConfig"`
-	// Specify this field if your model version performs text classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config.
-	TextClassificationConfig GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseInput `pulumi:"textClassificationConfig"`
-}
-
-func (GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput() GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput).ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs, GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtr and GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrType GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs
-
-func GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtr(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs) GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput)
-}
-
 // Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
 type GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2563,16 +1394,6 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) ToGoogl
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput)
 }
 
 // Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
@@ -2641,130 +1462,6 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) TextCla
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse {
 		return v.TextClassificationConfig
 	}).(GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput)
-}
-
-// Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) BigqueryImportKeys() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.BigqueryImportKeys
-	}).(pulumi.StringMapOutput)
-}
-
-// Specify this field if your model version performs image object detection (bounding box detection). `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) BoundingPolyConfig() GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BoundingPolyConfig
-	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput)
-}
-
-// Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) EvaluationConfig() GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *GoogleCloudDatalabelingV1beta1EvaluationConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.EvaluationConfig
-	}).(GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput)
-}
-
-// Optional. Configuration details for evaluation job alerts. Specify this field if you want to receive email alerts if the evaluation job finds that your predictions have low mean average precision during a run.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) EvaluationJobAlertConfig() GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.EvaluationJobAlertConfig
-	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput)
-}
-
-// The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) ExampleCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.ExampleCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) ExampleSamplePercentage() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.ExampleSamplePercentage
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Optional. Details for human annotation of your data. If you set labelMissingGroundTruth to `true` for this evaluation job, then you must specify this field. If you plan to provide your own ground truth labels, then omit this field. Note that you must create an Instruction resource before you can specify this field. Provide the name of the instruction resource in the `instruction` field within this configuration.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) HumanAnnotationConfig() GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.HumanAnnotationConfig
-	}).(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput)
-}
-
-// Specify this field if your model version performs image classification or general classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) ImageClassificationConfig() GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ImageClassificationConfig
-	}).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput)
-}
-
-// Rquired. Details for the sampled prediction input. Within this configuration, there are requirements for several fields: * `dataType` must be one of `IMAGE`, `TEXT`, or `GENERAL_DATA`. * `annotationType` must be one of `IMAGE_CLASSIFICATION_ANNOTATION`, `TEXT_CLASSIFICATION_ANNOTATION`, `GENERAL_CLASSIFICATION_ANNOTATION`, or `IMAGE_BOUNDING_BOX_ANNOTATION` (image object detection). * If your machine learning model performs classification, you must specify `classificationMetadata.isMultiLabel`. * You must specify `bigquerySource` (not `gcsSource`).
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) InputConfig() GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *GoogleCloudDatalabelingV1beta1InputConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.InputConfig
-	}).(GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput)
-}
-
-// Specify this field if your model version performs text classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) TextClassificationConfig() GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TextClassificationConfig
-	}).(GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput)
 }
 
 // Source of the Cloud Storage file to be imported.
@@ -2934,78 +1631,6 @@ type GoogleCloudDatalabelingV1beta1GcsSourceResponse struct {
 	MimeType string `pulumi:"mimeType"`
 }
 
-// GoogleCloudDatalabelingV1beta1GcsSourceResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs and GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1GcsSourceResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1GcsSourceResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1GcsSourceResponseOutput() GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput
-	ToGoogleCloudDatalabelingV1beta1GcsSourceResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput
-}
-
-// Source of the Cloud Storage file to be imported.
-type GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs struct {
-	// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
-	InputUri pulumi.StringInput `pulumi:"inputUri"`
-	// The format of the source file. Only "text/csv" is supported.
-	MimeType pulumi.StringInput `pulumi:"mimeType"`
-}
-
-func (GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1GcsSourceResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs) ToGoogleCloudDatalabelingV1beta1GcsSourceResponseOutput() GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1GcsSourceResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs) ToGoogleCloudDatalabelingV1beta1GcsSourceResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs) ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput() GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs) ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput).ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs, GoogleCloudDatalabelingV1beta1GcsSourceResponsePtr and GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput() GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1GcsSourceResponsePtrType GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs
-
-func GoogleCloudDatalabelingV1beta1GcsSourceResponsePtr(v *GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs) GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1GcsSourceResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1GcsSourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1GcsSourceResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1GcsSourceResponsePtrType) ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput() GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1GcsSourceResponsePtrType) ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput)
-}
-
 // Source of the Cloud Storage file to be imported.
 type GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -3021,16 +1646,6 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput) ToGoogleCloudData
 	return o
 }
 
-func (o GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput) ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput() GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput) ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1GcsSourceResponse) *GoogleCloudDatalabelingV1beta1GcsSourceResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput)
-}
-
 // The input URI of source file. This must be a Cloud Storage path (`gs://...`).
 func (o GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput) InputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1GcsSourceResponse) string { return v.InputUri }).(pulumi.StringOutput)
@@ -3039,50 +1654,6 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput) InputUri() pulumi
 // The format of the source file. Only "text/csv" is supported.
 func (o GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1GcsSourceResponse) string { return v.MimeType }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1GcsSourceResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput() GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1GcsSourceResponse) GoogleCloudDatalabelingV1beta1GcsSourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1GcsSourceResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput)
-}
-
-// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
-func (o GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput) InputUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1GcsSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InputUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The format of the source file. Only "text/csv" is supported.
-func (o GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput) MimeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1GcsSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MimeType
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration for how human labeling task should be done.
@@ -3403,92 +1974,6 @@ type GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse struct {
 	UserEmailAddress string `pulumi:"userEmailAddress"`
 }
 
-// GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs and GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput() GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput
-	ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput
-}
-
-// Configuration for how human labeling task should be done.
-type GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs struct {
-	// Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
-	AnnotatedDatasetDescription pulumi.StringInput `pulumi:"annotatedDatasetDescription"`
-	// A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
-	AnnotatedDatasetDisplayName pulumi.StringInput `pulumi:"annotatedDatasetDisplayName"`
-	// Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/
-	ContributorEmails pulumi.StringArrayInput `pulumi:"contributorEmails"`
-	// Instruction resource name.
-	Instruction pulumi.StringInput `pulumi:"instruction"`
-	// Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
-	LabelGroup pulumi.StringInput `pulumi:"labelGroup"`
-	// Optional. The Language of this question, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US. Only need to set this when task is language related. For example, French text classification.
-	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
-	// Optional. Maximum duration for contributors to answer a question. Maximum is 3600 seconds. Default is 3600 seconds.
-	QuestionDuration pulumi.StringInput `pulumi:"questionDuration"`
-	// Optional. Replication of questions. Each question will be sent to up to this number of contributors to label. Aggregated answers will be returned. Default is set to 1. For image related labeling, valid values are 1, 3, 5.
-	ReplicaCount pulumi.IntInput `pulumi:"replicaCount"`
-	// Email of the user who started the labeling task and should be notified by email. If empty no notification will be sent.
-	UserEmailAddress pulumi.StringInput `pulumi:"userEmailAddress"`
-}
-
-func (GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput() GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput).ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs, GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtr and GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrType GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs
-
-func GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtr(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs) GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput)
-}
-
 // Configuration for how human labeling task should be done.
 type GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -3502,16 +1987,6 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) ToGoo
 
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput)
 }
 
 // Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
@@ -3563,120 +2038,6 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) Repli
 // Email of the user who started the labeling task and should be notified by email. If empty no notification will be sent.
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) UserEmailAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) string { return v.UserEmailAddress }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput)
-}
-
-// Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) AnnotatedDatasetDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AnnotatedDatasetDescription
-	}).(pulumi.StringPtrOutput)
-}
-
-// A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) AnnotatedDatasetDisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AnnotatedDatasetDisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) ContributorEmails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ContributorEmails
-	}).(pulumi.StringArrayOutput)
-}
-
-// Instruction resource name.
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) Instruction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Instruction
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) LabelGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LabelGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The Language of this question, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US. Only need to set this when task is language related. For example, French text classification.
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) LanguageCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LanguageCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Maximum duration for contributors to answer a question. Maximum is 3600 seconds. Default is 3600 seconds.
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) QuestionDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.QuestionDuration
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Replication of questions. Each question will be sent to up to this number of contributors to label. Aggregated answers will be returned. Default is set to 1. For image related labeling, valid values are 1, 3, 5.
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) ReplicaCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.ReplicaCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Email of the user who started the labeling task and should be notified by email. If empty no notification will be sent.
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) UserEmailAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UserEmailAddress
-	}).(pulumi.StringPtrOutput)
 }
 
 // Config for image classification human labeling task.
@@ -3869,80 +2230,6 @@ type GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse struct {
 	AnswerAggregationType string `pulumi:"answerAggregationType"`
 }
 
-// GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs and GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput() GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput
-	ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput
-}
-
-// Config for image classification human labeling task.
-type GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs struct {
-	// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
-	AllowMultiLabel pulumi.BoolInput `pulumi:"allowMultiLabel"`
-	// Annotation spec set resource name.
-	AnnotationSpecSet pulumi.StringInput `pulumi:"annotationSpecSet"`
-	// Optional. The type of how to aggregate answers.
-	AnswerAggregationType pulumi.StringInput `pulumi:"answerAggregationType"`
-}
-
-func (GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput() GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput).ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs, GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtr and GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrType GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs
-
-func GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtr(v *GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs) GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput)
-}
-
 // Config for image classification human labeling task.
 type GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -3956,16 +2243,6 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput) T
 
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse) *GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput)
 }
 
 // Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
@@ -3985,60 +2262,6 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput) A
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse) string {
 		return v.AnswerAggregationType
 	}).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse) GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput)
-}
-
-// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
-func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput) AllowMultiLabel() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AllowMultiLabel
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Annotation spec set resource name.
-func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput) AnnotationSpecSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AnnotationSpecSet
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The type of how to aggregate answers.
-func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput) AnswerAggregationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AnswerAggregationType
-	}).(pulumi.StringPtrOutput)
 }
 
 // The configuration of input data, including data type, location, etc.
@@ -4304,111 +2527,6 @@ type GoogleCloudDatalabelingV1beta1InputConfigResponse struct {
 	TextMetadata GoogleCloudDatalabelingV1beta1TextMetadataResponse `pulumi:"textMetadata"`
 }
 
-// GoogleCloudDatalabelingV1beta1InputConfigResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1InputConfigResponseArgs and GoogleCloudDatalabelingV1beta1InputConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1InputConfigResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1InputConfigResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1InputConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1InputConfigResponseOutput() GoogleCloudDatalabelingV1beta1InputConfigResponseOutput
-	ToGoogleCloudDatalabelingV1beta1InputConfigResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1InputConfigResponseOutput
-}
-
-// The configuration of input data, including data type, location, etc.
-type GoogleCloudDatalabelingV1beta1InputConfigResponseArgs struct {
-	// Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
-	AnnotationType pulumi.StringInput `pulumi:"annotationType"`
-	// Source located in BigQuery. You must specify this field if you are using this InputConfig in an EvaluationJob.
-	BigquerySource GoogleCloudDatalabelingV1beta1BigQuerySourceResponseInput `pulumi:"bigquerySource"`
-	// Optional. Metadata about annotations for the input. You must specify this field if you are using this InputConfig in an EvaluationJob for a model version that performs classification.
-	ClassificationMetadata GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseInput `pulumi:"classificationMetadata"`
-	// Data type must be specifed when user tries to import data.
-	DataType pulumi.StringInput `pulumi:"dataType"`
-	// Source located in Cloud Storage.
-	GcsSource GoogleCloudDatalabelingV1beta1GcsSourceResponseInput `pulumi:"gcsSource"`
-	// Required for text import, as language code must be specified.
-	TextMetadata GoogleCloudDatalabelingV1beta1TextMetadataResponseInput `pulumi:"textMetadata"`
-}
-
-func (GoogleCloudDatalabelingV1beta1InputConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1InputConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1InputConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1InputConfigResponseOutput() GoogleCloudDatalabelingV1beta1InputConfigResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1InputConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1InputConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1InputConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1InputConfigResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1InputConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1InputConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1InputConfigResponseOutput).ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1InputConfigResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1InputConfigResponseArgs, GoogleCloudDatalabelingV1beta1InputConfigResponsePtr and GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1InputConfigResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1InputConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1InputConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1InputConfigResponsePtrType GoogleCloudDatalabelingV1beta1InputConfigResponseArgs
-
-func GoogleCloudDatalabelingV1beta1InputConfigResponsePtr(v *GoogleCloudDatalabelingV1beta1InputConfigResponseArgs) GoogleCloudDatalabelingV1beta1InputConfigResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1InputConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1InputConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1InputConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1InputConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1InputConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput)
-}
-
-// GoogleCloudDatalabelingV1beta1InputConfigResponseArrayInput is an input type that accepts GoogleCloudDatalabelingV1beta1InputConfigResponseArray and GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1InputConfigResponseArrayInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1InputConfigResponseArray{ GoogleCloudDatalabelingV1beta1InputConfigResponseArgs{...} }
-type GoogleCloudDatalabelingV1beta1InputConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput() GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput
-	ToGoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput
-}
-
-type GoogleCloudDatalabelingV1beta1InputConfigResponseArray []GoogleCloudDatalabelingV1beta1InputConfigResponseInput
-
-func (GoogleCloudDatalabelingV1beta1InputConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDatalabelingV1beta1InputConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1InputConfigResponseArray) ToGoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput() GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1InputConfigResponseArray) ToGoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput)
-}
-
 // The configuration of input data, including data type, location, etc.
 type GoogleCloudDatalabelingV1beta1InputConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -4422,16 +2540,6 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigResponseOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1InputConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1InputConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1InputConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1InputConfigResponse) *GoogleCloudDatalabelingV1beta1InputConfigResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput)
 }
 
 // Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
@@ -4470,90 +2578,6 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigResponseOutput) TextMetadata() 
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1InputConfigResponse) GoogleCloudDatalabelingV1beta1TextMetadataResponse {
 		return v.TextMetadata
 	}).(GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1InputConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1InputConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfigResponse) GoogleCloudDatalabelingV1beta1InputConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1InputConfigResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1InputConfigResponseOutput)
-}
-
-// Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
-func (o GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput) AnnotationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AnnotationType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Source located in BigQuery. You must specify this field if you are using this InputConfig in an EvaluationJob.
-func (o GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput) BigquerySource() GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfigResponse) *GoogleCloudDatalabelingV1beta1BigQuerySourceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BigquerySource
-	}).(GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput)
-}
-
-// Optional. Metadata about annotations for the input. You must specify this field if you are using this InputConfig in an EvaluationJob for a model version that performs classification.
-func (o GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput) ClassificationMetadata() GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfigResponse) *GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ClassificationMetadata
-	}).(GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput)
-}
-
-// Data type must be specifed when user tries to import data.
-func (o GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput) DataType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DataType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Source located in Cloud Storage.
-func (o GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput) GcsSource() GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfigResponse) *GoogleCloudDatalabelingV1beta1GcsSourceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.GcsSource
-	}).(GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput)
-}
-
-// Required for text import, as language code must be specified.
-func (o GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput) TextMetadata() GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfigResponse) *GoogleCloudDatalabelingV1beta1TextMetadataResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TextMetadata
-	}).(GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput)
 }
 
 type GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput struct{ *pulumi.OutputState }
@@ -4701,74 +2725,6 @@ func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput) Elem() 
 type GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse struct {
 }
 
-// GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseArgs and GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput() GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput
-	ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput
-}
-
-// Metadata describing the feedback from the operator.
-type GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseArgs struct {
-}
-
-func (GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput() GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput).ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseArgs, GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtr and GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrType GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseArgs
-
-func GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtr(v *GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseArgs) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrType) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrType) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput)
-}
-
 // Metadata describing the feedback from the operator.
 type GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput struct{ *pulumi.OutputState }
 
@@ -4782,40 +2738,6 @@ func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput) To
 
 func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse) *GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput)
 }
 
 // Instruction from a PDF file.
@@ -4964,76 +2886,6 @@ type GoogleCloudDatalabelingV1beta1PdfInstructionResponse struct {
 	GcsFileUri string `pulumi:"gcsFileUri"`
 }
 
-// GoogleCloudDatalabelingV1beta1PdfInstructionResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1PdfInstructionResponseArgs and GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1PdfInstructionResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1PdfInstructionResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1PdfInstructionResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput() GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput
-	ToGoogleCloudDatalabelingV1beta1PdfInstructionResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput
-}
-
-// Instruction from a PDF file.
-type GoogleCloudDatalabelingV1beta1PdfInstructionResponseArgs struct {
-	// PDF file for the instruction. Only gcs path is allowed.
-	GcsFileUri pulumi.StringInput `pulumi:"gcsFileUri"`
-}
-
-func (GoogleCloudDatalabelingV1beta1PdfInstructionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1PdfInstructionResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1PdfInstructionResponseArgs) ToGoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput() GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1PdfInstructionResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1PdfInstructionResponseArgs) ToGoogleCloudDatalabelingV1beta1PdfInstructionResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1PdfInstructionResponseArgs) ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput() GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1PdfInstructionResponseArgs) ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput).ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1PdfInstructionResponseArgs, GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtr and GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1PdfInstructionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput() GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1PdfInstructionResponsePtrType GoogleCloudDatalabelingV1beta1PdfInstructionResponseArgs
-
-func GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtr(v *GoogleCloudDatalabelingV1beta1PdfInstructionResponseArgs) GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1PdfInstructionResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1PdfInstructionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1PdfInstructionResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1PdfInstructionResponsePtrType) ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput() GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1PdfInstructionResponsePtrType) ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput)
-}
-
 // Instruction from a PDF file.
 type GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput struct{ *pulumi.OutputState }
 
@@ -5049,53 +2901,9 @@ func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput) ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput() GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput) ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1PdfInstructionResponse) *GoogleCloudDatalabelingV1beta1PdfInstructionResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput)
-}
-
 // PDF file for the instruction. Only gcs path is allowed.
 func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput) GcsFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1PdfInstructionResponse) string { return v.GcsFileUri }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1PdfInstructionResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput() GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1PdfInstructionResponse) GoogleCloudDatalabelingV1beta1PdfInstructionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1PdfInstructionResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput)
-}
-
-// PDF file for the instruction. Only gcs path is allowed.
-func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput) GcsFileUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1PdfInstructionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.GcsFileUri
-	}).(pulumi.StringPtrOutput)
 }
 
 // Metadata describing the feedback from the labeling task requester.
@@ -5223,74 +3031,6 @@ func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput) Elem()
 type GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse struct {
 }
 
-// GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseArgs and GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput() GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput
-	ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput
-}
-
-// Metadata describing the feedback from the labeling task requester.
-type GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseArgs struct {
-}
-
-func (GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput() GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput).ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseArgs, GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtr and GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrType GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseArgs
-
-func GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtr(v *GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseArgs) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrType) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrType) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput)
-}
-
 // Metadata describing the feedback from the labeling task requester.
 type GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput struct{ *pulumi.OutputState }
 
@@ -5304,40 +3044,6 @@ func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput) T
 
 func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse) *GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput)
 }
 
 // Config for setting up sentiments.
@@ -5486,76 +3192,6 @@ type GoogleCloudDatalabelingV1beta1SentimentConfigResponse struct {
 	EnableLabelSentimentSelection bool `pulumi:"enableLabelSentimentSelection"`
 }
 
-// GoogleCloudDatalabelingV1beta1SentimentConfigResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1SentimentConfigResponseArgs and GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1SentimentConfigResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1SentimentConfigResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1SentimentConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput() GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput
-	ToGoogleCloudDatalabelingV1beta1SentimentConfigResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput
-}
-
-// Config for setting up sentiments.
-type GoogleCloudDatalabelingV1beta1SentimentConfigResponseArgs struct {
-	// If set to true, contributors will have the option to select sentiment of the label they selected, to mark it as negative or positive label. Default is false.
-	EnableLabelSentimentSelection pulumi.BoolInput `pulumi:"enableLabelSentimentSelection"`
-}
-
-func (GoogleCloudDatalabelingV1beta1SentimentConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1SentimentConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1SentimentConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput() GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1SentimentConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1SentimentConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1SentimentConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1SentimentConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1SentimentConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput).ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1SentimentConfigResponseArgs, GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtr and GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1SentimentConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1SentimentConfigResponsePtrType GoogleCloudDatalabelingV1beta1SentimentConfigResponseArgs
-
-func GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtr(v *GoogleCloudDatalabelingV1beta1SentimentConfigResponseArgs) GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1SentimentConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1SentimentConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1SentimentConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1SentimentConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1SentimentConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput)
-}
-
 // Config for setting up sentiments.
 type GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -5571,55 +3207,11 @@ func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1SentimentConfigResponse) *GoogleCloudDatalabelingV1beta1SentimentConfigResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput)
-}
-
 // If set to true, contributors will have the option to select sentiment of the label they selected, to mark it as negative or positive label. Default is false.
 func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput) EnableLabelSentimentSelection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1SentimentConfigResponse) bool {
 		return v.EnableLabelSentimentSelection
 	}).(pulumi.BoolOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1SentimentConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1SentimentConfigResponse) GoogleCloudDatalabelingV1beta1SentimentConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1SentimentConfigResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput)
-}
-
-// If set to true, contributors will have the option to select sentiment of the label they selected, to mark it as negative or positive label. Default is false.
-func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput) EnableLabelSentimentSelection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1SentimentConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableLabelSentimentSelection
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Config for text classification human labeling task.
@@ -5812,80 +3404,6 @@ type GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse struct {
 	SentimentConfig GoogleCloudDatalabelingV1beta1SentimentConfigResponse `pulumi:"sentimentConfig"`
 }
 
-// GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs and GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput() GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput
-	ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput
-}
-
-// Config for text classification human labeling task.
-type GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs struct {
-	// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment.
-	AllowMultiLabel pulumi.BoolInput `pulumi:"allowMultiLabel"`
-	// Annotation spec set resource name.
-	AnnotationSpecSet pulumi.StringInput `pulumi:"annotationSpecSet"`
-	// Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as it is incompatible with uCAIP.
-	SentimentConfig GoogleCloudDatalabelingV1beta1SentimentConfigResponseInput `pulumi:"sentimentConfig"`
-}
-
-func (GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput() GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput).ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs, GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtr and GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrType GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs
-
-func GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtr(v *GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs) GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrType) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput)
-}
-
 // Config for text classification human labeling task.
 type GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -5899,16 +3417,6 @@ func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput) To
 
 func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse) *GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput)
 }
 
 // Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment.
@@ -5928,60 +3436,6 @@ func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput) Se
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse) GoogleCloudDatalabelingV1beta1SentimentConfigResponse {
 		return v.SentimentConfig
 	}).(GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput() GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse) GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput)
-}
-
-// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment.
-func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput) AllowMultiLabel() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AllowMultiLabel
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Annotation spec set resource name.
-func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput) AnnotationSpecSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AnnotationSpecSet
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as it is incompatible with uCAIP.
-func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput) SentimentConfig() GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse) *GoogleCloudDatalabelingV1beta1SentimentConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SentimentConfig
-	}).(GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput)
 }
 
 // Metadata for the text.
@@ -6130,76 +3584,6 @@ type GoogleCloudDatalabelingV1beta1TextMetadataResponse struct {
 	LanguageCode string `pulumi:"languageCode"`
 }
 
-// GoogleCloudDatalabelingV1beta1TextMetadataResponseInput is an input type that accepts GoogleCloudDatalabelingV1beta1TextMetadataResponseArgs and GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1TextMetadataResponseInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1TextMetadataResponseArgs{...}
-type GoogleCloudDatalabelingV1beta1TextMetadataResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1TextMetadataResponseOutput() GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput
-	ToGoogleCloudDatalabelingV1beta1TextMetadataResponseOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput
-}
-
-// Metadata for the text.
-type GoogleCloudDatalabelingV1beta1TextMetadataResponseArgs struct {
-	// The language of this text, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US.
-	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
-}
-
-func (GoogleCloudDatalabelingV1beta1TextMetadataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1TextMetadataResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1TextMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1TextMetadataResponseOutput() GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1TextMetadataResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1TextMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1TextMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput)
-}
-
-func (i GoogleCloudDatalabelingV1beta1TextMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1TextMetadataResponseArgs) ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput).ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1TextMetadataResponseArgs, GoogleCloudDatalabelingV1beta1TextMetadataResponsePtr and GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1TextMetadataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput
-	ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput
-}
-
-type googleCloudDatalabelingV1beta1TextMetadataResponsePtrType GoogleCloudDatalabelingV1beta1TextMetadataResponseArgs
-
-func GoogleCloudDatalabelingV1beta1TextMetadataResponsePtr(v *GoogleCloudDatalabelingV1beta1TextMetadataResponseArgs) GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrInput {
-	return (*googleCloudDatalabelingV1beta1TextMetadataResponsePtrType)(v)
-}
-
-func (*googleCloudDatalabelingV1beta1TextMetadataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1TextMetadataResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatalabelingV1beta1TextMetadataResponsePtrType) ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatalabelingV1beta1TextMetadataResponsePtrType) ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput)
-}
-
 // Metadata for the text.
 type GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput struct{ *pulumi.OutputState }
 
@@ -6215,53 +3599,9 @@ func (o GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput) ToGoogleCloudD
 	return o
 }
 
-func (o GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput {
-	return o.ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1TextMetadataResponse) *GoogleCloudDatalabelingV1beta1TextMetadataResponse {
-		return &v
-	}).(GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput)
-}
-
 // The language of this text, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US.
 func (o GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1TextMetadataResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1TextMetadataResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput() GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput) ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1TextMetadataResponse) GoogleCloudDatalabelingV1beta1TextMetadataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatalabelingV1beta1TextMetadataResponse
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput)
-}
-
-// The language of this text, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US.
-func (o GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput) LanguageCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1TextMetadataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LanguageCode
-	}).(pulumi.StringPtrOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -6272,64 +3612,6 @@ type GoogleRpcStatusResponse struct {
 	Details []map[string]string `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
-}
-
-// GoogleRpcStatusResponseInput is an input type that accepts GoogleRpcStatusResponseArgs and GoogleRpcStatusResponseOutput values.
-// You can construct a concrete instance of `GoogleRpcStatusResponseInput` via:
-//
-//          GoogleRpcStatusResponseArgs{...}
-type GoogleRpcStatusResponseInput interface {
-	pulumi.Input
-
-	ToGoogleRpcStatusResponseOutput() GoogleRpcStatusResponseOutput
-	ToGoogleRpcStatusResponseOutputWithContext(context.Context) GoogleRpcStatusResponseOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type GoogleRpcStatusResponseArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (GoogleRpcStatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleRpcStatusResponse)(nil)).Elem()
-}
-
-func (i GoogleRpcStatusResponseArgs) ToGoogleRpcStatusResponseOutput() GoogleRpcStatusResponseOutput {
-	return i.ToGoogleRpcStatusResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleRpcStatusResponseArgs) ToGoogleRpcStatusResponseOutputWithContext(ctx context.Context) GoogleRpcStatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusResponseOutput)
-}
-
-// GoogleRpcStatusResponseArrayInput is an input type that accepts GoogleRpcStatusResponseArray and GoogleRpcStatusResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleRpcStatusResponseArrayInput` via:
-//
-//          GoogleRpcStatusResponseArray{ GoogleRpcStatusResponseArgs{...} }
-type GoogleRpcStatusResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleRpcStatusResponseArrayOutput() GoogleRpcStatusResponseArrayOutput
-	ToGoogleRpcStatusResponseArrayOutputWithContext(context.Context) GoogleRpcStatusResponseArrayOutput
-}
-
-type GoogleRpcStatusResponseArray []GoogleRpcStatusResponseInput
-
-func (GoogleRpcStatusResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleRpcStatusResponse)(nil)).Elem()
-}
-
-func (i GoogleRpcStatusResponseArray) ToGoogleRpcStatusResponseArrayOutput() GoogleRpcStatusResponseArrayOutput {
-	return i.ToGoogleRpcStatusResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleRpcStatusResponseArray) ToGoogleRpcStatusResponseArrayOutputWithContext(ctx context.Context) GoogleRpcStatusResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusResponseArrayOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -6385,81 +3667,38 @@ func (o GoogleRpcStatusResponseArrayOutput) Index(i pulumi.IntInput) GoogleRpcSt
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1AnnotationSpecInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1AnnotationSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1AnnotationSpecArrayInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1AnnotationSpecArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1AnnotationSpecResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1AttemptResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1AttemptResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1AttemptResponseArrayInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1AttemptResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BigQuerySourceInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1BigQuerySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BigQuerySourcePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1BigQuerySourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BigQuerySourceResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BoundingPolyConfigInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1ClassificationMetadataInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationConfigInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationConfigPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationConfigResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationJobConfigInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1GcsSourceInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1GcsSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1GcsSourcePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1GcsSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1GcsSourceResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1HumanAnnotationConfigInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1ImageClassificationConfigInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1InputConfigInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1InputConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1InputConfigPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1InputConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1InputConfigResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1InputConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1InputConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1InputConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1InputConfigResponseArrayInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1InputConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1PdfInstructionInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1PdfInstructionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1PdfInstructionPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1PdfInstructionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1PdfInstructionResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1PdfInstructionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1PdfInstructionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1SentimentConfigInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1SentimentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1SentimentConfigPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1SentimentConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1SentimentConfigResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1SentimentConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1SentimentConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1TextClassificationConfigInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1TextMetadataInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1TextMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1TextMetadataPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1TextMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1TextMetadataResponseInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1TextMetadataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1TextMetadataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleRpcStatusResponseInput)(nil)).Elem(), GoogleRpcStatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleRpcStatusResponseArrayInput)(nil)).Elem(), GoogleRpcStatusResponseArray{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1AnnotationSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput{})
@@ -6469,72 +3708,53 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1BigQuerySourceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1ClassificationMetadataOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationConfigOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1GcsSourceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1InputConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1InputConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1InputConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1PdfInstructionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1SentimentConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1TextClassificationConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1TextMetadataOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusResponseOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusResponseArrayOutput{})
 }

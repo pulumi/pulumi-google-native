@@ -119,7 +119,7 @@ type TargetSslProxyInput interface {
 }
 
 func (*TargetSslProxy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetSslProxy)(nil))
+	return reflect.TypeOf((**TargetSslProxy)(nil)).Elem()
 }
 
 func (i *TargetSslProxy) ToTargetSslProxyOutput() TargetSslProxyOutput {
@@ -133,7 +133,7 @@ func (i *TargetSslProxy) ToTargetSslProxyOutputWithContext(ctx context.Context) 
 type TargetSslProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetSslProxyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetSslProxy)(nil))
+	return reflect.TypeOf((**TargetSslProxy)(nil)).Elem()
 }
 
 func (o TargetSslProxyOutput) ToTargetSslProxyOutput() TargetSslProxyOutput {

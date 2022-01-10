@@ -127,7 +127,7 @@ type ReservationInput interface {
 }
 
 func (*Reservation) ElementType() reflect.Type {
-	return reflect.TypeOf((*Reservation)(nil))
+	return reflect.TypeOf((**Reservation)(nil)).Elem()
 }
 
 func (i *Reservation) ToReservationOutput() ReservationOutput {
@@ -141,7 +141,7 @@ func (i *Reservation) ToReservationOutputWithContext(ctx context.Context) Reserv
 type ReservationOutput struct{ *pulumi.OutputState }
 
 func (ReservationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Reservation)(nil))
+	return reflect.TypeOf((**Reservation)(nil)).Elem()
 }
 
 func (o ReservationOutput) ToReservationOutput() ReservationOutput {

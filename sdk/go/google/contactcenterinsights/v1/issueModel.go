@@ -103,7 +103,7 @@ type IssueModelInput interface {
 }
 
 func (*IssueModel) ElementType() reflect.Type {
-	return reflect.TypeOf((*IssueModel)(nil))
+	return reflect.TypeOf((**IssueModel)(nil)).Elem()
 }
 
 func (i *IssueModel) ToIssueModelOutput() IssueModelOutput {
@@ -117,7 +117,7 @@ func (i *IssueModel) ToIssueModelOutputWithContext(ctx context.Context) IssueMod
 type IssueModelOutput struct{ *pulumi.OutputState }
 
 func (IssueModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IssueModel)(nil))
+	return reflect.TypeOf((**IssueModel)(nil)).Elem()
 }
 
 func (o IssueModelOutput) ToIssueModelOutput() IssueModelOutput {

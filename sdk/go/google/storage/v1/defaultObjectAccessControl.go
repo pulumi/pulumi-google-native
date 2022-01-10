@@ -191,7 +191,7 @@ type DefaultObjectAccessControlInput interface {
 }
 
 func (*DefaultObjectAccessControl) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultObjectAccessControl)(nil))
+	return reflect.TypeOf((**DefaultObjectAccessControl)(nil)).Elem()
 }
 
 func (i *DefaultObjectAccessControl) ToDefaultObjectAccessControlOutput() DefaultObjectAccessControlOutput {
@@ -205,7 +205,7 @@ func (i *DefaultObjectAccessControl) ToDefaultObjectAccessControlOutputWithConte
 type DefaultObjectAccessControlOutput struct{ *pulumi.OutputState }
 
 func (DefaultObjectAccessControlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultObjectAccessControl)(nil))
+	return reflect.TypeOf((**DefaultObjectAccessControl)(nil)).Elem()
 }
 
 func (o DefaultObjectAccessControlOutput) ToDefaultObjectAccessControlOutput() DefaultObjectAccessControlOutput {

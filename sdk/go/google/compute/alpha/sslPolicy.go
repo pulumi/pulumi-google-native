@@ -129,7 +129,7 @@ type SslPolicyInput interface {
 }
 
 func (*SslPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslPolicy)(nil))
+	return reflect.TypeOf((**SslPolicy)(nil)).Elem()
 }
 
 func (i *SslPolicy) ToSslPolicyOutput() SslPolicyOutput {
@@ -143,7 +143,7 @@ func (i *SslPolicy) ToSslPolicyOutputWithContext(ctx context.Context) SslPolicyO
 type SslPolicyOutput struct{ *pulumi.OutputState }
 
 func (SslPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslPolicy)(nil))
+	return reflect.TypeOf((**SslPolicy)(nil)).Elem()
 }
 
 func (o SslPolicyOutput) ToSslPolicyOutput() SslPolicyOutput {

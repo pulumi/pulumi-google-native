@@ -140,7 +140,7 @@ type CanaryEvaluationInput interface {
 }
 
 func (*CanaryEvaluation) ElementType() reflect.Type {
-	return reflect.TypeOf((*CanaryEvaluation)(nil))
+	return reflect.TypeOf((**CanaryEvaluation)(nil)).Elem()
 }
 
 func (i *CanaryEvaluation) ToCanaryEvaluationOutput() CanaryEvaluationOutput {
@@ -154,7 +154,7 @@ func (i *CanaryEvaluation) ToCanaryEvaluationOutputWithContext(ctx context.Conte
 type CanaryEvaluationOutput struct{ *pulumi.OutputState }
 
 func (CanaryEvaluationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CanaryEvaluation)(nil))
+	return reflect.TypeOf((**CanaryEvaluation)(nil)).Elem()
 }
 
 func (o CanaryEvaluationOutput) ToCanaryEvaluationOutput() CanaryEvaluationOutput {

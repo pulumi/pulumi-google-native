@@ -152,7 +152,7 @@ type CaseInput interface {
 }
 
 func (*Case) ElementType() reflect.Type {
-	return reflect.TypeOf((*Case)(nil))
+	return reflect.TypeOf((**Case)(nil)).Elem()
 }
 
 func (i *Case) ToCaseOutput() CaseOutput {
@@ -166,7 +166,7 @@ func (i *Case) ToCaseOutputWithContext(ctx context.Context) CaseOutput {
 type CaseOutput struct{ *pulumi.OutputState }
 
 func (CaseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Case)(nil))
+	return reflect.TypeOf((**Case)(nil)).Elem()
 }
 
 func (o CaseOutput) ToCaseOutput() CaseOutput {

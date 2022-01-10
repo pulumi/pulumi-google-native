@@ -103,7 +103,7 @@ type EntryGroupIamPolicyInput interface {
 }
 
 func (*EntryGroupIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntryGroupIamPolicy)(nil))
+	return reflect.TypeOf((**EntryGroupIamPolicy)(nil)).Elem()
 }
 
 func (i *EntryGroupIamPolicy) ToEntryGroupIamPolicyOutput() EntryGroupIamPolicyOutput {
@@ -117,7 +117,7 @@ func (i *EntryGroupIamPolicy) ToEntryGroupIamPolicyOutputWithContext(ctx context
 type EntryGroupIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntryGroupIamPolicy)(nil))
+	return reflect.TypeOf((**EntryGroupIamPolicy)(nil)).Elem()
 }
 
 func (o EntryGroupIamPolicyOutput) ToEntryGroupIamPolicyOutput() EntryGroupIamPolicyOutput {

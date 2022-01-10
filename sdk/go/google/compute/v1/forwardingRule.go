@@ -219,7 +219,7 @@ type ForwardingRuleInput interface {
 }
 
 func (*ForwardingRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*ForwardingRule)(nil))
+	return reflect.TypeOf((**ForwardingRule)(nil)).Elem()
 }
 
 func (i *ForwardingRule) ToForwardingRuleOutput() ForwardingRuleOutput {
@@ -233,7 +233,7 @@ func (i *ForwardingRule) ToForwardingRuleOutputWithContext(ctx context.Context) 
 type ForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ForwardingRule)(nil))
+	return reflect.TypeOf((**ForwardingRule)(nil)).Elem()
 }
 
 func (o ForwardingRuleOutput) ToForwardingRuleOutput() ForwardingRuleOutput {

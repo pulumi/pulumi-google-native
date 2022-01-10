@@ -158,78 +158,6 @@ type BigQueryOptionsResponse struct {
 	UsesTimestampColumnPartitioning bool `pulumi:"usesTimestampColumnPartitioning"`
 }
 
-// BigQueryOptionsResponseInput is an input type that accepts BigQueryOptionsResponseArgs and BigQueryOptionsResponseOutput values.
-// You can construct a concrete instance of `BigQueryOptionsResponseInput` via:
-//
-//          BigQueryOptionsResponseArgs{...}
-type BigQueryOptionsResponseInput interface {
-	pulumi.Input
-
-	ToBigQueryOptionsResponseOutput() BigQueryOptionsResponseOutput
-	ToBigQueryOptionsResponseOutputWithContext(context.Context) BigQueryOptionsResponseOutput
-}
-
-// Options that change functionality of a sink exporting data to BigQuery.
-type BigQueryOptionsResponseArgs struct {
-	// Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Cloud Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
-	UsePartitionedTables pulumi.BoolInput `pulumi:"usePartitionedTables"`
-	// True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use.All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
-	UsesTimestampColumnPartitioning pulumi.BoolInput `pulumi:"usesTimestampColumnPartitioning"`
-}
-
-func (BigQueryOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BigQueryOptionsResponse)(nil)).Elem()
-}
-
-func (i BigQueryOptionsResponseArgs) ToBigQueryOptionsResponseOutput() BigQueryOptionsResponseOutput {
-	return i.ToBigQueryOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i BigQueryOptionsResponseArgs) ToBigQueryOptionsResponseOutputWithContext(ctx context.Context) BigQueryOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigQueryOptionsResponseOutput)
-}
-
-func (i BigQueryOptionsResponseArgs) ToBigQueryOptionsResponsePtrOutput() BigQueryOptionsResponsePtrOutput {
-	return i.ToBigQueryOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BigQueryOptionsResponseArgs) ToBigQueryOptionsResponsePtrOutputWithContext(ctx context.Context) BigQueryOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigQueryOptionsResponseOutput).ToBigQueryOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// BigQueryOptionsResponsePtrInput is an input type that accepts BigQueryOptionsResponseArgs, BigQueryOptionsResponsePtr and BigQueryOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `BigQueryOptionsResponsePtrInput` via:
-//
-//          BigQueryOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BigQueryOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToBigQueryOptionsResponsePtrOutput() BigQueryOptionsResponsePtrOutput
-	ToBigQueryOptionsResponsePtrOutputWithContext(context.Context) BigQueryOptionsResponsePtrOutput
-}
-
-type bigQueryOptionsResponsePtrType BigQueryOptionsResponseArgs
-
-func BigQueryOptionsResponsePtr(v *BigQueryOptionsResponseArgs) BigQueryOptionsResponsePtrInput {
-	return (*bigQueryOptionsResponsePtrType)(v)
-}
-
-func (*bigQueryOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BigQueryOptionsResponse)(nil)).Elem()
-}
-
-func (i *bigQueryOptionsResponsePtrType) ToBigQueryOptionsResponsePtrOutput() BigQueryOptionsResponsePtrOutput {
-	return i.ToBigQueryOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bigQueryOptionsResponsePtrType) ToBigQueryOptionsResponsePtrOutputWithContext(ctx context.Context) BigQueryOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigQueryOptionsResponsePtrOutput)
-}
-
 // Options that change functionality of a sink exporting data to BigQuery.
 type BigQueryOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -245,16 +173,6 @@ func (o BigQueryOptionsResponseOutput) ToBigQueryOptionsResponseOutputWithContex
 	return o
 }
 
-func (o BigQueryOptionsResponseOutput) ToBigQueryOptionsResponsePtrOutput() BigQueryOptionsResponsePtrOutput {
-	return o.ToBigQueryOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BigQueryOptionsResponseOutput) ToBigQueryOptionsResponsePtrOutputWithContext(ctx context.Context) BigQueryOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryOptionsResponse) *BigQueryOptionsResponse {
-		return &v
-	}).(BigQueryOptionsResponsePtrOutput)
-}
-
 // Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Cloud Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
 func (o BigQueryOptionsResponseOutput) UsePartitionedTables() pulumi.BoolOutput {
 	return o.ApplyT(func(v BigQueryOptionsResponse) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
@@ -263,50 +181,6 @@ func (o BigQueryOptionsResponseOutput) UsePartitionedTables() pulumi.BoolOutput 
 // True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use.All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
 func (o BigQueryOptionsResponseOutput) UsesTimestampColumnPartitioning() pulumi.BoolOutput {
 	return o.ApplyT(func(v BigQueryOptionsResponse) bool { return v.UsesTimestampColumnPartitioning }).(pulumi.BoolOutput)
-}
-
-type BigQueryOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BigQueryOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BigQueryOptionsResponse)(nil)).Elem()
-}
-
-func (o BigQueryOptionsResponsePtrOutput) ToBigQueryOptionsResponsePtrOutput() BigQueryOptionsResponsePtrOutput {
-	return o
-}
-
-func (o BigQueryOptionsResponsePtrOutput) ToBigQueryOptionsResponsePtrOutputWithContext(ctx context.Context) BigQueryOptionsResponsePtrOutput {
-	return o
-}
-
-func (o BigQueryOptionsResponsePtrOutput) Elem() BigQueryOptionsResponseOutput {
-	return o.ApplyT(func(v *BigQueryOptionsResponse) BigQueryOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BigQueryOptionsResponse
-		return ret
-	}).(BigQueryOptionsResponseOutput)
-}
-
-// Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Cloud Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
-func (o BigQueryOptionsResponsePtrOutput) UsePartitionedTables() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BigQueryOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.UsePartitionedTables
-	}).(pulumi.BoolPtrOutput)
-}
-
-// True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use.All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
-func (o BigQueryOptionsResponsePtrOutput) UsesTimestampColumnPartitioning() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BigQueryOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.UsesTimestampColumnPartitioning
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Specifies a set of log entries that are filtered out by a sink. If your Google Cloud resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Note that exclusions on organization-level and folder-level sinks don't apply to child resources. Note also that you cannot modify the _Required sink or exclude logs from it.
@@ -452,70 +326,6 @@ type LogExclusionResponse struct {
 	UpdateTime string `pulumi:"updateTime"`
 }
 
-// LogExclusionResponseInput is an input type that accepts LogExclusionResponseArgs and LogExclusionResponseOutput values.
-// You can construct a concrete instance of `LogExclusionResponseInput` via:
-//
-//          LogExclusionResponseArgs{...}
-type LogExclusionResponseInput interface {
-	pulumi.Input
-
-	ToLogExclusionResponseOutput() LogExclusionResponseOutput
-	ToLogExclusionResponseOutputWithContext(context.Context) LogExclusionResponseOutput
-}
-
-// Specifies a set of log entries that are filtered out by a sink. If your Google Cloud resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Note that exclusions on organization-level and folder-level sinks don't apply to child resources. Note also that you cannot modify the _Required sink or exclude logs from it.
-type LogExclusionResponseArgs struct {
-	// The creation timestamp of the exclusion.This field may not be present for older exclusions.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Optional. A description of this exclusion.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
-	Disabled pulumi.BoolInput `pulumi:"disabled"`
-	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries.For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)
-	Filter pulumi.StringInput `pulumi:"filter"`
-	// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The last update timestamp of the exclusion.This field may not be present for older exclusions.
-	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
-}
-
-func (LogExclusionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogExclusionResponse)(nil)).Elem()
-}
-
-func (i LogExclusionResponseArgs) ToLogExclusionResponseOutput() LogExclusionResponseOutput {
-	return i.ToLogExclusionResponseOutputWithContext(context.Background())
-}
-
-func (i LogExclusionResponseArgs) ToLogExclusionResponseOutputWithContext(ctx context.Context) LogExclusionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogExclusionResponseOutput)
-}
-
-// LogExclusionResponseArrayInput is an input type that accepts LogExclusionResponseArray and LogExclusionResponseArrayOutput values.
-// You can construct a concrete instance of `LogExclusionResponseArrayInput` via:
-//
-//          LogExclusionResponseArray{ LogExclusionResponseArgs{...} }
-type LogExclusionResponseArrayInput interface {
-	pulumi.Input
-
-	ToLogExclusionResponseArrayOutput() LogExclusionResponseArrayOutput
-	ToLogExclusionResponseArrayOutputWithContext(context.Context) LogExclusionResponseArrayOutput
-}
-
-type LogExclusionResponseArray []LogExclusionResponseInput
-
-func (LogExclusionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LogExclusionResponse)(nil)).Elem()
-}
-
-func (i LogExclusionResponseArray) ToLogExclusionResponseArrayOutput() LogExclusionResponseArrayOutput {
-	return i.ToLogExclusionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i LogExclusionResponseArray) ToLogExclusionResponseArrayOutputWithContext(ctx context.Context) LogExclusionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogExclusionResponseArrayOutput)
-}
-
 // Specifies a set of log entries that are filtered out by a sink. If your Google Cloud resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Note that exclusions on organization-level and folder-level sinks don't apply to child resources. Note also that you cannot modify the _Required sink or exclude logs from it.
 type LogExclusionResponseOutput struct{ *pulumi.OutputState }
 
@@ -584,16 +394,11 @@ func (o LogExclusionResponseArrayOutput) Index(i pulumi.IntInput) LogExclusionRe
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryOptionsInput)(nil)).Elem(), BigQueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryOptionsPtrInput)(nil)).Elem(), BigQueryOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryOptionsResponseInput)(nil)).Elem(), BigQueryOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryOptionsResponsePtrInput)(nil)).Elem(), BigQueryOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogExclusionInput)(nil)).Elem(), LogExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogExclusionArrayInput)(nil)).Elem(), LogExclusionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LogExclusionResponseInput)(nil)).Elem(), LogExclusionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LogExclusionResponseArrayInput)(nil)).Elem(), LogExclusionResponseArray{})
 	pulumi.RegisterOutputType(BigQueryOptionsOutput{})
 	pulumi.RegisterOutputType(BigQueryOptionsPtrOutput{})
 	pulumi.RegisterOutputType(BigQueryOptionsResponseOutput{})
-	pulumi.RegisterOutputType(BigQueryOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(LogExclusionOutput{})
 	pulumi.RegisterOutputType(LogExclusionArrayOutput{})
 	pulumi.RegisterOutputType(LogExclusionResponseOutput{})

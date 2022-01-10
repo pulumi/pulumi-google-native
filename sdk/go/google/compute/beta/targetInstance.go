@@ -117,7 +117,7 @@ type TargetInstanceInput interface {
 }
 
 func (*TargetInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetInstance)(nil))
+	return reflect.TypeOf((**TargetInstance)(nil)).Elem()
 }
 
 func (i *TargetInstance) ToTargetInstanceOutput() TargetInstanceOutput {
@@ -131,7 +131,7 @@ func (i *TargetInstance) ToTargetInstanceOutputWithContext(ctx context.Context) 
 type TargetInstanceOutput struct{ *pulumi.OutputState }
 
 func (TargetInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetInstance)(nil))
+	return reflect.TypeOf((**TargetInstance)(nil)).Elem()
 }
 
 func (o TargetInstanceOutput) ToTargetInstanceOutput() TargetInstanceOutput {

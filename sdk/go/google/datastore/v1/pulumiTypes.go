@@ -129,62 +129,6 @@ type GoogleDatastoreAdminV1IndexedPropertyResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// GoogleDatastoreAdminV1IndexedPropertyResponseInput is an input type that accepts GoogleDatastoreAdminV1IndexedPropertyResponseArgs and GoogleDatastoreAdminV1IndexedPropertyResponseOutput values.
-// You can construct a concrete instance of `GoogleDatastoreAdminV1IndexedPropertyResponseInput` via:
-//
-//          GoogleDatastoreAdminV1IndexedPropertyResponseArgs{...}
-type GoogleDatastoreAdminV1IndexedPropertyResponseInput interface {
-	pulumi.Input
-
-	ToGoogleDatastoreAdminV1IndexedPropertyResponseOutput() GoogleDatastoreAdminV1IndexedPropertyResponseOutput
-	ToGoogleDatastoreAdminV1IndexedPropertyResponseOutputWithContext(context.Context) GoogleDatastoreAdminV1IndexedPropertyResponseOutput
-}
-
-// A property of an index.
-type GoogleDatastoreAdminV1IndexedPropertyResponseArgs struct {
-	// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
-	Direction pulumi.StringInput `pulumi:"direction"`
-	// The property name to index.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GoogleDatastoreAdminV1IndexedPropertyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleDatastoreAdminV1IndexedPropertyResponse)(nil)).Elem()
-}
-
-func (i GoogleDatastoreAdminV1IndexedPropertyResponseArgs) ToGoogleDatastoreAdminV1IndexedPropertyResponseOutput() GoogleDatastoreAdminV1IndexedPropertyResponseOutput {
-	return i.ToGoogleDatastoreAdminV1IndexedPropertyResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleDatastoreAdminV1IndexedPropertyResponseArgs) ToGoogleDatastoreAdminV1IndexedPropertyResponseOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDatastoreAdminV1IndexedPropertyResponseOutput)
-}
-
-// GoogleDatastoreAdminV1IndexedPropertyResponseArrayInput is an input type that accepts GoogleDatastoreAdminV1IndexedPropertyResponseArray and GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleDatastoreAdminV1IndexedPropertyResponseArrayInput` via:
-//
-//          GoogleDatastoreAdminV1IndexedPropertyResponseArray{ GoogleDatastoreAdminV1IndexedPropertyResponseArgs{...} }
-type GoogleDatastoreAdminV1IndexedPropertyResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput() GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput
-	ToGoogleDatastoreAdminV1IndexedPropertyResponseArrayOutputWithContext(context.Context) GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput
-}
-
-type GoogleDatastoreAdminV1IndexedPropertyResponseArray []GoogleDatastoreAdminV1IndexedPropertyResponseInput
-
-func (GoogleDatastoreAdminV1IndexedPropertyResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleDatastoreAdminV1IndexedPropertyResponse)(nil)).Elem()
-}
-
-func (i GoogleDatastoreAdminV1IndexedPropertyResponseArray) ToGoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput() GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput {
-	return i.ToGoogleDatastoreAdminV1IndexedPropertyResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleDatastoreAdminV1IndexedPropertyResponseArray) ToGoogleDatastoreAdminV1IndexedPropertyResponseArrayOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput)
-}
-
 // A property of an index.
 type GoogleDatastoreAdminV1IndexedPropertyResponseOutput struct{ *pulumi.OutputState }
 
@@ -233,8 +177,6 @@ func (o GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput) Index(i pulumi
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDatastoreAdminV1IndexedPropertyInput)(nil)).Elem(), GoogleDatastoreAdminV1IndexedPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDatastoreAdminV1IndexedPropertyArrayInput)(nil)).Elem(), GoogleDatastoreAdminV1IndexedPropertyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDatastoreAdminV1IndexedPropertyResponseInput)(nil)).Elem(), GoogleDatastoreAdminV1IndexedPropertyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDatastoreAdminV1IndexedPropertyResponseArrayInput)(nil)).Elem(), GoogleDatastoreAdminV1IndexedPropertyResponseArray{})
 	pulumi.RegisterOutputType(GoogleDatastoreAdminV1IndexedPropertyOutput{})
 	pulumi.RegisterOutputType(GoogleDatastoreAdminV1IndexedPropertyArrayOutput{})
 	pulumi.RegisterOutputType(GoogleDatastoreAdminV1IndexedPropertyResponseOutput{})

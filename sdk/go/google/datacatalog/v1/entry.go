@@ -201,7 +201,7 @@ type EntryInput interface {
 }
 
 func (*Entry) ElementType() reflect.Type {
-	return reflect.TypeOf((*Entry)(nil))
+	return reflect.TypeOf((**Entry)(nil)).Elem()
 }
 
 func (i *Entry) ToEntryOutput() EntryOutput {
@@ -215,7 +215,7 @@ func (i *Entry) ToEntryOutputWithContext(ctx context.Context) EntryOutput {
 type EntryOutput struct{ *pulumi.OutputState }
 
 func (EntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Entry)(nil))
+	return reflect.TypeOf((**Entry)(nil)).Elem()
 }
 
 func (o EntryOutput) ToEntryOutput() EntryOutput {

@@ -99,7 +99,7 @@ type CustomClassInput interface {
 }
 
 func (*CustomClass) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomClass)(nil))
+	return reflect.TypeOf((**CustomClass)(nil)).Elem()
 }
 
 func (i *CustomClass) ToCustomClassOutput() CustomClassOutput {
@@ -113,7 +113,7 @@ func (i *CustomClass) ToCustomClassOutputWithContext(ctx context.Context) Custom
 type CustomClassOutput struct{ *pulumi.OutputState }
 
 func (CustomClassOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomClass)(nil))
+	return reflect.TypeOf((**CustomClass)(nil)).Elem()
 }
 
 func (o CustomClassOutput) ToCustomClassOutput() CustomClassOutput {

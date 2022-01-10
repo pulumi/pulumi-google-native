@@ -177,78 +177,6 @@ type AuthenticationResponse struct {
 	GoogleAccount GoogleAccountResponse `pulumi:"googleAccount"`
 }
 
-// AuthenticationResponseInput is an input type that accepts AuthenticationResponseArgs and AuthenticationResponseOutput values.
-// You can construct a concrete instance of `AuthenticationResponseInput` via:
-//
-//          AuthenticationResponseArgs{...}
-type AuthenticationResponseInput interface {
-	pulumi.Input
-
-	ToAuthenticationResponseOutput() AuthenticationResponseOutput
-	ToAuthenticationResponseOutputWithContext(context.Context) AuthenticationResponseOutput
-}
-
-// Scan authentication configuration.
-type AuthenticationResponseArgs struct {
-	// Authentication using a custom account.
-	CustomAccount CustomAccountResponseInput `pulumi:"customAccount"`
-	// Authentication using a Google account.
-	GoogleAccount GoogleAccountResponseInput `pulumi:"googleAccount"`
-}
-
-func (AuthenticationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthenticationResponse)(nil)).Elem()
-}
-
-func (i AuthenticationResponseArgs) ToAuthenticationResponseOutput() AuthenticationResponseOutput {
-	return i.ToAuthenticationResponseOutputWithContext(context.Background())
-}
-
-func (i AuthenticationResponseArgs) ToAuthenticationResponseOutputWithContext(ctx context.Context) AuthenticationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationResponseOutput)
-}
-
-func (i AuthenticationResponseArgs) ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput {
-	return i.ToAuthenticationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AuthenticationResponseArgs) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationResponseOutput).ToAuthenticationResponsePtrOutputWithContext(ctx)
-}
-
-// AuthenticationResponsePtrInput is an input type that accepts AuthenticationResponseArgs, AuthenticationResponsePtr and AuthenticationResponsePtrOutput values.
-// You can construct a concrete instance of `AuthenticationResponsePtrInput` via:
-//
-//          AuthenticationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AuthenticationResponsePtrInput interface {
-	pulumi.Input
-
-	ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput
-	ToAuthenticationResponsePtrOutputWithContext(context.Context) AuthenticationResponsePtrOutput
-}
-
-type authenticationResponsePtrType AuthenticationResponseArgs
-
-func AuthenticationResponsePtr(v *AuthenticationResponseArgs) AuthenticationResponsePtrInput {
-	return (*authenticationResponsePtrType)(v)
-}
-
-func (*authenticationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthenticationResponse)(nil)).Elem()
-}
-
-func (i *authenticationResponsePtrType) ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput {
-	return i.ToAuthenticationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *authenticationResponsePtrType) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationResponsePtrOutput)
-}
-
 // Scan authentication configuration.
 type AuthenticationResponseOutput struct{ *pulumi.OutputState }
 
@@ -264,16 +192,6 @@ func (o AuthenticationResponseOutput) ToAuthenticationResponseOutputWithContext(
 	return o
 }
 
-func (o AuthenticationResponseOutput) ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput {
-	return o.ToAuthenticationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AuthenticationResponseOutput) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthenticationResponse) *AuthenticationResponse {
-		return &v
-	}).(AuthenticationResponsePtrOutput)
-}
-
 // Authentication using a custom account.
 func (o AuthenticationResponseOutput) CustomAccount() CustomAccountResponseOutput {
 	return o.ApplyT(func(v AuthenticationResponse) CustomAccountResponse { return v.CustomAccount }).(CustomAccountResponseOutput)
@@ -282,50 +200,6 @@ func (o AuthenticationResponseOutput) CustomAccount() CustomAccountResponseOutpu
 // Authentication using a Google account.
 func (o AuthenticationResponseOutput) GoogleAccount() GoogleAccountResponseOutput {
 	return o.ApplyT(func(v AuthenticationResponse) GoogleAccountResponse { return v.GoogleAccount }).(GoogleAccountResponseOutput)
-}
-
-type AuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AuthenticationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthenticationResponse)(nil)).Elem()
-}
-
-func (o AuthenticationResponsePtrOutput) ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput {
-	return o
-}
-
-func (o AuthenticationResponsePtrOutput) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
-	return o
-}
-
-func (o AuthenticationResponsePtrOutput) Elem() AuthenticationResponseOutput {
-	return o.ApplyT(func(v *AuthenticationResponse) AuthenticationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AuthenticationResponse
-		return ret
-	}).(AuthenticationResponseOutput)
-}
-
-// Authentication using a custom account.
-func (o AuthenticationResponsePtrOutput) CustomAccount() CustomAccountResponsePtrOutput {
-	return o.ApplyT(func(v *AuthenticationResponse) *CustomAccountResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CustomAccount
-	}).(CustomAccountResponsePtrOutput)
-}
-
-// Authentication using a Google account.
-func (o AuthenticationResponsePtrOutput) GoogleAccount() GoogleAccountResponsePtrOutput {
-	return o.ApplyT(func(v *AuthenticationResponse) *GoogleAccountResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.GoogleAccount
-	}).(GoogleAccountResponsePtrOutput)
 }
 
 // Describes authentication configuration that uses a custom account.
@@ -516,80 +390,6 @@ type CustomAccountResponse struct {
 	Username string `pulumi:"username"`
 }
 
-// CustomAccountResponseInput is an input type that accepts CustomAccountResponseArgs and CustomAccountResponseOutput values.
-// You can construct a concrete instance of `CustomAccountResponseInput` via:
-//
-//          CustomAccountResponseArgs{...}
-type CustomAccountResponseInput interface {
-	pulumi.Input
-
-	ToCustomAccountResponseOutput() CustomAccountResponseOutput
-	ToCustomAccountResponseOutputWithContext(context.Context) CustomAccountResponseOutput
-}
-
-// Describes authentication configuration that uses a custom account.
-type CustomAccountResponseArgs struct {
-	// The login form URL of the website.
-	LoginUrl pulumi.StringInput `pulumi:"loginUrl"`
-	// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-	Password pulumi.StringInput `pulumi:"password"`
-	// The user name of the custom account.
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (CustomAccountResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomAccountResponse)(nil)).Elem()
-}
-
-func (i CustomAccountResponseArgs) ToCustomAccountResponseOutput() CustomAccountResponseOutput {
-	return i.ToCustomAccountResponseOutputWithContext(context.Background())
-}
-
-func (i CustomAccountResponseArgs) ToCustomAccountResponseOutputWithContext(ctx context.Context) CustomAccountResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomAccountResponseOutput)
-}
-
-func (i CustomAccountResponseArgs) ToCustomAccountResponsePtrOutput() CustomAccountResponsePtrOutput {
-	return i.ToCustomAccountResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CustomAccountResponseArgs) ToCustomAccountResponsePtrOutputWithContext(ctx context.Context) CustomAccountResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomAccountResponseOutput).ToCustomAccountResponsePtrOutputWithContext(ctx)
-}
-
-// CustomAccountResponsePtrInput is an input type that accepts CustomAccountResponseArgs, CustomAccountResponsePtr and CustomAccountResponsePtrOutput values.
-// You can construct a concrete instance of `CustomAccountResponsePtrInput` via:
-//
-//          CustomAccountResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CustomAccountResponsePtrInput interface {
-	pulumi.Input
-
-	ToCustomAccountResponsePtrOutput() CustomAccountResponsePtrOutput
-	ToCustomAccountResponsePtrOutputWithContext(context.Context) CustomAccountResponsePtrOutput
-}
-
-type customAccountResponsePtrType CustomAccountResponseArgs
-
-func CustomAccountResponsePtr(v *CustomAccountResponseArgs) CustomAccountResponsePtrInput {
-	return (*customAccountResponsePtrType)(v)
-}
-
-func (*customAccountResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomAccountResponse)(nil)).Elem()
-}
-
-func (i *customAccountResponsePtrType) ToCustomAccountResponsePtrOutput() CustomAccountResponsePtrOutput {
-	return i.ToCustomAccountResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *customAccountResponsePtrType) ToCustomAccountResponsePtrOutputWithContext(ctx context.Context) CustomAccountResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomAccountResponsePtrOutput)
-}
-
 // Describes authentication configuration that uses a custom account.
 type CustomAccountResponseOutput struct{ *pulumi.OutputState }
 
@@ -605,16 +405,6 @@ func (o CustomAccountResponseOutput) ToCustomAccountResponseOutputWithContext(ct
 	return o
 }
 
-func (o CustomAccountResponseOutput) ToCustomAccountResponsePtrOutput() CustomAccountResponsePtrOutput {
-	return o.ToCustomAccountResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CustomAccountResponseOutput) ToCustomAccountResponsePtrOutputWithContext(ctx context.Context) CustomAccountResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomAccountResponse) *CustomAccountResponse {
-		return &v
-	}).(CustomAccountResponsePtrOutput)
-}
-
 // The login form URL of the website.
 func (o CustomAccountResponseOutput) LoginUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomAccountResponse) string { return v.LoginUrl }).(pulumi.StringOutput)
@@ -628,60 +418,6 @@ func (o CustomAccountResponseOutput) Password() pulumi.StringOutput {
 // The user name of the custom account.
 func (o CustomAccountResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomAccountResponse) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type CustomAccountResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CustomAccountResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomAccountResponse)(nil)).Elem()
-}
-
-func (o CustomAccountResponsePtrOutput) ToCustomAccountResponsePtrOutput() CustomAccountResponsePtrOutput {
-	return o
-}
-
-func (o CustomAccountResponsePtrOutput) ToCustomAccountResponsePtrOutputWithContext(ctx context.Context) CustomAccountResponsePtrOutput {
-	return o
-}
-
-func (o CustomAccountResponsePtrOutput) Elem() CustomAccountResponseOutput {
-	return o.ApplyT(func(v *CustomAccountResponse) CustomAccountResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CustomAccountResponse
-		return ret
-	}).(CustomAccountResponseOutput)
-}
-
-// The login form URL of the website.
-func (o CustomAccountResponsePtrOutput) LoginUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomAccountResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LoginUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-func (o CustomAccountResponsePtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomAccountResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// The user name of the custom account.
-func (o CustomAccountResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomAccountResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Username
-	}).(pulumi.StringPtrOutput)
 }
 
 // Describes authentication configuration that uses a Google account.
@@ -851,78 +587,6 @@ type GoogleAccountResponse struct {
 	Username string `pulumi:"username"`
 }
 
-// GoogleAccountResponseInput is an input type that accepts GoogleAccountResponseArgs and GoogleAccountResponseOutput values.
-// You can construct a concrete instance of `GoogleAccountResponseInput` via:
-//
-//          GoogleAccountResponseArgs{...}
-type GoogleAccountResponseInput interface {
-	pulumi.Input
-
-	ToGoogleAccountResponseOutput() GoogleAccountResponseOutput
-	ToGoogleAccountResponseOutputWithContext(context.Context) GoogleAccountResponseOutput
-}
-
-// Describes authentication configuration that uses a Google account.
-type GoogleAccountResponseArgs struct {
-	// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-	Password pulumi.StringInput `pulumi:"password"`
-	// The user name of the Google account.
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (GoogleAccountResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleAccountResponse)(nil)).Elem()
-}
-
-func (i GoogleAccountResponseArgs) ToGoogleAccountResponseOutput() GoogleAccountResponseOutput {
-	return i.ToGoogleAccountResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleAccountResponseArgs) ToGoogleAccountResponseOutputWithContext(ctx context.Context) GoogleAccountResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleAccountResponseOutput)
-}
-
-func (i GoogleAccountResponseArgs) ToGoogleAccountResponsePtrOutput() GoogleAccountResponsePtrOutput {
-	return i.ToGoogleAccountResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleAccountResponseArgs) ToGoogleAccountResponsePtrOutputWithContext(ctx context.Context) GoogleAccountResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleAccountResponseOutput).ToGoogleAccountResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleAccountResponsePtrInput is an input type that accepts GoogleAccountResponseArgs, GoogleAccountResponsePtr and GoogleAccountResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleAccountResponsePtrInput` via:
-//
-//          GoogleAccountResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleAccountResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleAccountResponsePtrOutput() GoogleAccountResponsePtrOutput
-	ToGoogleAccountResponsePtrOutputWithContext(context.Context) GoogleAccountResponsePtrOutput
-}
-
-type googleAccountResponsePtrType GoogleAccountResponseArgs
-
-func GoogleAccountResponsePtr(v *GoogleAccountResponseArgs) GoogleAccountResponsePtrInput {
-	return (*googleAccountResponsePtrType)(v)
-}
-
-func (*googleAccountResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleAccountResponse)(nil)).Elem()
-}
-
-func (i *googleAccountResponsePtrType) ToGoogleAccountResponsePtrOutput() GoogleAccountResponsePtrOutput {
-	return i.ToGoogleAccountResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleAccountResponsePtrType) ToGoogleAccountResponsePtrOutputWithContext(ctx context.Context) GoogleAccountResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleAccountResponsePtrOutput)
-}
-
 // Describes authentication configuration that uses a Google account.
 type GoogleAccountResponseOutput struct{ *pulumi.OutputState }
 
@@ -938,16 +602,6 @@ func (o GoogleAccountResponseOutput) ToGoogleAccountResponseOutputWithContext(ct
 	return o
 }
 
-func (o GoogleAccountResponseOutput) ToGoogleAccountResponsePtrOutput() GoogleAccountResponsePtrOutput {
-	return o.ToGoogleAccountResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleAccountResponseOutput) ToGoogleAccountResponsePtrOutputWithContext(ctx context.Context) GoogleAccountResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleAccountResponse) *GoogleAccountResponse {
-		return &v
-	}).(GoogleAccountResponsePtrOutput)
-}
-
 // Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
 func (o GoogleAccountResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleAccountResponse) string { return v.Password }).(pulumi.StringOutput)
@@ -956,50 +610,6 @@ func (o GoogleAccountResponseOutput) Password() pulumi.StringOutput {
 // The user name of the Google account.
 func (o GoogleAccountResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleAccountResponse) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type GoogleAccountResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleAccountResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleAccountResponse)(nil)).Elem()
-}
-
-func (o GoogleAccountResponsePtrOutput) ToGoogleAccountResponsePtrOutput() GoogleAccountResponsePtrOutput {
-	return o
-}
-
-func (o GoogleAccountResponsePtrOutput) ToGoogleAccountResponsePtrOutputWithContext(ctx context.Context) GoogleAccountResponsePtrOutput {
-	return o
-}
-
-func (o GoogleAccountResponsePtrOutput) Elem() GoogleAccountResponseOutput {
-	return o.ApplyT(func(v *GoogleAccountResponse) GoogleAccountResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleAccountResponse
-		return ret
-	}).(GoogleAccountResponseOutput)
-}
-
-// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-func (o GoogleAccountResponsePtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleAccountResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// The user name of the Google account.
-func (o GoogleAccountResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleAccountResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Username
-	}).(pulumi.StringPtrOutput)
 }
 
 // A ScanRun is a output-only resource representing an actual run of the scan.
@@ -1316,92 +926,6 @@ type ScanRunResponse struct {
 	UrlsTestedCount string `pulumi:"urlsTestedCount"`
 }
 
-// ScanRunResponseInput is an input type that accepts ScanRunResponseArgs and ScanRunResponseOutput values.
-// You can construct a concrete instance of `ScanRunResponseInput` via:
-//
-//          ScanRunResponseArgs{...}
-type ScanRunResponseInput interface {
-	pulumi.Input
-
-	ToScanRunResponseOutput() ScanRunResponseOutput
-	ToScanRunResponseOutputWithContext(context.Context) ScanRunResponseOutput
-}
-
-// A ScanRun is a output-only resource representing an actual run of the scan.
-type ScanRunResponseArgs struct {
-	// The time at which the ScanRun reached termination state - that the ScanRun is either finished or stopped by user.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// The execution state of the ScanRun.
-	ExecutionState pulumi.StringInput `pulumi:"executionState"`
-	// Whether the scan run has found any vulnerabilities.
-	HasVulnerabilities pulumi.BoolInput `pulumi:"hasVulnerabilities"`
-	// The resource name of the ScanRun. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. The ScanRun IDs are generated by the system.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The percentage of total completion ranging from 0 to 100. If the scan is in queue, the value is 0. If the scan is running, the value ranges from 0 to 100. If the scan is finished, the value is 100.
-	ProgressPercent pulumi.IntInput `pulumi:"progressPercent"`
-	// The result state of the ScanRun. This field is only available after the execution state reaches "FINISHED".
-	ResultState pulumi.StringInput `pulumi:"resultState"`
-	// The time at which the ScanRun started.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// The number of URLs crawled during this ScanRun. If the scan is in progress, the value represents the number of URLs crawled up to now.
-	UrlsCrawledCount pulumi.StringInput `pulumi:"urlsCrawledCount"`
-	// The number of URLs tested during this ScanRun. If the scan is in progress, the value represents the number of URLs tested up to now. The number of URLs tested is usually larger than the number URLS crawled because typically a crawled URL is tested with multiple test payloads.
-	UrlsTestedCount pulumi.StringInput `pulumi:"urlsTestedCount"`
-}
-
-func (ScanRunResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScanRunResponse)(nil)).Elem()
-}
-
-func (i ScanRunResponseArgs) ToScanRunResponseOutput() ScanRunResponseOutput {
-	return i.ToScanRunResponseOutputWithContext(context.Background())
-}
-
-func (i ScanRunResponseArgs) ToScanRunResponseOutputWithContext(ctx context.Context) ScanRunResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScanRunResponseOutput)
-}
-
-func (i ScanRunResponseArgs) ToScanRunResponsePtrOutput() ScanRunResponsePtrOutput {
-	return i.ToScanRunResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ScanRunResponseArgs) ToScanRunResponsePtrOutputWithContext(ctx context.Context) ScanRunResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScanRunResponseOutput).ToScanRunResponsePtrOutputWithContext(ctx)
-}
-
-// ScanRunResponsePtrInput is an input type that accepts ScanRunResponseArgs, ScanRunResponsePtr and ScanRunResponsePtrOutput values.
-// You can construct a concrete instance of `ScanRunResponsePtrInput` via:
-//
-//          ScanRunResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ScanRunResponsePtrInput interface {
-	pulumi.Input
-
-	ToScanRunResponsePtrOutput() ScanRunResponsePtrOutput
-	ToScanRunResponsePtrOutputWithContext(context.Context) ScanRunResponsePtrOutput
-}
-
-type scanRunResponsePtrType ScanRunResponseArgs
-
-func ScanRunResponsePtr(v *ScanRunResponseArgs) ScanRunResponsePtrInput {
-	return (*scanRunResponsePtrType)(v)
-}
-
-func (*scanRunResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScanRunResponse)(nil)).Elem()
-}
-
-func (i *scanRunResponsePtrType) ToScanRunResponsePtrOutput() ScanRunResponsePtrOutput {
-	return i.ToScanRunResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *scanRunResponsePtrType) ToScanRunResponsePtrOutputWithContext(ctx context.Context) ScanRunResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScanRunResponsePtrOutput)
-}
-
 // A ScanRun is a output-only resource representing an actual run of the scan.
 type ScanRunResponseOutput struct{ *pulumi.OutputState }
 
@@ -1415,16 +939,6 @@ func (o ScanRunResponseOutput) ToScanRunResponseOutput() ScanRunResponseOutput {
 
 func (o ScanRunResponseOutput) ToScanRunResponseOutputWithContext(ctx context.Context) ScanRunResponseOutput {
 	return o
-}
-
-func (o ScanRunResponseOutput) ToScanRunResponsePtrOutput() ScanRunResponsePtrOutput {
-	return o.ToScanRunResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ScanRunResponseOutput) ToScanRunResponsePtrOutputWithContext(ctx context.Context) ScanRunResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScanRunResponse) *ScanRunResponse {
-		return &v
-	}).(ScanRunResponsePtrOutput)
 }
 
 // The time at which the ScanRun reached termination state - that the ScanRun is either finished or stopped by user.
@@ -1470,120 +984,6 @@ func (o ScanRunResponseOutput) UrlsCrawledCount() pulumi.StringOutput {
 // The number of URLs tested during this ScanRun. If the scan is in progress, the value represents the number of URLs tested up to now. The number of URLs tested is usually larger than the number URLS crawled because typically a crawled URL is tested with multiple test payloads.
 func (o ScanRunResponseOutput) UrlsTestedCount() pulumi.StringOutput {
 	return o.ApplyT(func(v ScanRunResponse) string { return v.UrlsTestedCount }).(pulumi.StringOutput)
-}
-
-type ScanRunResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ScanRunResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScanRunResponse)(nil)).Elem()
-}
-
-func (o ScanRunResponsePtrOutput) ToScanRunResponsePtrOutput() ScanRunResponsePtrOutput {
-	return o
-}
-
-func (o ScanRunResponsePtrOutput) ToScanRunResponsePtrOutputWithContext(ctx context.Context) ScanRunResponsePtrOutput {
-	return o
-}
-
-func (o ScanRunResponsePtrOutput) Elem() ScanRunResponseOutput {
-	return o.ApplyT(func(v *ScanRunResponse) ScanRunResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ScanRunResponse
-		return ret
-	}).(ScanRunResponseOutput)
-}
-
-// The time at which the ScanRun reached termination state - that the ScanRun is either finished or stopped by user.
-func (o ScanRunResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScanRunResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The execution state of the ScanRun.
-func (o ScanRunResponsePtrOutput) ExecutionState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScanRunResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExecutionState
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether the scan run has found any vulnerabilities.
-func (o ScanRunResponsePtrOutput) HasVulnerabilities() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ScanRunResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.HasVulnerabilities
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The resource name of the ScanRun. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. The ScanRun IDs are generated by the system.
-func (o ScanRunResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScanRunResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The percentage of total completion ranging from 0 to 100. If the scan is in queue, the value is 0. If the scan is running, the value ranges from 0 to 100. If the scan is finished, the value is 100.
-func (o ScanRunResponsePtrOutput) ProgressPercent() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ScanRunResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.ProgressPercent
-	}).(pulumi.IntPtrOutput)
-}
-
-// The result state of the ScanRun. This field is only available after the execution state reaches "FINISHED".
-func (o ScanRunResponsePtrOutput) ResultState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScanRunResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResultState
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time at which the ScanRun started.
-func (o ScanRunResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScanRunResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of URLs crawled during this ScanRun. If the scan is in progress, the value represents the number of URLs crawled up to now.
-func (o ScanRunResponsePtrOutput) UrlsCrawledCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScanRunResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UrlsCrawledCount
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of URLs tested during this ScanRun. If the scan is in progress, the value represents the number of URLs tested up to now. The number of URLs tested is usually larger than the number URLS crawled because typically a crawled URL is tested with multiple test payloads.
-func (o ScanRunResponsePtrOutput) UrlsTestedCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScanRunResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UrlsTestedCount
-	}).(pulumi.StringPtrOutput)
 }
 
 // Scan schedule configuration.
@@ -1753,78 +1153,6 @@ type ScheduleResponse struct {
 	ScheduleTime string `pulumi:"scheduleTime"`
 }
 
-// ScheduleResponseInput is an input type that accepts ScheduleResponseArgs and ScheduleResponseOutput values.
-// You can construct a concrete instance of `ScheduleResponseInput` via:
-//
-//          ScheduleResponseArgs{...}
-type ScheduleResponseInput interface {
-	pulumi.Input
-
-	ToScheduleResponseOutput() ScheduleResponseOutput
-	ToScheduleResponseOutputWithContext(context.Context) ScheduleResponseOutput
-}
-
-// Scan schedule configuration.
-type ScheduleResponseArgs struct {
-	// The duration of time between executions in days.
-	IntervalDurationDays pulumi.IntInput `pulumi:"intervalDurationDays"`
-	// A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
-	ScheduleTime pulumi.StringInput `pulumi:"scheduleTime"`
-}
-
-func (ScheduleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleResponse)(nil)).Elem()
-}
-
-func (i ScheduleResponseArgs) ToScheduleResponseOutput() ScheduleResponseOutput {
-	return i.ToScheduleResponseOutputWithContext(context.Background())
-}
-
-func (i ScheduleResponseArgs) ToScheduleResponseOutputWithContext(ctx context.Context) ScheduleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleResponseOutput)
-}
-
-func (i ScheduleResponseArgs) ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput {
-	return i.ToScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ScheduleResponseArgs) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleResponseOutput).ToScheduleResponsePtrOutputWithContext(ctx)
-}
-
-// ScheduleResponsePtrInput is an input type that accepts ScheduleResponseArgs, ScheduleResponsePtr and ScheduleResponsePtrOutput values.
-// You can construct a concrete instance of `ScheduleResponsePtrInput` via:
-//
-//          ScheduleResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ScheduleResponsePtrInput interface {
-	pulumi.Input
-
-	ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput
-	ToScheduleResponsePtrOutputWithContext(context.Context) ScheduleResponsePtrOutput
-}
-
-type scheduleResponsePtrType ScheduleResponseArgs
-
-func ScheduleResponsePtr(v *ScheduleResponseArgs) ScheduleResponsePtrInput {
-	return (*scheduleResponsePtrType)(v)
-}
-
-func (*scheduleResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScheduleResponse)(nil)).Elem()
-}
-
-func (i *scheduleResponsePtrType) ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput {
-	return i.ToScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *scheduleResponsePtrType) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleResponsePtrOutput)
-}
-
 // Scan schedule configuration.
 type ScheduleResponseOutput struct{ *pulumi.OutputState }
 
@@ -1840,16 +1168,6 @@ func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o ScheduleResponseOutput) ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput {
-	return o.ToScheduleResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ScheduleResponseOutput) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleResponse) *ScheduleResponse {
-		return &v
-	}).(ScheduleResponsePtrOutput)
-}
-
 // The duration of time between executions in days.
 func (o ScheduleResponseOutput) IntervalDurationDays() pulumi.IntOutput {
 	return o.ApplyT(func(v ScheduleResponse) int { return v.IntervalDurationDays }).(pulumi.IntOutput)
@@ -1860,89 +1178,30 @@ func (o ScheduleResponseOutput) ScheduleTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ScheduleResponse) string { return v.ScheduleTime }).(pulumi.StringOutput)
 }
 
-type ScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScheduleResponse)(nil)).Elem()
-}
-
-func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput {
-	return o
-}
-
-func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
-	return o
-}
-
-func (o ScheduleResponsePtrOutput) Elem() ScheduleResponseOutput {
-	return o.ApplyT(func(v *ScheduleResponse) ScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ScheduleResponse
-		return ret
-	}).(ScheduleResponseOutput)
-}
-
-// The duration of time between executions in days.
-func (o ScheduleResponsePtrOutput) IntervalDurationDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.IntervalDurationDays
-	}).(pulumi.IntPtrOutput)
-}
-
-// A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
-func (o ScheduleResponsePtrOutput) ScheduleTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ScheduleTime
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticationInput)(nil)).Elem(), AuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticationPtrInput)(nil)).Elem(), AuthenticationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticationResponseInput)(nil)).Elem(), AuthenticationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticationResponsePtrInput)(nil)).Elem(), AuthenticationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomAccountInput)(nil)).Elem(), CustomAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomAccountPtrInput)(nil)).Elem(), CustomAccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomAccountResponseInput)(nil)).Elem(), CustomAccountResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomAccountResponsePtrInput)(nil)).Elem(), CustomAccountResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleAccountInput)(nil)).Elem(), GoogleAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleAccountPtrInput)(nil)).Elem(), GoogleAccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleAccountResponseInput)(nil)).Elem(), GoogleAccountResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleAccountResponsePtrInput)(nil)).Elem(), GoogleAccountResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScanRunInput)(nil)).Elem(), ScanRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScanRunPtrInput)(nil)).Elem(), ScanRunArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScanRunResponseInput)(nil)).Elem(), ScanRunResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScanRunResponsePtrInput)(nil)).Elem(), ScanRunResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleInput)(nil)).Elem(), ScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulePtrInput)(nil)).Elem(), ScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleResponseInput)(nil)).Elem(), ScheduleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleResponsePtrInput)(nil)).Elem(), ScheduleResponseArgs{})
 	pulumi.RegisterOutputType(AuthenticationOutput{})
 	pulumi.RegisterOutputType(AuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(AuthenticationResponseOutput{})
-	pulumi.RegisterOutputType(AuthenticationResponsePtrOutput{})
 	pulumi.RegisterOutputType(CustomAccountOutput{})
 	pulumi.RegisterOutputType(CustomAccountPtrOutput{})
 	pulumi.RegisterOutputType(CustomAccountResponseOutput{})
-	pulumi.RegisterOutputType(CustomAccountResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleAccountOutput{})
 	pulumi.RegisterOutputType(GoogleAccountPtrOutput{})
 	pulumi.RegisterOutputType(GoogleAccountResponseOutput{})
-	pulumi.RegisterOutputType(GoogleAccountResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScanRunOutput{})
 	pulumi.RegisterOutputType(ScanRunPtrOutput{})
 	pulumi.RegisterOutputType(ScanRunResponseOutput{})
-	pulumi.RegisterOutputType(ScanRunResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleOutput{})
 	pulumi.RegisterOutputType(SchedulePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleResponseOutput{})
-	pulumi.RegisterOutputType(ScheduleResponsePtrOutput{})
 }

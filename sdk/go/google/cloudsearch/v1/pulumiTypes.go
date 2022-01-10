@@ -173,36 +173,6 @@ type CompositeFilterResponse struct {
 	SubFilters []FilterResponse `pulumi:"subFilters"`
 }
 
-// CompositeFilterResponseInput is an input type that accepts CompositeFilterResponseArgs and CompositeFilterResponseOutput values.
-// You can construct a concrete instance of `CompositeFilterResponseInput` via:
-//
-//          CompositeFilterResponseArgs{...}
-type CompositeFilterResponseInput interface {
-	pulumi.Input
-
-	ToCompositeFilterResponseOutput() CompositeFilterResponseOutput
-	ToCompositeFilterResponseOutputWithContext(context.Context) CompositeFilterResponseOutput
-}
-
-type CompositeFilterResponseArgs struct {
-	// The logic operator of the sub filter.
-	LogicOperator pulumi.StringInput `pulumi:"logicOperator"`
-	// Sub filters.
-	SubFilters FilterResponseArrayInput `pulumi:"subFilters"`
-}
-
-func (CompositeFilterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeFilterResponse)(nil)).Elem()
-}
-
-func (i CompositeFilterResponseArgs) ToCompositeFilterResponseOutput() CompositeFilterResponseOutput {
-	return i.ToCompositeFilterResponseOutputWithContext(context.Background())
-}
-
-func (i CompositeFilterResponseArgs) ToCompositeFilterResponseOutputWithContext(ctx context.Context) CompositeFilterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeFilterResponseOutput)
-}
-
 type CompositeFilterResponseOutput struct{ *pulumi.OutputState }
 
 func (CompositeFilterResponseOutput) ElementType() reflect.Type {
@@ -342,62 +312,6 @@ type DataSourceRestrictionResponse struct {
 	FilterOptions []FilterOptionsResponse `pulumi:"filterOptions"`
 	// The source of restriction.
 	Source SourceResponse `pulumi:"source"`
-}
-
-// DataSourceRestrictionResponseInput is an input type that accepts DataSourceRestrictionResponseArgs and DataSourceRestrictionResponseOutput values.
-// You can construct a concrete instance of `DataSourceRestrictionResponseInput` via:
-//
-//          DataSourceRestrictionResponseArgs{...}
-type DataSourceRestrictionResponseInput interface {
-	pulumi.Input
-
-	ToDataSourceRestrictionResponseOutput() DataSourceRestrictionResponseOutput
-	ToDataSourceRestrictionResponseOutputWithContext(context.Context) DataSourceRestrictionResponseOutput
-}
-
-// Restriction on Datasource.
-type DataSourceRestrictionResponseArgs struct {
-	// Filter options restricting the results. If multiple filters are present, they are grouped by object type before joining. Filters with the same object type are joined conjunctively, then the resulting expressions are joined disjunctively. The maximum number of elements is 20. NOTE: Suggest API supports only few filters at the moment: "objecttype", "type" and "mimetype". For now, schema specific filters cannot be used to filter suggestions.
-	FilterOptions FilterOptionsResponseArrayInput `pulumi:"filterOptions"`
-	// The source of restriction.
-	Source SourceResponseInput `pulumi:"source"`
-}
-
-func (DataSourceRestrictionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataSourceRestrictionResponse)(nil)).Elem()
-}
-
-func (i DataSourceRestrictionResponseArgs) ToDataSourceRestrictionResponseOutput() DataSourceRestrictionResponseOutput {
-	return i.ToDataSourceRestrictionResponseOutputWithContext(context.Background())
-}
-
-func (i DataSourceRestrictionResponseArgs) ToDataSourceRestrictionResponseOutputWithContext(ctx context.Context) DataSourceRestrictionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataSourceRestrictionResponseOutput)
-}
-
-// DataSourceRestrictionResponseArrayInput is an input type that accepts DataSourceRestrictionResponseArray and DataSourceRestrictionResponseArrayOutput values.
-// You can construct a concrete instance of `DataSourceRestrictionResponseArrayInput` via:
-//
-//          DataSourceRestrictionResponseArray{ DataSourceRestrictionResponseArgs{...} }
-type DataSourceRestrictionResponseArrayInput interface {
-	pulumi.Input
-
-	ToDataSourceRestrictionResponseArrayOutput() DataSourceRestrictionResponseArrayOutput
-	ToDataSourceRestrictionResponseArrayOutputWithContext(context.Context) DataSourceRestrictionResponseArrayOutput
-}
-
-type DataSourceRestrictionResponseArray []DataSourceRestrictionResponseInput
-
-func (DataSourceRestrictionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataSourceRestrictionResponse)(nil)).Elem()
-}
-
-func (i DataSourceRestrictionResponseArray) ToDataSourceRestrictionResponseArrayOutput() DataSourceRestrictionResponseArrayOutput {
-	return i.ToDataSourceRestrictionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DataSourceRestrictionResponseArray) ToDataSourceRestrictionResponseArrayOutputWithContext(ctx context.Context) DataSourceRestrictionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataSourceRestrictionResponseArrayOutput)
 }
 
 // Restriction on Datasource.
@@ -633,39 +547,6 @@ type DateResponse struct {
 	Year int `pulumi:"year"`
 }
 
-// DateResponseInput is an input type that accepts DateResponseArgs and DateResponseOutput values.
-// You can construct a concrete instance of `DateResponseInput` via:
-//
-//          DateResponseArgs{...}
-type DateResponseInput interface {
-	pulumi.Input
-
-	ToDateResponseOutput() DateResponseOutput
-	ToDateResponseOutputWithContext(context.Context) DateResponseOutput
-}
-
-// Represents a whole calendar date, for example a date of birth. The time of day and time zone are either specified elsewhere or are not significant. The date is relative to the [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar). The date must be a valid calendar date between the year 1 and 9999.
-type DateResponseArgs struct {
-	// Day of month. Must be from 1 to 31 and valid for the year and month.
-	Day pulumi.IntInput `pulumi:"day"`
-	// Month of date. Must be from 1 to 12.
-	Month pulumi.IntInput `pulumi:"month"`
-	// Year of date. Must be from 1 to 9999.
-	Year pulumi.IntInput `pulumi:"year"`
-}
-
-func (DateResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DateResponse)(nil)).Elem()
-}
-
-func (i DateResponseArgs) ToDateResponseOutput() DateResponseOutput {
-	return i.ToDateResponseOutputWithContext(context.Background())
-}
-
-func (i DateResponseArgs) ToDateResponseOutputWithContext(ctx context.Context) DateResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DateResponseOutput)
-}
-
 // Represents a whole calendar date, for example a date of birth. The time of day and time zone are either specified elsewhere or are not significant. The date is relative to the [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar). The date must be a valid calendar date between the year 1 and 9999.
 type DateResponseOutput struct{ *pulumi.OutputState }
 
@@ -700,55 +581,6 @@ func (o DateResponseOutput) Year() pulumi.IntOutput {
 type DebugOptions struct {
 	// If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
 	EnableDebugging *bool `pulumi:"enableDebugging"`
-}
-
-// DebugOptionsInput is an input type that accepts DebugOptionsArgs and DebugOptionsOutput values.
-// You can construct a concrete instance of `DebugOptionsInput` via:
-//
-//          DebugOptionsArgs{...}
-type DebugOptionsInput interface {
-	pulumi.Input
-
-	ToDebugOptionsOutput() DebugOptionsOutput
-	ToDebugOptionsOutputWithContext(context.Context) DebugOptionsOutput
-}
-
-// Shared request debug options for all cloudsearch RPC methods.
-type DebugOptionsArgs struct {
-	// If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
-	EnableDebugging pulumi.BoolPtrInput `pulumi:"enableDebugging"`
-}
-
-func (DebugOptionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DebugOptions)(nil)).Elem()
-}
-
-func (i DebugOptionsArgs) ToDebugOptionsOutput() DebugOptionsOutput {
-	return i.ToDebugOptionsOutputWithContext(context.Background())
-}
-
-func (i DebugOptionsArgs) ToDebugOptionsOutputWithContext(ctx context.Context) DebugOptionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DebugOptionsOutput)
-}
-
-// Shared request debug options for all cloudsearch RPC methods.
-type DebugOptionsOutput struct{ *pulumi.OutputState }
-
-func (DebugOptionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DebugOptions)(nil)).Elem()
-}
-
-func (o DebugOptionsOutput) ToDebugOptionsOutput() DebugOptionsOutput {
-	return o
-}
-
-func (o DebugOptionsOutput) ToDebugOptionsOutputWithContext(ctx context.Context) DebugOptionsOutput {
-	return o
-}
-
-// If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
-func (o DebugOptionsOutput) EnableDebugging() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DebugOptions) *bool { return v.EnableDebugging }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
@@ -888,66 +720,6 @@ type FacetOptionsResponse struct {
 	OperatorName string `pulumi:"operatorName"`
 	// Source name to facet on. Format: datasources/{source_id} If empty, all data sources will be used.
 	SourceName string `pulumi:"sourceName"`
-}
-
-// FacetOptionsResponseInput is an input type that accepts FacetOptionsResponseArgs and FacetOptionsResponseOutput values.
-// You can construct a concrete instance of `FacetOptionsResponseInput` via:
-//
-//          FacetOptionsResponseArgs{...}
-type FacetOptionsResponseInput interface {
-	pulumi.Input
-
-	ToFacetOptionsResponseOutput() FacetOptionsResponseOutput
-	ToFacetOptionsResponseOutputWithContext(context.Context) FacetOptionsResponseOutput
-}
-
-// Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
-type FacetOptionsResponseArgs struct {
-	// Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.
-	NumFacetBuckets pulumi.IntInput `pulumi:"numFacetBuckets"`
-	// If object_type is set, only those objects of that type will be used to compute facets. If empty, then all objects will be used to compute facets.
-	ObjectType pulumi.StringInput `pulumi:"objectType"`
-	// Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
-	OperatorName pulumi.StringInput `pulumi:"operatorName"`
-	// Source name to facet on. Format: datasources/{source_id} If empty, all data sources will be used.
-	SourceName pulumi.StringInput `pulumi:"sourceName"`
-}
-
-func (FacetOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FacetOptionsResponse)(nil)).Elem()
-}
-
-func (i FacetOptionsResponseArgs) ToFacetOptionsResponseOutput() FacetOptionsResponseOutput {
-	return i.ToFacetOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i FacetOptionsResponseArgs) ToFacetOptionsResponseOutputWithContext(ctx context.Context) FacetOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FacetOptionsResponseOutput)
-}
-
-// FacetOptionsResponseArrayInput is an input type that accepts FacetOptionsResponseArray and FacetOptionsResponseArrayOutput values.
-// You can construct a concrete instance of `FacetOptionsResponseArrayInput` via:
-//
-//          FacetOptionsResponseArray{ FacetOptionsResponseArgs{...} }
-type FacetOptionsResponseArrayInput interface {
-	pulumi.Input
-
-	ToFacetOptionsResponseArrayOutput() FacetOptionsResponseArrayOutput
-	ToFacetOptionsResponseArrayOutputWithContext(context.Context) FacetOptionsResponseArrayOutput
-}
-
-type FacetOptionsResponseArray []FacetOptionsResponseInput
-
-func (FacetOptionsResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FacetOptionsResponse)(nil)).Elem()
-}
-
-func (i FacetOptionsResponseArray) ToFacetOptionsResponseArrayOutput() FacetOptionsResponseArrayOutput {
-	return i.ToFacetOptionsResponseArrayOutputWithContext(context.Background())
-}
-
-func (i FacetOptionsResponseArray) ToFacetOptionsResponseArrayOutputWithContext(ctx context.Context) FacetOptionsResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FacetOptionsResponseArrayOutput)
 }
 
 // Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
@@ -1318,62 +1090,6 @@ type FilterOptionsResponse struct {
 	ObjectType string `pulumi:"objectType"`
 }
 
-// FilterOptionsResponseInput is an input type that accepts FilterOptionsResponseArgs and FilterOptionsResponseOutput values.
-// You can construct a concrete instance of `FilterOptionsResponseInput` via:
-//
-//          FilterOptionsResponseArgs{...}
-type FilterOptionsResponseInput interface {
-	pulumi.Input
-
-	ToFilterOptionsResponseOutput() FilterOptionsResponseOutput
-	ToFilterOptionsResponseOutputWithContext(context.Context) FilterOptionsResponseOutput
-}
-
-// Filter options to be applied on query.
-type FilterOptionsResponseArgs struct {
-	// Generic filter to restrict the search, such as `lang:en`, `site:xyz`.
-	Filter FilterResponseInput `pulumi:"filter"`
-	// If object_type is set, only objects of that type are returned. This should correspond to the name of the object that was registered within the definition of schema. The maximum length is 256 characters.
-	ObjectType pulumi.StringInput `pulumi:"objectType"`
-}
-
-func (FilterOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FilterOptionsResponse)(nil)).Elem()
-}
-
-func (i FilterOptionsResponseArgs) ToFilterOptionsResponseOutput() FilterOptionsResponseOutput {
-	return i.ToFilterOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i FilterOptionsResponseArgs) ToFilterOptionsResponseOutputWithContext(ctx context.Context) FilterOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FilterOptionsResponseOutput)
-}
-
-// FilterOptionsResponseArrayInput is an input type that accepts FilterOptionsResponseArray and FilterOptionsResponseArrayOutput values.
-// You can construct a concrete instance of `FilterOptionsResponseArrayInput` via:
-//
-//          FilterOptionsResponseArray{ FilterOptionsResponseArgs{...} }
-type FilterOptionsResponseArrayInput interface {
-	pulumi.Input
-
-	ToFilterOptionsResponseArrayOutput() FilterOptionsResponseArrayOutput
-	ToFilterOptionsResponseArrayOutputWithContext(context.Context) FilterOptionsResponseArrayOutput
-}
-
-type FilterOptionsResponseArray []FilterOptionsResponseInput
-
-func (FilterOptionsResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FilterOptionsResponse)(nil)).Elem()
-}
-
-func (i FilterOptionsResponseArray) ToFilterOptionsResponseArrayOutput() FilterOptionsResponseArrayOutput {
-	return i.ToFilterOptionsResponseArrayOutputWithContext(context.Background())
-}
-
-func (i FilterOptionsResponseArray) ToFilterOptionsResponseArrayOutputWithContext(ctx context.Context) FilterOptionsResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FilterOptionsResponseArrayOutput)
-}
-
 // Filter options to be applied on query.
 type FilterOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -1423,60 +1139,6 @@ func (o FilterOptionsResponseArrayOutput) Index(i pulumi.IntInput) FilterOptions
 type FilterResponse struct {
 	CompositeFilter CompositeFilterResponse `pulumi:"compositeFilter"`
 	ValueFilter     ValueFilterResponse     `pulumi:"valueFilter"`
-}
-
-// FilterResponseInput is an input type that accepts FilterResponseArgs and FilterResponseOutput values.
-// You can construct a concrete instance of `FilterResponseInput` via:
-//
-//          FilterResponseArgs{...}
-type FilterResponseInput interface {
-	pulumi.Input
-
-	ToFilterResponseOutput() FilterResponseOutput
-	ToFilterResponseOutputWithContext(context.Context) FilterResponseOutput
-}
-
-// A generic way of expressing filters in a query, which supports two approaches: **1. Setting a ValueFilter.** The name must match an operator_name defined in the schema for your data source. **2. Setting a CompositeFilter.** The filters are evaluated using the logical operator. The top-level operators can only be either an AND or a NOT. AND can appear only at the top-most level. OR can appear only under a top-level AND.
-type FilterResponseArgs struct {
-	CompositeFilter CompositeFilterResponseInput `pulumi:"compositeFilter"`
-	ValueFilter     ValueFilterResponseInput     `pulumi:"valueFilter"`
-}
-
-func (FilterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FilterResponse)(nil)).Elem()
-}
-
-func (i FilterResponseArgs) ToFilterResponseOutput() FilterResponseOutput {
-	return i.ToFilterResponseOutputWithContext(context.Background())
-}
-
-func (i FilterResponseArgs) ToFilterResponseOutputWithContext(ctx context.Context) FilterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FilterResponseOutput)
-}
-
-// FilterResponseArrayInput is an input type that accepts FilterResponseArray and FilterResponseArrayOutput values.
-// You can construct a concrete instance of `FilterResponseArrayInput` via:
-//
-//          FilterResponseArray{ FilterResponseArgs{...} }
-type FilterResponseArrayInput interface {
-	pulumi.Input
-
-	ToFilterResponseArrayOutput() FilterResponseArrayOutput
-	ToFilterResponseArrayOutputWithContext(context.Context) FilterResponseArrayOutput
-}
-
-type FilterResponseArray []FilterResponseInput
-
-func (FilterResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FilterResponse)(nil)).Elem()
-}
-
-func (i FilterResponseArray) ToFilterResponseArrayOutput() FilterResponseArrayOutput {
-	return i.ToFilterResponseArrayOutputWithContext(context.Background())
-}
-
-func (i FilterResponseArray) ToFilterResponseArrayOutputWithContext(ctx context.Context) FilterResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FilterResponseArrayOutput)
 }
 
 // A generic way of expressing filters in a query, which supports two approaches: **1. Setting a ValueFilter.** The name must match an operator_name defined in the schema for your data source. **2. Setting a CompositeFilter.** The filters are evaluated using the logical operator. The top-level operators can only be either an AND or a NOT. AND can appear only at the top-most level. OR can appear only under a top-level AND.
@@ -1644,63 +1306,6 @@ type GSuitePrincipalResponse struct {
 	GsuiteGroupEmail string `pulumi:"gsuiteGroupEmail"`
 	// This principal references a G Suite user account
 	GsuiteUserEmail string `pulumi:"gsuiteUserEmail"`
-}
-
-// GSuitePrincipalResponseInput is an input type that accepts GSuitePrincipalResponseArgs and GSuitePrincipalResponseOutput values.
-// You can construct a concrete instance of `GSuitePrincipalResponseInput` via:
-//
-//          GSuitePrincipalResponseArgs{...}
-type GSuitePrincipalResponseInput interface {
-	pulumi.Input
-
-	ToGSuitePrincipalResponseOutput() GSuitePrincipalResponseOutput
-	ToGSuitePrincipalResponseOutputWithContext(context.Context) GSuitePrincipalResponseOutput
-}
-
-type GSuitePrincipalResponseArgs struct {
-	// This principal represents all users of the G Suite domain of the customer.
-	GsuiteDomain pulumi.BoolInput `pulumi:"gsuiteDomain"`
-	// This principal references a G Suite group account
-	GsuiteGroupEmail pulumi.StringInput `pulumi:"gsuiteGroupEmail"`
-	// This principal references a G Suite user account
-	GsuiteUserEmail pulumi.StringInput `pulumi:"gsuiteUserEmail"`
-}
-
-func (GSuitePrincipalResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GSuitePrincipalResponse)(nil)).Elem()
-}
-
-func (i GSuitePrincipalResponseArgs) ToGSuitePrincipalResponseOutput() GSuitePrincipalResponseOutput {
-	return i.ToGSuitePrincipalResponseOutputWithContext(context.Background())
-}
-
-func (i GSuitePrincipalResponseArgs) ToGSuitePrincipalResponseOutputWithContext(ctx context.Context) GSuitePrincipalResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GSuitePrincipalResponseOutput)
-}
-
-// GSuitePrincipalResponseArrayInput is an input type that accepts GSuitePrincipalResponseArray and GSuitePrincipalResponseArrayOutput values.
-// You can construct a concrete instance of `GSuitePrincipalResponseArrayInput` via:
-//
-//          GSuitePrincipalResponseArray{ GSuitePrincipalResponseArgs{...} }
-type GSuitePrincipalResponseArrayInput interface {
-	pulumi.Input
-
-	ToGSuitePrincipalResponseArrayOutput() GSuitePrincipalResponseArrayOutput
-	ToGSuitePrincipalResponseArrayOutputWithContext(context.Context) GSuitePrincipalResponseArrayOutput
-}
-
-type GSuitePrincipalResponseArray []GSuitePrincipalResponseInput
-
-func (GSuitePrincipalResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GSuitePrincipalResponse)(nil)).Elem()
-}
-
-func (i GSuitePrincipalResponseArray) ToGSuitePrincipalResponseArrayOutput() GSuitePrincipalResponseArrayOutput {
-	return i.ToGSuitePrincipalResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GSuitePrincipalResponseArray) ToGSuitePrincipalResponseArrayOutputWithContext(ctx context.Context) GSuitePrincipalResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GSuitePrincipalResponseArrayOutput)
 }
 
 type GSuitePrincipalResponseOutput struct{ *pulumi.OutputState }
@@ -1919,78 +1524,6 @@ type QueryInterpretationConfigResponse struct {
 	ForceVerbatimMode bool `pulumi:"forceVerbatimMode"`
 }
 
-// QueryInterpretationConfigResponseInput is an input type that accepts QueryInterpretationConfigResponseArgs and QueryInterpretationConfigResponseOutput values.
-// You can construct a concrete instance of `QueryInterpretationConfigResponseInput` via:
-//
-//          QueryInterpretationConfigResponseArgs{...}
-type QueryInterpretationConfigResponseInput interface {
-	pulumi.Input
-
-	ToQueryInterpretationConfigResponseOutput() QueryInterpretationConfigResponseOutput
-	ToQueryInterpretationConfigResponseOutputWithContext(context.Context) QueryInterpretationConfigResponseOutput
-}
-
-// Default options to interpret user query.
-type QueryInterpretationConfigResponseArgs struct {
-	// Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
-	ForceDisableSupplementalResults pulumi.BoolInput `pulumi:"forceDisableSupplementalResults"`
-	// Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode.
-	ForceVerbatimMode pulumi.BoolInput `pulumi:"forceVerbatimMode"`
-}
-
-func (QueryInterpretationConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueryInterpretationConfigResponse)(nil)).Elem()
-}
-
-func (i QueryInterpretationConfigResponseArgs) ToQueryInterpretationConfigResponseOutput() QueryInterpretationConfigResponseOutput {
-	return i.ToQueryInterpretationConfigResponseOutputWithContext(context.Background())
-}
-
-func (i QueryInterpretationConfigResponseArgs) ToQueryInterpretationConfigResponseOutputWithContext(ctx context.Context) QueryInterpretationConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryInterpretationConfigResponseOutput)
-}
-
-func (i QueryInterpretationConfigResponseArgs) ToQueryInterpretationConfigResponsePtrOutput() QueryInterpretationConfigResponsePtrOutput {
-	return i.ToQueryInterpretationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i QueryInterpretationConfigResponseArgs) ToQueryInterpretationConfigResponsePtrOutputWithContext(ctx context.Context) QueryInterpretationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryInterpretationConfigResponseOutput).ToQueryInterpretationConfigResponsePtrOutputWithContext(ctx)
-}
-
-// QueryInterpretationConfigResponsePtrInput is an input type that accepts QueryInterpretationConfigResponseArgs, QueryInterpretationConfigResponsePtr and QueryInterpretationConfigResponsePtrOutput values.
-// You can construct a concrete instance of `QueryInterpretationConfigResponsePtrInput` via:
-//
-//          QueryInterpretationConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type QueryInterpretationConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToQueryInterpretationConfigResponsePtrOutput() QueryInterpretationConfigResponsePtrOutput
-	ToQueryInterpretationConfigResponsePtrOutputWithContext(context.Context) QueryInterpretationConfigResponsePtrOutput
-}
-
-type queryInterpretationConfigResponsePtrType QueryInterpretationConfigResponseArgs
-
-func QueryInterpretationConfigResponsePtr(v *QueryInterpretationConfigResponseArgs) QueryInterpretationConfigResponsePtrInput {
-	return (*queryInterpretationConfigResponsePtrType)(v)
-}
-
-func (*queryInterpretationConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**QueryInterpretationConfigResponse)(nil)).Elem()
-}
-
-func (i *queryInterpretationConfigResponsePtrType) ToQueryInterpretationConfigResponsePtrOutput() QueryInterpretationConfigResponsePtrOutput {
-	return i.ToQueryInterpretationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *queryInterpretationConfigResponsePtrType) ToQueryInterpretationConfigResponsePtrOutputWithContext(ctx context.Context) QueryInterpretationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryInterpretationConfigResponsePtrOutput)
-}
-
 // Default options to interpret user query.
 type QueryInterpretationConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2006,16 +1539,6 @@ func (o QueryInterpretationConfigResponseOutput) ToQueryInterpretationConfigResp
 	return o
 }
 
-func (o QueryInterpretationConfigResponseOutput) ToQueryInterpretationConfigResponsePtrOutput() QueryInterpretationConfigResponsePtrOutput {
-	return o.ToQueryInterpretationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o QueryInterpretationConfigResponseOutput) ToQueryInterpretationConfigResponsePtrOutputWithContext(ctx context.Context) QueryInterpretationConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryInterpretationConfigResponse) *QueryInterpretationConfigResponse {
-		return &v
-	}).(QueryInterpretationConfigResponsePtrOutput)
-}
-
 // Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
 func (o QueryInterpretationConfigResponseOutput) ForceDisableSupplementalResults() pulumi.BoolOutput {
 	return o.ApplyT(func(v QueryInterpretationConfigResponse) bool { return v.ForceDisableSupplementalResults }).(pulumi.BoolOutput)
@@ -2024,50 +1547,6 @@ func (o QueryInterpretationConfigResponseOutput) ForceDisableSupplementalResults
 // Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode.
 func (o QueryInterpretationConfigResponseOutput) ForceVerbatimMode() pulumi.BoolOutput {
 	return o.ApplyT(func(v QueryInterpretationConfigResponse) bool { return v.ForceVerbatimMode }).(pulumi.BoolOutput)
-}
-
-type QueryInterpretationConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (QueryInterpretationConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QueryInterpretationConfigResponse)(nil)).Elem()
-}
-
-func (o QueryInterpretationConfigResponsePtrOutput) ToQueryInterpretationConfigResponsePtrOutput() QueryInterpretationConfigResponsePtrOutput {
-	return o
-}
-
-func (o QueryInterpretationConfigResponsePtrOutput) ToQueryInterpretationConfigResponsePtrOutputWithContext(ctx context.Context) QueryInterpretationConfigResponsePtrOutput {
-	return o
-}
-
-func (o QueryInterpretationConfigResponsePtrOutput) Elem() QueryInterpretationConfigResponseOutput {
-	return o.ApplyT(func(v *QueryInterpretationConfigResponse) QueryInterpretationConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret QueryInterpretationConfigResponse
-		return ret
-	}).(QueryInterpretationConfigResponseOutput)
-}
-
-// Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
-func (o QueryInterpretationConfigResponsePtrOutput) ForceDisableSupplementalResults() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *QueryInterpretationConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ForceDisableSupplementalResults
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode.
-func (o QueryInterpretationConfigResponsePtrOutput) ForceVerbatimMode() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *QueryInterpretationConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ForceVerbatimMode
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Scoring configurations for a source while processing a Search or Suggest request.
@@ -2237,78 +1716,6 @@ type ScoringConfigResponse struct {
 	DisablePersonalization bool `pulumi:"disablePersonalization"`
 }
 
-// ScoringConfigResponseInput is an input type that accepts ScoringConfigResponseArgs and ScoringConfigResponseOutput values.
-// You can construct a concrete instance of `ScoringConfigResponseInput` via:
-//
-//          ScoringConfigResponseArgs{...}
-type ScoringConfigResponseInput interface {
-	pulumi.Input
-
-	ToScoringConfigResponseOutput() ScoringConfigResponseOutput
-	ToScoringConfigResponseOutputWithContext(context.Context) ScoringConfigResponseOutput
-}
-
-// Scoring configurations for a source while processing a Search or Suggest request.
-type ScoringConfigResponseArgs struct {
-	// Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI.
-	DisableFreshness pulumi.BoolInput `pulumi:"disableFreshness"`
-	// Whether to personalize the results. By default, personal signals will be used to boost results.
-	DisablePersonalization pulumi.BoolInput `pulumi:"disablePersonalization"`
-}
-
-func (ScoringConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScoringConfigResponse)(nil)).Elem()
-}
-
-func (i ScoringConfigResponseArgs) ToScoringConfigResponseOutput() ScoringConfigResponseOutput {
-	return i.ToScoringConfigResponseOutputWithContext(context.Background())
-}
-
-func (i ScoringConfigResponseArgs) ToScoringConfigResponseOutputWithContext(ctx context.Context) ScoringConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScoringConfigResponseOutput)
-}
-
-func (i ScoringConfigResponseArgs) ToScoringConfigResponsePtrOutput() ScoringConfigResponsePtrOutput {
-	return i.ToScoringConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ScoringConfigResponseArgs) ToScoringConfigResponsePtrOutputWithContext(ctx context.Context) ScoringConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScoringConfigResponseOutput).ToScoringConfigResponsePtrOutputWithContext(ctx)
-}
-
-// ScoringConfigResponsePtrInput is an input type that accepts ScoringConfigResponseArgs, ScoringConfigResponsePtr and ScoringConfigResponsePtrOutput values.
-// You can construct a concrete instance of `ScoringConfigResponsePtrInput` via:
-//
-//          ScoringConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ScoringConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToScoringConfigResponsePtrOutput() ScoringConfigResponsePtrOutput
-	ToScoringConfigResponsePtrOutputWithContext(context.Context) ScoringConfigResponsePtrOutput
-}
-
-type scoringConfigResponsePtrType ScoringConfigResponseArgs
-
-func ScoringConfigResponsePtr(v *ScoringConfigResponseArgs) ScoringConfigResponsePtrInput {
-	return (*scoringConfigResponsePtrType)(v)
-}
-
-func (*scoringConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScoringConfigResponse)(nil)).Elem()
-}
-
-func (i *scoringConfigResponsePtrType) ToScoringConfigResponsePtrOutput() ScoringConfigResponsePtrOutput {
-	return i.ToScoringConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *scoringConfigResponsePtrType) ToScoringConfigResponsePtrOutputWithContext(ctx context.Context) ScoringConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScoringConfigResponsePtrOutput)
-}
-
 // Scoring configurations for a source while processing a Search or Suggest request.
 type ScoringConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2324,16 +1731,6 @@ func (o ScoringConfigResponseOutput) ToScoringConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o ScoringConfigResponseOutput) ToScoringConfigResponsePtrOutput() ScoringConfigResponsePtrOutput {
-	return o.ToScoringConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ScoringConfigResponseOutput) ToScoringConfigResponsePtrOutputWithContext(ctx context.Context) ScoringConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScoringConfigResponse) *ScoringConfigResponse {
-		return &v
-	}).(ScoringConfigResponsePtrOutput)
-}
-
 // Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI.
 func (o ScoringConfigResponseOutput) DisableFreshness() pulumi.BoolOutput {
 	return o.ApplyT(func(v ScoringConfigResponse) bool { return v.DisableFreshness }).(pulumi.BoolOutput)
@@ -2342,50 +1739,6 @@ func (o ScoringConfigResponseOutput) DisableFreshness() pulumi.BoolOutput {
 // Whether to personalize the results. By default, personal signals will be used to boost results.
 func (o ScoringConfigResponseOutput) DisablePersonalization() pulumi.BoolOutput {
 	return o.ApplyT(func(v ScoringConfigResponse) bool { return v.DisablePersonalization }).(pulumi.BoolOutput)
-}
-
-type ScoringConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ScoringConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScoringConfigResponse)(nil)).Elem()
-}
-
-func (o ScoringConfigResponsePtrOutput) ToScoringConfigResponsePtrOutput() ScoringConfigResponsePtrOutput {
-	return o
-}
-
-func (o ScoringConfigResponsePtrOutput) ToScoringConfigResponsePtrOutputWithContext(ctx context.Context) ScoringConfigResponsePtrOutput {
-	return o
-}
-
-func (o ScoringConfigResponsePtrOutput) Elem() ScoringConfigResponseOutput {
-	return o.ApplyT(func(v *ScoringConfigResponse) ScoringConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ScoringConfigResponse
-		return ret
-	}).(ScoringConfigResponseOutput)
-}
-
-// Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI.
-func (o ScoringConfigResponsePtrOutput) DisableFreshness() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ScoringConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.DisableFreshness
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to personalize the results. By default, personal signals will be used to boost results.
-func (o ScoringConfigResponsePtrOutput) DisablePersonalization() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ScoringConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.DisablePersonalization
-	}).(pulumi.BoolPtrOutput)
 }
 
 type SortOptions struct {
@@ -2551,77 +1904,6 @@ type SortOptionsResponse struct {
 	SortOrder string `pulumi:"sortOrder"`
 }
 
-// SortOptionsResponseInput is an input type that accepts SortOptionsResponseArgs and SortOptionsResponseOutput values.
-// You can construct a concrete instance of `SortOptionsResponseInput` via:
-//
-//          SortOptionsResponseArgs{...}
-type SortOptionsResponseInput interface {
-	pulumi.Input
-
-	ToSortOptionsResponseOutput() SortOptionsResponseOutput
-	ToSortOptionsResponseOutputWithContext(context.Context) SortOptionsResponseOutput
-}
-
-type SortOptionsResponseArgs struct {
-	// Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
-	OperatorName pulumi.StringInput `pulumi:"operatorName"`
-	// Ascending is the default sort order
-	SortOrder pulumi.StringInput `pulumi:"sortOrder"`
-}
-
-func (SortOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SortOptionsResponse)(nil)).Elem()
-}
-
-func (i SortOptionsResponseArgs) ToSortOptionsResponseOutput() SortOptionsResponseOutput {
-	return i.ToSortOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i SortOptionsResponseArgs) ToSortOptionsResponseOutputWithContext(ctx context.Context) SortOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SortOptionsResponseOutput)
-}
-
-func (i SortOptionsResponseArgs) ToSortOptionsResponsePtrOutput() SortOptionsResponsePtrOutput {
-	return i.ToSortOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SortOptionsResponseArgs) ToSortOptionsResponsePtrOutputWithContext(ctx context.Context) SortOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SortOptionsResponseOutput).ToSortOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// SortOptionsResponsePtrInput is an input type that accepts SortOptionsResponseArgs, SortOptionsResponsePtr and SortOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `SortOptionsResponsePtrInput` via:
-//
-//          SortOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SortOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToSortOptionsResponsePtrOutput() SortOptionsResponsePtrOutput
-	ToSortOptionsResponsePtrOutputWithContext(context.Context) SortOptionsResponsePtrOutput
-}
-
-type sortOptionsResponsePtrType SortOptionsResponseArgs
-
-func SortOptionsResponsePtr(v *SortOptionsResponseArgs) SortOptionsResponsePtrInput {
-	return (*sortOptionsResponsePtrType)(v)
-}
-
-func (*sortOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SortOptionsResponse)(nil)).Elem()
-}
-
-func (i *sortOptionsResponsePtrType) ToSortOptionsResponsePtrOutput() SortOptionsResponsePtrOutput {
-	return i.ToSortOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *sortOptionsResponsePtrType) ToSortOptionsResponsePtrOutputWithContext(ctx context.Context) SortOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SortOptionsResponsePtrOutput)
-}
-
 type SortOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (SortOptionsResponseOutput) ElementType() reflect.Type {
@@ -2636,16 +1918,6 @@ func (o SortOptionsResponseOutput) ToSortOptionsResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SortOptionsResponseOutput) ToSortOptionsResponsePtrOutput() SortOptionsResponsePtrOutput {
-	return o.ToSortOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SortOptionsResponseOutput) ToSortOptionsResponsePtrOutputWithContext(ctx context.Context) SortOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SortOptionsResponse) *SortOptionsResponse {
-		return &v
-	}).(SortOptionsResponsePtrOutput)
-}
-
 // Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
 func (o SortOptionsResponseOutput) OperatorName() pulumi.StringOutput {
 	return o.ApplyT(func(v SortOptionsResponse) string { return v.OperatorName }).(pulumi.StringOutput)
@@ -2654,50 +1926,6 @@ func (o SortOptionsResponseOutput) OperatorName() pulumi.StringOutput {
 // Ascending is the default sort order
 func (o SortOptionsResponseOutput) SortOrder() pulumi.StringOutput {
 	return o.ApplyT(func(v SortOptionsResponse) string { return v.SortOrder }).(pulumi.StringOutput)
-}
-
-type SortOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SortOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SortOptionsResponse)(nil)).Elem()
-}
-
-func (o SortOptionsResponsePtrOutput) ToSortOptionsResponsePtrOutput() SortOptionsResponsePtrOutput {
-	return o
-}
-
-func (o SortOptionsResponsePtrOutput) ToSortOptionsResponsePtrOutputWithContext(ctx context.Context) SortOptionsResponsePtrOutput {
-	return o
-}
-
-func (o SortOptionsResponsePtrOutput) Elem() SortOptionsResponseOutput {
-	return o.ApplyT(func(v *SortOptionsResponse) SortOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SortOptionsResponse
-		return ret
-	}).(SortOptionsResponseOutput)
-}
-
-// Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
-func (o SortOptionsResponsePtrOutput) OperatorName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SortOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OperatorName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Ascending is the default sort order
-func (o SortOptionsResponsePtrOutput) SortOrder() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SortOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SortOrder
-	}).(pulumi.StringPtrOutput)
 }
 
 // Defines sources for the suggest/search APIs.
@@ -2987,64 +2215,6 @@ type SourceConfigResponse struct {
 	Source SourceResponse `pulumi:"source"`
 }
 
-// SourceConfigResponseInput is an input type that accepts SourceConfigResponseArgs and SourceConfigResponseOutput values.
-// You can construct a concrete instance of `SourceConfigResponseInput` via:
-//
-//          SourceConfigResponseArgs{...}
-type SourceConfigResponseInput interface {
-	pulumi.Input
-
-	ToSourceConfigResponseOutput() SourceConfigResponseOutput
-	ToSourceConfigResponseOutputWithContext(context.Context) SourceConfigResponseOutput
-}
-
-// Configurations for a source while processing a Search or Suggest request.
-type SourceConfigResponseArgs struct {
-	// The crowding configuration for the source.
-	CrowdingConfig SourceCrowdingConfigResponseInput `pulumi:"crowdingConfig"`
-	// The scoring configuration for the source.
-	ScoringConfig SourceScoringConfigResponseInput `pulumi:"scoringConfig"`
-	// The source for which this configuration is to be used.
-	Source SourceResponseInput `pulumi:"source"`
-}
-
-func (SourceConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceConfigResponse)(nil)).Elem()
-}
-
-func (i SourceConfigResponseArgs) ToSourceConfigResponseOutput() SourceConfigResponseOutput {
-	return i.ToSourceConfigResponseOutputWithContext(context.Background())
-}
-
-func (i SourceConfigResponseArgs) ToSourceConfigResponseOutputWithContext(ctx context.Context) SourceConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigResponseOutput)
-}
-
-// SourceConfigResponseArrayInput is an input type that accepts SourceConfigResponseArray and SourceConfigResponseArrayOutput values.
-// You can construct a concrete instance of `SourceConfigResponseArrayInput` via:
-//
-//          SourceConfigResponseArray{ SourceConfigResponseArgs{...} }
-type SourceConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToSourceConfigResponseArrayOutput() SourceConfigResponseArrayOutput
-	ToSourceConfigResponseArrayOutputWithContext(context.Context) SourceConfigResponseArrayOutput
-}
-
-type SourceConfigResponseArray []SourceConfigResponseInput
-
-func (SourceConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SourceConfigResponse)(nil)).Elem()
-}
-
-func (i SourceConfigResponseArray) ToSourceConfigResponseArrayOutput() SourceConfigResponseArrayOutput {
-	return i.ToSourceConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SourceConfigResponseArray) ToSourceConfigResponseArrayOutputWithContext(ctx context.Context) SourceConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigResponseArrayOutput)
-}
-
 // Configurations for a source while processing a Search or Suggest request.
 type SourceConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -3262,37 +2432,6 @@ type SourceCrowdingConfigResponse struct {
 	NumSuggestions int `pulumi:"numSuggestions"`
 }
 
-// SourceCrowdingConfigResponseInput is an input type that accepts SourceCrowdingConfigResponseArgs and SourceCrowdingConfigResponseOutput values.
-// You can construct a concrete instance of `SourceCrowdingConfigResponseInput` via:
-//
-//          SourceCrowdingConfigResponseArgs{...}
-type SourceCrowdingConfigResponseInput interface {
-	pulumi.Input
-
-	ToSourceCrowdingConfigResponseOutput() SourceCrowdingConfigResponseOutput
-	ToSourceCrowdingConfigResponseOutputWithContext(context.Context) SourceCrowdingConfigResponseOutput
-}
-
-// Set search results crowding limits. Crowding is a situation in which multiple results from the same source or host "crowd out" other results, diminishing the quality of search for users. To foster better search quality and source diversity in search results, you can set a condition to reduce repetitive results by source.
-type SourceCrowdingConfigResponseArgs struct {
-	// Maximum number of results allowed from a datasource in a result page as long as results from other sources are not exhausted. Value specified must not be negative. A default value is used if this value is equal to 0. To disable crowding, set the value greater than 100.
-	NumResults pulumi.IntInput `pulumi:"numResults"`
-	// Maximum number of suggestions allowed from a source. No limits will be set on results if this value is less than or equal to 0.
-	NumSuggestions pulumi.IntInput `pulumi:"numSuggestions"`
-}
-
-func (SourceCrowdingConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceCrowdingConfigResponse)(nil)).Elem()
-}
-
-func (i SourceCrowdingConfigResponseArgs) ToSourceCrowdingConfigResponseOutput() SourceCrowdingConfigResponseOutput {
-	return i.ToSourceCrowdingConfigResponseOutputWithContext(context.Background())
-}
-
-func (i SourceCrowdingConfigResponseArgs) ToSourceCrowdingConfigResponseOutputWithContext(ctx context.Context) SourceCrowdingConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceCrowdingConfigResponseOutput)
-}
-
 // Set search results crowding limits. Crowding is a situation in which multiple results from the same source or host "crowd out" other results, diminishing the quality of search for users. To foster better search quality and source diversity in search results, you can set a condition to reduce repetitive results by source.
 type SourceCrowdingConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -3324,37 +2463,6 @@ type SourceResponse struct {
 	Name string `pulumi:"name"`
 	// Predefined content source for Google Apps.
 	PredefinedSource string `pulumi:"predefinedSource"`
-}
-
-// SourceResponseInput is an input type that accepts SourceResponseArgs and SourceResponseOutput values.
-// You can construct a concrete instance of `SourceResponseInput` via:
-//
-//          SourceResponseArgs{...}
-type SourceResponseInput interface {
-	pulumi.Input
-
-	ToSourceResponseOutput() SourceResponseOutput
-	ToSourceResponseOutputWithContext(context.Context) SourceResponseOutput
-}
-
-// Defines sources for the suggest/search APIs.
-type SourceResponseArgs struct {
-	// Source name for content indexed by the Indexing API.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Predefined content source for Google Apps.
-	PredefinedSource pulumi.StringInput `pulumi:"predefinedSource"`
-}
-
-func (SourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceResponse)(nil)).Elem()
-}
-
-func (i SourceResponseArgs) ToSourceResponseOutput() SourceResponseOutput {
-	return i.ToSourceResponseOutputWithContext(context.Background())
-}
-
-func (i SourceResponseArgs) ToSourceResponseOutputWithContext(ctx context.Context) SourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceResponseOutput)
 }
 
 // Defines sources for the suggest/search APIs.
@@ -3526,35 +2634,6 @@ func (o SourceScoringConfigPtrOutput) SourceImportance() SourceScoringConfigSour
 type SourceScoringConfigResponse struct {
 	// Importance of the source.
 	SourceImportance string `pulumi:"sourceImportance"`
-}
-
-// SourceScoringConfigResponseInput is an input type that accepts SourceScoringConfigResponseArgs and SourceScoringConfigResponseOutput values.
-// You can construct a concrete instance of `SourceScoringConfigResponseInput` via:
-//
-//          SourceScoringConfigResponseArgs{...}
-type SourceScoringConfigResponseInput interface {
-	pulumi.Input
-
-	ToSourceScoringConfigResponseOutput() SourceScoringConfigResponseOutput
-	ToSourceScoringConfigResponseOutputWithContext(context.Context) SourceScoringConfigResponseOutput
-}
-
-// Set the scoring configuration. This allows modifying the ranking of results for a source.
-type SourceScoringConfigResponseArgs struct {
-	// Importance of the source.
-	SourceImportance pulumi.StringInput `pulumi:"sourceImportance"`
-}
-
-func (SourceScoringConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceScoringConfigResponse)(nil)).Elem()
-}
-
-func (i SourceScoringConfigResponseArgs) ToSourceScoringConfigResponseOutput() SourceScoringConfigResponseOutput {
-	return i.ToSourceScoringConfigResponseOutputWithContext(context.Background())
-}
-
-func (i SourceScoringConfigResponseArgs) ToSourceScoringConfigResponseOutputWithContext(ctx context.Context) SourceScoringConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceScoringConfigResponseOutput)
 }
 
 // Set the scoring configuration. This allows modifying the ranking of results for a source.
@@ -3951,36 +3030,6 @@ type ValueFilterResponse struct {
 	Value ValueResponse `pulumi:"value"`
 }
 
-// ValueFilterResponseInput is an input type that accepts ValueFilterResponseArgs and ValueFilterResponseOutput values.
-// You can construct a concrete instance of `ValueFilterResponseInput` via:
-//
-//          ValueFilterResponseArgs{...}
-type ValueFilterResponseInput interface {
-	pulumi.Input
-
-	ToValueFilterResponseOutput() ValueFilterResponseOutput
-	ToValueFilterResponseOutputWithContext(context.Context) ValueFilterResponseOutput
-}
-
-type ValueFilterResponseArgs struct {
-	// The `operator_name` applied to the query, such as *price_greater_than*. The filter can work against both types of filters defined in the schema for your data source: 1. `operator_name`, where the query filters results by the property that matches the value. 2. `greater_than_operator_name` or `less_than_operator_name` in your schema. The query filters the results for the property values that are greater than or less than the supplied value in the query.
-	OperatorName pulumi.StringInput `pulumi:"operatorName"`
-	// The value to be compared with.
-	Value ValueResponseInput `pulumi:"value"`
-}
-
-func (ValueFilterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ValueFilterResponse)(nil)).Elem()
-}
-
-func (i ValueFilterResponseArgs) ToValueFilterResponseOutput() ValueFilterResponseOutput {
-	return i.ToValueFilterResponseOutputWithContext(context.Background())
-}
-
-func (i ValueFilterResponseArgs) ToValueFilterResponseOutputWithContext(ctx context.Context) ValueFilterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ValueFilterResponseOutput)
-}
-
 type ValueFilterResponseOutput struct{ *pulumi.OutputState }
 
 func (ValueFilterResponseOutput) ElementType() reflect.Type {
@@ -4013,39 +3062,6 @@ type ValueResponse struct {
 	IntegerValue   string       `pulumi:"integerValue"`
 	StringValue    string       `pulumi:"stringValue"`
 	TimestampValue string       `pulumi:"timestampValue"`
-}
-
-// ValueResponseInput is an input type that accepts ValueResponseArgs and ValueResponseOutput values.
-// You can construct a concrete instance of `ValueResponseInput` via:
-//
-//          ValueResponseArgs{...}
-type ValueResponseInput interface {
-	pulumi.Input
-
-	ToValueResponseOutput() ValueResponseOutput
-	ToValueResponseOutputWithContext(context.Context) ValueResponseOutput
-}
-
-// Definition of a single value with generic type.
-type ValueResponseArgs struct {
-	BooleanValue   pulumi.BoolInput    `pulumi:"booleanValue"`
-	DateValue      DateResponseInput   `pulumi:"dateValue"`
-	DoubleValue    pulumi.Float64Input `pulumi:"doubleValue"`
-	IntegerValue   pulumi.StringInput  `pulumi:"integerValue"`
-	StringValue    pulumi.StringInput  `pulumi:"stringValue"`
-	TimestampValue pulumi.StringInput  `pulumi:"timestampValue"`
-}
-
-func (ValueResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ValueResponse)(nil)).Elem()
-}
-
-func (i ValueResponseArgs) ToValueResponseOutput() ValueResponseOutput {
-	return i.ToValueResponseOutputWithContext(context.Background())
-}
-
-func (i ValueResponseArgs) ToValueResponseOutputWithContext(ctx context.Context) ValueResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ValueResponseOutput)
 }
 
 // Definition of a single value with generic type.
@@ -4090,63 +3106,37 @@ func (o ValueResponseOutput) TimestampValue() pulumi.StringOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CompositeFilterInput)(nil)).Elem(), CompositeFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CompositeFilterPtrInput)(nil)).Elem(), CompositeFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CompositeFilterResponseInput)(nil)).Elem(), CompositeFilterResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSourceRestrictionInput)(nil)).Elem(), DataSourceRestrictionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSourceRestrictionArrayInput)(nil)).Elem(), DataSourceRestrictionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DataSourceRestrictionResponseInput)(nil)).Elem(), DataSourceRestrictionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DataSourceRestrictionResponseArrayInput)(nil)).Elem(), DataSourceRestrictionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DateInput)(nil)).Elem(), DateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatePtrInput)(nil)).Elem(), DateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DateResponseInput)(nil)).Elem(), DateResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DebugOptionsInput)(nil)).Elem(), DebugOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FacetOptionsInput)(nil)).Elem(), FacetOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FacetOptionsArrayInput)(nil)).Elem(), FacetOptionsArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FacetOptionsResponseInput)(nil)).Elem(), FacetOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FacetOptionsResponseArrayInput)(nil)).Elem(), FacetOptionsResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterInput)(nil)).Elem(), FilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterPtrInput)(nil)).Elem(), FilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterArrayInput)(nil)).Elem(), FilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterOptionsInput)(nil)).Elem(), FilterOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterOptionsArrayInput)(nil)).Elem(), FilterOptionsArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FilterOptionsResponseInput)(nil)).Elem(), FilterOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FilterOptionsResponseArrayInput)(nil)).Elem(), FilterOptionsResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FilterResponseInput)(nil)).Elem(), FilterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FilterResponseArrayInput)(nil)).Elem(), FilterResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GSuitePrincipalInput)(nil)).Elem(), GSuitePrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GSuitePrincipalArrayInput)(nil)).Elem(), GSuitePrincipalArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GSuitePrincipalResponseInput)(nil)).Elem(), GSuitePrincipalResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GSuitePrincipalResponseArrayInput)(nil)).Elem(), GSuitePrincipalResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryInterpretationConfigInput)(nil)).Elem(), QueryInterpretationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryInterpretationConfigPtrInput)(nil)).Elem(), QueryInterpretationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueryInterpretationConfigResponseInput)(nil)).Elem(), QueryInterpretationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueryInterpretationConfigResponsePtrInput)(nil)).Elem(), QueryInterpretationConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScoringConfigInput)(nil)).Elem(), ScoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScoringConfigPtrInput)(nil)).Elem(), ScoringConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScoringConfigResponseInput)(nil)).Elem(), ScoringConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScoringConfigResponsePtrInput)(nil)).Elem(), ScoringConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SortOptionsInput)(nil)).Elem(), SortOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SortOptionsPtrInput)(nil)).Elem(), SortOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SortOptionsResponseInput)(nil)).Elem(), SortOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SortOptionsResponsePtrInput)(nil)).Elem(), SortOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourcePtrInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceConfigInput)(nil)).Elem(), SourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceConfigArrayInput)(nil)).Elem(), SourceConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceConfigResponseInput)(nil)).Elem(), SourceConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceConfigResponseArrayInput)(nil)).Elem(), SourceConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceCrowdingConfigInput)(nil)).Elem(), SourceCrowdingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceCrowdingConfigPtrInput)(nil)).Elem(), SourceCrowdingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceCrowdingConfigResponseInput)(nil)).Elem(), SourceCrowdingConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceResponseInput)(nil)).Elem(), SourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceScoringConfigInput)(nil)).Elem(), SourceScoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceScoringConfigPtrInput)(nil)).Elem(), SourceScoringConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceScoringConfigResponseInput)(nil)).Elem(), SourceScoringConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValueInput)(nil)).Elem(), ValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValuePtrInput)(nil)).Elem(), ValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValueFilterInput)(nil)).Elem(), ValueFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValueFilterPtrInput)(nil)).Elem(), ValueFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ValueFilterResponseInput)(nil)).Elem(), ValueFilterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ValueResponseInput)(nil)).Elem(), ValueResponseArgs{})
 	pulumi.RegisterOutputType(CompositeFilterOutput{})
 	pulumi.RegisterOutputType(CompositeFilterPtrOutput{})
 	pulumi.RegisterOutputType(CompositeFilterResponseOutput{})
@@ -4157,7 +3147,6 @@ func init() {
 	pulumi.RegisterOutputType(DateOutput{})
 	pulumi.RegisterOutputType(DatePtrOutput{})
 	pulumi.RegisterOutputType(DateResponseOutput{})
-	pulumi.RegisterOutputType(DebugOptionsOutput{})
 	pulumi.RegisterOutputType(FacetOptionsOutput{})
 	pulumi.RegisterOutputType(FacetOptionsArrayOutput{})
 	pulumi.RegisterOutputType(FacetOptionsResponseOutput{})
@@ -4178,15 +3167,12 @@ func init() {
 	pulumi.RegisterOutputType(QueryInterpretationConfigOutput{})
 	pulumi.RegisterOutputType(QueryInterpretationConfigPtrOutput{})
 	pulumi.RegisterOutputType(QueryInterpretationConfigResponseOutput{})
-	pulumi.RegisterOutputType(QueryInterpretationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScoringConfigOutput{})
 	pulumi.RegisterOutputType(ScoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(ScoringConfigResponseOutput{})
-	pulumi.RegisterOutputType(ScoringConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(SortOptionsOutput{})
 	pulumi.RegisterOutputType(SortOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SortOptionsResponseOutput{})
-	pulumi.RegisterOutputType(SortOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SourceOutput{})
 	pulumi.RegisterOutputType(SourcePtrOutput{})
 	pulumi.RegisterOutputType(SourceConfigOutput{})

@@ -149,66 +149,6 @@ type ArgumentResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// ArgumentResponseInput is an input type that accepts ArgumentResponseArgs and ArgumentResponseOutput values.
-// You can construct a concrete instance of `ArgumentResponseInput` via:
-//
-//          ArgumentResponseArgs{...}
-type ArgumentResponseInput interface {
-	pulumi.Input
-
-	ToArgumentResponseOutput() ArgumentResponseOutput
-	ToArgumentResponseOutputWithContext(context.Context) ArgumentResponseOutput
-}
-
-// Input/output argument of a function or a stored procedure.
-type ArgumentResponseArgs struct {
-	// Optional. Defaults to FIXED_TYPE.
-	ArgumentKind pulumi.StringInput `pulumi:"argumentKind"`
-	// Required unless argument_kind = ANY_TYPE.
-	DataType StandardSqlDataTypeResponseInput `pulumi:"dataType"`
-	// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
-	Mode pulumi.StringInput `pulumi:"mode"`
-	// Optional. The name of this argument. Can be absent for function return argument.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (ArgumentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ArgumentResponse)(nil)).Elem()
-}
-
-func (i ArgumentResponseArgs) ToArgumentResponseOutput() ArgumentResponseOutput {
-	return i.ToArgumentResponseOutputWithContext(context.Background())
-}
-
-func (i ArgumentResponseArgs) ToArgumentResponseOutputWithContext(ctx context.Context) ArgumentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArgumentResponseOutput)
-}
-
-// ArgumentResponseArrayInput is an input type that accepts ArgumentResponseArray and ArgumentResponseArrayOutput values.
-// You can construct a concrete instance of `ArgumentResponseArrayInput` via:
-//
-//          ArgumentResponseArray{ ArgumentResponseArgs{...} }
-type ArgumentResponseArrayInput interface {
-	pulumi.Input
-
-	ToArgumentResponseArrayOutput() ArgumentResponseArrayOutput
-	ToArgumentResponseArrayOutputWithContext(context.Context) ArgumentResponseArrayOutput
-}
-
-type ArgumentResponseArray []ArgumentResponseInput
-
-func (ArgumentResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ArgumentResponse)(nil)).Elem()
-}
-
-func (i ArgumentResponseArray) ToArgumentResponseArrayOutput() ArgumentResponseArrayOutput {
-	return i.ToArgumentResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ArgumentResponseArray) ToArgumentResponseArrayOutputWithContext(ctx context.Context) ArgumentResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArgumentResponseArrayOutput)
-}
-
 // Input/output argument of a function or a stored procedure.
 type ArgumentResponseOutput struct{ *pulumi.OutputState }
 
@@ -381,62 +321,6 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
-// You can construct a concrete instance of `AuditConfigResponseInput` via:
-//
-//          AuditConfigResponseArgs{...}
-type AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseOutput() AuditConfigResponseOutput
-	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return i.ToAuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
-}
-
-// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
-//
-//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
-type AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
-	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
-}
-
-type AuditConfigResponseArray []AuditConfigResponseInput
-
-func (AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -597,62 +481,6 @@ type AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
-//
-//          AuditLogConfigResponseArgs{...}
-type AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
-	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
-}
-
-// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
-//
-//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
-type AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
-	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
-}
-
-type AuditLogConfigResponseArray []AuditLogConfigResponseInput
-
-func (AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -842,75 +670,6 @@ type AvroOptionsResponse struct {
 	UseAvroLogicalTypes bool `pulumi:"useAvroLogicalTypes"`
 }
 
-// AvroOptionsResponseInput is an input type that accepts AvroOptionsResponseArgs and AvroOptionsResponseOutput values.
-// You can construct a concrete instance of `AvroOptionsResponseInput` via:
-//
-//          AvroOptionsResponseArgs{...}
-type AvroOptionsResponseInput interface {
-	pulumi.Input
-
-	ToAvroOptionsResponseOutput() AvroOptionsResponseOutput
-	ToAvroOptionsResponseOutputWithContext(context.Context) AvroOptionsResponseOutput
-}
-
-type AvroOptionsResponseArgs struct {
-	// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
-	UseAvroLogicalTypes pulumi.BoolInput `pulumi:"useAvroLogicalTypes"`
-}
-
-func (AvroOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AvroOptionsResponse)(nil)).Elem()
-}
-
-func (i AvroOptionsResponseArgs) ToAvroOptionsResponseOutput() AvroOptionsResponseOutput {
-	return i.ToAvroOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i AvroOptionsResponseArgs) ToAvroOptionsResponseOutputWithContext(ctx context.Context) AvroOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AvroOptionsResponseOutput)
-}
-
-func (i AvroOptionsResponseArgs) ToAvroOptionsResponsePtrOutput() AvroOptionsResponsePtrOutput {
-	return i.ToAvroOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AvroOptionsResponseArgs) ToAvroOptionsResponsePtrOutputWithContext(ctx context.Context) AvroOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AvroOptionsResponseOutput).ToAvroOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// AvroOptionsResponsePtrInput is an input type that accepts AvroOptionsResponseArgs, AvroOptionsResponsePtr and AvroOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `AvroOptionsResponsePtrInput` via:
-//
-//          AvroOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AvroOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToAvroOptionsResponsePtrOutput() AvroOptionsResponsePtrOutput
-	ToAvroOptionsResponsePtrOutputWithContext(context.Context) AvroOptionsResponsePtrOutput
-}
-
-type avroOptionsResponsePtrType AvroOptionsResponseArgs
-
-func AvroOptionsResponsePtr(v *AvroOptionsResponseArgs) AvroOptionsResponsePtrInput {
-	return (*avroOptionsResponsePtrType)(v)
-}
-
-func (*avroOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AvroOptionsResponse)(nil)).Elem()
-}
-
-func (i *avroOptionsResponsePtrType) ToAvroOptionsResponsePtrOutput() AvroOptionsResponsePtrOutput {
-	return i.ToAvroOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *avroOptionsResponsePtrType) ToAvroOptionsResponsePtrOutputWithContext(ctx context.Context) AvroOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AvroOptionsResponsePtrOutput)
-}
-
 type AvroOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (AvroOptionsResponseOutput) ElementType() reflect.Type {
@@ -925,53 +684,9 @@ func (o AvroOptionsResponseOutput) ToAvroOptionsResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AvroOptionsResponseOutput) ToAvroOptionsResponsePtrOutput() AvroOptionsResponsePtrOutput {
-	return o.ToAvroOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AvroOptionsResponseOutput) ToAvroOptionsResponsePtrOutputWithContext(ctx context.Context) AvroOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AvroOptionsResponse) *AvroOptionsResponse {
-		return &v
-	}).(AvroOptionsResponsePtrOutput)
-}
-
 // [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
 func (o AvroOptionsResponseOutput) UseAvroLogicalTypes() pulumi.BoolOutput {
 	return o.ApplyT(func(v AvroOptionsResponse) bool { return v.UseAvroLogicalTypes }).(pulumi.BoolOutput)
-}
-
-type AvroOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AvroOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AvroOptionsResponse)(nil)).Elem()
-}
-
-func (o AvroOptionsResponsePtrOutput) ToAvroOptionsResponsePtrOutput() AvroOptionsResponsePtrOutput {
-	return o
-}
-
-func (o AvroOptionsResponsePtrOutput) ToAvroOptionsResponsePtrOutputWithContext(ctx context.Context) AvroOptionsResponsePtrOutput {
-	return o
-}
-
-func (o AvroOptionsResponsePtrOutput) Elem() AvroOptionsResponseOutput {
-	return o.ApplyT(func(v *AvroOptionsResponse) AvroOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AvroOptionsResponse
-		return ret
-	}).(AvroOptionsResponseOutput)
-}
-
-// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
-func (o AvroOptionsResponsePtrOutput) UseAvroLogicalTypes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AvroOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.UseAvroLogicalTypes
-	}).(pulumi.BoolPtrOutput)
 }
 
 type BiEngineReasonResponse struct {
@@ -979,61 +694,6 @@ type BiEngineReasonResponse struct {
 	Code string `pulumi:"code"`
 	// Free form human-readable reason for partial or disabled acceleration.
 	Message string `pulumi:"message"`
-}
-
-// BiEngineReasonResponseInput is an input type that accepts BiEngineReasonResponseArgs and BiEngineReasonResponseOutput values.
-// You can construct a concrete instance of `BiEngineReasonResponseInput` via:
-//
-//          BiEngineReasonResponseArgs{...}
-type BiEngineReasonResponseInput interface {
-	pulumi.Input
-
-	ToBiEngineReasonResponseOutput() BiEngineReasonResponseOutput
-	ToBiEngineReasonResponseOutputWithContext(context.Context) BiEngineReasonResponseOutput
-}
-
-type BiEngineReasonResponseArgs struct {
-	// High-level BI Engine reason for partial or disabled acceleration.
-	Code pulumi.StringInput `pulumi:"code"`
-	// Free form human-readable reason for partial or disabled acceleration.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (BiEngineReasonResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BiEngineReasonResponse)(nil)).Elem()
-}
-
-func (i BiEngineReasonResponseArgs) ToBiEngineReasonResponseOutput() BiEngineReasonResponseOutput {
-	return i.ToBiEngineReasonResponseOutputWithContext(context.Background())
-}
-
-func (i BiEngineReasonResponseArgs) ToBiEngineReasonResponseOutputWithContext(ctx context.Context) BiEngineReasonResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BiEngineReasonResponseOutput)
-}
-
-// BiEngineReasonResponseArrayInput is an input type that accepts BiEngineReasonResponseArray and BiEngineReasonResponseArrayOutput values.
-// You can construct a concrete instance of `BiEngineReasonResponseArrayInput` via:
-//
-//          BiEngineReasonResponseArray{ BiEngineReasonResponseArgs{...} }
-type BiEngineReasonResponseArrayInput interface {
-	pulumi.Input
-
-	ToBiEngineReasonResponseArrayOutput() BiEngineReasonResponseArrayOutput
-	ToBiEngineReasonResponseArrayOutputWithContext(context.Context) BiEngineReasonResponseArrayOutput
-}
-
-type BiEngineReasonResponseArray []BiEngineReasonResponseInput
-
-func (BiEngineReasonResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BiEngineReasonResponse)(nil)).Elem()
-}
-
-func (i BiEngineReasonResponseArray) ToBiEngineReasonResponseArrayOutput() BiEngineReasonResponseArrayOutput {
-	return i.ToBiEngineReasonResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BiEngineReasonResponseArray) ToBiEngineReasonResponseArrayOutputWithContext(ctx context.Context) BiEngineReasonResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BiEngineReasonResponseArrayOutput)
 }
 
 type BiEngineReasonResponseOutput struct{ *pulumi.OutputState }
@@ -1087,77 +747,6 @@ type BiEngineStatisticsResponse struct {
 	BiEngineReasons []BiEngineReasonResponse `pulumi:"biEngineReasons"`
 }
 
-// BiEngineStatisticsResponseInput is an input type that accepts BiEngineStatisticsResponseArgs and BiEngineStatisticsResponseOutput values.
-// You can construct a concrete instance of `BiEngineStatisticsResponseInput` via:
-//
-//          BiEngineStatisticsResponseArgs{...}
-type BiEngineStatisticsResponseInput interface {
-	pulumi.Input
-
-	ToBiEngineStatisticsResponseOutput() BiEngineStatisticsResponseOutput
-	ToBiEngineStatisticsResponseOutputWithContext(context.Context) BiEngineStatisticsResponseOutput
-}
-
-type BiEngineStatisticsResponseArgs struct {
-	// Specifies which mode of BI Engine acceleration was performed (if any).
-	BiEngineMode pulumi.StringInput `pulumi:"biEngineMode"`
-	// In case of DISABLED or PARTIAL bi_engine_mode, these contain the explanatory reasons as to why BI Engine could not accelerate. In case the full query was accelerated, this field is not populated.
-	BiEngineReasons BiEngineReasonResponseArrayInput `pulumi:"biEngineReasons"`
-}
-
-func (BiEngineStatisticsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BiEngineStatisticsResponse)(nil)).Elem()
-}
-
-func (i BiEngineStatisticsResponseArgs) ToBiEngineStatisticsResponseOutput() BiEngineStatisticsResponseOutput {
-	return i.ToBiEngineStatisticsResponseOutputWithContext(context.Background())
-}
-
-func (i BiEngineStatisticsResponseArgs) ToBiEngineStatisticsResponseOutputWithContext(ctx context.Context) BiEngineStatisticsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BiEngineStatisticsResponseOutput)
-}
-
-func (i BiEngineStatisticsResponseArgs) ToBiEngineStatisticsResponsePtrOutput() BiEngineStatisticsResponsePtrOutput {
-	return i.ToBiEngineStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BiEngineStatisticsResponseArgs) ToBiEngineStatisticsResponsePtrOutputWithContext(ctx context.Context) BiEngineStatisticsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BiEngineStatisticsResponseOutput).ToBiEngineStatisticsResponsePtrOutputWithContext(ctx)
-}
-
-// BiEngineStatisticsResponsePtrInput is an input type that accepts BiEngineStatisticsResponseArgs, BiEngineStatisticsResponsePtr and BiEngineStatisticsResponsePtrOutput values.
-// You can construct a concrete instance of `BiEngineStatisticsResponsePtrInput` via:
-//
-//          BiEngineStatisticsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BiEngineStatisticsResponsePtrInput interface {
-	pulumi.Input
-
-	ToBiEngineStatisticsResponsePtrOutput() BiEngineStatisticsResponsePtrOutput
-	ToBiEngineStatisticsResponsePtrOutputWithContext(context.Context) BiEngineStatisticsResponsePtrOutput
-}
-
-type biEngineStatisticsResponsePtrType BiEngineStatisticsResponseArgs
-
-func BiEngineStatisticsResponsePtr(v *BiEngineStatisticsResponseArgs) BiEngineStatisticsResponsePtrInput {
-	return (*biEngineStatisticsResponsePtrType)(v)
-}
-
-func (*biEngineStatisticsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BiEngineStatisticsResponse)(nil)).Elem()
-}
-
-func (i *biEngineStatisticsResponsePtrType) ToBiEngineStatisticsResponsePtrOutput() BiEngineStatisticsResponsePtrOutput {
-	return i.ToBiEngineStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *biEngineStatisticsResponsePtrType) ToBiEngineStatisticsResponsePtrOutputWithContext(ctx context.Context) BiEngineStatisticsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BiEngineStatisticsResponsePtrOutput)
-}
-
 type BiEngineStatisticsResponseOutput struct{ *pulumi.OutputState }
 
 func (BiEngineStatisticsResponseOutput) ElementType() reflect.Type {
@@ -1172,16 +761,6 @@ func (o BiEngineStatisticsResponseOutput) ToBiEngineStatisticsResponseOutputWith
 	return o
 }
 
-func (o BiEngineStatisticsResponseOutput) ToBiEngineStatisticsResponsePtrOutput() BiEngineStatisticsResponsePtrOutput {
-	return o.ToBiEngineStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BiEngineStatisticsResponseOutput) ToBiEngineStatisticsResponsePtrOutputWithContext(ctx context.Context) BiEngineStatisticsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BiEngineStatisticsResponse) *BiEngineStatisticsResponse {
-		return &v
-	}).(BiEngineStatisticsResponsePtrOutput)
-}
-
 // Specifies which mode of BI Engine acceleration was performed (if any).
 func (o BiEngineStatisticsResponseOutput) BiEngineMode() pulumi.StringOutput {
 	return o.ApplyT(func(v BiEngineStatisticsResponse) string { return v.BiEngineMode }).(pulumi.StringOutput)
@@ -1192,126 +771,11 @@ func (o BiEngineStatisticsResponseOutput) BiEngineReasons() BiEngineReasonRespon
 	return o.ApplyT(func(v BiEngineStatisticsResponse) []BiEngineReasonResponse { return v.BiEngineReasons }).(BiEngineReasonResponseArrayOutput)
 }
 
-type BiEngineStatisticsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BiEngineStatisticsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BiEngineStatisticsResponse)(nil)).Elem()
-}
-
-func (o BiEngineStatisticsResponsePtrOutput) ToBiEngineStatisticsResponsePtrOutput() BiEngineStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o BiEngineStatisticsResponsePtrOutput) ToBiEngineStatisticsResponsePtrOutputWithContext(ctx context.Context) BiEngineStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o BiEngineStatisticsResponsePtrOutput) Elem() BiEngineStatisticsResponseOutput {
-	return o.ApplyT(func(v *BiEngineStatisticsResponse) BiEngineStatisticsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BiEngineStatisticsResponse
-		return ret
-	}).(BiEngineStatisticsResponseOutput)
-}
-
-// Specifies which mode of BI Engine acceleration was performed (if any).
-func (o BiEngineStatisticsResponsePtrOutput) BiEngineMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BiEngineStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BiEngineMode
-	}).(pulumi.StringPtrOutput)
-}
-
-// In case of DISABLED or PARTIAL bi_engine_mode, these contain the explanatory reasons as to why BI Engine could not accelerate. In case the full query was accelerated, this field is not populated.
-func (o BiEngineStatisticsResponsePtrOutput) BiEngineReasons() BiEngineReasonResponseArrayOutput {
-	return o.ApplyT(func(v *BiEngineStatisticsResponse) []BiEngineReasonResponse {
-		if v == nil {
-			return nil
-		}
-		return v.BiEngineReasons
-	}).(BiEngineReasonResponseArrayOutput)
-}
-
 type BigQueryModelTrainingResponse struct {
 	// [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show job progress.
 	CurrentIteration int `pulumi:"currentIteration"`
 	// [Output-only, Beta] Expected number of iterations for the create model query job specified as num_iterations in the input query. The actual total number of iterations may be less than this number due to early stop.
 	ExpectedTotalIterations string `pulumi:"expectedTotalIterations"`
-}
-
-// BigQueryModelTrainingResponseInput is an input type that accepts BigQueryModelTrainingResponseArgs and BigQueryModelTrainingResponseOutput values.
-// You can construct a concrete instance of `BigQueryModelTrainingResponseInput` via:
-//
-//          BigQueryModelTrainingResponseArgs{...}
-type BigQueryModelTrainingResponseInput interface {
-	pulumi.Input
-
-	ToBigQueryModelTrainingResponseOutput() BigQueryModelTrainingResponseOutput
-	ToBigQueryModelTrainingResponseOutputWithContext(context.Context) BigQueryModelTrainingResponseOutput
-}
-
-type BigQueryModelTrainingResponseArgs struct {
-	// [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show job progress.
-	CurrentIteration pulumi.IntInput `pulumi:"currentIteration"`
-	// [Output-only, Beta] Expected number of iterations for the create model query job specified as num_iterations in the input query. The actual total number of iterations may be less than this number due to early stop.
-	ExpectedTotalIterations pulumi.StringInput `pulumi:"expectedTotalIterations"`
-}
-
-func (BigQueryModelTrainingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BigQueryModelTrainingResponse)(nil)).Elem()
-}
-
-func (i BigQueryModelTrainingResponseArgs) ToBigQueryModelTrainingResponseOutput() BigQueryModelTrainingResponseOutput {
-	return i.ToBigQueryModelTrainingResponseOutputWithContext(context.Background())
-}
-
-func (i BigQueryModelTrainingResponseArgs) ToBigQueryModelTrainingResponseOutputWithContext(ctx context.Context) BigQueryModelTrainingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigQueryModelTrainingResponseOutput)
-}
-
-func (i BigQueryModelTrainingResponseArgs) ToBigQueryModelTrainingResponsePtrOutput() BigQueryModelTrainingResponsePtrOutput {
-	return i.ToBigQueryModelTrainingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BigQueryModelTrainingResponseArgs) ToBigQueryModelTrainingResponsePtrOutputWithContext(ctx context.Context) BigQueryModelTrainingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigQueryModelTrainingResponseOutput).ToBigQueryModelTrainingResponsePtrOutputWithContext(ctx)
-}
-
-// BigQueryModelTrainingResponsePtrInput is an input type that accepts BigQueryModelTrainingResponseArgs, BigQueryModelTrainingResponsePtr and BigQueryModelTrainingResponsePtrOutput values.
-// You can construct a concrete instance of `BigQueryModelTrainingResponsePtrInput` via:
-//
-//          BigQueryModelTrainingResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BigQueryModelTrainingResponsePtrInput interface {
-	pulumi.Input
-
-	ToBigQueryModelTrainingResponsePtrOutput() BigQueryModelTrainingResponsePtrOutput
-	ToBigQueryModelTrainingResponsePtrOutputWithContext(context.Context) BigQueryModelTrainingResponsePtrOutput
-}
-
-type bigQueryModelTrainingResponsePtrType BigQueryModelTrainingResponseArgs
-
-func BigQueryModelTrainingResponsePtr(v *BigQueryModelTrainingResponseArgs) BigQueryModelTrainingResponsePtrInput {
-	return (*bigQueryModelTrainingResponsePtrType)(v)
-}
-
-func (*bigQueryModelTrainingResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BigQueryModelTrainingResponse)(nil)).Elem()
-}
-
-func (i *bigQueryModelTrainingResponsePtrType) ToBigQueryModelTrainingResponsePtrOutput() BigQueryModelTrainingResponsePtrOutput {
-	return i.ToBigQueryModelTrainingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bigQueryModelTrainingResponsePtrType) ToBigQueryModelTrainingResponsePtrOutputWithContext(ctx context.Context) BigQueryModelTrainingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigQueryModelTrainingResponsePtrOutput)
 }
 
 type BigQueryModelTrainingResponseOutput struct{ *pulumi.OutputState }
@@ -1328,16 +792,6 @@ func (o BigQueryModelTrainingResponseOutput) ToBigQueryModelTrainingResponseOutp
 	return o
 }
 
-func (o BigQueryModelTrainingResponseOutput) ToBigQueryModelTrainingResponsePtrOutput() BigQueryModelTrainingResponsePtrOutput {
-	return o.ToBigQueryModelTrainingResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BigQueryModelTrainingResponseOutput) ToBigQueryModelTrainingResponsePtrOutputWithContext(ctx context.Context) BigQueryModelTrainingResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryModelTrainingResponse) *BigQueryModelTrainingResponse {
-		return &v
-	}).(BigQueryModelTrainingResponsePtrOutput)
-}
-
 // [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show job progress.
 func (o BigQueryModelTrainingResponseOutput) CurrentIteration() pulumi.IntOutput {
 	return o.ApplyT(func(v BigQueryModelTrainingResponse) int { return v.CurrentIteration }).(pulumi.IntOutput)
@@ -1346,50 +800,6 @@ func (o BigQueryModelTrainingResponseOutput) CurrentIteration() pulumi.IntOutput
 // [Output-only, Beta] Expected number of iterations for the create model query job specified as num_iterations in the input query. The actual total number of iterations may be less than this number due to early stop.
 func (o BigQueryModelTrainingResponseOutput) ExpectedTotalIterations() pulumi.StringOutput {
 	return o.ApplyT(func(v BigQueryModelTrainingResponse) string { return v.ExpectedTotalIterations }).(pulumi.StringOutput)
-}
-
-type BigQueryModelTrainingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BigQueryModelTrainingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BigQueryModelTrainingResponse)(nil)).Elem()
-}
-
-func (o BigQueryModelTrainingResponsePtrOutput) ToBigQueryModelTrainingResponsePtrOutput() BigQueryModelTrainingResponsePtrOutput {
-	return o
-}
-
-func (o BigQueryModelTrainingResponsePtrOutput) ToBigQueryModelTrainingResponsePtrOutputWithContext(ctx context.Context) BigQueryModelTrainingResponsePtrOutput {
-	return o
-}
-
-func (o BigQueryModelTrainingResponsePtrOutput) Elem() BigQueryModelTrainingResponseOutput {
-	return o.ApplyT(func(v *BigQueryModelTrainingResponse) BigQueryModelTrainingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BigQueryModelTrainingResponse
-		return ret
-	}).(BigQueryModelTrainingResponseOutput)
-}
-
-// [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show job progress.
-func (o BigQueryModelTrainingResponsePtrOutput) CurrentIteration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *BigQueryModelTrainingResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.CurrentIteration
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Output-only, Beta] Expected number of iterations for the create model query job specified as num_iterations in the input query. The actual total number of iterations may be less than this number due to early stop.
-func (o BigQueryModelTrainingResponsePtrOutput) ExpectedTotalIterations() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BigQueryModelTrainingResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExpectedTotalIterations
-	}).(pulumi.StringPtrOutput)
 }
 
 type BigtableColumn struct {
@@ -1677,67 +1087,6 @@ type BigtableColumnFamilyResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// BigtableColumnFamilyResponseInput is an input type that accepts BigtableColumnFamilyResponseArgs and BigtableColumnFamilyResponseOutput values.
-// You can construct a concrete instance of `BigtableColumnFamilyResponseInput` via:
-//
-//          BigtableColumnFamilyResponseArgs{...}
-type BigtableColumnFamilyResponseInput interface {
-	pulumi.Input
-
-	ToBigtableColumnFamilyResponseOutput() BigtableColumnFamilyResponseOutput
-	ToBigtableColumnFamilyResponseOutputWithContext(context.Context) BigtableColumnFamilyResponseOutput
-}
-
-type BigtableColumnFamilyResponseArgs struct {
-	// [Optional] Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as .. Other columns can be accessed as a list through .Column field.
-	Columns BigtableColumnResponseArrayInput `pulumi:"columns"`
-	// [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
-	Encoding pulumi.StringInput `pulumi:"encoding"`
-	// Identifier of the column family.
-	FamilyId pulumi.StringInput `pulumi:"familyId"`
-	// [Optional] If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
-	OnlyReadLatest pulumi.BoolInput `pulumi:"onlyReadLatest"`
-	// [Optional] The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (BigtableColumnFamilyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BigtableColumnFamilyResponse)(nil)).Elem()
-}
-
-func (i BigtableColumnFamilyResponseArgs) ToBigtableColumnFamilyResponseOutput() BigtableColumnFamilyResponseOutput {
-	return i.ToBigtableColumnFamilyResponseOutputWithContext(context.Background())
-}
-
-func (i BigtableColumnFamilyResponseArgs) ToBigtableColumnFamilyResponseOutputWithContext(ctx context.Context) BigtableColumnFamilyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigtableColumnFamilyResponseOutput)
-}
-
-// BigtableColumnFamilyResponseArrayInput is an input type that accepts BigtableColumnFamilyResponseArray and BigtableColumnFamilyResponseArrayOutput values.
-// You can construct a concrete instance of `BigtableColumnFamilyResponseArrayInput` via:
-//
-//          BigtableColumnFamilyResponseArray{ BigtableColumnFamilyResponseArgs{...} }
-type BigtableColumnFamilyResponseArrayInput interface {
-	pulumi.Input
-
-	ToBigtableColumnFamilyResponseArrayOutput() BigtableColumnFamilyResponseArrayOutput
-	ToBigtableColumnFamilyResponseArrayOutputWithContext(context.Context) BigtableColumnFamilyResponseArrayOutput
-}
-
-type BigtableColumnFamilyResponseArray []BigtableColumnFamilyResponseInput
-
-func (BigtableColumnFamilyResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BigtableColumnFamilyResponse)(nil)).Elem()
-}
-
-func (i BigtableColumnFamilyResponseArray) ToBigtableColumnFamilyResponseArrayOutput() BigtableColumnFamilyResponseArrayOutput {
-	return i.ToBigtableColumnFamilyResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BigtableColumnFamilyResponseArray) ToBigtableColumnFamilyResponseArrayOutputWithContext(ctx context.Context) BigtableColumnFamilyResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigtableColumnFamilyResponseArrayOutput)
-}
-
 type BigtableColumnFamilyResponseOutput struct{ *pulumi.OutputState }
 
 func (BigtableColumnFamilyResponseOutput) ElementType() reflect.Type {
@@ -1809,68 +1158,6 @@ type BigtableColumnResponse struct {
 	QualifierString  string `pulumi:"qualifierString"`
 	// [Optional] The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
 	Type string `pulumi:"type"`
-}
-
-// BigtableColumnResponseInput is an input type that accepts BigtableColumnResponseArgs and BigtableColumnResponseOutput values.
-// You can construct a concrete instance of `BigtableColumnResponseInput` via:
-//
-//          BigtableColumnResponseArgs{...}
-type BigtableColumnResponseInput interface {
-	pulumi.Input
-
-	ToBigtableColumnResponseOutput() BigtableColumnResponseOutput
-	ToBigtableColumnResponseOutputWithContext(context.Context) BigtableColumnResponseOutput
-}
-
-type BigtableColumnResponseArgs struct {
-	// [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
-	Encoding pulumi.StringInput `pulumi:"encoding"`
-	// [Optional] If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
-	FieldName pulumi.StringInput `pulumi:"fieldName"`
-	// [Optional] If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
-	OnlyReadLatest pulumi.BoolInput `pulumi:"onlyReadLatest"`
-	// [Required] Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifier_string field. Otherwise, a base-64 encoded value must be set to qualifier_encoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as field_name.
-	QualifierEncoded pulumi.StringInput `pulumi:"qualifierEncoded"`
-	QualifierString  pulumi.StringInput `pulumi:"qualifierString"`
-	// [Optional] The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (BigtableColumnResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BigtableColumnResponse)(nil)).Elem()
-}
-
-func (i BigtableColumnResponseArgs) ToBigtableColumnResponseOutput() BigtableColumnResponseOutput {
-	return i.ToBigtableColumnResponseOutputWithContext(context.Background())
-}
-
-func (i BigtableColumnResponseArgs) ToBigtableColumnResponseOutputWithContext(ctx context.Context) BigtableColumnResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigtableColumnResponseOutput)
-}
-
-// BigtableColumnResponseArrayInput is an input type that accepts BigtableColumnResponseArray and BigtableColumnResponseArrayOutput values.
-// You can construct a concrete instance of `BigtableColumnResponseArrayInput` via:
-//
-//          BigtableColumnResponseArray{ BigtableColumnResponseArgs{...} }
-type BigtableColumnResponseArrayInput interface {
-	pulumi.Input
-
-	ToBigtableColumnResponseArrayOutput() BigtableColumnResponseArrayOutput
-	ToBigtableColumnResponseArrayOutputWithContext(context.Context) BigtableColumnResponseArrayOutput
-}
-
-type BigtableColumnResponseArray []BigtableColumnResponseInput
-
-func (BigtableColumnResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BigtableColumnResponse)(nil)).Elem()
-}
-
-func (i BigtableColumnResponseArray) ToBigtableColumnResponseArrayOutput() BigtableColumnResponseArrayOutput {
-	return i.ToBigtableColumnResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BigtableColumnResponseArray) ToBigtableColumnResponseArrayOutputWithContext(ctx context.Context) BigtableColumnResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigtableColumnResponseArrayOutput)
 }
 
 type BigtableColumnResponseOutput struct{ *pulumi.OutputState }
@@ -2120,79 +1407,6 @@ type BigtableOptionsResponse struct {
 	ReadRowkeyAsString bool `pulumi:"readRowkeyAsString"`
 }
 
-// BigtableOptionsResponseInput is an input type that accepts BigtableOptionsResponseArgs and BigtableOptionsResponseOutput values.
-// You can construct a concrete instance of `BigtableOptionsResponseInput` via:
-//
-//          BigtableOptionsResponseArgs{...}
-type BigtableOptionsResponseInput interface {
-	pulumi.Input
-
-	ToBigtableOptionsResponseOutput() BigtableOptionsResponseOutput
-	ToBigtableOptionsResponseOutputWithContext(context.Context) BigtableOptionsResponseOutput
-}
-
-type BigtableOptionsResponseArgs struct {
-	// [Optional] List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.
-	ColumnFamilies BigtableColumnFamilyResponseArrayInput `pulumi:"columnFamilies"`
-	// [Optional] If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
-	IgnoreUnspecifiedColumnFamilies pulumi.BoolInput `pulumi:"ignoreUnspecifiedColumnFamilies"`
-	// [Optional] If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
-	ReadRowkeyAsString pulumi.BoolInput `pulumi:"readRowkeyAsString"`
-}
-
-func (BigtableOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BigtableOptionsResponse)(nil)).Elem()
-}
-
-func (i BigtableOptionsResponseArgs) ToBigtableOptionsResponseOutput() BigtableOptionsResponseOutput {
-	return i.ToBigtableOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i BigtableOptionsResponseArgs) ToBigtableOptionsResponseOutputWithContext(ctx context.Context) BigtableOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigtableOptionsResponseOutput)
-}
-
-func (i BigtableOptionsResponseArgs) ToBigtableOptionsResponsePtrOutput() BigtableOptionsResponsePtrOutput {
-	return i.ToBigtableOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BigtableOptionsResponseArgs) ToBigtableOptionsResponsePtrOutputWithContext(ctx context.Context) BigtableOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigtableOptionsResponseOutput).ToBigtableOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// BigtableOptionsResponsePtrInput is an input type that accepts BigtableOptionsResponseArgs, BigtableOptionsResponsePtr and BigtableOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `BigtableOptionsResponsePtrInput` via:
-//
-//          BigtableOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BigtableOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToBigtableOptionsResponsePtrOutput() BigtableOptionsResponsePtrOutput
-	ToBigtableOptionsResponsePtrOutputWithContext(context.Context) BigtableOptionsResponsePtrOutput
-}
-
-type bigtableOptionsResponsePtrType BigtableOptionsResponseArgs
-
-func BigtableOptionsResponsePtr(v *BigtableOptionsResponseArgs) BigtableOptionsResponsePtrInput {
-	return (*bigtableOptionsResponsePtrType)(v)
-}
-
-func (*bigtableOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BigtableOptionsResponse)(nil)).Elem()
-}
-
-func (i *bigtableOptionsResponsePtrType) ToBigtableOptionsResponsePtrOutput() BigtableOptionsResponsePtrOutput {
-	return i.ToBigtableOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bigtableOptionsResponsePtrType) ToBigtableOptionsResponsePtrOutputWithContext(ctx context.Context) BigtableOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigtableOptionsResponsePtrOutput)
-}
-
 type BigtableOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (BigtableOptionsResponseOutput) ElementType() reflect.Type {
@@ -2205,16 +1419,6 @@ func (o BigtableOptionsResponseOutput) ToBigtableOptionsResponseOutput() Bigtabl
 
 func (o BigtableOptionsResponseOutput) ToBigtableOptionsResponseOutputWithContext(ctx context.Context) BigtableOptionsResponseOutput {
 	return o
-}
-
-func (o BigtableOptionsResponseOutput) ToBigtableOptionsResponsePtrOutput() BigtableOptionsResponsePtrOutput {
-	return o.ToBigtableOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BigtableOptionsResponseOutput) ToBigtableOptionsResponsePtrOutputWithContext(ctx context.Context) BigtableOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigtableOptionsResponse) *BigtableOptionsResponse {
-		return &v
-	}).(BigtableOptionsResponsePtrOutput)
 }
 
 // [Optional] List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.
@@ -2230,60 +1434,6 @@ func (o BigtableOptionsResponseOutput) IgnoreUnspecifiedColumnFamilies() pulumi.
 // [Optional] If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
 func (o BigtableOptionsResponseOutput) ReadRowkeyAsString() pulumi.BoolOutput {
 	return o.ApplyT(func(v BigtableOptionsResponse) bool { return v.ReadRowkeyAsString }).(pulumi.BoolOutput)
-}
-
-type BigtableOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BigtableOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BigtableOptionsResponse)(nil)).Elem()
-}
-
-func (o BigtableOptionsResponsePtrOutput) ToBigtableOptionsResponsePtrOutput() BigtableOptionsResponsePtrOutput {
-	return o
-}
-
-func (o BigtableOptionsResponsePtrOutput) ToBigtableOptionsResponsePtrOutputWithContext(ctx context.Context) BigtableOptionsResponsePtrOutput {
-	return o
-}
-
-func (o BigtableOptionsResponsePtrOutput) Elem() BigtableOptionsResponseOutput {
-	return o.ApplyT(func(v *BigtableOptionsResponse) BigtableOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BigtableOptionsResponse
-		return ret
-	}).(BigtableOptionsResponseOutput)
-}
-
-// [Optional] List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.
-func (o BigtableOptionsResponsePtrOutput) ColumnFamilies() BigtableColumnFamilyResponseArrayOutput {
-	return o.ApplyT(func(v *BigtableOptionsResponse) []BigtableColumnFamilyResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ColumnFamilies
-	}).(BigtableColumnFamilyResponseArrayOutput)
-}
-
-// [Optional] If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
-func (o BigtableOptionsResponsePtrOutput) IgnoreUnspecifiedColumnFamilies() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BigtableOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.IgnoreUnspecifiedColumnFamilies
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Optional] If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
-func (o BigtableOptionsResponsePtrOutput) ReadRowkeyAsString() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BigtableOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ReadRowkeyAsString
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -2412,64 +1562,6 @@ type BindingResponse struct {
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
-}
-
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -2668,67 +1760,6 @@ type BqmlIterationResultResponse struct {
 	TrainingLoss float64 `pulumi:"trainingLoss"`
 }
 
-// BqmlIterationResultResponseInput is an input type that accepts BqmlIterationResultResponseArgs and BqmlIterationResultResponseOutput values.
-// You can construct a concrete instance of `BqmlIterationResultResponseInput` via:
-//
-//          BqmlIterationResultResponseArgs{...}
-type BqmlIterationResultResponseInput interface {
-	pulumi.Input
-
-	ToBqmlIterationResultResponseOutput() BqmlIterationResultResponseOutput
-	ToBqmlIterationResultResponseOutputWithContext(context.Context) BqmlIterationResultResponseOutput
-}
-
-type BqmlIterationResultResponseArgs struct {
-	// [Output-only, Beta] Time taken to run the training iteration in milliseconds.
-	DurationMs pulumi.StringInput `pulumi:"durationMs"`
-	// [Output-only, Beta] Eval loss computed on the eval data at the end of the iteration. The eval loss is used for early stopping to avoid overfitting. No eval loss if eval_split_method option is specified as no_split or auto_split with input data size less than 500 rows.
-	EvalLoss pulumi.Float64Input `pulumi:"evalLoss"`
-	// [Output-only, Beta] Index of the ML training iteration, starting from zero for each training run.
-	Index pulumi.IntInput `pulumi:"index"`
-	// [Output-only, Beta] Learning rate used for this iteration, it varies for different training iterations if learn_rate_strategy option is not constant.
-	LearnRate pulumi.Float64Input `pulumi:"learnRate"`
-	// [Output-only, Beta] Training loss computed on the training data at the end of the iteration. The training loss function is defined by model type.
-	TrainingLoss pulumi.Float64Input `pulumi:"trainingLoss"`
-}
-
-func (BqmlIterationResultResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BqmlIterationResultResponse)(nil)).Elem()
-}
-
-func (i BqmlIterationResultResponseArgs) ToBqmlIterationResultResponseOutput() BqmlIterationResultResponseOutput {
-	return i.ToBqmlIterationResultResponseOutputWithContext(context.Background())
-}
-
-func (i BqmlIterationResultResponseArgs) ToBqmlIterationResultResponseOutputWithContext(ctx context.Context) BqmlIterationResultResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BqmlIterationResultResponseOutput)
-}
-
-// BqmlIterationResultResponseArrayInput is an input type that accepts BqmlIterationResultResponseArray and BqmlIterationResultResponseArrayOutput values.
-// You can construct a concrete instance of `BqmlIterationResultResponseArrayInput` via:
-//
-//          BqmlIterationResultResponseArray{ BqmlIterationResultResponseArgs{...} }
-type BqmlIterationResultResponseArrayInput interface {
-	pulumi.Input
-
-	ToBqmlIterationResultResponseArrayOutput() BqmlIterationResultResponseArrayOutput
-	ToBqmlIterationResultResponseArrayOutputWithContext(context.Context) BqmlIterationResultResponseArrayOutput
-}
-
-type BqmlIterationResultResponseArray []BqmlIterationResultResponseInput
-
-func (BqmlIterationResultResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BqmlIterationResultResponse)(nil)).Elem()
-}
-
-func (i BqmlIterationResultResponseArray) ToBqmlIterationResultResponseArrayOutput() BqmlIterationResultResponseArrayOutput {
-	return i.ToBqmlIterationResultResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BqmlIterationResultResponseArray) ToBqmlIterationResultResponseArrayOutputWithContext(ctx context.Context) BqmlIterationResultResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BqmlIterationResultResponseArrayOutput)
-}
-
 type BqmlIterationResultResponseOutput struct{ *pulumi.OutputState }
 
 func (BqmlIterationResultResponseOutput) ElementType() reflect.Type {
@@ -2921,65 +1952,6 @@ type BqmlTrainingRunResponse struct {
 	State string `pulumi:"state"`
 	// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
 	TrainingOptions BqmlTrainingRunTrainingOptionsResponse `pulumi:"trainingOptions"`
-}
-
-// BqmlTrainingRunResponseInput is an input type that accepts BqmlTrainingRunResponseArgs and BqmlTrainingRunResponseOutput values.
-// You can construct a concrete instance of `BqmlTrainingRunResponseInput` via:
-//
-//          BqmlTrainingRunResponseArgs{...}
-type BqmlTrainingRunResponseInput interface {
-	pulumi.Input
-
-	ToBqmlTrainingRunResponseOutput() BqmlTrainingRunResponseOutput
-	ToBqmlTrainingRunResponseOutputWithContext(context.Context) BqmlTrainingRunResponseOutput
-}
-
-type BqmlTrainingRunResponseArgs struct {
-	// [Output-only, Beta] List of each iteration results.
-	IterationResults BqmlIterationResultResponseArrayInput `pulumi:"iterationResults"`
-	// [Output-only, Beta] Training run start time in milliseconds since the epoch.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
-	State pulumi.StringInput `pulumi:"state"`
-	// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-	TrainingOptions BqmlTrainingRunTrainingOptionsResponseInput `pulumi:"trainingOptions"`
-}
-
-func (BqmlTrainingRunResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BqmlTrainingRunResponse)(nil)).Elem()
-}
-
-func (i BqmlTrainingRunResponseArgs) ToBqmlTrainingRunResponseOutput() BqmlTrainingRunResponseOutput {
-	return i.ToBqmlTrainingRunResponseOutputWithContext(context.Background())
-}
-
-func (i BqmlTrainingRunResponseArgs) ToBqmlTrainingRunResponseOutputWithContext(ctx context.Context) BqmlTrainingRunResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BqmlTrainingRunResponseOutput)
-}
-
-// BqmlTrainingRunResponseArrayInput is an input type that accepts BqmlTrainingRunResponseArray and BqmlTrainingRunResponseArrayOutput values.
-// You can construct a concrete instance of `BqmlTrainingRunResponseArrayInput` via:
-//
-//          BqmlTrainingRunResponseArray{ BqmlTrainingRunResponseArgs{...} }
-type BqmlTrainingRunResponseArrayInput interface {
-	pulumi.Input
-
-	ToBqmlTrainingRunResponseArrayOutput() BqmlTrainingRunResponseArrayOutput
-	ToBqmlTrainingRunResponseArrayOutputWithContext(context.Context) BqmlTrainingRunResponseArrayOutput
-}
-
-type BqmlTrainingRunResponseArray []BqmlTrainingRunResponseInput
-
-func (BqmlTrainingRunResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BqmlTrainingRunResponse)(nil)).Elem()
-}
-
-func (i BqmlTrainingRunResponseArray) ToBqmlTrainingRunResponseArrayOutput() BqmlTrainingRunResponseArrayOutput {
-	return i.ToBqmlTrainingRunResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BqmlTrainingRunResponseArray) ToBqmlTrainingRunResponseArrayOutputWithContext(ctx context.Context) BqmlTrainingRunResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BqmlTrainingRunResponseArrayOutput)
 }
 
 type BqmlTrainingRunResponseOutput struct{ *pulumi.OutputState }
@@ -3305,42 +2277,6 @@ type BqmlTrainingRunTrainingOptionsResponse struct {
 	WarmStart               bool    `pulumi:"warmStart"`
 }
 
-// BqmlTrainingRunTrainingOptionsResponseInput is an input type that accepts BqmlTrainingRunTrainingOptionsResponseArgs and BqmlTrainingRunTrainingOptionsResponseOutput values.
-// You can construct a concrete instance of `BqmlTrainingRunTrainingOptionsResponseInput` via:
-//
-//          BqmlTrainingRunTrainingOptionsResponseArgs{...}
-type BqmlTrainingRunTrainingOptionsResponseInput interface {
-	pulumi.Input
-
-	ToBqmlTrainingRunTrainingOptionsResponseOutput() BqmlTrainingRunTrainingOptionsResponseOutput
-	ToBqmlTrainingRunTrainingOptionsResponseOutputWithContext(context.Context) BqmlTrainingRunTrainingOptionsResponseOutput
-}
-
-// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-type BqmlTrainingRunTrainingOptionsResponseArgs struct {
-	EarlyStop               pulumi.BoolInput    `pulumi:"earlyStop"`
-	L1Reg                   pulumi.Float64Input `pulumi:"l1Reg"`
-	L2Reg                   pulumi.Float64Input `pulumi:"l2Reg"`
-	LearnRate               pulumi.Float64Input `pulumi:"learnRate"`
-	LearnRateStrategy       pulumi.StringInput  `pulumi:"learnRateStrategy"`
-	LineSearchInitLearnRate pulumi.Float64Input `pulumi:"lineSearchInitLearnRate"`
-	MaxIteration            pulumi.StringInput  `pulumi:"maxIteration"`
-	MinRelProgress          pulumi.Float64Input `pulumi:"minRelProgress"`
-	WarmStart               pulumi.BoolInput    `pulumi:"warmStart"`
-}
-
-func (BqmlTrainingRunTrainingOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BqmlTrainingRunTrainingOptionsResponse)(nil)).Elem()
-}
-
-func (i BqmlTrainingRunTrainingOptionsResponseArgs) ToBqmlTrainingRunTrainingOptionsResponseOutput() BqmlTrainingRunTrainingOptionsResponseOutput {
-	return i.ToBqmlTrainingRunTrainingOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i BqmlTrainingRunTrainingOptionsResponseArgs) ToBqmlTrainingRunTrainingOptionsResponseOutputWithContext(ctx context.Context) BqmlTrainingRunTrainingOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BqmlTrainingRunTrainingOptionsResponseOutput)
-}
-
 // [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
 type BqmlTrainingRunTrainingOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -3534,75 +2470,6 @@ type ClusteringResponse struct {
 	Fields []string `pulumi:"fields"`
 }
 
-// ClusteringResponseInput is an input type that accepts ClusteringResponseArgs and ClusteringResponseOutput values.
-// You can construct a concrete instance of `ClusteringResponseInput` via:
-//
-//          ClusteringResponseArgs{...}
-type ClusteringResponseInput interface {
-	pulumi.Input
-
-	ToClusteringResponseOutput() ClusteringResponseOutput
-	ToClusteringResponseOutputWithContext(context.Context) ClusteringResponseOutput
-}
-
-type ClusteringResponseArgs struct {
-	// [Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you specify is important. The order of the specified columns determines the sort order of the data.
-	Fields pulumi.StringArrayInput `pulumi:"fields"`
-}
-
-func (ClusteringResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusteringResponse)(nil)).Elem()
-}
-
-func (i ClusteringResponseArgs) ToClusteringResponseOutput() ClusteringResponseOutput {
-	return i.ToClusteringResponseOutputWithContext(context.Background())
-}
-
-func (i ClusteringResponseArgs) ToClusteringResponseOutputWithContext(ctx context.Context) ClusteringResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusteringResponseOutput)
-}
-
-func (i ClusteringResponseArgs) ToClusteringResponsePtrOutput() ClusteringResponsePtrOutput {
-	return i.ToClusteringResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ClusteringResponseArgs) ToClusteringResponsePtrOutputWithContext(ctx context.Context) ClusteringResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusteringResponseOutput).ToClusteringResponsePtrOutputWithContext(ctx)
-}
-
-// ClusteringResponsePtrInput is an input type that accepts ClusteringResponseArgs, ClusteringResponsePtr and ClusteringResponsePtrOutput values.
-// You can construct a concrete instance of `ClusteringResponsePtrInput` via:
-//
-//          ClusteringResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ClusteringResponsePtrInput interface {
-	pulumi.Input
-
-	ToClusteringResponsePtrOutput() ClusteringResponsePtrOutput
-	ToClusteringResponsePtrOutputWithContext(context.Context) ClusteringResponsePtrOutput
-}
-
-type clusteringResponsePtrType ClusteringResponseArgs
-
-func ClusteringResponsePtr(v *ClusteringResponseArgs) ClusteringResponsePtrInput {
-	return (*clusteringResponsePtrType)(v)
-}
-
-func (*clusteringResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusteringResponse)(nil)).Elem()
-}
-
-func (i *clusteringResponsePtrType) ToClusteringResponsePtrOutput() ClusteringResponsePtrOutput {
-	return i.ToClusteringResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *clusteringResponsePtrType) ToClusteringResponsePtrOutputWithContext(ctx context.Context) ClusteringResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusteringResponsePtrOutput)
-}
-
 type ClusteringResponseOutput struct{ *pulumi.OutputState }
 
 func (ClusteringResponseOutput) ElementType() reflect.Type {
@@ -3617,53 +2484,9 @@ func (o ClusteringResponseOutput) ToClusteringResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o ClusteringResponseOutput) ToClusteringResponsePtrOutput() ClusteringResponsePtrOutput {
-	return o.ToClusteringResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ClusteringResponseOutput) ToClusteringResponsePtrOutputWithContext(ctx context.Context) ClusteringResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusteringResponse) *ClusteringResponse {
-		return &v
-	}).(ClusteringResponsePtrOutput)
-}
-
 // [Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you specify is important. The order of the specified columns determines the sort order of the data.
 func (o ClusteringResponseOutput) Fields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusteringResponse) []string { return v.Fields }).(pulumi.StringArrayOutput)
-}
-
-type ClusteringResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ClusteringResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusteringResponse)(nil)).Elem()
-}
-
-func (o ClusteringResponsePtrOutput) ToClusteringResponsePtrOutput() ClusteringResponsePtrOutput {
-	return o
-}
-
-func (o ClusteringResponsePtrOutput) ToClusteringResponsePtrOutputWithContext(ctx context.Context) ClusteringResponsePtrOutput {
-	return o
-}
-
-func (o ClusteringResponsePtrOutput) Elem() ClusteringResponseOutput {
-	return o.ApplyT(func(v *ClusteringResponse) ClusteringResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ClusteringResponse
-		return ret
-	}).(ClusteringResponseOutput)
-}
-
-// [Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you specify is important. The order of the specified columns determines the sort order of the data.
-func (o ClusteringResponsePtrOutput) Fields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ClusteringResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Fields
-	}).(pulumi.StringArrayOutput)
 }
 
 type ConnectionProperty struct {
@@ -3777,61 +2600,6 @@ type ConnectionPropertyResponse struct {
 	Key string `pulumi:"key"`
 	// [Required] Value of the connection property.
 	Value string `pulumi:"value"`
-}
-
-// ConnectionPropertyResponseInput is an input type that accepts ConnectionPropertyResponseArgs and ConnectionPropertyResponseOutput values.
-// You can construct a concrete instance of `ConnectionPropertyResponseInput` via:
-//
-//          ConnectionPropertyResponseArgs{...}
-type ConnectionPropertyResponseInput interface {
-	pulumi.Input
-
-	ToConnectionPropertyResponseOutput() ConnectionPropertyResponseOutput
-	ToConnectionPropertyResponseOutputWithContext(context.Context) ConnectionPropertyResponseOutput
-}
-
-type ConnectionPropertyResponseArgs struct {
-	// [Required] Name of the connection property to set.
-	Key pulumi.StringInput `pulumi:"key"`
-	// [Required] Value of the connection property.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (ConnectionPropertyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionPropertyResponse)(nil)).Elem()
-}
-
-func (i ConnectionPropertyResponseArgs) ToConnectionPropertyResponseOutput() ConnectionPropertyResponseOutput {
-	return i.ToConnectionPropertyResponseOutputWithContext(context.Background())
-}
-
-func (i ConnectionPropertyResponseArgs) ToConnectionPropertyResponseOutputWithContext(ctx context.Context) ConnectionPropertyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPropertyResponseOutput)
-}
-
-// ConnectionPropertyResponseArrayInput is an input type that accepts ConnectionPropertyResponseArray and ConnectionPropertyResponseArrayOutput values.
-// You can construct a concrete instance of `ConnectionPropertyResponseArrayInput` via:
-//
-//          ConnectionPropertyResponseArray{ ConnectionPropertyResponseArgs{...} }
-type ConnectionPropertyResponseArrayInput interface {
-	pulumi.Input
-
-	ToConnectionPropertyResponseArrayOutput() ConnectionPropertyResponseArrayOutput
-	ToConnectionPropertyResponseArrayOutputWithContext(context.Context) ConnectionPropertyResponseArrayOutput
-}
-
-type ConnectionPropertyResponseArray []ConnectionPropertyResponseInput
-
-func (ConnectionPropertyResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionPropertyResponse)(nil)).Elem()
-}
-
-func (i ConnectionPropertyResponseArray) ToConnectionPropertyResponseArrayOutput() ConnectionPropertyResponseArrayOutput {
-	return i.ToConnectionPropertyResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ConnectionPropertyResponseArray) ToConnectionPropertyResponseArrayOutputWithContext(ctx context.Context) ConnectionPropertyResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPropertyResponseArrayOutput)
 }
 
 type ConnectionPropertyResponseOutput struct{ *pulumi.OutputState }
@@ -4146,87 +2914,6 @@ type CsvOptionsResponse struct {
 	SkipLeadingRows string `pulumi:"skipLeadingRows"`
 }
 
-// CsvOptionsResponseInput is an input type that accepts CsvOptionsResponseArgs and CsvOptionsResponseOutput values.
-// You can construct a concrete instance of `CsvOptionsResponseInput` via:
-//
-//          CsvOptionsResponseArgs{...}
-type CsvOptionsResponseInput interface {
-	pulumi.Input
-
-	ToCsvOptionsResponseOutput() CsvOptionsResponseOutput
-	ToCsvOptionsResponseOutputWithContext(context.Context) CsvOptionsResponseOutput
-}
-
-type CsvOptionsResponseArgs struct {
-	// [Optional] Indicates if BigQuery should accept rows that are missing trailing optional columns. If true, BigQuery treats missing trailing columns as null values. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
-	AllowJaggedRows pulumi.BoolInput `pulumi:"allowJaggedRows"`
-	// [Optional] Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
-	AllowQuotedNewlines pulumi.BoolInput `pulumi:"allowQuotedNewlines"`
-	// [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
-	Encoding pulumi.StringInput `pulumi:"encoding"`
-	// [Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
-	FieldDelimiter pulumi.StringInput `pulumi:"fieldDelimiter"`
-	// [Optional] An custom string that will represent a NULL value in CSV import data.
-	NullMarker pulumi.StringInput `pulumi:"nullMarker"`
-	// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
-	Quote pulumi.StringInput `pulumi:"quote"`
-	// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
-	SkipLeadingRows pulumi.StringInput `pulumi:"skipLeadingRows"`
-}
-
-func (CsvOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CsvOptionsResponse)(nil)).Elem()
-}
-
-func (i CsvOptionsResponseArgs) ToCsvOptionsResponseOutput() CsvOptionsResponseOutput {
-	return i.ToCsvOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i CsvOptionsResponseArgs) ToCsvOptionsResponseOutputWithContext(ctx context.Context) CsvOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CsvOptionsResponseOutput)
-}
-
-func (i CsvOptionsResponseArgs) ToCsvOptionsResponsePtrOutput() CsvOptionsResponsePtrOutput {
-	return i.ToCsvOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CsvOptionsResponseArgs) ToCsvOptionsResponsePtrOutputWithContext(ctx context.Context) CsvOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CsvOptionsResponseOutput).ToCsvOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// CsvOptionsResponsePtrInput is an input type that accepts CsvOptionsResponseArgs, CsvOptionsResponsePtr and CsvOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `CsvOptionsResponsePtrInput` via:
-//
-//          CsvOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CsvOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToCsvOptionsResponsePtrOutput() CsvOptionsResponsePtrOutput
-	ToCsvOptionsResponsePtrOutputWithContext(context.Context) CsvOptionsResponsePtrOutput
-}
-
-type csvOptionsResponsePtrType CsvOptionsResponseArgs
-
-func CsvOptionsResponsePtr(v *CsvOptionsResponseArgs) CsvOptionsResponsePtrInput {
-	return (*csvOptionsResponsePtrType)(v)
-}
-
-func (*csvOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CsvOptionsResponse)(nil)).Elem()
-}
-
-func (i *csvOptionsResponsePtrType) ToCsvOptionsResponsePtrOutput() CsvOptionsResponsePtrOutput {
-	return i.ToCsvOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *csvOptionsResponsePtrType) ToCsvOptionsResponsePtrOutputWithContext(ctx context.Context) CsvOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CsvOptionsResponsePtrOutput)
-}
-
 type CsvOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (CsvOptionsResponseOutput) ElementType() reflect.Type {
@@ -4239,16 +2926,6 @@ func (o CsvOptionsResponseOutput) ToCsvOptionsResponseOutput() CsvOptionsRespons
 
 func (o CsvOptionsResponseOutput) ToCsvOptionsResponseOutputWithContext(ctx context.Context) CsvOptionsResponseOutput {
 	return o
-}
-
-func (o CsvOptionsResponseOutput) ToCsvOptionsResponsePtrOutput() CsvOptionsResponsePtrOutput {
-	return o.ToCsvOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CsvOptionsResponseOutput) ToCsvOptionsResponsePtrOutputWithContext(ctx context.Context) CsvOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CsvOptionsResponse) *CsvOptionsResponse {
-		return &v
-	}).(CsvOptionsResponsePtrOutput)
 }
 
 // [Optional] Indicates if BigQuery should accept rows that are missing trailing optional columns. If true, BigQuery treats missing trailing columns as null values. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
@@ -4284,100 +2961,6 @@ func (o CsvOptionsResponseOutput) Quote() pulumi.StringOutput {
 // [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
 func (o CsvOptionsResponseOutput) SkipLeadingRows() pulumi.StringOutput {
 	return o.ApplyT(func(v CsvOptionsResponse) string { return v.SkipLeadingRows }).(pulumi.StringOutput)
-}
-
-type CsvOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CsvOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CsvOptionsResponse)(nil)).Elem()
-}
-
-func (o CsvOptionsResponsePtrOutput) ToCsvOptionsResponsePtrOutput() CsvOptionsResponsePtrOutput {
-	return o
-}
-
-func (o CsvOptionsResponsePtrOutput) ToCsvOptionsResponsePtrOutputWithContext(ctx context.Context) CsvOptionsResponsePtrOutput {
-	return o
-}
-
-func (o CsvOptionsResponsePtrOutput) Elem() CsvOptionsResponseOutput {
-	return o.ApplyT(func(v *CsvOptionsResponse) CsvOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CsvOptionsResponse
-		return ret
-	}).(CsvOptionsResponseOutput)
-}
-
-// [Optional] Indicates if BigQuery should accept rows that are missing trailing optional columns. If true, BigQuery treats missing trailing columns as null values. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
-func (o CsvOptionsResponsePtrOutput) AllowJaggedRows() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CsvOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AllowJaggedRows
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Optional] Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
-func (o CsvOptionsResponsePtrOutput) AllowQuotedNewlines() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CsvOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AllowQuotedNewlines
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
-func (o CsvOptionsResponsePtrOutput) Encoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CsvOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Encoding
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
-func (o CsvOptionsResponsePtrOutput) FieldDelimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CsvOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FieldDelimiter
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] An custom string that will represent a NULL value in CSV import data.
-func (o CsvOptionsResponsePtrOutput) NullMarker() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CsvOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NullMarker
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
-func (o CsvOptionsResponsePtrOutput) Quote() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CsvOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Quote
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
-func (o CsvOptionsResponsePtrOutput) SkipLeadingRows() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CsvOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SkipLeadingRows
-	}).(pulumi.StringPtrOutput)
 }
 
 type DatasetAccessEntry struct {
@@ -4538,35 +3121,6 @@ type DatasetAccessEntryResponse struct {
 	TargetTypes []DatasetAccessEntryTargetTypesItemResponse `pulumi:"targetTypes"`
 }
 
-// DatasetAccessEntryResponseInput is an input type that accepts DatasetAccessEntryResponseArgs and DatasetAccessEntryResponseOutput values.
-// You can construct a concrete instance of `DatasetAccessEntryResponseInput` via:
-//
-//          DatasetAccessEntryResponseArgs{...}
-type DatasetAccessEntryResponseInput interface {
-	pulumi.Input
-
-	ToDatasetAccessEntryResponseOutput() DatasetAccessEntryResponseOutput
-	ToDatasetAccessEntryResponseOutputWithContext(context.Context) DatasetAccessEntryResponseOutput
-}
-
-type DatasetAccessEntryResponseArgs struct {
-	// [Required] The dataset this entry applies to.
-	Dataset     DatasetReferenceResponseInput                       `pulumi:"dataset"`
-	TargetTypes DatasetAccessEntryTargetTypesItemResponseArrayInput `pulumi:"targetTypes"`
-}
-
-func (DatasetAccessEntryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccessEntryResponse)(nil)).Elem()
-}
-
-func (i DatasetAccessEntryResponseArgs) ToDatasetAccessEntryResponseOutput() DatasetAccessEntryResponseOutput {
-	return i.ToDatasetAccessEntryResponseOutputWithContext(context.Background())
-}
-
-func (i DatasetAccessEntryResponseArgs) ToDatasetAccessEntryResponseOutputWithContext(ctx context.Context) DatasetAccessEntryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryResponseOutput)
-}
-
 type DatasetAccessEntryResponseOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessEntryResponseOutput) ElementType() reflect.Type {
@@ -4690,59 +3244,6 @@ func (o DatasetAccessEntryTargetTypesItemArrayOutput) Index(i pulumi.IntInput) D
 type DatasetAccessEntryTargetTypesItemResponse struct {
 	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
 	TargetType string `pulumi:"targetType"`
-}
-
-// DatasetAccessEntryTargetTypesItemResponseInput is an input type that accepts DatasetAccessEntryTargetTypesItemResponseArgs and DatasetAccessEntryTargetTypesItemResponseOutput values.
-// You can construct a concrete instance of `DatasetAccessEntryTargetTypesItemResponseInput` via:
-//
-//          DatasetAccessEntryTargetTypesItemResponseArgs{...}
-type DatasetAccessEntryTargetTypesItemResponseInput interface {
-	pulumi.Input
-
-	ToDatasetAccessEntryTargetTypesItemResponseOutput() DatasetAccessEntryTargetTypesItemResponseOutput
-	ToDatasetAccessEntryTargetTypesItemResponseOutputWithContext(context.Context) DatasetAccessEntryTargetTypesItemResponseOutput
-}
-
-type DatasetAccessEntryTargetTypesItemResponseArgs struct {
-	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-	TargetType pulumi.StringInput `pulumi:"targetType"`
-}
-
-func (DatasetAccessEntryTargetTypesItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccessEntryTargetTypesItemResponse)(nil)).Elem()
-}
-
-func (i DatasetAccessEntryTargetTypesItemResponseArgs) ToDatasetAccessEntryTargetTypesItemResponseOutput() DatasetAccessEntryTargetTypesItemResponseOutput {
-	return i.ToDatasetAccessEntryTargetTypesItemResponseOutputWithContext(context.Background())
-}
-
-func (i DatasetAccessEntryTargetTypesItemResponseArgs) ToDatasetAccessEntryTargetTypesItemResponseOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTargetTypesItemResponseOutput)
-}
-
-// DatasetAccessEntryTargetTypesItemResponseArrayInput is an input type that accepts DatasetAccessEntryTargetTypesItemResponseArray and DatasetAccessEntryTargetTypesItemResponseArrayOutput values.
-// You can construct a concrete instance of `DatasetAccessEntryTargetTypesItemResponseArrayInput` via:
-//
-//          DatasetAccessEntryTargetTypesItemResponseArray{ DatasetAccessEntryTargetTypesItemResponseArgs{...} }
-type DatasetAccessEntryTargetTypesItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToDatasetAccessEntryTargetTypesItemResponseArrayOutput() DatasetAccessEntryTargetTypesItemResponseArrayOutput
-	ToDatasetAccessEntryTargetTypesItemResponseArrayOutputWithContext(context.Context) DatasetAccessEntryTargetTypesItemResponseArrayOutput
-}
-
-type DatasetAccessEntryTargetTypesItemResponseArray []DatasetAccessEntryTargetTypesItemResponseInput
-
-func (DatasetAccessEntryTargetTypesItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetAccessEntryTargetTypesItemResponse)(nil)).Elem()
-}
-
-func (i DatasetAccessEntryTargetTypesItemResponseArray) ToDatasetAccessEntryTargetTypesItemResponseArrayOutput() DatasetAccessEntryTargetTypesItemResponseArrayOutput {
-	return i.ToDatasetAccessEntryTargetTypesItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DatasetAccessEntryTargetTypesItemResponseArray) ToDatasetAccessEntryTargetTypesItemResponseArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTargetTypesItemResponseArrayOutput)
 }
 
 type DatasetAccessEntryTargetTypesItemResponseOutput struct{ *pulumi.OutputState }
@@ -4972,75 +3473,6 @@ type DatasetAccessItemResponse struct {
 	UserByEmail string `pulumi:"userByEmail"`
 	// [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
 	View TableReferenceResponse `pulumi:"view"`
-}
-
-// DatasetAccessItemResponseInput is an input type that accepts DatasetAccessItemResponseArgs and DatasetAccessItemResponseOutput values.
-// You can construct a concrete instance of `DatasetAccessItemResponseInput` via:
-//
-//          DatasetAccessItemResponseArgs{...}
-type DatasetAccessItemResponseInput interface {
-	pulumi.Input
-
-	ToDatasetAccessItemResponseOutput() DatasetAccessItemResponseOutput
-	ToDatasetAccessItemResponseOutputWithContext(context.Context) DatasetAccessItemResponseOutput
-}
-
-type DatasetAccessItemResponseArgs struct {
-	// [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
-	Dataset DatasetAccessEntryResponseInput `pulumi:"dataset"`
-	// [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
-	Domain pulumi.StringInput `pulumi:"domain"`
-	// [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
-	GroupByEmail pulumi.StringInput `pulumi:"groupByEmail"`
-	// [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
-	IamMember pulumi.StringInput `pulumi:"iamMember"`
-	// [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
-	Role pulumi.StringInput `pulumi:"role"`
-	// [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
-	Routine RoutineReferenceResponseInput `pulumi:"routine"`
-	// [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
-	SpecialGroup pulumi.StringInput `pulumi:"specialGroup"`
-	// [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
-	UserByEmail pulumi.StringInput `pulumi:"userByEmail"`
-	// [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
-	View TableReferenceResponseInput `pulumi:"view"`
-}
-
-func (DatasetAccessItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccessItemResponse)(nil)).Elem()
-}
-
-func (i DatasetAccessItemResponseArgs) ToDatasetAccessItemResponseOutput() DatasetAccessItemResponseOutput {
-	return i.ToDatasetAccessItemResponseOutputWithContext(context.Background())
-}
-
-func (i DatasetAccessItemResponseArgs) ToDatasetAccessItemResponseOutputWithContext(ctx context.Context) DatasetAccessItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessItemResponseOutput)
-}
-
-// DatasetAccessItemResponseArrayInput is an input type that accepts DatasetAccessItemResponseArray and DatasetAccessItemResponseArrayOutput values.
-// You can construct a concrete instance of `DatasetAccessItemResponseArrayInput` via:
-//
-//          DatasetAccessItemResponseArray{ DatasetAccessItemResponseArgs{...} }
-type DatasetAccessItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToDatasetAccessItemResponseArrayOutput() DatasetAccessItemResponseArrayOutput
-	ToDatasetAccessItemResponseArrayOutputWithContext(context.Context) DatasetAccessItemResponseArrayOutput
-}
-
-type DatasetAccessItemResponseArray []DatasetAccessItemResponseInput
-
-func (DatasetAccessItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetAccessItemResponse)(nil)).Elem()
-}
-
-func (i DatasetAccessItemResponseArray) ToDatasetAccessItemResponseArrayOutput() DatasetAccessItemResponseArrayOutput {
-	return i.ToDatasetAccessItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DatasetAccessItemResponseArray) ToDatasetAccessItemResponseArrayOutputWithContext(ctx context.Context) DatasetAccessItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessItemResponseArrayOutput)
 }
 
 type DatasetAccessItemResponseOutput struct{ *pulumi.OutputState }
@@ -5285,77 +3717,6 @@ type DatasetReferenceResponse struct {
 	Project string `pulumi:"project"`
 }
 
-// DatasetReferenceResponseInput is an input type that accepts DatasetReferenceResponseArgs and DatasetReferenceResponseOutput values.
-// You can construct a concrete instance of `DatasetReferenceResponseInput` via:
-//
-//          DatasetReferenceResponseArgs{...}
-type DatasetReferenceResponseInput interface {
-	pulumi.Input
-
-	ToDatasetReferenceResponseOutput() DatasetReferenceResponseOutput
-	ToDatasetReferenceResponseOutputWithContext(context.Context) DatasetReferenceResponseOutput
-}
-
-type DatasetReferenceResponseArgs struct {
-	// [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-	DatasetId pulumi.StringInput `pulumi:"datasetId"`
-	// [Optional] The ID of the project containing this dataset.
-	Project pulumi.StringInput `pulumi:"project"`
-}
-
-func (DatasetReferenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetReferenceResponse)(nil)).Elem()
-}
-
-func (i DatasetReferenceResponseArgs) ToDatasetReferenceResponseOutput() DatasetReferenceResponseOutput {
-	return i.ToDatasetReferenceResponseOutputWithContext(context.Background())
-}
-
-func (i DatasetReferenceResponseArgs) ToDatasetReferenceResponseOutputWithContext(ctx context.Context) DatasetReferenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetReferenceResponseOutput)
-}
-
-func (i DatasetReferenceResponseArgs) ToDatasetReferenceResponsePtrOutput() DatasetReferenceResponsePtrOutput {
-	return i.ToDatasetReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DatasetReferenceResponseArgs) ToDatasetReferenceResponsePtrOutputWithContext(ctx context.Context) DatasetReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetReferenceResponseOutput).ToDatasetReferenceResponsePtrOutputWithContext(ctx)
-}
-
-// DatasetReferenceResponsePtrInput is an input type that accepts DatasetReferenceResponseArgs, DatasetReferenceResponsePtr and DatasetReferenceResponsePtrOutput values.
-// You can construct a concrete instance of `DatasetReferenceResponsePtrInput` via:
-//
-//          DatasetReferenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DatasetReferenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToDatasetReferenceResponsePtrOutput() DatasetReferenceResponsePtrOutput
-	ToDatasetReferenceResponsePtrOutputWithContext(context.Context) DatasetReferenceResponsePtrOutput
-}
-
-type datasetReferenceResponsePtrType DatasetReferenceResponseArgs
-
-func DatasetReferenceResponsePtr(v *DatasetReferenceResponseArgs) DatasetReferenceResponsePtrInput {
-	return (*datasetReferenceResponsePtrType)(v)
-}
-
-func (*datasetReferenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatasetReferenceResponse)(nil)).Elem()
-}
-
-func (i *datasetReferenceResponsePtrType) ToDatasetReferenceResponsePtrOutput() DatasetReferenceResponsePtrOutput {
-	return i.ToDatasetReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *datasetReferenceResponsePtrType) ToDatasetReferenceResponsePtrOutputWithContext(ctx context.Context) DatasetReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetReferenceResponsePtrOutput)
-}
-
 type DatasetReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (DatasetReferenceResponseOutput) ElementType() reflect.Type {
@@ -5370,16 +3731,6 @@ func (o DatasetReferenceResponseOutput) ToDatasetReferenceResponseOutputWithCont
 	return o
 }
 
-func (o DatasetReferenceResponseOutput) ToDatasetReferenceResponsePtrOutput() DatasetReferenceResponsePtrOutput {
-	return o.ToDatasetReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DatasetReferenceResponseOutput) ToDatasetReferenceResponsePtrOutputWithContext(ctx context.Context) DatasetReferenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetReferenceResponse) *DatasetReferenceResponse {
-		return &v
-	}).(DatasetReferenceResponsePtrOutput)
-}
-
 // [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 func (o DatasetReferenceResponseOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v DatasetReferenceResponse) string { return v.DatasetId }).(pulumi.StringOutput)
@@ -5388,50 +3739,6 @@ func (o DatasetReferenceResponseOutput) DatasetId() pulumi.StringOutput {
 // [Optional] The ID of the project containing this dataset.
 func (o DatasetReferenceResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v DatasetReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
-}
-
-type DatasetReferenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DatasetReferenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatasetReferenceResponse)(nil)).Elem()
-}
-
-func (o DatasetReferenceResponsePtrOutput) ToDatasetReferenceResponsePtrOutput() DatasetReferenceResponsePtrOutput {
-	return o
-}
-
-func (o DatasetReferenceResponsePtrOutput) ToDatasetReferenceResponsePtrOutputWithContext(ctx context.Context) DatasetReferenceResponsePtrOutput {
-	return o
-}
-
-func (o DatasetReferenceResponsePtrOutput) Elem() DatasetReferenceResponseOutput {
-	return o.ApplyT(func(v *DatasetReferenceResponse) DatasetReferenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DatasetReferenceResponse
-		return ret
-	}).(DatasetReferenceResponseOutput)
-}
-
-// [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-func (o DatasetReferenceResponsePtrOutput) DatasetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatasetReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DatasetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] The ID of the project containing this dataset.
-func (o DatasetReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatasetReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
 }
 
 type DestinationTableProperties struct {
@@ -5639,81 +3946,6 @@ type DestinationTablePropertiesResponse struct {
 	Labels map[string]string `pulumi:"labels"`
 }
 
-// DestinationTablePropertiesResponseInput is an input type that accepts DestinationTablePropertiesResponseArgs and DestinationTablePropertiesResponseOutput values.
-// You can construct a concrete instance of `DestinationTablePropertiesResponseInput` via:
-//
-//          DestinationTablePropertiesResponseArgs{...}
-type DestinationTablePropertiesResponseInput interface {
-	pulumi.Input
-
-	ToDestinationTablePropertiesResponseOutput() DestinationTablePropertiesResponseOutput
-	ToDestinationTablePropertiesResponseOutputWithContext(context.Context) DestinationTablePropertiesResponseOutput
-}
-
-type DestinationTablePropertiesResponseArgs struct {
-	// [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
-	Description pulumi.StringInput `pulumi:"description"`
-	// [Internal] This field is for Google internal use only.
-	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
-	// [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
-	FriendlyName pulumi.StringInput `pulumi:"friendlyName"`
-	// [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-}
-
-func (DestinationTablePropertiesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DestinationTablePropertiesResponse)(nil)).Elem()
-}
-
-func (i DestinationTablePropertiesResponseArgs) ToDestinationTablePropertiesResponseOutput() DestinationTablePropertiesResponseOutput {
-	return i.ToDestinationTablePropertiesResponseOutputWithContext(context.Background())
-}
-
-func (i DestinationTablePropertiesResponseArgs) ToDestinationTablePropertiesResponseOutputWithContext(ctx context.Context) DestinationTablePropertiesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationTablePropertiesResponseOutput)
-}
-
-func (i DestinationTablePropertiesResponseArgs) ToDestinationTablePropertiesResponsePtrOutput() DestinationTablePropertiesResponsePtrOutput {
-	return i.ToDestinationTablePropertiesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DestinationTablePropertiesResponseArgs) ToDestinationTablePropertiesResponsePtrOutputWithContext(ctx context.Context) DestinationTablePropertiesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationTablePropertiesResponseOutput).ToDestinationTablePropertiesResponsePtrOutputWithContext(ctx)
-}
-
-// DestinationTablePropertiesResponsePtrInput is an input type that accepts DestinationTablePropertiesResponseArgs, DestinationTablePropertiesResponsePtr and DestinationTablePropertiesResponsePtrOutput values.
-// You can construct a concrete instance of `DestinationTablePropertiesResponsePtrInput` via:
-//
-//          DestinationTablePropertiesResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DestinationTablePropertiesResponsePtrInput interface {
-	pulumi.Input
-
-	ToDestinationTablePropertiesResponsePtrOutput() DestinationTablePropertiesResponsePtrOutput
-	ToDestinationTablePropertiesResponsePtrOutputWithContext(context.Context) DestinationTablePropertiesResponsePtrOutput
-}
-
-type destinationTablePropertiesResponsePtrType DestinationTablePropertiesResponseArgs
-
-func DestinationTablePropertiesResponsePtr(v *DestinationTablePropertiesResponseArgs) DestinationTablePropertiesResponsePtrInput {
-	return (*destinationTablePropertiesResponsePtrType)(v)
-}
-
-func (*destinationTablePropertiesResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DestinationTablePropertiesResponse)(nil)).Elem()
-}
-
-func (i *destinationTablePropertiesResponsePtrType) ToDestinationTablePropertiesResponsePtrOutput() DestinationTablePropertiesResponsePtrOutput {
-	return i.ToDestinationTablePropertiesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *destinationTablePropertiesResponsePtrType) ToDestinationTablePropertiesResponsePtrOutputWithContext(ctx context.Context) DestinationTablePropertiesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationTablePropertiesResponsePtrOutput)
-}
-
 type DestinationTablePropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (DestinationTablePropertiesResponseOutput) ElementType() reflect.Type {
@@ -5726,16 +3958,6 @@ func (o DestinationTablePropertiesResponseOutput) ToDestinationTablePropertiesRe
 
 func (o DestinationTablePropertiesResponseOutput) ToDestinationTablePropertiesResponseOutputWithContext(ctx context.Context) DestinationTablePropertiesResponseOutput {
 	return o
-}
-
-func (o DestinationTablePropertiesResponseOutput) ToDestinationTablePropertiesResponsePtrOutput() DestinationTablePropertiesResponsePtrOutput {
-	return o.ToDestinationTablePropertiesResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DestinationTablePropertiesResponseOutput) ToDestinationTablePropertiesResponsePtrOutputWithContext(ctx context.Context) DestinationTablePropertiesResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DestinationTablePropertiesResponse) *DestinationTablePropertiesResponse {
-		return &v
-	}).(DestinationTablePropertiesResponsePtrOutput)
 }
 
 // [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
@@ -5758,70 +3980,6 @@ func (o DestinationTablePropertiesResponseOutput) Labels() pulumi.StringMapOutpu
 	return o.ApplyT(func(v DestinationTablePropertiesResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-type DestinationTablePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DestinationTablePropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DestinationTablePropertiesResponse)(nil)).Elem()
-}
-
-func (o DestinationTablePropertiesResponsePtrOutput) ToDestinationTablePropertiesResponsePtrOutput() DestinationTablePropertiesResponsePtrOutput {
-	return o
-}
-
-func (o DestinationTablePropertiesResponsePtrOutput) ToDestinationTablePropertiesResponsePtrOutputWithContext(ctx context.Context) DestinationTablePropertiesResponsePtrOutput {
-	return o
-}
-
-func (o DestinationTablePropertiesResponsePtrOutput) Elem() DestinationTablePropertiesResponseOutput {
-	return o.ApplyT(func(v *DestinationTablePropertiesResponse) DestinationTablePropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DestinationTablePropertiesResponse
-		return ret
-	}).(DestinationTablePropertiesResponseOutput)
-}
-
-// [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
-func (o DestinationTablePropertiesResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DestinationTablePropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Internal] This field is for Google internal use only.
-func (o DestinationTablePropertiesResponsePtrOutput) ExpirationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DestinationTablePropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExpirationTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
-func (o DestinationTablePropertiesResponsePtrOutput) FriendlyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DestinationTablePropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FriendlyName
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
-func (o DestinationTablePropertiesResponsePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *DestinationTablePropertiesResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
 type DmlStatisticsResponse struct {
 	// Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements.
 	DeletedRowCount string `pulumi:"deletedRowCount"`
@@ -5829,79 +3987,6 @@ type DmlStatisticsResponse struct {
 	InsertedRowCount string `pulumi:"insertedRowCount"`
 	// Number of updated Rows. Populated by DML UPDATE and MERGE statements.
 	UpdatedRowCount string `pulumi:"updatedRowCount"`
-}
-
-// DmlStatisticsResponseInput is an input type that accepts DmlStatisticsResponseArgs and DmlStatisticsResponseOutput values.
-// You can construct a concrete instance of `DmlStatisticsResponseInput` via:
-//
-//          DmlStatisticsResponseArgs{...}
-type DmlStatisticsResponseInput interface {
-	pulumi.Input
-
-	ToDmlStatisticsResponseOutput() DmlStatisticsResponseOutput
-	ToDmlStatisticsResponseOutputWithContext(context.Context) DmlStatisticsResponseOutput
-}
-
-type DmlStatisticsResponseArgs struct {
-	// Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements.
-	DeletedRowCount pulumi.StringInput `pulumi:"deletedRowCount"`
-	// Number of inserted Rows. Populated by DML INSERT and MERGE statements.
-	InsertedRowCount pulumi.StringInput `pulumi:"insertedRowCount"`
-	// Number of updated Rows. Populated by DML UPDATE and MERGE statements.
-	UpdatedRowCount pulumi.StringInput `pulumi:"updatedRowCount"`
-}
-
-func (DmlStatisticsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DmlStatisticsResponse)(nil)).Elem()
-}
-
-func (i DmlStatisticsResponseArgs) ToDmlStatisticsResponseOutput() DmlStatisticsResponseOutput {
-	return i.ToDmlStatisticsResponseOutputWithContext(context.Background())
-}
-
-func (i DmlStatisticsResponseArgs) ToDmlStatisticsResponseOutputWithContext(ctx context.Context) DmlStatisticsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DmlStatisticsResponseOutput)
-}
-
-func (i DmlStatisticsResponseArgs) ToDmlStatisticsResponsePtrOutput() DmlStatisticsResponsePtrOutput {
-	return i.ToDmlStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DmlStatisticsResponseArgs) ToDmlStatisticsResponsePtrOutputWithContext(ctx context.Context) DmlStatisticsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DmlStatisticsResponseOutput).ToDmlStatisticsResponsePtrOutputWithContext(ctx)
-}
-
-// DmlStatisticsResponsePtrInput is an input type that accepts DmlStatisticsResponseArgs, DmlStatisticsResponsePtr and DmlStatisticsResponsePtrOutput values.
-// You can construct a concrete instance of `DmlStatisticsResponsePtrInput` via:
-//
-//          DmlStatisticsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DmlStatisticsResponsePtrInput interface {
-	pulumi.Input
-
-	ToDmlStatisticsResponsePtrOutput() DmlStatisticsResponsePtrOutput
-	ToDmlStatisticsResponsePtrOutputWithContext(context.Context) DmlStatisticsResponsePtrOutput
-}
-
-type dmlStatisticsResponsePtrType DmlStatisticsResponseArgs
-
-func DmlStatisticsResponsePtr(v *DmlStatisticsResponseArgs) DmlStatisticsResponsePtrInput {
-	return (*dmlStatisticsResponsePtrType)(v)
-}
-
-func (*dmlStatisticsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DmlStatisticsResponse)(nil)).Elem()
-}
-
-func (i *dmlStatisticsResponsePtrType) ToDmlStatisticsResponsePtrOutput() DmlStatisticsResponsePtrOutput {
-	return i.ToDmlStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *dmlStatisticsResponsePtrType) ToDmlStatisticsResponsePtrOutputWithContext(ctx context.Context) DmlStatisticsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DmlStatisticsResponsePtrOutput)
 }
 
 type DmlStatisticsResponseOutput struct{ *pulumi.OutputState }
@@ -5918,16 +4003,6 @@ func (o DmlStatisticsResponseOutput) ToDmlStatisticsResponseOutputWithContext(ct
 	return o
 }
 
-func (o DmlStatisticsResponseOutput) ToDmlStatisticsResponsePtrOutput() DmlStatisticsResponsePtrOutput {
-	return o.ToDmlStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DmlStatisticsResponseOutput) ToDmlStatisticsResponsePtrOutputWithContext(ctx context.Context) DmlStatisticsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DmlStatisticsResponse) *DmlStatisticsResponse {
-		return &v
-	}).(DmlStatisticsResponsePtrOutput)
-}
-
 // Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements.
 func (o DmlStatisticsResponseOutput) DeletedRowCount() pulumi.StringOutput {
 	return o.ApplyT(func(v DmlStatisticsResponse) string { return v.DeletedRowCount }).(pulumi.StringOutput)
@@ -5941,60 +4016,6 @@ func (o DmlStatisticsResponseOutput) InsertedRowCount() pulumi.StringOutput {
 // Number of updated Rows. Populated by DML UPDATE and MERGE statements.
 func (o DmlStatisticsResponseOutput) UpdatedRowCount() pulumi.StringOutput {
 	return o.ApplyT(func(v DmlStatisticsResponse) string { return v.UpdatedRowCount }).(pulumi.StringOutput)
-}
-
-type DmlStatisticsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DmlStatisticsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DmlStatisticsResponse)(nil)).Elem()
-}
-
-func (o DmlStatisticsResponsePtrOutput) ToDmlStatisticsResponsePtrOutput() DmlStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o DmlStatisticsResponsePtrOutput) ToDmlStatisticsResponsePtrOutputWithContext(ctx context.Context) DmlStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o DmlStatisticsResponsePtrOutput) Elem() DmlStatisticsResponseOutput {
-	return o.ApplyT(func(v *DmlStatisticsResponse) DmlStatisticsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DmlStatisticsResponse
-		return ret
-	}).(DmlStatisticsResponseOutput)
-}
-
-// Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements.
-func (o DmlStatisticsResponsePtrOutput) DeletedRowCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DmlStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DeletedRowCount
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of inserted Rows. Populated by DML INSERT and MERGE statements.
-func (o DmlStatisticsResponsePtrOutput) InsertedRowCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DmlStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InsertedRowCount
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of updated Rows. Populated by DML UPDATE and MERGE statements.
-func (o DmlStatisticsResponsePtrOutput) UpdatedRowCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DmlStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UpdatedRowCount
-	}).(pulumi.StringPtrOutput)
 }
 
 type EncryptionConfiguration struct {
@@ -6139,75 +4160,6 @@ type EncryptionConfigurationResponse struct {
 	KmsKeyName string `pulumi:"kmsKeyName"`
 }
 
-// EncryptionConfigurationResponseInput is an input type that accepts EncryptionConfigurationResponseArgs and EncryptionConfigurationResponseOutput values.
-// You can construct a concrete instance of `EncryptionConfigurationResponseInput` via:
-//
-//          EncryptionConfigurationResponseArgs{...}
-type EncryptionConfigurationResponseInput interface {
-	pulumi.Input
-
-	ToEncryptionConfigurationResponseOutput() EncryptionConfigurationResponseOutput
-	ToEncryptionConfigurationResponseOutputWithContext(context.Context) EncryptionConfigurationResponseOutput
-}
-
-type EncryptionConfigurationResponseArgs struct {
-	// [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
-	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-}
-
-func (EncryptionConfigurationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionConfigurationResponse)(nil)).Elem()
-}
-
-func (i EncryptionConfigurationResponseArgs) ToEncryptionConfigurationResponseOutput() EncryptionConfigurationResponseOutput {
-	return i.ToEncryptionConfigurationResponseOutputWithContext(context.Background())
-}
-
-func (i EncryptionConfigurationResponseArgs) ToEncryptionConfigurationResponseOutputWithContext(ctx context.Context) EncryptionConfigurationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigurationResponseOutput)
-}
-
-func (i EncryptionConfigurationResponseArgs) ToEncryptionConfigurationResponsePtrOutput() EncryptionConfigurationResponsePtrOutput {
-	return i.ToEncryptionConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EncryptionConfigurationResponseArgs) ToEncryptionConfigurationResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigurationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigurationResponseOutput).ToEncryptionConfigurationResponsePtrOutputWithContext(ctx)
-}
-
-// EncryptionConfigurationResponsePtrInput is an input type that accepts EncryptionConfigurationResponseArgs, EncryptionConfigurationResponsePtr and EncryptionConfigurationResponsePtrOutput values.
-// You can construct a concrete instance of `EncryptionConfigurationResponsePtrInput` via:
-//
-//          EncryptionConfigurationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EncryptionConfigurationResponsePtrInput interface {
-	pulumi.Input
-
-	ToEncryptionConfigurationResponsePtrOutput() EncryptionConfigurationResponsePtrOutput
-	ToEncryptionConfigurationResponsePtrOutputWithContext(context.Context) EncryptionConfigurationResponsePtrOutput
-}
-
-type encryptionConfigurationResponsePtrType EncryptionConfigurationResponseArgs
-
-func EncryptionConfigurationResponsePtr(v *EncryptionConfigurationResponseArgs) EncryptionConfigurationResponsePtrInput {
-	return (*encryptionConfigurationResponsePtrType)(v)
-}
-
-func (*encryptionConfigurationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionConfigurationResponse)(nil)).Elem()
-}
-
-func (i *encryptionConfigurationResponsePtrType) ToEncryptionConfigurationResponsePtrOutput() EncryptionConfigurationResponsePtrOutput {
-	return i.ToEncryptionConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *encryptionConfigurationResponsePtrType) ToEncryptionConfigurationResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigurationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigurationResponsePtrOutput)
-}
-
 type EncryptionConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (EncryptionConfigurationResponseOutput) ElementType() reflect.Type {
@@ -6222,53 +4174,9 @@ func (o EncryptionConfigurationResponseOutput) ToEncryptionConfigurationResponse
 	return o
 }
 
-func (o EncryptionConfigurationResponseOutput) ToEncryptionConfigurationResponsePtrOutput() EncryptionConfigurationResponsePtrOutput {
-	return o.ToEncryptionConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EncryptionConfigurationResponseOutput) ToEncryptionConfigurationResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigurationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfigurationResponse) *EncryptionConfigurationResponse {
-		return &v
-	}).(EncryptionConfigurationResponsePtrOutput)
-}
-
 // [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
 func (o EncryptionConfigurationResponseOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionConfigurationResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
-}
-
-type EncryptionConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionConfigurationResponse)(nil)).Elem()
-}
-
-func (o EncryptionConfigurationResponsePtrOutput) ToEncryptionConfigurationResponsePtrOutput() EncryptionConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionConfigurationResponsePtrOutput) ToEncryptionConfigurationResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionConfigurationResponsePtrOutput) Elem() EncryptionConfigurationResponseOutput {
-	return o.ApplyT(func(v *EncryptionConfigurationResponse) EncryptionConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EncryptionConfigurationResponse
-		return ret
-	}).(EncryptionConfigurationResponseOutput)
-}
-
-// [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
-func (o EncryptionConfigurationResponsePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KmsKeyName
-	}).(pulumi.StringPtrOutput)
 }
 
 type ErrorProtoResponse struct {
@@ -6280,106 +4188,6 @@ type ErrorProtoResponse struct {
 	Message string `pulumi:"message"`
 	// A short error code that summarizes the error.
 	Reason string `pulumi:"reason"`
-}
-
-// ErrorProtoResponseInput is an input type that accepts ErrorProtoResponseArgs and ErrorProtoResponseOutput values.
-// You can construct a concrete instance of `ErrorProtoResponseInput` via:
-//
-//          ErrorProtoResponseArgs{...}
-type ErrorProtoResponseInput interface {
-	pulumi.Input
-
-	ToErrorProtoResponseOutput() ErrorProtoResponseOutput
-	ToErrorProtoResponseOutputWithContext(context.Context) ErrorProtoResponseOutput
-}
-
-type ErrorProtoResponseArgs struct {
-	// Debugging information. This property is internal to Google and should not be used.
-	DebugInfo pulumi.StringInput `pulumi:"debugInfo"`
-	// Specifies where the error occurred, if present.
-	Location pulumi.StringInput `pulumi:"location"`
-	// A human-readable description of the error.
-	Message pulumi.StringInput `pulumi:"message"`
-	// A short error code that summarizes the error.
-	Reason pulumi.StringInput `pulumi:"reason"`
-}
-
-func (ErrorProtoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ErrorProtoResponse)(nil)).Elem()
-}
-
-func (i ErrorProtoResponseArgs) ToErrorProtoResponseOutput() ErrorProtoResponseOutput {
-	return i.ToErrorProtoResponseOutputWithContext(context.Background())
-}
-
-func (i ErrorProtoResponseArgs) ToErrorProtoResponseOutputWithContext(ctx context.Context) ErrorProtoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorProtoResponseOutput)
-}
-
-func (i ErrorProtoResponseArgs) ToErrorProtoResponsePtrOutput() ErrorProtoResponsePtrOutput {
-	return i.ToErrorProtoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ErrorProtoResponseArgs) ToErrorProtoResponsePtrOutputWithContext(ctx context.Context) ErrorProtoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorProtoResponseOutput).ToErrorProtoResponsePtrOutputWithContext(ctx)
-}
-
-// ErrorProtoResponsePtrInput is an input type that accepts ErrorProtoResponseArgs, ErrorProtoResponsePtr and ErrorProtoResponsePtrOutput values.
-// You can construct a concrete instance of `ErrorProtoResponsePtrInput` via:
-//
-//          ErrorProtoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ErrorProtoResponsePtrInput interface {
-	pulumi.Input
-
-	ToErrorProtoResponsePtrOutput() ErrorProtoResponsePtrOutput
-	ToErrorProtoResponsePtrOutputWithContext(context.Context) ErrorProtoResponsePtrOutput
-}
-
-type errorProtoResponsePtrType ErrorProtoResponseArgs
-
-func ErrorProtoResponsePtr(v *ErrorProtoResponseArgs) ErrorProtoResponsePtrInput {
-	return (*errorProtoResponsePtrType)(v)
-}
-
-func (*errorProtoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ErrorProtoResponse)(nil)).Elem()
-}
-
-func (i *errorProtoResponsePtrType) ToErrorProtoResponsePtrOutput() ErrorProtoResponsePtrOutput {
-	return i.ToErrorProtoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *errorProtoResponsePtrType) ToErrorProtoResponsePtrOutputWithContext(ctx context.Context) ErrorProtoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorProtoResponsePtrOutput)
-}
-
-// ErrorProtoResponseArrayInput is an input type that accepts ErrorProtoResponseArray and ErrorProtoResponseArrayOutput values.
-// You can construct a concrete instance of `ErrorProtoResponseArrayInput` via:
-//
-//          ErrorProtoResponseArray{ ErrorProtoResponseArgs{...} }
-type ErrorProtoResponseArrayInput interface {
-	pulumi.Input
-
-	ToErrorProtoResponseArrayOutput() ErrorProtoResponseArrayOutput
-	ToErrorProtoResponseArrayOutputWithContext(context.Context) ErrorProtoResponseArrayOutput
-}
-
-type ErrorProtoResponseArray []ErrorProtoResponseInput
-
-func (ErrorProtoResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ErrorProtoResponse)(nil)).Elem()
-}
-
-func (i ErrorProtoResponseArray) ToErrorProtoResponseArrayOutput() ErrorProtoResponseArrayOutput {
-	return i.ToErrorProtoResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ErrorProtoResponseArray) ToErrorProtoResponseArrayOutputWithContext(ctx context.Context) ErrorProtoResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorProtoResponseArrayOutput)
 }
 
 type ErrorProtoResponseOutput struct{ *pulumi.OutputState }
@@ -6394,16 +4202,6 @@ func (o ErrorProtoResponseOutput) ToErrorProtoResponseOutput() ErrorProtoRespons
 
 func (o ErrorProtoResponseOutput) ToErrorProtoResponseOutputWithContext(ctx context.Context) ErrorProtoResponseOutput {
 	return o
-}
-
-func (o ErrorProtoResponseOutput) ToErrorProtoResponsePtrOutput() ErrorProtoResponsePtrOutput {
-	return o.ToErrorProtoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ErrorProtoResponseOutput) ToErrorProtoResponsePtrOutputWithContext(ctx context.Context) ErrorProtoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErrorProtoResponse) *ErrorProtoResponse {
-		return &v
-	}).(ErrorProtoResponsePtrOutput)
 }
 
 // Debugging information. This property is internal to Google and should not be used.
@@ -6424,70 +4222,6 @@ func (o ErrorProtoResponseOutput) Message() pulumi.StringOutput {
 // A short error code that summarizes the error.
 func (o ErrorProtoResponseOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorProtoResponse) string { return v.Reason }).(pulumi.StringOutput)
-}
-
-type ErrorProtoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ErrorProtoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ErrorProtoResponse)(nil)).Elem()
-}
-
-func (o ErrorProtoResponsePtrOutput) ToErrorProtoResponsePtrOutput() ErrorProtoResponsePtrOutput {
-	return o
-}
-
-func (o ErrorProtoResponsePtrOutput) ToErrorProtoResponsePtrOutputWithContext(ctx context.Context) ErrorProtoResponsePtrOutput {
-	return o
-}
-
-func (o ErrorProtoResponsePtrOutput) Elem() ErrorProtoResponseOutput {
-	return o.ApplyT(func(v *ErrorProtoResponse) ErrorProtoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ErrorProtoResponse
-		return ret
-	}).(ErrorProtoResponseOutput)
-}
-
-// Debugging information. This property is internal to Google and should not be used.
-func (o ErrorProtoResponsePtrOutput) DebugInfo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorProtoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DebugInfo
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies where the error occurred, if present.
-func (o ErrorProtoResponsePtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorProtoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// A human-readable description of the error.
-func (o ErrorProtoResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorProtoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
-// A short error code that summarizes the error.
-func (o ErrorProtoResponsePtrOutput) Reason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorProtoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Reason
-	}).(pulumi.StringPtrOutput)
 }
 
 type ErrorProtoResponseArrayOutput struct{ *pulumi.OutputState }
@@ -6569,115 +4303,6 @@ type ExplainQueryStageResponse struct {
 	WriteRatioAvg float64 `pulumi:"writeRatioAvg"`
 	// Relative amount of time the slowest shard spent on writing output.
 	WriteRatioMax float64 `pulumi:"writeRatioMax"`
-}
-
-// ExplainQueryStageResponseInput is an input type that accepts ExplainQueryStageResponseArgs and ExplainQueryStageResponseOutput values.
-// You can construct a concrete instance of `ExplainQueryStageResponseInput` via:
-//
-//          ExplainQueryStageResponseArgs{...}
-type ExplainQueryStageResponseInput interface {
-	pulumi.Input
-
-	ToExplainQueryStageResponseOutput() ExplainQueryStageResponseOutput
-	ToExplainQueryStageResponseOutputWithContext(context.Context) ExplainQueryStageResponseOutput
-}
-
-type ExplainQueryStageResponseArgs struct {
-	// Number of parallel input segments completed.
-	CompletedParallelInputs pulumi.StringInput `pulumi:"completedParallelInputs"`
-	// Milliseconds the average shard spent on CPU-bound tasks.
-	ComputeMsAvg pulumi.StringInput `pulumi:"computeMsAvg"`
-	// Milliseconds the slowest shard spent on CPU-bound tasks.
-	ComputeMsMax pulumi.StringInput `pulumi:"computeMsMax"`
-	// Relative amount of time the average shard spent on CPU-bound tasks.
-	ComputeRatioAvg pulumi.Float64Input `pulumi:"computeRatioAvg"`
-	// Relative amount of time the slowest shard spent on CPU-bound tasks.
-	ComputeRatioMax pulumi.Float64Input `pulumi:"computeRatioMax"`
-	// Stage end time represented as milliseconds since epoch.
-	EndMs pulumi.StringInput `pulumi:"endMs"`
-	// IDs for stages that are inputs to this stage.
-	InputStages pulumi.StringArrayInput `pulumi:"inputStages"`
-	// Human-readable name for stage.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Number of parallel input segments to be processed.
-	ParallelInputs pulumi.StringInput `pulumi:"parallelInputs"`
-	// Milliseconds the average shard spent reading input.
-	ReadMsAvg pulumi.StringInput `pulumi:"readMsAvg"`
-	// Milliseconds the slowest shard spent reading input.
-	ReadMsMax pulumi.StringInput `pulumi:"readMsMax"`
-	// Relative amount of time the average shard spent reading input.
-	ReadRatioAvg pulumi.Float64Input `pulumi:"readRatioAvg"`
-	// Relative amount of time the slowest shard spent reading input.
-	ReadRatioMax pulumi.Float64Input `pulumi:"readRatioMax"`
-	// Number of records read into the stage.
-	RecordsRead pulumi.StringInput `pulumi:"recordsRead"`
-	// Number of records written by the stage.
-	RecordsWritten pulumi.StringInput `pulumi:"recordsWritten"`
-	// Total number of bytes written to shuffle.
-	ShuffleOutputBytes pulumi.StringInput `pulumi:"shuffleOutputBytes"`
-	// Total number of bytes written to shuffle and spilled to disk.
-	ShuffleOutputBytesSpilled pulumi.StringInput `pulumi:"shuffleOutputBytesSpilled"`
-	// Slot-milliseconds used by the stage.
-	SlotMs pulumi.StringInput `pulumi:"slotMs"`
-	// Stage start time represented as milliseconds since epoch.
-	StartMs pulumi.StringInput `pulumi:"startMs"`
-	// Current status for the stage.
-	Status pulumi.StringInput `pulumi:"status"`
-	// List of operations within the stage in dependency order (approximately chronological).
-	Steps ExplainQueryStepResponseArrayInput `pulumi:"steps"`
-	// Milliseconds the average shard spent waiting to be scheduled.
-	WaitMsAvg pulumi.StringInput `pulumi:"waitMsAvg"`
-	// Milliseconds the slowest shard spent waiting to be scheduled.
-	WaitMsMax pulumi.StringInput `pulumi:"waitMsMax"`
-	// Relative amount of time the average shard spent waiting to be scheduled.
-	WaitRatioAvg pulumi.Float64Input `pulumi:"waitRatioAvg"`
-	// Relative amount of time the slowest shard spent waiting to be scheduled.
-	WaitRatioMax pulumi.Float64Input `pulumi:"waitRatioMax"`
-	// Milliseconds the average shard spent on writing output.
-	WriteMsAvg pulumi.StringInput `pulumi:"writeMsAvg"`
-	// Milliseconds the slowest shard spent on writing output.
-	WriteMsMax pulumi.StringInput `pulumi:"writeMsMax"`
-	// Relative amount of time the average shard spent on writing output.
-	WriteRatioAvg pulumi.Float64Input `pulumi:"writeRatioAvg"`
-	// Relative amount of time the slowest shard spent on writing output.
-	WriteRatioMax pulumi.Float64Input `pulumi:"writeRatioMax"`
-}
-
-func (ExplainQueryStageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExplainQueryStageResponse)(nil)).Elem()
-}
-
-func (i ExplainQueryStageResponseArgs) ToExplainQueryStageResponseOutput() ExplainQueryStageResponseOutput {
-	return i.ToExplainQueryStageResponseOutputWithContext(context.Background())
-}
-
-func (i ExplainQueryStageResponseArgs) ToExplainQueryStageResponseOutputWithContext(ctx context.Context) ExplainQueryStageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExplainQueryStageResponseOutput)
-}
-
-// ExplainQueryStageResponseArrayInput is an input type that accepts ExplainQueryStageResponseArray and ExplainQueryStageResponseArrayOutput values.
-// You can construct a concrete instance of `ExplainQueryStageResponseArrayInput` via:
-//
-//          ExplainQueryStageResponseArray{ ExplainQueryStageResponseArgs{...} }
-type ExplainQueryStageResponseArrayInput interface {
-	pulumi.Input
-
-	ToExplainQueryStageResponseArrayOutput() ExplainQueryStageResponseArrayOutput
-	ToExplainQueryStageResponseArrayOutputWithContext(context.Context) ExplainQueryStageResponseArrayOutput
-}
-
-type ExplainQueryStageResponseArray []ExplainQueryStageResponseInput
-
-func (ExplainQueryStageResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExplainQueryStageResponse)(nil)).Elem()
-}
-
-func (i ExplainQueryStageResponseArray) ToExplainQueryStageResponseArrayOutput() ExplainQueryStageResponseArrayOutput {
-	return i.ToExplainQueryStageResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ExplainQueryStageResponseArray) ToExplainQueryStageResponseArrayOutputWithContext(ctx context.Context) ExplainQueryStageResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExplainQueryStageResponseArrayOutput)
 }
 
 type ExplainQueryStageResponseOutput struct{ *pulumi.OutputState }
@@ -6864,61 +4489,6 @@ type ExplainQueryStepResponse struct {
 	Kind string `pulumi:"kind"`
 	// Human-readable stage descriptions.
 	Substeps []string `pulumi:"substeps"`
-}
-
-// ExplainQueryStepResponseInput is an input type that accepts ExplainQueryStepResponseArgs and ExplainQueryStepResponseOutput values.
-// You can construct a concrete instance of `ExplainQueryStepResponseInput` via:
-//
-//          ExplainQueryStepResponseArgs{...}
-type ExplainQueryStepResponseInput interface {
-	pulumi.Input
-
-	ToExplainQueryStepResponseOutput() ExplainQueryStepResponseOutput
-	ToExplainQueryStepResponseOutputWithContext(context.Context) ExplainQueryStepResponseOutput
-}
-
-type ExplainQueryStepResponseArgs struct {
-	// Machine-readable operation type.
-	Kind pulumi.StringInput `pulumi:"kind"`
-	// Human-readable stage descriptions.
-	Substeps pulumi.StringArrayInput `pulumi:"substeps"`
-}
-
-func (ExplainQueryStepResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExplainQueryStepResponse)(nil)).Elem()
-}
-
-func (i ExplainQueryStepResponseArgs) ToExplainQueryStepResponseOutput() ExplainQueryStepResponseOutput {
-	return i.ToExplainQueryStepResponseOutputWithContext(context.Background())
-}
-
-func (i ExplainQueryStepResponseArgs) ToExplainQueryStepResponseOutputWithContext(ctx context.Context) ExplainQueryStepResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExplainQueryStepResponseOutput)
-}
-
-// ExplainQueryStepResponseArrayInput is an input type that accepts ExplainQueryStepResponseArray and ExplainQueryStepResponseArrayOutput values.
-// You can construct a concrete instance of `ExplainQueryStepResponseArrayInput` via:
-//
-//          ExplainQueryStepResponseArray{ ExplainQueryStepResponseArgs{...} }
-type ExplainQueryStepResponseArrayInput interface {
-	pulumi.Input
-
-	ToExplainQueryStepResponseArrayOutput() ExplainQueryStepResponseArrayOutput
-	ToExplainQueryStepResponseArrayOutputWithContext(context.Context) ExplainQueryStepResponseArrayOutput
-}
-
-type ExplainQueryStepResponseArray []ExplainQueryStepResponseInput
-
-func (ExplainQueryStepResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExplainQueryStepResponse)(nil)).Elem()
-}
-
-func (i ExplainQueryStepResponseArray) ToExplainQueryStepResponseArrayOutput() ExplainQueryStepResponseArrayOutput {
-	return i.ToExplainQueryStepResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ExplainQueryStepResponseArray) ToExplainQueryStepResponseArrayOutputWithContext(ctx context.Context) ExplainQueryStepResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExplainQueryStepResponseArrayOutput)
 }
 
 type ExplainQueryStepResponseOutput struct{ *pulumi.OutputState }
@@ -7172,41 +4742,6 @@ type ExprResponse struct {
 	Location string `pulumi:"location"`
 	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 	Title string `pulumi:"title"`
-}
-
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -7680,103 +5215,6 @@ type ExternalDataConfigurationResponse struct {
 	SourceUris []string `pulumi:"sourceUris"`
 }
 
-// ExternalDataConfigurationResponseInput is an input type that accepts ExternalDataConfigurationResponseArgs and ExternalDataConfigurationResponseOutput values.
-// You can construct a concrete instance of `ExternalDataConfigurationResponseInput` via:
-//
-//          ExternalDataConfigurationResponseArgs{...}
-type ExternalDataConfigurationResponseInput interface {
-	pulumi.Input
-
-	ToExternalDataConfigurationResponseOutput() ExternalDataConfigurationResponseOutput
-	ToExternalDataConfigurationResponseOutputWithContext(context.Context) ExternalDataConfigurationResponseOutput
-}
-
-type ExternalDataConfigurationResponseArgs struct {
-	// Try to detect schema and format options automatically. Any option specified explicitly will be honored.
-	Autodetect pulumi.BoolInput `pulumi:"autodetect"`
-	// Additional properties to set if sourceFormat is set to Avro.
-	AvroOptions AvroOptionsResponseInput `pulumi:"avroOptions"`
-	// [Optional] Additional options if sourceFormat is set to BIGTABLE.
-	BigtableOptions BigtableOptionsResponseInput `pulumi:"bigtableOptions"`
-	// [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
-	Compression pulumi.StringInput `pulumi:"compression"`
-	// [Optional, Trusted Tester] Connection for external data source.
-	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
-	// Additional properties to set if sourceFormat is set to CSV.
-	CsvOptions CsvOptionsResponseInput `pulumi:"csvOptions"`
-	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
-	DecimalTargetTypes pulumi.StringArrayInput `pulumi:"decimalTargetTypes"`
-	// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
-	GoogleSheetsOptions GoogleSheetsOptionsResponseInput `pulumi:"googleSheetsOptions"`
-	// [Optional] Options to configure hive partitioning support.
-	HivePartitioningOptions HivePartitioningOptionsResponseInput `pulumi:"hivePartitioningOptions"`
-	// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
-	IgnoreUnknownValues pulumi.BoolInput `pulumi:"ignoreUnknownValues"`
-	// [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
-	MaxBadRecords pulumi.IntInput `pulumi:"maxBadRecords"`
-	// Additional properties to set if sourceFormat is set to Parquet.
-	ParquetOptions ParquetOptionsResponseInput `pulumi:"parquetOptions"`
-	// [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
-	Schema TableSchemaResponseInput `pulumi:"schema"`
-	// [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
-	SourceFormat pulumi.StringInput `pulumi:"sourceFormat"`
-	// [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
-	SourceUris pulumi.StringArrayInput `pulumi:"sourceUris"`
-}
-
-func (ExternalDataConfigurationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalDataConfigurationResponse)(nil)).Elem()
-}
-
-func (i ExternalDataConfigurationResponseArgs) ToExternalDataConfigurationResponseOutput() ExternalDataConfigurationResponseOutput {
-	return i.ToExternalDataConfigurationResponseOutputWithContext(context.Background())
-}
-
-func (i ExternalDataConfigurationResponseArgs) ToExternalDataConfigurationResponseOutputWithContext(ctx context.Context) ExternalDataConfigurationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalDataConfigurationResponseOutput)
-}
-
-func (i ExternalDataConfigurationResponseArgs) ToExternalDataConfigurationResponsePtrOutput() ExternalDataConfigurationResponsePtrOutput {
-	return i.ToExternalDataConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ExternalDataConfigurationResponseArgs) ToExternalDataConfigurationResponsePtrOutputWithContext(ctx context.Context) ExternalDataConfigurationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalDataConfigurationResponseOutput).ToExternalDataConfigurationResponsePtrOutputWithContext(ctx)
-}
-
-// ExternalDataConfigurationResponsePtrInput is an input type that accepts ExternalDataConfigurationResponseArgs, ExternalDataConfigurationResponsePtr and ExternalDataConfigurationResponsePtrOutput values.
-// You can construct a concrete instance of `ExternalDataConfigurationResponsePtrInput` via:
-//
-//          ExternalDataConfigurationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ExternalDataConfigurationResponsePtrInput interface {
-	pulumi.Input
-
-	ToExternalDataConfigurationResponsePtrOutput() ExternalDataConfigurationResponsePtrOutput
-	ToExternalDataConfigurationResponsePtrOutputWithContext(context.Context) ExternalDataConfigurationResponsePtrOutput
-}
-
-type externalDataConfigurationResponsePtrType ExternalDataConfigurationResponseArgs
-
-func ExternalDataConfigurationResponsePtr(v *ExternalDataConfigurationResponseArgs) ExternalDataConfigurationResponsePtrInput {
-	return (*externalDataConfigurationResponsePtrType)(v)
-}
-
-func (*externalDataConfigurationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalDataConfigurationResponse)(nil)).Elem()
-}
-
-func (i *externalDataConfigurationResponsePtrType) ToExternalDataConfigurationResponsePtrOutput() ExternalDataConfigurationResponsePtrOutput {
-	return i.ToExternalDataConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *externalDataConfigurationResponsePtrType) ToExternalDataConfigurationResponsePtrOutputWithContext(ctx context.Context) ExternalDataConfigurationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalDataConfigurationResponsePtrOutput)
-}
-
 type ExternalDataConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (ExternalDataConfigurationResponseOutput) ElementType() reflect.Type {
@@ -7789,16 +5227,6 @@ func (o ExternalDataConfigurationResponseOutput) ToExternalDataConfigurationResp
 
 func (o ExternalDataConfigurationResponseOutput) ToExternalDataConfigurationResponseOutputWithContext(ctx context.Context) ExternalDataConfigurationResponseOutput {
 	return o
-}
-
-func (o ExternalDataConfigurationResponseOutput) ToExternalDataConfigurationResponsePtrOutput() ExternalDataConfigurationResponsePtrOutput {
-	return o.ToExternalDataConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ExternalDataConfigurationResponseOutput) ToExternalDataConfigurationResponsePtrOutputWithContext(ctx context.Context) ExternalDataConfigurationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalDataConfigurationResponse) *ExternalDataConfigurationResponse {
-		return &v
-	}).(ExternalDataConfigurationResponsePtrOutput)
 }
 
 // Try to detect schema and format options automatically. Any option specified explicitly will be honored.
@@ -7876,180 +5304,6 @@ func (o ExternalDataConfigurationResponseOutput) SourceFormat() pulumi.StringOut
 // [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
 func (o ExternalDataConfigurationResponseOutput) SourceUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExternalDataConfigurationResponse) []string { return v.SourceUris }).(pulumi.StringArrayOutput)
-}
-
-type ExternalDataConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ExternalDataConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalDataConfigurationResponse)(nil)).Elem()
-}
-
-func (o ExternalDataConfigurationResponsePtrOutput) ToExternalDataConfigurationResponsePtrOutput() ExternalDataConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o ExternalDataConfigurationResponsePtrOutput) ToExternalDataConfigurationResponsePtrOutputWithContext(ctx context.Context) ExternalDataConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o ExternalDataConfigurationResponsePtrOutput) Elem() ExternalDataConfigurationResponseOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) ExternalDataConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ExternalDataConfigurationResponse
-		return ret
-	}).(ExternalDataConfigurationResponseOutput)
-}
-
-// Try to detect schema and format options automatically. Any option specified explicitly will be honored.
-func (o ExternalDataConfigurationResponsePtrOutput) Autodetect() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Autodetect
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Additional properties to set if sourceFormat is set to Avro.
-func (o ExternalDataConfigurationResponsePtrOutput) AvroOptions() AvroOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) *AvroOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AvroOptions
-	}).(AvroOptionsResponsePtrOutput)
-}
-
-// [Optional] Additional options if sourceFormat is set to BIGTABLE.
-func (o ExternalDataConfigurationResponsePtrOutput) BigtableOptions() BigtableOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) *BigtableOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BigtableOptions
-	}).(BigtableOptionsResponsePtrOutput)
-}
-
-// [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
-func (o ExternalDataConfigurationResponsePtrOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Compression
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional, Trusted Tester] Connection for external data source.
-func (o ExternalDataConfigurationResponsePtrOutput) ConnectionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ConnectionId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Additional properties to set if sourceFormat is set to CSV.
-func (o ExternalDataConfigurationResponsePtrOutput) CsvOptions() CsvOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) *CsvOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CsvOptions
-	}).(CsvOptionsResponsePtrOutput)
-}
-
-// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
-func (o ExternalDataConfigurationResponsePtrOutput) DecimalTargetTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DecimalTargetTypes
-	}).(pulumi.StringArrayOutput)
-}
-
-// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
-func (o ExternalDataConfigurationResponsePtrOutput) GoogleSheetsOptions() GoogleSheetsOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) *GoogleSheetsOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.GoogleSheetsOptions
-	}).(GoogleSheetsOptionsResponsePtrOutput)
-}
-
-// [Optional] Options to configure hive partitioning support.
-func (o ExternalDataConfigurationResponsePtrOutput) HivePartitioningOptions() HivePartitioningOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) *HivePartitioningOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.HivePartitioningOptions
-	}).(HivePartitioningOptionsResponsePtrOutput)
-}
-
-// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
-func (o ExternalDataConfigurationResponsePtrOutput) IgnoreUnknownValues() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.IgnoreUnknownValues
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
-func (o ExternalDataConfigurationResponsePtrOutput) MaxBadRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxBadRecords
-	}).(pulumi.IntPtrOutput)
-}
-
-// Additional properties to set if sourceFormat is set to Parquet.
-func (o ExternalDataConfigurationResponsePtrOutput) ParquetOptions() ParquetOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) *ParquetOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ParquetOptions
-	}).(ParquetOptionsResponsePtrOutput)
-}
-
-// [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
-func (o ExternalDataConfigurationResponsePtrOutput) Schema() TableSchemaResponsePtrOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) *TableSchemaResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Schema
-	}).(TableSchemaResponsePtrOutput)
-}
-
-// [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
-func (o ExternalDataConfigurationResponsePtrOutput) SourceFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceFormat
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
-func (o ExternalDataConfigurationResponsePtrOutput) SourceUris() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SourceUris
-	}).(pulumi.StringArrayOutput)
 }
 
 type GoogleSheetsOptions struct {
@@ -8215,77 +5469,6 @@ type GoogleSheetsOptionsResponse struct {
 	SkipLeadingRows string `pulumi:"skipLeadingRows"`
 }
 
-// GoogleSheetsOptionsResponseInput is an input type that accepts GoogleSheetsOptionsResponseArgs and GoogleSheetsOptionsResponseOutput values.
-// You can construct a concrete instance of `GoogleSheetsOptionsResponseInput` via:
-//
-//          GoogleSheetsOptionsResponseArgs{...}
-type GoogleSheetsOptionsResponseInput interface {
-	pulumi.Input
-
-	ToGoogleSheetsOptionsResponseOutput() GoogleSheetsOptionsResponseOutput
-	ToGoogleSheetsOptionsResponseOutputWithContext(context.Context) GoogleSheetsOptionsResponseOutput
-}
-
-type GoogleSheetsOptionsResponseArgs struct {
-	// [Optional] Range of a sheet to query from. Only used when non-empty. Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20
-	Range pulumi.StringInput `pulumi:"range"`
-	// [Optional] The number of rows at the top of a sheet that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows that should be skipped. When autodetect is on, behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
-	SkipLeadingRows pulumi.StringInput `pulumi:"skipLeadingRows"`
-}
-
-func (GoogleSheetsOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleSheetsOptionsResponse)(nil)).Elem()
-}
-
-func (i GoogleSheetsOptionsResponseArgs) ToGoogleSheetsOptionsResponseOutput() GoogleSheetsOptionsResponseOutput {
-	return i.ToGoogleSheetsOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleSheetsOptionsResponseArgs) ToGoogleSheetsOptionsResponseOutputWithContext(ctx context.Context) GoogleSheetsOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleSheetsOptionsResponseOutput)
-}
-
-func (i GoogleSheetsOptionsResponseArgs) ToGoogleSheetsOptionsResponsePtrOutput() GoogleSheetsOptionsResponsePtrOutput {
-	return i.ToGoogleSheetsOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleSheetsOptionsResponseArgs) ToGoogleSheetsOptionsResponsePtrOutputWithContext(ctx context.Context) GoogleSheetsOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleSheetsOptionsResponseOutput).ToGoogleSheetsOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleSheetsOptionsResponsePtrInput is an input type that accepts GoogleSheetsOptionsResponseArgs, GoogleSheetsOptionsResponsePtr and GoogleSheetsOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleSheetsOptionsResponsePtrInput` via:
-//
-//          GoogleSheetsOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleSheetsOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleSheetsOptionsResponsePtrOutput() GoogleSheetsOptionsResponsePtrOutput
-	ToGoogleSheetsOptionsResponsePtrOutputWithContext(context.Context) GoogleSheetsOptionsResponsePtrOutput
-}
-
-type googleSheetsOptionsResponsePtrType GoogleSheetsOptionsResponseArgs
-
-func GoogleSheetsOptionsResponsePtr(v *GoogleSheetsOptionsResponseArgs) GoogleSheetsOptionsResponsePtrInput {
-	return (*googleSheetsOptionsResponsePtrType)(v)
-}
-
-func (*googleSheetsOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleSheetsOptionsResponse)(nil)).Elem()
-}
-
-func (i *googleSheetsOptionsResponsePtrType) ToGoogleSheetsOptionsResponsePtrOutput() GoogleSheetsOptionsResponsePtrOutput {
-	return i.ToGoogleSheetsOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleSheetsOptionsResponsePtrType) ToGoogleSheetsOptionsResponsePtrOutputWithContext(ctx context.Context) GoogleSheetsOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleSheetsOptionsResponsePtrOutput)
-}
-
 type GoogleSheetsOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleSheetsOptionsResponseOutput) ElementType() reflect.Type {
@@ -8300,16 +5483,6 @@ func (o GoogleSheetsOptionsResponseOutput) ToGoogleSheetsOptionsResponseOutputWi
 	return o
 }
 
-func (o GoogleSheetsOptionsResponseOutput) ToGoogleSheetsOptionsResponsePtrOutput() GoogleSheetsOptionsResponsePtrOutput {
-	return o.ToGoogleSheetsOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleSheetsOptionsResponseOutput) ToGoogleSheetsOptionsResponsePtrOutputWithContext(ctx context.Context) GoogleSheetsOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleSheetsOptionsResponse) *GoogleSheetsOptionsResponse {
-		return &v
-	}).(GoogleSheetsOptionsResponsePtrOutput)
-}
-
 // [Optional] Range of a sheet to query from. Only used when non-empty. Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20
 func (o GoogleSheetsOptionsResponseOutput) Range() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleSheetsOptionsResponse) string { return v.Range }).(pulumi.StringOutput)
@@ -8318,50 +5491,6 @@ func (o GoogleSheetsOptionsResponseOutput) Range() pulumi.StringOutput {
 // [Optional] The number of rows at the top of a sheet that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows that should be skipped. When autodetect is on, behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
 func (o GoogleSheetsOptionsResponseOutput) SkipLeadingRows() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleSheetsOptionsResponse) string { return v.SkipLeadingRows }).(pulumi.StringOutput)
-}
-
-type GoogleSheetsOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleSheetsOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleSheetsOptionsResponse)(nil)).Elem()
-}
-
-func (o GoogleSheetsOptionsResponsePtrOutput) ToGoogleSheetsOptionsResponsePtrOutput() GoogleSheetsOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GoogleSheetsOptionsResponsePtrOutput) ToGoogleSheetsOptionsResponsePtrOutputWithContext(ctx context.Context) GoogleSheetsOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GoogleSheetsOptionsResponsePtrOutput) Elem() GoogleSheetsOptionsResponseOutput {
-	return o.ApplyT(func(v *GoogleSheetsOptionsResponse) GoogleSheetsOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleSheetsOptionsResponse
-		return ret
-	}).(GoogleSheetsOptionsResponseOutput)
-}
-
-// [Optional] Range of a sheet to query from. Only used when non-empty. Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20
-func (o GoogleSheetsOptionsResponsePtrOutput) Range() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleSheetsOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Range
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] The number of rows at the top of a sheet that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows that should be skipped. When autodetect is on, behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
-func (o GoogleSheetsOptionsResponsePtrOutput) SkipLeadingRows() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleSheetsOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SkipLeadingRows
-	}).(pulumi.StringPtrOutput)
 }
 
 type HivePartitioningOptions struct {
@@ -8548,79 +5677,6 @@ type HivePartitioningOptionsResponse struct {
 	SourceUriPrefix string `pulumi:"sourceUriPrefix"`
 }
 
-// HivePartitioningOptionsResponseInput is an input type that accepts HivePartitioningOptionsResponseArgs and HivePartitioningOptionsResponseOutput values.
-// You can construct a concrete instance of `HivePartitioningOptionsResponseInput` via:
-//
-//          HivePartitioningOptionsResponseArgs{...}
-type HivePartitioningOptionsResponseInput interface {
-	pulumi.Input
-
-	ToHivePartitioningOptionsResponseOutput() HivePartitioningOptionsResponseOutput
-	ToHivePartitioningOptionsResponseOutputWithContext(context.Context) HivePartitioningOptionsResponseOutput
-}
-
-type HivePartitioningOptionsResponseArgs struct {
-	// [Optional] When set, what mode of hive partitioning to use when reading data. The following modes are supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS: automatically infer partition key name(s). All types are interpreted as strings. (3) CUSTOM: partition key schema is encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error. Currently supported types include: AVRO, CSV, JSON, ORC and Parquet.
-	Mode pulumi.StringInput `pulumi:"mode"`
-	// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. Note that this field should only be true when creating a permanent external table or querying a temporary external table. Hive-partitioned loads with requirePartitionFilter explicitly set to true will fail.
-	RequirePartitionFilter pulumi.BoolInput `pulumi:"requirePartitionFilter"`
-	// [Optional] When hive partition detection is requested, a common prefix for all source uris should be supplied. The prefix must end immediately before the partition key encoding begins. For example, consider files following this data layout. gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When hive partitioning is requested with either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or gs://bucket/path_to_table/ (trailing slash does not matter).
-	SourceUriPrefix pulumi.StringInput `pulumi:"sourceUriPrefix"`
-}
-
-func (HivePartitioningOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HivePartitioningOptionsResponse)(nil)).Elem()
-}
-
-func (i HivePartitioningOptionsResponseArgs) ToHivePartitioningOptionsResponseOutput() HivePartitioningOptionsResponseOutput {
-	return i.ToHivePartitioningOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i HivePartitioningOptionsResponseArgs) ToHivePartitioningOptionsResponseOutputWithContext(ctx context.Context) HivePartitioningOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HivePartitioningOptionsResponseOutput)
-}
-
-func (i HivePartitioningOptionsResponseArgs) ToHivePartitioningOptionsResponsePtrOutput() HivePartitioningOptionsResponsePtrOutput {
-	return i.ToHivePartitioningOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i HivePartitioningOptionsResponseArgs) ToHivePartitioningOptionsResponsePtrOutputWithContext(ctx context.Context) HivePartitioningOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HivePartitioningOptionsResponseOutput).ToHivePartitioningOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// HivePartitioningOptionsResponsePtrInput is an input type that accepts HivePartitioningOptionsResponseArgs, HivePartitioningOptionsResponsePtr and HivePartitioningOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `HivePartitioningOptionsResponsePtrInput` via:
-//
-//          HivePartitioningOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type HivePartitioningOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToHivePartitioningOptionsResponsePtrOutput() HivePartitioningOptionsResponsePtrOutput
-	ToHivePartitioningOptionsResponsePtrOutputWithContext(context.Context) HivePartitioningOptionsResponsePtrOutput
-}
-
-type hivePartitioningOptionsResponsePtrType HivePartitioningOptionsResponseArgs
-
-func HivePartitioningOptionsResponsePtr(v *HivePartitioningOptionsResponseArgs) HivePartitioningOptionsResponsePtrInput {
-	return (*hivePartitioningOptionsResponsePtrType)(v)
-}
-
-func (*hivePartitioningOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HivePartitioningOptionsResponse)(nil)).Elem()
-}
-
-func (i *hivePartitioningOptionsResponsePtrType) ToHivePartitioningOptionsResponsePtrOutput() HivePartitioningOptionsResponsePtrOutput {
-	return i.ToHivePartitioningOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *hivePartitioningOptionsResponsePtrType) ToHivePartitioningOptionsResponsePtrOutputWithContext(ctx context.Context) HivePartitioningOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HivePartitioningOptionsResponsePtrOutput)
-}
-
 type HivePartitioningOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (HivePartitioningOptionsResponseOutput) ElementType() reflect.Type {
@@ -8633,16 +5689,6 @@ func (o HivePartitioningOptionsResponseOutput) ToHivePartitioningOptionsResponse
 
 func (o HivePartitioningOptionsResponseOutput) ToHivePartitioningOptionsResponseOutputWithContext(ctx context.Context) HivePartitioningOptionsResponseOutput {
 	return o
-}
-
-func (o HivePartitioningOptionsResponseOutput) ToHivePartitioningOptionsResponsePtrOutput() HivePartitioningOptionsResponsePtrOutput {
-	return o.ToHivePartitioningOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o HivePartitioningOptionsResponseOutput) ToHivePartitioningOptionsResponsePtrOutputWithContext(ctx context.Context) HivePartitioningOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HivePartitioningOptionsResponse) *HivePartitioningOptionsResponse {
-		return &v
-	}).(HivePartitioningOptionsResponsePtrOutput)
 }
 
 // [Optional] When set, what mode of hive partitioning to use when reading data. The following modes are supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS: automatically infer partition key name(s). All types are interpreted as strings. (3) CUSTOM: partition key schema is encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error. Currently supported types include: AVRO, CSV, JSON, ORC and Parquet.
@@ -8660,60 +5706,6 @@ func (o HivePartitioningOptionsResponseOutput) SourceUriPrefix() pulumi.StringOu
 	return o.ApplyT(func(v HivePartitioningOptionsResponse) string { return v.SourceUriPrefix }).(pulumi.StringOutput)
 }
 
-type HivePartitioningOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (HivePartitioningOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HivePartitioningOptionsResponse)(nil)).Elem()
-}
-
-func (o HivePartitioningOptionsResponsePtrOutput) ToHivePartitioningOptionsResponsePtrOutput() HivePartitioningOptionsResponsePtrOutput {
-	return o
-}
-
-func (o HivePartitioningOptionsResponsePtrOutput) ToHivePartitioningOptionsResponsePtrOutputWithContext(ctx context.Context) HivePartitioningOptionsResponsePtrOutput {
-	return o
-}
-
-func (o HivePartitioningOptionsResponsePtrOutput) Elem() HivePartitioningOptionsResponseOutput {
-	return o.ApplyT(func(v *HivePartitioningOptionsResponse) HivePartitioningOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret HivePartitioningOptionsResponse
-		return ret
-	}).(HivePartitioningOptionsResponseOutput)
-}
-
-// [Optional] When set, what mode of hive partitioning to use when reading data. The following modes are supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS: automatically infer partition key name(s). All types are interpreted as strings. (3) CUSTOM: partition key schema is encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error. Currently supported types include: AVRO, CSV, JSON, ORC and Parquet.
-func (o HivePartitioningOptionsResponsePtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HivePartitioningOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. Note that this field should only be true when creating a permanent external table or querying a temporary external table. Hive-partitioned loads with requirePartitionFilter explicitly set to true will fail.
-func (o HivePartitioningOptionsResponsePtrOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *HivePartitioningOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.RequirePartitionFilter
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Optional] When hive partition detection is requested, a common prefix for all source uris should be supplied. The prefix must end immediately before the partition key encoding begins. For example, consider files following this data layout. gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When hive partitioning is requested with either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or gs://bucket/path_to_table/ (trailing slash does not matter).
-func (o HivePartitioningOptionsResponsePtrOutput) SourceUriPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HivePartitioningOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceUriPrefix
-	}).(pulumi.StringPtrOutput)
-}
-
 type IterationResultResponse struct {
 	// Time taken to run the iteration in milliseconds.
 	DurationMs string `pulumi:"durationMs"`
@@ -8725,67 +5717,6 @@ type IterationResultResponse struct {
 	LearnRate float64 `pulumi:"learnRate"`
 	// Loss computed on the training data at the end of iteration.
 	TrainingLoss float64 `pulumi:"trainingLoss"`
-}
-
-// IterationResultResponseInput is an input type that accepts IterationResultResponseArgs and IterationResultResponseOutput values.
-// You can construct a concrete instance of `IterationResultResponseInput` via:
-//
-//          IterationResultResponseArgs{...}
-type IterationResultResponseInput interface {
-	pulumi.Input
-
-	ToIterationResultResponseOutput() IterationResultResponseOutput
-	ToIterationResultResponseOutputWithContext(context.Context) IterationResultResponseOutput
-}
-
-type IterationResultResponseArgs struct {
-	// Time taken to run the iteration in milliseconds.
-	DurationMs pulumi.StringInput `pulumi:"durationMs"`
-	// Loss computed on the eval data at the end of iteration.
-	EvalLoss pulumi.Float64Input `pulumi:"evalLoss"`
-	// Index of the iteration, 0 based.
-	Index pulumi.IntInput `pulumi:"index"`
-	// Learn rate used for this iteration.
-	LearnRate pulumi.Float64Input `pulumi:"learnRate"`
-	// Loss computed on the training data at the end of iteration.
-	TrainingLoss pulumi.Float64Input `pulumi:"trainingLoss"`
-}
-
-func (IterationResultResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IterationResultResponse)(nil)).Elem()
-}
-
-func (i IterationResultResponseArgs) ToIterationResultResponseOutput() IterationResultResponseOutput {
-	return i.ToIterationResultResponseOutputWithContext(context.Background())
-}
-
-func (i IterationResultResponseArgs) ToIterationResultResponseOutputWithContext(ctx context.Context) IterationResultResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IterationResultResponseOutput)
-}
-
-// IterationResultResponseArrayInput is an input type that accepts IterationResultResponseArray and IterationResultResponseArrayOutput values.
-// You can construct a concrete instance of `IterationResultResponseArrayInput` via:
-//
-//          IterationResultResponseArray{ IterationResultResponseArgs{...} }
-type IterationResultResponseArrayInput interface {
-	pulumi.Input
-
-	ToIterationResultResponseArrayOutput() IterationResultResponseArrayOutput
-	ToIterationResultResponseArrayOutputWithContext(context.Context) IterationResultResponseArrayOutput
-}
-
-type IterationResultResponseArray []IterationResultResponseInput
-
-func (IterationResultResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IterationResultResponse)(nil)).Elem()
-}
-
-func (i IterationResultResponseArray) ToIterationResultResponseArrayOutput() IterationResultResponseArrayOutput {
-	return i.ToIterationResultResponseArrayOutputWithContext(context.Background())
-}
-
-func (i IterationResultResponseArray) ToIterationResultResponseArrayOutputWithContext(ctx context.Context) IterationResultResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IterationResultResponseArrayOutput)
 }
 
 type IterationResultResponseOutput struct{ *pulumi.OutputState }
@@ -9408,91 +6339,6 @@ type JobConfigurationExtractResponse struct {
 	UseAvroLogicalTypes bool `pulumi:"useAvroLogicalTypes"`
 }
 
-// JobConfigurationExtractResponseInput is an input type that accepts JobConfigurationExtractResponseArgs and JobConfigurationExtractResponseOutput values.
-// You can construct a concrete instance of `JobConfigurationExtractResponseInput` via:
-//
-//          JobConfigurationExtractResponseArgs{...}
-type JobConfigurationExtractResponseInput interface {
-	pulumi.Input
-
-	ToJobConfigurationExtractResponseOutput() JobConfigurationExtractResponseOutput
-	ToJobConfigurationExtractResponseOutputWithContext(context.Context) JobConfigurationExtractResponseOutput
-}
-
-type JobConfigurationExtractResponseArgs struct {
-	// [Optional] The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable when extracting models.
-	Compression pulumi.StringInput `pulumi:"compression"`
-	// [Optional] The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET or AVRO for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV. The default value for models is ML_TF_SAVED_MODEL.
-	DestinationFormat pulumi.StringInput `pulumi:"destinationFormat"`
-	// [Pick one] DEPRECATED: Use destinationUris instead, passing only one URI as necessary. The fully-qualified Google Cloud Storage URI where the extracted table should be written.
-	DestinationUri pulumi.StringInput `pulumi:"destinationUri"`
-	// [Pick one] A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
-	DestinationUris pulumi.StringArrayInput `pulumi:"destinationUris"`
-	// [Optional] Delimiter to use between fields in the exported data. Default is ','. Not applicable when extracting models.
-	FieldDelimiter pulumi.StringInput `pulumi:"fieldDelimiter"`
-	// [Optional] Whether to print out a header row in the results. Default is true. Not applicable when extracting models.
-	PrintHeader pulumi.BoolInput `pulumi:"printHeader"`
-	// A reference to the model being exported.
-	SourceModel ModelReferenceResponseInput `pulumi:"sourceModel"`
-	// A reference to the table being exported.
-	SourceTable TableReferenceResponseInput `pulumi:"sourceTable"`
-	// [Optional] If destinationFormat is set to "AVRO", this flag indicates whether to enable extracting applicable column types (such as TIMESTAMP) to their corresponding AVRO logical types (timestamp-micros), instead of only using their raw types (avro-long). Not applicable when extracting models.
-	UseAvroLogicalTypes pulumi.BoolInput `pulumi:"useAvroLogicalTypes"`
-}
-
-func (JobConfigurationExtractResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobConfigurationExtractResponse)(nil)).Elem()
-}
-
-func (i JobConfigurationExtractResponseArgs) ToJobConfigurationExtractResponseOutput() JobConfigurationExtractResponseOutput {
-	return i.ToJobConfigurationExtractResponseOutputWithContext(context.Background())
-}
-
-func (i JobConfigurationExtractResponseArgs) ToJobConfigurationExtractResponseOutputWithContext(ctx context.Context) JobConfigurationExtractResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationExtractResponseOutput)
-}
-
-func (i JobConfigurationExtractResponseArgs) ToJobConfigurationExtractResponsePtrOutput() JobConfigurationExtractResponsePtrOutput {
-	return i.ToJobConfigurationExtractResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobConfigurationExtractResponseArgs) ToJobConfigurationExtractResponsePtrOutputWithContext(ctx context.Context) JobConfigurationExtractResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationExtractResponseOutput).ToJobConfigurationExtractResponsePtrOutputWithContext(ctx)
-}
-
-// JobConfigurationExtractResponsePtrInput is an input type that accepts JobConfigurationExtractResponseArgs, JobConfigurationExtractResponsePtr and JobConfigurationExtractResponsePtrOutput values.
-// You can construct a concrete instance of `JobConfigurationExtractResponsePtrInput` via:
-//
-//          JobConfigurationExtractResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobConfigurationExtractResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobConfigurationExtractResponsePtrOutput() JobConfigurationExtractResponsePtrOutput
-	ToJobConfigurationExtractResponsePtrOutputWithContext(context.Context) JobConfigurationExtractResponsePtrOutput
-}
-
-type jobConfigurationExtractResponsePtrType JobConfigurationExtractResponseArgs
-
-func JobConfigurationExtractResponsePtr(v *JobConfigurationExtractResponseArgs) JobConfigurationExtractResponsePtrInput {
-	return (*jobConfigurationExtractResponsePtrType)(v)
-}
-
-func (*jobConfigurationExtractResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobConfigurationExtractResponse)(nil)).Elem()
-}
-
-func (i *jobConfigurationExtractResponsePtrType) ToJobConfigurationExtractResponsePtrOutput() JobConfigurationExtractResponsePtrOutput {
-	return i.ToJobConfigurationExtractResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobConfigurationExtractResponsePtrType) ToJobConfigurationExtractResponsePtrOutputWithContext(ctx context.Context) JobConfigurationExtractResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationExtractResponsePtrOutput)
-}
-
 type JobConfigurationExtractResponseOutput struct{ *pulumi.OutputState }
 
 func (JobConfigurationExtractResponseOutput) ElementType() reflect.Type {
@@ -9505,16 +6351,6 @@ func (o JobConfigurationExtractResponseOutput) ToJobConfigurationExtractResponse
 
 func (o JobConfigurationExtractResponseOutput) ToJobConfigurationExtractResponseOutputWithContext(ctx context.Context) JobConfigurationExtractResponseOutput {
 	return o
-}
-
-func (o JobConfigurationExtractResponseOutput) ToJobConfigurationExtractResponsePtrOutput() JobConfigurationExtractResponsePtrOutput {
-	return o.ToJobConfigurationExtractResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobConfigurationExtractResponseOutput) ToJobConfigurationExtractResponsePtrOutputWithContext(ctx context.Context) JobConfigurationExtractResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationExtractResponse) *JobConfigurationExtractResponse {
-		return &v
-	}).(JobConfigurationExtractResponsePtrOutput)
 }
 
 // [Optional] The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable when extracting models.
@@ -9560,120 +6396,6 @@ func (o JobConfigurationExtractResponseOutput) SourceTable() TableReferenceRespo
 // [Optional] If destinationFormat is set to "AVRO", this flag indicates whether to enable extracting applicable column types (such as TIMESTAMP) to their corresponding AVRO logical types (timestamp-micros), instead of only using their raw types (avro-long). Not applicable when extracting models.
 func (o JobConfigurationExtractResponseOutput) UseAvroLogicalTypes() pulumi.BoolOutput {
 	return o.ApplyT(func(v JobConfigurationExtractResponse) bool { return v.UseAvroLogicalTypes }).(pulumi.BoolOutput)
-}
-
-type JobConfigurationExtractResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobConfigurationExtractResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobConfigurationExtractResponse)(nil)).Elem()
-}
-
-func (o JobConfigurationExtractResponsePtrOutput) ToJobConfigurationExtractResponsePtrOutput() JobConfigurationExtractResponsePtrOutput {
-	return o
-}
-
-func (o JobConfigurationExtractResponsePtrOutput) ToJobConfigurationExtractResponsePtrOutputWithContext(ctx context.Context) JobConfigurationExtractResponsePtrOutput {
-	return o
-}
-
-func (o JobConfigurationExtractResponsePtrOutput) Elem() JobConfigurationExtractResponseOutput {
-	return o.ApplyT(func(v *JobConfigurationExtractResponse) JobConfigurationExtractResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JobConfigurationExtractResponse
-		return ret
-	}).(JobConfigurationExtractResponseOutput)
-}
-
-// [Optional] The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable when extracting models.
-func (o JobConfigurationExtractResponsePtrOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationExtractResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Compression
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET or AVRO for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV. The default value for models is ML_TF_SAVED_MODEL.
-func (o JobConfigurationExtractResponsePtrOutput) DestinationFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationExtractResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DestinationFormat
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Pick one] DEPRECATED: Use destinationUris instead, passing only one URI as necessary. The fully-qualified Google Cloud Storage URI where the extracted table should be written.
-func (o JobConfigurationExtractResponsePtrOutput) DestinationUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationExtractResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DestinationUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Pick one] A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
-func (o JobConfigurationExtractResponsePtrOutput) DestinationUris() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobConfigurationExtractResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DestinationUris
-	}).(pulumi.StringArrayOutput)
-}
-
-// [Optional] Delimiter to use between fields in the exported data. Default is ','. Not applicable when extracting models.
-func (o JobConfigurationExtractResponsePtrOutput) FieldDelimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationExtractResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FieldDelimiter
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] Whether to print out a header row in the results. Default is true. Not applicable when extracting models.
-func (o JobConfigurationExtractResponsePtrOutput) PrintHeader() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationExtractResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.PrintHeader
-	}).(pulumi.BoolPtrOutput)
-}
-
-// A reference to the model being exported.
-func (o JobConfigurationExtractResponsePtrOutput) SourceModel() ModelReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationExtractResponse) *ModelReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceModel
-	}).(ModelReferenceResponsePtrOutput)
-}
-
-// A reference to the table being exported.
-func (o JobConfigurationExtractResponsePtrOutput) SourceTable() TableReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationExtractResponse) *TableReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceTable
-	}).(TableReferenceResponsePtrOutput)
-}
-
-// [Optional] If destinationFormat is set to "AVRO", this flag indicates whether to enable extracting applicable column types (such as TIMESTAMP) to their corresponding AVRO logical types (timestamp-micros), instead of only using their raw types (avro-long). Not applicable when extracting models.
-func (o JobConfigurationExtractResponsePtrOutput) UseAvroLogicalTypes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationExtractResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.UseAvroLogicalTypes
-	}).(pulumi.BoolPtrOutput)
 }
 
 type JobConfigurationLoad struct {
@@ -10385,129 +7107,6 @@ type JobConfigurationLoadResponse struct {
 	WriteDisposition string `pulumi:"writeDisposition"`
 }
 
-// JobConfigurationLoadResponseInput is an input type that accepts JobConfigurationLoadResponseArgs and JobConfigurationLoadResponseOutput values.
-// You can construct a concrete instance of `JobConfigurationLoadResponseInput` via:
-//
-//          JobConfigurationLoadResponseArgs{...}
-type JobConfigurationLoadResponseInput interface {
-	pulumi.Input
-
-	ToJobConfigurationLoadResponseOutput() JobConfigurationLoadResponseOutput
-	ToJobConfigurationLoadResponseOutputWithContext(context.Context) JobConfigurationLoadResponseOutput
-}
-
-type JobConfigurationLoadResponseArgs struct {
-	// [Optional] Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
-	AllowJaggedRows pulumi.BoolInput `pulumi:"allowJaggedRows"`
-	// Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
-	AllowQuotedNewlines pulumi.BoolInput `pulumi:"allowQuotedNewlines"`
-	// [Optional] Indicates if we should automatically infer the options and schema for CSV and JSON sources.
-	Autodetect pulumi.BoolInput `pulumi:"autodetect"`
-	// [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
-	Clustering ClusteringResponseInput `pulumi:"clustering"`
-	// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
-	CreateDisposition pulumi.StringInput `pulumi:"createDisposition"`
-	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
-	DecimalTargetTypes pulumi.StringArrayInput `pulumi:"decimalTargetTypes"`
-	// Custom encryption configuration (e.g., Cloud KMS keys).
-	DestinationEncryptionConfiguration EncryptionConfigurationResponseInput `pulumi:"destinationEncryptionConfiguration"`
-	// [Required] The destination table to load the data into.
-	DestinationTable TableReferenceResponseInput `pulumi:"destinationTable"`
-	// [Beta] [Optional] Properties with which to create the destination table if it is new.
-	DestinationTableProperties DestinationTablePropertiesResponseInput `pulumi:"destinationTableProperties"`
-	// [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
-	Encoding pulumi.StringInput `pulumi:"encoding"`
-	// [Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character. To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
-	FieldDelimiter pulumi.StringInput `pulumi:"fieldDelimiter"`
-	// [Optional] Options to configure hive partitioning support.
-	HivePartitioningOptions HivePartitioningOptionsResponseInput `pulumi:"hivePartitioningOptions"`
-	// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names
-	IgnoreUnknownValues pulumi.BoolInput `pulumi:"ignoreUnknownValues"`
-	// [Optional] If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON. For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited GeoJSON: set to GEOJSON.
-	JsonExtension pulumi.StringInput `pulumi:"jsonExtension"`
-	// [Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV and JSON. The default value is 0, which requires that all records are valid.
-	MaxBadRecords pulumi.IntInput `pulumi:"maxBadRecords"`
-	// [Optional] Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.
-	NullMarker pulumi.StringInput `pulumi:"nullMarker"`
-	// [Optional] Options to configure parquet support.
-	ParquetOptions ParquetOptionsResponseInput `pulumi:"parquetOptions"`
-	// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
-	ProjectionFields pulumi.StringArrayInput `pulumi:"projectionFields"`
-	// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
-	Quote pulumi.StringInput `pulumi:"quote"`
-	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
-	RangePartitioning RangePartitioningResponseInput `pulumi:"rangePartitioning"`
-	// [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
-	Schema TableSchemaResponseInput `pulumi:"schema"`
-	// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
-	SchemaUpdateOptions pulumi.StringArrayInput `pulumi:"schemaUpdateOptions"`
-	// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped.
-	SkipLeadingRows pulumi.IntInput `pulumi:"skipLeadingRows"`
-	// [Optional] The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.
-	SourceFormat pulumi.StringInput `pulumi:"sourceFormat"`
-	// [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
-	SourceUris pulumi.StringArrayInput `pulumi:"sourceUris"`
-	// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
-	TimePartitioning TimePartitioningResponseInput `pulumi:"timePartitioning"`
-	// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
-	UseAvroLogicalTypes pulumi.BoolInput `pulumi:"useAvroLogicalTypes"`
-	// [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
-	WriteDisposition pulumi.StringInput `pulumi:"writeDisposition"`
-}
-
-func (JobConfigurationLoadResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobConfigurationLoadResponse)(nil)).Elem()
-}
-
-func (i JobConfigurationLoadResponseArgs) ToJobConfigurationLoadResponseOutput() JobConfigurationLoadResponseOutput {
-	return i.ToJobConfigurationLoadResponseOutputWithContext(context.Background())
-}
-
-func (i JobConfigurationLoadResponseArgs) ToJobConfigurationLoadResponseOutputWithContext(ctx context.Context) JobConfigurationLoadResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationLoadResponseOutput)
-}
-
-func (i JobConfigurationLoadResponseArgs) ToJobConfigurationLoadResponsePtrOutput() JobConfigurationLoadResponsePtrOutput {
-	return i.ToJobConfigurationLoadResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobConfigurationLoadResponseArgs) ToJobConfigurationLoadResponsePtrOutputWithContext(ctx context.Context) JobConfigurationLoadResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationLoadResponseOutput).ToJobConfigurationLoadResponsePtrOutputWithContext(ctx)
-}
-
-// JobConfigurationLoadResponsePtrInput is an input type that accepts JobConfigurationLoadResponseArgs, JobConfigurationLoadResponsePtr and JobConfigurationLoadResponsePtrOutput values.
-// You can construct a concrete instance of `JobConfigurationLoadResponsePtrInput` via:
-//
-//          JobConfigurationLoadResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobConfigurationLoadResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobConfigurationLoadResponsePtrOutput() JobConfigurationLoadResponsePtrOutput
-	ToJobConfigurationLoadResponsePtrOutputWithContext(context.Context) JobConfigurationLoadResponsePtrOutput
-}
-
-type jobConfigurationLoadResponsePtrType JobConfigurationLoadResponseArgs
-
-func JobConfigurationLoadResponsePtr(v *JobConfigurationLoadResponseArgs) JobConfigurationLoadResponsePtrInput {
-	return (*jobConfigurationLoadResponsePtrType)(v)
-}
-
-func (*jobConfigurationLoadResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobConfigurationLoadResponse)(nil)).Elem()
-}
-
-func (i *jobConfigurationLoadResponsePtrType) ToJobConfigurationLoadResponsePtrOutput() JobConfigurationLoadResponsePtrOutput {
-	return i.ToJobConfigurationLoadResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobConfigurationLoadResponsePtrType) ToJobConfigurationLoadResponsePtrOutputWithContext(ctx context.Context) JobConfigurationLoadResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationLoadResponsePtrOutput)
-}
-
 type JobConfigurationLoadResponseOutput struct{ *pulumi.OutputState }
 
 func (JobConfigurationLoadResponseOutput) ElementType() reflect.Type {
@@ -10520,16 +7119,6 @@ func (o JobConfigurationLoadResponseOutput) ToJobConfigurationLoadResponseOutput
 
 func (o JobConfigurationLoadResponseOutput) ToJobConfigurationLoadResponseOutputWithContext(ctx context.Context) JobConfigurationLoadResponseOutput {
 	return o
-}
-
-func (o JobConfigurationLoadResponseOutput) ToJobConfigurationLoadResponsePtrOutput() JobConfigurationLoadResponsePtrOutput {
-	return o.ToJobConfigurationLoadResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobConfigurationLoadResponseOutput) ToJobConfigurationLoadResponsePtrOutputWithContext(ctx context.Context) JobConfigurationLoadResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationLoadResponse) *JobConfigurationLoadResponse {
-		return &v
-	}).(JobConfigurationLoadResponsePtrOutput)
 }
 
 // [Optional] Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
@@ -10674,310 +7263,6 @@ func (o JobConfigurationLoadResponseOutput) UseAvroLogicalTypes() pulumi.BoolOut
 // [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
 func (o JobConfigurationLoadResponseOutput) WriteDisposition() pulumi.StringOutput {
 	return o.ApplyT(func(v JobConfigurationLoadResponse) string { return v.WriteDisposition }).(pulumi.StringOutput)
-}
-
-type JobConfigurationLoadResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobConfigurationLoadResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobConfigurationLoadResponse)(nil)).Elem()
-}
-
-func (o JobConfigurationLoadResponsePtrOutput) ToJobConfigurationLoadResponsePtrOutput() JobConfigurationLoadResponsePtrOutput {
-	return o
-}
-
-func (o JobConfigurationLoadResponsePtrOutput) ToJobConfigurationLoadResponsePtrOutputWithContext(ctx context.Context) JobConfigurationLoadResponsePtrOutput {
-	return o
-}
-
-func (o JobConfigurationLoadResponsePtrOutput) Elem() JobConfigurationLoadResponseOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) JobConfigurationLoadResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JobConfigurationLoadResponse
-		return ret
-	}).(JobConfigurationLoadResponseOutput)
-}
-
-// [Optional] Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
-func (o JobConfigurationLoadResponsePtrOutput) AllowJaggedRows() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AllowJaggedRows
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
-func (o JobConfigurationLoadResponsePtrOutput) AllowQuotedNewlines() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AllowQuotedNewlines
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Optional] Indicates if we should automatically infer the options and schema for CSV and JSON sources.
-func (o JobConfigurationLoadResponsePtrOutput) Autodetect() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Autodetect
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
-func (o JobConfigurationLoadResponsePtrOutput) Clustering() ClusteringResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *ClusteringResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Clustering
-	}).(ClusteringResponsePtrOutput)
-}
-
-// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
-func (o JobConfigurationLoadResponsePtrOutput) CreateDisposition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateDisposition
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
-func (o JobConfigurationLoadResponsePtrOutput) DecimalTargetTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DecimalTargetTypes
-	}).(pulumi.StringArrayOutput)
-}
-
-// Custom encryption configuration (e.g., Cloud KMS keys).
-func (o JobConfigurationLoadResponsePtrOutput) DestinationEncryptionConfiguration() EncryptionConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *EncryptionConfigurationResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DestinationEncryptionConfiguration
-	}).(EncryptionConfigurationResponsePtrOutput)
-}
-
-// [Required] The destination table to load the data into.
-func (o JobConfigurationLoadResponsePtrOutput) DestinationTable() TableReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *TableReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DestinationTable
-	}).(TableReferenceResponsePtrOutput)
-}
-
-// [Beta] [Optional] Properties with which to create the destination table if it is new.
-func (o JobConfigurationLoadResponsePtrOutput) DestinationTableProperties() DestinationTablePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *DestinationTablePropertiesResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DestinationTableProperties
-	}).(DestinationTablePropertiesResponsePtrOutput)
-}
-
-// [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
-func (o JobConfigurationLoadResponsePtrOutput) Encoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Encoding
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character. To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
-func (o JobConfigurationLoadResponsePtrOutput) FieldDelimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FieldDelimiter
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] Options to configure hive partitioning support.
-func (o JobConfigurationLoadResponsePtrOutput) HivePartitioningOptions() HivePartitioningOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *HivePartitioningOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.HivePartitioningOptions
-	}).(HivePartitioningOptionsResponsePtrOutput)
-}
-
-// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names
-func (o JobConfigurationLoadResponsePtrOutput) IgnoreUnknownValues() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.IgnoreUnknownValues
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Optional] If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON. For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited GeoJSON: set to GEOJSON.
-func (o JobConfigurationLoadResponsePtrOutput) JsonExtension() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.JsonExtension
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV and JSON. The default value is 0, which requires that all records are valid.
-func (o JobConfigurationLoadResponsePtrOutput) MaxBadRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxBadRecords
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Optional] Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.
-func (o JobConfigurationLoadResponsePtrOutput) NullMarker() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NullMarker
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] Options to configure parquet support.
-func (o JobConfigurationLoadResponsePtrOutput) ParquetOptions() ParquetOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *ParquetOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ParquetOptions
-	}).(ParquetOptionsResponsePtrOutput)
-}
-
-// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
-func (o JobConfigurationLoadResponsePtrOutput) ProjectionFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ProjectionFields
-	}).(pulumi.StringArrayOutput)
-}
-
-// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
-func (o JobConfigurationLoadResponsePtrOutput) Quote() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Quote
-	}).(pulumi.StringPtrOutput)
-}
-
-// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
-func (o JobConfigurationLoadResponsePtrOutput) RangePartitioning() RangePartitioningResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *RangePartitioningResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.RangePartitioning
-	}).(RangePartitioningResponsePtrOutput)
-}
-
-// [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
-func (o JobConfigurationLoadResponsePtrOutput) Schema() TableSchemaResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *TableSchemaResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Schema
-	}).(TableSchemaResponsePtrOutput)
-}
-
-// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
-func (o JobConfigurationLoadResponsePtrOutput) SchemaUpdateOptions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SchemaUpdateOptions
-	}).(pulumi.StringArrayOutput)
-}
-
-// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped.
-func (o JobConfigurationLoadResponsePtrOutput) SkipLeadingRows() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.SkipLeadingRows
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Optional] The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.
-func (o JobConfigurationLoadResponsePtrOutput) SourceFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceFormat
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
-func (o JobConfigurationLoadResponsePtrOutput) SourceUris() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SourceUris
-	}).(pulumi.StringArrayOutput)
-}
-
-// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
-func (o JobConfigurationLoadResponsePtrOutput) TimePartitioning() TimePartitioningResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *TimePartitioningResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TimePartitioning
-	}).(TimePartitioningResponsePtrOutput)
-}
-
-// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
-func (o JobConfigurationLoadResponsePtrOutput) UseAvroLogicalTypes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.UseAvroLogicalTypes
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
-func (o JobConfigurationLoadResponsePtrOutput) WriteDisposition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WriteDisposition
-	}).(pulumi.StringPtrOutput)
 }
 
 type JobConfigurationQuery struct {
@@ -11584,119 +7869,6 @@ type JobConfigurationQueryResponse struct {
 	WriteDisposition string `pulumi:"writeDisposition"`
 }
 
-// JobConfigurationQueryResponseInput is an input type that accepts JobConfigurationQueryResponseArgs and JobConfigurationQueryResponseOutput values.
-// You can construct a concrete instance of `JobConfigurationQueryResponseInput` via:
-//
-//          JobConfigurationQueryResponseArgs{...}
-type JobConfigurationQueryResponseInput interface {
-	pulumi.Input
-
-	ToJobConfigurationQueryResponseOutput() JobConfigurationQueryResponseOutput
-	ToJobConfigurationQueryResponseOutputWithContext(context.Context) JobConfigurationQueryResponseOutput
-}
-
-type JobConfigurationQueryResponseArgs struct {
-	// [Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
-	AllowLargeResults pulumi.BoolInput `pulumi:"allowLargeResults"`
-	// [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
-	Clustering ClusteringResponseInput `pulumi:"clustering"`
-	// Connection properties.
-	ConnectionProperties ConnectionPropertyResponseArrayInput `pulumi:"connectionProperties"`
-	// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
-	CreateDisposition pulumi.StringInput `pulumi:"createDisposition"`
-	// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.
-	CreateSession pulumi.BoolInput `pulumi:"createSession"`
-	// [Optional] Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
-	DefaultDataset DatasetReferenceResponseInput `pulumi:"defaultDataset"`
-	// Custom encryption configuration (e.g., Cloud KMS keys).
-	DestinationEncryptionConfiguration EncryptionConfigurationResponseInput `pulumi:"destinationEncryptionConfiguration"`
-	// [Optional] Describes the table where the query results should be stored. If not present, a new table will be created to store the results. This property must be set for large results that exceed the maximum response size.
-	DestinationTable TableReferenceResponseInput `pulumi:"destinationTable"`
-	// [Optional] If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results. allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
-	FlattenResults pulumi.BoolInput `pulumi:"flattenResults"`
-	// [Optional] Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge). If unspecified, this will be set to your project default.
-	MaximumBillingTier pulumi.IntInput `pulumi:"maximumBillingTier"`
-	// [Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge). If unspecified, this will be set to your project default.
-	MaximumBytesBilled pulumi.StringInput `pulumi:"maximumBytesBilled"`
-	// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
-	ParameterMode pulumi.StringInput `pulumi:"parameterMode"`
-	// [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
-	Priority pulumi.StringInput `pulumi:"priority"`
-	// [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-	Query pulumi.StringInput `pulumi:"query"`
-	// Query parameters for standard SQL queries.
-	QueryParameters QueryParameterResponseArrayInput `pulumi:"queryParameters"`
-	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
-	RangePartitioning RangePartitioningResponseInput `pulumi:"rangePartitioning"`
-	// Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
-	SchemaUpdateOptions pulumi.StringArrayInput `pulumi:"schemaUpdateOptions"`
-	// [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-	TableDefinitions pulumi.StringMapInput `pulumi:"tableDefinitions"`
-	// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
-	TimePartitioning TimePartitioningResponseInput `pulumi:"timePartitioning"`
-	// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
-	UseLegacySql pulumi.BoolInput `pulumi:"useLegacySql"`
-	// [Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.
-	UseQueryCache pulumi.BoolInput `pulumi:"useQueryCache"`
-	// Describes user-defined function resources used in the query.
-	UserDefinedFunctionResources UserDefinedFunctionResourceResponseArrayInput `pulumi:"userDefinedFunctionResources"`
-	// [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
-	WriteDisposition pulumi.StringInput `pulumi:"writeDisposition"`
-}
-
-func (JobConfigurationQueryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobConfigurationQueryResponse)(nil)).Elem()
-}
-
-func (i JobConfigurationQueryResponseArgs) ToJobConfigurationQueryResponseOutput() JobConfigurationQueryResponseOutput {
-	return i.ToJobConfigurationQueryResponseOutputWithContext(context.Background())
-}
-
-func (i JobConfigurationQueryResponseArgs) ToJobConfigurationQueryResponseOutputWithContext(ctx context.Context) JobConfigurationQueryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationQueryResponseOutput)
-}
-
-func (i JobConfigurationQueryResponseArgs) ToJobConfigurationQueryResponsePtrOutput() JobConfigurationQueryResponsePtrOutput {
-	return i.ToJobConfigurationQueryResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobConfigurationQueryResponseArgs) ToJobConfigurationQueryResponsePtrOutputWithContext(ctx context.Context) JobConfigurationQueryResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationQueryResponseOutput).ToJobConfigurationQueryResponsePtrOutputWithContext(ctx)
-}
-
-// JobConfigurationQueryResponsePtrInput is an input type that accepts JobConfigurationQueryResponseArgs, JobConfigurationQueryResponsePtr and JobConfigurationQueryResponsePtrOutput values.
-// You can construct a concrete instance of `JobConfigurationQueryResponsePtrInput` via:
-//
-//          JobConfigurationQueryResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobConfigurationQueryResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobConfigurationQueryResponsePtrOutput() JobConfigurationQueryResponsePtrOutput
-	ToJobConfigurationQueryResponsePtrOutputWithContext(context.Context) JobConfigurationQueryResponsePtrOutput
-}
-
-type jobConfigurationQueryResponsePtrType JobConfigurationQueryResponseArgs
-
-func JobConfigurationQueryResponsePtr(v *JobConfigurationQueryResponseArgs) JobConfigurationQueryResponsePtrInput {
-	return (*jobConfigurationQueryResponsePtrType)(v)
-}
-
-func (*jobConfigurationQueryResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobConfigurationQueryResponse)(nil)).Elem()
-}
-
-func (i *jobConfigurationQueryResponsePtrType) ToJobConfigurationQueryResponsePtrOutput() JobConfigurationQueryResponsePtrOutput {
-	return i.ToJobConfigurationQueryResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobConfigurationQueryResponsePtrType) ToJobConfigurationQueryResponsePtrOutputWithContext(ctx context.Context) JobConfigurationQueryResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationQueryResponsePtrOutput)
-}
-
 type JobConfigurationQueryResponseOutput struct{ *pulumi.OutputState }
 
 func (JobConfigurationQueryResponseOutput) ElementType() reflect.Type {
@@ -11709,16 +7881,6 @@ func (o JobConfigurationQueryResponseOutput) ToJobConfigurationQueryResponseOutp
 
 func (o JobConfigurationQueryResponseOutput) ToJobConfigurationQueryResponseOutputWithContext(ctx context.Context) JobConfigurationQueryResponseOutput {
 	return o
-}
-
-func (o JobConfigurationQueryResponseOutput) ToJobConfigurationQueryResponsePtrOutput() JobConfigurationQueryResponsePtrOutput {
-	return o.ToJobConfigurationQueryResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobConfigurationQueryResponseOutput) ToJobConfigurationQueryResponsePtrOutputWithContext(ctx context.Context) JobConfigurationQueryResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationQueryResponse) *JobConfigurationQueryResponse {
-		return &v
-	}).(JobConfigurationQueryResponsePtrOutput)
 }
 
 // [Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
@@ -11840,260 +8002,6 @@ func (o JobConfigurationQueryResponseOutput) WriteDisposition() pulumi.StringOut
 	return o.ApplyT(func(v JobConfigurationQueryResponse) string { return v.WriteDisposition }).(pulumi.StringOutput)
 }
 
-type JobConfigurationQueryResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobConfigurationQueryResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobConfigurationQueryResponse)(nil)).Elem()
-}
-
-func (o JobConfigurationQueryResponsePtrOutput) ToJobConfigurationQueryResponsePtrOutput() JobConfigurationQueryResponsePtrOutput {
-	return o
-}
-
-func (o JobConfigurationQueryResponsePtrOutput) ToJobConfigurationQueryResponsePtrOutputWithContext(ctx context.Context) JobConfigurationQueryResponsePtrOutput {
-	return o
-}
-
-func (o JobConfigurationQueryResponsePtrOutput) Elem() JobConfigurationQueryResponseOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) JobConfigurationQueryResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JobConfigurationQueryResponse
-		return ret
-	}).(JobConfigurationQueryResponseOutput)
-}
-
-// [Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
-func (o JobConfigurationQueryResponsePtrOutput) AllowLargeResults() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AllowLargeResults
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
-func (o JobConfigurationQueryResponsePtrOutput) Clustering() ClusteringResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *ClusteringResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Clustering
-	}).(ClusteringResponsePtrOutput)
-}
-
-// Connection properties.
-func (o JobConfigurationQueryResponsePtrOutput) ConnectionProperties() ConnectionPropertyResponseArrayOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) []ConnectionPropertyResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ConnectionProperties
-	}).(ConnectionPropertyResponseArrayOutput)
-}
-
-// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
-func (o JobConfigurationQueryResponsePtrOutput) CreateDisposition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateDisposition
-	}).(pulumi.StringPtrOutput)
-}
-
-// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.
-func (o JobConfigurationQueryResponsePtrOutput) CreateSession() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateSession
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Optional] Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
-func (o JobConfigurationQueryResponsePtrOutput) DefaultDataset() DatasetReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *DatasetReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DefaultDataset
-	}).(DatasetReferenceResponsePtrOutput)
-}
-
-// Custom encryption configuration (e.g., Cloud KMS keys).
-func (o JobConfigurationQueryResponsePtrOutput) DestinationEncryptionConfiguration() EncryptionConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *EncryptionConfigurationResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DestinationEncryptionConfiguration
-	}).(EncryptionConfigurationResponsePtrOutput)
-}
-
-// [Optional] Describes the table where the query results should be stored. If not present, a new table will be created to store the results. This property must be set for large results that exceed the maximum response size.
-func (o JobConfigurationQueryResponsePtrOutput) DestinationTable() TableReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *TableReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DestinationTable
-	}).(TableReferenceResponsePtrOutput)
-}
-
-// [Optional] If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results. allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
-func (o JobConfigurationQueryResponsePtrOutput) FlattenResults() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.FlattenResults
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Optional] Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge). If unspecified, this will be set to your project default.
-func (o JobConfigurationQueryResponsePtrOutput) MaximumBillingTier() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaximumBillingTier
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge). If unspecified, this will be set to your project default.
-func (o JobConfigurationQueryResponsePtrOutput) MaximumBytesBilled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MaximumBytesBilled
-	}).(pulumi.StringPtrOutput)
-}
-
-// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
-func (o JobConfigurationQueryResponsePtrOutput) ParameterMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ParameterMode
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
-func (o JobConfigurationQueryResponsePtrOutput) Priority() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Priority
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-func (o JobConfigurationQueryResponsePtrOutput) Query() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Query
-	}).(pulumi.StringPtrOutput)
-}
-
-// Query parameters for standard SQL queries.
-func (o JobConfigurationQueryResponsePtrOutput) QueryParameters() QueryParameterResponseArrayOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) []QueryParameterResponse {
-		if v == nil {
-			return nil
-		}
-		return v.QueryParameters
-	}).(QueryParameterResponseArrayOutput)
-}
-
-// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
-func (o JobConfigurationQueryResponsePtrOutput) RangePartitioning() RangePartitioningResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *RangePartitioningResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.RangePartitioning
-	}).(RangePartitioningResponsePtrOutput)
-}
-
-// Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
-func (o JobConfigurationQueryResponsePtrOutput) SchemaUpdateOptions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SchemaUpdateOptions
-	}).(pulumi.StringArrayOutput)
-}
-
-// [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-func (o JobConfigurationQueryResponsePtrOutput) TableDefinitions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.TableDefinitions
-	}).(pulumi.StringMapOutput)
-}
-
-// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
-func (o JobConfigurationQueryResponsePtrOutput) TimePartitioning() TimePartitioningResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *TimePartitioningResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TimePartitioning
-	}).(TimePartitioningResponsePtrOutput)
-}
-
-// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
-func (o JobConfigurationQueryResponsePtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.UseLegacySql
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.
-func (o JobConfigurationQueryResponsePtrOutput) UseQueryCache() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.UseQueryCache
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Describes user-defined function resources used in the query.
-func (o JobConfigurationQueryResponsePtrOutput) UserDefinedFunctionResources() UserDefinedFunctionResourceResponseArrayOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) []UserDefinedFunctionResourceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UserDefinedFunctionResources
-	}).(UserDefinedFunctionResourceResponseArrayOutput)
-}
-
-// [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
-func (o JobConfigurationQueryResponsePtrOutput) WriteDisposition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WriteDisposition
-	}).(pulumi.StringPtrOutput)
-}
-
 type JobConfigurationResponse struct {
 	// [Pick one] Copies a table.
 	Copy JobConfigurationTableCopyResponse `pulumi:"copy"`
@@ -12113,89 +8021,6 @@ type JobConfigurationResponse struct {
 	Query JobConfigurationQueryResponse `pulumi:"query"`
 }
 
-// JobConfigurationResponseInput is an input type that accepts JobConfigurationResponseArgs and JobConfigurationResponseOutput values.
-// You can construct a concrete instance of `JobConfigurationResponseInput` via:
-//
-//          JobConfigurationResponseArgs{...}
-type JobConfigurationResponseInput interface {
-	pulumi.Input
-
-	ToJobConfigurationResponseOutput() JobConfigurationResponseOutput
-	ToJobConfigurationResponseOutputWithContext(context.Context) JobConfigurationResponseOutput
-}
-
-type JobConfigurationResponseArgs struct {
-	// [Pick one] Copies a table.
-	Copy JobConfigurationTableCopyResponseInput `pulumi:"copy"`
-	// [Optional] If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.
-	DryRun pulumi.BoolInput `pulumi:"dryRun"`
-	// [Pick one] Configures an extract job.
-	Extract JobConfigurationExtractResponseInput `pulumi:"extract"`
-	// [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
-	JobTimeoutMs pulumi.StringInput `pulumi:"jobTimeoutMs"`
-	// The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
-	JobType pulumi.StringInput `pulumi:"jobType"`
-	// The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// [Pick one] Configures a load job.
-	Load JobConfigurationLoadResponseInput `pulumi:"load"`
-	// [Pick one] Configures a query job.
-	Query JobConfigurationQueryResponseInput `pulumi:"query"`
-}
-
-func (JobConfigurationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobConfigurationResponse)(nil)).Elem()
-}
-
-func (i JobConfigurationResponseArgs) ToJobConfigurationResponseOutput() JobConfigurationResponseOutput {
-	return i.ToJobConfigurationResponseOutputWithContext(context.Background())
-}
-
-func (i JobConfigurationResponseArgs) ToJobConfigurationResponseOutputWithContext(ctx context.Context) JobConfigurationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationResponseOutput)
-}
-
-func (i JobConfigurationResponseArgs) ToJobConfigurationResponsePtrOutput() JobConfigurationResponsePtrOutput {
-	return i.ToJobConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobConfigurationResponseArgs) ToJobConfigurationResponsePtrOutputWithContext(ctx context.Context) JobConfigurationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationResponseOutput).ToJobConfigurationResponsePtrOutputWithContext(ctx)
-}
-
-// JobConfigurationResponsePtrInput is an input type that accepts JobConfigurationResponseArgs, JobConfigurationResponsePtr and JobConfigurationResponsePtrOutput values.
-// You can construct a concrete instance of `JobConfigurationResponsePtrInput` via:
-//
-//          JobConfigurationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobConfigurationResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobConfigurationResponsePtrOutput() JobConfigurationResponsePtrOutput
-	ToJobConfigurationResponsePtrOutputWithContext(context.Context) JobConfigurationResponsePtrOutput
-}
-
-type jobConfigurationResponsePtrType JobConfigurationResponseArgs
-
-func JobConfigurationResponsePtr(v *JobConfigurationResponseArgs) JobConfigurationResponsePtrInput {
-	return (*jobConfigurationResponsePtrType)(v)
-}
-
-func (*jobConfigurationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobConfigurationResponse)(nil)).Elem()
-}
-
-func (i *jobConfigurationResponsePtrType) ToJobConfigurationResponsePtrOutput() JobConfigurationResponsePtrOutput {
-	return i.ToJobConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobConfigurationResponsePtrType) ToJobConfigurationResponsePtrOutputWithContext(ctx context.Context) JobConfigurationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationResponsePtrOutput)
-}
-
 type JobConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (JobConfigurationResponseOutput) ElementType() reflect.Type {
@@ -12208,16 +8033,6 @@ func (o JobConfigurationResponseOutput) ToJobConfigurationResponseOutput() JobCo
 
 func (o JobConfigurationResponseOutput) ToJobConfigurationResponseOutputWithContext(ctx context.Context) JobConfigurationResponseOutput {
 	return o
-}
-
-func (o JobConfigurationResponseOutput) ToJobConfigurationResponsePtrOutput() JobConfigurationResponsePtrOutput {
-	return o.ToJobConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobConfigurationResponseOutput) ToJobConfigurationResponsePtrOutputWithContext(ctx context.Context) JobConfigurationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationResponse) *JobConfigurationResponse {
-		return &v
-	}).(JobConfigurationResponsePtrOutput)
 }
 
 // [Pick one] Copies a table.
@@ -12258,110 +8073,6 @@ func (o JobConfigurationResponseOutput) Load() JobConfigurationLoadResponseOutpu
 // [Pick one] Configures a query job.
 func (o JobConfigurationResponseOutput) Query() JobConfigurationQueryResponseOutput {
 	return o.ApplyT(func(v JobConfigurationResponse) JobConfigurationQueryResponse { return v.Query }).(JobConfigurationQueryResponseOutput)
-}
-
-type JobConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobConfigurationResponse)(nil)).Elem()
-}
-
-func (o JobConfigurationResponsePtrOutput) ToJobConfigurationResponsePtrOutput() JobConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o JobConfigurationResponsePtrOutput) ToJobConfigurationResponsePtrOutputWithContext(ctx context.Context) JobConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o JobConfigurationResponsePtrOutput) Elem() JobConfigurationResponseOutput {
-	return o.ApplyT(func(v *JobConfigurationResponse) JobConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JobConfigurationResponse
-		return ret
-	}).(JobConfigurationResponseOutput)
-}
-
-// [Pick one] Copies a table.
-func (o JobConfigurationResponsePtrOutput) Copy() JobConfigurationTableCopyResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationResponse) *JobConfigurationTableCopyResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Copy
-	}).(JobConfigurationTableCopyResponsePtrOutput)
-}
-
-// [Optional] If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.
-func (o JobConfigurationResponsePtrOutput) DryRun() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.DryRun
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Pick one] Configures an extract job.
-func (o JobConfigurationResponsePtrOutput) Extract() JobConfigurationExtractResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationResponse) *JobConfigurationExtractResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Extract
-	}).(JobConfigurationExtractResponsePtrOutput)
-}
-
-// [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
-func (o JobConfigurationResponsePtrOutput) JobTimeoutMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.JobTimeoutMs
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
-func (o JobConfigurationResponsePtrOutput) JobType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.JobType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
-func (o JobConfigurationResponsePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *JobConfigurationResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// [Pick one] Configures a load job.
-func (o JobConfigurationResponsePtrOutput) Load() JobConfigurationLoadResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationResponse) *JobConfigurationLoadResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Load
-	}).(JobConfigurationLoadResponsePtrOutput)
-}
-
-// [Pick one] Configures a query job.
-func (o JobConfigurationResponsePtrOutput) Query() JobConfigurationQueryResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationResponse) *JobConfigurationQueryResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Query
-	}).(JobConfigurationQueryResponsePtrOutput)
 }
 
 type JobConfigurationTableCopy struct {
@@ -12655,89 +8366,6 @@ type JobConfigurationTableCopyResponse struct {
 	WriteDisposition string `pulumi:"writeDisposition"`
 }
 
-// JobConfigurationTableCopyResponseInput is an input type that accepts JobConfigurationTableCopyResponseArgs and JobConfigurationTableCopyResponseOutput values.
-// You can construct a concrete instance of `JobConfigurationTableCopyResponseInput` via:
-//
-//          JobConfigurationTableCopyResponseArgs{...}
-type JobConfigurationTableCopyResponseInput interface {
-	pulumi.Input
-
-	ToJobConfigurationTableCopyResponseOutput() JobConfigurationTableCopyResponseOutput
-	ToJobConfigurationTableCopyResponseOutputWithContext(context.Context) JobConfigurationTableCopyResponseOutput
-}
-
-type JobConfigurationTableCopyResponseArgs struct {
-	// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
-	CreateDisposition pulumi.StringInput `pulumi:"createDisposition"`
-	// Custom encryption configuration (e.g., Cloud KMS keys).
-	DestinationEncryptionConfiguration EncryptionConfigurationResponseInput `pulumi:"destinationEncryptionConfiguration"`
-	// [Optional] The time when the destination table expires. Expired tables will be deleted and their storage reclaimed.
-	DestinationExpirationTime pulumi.Input `pulumi:"destinationExpirationTime"`
-	// [Required] The destination table
-	DestinationTable TableReferenceResponseInput `pulumi:"destinationTable"`
-	// [Optional] Supported operation types in table copy job.
-	OperationType pulumi.StringInput `pulumi:"operationType"`
-	// [Pick one] Source table to copy.
-	SourceTable TableReferenceResponseInput `pulumi:"sourceTable"`
-	// [Pick one] Source tables to copy.
-	SourceTables TableReferenceResponseArrayInput `pulumi:"sourceTables"`
-	// [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
-	WriteDisposition pulumi.StringInput `pulumi:"writeDisposition"`
-}
-
-func (JobConfigurationTableCopyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobConfigurationTableCopyResponse)(nil)).Elem()
-}
-
-func (i JobConfigurationTableCopyResponseArgs) ToJobConfigurationTableCopyResponseOutput() JobConfigurationTableCopyResponseOutput {
-	return i.ToJobConfigurationTableCopyResponseOutputWithContext(context.Background())
-}
-
-func (i JobConfigurationTableCopyResponseArgs) ToJobConfigurationTableCopyResponseOutputWithContext(ctx context.Context) JobConfigurationTableCopyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationTableCopyResponseOutput)
-}
-
-func (i JobConfigurationTableCopyResponseArgs) ToJobConfigurationTableCopyResponsePtrOutput() JobConfigurationTableCopyResponsePtrOutput {
-	return i.ToJobConfigurationTableCopyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobConfigurationTableCopyResponseArgs) ToJobConfigurationTableCopyResponsePtrOutputWithContext(ctx context.Context) JobConfigurationTableCopyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationTableCopyResponseOutput).ToJobConfigurationTableCopyResponsePtrOutputWithContext(ctx)
-}
-
-// JobConfigurationTableCopyResponsePtrInput is an input type that accepts JobConfigurationTableCopyResponseArgs, JobConfigurationTableCopyResponsePtr and JobConfigurationTableCopyResponsePtrOutput values.
-// You can construct a concrete instance of `JobConfigurationTableCopyResponsePtrInput` via:
-//
-//          JobConfigurationTableCopyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobConfigurationTableCopyResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobConfigurationTableCopyResponsePtrOutput() JobConfigurationTableCopyResponsePtrOutput
-	ToJobConfigurationTableCopyResponsePtrOutputWithContext(context.Context) JobConfigurationTableCopyResponsePtrOutput
-}
-
-type jobConfigurationTableCopyResponsePtrType JobConfigurationTableCopyResponseArgs
-
-func JobConfigurationTableCopyResponsePtr(v *JobConfigurationTableCopyResponseArgs) JobConfigurationTableCopyResponsePtrInput {
-	return (*jobConfigurationTableCopyResponsePtrType)(v)
-}
-
-func (*jobConfigurationTableCopyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobConfigurationTableCopyResponse)(nil)).Elem()
-}
-
-func (i *jobConfigurationTableCopyResponsePtrType) ToJobConfigurationTableCopyResponsePtrOutput() JobConfigurationTableCopyResponsePtrOutput {
-	return i.ToJobConfigurationTableCopyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobConfigurationTableCopyResponsePtrType) ToJobConfigurationTableCopyResponsePtrOutputWithContext(ctx context.Context) JobConfigurationTableCopyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationTableCopyResponsePtrOutput)
-}
-
 type JobConfigurationTableCopyResponseOutput struct{ *pulumi.OutputState }
 
 func (JobConfigurationTableCopyResponseOutput) ElementType() reflect.Type {
@@ -12750,16 +8378,6 @@ func (o JobConfigurationTableCopyResponseOutput) ToJobConfigurationTableCopyResp
 
 func (o JobConfigurationTableCopyResponseOutput) ToJobConfigurationTableCopyResponseOutputWithContext(ctx context.Context) JobConfigurationTableCopyResponseOutput {
 	return o
-}
-
-func (o JobConfigurationTableCopyResponseOutput) ToJobConfigurationTableCopyResponsePtrOutput() JobConfigurationTableCopyResponsePtrOutput {
-	return o.ToJobConfigurationTableCopyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobConfigurationTableCopyResponseOutput) ToJobConfigurationTableCopyResponsePtrOutputWithContext(ctx context.Context) JobConfigurationTableCopyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationTableCopyResponse) *JobConfigurationTableCopyResponse {
-		return &v
-	}).(JobConfigurationTableCopyResponsePtrOutput)
 }
 
 // [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
@@ -12802,110 +8420,6 @@ func (o JobConfigurationTableCopyResponseOutput) SourceTables() TableReferenceRe
 // [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
 func (o JobConfigurationTableCopyResponseOutput) WriteDisposition() pulumi.StringOutput {
 	return o.ApplyT(func(v JobConfigurationTableCopyResponse) string { return v.WriteDisposition }).(pulumi.StringOutput)
-}
-
-type JobConfigurationTableCopyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobConfigurationTableCopyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobConfigurationTableCopyResponse)(nil)).Elem()
-}
-
-func (o JobConfigurationTableCopyResponsePtrOutput) ToJobConfigurationTableCopyResponsePtrOutput() JobConfigurationTableCopyResponsePtrOutput {
-	return o
-}
-
-func (o JobConfigurationTableCopyResponsePtrOutput) ToJobConfigurationTableCopyResponsePtrOutputWithContext(ctx context.Context) JobConfigurationTableCopyResponsePtrOutput {
-	return o
-}
-
-func (o JobConfigurationTableCopyResponsePtrOutput) Elem() JobConfigurationTableCopyResponseOutput {
-	return o.ApplyT(func(v *JobConfigurationTableCopyResponse) JobConfigurationTableCopyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JobConfigurationTableCopyResponse
-		return ret
-	}).(JobConfigurationTableCopyResponseOutput)
-}
-
-// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
-func (o JobConfigurationTableCopyResponsePtrOutput) CreateDisposition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationTableCopyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateDisposition
-	}).(pulumi.StringPtrOutput)
-}
-
-// Custom encryption configuration (e.g., Cloud KMS keys).
-func (o JobConfigurationTableCopyResponsePtrOutput) DestinationEncryptionConfiguration() EncryptionConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationTableCopyResponse) *EncryptionConfigurationResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DestinationEncryptionConfiguration
-	}).(EncryptionConfigurationResponsePtrOutput)
-}
-
-// [Optional] The time when the destination table expires. Expired tables will be deleted and their storage reclaimed.
-func (o JobConfigurationTableCopyResponsePtrOutput) DestinationExpirationTime() pulumi.AnyOutput {
-	return o.ApplyT(func(v *JobConfigurationTableCopyResponse) interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.DestinationExpirationTime
-	}).(pulumi.AnyOutput)
-}
-
-// [Required] The destination table
-func (o JobConfigurationTableCopyResponsePtrOutput) DestinationTable() TableReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationTableCopyResponse) *TableReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DestinationTable
-	}).(TableReferenceResponsePtrOutput)
-}
-
-// [Optional] Supported operation types in table copy job.
-func (o JobConfigurationTableCopyResponsePtrOutput) OperationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationTableCopyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OperationType
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Pick one] Source table to copy.
-func (o JobConfigurationTableCopyResponsePtrOutput) SourceTable() TableReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigurationTableCopyResponse) *TableReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceTable
-	}).(TableReferenceResponsePtrOutput)
-}
-
-// [Pick one] Source tables to copy.
-func (o JobConfigurationTableCopyResponsePtrOutput) SourceTables() TableReferenceResponseArrayOutput {
-	return o.ApplyT(func(v *JobConfigurationTableCopyResponse) []TableReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.SourceTables
-	}).(TableReferenceResponseArrayOutput)
-}
-
-// [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
-func (o JobConfigurationTableCopyResponsePtrOutput) WriteDisposition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfigurationTableCopyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WriteDisposition
-	}).(pulumi.StringPtrOutput)
 }
 
 type JobReference struct {
@@ -13092,79 +8606,6 @@ type JobReferenceResponse struct {
 	Project string `pulumi:"project"`
 }
 
-// JobReferenceResponseInput is an input type that accepts JobReferenceResponseArgs and JobReferenceResponseOutput values.
-// You can construct a concrete instance of `JobReferenceResponseInput` via:
-//
-//          JobReferenceResponseArgs{...}
-type JobReferenceResponseInput interface {
-	pulumi.Input
-
-	ToJobReferenceResponseOutput() JobReferenceResponseOutput
-	ToJobReferenceResponseOutputWithContext(context.Context) JobReferenceResponseOutput
-}
-
-type JobReferenceResponseArgs struct {
-	// [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
-	JobId pulumi.StringInput `pulumi:"jobId"`
-	// The geographic location of the job. See details at https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
-	Location pulumi.StringInput `pulumi:"location"`
-	// [Required] The ID of the project containing this job.
-	Project pulumi.StringInput `pulumi:"project"`
-}
-
-func (JobReferenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobReferenceResponse)(nil)).Elem()
-}
-
-func (i JobReferenceResponseArgs) ToJobReferenceResponseOutput() JobReferenceResponseOutput {
-	return i.ToJobReferenceResponseOutputWithContext(context.Background())
-}
-
-func (i JobReferenceResponseArgs) ToJobReferenceResponseOutputWithContext(ctx context.Context) JobReferenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobReferenceResponseOutput)
-}
-
-func (i JobReferenceResponseArgs) ToJobReferenceResponsePtrOutput() JobReferenceResponsePtrOutput {
-	return i.ToJobReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobReferenceResponseArgs) ToJobReferenceResponsePtrOutputWithContext(ctx context.Context) JobReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobReferenceResponseOutput).ToJobReferenceResponsePtrOutputWithContext(ctx)
-}
-
-// JobReferenceResponsePtrInput is an input type that accepts JobReferenceResponseArgs, JobReferenceResponsePtr and JobReferenceResponsePtrOutput values.
-// You can construct a concrete instance of `JobReferenceResponsePtrInput` via:
-//
-//          JobReferenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobReferenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobReferenceResponsePtrOutput() JobReferenceResponsePtrOutput
-	ToJobReferenceResponsePtrOutputWithContext(context.Context) JobReferenceResponsePtrOutput
-}
-
-type jobReferenceResponsePtrType JobReferenceResponseArgs
-
-func JobReferenceResponsePtr(v *JobReferenceResponseArgs) JobReferenceResponsePtrInput {
-	return (*jobReferenceResponsePtrType)(v)
-}
-
-func (*jobReferenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobReferenceResponse)(nil)).Elem()
-}
-
-func (i *jobReferenceResponsePtrType) ToJobReferenceResponsePtrOutput() JobReferenceResponsePtrOutput {
-	return i.ToJobReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobReferenceResponsePtrType) ToJobReferenceResponsePtrOutputWithContext(ctx context.Context) JobReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobReferenceResponsePtrOutput)
-}
-
 type JobReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (JobReferenceResponseOutput) ElementType() reflect.Type {
@@ -13177,16 +8618,6 @@ func (o JobReferenceResponseOutput) ToJobReferenceResponseOutput() JobReferenceR
 
 func (o JobReferenceResponseOutput) ToJobReferenceResponseOutputWithContext(ctx context.Context) JobReferenceResponseOutput {
 	return o
-}
-
-func (o JobReferenceResponseOutput) ToJobReferenceResponsePtrOutput() JobReferenceResponsePtrOutput {
-	return o.ToJobReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobReferenceResponseOutput) ToJobReferenceResponsePtrOutputWithContext(ctx context.Context) JobReferenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobReferenceResponse) *JobReferenceResponse {
-		return &v
-	}).(JobReferenceResponsePtrOutput)
 }
 
 // [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
@@ -13204,120 +8635,11 @@ func (o JobReferenceResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v JobReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
-type JobReferenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobReferenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobReferenceResponse)(nil)).Elem()
-}
-
-func (o JobReferenceResponsePtrOutput) ToJobReferenceResponsePtrOutput() JobReferenceResponsePtrOutput {
-	return o
-}
-
-func (o JobReferenceResponsePtrOutput) ToJobReferenceResponsePtrOutputWithContext(ctx context.Context) JobReferenceResponsePtrOutput {
-	return o
-}
-
-func (o JobReferenceResponsePtrOutput) Elem() JobReferenceResponseOutput {
-	return o.ApplyT(func(v *JobReferenceResponse) JobReferenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JobReferenceResponse
-		return ret
-	}).(JobReferenceResponseOutput)
-}
-
-// [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
-func (o JobReferenceResponsePtrOutput) JobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.JobId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The geographic location of the job. See details at https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
-func (o JobReferenceResponsePtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the project containing this job.
-func (o JobReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
 type JobStatistics2ReservationUsageItemResponse struct {
 	// Reservation name or "unreserved" for on-demand resources usage.
 	Name string `pulumi:"name"`
 	// Slot-milliseconds the job spent in the given reservation.
 	SlotMs string `pulumi:"slotMs"`
-}
-
-// JobStatistics2ReservationUsageItemResponseInput is an input type that accepts JobStatistics2ReservationUsageItemResponseArgs and JobStatistics2ReservationUsageItemResponseOutput values.
-// You can construct a concrete instance of `JobStatistics2ReservationUsageItemResponseInput` via:
-//
-//          JobStatistics2ReservationUsageItemResponseArgs{...}
-type JobStatistics2ReservationUsageItemResponseInput interface {
-	pulumi.Input
-
-	ToJobStatistics2ReservationUsageItemResponseOutput() JobStatistics2ReservationUsageItemResponseOutput
-	ToJobStatistics2ReservationUsageItemResponseOutputWithContext(context.Context) JobStatistics2ReservationUsageItemResponseOutput
-}
-
-type JobStatistics2ReservationUsageItemResponseArgs struct {
-	// Reservation name or "unreserved" for on-demand resources usage.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Slot-milliseconds the job spent in the given reservation.
-	SlotMs pulumi.StringInput `pulumi:"slotMs"`
-}
-
-func (JobStatistics2ReservationUsageItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatistics2ReservationUsageItemResponse)(nil)).Elem()
-}
-
-func (i JobStatistics2ReservationUsageItemResponseArgs) ToJobStatistics2ReservationUsageItemResponseOutput() JobStatistics2ReservationUsageItemResponseOutput {
-	return i.ToJobStatistics2ReservationUsageItemResponseOutputWithContext(context.Background())
-}
-
-func (i JobStatistics2ReservationUsageItemResponseArgs) ToJobStatistics2ReservationUsageItemResponseOutputWithContext(ctx context.Context) JobStatistics2ReservationUsageItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics2ReservationUsageItemResponseOutput)
-}
-
-// JobStatistics2ReservationUsageItemResponseArrayInput is an input type that accepts JobStatistics2ReservationUsageItemResponseArray and JobStatistics2ReservationUsageItemResponseArrayOutput values.
-// You can construct a concrete instance of `JobStatistics2ReservationUsageItemResponseArrayInput` via:
-//
-//          JobStatistics2ReservationUsageItemResponseArray{ JobStatistics2ReservationUsageItemResponseArgs{...} }
-type JobStatistics2ReservationUsageItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToJobStatistics2ReservationUsageItemResponseArrayOutput() JobStatistics2ReservationUsageItemResponseArrayOutput
-	ToJobStatistics2ReservationUsageItemResponseArrayOutputWithContext(context.Context) JobStatistics2ReservationUsageItemResponseArrayOutput
-}
-
-type JobStatistics2ReservationUsageItemResponseArray []JobStatistics2ReservationUsageItemResponseInput
-
-func (JobStatistics2ReservationUsageItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobStatistics2ReservationUsageItemResponse)(nil)).Elem()
-}
-
-func (i JobStatistics2ReservationUsageItemResponseArray) ToJobStatistics2ReservationUsageItemResponseArrayOutput() JobStatistics2ReservationUsageItemResponseArrayOutput {
-	return i.ToJobStatistics2ReservationUsageItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i JobStatistics2ReservationUsageItemResponseArray) ToJobStatistics2ReservationUsageItemResponseArrayOutputWithContext(ctx context.Context) JobStatistics2ReservationUsageItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics2ReservationUsageItemResponseArrayOutput)
 }
 
 type JobStatistics2ReservationUsageItemResponseOutput struct{ *pulumi.OutputState }
@@ -13423,129 +8745,6 @@ type JobStatistics2Response struct {
 	UndeclaredQueryParameters []QueryParameterResponse `pulumi:"undeclaredQueryParameters"`
 }
 
-// JobStatistics2ResponseInput is an input type that accepts JobStatistics2ResponseArgs and JobStatistics2ResponseOutput values.
-// You can construct a concrete instance of `JobStatistics2ResponseInput` via:
-//
-//          JobStatistics2ResponseArgs{...}
-type JobStatistics2ResponseInput interface {
-	pulumi.Input
-
-	ToJobStatistics2ResponseOutput() JobStatistics2ResponseOutput
-	ToJobStatistics2ResponseOutputWithContext(context.Context) JobStatistics2ResponseOutput
-}
-
-type JobStatistics2ResponseArgs struct {
-	// BI Engine specific Statistics. [Output-only] BI Engine specific Statistics.
-	BiEngineStatistics BiEngineStatisticsResponseInput `pulumi:"biEngineStatistics"`
-	// Billing tier for the job.
-	BillingTier pulumi.IntInput `pulumi:"billingTier"`
-	// Whether the query result was fetched from the query cache.
-	CacheHit pulumi.BoolInput `pulumi:"cacheHit"`
-	// [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
-	DdlAffectedRowAccessPolicyCount pulumi.StringInput `pulumi:"ddlAffectedRowAccessPolicyCount"`
-	// The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
-	DdlDestinationTable TableReferenceResponseInput `pulumi:"ddlDestinationTable"`
-	// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
-	DdlOperationPerformed pulumi.StringInput `pulumi:"ddlOperationPerformed"`
-	// The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
-	DdlTargetDataset DatasetReferenceResponseInput `pulumi:"ddlTargetDataset"`
-	// The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
-	DdlTargetRoutine RoutineReferenceResponseInput `pulumi:"ddlTargetRoutine"`
-	// [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
-	DdlTargetRowAccessPolicy RowAccessPolicyReferenceResponseInput `pulumi:"ddlTargetRowAccessPolicy"`
-	// The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
-	DdlTargetTable TableReferenceResponseInput `pulumi:"ddlTargetTable"`
-	// Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
-	DmlStats DmlStatisticsResponseInput `pulumi:"dmlStats"`
-	// The original estimate of bytes processed for the job.
-	EstimatedBytesProcessed pulumi.StringInput `pulumi:"estimatedBytesProcessed"`
-	// Statistics of a BigQuery ML training job.
-	MlStatistics MlStatisticsResponseInput `pulumi:"mlStatistics"`
-	// [Output-only, Beta] Information about create model query job progress.
-	ModelTraining BigQueryModelTrainingResponseInput `pulumi:"modelTraining"`
-	// The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
-	NumDmlAffectedRows pulumi.StringInput `pulumi:"numDmlAffectedRows"`
-	// Describes execution plan for the query.
-	QueryPlan ExplainQueryStageResponseArrayInput `pulumi:"queryPlan"`
-	// Referenced routines (persistent user-defined functions and stored procedures) for the job.
-	ReferencedRoutines RoutineReferenceResponseArrayInput `pulumi:"referencedRoutines"`
-	// Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
-	ReferencedTables TableReferenceResponseArrayInput `pulumi:"referencedTables"`
-	// Job resource usage breakdown by reservation.
-	ReservationUsage JobStatistics2ReservationUsageItemResponseArrayInput `pulumi:"reservationUsage"`
-	// The schema of the results. Present only for successful dry run of non-legacy SQL queries.
-	Schema TableSchemaResponseInput `pulumi:"schema"`
-	// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
-	StatementType pulumi.StringInput `pulumi:"statementType"`
-	// [Beta] Describes a timeline of job execution.
-	Timeline QueryTimelineSampleResponseArrayInput `pulumi:"timeline"`
-	// Total bytes billed for the job.
-	TotalBytesBilled pulumi.StringInput `pulumi:"totalBytesBilled"`
-	// Total bytes processed for the job.
-	TotalBytesProcessed pulumi.StringInput `pulumi:"totalBytesProcessed"`
-	// For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
-	TotalBytesProcessedAccuracy pulumi.StringInput `pulumi:"totalBytesProcessedAccuracy"`
-	// Total number of partitions processed from all partitioned tables referenced in the job.
-	TotalPartitionsProcessed pulumi.StringInput `pulumi:"totalPartitionsProcessed"`
-	// Slot-milliseconds for the job.
-	TotalSlotMs pulumi.StringInput `pulumi:"totalSlotMs"`
-	// Standard SQL only: list of undeclared query parameters detected during a dry run validation.
-	UndeclaredQueryParameters QueryParameterResponseArrayInput `pulumi:"undeclaredQueryParameters"`
-}
-
-func (JobStatistics2ResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatistics2Response)(nil)).Elem()
-}
-
-func (i JobStatistics2ResponseArgs) ToJobStatistics2ResponseOutput() JobStatistics2ResponseOutput {
-	return i.ToJobStatistics2ResponseOutputWithContext(context.Background())
-}
-
-func (i JobStatistics2ResponseArgs) ToJobStatistics2ResponseOutputWithContext(ctx context.Context) JobStatistics2ResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics2ResponseOutput)
-}
-
-func (i JobStatistics2ResponseArgs) ToJobStatistics2ResponsePtrOutput() JobStatistics2ResponsePtrOutput {
-	return i.ToJobStatistics2ResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobStatistics2ResponseArgs) ToJobStatistics2ResponsePtrOutputWithContext(ctx context.Context) JobStatistics2ResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics2ResponseOutput).ToJobStatistics2ResponsePtrOutputWithContext(ctx)
-}
-
-// JobStatistics2ResponsePtrInput is an input type that accepts JobStatistics2ResponseArgs, JobStatistics2ResponsePtr and JobStatistics2ResponsePtrOutput values.
-// You can construct a concrete instance of `JobStatistics2ResponsePtrInput` via:
-//
-//          JobStatistics2ResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobStatistics2ResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobStatistics2ResponsePtrOutput() JobStatistics2ResponsePtrOutput
-	ToJobStatistics2ResponsePtrOutputWithContext(context.Context) JobStatistics2ResponsePtrOutput
-}
-
-type jobStatistics2ResponsePtrType JobStatistics2ResponseArgs
-
-func JobStatistics2ResponsePtr(v *JobStatistics2ResponseArgs) JobStatistics2ResponsePtrInput {
-	return (*jobStatistics2ResponsePtrType)(v)
-}
-
-func (*jobStatistics2ResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatistics2Response)(nil)).Elem()
-}
-
-func (i *jobStatistics2ResponsePtrType) ToJobStatistics2ResponsePtrOutput() JobStatistics2ResponsePtrOutput {
-	return i.ToJobStatistics2ResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobStatistics2ResponsePtrType) ToJobStatistics2ResponsePtrOutputWithContext(ctx context.Context) JobStatistics2ResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics2ResponsePtrOutput)
-}
-
 type JobStatistics2ResponseOutput struct{ *pulumi.OutputState }
 
 func (JobStatistics2ResponseOutput) ElementType() reflect.Type {
@@ -13558,16 +8757,6 @@ func (o JobStatistics2ResponseOutput) ToJobStatistics2ResponseOutput() JobStatis
 
 func (o JobStatistics2ResponseOutput) ToJobStatistics2ResponseOutputWithContext(ctx context.Context) JobStatistics2ResponseOutput {
 	return o
-}
-
-func (o JobStatistics2ResponseOutput) ToJobStatistics2ResponsePtrOutput() JobStatistics2ResponsePtrOutput {
-	return o.ToJobStatistics2ResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobStatistics2ResponseOutput) ToJobStatistics2ResponsePtrOutputWithContext(ctx context.Context) JobStatistics2ResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatistics2Response) *JobStatistics2Response {
-		return &v
-	}).(JobStatistics2ResponsePtrOutput)
 }
 
 // BI Engine specific Statistics. [Output-only] BI Engine specific Statistics.
@@ -13710,310 +8899,6 @@ func (o JobStatistics2ResponseOutput) UndeclaredQueryParameters() QueryParameter
 	return o.ApplyT(func(v JobStatistics2Response) []QueryParameterResponse { return v.UndeclaredQueryParameters }).(QueryParameterResponseArrayOutput)
 }
 
-type JobStatistics2ResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobStatistics2ResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatistics2Response)(nil)).Elem()
-}
-
-func (o JobStatistics2ResponsePtrOutput) ToJobStatistics2ResponsePtrOutput() JobStatistics2ResponsePtrOutput {
-	return o
-}
-
-func (o JobStatistics2ResponsePtrOutput) ToJobStatistics2ResponsePtrOutputWithContext(ctx context.Context) JobStatistics2ResponsePtrOutput {
-	return o
-}
-
-func (o JobStatistics2ResponsePtrOutput) Elem() JobStatistics2ResponseOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) JobStatistics2Response {
-		if v != nil {
-			return *v
-		}
-		var ret JobStatistics2Response
-		return ret
-	}).(JobStatistics2ResponseOutput)
-}
-
-// BI Engine specific Statistics. [Output-only] BI Engine specific Statistics.
-func (o JobStatistics2ResponsePtrOutput) BiEngineStatistics() BiEngineStatisticsResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *BiEngineStatisticsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BiEngineStatistics
-	}).(BiEngineStatisticsResponsePtrOutput)
-}
-
-// Billing tier for the job.
-func (o JobStatistics2ResponsePtrOutput) BillingTier() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.BillingTier
-	}).(pulumi.IntPtrOutput)
-}
-
-// Whether the query result was fetched from the query cache.
-func (o JobStatistics2ResponsePtrOutput) CacheHit() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.CacheHit
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
-func (o JobStatistics2ResponsePtrOutput) DdlAffectedRowAccessPolicyCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DdlAffectedRowAccessPolicyCount
-	}).(pulumi.StringPtrOutput)
-}
-
-// The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
-func (o JobStatistics2ResponsePtrOutput) DdlDestinationTable() TableReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *TableReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DdlDestinationTable
-	}).(TableReferenceResponsePtrOutput)
-}
-
-// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
-func (o JobStatistics2ResponsePtrOutput) DdlOperationPerformed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DdlOperationPerformed
-	}).(pulumi.StringPtrOutput)
-}
-
-// The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
-func (o JobStatistics2ResponsePtrOutput) DdlTargetDataset() DatasetReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *DatasetReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DdlTargetDataset
-	}).(DatasetReferenceResponsePtrOutput)
-}
-
-// The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
-func (o JobStatistics2ResponsePtrOutput) DdlTargetRoutine() RoutineReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *RoutineReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DdlTargetRoutine
-	}).(RoutineReferenceResponsePtrOutput)
-}
-
-// [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
-func (o JobStatistics2ResponsePtrOutput) DdlTargetRowAccessPolicy() RowAccessPolicyReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *RowAccessPolicyReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DdlTargetRowAccessPolicy
-	}).(RowAccessPolicyReferenceResponsePtrOutput)
-}
-
-// The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
-func (o JobStatistics2ResponsePtrOutput) DdlTargetTable() TableReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *TableReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DdlTargetTable
-	}).(TableReferenceResponsePtrOutput)
-}
-
-// Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
-func (o JobStatistics2ResponsePtrOutput) DmlStats() DmlStatisticsResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *DmlStatisticsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DmlStats
-	}).(DmlStatisticsResponsePtrOutput)
-}
-
-// The original estimate of bytes processed for the job.
-func (o JobStatistics2ResponsePtrOutput) EstimatedBytesProcessed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EstimatedBytesProcessed
-	}).(pulumi.StringPtrOutput)
-}
-
-// Statistics of a BigQuery ML training job.
-func (o JobStatistics2ResponsePtrOutput) MlStatistics() MlStatisticsResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *MlStatisticsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.MlStatistics
-	}).(MlStatisticsResponsePtrOutput)
-}
-
-// [Output-only, Beta] Information about create model query job progress.
-func (o JobStatistics2ResponsePtrOutput) ModelTraining() BigQueryModelTrainingResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *BigQueryModelTrainingResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ModelTraining
-	}).(BigQueryModelTrainingResponsePtrOutput)
-}
-
-// The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
-func (o JobStatistics2ResponsePtrOutput) NumDmlAffectedRows() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NumDmlAffectedRows
-	}).(pulumi.StringPtrOutput)
-}
-
-// Describes execution plan for the query.
-func (o JobStatistics2ResponsePtrOutput) QueryPlan() ExplainQueryStageResponseArrayOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) []ExplainQueryStageResponse {
-		if v == nil {
-			return nil
-		}
-		return v.QueryPlan
-	}).(ExplainQueryStageResponseArrayOutput)
-}
-
-// Referenced routines (persistent user-defined functions and stored procedures) for the job.
-func (o JobStatistics2ResponsePtrOutput) ReferencedRoutines() RoutineReferenceResponseArrayOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) []RoutineReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ReferencedRoutines
-	}).(RoutineReferenceResponseArrayOutput)
-}
-
-// Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
-func (o JobStatistics2ResponsePtrOutput) ReferencedTables() TableReferenceResponseArrayOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) []TableReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ReferencedTables
-	}).(TableReferenceResponseArrayOutput)
-}
-
-// Job resource usage breakdown by reservation.
-func (o JobStatistics2ResponsePtrOutput) ReservationUsage() JobStatistics2ReservationUsageItemResponseArrayOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) []JobStatistics2ReservationUsageItemResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ReservationUsage
-	}).(JobStatistics2ReservationUsageItemResponseArrayOutput)
-}
-
-// The schema of the results. Present only for successful dry run of non-legacy SQL queries.
-func (o JobStatistics2ResponsePtrOutput) Schema() TableSchemaResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *TableSchemaResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Schema
-	}).(TableSchemaResponsePtrOutput)
-}
-
-// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
-func (o JobStatistics2ResponsePtrOutput) StatementType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StatementType
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Beta] Describes a timeline of job execution.
-func (o JobStatistics2ResponsePtrOutput) Timeline() QueryTimelineSampleResponseArrayOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) []QueryTimelineSampleResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Timeline
-	}).(QueryTimelineSampleResponseArrayOutput)
-}
-
-// Total bytes billed for the job.
-func (o JobStatistics2ResponsePtrOutput) TotalBytesBilled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TotalBytesBilled
-	}).(pulumi.StringPtrOutput)
-}
-
-// Total bytes processed for the job.
-func (o JobStatistics2ResponsePtrOutput) TotalBytesProcessed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TotalBytesProcessed
-	}).(pulumi.StringPtrOutput)
-}
-
-// For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
-func (o JobStatistics2ResponsePtrOutput) TotalBytesProcessedAccuracy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TotalBytesProcessedAccuracy
-	}).(pulumi.StringPtrOutput)
-}
-
-// Total number of partitions processed from all partitioned tables referenced in the job.
-func (o JobStatistics2ResponsePtrOutput) TotalPartitionsProcessed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TotalPartitionsProcessed
-	}).(pulumi.StringPtrOutput)
-}
-
-// Slot-milliseconds for the job.
-func (o JobStatistics2ResponsePtrOutput) TotalSlotMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TotalSlotMs
-	}).(pulumi.StringPtrOutput)
-}
-
-// Standard SQL only: list of undeclared query parameters detected during a dry run validation.
-func (o JobStatistics2ResponsePtrOutput) UndeclaredQueryParameters() QueryParameterResponseArrayOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) []QueryParameterResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UndeclaredQueryParameters
-	}).(QueryParameterResponseArrayOutput)
-}
-
 type JobStatistics3Response struct {
 	// The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
 	BadRecords string `pulumi:"badRecords"`
@@ -14025,83 +8910,6 @@ type JobStatistics3Response struct {
 	OutputBytes string `pulumi:"outputBytes"`
 	// Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
 	OutputRows string `pulumi:"outputRows"`
-}
-
-// JobStatistics3ResponseInput is an input type that accepts JobStatistics3ResponseArgs and JobStatistics3ResponseOutput values.
-// You can construct a concrete instance of `JobStatistics3ResponseInput` via:
-//
-//          JobStatistics3ResponseArgs{...}
-type JobStatistics3ResponseInput interface {
-	pulumi.Input
-
-	ToJobStatistics3ResponseOutput() JobStatistics3ResponseOutput
-	ToJobStatistics3ResponseOutputWithContext(context.Context) JobStatistics3ResponseOutput
-}
-
-type JobStatistics3ResponseArgs struct {
-	// The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
-	BadRecords pulumi.StringInput `pulumi:"badRecords"`
-	// Number of bytes of source data in a load job.
-	InputFileBytes pulumi.StringInput `pulumi:"inputFileBytes"`
-	// Number of source files in a load job.
-	InputFiles pulumi.StringInput `pulumi:"inputFiles"`
-	// Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
-	OutputBytes pulumi.StringInput `pulumi:"outputBytes"`
-	// Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
-	OutputRows pulumi.StringInput `pulumi:"outputRows"`
-}
-
-func (JobStatistics3ResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatistics3Response)(nil)).Elem()
-}
-
-func (i JobStatistics3ResponseArgs) ToJobStatistics3ResponseOutput() JobStatistics3ResponseOutput {
-	return i.ToJobStatistics3ResponseOutputWithContext(context.Background())
-}
-
-func (i JobStatistics3ResponseArgs) ToJobStatistics3ResponseOutputWithContext(ctx context.Context) JobStatistics3ResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics3ResponseOutput)
-}
-
-func (i JobStatistics3ResponseArgs) ToJobStatistics3ResponsePtrOutput() JobStatistics3ResponsePtrOutput {
-	return i.ToJobStatistics3ResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobStatistics3ResponseArgs) ToJobStatistics3ResponsePtrOutputWithContext(ctx context.Context) JobStatistics3ResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics3ResponseOutput).ToJobStatistics3ResponsePtrOutputWithContext(ctx)
-}
-
-// JobStatistics3ResponsePtrInput is an input type that accepts JobStatistics3ResponseArgs, JobStatistics3ResponsePtr and JobStatistics3ResponsePtrOutput values.
-// You can construct a concrete instance of `JobStatistics3ResponsePtrInput` via:
-//
-//          JobStatistics3ResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobStatistics3ResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobStatistics3ResponsePtrOutput() JobStatistics3ResponsePtrOutput
-	ToJobStatistics3ResponsePtrOutputWithContext(context.Context) JobStatistics3ResponsePtrOutput
-}
-
-type jobStatistics3ResponsePtrType JobStatistics3ResponseArgs
-
-func JobStatistics3ResponsePtr(v *JobStatistics3ResponseArgs) JobStatistics3ResponsePtrInput {
-	return (*jobStatistics3ResponsePtrType)(v)
-}
-
-func (*jobStatistics3ResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatistics3Response)(nil)).Elem()
-}
-
-func (i *jobStatistics3ResponsePtrType) ToJobStatistics3ResponsePtrOutput() JobStatistics3ResponsePtrOutput {
-	return i.ToJobStatistics3ResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobStatistics3ResponsePtrType) ToJobStatistics3ResponsePtrOutputWithContext(ctx context.Context) JobStatistics3ResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics3ResponsePtrOutput)
 }
 
 type JobStatistics3ResponseOutput struct{ *pulumi.OutputState }
@@ -14116,16 +8924,6 @@ func (o JobStatistics3ResponseOutput) ToJobStatistics3ResponseOutput() JobStatis
 
 func (o JobStatistics3ResponseOutput) ToJobStatistics3ResponseOutputWithContext(ctx context.Context) JobStatistics3ResponseOutput {
 	return o
-}
-
-func (o JobStatistics3ResponseOutput) ToJobStatistics3ResponsePtrOutput() JobStatistics3ResponsePtrOutput {
-	return o.ToJobStatistics3ResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobStatistics3ResponseOutput) ToJobStatistics3ResponsePtrOutputWithContext(ctx context.Context) JobStatistics3ResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatistics3Response) *JobStatistics3Response {
-		return &v
-	}).(JobStatistics3ResponsePtrOutput)
 }
 
 // The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
@@ -14153,156 +8951,11 @@ func (o JobStatistics3ResponseOutput) OutputRows() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics3Response) string { return v.OutputRows }).(pulumi.StringOutput)
 }
 
-type JobStatistics3ResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobStatistics3ResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatistics3Response)(nil)).Elem()
-}
-
-func (o JobStatistics3ResponsePtrOutput) ToJobStatistics3ResponsePtrOutput() JobStatistics3ResponsePtrOutput {
-	return o
-}
-
-func (o JobStatistics3ResponsePtrOutput) ToJobStatistics3ResponsePtrOutputWithContext(ctx context.Context) JobStatistics3ResponsePtrOutput {
-	return o
-}
-
-func (o JobStatistics3ResponsePtrOutput) Elem() JobStatistics3ResponseOutput {
-	return o.ApplyT(func(v *JobStatistics3Response) JobStatistics3Response {
-		if v != nil {
-			return *v
-		}
-		var ret JobStatistics3Response
-		return ret
-	}).(JobStatistics3ResponseOutput)
-}
-
-// The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
-func (o JobStatistics3ResponsePtrOutput) BadRecords() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics3Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BadRecords
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of bytes of source data in a load job.
-func (o JobStatistics3ResponsePtrOutput) InputFileBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics3Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InputFileBytes
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of source files in a load job.
-func (o JobStatistics3ResponsePtrOutput) InputFiles() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics3Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InputFiles
-	}).(pulumi.StringPtrOutput)
-}
-
-// Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
-func (o JobStatistics3ResponsePtrOutput) OutputBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics3Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OutputBytes
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
-func (o JobStatistics3ResponsePtrOutput) OutputRows() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics3Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OutputRows
-	}).(pulumi.StringPtrOutput)
-}
-
 type JobStatistics4Response struct {
 	// Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
 	DestinationUriFileCounts []string `pulumi:"destinationUriFileCounts"`
 	// Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
 	InputBytes string `pulumi:"inputBytes"`
-}
-
-// JobStatistics4ResponseInput is an input type that accepts JobStatistics4ResponseArgs and JobStatistics4ResponseOutput values.
-// You can construct a concrete instance of `JobStatistics4ResponseInput` via:
-//
-//          JobStatistics4ResponseArgs{...}
-type JobStatistics4ResponseInput interface {
-	pulumi.Input
-
-	ToJobStatistics4ResponseOutput() JobStatistics4ResponseOutput
-	ToJobStatistics4ResponseOutputWithContext(context.Context) JobStatistics4ResponseOutput
-}
-
-type JobStatistics4ResponseArgs struct {
-	// Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
-	DestinationUriFileCounts pulumi.StringArrayInput `pulumi:"destinationUriFileCounts"`
-	// Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
-	InputBytes pulumi.StringInput `pulumi:"inputBytes"`
-}
-
-func (JobStatistics4ResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatistics4Response)(nil)).Elem()
-}
-
-func (i JobStatistics4ResponseArgs) ToJobStatistics4ResponseOutput() JobStatistics4ResponseOutput {
-	return i.ToJobStatistics4ResponseOutputWithContext(context.Background())
-}
-
-func (i JobStatistics4ResponseArgs) ToJobStatistics4ResponseOutputWithContext(ctx context.Context) JobStatistics4ResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics4ResponseOutput)
-}
-
-func (i JobStatistics4ResponseArgs) ToJobStatistics4ResponsePtrOutput() JobStatistics4ResponsePtrOutput {
-	return i.ToJobStatistics4ResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobStatistics4ResponseArgs) ToJobStatistics4ResponsePtrOutputWithContext(ctx context.Context) JobStatistics4ResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics4ResponseOutput).ToJobStatistics4ResponsePtrOutputWithContext(ctx)
-}
-
-// JobStatistics4ResponsePtrInput is an input type that accepts JobStatistics4ResponseArgs, JobStatistics4ResponsePtr and JobStatistics4ResponsePtrOutput values.
-// You can construct a concrete instance of `JobStatistics4ResponsePtrInput` via:
-//
-//          JobStatistics4ResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobStatistics4ResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobStatistics4ResponsePtrOutput() JobStatistics4ResponsePtrOutput
-	ToJobStatistics4ResponsePtrOutputWithContext(context.Context) JobStatistics4ResponsePtrOutput
-}
-
-type jobStatistics4ResponsePtrType JobStatistics4ResponseArgs
-
-func JobStatistics4ResponsePtr(v *JobStatistics4ResponseArgs) JobStatistics4ResponsePtrInput {
-	return (*jobStatistics4ResponsePtrType)(v)
-}
-
-func (*jobStatistics4ResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatistics4Response)(nil)).Elem()
-}
-
-func (i *jobStatistics4ResponsePtrType) ToJobStatistics4ResponsePtrOutput() JobStatistics4ResponsePtrOutput {
-	return i.ToJobStatistics4ResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobStatistics4ResponsePtrType) ToJobStatistics4ResponsePtrOutputWithContext(ctx context.Context) JobStatistics4ResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics4ResponsePtrOutput)
 }
 
 type JobStatistics4ResponseOutput struct{ *pulumi.OutputState }
@@ -14319,16 +8972,6 @@ func (o JobStatistics4ResponseOutput) ToJobStatistics4ResponseOutputWithContext(
 	return o
 }
 
-func (o JobStatistics4ResponseOutput) ToJobStatistics4ResponsePtrOutput() JobStatistics4ResponsePtrOutput {
-	return o.ToJobStatistics4ResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobStatistics4ResponseOutput) ToJobStatistics4ResponsePtrOutputWithContext(ctx context.Context) JobStatistics4ResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatistics4Response) *JobStatistics4Response {
-		return &v
-	}).(JobStatistics4ResponsePtrOutput)
-}
-
 // Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
 func (o JobStatistics4ResponseOutput) DestinationUriFileCounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobStatistics4Response) []string { return v.DestinationUriFileCounts }).(pulumi.StringArrayOutput)
@@ -14339,110 +8982,11 @@ func (o JobStatistics4ResponseOutput) InputBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics4Response) string { return v.InputBytes }).(pulumi.StringOutput)
 }
 
-type JobStatistics4ResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobStatistics4ResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatistics4Response)(nil)).Elem()
-}
-
-func (o JobStatistics4ResponsePtrOutput) ToJobStatistics4ResponsePtrOutput() JobStatistics4ResponsePtrOutput {
-	return o
-}
-
-func (o JobStatistics4ResponsePtrOutput) ToJobStatistics4ResponsePtrOutputWithContext(ctx context.Context) JobStatistics4ResponsePtrOutput {
-	return o
-}
-
-func (o JobStatistics4ResponsePtrOutput) Elem() JobStatistics4ResponseOutput {
-	return o.ApplyT(func(v *JobStatistics4Response) JobStatistics4Response {
-		if v != nil {
-			return *v
-		}
-		var ret JobStatistics4Response
-		return ret
-	}).(JobStatistics4ResponseOutput)
-}
-
-// Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
-func (o JobStatistics4ResponsePtrOutput) DestinationUriFileCounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobStatistics4Response) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DestinationUriFileCounts
-	}).(pulumi.StringArrayOutput)
-}
-
-// Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
-func (o JobStatistics4ResponsePtrOutput) InputBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics4Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InputBytes
-	}).(pulumi.StringPtrOutput)
-}
-
 type JobStatisticsReservationUsageItemResponse struct {
 	// Reservation name or "unreserved" for on-demand resources usage.
 	Name string `pulumi:"name"`
 	// Slot-milliseconds the job spent in the given reservation.
 	SlotMs string `pulumi:"slotMs"`
-}
-
-// JobStatisticsReservationUsageItemResponseInput is an input type that accepts JobStatisticsReservationUsageItemResponseArgs and JobStatisticsReservationUsageItemResponseOutput values.
-// You can construct a concrete instance of `JobStatisticsReservationUsageItemResponseInput` via:
-//
-//          JobStatisticsReservationUsageItemResponseArgs{...}
-type JobStatisticsReservationUsageItemResponseInput interface {
-	pulumi.Input
-
-	ToJobStatisticsReservationUsageItemResponseOutput() JobStatisticsReservationUsageItemResponseOutput
-	ToJobStatisticsReservationUsageItemResponseOutputWithContext(context.Context) JobStatisticsReservationUsageItemResponseOutput
-}
-
-type JobStatisticsReservationUsageItemResponseArgs struct {
-	// Reservation name or "unreserved" for on-demand resources usage.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Slot-milliseconds the job spent in the given reservation.
-	SlotMs pulumi.StringInput `pulumi:"slotMs"`
-}
-
-func (JobStatisticsReservationUsageItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatisticsReservationUsageItemResponse)(nil)).Elem()
-}
-
-func (i JobStatisticsReservationUsageItemResponseArgs) ToJobStatisticsReservationUsageItemResponseOutput() JobStatisticsReservationUsageItemResponseOutput {
-	return i.ToJobStatisticsReservationUsageItemResponseOutputWithContext(context.Background())
-}
-
-func (i JobStatisticsReservationUsageItemResponseArgs) ToJobStatisticsReservationUsageItemResponseOutputWithContext(ctx context.Context) JobStatisticsReservationUsageItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatisticsReservationUsageItemResponseOutput)
-}
-
-// JobStatisticsReservationUsageItemResponseArrayInput is an input type that accepts JobStatisticsReservationUsageItemResponseArray and JobStatisticsReservationUsageItemResponseArrayOutput values.
-// You can construct a concrete instance of `JobStatisticsReservationUsageItemResponseArrayInput` via:
-//
-//          JobStatisticsReservationUsageItemResponseArray{ JobStatisticsReservationUsageItemResponseArgs{...} }
-type JobStatisticsReservationUsageItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToJobStatisticsReservationUsageItemResponseArrayOutput() JobStatisticsReservationUsageItemResponseArrayOutput
-	ToJobStatisticsReservationUsageItemResponseArrayOutputWithContext(context.Context) JobStatisticsReservationUsageItemResponseArrayOutput
-}
-
-type JobStatisticsReservationUsageItemResponseArray []JobStatisticsReservationUsageItemResponseInput
-
-func (JobStatisticsReservationUsageItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobStatisticsReservationUsageItemResponse)(nil)).Elem()
-}
-
-func (i JobStatisticsReservationUsageItemResponseArray) ToJobStatisticsReservationUsageItemResponseArrayOutput() JobStatisticsReservationUsageItemResponseArrayOutput {
-	return i.ToJobStatisticsReservationUsageItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i JobStatisticsReservationUsageItemResponseArray) ToJobStatisticsReservationUsageItemResponseArrayOutputWithContext(ctx context.Context) JobStatisticsReservationUsageItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatisticsReservationUsageItemResponseArrayOutput)
 }
 
 type JobStatisticsReservationUsageItemResponseOutput struct{ *pulumi.OutputState }
@@ -14526,107 +9070,6 @@ type JobStatisticsResponse struct {
 	TransactionInfo TransactionInfoResponse `pulumi:"transactionInfo"`
 }
 
-// JobStatisticsResponseInput is an input type that accepts JobStatisticsResponseArgs and JobStatisticsResponseOutput values.
-// You can construct a concrete instance of `JobStatisticsResponseInput` via:
-//
-//          JobStatisticsResponseArgs{...}
-type JobStatisticsResponseInput interface {
-	pulumi.Input
-
-	ToJobStatisticsResponseOutput() JobStatisticsResponseOutput
-	ToJobStatisticsResponseOutputWithContext(context.Context) JobStatisticsResponseOutput
-}
-
-type JobStatisticsResponseArgs struct {
-	// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
-	CompletionRatio pulumi.Float64Input `pulumi:"completionRatio"`
-	// Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
-	CreationTime pulumi.StringInput `pulumi:"creationTime"`
-	// End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// Statistics for an extract job.
-	Extract JobStatistics4ResponseInput `pulumi:"extract"`
-	// Statistics for a load job.
-	Load JobStatistics3ResponseInput `pulumi:"load"`
-	// Number of child jobs executed.
-	NumChildJobs pulumi.StringInput `pulumi:"numChildJobs"`
-	// If this is a child job, the id of the parent.
-	ParentJobId pulumi.StringInput `pulumi:"parentJobId"`
-	// Statistics for a query job.
-	Query JobStatistics2ResponseInput `pulumi:"query"`
-	// Quotas which delayed this job's start time.
-	QuotaDeferments pulumi.StringArrayInput `pulumi:"quotaDeferments"`
-	// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-	ReservationId pulumi.StringInput `pulumi:"reservationId"`
-	// Job resource usage breakdown by reservation.
-	ReservationUsage JobStatisticsReservationUsageItemResponseArrayInput `pulumi:"reservationUsage"`
-	// [Preview] Statistics for row-level security. Present only for query and extract jobs.
-	RowLevelSecurityStatistics RowLevelSecurityStatisticsResponseInput `pulumi:"rowLevelSecurityStatistics"`
-	// Statistics for a child job of a script.
-	ScriptStatistics ScriptStatisticsResponseInput `pulumi:"scriptStatistics"`
-	// [Preview] Information of the session if this job is part of one.
-	SessionInfo SessionInfoResponseInput `pulumi:"sessionInfo"`
-	// Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// Slot-milliseconds for the job.
-	TotalSlotMs pulumi.StringInput `pulumi:"totalSlotMs"`
-	// [Alpha] Information of the multi-statement transaction if this job is part of one.
-	TransactionInfo TransactionInfoResponseInput `pulumi:"transactionInfo"`
-}
-
-func (JobStatisticsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatisticsResponse)(nil)).Elem()
-}
-
-func (i JobStatisticsResponseArgs) ToJobStatisticsResponseOutput() JobStatisticsResponseOutput {
-	return i.ToJobStatisticsResponseOutputWithContext(context.Background())
-}
-
-func (i JobStatisticsResponseArgs) ToJobStatisticsResponseOutputWithContext(ctx context.Context) JobStatisticsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatisticsResponseOutput)
-}
-
-func (i JobStatisticsResponseArgs) ToJobStatisticsResponsePtrOutput() JobStatisticsResponsePtrOutput {
-	return i.ToJobStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobStatisticsResponseArgs) ToJobStatisticsResponsePtrOutputWithContext(ctx context.Context) JobStatisticsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatisticsResponseOutput).ToJobStatisticsResponsePtrOutputWithContext(ctx)
-}
-
-// JobStatisticsResponsePtrInput is an input type that accepts JobStatisticsResponseArgs, JobStatisticsResponsePtr and JobStatisticsResponsePtrOutput values.
-// You can construct a concrete instance of `JobStatisticsResponsePtrInput` via:
-//
-//          JobStatisticsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobStatisticsResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobStatisticsResponsePtrOutput() JobStatisticsResponsePtrOutput
-	ToJobStatisticsResponsePtrOutputWithContext(context.Context) JobStatisticsResponsePtrOutput
-}
-
-type jobStatisticsResponsePtrType JobStatisticsResponseArgs
-
-func JobStatisticsResponsePtr(v *JobStatisticsResponseArgs) JobStatisticsResponsePtrInput {
-	return (*jobStatisticsResponsePtrType)(v)
-}
-
-func (*jobStatisticsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatisticsResponse)(nil)).Elem()
-}
-
-func (i *jobStatisticsResponsePtrType) ToJobStatisticsResponsePtrOutput() JobStatisticsResponsePtrOutput {
-	return i.ToJobStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobStatisticsResponsePtrType) ToJobStatisticsResponsePtrOutputWithContext(ctx context.Context) JobStatisticsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatisticsResponsePtrOutput)
-}
-
 type JobStatisticsResponseOutput struct{ *pulumi.OutputState }
 
 func (JobStatisticsResponseOutput) ElementType() reflect.Type {
@@ -14639,16 +9082,6 @@ func (o JobStatisticsResponseOutput) ToJobStatisticsResponseOutput() JobStatisti
 
 func (o JobStatisticsResponseOutput) ToJobStatisticsResponseOutputWithContext(ctx context.Context) JobStatisticsResponseOutput {
 	return o
-}
-
-func (o JobStatisticsResponseOutput) ToJobStatisticsResponsePtrOutput() JobStatisticsResponsePtrOutput {
-	return o.ToJobStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobStatisticsResponseOutput) ToJobStatisticsResponsePtrOutputWithContext(ctx context.Context) JobStatisticsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatisticsResponse) *JobStatisticsResponse {
-		return &v
-	}).(JobStatisticsResponsePtrOutput)
 }
 
 // [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
@@ -14736,200 +9169,6 @@ func (o JobStatisticsResponseOutput) TransactionInfo() TransactionInfoResponseOu
 	return o.ApplyT(func(v JobStatisticsResponse) TransactionInfoResponse { return v.TransactionInfo }).(TransactionInfoResponseOutput)
 }
 
-type JobStatisticsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobStatisticsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatisticsResponse)(nil)).Elem()
-}
-
-func (o JobStatisticsResponsePtrOutput) ToJobStatisticsResponsePtrOutput() JobStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o JobStatisticsResponsePtrOutput) ToJobStatisticsResponsePtrOutputWithContext(ctx context.Context) JobStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o JobStatisticsResponsePtrOutput) Elem() JobStatisticsResponseOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) JobStatisticsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JobStatisticsResponse
-		return ret
-	}).(JobStatisticsResponseOutput)
-}
-
-// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
-func (o JobStatisticsResponsePtrOutput) CompletionRatio() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.CompletionRatio
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
-func (o JobStatisticsResponsePtrOutput) CreationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreationTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
-func (o JobStatisticsResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Statistics for an extract job.
-func (o JobStatisticsResponsePtrOutput) Extract() JobStatistics4ResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *JobStatistics4Response {
-		if v == nil {
-			return nil
-		}
-		return &v.Extract
-	}).(JobStatistics4ResponsePtrOutput)
-}
-
-// Statistics for a load job.
-func (o JobStatisticsResponsePtrOutput) Load() JobStatistics3ResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *JobStatistics3Response {
-		if v == nil {
-			return nil
-		}
-		return &v.Load
-	}).(JobStatistics3ResponsePtrOutput)
-}
-
-// Number of child jobs executed.
-func (o JobStatisticsResponsePtrOutput) NumChildJobs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NumChildJobs
-	}).(pulumi.StringPtrOutput)
-}
-
-// If this is a child job, the id of the parent.
-func (o JobStatisticsResponsePtrOutput) ParentJobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ParentJobId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Statistics for a query job.
-func (o JobStatisticsResponsePtrOutput) Query() JobStatistics2ResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *JobStatistics2Response {
-		if v == nil {
-			return nil
-		}
-		return &v.Query
-	}).(JobStatistics2ResponsePtrOutput)
-}
-
-// Quotas which delayed this job's start time.
-func (o JobStatisticsResponsePtrOutput) QuotaDeferments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.QuotaDeferments
-	}).(pulumi.StringArrayOutput)
-}
-
-// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-func (o JobStatisticsResponsePtrOutput) ReservationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ReservationId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Job resource usage breakdown by reservation.
-func (o JobStatisticsResponsePtrOutput) ReservationUsage() JobStatisticsReservationUsageItemResponseArrayOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) []JobStatisticsReservationUsageItemResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ReservationUsage
-	}).(JobStatisticsReservationUsageItemResponseArrayOutput)
-}
-
-// [Preview] Statistics for row-level security. Present only for query and extract jobs.
-func (o JobStatisticsResponsePtrOutput) RowLevelSecurityStatistics() RowLevelSecurityStatisticsResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *RowLevelSecurityStatisticsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.RowLevelSecurityStatistics
-	}).(RowLevelSecurityStatisticsResponsePtrOutput)
-}
-
-// Statistics for a child job of a script.
-func (o JobStatisticsResponsePtrOutput) ScriptStatistics() ScriptStatisticsResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *ScriptStatisticsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ScriptStatistics
-	}).(ScriptStatisticsResponsePtrOutput)
-}
-
-// [Preview] Information of the session if this job is part of one.
-func (o JobStatisticsResponsePtrOutput) SessionInfo() SessionInfoResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *SessionInfoResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SessionInfo
-	}).(SessionInfoResponsePtrOutput)
-}
-
-// Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
-func (o JobStatisticsResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Slot-milliseconds for the job.
-func (o JobStatisticsResponsePtrOutput) TotalSlotMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TotalSlotMs
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Alpha] Information of the multi-statement transaction if this job is part of one.
-func (o JobStatisticsResponsePtrOutput) TransactionInfo() TransactionInfoResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *TransactionInfoResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TransactionInfo
-	}).(TransactionInfoResponsePtrOutput)
-}
-
 type JobStatusResponse struct {
 	// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
 	ErrorResult ErrorProtoResponse `pulumi:"errorResult"`
@@ -14937,79 +9176,6 @@ type JobStatusResponse struct {
 	Errors []ErrorProtoResponse `pulumi:"errors"`
 	// Running state of the job.
 	State string `pulumi:"state"`
-}
-
-// JobStatusResponseInput is an input type that accepts JobStatusResponseArgs and JobStatusResponseOutput values.
-// You can construct a concrete instance of `JobStatusResponseInput` via:
-//
-//          JobStatusResponseArgs{...}
-type JobStatusResponseInput interface {
-	pulumi.Input
-
-	ToJobStatusResponseOutput() JobStatusResponseOutput
-	ToJobStatusResponseOutputWithContext(context.Context) JobStatusResponseOutput
-}
-
-type JobStatusResponseArgs struct {
-	// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
-	ErrorResult ErrorProtoResponseInput `pulumi:"errorResult"`
-	// The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
-	Errors ErrorProtoResponseArrayInput `pulumi:"errors"`
-	// Running state of the job.
-	State pulumi.StringInput `pulumi:"state"`
-}
-
-func (JobStatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatusResponse)(nil)).Elem()
-}
-
-func (i JobStatusResponseArgs) ToJobStatusResponseOutput() JobStatusResponseOutput {
-	return i.ToJobStatusResponseOutputWithContext(context.Background())
-}
-
-func (i JobStatusResponseArgs) ToJobStatusResponseOutputWithContext(ctx context.Context) JobStatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatusResponseOutput)
-}
-
-func (i JobStatusResponseArgs) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
-	return i.ToJobStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobStatusResponseArgs) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatusResponseOutput).ToJobStatusResponsePtrOutputWithContext(ctx)
-}
-
-// JobStatusResponsePtrInput is an input type that accepts JobStatusResponseArgs, JobStatusResponsePtr and JobStatusResponsePtrOutput values.
-// You can construct a concrete instance of `JobStatusResponsePtrInput` via:
-//
-//          JobStatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobStatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput
-	ToJobStatusResponsePtrOutputWithContext(context.Context) JobStatusResponsePtrOutput
-}
-
-type jobStatusResponsePtrType JobStatusResponseArgs
-
-func JobStatusResponsePtr(v *JobStatusResponseArgs) JobStatusResponsePtrInput {
-	return (*jobStatusResponsePtrType)(v)
-}
-
-func (*jobStatusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatusResponse)(nil)).Elem()
-}
-
-func (i *jobStatusResponsePtrType) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
-	return i.ToJobStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobStatusResponsePtrType) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatusResponsePtrOutput)
 }
 
 type JobStatusResponseOutput struct{ *pulumi.OutputState }
@@ -15026,16 +9192,6 @@ func (o JobStatusResponseOutput) ToJobStatusResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o JobStatusResponseOutput) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
-	return o.ToJobStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobStatusResponseOutput) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatusResponse) *JobStatusResponse {
-		return &v
-	}).(JobStatusResponsePtrOutput)
-}
-
 // Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
 func (o JobStatusResponseOutput) ErrorResult() ErrorProtoResponseOutput {
 	return o.ApplyT(func(v JobStatusResponse) ErrorProtoResponse { return v.ErrorResult }).(ErrorProtoResponseOutput)
@@ -15049,60 +9205,6 @@ func (o JobStatusResponseOutput) Errors() ErrorProtoResponseArrayOutput {
 // Running state of the job.
 func (o JobStatusResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatusResponse) string { return v.State }).(pulumi.StringOutput)
-}
-
-type JobStatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobStatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatusResponse)(nil)).Elem()
-}
-
-func (o JobStatusResponsePtrOutput) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
-	return o
-}
-
-func (o JobStatusResponsePtrOutput) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
-	return o
-}
-
-func (o JobStatusResponsePtrOutput) Elem() JobStatusResponseOutput {
-	return o.ApplyT(func(v *JobStatusResponse) JobStatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JobStatusResponse
-		return ret
-	}).(JobStatusResponseOutput)
-}
-
-// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
-func (o JobStatusResponsePtrOutput) ErrorResult() ErrorProtoResponsePtrOutput {
-	return o.ApplyT(func(v *JobStatusResponse) *ErrorProtoResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ErrorResult
-	}).(ErrorProtoResponsePtrOutput)
-}
-
-// The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
-func (o JobStatusResponsePtrOutput) Errors() ErrorProtoResponseArrayOutput {
-	return o.ApplyT(func(v *JobStatusResponse) []ErrorProtoResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Errors
-	}).(ErrorProtoResponseArrayOutput)
-}
-
-// Running state of the job.
-func (o JobStatusResponsePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.State
-	}).(pulumi.StringPtrOutput)
 }
 
 type MaterializedViewDefinition struct {
@@ -15291,81 +9393,6 @@ type MaterializedViewDefinitionResponse struct {
 	RefreshIntervalMs string `pulumi:"refreshIntervalMs"`
 }
 
-// MaterializedViewDefinitionResponseInput is an input type that accepts MaterializedViewDefinitionResponseArgs and MaterializedViewDefinitionResponseOutput values.
-// You can construct a concrete instance of `MaterializedViewDefinitionResponseInput` via:
-//
-//          MaterializedViewDefinitionResponseArgs{...}
-type MaterializedViewDefinitionResponseInput interface {
-	pulumi.Input
-
-	ToMaterializedViewDefinitionResponseOutput() MaterializedViewDefinitionResponseOutput
-	ToMaterializedViewDefinitionResponseOutputWithContext(context.Context) MaterializedViewDefinitionResponseOutput
-}
-
-type MaterializedViewDefinitionResponseArgs struct {
-	// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
-	EnableRefresh pulumi.BoolInput `pulumi:"enableRefresh"`
-	// [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
-	LastRefreshTime pulumi.StringInput `pulumi:"lastRefreshTime"`
-	// [Required] A query whose result is persisted.
-	Query pulumi.StringInput `pulumi:"query"`
-	// [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
-	RefreshIntervalMs pulumi.StringInput `pulumi:"refreshIntervalMs"`
-}
-
-func (MaterializedViewDefinitionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MaterializedViewDefinitionResponse)(nil)).Elem()
-}
-
-func (i MaterializedViewDefinitionResponseArgs) ToMaterializedViewDefinitionResponseOutput() MaterializedViewDefinitionResponseOutput {
-	return i.ToMaterializedViewDefinitionResponseOutputWithContext(context.Background())
-}
-
-func (i MaterializedViewDefinitionResponseArgs) ToMaterializedViewDefinitionResponseOutputWithContext(ctx context.Context) MaterializedViewDefinitionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaterializedViewDefinitionResponseOutput)
-}
-
-func (i MaterializedViewDefinitionResponseArgs) ToMaterializedViewDefinitionResponsePtrOutput() MaterializedViewDefinitionResponsePtrOutput {
-	return i.ToMaterializedViewDefinitionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MaterializedViewDefinitionResponseArgs) ToMaterializedViewDefinitionResponsePtrOutputWithContext(ctx context.Context) MaterializedViewDefinitionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaterializedViewDefinitionResponseOutput).ToMaterializedViewDefinitionResponsePtrOutputWithContext(ctx)
-}
-
-// MaterializedViewDefinitionResponsePtrInput is an input type that accepts MaterializedViewDefinitionResponseArgs, MaterializedViewDefinitionResponsePtr and MaterializedViewDefinitionResponsePtrOutput values.
-// You can construct a concrete instance of `MaterializedViewDefinitionResponsePtrInput` via:
-//
-//          MaterializedViewDefinitionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MaterializedViewDefinitionResponsePtrInput interface {
-	pulumi.Input
-
-	ToMaterializedViewDefinitionResponsePtrOutput() MaterializedViewDefinitionResponsePtrOutput
-	ToMaterializedViewDefinitionResponsePtrOutputWithContext(context.Context) MaterializedViewDefinitionResponsePtrOutput
-}
-
-type materializedViewDefinitionResponsePtrType MaterializedViewDefinitionResponseArgs
-
-func MaterializedViewDefinitionResponsePtr(v *MaterializedViewDefinitionResponseArgs) MaterializedViewDefinitionResponsePtrInput {
-	return (*materializedViewDefinitionResponsePtrType)(v)
-}
-
-func (*materializedViewDefinitionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MaterializedViewDefinitionResponse)(nil)).Elem()
-}
-
-func (i *materializedViewDefinitionResponsePtrType) ToMaterializedViewDefinitionResponsePtrOutput() MaterializedViewDefinitionResponsePtrOutput {
-	return i.ToMaterializedViewDefinitionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *materializedViewDefinitionResponsePtrType) ToMaterializedViewDefinitionResponsePtrOutputWithContext(ctx context.Context) MaterializedViewDefinitionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaterializedViewDefinitionResponsePtrOutput)
-}
-
 type MaterializedViewDefinitionResponseOutput struct{ *pulumi.OutputState }
 
 func (MaterializedViewDefinitionResponseOutput) ElementType() reflect.Type {
@@ -15378,16 +9405,6 @@ func (o MaterializedViewDefinitionResponseOutput) ToMaterializedViewDefinitionRe
 
 func (o MaterializedViewDefinitionResponseOutput) ToMaterializedViewDefinitionResponseOutputWithContext(ctx context.Context) MaterializedViewDefinitionResponseOutput {
 	return o
-}
-
-func (o MaterializedViewDefinitionResponseOutput) ToMaterializedViewDefinitionResponsePtrOutput() MaterializedViewDefinitionResponsePtrOutput {
-	return o.ToMaterializedViewDefinitionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MaterializedViewDefinitionResponseOutput) ToMaterializedViewDefinitionResponsePtrOutputWithContext(ctx context.Context) MaterializedViewDefinitionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaterializedViewDefinitionResponse) *MaterializedViewDefinitionResponse {
-		return &v
-	}).(MaterializedViewDefinitionResponsePtrOutput)
 }
 
 // [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
@@ -15410,146 +9427,11 @@ func (o MaterializedViewDefinitionResponseOutput) RefreshIntervalMs() pulumi.Str
 	return o.ApplyT(func(v MaterializedViewDefinitionResponse) string { return v.RefreshIntervalMs }).(pulumi.StringOutput)
 }
 
-type MaterializedViewDefinitionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MaterializedViewDefinitionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MaterializedViewDefinitionResponse)(nil)).Elem()
-}
-
-func (o MaterializedViewDefinitionResponsePtrOutput) ToMaterializedViewDefinitionResponsePtrOutput() MaterializedViewDefinitionResponsePtrOutput {
-	return o
-}
-
-func (o MaterializedViewDefinitionResponsePtrOutput) ToMaterializedViewDefinitionResponsePtrOutputWithContext(ctx context.Context) MaterializedViewDefinitionResponsePtrOutput {
-	return o
-}
-
-func (o MaterializedViewDefinitionResponsePtrOutput) Elem() MaterializedViewDefinitionResponseOutput {
-	return o.ApplyT(func(v *MaterializedViewDefinitionResponse) MaterializedViewDefinitionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MaterializedViewDefinitionResponse
-		return ret
-	}).(MaterializedViewDefinitionResponseOutput)
-}
-
-// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
-func (o MaterializedViewDefinitionResponsePtrOutput) EnableRefresh() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MaterializedViewDefinitionResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableRefresh
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
-func (o MaterializedViewDefinitionResponsePtrOutput) LastRefreshTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaterializedViewDefinitionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LastRefreshTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] A query whose result is persisted.
-func (o MaterializedViewDefinitionResponsePtrOutput) Query() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaterializedViewDefinitionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Query
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
-func (o MaterializedViewDefinitionResponsePtrOutput) RefreshIntervalMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaterializedViewDefinitionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RefreshIntervalMs
-	}).(pulumi.StringPtrOutput)
-}
-
 type MlStatisticsResponse struct {
 	// Results for all completed iterations.
 	IterationResults []IterationResultResponse `pulumi:"iterationResults"`
 	// Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop.
 	MaxIterations string `pulumi:"maxIterations"`
-}
-
-// MlStatisticsResponseInput is an input type that accepts MlStatisticsResponseArgs and MlStatisticsResponseOutput values.
-// You can construct a concrete instance of `MlStatisticsResponseInput` via:
-//
-//          MlStatisticsResponseArgs{...}
-type MlStatisticsResponseInput interface {
-	pulumi.Input
-
-	ToMlStatisticsResponseOutput() MlStatisticsResponseOutput
-	ToMlStatisticsResponseOutputWithContext(context.Context) MlStatisticsResponseOutput
-}
-
-type MlStatisticsResponseArgs struct {
-	// Results for all completed iterations.
-	IterationResults IterationResultResponseArrayInput `pulumi:"iterationResults"`
-	// Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop.
-	MaxIterations pulumi.StringInput `pulumi:"maxIterations"`
-}
-
-func (MlStatisticsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MlStatisticsResponse)(nil)).Elem()
-}
-
-func (i MlStatisticsResponseArgs) ToMlStatisticsResponseOutput() MlStatisticsResponseOutput {
-	return i.ToMlStatisticsResponseOutputWithContext(context.Background())
-}
-
-func (i MlStatisticsResponseArgs) ToMlStatisticsResponseOutputWithContext(ctx context.Context) MlStatisticsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlStatisticsResponseOutput)
-}
-
-func (i MlStatisticsResponseArgs) ToMlStatisticsResponsePtrOutput() MlStatisticsResponsePtrOutput {
-	return i.ToMlStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MlStatisticsResponseArgs) ToMlStatisticsResponsePtrOutputWithContext(ctx context.Context) MlStatisticsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlStatisticsResponseOutput).ToMlStatisticsResponsePtrOutputWithContext(ctx)
-}
-
-// MlStatisticsResponsePtrInput is an input type that accepts MlStatisticsResponseArgs, MlStatisticsResponsePtr and MlStatisticsResponsePtrOutput values.
-// You can construct a concrete instance of `MlStatisticsResponsePtrInput` via:
-//
-//          MlStatisticsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MlStatisticsResponsePtrInput interface {
-	pulumi.Input
-
-	ToMlStatisticsResponsePtrOutput() MlStatisticsResponsePtrOutput
-	ToMlStatisticsResponsePtrOutputWithContext(context.Context) MlStatisticsResponsePtrOutput
-}
-
-type mlStatisticsResponsePtrType MlStatisticsResponseArgs
-
-func MlStatisticsResponsePtr(v *MlStatisticsResponseArgs) MlStatisticsResponsePtrInput {
-	return (*mlStatisticsResponsePtrType)(v)
-}
-
-func (*mlStatisticsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MlStatisticsResponse)(nil)).Elem()
-}
-
-func (i *mlStatisticsResponsePtrType) ToMlStatisticsResponsePtrOutput() MlStatisticsResponsePtrOutput {
-	return i.ToMlStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *mlStatisticsResponsePtrType) ToMlStatisticsResponsePtrOutputWithContext(ctx context.Context) MlStatisticsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MlStatisticsResponsePtrOutput)
 }
 
 type MlStatisticsResponseOutput struct{ *pulumi.OutputState }
@@ -15566,16 +9448,6 @@ func (o MlStatisticsResponseOutput) ToMlStatisticsResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o MlStatisticsResponseOutput) ToMlStatisticsResponsePtrOutput() MlStatisticsResponsePtrOutput {
-	return o.ToMlStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MlStatisticsResponseOutput) ToMlStatisticsResponsePtrOutputWithContext(ctx context.Context) MlStatisticsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MlStatisticsResponse) *MlStatisticsResponse {
-		return &v
-	}).(MlStatisticsResponsePtrOutput)
-}
-
 // Results for all completed iterations.
 func (o MlStatisticsResponseOutput) IterationResults() IterationResultResponseArrayOutput {
 	return o.ApplyT(func(v MlStatisticsResponse) []IterationResultResponse { return v.IterationResults }).(IterationResultResponseArrayOutput)
@@ -15584,50 +9456,6 @@ func (o MlStatisticsResponseOutput) IterationResults() IterationResultResponseAr
 // Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop.
 func (o MlStatisticsResponseOutput) MaxIterations() pulumi.StringOutput {
 	return o.ApplyT(func(v MlStatisticsResponse) string { return v.MaxIterations }).(pulumi.StringOutput)
-}
-
-type MlStatisticsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MlStatisticsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MlStatisticsResponse)(nil)).Elem()
-}
-
-func (o MlStatisticsResponsePtrOutput) ToMlStatisticsResponsePtrOutput() MlStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o MlStatisticsResponsePtrOutput) ToMlStatisticsResponsePtrOutputWithContext(ctx context.Context) MlStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o MlStatisticsResponsePtrOutput) Elem() MlStatisticsResponseOutput {
-	return o.ApplyT(func(v *MlStatisticsResponse) MlStatisticsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MlStatisticsResponse
-		return ret
-	}).(MlStatisticsResponseOutput)
-}
-
-// Results for all completed iterations.
-func (o MlStatisticsResponsePtrOutput) IterationResults() IterationResultResponseArrayOutput {
-	return o.ApplyT(func(v *MlStatisticsResponse) []IterationResultResponse {
-		if v == nil {
-			return nil
-		}
-		return v.IterationResults
-	}).(IterationResultResponseArrayOutput)
-}
-
-// Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop.
-func (o MlStatisticsResponsePtrOutput) MaxIterations() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MlStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxIterations
-	}).(pulumi.StringPtrOutput)
 }
 
 type ModelDefinition struct {
@@ -15959,77 +9787,6 @@ type ModelDefinitionModelOptionsResponse struct {
 	ModelType string   `pulumi:"modelType"`
 }
 
-// ModelDefinitionModelOptionsResponseInput is an input type that accepts ModelDefinitionModelOptionsResponseArgs and ModelDefinitionModelOptionsResponseOutput values.
-// You can construct a concrete instance of `ModelDefinitionModelOptionsResponseInput` via:
-//
-//          ModelDefinitionModelOptionsResponseArgs{...}
-type ModelDefinitionModelOptionsResponseInput interface {
-	pulumi.Input
-
-	ToModelDefinitionModelOptionsResponseOutput() ModelDefinitionModelOptionsResponseOutput
-	ToModelDefinitionModelOptionsResponseOutputWithContext(context.Context) ModelDefinitionModelOptionsResponseOutput
-}
-
-// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-type ModelDefinitionModelOptionsResponseArgs struct {
-	Labels    pulumi.StringArrayInput `pulumi:"labels"`
-	LossType  pulumi.StringInput      `pulumi:"lossType"`
-	ModelType pulumi.StringInput      `pulumi:"modelType"`
-}
-
-func (ModelDefinitionModelOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelDefinitionModelOptionsResponse)(nil)).Elem()
-}
-
-func (i ModelDefinitionModelOptionsResponseArgs) ToModelDefinitionModelOptionsResponseOutput() ModelDefinitionModelOptionsResponseOutput {
-	return i.ToModelDefinitionModelOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i ModelDefinitionModelOptionsResponseArgs) ToModelDefinitionModelOptionsResponseOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelDefinitionModelOptionsResponseOutput)
-}
-
-func (i ModelDefinitionModelOptionsResponseArgs) ToModelDefinitionModelOptionsResponsePtrOutput() ModelDefinitionModelOptionsResponsePtrOutput {
-	return i.ToModelDefinitionModelOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ModelDefinitionModelOptionsResponseArgs) ToModelDefinitionModelOptionsResponsePtrOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelDefinitionModelOptionsResponseOutput).ToModelDefinitionModelOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// ModelDefinitionModelOptionsResponsePtrInput is an input type that accepts ModelDefinitionModelOptionsResponseArgs, ModelDefinitionModelOptionsResponsePtr and ModelDefinitionModelOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `ModelDefinitionModelOptionsResponsePtrInput` via:
-//
-//          ModelDefinitionModelOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ModelDefinitionModelOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToModelDefinitionModelOptionsResponsePtrOutput() ModelDefinitionModelOptionsResponsePtrOutput
-	ToModelDefinitionModelOptionsResponsePtrOutputWithContext(context.Context) ModelDefinitionModelOptionsResponsePtrOutput
-}
-
-type modelDefinitionModelOptionsResponsePtrType ModelDefinitionModelOptionsResponseArgs
-
-func ModelDefinitionModelOptionsResponsePtr(v *ModelDefinitionModelOptionsResponseArgs) ModelDefinitionModelOptionsResponsePtrInput {
-	return (*modelDefinitionModelOptionsResponsePtrType)(v)
-}
-
-func (*modelDefinitionModelOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelDefinitionModelOptionsResponse)(nil)).Elem()
-}
-
-func (i *modelDefinitionModelOptionsResponsePtrType) ToModelDefinitionModelOptionsResponsePtrOutput() ModelDefinitionModelOptionsResponsePtrOutput {
-	return i.ToModelDefinitionModelOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *modelDefinitionModelOptionsResponsePtrType) ToModelDefinitionModelOptionsResponsePtrOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelDefinitionModelOptionsResponsePtrOutput)
-}
-
 // [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
 type ModelDefinitionModelOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -16045,16 +9802,6 @@ func (o ModelDefinitionModelOptionsResponseOutput) ToModelDefinitionModelOptions
 	return o
 }
 
-func (o ModelDefinitionModelOptionsResponseOutput) ToModelDefinitionModelOptionsResponsePtrOutput() ModelDefinitionModelOptionsResponsePtrOutput {
-	return o.ToModelDefinitionModelOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ModelDefinitionModelOptionsResponseOutput) ToModelDefinitionModelOptionsResponsePtrOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelDefinitionModelOptionsResponse) *ModelDefinitionModelOptionsResponse {
-		return &v
-	}).(ModelDefinitionModelOptionsResponsePtrOutput)
-}
-
 func (o ModelDefinitionModelOptionsResponseOutput) Labels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ModelDefinitionModelOptionsResponse) []string { return v.Labels }).(pulumi.StringArrayOutput)
 }
@@ -16067,133 +9814,11 @@ func (o ModelDefinitionModelOptionsResponseOutput) ModelType() pulumi.StringOutp
 	return o.ApplyT(func(v ModelDefinitionModelOptionsResponse) string { return v.ModelType }).(pulumi.StringOutput)
 }
 
-type ModelDefinitionModelOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ModelDefinitionModelOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelDefinitionModelOptionsResponse)(nil)).Elem()
-}
-
-func (o ModelDefinitionModelOptionsResponsePtrOutput) ToModelDefinitionModelOptionsResponsePtrOutput() ModelDefinitionModelOptionsResponsePtrOutput {
-	return o
-}
-
-func (o ModelDefinitionModelOptionsResponsePtrOutput) ToModelDefinitionModelOptionsResponsePtrOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsResponsePtrOutput {
-	return o
-}
-
-func (o ModelDefinitionModelOptionsResponsePtrOutput) Elem() ModelDefinitionModelOptionsResponseOutput {
-	return o.ApplyT(func(v *ModelDefinitionModelOptionsResponse) ModelDefinitionModelOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ModelDefinitionModelOptionsResponse
-		return ret
-	}).(ModelDefinitionModelOptionsResponseOutput)
-}
-
-func (o ModelDefinitionModelOptionsResponsePtrOutput) Labels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ModelDefinitionModelOptionsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o ModelDefinitionModelOptionsResponsePtrOutput) LossType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelDefinitionModelOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LossType
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ModelDefinitionModelOptionsResponsePtrOutput) ModelType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelDefinitionModelOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ModelType
-	}).(pulumi.StringPtrOutput)
-}
-
 type ModelDefinitionResponse struct {
 	// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
 	ModelOptions ModelDefinitionModelOptionsResponse `pulumi:"modelOptions"`
 	// [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
 	TrainingRuns []BqmlTrainingRunResponse `pulumi:"trainingRuns"`
-}
-
-// ModelDefinitionResponseInput is an input type that accepts ModelDefinitionResponseArgs and ModelDefinitionResponseOutput values.
-// You can construct a concrete instance of `ModelDefinitionResponseInput` via:
-//
-//          ModelDefinitionResponseArgs{...}
-type ModelDefinitionResponseInput interface {
-	pulumi.Input
-
-	ToModelDefinitionResponseOutput() ModelDefinitionResponseOutput
-	ToModelDefinitionResponseOutputWithContext(context.Context) ModelDefinitionResponseOutput
-}
-
-type ModelDefinitionResponseArgs struct {
-	// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-	ModelOptions ModelDefinitionModelOptionsResponseInput `pulumi:"modelOptions"`
-	// [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
-	TrainingRuns BqmlTrainingRunResponseArrayInput `pulumi:"trainingRuns"`
-}
-
-func (ModelDefinitionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelDefinitionResponse)(nil)).Elem()
-}
-
-func (i ModelDefinitionResponseArgs) ToModelDefinitionResponseOutput() ModelDefinitionResponseOutput {
-	return i.ToModelDefinitionResponseOutputWithContext(context.Background())
-}
-
-func (i ModelDefinitionResponseArgs) ToModelDefinitionResponseOutputWithContext(ctx context.Context) ModelDefinitionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelDefinitionResponseOutput)
-}
-
-func (i ModelDefinitionResponseArgs) ToModelDefinitionResponsePtrOutput() ModelDefinitionResponsePtrOutput {
-	return i.ToModelDefinitionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ModelDefinitionResponseArgs) ToModelDefinitionResponsePtrOutputWithContext(ctx context.Context) ModelDefinitionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelDefinitionResponseOutput).ToModelDefinitionResponsePtrOutputWithContext(ctx)
-}
-
-// ModelDefinitionResponsePtrInput is an input type that accepts ModelDefinitionResponseArgs, ModelDefinitionResponsePtr and ModelDefinitionResponsePtrOutput values.
-// You can construct a concrete instance of `ModelDefinitionResponsePtrInput` via:
-//
-//          ModelDefinitionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ModelDefinitionResponsePtrInput interface {
-	pulumi.Input
-
-	ToModelDefinitionResponsePtrOutput() ModelDefinitionResponsePtrOutput
-	ToModelDefinitionResponsePtrOutputWithContext(context.Context) ModelDefinitionResponsePtrOutput
-}
-
-type modelDefinitionResponsePtrType ModelDefinitionResponseArgs
-
-func ModelDefinitionResponsePtr(v *ModelDefinitionResponseArgs) ModelDefinitionResponsePtrInput {
-	return (*modelDefinitionResponsePtrType)(v)
-}
-
-func (*modelDefinitionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelDefinitionResponse)(nil)).Elem()
-}
-
-func (i *modelDefinitionResponsePtrType) ToModelDefinitionResponsePtrOutput() ModelDefinitionResponsePtrOutput {
-	return i.ToModelDefinitionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *modelDefinitionResponsePtrType) ToModelDefinitionResponsePtrOutputWithContext(ctx context.Context) ModelDefinitionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelDefinitionResponsePtrOutput)
 }
 
 type ModelDefinitionResponseOutput struct{ *pulumi.OutputState }
@@ -16210,16 +9835,6 @@ func (o ModelDefinitionResponseOutput) ToModelDefinitionResponseOutputWithContex
 	return o
 }
 
-func (o ModelDefinitionResponseOutput) ToModelDefinitionResponsePtrOutput() ModelDefinitionResponsePtrOutput {
-	return o.ToModelDefinitionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ModelDefinitionResponseOutput) ToModelDefinitionResponsePtrOutputWithContext(ctx context.Context) ModelDefinitionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelDefinitionResponse) *ModelDefinitionResponse {
-		return &v
-	}).(ModelDefinitionResponsePtrOutput)
-}
-
 // [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
 func (o ModelDefinitionResponseOutput) ModelOptions() ModelDefinitionModelOptionsResponseOutput {
 	return o.ApplyT(func(v ModelDefinitionResponse) ModelDefinitionModelOptionsResponse { return v.ModelOptions }).(ModelDefinitionModelOptionsResponseOutput)
@@ -16228,50 +9843,6 @@ func (o ModelDefinitionResponseOutput) ModelOptions() ModelDefinitionModelOption
 // [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
 func (o ModelDefinitionResponseOutput) TrainingRuns() BqmlTrainingRunResponseArrayOutput {
 	return o.ApplyT(func(v ModelDefinitionResponse) []BqmlTrainingRunResponse { return v.TrainingRuns }).(BqmlTrainingRunResponseArrayOutput)
-}
-
-type ModelDefinitionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ModelDefinitionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelDefinitionResponse)(nil)).Elem()
-}
-
-func (o ModelDefinitionResponsePtrOutput) ToModelDefinitionResponsePtrOutput() ModelDefinitionResponsePtrOutput {
-	return o
-}
-
-func (o ModelDefinitionResponsePtrOutput) ToModelDefinitionResponsePtrOutputWithContext(ctx context.Context) ModelDefinitionResponsePtrOutput {
-	return o
-}
-
-func (o ModelDefinitionResponsePtrOutput) Elem() ModelDefinitionResponseOutput {
-	return o.ApplyT(func(v *ModelDefinitionResponse) ModelDefinitionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ModelDefinitionResponse
-		return ret
-	}).(ModelDefinitionResponseOutput)
-}
-
-// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-func (o ModelDefinitionResponsePtrOutput) ModelOptions() ModelDefinitionModelOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *ModelDefinitionResponse) *ModelDefinitionModelOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ModelOptions
-	}).(ModelDefinitionModelOptionsResponsePtrOutput)
-}
-
-// [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
-func (o ModelDefinitionResponsePtrOutput) TrainingRuns() BqmlTrainingRunResponseArrayOutput {
-	return o.ApplyT(func(v *ModelDefinitionResponse) []BqmlTrainingRunResponse {
-		if v == nil {
-			return nil
-		}
-		return v.TrainingRuns
-	}).(BqmlTrainingRunResponseArrayOutput)
 }
 
 type ModelReference struct {
@@ -16458,79 +10029,6 @@ type ModelReferenceResponse struct {
 	Project string `pulumi:"project"`
 }
 
-// ModelReferenceResponseInput is an input type that accepts ModelReferenceResponseArgs and ModelReferenceResponseOutput values.
-// You can construct a concrete instance of `ModelReferenceResponseInput` via:
-//
-//          ModelReferenceResponseArgs{...}
-type ModelReferenceResponseInput interface {
-	pulumi.Input
-
-	ToModelReferenceResponseOutput() ModelReferenceResponseOutput
-	ToModelReferenceResponseOutputWithContext(context.Context) ModelReferenceResponseOutput
-}
-
-type ModelReferenceResponseArgs struct {
-	// [Required] The ID of the dataset containing this model.
-	DatasetId pulumi.StringInput `pulumi:"datasetId"`
-	// [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-	ModelId pulumi.StringInput `pulumi:"modelId"`
-	// [Required] The ID of the project containing this model.
-	Project pulumi.StringInput `pulumi:"project"`
-}
-
-func (ModelReferenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelReferenceResponse)(nil)).Elem()
-}
-
-func (i ModelReferenceResponseArgs) ToModelReferenceResponseOutput() ModelReferenceResponseOutput {
-	return i.ToModelReferenceResponseOutputWithContext(context.Background())
-}
-
-func (i ModelReferenceResponseArgs) ToModelReferenceResponseOutputWithContext(ctx context.Context) ModelReferenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelReferenceResponseOutput)
-}
-
-func (i ModelReferenceResponseArgs) ToModelReferenceResponsePtrOutput() ModelReferenceResponsePtrOutput {
-	return i.ToModelReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ModelReferenceResponseArgs) ToModelReferenceResponsePtrOutputWithContext(ctx context.Context) ModelReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelReferenceResponseOutput).ToModelReferenceResponsePtrOutputWithContext(ctx)
-}
-
-// ModelReferenceResponsePtrInput is an input type that accepts ModelReferenceResponseArgs, ModelReferenceResponsePtr and ModelReferenceResponsePtrOutput values.
-// You can construct a concrete instance of `ModelReferenceResponsePtrInput` via:
-//
-//          ModelReferenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ModelReferenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToModelReferenceResponsePtrOutput() ModelReferenceResponsePtrOutput
-	ToModelReferenceResponsePtrOutputWithContext(context.Context) ModelReferenceResponsePtrOutput
-}
-
-type modelReferenceResponsePtrType ModelReferenceResponseArgs
-
-func ModelReferenceResponsePtr(v *ModelReferenceResponseArgs) ModelReferenceResponsePtrInput {
-	return (*modelReferenceResponsePtrType)(v)
-}
-
-func (*modelReferenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelReferenceResponse)(nil)).Elem()
-}
-
-func (i *modelReferenceResponsePtrType) ToModelReferenceResponsePtrOutput() ModelReferenceResponsePtrOutput {
-	return i.ToModelReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *modelReferenceResponsePtrType) ToModelReferenceResponsePtrOutputWithContext(ctx context.Context) ModelReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelReferenceResponsePtrOutput)
-}
-
 type ModelReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (ModelReferenceResponseOutput) ElementType() reflect.Type {
@@ -16543,16 +10041,6 @@ func (o ModelReferenceResponseOutput) ToModelReferenceResponseOutput() ModelRefe
 
 func (o ModelReferenceResponseOutput) ToModelReferenceResponseOutputWithContext(ctx context.Context) ModelReferenceResponseOutput {
 	return o
-}
-
-func (o ModelReferenceResponseOutput) ToModelReferenceResponsePtrOutput() ModelReferenceResponsePtrOutput {
-	return o.ToModelReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ModelReferenceResponseOutput) ToModelReferenceResponsePtrOutputWithContext(ctx context.Context) ModelReferenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelReferenceResponse) *ModelReferenceResponse {
-		return &v
-	}).(ModelReferenceResponsePtrOutput)
 }
 
 // [Required] The ID of the dataset containing this model.
@@ -16568,60 +10056,6 @@ func (o ModelReferenceResponseOutput) ModelId() pulumi.StringOutput {
 // [Required] The ID of the project containing this model.
 func (o ModelReferenceResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
-}
-
-type ModelReferenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ModelReferenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ModelReferenceResponse)(nil)).Elem()
-}
-
-func (o ModelReferenceResponsePtrOutput) ToModelReferenceResponsePtrOutput() ModelReferenceResponsePtrOutput {
-	return o
-}
-
-func (o ModelReferenceResponsePtrOutput) ToModelReferenceResponsePtrOutputWithContext(ctx context.Context) ModelReferenceResponsePtrOutput {
-	return o
-}
-
-func (o ModelReferenceResponsePtrOutput) Elem() ModelReferenceResponseOutput {
-	return o.ApplyT(func(v *ModelReferenceResponse) ModelReferenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ModelReferenceResponse
-		return ret
-	}).(ModelReferenceResponseOutput)
-}
-
-// [Required] The ID of the dataset containing this model.
-func (o ModelReferenceResponsePtrOutput) DatasetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DatasetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-func (o ModelReferenceResponsePtrOutput) ModelId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ModelId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the project containing this model.
-func (o ModelReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
 }
 
 type ParquetOptions struct {
@@ -16787,77 +10221,6 @@ type ParquetOptionsResponse struct {
 	EnumAsString bool `pulumi:"enumAsString"`
 }
 
-// ParquetOptionsResponseInput is an input type that accepts ParquetOptionsResponseArgs and ParquetOptionsResponseOutput values.
-// You can construct a concrete instance of `ParquetOptionsResponseInput` via:
-//
-//          ParquetOptionsResponseArgs{...}
-type ParquetOptionsResponseInput interface {
-	pulumi.Input
-
-	ToParquetOptionsResponseOutput() ParquetOptionsResponseOutput
-	ToParquetOptionsResponseOutputWithContext(context.Context) ParquetOptionsResponseOutput
-}
-
-type ParquetOptionsResponseArgs struct {
-	// [Optional] Indicates whether to use schema inference specifically for Parquet LIST logical type.
-	EnableListInference pulumi.BoolInput `pulumi:"enableListInference"`
-	// [Optional] Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
-	EnumAsString pulumi.BoolInput `pulumi:"enumAsString"`
-}
-
-func (ParquetOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ParquetOptionsResponse)(nil)).Elem()
-}
-
-func (i ParquetOptionsResponseArgs) ToParquetOptionsResponseOutput() ParquetOptionsResponseOutput {
-	return i.ToParquetOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i ParquetOptionsResponseArgs) ToParquetOptionsResponseOutputWithContext(ctx context.Context) ParquetOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ParquetOptionsResponseOutput)
-}
-
-func (i ParquetOptionsResponseArgs) ToParquetOptionsResponsePtrOutput() ParquetOptionsResponsePtrOutput {
-	return i.ToParquetOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ParquetOptionsResponseArgs) ToParquetOptionsResponsePtrOutputWithContext(ctx context.Context) ParquetOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ParquetOptionsResponseOutput).ToParquetOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// ParquetOptionsResponsePtrInput is an input type that accepts ParquetOptionsResponseArgs, ParquetOptionsResponsePtr and ParquetOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `ParquetOptionsResponsePtrInput` via:
-//
-//          ParquetOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ParquetOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToParquetOptionsResponsePtrOutput() ParquetOptionsResponsePtrOutput
-	ToParquetOptionsResponsePtrOutputWithContext(context.Context) ParquetOptionsResponsePtrOutput
-}
-
-type parquetOptionsResponsePtrType ParquetOptionsResponseArgs
-
-func ParquetOptionsResponsePtr(v *ParquetOptionsResponseArgs) ParquetOptionsResponsePtrInput {
-	return (*parquetOptionsResponsePtrType)(v)
-}
-
-func (*parquetOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ParquetOptionsResponse)(nil)).Elem()
-}
-
-func (i *parquetOptionsResponsePtrType) ToParquetOptionsResponsePtrOutput() ParquetOptionsResponsePtrOutput {
-	return i.ToParquetOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *parquetOptionsResponsePtrType) ToParquetOptionsResponsePtrOutputWithContext(ctx context.Context) ParquetOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ParquetOptionsResponsePtrOutput)
-}
-
 type ParquetOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (ParquetOptionsResponseOutput) ElementType() reflect.Type {
@@ -16872,16 +10235,6 @@ func (o ParquetOptionsResponseOutput) ToParquetOptionsResponseOutputWithContext(
 	return o
 }
 
-func (o ParquetOptionsResponseOutput) ToParquetOptionsResponsePtrOutput() ParquetOptionsResponsePtrOutput {
-	return o.ToParquetOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ParquetOptionsResponseOutput) ToParquetOptionsResponsePtrOutputWithContext(ctx context.Context) ParquetOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParquetOptionsResponse) *ParquetOptionsResponse {
-		return &v
-	}).(ParquetOptionsResponsePtrOutput)
-}
-
 // [Optional] Indicates whether to use schema inference specifically for Parquet LIST logical type.
 func (o ParquetOptionsResponseOutput) EnableListInference() pulumi.BoolOutput {
 	return o.ApplyT(func(v ParquetOptionsResponse) bool { return v.EnableListInference }).(pulumi.BoolOutput)
@@ -16890,50 +10243,6 @@ func (o ParquetOptionsResponseOutput) EnableListInference() pulumi.BoolOutput {
 // [Optional] Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
 func (o ParquetOptionsResponseOutput) EnumAsString() pulumi.BoolOutput {
 	return o.ApplyT(func(v ParquetOptionsResponse) bool { return v.EnumAsString }).(pulumi.BoolOutput)
-}
-
-type ParquetOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ParquetOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ParquetOptionsResponse)(nil)).Elem()
-}
-
-func (o ParquetOptionsResponsePtrOutput) ToParquetOptionsResponsePtrOutput() ParquetOptionsResponsePtrOutput {
-	return o
-}
-
-func (o ParquetOptionsResponsePtrOutput) ToParquetOptionsResponsePtrOutputWithContext(ctx context.Context) ParquetOptionsResponsePtrOutput {
-	return o
-}
-
-func (o ParquetOptionsResponsePtrOutput) Elem() ParquetOptionsResponseOutput {
-	return o.ApplyT(func(v *ParquetOptionsResponse) ParquetOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ParquetOptionsResponse
-		return ret
-	}).(ParquetOptionsResponseOutput)
-}
-
-// [Optional] Indicates whether to use schema inference specifically for Parquet LIST logical type.
-func (o ParquetOptionsResponsePtrOutput) EnableListInference() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ParquetOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableListInference
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Optional] Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
-func (o ParquetOptionsResponsePtrOutput) EnumAsString() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ParquetOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnumAsString
-	}).(pulumi.BoolPtrOutput)
 }
 
 type QueryParameter struct {
@@ -17058,63 +10367,6 @@ type QueryParameterResponse struct {
 	ParameterType QueryParameterTypeResponse `pulumi:"parameterType"`
 	// [Required] The value of this parameter.
 	ParameterValue QueryParameterValueResponse `pulumi:"parameterValue"`
-}
-
-// QueryParameterResponseInput is an input type that accepts QueryParameterResponseArgs and QueryParameterResponseOutput values.
-// You can construct a concrete instance of `QueryParameterResponseInput` via:
-//
-//          QueryParameterResponseArgs{...}
-type QueryParameterResponseInput interface {
-	pulumi.Input
-
-	ToQueryParameterResponseOutput() QueryParameterResponseOutput
-	ToQueryParameterResponseOutputWithContext(context.Context) QueryParameterResponseOutput
-}
-
-type QueryParameterResponseArgs struct {
-	// [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
-	Name pulumi.StringInput `pulumi:"name"`
-	// [Required] The type of this parameter.
-	ParameterType QueryParameterTypeResponseInput `pulumi:"parameterType"`
-	// [Required] The value of this parameter.
-	ParameterValue QueryParameterValueResponseInput `pulumi:"parameterValue"`
-}
-
-func (QueryParameterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueryParameterResponse)(nil)).Elem()
-}
-
-func (i QueryParameterResponseArgs) ToQueryParameterResponseOutput() QueryParameterResponseOutput {
-	return i.ToQueryParameterResponseOutputWithContext(context.Background())
-}
-
-func (i QueryParameterResponseArgs) ToQueryParameterResponseOutputWithContext(ctx context.Context) QueryParameterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterResponseOutput)
-}
-
-// QueryParameterResponseArrayInput is an input type that accepts QueryParameterResponseArray and QueryParameterResponseArrayOutput values.
-// You can construct a concrete instance of `QueryParameterResponseArrayInput` via:
-//
-//          QueryParameterResponseArray{ QueryParameterResponseArgs{...} }
-type QueryParameterResponseArrayInput interface {
-	pulumi.Input
-
-	ToQueryParameterResponseArrayOutput() QueryParameterResponseArrayOutput
-	ToQueryParameterResponseArrayOutputWithContext(context.Context) QueryParameterResponseArrayOutput
-}
-
-type QueryParameterResponseArray []QueryParameterResponseInput
-
-func (QueryParameterResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]QueryParameterResponse)(nil)).Elem()
-}
-
-func (i QueryParameterResponseArray) ToQueryParameterResponseArrayOutput() QueryParameterResponseArrayOutput {
-	return i.ToQueryParameterResponseArrayOutputWithContext(context.Background())
-}
-
-func (i QueryParameterResponseArray) ToQueryParameterResponseArrayOutputWithContext(ctx context.Context) QueryParameterResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterResponseArrayOutput)
 }
 
 type QueryParameterResponseOutput struct{ *pulumi.OutputState }
@@ -17350,79 +10602,6 @@ type QueryParameterTypeResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// QueryParameterTypeResponseInput is an input type that accepts QueryParameterTypeResponseArgs and QueryParameterTypeResponseOutput values.
-// You can construct a concrete instance of `QueryParameterTypeResponseInput` via:
-//
-//          QueryParameterTypeResponseArgs{...}
-type QueryParameterTypeResponseInput interface {
-	pulumi.Input
-
-	ToQueryParameterTypeResponseOutput() QueryParameterTypeResponseOutput
-	ToQueryParameterTypeResponseOutputWithContext(context.Context) QueryParameterTypeResponseOutput
-}
-
-type QueryParameterTypeResponseArgs struct {
-	// [Optional] The type of the array's elements, if this is an array.
-	ArrayType QueryParameterTypeResponsePtrInput `pulumi:"arrayType"`
-	// [Optional] The types of the fields of this struct, in order, if this is a struct.
-	StructTypes QueryParameterTypeStructTypesItemResponseArrayInput `pulumi:"structTypes"`
-	// [Required] The top level type of this field.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (QueryParameterTypeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueryParameterTypeResponse)(nil)).Elem()
-}
-
-func (i QueryParameterTypeResponseArgs) ToQueryParameterTypeResponseOutput() QueryParameterTypeResponseOutput {
-	return i.ToQueryParameterTypeResponseOutputWithContext(context.Background())
-}
-
-func (i QueryParameterTypeResponseArgs) ToQueryParameterTypeResponseOutputWithContext(ctx context.Context) QueryParameterTypeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterTypeResponseOutput)
-}
-
-func (i QueryParameterTypeResponseArgs) ToQueryParameterTypeResponsePtrOutput() QueryParameterTypeResponsePtrOutput {
-	return i.ToQueryParameterTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i QueryParameterTypeResponseArgs) ToQueryParameterTypeResponsePtrOutputWithContext(ctx context.Context) QueryParameterTypeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterTypeResponseOutput).ToQueryParameterTypeResponsePtrOutputWithContext(ctx)
-}
-
-// QueryParameterTypeResponsePtrInput is an input type that accepts QueryParameterTypeResponseArgs, QueryParameterTypeResponsePtr and QueryParameterTypeResponsePtrOutput values.
-// You can construct a concrete instance of `QueryParameterTypeResponsePtrInput` via:
-//
-//          QueryParameterTypeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type QueryParameterTypeResponsePtrInput interface {
-	pulumi.Input
-
-	ToQueryParameterTypeResponsePtrOutput() QueryParameterTypeResponsePtrOutput
-	ToQueryParameterTypeResponsePtrOutputWithContext(context.Context) QueryParameterTypeResponsePtrOutput
-}
-
-type queryParameterTypeResponsePtrType QueryParameterTypeResponseArgs
-
-func QueryParameterTypeResponsePtr(v *QueryParameterTypeResponseArgs) QueryParameterTypeResponsePtrInput {
-	return (*queryParameterTypeResponsePtrType)(v)
-}
-
-func (*queryParameterTypeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**QueryParameterTypeResponse)(nil)).Elem()
-}
-
-func (i *queryParameterTypeResponsePtrType) ToQueryParameterTypeResponsePtrOutput() QueryParameterTypeResponsePtrOutput {
-	return i.ToQueryParameterTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *queryParameterTypeResponsePtrType) ToQueryParameterTypeResponsePtrOutputWithContext(ctx context.Context) QueryParameterTypeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterTypeResponsePtrOutput)
-}
-
 type QueryParameterTypeResponseOutput struct{ *pulumi.OutputState }
 
 func (QueryParameterTypeResponseOutput) ElementType() reflect.Type {
@@ -17435,16 +10614,6 @@ func (o QueryParameterTypeResponseOutput) ToQueryParameterTypeResponseOutput() Q
 
 func (o QueryParameterTypeResponseOutput) ToQueryParameterTypeResponseOutputWithContext(ctx context.Context) QueryParameterTypeResponseOutput {
 	return o
-}
-
-func (o QueryParameterTypeResponseOutput) ToQueryParameterTypeResponsePtrOutput() QueryParameterTypeResponsePtrOutput {
-	return o.ToQueryParameterTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o QueryParameterTypeResponseOutput) ToQueryParameterTypeResponsePtrOutputWithContext(ctx context.Context) QueryParameterTypeResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryParameterTypeResponse) *QueryParameterTypeResponse {
-		return &v
-	}).(QueryParameterTypeResponsePtrOutput)
 }
 
 // [Optional] The type of the array's elements, if this is an array.
@@ -17638,63 +10807,6 @@ type QueryParameterTypeStructTypesItemResponse struct {
 	Name string `pulumi:"name"`
 	// [Required] The type of this field.
 	Type QueryParameterTypeResponse `pulumi:"type"`
-}
-
-// QueryParameterTypeStructTypesItemResponseInput is an input type that accepts QueryParameterTypeStructTypesItemResponseArgs and QueryParameterTypeStructTypesItemResponseOutput values.
-// You can construct a concrete instance of `QueryParameterTypeStructTypesItemResponseInput` via:
-//
-//          QueryParameterTypeStructTypesItemResponseArgs{...}
-type QueryParameterTypeStructTypesItemResponseInput interface {
-	pulumi.Input
-
-	ToQueryParameterTypeStructTypesItemResponseOutput() QueryParameterTypeStructTypesItemResponseOutput
-	ToQueryParameterTypeStructTypesItemResponseOutputWithContext(context.Context) QueryParameterTypeStructTypesItemResponseOutput
-}
-
-type QueryParameterTypeStructTypesItemResponseArgs struct {
-	// [Optional] Human-oriented description of the field.
-	Description pulumi.StringInput `pulumi:"description"`
-	// [Optional] The name of this field.
-	Name pulumi.StringInput `pulumi:"name"`
-	// [Required] The type of this field.
-	Type QueryParameterTypeResponseInput `pulumi:"type"`
-}
-
-func (QueryParameterTypeStructTypesItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueryParameterTypeStructTypesItemResponse)(nil)).Elem()
-}
-
-func (i QueryParameterTypeStructTypesItemResponseArgs) ToQueryParameterTypeStructTypesItemResponseOutput() QueryParameterTypeStructTypesItemResponseOutput {
-	return i.ToQueryParameterTypeStructTypesItemResponseOutputWithContext(context.Background())
-}
-
-func (i QueryParameterTypeStructTypesItemResponseArgs) ToQueryParameterTypeStructTypesItemResponseOutputWithContext(ctx context.Context) QueryParameterTypeStructTypesItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterTypeStructTypesItemResponseOutput)
-}
-
-// QueryParameterTypeStructTypesItemResponseArrayInput is an input type that accepts QueryParameterTypeStructTypesItemResponseArray and QueryParameterTypeStructTypesItemResponseArrayOutput values.
-// You can construct a concrete instance of `QueryParameterTypeStructTypesItemResponseArrayInput` via:
-//
-//          QueryParameterTypeStructTypesItemResponseArray{ QueryParameterTypeStructTypesItemResponseArgs{...} }
-type QueryParameterTypeStructTypesItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToQueryParameterTypeStructTypesItemResponseArrayOutput() QueryParameterTypeStructTypesItemResponseArrayOutput
-	ToQueryParameterTypeStructTypesItemResponseArrayOutputWithContext(context.Context) QueryParameterTypeStructTypesItemResponseArrayOutput
-}
-
-type QueryParameterTypeStructTypesItemResponseArray []QueryParameterTypeStructTypesItemResponseInput
-
-func (QueryParameterTypeStructTypesItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]QueryParameterTypeStructTypesItemResponse)(nil)).Elem()
-}
-
-func (i QueryParameterTypeStructTypesItemResponseArray) ToQueryParameterTypeStructTypesItemResponseArrayOutput() QueryParameterTypeStructTypesItemResponseArrayOutput {
-	return i.ToQueryParameterTypeStructTypesItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i QueryParameterTypeStructTypesItemResponseArray) ToQueryParameterTypeStructTypesItemResponseArrayOutputWithContext(ctx context.Context) QueryParameterTypeStructTypesItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterTypeStructTypesItemResponseArrayOutput)
 }
 
 type QueryParameterTypeStructTypesItemResponseOutput struct{ *pulumi.OutputState }
@@ -17975,63 +11087,6 @@ type QueryParameterValueResponse struct {
 	Value string `pulumi:"value"`
 }
 
-// QueryParameterValueResponseInput is an input type that accepts QueryParameterValueResponseArgs and QueryParameterValueResponseOutput values.
-// You can construct a concrete instance of `QueryParameterValueResponseInput` via:
-//
-//          QueryParameterValueResponseArgs{...}
-type QueryParameterValueResponseInput interface {
-	pulumi.Input
-
-	ToQueryParameterValueResponseOutput() QueryParameterValueResponseOutput
-	ToQueryParameterValueResponseOutputWithContext(context.Context) QueryParameterValueResponseOutput
-}
-
-type QueryParameterValueResponseArgs struct {
-	// [Optional] The array values, if this is an array type.
-	ArrayValues QueryParameterValueResponseArrayInput `pulumi:"arrayValues"`
-	// [Optional] The struct field values, in order of the struct type's declaration.
-	StructValues pulumi.StringMapInput `pulumi:"structValues"`
-	// [Optional] The value of this value, if a simple scalar type.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (QueryParameterValueResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueryParameterValueResponse)(nil)).Elem()
-}
-
-func (i QueryParameterValueResponseArgs) ToQueryParameterValueResponseOutput() QueryParameterValueResponseOutput {
-	return i.ToQueryParameterValueResponseOutputWithContext(context.Background())
-}
-
-func (i QueryParameterValueResponseArgs) ToQueryParameterValueResponseOutputWithContext(ctx context.Context) QueryParameterValueResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterValueResponseOutput)
-}
-
-// QueryParameterValueResponseArrayInput is an input type that accepts QueryParameterValueResponseArray and QueryParameterValueResponseArrayOutput values.
-// You can construct a concrete instance of `QueryParameterValueResponseArrayInput` via:
-//
-//          QueryParameterValueResponseArray{ QueryParameterValueResponseArgs{...} }
-type QueryParameterValueResponseArrayInput interface {
-	pulumi.Input
-
-	ToQueryParameterValueResponseArrayOutput() QueryParameterValueResponseArrayOutput
-	ToQueryParameterValueResponseArrayOutputWithContext(context.Context) QueryParameterValueResponseArrayOutput
-}
-
-type QueryParameterValueResponseArray []QueryParameterValueResponseInput
-
-func (QueryParameterValueResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]QueryParameterValueResponse)(nil)).Elem()
-}
-
-func (i QueryParameterValueResponseArray) ToQueryParameterValueResponseArrayOutput() QueryParameterValueResponseArrayOutput {
-	return i.ToQueryParameterValueResponseArrayOutputWithContext(context.Background())
-}
-
-func (i QueryParameterValueResponseArray) ToQueryParameterValueResponseArrayOutputWithContext(ctx context.Context) QueryParameterValueResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterValueResponseArrayOutput)
-}
-
 type QueryParameterValueResponseOutput struct{ *pulumi.OutputState }
 
 func (QueryParameterValueResponseOutput) ElementType() reflect.Type {
@@ -18092,67 +11147,6 @@ type QueryTimelineSampleResponse struct {
 	PendingUnits string `pulumi:"pendingUnits"`
 	// Cumulative slot-ms consumed by the query.
 	TotalSlotMs string `pulumi:"totalSlotMs"`
-}
-
-// QueryTimelineSampleResponseInput is an input type that accepts QueryTimelineSampleResponseArgs and QueryTimelineSampleResponseOutput values.
-// You can construct a concrete instance of `QueryTimelineSampleResponseInput` via:
-//
-//          QueryTimelineSampleResponseArgs{...}
-type QueryTimelineSampleResponseInput interface {
-	pulumi.Input
-
-	ToQueryTimelineSampleResponseOutput() QueryTimelineSampleResponseOutput
-	ToQueryTimelineSampleResponseOutputWithContext(context.Context) QueryTimelineSampleResponseOutput
-}
-
-type QueryTimelineSampleResponseArgs struct {
-	// Total number of units currently being processed by workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.
-	ActiveUnits pulumi.StringInput `pulumi:"activeUnits"`
-	// Total parallel units of work completed by this query.
-	CompletedUnits pulumi.StringInput `pulumi:"completedUnits"`
-	// Milliseconds elapsed since the start of query execution.
-	ElapsedMs pulumi.StringInput `pulumi:"elapsedMs"`
-	// Total parallel units of work remaining for the active stages.
-	PendingUnits pulumi.StringInput `pulumi:"pendingUnits"`
-	// Cumulative slot-ms consumed by the query.
-	TotalSlotMs pulumi.StringInput `pulumi:"totalSlotMs"`
-}
-
-func (QueryTimelineSampleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueryTimelineSampleResponse)(nil)).Elem()
-}
-
-func (i QueryTimelineSampleResponseArgs) ToQueryTimelineSampleResponseOutput() QueryTimelineSampleResponseOutput {
-	return i.ToQueryTimelineSampleResponseOutputWithContext(context.Background())
-}
-
-func (i QueryTimelineSampleResponseArgs) ToQueryTimelineSampleResponseOutputWithContext(ctx context.Context) QueryTimelineSampleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryTimelineSampleResponseOutput)
-}
-
-// QueryTimelineSampleResponseArrayInput is an input type that accepts QueryTimelineSampleResponseArray and QueryTimelineSampleResponseArrayOutput values.
-// You can construct a concrete instance of `QueryTimelineSampleResponseArrayInput` via:
-//
-//          QueryTimelineSampleResponseArray{ QueryTimelineSampleResponseArgs{...} }
-type QueryTimelineSampleResponseArrayInput interface {
-	pulumi.Input
-
-	ToQueryTimelineSampleResponseArrayOutput() QueryTimelineSampleResponseArrayOutput
-	ToQueryTimelineSampleResponseArrayOutputWithContext(context.Context) QueryTimelineSampleResponseArrayOutput
-}
-
-type QueryTimelineSampleResponseArray []QueryTimelineSampleResponseInput
-
-func (QueryTimelineSampleResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]QueryTimelineSampleResponse)(nil)).Elem()
-}
-
-func (i QueryTimelineSampleResponseArray) ToQueryTimelineSampleResponseArrayOutput() QueryTimelineSampleResponseArrayOutput {
-	return i.ToQueryTimelineSampleResponseArrayOutputWithContext(context.Background())
-}
-
-func (i QueryTimelineSampleResponseArray) ToQueryTimelineSampleResponseArrayOutputWithContext(ctx context.Context) QueryTimelineSampleResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryTimelineSampleResponseArrayOutput)
 }
 
 type QueryTimelineSampleResponseOutput struct{ *pulumi.OutputState }
@@ -18558,80 +11552,6 @@ type RangePartitioningRangeResponse struct {
 	Start string `pulumi:"start"`
 }
 
-// RangePartitioningRangeResponseInput is an input type that accepts RangePartitioningRangeResponseArgs and RangePartitioningRangeResponseOutput values.
-// You can construct a concrete instance of `RangePartitioningRangeResponseInput` via:
-//
-//          RangePartitioningRangeResponseArgs{...}
-type RangePartitioningRangeResponseInput interface {
-	pulumi.Input
-
-	ToRangePartitioningRangeResponseOutput() RangePartitioningRangeResponseOutput
-	ToRangePartitioningRangeResponseOutputWithContext(context.Context) RangePartitioningRangeResponseOutput
-}
-
-// [TrustedTester] [Required] Defines the ranges for range partitioning.
-type RangePartitioningRangeResponseArgs struct {
-	// [TrustedTester] [Required] The end of range partitioning, exclusive.
-	End pulumi.StringInput `pulumi:"end"`
-	// [TrustedTester] [Required] The width of each interval.
-	Interval pulumi.StringInput `pulumi:"interval"`
-	// [TrustedTester] [Required] The start of range partitioning, inclusive.
-	Start pulumi.StringInput `pulumi:"start"`
-}
-
-func (RangePartitioningRangeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RangePartitioningRangeResponse)(nil)).Elem()
-}
-
-func (i RangePartitioningRangeResponseArgs) ToRangePartitioningRangeResponseOutput() RangePartitioningRangeResponseOutput {
-	return i.ToRangePartitioningRangeResponseOutputWithContext(context.Background())
-}
-
-func (i RangePartitioningRangeResponseArgs) ToRangePartitioningRangeResponseOutputWithContext(ctx context.Context) RangePartitioningRangeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RangePartitioningRangeResponseOutput)
-}
-
-func (i RangePartitioningRangeResponseArgs) ToRangePartitioningRangeResponsePtrOutput() RangePartitioningRangeResponsePtrOutput {
-	return i.ToRangePartitioningRangeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RangePartitioningRangeResponseArgs) ToRangePartitioningRangeResponsePtrOutputWithContext(ctx context.Context) RangePartitioningRangeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RangePartitioningRangeResponseOutput).ToRangePartitioningRangeResponsePtrOutputWithContext(ctx)
-}
-
-// RangePartitioningRangeResponsePtrInput is an input type that accepts RangePartitioningRangeResponseArgs, RangePartitioningRangeResponsePtr and RangePartitioningRangeResponsePtrOutput values.
-// You can construct a concrete instance of `RangePartitioningRangeResponsePtrInput` via:
-//
-//          RangePartitioningRangeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RangePartitioningRangeResponsePtrInput interface {
-	pulumi.Input
-
-	ToRangePartitioningRangeResponsePtrOutput() RangePartitioningRangeResponsePtrOutput
-	ToRangePartitioningRangeResponsePtrOutputWithContext(context.Context) RangePartitioningRangeResponsePtrOutput
-}
-
-type rangePartitioningRangeResponsePtrType RangePartitioningRangeResponseArgs
-
-func RangePartitioningRangeResponsePtr(v *RangePartitioningRangeResponseArgs) RangePartitioningRangeResponsePtrInput {
-	return (*rangePartitioningRangeResponsePtrType)(v)
-}
-
-func (*rangePartitioningRangeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RangePartitioningRangeResponse)(nil)).Elem()
-}
-
-func (i *rangePartitioningRangeResponsePtrType) ToRangePartitioningRangeResponsePtrOutput() RangePartitioningRangeResponsePtrOutput {
-	return i.ToRangePartitioningRangeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *rangePartitioningRangeResponsePtrType) ToRangePartitioningRangeResponsePtrOutputWithContext(ctx context.Context) RangePartitioningRangeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RangePartitioningRangeResponsePtrOutput)
-}
-
 // [TrustedTester] [Required] Defines the ranges for range partitioning.
 type RangePartitioningRangeResponseOutput struct{ *pulumi.OutputState }
 
@@ -18645,16 +11565,6 @@ func (o RangePartitioningRangeResponseOutput) ToRangePartitioningRangeResponseOu
 
 func (o RangePartitioningRangeResponseOutput) ToRangePartitioningRangeResponseOutputWithContext(ctx context.Context) RangePartitioningRangeResponseOutput {
 	return o
-}
-
-func (o RangePartitioningRangeResponseOutput) ToRangePartitioningRangeResponsePtrOutput() RangePartitioningRangeResponsePtrOutput {
-	return o.ToRangePartitioningRangeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RangePartitioningRangeResponseOutput) ToRangePartitioningRangeResponsePtrOutputWithContext(ctx context.Context) RangePartitioningRangeResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RangePartitioningRangeResponse) *RangePartitioningRangeResponse {
-		return &v
-	}).(RangePartitioningRangeResponsePtrOutput)
 }
 
 // [TrustedTester] [Required] The end of range partitioning, exclusive.
@@ -18672,136 +11582,11 @@ func (o RangePartitioningRangeResponseOutput) Start() pulumi.StringOutput {
 	return o.ApplyT(func(v RangePartitioningRangeResponse) string { return v.Start }).(pulumi.StringOutput)
 }
 
-type RangePartitioningRangeResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RangePartitioningRangeResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RangePartitioningRangeResponse)(nil)).Elem()
-}
-
-func (o RangePartitioningRangeResponsePtrOutput) ToRangePartitioningRangeResponsePtrOutput() RangePartitioningRangeResponsePtrOutput {
-	return o
-}
-
-func (o RangePartitioningRangeResponsePtrOutput) ToRangePartitioningRangeResponsePtrOutputWithContext(ctx context.Context) RangePartitioningRangeResponsePtrOutput {
-	return o
-}
-
-func (o RangePartitioningRangeResponsePtrOutput) Elem() RangePartitioningRangeResponseOutput {
-	return o.ApplyT(func(v *RangePartitioningRangeResponse) RangePartitioningRangeResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RangePartitioningRangeResponse
-		return ret
-	}).(RangePartitioningRangeResponseOutput)
-}
-
-// [TrustedTester] [Required] The end of range partitioning, exclusive.
-func (o RangePartitioningRangeResponsePtrOutput) End() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RangePartitioningRangeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.End
-	}).(pulumi.StringPtrOutput)
-}
-
-// [TrustedTester] [Required] The width of each interval.
-func (o RangePartitioningRangeResponsePtrOutput) Interval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RangePartitioningRangeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Interval
-	}).(pulumi.StringPtrOutput)
-}
-
-// [TrustedTester] [Required] The start of range partitioning, inclusive.
-func (o RangePartitioningRangeResponsePtrOutput) Start() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RangePartitioningRangeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Start
-	}).(pulumi.StringPtrOutput)
-}
-
 type RangePartitioningResponse struct {
 	// [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
 	Field string `pulumi:"field"`
 	// [TrustedTester] [Required] Defines the ranges for range partitioning.
 	Range RangePartitioningRangeResponse `pulumi:"range"`
-}
-
-// RangePartitioningResponseInput is an input type that accepts RangePartitioningResponseArgs and RangePartitioningResponseOutput values.
-// You can construct a concrete instance of `RangePartitioningResponseInput` via:
-//
-//          RangePartitioningResponseArgs{...}
-type RangePartitioningResponseInput interface {
-	pulumi.Input
-
-	ToRangePartitioningResponseOutput() RangePartitioningResponseOutput
-	ToRangePartitioningResponseOutputWithContext(context.Context) RangePartitioningResponseOutput
-}
-
-type RangePartitioningResponseArgs struct {
-	// [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
-	Field pulumi.StringInput `pulumi:"field"`
-	// [TrustedTester] [Required] Defines the ranges for range partitioning.
-	Range RangePartitioningRangeResponseInput `pulumi:"range"`
-}
-
-func (RangePartitioningResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RangePartitioningResponse)(nil)).Elem()
-}
-
-func (i RangePartitioningResponseArgs) ToRangePartitioningResponseOutput() RangePartitioningResponseOutput {
-	return i.ToRangePartitioningResponseOutputWithContext(context.Background())
-}
-
-func (i RangePartitioningResponseArgs) ToRangePartitioningResponseOutputWithContext(ctx context.Context) RangePartitioningResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RangePartitioningResponseOutput)
-}
-
-func (i RangePartitioningResponseArgs) ToRangePartitioningResponsePtrOutput() RangePartitioningResponsePtrOutput {
-	return i.ToRangePartitioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RangePartitioningResponseArgs) ToRangePartitioningResponsePtrOutputWithContext(ctx context.Context) RangePartitioningResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RangePartitioningResponseOutput).ToRangePartitioningResponsePtrOutputWithContext(ctx)
-}
-
-// RangePartitioningResponsePtrInput is an input type that accepts RangePartitioningResponseArgs, RangePartitioningResponsePtr and RangePartitioningResponsePtrOutput values.
-// You can construct a concrete instance of `RangePartitioningResponsePtrInput` via:
-//
-//          RangePartitioningResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RangePartitioningResponsePtrInput interface {
-	pulumi.Input
-
-	ToRangePartitioningResponsePtrOutput() RangePartitioningResponsePtrOutput
-	ToRangePartitioningResponsePtrOutputWithContext(context.Context) RangePartitioningResponsePtrOutput
-}
-
-type rangePartitioningResponsePtrType RangePartitioningResponseArgs
-
-func RangePartitioningResponsePtr(v *RangePartitioningResponseArgs) RangePartitioningResponsePtrInput {
-	return (*rangePartitioningResponsePtrType)(v)
-}
-
-func (*rangePartitioningResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RangePartitioningResponse)(nil)).Elem()
-}
-
-func (i *rangePartitioningResponsePtrType) ToRangePartitioningResponsePtrOutput() RangePartitioningResponsePtrOutput {
-	return i.ToRangePartitioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *rangePartitioningResponsePtrType) ToRangePartitioningResponsePtrOutputWithContext(ctx context.Context) RangePartitioningResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RangePartitioningResponsePtrOutput)
 }
 
 type RangePartitioningResponseOutput struct{ *pulumi.OutputState }
@@ -18818,16 +11603,6 @@ func (o RangePartitioningResponseOutput) ToRangePartitioningResponseOutputWithCo
 	return o
 }
 
-func (o RangePartitioningResponseOutput) ToRangePartitioningResponsePtrOutput() RangePartitioningResponsePtrOutput {
-	return o.ToRangePartitioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RangePartitioningResponseOutput) ToRangePartitioningResponsePtrOutputWithContext(ctx context.Context) RangePartitioningResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RangePartitioningResponse) *RangePartitioningResponse {
-		return &v
-	}).(RangePartitioningResponsePtrOutput)
-}
-
 // [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
 func (o RangePartitioningResponseOutput) Field() pulumi.StringOutput {
 	return o.ApplyT(func(v RangePartitioningResponse) string { return v.Field }).(pulumi.StringOutput)
@@ -18836,50 +11611,6 @@ func (o RangePartitioningResponseOutput) Field() pulumi.StringOutput {
 // [TrustedTester] [Required] Defines the ranges for range partitioning.
 func (o RangePartitioningResponseOutput) Range() RangePartitioningRangeResponseOutput {
 	return o.ApplyT(func(v RangePartitioningResponse) RangePartitioningRangeResponse { return v.Range }).(RangePartitioningRangeResponseOutput)
-}
-
-type RangePartitioningResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RangePartitioningResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RangePartitioningResponse)(nil)).Elem()
-}
-
-func (o RangePartitioningResponsePtrOutput) ToRangePartitioningResponsePtrOutput() RangePartitioningResponsePtrOutput {
-	return o
-}
-
-func (o RangePartitioningResponsePtrOutput) ToRangePartitioningResponsePtrOutputWithContext(ctx context.Context) RangePartitioningResponsePtrOutput {
-	return o
-}
-
-func (o RangePartitioningResponsePtrOutput) Elem() RangePartitioningResponseOutput {
-	return o.ApplyT(func(v *RangePartitioningResponse) RangePartitioningResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RangePartitioningResponse
-		return ret
-	}).(RangePartitioningResponseOutput)
-}
-
-// [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
-func (o RangePartitioningResponsePtrOutput) Field() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RangePartitioningResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Field
-	}).(pulumi.StringPtrOutput)
-}
-
-// [TrustedTester] [Required] Defines the ranges for range partitioning.
-func (o RangePartitioningResponsePtrOutput) Range() RangePartitioningRangeResponsePtrOutput {
-	return o.ApplyT(func(v *RangePartitioningResponse) *RangePartitioningRangeResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Range
-	}).(RangePartitioningRangeResponsePtrOutput)
 }
 
 type RoutineReference struct {
@@ -19066,104 +11797,6 @@ type RoutineReferenceResponse struct {
 	RoutineId string `pulumi:"routineId"`
 }
 
-// RoutineReferenceResponseInput is an input type that accepts RoutineReferenceResponseArgs and RoutineReferenceResponseOutput values.
-// You can construct a concrete instance of `RoutineReferenceResponseInput` via:
-//
-//          RoutineReferenceResponseArgs{...}
-type RoutineReferenceResponseInput interface {
-	pulumi.Input
-
-	ToRoutineReferenceResponseOutput() RoutineReferenceResponseOutput
-	ToRoutineReferenceResponseOutputWithContext(context.Context) RoutineReferenceResponseOutput
-}
-
-type RoutineReferenceResponseArgs struct {
-	// [Required] The ID of the dataset containing this routine.
-	DatasetId pulumi.StringInput `pulumi:"datasetId"`
-	// [Required] The ID of the project containing this routine.
-	Project pulumi.StringInput `pulumi:"project"`
-	// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-	RoutineId pulumi.StringInput `pulumi:"routineId"`
-}
-
-func (RoutineReferenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutineReferenceResponse)(nil)).Elem()
-}
-
-func (i RoutineReferenceResponseArgs) ToRoutineReferenceResponseOutput() RoutineReferenceResponseOutput {
-	return i.ToRoutineReferenceResponseOutputWithContext(context.Background())
-}
-
-func (i RoutineReferenceResponseArgs) ToRoutineReferenceResponseOutputWithContext(ctx context.Context) RoutineReferenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutineReferenceResponseOutput)
-}
-
-func (i RoutineReferenceResponseArgs) ToRoutineReferenceResponsePtrOutput() RoutineReferenceResponsePtrOutput {
-	return i.ToRoutineReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RoutineReferenceResponseArgs) ToRoutineReferenceResponsePtrOutputWithContext(ctx context.Context) RoutineReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutineReferenceResponseOutput).ToRoutineReferenceResponsePtrOutputWithContext(ctx)
-}
-
-// RoutineReferenceResponsePtrInput is an input type that accepts RoutineReferenceResponseArgs, RoutineReferenceResponsePtr and RoutineReferenceResponsePtrOutput values.
-// You can construct a concrete instance of `RoutineReferenceResponsePtrInput` via:
-//
-//          RoutineReferenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RoutineReferenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToRoutineReferenceResponsePtrOutput() RoutineReferenceResponsePtrOutput
-	ToRoutineReferenceResponsePtrOutputWithContext(context.Context) RoutineReferenceResponsePtrOutput
-}
-
-type routineReferenceResponsePtrType RoutineReferenceResponseArgs
-
-func RoutineReferenceResponsePtr(v *RoutineReferenceResponseArgs) RoutineReferenceResponsePtrInput {
-	return (*routineReferenceResponsePtrType)(v)
-}
-
-func (*routineReferenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoutineReferenceResponse)(nil)).Elem()
-}
-
-func (i *routineReferenceResponsePtrType) ToRoutineReferenceResponsePtrOutput() RoutineReferenceResponsePtrOutput {
-	return i.ToRoutineReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *routineReferenceResponsePtrType) ToRoutineReferenceResponsePtrOutputWithContext(ctx context.Context) RoutineReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutineReferenceResponsePtrOutput)
-}
-
-// RoutineReferenceResponseArrayInput is an input type that accepts RoutineReferenceResponseArray and RoutineReferenceResponseArrayOutput values.
-// You can construct a concrete instance of `RoutineReferenceResponseArrayInput` via:
-//
-//          RoutineReferenceResponseArray{ RoutineReferenceResponseArgs{...} }
-type RoutineReferenceResponseArrayInput interface {
-	pulumi.Input
-
-	ToRoutineReferenceResponseArrayOutput() RoutineReferenceResponseArrayOutput
-	ToRoutineReferenceResponseArrayOutputWithContext(context.Context) RoutineReferenceResponseArrayOutput
-}
-
-type RoutineReferenceResponseArray []RoutineReferenceResponseInput
-
-func (RoutineReferenceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoutineReferenceResponse)(nil)).Elem()
-}
-
-func (i RoutineReferenceResponseArray) ToRoutineReferenceResponseArrayOutput() RoutineReferenceResponseArrayOutput {
-	return i.ToRoutineReferenceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i RoutineReferenceResponseArray) ToRoutineReferenceResponseArrayOutputWithContext(ctx context.Context) RoutineReferenceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutineReferenceResponseArrayOutput)
-}
-
 type RoutineReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (RoutineReferenceResponseOutput) ElementType() reflect.Type {
@@ -19176,16 +11809,6 @@ func (o RoutineReferenceResponseOutput) ToRoutineReferenceResponseOutput() Routi
 
 func (o RoutineReferenceResponseOutput) ToRoutineReferenceResponseOutputWithContext(ctx context.Context) RoutineReferenceResponseOutput {
 	return o
-}
-
-func (o RoutineReferenceResponseOutput) ToRoutineReferenceResponsePtrOutput() RoutineReferenceResponsePtrOutput {
-	return o.ToRoutineReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RoutineReferenceResponseOutput) ToRoutineReferenceResponsePtrOutputWithContext(ctx context.Context) RoutineReferenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutineReferenceResponse) *RoutineReferenceResponse {
-		return &v
-	}).(RoutineReferenceResponsePtrOutput)
 }
 
 // [Required] The ID of the dataset containing this routine.
@@ -19201,60 +11824,6 @@ func (o RoutineReferenceResponseOutput) Project() pulumi.StringOutput {
 // [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 func (o RoutineReferenceResponseOutput) RoutineId() pulumi.StringOutput {
 	return o.ApplyT(func(v RoutineReferenceResponse) string { return v.RoutineId }).(pulumi.StringOutput)
-}
-
-type RoutineReferenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RoutineReferenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoutineReferenceResponse)(nil)).Elem()
-}
-
-func (o RoutineReferenceResponsePtrOutput) ToRoutineReferenceResponsePtrOutput() RoutineReferenceResponsePtrOutput {
-	return o
-}
-
-func (o RoutineReferenceResponsePtrOutput) ToRoutineReferenceResponsePtrOutputWithContext(ctx context.Context) RoutineReferenceResponsePtrOutput {
-	return o
-}
-
-func (o RoutineReferenceResponsePtrOutput) Elem() RoutineReferenceResponseOutput {
-	return o.ApplyT(func(v *RoutineReferenceResponse) RoutineReferenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RoutineReferenceResponse
-		return ret
-	}).(RoutineReferenceResponseOutput)
-}
-
-// [Required] The ID of the dataset containing this routine.
-func (o RoutineReferenceResponsePtrOutput) DatasetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutineReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DatasetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the project containing this routine.
-func (o RoutineReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutineReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-func (o RoutineReferenceResponsePtrOutput) RoutineId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutineReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RoutineId
-	}).(pulumi.StringPtrOutput)
 }
 
 type RoutineReferenceResponseArrayOutput struct{ *pulumi.OutputState }
@@ -19288,81 +11857,6 @@ type RowAccessPolicyReferenceResponse struct {
 	TableId string `pulumi:"tableId"`
 }
 
-// RowAccessPolicyReferenceResponseInput is an input type that accepts RowAccessPolicyReferenceResponseArgs and RowAccessPolicyReferenceResponseOutput values.
-// You can construct a concrete instance of `RowAccessPolicyReferenceResponseInput` via:
-//
-//          RowAccessPolicyReferenceResponseArgs{...}
-type RowAccessPolicyReferenceResponseInput interface {
-	pulumi.Input
-
-	ToRowAccessPolicyReferenceResponseOutput() RowAccessPolicyReferenceResponseOutput
-	ToRowAccessPolicyReferenceResponseOutputWithContext(context.Context) RowAccessPolicyReferenceResponseOutput
-}
-
-type RowAccessPolicyReferenceResponseArgs struct {
-	// [Required] The ID of the dataset containing this row access policy.
-	DatasetId pulumi.StringInput `pulumi:"datasetId"`
-	// [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-	PolicyId pulumi.StringInput `pulumi:"policyId"`
-	// [Required] The ID of the project containing this row access policy.
-	Project pulumi.StringInput `pulumi:"project"`
-	// [Required] The ID of the table containing this row access policy.
-	TableId pulumi.StringInput `pulumi:"tableId"`
-}
-
-func (RowAccessPolicyReferenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RowAccessPolicyReferenceResponse)(nil)).Elem()
-}
-
-func (i RowAccessPolicyReferenceResponseArgs) ToRowAccessPolicyReferenceResponseOutput() RowAccessPolicyReferenceResponseOutput {
-	return i.ToRowAccessPolicyReferenceResponseOutputWithContext(context.Background())
-}
-
-func (i RowAccessPolicyReferenceResponseArgs) ToRowAccessPolicyReferenceResponseOutputWithContext(ctx context.Context) RowAccessPolicyReferenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RowAccessPolicyReferenceResponseOutput)
-}
-
-func (i RowAccessPolicyReferenceResponseArgs) ToRowAccessPolicyReferenceResponsePtrOutput() RowAccessPolicyReferenceResponsePtrOutput {
-	return i.ToRowAccessPolicyReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RowAccessPolicyReferenceResponseArgs) ToRowAccessPolicyReferenceResponsePtrOutputWithContext(ctx context.Context) RowAccessPolicyReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RowAccessPolicyReferenceResponseOutput).ToRowAccessPolicyReferenceResponsePtrOutputWithContext(ctx)
-}
-
-// RowAccessPolicyReferenceResponsePtrInput is an input type that accepts RowAccessPolicyReferenceResponseArgs, RowAccessPolicyReferenceResponsePtr and RowAccessPolicyReferenceResponsePtrOutput values.
-// You can construct a concrete instance of `RowAccessPolicyReferenceResponsePtrInput` via:
-//
-//          RowAccessPolicyReferenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RowAccessPolicyReferenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToRowAccessPolicyReferenceResponsePtrOutput() RowAccessPolicyReferenceResponsePtrOutput
-	ToRowAccessPolicyReferenceResponsePtrOutputWithContext(context.Context) RowAccessPolicyReferenceResponsePtrOutput
-}
-
-type rowAccessPolicyReferenceResponsePtrType RowAccessPolicyReferenceResponseArgs
-
-func RowAccessPolicyReferenceResponsePtr(v *RowAccessPolicyReferenceResponseArgs) RowAccessPolicyReferenceResponsePtrInput {
-	return (*rowAccessPolicyReferenceResponsePtrType)(v)
-}
-
-func (*rowAccessPolicyReferenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RowAccessPolicyReferenceResponse)(nil)).Elem()
-}
-
-func (i *rowAccessPolicyReferenceResponsePtrType) ToRowAccessPolicyReferenceResponsePtrOutput() RowAccessPolicyReferenceResponsePtrOutput {
-	return i.ToRowAccessPolicyReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *rowAccessPolicyReferenceResponsePtrType) ToRowAccessPolicyReferenceResponsePtrOutputWithContext(ctx context.Context) RowAccessPolicyReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RowAccessPolicyReferenceResponsePtrOutput)
-}
-
 type RowAccessPolicyReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (RowAccessPolicyReferenceResponseOutput) ElementType() reflect.Type {
@@ -19375,16 +11869,6 @@ func (o RowAccessPolicyReferenceResponseOutput) ToRowAccessPolicyReferenceRespon
 
 func (o RowAccessPolicyReferenceResponseOutput) ToRowAccessPolicyReferenceResponseOutputWithContext(ctx context.Context) RowAccessPolicyReferenceResponseOutput {
 	return o
-}
-
-func (o RowAccessPolicyReferenceResponseOutput) ToRowAccessPolicyReferenceResponsePtrOutput() RowAccessPolicyReferenceResponsePtrOutput {
-	return o.ToRowAccessPolicyReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RowAccessPolicyReferenceResponseOutput) ToRowAccessPolicyReferenceResponsePtrOutputWithContext(ctx context.Context) RowAccessPolicyReferenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RowAccessPolicyReferenceResponse) *RowAccessPolicyReferenceResponse {
-		return &v
-	}).(RowAccessPolicyReferenceResponsePtrOutput)
 }
 
 // [Required] The ID of the dataset containing this row access policy.
@@ -19407,142 +11891,9 @@ func (o RowAccessPolicyReferenceResponseOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v RowAccessPolicyReferenceResponse) string { return v.TableId }).(pulumi.StringOutput)
 }
 
-type RowAccessPolicyReferenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RowAccessPolicyReferenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RowAccessPolicyReferenceResponse)(nil)).Elem()
-}
-
-func (o RowAccessPolicyReferenceResponsePtrOutput) ToRowAccessPolicyReferenceResponsePtrOutput() RowAccessPolicyReferenceResponsePtrOutput {
-	return o
-}
-
-func (o RowAccessPolicyReferenceResponsePtrOutput) ToRowAccessPolicyReferenceResponsePtrOutputWithContext(ctx context.Context) RowAccessPolicyReferenceResponsePtrOutput {
-	return o
-}
-
-func (o RowAccessPolicyReferenceResponsePtrOutput) Elem() RowAccessPolicyReferenceResponseOutput {
-	return o.ApplyT(func(v *RowAccessPolicyReferenceResponse) RowAccessPolicyReferenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RowAccessPolicyReferenceResponse
-		return ret
-	}).(RowAccessPolicyReferenceResponseOutput)
-}
-
-// [Required] The ID of the dataset containing this row access policy.
-func (o RowAccessPolicyReferenceResponsePtrOutput) DatasetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RowAccessPolicyReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DatasetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-func (o RowAccessPolicyReferenceResponsePtrOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RowAccessPolicyReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PolicyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the project containing this row access policy.
-func (o RowAccessPolicyReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RowAccessPolicyReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the table containing this row access policy.
-func (o RowAccessPolicyReferenceResponsePtrOutput) TableId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RowAccessPolicyReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TableId
-	}).(pulumi.StringPtrOutput)
-}
-
 type RowLevelSecurityStatisticsResponse struct {
 	// [Preview] Whether any accessed data was protected by row access policies.
 	RowLevelSecurityApplied bool `pulumi:"rowLevelSecurityApplied"`
-}
-
-// RowLevelSecurityStatisticsResponseInput is an input type that accepts RowLevelSecurityStatisticsResponseArgs and RowLevelSecurityStatisticsResponseOutput values.
-// You can construct a concrete instance of `RowLevelSecurityStatisticsResponseInput` via:
-//
-//          RowLevelSecurityStatisticsResponseArgs{...}
-type RowLevelSecurityStatisticsResponseInput interface {
-	pulumi.Input
-
-	ToRowLevelSecurityStatisticsResponseOutput() RowLevelSecurityStatisticsResponseOutput
-	ToRowLevelSecurityStatisticsResponseOutputWithContext(context.Context) RowLevelSecurityStatisticsResponseOutput
-}
-
-type RowLevelSecurityStatisticsResponseArgs struct {
-	// [Preview] Whether any accessed data was protected by row access policies.
-	RowLevelSecurityApplied pulumi.BoolInput `pulumi:"rowLevelSecurityApplied"`
-}
-
-func (RowLevelSecurityStatisticsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RowLevelSecurityStatisticsResponse)(nil)).Elem()
-}
-
-func (i RowLevelSecurityStatisticsResponseArgs) ToRowLevelSecurityStatisticsResponseOutput() RowLevelSecurityStatisticsResponseOutput {
-	return i.ToRowLevelSecurityStatisticsResponseOutputWithContext(context.Background())
-}
-
-func (i RowLevelSecurityStatisticsResponseArgs) ToRowLevelSecurityStatisticsResponseOutputWithContext(ctx context.Context) RowLevelSecurityStatisticsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RowLevelSecurityStatisticsResponseOutput)
-}
-
-func (i RowLevelSecurityStatisticsResponseArgs) ToRowLevelSecurityStatisticsResponsePtrOutput() RowLevelSecurityStatisticsResponsePtrOutput {
-	return i.ToRowLevelSecurityStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RowLevelSecurityStatisticsResponseArgs) ToRowLevelSecurityStatisticsResponsePtrOutputWithContext(ctx context.Context) RowLevelSecurityStatisticsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RowLevelSecurityStatisticsResponseOutput).ToRowLevelSecurityStatisticsResponsePtrOutputWithContext(ctx)
-}
-
-// RowLevelSecurityStatisticsResponsePtrInput is an input type that accepts RowLevelSecurityStatisticsResponseArgs, RowLevelSecurityStatisticsResponsePtr and RowLevelSecurityStatisticsResponsePtrOutput values.
-// You can construct a concrete instance of `RowLevelSecurityStatisticsResponsePtrInput` via:
-//
-//          RowLevelSecurityStatisticsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RowLevelSecurityStatisticsResponsePtrInput interface {
-	pulumi.Input
-
-	ToRowLevelSecurityStatisticsResponsePtrOutput() RowLevelSecurityStatisticsResponsePtrOutput
-	ToRowLevelSecurityStatisticsResponsePtrOutputWithContext(context.Context) RowLevelSecurityStatisticsResponsePtrOutput
-}
-
-type rowLevelSecurityStatisticsResponsePtrType RowLevelSecurityStatisticsResponseArgs
-
-func RowLevelSecurityStatisticsResponsePtr(v *RowLevelSecurityStatisticsResponseArgs) RowLevelSecurityStatisticsResponsePtrInput {
-	return (*rowLevelSecurityStatisticsResponsePtrType)(v)
-}
-
-func (*rowLevelSecurityStatisticsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RowLevelSecurityStatisticsResponse)(nil)).Elem()
-}
-
-func (i *rowLevelSecurityStatisticsResponsePtrType) ToRowLevelSecurityStatisticsResponsePtrOutput() RowLevelSecurityStatisticsResponsePtrOutput {
-	return i.ToRowLevelSecurityStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *rowLevelSecurityStatisticsResponsePtrType) ToRowLevelSecurityStatisticsResponsePtrOutputWithContext(ctx context.Context) RowLevelSecurityStatisticsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RowLevelSecurityStatisticsResponsePtrOutput)
 }
 
 type RowLevelSecurityStatisticsResponseOutput struct{ *pulumi.OutputState }
@@ -19559,53 +11910,9 @@ func (o RowLevelSecurityStatisticsResponseOutput) ToRowLevelSecurityStatisticsRe
 	return o
 }
 
-func (o RowLevelSecurityStatisticsResponseOutput) ToRowLevelSecurityStatisticsResponsePtrOutput() RowLevelSecurityStatisticsResponsePtrOutput {
-	return o.ToRowLevelSecurityStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RowLevelSecurityStatisticsResponseOutput) ToRowLevelSecurityStatisticsResponsePtrOutputWithContext(ctx context.Context) RowLevelSecurityStatisticsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RowLevelSecurityStatisticsResponse) *RowLevelSecurityStatisticsResponse {
-		return &v
-	}).(RowLevelSecurityStatisticsResponsePtrOutput)
-}
-
 // [Preview] Whether any accessed data was protected by row access policies.
 func (o RowLevelSecurityStatisticsResponseOutput) RowLevelSecurityApplied() pulumi.BoolOutput {
 	return o.ApplyT(func(v RowLevelSecurityStatisticsResponse) bool { return v.RowLevelSecurityApplied }).(pulumi.BoolOutput)
-}
-
-type RowLevelSecurityStatisticsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RowLevelSecurityStatisticsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RowLevelSecurityStatisticsResponse)(nil)).Elem()
-}
-
-func (o RowLevelSecurityStatisticsResponsePtrOutput) ToRowLevelSecurityStatisticsResponsePtrOutput() RowLevelSecurityStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o RowLevelSecurityStatisticsResponsePtrOutput) ToRowLevelSecurityStatisticsResponsePtrOutputWithContext(ctx context.Context) RowLevelSecurityStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o RowLevelSecurityStatisticsResponsePtrOutput) Elem() RowLevelSecurityStatisticsResponseOutput {
-	return o.ApplyT(func(v *RowLevelSecurityStatisticsResponse) RowLevelSecurityStatisticsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RowLevelSecurityStatisticsResponse
-		return ret
-	}).(RowLevelSecurityStatisticsResponseOutput)
-}
-
-// [Preview] Whether any accessed data was protected by row access policies.
-func (o RowLevelSecurityStatisticsResponsePtrOutput) RowLevelSecurityApplied() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RowLevelSecurityStatisticsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.RowLevelSecurityApplied
-	}).(pulumi.BoolPtrOutput)
 }
 
 type ScriptStackFrameResponse struct {
@@ -19621,69 +11928,6 @@ type ScriptStackFrameResponse struct {
 	StartLine int `pulumi:"startLine"`
 	// Text of the current statement/expression.
 	Text string `pulumi:"text"`
-}
-
-// ScriptStackFrameResponseInput is an input type that accepts ScriptStackFrameResponseArgs and ScriptStackFrameResponseOutput values.
-// You can construct a concrete instance of `ScriptStackFrameResponseInput` via:
-//
-//          ScriptStackFrameResponseArgs{...}
-type ScriptStackFrameResponseInput interface {
-	pulumi.Input
-
-	ToScriptStackFrameResponseOutput() ScriptStackFrameResponseOutput
-	ToScriptStackFrameResponseOutputWithContext(context.Context) ScriptStackFrameResponseOutput
-}
-
-type ScriptStackFrameResponseArgs struct {
-	// One-based end column.
-	EndColumn pulumi.IntInput `pulumi:"endColumn"`
-	// One-based end line.
-	EndLine pulumi.IntInput `pulumi:"endLine"`
-	// Name of the active procedure, empty if in a top-level script.
-	ProcedureId pulumi.StringInput `pulumi:"procedureId"`
-	// One-based start column.
-	StartColumn pulumi.IntInput `pulumi:"startColumn"`
-	// One-based start line.
-	StartLine pulumi.IntInput `pulumi:"startLine"`
-	// Text of the current statement/expression.
-	Text pulumi.StringInput `pulumi:"text"`
-}
-
-func (ScriptStackFrameResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptStackFrameResponse)(nil)).Elem()
-}
-
-func (i ScriptStackFrameResponseArgs) ToScriptStackFrameResponseOutput() ScriptStackFrameResponseOutput {
-	return i.ToScriptStackFrameResponseOutputWithContext(context.Background())
-}
-
-func (i ScriptStackFrameResponseArgs) ToScriptStackFrameResponseOutputWithContext(ctx context.Context) ScriptStackFrameResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptStackFrameResponseOutput)
-}
-
-// ScriptStackFrameResponseArrayInput is an input type that accepts ScriptStackFrameResponseArray and ScriptStackFrameResponseArrayOutput values.
-// You can construct a concrete instance of `ScriptStackFrameResponseArrayInput` via:
-//
-//          ScriptStackFrameResponseArray{ ScriptStackFrameResponseArgs{...} }
-type ScriptStackFrameResponseArrayInput interface {
-	pulumi.Input
-
-	ToScriptStackFrameResponseArrayOutput() ScriptStackFrameResponseArrayOutput
-	ToScriptStackFrameResponseArrayOutputWithContext(context.Context) ScriptStackFrameResponseArrayOutput
-}
-
-type ScriptStackFrameResponseArray []ScriptStackFrameResponseInput
-
-func (ScriptStackFrameResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScriptStackFrameResponse)(nil)).Elem()
-}
-
-func (i ScriptStackFrameResponseArray) ToScriptStackFrameResponseArrayOutput() ScriptStackFrameResponseArrayOutput {
-	return i.ToScriptStackFrameResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ScriptStackFrameResponseArray) ToScriptStackFrameResponseArrayOutputWithContext(ctx context.Context) ScriptStackFrameResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptStackFrameResponseArrayOutput)
 }
 
 type ScriptStackFrameResponseOutput struct{ *pulumi.OutputState }
@@ -19757,77 +12001,6 @@ type ScriptStatisticsResponse struct {
 	StackFrames []ScriptStackFrameResponse `pulumi:"stackFrames"`
 }
 
-// ScriptStatisticsResponseInput is an input type that accepts ScriptStatisticsResponseArgs and ScriptStatisticsResponseOutput values.
-// You can construct a concrete instance of `ScriptStatisticsResponseInput` via:
-//
-//          ScriptStatisticsResponseArgs{...}
-type ScriptStatisticsResponseInput interface {
-	pulumi.Input
-
-	ToScriptStatisticsResponseOutput() ScriptStatisticsResponseOutput
-	ToScriptStatisticsResponseOutputWithContext(context.Context) ScriptStatisticsResponseOutput
-}
-
-type ScriptStatisticsResponseArgs struct {
-	// Whether this child job was a statement or expression.
-	EvaluationKind pulumi.StringInput `pulumi:"evaluationKind"`
-	// Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.
-	StackFrames ScriptStackFrameResponseArrayInput `pulumi:"stackFrames"`
-}
-
-func (ScriptStatisticsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptStatisticsResponse)(nil)).Elem()
-}
-
-func (i ScriptStatisticsResponseArgs) ToScriptStatisticsResponseOutput() ScriptStatisticsResponseOutput {
-	return i.ToScriptStatisticsResponseOutputWithContext(context.Background())
-}
-
-func (i ScriptStatisticsResponseArgs) ToScriptStatisticsResponseOutputWithContext(ctx context.Context) ScriptStatisticsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptStatisticsResponseOutput)
-}
-
-func (i ScriptStatisticsResponseArgs) ToScriptStatisticsResponsePtrOutput() ScriptStatisticsResponsePtrOutput {
-	return i.ToScriptStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ScriptStatisticsResponseArgs) ToScriptStatisticsResponsePtrOutputWithContext(ctx context.Context) ScriptStatisticsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptStatisticsResponseOutput).ToScriptStatisticsResponsePtrOutputWithContext(ctx)
-}
-
-// ScriptStatisticsResponsePtrInput is an input type that accepts ScriptStatisticsResponseArgs, ScriptStatisticsResponsePtr and ScriptStatisticsResponsePtrOutput values.
-// You can construct a concrete instance of `ScriptStatisticsResponsePtrInput` via:
-//
-//          ScriptStatisticsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ScriptStatisticsResponsePtrInput interface {
-	pulumi.Input
-
-	ToScriptStatisticsResponsePtrOutput() ScriptStatisticsResponsePtrOutput
-	ToScriptStatisticsResponsePtrOutputWithContext(context.Context) ScriptStatisticsResponsePtrOutput
-}
-
-type scriptStatisticsResponsePtrType ScriptStatisticsResponseArgs
-
-func ScriptStatisticsResponsePtr(v *ScriptStatisticsResponseArgs) ScriptStatisticsResponsePtrInput {
-	return (*scriptStatisticsResponsePtrType)(v)
-}
-
-func (*scriptStatisticsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScriptStatisticsResponse)(nil)).Elem()
-}
-
-func (i *scriptStatisticsResponsePtrType) ToScriptStatisticsResponsePtrOutput() ScriptStatisticsResponsePtrOutput {
-	return i.ToScriptStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *scriptStatisticsResponsePtrType) ToScriptStatisticsResponsePtrOutputWithContext(ctx context.Context) ScriptStatisticsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptStatisticsResponsePtrOutput)
-}
-
 type ScriptStatisticsResponseOutput struct{ *pulumi.OutputState }
 
 func (ScriptStatisticsResponseOutput) ElementType() reflect.Type {
@@ -19842,16 +12015,6 @@ func (o ScriptStatisticsResponseOutput) ToScriptStatisticsResponseOutputWithCont
 	return o
 }
 
-func (o ScriptStatisticsResponseOutput) ToScriptStatisticsResponsePtrOutput() ScriptStatisticsResponsePtrOutput {
-	return o.ToScriptStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ScriptStatisticsResponseOutput) ToScriptStatisticsResponsePtrOutputWithContext(ctx context.Context) ScriptStatisticsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScriptStatisticsResponse) *ScriptStatisticsResponse {
-		return &v
-	}).(ScriptStatisticsResponsePtrOutput)
-}
-
 // Whether this child job was a statement or expression.
 func (o ScriptStatisticsResponseOutput) EvaluationKind() pulumi.StringOutput {
 	return o.ApplyT(func(v ScriptStatisticsResponse) string { return v.EvaluationKind }).(pulumi.StringOutput)
@@ -19862,122 +12025,9 @@ func (o ScriptStatisticsResponseOutput) StackFrames() ScriptStackFrameResponseAr
 	return o.ApplyT(func(v ScriptStatisticsResponse) []ScriptStackFrameResponse { return v.StackFrames }).(ScriptStackFrameResponseArrayOutput)
 }
 
-type ScriptStatisticsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ScriptStatisticsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScriptStatisticsResponse)(nil)).Elem()
-}
-
-func (o ScriptStatisticsResponsePtrOutput) ToScriptStatisticsResponsePtrOutput() ScriptStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o ScriptStatisticsResponsePtrOutput) ToScriptStatisticsResponsePtrOutputWithContext(ctx context.Context) ScriptStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o ScriptStatisticsResponsePtrOutput) Elem() ScriptStatisticsResponseOutput {
-	return o.ApplyT(func(v *ScriptStatisticsResponse) ScriptStatisticsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ScriptStatisticsResponse
-		return ret
-	}).(ScriptStatisticsResponseOutput)
-}
-
-// Whether this child job was a statement or expression.
-func (o ScriptStatisticsResponsePtrOutput) EvaluationKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScriptStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EvaluationKind
-	}).(pulumi.StringPtrOutput)
-}
-
-// Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.
-func (o ScriptStatisticsResponsePtrOutput) StackFrames() ScriptStackFrameResponseArrayOutput {
-	return o.ApplyT(func(v *ScriptStatisticsResponse) []ScriptStackFrameResponse {
-		if v == nil {
-			return nil
-		}
-		return v.StackFrames
-	}).(ScriptStackFrameResponseArrayOutput)
-}
-
 type SessionInfoResponse struct {
 	// // [Preview] Id of the session.
 	SessionId string `pulumi:"sessionId"`
-}
-
-// SessionInfoResponseInput is an input type that accepts SessionInfoResponseArgs and SessionInfoResponseOutput values.
-// You can construct a concrete instance of `SessionInfoResponseInput` via:
-//
-//          SessionInfoResponseArgs{...}
-type SessionInfoResponseInput interface {
-	pulumi.Input
-
-	ToSessionInfoResponseOutput() SessionInfoResponseOutput
-	ToSessionInfoResponseOutputWithContext(context.Context) SessionInfoResponseOutput
-}
-
-type SessionInfoResponseArgs struct {
-	// // [Preview] Id of the session.
-	SessionId pulumi.StringInput `pulumi:"sessionId"`
-}
-
-func (SessionInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SessionInfoResponse)(nil)).Elem()
-}
-
-func (i SessionInfoResponseArgs) ToSessionInfoResponseOutput() SessionInfoResponseOutput {
-	return i.ToSessionInfoResponseOutputWithContext(context.Background())
-}
-
-func (i SessionInfoResponseArgs) ToSessionInfoResponseOutputWithContext(ctx context.Context) SessionInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SessionInfoResponseOutput)
-}
-
-func (i SessionInfoResponseArgs) ToSessionInfoResponsePtrOutput() SessionInfoResponsePtrOutput {
-	return i.ToSessionInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SessionInfoResponseArgs) ToSessionInfoResponsePtrOutputWithContext(ctx context.Context) SessionInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SessionInfoResponseOutput).ToSessionInfoResponsePtrOutputWithContext(ctx)
-}
-
-// SessionInfoResponsePtrInput is an input type that accepts SessionInfoResponseArgs, SessionInfoResponsePtr and SessionInfoResponsePtrOutput values.
-// You can construct a concrete instance of `SessionInfoResponsePtrInput` via:
-//
-//          SessionInfoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SessionInfoResponsePtrInput interface {
-	pulumi.Input
-
-	ToSessionInfoResponsePtrOutput() SessionInfoResponsePtrOutput
-	ToSessionInfoResponsePtrOutputWithContext(context.Context) SessionInfoResponsePtrOutput
-}
-
-type sessionInfoResponsePtrType SessionInfoResponseArgs
-
-func SessionInfoResponsePtr(v *SessionInfoResponseArgs) SessionInfoResponsePtrInput {
-	return (*sessionInfoResponsePtrType)(v)
-}
-
-func (*sessionInfoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SessionInfoResponse)(nil)).Elem()
-}
-
-func (i *sessionInfoResponsePtrType) ToSessionInfoResponsePtrOutput() SessionInfoResponsePtrOutput {
-	return i.ToSessionInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *sessionInfoResponsePtrType) ToSessionInfoResponsePtrOutputWithContext(ctx context.Context) SessionInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SessionInfoResponsePtrOutput)
 }
 
 type SessionInfoResponseOutput struct{ *pulumi.OutputState }
@@ -19994,53 +12044,9 @@ func (o SessionInfoResponseOutput) ToSessionInfoResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SessionInfoResponseOutput) ToSessionInfoResponsePtrOutput() SessionInfoResponsePtrOutput {
-	return o.ToSessionInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SessionInfoResponseOutput) ToSessionInfoResponsePtrOutputWithContext(ctx context.Context) SessionInfoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionInfoResponse) *SessionInfoResponse {
-		return &v
-	}).(SessionInfoResponsePtrOutput)
-}
-
 // // [Preview] Id of the session.
 func (o SessionInfoResponseOutput) SessionId() pulumi.StringOutput {
 	return o.ApplyT(func(v SessionInfoResponse) string { return v.SessionId }).(pulumi.StringOutput)
-}
-
-type SessionInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SessionInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SessionInfoResponse)(nil)).Elem()
-}
-
-func (o SessionInfoResponsePtrOutput) ToSessionInfoResponsePtrOutput() SessionInfoResponsePtrOutput {
-	return o
-}
-
-func (o SessionInfoResponsePtrOutput) ToSessionInfoResponsePtrOutputWithContext(ctx context.Context) SessionInfoResponsePtrOutput {
-	return o
-}
-
-func (o SessionInfoResponsePtrOutput) Elem() SessionInfoResponseOutput {
-	return o.ApplyT(func(v *SessionInfoResponse) SessionInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SessionInfoResponse
-		return ret
-	}).(SessionInfoResponseOutput)
-}
-
-// // [Preview] Id of the session.
-func (o SessionInfoResponsePtrOutput) SessionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SessionInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SessionId
-	}).(pulumi.StringPtrOutput)
 }
 
 type SnapshotDefinitionResponse struct {
@@ -20048,77 +12054,6 @@ type SnapshotDefinitionResponse struct {
 	BaseTableReference TableReferenceResponse `pulumi:"baseTableReference"`
 	// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
 	SnapshotTime string `pulumi:"snapshotTime"`
-}
-
-// SnapshotDefinitionResponseInput is an input type that accepts SnapshotDefinitionResponseArgs and SnapshotDefinitionResponseOutput values.
-// You can construct a concrete instance of `SnapshotDefinitionResponseInput` via:
-//
-//          SnapshotDefinitionResponseArgs{...}
-type SnapshotDefinitionResponseInput interface {
-	pulumi.Input
-
-	ToSnapshotDefinitionResponseOutput() SnapshotDefinitionResponseOutput
-	ToSnapshotDefinitionResponseOutputWithContext(context.Context) SnapshotDefinitionResponseOutput
-}
-
-type SnapshotDefinitionResponseArgs struct {
-	// [Required] Reference describing the ID of the table that was snapshot.
-	BaseTableReference TableReferenceResponseInput `pulumi:"baseTableReference"`
-	// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
-	SnapshotTime pulumi.StringInput `pulumi:"snapshotTime"`
-}
-
-func (SnapshotDefinitionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotDefinitionResponse)(nil)).Elem()
-}
-
-func (i SnapshotDefinitionResponseArgs) ToSnapshotDefinitionResponseOutput() SnapshotDefinitionResponseOutput {
-	return i.ToSnapshotDefinitionResponseOutputWithContext(context.Background())
-}
-
-func (i SnapshotDefinitionResponseArgs) ToSnapshotDefinitionResponseOutputWithContext(ctx context.Context) SnapshotDefinitionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotDefinitionResponseOutput)
-}
-
-func (i SnapshotDefinitionResponseArgs) ToSnapshotDefinitionResponsePtrOutput() SnapshotDefinitionResponsePtrOutput {
-	return i.ToSnapshotDefinitionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SnapshotDefinitionResponseArgs) ToSnapshotDefinitionResponsePtrOutputWithContext(ctx context.Context) SnapshotDefinitionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotDefinitionResponseOutput).ToSnapshotDefinitionResponsePtrOutputWithContext(ctx)
-}
-
-// SnapshotDefinitionResponsePtrInput is an input type that accepts SnapshotDefinitionResponseArgs, SnapshotDefinitionResponsePtr and SnapshotDefinitionResponsePtrOutput values.
-// You can construct a concrete instance of `SnapshotDefinitionResponsePtrInput` via:
-//
-//          SnapshotDefinitionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SnapshotDefinitionResponsePtrInput interface {
-	pulumi.Input
-
-	ToSnapshotDefinitionResponsePtrOutput() SnapshotDefinitionResponsePtrOutput
-	ToSnapshotDefinitionResponsePtrOutputWithContext(context.Context) SnapshotDefinitionResponsePtrOutput
-}
-
-type snapshotDefinitionResponsePtrType SnapshotDefinitionResponseArgs
-
-func SnapshotDefinitionResponsePtr(v *SnapshotDefinitionResponseArgs) SnapshotDefinitionResponsePtrInput {
-	return (*snapshotDefinitionResponsePtrType)(v)
-}
-
-func (*snapshotDefinitionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SnapshotDefinitionResponse)(nil)).Elem()
-}
-
-func (i *snapshotDefinitionResponsePtrType) ToSnapshotDefinitionResponsePtrOutput() SnapshotDefinitionResponsePtrOutput {
-	return i.ToSnapshotDefinitionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *snapshotDefinitionResponsePtrType) ToSnapshotDefinitionResponsePtrOutputWithContext(ctx context.Context) SnapshotDefinitionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotDefinitionResponsePtrOutput)
 }
 
 type SnapshotDefinitionResponseOutput struct{ *pulumi.OutputState }
@@ -20135,16 +12070,6 @@ func (o SnapshotDefinitionResponseOutput) ToSnapshotDefinitionResponseOutputWith
 	return o
 }
 
-func (o SnapshotDefinitionResponseOutput) ToSnapshotDefinitionResponsePtrOutput() SnapshotDefinitionResponsePtrOutput {
-	return o.ToSnapshotDefinitionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SnapshotDefinitionResponseOutput) ToSnapshotDefinitionResponsePtrOutputWithContext(ctx context.Context) SnapshotDefinitionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotDefinitionResponse) *SnapshotDefinitionResponse {
-		return &v
-	}).(SnapshotDefinitionResponsePtrOutput)
-}
-
 // [Required] Reference describing the ID of the table that was snapshot.
 func (o SnapshotDefinitionResponseOutput) BaseTableReference() TableReferenceResponseOutput {
 	return o.ApplyT(func(v SnapshotDefinitionResponse) TableReferenceResponse { return v.BaseTableReference }).(TableReferenceResponseOutput)
@@ -20153,50 +12078,6 @@ func (o SnapshotDefinitionResponseOutput) BaseTableReference() TableReferenceRes
 // [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
 func (o SnapshotDefinitionResponseOutput) SnapshotTime() pulumi.StringOutput {
 	return o.ApplyT(func(v SnapshotDefinitionResponse) string { return v.SnapshotTime }).(pulumi.StringOutput)
-}
-
-type SnapshotDefinitionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SnapshotDefinitionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SnapshotDefinitionResponse)(nil)).Elem()
-}
-
-func (o SnapshotDefinitionResponsePtrOutput) ToSnapshotDefinitionResponsePtrOutput() SnapshotDefinitionResponsePtrOutput {
-	return o
-}
-
-func (o SnapshotDefinitionResponsePtrOutput) ToSnapshotDefinitionResponsePtrOutputWithContext(ctx context.Context) SnapshotDefinitionResponsePtrOutput {
-	return o
-}
-
-func (o SnapshotDefinitionResponsePtrOutput) Elem() SnapshotDefinitionResponseOutput {
-	return o.ApplyT(func(v *SnapshotDefinitionResponse) SnapshotDefinitionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SnapshotDefinitionResponse
-		return ret
-	}).(SnapshotDefinitionResponseOutput)
-}
-
-// [Required] Reference describing the ID of the table that was snapshot.
-func (o SnapshotDefinitionResponsePtrOutput) BaseTableReference() TableReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *SnapshotDefinitionResponse) *TableReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BaseTableReference
-	}).(TableReferenceResponsePtrOutput)
-}
-
-// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
-func (o SnapshotDefinitionResponsePtrOutput) SnapshotTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SnapshotDefinitionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SnapshotTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
@@ -20387,80 +12268,6 @@ type StandardSqlDataTypeResponse struct {
 	TypeKind string `pulumi:"typeKind"`
 }
 
-// StandardSqlDataTypeResponseInput is an input type that accepts StandardSqlDataTypeResponseArgs and StandardSqlDataTypeResponseOutput values.
-// You can construct a concrete instance of `StandardSqlDataTypeResponseInput` via:
-//
-//          StandardSqlDataTypeResponseArgs{...}
-type StandardSqlDataTypeResponseInput interface {
-	pulumi.Input
-
-	ToStandardSqlDataTypeResponseOutput() StandardSqlDataTypeResponseOutput
-	ToStandardSqlDataTypeResponseOutputWithContext(context.Context) StandardSqlDataTypeResponseOutput
-}
-
-// The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
-type StandardSqlDataTypeResponseArgs struct {
-	// The type of the array's elements, if type_kind = "ARRAY".
-	ArrayElementType StandardSqlDataTypeResponsePtrInput `pulumi:"arrayElementType"`
-	// The fields of this struct, in order, if type_kind = "STRUCT".
-	StructType StandardSqlStructTypeResponseInput `pulumi:"structType"`
-	// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
-	TypeKind pulumi.StringInput `pulumi:"typeKind"`
-}
-
-func (StandardSqlDataTypeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StandardSqlDataTypeResponse)(nil)).Elem()
-}
-
-func (i StandardSqlDataTypeResponseArgs) ToStandardSqlDataTypeResponseOutput() StandardSqlDataTypeResponseOutput {
-	return i.ToStandardSqlDataTypeResponseOutputWithContext(context.Background())
-}
-
-func (i StandardSqlDataTypeResponseArgs) ToStandardSqlDataTypeResponseOutputWithContext(ctx context.Context) StandardSqlDataTypeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardSqlDataTypeResponseOutput)
-}
-
-func (i StandardSqlDataTypeResponseArgs) ToStandardSqlDataTypeResponsePtrOutput() StandardSqlDataTypeResponsePtrOutput {
-	return i.ToStandardSqlDataTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StandardSqlDataTypeResponseArgs) ToStandardSqlDataTypeResponsePtrOutputWithContext(ctx context.Context) StandardSqlDataTypeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardSqlDataTypeResponseOutput).ToStandardSqlDataTypeResponsePtrOutputWithContext(ctx)
-}
-
-// StandardSqlDataTypeResponsePtrInput is an input type that accepts StandardSqlDataTypeResponseArgs, StandardSqlDataTypeResponsePtr and StandardSqlDataTypeResponsePtrOutput values.
-// You can construct a concrete instance of `StandardSqlDataTypeResponsePtrInput` via:
-//
-//          StandardSqlDataTypeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StandardSqlDataTypeResponsePtrInput interface {
-	pulumi.Input
-
-	ToStandardSqlDataTypeResponsePtrOutput() StandardSqlDataTypeResponsePtrOutput
-	ToStandardSqlDataTypeResponsePtrOutputWithContext(context.Context) StandardSqlDataTypeResponsePtrOutput
-}
-
-type standardSqlDataTypeResponsePtrType StandardSqlDataTypeResponseArgs
-
-func StandardSqlDataTypeResponsePtr(v *StandardSqlDataTypeResponseArgs) StandardSqlDataTypeResponsePtrInput {
-	return (*standardSqlDataTypeResponsePtrType)(v)
-}
-
-func (*standardSqlDataTypeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StandardSqlDataTypeResponse)(nil)).Elem()
-}
-
-func (i *standardSqlDataTypeResponsePtrType) ToStandardSqlDataTypeResponsePtrOutput() StandardSqlDataTypeResponsePtrOutput {
-	return i.ToStandardSqlDataTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *standardSqlDataTypeResponsePtrType) ToStandardSqlDataTypeResponsePtrOutputWithContext(ctx context.Context) StandardSqlDataTypeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardSqlDataTypeResponsePtrOutput)
-}
-
 // The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
 type StandardSqlDataTypeResponseOutput struct{ *pulumi.OutputState }
 
@@ -20474,16 +12281,6 @@ func (o StandardSqlDataTypeResponseOutput) ToStandardSqlDataTypeResponseOutput()
 
 func (o StandardSqlDataTypeResponseOutput) ToStandardSqlDataTypeResponseOutputWithContext(ctx context.Context) StandardSqlDataTypeResponseOutput {
 	return o
-}
-
-func (o StandardSqlDataTypeResponseOutput) ToStandardSqlDataTypeResponsePtrOutput() StandardSqlDataTypeResponsePtrOutput {
-	return o.ToStandardSqlDataTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StandardSqlDataTypeResponseOutput) ToStandardSqlDataTypeResponsePtrOutputWithContext(ctx context.Context) StandardSqlDataTypeResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardSqlDataTypeResponse) *StandardSqlDataTypeResponse {
-		return &v
-	}).(StandardSqlDataTypeResponsePtrOutput)
 }
 
 // The type of the array's elements, if type_kind = "ARRAY".
@@ -20672,62 +12469,6 @@ type StandardSqlFieldResponse struct {
 	Type StandardSqlDataTypeResponse `pulumi:"type"`
 }
 
-// StandardSqlFieldResponseInput is an input type that accepts StandardSqlFieldResponseArgs and StandardSqlFieldResponseOutput values.
-// You can construct a concrete instance of `StandardSqlFieldResponseInput` via:
-//
-//          StandardSqlFieldResponseArgs{...}
-type StandardSqlFieldResponseInput interface {
-	pulumi.Input
-
-	ToStandardSqlFieldResponseOutput() StandardSqlFieldResponseOutput
-	ToStandardSqlFieldResponseOutputWithContext(context.Context) StandardSqlFieldResponseOutput
-}
-
-// A field or a column.
-type StandardSqlFieldResponseArgs struct {
-	// Optional. The name of this field. Can be absent for struct fields.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Optional. The type of this parameter. Absent if not explicitly specified (e.g., CREATE FUNCTION statement can omit the return type; in this case the output parameter does not have this "type" field).
-	Type StandardSqlDataTypeResponseInput `pulumi:"type"`
-}
-
-func (StandardSqlFieldResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StandardSqlFieldResponse)(nil)).Elem()
-}
-
-func (i StandardSqlFieldResponseArgs) ToStandardSqlFieldResponseOutput() StandardSqlFieldResponseOutput {
-	return i.ToStandardSqlFieldResponseOutputWithContext(context.Background())
-}
-
-func (i StandardSqlFieldResponseArgs) ToStandardSqlFieldResponseOutputWithContext(ctx context.Context) StandardSqlFieldResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardSqlFieldResponseOutput)
-}
-
-// StandardSqlFieldResponseArrayInput is an input type that accepts StandardSqlFieldResponseArray and StandardSqlFieldResponseArrayOutput values.
-// You can construct a concrete instance of `StandardSqlFieldResponseArrayInput` via:
-//
-//          StandardSqlFieldResponseArray{ StandardSqlFieldResponseArgs{...} }
-type StandardSqlFieldResponseArrayInput interface {
-	pulumi.Input
-
-	ToStandardSqlFieldResponseArrayOutput() StandardSqlFieldResponseArrayOutput
-	ToStandardSqlFieldResponseArrayOutputWithContext(context.Context) StandardSqlFieldResponseArrayOutput
-}
-
-type StandardSqlFieldResponseArray []StandardSqlFieldResponseInput
-
-func (StandardSqlFieldResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StandardSqlFieldResponse)(nil)).Elem()
-}
-
-func (i StandardSqlFieldResponseArray) ToStandardSqlFieldResponseArrayOutput() StandardSqlFieldResponseArrayOutput {
-	return i.ToStandardSqlFieldResponseArrayOutputWithContext(context.Background())
-}
-
-func (i StandardSqlFieldResponseArray) ToStandardSqlFieldResponseArrayOutputWithContext(ctx context.Context) StandardSqlFieldResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardSqlFieldResponseArrayOutput)
-}
-
 // A field or a column.
 type StandardSqlFieldResponseOutput struct{ *pulumi.OutputState }
 
@@ -20910,74 +12651,6 @@ type StandardSqlStructTypeResponse struct {
 	Fields []StandardSqlFieldResponse `pulumi:"fields"`
 }
 
-// StandardSqlStructTypeResponseInput is an input type that accepts StandardSqlStructTypeResponseArgs and StandardSqlStructTypeResponseOutput values.
-// You can construct a concrete instance of `StandardSqlStructTypeResponseInput` via:
-//
-//          StandardSqlStructTypeResponseArgs{...}
-type StandardSqlStructTypeResponseInput interface {
-	pulumi.Input
-
-	ToStandardSqlStructTypeResponseOutput() StandardSqlStructTypeResponseOutput
-	ToStandardSqlStructTypeResponseOutputWithContext(context.Context) StandardSqlStructTypeResponseOutput
-}
-
-type StandardSqlStructTypeResponseArgs struct {
-	Fields StandardSqlFieldResponseArrayInput `pulumi:"fields"`
-}
-
-func (StandardSqlStructTypeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StandardSqlStructTypeResponse)(nil)).Elem()
-}
-
-func (i StandardSqlStructTypeResponseArgs) ToStandardSqlStructTypeResponseOutput() StandardSqlStructTypeResponseOutput {
-	return i.ToStandardSqlStructTypeResponseOutputWithContext(context.Background())
-}
-
-func (i StandardSqlStructTypeResponseArgs) ToStandardSqlStructTypeResponseOutputWithContext(ctx context.Context) StandardSqlStructTypeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardSqlStructTypeResponseOutput)
-}
-
-func (i StandardSqlStructTypeResponseArgs) ToStandardSqlStructTypeResponsePtrOutput() StandardSqlStructTypeResponsePtrOutput {
-	return i.ToStandardSqlStructTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StandardSqlStructTypeResponseArgs) ToStandardSqlStructTypeResponsePtrOutputWithContext(ctx context.Context) StandardSqlStructTypeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardSqlStructTypeResponseOutput).ToStandardSqlStructTypeResponsePtrOutputWithContext(ctx)
-}
-
-// StandardSqlStructTypeResponsePtrInput is an input type that accepts StandardSqlStructTypeResponseArgs, StandardSqlStructTypeResponsePtr and StandardSqlStructTypeResponsePtrOutput values.
-// You can construct a concrete instance of `StandardSqlStructTypeResponsePtrInput` via:
-//
-//          StandardSqlStructTypeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StandardSqlStructTypeResponsePtrInput interface {
-	pulumi.Input
-
-	ToStandardSqlStructTypeResponsePtrOutput() StandardSqlStructTypeResponsePtrOutput
-	ToStandardSqlStructTypeResponsePtrOutputWithContext(context.Context) StandardSqlStructTypeResponsePtrOutput
-}
-
-type standardSqlStructTypeResponsePtrType StandardSqlStructTypeResponseArgs
-
-func StandardSqlStructTypeResponsePtr(v *StandardSqlStructTypeResponseArgs) StandardSqlStructTypeResponsePtrInput {
-	return (*standardSqlStructTypeResponsePtrType)(v)
-}
-
-func (*standardSqlStructTypeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StandardSqlStructTypeResponse)(nil)).Elem()
-}
-
-func (i *standardSqlStructTypeResponsePtrType) ToStandardSqlStructTypeResponsePtrOutput() StandardSqlStructTypeResponsePtrOutput {
-	return i.ToStandardSqlStructTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *standardSqlStructTypeResponsePtrType) ToStandardSqlStructTypeResponsePtrOutputWithContext(ctx context.Context) StandardSqlStructTypeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardSqlStructTypeResponsePtrOutput)
-}
-
 type StandardSqlStructTypeResponseOutput struct{ *pulumi.OutputState }
 
 func (StandardSqlStructTypeResponseOutput) ElementType() reflect.Type {
@@ -20990,16 +12663,6 @@ func (o StandardSqlStructTypeResponseOutput) ToStandardSqlStructTypeResponseOutp
 
 func (o StandardSqlStructTypeResponseOutput) ToStandardSqlStructTypeResponseOutputWithContext(ctx context.Context) StandardSqlStructTypeResponseOutput {
 	return o
-}
-
-func (o StandardSqlStructTypeResponseOutput) ToStandardSqlStructTypeResponsePtrOutput() StandardSqlStructTypeResponsePtrOutput {
-	return o.ToStandardSqlStructTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StandardSqlStructTypeResponseOutput) ToStandardSqlStructTypeResponsePtrOutputWithContext(ctx context.Context) StandardSqlStructTypeResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardSqlStructTypeResponse) *StandardSqlStructTypeResponse {
-		return &v
-	}).(StandardSqlStructTypeResponsePtrOutput)
 }
 
 func (o StandardSqlStructTypeResponseOutput) Fields() StandardSqlFieldResponseArrayOutput {
@@ -21185,76 +12848,6 @@ type StandardSqlTableTypeResponse struct {
 	Columns []StandardSqlFieldResponse `pulumi:"columns"`
 }
 
-// StandardSqlTableTypeResponseInput is an input type that accepts StandardSqlTableTypeResponseArgs and StandardSqlTableTypeResponseOutput values.
-// You can construct a concrete instance of `StandardSqlTableTypeResponseInput` via:
-//
-//          StandardSqlTableTypeResponseArgs{...}
-type StandardSqlTableTypeResponseInput interface {
-	pulumi.Input
-
-	ToStandardSqlTableTypeResponseOutput() StandardSqlTableTypeResponseOutput
-	ToStandardSqlTableTypeResponseOutputWithContext(context.Context) StandardSqlTableTypeResponseOutput
-}
-
-// A table type
-type StandardSqlTableTypeResponseArgs struct {
-	// The columns in this table type
-	Columns StandardSqlFieldResponseArrayInput `pulumi:"columns"`
-}
-
-func (StandardSqlTableTypeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StandardSqlTableTypeResponse)(nil)).Elem()
-}
-
-func (i StandardSqlTableTypeResponseArgs) ToStandardSqlTableTypeResponseOutput() StandardSqlTableTypeResponseOutput {
-	return i.ToStandardSqlTableTypeResponseOutputWithContext(context.Background())
-}
-
-func (i StandardSqlTableTypeResponseArgs) ToStandardSqlTableTypeResponseOutputWithContext(ctx context.Context) StandardSqlTableTypeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardSqlTableTypeResponseOutput)
-}
-
-func (i StandardSqlTableTypeResponseArgs) ToStandardSqlTableTypeResponsePtrOutput() StandardSqlTableTypeResponsePtrOutput {
-	return i.ToStandardSqlTableTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StandardSqlTableTypeResponseArgs) ToStandardSqlTableTypeResponsePtrOutputWithContext(ctx context.Context) StandardSqlTableTypeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardSqlTableTypeResponseOutput).ToStandardSqlTableTypeResponsePtrOutputWithContext(ctx)
-}
-
-// StandardSqlTableTypeResponsePtrInput is an input type that accepts StandardSqlTableTypeResponseArgs, StandardSqlTableTypeResponsePtr and StandardSqlTableTypeResponsePtrOutput values.
-// You can construct a concrete instance of `StandardSqlTableTypeResponsePtrInput` via:
-//
-//          StandardSqlTableTypeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StandardSqlTableTypeResponsePtrInput interface {
-	pulumi.Input
-
-	ToStandardSqlTableTypeResponsePtrOutput() StandardSqlTableTypeResponsePtrOutput
-	ToStandardSqlTableTypeResponsePtrOutputWithContext(context.Context) StandardSqlTableTypeResponsePtrOutput
-}
-
-type standardSqlTableTypeResponsePtrType StandardSqlTableTypeResponseArgs
-
-func StandardSqlTableTypeResponsePtr(v *StandardSqlTableTypeResponseArgs) StandardSqlTableTypeResponsePtrInput {
-	return (*standardSqlTableTypeResponsePtrType)(v)
-}
-
-func (*standardSqlTableTypeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StandardSqlTableTypeResponse)(nil)).Elem()
-}
-
-func (i *standardSqlTableTypeResponsePtrType) ToStandardSqlTableTypeResponsePtrOutput() StandardSqlTableTypeResponsePtrOutput {
-	return i.ToStandardSqlTableTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *standardSqlTableTypeResponsePtrType) ToStandardSqlTableTypeResponsePtrOutputWithContext(ctx context.Context) StandardSqlTableTypeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardSqlTableTypeResponsePtrOutput)
-}
-
 // A table type
 type StandardSqlTableTypeResponseOutput struct{ *pulumi.OutputState }
 
@@ -21270,53 +12863,9 @@ func (o StandardSqlTableTypeResponseOutput) ToStandardSqlTableTypeResponseOutput
 	return o
 }
 
-func (o StandardSqlTableTypeResponseOutput) ToStandardSqlTableTypeResponsePtrOutput() StandardSqlTableTypeResponsePtrOutput {
-	return o.ToStandardSqlTableTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StandardSqlTableTypeResponseOutput) ToStandardSqlTableTypeResponsePtrOutputWithContext(ctx context.Context) StandardSqlTableTypeResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardSqlTableTypeResponse) *StandardSqlTableTypeResponse {
-		return &v
-	}).(StandardSqlTableTypeResponsePtrOutput)
-}
-
 // The columns in this table type
 func (o StandardSqlTableTypeResponseOutput) Columns() StandardSqlFieldResponseArrayOutput {
 	return o.ApplyT(func(v StandardSqlTableTypeResponse) []StandardSqlFieldResponse { return v.Columns }).(StandardSqlFieldResponseArrayOutput)
-}
-
-type StandardSqlTableTypeResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StandardSqlTableTypeResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StandardSqlTableTypeResponse)(nil)).Elem()
-}
-
-func (o StandardSqlTableTypeResponsePtrOutput) ToStandardSqlTableTypeResponsePtrOutput() StandardSqlTableTypeResponsePtrOutput {
-	return o
-}
-
-func (o StandardSqlTableTypeResponsePtrOutput) ToStandardSqlTableTypeResponsePtrOutputWithContext(ctx context.Context) StandardSqlTableTypeResponsePtrOutput {
-	return o
-}
-
-func (o StandardSqlTableTypeResponsePtrOutput) Elem() StandardSqlTableTypeResponseOutput {
-	return o.ApplyT(func(v *StandardSqlTableTypeResponse) StandardSqlTableTypeResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StandardSqlTableTypeResponse
-		return ret
-	}).(StandardSqlTableTypeResponseOutput)
-}
-
-// The columns in this table type
-func (o StandardSqlTableTypeResponsePtrOutput) Columns() StandardSqlFieldResponseArrayOutput {
-	return o.ApplyT(func(v *StandardSqlTableTypeResponse) []StandardSqlFieldResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Columns
-	}).(StandardSqlFieldResponseArrayOutput)
 }
 
 type StreamingbufferResponse struct {
@@ -21326,79 +12875,6 @@ type StreamingbufferResponse struct {
 	EstimatedRows string `pulumi:"estimatedRows"`
 	// Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
 	OldestEntryTime string `pulumi:"oldestEntryTime"`
-}
-
-// StreamingbufferResponseInput is an input type that accepts StreamingbufferResponseArgs and StreamingbufferResponseOutput values.
-// You can construct a concrete instance of `StreamingbufferResponseInput` via:
-//
-//          StreamingbufferResponseArgs{...}
-type StreamingbufferResponseInput interface {
-	pulumi.Input
-
-	ToStreamingbufferResponseOutput() StreamingbufferResponseOutput
-	ToStreamingbufferResponseOutputWithContext(context.Context) StreamingbufferResponseOutput
-}
-
-type StreamingbufferResponseArgs struct {
-	// A lower-bound estimate of the number of bytes currently in the streaming buffer.
-	EstimatedBytes pulumi.StringInput `pulumi:"estimatedBytes"`
-	// A lower-bound estimate of the number of rows currently in the streaming buffer.
-	EstimatedRows pulumi.StringInput `pulumi:"estimatedRows"`
-	// Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
-	OldestEntryTime pulumi.StringInput `pulumi:"oldestEntryTime"`
-}
-
-func (StreamingbufferResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StreamingbufferResponse)(nil)).Elem()
-}
-
-func (i StreamingbufferResponseArgs) ToStreamingbufferResponseOutput() StreamingbufferResponseOutput {
-	return i.ToStreamingbufferResponseOutputWithContext(context.Background())
-}
-
-func (i StreamingbufferResponseArgs) ToStreamingbufferResponseOutputWithContext(ctx context.Context) StreamingbufferResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamingbufferResponseOutput)
-}
-
-func (i StreamingbufferResponseArgs) ToStreamingbufferResponsePtrOutput() StreamingbufferResponsePtrOutput {
-	return i.ToStreamingbufferResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StreamingbufferResponseArgs) ToStreamingbufferResponsePtrOutputWithContext(ctx context.Context) StreamingbufferResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamingbufferResponseOutput).ToStreamingbufferResponsePtrOutputWithContext(ctx)
-}
-
-// StreamingbufferResponsePtrInput is an input type that accepts StreamingbufferResponseArgs, StreamingbufferResponsePtr and StreamingbufferResponsePtrOutput values.
-// You can construct a concrete instance of `StreamingbufferResponsePtrInput` via:
-//
-//          StreamingbufferResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StreamingbufferResponsePtrInput interface {
-	pulumi.Input
-
-	ToStreamingbufferResponsePtrOutput() StreamingbufferResponsePtrOutput
-	ToStreamingbufferResponsePtrOutputWithContext(context.Context) StreamingbufferResponsePtrOutput
-}
-
-type streamingbufferResponsePtrType StreamingbufferResponseArgs
-
-func StreamingbufferResponsePtr(v *StreamingbufferResponseArgs) StreamingbufferResponsePtrInput {
-	return (*streamingbufferResponsePtrType)(v)
-}
-
-func (*streamingbufferResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StreamingbufferResponse)(nil)).Elem()
-}
-
-func (i *streamingbufferResponsePtrType) ToStreamingbufferResponsePtrOutput() StreamingbufferResponsePtrOutput {
-	return i.ToStreamingbufferResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *streamingbufferResponsePtrType) ToStreamingbufferResponsePtrOutputWithContext(ctx context.Context) StreamingbufferResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamingbufferResponsePtrOutput)
 }
 
 type StreamingbufferResponseOutput struct{ *pulumi.OutputState }
@@ -21415,16 +12891,6 @@ func (o StreamingbufferResponseOutput) ToStreamingbufferResponseOutputWithContex
 	return o
 }
 
-func (o StreamingbufferResponseOutput) ToStreamingbufferResponsePtrOutput() StreamingbufferResponsePtrOutput {
-	return o.ToStreamingbufferResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StreamingbufferResponseOutput) ToStreamingbufferResponsePtrOutputWithContext(ctx context.Context) StreamingbufferResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamingbufferResponse) *StreamingbufferResponse {
-		return &v
-	}).(StreamingbufferResponsePtrOutput)
-}
-
 // A lower-bound estimate of the number of bytes currently in the streaming buffer.
 func (o StreamingbufferResponseOutput) EstimatedBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamingbufferResponse) string { return v.EstimatedBytes }).(pulumi.StringOutput)
@@ -21438,60 +12904,6 @@ func (o StreamingbufferResponseOutput) EstimatedRows() pulumi.StringOutput {
 // Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
 func (o StreamingbufferResponseOutput) OldestEntryTime() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamingbufferResponse) string { return v.OldestEntryTime }).(pulumi.StringOutput)
-}
-
-type StreamingbufferResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StreamingbufferResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StreamingbufferResponse)(nil)).Elem()
-}
-
-func (o StreamingbufferResponsePtrOutput) ToStreamingbufferResponsePtrOutput() StreamingbufferResponsePtrOutput {
-	return o
-}
-
-func (o StreamingbufferResponsePtrOutput) ToStreamingbufferResponsePtrOutputWithContext(ctx context.Context) StreamingbufferResponsePtrOutput {
-	return o
-}
-
-func (o StreamingbufferResponsePtrOutput) Elem() StreamingbufferResponseOutput {
-	return o.ApplyT(func(v *StreamingbufferResponse) StreamingbufferResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StreamingbufferResponse
-		return ret
-	}).(StreamingbufferResponseOutput)
-}
-
-// A lower-bound estimate of the number of bytes currently in the streaming buffer.
-func (o StreamingbufferResponsePtrOutput) EstimatedBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StreamingbufferResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EstimatedBytes
-	}).(pulumi.StringPtrOutput)
-}
-
-// A lower-bound estimate of the number of rows currently in the streaming buffer.
-func (o StreamingbufferResponsePtrOutput) EstimatedRows() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StreamingbufferResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EstimatedRows
-	}).(pulumi.StringPtrOutput)
-}
-
-// Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
-func (o StreamingbufferResponsePtrOutput) OldestEntryTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StreamingbufferResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OldestEntryTime
-	}).(pulumi.StringPtrOutput)
 }
 
 type TableFieldSchema struct {
@@ -21824,35 +13236,6 @@ type TableFieldSchemaCategoriesResponse struct {
 	Names []string `pulumi:"names"`
 }
 
-// TableFieldSchemaCategoriesResponseInput is an input type that accepts TableFieldSchemaCategoriesResponseArgs and TableFieldSchemaCategoriesResponseOutput values.
-// You can construct a concrete instance of `TableFieldSchemaCategoriesResponseInput` via:
-//
-//          TableFieldSchemaCategoriesResponseArgs{...}
-type TableFieldSchemaCategoriesResponseInput interface {
-	pulumi.Input
-
-	ToTableFieldSchemaCategoriesResponseOutput() TableFieldSchemaCategoriesResponseOutput
-	ToTableFieldSchemaCategoriesResponseOutputWithContext(context.Context) TableFieldSchemaCategoriesResponseOutput
-}
-
-// [Optional] The categories attached to this field, used for field-level access control.
-type TableFieldSchemaCategoriesResponseArgs struct {
-	// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-	Names pulumi.StringArrayInput `pulumi:"names"`
-}
-
-func (TableFieldSchemaCategoriesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableFieldSchemaCategoriesResponse)(nil)).Elem()
-}
-
-func (i TableFieldSchemaCategoriesResponseArgs) ToTableFieldSchemaCategoriesResponseOutput() TableFieldSchemaCategoriesResponseOutput {
-	return i.ToTableFieldSchemaCategoriesResponseOutputWithContext(context.Background())
-}
-
-func (i TableFieldSchemaCategoriesResponseArgs) ToTableFieldSchemaCategoriesResponseOutputWithContext(ctx context.Context) TableFieldSchemaCategoriesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaCategoriesResponseOutput)
-}
-
 // [Optional] The categories attached to this field, used for field-level access control.
 type TableFieldSchemaCategoriesResponseOutput struct{ *pulumi.OutputState }
 
@@ -22015,34 +13398,6 @@ type TableFieldSchemaPolicyTagsResponse struct {
 	Names []string `pulumi:"names"`
 }
 
-// TableFieldSchemaPolicyTagsResponseInput is an input type that accepts TableFieldSchemaPolicyTagsResponseArgs and TableFieldSchemaPolicyTagsResponseOutput values.
-// You can construct a concrete instance of `TableFieldSchemaPolicyTagsResponseInput` via:
-//
-//          TableFieldSchemaPolicyTagsResponseArgs{...}
-type TableFieldSchemaPolicyTagsResponseInput interface {
-	pulumi.Input
-
-	ToTableFieldSchemaPolicyTagsResponseOutput() TableFieldSchemaPolicyTagsResponseOutput
-	ToTableFieldSchemaPolicyTagsResponseOutputWithContext(context.Context) TableFieldSchemaPolicyTagsResponseOutput
-}
-
-type TableFieldSchemaPolicyTagsResponseArgs struct {
-	// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
-	Names pulumi.StringArrayInput `pulumi:"names"`
-}
-
-func (TableFieldSchemaPolicyTagsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableFieldSchemaPolicyTagsResponse)(nil)).Elem()
-}
-
-func (i TableFieldSchemaPolicyTagsResponseArgs) ToTableFieldSchemaPolicyTagsResponseOutput() TableFieldSchemaPolicyTagsResponseOutput {
-	return i.ToTableFieldSchemaPolicyTagsResponseOutputWithContext(context.Background())
-}
-
-func (i TableFieldSchemaPolicyTagsResponseArgs) ToTableFieldSchemaPolicyTagsResponseOutputWithContext(ctx context.Context) TableFieldSchemaPolicyTagsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaPolicyTagsResponseOutput)
-}
-
 type TableFieldSchemaPolicyTagsResponseOutput struct{ *pulumi.OutputState }
 
 func (TableFieldSchemaPolicyTagsResponseOutput) ElementType() reflect.Type {
@@ -22084,78 +13439,6 @@ type TableFieldSchemaResponse struct {
 	Scale string `pulumi:"scale"`
 	// [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
 	Type string `pulumi:"type"`
-}
-
-// TableFieldSchemaResponseInput is an input type that accepts TableFieldSchemaResponseArgs and TableFieldSchemaResponseOutput values.
-// You can construct a concrete instance of `TableFieldSchemaResponseInput` via:
-//
-//          TableFieldSchemaResponseArgs{...}
-type TableFieldSchemaResponseInput interface {
-	pulumi.Input
-
-	ToTableFieldSchemaResponseOutput() TableFieldSchemaResponseOutput
-	ToTableFieldSchemaResponseOutputWithContext(context.Context) TableFieldSchemaResponseOutput
-}
-
-type TableFieldSchemaResponseArgs struct {
-	// [Optional] The categories attached to this field, used for field-level access control.
-	Categories TableFieldSchemaCategoriesResponseInput `pulumi:"categories"`
-	// Optional. Collation specification of the field. It only can be set on string type field.
-	CollationSpec pulumi.StringInput `pulumi:"collationSpec"`
-	// [Optional] The field description. The maximum length is 1,024 characters.
-	Description pulumi.StringInput `pulumi:"description"`
-	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
-	Fields TableFieldSchemaResponseArrayInput `pulumi:"fields"`
-	// [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
-	MaxLength pulumi.StringInput `pulumi:"maxLength"`
-	// [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
-	Mode pulumi.StringInput `pulumi:"mode"`
-	// [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters.
-	Name       pulumi.StringInput                      `pulumi:"name"`
-	PolicyTags TableFieldSchemaPolicyTagsResponseInput `pulumi:"policyTags"`
-	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
-	Precision pulumi.StringInput `pulumi:"precision"`
-	// [Optional] See documentation for precision.
-	Scale pulumi.StringInput `pulumi:"scale"`
-	// [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (TableFieldSchemaResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableFieldSchemaResponse)(nil)).Elem()
-}
-
-func (i TableFieldSchemaResponseArgs) ToTableFieldSchemaResponseOutput() TableFieldSchemaResponseOutput {
-	return i.ToTableFieldSchemaResponseOutputWithContext(context.Background())
-}
-
-func (i TableFieldSchemaResponseArgs) ToTableFieldSchemaResponseOutputWithContext(ctx context.Context) TableFieldSchemaResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaResponseOutput)
-}
-
-// TableFieldSchemaResponseArrayInput is an input type that accepts TableFieldSchemaResponseArray and TableFieldSchemaResponseArrayOutput values.
-// You can construct a concrete instance of `TableFieldSchemaResponseArrayInput` via:
-//
-//          TableFieldSchemaResponseArray{ TableFieldSchemaResponseArgs{...} }
-type TableFieldSchemaResponseArrayInput interface {
-	pulumi.Input
-
-	ToTableFieldSchemaResponseArrayOutput() TableFieldSchemaResponseArrayOutput
-	ToTableFieldSchemaResponseArrayOutputWithContext(context.Context) TableFieldSchemaResponseArrayOutput
-}
-
-type TableFieldSchemaResponseArray []TableFieldSchemaResponseInput
-
-func (TableFieldSchemaResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TableFieldSchemaResponse)(nil)).Elem()
-}
-
-func (i TableFieldSchemaResponseArray) ToTableFieldSchemaResponseArrayOutput() TableFieldSchemaResponseArrayOutput {
-	return i.ToTableFieldSchemaResponseArrayOutputWithContext(context.Background())
-}
-
-func (i TableFieldSchemaResponseArray) ToTableFieldSchemaResponseArrayOutputWithContext(ctx context.Context) TableFieldSchemaResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaResponseArrayOutput)
 }
 
 type TableFieldSchemaResponseOutput struct{ *pulumi.OutputState }
@@ -22475,104 +13758,6 @@ type TableReferenceResponse struct {
 	TableId string `pulumi:"tableId"`
 }
 
-// TableReferenceResponseInput is an input type that accepts TableReferenceResponseArgs and TableReferenceResponseOutput values.
-// You can construct a concrete instance of `TableReferenceResponseInput` via:
-//
-//          TableReferenceResponseArgs{...}
-type TableReferenceResponseInput interface {
-	pulumi.Input
-
-	ToTableReferenceResponseOutput() TableReferenceResponseOutput
-	ToTableReferenceResponseOutputWithContext(context.Context) TableReferenceResponseOutput
-}
-
-type TableReferenceResponseArgs struct {
-	// [Required] The ID of the dataset containing this table.
-	DatasetId pulumi.StringInput `pulumi:"datasetId"`
-	// [Required] The ID of the project containing this table.
-	Project pulumi.StringInput `pulumi:"project"`
-	// [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-	TableId pulumi.StringInput `pulumi:"tableId"`
-}
-
-func (TableReferenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableReferenceResponse)(nil)).Elem()
-}
-
-func (i TableReferenceResponseArgs) ToTableReferenceResponseOutput() TableReferenceResponseOutput {
-	return i.ToTableReferenceResponseOutputWithContext(context.Background())
-}
-
-func (i TableReferenceResponseArgs) ToTableReferenceResponseOutputWithContext(ctx context.Context) TableReferenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableReferenceResponseOutput)
-}
-
-func (i TableReferenceResponseArgs) ToTableReferenceResponsePtrOutput() TableReferenceResponsePtrOutput {
-	return i.ToTableReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i TableReferenceResponseArgs) ToTableReferenceResponsePtrOutputWithContext(ctx context.Context) TableReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableReferenceResponseOutput).ToTableReferenceResponsePtrOutputWithContext(ctx)
-}
-
-// TableReferenceResponsePtrInput is an input type that accepts TableReferenceResponseArgs, TableReferenceResponsePtr and TableReferenceResponsePtrOutput values.
-// You can construct a concrete instance of `TableReferenceResponsePtrInput` via:
-//
-//          TableReferenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type TableReferenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToTableReferenceResponsePtrOutput() TableReferenceResponsePtrOutput
-	ToTableReferenceResponsePtrOutputWithContext(context.Context) TableReferenceResponsePtrOutput
-}
-
-type tableReferenceResponsePtrType TableReferenceResponseArgs
-
-func TableReferenceResponsePtr(v *TableReferenceResponseArgs) TableReferenceResponsePtrInput {
-	return (*tableReferenceResponsePtrType)(v)
-}
-
-func (*tableReferenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableReferenceResponse)(nil)).Elem()
-}
-
-func (i *tableReferenceResponsePtrType) ToTableReferenceResponsePtrOutput() TableReferenceResponsePtrOutput {
-	return i.ToTableReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *tableReferenceResponsePtrType) ToTableReferenceResponsePtrOutputWithContext(ctx context.Context) TableReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableReferenceResponsePtrOutput)
-}
-
-// TableReferenceResponseArrayInput is an input type that accepts TableReferenceResponseArray and TableReferenceResponseArrayOutput values.
-// You can construct a concrete instance of `TableReferenceResponseArrayInput` via:
-//
-//          TableReferenceResponseArray{ TableReferenceResponseArgs{...} }
-type TableReferenceResponseArrayInput interface {
-	pulumi.Input
-
-	ToTableReferenceResponseArrayOutput() TableReferenceResponseArrayOutput
-	ToTableReferenceResponseArrayOutputWithContext(context.Context) TableReferenceResponseArrayOutput
-}
-
-type TableReferenceResponseArray []TableReferenceResponseInput
-
-func (TableReferenceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TableReferenceResponse)(nil)).Elem()
-}
-
-func (i TableReferenceResponseArray) ToTableReferenceResponseArrayOutput() TableReferenceResponseArrayOutput {
-	return i.ToTableReferenceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i TableReferenceResponseArray) ToTableReferenceResponseArrayOutputWithContext(ctx context.Context) TableReferenceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableReferenceResponseArrayOutput)
-}
-
 type TableReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (TableReferenceResponseOutput) ElementType() reflect.Type {
@@ -22585,16 +13770,6 @@ func (o TableReferenceResponseOutput) ToTableReferenceResponseOutput() TableRefe
 
 func (o TableReferenceResponseOutput) ToTableReferenceResponseOutputWithContext(ctx context.Context) TableReferenceResponseOutput {
 	return o
-}
-
-func (o TableReferenceResponseOutput) ToTableReferenceResponsePtrOutput() TableReferenceResponsePtrOutput {
-	return o.ToTableReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o TableReferenceResponseOutput) ToTableReferenceResponsePtrOutputWithContext(ctx context.Context) TableReferenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableReferenceResponse) *TableReferenceResponse {
-		return &v
-	}).(TableReferenceResponsePtrOutput)
 }
 
 // [Required] The ID of the dataset containing this table.
@@ -22610,60 +13785,6 @@ func (o TableReferenceResponseOutput) Project() pulumi.StringOutput {
 // [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 func (o TableReferenceResponseOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v TableReferenceResponse) string { return v.TableId }).(pulumi.StringOutput)
-}
-
-type TableReferenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TableReferenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableReferenceResponse)(nil)).Elem()
-}
-
-func (o TableReferenceResponsePtrOutput) ToTableReferenceResponsePtrOutput() TableReferenceResponsePtrOutput {
-	return o
-}
-
-func (o TableReferenceResponsePtrOutput) ToTableReferenceResponsePtrOutputWithContext(ctx context.Context) TableReferenceResponsePtrOutput {
-	return o
-}
-
-func (o TableReferenceResponsePtrOutput) Elem() TableReferenceResponseOutput {
-	return o.ApplyT(func(v *TableReferenceResponse) TableReferenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TableReferenceResponse
-		return ret
-	}).(TableReferenceResponseOutput)
-}
-
-// [Required] The ID of the dataset containing this table.
-func (o TableReferenceResponsePtrOutput) DatasetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DatasetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the project containing this table.
-func (o TableReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-func (o TableReferenceResponsePtrOutput) TableId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TableId
-	}).(pulumi.StringPtrOutput)
 }
 
 type TableReferenceResponseArrayOutput struct{ *pulumi.OutputState }
@@ -22828,75 +13949,6 @@ type TableSchemaResponse struct {
 	Fields []TableFieldSchemaResponse `pulumi:"fields"`
 }
 
-// TableSchemaResponseInput is an input type that accepts TableSchemaResponseArgs and TableSchemaResponseOutput values.
-// You can construct a concrete instance of `TableSchemaResponseInput` via:
-//
-//          TableSchemaResponseArgs{...}
-type TableSchemaResponseInput interface {
-	pulumi.Input
-
-	ToTableSchemaResponseOutput() TableSchemaResponseOutput
-	ToTableSchemaResponseOutputWithContext(context.Context) TableSchemaResponseOutput
-}
-
-type TableSchemaResponseArgs struct {
-	// Describes the fields in a table.
-	Fields TableFieldSchemaResponseArrayInput `pulumi:"fields"`
-}
-
-func (TableSchemaResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableSchemaResponse)(nil)).Elem()
-}
-
-func (i TableSchemaResponseArgs) ToTableSchemaResponseOutput() TableSchemaResponseOutput {
-	return i.ToTableSchemaResponseOutputWithContext(context.Background())
-}
-
-func (i TableSchemaResponseArgs) ToTableSchemaResponseOutputWithContext(ctx context.Context) TableSchemaResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableSchemaResponseOutput)
-}
-
-func (i TableSchemaResponseArgs) ToTableSchemaResponsePtrOutput() TableSchemaResponsePtrOutput {
-	return i.ToTableSchemaResponsePtrOutputWithContext(context.Background())
-}
-
-func (i TableSchemaResponseArgs) ToTableSchemaResponsePtrOutputWithContext(ctx context.Context) TableSchemaResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableSchemaResponseOutput).ToTableSchemaResponsePtrOutputWithContext(ctx)
-}
-
-// TableSchemaResponsePtrInput is an input type that accepts TableSchemaResponseArgs, TableSchemaResponsePtr and TableSchemaResponsePtrOutput values.
-// You can construct a concrete instance of `TableSchemaResponsePtrInput` via:
-//
-//          TableSchemaResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type TableSchemaResponsePtrInput interface {
-	pulumi.Input
-
-	ToTableSchemaResponsePtrOutput() TableSchemaResponsePtrOutput
-	ToTableSchemaResponsePtrOutputWithContext(context.Context) TableSchemaResponsePtrOutput
-}
-
-type tableSchemaResponsePtrType TableSchemaResponseArgs
-
-func TableSchemaResponsePtr(v *TableSchemaResponseArgs) TableSchemaResponsePtrInput {
-	return (*tableSchemaResponsePtrType)(v)
-}
-
-func (*tableSchemaResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableSchemaResponse)(nil)).Elem()
-}
-
-func (i *tableSchemaResponsePtrType) ToTableSchemaResponsePtrOutput() TableSchemaResponsePtrOutput {
-	return i.ToTableSchemaResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *tableSchemaResponsePtrType) ToTableSchemaResponsePtrOutputWithContext(ctx context.Context) TableSchemaResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableSchemaResponsePtrOutput)
-}
-
 type TableSchemaResponseOutput struct{ *pulumi.OutputState }
 
 func (TableSchemaResponseOutput) ElementType() reflect.Type {
@@ -22911,53 +13963,9 @@ func (o TableSchemaResponseOutput) ToTableSchemaResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o TableSchemaResponseOutput) ToTableSchemaResponsePtrOutput() TableSchemaResponsePtrOutput {
-	return o.ToTableSchemaResponsePtrOutputWithContext(context.Background())
-}
-
-func (o TableSchemaResponseOutput) ToTableSchemaResponsePtrOutputWithContext(ctx context.Context) TableSchemaResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableSchemaResponse) *TableSchemaResponse {
-		return &v
-	}).(TableSchemaResponsePtrOutput)
-}
-
 // Describes the fields in a table.
 func (o TableSchemaResponseOutput) Fields() TableFieldSchemaResponseArrayOutput {
 	return o.ApplyT(func(v TableSchemaResponse) []TableFieldSchemaResponse { return v.Fields }).(TableFieldSchemaResponseArrayOutput)
-}
-
-type TableSchemaResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TableSchemaResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableSchemaResponse)(nil)).Elem()
-}
-
-func (o TableSchemaResponsePtrOutput) ToTableSchemaResponsePtrOutput() TableSchemaResponsePtrOutput {
-	return o
-}
-
-func (o TableSchemaResponsePtrOutput) ToTableSchemaResponsePtrOutputWithContext(ctx context.Context) TableSchemaResponsePtrOutput {
-	return o
-}
-
-func (o TableSchemaResponsePtrOutput) Elem() TableSchemaResponseOutput {
-	return o.ApplyT(func(v *TableSchemaResponse) TableSchemaResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TableSchemaResponse
-		return ret
-	}).(TableSchemaResponseOutput)
-}
-
-// Describes the fields in a table.
-func (o TableSchemaResponsePtrOutput) Fields() TableFieldSchemaResponseArrayOutput {
-	return o.ApplyT(func(v *TableSchemaResponse) []TableFieldSchemaResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Fields
-	}).(TableFieldSchemaResponseArrayOutput)
 }
 
 type TimePartitioning struct {
@@ -23160,80 +14168,6 @@ type TimePartitioningResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// TimePartitioningResponseInput is an input type that accepts TimePartitioningResponseArgs and TimePartitioningResponseOutput values.
-// You can construct a concrete instance of `TimePartitioningResponseInput` via:
-//
-//          TimePartitioningResponseArgs{...}
-type TimePartitioningResponseInput interface {
-	pulumi.Input
-
-	ToTimePartitioningResponseOutput() TimePartitioningResponseOutput
-	ToTimePartitioningResponseOutputWithContext(context.Context) TimePartitioningResponseOutput
-}
-
-type TimePartitioningResponseArgs struct {
-	// [Optional] Number of milliseconds for which to keep the storage for partitions in the table. The storage in a partition will have an expiration time of its partition time plus this value.
-	ExpirationMs pulumi.StringInput `pulumi:"expirationMs"`
-	// [Beta] [Optional] If not set, the table is partitioned by pseudo column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or '_PARTITIONDATE' as DATE type. If field is specified, the table is instead partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
-	Field                  pulumi.StringInput `pulumi:"field"`
-	RequirePartitionFilter pulumi.BoolInput   `pulumi:"requirePartitionFilter"`
-	// [Required] The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively. When the type is not specified, the default behavior is DAY.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (TimePartitioningResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TimePartitioningResponse)(nil)).Elem()
-}
-
-func (i TimePartitioningResponseArgs) ToTimePartitioningResponseOutput() TimePartitioningResponseOutput {
-	return i.ToTimePartitioningResponseOutputWithContext(context.Background())
-}
-
-func (i TimePartitioningResponseArgs) ToTimePartitioningResponseOutputWithContext(ctx context.Context) TimePartitioningResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimePartitioningResponseOutput)
-}
-
-func (i TimePartitioningResponseArgs) ToTimePartitioningResponsePtrOutput() TimePartitioningResponsePtrOutput {
-	return i.ToTimePartitioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (i TimePartitioningResponseArgs) ToTimePartitioningResponsePtrOutputWithContext(ctx context.Context) TimePartitioningResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimePartitioningResponseOutput).ToTimePartitioningResponsePtrOutputWithContext(ctx)
-}
-
-// TimePartitioningResponsePtrInput is an input type that accepts TimePartitioningResponseArgs, TimePartitioningResponsePtr and TimePartitioningResponsePtrOutput values.
-// You can construct a concrete instance of `TimePartitioningResponsePtrInput` via:
-//
-//          TimePartitioningResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type TimePartitioningResponsePtrInput interface {
-	pulumi.Input
-
-	ToTimePartitioningResponsePtrOutput() TimePartitioningResponsePtrOutput
-	ToTimePartitioningResponsePtrOutputWithContext(context.Context) TimePartitioningResponsePtrOutput
-}
-
-type timePartitioningResponsePtrType TimePartitioningResponseArgs
-
-func TimePartitioningResponsePtr(v *TimePartitioningResponseArgs) TimePartitioningResponsePtrInput {
-	return (*timePartitioningResponsePtrType)(v)
-}
-
-func (*timePartitioningResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TimePartitioningResponse)(nil)).Elem()
-}
-
-func (i *timePartitioningResponsePtrType) ToTimePartitioningResponsePtrOutput() TimePartitioningResponsePtrOutput {
-	return i.ToTimePartitioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *timePartitioningResponsePtrType) ToTimePartitioningResponsePtrOutputWithContext(ctx context.Context) TimePartitioningResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimePartitioningResponsePtrOutput)
-}
-
 type TimePartitioningResponseOutput struct{ *pulumi.OutputState }
 
 func (TimePartitioningResponseOutput) ElementType() reflect.Type {
@@ -23246,16 +14180,6 @@ func (o TimePartitioningResponseOutput) ToTimePartitioningResponseOutput() TimeP
 
 func (o TimePartitioningResponseOutput) ToTimePartitioningResponseOutputWithContext(ctx context.Context) TimePartitioningResponseOutput {
 	return o
-}
-
-func (o TimePartitioningResponseOutput) ToTimePartitioningResponsePtrOutput() TimePartitioningResponsePtrOutput {
-	return o.ToTimePartitioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (o TimePartitioningResponseOutput) ToTimePartitioningResponsePtrOutputWithContext(ctx context.Context) TimePartitioningResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimePartitioningResponse) *TimePartitioningResponse {
-		return &v
-	}).(TimePartitioningResponsePtrOutput)
 }
 
 // [Optional] Number of milliseconds for which to keep the storage for partitions in the table. The storage in a partition will have an expiration time of its partition time plus this value.
@@ -23277,141 +14201,9 @@ func (o TimePartitioningResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v TimePartitioningResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type TimePartitioningResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TimePartitioningResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TimePartitioningResponse)(nil)).Elem()
-}
-
-func (o TimePartitioningResponsePtrOutput) ToTimePartitioningResponsePtrOutput() TimePartitioningResponsePtrOutput {
-	return o
-}
-
-func (o TimePartitioningResponsePtrOutput) ToTimePartitioningResponsePtrOutputWithContext(ctx context.Context) TimePartitioningResponsePtrOutput {
-	return o
-}
-
-func (o TimePartitioningResponsePtrOutput) Elem() TimePartitioningResponseOutput {
-	return o.ApplyT(func(v *TimePartitioningResponse) TimePartitioningResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TimePartitioningResponse
-		return ret
-	}).(TimePartitioningResponseOutput)
-}
-
-// [Optional] Number of milliseconds for which to keep the storage for partitions in the table. The storage in a partition will have an expiration time of its partition time plus this value.
-func (o TimePartitioningResponsePtrOutput) ExpirationMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TimePartitioningResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExpirationMs
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Beta] [Optional] If not set, the table is partitioned by pseudo column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or '_PARTITIONDATE' as DATE type. If field is specified, the table is instead partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
-func (o TimePartitioningResponsePtrOutput) Field() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TimePartitioningResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Field
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o TimePartitioningResponsePtrOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TimePartitioningResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.RequirePartitionFilter
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Required] The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively. When the type is not specified, the default behavior is DAY.
-func (o TimePartitioningResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TimePartitioningResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
 type TransactionInfoResponse struct {
 	// // [Alpha] Id of the transaction.
 	TransactionId string `pulumi:"transactionId"`
-}
-
-// TransactionInfoResponseInput is an input type that accepts TransactionInfoResponseArgs and TransactionInfoResponseOutput values.
-// You can construct a concrete instance of `TransactionInfoResponseInput` via:
-//
-//          TransactionInfoResponseArgs{...}
-type TransactionInfoResponseInput interface {
-	pulumi.Input
-
-	ToTransactionInfoResponseOutput() TransactionInfoResponseOutput
-	ToTransactionInfoResponseOutputWithContext(context.Context) TransactionInfoResponseOutput
-}
-
-type TransactionInfoResponseArgs struct {
-	// // [Alpha] Id of the transaction.
-	TransactionId pulumi.StringInput `pulumi:"transactionId"`
-}
-
-func (TransactionInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransactionInfoResponse)(nil)).Elem()
-}
-
-func (i TransactionInfoResponseArgs) ToTransactionInfoResponseOutput() TransactionInfoResponseOutput {
-	return i.ToTransactionInfoResponseOutputWithContext(context.Background())
-}
-
-func (i TransactionInfoResponseArgs) ToTransactionInfoResponseOutputWithContext(ctx context.Context) TransactionInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransactionInfoResponseOutput)
-}
-
-func (i TransactionInfoResponseArgs) ToTransactionInfoResponsePtrOutput() TransactionInfoResponsePtrOutput {
-	return i.ToTransactionInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i TransactionInfoResponseArgs) ToTransactionInfoResponsePtrOutputWithContext(ctx context.Context) TransactionInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransactionInfoResponseOutput).ToTransactionInfoResponsePtrOutputWithContext(ctx)
-}
-
-// TransactionInfoResponsePtrInput is an input type that accepts TransactionInfoResponseArgs, TransactionInfoResponsePtr and TransactionInfoResponsePtrOutput values.
-// You can construct a concrete instance of `TransactionInfoResponsePtrInput` via:
-//
-//          TransactionInfoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type TransactionInfoResponsePtrInput interface {
-	pulumi.Input
-
-	ToTransactionInfoResponsePtrOutput() TransactionInfoResponsePtrOutput
-	ToTransactionInfoResponsePtrOutputWithContext(context.Context) TransactionInfoResponsePtrOutput
-}
-
-type transactionInfoResponsePtrType TransactionInfoResponseArgs
-
-func TransactionInfoResponsePtr(v *TransactionInfoResponseArgs) TransactionInfoResponsePtrInput {
-	return (*transactionInfoResponsePtrType)(v)
-}
-
-func (*transactionInfoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransactionInfoResponse)(nil)).Elem()
-}
-
-func (i *transactionInfoResponsePtrType) ToTransactionInfoResponsePtrOutput() TransactionInfoResponsePtrOutput {
-	return i.ToTransactionInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *transactionInfoResponsePtrType) ToTransactionInfoResponsePtrOutputWithContext(ctx context.Context) TransactionInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransactionInfoResponsePtrOutput)
 }
 
 type TransactionInfoResponseOutput struct{ *pulumi.OutputState }
@@ -23428,53 +14220,9 @@ func (o TransactionInfoResponseOutput) ToTransactionInfoResponseOutputWithContex
 	return o
 }
 
-func (o TransactionInfoResponseOutput) ToTransactionInfoResponsePtrOutput() TransactionInfoResponsePtrOutput {
-	return o.ToTransactionInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o TransactionInfoResponseOutput) ToTransactionInfoResponsePtrOutputWithContext(ctx context.Context) TransactionInfoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransactionInfoResponse) *TransactionInfoResponse {
-		return &v
-	}).(TransactionInfoResponsePtrOutput)
-}
-
 // // [Alpha] Id of the transaction.
 func (o TransactionInfoResponseOutput) TransactionId() pulumi.StringOutput {
 	return o.ApplyT(func(v TransactionInfoResponse) string { return v.TransactionId }).(pulumi.StringOutput)
-}
-
-type TransactionInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TransactionInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransactionInfoResponse)(nil)).Elem()
-}
-
-func (o TransactionInfoResponsePtrOutput) ToTransactionInfoResponsePtrOutput() TransactionInfoResponsePtrOutput {
-	return o
-}
-
-func (o TransactionInfoResponsePtrOutput) ToTransactionInfoResponsePtrOutputWithContext(ctx context.Context) TransactionInfoResponsePtrOutput {
-	return o
-}
-
-func (o TransactionInfoResponsePtrOutput) Elem() TransactionInfoResponseOutput {
-	return o.ApplyT(func(v *TransactionInfoResponse) TransactionInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TransactionInfoResponse
-		return ret
-	}).(TransactionInfoResponseOutput)
-}
-
-// // [Alpha] Id of the transaction.
-func (o TransactionInfoResponsePtrOutput) TransactionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TransactionInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TransactionId
-	}).(pulumi.StringPtrOutput)
 }
 
 // This is used for defining User Defined Function (UDF) resources only when using legacy SQL. Users of Standard SQL should leverage either DDL (e.g. CREATE [TEMPORARY] FUNCTION ... ) or the Routines API to define UDF resources. For additional information on migrating, see: https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql#differences_in_user-defined_javascript_functions
@@ -23592,62 +14340,6 @@ type UserDefinedFunctionResourceResponse struct {
 	InlineCode string `pulumi:"inlineCode"`
 	// [Pick one] A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
 	ResourceUri string `pulumi:"resourceUri"`
-}
-
-// UserDefinedFunctionResourceResponseInput is an input type that accepts UserDefinedFunctionResourceResponseArgs and UserDefinedFunctionResourceResponseOutput values.
-// You can construct a concrete instance of `UserDefinedFunctionResourceResponseInput` via:
-//
-//          UserDefinedFunctionResourceResponseArgs{...}
-type UserDefinedFunctionResourceResponseInput interface {
-	pulumi.Input
-
-	ToUserDefinedFunctionResourceResponseOutput() UserDefinedFunctionResourceResponseOutput
-	ToUserDefinedFunctionResourceResponseOutputWithContext(context.Context) UserDefinedFunctionResourceResponseOutput
-}
-
-// This is used for defining User Defined Function (UDF) resources only when using legacy SQL. Users of Standard SQL should leverage either DDL (e.g. CREATE [TEMPORARY] FUNCTION ... ) or the Routines API to define UDF resources. For additional information on migrating, see: https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql#differences_in_user-defined_javascript_functions
-type UserDefinedFunctionResourceResponseArgs struct {
-	// [Pick one] An inline resource that contains code for a user-defined function (UDF). Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
-	InlineCode pulumi.StringInput `pulumi:"inlineCode"`
-	// [Pick one] A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
-	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
-}
-
-func (UserDefinedFunctionResourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserDefinedFunctionResourceResponse)(nil)).Elem()
-}
-
-func (i UserDefinedFunctionResourceResponseArgs) ToUserDefinedFunctionResourceResponseOutput() UserDefinedFunctionResourceResponseOutput {
-	return i.ToUserDefinedFunctionResourceResponseOutputWithContext(context.Background())
-}
-
-func (i UserDefinedFunctionResourceResponseArgs) ToUserDefinedFunctionResourceResponseOutputWithContext(ctx context.Context) UserDefinedFunctionResourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserDefinedFunctionResourceResponseOutput)
-}
-
-// UserDefinedFunctionResourceResponseArrayInput is an input type that accepts UserDefinedFunctionResourceResponseArray and UserDefinedFunctionResourceResponseArrayOutput values.
-// You can construct a concrete instance of `UserDefinedFunctionResourceResponseArrayInput` via:
-//
-//          UserDefinedFunctionResourceResponseArray{ UserDefinedFunctionResourceResponseArgs{...} }
-type UserDefinedFunctionResourceResponseArrayInput interface {
-	pulumi.Input
-
-	ToUserDefinedFunctionResourceResponseArrayOutput() UserDefinedFunctionResourceResponseArrayOutput
-	ToUserDefinedFunctionResourceResponseArrayOutputWithContext(context.Context) UserDefinedFunctionResourceResponseArrayOutput
-}
-
-type UserDefinedFunctionResourceResponseArray []UserDefinedFunctionResourceResponseInput
-
-func (UserDefinedFunctionResourceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]UserDefinedFunctionResourceResponse)(nil)).Elem()
-}
-
-func (i UserDefinedFunctionResourceResponseArray) ToUserDefinedFunctionResourceResponseArrayOutput() UserDefinedFunctionResourceResponseArrayOutput {
-	return i.ToUserDefinedFunctionResourceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i UserDefinedFunctionResourceResponseArray) ToUserDefinedFunctionResourceResponseArrayOutputWithContext(ctx context.Context) UserDefinedFunctionResourceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserDefinedFunctionResourceResponseArrayOutput)
 }
 
 // This is used for defining User Defined Function (UDF) resources only when using legacy SQL. Users of Standard SQL should leverage either DDL (e.g. CREATE [TEMPORARY] FUNCTION ... ) or the Routines API to define UDF resources. For additional information on migrating, see: https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql#differences_in_user-defined_javascript_functions
@@ -23900,81 +14592,6 @@ type ViewDefinitionResponse struct {
 	UserDefinedFunctionResources []UserDefinedFunctionResourceResponse `pulumi:"userDefinedFunctionResources"`
 }
 
-// ViewDefinitionResponseInput is an input type that accepts ViewDefinitionResponseArgs and ViewDefinitionResponseOutput values.
-// You can construct a concrete instance of `ViewDefinitionResponseInput` via:
-//
-//          ViewDefinitionResponseArgs{...}
-type ViewDefinitionResponseInput interface {
-	pulumi.Input
-
-	ToViewDefinitionResponseOutput() ViewDefinitionResponseOutput
-	ToViewDefinitionResponseOutputWithContext(context.Context) ViewDefinitionResponseOutput
-}
-
-type ViewDefinitionResponseArgs struct {
-	// [Required] A query that BigQuery executes when the view is referenced.
-	Query pulumi.StringInput `pulumi:"query"`
-	// True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
-	UseExplicitColumnNames pulumi.BoolInput `pulumi:"useExplicitColumnNames"`
-	// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
-	UseLegacySql pulumi.BoolInput `pulumi:"useLegacySql"`
-	// Describes user-defined function resources used in the query.
-	UserDefinedFunctionResources UserDefinedFunctionResourceResponseArrayInput `pulumi:"userDefinedFunctionResources"`
-}
-
-func (ViewDefinitionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ViewDefinitionResponse)(nil)).Elem()
-}
-
-func (i ViewDefinitionResponseArgs) ToViewDefinitionResponseOutput() ViewDefinitionResponseOutput {
-	return i.ToViewDefinitionResponseOutputWithContext(context.Background())
-}
-
-func (i ViewDefinitionResponseArgs) ToViewDefinitionResponseOutputWithContext(ctx context.Context) ViewDefinitionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ViewDefinitionResponseOutput)
-}
-
-func (i ViewDefinitionResponseArgs) ToViewDefinitionResponsePtrOutput() ViewDefinitionResponsePtrOutput {
-	return i.ToViewDefinitionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ViewDefinitionResponseArgs) ToViewDefinitionResponsePtrOutputWithContext(ctx context.Context) ViewDefinitionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ViewDefinitionResponseOutput).ToViewDefinitionResponsePtrOutputWithContext(ctx)
-}
-
-// ViewDefinitionResponsePtrInput is an input type that accepts ViewDefinitionResponseArgs, ViewDefinitionResponsePtr and ViewDefinitionResponsePtrOutput values.
-// You can construct a concrete instance of `ViewDefinitionResponsePtrInput` via:
-//
-//          ViewDefinitionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ViewDefinitionResponsePtrInput interface {
-	pulumi.Input
-
-	ToViewDefinitionResponsePtrOutput() ViewDefinitionResponsePtrOutput
-	ToViewDefinitionResponsePtrOutputWithContext(context.Context) ViewDefinitionResponsePtrOutput
-}
-
-type viewDefinitionResponsePtrType ViewDefinitionResponseArgs
-
-func ViewDefinitionResponsePtr(v *ViewDefinitionResponseArgs) ViewDefinitionResponsePtrInput {
-	return (*viewDefinitionResponsePtrType)(v)
-}
-
-func (*viewDefinitionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ViewDefinitionResponse)(nil)).Elem()
-}
-
-func (i *viewDefinitionResponsePtrType) ToViewDefinitionResponsePtrOutput() ViewDefinitionResponsePtrOutput {
-	return i.ToViewDefinitionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *viewDefinitionResponsePtrType) ToViewDefinitionResponsePtrOutputWithContext(ctx context.Context) ViewDefinitionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ViewDefinitionResponsePtrOutput)
-}
-
 type ViewDefinitionResponseOutput struct{ *pulumi.OutputState }
 
 func (ViewDefinitionResponseOutput) ElementType() reflect.Type {
@@ -23987,16 +14604,6 @@ func (o ViewDefinitionResponseOutput) ToViewDefinitionResponseOutput() ViewDefin
 
 func (o ViewDefinitionResponseOutput) ToViewDefinitionResponseOutputWithContext(ctx context.Context) ViewDefinitionResponseOutput {
 	return o
-}
-
-func (o ViewDefinitionResponseOutput) ToViewDefinitionResponsePtrOutput() ViewDefinitionResponsePtrOutput {
-	return o.ToViewDefinitionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ViewDefinitionResponseOutput) ToViewDefinitionResponsePtrOutputWithContext(ctx context.Context) ViewDefinitionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ViewDefinitionResponse) *ViewDefinitionResponse {
-		return &v
-	}).(ViewDefinitionResponsePtrOutput)
 }
 
 // [Required] A query that BigQuery executes when the view is referenced.
@@ -24021,337 +14628,117 @@ func (o ViewDefinitionResponseOutput) UserDefinedFunctionResources() UserDefined
 	}).(UserDefinedFunctionResourceResponseArrayOutput)
 }
 
-type ViewDefinitionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ViewDefinitionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ViewDefinitionResponse)(nil)).Elem()
-}
-
-func (o ViewDefinitionResponsePtrOutput) ToViewDefinitionResponsePtrOutput() ViewDefinitionResponsePtrOutput {
-	return o
-}
-
-func (o ViewDefinitionResponsePtrOutput) ToViewDefinitionResponsePtrOutputWithContext(ctx context.Context) ViewDefinitionResponsePtrOutput {
-	return o
-}
-
-func (o ViewDefinitionResponsePtrOutput) Elem() ViewDefinitionResponseOutput {
-	return o.ApplyT(func(v *ViewDefinitionResponse) ViewDefinitionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ViewDefinitionResponse
-		return ret
-	}).(ViewDefinitionResponseOutput)
-}
-
-// [Required] A query that BigQuery executes when the view is referenced.
-func (o ViewDefinitionResponsePtrOutput) Query() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ViewDefinitionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Query
-	}).(pulumi.StringPtrOutput)
-}
-
-// True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
-func (o ViewDefinitionResponsePtrOutput) UseExplicitColumnNames() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ViewDefinitionResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.UseExplicitColumnNames
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
-func (o ViewDefinitionResponsePtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ViewDefinitionResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.UseLegacySql
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Describes user-defined function resources used in the query.
-func (o ViewDefinitionResponsePtrOutput) UserDefinedFunctionResources() UserDefinedFunctionResourceResponseArrayOutput {
-	return o.ApplyT(func(v *ViewDefinitionResponse) []UserDefinedFunctionResourceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UserDefinedFunctionResources
-	}).(UserDefinedFunctionResourceResponseArrayOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentInput)(nil)).Elem(), ArgumentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentArrayInput)(nil)).Elem(), ArgumentArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentResponseInput)(nil)).Elem(), ArgumentResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentResponseArrayInput)(nil)).Elem(), ArgumentResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AvroOptionsInput)(nil)).Elem(), AvroOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AvroOptionsPtrInput)(nil)).Elem(), AvroOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AvroOptionsResponseInput)(nil)).Elem(), AvroOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AvroOptionsResponsePtrInput)(nil)).Elem(), AvroOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BiEngineReasonResponseInput)(nil)).Elem(), BiEngineReasonResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BiEngineReasonResponseArrayInput)(nil)).Elem(), BiEngineReasonResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BiEngineStatisticsResponseInput)(nil)).Elem(), BiEngineStatisticsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BiEngineStatisticsResponsePtrInput)(nil)).Elem(), BiEngineStatisticsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryModelTrainingResponseInput)(nil)).Elem(), BigQueryModelTrainingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryModelTrainingResponsePtrInput)(nil)).Elem(), BigQueryModelTrainingResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnInput)(nil)).Elem(), BigtableColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnArrayInput)(nil)).Elem(), BigtableColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnFamilyInput)(nil)).Elem(), BigtableColumnFamilyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnFamilyArrayInput)(nil)).Elem(), BigtableColumnFamilyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnFamilyResponseInput)(nil)).Elem(), BigtableColumnFamilyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnFamilyResponseArrayInput)(nil)).Elem(), BigtableColumnFamilyResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnResponseInput)(nil)).Elem(), BigtableColumnResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnResponseArrayInput)(nil)).Elem(), BigtableColumnResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigtableOptionsInput)(nil)).Elem(), BigtableOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigtableOptionsPtrInput)(nil)).Elem(), BigtableOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BigtableOptionsResponseInput)(nil)).Elem(), BigtableOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BigtableOptionsResponsePtrInput)(nil)).Elem(), BigtableOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BqmlIterationResultInput)(nil)).Elem(), BqmlIterationResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BqmlIterationResultArrayInput)(nil)).Elem(), BqmlIterationResultArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BqmlIterationResultResponseInput)(nil)).Elem(), BqmlIterationResultResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BqmlIterationResultResponseArrayInput)(nil)).Elem(), BqmlIterationResultResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BqmlTrainingRunInput)(nil)).Elem(), BqmlTrainingRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BqmlTrainingRunArrayInput)(nil)).Elem(), BqmlTrainingRunArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BqmlTrainingRunResponseInput)(nil)).Elem(), BqmlTrainingRunResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BqmlTrainingRunResponseArrayInput)(nil)).Elem(), BqmlTrainingRunResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BqmlTrainingRunTrainingOptionsInput)(nil)).Elem(), BqmlTrainingRunTrainingOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BqmlTrainingRunTrainingOptionsPtrInput)(nil)).Elem(), BqmlTrainingRunTrainingOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BqmlTrainingRunTrainingOptionsResponseInput)(nil)).Elem(), BqmlTrainingRunTrainingOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusteringInput)(nil)).Elem(), ClusteringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusteringPtrInput)(nil)).Elem(), ClusteringArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusteringResponseInput)(nil)).Elem(), ClusteringResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusteringResponsePtrInput)(nil)).Elem(), ClusteringResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPropertyInput)(nil)).Elem(), ConnectionPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPropertyArrayInput)(nil)).Elem(), ConnectionPropertyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPropertyResponseInput)(nil)).Elem(), ConnectionPropertyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPropertyResponseArrayInput)(nil)).Elem(), ConnectionPropertyResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CsvOptionsInput)(nil)).Elem(), CsvOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CsvOptionsPtrInput)(nil)).Elem(), CsvOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CsvOptionsResponseInput)(nil)).Elem(), CsvOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CsvOptionsResponsePtrInput)(nil)).Elem(), CsvOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryInput)(nil)).Elem(), DatasetAccessEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryPtrInput)(nil)).Elem(), DatasetAccessEntryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryResponseInput)(nil)).Elem(), DatasetAccessEntryResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemArrayInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItemArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemResponseInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemResponseArrayInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItemResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessItemInput)(nil)).Elem(), DatasetAccessItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessItemArrayInput)(nil)).Elem(), DatasetAccessItemArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessItemResponseInput)(nil)).Elem(), DatasetAccessItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessItemResponseArrayInput)(nil)).Elem(), DatasetAccessItemResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetReferenceInput)(nil)).Elem(), DatasetReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetReferencePtrInput)(nil)).Elem(), DatasetReferenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatasetReferenceResponseInput)(nil)).Elem(), DatasetReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatasetReferenceResponsePtrInput)(nil)).Elem(), DatasetReferenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationTablePropertiesInput)(nil)).Elem(), DestinationTablePropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationTablePropertiesPtrInput)(nil)).Elem(), DestinationTablePropertiesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DestinationTablePropertiesResponseInput)(nil)).Elem(), DestinationTablePropertiesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DestinationTablePropertiesResponsePtrInput)(nil)).Elem(), DestinationTablePropertiesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DmlStatisticsResponseInput)(nil)).Elem(), DmlStatisticsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DmlStatisticsResponsePtrInput)(nil)).Elem(), DmlStatisticsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigurationInput)(nil)).Elem(), EncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigurationPtrInput)(nil)).Elem(), EncryptionConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigurationResponseInput)(nil)).Elem(), EncryptionConfigurationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigurationResponsePtrInput)(nil)).Elem(), EncryptionConfigurationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ErrorProtoResponseInput)(nil)).Elem(), ErrorProtoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ErrorProtoResponsePtrInput)(nil)).Elem(), ErrorProtoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ErrorProtoResponseArrayInput)(nil)).Elem(), ErrorProtoResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExplainQueryStageResponseInput)(nil)).Elem(), ExplainQueryStageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExplainQueryStageResponseArrayInput)(nil)).Elem(), ExplainQueryStageResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExplainQueryStepResponseInput)(nil)).Elem(), ExplainQueryStepResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExplainQueryStepResponseArrayInput)(nil)).Elem(), ExplainQueryStepResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationInput)(nil)).Elem(), ExternalDataConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationPtrInput)(nil)).Elem(), ExternalDataConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationResponseInput)(nil)).Elem(), ExternalDataConfigurationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationResponsePtrInput)(nil)).Elem(), ExternalDataConfigurationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleSheetsOptionsInput)(nil)).Elem(), GoogleSheetsOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleSheetsOptionsPtrInput)(nil)).Elem(), GoogleSheetsOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleSheetsOptionsResponseInput)(nil)).Elem(), GoogleSheetsOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleSheetsOptionsResponsePtrInput)(nil)).Elem(), GoogleSheetsOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HivePartitioningOptionsInput)(nil)).Elem(), HivePartitioningOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HivePartitioningOptionsPtrInput)(nil)).Elem(), HivePartitioningOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HivePartitioningOptionsResponseInput)(nil)).Elem(), HivePartitioningOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HivePartitioningOptionsResponsePtrInput)(nil)).Elem(), HivePartitioningOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IterationResultResponseInput)(nil)).Elem(), IterationResultResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IterationResultResponseArrayInput)(nil)).Elem(), IterationResultResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationInput)(nil)).Elem(), JobConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationPtrInput)(nil)).Elem(), JobConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationExtractInput)(nil)).Elem(), JobConfigurationExtractArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationExtractPtrInput)(nil)).Elem(), JobConfigurationExtractArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationExtractResponseInput)(nil)).Elem(), JobConfigurationExtractResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationExtractResponsePtrInput)(nil)).Elem(), JobConfigurationExtractResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadInput)(nil)).Elem(), JobConfigurationLoadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadPtrInput)(nil)).Elem(), JobConfigurationLoadArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadResponseInput)(nil)).Elem(), JobConfigurationLoadResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadResponsePtrInput)(nil)).Elem(), JobConfigurationLoadResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationQueryInput)(nil)).Elem(), JobConfigurationQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationQueryPtrInput)(nil)).Elem(), JobConfigurationQueryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationQueryResponseInput)(nil)).Elem(), JobConfigurationQueryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationQueryResponsePtrInput)(nil)).Elem(), JobConfigurationQueryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationResponseInput)(nil)).Elem(), JobConfigurationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationResponsePtrInput)(nil)).Elem(), JobConfigurationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationTableCopyInput)(nil)).Elem(), JobConfigurationTableCopyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationTableCopyPtrInput)(nil)).Elem(), JobConfigurationTableCopyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationTableCopyResponseInput)(nil)).Elem(), JobConfigurationTableCopyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationTableCopyResponsePtrInput)(nil)).Elem(), JobConfigurationTableCopyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobReferenceInput)(nil)).Elem(), JobReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobReferencePtrInput)(nil)).Elem(), JobReferenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobReferenceResponseInput)(nil)).Elem(), JobReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobReferenceResponsePtrInput)(nil)).Elem(), JobReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics2ReservationUsageItemResponseInput)(nil)).Elem(), JobStatistics2ReservationUsageItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics2ReservationUsageItemResponseArrayInput)(nil)).Elem(), JobStatistics2ReservationUsageItemResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics2ResponseInput)(nil)).Elem(), JobStatistics2ResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics2ResponsePtrInput)(nil)).Elem(), JobStatistics2ResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics3ResponseInput)(nil)).Elem(), JobStatistics3ResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics3ResponsePtrInput)(nil)).Elem(), JobStatistics3ResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics4ResponseInput)(nil)).Elem(), JobStatistics4ResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics4ResponsePtrInput)(nil)).Elem(), JobStatistics4ResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatisticsReservationUsageItemResponseInput)(nil)).Elem(), JobStatisticsReservationUsageItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatisticsReservationUsageItemResponseArrayInput)(nil)).Elem(), JobStatisticsReservationUsageItemResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatisticsResponseInput)(nil)).Elem(), JobStatisticsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatisticsResponsePtrInput)(nil)).Elem(), JobStatisticsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusResponseInput)(nil)).Elem(), JobStatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusResponsePtrInput)(nil)).Elem(), JobStatusResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaterializedViewDefinitionInput)(nil)).Elem(), MaterializedViewDefinitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaterializedViewDefinitionPtrInput)(nil)).Elem(), MaterializedViewDefinitionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MaterializedViewDefinitionResponseInput)(nil)).Elem(), MaterializedViewDefinitionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MaterializedViewDefinitionResponsePtrInput)(nil)).Elem(), MaterializedViewDefinitionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MlStatisticsResponseInput)(nil)).Elem(), MlStatisticsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MlStatisticsResponsePtrInput)(nil)).Elem(), MlStatisticsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionInput)(nil)).Elem(), ModelDefinitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionPtrInput)(nil)).Elem(), ModelDefinitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionModelOptionsInput)(nil)).Elem(), ModelDefinitionModelOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionModelOptionsPtrInput)(nil)).Elem(), ModelDefinitionModelOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionModelOptionsResponseInput)(nil)).Elem(), ModelDefinitionModelOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionModelOptionsResponsePtrInput)(nil)).Elem(), ModelDefinitionModelOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionResponseInput)(nil)).Elem(), ModelDefinitionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionResponsePtrInput)(nil)).Elem(), ModelDefinitionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelReferenceInput)(nil)).Elem(), ModelReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelReferencePtrInput)(nil)).Elem(), ModelReferenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelReferenceResponseInput)(nil)).Elem(), ModelReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ModelReferenceResponsePtrInput)(nil)).Elem(), ModelReferenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParquetOptionsInput)(nil)).Elem(), ParquetOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParquetOptionsPtrInput)(nil)).Elem(), ParquetOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ParquetOptionsResponseInput)(nil)).Elem(), ParquetOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ParquetOptionsResponsePtrInput)(nil)).Elem(), ParquetOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterInput)(nil)).Elem(), QueryParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterArrayInput)(nil)).Elem(), QueryParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterResponseInput)(nil)).Elem(), QueryParameterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterResponseArrayInput)(nil)).Elem(), QueryParameterResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypeInput)(nil)).Elem(), QueryParameterTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypePtrInput)(nil)).Elem(), QueryParameterTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypeResponseInput)(nil)).Elem(), QueryParameterTypeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypeResponsePtrInput)(nil)).Elem(), QueryParameterTypeResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypeStructTypesItemInput)(nil)).Elem(), QueryParameterTypeStructTypesItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypeStructTypesItemArrayInput)(nil)).Elem(), QueryParameterTypeStructTypesItemArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypeStructTypesItemResponseInput)(nil)).Elem(), QueryParameterTypeStructTypesItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypeStructTypesItemResponseArrayInput)(nil)).Elem(), QueryParameterTypeStructTypesItemResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterValueInput)(nil)).Elem(), QueryParameterValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterValuePtrInput)(nil)).Elem(), QueryParameterValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterValueArrayInput)(nil)).Elem(), QueryParameterValueArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterValueResponseInput)(nil)).Elem(), QueryParameterValueResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterValueResponseArrayInput)(nil)).Elem(), QueryParameterValueResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueryTimelineSampleResponseInput)(nil)).Elem(), QueryTimelineSampleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueryTimelineSampleResponseArrayInput)(nil)).Elem(), QueryTimelineSampleResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningInput)(nil)).Elem(), RangePartitioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningPtrInput)(nil)).Elem(), RangePartitioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningRangeInput)(nil)).Elem(), RangePartitioningRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningRangePtrInput)(nil)).Elem(), RangePartitioningRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningRangeResponseInput)(nil)).Elem(), RangePartitioningRangeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningRangeResponsePtrInput)(nil)).Elem(), RangePartitioningRangeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningResponseInput)(nil)).Elem(), RangePartitioningResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningResponsePtrInput)(nil)).Elem(), RangePartitioningResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineReferenceInput)(nil)).Elem(), RoutineReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineReferencePtrInput)(nil)).Elem(), RoutineReferenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RoutineReferenceResponseInput)(nil)).Elem(), RoutineReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RoutineReferenceResponsePtrInput)(nil)).Elem(), RoutineReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RoutineReferenceResponseArrayInput)(nil)).Elem(), RoutineReferenceResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RowAccessPolicyReferenceResponseInput)(nil)).Elem(), RowAccessPolicyReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RowAccessPolicyReferenceResponsePtrInput)(nil)).Elem(), RowAccessPolicyReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RowLevelSecurityStatisticsResponseInput)(nil)).Elem(), RowLevelSecurityStatisticsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RowLevelSecurityStatisticsResponsePtrInput)(nil)).Elem(), RowLevelSecurityStatisticsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScriptStackFrameResponseInput)(nil)).Elem(), ScriptStackFrameResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScriptStackFrameResponseArrayInput)(nil)).Elem(), ScriptStackFrameResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScriptStatisticsResponseInput)(nil)).Elem(), ScriptStatisticsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScriptStatisticsResponsePtrInput)(nil)).Elem(), ScriptStatisticsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SessionInfoResponseInput)(nil)).Elem(), SessionInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SessionInfoResponsePtrInput)(nil)).Elem(), SessionInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotDefinitionResponseInput)(nil)).Elem(), SnapshotDefinitionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotDefinitionResponsePtrInput)(nil)).Elem(), SnapshotDefinitionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypeInput)(nil)).Elem(), StandardSqlDataTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypePtrInput)(nil)).Elem(), StandardSqlDataTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypeResponseInput)(nil)).Elem(), StandardSqlDataTypeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypeResponsePtrInput)(nil)).Elem(), StandardSqlDataTypeResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlFieldInput)(nil)).Elem(), StandardSqlFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlFieldArrayInput)(nil)).Elem(), StandardSqlFieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlFieldResponseInput)(nil)).Elem(), StandardSqlFieldResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlFieldResponseArrayInput)(nil)).Elem(), StandardSqlFieldResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlStructTypeInput)(nil)).Elem(), StandardSqlStructTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlStructTypePtrInput)(nil)).Elem(), StandardSqlStructTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlStructTypeResponseInput)(nil)).Elem(), StandardSqlStructTypeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlStructTypeResponsePtrInput)(nil)).Elem(), StandardSqlStructTypeResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlTableTypeInput)(nil)).Elem(), StandardSqlTableTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlTableTypePtrInput)(nil)).Elem(), StandardSqlTableTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlTableTypeResponseInput)(nil)).Elem(), StandardSqlTableTypeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlTableTypeResponsePtrInput)(nil)).Elem(), StandardSqlTableTypeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StreamingbufferResponseInput)(nil)).Elem(), StreamingbufferResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StreamingbufferResponsePtrInput)(nil)).Elem(), StreamingbufferResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaInput)(nil)).Elem(), TableFieldSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaArrayInput)(nil)).Elem(), TableFieldSchemaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaCategoriesInput)(nil)).Elem(), TableFieldSchemaCategoriesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaCategoriesPtrInput)(nil)).Elem(), TableFieldSchemaCategoriesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaCategoriesResponseInput)(nil)).Elem(), TableFieldSchemaCategoriesResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaPolicyTagsInput)(nil)).Elem(), TableFieldSchemaPolicyTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaPolicyTagsPtrInput)(nil)).Elem(), TableFieldSchemaPolicyTagsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaPolicyTagsResponseInput)(nil)).Elem(), TableFieldSchemaPolicyTagsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaResponseInput)(nil)).Elem(), TableFieldSchemaResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaResponseArrayInput)(nil)).Elem(), TableFieldSchemaResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableReferenceInput)(nil)).Elem(), TableReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableReferencePtrInput)(nil)).Elem(), TableReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableReferenceArrayInput)(nil)).Elem(), TableReferenceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TableReferenceResponseInput)(nil)).Elem(), TableReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TableReferenceResponsePtrInput)(nil)).Elem(), TableReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TableReferenceResponseArrayInput)(nil)).Elem(), TableReferenceResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableSchemaInput)(nil)).Elem(), TableSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableSchemaPtrInput)(nil)).Elem(), TableSchemaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TableSchemaResponseInput)(nil)).Elem(), TableSchemaResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TableSchemaResponsePtrInput)(nil)).Elem(), TableSchemaResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimePartitioningInput)(nil)).Elem(), TimePartitioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimePartitioningPtrInput)(nil)).Elem(), TimePartitioningArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TimePartitioningResponseInput)(nil)).Elem(), TimePartitioningResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TimePartitioningResponsePtrInput)(nil)).Elem(), TimePartitioningResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TransactionInfoResponseInput)(nil)).Elem(), TransactionInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TransactionInfoResponsePtrInput)(nil)).Elem(), TransactionInfoResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserDefinedFunctionResourceInput)(nil)).Elem(), UserDefinedFunctionResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserDefinedFunctionResourceArrayInput)(nil)).Elem(), UserDefinedFunctionResourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UserDefinedFunctionResourceResponseInput)(nil)).Elem(), UserDefinedFunctionResourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UserDefinedFunctionResourceResponseArrayInput)(nil)).Elem(), UserDefinedFunctionResourceResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ViewDefinitionInput)(nil)).Elem(), ViewDefinitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ViewDefinitionPtrInput)(nil)).Elem(), ViewDefinitionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ViewDefinitionResponseInput)(nil)).Elem(), ViewDefinitionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ViewDefinitionResponsePtrInput)(nil)).Elem(), ViewDefinitionResponseArgs{})
 	pulumi.RegisterOutputType(ArgumentOutput{})
 	pulumi.RegisterOutputType(ArgumentArrayOutput{})
 	pulumi.RegisterOutputType(ArgumentResponseOutput{})
@@ -24367,13 +14754,10 @@ func init() {
 	pulumi.RegisterOutputType(AvroOptionsOutput{})
 	pulumi.RegisterOutputType(AvroOptionsPtrOutput{})
 	pulumi.RegisterOutputType(AvroOptionsResponseOutput{})
-	pulumi.RegisterOutputType(AvroOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BiEngineReasonResponseOutput{})
 	pulumi.RegisterOutputType(BiEngineReasonResponseArrayOutput{})
 	pulumi.RegisterOutputType(BiEngineStatisticsResponseOutput{})
-	pulumi.RegisterOutputType(BiEngineStatisticsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BigQueryModelTrainingResponseOutput{})
-	pulumi.RegisterOutputType(BigQueryModelTrainingResponsePtrOutput{})
 	pulumi.RegisterOutputType(BigtableColumnOutput{})
 	pulumi.RegisterOutputType(BigtableColumnArrayOutput{})
 	pulumi.RegisterOutputType(BigtableColumnFamilyOutput{})
@@ -24385,7 +14769,6 @@ func init() {
 	pulumi.RegisterOutputType(BigtableOptionsOutput{})
 	pulumi.RegisterOutputType(BigtableOptionsPtrOutput{})
 	pulumi.RegisterOutputType(BigtableOptionsResponseOutput{})
-	pulumi.RegisterOutputType(BigtableOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -24404,7 +14787,6 @@ func init() {
 	pulumi.RegisterOutputType(ClusteringOutput{})
 	pulumi.RegisterOutputType(ClusteringPtrOutput{})
 	pulumi.RegisterOutputType(ClusteringResponseOutput{})
-	pulumi.RegisterOutputType(ClusteringResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionPropertyOutput{})
 	pulumi.RegisterOutputType(ConnectionPropertyArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionPropertyResponseOutput{})
@@ -24412,7 +14794,6 @@ func init() {
 	pulumi.RegisterOutputType(CsvOptionsOutput{})
 	pulumi.RegisterOutputType(CsvOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CsvOptionsResponseOutput{})
-	pulumi.RegisterOutputType(CsvOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryResponseOutput{})
@@ -24427,19 +14808,14 @@ func init() {
 	pulumi.RegisterOutputType(DatasetReferenceOutput{})
 	pulumi.RegisterOutputType(DatasetReferencePtrOutput{})
 	pulumi.RegisterOutputType(DatasetReferenceResponseOutput{})
-	pulumi.RegisterOutputType(DatasetReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(DestinationTablePropertiesOutput{})
 	pulumi.RegisterOutputType(DestinationTablePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DestinationTablePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(DestinationTablePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(DmlStatisticsResponseOutput{})
-	pulumi.RegisterOutputType(DmlStatisticsResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(EncryptionConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorProtoResponseOutput{})
-	pulumi.RegisterOutputType(ErrorProtoResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorProtoResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExplainQueryStageResponseOutput{})
 	pulumi.RegisterOutputType(ExplainQueryStageResponseArrayOutput{})
@@ -24451,15 +14827,12 @@ func init() {
 	pulumi.RegisterOutputType(ExternalDataConfigurationOutput{})
 	pulumi.RegisterOutputType(ExternalDataConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ExternalDataConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(ExternalDataConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleSheetsOptionsOutput{})
 	pulumi.RegisterOutputType(GoogleSheetsOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleSheetsOptionsResponseOutput{})
-	pulumi.RegisterOutputType(GoogleSheetsOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(HivePartitioningOptionsOutput{})
 	pulumi.RegisterOutputType(HivePartitioningOptionsPtrOutput{})
 	pulumi.RegisterOutputType(HivePartitioningOptionsResponseOutput{})
-	pulumi.RegisterOutputType(HivePartitioningOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(IterationResultResponseOutput{})
 	pulumi.RegisterOutputType(IterationResultResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobConfigurationOutput{})
@@ -24467,61 +14840,44 @@ func init() {
 	pulumi.RegisterOutputType(JobConfigurationExtractOutput{})
 	pulumi.RegisterOutputType(JobConfigurationExtractPtrOutput{})
 	pulumi.RegisterOutputType(JobConfigurationExtractResponseOutput{})
-	pulumi.RegisterOutputType(JobConfigurationExtractResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobConfigurationLoadOutput{})
 	pulumi.RegisterOutputType(JobConfigurationLoadPtrOutput{})
 	pulumi.RegisterOutputType(JobConfigurationLoadResponseOutput{})
-	pulumi.RegisterOutputType(JobConfigurationLoadResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobConfigurationQueryOutput{})
 	pulumi.RegisterOutputType(JobConfigurationQueryPtrOutput{})
 	pulumi.RegisterOutputType(JobConfigurationQueryResponseOutput{})
-	pulumi.RegisterOutputType(JobConfigurationQueryResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(JobConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobConfigurationTableCopyOutput{})
 	pulumi.RegisterOutputType(JobConfigurationTableCopyPtrOutput{})
 	pulumi.RegisterOutputType(JobConfigurationTableCopyResponseOutput{})
-	pulumi.RegisterOutputType(JobConfigurationTableCopyResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobReferenceOutput{})
 	pulumi.RegisterOutputType(JobReferencePtrOutput{})
 	pulumi.RegisterOutputType(JobReferenceResponseOutput{})
-	pulumi.RegisterOutputType(JobReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobStatistics2ReservationUsageItemResponseOutput{})
 	pulumi.RegisterOutputType(JobStatistics2ReservationUsageItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobStatistics2ResponseOutput{})
-	pulumi.RegisterOutputType(JobStatistics2ResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobStatistics3ResponseOutput{})
-	pulumi.RegisterOutputType(JobStatistics3ResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobStatistics4ResponseOutput{})
-	pulumi.RegisterOutputType(JobStatistics4ResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobStatisticsReservationUsageItemResponseOutput{})
 	pulumi.RegisterOutputType(JobStatisticsReservationUsageItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobStatisticsResponseOutput{})
-	pulumi.RegisterOutputType(JobStatisticsResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobStatusResponseOutput{})
-	pulumi.RegisterOutputType(JobStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(MaterializedViewDefinitionOutput{})
 	pulumi.RegisterOutputType(MaterializedViewDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(MaterializedViewDefinitionResponseOutput{})
-	pulumi.RegisterOutputType(MaterializedViewDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(MlStatisticsResponseOutput{})
-	pulumi.RegisterOutputType(MlStatisticsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ModelDefinitionOutput{})
 	pulumi.RegisterOutputType(ModelDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(ModelDefinitionModelOptionsOutput{})
 	pulumi.RegisterOutputType(ModelDefinitionModelOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ModelDefinitionModelOptionsResponseOutput{})
-	pulumi.RegisterOutputType(ModelDefinitionModelOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ModelDefinitionResponseOutput{})
-	pulumi.RegisterOutputType(ModelDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ModelReferenceOutput{})
 	pulumi.RegisterOutputType(ModelReferencePtrOutput{})
 	pulumi.RegisterOutputType(ModelReferenceResponseOutput{})
-	pulumi.RegisterOutputType(ModelReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(ParquetOptionsOutput{})
 	pulumi.RegisterOutputType(ParquetOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ParquetOptionsResponseOutput{})
-	pulumi.RegisterOutputType(ParquetOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(QueryParameterOutput{})
 	pulumi.RegisterOutputType(QueryParameterArrayOutput{})
 	pulumi.RegisterOutputType(QueryParameterResponseOutput{})
@@ -24546,26 +14902,18 @@ func init() {
 	pulumi.RegisterOutputType(RangePartitioningRangeOutput{})
 	pulumi.RegisterOutputType(RangePartitioningRangePtrOutput{})
 	pulumi.RegisterOutputType(RangePartitioningRangeResponseOutput{})
-	pulumi.RegisterOutputType(RangePartitioningRangeResponsePtrOutput{})
 	pulumi.RegisterOutputType(RangePartitioningResponseOutput{})
-	pulumi.RegisterOutputType(RangePartitioningResponsePtrOutput{})
 	pulumi.RegisterOutputType(RoutineReferenceOutput{})
 	pulumi.RegisterOutputType(RoutineReferencePtrOutput{})
 	pulumi.RegisterOutputType(RoutineReferenceResponseOutput{})
-	pulumi.RegisterOutputType(RoutineReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(RoutineReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(RowAccessPolicyReferenceResponseOutput{})
-	pulumi.RegisterOutputType(RowAccessPolicyReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(RowLevelSecurityStatisticsResponseOutput{})
-	pulumi.RegisterOutputType(RowLevelSecurityStatisticsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScriptStackFrameResponseOutput{})
 	pulumi.RegisterOutputType(ScriptStackFrameResponseArrayOutput{})
 	pulumi.RegisterOutputType(ScriptStatisticsResponseOutput{})
-	pulumi.RegisterOutputType(ScriptStatisticsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SessionInfoResponseOutput{})
-	pulumi.RegisterOutputType(SessionInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(SnapshotDefinitionResponseOutput{})
-	pulumi.RegisterOutputType(SnapshotDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(StandardSqlDataTypeOutput{})
 	pulumi.RegisterOutputType(StandardSqlDataTypePtrOutput{})
 	pulumi.RegisterOutputType(StandardSqlDataTypeResponseOutput{})
@@ -24581,9 +14929,7 @@ func init() {
 	pulumi.RegisterOutputType(StandardSqlTableTypeOutput{})
 	pulumi.RegisterOutputType(StandardSqlTableTypePtrOutput{})
 	pulumi.RegisterOutputType(StandardSqlTableTypeResponseOutput{})
-	pulumi.RegisterOutputType(StandardSqlTableTypeResponsePtrOutput{})
 	pulumi.RegisterOutputType(StreamingbufferResponseOutput{})
-	pulumi.RegisterOutputType(StreamingbufferResponsePtrOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaArrayOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaCategoriesOutput{})
@@ -24598,18 +14944,14 @@ func init() {
 	pulumi.RegisterOutputType(TableReferencePtrOutput{})
 	pulumi.RegisterOutputType(TableReferenceArrayOutput{})
 	pulumi.RegisterOutputType(TableReferenceResponseOutput{})
-	pulumi.RegisterOutputType(TableReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(TableReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(TableSchemaOutput{})
 	pulumi.RegisterOutputType(TableSchemaPtrOutput{})
 	pulumi.RegisterOutputType(TableSchemaResponseOutput{})
-	pulumi.RegisterOutputType(TableSchemaResponsePtrOutput{})
 	pulumi.RegisterOutputType(TimePartitioningOutput{})
 	pulumi.RegisterOutputType(TimePartitioningPtrOutput{})
 	pulumi.RegisterOutputType(TimePartitioningResponseOutput{})
-	pulumi.RegisterOutputType(TimePartitioningResponsePtrOutput{})
 	pulumi.RegisterOutputType(TransactionInfoResponseOutput{})
-	pulumi.RegisterOutputType(TransactionInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserDefinedFunctionResourceOutput{})
 	pulumi.RegisterOutputType(UserDefinedFunctionResourceArrayOutput{})
 	pulumi.RegisterOutputType(UserDefinedFunctionResourceResponseOutput{})
@@ -24617,5 +14959,4 @@ func init() {
 	pulumi.RegisterOutputType(ViewDefinitionOutput{})
 	pulumi.RegisterOutputType(ViewDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(ViewDefinitionResponseOutput{})
-	pulumi.RegisterOutputType(ViewDefinitionResponsePtrOutput{})
 }

@@ -118,7 +118,7 @@ type KeyRingCryptoKeyIamPolicyInput interface {
 }
 
 func (*KeyRingCryptoKeyIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingCryptoKeyIamPolicy)(nil))
+	return reflect.TypeOf((**KeyRingCryptoKeyIamPolicy)(nil)).Elem()
 }
 
 func (i *KeyRingCryptoKeyIamPolicy) ToKeyRingCryptoKeyIamPolicyOutput() KeyRingCryptoKeyIamPolicyOutput {
@@ -132,7 +132,7 @@ func (i *KeyRingCryptoKeyIamPolicy) ToKeyRingCryptoKeyIamPolicyOutputWithContext
 type KeyRingCryptoKeyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (KeyRingCryptoKeyIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingCryptoKeyIamPolicy)(nil))
+	return reflect.TypeOf((**KeyRingCryptoKeyIamPolicy)(nil)).Elem()
 }
 
 func (o KeyRingCryptoKeyIamPolicyOutput) ToKeyRingCryptoKeyIamPolicyOutput() KeyRingCryptoKeyIamPolicyOutput {

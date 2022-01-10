@@ -18,78 +18,6 @@ type AppliedLicenseResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// AppliedLicenseResponseInput is an input type that accepts AppliedLicenseResponseArgs and AppliedLicenseResponseOutput values.
-// You can construct a concrete instance of `AppliedLicenseResponseInput` via:
-//
-//          AppliedLicenseResponseArgs{...}
-type AppliedLicenseResponseInput interface {
-	pulumi.Input
-
-	ToAppliedLicenseResponseOutput() AppliedLicenseResponseOutput
-	ToAppliedLicenseResponseOutputWithContext(context.Context) AppliedLicenseResponseOutput
-}
-
-// AppliedLicense holds the license data returned by adaptation module report.
-type AppliedLicenseResponseArgs struct {
-	// The OS license returned from the adaptation module's report.
-	OsLicense pulumi.StringInput `pulumi:"osLicense"`
-	// The license type that was used in OS adaptation.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (AppliedLicenseResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppliedLicenseResponse)(nil)).Elem()
-}
-
-func (i AppliedLicenseResponseArgs) ToAppliedLicenseResponseOutput() AppliedLicenseResponseOutput {
-	return i.ToAppliedLicenseResponseOutputWithContext(context.Background())
-}
-
-func (i AppliedLicenseResponseArgs) ToAppliedLicenseResponseOutputWithContext(ctx context.Context) AppliedLicenseResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppliedLicenseResponseOutput)
-}
-
-func (i AppliedLicenseResponseArgs) ToAppliedLicenseResponsePtrOutput() AppliedLicenseResponsePtrOutput {
-	return i.ToAppliedLicenseResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AppliedLicenseResponseArgs) ToAppliedLicenseResponsePtrOutputWithContext(ctx context.Context) AppliedLicenseResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppliedLicenseResponseOutput).ToAppliedLicenseResponsePtrOutputWithContext(ctx)
-}
-
-// AppliedLicenseResponsePtrInput is an input type that accepts AppliedLicenseResponseArgs, AppliedLicenseResponsePtr and AppliedLicenseResponsePtrOutput values.
-// You can construct a concrete instance of `AppliedLicenseResponsePtrInput` via:
-//
-//          AppliedLicenseResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AppliedLicenseResponsePtrInput interface {
-	pulumi.Input
-
-	ToAppliedLicenseResponsePtrOutput() AppliedLicenseResponsePtrOutput
-	ToAppliedLicenseResponsePtrOutputWithContext(context.Context) AppliedLicenseResponsePtrOutput
-}
-
-type appliedLicenseResponsePtrType AppliedLicenseResponseArgs
-
-func AppliedLicenseResponsePtr(v *AppliedLicenseResponseArgs) AppliedLicenseResponsePtrInput {
-	return (*appliedLicenseResponsePtrType)(v)
-}
-
-func (*appliedLicenseResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppliedLicenseResponse)(nil)).Elem()
-}
-
-func (i *appliedLicenseResponsePtrType) ToAppliedLicenseResponsePtrOutput() AppliedLicenseResponsePtrOutput {
-	return i.ToAppliedLicenseResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *appliedLicenseResponsePtrType) ToAppliedLicenseResponsePtrOutputWithContext(ctx context.Context) AppliedLicenseResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppliedLicenseResponsePtrOutput)
-}
-
 // AppliedLicense holds the license data returned by adaptation module report.
 type AppliedLicenseResponseOutput struct{ *pulumi.OutputState }
 
@@ -105,16 +33,6 @@ func (o AppliedLicenseResponseOutput) ToAppliedLicenseResponseOutputWithContext(
 	return o
 }
 
-func (o AppliedLicenseResponseOutput) ToAppliedLicenseResponsePtrOutput() AppliedLicenseResponsePtrOutput {
-	return o.ToAppliedLicenseResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AppliedLicenseResponseOutput) ToAppliedLicenseResponsePtrOutputWithContext(ctx context.Context) AppliedLicenseResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppliedLicenseResponse) *AppliedLicenseResponse {
-		return &v
-	}).(AppliedLicenseResponsePtrOutput)
-}
-
 // The OS license returned from the adaptation module's report.
 func (o AppliedLicenseResponseOutput) OsLicense() pulumi.StringOutput {
 	return o.ApplyT(func(v AppliedLicenseResponse) string { return v.OsLicense }).(pulumi.StringOutput)
@@ -123,50 +41,6 @@ func (o AppliedLicenseResponseOutput) OsLicense() pulumi.StringOutput {
 // The license type that was used in OS adaptation.
 func (o AppliedLicenseResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AppliedLicenseResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type AppliedLicenseResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AppliedLicenseResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppliedLicenseResponse)(nil)).Elem()
-}
-
-func (o AppliedLicenseResponsePtrOutput) ToAppliedLicenseResponsePtrOutput() AppliedLicenseResponsePtrOutput {
-	return o
-}
-
-func (o AppliedLicenseResponsePtrOutput) ToAppliedLicenseResponsePtrOutputWithContext(ctx context.Context) AppliedLicenseResponsePtrOutput {
-	return o
-}
-
-func (o AppliedLicenseResponsePtrOutput) Elem() AppliedLicenseResponseOutput {
-	return o.ApplyT(func(v *AppliedLicenseResponse) AppliedLicenseResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AppliedLicenseResponse
-		return ret
-	}).(AppliedLicenseResponseOutput)
-}
-
-// The OS license returned from the adaptation module's report.
-func (o AppliedLicenseResponsePtrOutput) OsLicense() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppliedLicenseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OsLicense
-	}).(pulumi.StringPtrOutput)
-}
-
-// The license type that was used in OS adaptation.
-func (o AppliedLicenseResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppliedLicenseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
@@ -183,70 +57,6 @@ type CloneJobResponse struct {
 	State string `pulumi:"state"`
 	// The time the state was last updated.
 	StateTime string `pulumi:"stateTime"`
-}
-
-// CloneJobResponseInput is an input type that accepts CloneJobResponseArgs and CloneJobResponseOutput values.
-// You can construct a concrete instance of `CloneJobResponseInput` via:
-//
-//          CloneJobResponseArgs{...}
-type CloneJobResponseInput interface {
-	pulumi.Input
-
-	ToCloneJobResponseOutput() CloneJobResponseOutput
-	ToCloneJobResponseOutputWithContext(context.Context) CloneJobResponseOutput
-}
-
-// CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
-type CloneJobResponseArgs struct {
-	// Details of the target VM in Compute Engine.
-	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponseInput `pulumi:"computeEngineTargetDetails"`
-	// The time the clone job was created (as an API call, not when it was actually created in the target).
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Provides details for the errors that led to the Clone Job's state.
-	Error StatusResponseInput `pulumi:"error"`
-	// The name of the clone.
-	Name pulumi.StringInput `pulumi:"name"`
-	// State of the clone job.
-	State pulumi.StringInput `pulumi:"state"`
-	// The time the state was last updated.
-	StateTime pulumi.StringInput `pulumi:"stateTime"`
-}
-
-func (CloneJobResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloneJobResponse)(nil)).Elem()
-}
-
-func (i CloneJobResponseArgs) ToCloneJobResponseOutput() CloneJobResponseOutput {
-	return i.ToCloneJobResponseOutputWithContext(context.Background())
-}
-
-func (i CloneJobResponseArgs) ToCloneJobResponseOutputWithContext(ctx context.Context) CloneJobResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloneJobResponseOutput)
-}
-
-// CloneJobResponseArrayInput is an input type that accepts CloneJobResponseArray and CloneJobResponseArrayOutput values.
-// You can construct a concrete instance of `CloneJobResponseArrayInput` via:
-//
-//          CloneJobResponseArray{ CloneJobResponseArgs{...} }
-type CloneJobResponseArrayInput interface {
-	pulumi.Input
-
-	ToCloneJobResponseArrayOutput() CloneJobResponseArrayOutput
-	ToCloneJobResponseArrayOutputWithContext(context.Context) CloneJobResponseArrayOutput
-}
-
-type CloneJobResponseArray []CloneJobResponseInput
-
-func (CloneJobResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloneJobResponse)(nil)).Elem()
-}
-
-func (i CloneJobResponseArray) ToCloneJobResponseArrayOutput() CloneJobResponseArrayOutput {
-	return i.ToCloneJobResponseArrayOutputWithContext(context.Background())
-}
-
-func (i CloneJobResponseArray) ToCloneJobResponseArrayOutputWithContext(ctx context.Context) CloneJobResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloneJobResponseArrayOutput)
 }
 
 // CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
@@ -758,108 +568,6 @@ type ComputeEngineTargetDefaultsResponse struct {
 	Zone string `pulumi:"zone"`
 }
 
-// ComputeEngineTargetDefaultsResponseInput is an input type that accepts ComputeEngineTargetDefaultsResponseArgs and ComputeEngineTargetDefaultsResponseOutput values.
-// You can construct a concrete instance of `ComputeEngineTargetDefaultsResponseInput` via:
-//
-//          ComputeEngineTargetDefaultsResponseArgs{...}
-type ComputeEngineTargetDefaultsResponseInput interface {
-	pulumi.Input
-
-	ToComputeEngineTargetDefaultsResponseOutput() ComputeEngineTargetDefaultsResponseOutput
-	ToComputeEngineTargetDefaultsResponseOutputWithContext(context.Context) ComputeEngineTargetDefaultsResponseOutput
-}
-
-// ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
-type ComputeEngineTargetDefaultsResponseArgs struct {
-	// Additional licenses to assign to the VM.
-	AdditionalLicenses pulumi.StringArrayInput `pulumi:"additionalLicenses"`
-	// The OS license returned from the adaptation module report.
-	AppliedLicense AppliedLicenseResponseInput `pulumi:"appliedLicense"`
-	// The VM Boot Option, as set in the source vm.
-	BootOption pulumi.StringInput `pulumi:"bootOption"`
-	// Compute instance scheduling information (if empty default is used).
-	ComputeScheduling ComputeSchedulingResponseInput `pulumi:"computeScheduling"`
-	// The disk type to use in the VM.
-	DiskType pulumi.StringInput `pulumi:"diskType"`
-	// A map of labels to associate with the VM.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The license type to use in OS adaptation.
-	LicenseType pulumi.StringInput `pulumi:"licenseType"`
-	// The machine type to create the VM with.
-	MachineType pulumi.StringInput `pulumi:"machineType"`
-	// The machine type series to create the VM with.
-	MachineTypeSeries pulumi.StringInput `pulumi:"machineTypeSeries"`
-	// The metadata key/value pairs to assign to the VM.
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	// List of NICs connected to this VM.
-	NetworkInterfaces NetworkInterfaceResponseArrayInput `pulumi:"networkInterfaces"`
-	// A map of network tags to associate with the VM.
-	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
-	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
-	SecureBoot pulumi.BoolInput `pulumi:"secureBoot"`
-	// The service account to associate the VM with.
-	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
-	// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
-	TargetProject pulumi.StringInput `pulumi:"targetProject"`
-	// The name of the VM to create.
-	VmName pulumi.StringInput `pulumi:"vmName"`
-	// The zone in which to create the VM.
-	Zone pulumi.StringInput `pulumi:"zone"`
-}
-
-func (ComputeEngineTargetDefaultsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeEngineTargetDefaultsResponse)(nil)).Elem()
-}
-
-func (i ComputeEngineTargetDefaultsResponseArgs) ToComputeEngineTargetDefaultsResponseOutput() ComputeEngineTargetDefaultsResponseOutput {
-	return i.ToComputeEngineTargetDefaultsResponseOutputWithContext(context.Background())
-}
-
-func (i ComputeEngineTargetDefaultsResponseArgs) ToComputeEngineTargetDefaultsResponseOutputWithContext(ctx context.Context) ComputeEngineTargetDefaultsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeEngineTargetDefaultsResponseOutput)
-}
-
-func (i ComputeEngineTargetDefaultsResponseArgs) ToComputeEngineTargetDefaultsResponsePtrOutput() ComputeEngineTargetDefaultsResponsePtrOutput {
-	return i.ToComputeEngineTargetDefaultsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ComputeEngineTargetDefaultsResponseArgs) ToComputeEngineTargetDefaultsResponsePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDefaultsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeEngineTargetDefaultsResponseOutput).ToComputeEngineTargetDefaultsResponsePtrOutputWithContext(ctx)
-}
-
-// ComputeEngineTargetDefaultsResponsePtrInput is an input type that accepts ComputeEngineTargetDefaultsResponseArgs, ComputeEngineTargetDefaultsResponsePtr and ComputeEngineTargetDefaultsResponsePtrOutput values.
-// You can construct a concrete instance of `ComputeEngineTargetDefaultsResponsePtrInput` via:
-//
-//          ComputeEngineTargetDefaultsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ComputeEngineTargetDefaultsResponsePtrInput interface {
-	pulumi.Input
-
-	ToComputeEngineTargetDefaultsResponsePtrOutput() ComputeEngineTargetDefaultsResponsePtrOutput
-	ToComputeEngineTargetDefaultsResponsePtrOutputWithContext(context.Context) ComputeEngineTargetDefaultsResponsePtrOutput
-}
-
-type computeEngineTargetDefaultsResponsePtrType ComputeEngineTargetDefaultsResponseArgs
-
-func ComputeEngineTargetDefaultsResponsePtr(v *ComputeEngineTargetDefaultsResponseArgs) ComputeEngineTargetDefaultsResponsePtrInput {
-	return (*computeEngineTargetDefaultsResponsePtrType)(v)
-}
-
-func (*computeEngineTargetDefaultsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeEngineTargetDefaultsResponse)(nil)).Elem()
-}
-
-func (i *computeEngineTargetDefaultsResponsePtrType) ToComputeEngineTargetDefaultsResponsePtrOutput() ComputeEngineTargetDefaultsResponsePtrOutput {
-	return i.ToComputeEngineTargetDefaultsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *computeEngineTargetDefaultsResponsePtrType) ToComputeEngineTargetDefaultsResponsePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDefaultsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeEngineTargetDefaultsResponsePtrOutput)
-}
-
 // ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
 type ComputeEngineTargetDefaultsResponseOutput struct{ *pulumi.OutputState }
 
@@ -873,16 +581,6 @@ func (o ComputeEngineTargetDefaultsResponseOutput) ToComputeEngineTargetDefaults
 
 func (o ComputeEngineTargetDefaultsResponseOutput) ToComputeEngineTargetDefaultsResponseOutputWithContext(ctx context.Context) ComputeEngineTargetDefaultsResponseOutput {
 	return o
-}
-
-func (o ComputeEngineTargetDefaultsResponseOutput) ToComputeEngineTargetDefaultsResponsePtrOutput() ComputeEngineTargetDefaultsResponsePtrOutput {
-	return o.ToComputeEngineTargetDefaultsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ComputeEngineTargetDefaultsResponseOutput) ToComputeEngineTargetDefaultsResponsePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDefaultsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeEngineTargetDefaultsResponse) *ComputeEngineTargetDefaultsResponse {
-		return &v
-	}).(ComputeEngineTargetDefaultsResponsePtrOutput)
 }
 
 // Additional licenses to assign to the VM.
@@ -970,200 +668,6 @@ func (o ComputeEngineTargetDefaultsResponseOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDefaultsResponse) string { return v.Zone }).(pulumi.StringOutput)
 }
 
-type ComputeEngineTargetDefaultsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeEngineTargetDefaultsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeEngineTargetDefaultsResponse)(nil)).Elem()
-}
-
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) ToComputeEngineTargetDefaultsResponsePtrOutput() ComputeEngineTargetDefaultsResponsePtrOutput {
-	return o
-}
-
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) ToComputeEngineTargetDefaultsResponsePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDefaultsResponsePtrOutput {
-	return o
-}
-
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) Elem() ComputeEngineTargetDefaultsResponseOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) ComputeEngineTargetDefaultsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeEngineTargetDefaultsResponse
-		return ret
-	}).(ComputeEngineTargetDefaultsResponseOutput)
-}
-
-// Additional licenses to assign to the VM.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) AdditionalLicenses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalLicenses
-	}).(pulumi.StringArrayOutput)
-}
-
-// The OS license returned from the adaptation module report.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) AppliedLicense() AppliedLicenseResponsePtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) *AppliedLicenseResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AppliedLicense
-	}).(AppliedLicenseResponsePtrOutput)
-}
-
-// The VM Boot Option, as set in the source vm.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) BootOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BootOption
-	}).(pulumi.StringPtrOutput)
-}
-
-// Compute instance scheduling information (if empty default is used).
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) ComputeScheduling() ComputeSchedulingResponsePtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) *ComputeSchedulingResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ComputeScheduling
-	}).(ComputeSchedulingResponsePtrOutput)
-}
-
-// The disk type to use in the VM.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskType
-	}).(pulumi.StringPtrOutput)
-}
-
-// A map of labels to associate with the VM.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// The license type to use in OS adaptation.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) LicenseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LicenseType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The machine type to create the VM with.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MachineType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The machine type series to create the VM with.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) MachineTypeSeries() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MachineTypeSeries
-	}).(pulumi.StringPtrOutput)
-}
-
-// The metadata key/value pairs to assign to the VM.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Metadata
-	}).(pulumi.StringMapOutput)
-}
-
-// List of NICs connected to this VM.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) []NetworkInterfaceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkInterfaces
-	}).(NetworkInterfaceResponseArrayOutput)
-}
-
-// A map of network tags to associate with the VM.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) NetworkTags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkTags
-	}).(pulumi.StringArrayOutput)
-}
-
-// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) SecureBoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.SecureBoot
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The service account to associate the VM with.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccount
-	}).(pulumi.StringPtrOutput)
-}
-
-// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) TargetProject() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TargetProject
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the VM to create.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) VmName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VmName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The zone in which to create the VM.
-func (o ComputeEngineTargetDefaultsResponsePtrOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDefaultsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Zone
-	}).(pulumi.StringPtrOutput)
-}
-
 // ComputeEngineTargetDetails is a collection of details for creating a VM in a target Compute Engine project.
 type ComputeEngineTargetDetailsResponse struct {
 	// Additional licenses to assign to the VM.
@@ -1202,108 +706,6 @@ type ComputeEngineTargetDetailsResponse struct {
 	Zone string `pulumi:"zone"`
 }
 
-// ComputeEngineTargetDetailsResponseInput is an input type that accepts ComputeEngineTargetDetailsResponseArgs and ComputeEngineTargetDetailsResponseOutput values.
-// You can construct a concrete instance of `ComputeEngineTargetDetailsResponseInput` via:
-//
-//          ComputeEngineTargetDetailsResponseArgs{...}
-type ComputeEngineTargetDetailsResponseInput interface {
-	pulumi.Input
-
-	ToComputeEngineTargetDetailsResponseOutput() ComputeEngineTargetDetailsResponseOutput
-	ToComputeEngineTargetDetailsResponseOutputWithContext(context.Context) ComputeEngineTargetDetailsResponseOutput
-}
-
-// ComputeEngineTargetDetails is a collection of details for creating a VM in a target Compute Engine project.
-type ComputeEngineTargetDetailsResponseArgs struct {
-	// Additional licenses to assign to the VM.
-	AdditionalLicenses pulumi.StringArrayInput `pulumi:"additionalLicenses"`
-	// The OS license returned from the adaptation module report.
-	AppliedLicense AppliedLicenseResponseInput `pulumi:"appliedLicense"`
-	// The VM Boot Option, as set in the source vm.
-	BootOption pulumi.StringInput `pulumi:"bootOption"`
-	// Compute instance scheduling information (if empty default is used).
-	ComputeScheduling ComputeSchedulingResponseInput `pulumi:"computeScheduling"`
-	// The disk type to use in the VM.
-	DiskType pulumi.StringInput `pulumi:"diskType"`
-	// A map of labels to associate with the VM.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The license type to use in OS adaptation.
-	LicenseType pulumi.StringInput `pulumi:"licenseType"`
-	// The machine type to create the VM with.
-	MachineType pulumi.StringInput `pulumi:"machineType"`
-	// The machine type series to create the VM with.
-	MachineTypeSeries pulumi.StringInput `pulumi:"machineTypeSeries"`
-	// The metadata key/value pairs to assign to the VM.
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	// List of NICs connected to this VM.
-	NetworkInterfaces NetworkInterfaceResponseArrayInput `pulumi:"networkInterfaces"`
-	// A map of network tags to associate with the VM.
-	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
-	// The GCP target project ID or project name.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
-	SecureBoot pulumi.BoolInput `pulumi:"secureBoot"`
-	// The service account to associate the VM with.
-	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
-	// The name of the VM to create.
-	VmName pulumi.StringInput `pulumi:"vmName"`
-	// The zone in which to create the VM.
-	Zone pulumi.StringInput `pulumi:"zone"`
-}
-
-func (ComputeEngineTargetDetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeEngineTargetDetailsResponse)(nil)).Elem()
-}
-
-func (i ComputeEngineTargetDetailsResponseArgs) ToComputeEngineTargetDetailsResponseOutput() ComputeEngineTargetDetailsResponseOutput {
-	return i.ToComputeEngineTargetDetailsResponseOutputWithContext(context.Background())
-}
-
-func (i ComputeEngineTargetDetailsResponseArgs) ToComputeEngineTargetDetailsResponseOutputWithContext(ctx context.Context) ComputeEngineTargetDetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeEngineTargetDetailsResponseOutput)
-}
-
-func (i ComputeEngineTargetDetailsResponseArgs) ToComputeEngineTargetDetailsResponsePtrOutput() ComputeEngineTargetDetailsResponsePtrOutput {
-	return i.ToComputeEngineTargetDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ComputeEngineTargetDetailsResponseArgs) ToComputeEngineTargetDetailsResponsePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDetailsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeEngineTargetDetailsResponseOutput).ToComputeEngineTargetDetailsResponsePtrOutputWithContext(ctx)
-}
-
-// ComputeEngineTargetDetailsResponsePtrInput is an input type that accepts ComputeEngineTargetDetailsResponseArgs, ComputeEngineTargetDetailsResponsePtr and ComputeEngineTargetDetailsResponsePtrOutput values.
-// You can construct a concrete instance of `ComputeEngineTargetDetailsResponsePtrInput` via:
-//
-//          ComputeEngineTargetDetailsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ComputeEngineTargetDetailsResponsePtrInput interface {
-	pulumi.Input
-
-	ToComputeEngineTargetDetailsResponsePtrOutput() ComputeEngineTargetDetailsResponsePtrOutput
-	ToComputeEngineTargetDetailsResponsePtrOutputWithContext(context.Context) ComputeEngineTargetDetailsResponsePtrOutput
-}
-
-type computeEngineTargetDetailsResponsePtrType ComputeEngineTargetDetailsResponseArgs
-
-func ComputeEngineTargetDetailsResponsePtr(v *ComputeEngineTargetDetailsResponseArgs) ComputeEngineTargetDetailsResponsePtrInput {
-	return (*computeEngineTargetDetailsResponsePtrType)(v)
-}
-
-func (*computeEngineTargetDetailsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeEngineTargetDetailsResponse)(nil)).Elem()
-}
-
-func (i *computeEngineTargetDetailsResponsePtrType) ToComputeEngineTargetDetailsResponsePtrOutput() ComputeEngineTargetDetailsResponsePtrOutput {
-	return i.ToComputeEngineTargetDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *computeEngineTargetDetailsResponsePtrType) ToComputeEngineTargetDetailsResponsePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDetailsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeEngineTargetDetailsResponsePtrOutput)
-}
-
 // ComputeEngineTargetDetails is a collection of details for creating a VM in a target Compute Engine project.
 type ComputeEngineTargetDetailsResponseOutput struct{ *pulumi.OutputState }
 
@@ -1317,16 +719,6 @@ func (o ComputeEngineTargetDetailsResponseOutput) ToComputeEngineTargetDetailsRe
 
 func (o ComputeEngineTargetDetailsResponseOutput) ToComputeEngineTargetDetailsResponseOutputWithContext(ctx context.Context) ComputeEngineTargetDetailsResponseOutput {
 	return o
-}
-
-func (o ComputeEngineTargetDetailsResponseOutput) ToComputeEngineTargetDetailsResponsePtrOutput() ComputeEngineTargetDetailsResponsePtrOutput {
-	return o.ToComputeEngineTargetDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ComputeEngineTargetDetailsResponseOutput) ToComputeEngineTargetDetailsResponsePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDetailsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeEngineTargetDetailsResponse) *ComputeEngineTargetDetailsResponse {
-		return &v
-	}).(ComputeEngineTargetDetailsResponsePtrOutput)
 }
 
 // Additional licenses to assign to the VM.
@@ -1412,200 +804,6 @@ func (o ComputeEngineTargetDetailsResponseOutput) VmName() pulumi.StringOutput {
 // The zone in which to create the VM.
 func (o ComputeEngineTargetDetailsResponseOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) string { return v.Zone }).(pulumi.StringOutput)
-}
-
-type ComputeEngineTargetDetailsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeEngineTargetDetailsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeEngineTargetDetailsResponse)(nil)).Elem()
-}
-
-func (o ComputeEngineTargetDetailsResponsePtrOutput) ToComputeEngineTargetDetailsResponsePtrOutput() ComputeEngineTargetDetailsResponsePtrOutput {
-	return o
-}
-
-func (o ComputeEngineTargetDetailsResponsePtrOutput) ToComputeEngineTargetDetailsResponsePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDetailsResponsePtrOutput {
-	return o
-}
-
-func (o ComputeEngineTargetDetailsResponsePtrOutput) Elem() ComputeEngineTargetDetailsResponseOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) ComputeEngineTargetDetailsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeEngineTargetDetailsResponse
-		return ret
-	}).(ComputeEngineTargetDetailsResponseOutput)
-}
-
-// Additional licenses to assign to the VM.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) AdditionalLicenses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalLicenses
-	}).(pulumi.StringArrayOutput)
-}
-
-// The OS license returned from the adaptation module report.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) AppliedLicense() AppliedLicenseResponsePtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) *AppliedLicenseResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AppliedLicense
-	}).(AppliedLicenseResponsePtrOutput)
-}
-
-// The VM Boot Option, as set in the source vm.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) BootOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BootOption
-	}).(pulumi.StringPtrOutput)
-}
-
-// Compute instance scheduling information (if empty default is used).
-func (o ComputeEngineTargetDetailsResponsePtrOutput) ComputeScheduling() ComputeSchedulingResponsePtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) *ComputeSchedulingResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ComputeScheduling
-	}).(ComputeSchedulingResponsePtrOutput)
-}
-
-// The disk type to use in the VM.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskType
-	}).(pulumi.StringPtrOutput)
-}
-
-// A map of labels to associate with the VM.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// The license type to use in OS adaptation.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) LicenseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LicenseType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The machine type to create the VM with.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MachineType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The machine type series to create the VM with.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) MachineTypeSeries() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MachineTypeSeries
-	}).(pulumi.StringPtrOutput)
-}
-
-// The metadata key/value pairs to assign to the VM.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Metadata
-	}).(pulumi.StringMapOutput)
-}
-
-// List of NICs connected to this VM.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) []NetworkInterfaceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkInterfaces
-	}).(NetworkInterfaceResponseArrayOutput)
-}
-
-// A map of network tags to associate with the VM.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) NetworkTags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkTags
-	}).(pulumi.StringArrayOutput)
-}
-
-// The GCP target project ID or project name.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) SecureBoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.SecureBoot
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The service account to associate the VM with.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccount
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the VM to create.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) VmName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VmName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The zone in which to create the VM.
-func (o ComputeEngineTargetDetailsResponsePtrOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeEngineTargetDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Zone
-	}).(pulumi.StringPtrOutput)
 }
 
 // Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes.
@@ -1833,83 +1031,6 @@ type ComputeSchedulingResponse struct {
 	RestartType string `pulumi:"restartType"`
 }
 
-// ComputeSchedulingResponseInput is an input type that accepts ComputeSchedulingResponseArgs and ComputeSchedulingResponseOutput values.
-// You can construct a concrete instance of `ComputeSchedulingResponseInput` via:
-//
-//          ComputeSchedulingResponseArgs{...}
-type ComputeSchedulingResponseInput interface {
-	pulumi.Input
-
-	ToComputeSchedulingResponseOutput() ComputeSchedulingResponseOutput
-	ToComputeSchedulingResponseOutputWithContext(context.Context) ComputeSchedulingResponseOutput
-}
-
-// Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes.
-type ComputeSchedulingResponseArgs struct {
-	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
-	// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node. Ignored if no node_affinites are configured.
-	MinNodeCpus pulumi.IntInput `pulumi:"minNodeCpus"`
-	// A set of node affinity and anti-affinity configurations for sole tenant nodes.
-	NodeAffinities SchedulingNodeAffinityResponseArrayInput `pulumi:"nodeAffinities"`
-	// How the instance should behave when the host machine undergoes maintenance that may temporarily impact instance performance.
-	OnHostMaintenance pulumi.StringInput `pulumi:"onHostMaintenance"`
-	// Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart.
-	RestartType pulumi.StringInput `pulumi:"restartType"`
-}
-
-func (ComputeSchedulingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeSchedulingResponse)(nil)).Elem()
-}
-
-func (i ComputeSchedulingResponseArgs) ToComputeSchedulingResponseOutput() ComputeSchedulingResponseOutput {
-	return i.ToComputeSchedulingResponseOutputWithContext(context.Background())
-}
-
-func (i ComputeSchedulingResponseArgs) ToComputeSchedulingResponseOutputWithContext(ctx context.Context) ComputeSchedulingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeSchedulingResponseOutput)
-}
-
-func (i ComputeSchedulingResponseArgs) ToComputeSchedulingResponsePtrOutput() ComputeSchedulingResponsePtrOutput {
-	return i.ToComputeSchedulingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ComputeSchedulingResponseArgs) ToComputeSchedulingResponsePtrOutputWithContext(ctx context.Context) ComputeSchedulingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeSchedulingResponseOutput).ToComputeSchedulingResponsePtrOutputWithContext(ctx)
-}
-
-// ComputeSchedulingResponsePtrInput is an input type that accepts ComputeSchedulingResponseArgs, ComputeSchedulingResponsePtr and ComputeSchedulingResponsePtrOutput values.
-// You can construct a concrete instance of `ComputeSchedulingResponsePtrInput` via:
-//
-//          ComputeSchedulingResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ComputeSchedulingResponsePtrInput interface {
-	pulumi.Input
-
-	ToComputeSchedulingResponsePtrOutput() ComputeSchedulingResponsePtrOutput
-	ToComputeSchedulingResponsePtrOutputWithContext(context.Context) ComputeSchedulingResponsePtrOutput
-}
-
-type computeSchedulingResponsePtrType ComputeSchedulingResponseArgs
-
-func ComputeSchedulingResponsePtr(v *ComputeSchedulingResponseArgs) ComputeSchedulingResponsePtrInput {
-	return (*computeSchedulingResponsePtrType)(v)
-}
-
-func (*computeSchedulingResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeSchedulingResponse)(nil)).Elem()
-}
-
-func (i *computeSchedulingResponsePtrType) ToComputeSchedulingResponsePtrOutput() ComputeSchedulingResponsePtrOutput {
-	return i.ToComputeSchedulingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *computeSchedulingResponsePtrType) ToComputeSchedulingResponsePtrOutputWithContext(ctx context.Context) ComputeSchedulingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeSchedulingResponsePtrOutput)
-}
-
 // Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes.
 type ComputeSchedulingResponseOutput struct{ *pulumi.OutputState }
 
@@ -1923,16 +1044,6 @@ func (o ComputeSchedulingResponseOutput) ToComputeSchedulingResponseOutput() Com
 
 func (o ComputeSchedulingResponseOutput) ToComputeSchedulingResponseOutputWithContext(ctx context.Context) ComputeSchedulingResponseOutput {
 	return o
-}
-
-func (o ComputeSchedulingResponseOutput) ToComputeSchedulingResponsePtrOutput() ComputeSchedulingResponsePtrOutput {
-	return o.ToComputeSchedulingResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ComputeSchedulingResponseOutput) ToComputeSchedulingResponsePtrOutputWithContext(ctx context.Context) ComputeSchedulingResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeSchedulingResponse) *ComputeSchedulingResponse {
-		return &v
-	}).(ComputeSchedulingResponsePtrOutput)
 }
 
 func (o ComputeSchedulingResponseOutput) AutomaticRestart() pulumi.BoolOutput {
@@ -1959,79 +1070,6 @@ func (o ComputeSchedulingResponseOutput) RestartType() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeSchedulingResponse) string { return v.RestartType }).(pulumi.StringOutput)
 }
 
-type ComputeSchedulingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeSchedulingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeSchedulingResponse)(nil)).Elem()
-}
-
-func (o ComputeSchedulingResponsePtrOutput) ToComputeSchedulingResponsePtrOutput() ComputeSchedulingResponsePtrOutput {
-	return o
-}
-
-func (o ComputeSchedulingResponsePtrOutput) ToComputeSchedulingResponsePtrOutputWithContext(ctx context.Context) ComputeSchedulingResponsePtrOutput {
-	return o
-}
-
-func (o ComputeSchedulingResponsePtrOutput) Elem() ComputeSchedulingResponseOutput {
-	return o.ApplyT(func(v *ComputeSchedulingResponse) ComputeSchedulingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeSchedulingResponse
-		return ret
-	}).(ComputeSchedulingResponseOutput)
-}
-
-func (o ComputeSchedulingResponsePtrOutput) AutomaticRestart() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ComputeSchedulingResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AutomaticRestart
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node. Ignored if no node_affinites are configured.
-func (o ComputeSchedulingResponsePtrOutput) MinNodeCpus() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ComputeSchedulingResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MinNodeCpus
-	}).(pulumi.IntPtrOutput)
-}
-
-// A set of node affinity and anti-affinity configurations for sole tenant nodes.
-func (o ComputeSchedulingResponsePtrOutput) NodeAffinities() SchedulingNodeAffinityResponseArrayOutput {
-	return o.ApplyT(func(v *ComputeSchedulingResponse) []SchedulingNodeAffinityResponse {
-		if v == nil {
-			return nil
-		}
-		return v.NodeAffinities
-	}).(SchedulingNodeAffinityResponseArrayOutput)
-}
-
-// How the instance should behave when the host machine undergoes maintenance that may temporarily impact instance performance.
-func (o ComputeSchedulingResponsePtrOutput) OnHostMaintenance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeSchedulingResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OnHostMaintenance
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart.
-func (o ComputeSchedulingResponsePtrOutput) RestartType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeSchedulingResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RestartType
-	}).(pulumi.StringPtrOutput)
-}
-
 // CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
 type CutoverJobResponse struct {
 	// Details of the target VM in Compute Engine.
@@ -2052,76 +1090,6 @@ type CutoverJobResponse struct {
 	StateMessage string `pulumi:"stateMessage"`
 	// The time the state was last updated.
 	StateTime string `pulumi:"stateTime"`
-}
-
-// CutoverJobResponseInput is an input type that accepts CutoverJobResponseArgs and CutoverJobResponseOutput values.
-// You can construct a concrete instance of `CutoverJobResponseInput` via:
-//
-//          CutoverJobResponseArgs{...}
-type CutoverJobResponseInput interface {
-	pulumi.Input
-
-	ToCutoverJobResponseOutput() CutoverJobResponseOutput
-	ToCutoverJobResponseOutputWithContext(context.Context) CutoverJobResponseOutput
-}
-
-// CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
-type CutoverJobResponseArgs struct {
-	// Details of the target VM in Compute Engine.
-	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponseInput `pulumi:"computeEngineTargetDetails"`
-	// The time the cutover job was created (as an API call, not when it was actually created in the target).
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Provides details for the errors that led to the Cutover Job's state.
-	Error StatusResponseInput `pulumi:"error"`
-	// The name of the cutover job.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The current progress in percentage of the cutover job.
-	Progress pulumi.IntInput `pulumi:"progress"`
-	// The current progress in percentage of the cutover job.
-	ProgressPercent pulumi.IntInput `pulumi:"progressPercent"`
-	// State of the cutover job.
-	State pulumi.StringInput `pulumi:"state"`
-	// A message providing possible extra details about the current state.
-	StateMessage pulumi.StringInput `pulumi:"stateMessage"`
-	// The time the state was last updated.
-	StateTime pulumi.StringInput `pulumi:"stateTime"`
-}
-
-func (CutoverJobResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CutoverJobResponse)(nil)).Elem()
-}
-
-func (i CutoverJobResponseArgs) ToCutoverJobResponseOutput() CutoverJobResponseOutput {
-	return i.ToCutoverJobResponseOutputWithContext(context.Background())
-}
-
-func (i CutoverJobResponseArgs) ToCutoverJobResponseOutputWithContext(ctx context.Context) CutoverJobResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CutoverJobResponseOutput)
-}
-
-// CutoverJobResponseArrayInput is an input type that accepts CutoverJobResponseArray and CutoverJobResponseArrayOutput values.
-// You can construct a concrete instance of `CutoverJobResponseArrayInput` via:
-//
-//          CutoverJobResponseArray{ CutoverJobResponseArgs{...} }
-type CutoverJobResponseArrayInput interface {
-	pulumi.Input
-
-	ToCutoverJobResponseArrayOutput() CutoverJobResponseArrayOutput
-	ToCutoverJobResponseArrayOutputWithContext(context.Context) CutoverJobResponseArrayOutput
-}
-
-type CutoverJobResponseArray []CutoverJobResponseInput
-
-func (CutoverJobResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CutoverJobResponse)(nil)).Elem()
-}
-
-func (i CutoverJobResponseArray) ToCutoverJobResponseArrayOutput() CutoverJobResponseArrayOutput {
-	return i.ToCutoverJobResponseArrayOutputWithContext(context.Background())
-}
-
-func (i CutoverJobResponseArray) ToCutoverJobResponseArrayOutputWithContext(ctx context.Context) CutoverJobResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CutoverJobResponseArrayOutput)
 }
 
 // CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
@@ -2343,66 +1311,6 @@ type NetworkInterfaceResponse struct {
 	Subnetwork string `pulumi:"subnetwork"`
 }
 
-// NetworkInterfaceResponseInput is an input type that accepts NetworkInterfaceResponseArgs and NetworkInterfaceResponseOutput values.
-// You can construct a concrete instance of `NetworkInterfaceResponseInput` via:
-//
-//          NetworkInterfaceResponseArgs{...}
-type NetworkInterfaceResponseInput interface {
-	pulumi.Input
-
-	ToNetworkInterfaceResponseOutput() NetworkInterfaceResponseOutput
-	ToNetworkInterfaceResponseOutputWithContext(context.Context) NetworkInterfaceResponseOutput
-}
-
-// NetworkInterface represents a NIC of a VM.
-type NetworkInterfaceResponseArgs struct {
-	// The external IP to define in the NIC.
-	ExternalIp pulumi.StringInput `pulumi:"externalIp"`
-	// The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
-	InternalIp pulumi.StringInput `pulumi:"internalIp"`
-	// The network to connect the NIC to.
-	Network pulumi.StringInput `pulumi:"network"`
-	// The subnetwork to connect the NIC to.
-	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
-}
-
-func (NetworkInterfaceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkInterfaceResponse)(nil)).Elem()
-}
-
-func (i NetworkInterfaceResponseArgs) ToNetworkInterfaceResponseOutput() NetworkInterfaceResponseOutput {
-	return i.ToNetworkInterfaceResponseOutputWithContext(context.Background())
-}
-
-func (i NetworkInterfaceResponseArgs) ToNetworkInterfaceResponseOutputWithContext(ctx context.Context) NetworkInterfaceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceResponseOutput)
-}
-
-// NetworkInterfaceResponseArrayInput is an input type that accepts NetworkInterfaceResponseArray and NetworkInterfaceResponseArrayOutput values.
-// You can construct a concrete instance of `NetworkInterfaceResponseArrayInput` via:
-//
-//          NetworkInterfaceResponseArray{ NetworkInterfaceResponseArgs{...} }
-type NetworkInterfaceResponseArrayInput interface {
-	pulumi.Input
-
-	ToNetworkInterfaceResponseArrayOutput() NetworkInterfaceResponseArrayOutput
-	ToNetworkInterfaceResponseArrayOutputWithContext(context.Context) NetworkInterfaceResponseArrayOutput
-}
-
-type NetworkInterfaceResponseArray []NetworkInterfaceResponseInput
-
-func (NetworkInterfaceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkInterfaceResponse)(nil)).Elem()
-}
-
-func (i NetworkInterfaceResponseArray) ToNetworkInterfaceResponseArrayOutput() NetworkInterfaceResponseArrayOutput {
-	return i.ToNetworkInterfaceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i NetworkInterfaceResponseArray) ToNetworkInterfaceResponseArrayOutputWithContext(ctx context.Context) NetworkInterfaceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceResponseArrayOutput)
-}
-
 // NetworkInterface represents a NIC of a VM.
 type NetworkInterfaceResponseOutput struct{ *pulumi.OutputState }
 
@@ -2468,80 +1376,6 @@ type ReplicationCycleResponse struct {
 	StartTime string `pulumi:"startTime"`
 }
 
-// ReplicationCycleResponseInput is an input type that accepts ReplicationCycleResponseArgs and ReplicationCycleResponseOutput values.
-// You can construct a concrete instance of `ReplicationCycleResponseInput` via:
-//
-//          ReplicationCycleResponseArgs{...}
-type ReplicationCycleResponseInput interface {
-	pulumi.Input
-
-	ToReplicationCycleResponseOutput() ReplicationCycleResponseOutput
-	ToReplicationCycleResponseOutputWithContext(context.Context) ReplicationCycleResponseOutput
-}
-
-// ReplicationCycle contains information about the current replication cycle status.
-type ReplicationCycleResponseArgs struct {
-	// The current progress in percentage of this cycle.
-	Progress pulumi.IntInput `pulumi:"progress"`
-	// The current progress in percentage of this cycle.
-	ProgressPercent pulumi.IntInput `pulumi:"progressPercent"`
-	// The time the replication cycle has started.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-}
-
-func (ReplicationCycleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationCycleResponse)(nil)).Elem()
-}
-
-func (i ReplicationCycleResponseArgs) ToReplicationCycleResponseOutput() ReplicationCycleResponseOutput {
-	return i.ToReplicationCycleResponseOutputWithContext(context.Background())
-}
-
-func (i ReplicationCycleResponseArgs) ToReplicationCycleResponseOutputWithContext(ctx context.Context) ReplicationCycleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReplicationCycleResponseOutput)
-}
-
-func (i ReplicationCycleResponseArgs) ToReplicationCycleResponsePtrOutput() ReplicationCycleResponsePtrOutput {
-	return i.ToReplicationCycleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ReplicationCycleResponseArgs) ToReplicationCycleResponsePtrOutputWithContext(ctx context.Context) ReplicationCycleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReplicationCycleResponseOutput).ToReplicationCycleResponsePtrOutputWithContext(ctx)
-}
-
-// ReplicationCycleResponsePtrInput is an input type that accepts ReplicationCycleResponseArgs, ReplicationCycleResponsePtr and ReplicationCycleResponsePtrOutput values.
-// You can construct a concrete instance of `ReplicationCycleResponsePtrInput` via:
-//
-//          ReplicationCycleResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ReplicationCycleResponsePtrInput interface {
-	pulumi.Input
-
-	ToReplicationCycleResponsePtrOutput() ReplicationCycleResponsePtrOutput
-	ToReplicationCycleResponsePtrOutputWithContext(context.Context) ReplicationCycleResponsePtrOutput
-}
-
-type replicationCycleResponsePtrType ReplicationCycleResponseArgs
-
-func ReplicationCycleResponsePtr(v *ReplicationCycleResponseArgs) ReplicationCycleResponsePtrInput {
-	return (*replicationCycleResponsePtrType)(v)
-}
-
-func (*replicationCycleResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReplicationCycleResponse)(nil)).Elem()
-}
-
-func (i *replicationCycleResponsePtrType) ToReplicationCycleResponsePtrOutput() ReplicationCycleResponsePtrOutput {
-	return i.ToReplicationCycleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *replicationCycleResponsePtrType) ToReplicationCycleResponsePtrOutputWithContext(ctx context.Context) ReplicationCycleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReplicationCycleResponsePtrOutput)
-}
-
 // ReplicationCycle contains information about the current replication cycle status.
 type ReplicationCycleResponseOutput struct{ *pulumi.OutputState }
 
@@ -2555,16 +1389,6 @@ func (o ReplicationCycleResponseOutput) ToReplicationCycleResponseOutput() Repli
 
 func (o ReplicationCycleResponseOutput) ToReplicationCycleResponseOutputWithContext(ctx context.Context) ReplicationCycleResponseOutput {
 	return o
-}
-
-func (o ReplicationCycleResponseOutput) ToReplicationCycleResponsePtrOutput() ReplicationCycleResponsePtrOutput {
-	return o.ToReplicationCycleResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ReplicationCycleResponseOutput) ToReplicationCycleResponsePtrOutputWithContext(ctx context.Context) ReplicationCycleResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReplicationCycleResponse) *ReplicationCycleResponse {
-		return &v
-	}).(ReplicationCycleResponsePtrOutput)
 }
 
 // The current progress in percentage of this cycle.
@@ -2582,134 +1406,10 @@ func (o ReplicationCycleResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-type ReplicationCycleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ReplicationCycleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReplicationCycleResponse)(nil)).Elem()
-}
-
-func (o ReplicationCycleResponsePtrOutput) ToReplicationCycleResponsePtrOutput() ReplicationCycleResponsePtrOutput {
-	return o
-}
-
-func (o ReplicationCycleResponsePtrOutput) ToReplicationCycleResponsePtrOutputWithContext(ctx context.Context) ReplicationCycleResponsePtrOutput {
-	return o
-}
-
-func (o ReplicationCycleResponsePtrOutput) Elem() ReplicationCycleResponseOutput {
-	return o.ApplyT(func(v *ReplicationCycleResponse) ReplicationCycleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ReplicationCycleResponse
-		return ret
-	}).(ReplicationCycleResponseOutput)
-}
-
-// The current progress in percentage of this cycle.
-func (o ReplicationCycleResponsePtrOutput) Progress() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ReplicationCycleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Progress
-	}).(pulumi.IntPtrOutput)
-}
-
-// The current progress in percentage of this cycle.
-func (o ReplicationCycleResponsePtrOutput) ProgressPercent() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ReplicationCycleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.ProgressPercent
-	}).(pulumi.IntPtrOutput)
-}
-
-// The time the replication cycle has started.
-func (o ReplicationCycleResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReplicationCycleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
 // ReplicationSync contain information about the last replica sync to the cloud.
 type ReplicationSyncResponse struct {
 	// The most updated snapshot created time in the source that finished replication.
 	LastSyncTime string `pulumi:"lastSyncTime"`
-}
-
-// ReplicationSyncResponseInput is an input type that accepts ReplicationSyncResponseArgs and ReplicationSyncResponseOutput values.
-// You can construct a concrete instance of `ReplicationSyncResponseInput` via:
-//
-//          ReplicationSyncResponseArgs{...}
-type ReplicationSyncResponseInput interface {
-	pulumi.Input
-
-	ToReplicationSyncResponseOutput() ReplicationSyncResponseOutput
-	ToReplicationSyncResponseOutputWithContext(context.Context) ReplicationSyncResponseOutput
-}
-
-// ReplicationSync contain information about the last replica sync to the cloud.
-type ReplicationSyncResponseArgs struct {
-	// The most updated snapshot created time in the source that finished replication.
-	LastSyncTime pulumi.StringInput `pulumi:"lastSyncTime"`
-}
-
-func (ReplicationSyncResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationSyncResponse)(nil)).Elem()
-}
-
-func (i ReplicationSyncResponseArgs) ToReplicationSyncResponseOutput() ReplicationSyncResponseOutput {
-	return i.ToReplicationSyncResponseOutputWithContext(context.Background())
-}
-
-func (i ReplicationSyncResponseArgs) ToReplicationSyncResponseOutputWithContext(ctx context.Context) ReplicationSyncResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSyncResponseOutput)
-}
-
-func (i ReplicationSyncResponseArgs) ToReplicationSyncResponsePtrOutput() ReplicationSyncResponsePtrOutput {
-	return i.ToReplicationSyncResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ReplicationSyncResponseArgs) ToReplicationSyncResponsePtrOutputWithContext(ctx context.Context) ReplicationSyncResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSyncResponseOutput).ToReplicationSyncResponsePtrOutputWithContext(ctx)
-}
-
-// ReplicationSyncResponsePtrInput is an input type that accepts ReplicationSyncResponseArgs, ReplicationSyncResponsePtr and ReplicationSyncResponsePtrOutput values.
-// You can construct a concrete instance of `ReplicationSyncResponsePtrInput` via:
-//
-//          ReplicationSyncResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ReplicationSyncResponsePtrInput interface {
-	pulumi.Input
-
-	ToReplicationSyncResponsePtrOutput() ReplicationSyncResponsePtrOutput
-	ToReplicationSyncResponsePtrOutputWithContext(context.Context) ReplicationSyncResponsePtrOutput
-}
-
-type replicationSyncResponsePtrType ReplicationSyncResponseArgs
-
-func ReplicationSyncResponsePtr(v *ReplicationSyncResponseArgs) ReplicationSyncResponsePtrInput {
-	return (*replicationSyncResponsePtrType)(v)
-}
-
-func (*replicationSyncResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReplicationSyncResponse)(nil)).Elem()
-}
-
-func (i *replicationSyncResponsePtrType) ToReplicationSyncResponsePtrOutput() ReplicationSyncResponsePtrOutput {
-	return i.ToReplicationSyncResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *replicationSyncResponsePtrType) ToReplicationSyncResponsePtrOutputWithContext(ctx context.Context) ReplicationSyncResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSyncResponsePtrOutput)
 }
 
 // ReplicationSync contain information about the last replica sync to the cloud.
@@ -2727,53 +1427,9 @@ func (o ReplicationSyncResponseOutput) ToReplicationSyncResponseOutputWithContex
 	return o
 }
 
-func (o ReplicationSyncResponseOutput) ToReplicationSyncResponsePtrOutput() ReplicationSyncResponsePtrOutput {
-	return o.ToReplicationSyncResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ReplicationSyncResponseOutput) ToReplicationSyncResponsePtrOutputWithContext(ctx context.Context) ReplicationSyncResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReplicationSyncResponse) *ReplicationSyncResponse {
-		return &v
-	}).(ReplicationSyncResponsePtrOutput)
-}
-
 // The most updated snapshot created time in the source that finished replication.
 func (o ReplicationSyncResponseOutput) LastSyncTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ReplicationSyncResponse) string { return v.LastSyncTime }).(pulumi.StringOutput)
-}
-
-type ReplicationSyncResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ReplicationSyncResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReplicationSyncResponse)(nil)).Elem()
-}
-
-func (o ReplicationSyncResponsePtrOutput) ToReplicationSyncResponsePtrOutput() ReplicationSyncResponsePtrOutput {
-	return o
-}
-
-func (o ReplicationSyncResponsePtrOutput) ToReplicationSyncResponsePtrOutputWithContext(ctx context.Context) ReplicationSyncResponsePtrOutput {
-	return o
-}
-
-func (o ReplicationSyncResponsePtrOutput) Elem() ReplicationSyncResponseOutput {
-	return o.ApplyT(func(v *ReplicationSyncResponse) ReplicationSyncResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ReplicationSyncResponse
-		return ret
-	}).(ReplicationSyncResponseOutput)
-}
-
-// The most updated snapshot created time in the source that finished replication.
-func (o ReplicationSyncResponsePtrOutput) LastSyncTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReplicationSyncResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LastSyncTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // A policy for scheduling replications.
@@ -2943,78 +1599,6 @@ type SchedulePolicyResponse struct {
 	SkipOsAdaptation bool `pulumi:"skipOsAdaptation"`
 }
 
-// SchedulePolicyResponseInput is an input type that accepts SchedulePolicyResponseArgs and SchedulePolicyResponseOutput values.
-// You can construct a concrete instance of `SchedulePolicyResponseInput` via:
-//
-//          SchedulePolicyResponseArgs{...}
-type SchedulePolicyResponseInput interface {
-	pulumi.Input
-
-	ToSchedulePolicyResponseOutput() SchedulePolicyResponseOutput
-	ToSchedulePolicyResponseOutputWithContext(context.Context) SchedulePolicyResponseOutput
-}
-
-// A policy for scheduling replications.
-type SchedulePolicyResponseArgs struct {
-	// The idle duration between replication stages.
-	IdleDuration pulumi.StringInput `pulumi:"idleDuration"`
-	// A flag to indicate whether to skip OS adaptation during the replication sync. OS adaptation is a process where the VM's operating system undergoes changes and adaptations to fully function on Compute Engine.
-	SkipOsAdaptation pulumi.BoolInput `pulumi:"skipOsAdaptation"`
-}
-
-func (SchedulePolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchedulePolicyResponse)(nil)).Elem()
-}
-
-func (i SchedulePolicyResponseArgs) ToSchedulePolicyResponseOutput() SchedulePolicyResponseOutput {
-	return i.ToSchedulePolicyResponseOutputWithContext(context.Background())
-}
-
-func (i SchedulePolicyResponseArgs) ToSchedulePolicyResponseOutputWithContext(ctx context.Context) SchedulePolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulePolicyResponseOutput)
-}
-
-func (i SchedulePolicyResponseArgs) ToSchedulePolicyResponsePtrOutput() SchedulePolicyResponsePtrOutput {
-	return i.ToSchedulePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SchedulePolicyResponseArgs) ToSchedulePolicyResponsePtrOutputWithContext(ctx context.Context) SchedulePolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulePolicyResponseOutput).ToSchedulePolicyResponsePtrOutputWithContext(ctx)
-}
-
-// SchedulePolicyResponsePtrInput is an input type that accepts SchedulePolicyResponseArgs, SchedulePolicyResponsePtr and SchedulePolicyResponsePtrOutput values.
-// You can construct a concrete instance of `SchedulePolicyResponsePtrInput` via:
-//
-//          SchedulePolicyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SchedulePolicyResponsePtrInput interface {
-	pulumi.Input
-
-	ToSchedulePolicyResponsePtrOutput() SchedulePolicyResponsePtrOutput
-	ToSchedulePolicyResponsePtrOutputWithContext(context.Context) SchedulePolicyResponsePtrOutput
-}
-
-type schedulePolicyResponsePtrType SchedulePolicyResponseArgs
-
-func SchedulePolicyResponsePtr(v *SchedulePolicyResponseArgs) SchedulePolicyResponsePtrInput {
-	return (*schedulePolicyResponsePtrType)(v)
-}
-
-func (*schedulePolicyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchedulePolicyResponse)(nil)).Elem()
-}
-
-func (i *schedulePolicyResponsePtrType) ToSchedulePolicyResponsePtrOutput() SchedulePolicyResponsePtrOutput {
-	return i.ToSchedulePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *schedulePolicyResponsePtrType) ToSchedulePolicyResponsePtrOutputWithContext(ctx context.Context) SchedulePolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulePolicyResponsePtrOutput)
-}
-
 // A policy for scheduling replications.
 type SchedulePolicyResponseOutput struct{ *pulumi.OutputState }
 
@@ -3030,16 +1614,6 @@ func (o SchedulePolicyResponseOutput) ToSchedulePolicyResponseOutputWithContext(
 	return o
 }
 
-func (o SchedulePolicyResponseOutput) ToSchedulePolicyResponsePtrOutput() SchedulePolicyResponsePtrOutput {
-	return o.ToSchedulePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SchedulePolicyResponseOutput) ToSchedulePolicyResponsePtrOutputWithContext(ctx context.Context) SchedulePolicyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulePolicyResponse) *SchedulePolicyResponse {
-		return &v
-	}).(SchedulePolicyResponsePtrOutput)
-}
-
 // The idle duration between replication stages.
 func (o SchedulePolicyResponseOutput) IdleDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v SchedulePolicyResponse) string { return v.IdleDuration }).(pulumi.StringOutput)
@@ -3048,50 +1622,6 @@ func (o SchedulePolicyResponseOutput) IdleDuration() pulumi.StringOutput {
 // A flag to indicate whether to skip OS adaptation during the replication sync. OS adaptation is a process where the VM's operating system undergoes changes and adaptations to fully function on Compute Engine.
 func (o SchedulePolicyResponseOutput) SkipOsAdaptation() pulumi.BoolOutput {
 	return o.ApplyT(func(v SchedulePolicyResponse) bool { return v.SkipOsAdaptation }).(pulumi.BoolOutput)
-}
-
-type SchedulePolicyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SchedulePolicyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchedulePolicyResponse)(nil)).Elem()
-}
-
-func (o SchedulePolicyResponsePtrOutput) ToSchedulePolicyResponsePtrOutput() SchedulePolicyResponsePtrOutput {
-	return o
-}
-
-func (o SchedulePolicyResponsePtrOutput) ToSchedulePolicyResponsePtrOutputWithContext(ctx context.Context) SchedulePolicyResponsePtrOutput {
-	return o
-}
-
-func (o SchedulePolicyResponsePtrOutput) Elem() SchedulePolicyResponseOutput {
-	return o.ApplyT(func(v *SchedulePolicyResponse) SchedulePolicyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SchedulePolicyResponse
-		return ret
-	}).(SchedulePolicyResponseOutput)
-}
-
-// The idle duration between replication stages.
-func (o SchedulePolicyResponsePtrOutput) IdleDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SchedulePolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IdleDuration
-	}).(pulumi.StringPtrOutput)
-}
-
-// A flag to indicate whether to skip OS adaptation during the replication sync. OS adaptation is a process where the VM's operating system undergoes changes and adaptations to fully function on Compute Engine.
-func (o SchedulePolicyResponsePtrOutput) SkipOsAdaptation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SchedulePolicyResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.SkipOsAdaptation
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. Based on https://cloud.google.com/compute/docs/reference/rest/v1/instances/setScheduling
@@ -3222,64 +1752,6 @@ type SchedulingNodeAffinityResponse struct {
 	Values []string `pulumi:"values"`
 }
 
-// SchedulingNodeAffinityResponseInput is an input type that accepts SchedulingNodeAffinityResponseArgs and SchedulingNodeAffinityResponseOutput values.
-// You can construct a concrete instance of `SchedulingNodeAffinityResponseInput` via:
-//
-//          SchedulingNodeAffinityResponseArgs{...}
-type SchedulingNodeAffinityResponseInput interface {
-	pulumi.Input
-
-	ToSchedulingNodeAffinityResponseOutput() SchedulingNodeAffinityResponseOutput
-	ToSchedulingNodeAffinityResponseOutputWithContext(context.Context) SchedulingNodeAffinityResponseOutput
-}
-
-// Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. Based on https://cloud.google.com/compute/docs/reference/rest/v1/instances/setScheduling
-type SchedulingNodeAffinityResponseArgs struct {
-	// The label key of Node resource to reference.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The operator to use for the node resources specified in the `values` parameter.
-	Operator pulumi.StringInput `pulumi:"operator"`
-	// Corresponds to the label values of Node resource.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (SchedulingNodeAffinityResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchedulingNodeAffinityResponse)(nil)).Elem()
-}
-
-func (i SchedulingNodeAffinityResponseArgs) ToSchedulingNodeAffinityResponseOutput() SchedulingNodeAffinityResponseOutput {
-	return i.ToSchedulingNodeAffinityResponseOutputWithContext(context.Background())
-}
-
-func (i SchedulingNodeAffinityResponseArgs) ToSchedulingNodeAffinityResponseOutputWithContext(ctx context.Context) SchedulingNodeAffinityResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulingNodeAffinityResponseOutput)
-}
-
-// SchedulingNodeAffinityResponseArrayInput is an input type that accepts SchedulingNodeAffinityResponseArray and SchedulingNodeAffinityResponseArrayOutput values.
-// You can construct a concrete instance of `SchedulingNodeAffinityResponseArrayInput` via:
-//
-//          SchedulingNodeAffinityResponseArray{ SchedulingNodeAffinityResponseArgs{...} }
-type SchedulingNodeAffinityResponseArrayInput interface {
-	pulumi.Input
-
-	ToSchedulingNodeAffinityResponseArrayOutput() SchedulingNodeAffinityResponseArrayOutput
-	ToSchedulingNodeAffinityResponseArrayOutputWithContext(context.Context) SchedulingNodeAffinityResponseArrayOutput
-}
-
-type SchedulingNodeAffinityResponseArray []SchedulingNodeAffinityResponseInput
-
-func (SchedulingNodeAffinityResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SchedulingNodeAffinityResponse)(nil)).Elem()
-}
-
-func (i SchedulingNodeAffinityResponseArray) ToSchedulingNodeAffinityResponseArrayOutput() SchedulingNodeAffinityResponseArrayOutput {
-	return i.ToSchedulingNodeAffinityResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SchedulingNodeAffinityResponseArray) ToSchedulingNodeAffinityResponseArrayOutputWithContext(ctx context.Context) SchedulingNodeAffinityResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulingNodeAffinityResponseArrayOutput)
-}
-
 // Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. Based on https://cloud.google.com/compute/docs/reference/rest/v1/instances/setScheduling
 type SchedulingNodeAffinityResponseOutput struct{ *pulumi.OutputState }
 
@@ -3340,80 +1812,6 @@ type StatusResponse struct {
 	Message string `pulumi:"message"`
 }
 
-// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
-// You can construct a concrete instance of `StatusResponseInput` via:
-//
-//          StatusResponseArgs{...}
-type StatusResponseInput interface {
-	pulumi.Input
-
-	ToStatusResponseOutput() StatusResponseOutput
-	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusResponseArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (StatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
-	return i.ToStatusResponseOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
-}
-
-// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
-// You can construct a concrete instance of `StatusResponsePtrInput` via:
-//
-//          StatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToStatusResponsePtrOutput() StatusResponsePtrOutput
-	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
-}
-
-type statusResponsePtrType StatusResponseArgs
-
-func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
-	return (*statusResponsePtrType)(v)
-}
-
-func (*statusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
-}
-
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponseOutput struct{ *pulumi.OutputState }
 
@@ -3429,16 +1827,6 @@ func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
-		return &v
-	}).(StatusResponsePtrOutput)
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o StatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -3452,60 +1840,6 @@ func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
-}
-
-type StatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StatusResponse
-		return ret
-	}).(StatusResponseOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Code
-	}).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *StatusResponse) []map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
 }
 
 // Utilization information of a single VM.
@@ -3634,64 +1968,6 @@ type VmUtilizationInfoResponse struct {
 	VmId string `pulumi:"vmId"`
 	// The description of the VM in a Source of type Vmware.
 	VmwareVmDetails VmwareVmDetailsResponse `pulumi:"vmwareVmDetails"`
-}
-
-// VmUtilizationInfoResponseInput is an input type that accepts VmUtilizationInfoResponseArgs and VmUtilizationInfoResponseOutput values.
-// You can construct a concrete instance of `VmUtilizationInfoResponseInput` via:
-//
-//          VmUtilizationInfoResponseArgs{...}
-type VmUtilizationInfoResponseInput interface {
-	pulumi.Input
-
-	ToVmUtilizationInfoResponseOutput() VmUtilizationInfoResponseOutput
-	ToVmUtilizationInfoResponseOutputWithContext(context.Context) VmUtilizationInfoResponseOutput
-}
-
-// Utilization information of a single VM.
-type VmUtilizationInfoResponseArgs struct {
-	// Utilization metrics for this VM.
-	Utilization VmUtilizationMetricsResponseInput `pulumi:"utilization"`
-	// The VM's ID in the source.
-	VmId pulumi.StringInput `pulumi:"vmId"`
-	// The description of the VM in a Source of type Vmware.
-	VmwareVmDetails VmwareVmDetailsResponseInput `pulumi:"vmwareVmDetails"`
-}
-
-func (VmUtilizationInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmUtilizationInfoResponse)(nil)).Elem()
-}
-
-func (i VmUtilizationInfoResponseArgs) ToVmUtilizationInfoResponseOutput() VmUtilizationInfoResponseOutput {
-	return i.ToVmUtilizationInfoResponseOutputWithContext(context.Background())
-}
-
-func (i VmUtilizationInfoResponseArgs) ToVmUtilizationInfoResponseOutputWithContext(ctx context.Context) VmUtilizationInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmUtilizationInfoResponseOutput)
-}
-
-// VmUtilizationInfoResponseArrayInput is an input type that accepts VmUtilizationInfoResponseArray and VmUtilizationInfoResponseArrayOutput values.
-// You can construct a concrete instance of `VmUtilizationInfoResponseArrayInput` via:
-//
-//          VmUtilizationInfoResponseArray{ VmUtilizationInfoResponseArgs{...} }
-type VmUtilizationInfoResponseArrayInput interface {
-	pulumi.Input
-
-	ToVmUtilizationInfoResponseArrayOutput() VmUtilizationInfoResponseArrayOutput
-	ToVmUtilizationInfoResponseArrayOutputWithContext(context.Context) VmUtilizationInfoResponseArrayOutput
-}
-
-type VmUtilizationInfoResponseArray []VmUtilizationInfoResponseInput
-
-func (VmUtilizationInfoResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VmUtilizationInfoResponse)(nil)).Elem()
-}
-
-func (i VmUtilizationInfoResponseArray) ToVmUtilizationInfoResponseArrayOutput() VmUtilizationInfoResponseArrayOutput {
-	return i.ToVmUtilizationInfoResponseArrayOutputWithContext(context.Background())
-}
-
-func (i VmUtilizationInfoResponseArray) ToVmUtilizationInfoResponseArrayOutputWithContext(ctx context.Context) VmUtilizationInfoResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmUtilizationInfoResponseArrayOutput)
 }
 
 // Utilization information of a single VM.
@@ -4205,65 +2481,6 @@ type VmUtilizationMetricsResponse struct {
 	NetworkThroughputMaxKbps string `pulumi:"networkThroughputMaxKbps"`
 }
 
-// VmUtilizationMetricsResponseInput is an input type that accepts VmUtilizationMetricsResponseArgs and VmUtilizationMetricsResponseOutput values.
-// You can construct a concrete instance of `VmUtilizationMetricsResponseInput` via:
-//
-//          VmUtilizationMetricsResponseArgs{...}
-type VmUtilizationMetricsResponseInput interface {
-	pulumi.Input
-
-	ToVmUtilizationMetricsResponseOutput() VmUtilizationMetricsResponseOutput
-	ToVmUtilizationMetricsResponseOutputWithContext(context.Context) VmUtilizationMetricsResponseOutput
-}
-
-// Utilization metrics values for a single VM.
-type VmUtilizationMetricsResponseArgs struct {
-	// Average CPU usage, percent.
-	CpuAverage pulumi.IntInput `pulumi:"cpuAverage"`
-	// Average CPU usage, percent.
-	CpuAveragePercent pulumi.IntInput `pulumi:"cpuAveragePercent"`
-	// Max CPU usage, percent.
-	CpuMax pulumi.IntInput `pulumi:"cpuMax"`
-	// Max CPU usage, percent.
-	CpuMaxPercent pulumi.IntInput `pulumi:"cpuMaxPercent"`
-	// Average disk IO rate, in kilobytes per second.
-	DiskIoRateAverage pulumi.StringInput `pulumi:"diskIoRateAverage"`
-	// Average disk IO rate, in kilobytes per second.
-	DiskIoRateAverageKbps pulumi.StringInput `pulumi:"diskIoRateAverageKbps"`
-	// Max disk IO rate, in kilobytes per second.
-	DiskIoRateMax pulumi.StringInput `pulumi:"diskIoRateMax"`
-	// Max disk IO rate, in kilobytes per second.
-	DiskIoRateMaxKbps pulumi.StringInput `pulumi:"diskIoRateMaxKbps"`
-	// Average memory usage, percent.
-	MemoryAverage pulumi.IntInput `pulumi:"memoryAverage"`
-	// Average memory usage, percent.
-	MemoryAveragePercent pulumi.IntInput `pulumi:"memoryAveragePercent"`
-	// Max memory usage, percent.
-	MemoryMax pulumi.IntInput `pulumi:"memoryMax"`
-	// Max memory usage, percent.
-	MemoryMaxPercent pulumi.IntInput `pulumi:"memoryMaxPercent"`
-	// Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
-	NetworkThroughputAverage pulumi.StringInput `pulumi:"networkThroughputAverage"`
-	// Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
-	NetworkThroughputAverageKbps pulumi.StringInput `pulumi:"networkThroughputAverageKbps"`
-	// Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
-	NetworkThroughputMax pulumi.StringInput `pulumi:"networkThroughputMax"`
-	// Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
-	NetworkThroughputMaxKbps pulumi.StringInput `pulumi:"networkThroughputMaxKbps"`
-}
-
-func (VmUtilizationMetricsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmUtilizationMetricsResponse)(nil)).Elem()
-}
-
-func (i VmUtilizationMetricsResponseArgs) ToVmUtilizationMetricsResponseOutput() VmUtilizationMetricsResponseOutput {
-	return i.ToVmUtilizationMetricsResponseOutputWithContext(context.Background())
-}
-
-func (i VmUtilizationMetricsResponseArgs) ToVmUtilizationMetricsResponseOutputWithContext(ctx context.Context) VmUtilizationMetricsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmUtilizationMetricsResponseOutput)
-}
-
 // Utilization metrics values for a single VM.
 type VmUtilizationMetricsResponseOutput struct{ *pulumi.OutputState }
 
@@ -4568,82 +2785,6 @@ type VmwareSourceDetailsResponse struct {
 	VcenterIp string `pulumi:"vcenterIp"`
 }
 
-// VmwareSourceDetailsResponseInput is an input type that accepts VmwareSourceDetailsResponseArgs and VmwareSourceDetailsResponseOutput values.
-// You can construct a concrete instance of `VmwareSourceDetailsResponseInput` via:
-//
-//          VmwareSourceDetailsResponseArgs{...}
-type VmwareSourceDetailsResponseInput interface {
-	pulumi.Input
-
-	ToVmwareSourceDetailsResponseOutput() VmwareSourceDetailsResponseOutput
-	ToVmwareSourceDetailsResponseOutputWithContext(context.Context) VmwareSourceDetailsResponseOutput
-}
-
-// VmwareSourceDetails message describes a specific source details for the vmware source type.
-type VmwareSourceDetailsResponseArgs struct {
-	// Input only. The credentials password. This is write only and can not be read in a GET operation.
-	Password pulumi.StringInput `pulumi:"password"`
-	// The thumbprint representing the certificate for the vcenter.
-	Thumbprint pulumi.StringInput `pulumi:"thumbprint"`
-	// The credentials username.
-	Username pulumi.StringInput `pulumi:"username"`
-	// The ip address of the vcenter this Source represents.
-	VcenterIp pulumi.StringInput `pulumi:"vcenterIp"`
-}
-
-func (VmwareSourceDetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmwareSourceDetailsResponse)(nil)).Elem()
-}
-
-func (i VmwareSourceDetailsResponseArgs) ToVmwareSourceDetailsResponseOutput() VmwareSourceDetailsResponseOutput {
-	return i.ToVmwareSourceDetailsResponseOutputWithContext(context.Background())
-}
-
-func (i VmwareSourceDetailsResponseArgs) ToVmwareSourceDetailsResponseOutputWithContext(ctx context.Context) VmwareSourceDetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmwareSourceDetailsResponseOutput)
-}
-
-func (i VmwareSourceDetailsResponseArgs) ToVmwareSourceDetailsResponsePtrOutput() VmwareSourceDetailsResponsePtrOutput {
-	return i.ToVmwareSourceDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i VmwareSourceDetailsResponseArgs) ToVmwareSourceDetailsResponsePtrOutputWithContext(ctx context.Context) VmwareSourceDetailsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmwareSourceDetailsResponseOutput).ToVmwareSourceDetailsResponsePtrOutputWithContext(ctx)
-}
-
-// VmwareSourceDetailsResponsePtrInput is an input type that accepts VmwareSourceDetailsResponseArgs, VmwareSourceDetailsResponsePtr and VmwareSourceDetailsResponsePtrOutput values.
-// You can construct a concrete instance of `VmwareSourceDetailsResponsePtrInput` via:
-//
-//          VmwareSourceDetailsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type VmwareSourceDetailsResponsePtrInput interface {
-	pulumi.Input
-
-	ToVmwareSourceDetailsResponsePtrOutput() VmwareSourceDetailsResponsePtrOutput
-	ToVmwareSourceDetailsResponsePtrOutputWithContext(context.Context) VmwareSourceDetailsResponsePtrOutput
-}
-
-type vmwareSourceDetailsResponsePtrType VmwareSourceDetailsResponseArgs
-
-func VmwareSourceDetailsResponsePtr(v *VmwareSourceDetailsResponseArgs) VmwareSourceDetailsResponsePtrInput {
-	return (*vmwareSourceDetailsResponsePtrType)(v)
-}
-
-func (*vmwareSourceDetailsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VmwareSourceDetailsResponse)(nil)).Elem()
-}
-
-func (i *vmwareSourceDetailsResponsePtrType) ToVmwareSourceDetailsResponsePtrOutput() VmwareSourceDetailsResponsePtrOutput {
-	return i.ToVmwareSourceDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *vmwareSourceDetailsResponsePtrType) ToVmwareSourceDetailsResponsePtrOutputWithContext(ctx context.Context) VmwareSourceDetailsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmwareSourceDetailsResponsePtrOutput)
-}
-
 // VmwareSourceDetails message describes a specific source details for the vmware source type.
 type VmwareSourceDetailsResponseOutput struct{ *pulumi.OutputState }
 
@@ -4657,16 +2798,6 @@ func (o VmwareSourceDetailsResponseOutput) ToVmwareSourceDetailsResponseOutput()
 
 func (o VmwareSourceDetailsResponseOutput) ToVmwareSourceDetailsResponseOutputWithContext(ctx context.Context) VmwareSourceDetailsResponseOutput {
 	return o
-}
-
-func (o VmwareSourceDetailsResponseOutput) ToVmwareSourceDetailsResponsePtrOutput() VmwareSourceDetailsResponsePtrOutput {
-	return o.ToVmwareSourceDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o VmwareSourceDetailsResponseOutput) ToVmwareSourceDetailsResponsePtrOutputWithContext(ctx context.Context) VmwareSourceDetailsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareSourceDetailsResponse) *VmwareSourceDetailsResponse {
-		return &v
-	}).(VmwareSourceDetailsResponsePtrOutput)
 }
 
 // Input only. The credentials password. This is write only and can not be read in a GET operation.
@@ -4687,70 +2818,6 @@ func (o VmwareSourceDetailsResponseOutput) Username() pulumi.StringOutput {
 // The ip address of the vcenter this Source represents.
 func (o VmwareSourceDetailsResponseOutput) VcenterIp() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareSourceDetailsResponse) string { return v.VcenterIp }).(pulumi.StringOutput)
-}
-
-type VmwareSourceDetailsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (VmwareSourceDetailsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VmwareSourceDetailsResponse)(nil)).Elem()
-}
-
-func (o VmwareSourceDetailsResponsePtrOutput) ToVmwareSourceDetailsResponsePtrOutput() VmwareSourceDetailsResponsePtrOutput {
-	return o
-}
-
-func (o VmwareSourceDetailsResponsePtrOutput) ToVmwareSourceDetailsResponsePtrOutputWithContext(ctx context.Context) VmwareSourceDetailsResponsePtrOutput {
-	return o
-}
-
-func (o VmwareSourceDetailsResponsePtrOutput) Elem() VmwareSourceDetailsResponseOutput {
-	return o.ApplyT(func(v *VmwareSourceDetailsResponse) VmwareSourceDetailsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret VmwareSourceDetailsResponse
-		return ret
-	}).(VmwareSourceDetailsResponseOutput)
-}
-
-// Input only. The credentials password. This is write only and can not be read in a GET operation.
-func (o VmwareSourceDetailsResponsePtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VmwareSourceDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// The thumbprint representing the certificate for the vcenter.
-func (o VmwareSourceDetailsResponsePtrOutput) Thumbprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VmwareSourceDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Thumbprint
-	}).(pulumi.StringPtrOutput)
-}
-
-// The credentials username.
-func (o VmwareSourceDetailsResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VmwareSourceDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Username
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ip address of the vcenter this Source represents.
-func (o VmwareSourceDetailsResponsePtrOutput) VcenterIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VmwareSourceDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VcenterIp
-	}).(pulumi.StringPtrOutput)
 }
 
 // VmwareVmDetails describes a VM in vCenter.
@@ -5132,59 +3199,6 @@ type VmwareVmDetailsResponse struct {
 	VmId string `pulumi:"vmId"`
 }
 
-// VmwareVmDetailsResponseInput is an input type that accepts VmwareVmDetailsResponseArgs and VmwareVmDetailsResponseOutput values.
-// You can construct a concrete instance of `VmwareVmDetailsResponseInput` via:
-//
-//          VmwareVmDetailsResponseArgs{...}
-type VmwareVmDetailsResponseInput interface {
-	pulumi.Input
-
-	ToVmwareVmDetailsResponseOutput() VmwareVmDetailsResponseOutput
-	ToVmwareVmDetailsResponseOutputWithContext(context.Context) VmwareVmDetailsResponseOutput
-}
-
-// VmwareVmDetails describes a VM in vCenter.
-type VmwareVmDetailsResponseArgs struct {
-	// The VM Boot Option.
-	BootOption pulumi.StringInput `pulumi:"bootOption"`
-	// The total size of the storage allocated to the VM in MB.
-	CommittedStorage pulumi.StringInput `pulumi:"committedStorage"`
-	// The total size of the storage allocated to the VM in MB.
-	CommittedStorageMb pulumi.StringInput `pulumi:"committedStorageMb"`
-	// The number of cpus in the VM.
-	CpuCount pulumi.IntInput `pulumi:"cpuCount"`
-	// The descriptive name of the vCenter's datacenter this VM is contained in.
-	DatacenterDescription pulumi.StringInput `pulumi:"datacenterDescription"`
-	// The id of the vCenter's datacenter this VM is contained in.
-	DatacenterId pulumi.StringInput `pulumi:"datacenterId"`
-	// The number of disks the VM has.
-	DiskCount pulumi.IntInput `pulumi:"diskCount"`
-	// The display name of the VM. Note that this is not necessarily unique.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
-	GuestDescription pulumi.StringInput `pulumi:"guestDescription"`
-	// The size of the memory of the VM in MB.
-	MemoryMb pulumi.IntInput `pulumi:"memoryMb"`
-	// The power state of the VM at the moment list was taken.
-	PowerState pulumi.StringInput `pulumi:"powerState"`
-	// The unique identifier of the VM in vCenter.
-	Uuid pulumi.StringInput `pulumi:"uuid"`
-	// The VM's id in the source (note that this is not the MigratingVm's id). This is the moref id of the VM.
-	VmId pulumi.StringInput `pulumi:"vmId"`
-}
-
-func (VmwareVmDetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmwareVmDetailsResponse)(nil)).Elem()
-}
-
-func (i VmwareVmDetailsResponseArgs) ToVmwareVmDetailsResponseOutput() VmwareVmDetailsResponseOutput {
-	return i.ToVmwareVmDetailsResponseOutputWithContext(context.Background())
-}
-
-func (i VmwareVmDetailsResponseArgs) ToVmwareVmDetailsResponseOutputWithContext(ctx context.Context) VmwareVmDetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmwareVmDetailsResponseOutput)
-}
-
 // VmwareVmDetails describes a VM in vCenter.
 type VmwareVmDetailsResponseOutput struct{ *pulumi.OutputState }
 
@@ -5266,68 +3280,34 @@ func (o VmwareVmDetailsResponseOutput) VmId() pulumi.StringOutput {
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*AppliedLicenseResponseInput)(nil)).Elem(), AppliedLicenseResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppliedLicenseResponsePtrInput)(nil)).Elem(), AppliedLicenseResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloneJobResponseInput)(nil)).Elem(), CloneJobResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloneJobResponseArrayInput)(nil)).Elem(), CloneJobResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineTargetDefaultsInput)(nil)).Elem(), ComputeEngineTargetDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineTargetDefaultsPtrInput)(nil)).Elem(), ComputeEngineTargetDefaultsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineTargetDefaultsResponseInput)(nil)).Elem(), ComputeEngineTargetDefaultsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineTargetDefaultsResponsePtrInput)(nil)).Elem(), ComputeEngineTargetDefaultsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineTargetDetailsResponseInput)(nil)).Elem(), ComputeEngineTargetDetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineTargetDetailsResponsePtrInput)(nil)).Elem(), ComputeEngineTargetDetailsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSchedulingInput)(nil)).Elem(), ComputeSchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSchedulingPtrInput)(nil)).Elem(), ComputeSchedulingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSchedulingResponseInput)(nil)).Elem(), ComputeSchedulingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSchedulingResponsePtrInput)(nil)).Elem(), ComputeSchedulingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CutoverJobResponseInput)(nil)).Elem(), CutoverJobResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CutoverJobResponseArrayInput)(nil)).Elem(), CutoverJobResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceInput)(nil)).Elem(), NetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceArrayInput)(nil)).Elem(), NetworkInterfaceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceResponseInput)(nil)).Elem(), NetworkInterfaceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceResponseArrayInput)(nil)).Elem(), NetworkInterfaceResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationCycleResponseInput)(nil)).Elem(), ReplicationCycleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationCycleResponsePtrInput)(nil)).Elem(), ReplicationCycleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationSyncResponseInput)(nil)).Elem(), ReplicationSyncResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationSyncResponsePtrInput)(nil)).Elem(), ReplicationSyncResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulePolicyInput)(nil)).Elem(), SchedulePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulePolicyPtrInput)(nil)).Elem(), SchedulePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchedulePolicyResponseInput)(nil)).Elem(), SchedulePolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchedulePolicyResponsePtrInput)(nil)).Elem(), SchedulePolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityInput)(nil)).Elem(), SchedulingNodeAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityArrayInput)(nil)).Elem(), SchedulingNodeAffinityArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityResponseInput)(nil)).Elem(), SchedulingNodeAffinityResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityResponseArrayInput)(nil)).Elem(), SchedulingNodeAffinityResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationInfoInput)(nil)).Elem(), VmUtilizationInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationInfoArrayInput)(nil)).Elem(), VmUtilizationInfoArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationInfoResponseInput)(nil)).Elem(), VmUtilizationInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationInfoResponseArrayInput)(nil)).Elem(), VmUtilizationInfoResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationMetricsInput)(nil)).Elem(), VmUtilizationMetricsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationMetricsPtrInput)(nil)).Elem(), VmUtilizationMetricsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationMetricsResponseInput)(nil)).Elem(), VmUtilizationMetricsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareSourceDetailsInput)(nil)).Elem(), VmwareSourceDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareSourceDetailsPtrInput)(nil)).Elem(), VmwareSourceDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VmwareSourceDetailsResponseInput)(nil)).Elem(), VmwareSourceDetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VmwareSourceDetailsResponsePtrInput)(nil)).Elem(), VmwareSourceDetailsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVmDetailsInput)(nil)).Elem(), VmwareVmDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVmDetailsPtrInput)(nil)).Elem(), VmwareVmDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVmDetailsResponseInput)(nil)).Elem(), VmwareVmDetailsResponseArgs{})
 	pulumi.RegisterOutputType(AppliedLicenseResponseOutput{})
-	pulumi.RegisterOutputType(AppliedLicenseResponsePtrOutput{})
 	pulumi.RegisterOutputType(CloneJobResponseOutput{})
 	pulumi.RegisterOutputType(CloneJobResponseArrayOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsResponseOutput{})
-	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDetailsResponseOutput{})
-	pulumi.RegisterOutputType(ComputeEngineTargetDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ComputeSchedulingOutput{})
 	pulumi.RegisterOutputType(ComputeSchedulingPtrOutput{})
 	pulumi.RegisterOutputType(ComputeSchedulingResponseOutput{})
-	pulumi.RegisterOutputType(ComputeSchedulingResponsePtrOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceOutput{})
@@ -5335,19 +3315,15 @@ func init() {
 	pulumi.RegisterOutputType(NetworkInterfaceResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseArrayOutput{})
 	pulumi.RegisterOutputType(ReplicationCycleResponseOutput{})
-	pulumi.RegisterOutputType(ReplicationCycleResponsePtrOutput{})
 	pulumi.RegisterOutputType(ReplicationSyncResponseOutput{})
-	pulumi.RegisterOutputType(ReplicationSyncResponsePtrOutput{})
 	pulumi.RegisterOutputType(SchedulePolicyOutput{})
 	pulumi.RegisterOutputType(SchedulePolicyPtrOutput{})
 	pulumi.RegisterOutputType(SchedulePolicyResponseOutput{})
-	pulumi.RegisterOutputType(SchedulePolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseArrayOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
-	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoArrayOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoResponseOutput{})
@@ -5358,7 +3334,6 @@ func init() {
 	pulumi.RegisterOutputType(VmwareSourceDetailsOutput{})
 	pulumi.RegisterOutputType(VmwareSourceDetailsPtrOutput{})
 	pulumi.RegisterOutputType(VmwareSourceDetailsResponseOutput{})
-	pulumi.RegisterOutputType(VmwareSourceDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(VmwareVmDetailsOutput{})
 	pulumi.RegisterOutputType(VmwareVmDetailsPtrOutput{})
 	pulumi.RegisterOutputType(VmwareVmDetailsResponseOutput{})

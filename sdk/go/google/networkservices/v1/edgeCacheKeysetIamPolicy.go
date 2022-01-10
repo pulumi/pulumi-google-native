@@ -113,7 +113,7 @@ type EdgeCacheKeysetIamPolicyInput interface {
 }
 
 func (*EdgeCacheKeysetIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeCacheKeysetIamPolicy)(nil))
+	return reflect.TypeOf((**EdgeCacheKeysetIamPolicy)(nil)).Elem()
 }
 
 func (i *EdgeCacheKeysetIamPolicy) ToEdgeCacheKeysetIamPolicyOutput() EdgeCacheKeysetIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *EdgeCacheKeysetIamPolicy) ToEdgeCacheKeysetIamPolicyOutputWithContext(c
 type EdgeCacheKeysetIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheKeysetIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeCacheKeysetIamPolicy)(nil))
+	return reflect.TypeOf((**EdgeCacheKeysetIamPolicy)(nil)).Elem()
 }
 
 func (o EdgeCacheKeysetIamPolicyOutput) ToEdgeCacheKeysetIamPolicyOutput() EdgeCacheKeysetIamPolicyOutput {

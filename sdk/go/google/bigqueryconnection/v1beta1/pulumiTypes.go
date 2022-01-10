@@ -127,62 +127,6 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
-// You can construct a concrete instance of `AuditConfigResponseInput` via:
-//
-//          AuditConfigResponseArgs{...}
-type AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseOutput() AuditConfigResponseOutput
-	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return i.ToAuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
-}
-
-// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
-//
-//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
-type AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
-	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
-}
-
-type AuditConfigResponseArray []AuditConfigResponseInput
-
-func (AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -343,62 +287,6 @@ type AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
-//
-//          AuditLogConfigResponseArgs{...}
-type AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
-	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
-}
-
-// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
-//
-//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
-type AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
-	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
-}
-
-type AuditLogConfigResponseArray []AuditLogConfigResponseInput
-
-func (AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -572,64 +460,6 @@ type BindingResponse struct {
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
-}
-
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -849,78 +679,6 @@ type CloudSqlCredentialResponse struct {
 	Username string `pulumi:"username"`
 }
 
-// CloudSqlCredentialResponseInput is an input type that accepts CloudSqlCredentialResponseArgs and CloudSqlCredentialResponseOutput values.
-// You can construct a concrete instance of `CloudSqlCredentialResponseInput` via:
-//
-//          CloudSqlCredentialResponseArgs{...}
-type CloudSqlCredentialResponseInput interface {
-	pulumi.Input
-
-	ToCloudSqlCredentialResponseOutput() CloudSqlCredentialResponseOutput
-	ToCloudSqlCredentialResponseOutputWithContext(context.Context) CloudSqlCredentialResponseOutput
-}
-
-// Credential info for the Cloud SQL.
-type CloudSqlCredentialResponseArgs struct {
-	// The password for the credential.
-	Password pulumi.StringInput `pulumi:"password"`
-	// The username for the credential.
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (CloudSqlCredentialResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudSqlCredentialResponse)(nil)).Elem()
-}
-
-func (i CloudSqlCredentialResponseArgs) ToCloudSqlCredentialResponseOutput() CloudSqlCredentialResponseOutput {
-	return i.ToCloudSqlCredentialResponseOutputWithContext(context.Background())
-}
-
-func (i CloudSqlCredentialResponseArgs) ToCloudSqlCredentialResponseOutputWithContext(ctx context.Context) CloudSqlCredentialResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlCredentialResponseOutput)
-}
-
-func (i CloudSqlCredentialResponseArgs) ToCloudSqlCredentialResponsePtrOutput() CloudSqlCredentialResponsePtrOutput {
-	return i.ToCloudSqlCredentialResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CloudSqlCredentialResponseArgs) ToCloudSqlCredentialResponsePtrOutputWithContext(ctx context.Context) CloudSqlCredentialResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlCredentialResponseOutput).ToCloudSqlCredentialResponsePtrOutputWithContext(ctx)
-}
-
-// CloudSqlCredentialResponsePtrInput is an input type that accepts CloudSqlCredentialResponseArgs, CloudSqlCredentialResponsePtr and CloudSqlCredentialResponsePtrOutput values.
-// You can construct a concrete instance of `CloudSqlCredentialResponsePtrInput` via:
-//
-//          CloudSqlCredentialResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudSqlCredentialResponsePtrInput interface {
-	pulumi.Input
-
-	ToCloudSqlCredentialResponsePtrOutput() CloudSqlCredentialResponsePtrOutput
-	ToCloudSqlCredentialResponsePtrOutputWithContext(context.Context) CloudSqlCredentialResponsePtrOutput
-}
-
-type cloudSqlCredentialResponsePtrType CloudSqlCredentialResponseArgs
-
-func CloudSqlCredentialResponsePtr(v *CloudSqlCredentialResponseArgs) CloudSqlCredentialResponsePtrInput {
-	return (*cloudSqlCredentialResponsePtrType)(v)
-}
-
-func (*cloudSqlCredentialResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudSqlCredentialResponse)(nil)).Elem()
-}
-
-func (i *cloudSqlCredentialResponsePtrType) ToCloudSqlCredentialResponsePtrOutput() CloudSqlCredentialResponsePtrOutput {
-	return i.ToCloudSqlCredentialResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *cloudSqlCredentialResponsePtrType) ToCloudSqlCredentialResponsePtrOutputWithContext(ctx context.Context) CloudSqlCredentialResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlCredentialResponsePtrOutput)
-}
-
 // Credential info for the Cloud SQL.
 type CloudSqlCredentialResponseOutput struct{ *pulumi.OutputState }
 
@@ -936,16 +694,6 @@ func (o CloudSqlCredentialResponseOutput) ToCloudSqlCredentialResponseOutputWith
 	return o
 }
 
-func (o CloudSqlCredentialResponseOutput) ToCloudSqlCredentialResponsePtrOutput() CloudSqlCredentialResponsePtrOutput {
-	return o.ToCloudSqlCredentialResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CloudSqlCredentialResponseOutput) ToCloudSqlCredentialResponsePtrOutputWithContext(ctx context.Context) CloudSqlCredentialResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlCredentialResponse) *CloudSqlCredentialResponse {
-		return &v
-	}).(CloudSqlCredentialResponsePtrOutput)
-}
-
 // The password for the credential.
 func (o CloudSqlCredentialResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudSqlCredentialResponse) string { return v.Password }).(pulumi.StringOutput)
@@ -954,50 +702,6 @@ func (o CloudSqlCredentialResponseOutput) Password() pulumi.StringOutput {
 // The username for the credential.
 func (o CloudSqlCredentialResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudSqlCredentialResponse) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type CloudSqlCredentialResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CloudSqlCredentialResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudSqlCredentialResponse)(nil)).Elem()
-}
-
-func (o CloudSqlCredentialResponsePtrOutput) ToCloudSqlCredentialResponsePtrOutput() CloudSqlCredentialResponsePtrOutput {
-	return o
-}
-
-func (o CloudSqlCredentialResponsePtrOutput) ToCloudSqlCredentialResponsePtrOutputWithContext(ctx context.Context) CloudSqlCredentialResponsePtrOutput {
-	return o
-}
-
-func (o CloudSqlCredentialResponsePtrOutput) Elem() CloudSqlCredentialResponseOutput {
-	return o.ApplyT(func(v *CloudSqlCredentialResponse) CloudSqlCredentialResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CloudSqlCredentialResponse
-		return ret
-	}).(CloudSqlCredentialResponseOutput)
-}
-
-// The password for the credential.
-func (o CloudSqlCredentialResponsePtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlCredentialResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username for the credential.
-func (o CloudSqlCredentialResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlCredentialResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Username
-	}).(pulumi.StringPtrOutput)
 }
 
 // Connection properties specific to the Cloud SQL.
@@ -1209,82 +913,6 @@ type CloudSqlPropertiesResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// CloudSqlPropertiesResponseInput is an input type that accepts CloudSqlPropertiesResponseArgs and CloudSqlPropertiesResponseOutput values.
-// You can construct a concrete instance of `CloudSqlPropertiesResponseInput` via:
-//
-//          CloudSqlPropertiesResponseArgs{...}
-type CloudSqlPropertiesResponseInput interface {
-	pulumi.Input
-
-	ToCloudSqlPropertiesResponseOutput() CloudSqlPropertiesResponseOutput
-	ToCloudSqlPropertiesResponseOutputWithContext(context.Context) CloudSqlPropertiesResponseOutput
-}
-
-// Connection properties specific to the Cloud SQL.
-type CloudSqlPropertiesResponseArgs struct {
-	// Input only. Cloud SQL credential.
-	Credential CloudSqlCredentialResponseInput `pulumi:"credential"`
-	// Database name.
-	Database pulumi.StringInput `pulumi:"database"`
-	// Cloud SQL instance ID in the form `project:location:instance`.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Type of the Cloud SQL database.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (CloudSqlPropertiesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudSqlPropertiesResponse)(nil)).Elem()
-}
-
-func (i CloudSqlPropertiesResponseArgs) ToCloudSqlPropertiesResponseOutput() CloudSqlPropertiesResponseOutput {
-	return i.ToCloudSqlPropertiesResponseOutputWithContext(context.Background())
-}
-
-func (i CloudSqlPropertiesResponseArgs) ToCloudSqlPropertiesResponseOutputWithContext(ctx context.Context) CloudSqlPropertiesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlPropertiesResponseOutput)
-}
-
-func (i CloudSqlPropertiesResponseArgs) ToCloudSqlPropertiesResponsePtrOutput() CloudSqlPropertiesResponsePtrOutput {
-	return i.ToCloudSqlPropertiesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CloudSqlPropertiesResponseArgs) ToCloudSqlPropertiesResponsePtrOutputWithContext(ctx context.Context) CloudSqlPropertiesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlPropertiesResponseOutput).ToCloudSqlPropertiesResponsePtrOutputWithContext(ctx)
-}
-
-// CloudSqlPropertiesResponsePtrInput is an input type that accepts CloudSqlPropertiesResponseArgs, CloudSqlPropertiesResponsePtr and CloudSqlPropertiesResponsePtrOutput values.
-// You can construct a concrete instance of `CloudSqlPropertiesResponsePtrInput` via:
-//
-//          CloudSqlPropertiesResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudSqlPropertiesResponsePtrInput interface {
-	pulumi.Input
-
-	ToCloudSqlPropertiesResponsePtrOutput() CloudSqlPropertiesResponsePtrOutput
-	ToCloudSqlPropertiesResponsePtrOutputWithContext(context.Context) CloudSqlPropertiesResponsePtrOutput
-}
-
-type cloudSqlPropertiesResponsePtrType CloudSqlPropertiesResponseArgs
-
-func CloudSqlPropertiesResponsePtr(v *CloudSqlPropertiesResponseArgs) CloudSqlPropertiesResponsePtrInput {
-	return (*cloudSqlPropertiesResponsePtrType)(v)
-}
-
-func (*cloudSqlPropertiesResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudSqlPropertiesResponse)(nil)).Elem()
-}
-
-func (i *cloudSqlPropertiesResponsePtrType) ToCloudSqlPropertiesResponsePtrOutput() CloudSqlPropertiesResponsePtrOutput {
-	return i.ToCloudSqlPropertiesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *cloudSqlPropertiesResponsePtrType) ToCloudSqlPropertiesResponsePtrOutputWithContext(ctx context.Context) CloudSqlPropertiesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlPropertiesResponsePtrOutput)
-}
-
 // Connection properties specific to the Cloud SQL.
 type CloudSqlPropertiesResponseOutput struct{ *pulumi.OutputState }
 
@@ -1298,16 +926,6 @@ func (o CloudSqlPropertiesResponseOutput) ToCloudSqlPropertiesResponseOutput() C
 
 func (o CloudSqlPropertiesResponseOutput) ToCloudSqlPropertiesResponseOutputWithContext(ctx context.Context) CloudSqlPropertiesResponseOutput {
 	return o
-}
-
-func (o CloudSqlPropertiesResponseOutput) ToCloudSqlPropertiesResponsePtrOutput() CloudSqlPropertiesResponsePtrOutput {
-	return o.ToCloudSqlPropertiesResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CloudSqlPropertiesResponseOutput) ToCloudSqlPropertiesResponsePtrOutputWithContext(ctx context.Context) CloudSqlPropertiesResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlPropertiesResponse) *CloudSqlPropertiesResponse {
-		return &v
-	}).(CloudSqlPropertiesResponsePtrOutput)
 }
 
 // Input only. Cloud SQL credential.
@@ -1328,70 +946,6 @@ func (o CloudSqlPropertiesResponseOutput) InstanceId() pulumi.StringOutput {
 // Type of the Cloud SQL database.
 func (o CloudSqlPropertiesResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudSqlPropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type CloudSqlPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CloudSqlPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudSqlPropertiesResponse)(nil)).Elem()
-}
-
-func (o CloudSqlPropertiesResponsePtrOutput) ToCloudSqlPropertiesResponsePtrOutput() CloudSqlPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o CloudSqlPropertiesResponsePtrOutput) ToCloudSqlPropertiesResponsePtrOutputWithContext(ctx context.Context) CloudSqlPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o CloudSqlPropertiesResponsePtrOutput) Elem() CloudSqlPropertiesResponseOutput {
-	return o.ApplyT(func(v *CloudSqlPropertiesResponse) CloudSqlPropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CloudSqlPropertiesResponse
-		return ret
-	}).(CloudSqlPropertiesResponseOutput)
-}
-
-// Input only. Cloud SQL credential.
-func (o CloudSqlPropertiesResponsePtrOutput) Credential() CloudSqlCredentialResponsePtrOutput {
-	return o.ApplyT(func(v *CloudSqlPropertiesResponse) *CloudSqlCredentialResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Credential
-	}).(CloudSqlCredentialResponsePtrOutput)
-}
-
-// Database name.
-func (o CloudSqlPropertiesResponsePtrOutput) Database() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Database
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cloud SQL instance ID in the form `project:location:instance`.
-func (o CloudSqlPropertiesResponsePtrOutput) InstanceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InstanceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of the Cloud SQL database.
-func (o CloudSqlPropertiesResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1603,41 +1157,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -1676,27 +1195,16 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlCredentialInput)(nil)).Elem(), CloudSqlCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlCredentialPtrInput)(nil)).Elem(), CloudSqlCredentialArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlCredentialResponseInput)(nil)).Elem(), CloudSqlCredentialResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlCredentialResponsePtrInput)(nil)).Elem(), CloudSqlCredentialResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlPropertiesInput)(nil)).Elem(), CloudSqlPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlPropertiesPtrInput)(nil)).Elem(), CloudSqlPropertiesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlPropertiesResponseInput)(nil)).Elem(), CloudSqlPropertiesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlPropertiesResponsePtrInput)(nil)).Elem(), CloudSqlPropertiesResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -1712,11 +1220,9 @@ func init() {
 	pulumi.RegisterOutputType(CloudSqlCredentialOutput{})
 	pulumi.RegisterOutputType(CloudSqlCredentialPtrOutput{})
 	pulumi.RegisterOutputType(CloudSqlCredentialResponseOutput{})
-	pulumi.RegisterOutputType(CloudSqlCredentialResponsePtrOutput{})
 	pulumi.RegisterOutputType(CloudSqlPropertiesOutput{})
 	pulumi.RegisterOutputType(CloudSqlPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(CloudSqlPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(CloudSqlPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})

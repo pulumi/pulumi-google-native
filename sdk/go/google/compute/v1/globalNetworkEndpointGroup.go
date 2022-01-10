@@ -155,7 +155,7 @@ type GlobalNetworkEndpointGroupInput interface {
 }
 
 func (*GlobalNetworkEndpointGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalNetworkEndpointGroup)(nil))
+	return reflect.TypeOf((**GlobalNetworkEndpointGroup)(nil)).Elem()
 }
 
 func (i *GlobalNetworkEndpointGroup) ToGlobalNetworkEndpointGroupOutput() GlobalNetworkEndpointGroupOutput {
@@ -169,7 +169,7 @@ func (i *GlobalNetworkEndpointGroup) ToGlobalNetworkEndpointGroupOutputWithConte
 type GlobalNetworkEndpointGroupOutput struct{ *pulumi.OutputState }
 
 func (GlobalNetworkEndpointGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalNetworkEndpointGroup)(nil))
+	return reflect.TypeOf((**GlobalNetworkEndpointGroup)(nil)).Elem()
 }
 
 func (o GlobalNetworkEndpointGroupOutput) ToGlobalNetworkEndpointGroupOutput() GlobalNetworkEndpointGroupOutput {

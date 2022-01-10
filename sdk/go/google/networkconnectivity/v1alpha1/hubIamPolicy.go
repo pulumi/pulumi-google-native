@@ -111,7 +111,7 @@ type HubIamPolicyInput interface {
 }
 
 func (*HubIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*HubIamPolicy)(nil))
+	return reflect.TypeOf((**HubIamPolicy)(nil)).Elem()
 }
 
 func (i *HubIamPolicy) ToHubIamPolicyOutput() HubIamPolicyOutput {
@@ -125,7 +125,7 @@ func (i *HubIamPolicy) ToHubIamPolicyOutputWithContext(ctx context.Context) HubI
 type HubIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (HubIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HubIamPolicy)(nil))
+	return reflect.TypeOf((**HubIamPolicy)(nil)).Elem()
 }
 
 func (o HubIamPolicyOutput) ToHubIamPolicyOutput() HubIamPolicyOutput {

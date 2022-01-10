@@ -126,7 +126,7 @@ type RegionNetworkFirewallPolicyInput interface {
 }
 
 func (*RegionNetworkFirewallPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionNetworkFirewallPolicy)(nil))
+	return reflect.TypeOf((**RegionNetworkFirewallPolicy)(nil)).Elem()
 }
 
 func (i *RegionNetworkFirewallPolicy) ToRegionNetworkFirewallPolicyOutput() RegionNetworkFirewallPolicyOutput {
@@ -140,7 +140,7 @@ func (i *RegionNetworkFirewallPolicy) ToRegionNetworkFirewallPolicyOutputWithCon
 type RegionNetworkFirewallPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionNetworkFirewallPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionNetworkFirewallPolicy)(nil))
+	return reflect.TypeOf((**RegionNetworkFirewallPolicy)(nil)).Elem()
 }
 
 func (o RegionNetworkFirewallPolicyOutput) ToRegionNetworkFirewallPolicyOutput() RegionNetworkFirewallPolicyOutput {

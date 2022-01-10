@@ -118,7 +118,7 @@ type CertificateAuthorityCertificateRevocationListIamPolicyInput interface {
 }
 
 func (*CertificateAuthorityCertificateRevocationListIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateAuthorityCertificateRevocationListIamPolicy)(nil))
+	return reflect.TypeOf((**CertificateAuthorityCertificateRevocationListIamPolicy)(nil)).Elem()
 }
 
 func (i *CertificateAuthorityCertificateRevocationListIamPolicy) ToCertificateAuthorityCertificateRevocationListIamPolicyOutput() CertificateAuthorityCertificateRevocationListIamPolicyOutput {
@@ -132,7 +132,7 @@ func (i *CertificateAuthorityCertificateRevocationListIamPolicy) ToCertificateAu
 type CertificateAuthorityCertificateRevocationListIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (CertificateAuthorityCertificateRevocationListIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateAuthorityCertificateRevocationListIamPolicy)(nil))
+	return reflect.TypeOf((**CertificateAuthorityCertificateRevocationListIamPolicy)(nil)).Elem()
 }
 
 func (o CertificateAuthorityCertificateRevocationListIamPolicyOutput) ToCertificateAuthorityCertificateRevocationListIamPolicyOutput() CertificateAuthorityCertificateRevocationListIamPolicyOutput {

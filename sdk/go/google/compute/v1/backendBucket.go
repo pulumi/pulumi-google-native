@@ -125,7 +125,7 @@ type BackendBucketInput interface {
 }
 
 func (*BackendBucket) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendBucket)(nil))
+	return reflect.TypeOf((**BackendBucket)(nil)).Elem()
 }
 
 func (i *BackendBucket) ToBackendBucketOutput() BackendBucketOutput {
@@ -139,7 +139,7 @@ func (i *BackendBucket) ToBackendBucketOutputWithContext(ctx context.Context) Ba
 type BackendBucketOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendBucket)(nil))
+	return reflect.TypeOf((**BackendBucket)(nil)).Elem()
 }
 
 func (o BackendBucketOutput) ToBackendBucketOutput() BackendBucketOutput {

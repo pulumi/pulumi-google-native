@@ -123,7 +123,7 @@ type DatacenterConnectorInput interface {
 }
 
 func (*DatacenterConnector) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatacenterConnector)(nil))
+	return reflect.TypeOf((**DatacenterConnector)(nil)).Elem()
 }
 
 func (i *DatacenterConnector) ToDatacenterConnectorOutput() DatacenterConnectorOutput {
@@ -137,7 +137,7 @@ func (i *DatacenterConnector) ToDatacenterConnectorOutputWithContext(ctx context
 type DatacenterConnectorOutput struct{ *pulumi.OutputState }
 
 func (DatacenterConnectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatacenterConnector)(nil))
+	return reflect.TypeOf((**DatacenterConnector)(nil)).Elem()
 }
 
 func (o DatacenterConnectorOutput) ToDatacenterConnectorOutput() DatacenterConnectorOutput {

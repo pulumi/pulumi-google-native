@@ -181,7 +181,7 @@ type InstanceGroupManagerInput interface {
 }
 
 func (*InstanceGroupManager) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManager)(nil))
+	return reflect.TypeOf((**InstanceGroupManager)(nil)).Elem()
 }
 
 func (i *InstanceGroupManager) ToInstanceGroupManagerOutput() InstanceGroupManagerOutput {
@@ -195,7 +195,7 @@ func (i *InstanceGroupManager) ToInstanceGroupManagerOutputWithContext(ctx conte
 type InstanceGroupManagerOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManager)(nil))
+	return reflect.TypeOf((**InstanceGroupManager)(nil)).Elem()
 }
 
 func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutput() InstanceGroupManagerOutput {

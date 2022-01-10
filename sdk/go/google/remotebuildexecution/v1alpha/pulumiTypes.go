@@ -181,78 +181,6 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse str
 	AcceleratorType string `pulumi:"acceleratorType"`
 }
 
-// GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseInput` via:
-//
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseArgs{...}
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutputWithContext(context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput
-}
-
-// AcceleratorConfig defines the accelerator cards to attach to the VM.
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseArgs struct {
-	// The number of guest accelerator cards exposed to each VM.
-	AcceleratorCount pulumi.StringInput `pulumi:"acceleratorCount"`
-	// The type of accelerator to attach to each VM, e.g. "nvidia-tesla-k80" for nVidia Tesla K80.
-	AcceleratorType pulumi.StringInput `pulumi:"acceleratorType"`
-}
-
-func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput)
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput).ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseArgs, GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtr and GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrInput` via:
-//
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutputWithContext(context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput
-}
-
-type googleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrType GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseArgs
-
-func GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtr(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseArgs) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrInput {
-	return (*googleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrType)(v)
-}
-
-func (*googleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse)(nil)).Elem()
-}
-
-func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrType) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrType) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput)
-}
-
 // AcceleratorConfig defines the accelerator cards to attach to the VM.
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -268,16 +196,6 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseO
 	return o
 }
 
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput {
-	return o.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse {
-		return &v
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput)
-}
-
 // The number of guest accelerator cards exposed to each VM.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput) AcceleratorCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse) string {
@@ -290,50 +208,6 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseO
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse) string {
 		return v.AcceleratorType
 	}).(pulumi.StringOutput)
-}
-
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse
-		return ret
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput)
-}
-
-// The number of guest accelerator cards exposed to each VM.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput) AcceleratorCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AcceleratorCount
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of accelerator to attach to each VM, e.g. "nvidia-tesla-k80" for nVidia Tesla K80.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput) AcceleratorType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AcceleratorType
-	}).(pulumi.StringPtrOutput)
 }
 
 // Autoscale defines the autoscaling policy of a worker pool.
@@ -503,78 +377,6 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse struct {
 	MinSize string `pulumi:"minSize"`
 }
 
-// GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput values.
-// You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseInput` via:
-//
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseArgs{...}
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseInput interface {
-	pulumi.Input
-
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutputWithContext(context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput
-}
-
-// Autoscale defines the autoscaling policy of a worker pool.
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseArgs struct {
-	// The maximal number of workers. Must be equal to or greater than min_size.
-	MaxSize pulumi.StringInput `pulumi:"maxSize"`
-	// The minimal number of workers. Must be greater than 0.
-	MinSize pulumi.StringInput `pulumi:"minSize"`
-}
-
-func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse)(nil)).Elem()
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput)
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput).ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseArgs, GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtr and GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrInput` via:
-//
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutputWithContext(context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput
-}
-
-type googleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrType GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseArgs
-
-func GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtr(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseArgs) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrInput {
-	return (*googleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrType)(v)
-}
-
-func (*googleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse)(nil)).Elem()
-}
-
-func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrType) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrType) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput)
-}
-
 // Autoscale defines the autoscaling policy of a worker pool.
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput struct{ *pulumi.OutputState }
 
@@ -590,16 +392,6 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput) T
 	return o
 }
 
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput {
-	return o.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse {
-		return &v
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput)
-}
-
 // The maximal number of workers. Must be equal to or greater than min_size.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput) MaxSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse) string { return v.MaxSize }).(pulumi.StringOutput)
@@ -608,50 +400,6 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput) M
 // The minimal number of workers. Must be greater than 0.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput) MinSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse) string { return v.MinSize }).(pulumi.StringOutput)
-}
-
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse)(nil)).Elem()
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput {
-	return o
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput {
-	return o
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse
-		return ret
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput)
-}
-
-// The maximal number of workers. Must be equal to or greater than min_size.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput) MaxSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxSize
-	}).(pulumi.StringPtrOutput)
-}
-
-// The minimal number of workers. Must be greater than 0.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput) MinSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MinSize
-	}).(pulumi.StringPtrOutput)
 }
 
 // FeaturePolicy defines features allowed to be used on RBE instances, as well as instance-wide behavior changes that take effect without opt-in or opt-out at usage time.
@@ -1135,78 +883,6 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse 
 	Policy string `pulumi:"policy"`
 }
 
-// GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput values.
-// You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseInput` via:
-//
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseArgs{...}
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseInput interface {
-	pulumi.Input
-
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutputWithContext(context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput
-}
-
-// Defines whether a feature can be used or what values are accepted.
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseArgs struct {
-	// A list of acceptable values. Only effective when the policy is `RESTRICTED`.
-	AllowedValues pulumi.StringArrayInput `pulumi:"allowedValues"`
-	// The policy of the feature.
-	Policy pulumi.StringInput `pulumi:"policy"`
-}
-
-func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse)(nil)).Elem()
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput)
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput).ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseArgs, GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtr and GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrInput` via:
-//
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutputWithContext(context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput
-}
-
-type googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrType GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseArgs
-
-func GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtr(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseArgs) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrInput {
-	return (*googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrType)(v)
-}
-
-func (*googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse)(nil)).Elem()
-}
-
-func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrType) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrType) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput)
-}
-
 // Defines whether a feature can be used or what values are accepted.
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput struct{ *pulumi.OutputState }
 
@@ -1222,16 +898,6 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureRespon
 	return o
 }
 
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return o.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
-		return &v
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput)
-}
-
 // A list of acceptable values. Only effective when the policy is `RESTRICTED`.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput) AllowedValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse) []string {
@@ -1244,50 +910,6 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureRespon
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse) string {
 		return v.Policy
 	}).(pulumi.StringOutput)
-}
-
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse)(nil)).Elem()
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return o
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return o
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse
-		return ret
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput)
-}
-
-// A list of acceptable values. Only effective when the policy is `RESTRICTED`.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput) AllowedValues() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AllowedValues
-	}).(pulumi.StringArrayOutput)
-}
-
-// The policy of the feature.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Policy
-	}).(pulumi.StringPtrOutput)
 }
 
 // FeaturePolicy defines features allowed to be used on RBE instances, as well as instance-wide behavior changes that take effect without opt-in or opt-out at usage time.
@@ -1312,92 +934,6 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse struct 
 	LinuxIsolation string `pulumi:"linuxIsolation"`
 }
 
-// GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput values.
-// You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseInput` via:
-//
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseArgs{...}
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseInput interface {
-	pulumi.Input
-
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutputWithContext(context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput
-}
-
-// FeaturePolicy defines features allowed to be used on RBE instances, as well as instance-wide behavior changes that take effect without opt-in or opt-out at usage time.
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseArgs struct {
-	// Which container image sources are allowed. Currently only RBE-supported registry (gcr.io) is allowed. One can allow all repositories under a project or one specific repository only. E.g. container_image_sources { policy: RESTRICTED allowed_values: [ "gcr.io/project-foo", "gcr.io/project-bar/repo-baz", ] } will allow any repositories under "gcr.io/project-foo" plus the repository "gcr.io/project-bar/repo-baz". Default (UNSPECIFIED) is equivalent to any source is allowed.
-	ContainerImageSources GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseInput `pulumi:"containerImageSources"`
-	// Whether dockerAddCapabilities can be used or what capabilities are allowed.
-	DockerAddCapabilities GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseInput `pulumi:"dockerAddCapabilities"`
-	// Whether dockerChrootPath can be used.
-	DockerChrootPath GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseInput `pulumi:"dockerChrootPath"`
-	// Whether dockerNetwork can be used or what network modes are allowed. E.g. one may allow `off` value only via `allowed_values`.
-	DockerNetwork GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseInput `pulumi:"dockerNetwork"`
-	// Whether dockerPrivileged can be used.
-	DockerPrivileged GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseInput `pulumi:"dockerPrivileged"`
-	// Whether dockerRunAsRoot can be used.
-	DockerRunAsRoot GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseInput `pulumi:"dockerRunAsRoot"`
-	// Whether dockerRuntime is allowed to be set or what runtimes are allowed. Note linux_isolation takes precedence, and if set, docker_runtime values may be rejected if they are incompatible with the selected isolation.
-	DockerRuntime GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseInput `pulumi:"dockerRuntime"`
-	// Whether dockerSiblingContainers can be used.
-	DockerSiblingContainers GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseInput `pulumi:"dockerSiblingContainers"`
-	// linux_isolation allows overriding the docker runtime used for containers started on Linux.
-	LinuxIsolation pulumi.StringInput `pulumi:"linuxIsolation"`
-}
-
-func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse)(nil)).Elem()
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput)
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput).ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseArgs, GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtr and GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrInput` via:
-//
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutputWithContext(context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput
-}
-
-type googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrType GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseArgs
-
-func GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtr(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseArgs) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrInput {
-	return (*googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrType)(v)
-}
-
-func (*googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse)(nil)).Elem()
-}
-
-func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrType) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrType) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput)
-}
-
 // FeaturePolicy defines features allowed to be used on RBE instances, as well as instance-wide behavior changes that take effect without opt-in or opt-out at usage time.
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput struct{ *pulumi.OutputState }
 
@@ -1411,16 +947,6 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutpu
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput {
 	return o
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput {
-	return o.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse {
-		return &v
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput)
 }
 
 // Which container image sources are allowed. Currently only RBE-supported registry (gcr.io) is allowed. One can allow all repositories under a project or one specific repository only. E.g. container_image_sources { policy: RESTRICTED allowed_values: [ "gcr.io/project-foo", "gcr.io/project-bar/repo-baz", ] } will allow any repositories under "gcr.io/project-foo" plus the repository "gcr.io/project-bar/repo-baz". Default (UNSPECIFIED) is equivalent to any source is allowed.
@@ -1484,120 +1010,6 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutpu
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) string {
 		return v.LinuxIsolation
 	}).(pulumi.StringOutput)
-}
-
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse)(nil)).Elem()
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput {
-	return o
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput {
-	return o
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse
-		return ret
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput)
-}
-
-// Which container image sources are allowed. Currently only RBE-supported registry (gcr.io) is allowed. One can allow all repositories under a project or one specific repository only. E.g. container_image_sources { policy: RESTRICTED allowed_values: [ "gcr.io/project-foo", "gcr.io/project-bar/repo-baz", ] } will allow any repositories under "gcr.io/project-foo" plus the repository "gcr.io/project-bar/repo-baz". Default (UNSPECIFIED) is equivalent to any source is allowed.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput) ContainerImageSources() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ContainerImageSources
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput)
-}
-
-// Whether dockerAddCapabilities can be used or what capabilities are allowed.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput) DockerAddCapabilities() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DockerAddCapabilities
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput)
-}
-
-// Whether dockerChrootPath can be used.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput) DockerChrootPath() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DockerChrootPath
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput)
-}
-
-// Whether dockerNetwork can be used or what network modes are allowed. E.g. one may allow `off` value only via `allowed_values`.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput) DockerNetwork() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DockerNetwork
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput)
-}
-
-// Whether dockerPrivileged can be used.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput) DockerPrivileged() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DockerPrivileged
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput)
-}
-
-// Whether dockerRunAsRoot can be used.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput) DockerRunAsRoot() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DockerRunAsRoot
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput)
-}
-
-// Whether dockerRuntime is allowed to be set or what runtimes are allowed. Note linux_isolation takes precedence, and if set, docker_runtime values may be rejected if they are incompatible with the selected isolation.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput) DockerRuntime() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DockerRuntime
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput)
-}
-
-// Whether dockerSiblingContainers can be used.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput) DockerSiblingContainers() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DockerSiblingContainers
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput)
-}
-
-// linux_isolation allows overriding the docker runtime used for containers started on Linux.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput) LinuxIsolation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LinuxIsolation
-	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the configuration to be used for creating workers in the worker pool.
@@ -1962,96 +1374,6 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse struct {
 	VmImage string `pulumi:"vmImage"`
 }
 
-// GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseInput` via:
-//
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs{...}
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutputWithContext(context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput
-}
-
-// Defines the configuration to be used for creating workers in the worker pool.
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs struct {
-	// The accelerator card attached to each VM.
-	Accelerator GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseInput `pulumi:"accelerator"`
-	// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
-	DiskSizeGb pulumi.StringInput `pulumi:"diskSizeGb"`
-	// Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
-	DiskType pulumi.StringInput `pulumi:"diskType"`
-	// Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
-	MachineType pulumi.StringInput `pulumi:"machineType"`
-	// The maximum number of actions a worker can execute concurrently.
-	MaxConcurrentActions pulumi.StringInput `pulumi:"maxConcurrentActions"`
-	// Minimum CPU platform to use when creating the worker. See [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms).
-	MinCpuPlatform pulumi.StringInput `pulumi:"minCpuPlatform"`
-	// Determines the type of network access granted to workers. Possible values: - "public": Workers can connect to the public internet. - "private": Workers can only connect to Google APIs and services. - "restricted-private": Workers can only connect to Google APIs that are reachable through `restricted.googleapis.com` (`199.36.153.4/30`).
-	NetworkAccess pulumi.StringInput `pulumi:"networkAccess"`
-	// Determines whether the worker is reserved (equivalent to a Compute Engine on-demand VM and therefore won't be preempted). See [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for more details.
-	Reserved pulumi.BoolInput `pulumi:"reserved"`
-	// The node type name to be used for sole-tenant nodes.
-	SoleTenantNodeType pulumi.StringInput `pulumi:"soleTenantNodeType"`
-	// The name of the image used by each VM.
-	VmImage pulumi.StringInput `pulumi:"vmImage"`
-}
-
-func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput)
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput).ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs, GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtr and GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrInput` via:
-//
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput
-	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutputWithContext(context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput
-}
-
-type googleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrType GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs
-
-func GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtr(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrInput {
-	return (*googleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrType)(v)
-}
-
-func (*googleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse)(nil)).Elem()
-}
-
-func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrType) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput {
-	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrType) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput)
-}
-
 // Defines the configuration to be used for creating workers in the worker pool.
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2065,16 +1387,6 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput {
 	return o
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput {
-	return o.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse {
-		return &v
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput)
 }
 
 // The accelerator card attached to each VM.
@@ -2146,179 +1458,30 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) string { return v.VmImage }).(pulumi.StringOutput)
 }
 
-type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse
-		return ret
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput)
-}
-
-// The accelerator card attached to each VM.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) Accelerator() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Accelerator
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput)
-}
-
-// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskSizeGb
-	}).(pulumi.StringPtrOutput)
-}
-
-// Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MachineType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The maximum number of actions a worker can execute concurrently.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) MaxConcurrentActions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxConcurrentActions
-	}).(pulumi.StringPtrOutput)
-}
-
-// Minimum CPU platform to use when creating the worker. See [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms).
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MinCpuPlatform
-	}).(pulumi.StringPtrOutput)
-}
-
-// Determines the type of network access granted to workers. Possible values: - "public": Workers can connect to the public internet. - "private": Workers can only connect to Google APIs and services. - "restricted-private": Workers can only connect to Google APIs that are reachable through `restricted.googleapis.com` (`199.36.153.4/30`).
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) NetworkAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NetworkAccess
-	}).(pulumi.StringPtrOutput)
-}
-
-// Determines whether the worker is reserved (equivalent to a Compute Engine on-demand VM and therefore won't be preempted). See [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for more details.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) Reserved() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Reserved
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The node type name to be used for sole-tenant nodes.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) SoleTenantNodeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SoleTenantNodeType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the image used by each VM.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) VmImage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VmImage
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput{})
-	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput{})
-	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput{})
-	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput{})
 }

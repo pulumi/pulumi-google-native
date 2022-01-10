@@ -123,61 +123,6 @@ type InstanceMessageResponse struct {
 	Message string `pulumi:"message"`
 }
 
-// InstanceMessageResponseInput is an input type that accepts InstanceMessageResponseArgs and InstanceMessageResponseOutput values.
-// You can construct a concrete instance of `InstanceMessageResponseInput` via:
-//
-//          InstanceMessageResponseArgs{...}
-type InstanceMessageResponseInput interface {
-	pulumi.Input
-
-	ToInstanceMessageResponseOutput() InstanceMessageResponseOutput
-	ToInstanceMessageResponseOutputWithContext(context.Context) InstanceMessageResponseOutput
-}
-
-type InstanceMessageResponseArgs struct {
-	// A code that correspond to one type of user-facing message.
-	Code pulumi.StringInput `pulumi:"code"`
-	// Message on memcached instance which will be exposed to users.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (InstanceMessageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceMessageResponse)(nil)).Elem()
-}
-
-func (i InstanceMessageResponseArgs) ToInstanceMessageResponseOutput() InstanceMessageResponseOutput {
-	return i.ToInstanceMessageResponseOutputWithContext(context.Background())
-}
-
-func (i InstanceMessageResponseArgs) ToInstanceMessageResponseOutputWithContext(ctx context.Context) InstanceMessageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceMessageResponseOutput)
-}
-
-// InstanceMessageResponseArrayInput is an input type that accepts InstanceMessageResponseArray and InstanceMessageResponseArrayOutput values.
-// You can construct a concrete instance of `InstanceMessageResponseArrayInput` via:
-//
-//          InstanceMessageResponseArray{ InstanceMessageResponseArgs{...} }
-type InstanceMessageResponseArrayInput interface {
-	pulumi.Input
-
-	ToInstanceMessageResponseArrayOutput() InstanceMessageResponseArrayOutput
-	ToInstanceMessageResponseArrayOutputWithContext(context.Context) InstanceMessageResponseArrayOutput
-}
-
-type InstanceMessageResponseArray []InstanceMessageResponseInput
-
-func (InstanceMessageResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceMessageResponse)(nil)).Elem()
-}
-
-func (i InstanceMessageResponseArray) ToInstanceMessageResponseArrayOutput() InstanceMessageResponseArrayOutput {
-	return i.ToInstanceMessageResponseArrayOutputWithContext(context.Background())
-}
-
-func (i InstanceMessageResponseArray) ToInstanceMessageResponseArrayOutputWithContext(ctx context.Context) InstanceMessageResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceMessageResponseArrayOutput)
-}
-
 type InstanceMessageResponseOutput struct{ *pulumi.OutputState }
 
 func (InstanceMessageResponseOutput) ElementType() reflect.Type {
@@ -364,75 +309,6 @@ type MemcacheParametersResponse struct {
 	Params map[string]string `pulumi:"params"`
 }
 
-// MemcacheParametersResponseInput is an input type that accepts MemcacheParametersResponseArgs and MemcacheParametersResponseOutput values.
-// You can construct a concrete instance of `MemcacheParametersResponseInput` via:
-//
-//          MemcacheParametersResponseArgs{...}
-type MemcacheParametersResponseInput interface {
-	pulumi.Input
-
-	ToMemcacheParametersResponseOutput() MemcacheParametersResponseOutput
-	ToMemcacheParametersResponseOutputWithContext(context.Context) MemcacheParametersResponseOutput
-}
-
-type MemcacheParametersResponseArgs struct {
-	// User defined set of parameters to use in the memcached process.
-	Params pulumi.StringMapInput `pulumi:"params"`
-}
-
-func (MemcacheParametersResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MemcacheParametersResponse)(nil)).Elem()
-}
-
-func (i MemcacheParametersResponseArgs) ToMemcacheParametersResponseOutput() MemcacheParametersResponseOutput {
-	return i.ToMemcacheParametersResponseOutputWithContext(context.Background())
-}
-
-func (i MemcacheParametersResponseArgs) ToMemcacheParametersResponseOutputWithContext(ctx context.Context) MemcacheParametersResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MemcacheParametersResponseOutput)
-}
-
-func (i MemcacheParametersResponseArgs) ToMemcacheParametersResponsePtrOutput() MemcacheParametersResponsePtrOutput {
-	return i.ToMemcacheParametersResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MemcacheParametersResponseArgs) ToMemcacheParametersResponsePtrOutputWithContext(ctx context.Context) MemcacheParametersResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MemcacheParametersResponseOutput).ToMemcacheParametersResponsePtrOutputWithContext(ctx)
-}
-
-// MemcacheParametersResponsePtrInput is an input type that accepts MemcacheParametersResponseArgs, MemcacheParametersResponsePtr and MemcacheParametersResponsePtrOutput values.
-// You can construct a concrete instance of `MemcacheParametersResponsePtrInput` via:
-//
-//          MemcacheParametersResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MemcacheParametersResponsePtrInput interface {
-	pulumi.Input
-
-	ToMemcacheParametersResponsePtrOutput() MemcacheParametersResponsePtrOutput
-	ToMemcacheParametersResponsePtrOutputWithContext(context.Context) MemcacheParametersResponsePtrOutput
-}
-
-type memcacheParametersResponsePtrType MemcacheParametersResponseArgs
-
-func MemcacheParametersResponsePtr(v *MemcacheParametersResponseArgs) MemcacheParametersResponsePtrInput {
-	return (*memcacheParametersResponsePtrType)(v)
-}
-
-func (*memcacheParametersResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MemcacheParametersResponse)(nil)).Elem()
-}
-
-func (i *memcacheParametersResponsePtrType) ToMemcacheParametersResponsePtrOutput() MemcacheParametersResponsePtrOutput {
-	return i.ToMemcacheParametersResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *memcacheParametersResponsePtrType) ToMemcacheParametersResponsePtrOutputWithContext(ctx context.Context) MemcacheParametersResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MemcacheParametersResponsePtrOutput)
-}
-
 type MemcacheParametersResponseOutput struct{ *pulumi.OutputState }
 
 func (MemcacheParametersResponseOutput) ElementType() reflect.Type {
@@ -447,53 +323,9 @@ func (o MemcacheParametersResponseOutput) ToMemcacheParametersResponseOutputWith
 	return o
 }
 
-func (o MemcacheParametersResponseOutput) ToMemcacheParametersResponsePtrOutput() MemcacheParametersResponsePtrOutput {
-	return o.ToMemcacheParametersResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MemcacheParametersResponseOutput) ToMemcacheParametersResponsePtrOutputWithContext(ctx context.Context) MemcacheParametersResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MemcacheParametersResponse) *MemcacheParametersResponse {
-		return &v
-	}).(MemcacheParametersResponsePtrOutput)
-}
-
 // User defined set of parameters to use in the memcached process.
 func (o MemcacheParametersResponseOutput) Params() pulumi.StringMapOutput {
 	return o.ApplyT(func(v MemcacheParametersResponse) map[string]string { return v.Params }).(pulumi.StringMapOutput)
-}
-
-type MemcacheParametersResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MemcacheParametersResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MemcacheParametersResponse)(nil)).Elem()
-}
-
-func (o MemcacheParametersResponsePtrOutput) ToMemcacheParametersResponsePtrOutput() MemcacheParametersResponsePtrOutput {
-	return o
-}
-
-func (o MemcacheParametersResponsePtrOutput) ToMemcacheParametersResponsePtrOutputWithContext(ctx context.Context) MemcacheParametersResponsePtrOutput {
-	return o
-}
-
-func (o MemcacheParametersResponsePtrOutput) Elem() MemcacheParametersResponseOutput {
-	return o.ApplyT(func(v *MemcacheParametersResponse) MemcacheParametersResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MemcacheParametersResponse
-		return ret
-	}).(MemcacheParametersResponseOutput)
-}
-
-// User defined set of parameters to use in the memcached process.
-func (o MemcacheParametersResponsePtrOutput) Params() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *MemcacheParametersResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Params
-	}).(pulumi.StringMapOutput)
 }
 
 // Configuration for a Memcached Node.
@@ -535,47 +367,6 @@ func (i NodeConfigArgs) ToNodeConfigOutputWithContext(ctx context.Context) NodeC
 	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigOutput)
 }
 
-func (i NodeConfigArgs) ToNodeConfigPtrOutput() NodeConfigPtrOutput {
-	return i.ToNodeConfigPtrOutputWithContext(context.Background())
-}
-
-func (i NodeConfigArgs) ToNodeConfigPtrOutputWithContext(ctx context.Context) NodeConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigOutput).ToNodeConfigPtrOutputWithContext(ctx)
-}
-
-// NodeConfigPtrInput is an input type that accepts NodeConfigArgs, NodeConfigPtr and NodeConfigPtrOutput values.
-// You can construct a concrete instance of `NodeConfigPtrInput` via:
-//
-//          NodeConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type NodeConfigPtrInput interface {
-	pulumi.Input
-
-	ToNodeConfigPtrOutput() NodeConfigPtrOutput
-	ToNodeConfigPtrOutputWithContext(context.Context) NodeConfigPtrOutput
-}
-
-type nodeConfigPtrType NodeConfigArgs
-
-func NodeConfigPtr(v *NodeConfigArgs) NodeConfigPtrInput {
-	return (*nodeConfigPtrType)(v)
-}
-
-func (*nodeConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeConfig)(nil)).Elem()
-}
-
-func (i *nodeConfigPtrType) ToNodeConfigPtrOutput() NodeConfigPtrOutput {
-	return i.ToNodeConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *nodeConfigPtrType) ToNodeConfigPtrOutputWithContext(ctx context.Context) NodeConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigPtrOutput)
-}
-
 // Configuration for a Memcached Node.
 type NodeConfigOutput struct{ *pulumi.OutputState }
 
@@ -591,16 +382,6 @@ func (o NodeConfigOutput) ToNodeConfigOutputWithContext(ctx context.Context) Nod
 	return o
 }
 
-func (o NodeConfigOutput) ToNodeConfigPtrOutput() NodeConfigPtrOutput {
-	return o.ToNodeConfigPtrOutputWithContext(context.Background())
-}
-
-func (o NodeConfigOutput) ToNodeConfigPtrOutputWithContext(ctx context.Context) NodeConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeConfig) *NodeConfig {
-		return &v
-	}).(NodeConfigPtrOutput)
-}
-
 // Number of cpus per Memcached node.
 func (o NodeConfigOutput) CpuCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeConfig) int { return v.CpuCount }).(pulumi.IntOutput)
@@ -611,128 +392,12 @@ func (o NodeConfigOutput) MemorySizeMb() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeConfig) int { return v.MemorySizeMb }).(pulumi.IntOutput)
 }
 
-type NodeConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (NodeConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeConfig)(nil)).Elem()
-}
-
-func (o NodeConfigPtrOutput) ToNodeConfigPtrOutput() NodeConfigPtrOutput {
-	return o
-}
-
-func (o NodeConfigPtrOutput) ToNodeConfigPtrOutputWithContext(ctx context.Context) NodeConfigPtrOutput {
-	return o
-}
-
-func (o NodeConfigPtrOutput) Elem() NodeConfigOutput {
-	return o.ApplyT(func(v *NodeConfig) NodeConfig {
-		if v != nil {
-			return *v
-		}
-		var ret NodeConfig
-		return ret
-	}).(NodeConfigOutput)
-}
-
-// Number of cpus per Memcached node.
-func (o NodeConfigPtrOutput) CpuCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NodeConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.CpuCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Memory size in MiB for each Memcached node.
-func (o NodeConfigPtrOutput) MemorySizeMb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NodeConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MemorySizeMb
-	}).(pulumi.IntPtrOutput)
-}
-
 // Configuration for a Memcached Node.
 type NodeConfigResponse struct {
 	// Number of cpus per Memcached node.
 	CpuCount int `pulumi:"cpuCount"`
 	// Memory size in MiB for each Memcached node.
 	MemorySizeMb int `pulumi:"memorySizeMb"`
-}
-
-// NodeConfigResponseInput is an input type that accepts NodeConfigResponseArgs and NodeConfigResponseOutput values.
-// You can construct a concrete instance of `NodeConfigResponseInput` via:
-//
-//          NodeConfigResponseArgs{...}
-type NodeConfigResponseInput interface {
-	pulumi.Input
-
-	ToNodeConfigResponseOutput() NodeConfigResponseOutput
-	ToNodeConfigResponseOutputWithContext(context.Context) NodeConfigResponseOutput
-}
-
-// Configuration for a Memcached Node.
-type NodeConfigResponseArgs struct {
-	// Number of cpus per Memcached node.
-	CpuCount pulumi.IntInput `pulumi:"cpuCount"`
-	// Memory size in MiB for each Memcached node.
-	MemorySizeMb pulumi.IntInput `pulumi:"memorySizeMb"`
-}
-
-func (NodeConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeConfigResponse)(nil)).Elem()
-}
-
-func (i NodeConfigResponseArgs) ToNodeConfigResponseOutput() NodeConfigResponseOutput {
-	return i.ToNodeConfigResponseOutputWithContext(context.Background())
-}
-
-func (i NodeConfigResponseArgs) ToNodeConfigResponseOutputWithContext(ctx context.Context) NodeConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigResponseOutput)
-}
-
-func (i NodeConfigResponseArgs) ToNodeConfigResponsePtrOutput() NodeConfigResponsePtrOutput {
-	return i.ToNodeConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i NodeConfigResponseArgs) ToNodeConfigResponsePtrOutputWithContext(ctx context.Context) NodeConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigResponseOutput).ToNodeConfigResponsePtrOutputWithContext(ctx)
-}
-
-// NodeConfigResponsePtrInput is an input type that accepts NodeConfigResponseArgs, NodeConfigResponsePtr and NodeConfigResponsePtrOutput values.
-// You can construct a concrete instance of `NodeConfigResponsePtrInput` via:
-//
-//          NodeConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type NodeConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToNodeConfigResponsePtrOutput() NodeConfigResponsePtrOutput
-	ToNodeConfigResponsePtrOutputWithContext(context.Context) NodeConfigResponsePtrOutput
-}
-
-type nodeConfigResponsePtrType NodeConfigResponseArgs
-
-func NodeConfigResponsePtr(v *NodeConfigResponseArgs) NodeConfigResponsePtrInput {
-	return (*nodeConfigResponsePtrType)(v)
-}
-
-func (*nodeConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeConfigResponse)(nil)).Elem()
-}
-
-func (i *nodeConfigResponsePtrType) ToNodeConfigResponsePtrOutput() NodeConfigResponsePtrOutput {
-	return i.ToNodeConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *nodeConfigResponsePtrType) ToNodeConfigResponsePtrOutputWithContext(ctx context.Context) NodeConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigResponsePtrOutput)
 }
 
 // Configuration for a Memcached Node.
@@ -750,16 +415,6 @@ func (o NodeConfigResponseOutput) ToNodeConfigResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o NodeConfigResponseOutput) ToNodeConfigResponsePtrOutput() NodeConfigResponsePtrOutput {
-	return o.ToNodeConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o NodeConfigResponseOutput) ToNodeConfigResponsePtrOutputWithContext(ctx context.Context) NodeConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeConfigResponse) *NodeConfigResponse {
-		return &v
-	}).(NodeConfigResponsePtrOutput)
-}
-
 // Number of cpus per Memcached node.
 func (o NodeConfigResponseOutput) CpuCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeConfigResponse) int { return v.CpuCount }).(pulumi.IntOutput)
@@ -768,50 +423,6 @@ func (o NodeConfigResponseOutput) CpuCount() pulumi.IntOutput {
 // Memory size in MiB for each Memcached node.
 func (o NodeConfigResponseOutput) MemorySizeMb() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeConfigResponse) int { return v.MemorySizeMb }).(pulumi.IntOutput)
-}
-
-type NodeConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (NodeConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeConfigResponse)(nil)).Elem()
-}
-
-func (o NodeConfigResponsePtrOutput) ToNodeConfigResponsePtrOutput() NodeConfigResponsePtrOutput {
-	return o
-}
-
-func (o NodeConfigResponsePtrOutput) ToNodeConfigResponsePtrOutputWithContext(ctx context.Context) NodeConfigResponsePtrOutput {
-	return o
-}
-
-func (o NodeConfigResponsePtrOutput) Elem() NodeConfigResponseOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) NodeConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret NodeConfigResponse
-		return ret
-	}).(NodeConfigResponseOutput)
-}
-
-// Number of cpus per Memcached node.
-func (o NodeConfigResponsePtrOutput) CpuCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.CpuCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Memory size in MiB for each Memcached node.
-func (o NodeConfigResponsePtrOutput) MemorySizeMb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MemorySizeMb
-	}).(pulumi.IntPtrOutput)
 }
 
 type NodeResponse struct {
@@ -829,71 +440,6 @@ type NodeResponse struct {
 	UpdateAvailable bool `pulumi:"updateAvailable"`
 	// Location (GCP Zone) for the Memcached node.
 	Zone string `pulumi:"zone"`
-}
-
-// NodeResponseInput is an input type that accepts NodeResponseArgs and NodeResponseOutput values.
-// You can construct a concrete instance of `NodeResponseInput` via:
-//
-//          NodeResponseArgs{...}
-type NodeResponseInput interface {
-	pulumi.Input
-
-	ToNodeResponseOutput() NodeResponseOutput
-	ToNodeResponseOutputWithContext(context.Context) NodeResponseOutput
-}
-
-type NodeResponseArgs struct {
-	// Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
-	Host pulumi.StringInput `pulumi:"host"`
-	// Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
-	NodeId pulumi.StringInput `pulumi:"nodeId"`
-	// User defined parameters currently applied to the node.
-	Parameters MemcacheParametersResponseInput `pulumi:"parameters"`
-	// The port number of the Memcached server on this node.
-	Port pulumi.IntInput `pulumi:"port"`
-	// Current state of the Memcached node.
-	State pulumi.StringInput `pulumi:"state"`
-	// Returns true if there is an update waiting to be applied
-	UpdateAvailable pulumi.BoolInput `pulumi:"updateAvailable"`
-	// Location (GCP Zone) for the Memcached node.
-	Zone pulumi.StringInput `pulumi:"zone"`
-}
-
-func (NodeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeResponse)(nil)).Elem()
-}
-
-func (i NodeResponseArgs) ToNodeResponseOutput() NodeResponseOutput {
-	return i.ToNodeResponseOutputWithContext(context.Background())
-}
-
-func (i NodeResponseArgs) ToNodeResponseOutputWithContext(ctx context.Context) NodeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeResponseOutput)
-}
-
-// NodeResponseArrayInput is an input type that accepts NodeResponseArray and NodeResponseArrayOutput values.
-// You can construct a concrete instance of `NodeResponseArrayInput` via:
-//
-//          NodeResponseArray{ NodeResponseArgs{...} }
-type NodeResponseArrayInput interface {
-	pulumi.Input
-
-	ToNodeResponseArrayOutput() NodeResponseArrayOutput
-	ToNodeResponseArrayOutputWithContext(context.Context) NodeResponseArrayOutput
-}
-
-type NodeResponseArray []NodeResponseInput
-
-func (NodeResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NodeResponse)(nil)).Elem()
-}
-
-func (i NodeResponseArray) ToNodeResponseArrayOutput() NodeResponseArrayOutput {
-	return i.ToNodeResponseArrayOutputWithContext(context.Background())
-}
-
-func (i NodeResponseArray) ToNodeResponseArrayOutputWithContext(ctx context.Context) NodeResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeResponseArrayOutput)
 }
 
 type NodeResponseOutput struct{ *pulumi.OutputState }
@@ -968,18 +514,9 @@ func (o NodeResponseArrayOutput) Index(i pulumi.IntInput) NodeResponseOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMessageInput)(nil)).Elem(), InstanceMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMessageArrayInput)(nil)).Elem(), InstanceMessageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMessageResponseInput)(nil)).Elem(), InstanceMessageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMessageResponseArrayInput)(nil)).Elem(), InstanceMessageResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MemcacheParametersInput)(nil)).Elem(), MemcacheParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MemcacheParametersPtrInput)(nil)).Elem(), MemcacheParametersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MemcacheParametersResponseInput)(nil)).Elem(), MemcacheParametersResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MemcacheParametersResponsePtrInput)(nil)).Elem(), MemcacheParametersResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponseInput)(nil)).Elem(), NodeConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponsePtrInput)(nil)).Elem(), NodeConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeResponseInput)(nil)).Elem(), NodeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeResponseArrayInput)(nil)).Elem(), NodeResponseArray{})
 	pulumi.RegisterOutputType(InstanceMessageOutput{})
 	pulumi.RegisterOutputType(InstanceMessageArrayOutput{})
 	pulumi.RegisterOutputType(InstanceMessageResponseOutput{})
@@ -987,11 +524,8 @@ func init() {
 	pulumi.RegisterOutputType(MemcacheParametersOutput{})
 	pulumi.RegisterOutputType(MemcacheParametersPtrOutput{})
 	pulumi.RegisterOutputType(MemcacheParametersResponseOutput{})
-	pulumi.RegisterOutputType(MemcacheParametersResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigOutput{})
-	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigResponseOutput{})
-	pulumi.RegisterOutputType(NodeConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodeResponseOutput{})
 	pulumi.RegisterOutputType(NodeResponseArrayOutput{})
 }

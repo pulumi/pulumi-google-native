@@ -250,7 +250,7 @@ type RegionBackendServiceInput interface {
 }
 
 func (*RegionBackendService) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionBackendService)(nil))
+	return reflect.TypeOf((**RegionBackendService)(nil)).Elem()
 }
 
 func (i *RegionBackendService) ToRegionBackendServiceOutput() RegionBackendServiceOutput {
@@ -264,7 +264,7 @@ func (i *RegionBackendService) ToRegionBackendServiceOutputWithContext(ctx conte
 type RegionBackendServiceOutput struct{ *pulumi.OutputState }
 
 func (RegionBackendServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionBackendService)(nil))
+	return reflect.TypeOf((**RegionBackendService)(nil)).Elem()
 }
 
 func (o RegionBackendServiceOutput) ToRegionBackendServiceOutput() RegionBackendServiceOutput {

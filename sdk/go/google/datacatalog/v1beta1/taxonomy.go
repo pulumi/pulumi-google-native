@@ -106,7 +106,7 @@ type TaxonomyInput interface {
 }
 
 func (*Taxonomy) ElementType() reflect.Type {
-	return reflect.TypeOf((*Taxonomy)(nil))
+	return reflect.TypeOf((**Taxonomy)(nil)).Elem()
 }
 
 func (i *Taxonomy) ToTaxonomyOutput() TaxonomyOutput {
@@ -120,7 +120,7 @@ func (i *Taxonomy) ToTaxonomyOutputWithContext(ctx context.Context) TaxonomyOutp
 type TaxonomyOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Taxonomy)(nil))
+	return reflect.TypeOf((**Taxonomy)(nil)).Elem()
 }
 
 func (o TaxonomyOutput) ToTaxonomyOutput() TaxonomyOutput {

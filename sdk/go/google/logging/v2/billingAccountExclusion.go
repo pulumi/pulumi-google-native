@@ -110,7 +110,7 @@ type BillingAccountExclusionInput interface {
 }
 
 func (*BillingAccountExclusion) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingAccountExclusion)(nil))
+	return reflect.TypeOf((**BillingAccountExclusion)(nil)).Elem()
 }
 
 func (i *BillingAccountExclusion) ToBillingAccountExclusionOutput() BillingAccountExclusionOutput {
@@ -124,7 +124,7 @@ func (i *BillingAccountExclusion) ToBillingAccountExclusionOutputWithContext(ctx
 type BillingAccountExclusionOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountExclusionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingAccountExclusion)(nil))
+	return reflect.TypeOf((**BillingAccountExclusion)(nil)).Elem()
 }
 
 func (o BillingAccountExclusionOutput) ToBillingAccountExclusionOutput() BillingAccountExclusionOutput {

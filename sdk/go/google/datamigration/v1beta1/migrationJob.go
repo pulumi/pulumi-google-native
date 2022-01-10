@@ -184,7 +184,7 @@ type MigrationJobInput interface {
 }
 
 func (*MigrationJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*MigrationJob)(nil))
+	return reflect.TypeOf((**MigrationJob)(nil)).Elem()
 }
 
 func (i *MigrationJob) ToMigrationJobOutput() MigrationJobOutput {
@@ -198,7 +198,7 @@ func (i *MigrationJob) ToMigrationJobOutputWithContext(ctx context.Context) Migr
 type MigrationJobOutput struct{ *pulumi.OutputState }
 
 func (MigrationJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MigrationJob)(nil))
+	return reflect.TypeOf((**MigrationJob)(nil)).Elem()
 }
 
 func (o MigrationJobOutput) ToMigrationJobOutput() MigrationJobOutput {

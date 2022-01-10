@@ -105,7 +105,7 @@ type AnnotationSpecSetInput interface {
 }
 
 func (*AnnotationSpecSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnnotationSpecSet)(nil))
+	return reflect.TypeOf((**AnnotationSpecSet)(nil)).Elem()
 }
 
 func (i *AnnotationSpecSet) ToAnnotationSpecSetOutput() AnnotationSpecSetOutput {
@@ -119,7 +119,7 @@ func (i *AnnotationSpecSet) ToAnnotationSpecSetOutputWithContext(ctx context.Con
 type AnnotationSpecSetOutput struct{ *pulumi.OutputState }
 
 func (AnnotationSpecSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnnotationSpecSet)(nil))
+	return reflect.TypeOf((**AnnotationSpecSet)(nil)).Elem()
 }
 
 func (o AnnotationSpecSetOutput) ToAnnotationSpecSetOutput() AnnotationSpecSetOutput {

@@ -152,7 +152,7 @@ type CompanyInput interface {
 }
 
 func (*Company) ElementType() reflect.Type {
-	return reflect.TypeOf((*Company)(nil))
+	return reflect.TypeOf((**Company)(nil)).Elem()
 }
 
 func (i *Company) ToCompanyOutput() CompanyOutput {
@@ -166,7 +166,7 @@ func (i *Company) ToCompanyOutputWithContext(ctx context.Context) CompanyOutput 
 type CompanyOutput struct{ *pulumi.OutputState }
 
 func (CompanyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Company)(nil))
+	return reflect.TypeOf((**Company)(nil)).Elem()
 }
 
 func (o CompanyOutput) ToCompanyOutput() CompanyOutput {

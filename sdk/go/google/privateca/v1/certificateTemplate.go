@@ -122,7 +122,7 @@ type CertificateTemplateInput interface {
 }
 
 func (*CertificateTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateTemplate)(nil))
+	return reflect.TypeOf((**CertificateTemplate)(nil)).Elem()
 }
 
 func (i *CertificateTemplate) ToCertificateTemplateOutput() CertificateTemplateOutput {
@@ -136,7 +136,7 @@ func (i *CertificateTemplate) ToCertificateTemplateOutputWithContext(ctx context
 type CertificateTemplateOutput struct{ *pulumi.OutputState }
 
 func (CertificateTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateTemplate)(nil))
+	return reflect.TypeOf((**CertificateTemplate)(nil)).Elem()
 }
 
 func (o CertificateTemplateOutput) ToCertificateTemplateOutput() CertificateTemplateOutput {

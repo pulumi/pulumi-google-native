@@ -174,7 +174,7 @@ type BackupRunInput interface {
 }
 
 func (*BackupRun) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupRun)(nil))
+	return reflect.TypeOf((**BackupRun)(nil)).Elem()
 }
 
 func (i *BackupRun) ToBackupRunOutput() BackupRunOutput {
@@ -188,7 +188,7 @@ func (i *BackupRun) ToBackupRunOutputWithContext(ctx context.Context) BackupRunO
 type BackupRunOutput struct{ *pulumi.OutputState }
 
 func (BackupRunOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupRun)(nil))
+	return reflect.TypeOf((**BackupRun)(nil)).Elem()
 }
 
 func (o BackupRunOutput) ToBackupRunOutput() BackupRunOutput {

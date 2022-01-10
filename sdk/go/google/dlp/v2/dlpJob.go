@@ -110,7 +110,7 @@ type DlpJobInput interface {
 }
 
 func (*DlpJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*DlpJob)(nil))
+	return reflect.TypeOf((**DlpJob)(nil)).Elem()
 }
 
 func (i *DlpJob) ToDlpJobOutput() DlpJobOutput {
@@ -124,7 +124,7 @@ func (i *DlpJob) ToDlpJobOutputWithContext(ctx context.Context) DlpJobOutput {
 type DlpJobOutput struct{ *pulumi.OutputState }
 
 func (DlpJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DlpJob)(nil))
+	return reflect.TypeOf((**DlpJob)(nil)).Elem()
 }
 
 func (o DlpJobOutput) ToDlpJobOutput() DlpJobOutput {

@@ -118,7 +118,7 @@ type InstanceNamespaceIamPolicyInput interface {
 }
 
 func (*InstanceNamespaceIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceNamespaceIamPolicy)(nil))
+	return reflect.TypeOf((**InstanceNamespaceIamPolicy)(nil)).Elem()
 }
 
 func (i *InstanceNamespaceIamPolicy) ToInstanceNamespaceIamPolicyOutput() InstanceNamespaceIamPolicyOutput {
@@ -132,7 +132,7 @@ func (i *InstanceNamespaceIamPolicy) ToInstanceNamespaceIamPolicyOutputWithConte
 type InstanceNamespaceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (InstanceNamespaceIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceNamespaceIamPolicy)(nil))
+	return reflect.TypeOf((**InstanceNamespaceIamPolicy)(nil)).Elem()
 }
 
 func (o InstanceNamespaceIamPolicyOutput) ToInstanceNamespaceIamPolicyOutput() InstanceNamespaceIamPolicyOutput {

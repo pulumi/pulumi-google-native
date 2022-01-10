@@ -146,7 +146,7 @@ type PatchDeploymentInput interface {
 }
 
 func (*PatchDeployment) ElementType() reflect.Type {
-	return reflect.TypeOf((*PatchDeployment)(nil))
+	return reflect.TypeOf((**PatchDeployment)(nil)).Elem()
 }
 
 func (i *PatchDeployment) ToPatchDeploymentOutput() PatchDeploymentOutput {
@@ -160,7 +160,7 @@ func (i *PatchDeployment) ToPatchDeploymentOutputWithContext(ctx context.Context
 type PatchDeploymentOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PatchDeployment)(nil))
+	return reflect.TypeOf((**PatchDeployment)(nil)).Elem()
 }
 
 func (o PatchDeploymentOutput) ToPatchDeploymentOutput() PatchDeploymentOutput {

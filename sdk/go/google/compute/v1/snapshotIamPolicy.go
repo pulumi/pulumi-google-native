@@ -113,7 +113,7 @@ type SnapshotIamPolicyInput interface {
 }
 
 func (*SnapshotIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotIamPolicy)(nil))
+	return reflect.TypeOf((**SnapshotIamPolicy)(nil)).Elem()
 }
 
 func (i *SnapshotIamPolicy) ToSnapshotIamPolicyOutput() SnapshotIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *SnapshotIamPolicy) ToSnapshotIamPolicyOutputWithContext(ctx context.Con
 type SnapshotIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (SnapshotIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotIamPolicy)(nil))
+	return reflect.TypeOf((**SnapshotIamPolicy)(nil)).Elem()
 }
 
 func (o SnapshotIamPolicyOutput) ToSnapshotIamPolicyOutput() SnapshotIamPolicyOutput {

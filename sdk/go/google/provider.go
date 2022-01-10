@@ -22,22 +22,22 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
-	if args.AppendUserAgent == nil {
+	if isZero(args.AppendUserAgent) {
 		args.AppendUserAgent = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_APPEND_USER_AGENT").(string))
 	}
-	if args.DisablePartnerName == nil {
+	if isZero(args.DisablePartnerName) {
 		args.DisablePartnerName = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "GOOGLE_DISABLE_PARTNER_NAME").(bool))
 	}
-	if args.PartnerName == nil {
+	if isZero(args.PartnerName) {
 		args.PartnerName = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_PARTNER_NAME").(string))
 	}
-	if args.Project == nil {
+	if isZero(args.Project) {
 		args.Project = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT").(string))
 	}
-	if args.Region == nil {
+	if isZero(args.Region) {
 		args.Region = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION").(string))
 	}
-	if args.Zone == nil {
+	if isZero(args.Zone) {
 		args.Zone = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE").(string))
 	}
 	var resource Provider
@@ -91,7 +91,7 @@ type ProviderInput interface {
 }
 
 func (*Provider) ElementType() reflect.Type {
-	return reflect.TypeOf((*Provider)(nil))
+	return reflect.TypeOf((**Provider)(nil)).Elem()
 }
 
 func (i *Provider) ToProviderOutput() ProviderOutput {
@@ -105,7 +105,7 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 type ProviderOutput struct{ *pulumi.OutputState }
 
 func (ProviderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Provider)(nil))
+	return reflect.TypeOf((**Provider)(nil)).Elem()
 }
 
 func (o ProviderOutput) ToProviderOutput() ProviderOutput {

@@ -157,7 +157,7 @@ type GlobalAddressInput interface {
 }
 
 func (*GlobalAddress) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalAddress)(nil))
+	return reflect.TypeOf((**GlobalAddress)(nil)).Elem()
 }
 
 func (i *GlobalAddress) ToGlobalAddressOutput() GlobalAddressOutput {
@@ -171,7 +171,7 @@ func (i *GlobalAddress) ToGlobalAddressOutputWithContext(ctx context.Context) Gl
 type GlobalAddressOutput struct{ *pulumi.OutputState }
 
 func (GlobalAddressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalAddress)(nil))
+	return reflect.TypeOf((**GlobalAddress)(nil)).Elem()
 }
 
 func (o GlobalAddressOutput) ToGlobalAddressOutput() GlobalAddressOutput {

@@ -111,7 +111,7 @@ type ReferenceInput interface {
 }
 
 func (*Reference) ElementType() reflect.Type {
-	return reflect.TypeOf((*Reference)(nil))
+	return reflect.TypeOf((**Reference)(nil)).Elem()
 }
 
 func (i *Reference) ToReferenceOutput() ReferenceOutput {
@@ -125,7 +125,7 @@ func (i *Reference) ToReferenceOutputWithContext(ctx context.Context) ReferenceO
 type ReferenceOutput struct{ *pulumi.OutputState }
 
 func (ReferenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Reference)(nil))
+	return reflect.TypeOf((**Reference)(nil)).Elem()
 }
 
 func (o ReferenceOutput) ToReferenceOutput() ReferenceOutput {

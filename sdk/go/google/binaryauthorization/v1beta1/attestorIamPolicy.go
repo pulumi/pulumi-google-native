@@ -101,7 +101,7 @@ type AttestorIamPolicyInput interface {
 }
 
 func (*AttestorIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttestorIamPolicy)(nil))
+	return reflect.TypeOf((**AttestorIamPolicy)(nil)).Elem()
 }
 
 func (i *AttestorIamPolicy) ToAttestorIamPolicyOutput() AttestorIamPolicyOutput {
@@ -115,7 +115,7 @@ func (i *AttestorIamPolicy) ToAttestorIamPolicyOutputWithContext(ctx context.Con
 type AttestorIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttestorIamPolicy)(nil))
+	return reflect.TypeOf((**AttestorIamPolicy)(nil)).Elem()
 }
 
 func (o AttestorIamPolicyOutput) ToAttestorIamPolicyOutput() AttestorIamPolicyOutput {

@@ -108,7 +108,7 @@ type DatasetInput interface {
 }
 
 func (*Dataset) ElementType() reflect.Type {
-	return reflect.TypeOf((*Dataset)(nil))
+	return reflect.TypeOf((**Dataset)(nil)).Elem()
 }
 
 func (i *Dataset) ToDatasetOutput() DatasetOutput {
@@ -122,7 +122,7 @@ func (i *Dataset) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput 
 type DatasetOutput struct{ *pulumi.OutputState }
 
 func (DatasetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Dataset)(nil))
+	return reflect.TypeOf((**Dataset)(nil)).Elem()
 }
 
 func (o DatasetOutput) ToDatasetOutput() DatasetOutput {

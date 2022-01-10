@@ -133,7 +133,7 @@ type ConnectionProfileInput interface {
 }
 
 func (*ConnectionProfile) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionProfile)(nil))
+	return reflect.TypeOf((**ConnectionProfile)(nil)).Elem()
 }
 
 func (i *ConnectionProfile) ToConnectionProfileOutput() ConnectionProfileOutput {
@@ -147,7 +147,7 @@ func (i *ConnectionProfile) ToConnectionProfileOutputWithContext(ctx context.Con
 type ConnectionProfileOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionProfile)(nil))
+	return reflect.TypeOf((**ConnectionProfile)(nil)).Elem()
 }
 
 func (o ConnectionProfileOutput) ToConnectionProfileOutput() ConnectionProfileOutput {

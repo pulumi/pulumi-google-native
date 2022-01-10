@@ -92,7 +92,7 @@ type FolderPolicyInput interface {
 }
 
 func (*FolderPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderPolicy)(nil))
+	return reflect.TypeOf((**FolderPolicy)(nil)).Elem()
 }
 
 func (i *FolderPolicy) ToFolderPolicyOutput() FolderPolicyOutput {
@@ -106,7 +106,7 @@ func (i *FolderPolicy) ToFolderPolicyOutputWithContext(ctx context.Context) Fold
 type FolderPolicyOutput struct{ *pulumi.OutputState }
 
 func (FolderPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderPolicy)(nil))
+	return reflect.TypeOf((**FolderPolicy)(nil)).Elem()
 }
 
 func (o FolderPolicyOutput) ToFolderPolicyOutput() FolderPolicyOutput {

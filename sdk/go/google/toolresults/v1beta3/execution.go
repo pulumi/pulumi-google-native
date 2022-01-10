@@ -134,7 +134,7 @@ type ExecutionInput interface {
 }
 
 func (*Execution) ElementType() reflect.Type {
-	return reflect.TypeOf((*Execution)(nil))
+	return reflect.TypeOf((**Execution)(nil)).Elem()
 }
 
 func (i *Execution) ToExecutionOutput() ExecutionOutput {
@@ -148,7 +148,7 @@ func (i *Execution) ToExecutionOutputWithContext(ctx context.Context) ExecutionO
 type ExecutionOutput struct{ *pulumi.OutputState }
 
 func (ExecutionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Execution)(nil))
+	return reflect.TypeOf((**Execution)(nil)).Elem()
 }
 
 func (o ExecutionOutput) ToExecutionOutput() ExecutionOutput {

@@ -245,7 +245,7 @@ type InterconnectAttachmentInput interface {
 }
 
 func (*InterconnectAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterconnectAttachment)(nil))
+	return reflect.TypeOf((**InterconnectAttachment)(nil)).Elem()
 }
 
 func (i *InterconnectAttachment) ToInterconnectAttachmentOutput() InterconnectAttachmentOutput {
@@ -259,7 +259,7 @@ func (i *InterconnectAttachment) ToInterconnectAttachmentOutputWithContext(ctx c
 type InterconnectAttachmentOutput struct{ *pulumi.OutputState }
 
 func (InterconnectAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterconnectAttachment)(nil))
+	return reflect.TypeOf((**InterconnectAttachment)(nil)).Elem()
 }
 
 func (o InterconnectAttachmentOutput) ToInterconnectAttachmentOutput() InterconnectAttachmentOutput {

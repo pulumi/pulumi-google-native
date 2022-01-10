@@ -113,7 +113,7 @@ type DeliveryPipelineIamPolicyInput interface {
 }
 
 func (*DeliveryPipelineIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeliveryPipelineIamPolicy)(nil))
+	return reflect.TypeOf((**DeliveryPipelineIamPolicy)(nil)).Elem()
 }
 
 func (i *DeliveryPipelineIamPolicy) ToDeliveryPipelineIamPolicyOutput() DeliveryPipelineIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *DeliveryPipelineIamPolicy) ToDeliveryPipelineIamPolicyOutputWithContext
 type DeliveryPipelineIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeliveryPipelineIamPolicy)(nil))
+	return reflect.TypeOf((**DeliveryPipelineIamPolicy)(nil)).Elem()
 }
 
 func (o DeliveryPipelineIamPolicyOutput) ToDeliveryPipelineIamPolicyOutput() DeliveryPipelineIamPolicyOutput {

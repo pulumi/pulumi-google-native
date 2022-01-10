@@ -135,7 +135,7 @@ type GithubEnterpriseConfigInput interface {
 }
 
 func (*GithubEnterpriseConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*GithubEnterpriseConfig)(nil))
+	return reflect.TypeOf((**GithubEnterpriseConfig)(nil)).Elem()
 }
 
 func (i *GithubEnterpriseConfig) ToGithubEnterpriseConfigOutput() GithubEnterpriseConfigOutput {
@@ -149,7 +149,7 @@ func (i *GithubEnterpriseConfig) ToGithubEnterpriseConfigOutputWithContext(ctx c
 type GithubEnterpriseConfigOutput struct{ *pulumi.OutputState }
 
 func (GithubEnterpriseConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GithubEnterpriseConfig)(nil))
+	return reflect.TypeOf((**GithubEnterpriseConfig)(nil)).Elem()
 }
 
 func (o GithubEnterpriseConfigOutput) ToGithubEnterpriseConfigOutput() GithubEnterpriseConfigOutput {

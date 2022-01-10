@@ -177,78 +177,6 @@ type GoogleCloudRunOpV2BinaryAuthorizationResponse struct {
 	UseDefault bool `pulumi:"useDefault"`
 }
 
-// GoogleCloudRunOpV2BinaryAuthorizationResponseInput is an input type that accepts GoogleCloudRunOpV2BinaryAuthorizationResponseArgs and GoogleCloudRunOpV2BinaryAuthorizationResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2BinaryAuthorizationResponseInput` via:
-//
-//          GoogleCloudRunOpV2BinaryAuthorizationResponseArgs{...}
-type GoogleCloudRunOpV2BinaryAuthorizationResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2BinaryAuthorizationResponseOutput() GoogleCloudRunOpV2BinaryAuthorizationResponseOutput
-	ToGoogleCloudRunOpV2BinaryAuthorizationResponseOutputWithContext(context.Context) GoogleCloudRunOpV2BinaryAuthorizationResponseOutput
-}
-
-// Settings for Binary Authorization feature.
-type GoogleCloudRunOpV2BinaryAuthorizationResponseArgs struct {
-	// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
-	BreakglassJustification pulumi.StringInput `pulumi:"breakglassJustification"`
-	// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
-	UseDefault pulumi.BoolInput `pulumi:"useDefault"`
-}
-
-func (GoogleCloudRunOpV2BinaryAuthorizationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2BinaryAuthorizationResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2BinaryAuthorizationResponseArgs) ToGoogleCloudRunOpV2BinaryAuthorizationResponseOutput() GoogleCloudRunOpV2BinaryAuthorizationResponseOutput {
-	return i.ToGoogleCloudRunOpV2BinaryAuthorizationResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2BinaryAuthorizationResponseArgs) ToGoogleCloudRunOpV2BinaryAuthorizationResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2BinaryAuthorizationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2BinaryAuthorizationResponseOutput)
-}
-
-func (i GoogleCloudRunOpV2BinaryAuthorizationResponseArgs) ToGoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput() GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput {
-	return i.ToGoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2BinaryAuthorizationResponseArgs) ToGoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2BinaryAuthorizationResponseOutput).ToGoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudRunOpV2BinaryAuthorizationResponsePtrInput is an input type that accepts GoogleCloudRunOpV2BinaryAuthorizationResponseArgs, GoogleCloudRunOpV2BinaryAuthorizationResponsePtr and GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2BinaryAuthorizationResponsePtrInput` via:
-//
-//          GoogleCloudRunOpV2BinaryAuthorizationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudRunOpV2BinaryAuthorizationResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput() GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput
-	ToGoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutputWithContext(context.Context) GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput
-}
-
-type googleCloudRunOpV2BinaryAuthorizationResponsePtrType GoogleCloudRunOpV2BinaryAuthorizationResponseArgs
-
-func GoogleCloudRunOpV2BinaryAuthorizationResponsePtr(v *GoogleCloudRunOpV2BinaryAuthorizationResponseArgs) GoogleCloudRunOpV2BinaryAuthorizationResponsePtrInput {
-	return (*googleCloudRunOpV2BinaryAuthorizationResponsePtrType)(v)
-}
-
-func (*googleCloudRunOpV2BinaryAuthorizationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2BinaryAuthorizationResponse)(nil)).Elem()
-}
-
-func (i *googleCloudRunOpV2BinaryAuthorizationResponsePtrType) ToGoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput() GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput {
-	return i.ToGoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudRunOpV2BinaryAuthorizationResponsePtrType) ToGoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput)
-}
-
 // Settings for Binary Authorization feature.
 type GoogleCloudRunOpV2BinaryAuthorizationResponseOutput struct{ *pulumi.OutputState }
 
@@ -264,16 +192,6 @@ func (o GoogleCloudRunOpV2BinaryAuthorizationResponseOutput) ToGoogleCloudRunOpV
 	return o
 }
 
-func (o GoogleCloudRunOpV2BinaryAuthorizationResponseOutput) ToGoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput() GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput {
-	return o.ToGoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudRunOpV2BinaryAuthorizationResponseOutput) ToGoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunOpV2BinaryAuthorizationResponse) *GoogleCloudRunOpV2BinaryAuthorizationResponse {
-		return &v
-	}).(GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput)
-}
-
 // If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 func (o GoogleCloudRunOpV2BinaryAuthorizationResponseOutput) BreakglassJustification() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunOpV2BinaryAuthorizationResponse) string { return v.BreakglassJustification }).(pulumi.StringOutput)
@@ -282,50 +200,6 @@ func (o GoogleCloudRunOpV2BinaryAuthorizationResponseOutput) BreakglassJustifica
 // If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 func (o GoogleCloudRunOpV2BinaryAuthorizationResponseOutput) UseDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudRunOpV2BinaryAuthorizationResponse) bool { return v.UseDefault }).(pulumi.BoolOutput)
-}
-
-type GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2BinaryAuthorizationResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput) ToGoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput() GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput) ToGoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput) Elem() GoogleCloudRunOpV2BinaryAuthorizationResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2BinaryAuthorizationResponse) GoogleCloudRunOpV2BinaryAuthorizationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudRunOpV2BinaryAuthorizationResponse
-		return ret
-	}).(GoogleCloudRunOpV2BinaryAuthorizationResponseOutput)
-}
-
-// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
-func (o GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput) BreakglassJustification() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2BinaryAuthorizationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BreakglassJustification
-	}).(pulumi.StringPtrOutput)
-}
-
-// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
-func (o GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput) UseDefault() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2BinaryAuthorizationResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.UseDefault
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Represents a specific Cloud SQL instance.
@@ -474,35 +348,6 @@ type GoogleCloudRunOpV2CloudSqlInstanceResponse struct {
 	Connections []string `pulumi:"connections"`
 }
 
-// GoogleCloudRunOpV2CloudSqlInstanceResponseInput is an input type that accepts GoogleCloudRunOpV2CloudSqlInstanceResponseArgs and GoogleCloudRunOpV2CloudSqlInstanceResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2CloudSqlInstanceResponseInput` via:
-//
-//          GoogleCloudRunOpV2CloudSqlInstanceResponseArgs{...}
-type GoogleCloudRunOpV2CloudSqlInstanceResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2CloudSqlInstanceResponseOutput() GoogleCloudRunOpV2CloudSqlInstanceResponseOutput
-	ToGoogleCloudRunOpV2CloudSqlInstanceResponseOutputWithContext(context.Context) GoogleCloudRunOpV2CloudSqlInstanceResponseOutput
-}
-
-// Represents a specific Cloud SQL instance.
-type GoogleCloudRunOpV2CloudSqlInstanceResponseArgs struct {
-	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
-	Connections pulumi.StringArrayInput `pulumi:"connections"`
-}
-
-func (GoogleCloudRunOpV2CloudSqlInstanceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2CloudSqlInstanceResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2CloudSqlInstanceResponseArgs) ToGoogleCloudRunOpV2CloudSqlInstanceResponseOutput() GoogleCloudRunOpV2CloudSqlInstanceResponseOutput {
-	return i.ToGoogleCloudRunOpV2CloudSqlInstanceResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2CloudSqlInstanceResponseArgs) ToGoogleCloudRunOpV2CloudSqlInstanceResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2CloudSqlInstanceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2CloudSqlInstanceResponseOutput)
-}
-
 // Represents a specific Cloud SQL instance.
 type GoogleCloudRunOpV2CloudSqlInstanceResponseOutput struct{ *pulumi.OutputState }
 
@@ -547,119 +392,6 @@ type GoogleCloudRunOpV2ConditionResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// GoogleCloudRunOpV2ConditionResponseInput is an input type that accepts GoogleCloudRunOpV2ConditionResponseArgs and GoogleCloudRunOpV2ConditionResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2ConditionResponseInput` via:
-//
-//          GoogleCloudRunOpV2ConditionResponseArgs{...}
-type GoogleCloudRunOpV2ConditionResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2ConditionResponseOutput() GoogleCloudRunOpV2ConditionResponseOutput
-	ToGoogleCloudRunOpV2ConditionResponseOutputWithContext(context.Context) GoogleCloudRunOpV2ConditionResponseOutput
-}
-
-// Defines a status condition for a resource.
-type GoogleCloudRunOpV2ConditionResponseArgs struct {
-	// A reason for the domain mapping condition.
-	DomainMappingReason pulumi.StringInput `pulumi:"domainMappingReason"`
-	// A reason for the execution condition.
-	ExecutionReason pulumi.StringInput `pulumi:"executionReason"`
-	// A reason for the internal condition.
-	InternalReason pulumi.StringInput `pulumi:"internalReason"`
-	// Last time the condition transitioned from one status to another.
-	LastTransitionTime pulumi.StringInput `pulumi:"lastTransitionTime"`
-	// Human readable message indicating details about the current status.
-	Message pulumi.StringInput `pulumi:"message"`
-	// A common (service-level) reason for this condition.
-	Reason pulumi.StringInput `pulumi:"reason"`
-	// A reason for the revision condition.
-	RevisionReason pulumi.StringInput `pulumi:"revisionReason"`
-	// How to interpret failures of this condition, one of Error, Warning, Info
-	Severity pulumi.StringInput `pulumi:"severity"`
-	// State of the condition.
-	State pulumi.StringInput `pulumi:"state"`
-	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GoogleCloudRunOpV2ConditionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2ConditionResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2ConditionResponseArgs) ToGoogleCloudRunOpV2ConditionResponseOutput() GoogleCloudRunOpV2ConditionResponseOutput {
-	return i.ToGoogleCloudRunOpV2ConditionResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2ConditionResponseArgs) ToGoogleCloudRunOpV2ConditionResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2ConditionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2ConditionResponseOutput)
-}
-
-func (i GoogleCloudRunOpV2ConditionResponseArgs) ToGoogleCloudRunOpV2ConditionResponsePtrOutput() GoogleCloudRunOpV2ConditionResponsePtrOutput {
-	return i.ToGoogleCloudRunOpV2ConditionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2ConditionResponseArgs) ToGoogleCloudRunOpV2ConditionResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2ConditionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2ConditionResponseOutput).ToGoogleCloudRunOpV2ConditionResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudRunOpV2ConditionResponsePtrInput is an input type that accepts GoogleCloudRunOpV2ConditionResponseArgs, GoogleCloudRunOpV2ConditionResponsePtr and GoogleCloudRunOpV2ConditionResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2ConditionResponsePtrInput` via:
-//
-//          GoogleCloudRunOpV2ConditionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudRunOpV2ConditionResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2ConditionResponsePtrOutput() GoogleCloudRunOpV2ConditionResponsePtrOutput
-	ToGoogleCloudRunOpV2ConditionResponsePtrOutputWithContext(context.Context) GoogleCloudRunOpV2ConditionResponsePtrOutput
-}
-
-type googleCloudRunOpV2ConditionResponsePtrType GoogleCloudRunOpV2ConditionResponseArgs
-
-func GoogleCloudRunOpV2ConditionResponsePtr(v *GoogleCloudRunOpV2ConditionResponseArgs) GoogleCloudRunOpV2ConditionResponsePtrInput {
-	return (*googleCloudRunOpV2ConditionResponsePtrType)(v)
-}
-
-func (*googleCloudRunOpV2ConditionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2ConditionResponse)(nil)).Elem()
-}
-
-func (i *googleCloudRunOpV2ConditionResponsePtrType) ToGoogleCloudRunOpV2ConditionResponsePtrOutput() GoogleCloudRunOpV2ConditionResponsePtrOutput {
-	return i.ToGoogleCloudRunOpV2ConditionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudRunOpV2ConditionResponsePtrType) ToGoogleCloudRunOpV2ConditionResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2ConditionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2ConditionResponsePtrOutput)
-}
-
-// GoogleCloudRunOpV2ConditionResponseArrayInput is an input type that accepts GoogleCloudRunOpV2ConditionResponseArray and GoogleCloudRunOpV2ConditionResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2ConditionResponseArrayInput` via:
-//
-//          GoogleCloudRunOpV2ConditionResponseArray{ GoogleCloudRunOpV2ConditionResponseArgs{...} }
-type GoogleCloudRunOpV2ConditionResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2ConditionResponseArrayOutput() GoogleCloudRunOpV2ConditionResponseArrayOutput
-	ToGoogleCloudRunOpV2ConditionResponseArrayOutputWithContext(context.Context) GoogleCloudRunOpV2ConditionResponseArrayOutput
-}
-
-type GoogleCloudRunOpV2ConditionResponseArray []GoogleCloudRunOpV2ConditionResponseInput
-
-func (GoogleCloudRunOpV2ConditionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRunOpV2ConditionResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2ConditionResponseArray) ToGoogleCloudRunOpV2ConditionResponseArrayOutput() GoogleCloudRunOpV2ConditionResponseArrayOutput {
-	return i.ToGoogleCloudRunOpV2ConditionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2ConditionResponseArray) ToGoogleCloudRunOpV2ConditionResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunOpV2ConditionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2ConditionResponseArrayOutput)
-}
-
 // Defines a status condition for a resource.
 type GoogleCloudRunOpV2ConditionResponseOutput struct{ *pulumi.OutputState }
 
@@ -673,16 +405,6 @@ func (o GoogleCloudRunOpV2ConditionResponseOutput) ToGoogleCloudRunOpV2Condition
 
 func (o GoogleCloudRunOpV2ConditionResponseOutput) ToGoogleCloudRunOpV2ConditionResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2ConditionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRunOpV2ConditionResponseOutput) ToGoogleCloudRunOpV2ConditionResponsePtrOutput() GoogleCloudRunOpV2ConditionResponsePtrOutput {
-	return o.ToGoogleCloudRunOpV2ConditionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudRunOpV2ConditionResponseOutput) ToGoogleCloudRunOpV2ConditionResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2ConditionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunOpV2ConditionResponse) *GoogleCloudRunOpV2ConditionResponse {
-		return &v
-	}).(GoogleCloudRunOpV2ConditionResponsePtrOutput)
 }
 
 // A reason for the domain mapping condition.
@@ -733,130 +455,6 @@ func (o GoogleCloudRunOpV2ConditionResponseOutput) State() pulumi.StringOutput {
 // type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
 func (o GoogleCloudRunOpV2ConditionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunOpV2ConditionResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GoogleCloudRunOpV2ConditionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRunOpV2ConditionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2ConditionResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudRunOpV2ConditionResponsePtrOutput) ToGoogleCloudRunOpV2ConditionResponsePtrOutput() GoogleCloudRunOpV2ConditionResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRunOpV2ConditionResponsePtrOutput) ToGoogleCloudRunOpV2ConditionResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2ConditionResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRunOpV2ConditionResponsePtrOutput) Elem() GoogleCloudRunOpV2ConditionResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2ConditionResponse) GoogleCloudRunOpV2ConditionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudRunOpV2ConditionResponse
-		return ret
-	}).(GoogleCloudRunOpV2ConditionResponseOutput)
-}
-
-// A reason for the domain mapping condition.
-func (o GoogleCloudRunOpV2ConditionResponsePtrOutput) DomainMappingReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2ConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DomainMappingReason
-	}).(pulumi.StringPtrOutput)
-}
-
-// A reason for the execution condition.
-func (o GoogleCloudRunOpV2ConditionResponsePtrOutput) ExecutionReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2ConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExecutionReason
-	}).(pulumi.StringPtrOutput)
-}
-
-// A reason for the internal condition.
-func (o GoogleCloudRunOpV2ConditionResponsePtrOutput) InternalReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2ConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InternalReason
-	}).(pulumi.StringPtrOutput)
-}
-
-// Last time the condition transitioned from one status to another.
-func (o GoogleCloudRunOpV2ConditionResponsePtrOutput) LastTransitionTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2ConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LastTransitionTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Human readable message indicating details about the current status.
-func (o GoogleCloudRunOpV2ConditionResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2ConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
-// A common (service-level) reason for this condition.
-func (o GoogleCloudRunOpV2ConditionResponsePtrOutput) Reason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2ConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Reason
-	}).(pulumi.StringPtrOutput)
-}
-
-// A reason for the revision condition.
-func (o GoogleCloudRunOpV2ConditionResponsePtrOutput) RevisionReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2ConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RevisionReason
-	}).(pulumi.StringPtrOutput)
-}
-
-// How to interpret failures of this condition, one of Error, Warning, Info
-func (o GoogleCloudRunOpV2ConditionResponsePtrOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2ConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Severity
-	}).(pulumi.StringPtrOutput)
-}
-
-// State of the condition.
-func (o GoogleCloudRunOpV2ConditionResponsePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2ConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
-func (o GoogleCloudRunOpV2ConditionResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2ConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 type GoogleCloudRunOpV2ConditionResponseArrayOutput struct{ *pulumi.OutputState }
@@ -1159,62 +757,6 @@ type GoogleCloudRunOpV2ContainerPortResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// GoogleCloudRunOpV2ContainerPortResponseInput is an input type that accepts GoogleCloudRunOpV2ContainerPortResponseArgs and GoogleCloudRunOpV2ContainerPortResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2ContainerPortResponseInput` via:
-//
-//          GoogleCloudRunOpV2ContainerPortResponseArgs{...}
-type GoogleCloudRunOpV2ContainerPortResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2ContainerPortResponseOutput() GoogleCloudRunOpV2ContainerPortResponseOutput
-	ToGoogleCloudRunOpV2ContainerPortResponseOutputWithContext(context.Context) GoogleCloudRunOpV2ContainerPortResponseOutput
-}
-
-// ContainerPort represents a network port in a single container.
-type GoogleCloudRunOpV2ContainerPortResponseArgs struct {
-	// Port number the container listens on. This must be a valid TCP port number, 0 < container_port < 65536.
-	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
-	// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GoogleCloudRunOpV2ContainerPortResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2ContainerPortResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2ContainerPortResponseArgs) ToGoogleCloudRunOpV2ContainerPortResponseOutput() GoogleCloudRunOpV2ContainerPortResponseOutput {
-	return i.ToGoogleCloudRunOpV2ContainerPortResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2ContainerPortResponseArgs) ToGoogleCloudRunOpV2ContainerPortResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2ContainerPortResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2ContainerPortResponseOutput)
-}
-
-// GoogleCloudRunOpV2ContainerPortResponseArrayInput is an input type that accepts GoogleCloudRunOpV2ContainerPortResponseArray and GoogleCloudRunOpV2ContainerPortResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2ContainerPortResponseArrayInput` via:
-//
-//          GoogleCloudRunOpV2ContainerPortResponseArray{ GoogleCloudRunOpV2ContainerPortResponseArgs{...} }
-type GoogleCloudRunOpV2ContainerPortResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2ContainerPortResponseArrayOutput() GoogleCloudRunOpV2ContainerPortResponseArrayOutput
-	ToGoogleCloudRunOpV2ContainerPortResponseArrayOutputWithContext(context.Context) GoogleCloudRunOpV2ContainerPortResponseArrayOutput
-}
-
-type GoogleCloudRunOpV2ContainerPortResponseArray []GoogleCloudRunOpV2ContainerPortResponseInput
-
-func (GoogleCloudRunOpV2ContainerPortResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRunOpV2ContainerPortResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2ContainerPortResponseArray) ToGoogleCloudRunOpV2ContainerPortResponseArrayOutput() GoogleCloudRunOpV2ContainerPortResponseArrayOutput {
-	return i.ToGoogleCloudRunOpV2ContainerPortResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2ContainerPortResponseArray) ToGoogleCloudRunOpV2ContainerPortResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunOpV2ContainerPortResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2ContainerPortResponseArrayOutput)
-}
-
 // ContainerPort represents a network port in a single container.
 type GoogleCloudRunOpV2ContainerPortResponseOutput struct{ *pulumi.OutputState }
 
@@ -1278,74 +820,6 @@ type GoogleCloudRunOpV2ContainerResponse struct {
 	Resources GoogleCloudRunOpV2ResourceRequirementsResponse `pulumi:"resources"`
 	// Volume to mount into the container's filesystem.
 	VolumeMounts []GoogleCloudRunOpV2VolumeMountResponse `pulumi:"volumeMounts"`
-}
-
-// GoogleCloudRunOpV2ContainerResponseInput is an input type that accepts GoogleCloudRunOpV2ContainerResponseArgs and GoogleCloudRunOpV2ContainerResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2ContainerResponseInput` via:
-//
-//          GoogleCloudRunOpV2ContainerResponseArgs{...}
-type GoogleCloudRunOpV2ContainerResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2ContainerResponseOutput() GoogleCloudRunOpV2ContainerResponseOutput
-	ToGoogleCloudRunOpV2ContainerResponseOutputWithContext(context.Context) GoogleCloudRunOpV2ContainerResponseOutput
-}
-
-// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
-type GoogleCloudRunOpV2ContainerResponseArgs struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-	Command pulumi.StringArrayInput `pulumi:"command"`
-	// List of environment variables to set in the container.
-	Env GoogleCloudRunOpV2EnvVarResponseArrayInput `pulumi:"env"`
-	// URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
-	Image pulumi.StringInput `pulumi:"image"`
-	// Name of the container specified as a DNS_LABEL.
-	Name pulumi.StringInput `pulumi:"name"`
-	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
-	Ports GoogleCloudRunOpV2ContainerPortResponseArrayInput `pulumi:"ports"`
-	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
-	Resources GoogleCloudRunOpV2ResourceRequirementsResponseInput `pulumi:"resources"`
-	// Volume to mount into the container's filesystem.
-	VolumeMounts GoogleCloudRunOpV2VolumeMountResponseArrayInput `pulumi:"volumeMounts"`
-}
-
-func (GoogleCloudRunOpV2ContainerResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2ContainerResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2ContainerResponseArgs) ToGoogleCloudRunOpV2ContainerResponseOutput() GoogleCloudRunOpV2ContainerResponseOutput {
-	return i.ToGoogleCloudRunOpV2ContainerResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2ContainerResponseArgs) ToGoogleCloudRunOpV2ContainerResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2ContainerResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2ContainerResponseOutput)
-}
-
-// GoogleCloudRunOpV2ContainerResponseArrayInput is an input type that accepts GoogleCloudRunOpV2ContainerResponseArray and GoogleCloudRunOpV2ContainerResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2ContainerResponseArrayInput` via:
-//
-//          GoogleCloudRunOpV2ContainerResponseArray{ GoogleCloudRunOpV2ContainerResponseArgs{...} }
-type GoogleCloudRunOpV2ContainerResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2ContainerResponseArrayOutput() GoogleCloudRunOpV2ContainerResponseArrayOutput
-	ToGoogleCloudRunOpV2ContainerResponseArrayOutputWithContext(context.Context) GoogleCloudRunOpV2ContainerResponseArrayOutput
-}
-
-type GoogleCloudRunOpV2ContainerResponseArray []GoogleCloudRunOpV2ContainerResponseInput
-
-func (GoogleCloudRunOpV2ContainerResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRunOpV2ContainerResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2ContainerResponseArray) ToGoogleCloudRunOpV2ContainerResponseArrayOutput() GoogleCloudRunOpV2ContainerResponseArrayOutput {
-	return i.ToGoogleCloudRunOpV2ContainerResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2ContainerResponseArray) ToGoogleCloudRunOpV2ContainerResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunOpV2ContainerResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2ContainerResponseArrayOutput)
 }
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
@@ -1555,64 +1029,6 @@ type GoogleCloudRunOpV2EnvVarResponse struct {
 	ValueSource GoogleCloudRunOpV2EnvVarSourceResponse `pulumi:"valueSource"`
 }
 
-// GoogleCloudRunOpV2EnvVarResponseInput is an input type that accepts GoogleCloudRunOpV2EnvVarResponseArgs and GoogleCloudRunOpV2EnvVarResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2EnvVarResponseInput` via:
-//
-//          GoogleCloudRunOpV2EnvVarResponseArgs{...}
-type GoogleCloudRunOpV2EnvVarResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2EnvVarResponseOutput() GoogleCloudRunOpV2EnvVarResponseOutput
-	ToGoogleCloudRunOpV2EnvVarResponseOutputWithContext(context.Context) GoogleCloudRunOpV2EnvVarResponseOutput
-}
-
-// EnvVar represents an environment variable present in a Container.
-type GoogleCloudRunOpV2EnvVarResponseArgs struct {
-	// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes.
-	Value pulumi.StringInput `pulumi:"value"`
-	// Source for the environment variable's value.
-	ValueSource GoogleCloudRunOpV2EnvVarSourceResponseInput `pulumi:"valueSource"`
-}
-
-func (GoogleCloudRunOpV2EnvVarResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2EnvVarResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2EnvVarResponseArgs) ToGoogleCloudRunOpV2EnvVarResponseOutput() GoogleCloudRunOpV2EnvVarResponseOutput {
-	return i.ToGoogleCloudRunOpV2EnvVarResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2EnvVarResponseArgs) ToGoogleCloudRunOpV2EnvVarResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2EnvVarResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2EnvVarResponseOutput)
-}
-
-// GoogleCloudRunOpV2EnvVarResponseArrayInput is an input type that accepts GoogleCloudRunOpV2EnvVarResponseArray and GoogleCloudRunOpV2EnvVarResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2EnvVarResponseArrayInput` via:
-//
-//          GoogleCloudRunOpV2EnvVarResponseArray{ GoogleCloudRunOpV2EnvVarResponseArgs{...} }
-type GoogleCloudRunOpV2EnvVarResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2EnvVarResponseArrayOutput() GoogleCloudRunOpV2EnvVarResponseArrayOutput
-	ToGoogleCloudRunOpV2EnvVarResponseArrayOutputWithContext(context.Context) GoogleCloudRunOpV2EnvVarResponseArrayOutput
-}
-
-type GoogleCloudRunOpV2EnvVarResponseArray []GoogleCloudRunOpV2EnvVarResponseInput
-
-func (GoogleCloudRunOpV2EnvVarResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRunOpV2EnvVarResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2EnvVarResponseArray) ToGoogleCloudRunOpV2EnvVarResponseArrayOutput() GoogleCloudRunOpV2EnvVarResponseArrayOutput {
-	return i.ToGoogleCloudRunOpV2EnvVarResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2EnvVarResponseArray) ToGoogleCloudRunOpV2EnvVarResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunOpV2EnvVarResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2EnvVarResponseArrayOutput)
-}
-
 // EnvVar represents an environment variable present in a Container.
 type GoogleCloudRunOpV2EnvVarResponseOutput struct{ *pulumi.OutputState }
 
@@ -1809,35 +1225,6 @@ type GoogleCloudRunOpV2EnvVarSourceResponse struct {
 	SecretKeyRef GoogleCloudRunOpV2SecretKeySelectorResponse `pulumi:"secretKeyRef"`
 }
 
-// GoogleCloudRunOpV2EnvVarSourceResponseInput is an input type that accepts GoogleCloudRunOpV2EnvVarSourceResponseArgs and GoogleCloudRunOpV2EnvVarSourceResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2EnvVarSourceResponseInput` via:
-//
-//          GoogleCloudRunOpV2EnvVarSourceResponseArgs{...}
-type GoogleCloudRunOpV2EnvVarSourceResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2EnvVarSourceResponseOutput() GoogleCloudRunOpV2EnvVarSourceResponseOutput
-	ToGoogleCloudRunOpV2EnvVarSourceResponseOutputWithContext(context.Context) GoogleCloudRunOpV2EnvVarSourceResponseOutput
-}
-
-// EnvVarSource represents a source for the value of an EnvVar.
-type GoogleCloudRunOpV2EnvVarSourceResponseArgs struct {
-	// Selects a secret and a specific version from Cloud Secret Manager.
-	SecretKeyRef GoogleCloudRunOpV2SecretKeySelectorResponseInput `pulumi:"secretKeyRef"`
-}
-
-func (GoogleCloudRunOpV2EnvVarSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2EnvVarSourceResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2EnvVarSourceResponseArgs) ToGoogleCloudRunOpV2EnvVarSourceResponseOutput() GoogleCloudRunOpV2EnvVarSourceResponseOutput {
-	return i.ToGoogleCloudRunOpV2EnvVarSourceResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2EnvVarSourceResponseArgs) ToGoogleCloudRunOpV2EnvVarSourceResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2EnvVarSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2EnvVarSourceResponseOutput)
-}
-
 // EnvVarSource represents a source for the value of an EnvVar.
 type GoogleCloudRunOpV2EnvVarSourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -2025,37 +1412,6 @@ type GoogleCloudRunOpV2ResourceRequirementsResponse struct {
 	CpuIdle bool `pulumi:"cpuIdle"`
 	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
-}
-
-// GoogleCloudRunOpV2ResourceRequirementsResponseInput is an input type that accepts GoogleCloudRunOpV2ResourceRequirementsResponseArgs and GoogleCloudRunOpV2ResourceRequirementsResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2ResourceRequirementsResponseInput` via:
-//
-//          GoogleCloudRunOpV2ResourceRequirementsResponseArgs{...}
-type GoogleCloudRunOpV2ResourceRequirementsResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2ResourceRequirementsResponseOutput() GoogleCloudRunOpV2ResourceRequirementsResponseOutput
-	ToGoogleCloudRunOpV2ResourceRequirementsResponseOutputWithContext(context.Context) GoogleCloudRunOpV2ResourceRequirementsResponseOutput
-}
-
-// ResourceRequirements describes the compute resource requirements.
-type GoogleCloudRunOpV2ResourceRequirementsResponseArgs struct {
-	// Determines whether CPU should be throttled or not outside of requests.
-	CpuIdle pulumi.BoolInput `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-	Limits pulumi.StringMapInput `pulumi:"limits"`
-}
-
-func (GoogleCloudRunOpV2ResourceRequirementsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2ResourceRequirementsResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2ResourceRequirementsResponseArgs) ToGoogleCloudRunOpV2ResourceRequirementsResponseOutput() GoogleCloudRunOpV2ResourceRequirementsResponseOutput {
-	return i.ToGoogleCloudRunOpV2ResourceRequirementsResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2ResourceRequirementsResponseArgs) ToGoogleCloudRunOpV2ResourceRequirementsResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2ResourceRequirementsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2ResourceRequirementsResponseOutput)
 }
 
 // ResourceRequirements describes the compute resource requirements.
@@ -2250,78 +1606,6 @@ type GoogleCloudRunOpV2RevisionScalingResponse struct {
 	MinInstanceCount int `pulumi:"minInstanceCount"`
 }
 
-// GoogleCloudRunOpV2RevisionScalingResponseInput is an input type that accepts GoogleCloudRunOpV2RevisionScalingResponseArgs and GoogleCloudRunOpV2RevisionScalingResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2RevisionScalingResponseInput` via:
-//
-//          GoogleCloudRunOpV2RevisionScalingResponseArgs{...}
-type GoogleCloudRunOpV2RevisionScalingResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2RevisionScalingResponseOutput() GoogleCloudRunOpV2RevisionScalingResponseOutput
-	ToGoogleCloudRunOpV2RevisionScalingResponseOutputWithContext(context.Context) GoogleCloudRunOpV2RevisionScalingResponseOutput
-}
-
-// Settings for revision-level scaling settings.
-type GoogleCloudRunOpV2RevisionScalingResponseArgs struct {
-	// Maximum number of serving instances that this resource should have.
-	MaxInstanceCount pulumi.IntInput `pulumi:"maxInstanceCount"`
-	// Minimum number of serving instances that this resource should have.
-	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
-}
-
-func (GoogleCloudRunOpV2RevisionScalingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2RevisionScalingResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2RevisionScalingResponseArgs) ToGoogleCloudRunOpV2RevisionScalingResponseOutput() GoogleCloudRunOpV2RevisionScalingResponseOutput {
-	return i.ToGoogleCloudRunOpV2RevisionScalingResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2RevisionScalingResponseArgs) ToGoogleCloudRunOpV2RevisionScalingResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionScalingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2RevisionScalingResponseOutput)
-}
-
-func (i GoogleCloudRunOpV2RevisionScalingResponseArgs) ToGoogleCloudRunOpV2RevisionScalingResponsePtrOutput() GoogleCloudRunOpV2RevisionScalingResponsePtrOutput {
-	return i.ToGoogleCloudRunOpV2RevisionScalingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2RevisionScalingResponseArgs) ToGoogleCloudRunOpV2RevisionScalingResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionScalingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2RevisionScalingResponseOutput).ToGoogleCloudRunOpV2RevisionScalingResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudRunOpV2RevisionScalingResponsePtrInput is an input type that accepts GoogleCloudRunOpV2RevisionScalingResponseArgs, GoogleCloudRunOpV2RevisionScalingResponsePtr and GoogleCloudRunOpV2RevisionScalingResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2RevisionScalingResponsePtrInput` via:
-//
-//          GoogleCloudRunOpV2RevisionScalingResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudRunOpV2RevisionScalingResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2RevisionScalingResponsePtrOutput() GoogleCloudRunOpV2RevisionScalingResponsePtrOutput
-	ToGoogleCloudRunOpV2RevisionScalingResponsePtrOutputWithContext(context.Context) GoogleCloudRunOpV2RevisionScalingResponsePtrOutput
-}
-
-type googleCloudRunOpV2RevisionScalingResponsePtrType GoogleCloudRunOpV2RevisionScalingResponseArgs
-
-func GoogleCloudRunOpV2RevisionScalingResponsePtr(v *GoogleCloudRunOpV2RevisionScalingResponseArgs) GoogleCloudRunOpV2RevisionScalingResponsePtrInput {
-	return (*googleCloudRunOpV2RevisionScalingResponsePtrType)(v)
-}
-
-func (*googleCloudRunOpV2RevisionScalingResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2RevisionScalingResponse)(nil)).Elem()
-}
-
-func (i *googleCloudRunOpV2RevisionScalingResponsePtrType) ToGoogleCloudRunOpV2RevisionScalingResponsePtrOutput() GoogleCloudRunOpV2RevisionScalingResponsePtrOutput {
-	return i.ToGoogleCloudRunOpV2RevisionScalingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudRunOpV2RevisionScalingResponsePtrType) ToGoogleCloudRunOpV2RevisionScalingResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionScalingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2RevisionScalingResponsePtrOutput)
-}
-
 // Settings for revision-level scaling settings.
 type GoogleCloudRunOpV2RevisionScalingResponseOutput struct{ *pulumi.OutputState }
 
@@ -2337,16 +1621,6 @@ func (o GoogleCloudRunOpV2RevisionScalingResponseOutput) ToGoogleCloudRunOpV2Rev
 	return o
 }
 
-func (o GoogleCloudRunOpV2RevisionScalingResponseOutput) ToGoogleCloudRunOpV2RevisionScalingResponsePtrOutput() GoogleCloudRunOpV2RevisionScalingResponsePtrOutput {
-	return o.ToGoogleCloudRunOpV2RevisionScalingResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudRunOpV2RevisionScalingResponseOutput) ToGoogleCloudRunOpV2RevisionScalingResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionScalingResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunOpV2RevisionScalingResponse) *GoogleCloudRunOpV2RevisionScalingResponse {
-		return &v
-	}).(GoogleCloudRunOpV2RevisionScalingResponsePtrOutput)
-}
-
 // Maximum number of serving instances that this resource should have.
 func (o GoogleCloudRunOpV2RevisionScalingResponseOutput) MaxInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunOpV2RevisionScalingResponse) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
@@ -2355,50 +1629,6 @@ func (o GoogleCloudRunOpV2RevisionScalingResponseOutput) MaxInstanceCount() pulu
 // Minimum number of serving instances that this resource should have.
 func (o GoogleCloudRunOpV2RevisionScalingResponseOutput) MinInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunOpV2RevisionScalingResponse) int { return v.MinInstanceCount }).(pulumi.IntOutput)
-}
-
-type GoogleCloudRunOpV2RevisionScalingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRunOpV2RevisionScalingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2RevisionScalingResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudRunOpV2RevisionScalingResponsePtrOutput) ToGoogleCloudRunOpV2RevisionScalingResponsePtrOutput() GoogleCloudRunOpV2RevisionScalingResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRunOpV2RevisionScalingResponsePtrOutput) ToGoogleCloudRunOpV2RevisionScalingResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionScalingResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRunOpV2RevisionScalingResponsePtrOutput) Elem() GoogleCloudRunOpV2RevisionScalingResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionScalingResponse) GoogleCloudRunOpV2RevisionScalingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudRunOpV2RevisionScalingResponse
-		return ret
-	}).(GoogleCloudRunOpV2RevisionScalingResponseOutput)
-}
-
-// Maximum number of serving instances that this resource should have.
-func (o GoogleCloudRunOpV2RevisionScalingResponsePtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionScalingResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxInstanceCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Minimum number of serving instances that this resource should have.
-func (o GoogleCloudRunOpV2RevisionScalingResponsePtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionScalingResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MinInstanceCount
-	}).(pulumi.IntPtrOutput)
 }
 
 // RevisionTemplate describes the data a revision should have when created from a template.
@@ -2484,47 +1714,6 @@ func (i GoogleCloudRunOpV2RevisionTemplateArgs) ToGoogleCloudRunOpV2RevisionTemp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2RevisionTemplateOutput)
 }
 
-func (i GoogleCloudRunOpV2RevisionTemplateArgs) ToGoogleCloudRunOpV2RevisionTemplatePtrOutput() GoogleCloudRunOpV2RevisionTemplatePtrOutput {
-	return i.ToGoogleCloudRunOpV2RevisionTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2RevisionTemplateArgs) ToGoogleCloudRunOpV2RevisionTemplatePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2RevisionTemplateOutput).ToGoogleCloudRunOpV2RevisionTemplatePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudRunOpV2RevisionTemplatePtrInput is an input type that accepts GoogleCloudRunOpV2RevisionTemplateArgs, GoogleCloudRunOpV2RevisionTemplatePtr and GoogleCloudRunOpV2RevisionTemplatePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2RevisionTemplatePtrInput` via:
-//
-//          GoogleCloudRunOpV2RevisionTemplateArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudRunOpV2RevisionTemplatePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2RevisionTemplatePtrOutput() GoogleCloudRunOpV2RevisionTemplatePtrOutput
-	ToGoogleCloudRunOpV2RevisionTemplatePtrOutputWithContext(context.Context) GoogleCloudRunOpV2RevisionTemplatePtrOutput
-}
-
-type googleCloudRunOpV2RevisionTemplatePtrType GoogleCloudRunOpV2RevisionTemplateArgs
-
-func GoogleCloudRunOpV2RevisionTemplatePtr(v *GoogleCloudRunOpV2RevisionTemplateArgs) GoogleCloudRunOpV2RevisionTemplatePtrInput {
-	return (*googleCloudRunOpV2RevisionTemplatePtrType)(v)
-}
-
-func (*googleCloudRunOpV2RevisionTemplatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2RevisionTemplate)(nil)).Elem()
-}
-
-func (i *googleCloudRunOpV2RevisionTemplatePtrType) ToGoogleCloudRunOpV2RevisionTemplatePtrOutput() GoogleCloudRunOpV2RevisionTemplatePtrOutput {
-	return i.ToGoogleCloudRunOpV2RevisionTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudRunOpV2RevisionTemplatePtrType) ToGoogleCloudRunOpV2RevisionTemplatePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2RevisionTemplatePtrOutput)
-}
-
 // RevisionTemplate describes the data a revision should have when created from a template.
 type GoogleCloudRunOpV2RevisionTemplateOutput struct{ *pulumi.OutputState }
 
@@ -2538,16 +1727,6 @@ func (o GoogleCloudRunOpV2RevisionTemplateOutput) ToGoogleCloudRunOpV2RevisionTe
 
 func (o GoogleCloudRunOpV2RevisionTemplateOutput) ToGoogleCloudRunOpV2RevisionTemplateOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplateOutput {
 	return o
-}
-
-func (o GoogleCloudRunOpV2RevisionTemplateOutput) ToGoogleCloudRunOpV2RevisionTemplatePtrOutput() GoogleCloudRunOpV2RevisionTemplatePtrOutput {
-	return o.ToGoogleCloudRunOpV2RevisionTemplatePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudRunOpV2RevisionTemplateOutput) ToGoogleCloudRunOpV2RevisionTemplatePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunOpV2RevisionTemplate) *GoogleCloudRunOpV2RevisionTemplate {
-		return &v
-	}).(GoogleCloudRunOpV2RevisionTemplatePtrOutput)
 }
 
 // KRM-style annotations for the resource.
@@ -2617,160 +1796,6 @@ func (o GoogleCloudRunOpV2RevisionTemplateOutput) VpcAccess() GoogleCloudRunOpV2
 	return o.ApplyT(func(v GoogleCloudRunOpV2RevisionTemplate) *GoogleCloudRunOpV2VpcAccess { return v.VpcAccess }).(GoogleCloudRunOpV2VpcAccessPtrOutput)
 }
 
-type GoogleCloudRunOpV2RevisionTemplatePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRunOpV2RevisionTemplatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2RevisionTemplate)(nil)).Elem()
-}
-
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) ToGoogleCloudRunOpV2RevisionTemplatePtrOutput() GoogleCloudRunOpV2RevisionTemplatePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) ToGoogleCloudRunOpV2RevisionTemplatePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplatePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) Elem() GoogleCloudRunOpV2RevisionTemplateOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplate) GoogleCloudRunOpV2RevisionTemplate {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudRunOpV2RevisionTemplate
-		return ret
-	}).(GoogleCloudRunOpV2RevisionTemplateOutput)
-}
-
-// KRM-style annotations for the resource.
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplate) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Annotations
-	}).(pulumi.StringMapOutput)
-}
-
-// Enables Confidential Cloud Run in Revisions created using this template.
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) Confidential() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplate) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Confidential
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Sets the maximum number of requests that each serving instance can receive.
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplate) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ContainerConcurrency
-	}).(pulumi.IntPtrOutput)
-}
-
-// Holds the single container that defines the unit of execution for this Revision.
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) Containers() GoogleCloudRunOpV2ContainerArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplate) []GoogleCloudRunOpV2Container {
-		if v == nil {
-			return nil
-		}
-		return v.Containers
-	}).(GoogleCloudRunOpV2ContainerArrayOutput)
-}
-
-// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) EncryptionKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EncryptionKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The sandbox environment to host this Revision.
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) ExecutionEnvironment() GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplate) *GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment {
-		if v == nil {
-			return nil
-		}
-		return v.ExecutionEnvironment
-	}).(GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput)
-}
-
-// KRM-style labels for the resource.
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplate) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) Revision() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Revision
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scaling settings for this Revision.
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) Scaling() GoogleCloudRunOpV2RevisionScalingPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplate) *GoogleCloudRunOpV2RevisionScaling {
-		if v == nil {
-			return nil
-		}
-		return v.Scaling
-	}).(GoogleCloudRunOpV2RevisionScalingPtrOutput)
-}
-
-// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAccount
-	}).(pulumi.StringPtrOutput)
-}
-
-// Max allowed time for an instance to respond to a request.
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Timeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// A list of Volumes to make available to containers.
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) Volumes() GoogleCloudRunOpV2VolumeArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplate) []GoogleCloudRunOpV2Volume {
-		if v == nil {
-			return nil
-		}
-		return v.Volumes
-	}).(GoogleCloudRunOpV2VolumeArrayOutput)
-}
-
-// VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
-func (o GoogleCloudRunOpV2RevisionTemplatePtrOutput) VpcAccess() GoogleCloudRunOpV2VpcAccessPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplate) *GoogleCloudRunOpV2VpcAccess {
-		if v == nil {
-			return nil
-		}
-		return v.VpcAccess
-	}).(GoogleCloudRunOpV2VpcAccessPtrOutput)
-}
-
 // RevisionTemplate describes the data a revision should have when created from a template.
 type GoogleCloudRunOpV2RevisionTemplateResponse struct {
 	// KRM-style annotations for the resource.
@@ -2801,100 +1826,6 @@ type GoogleCloudRunOpV2RevisionTemplateResponse struct {
 	VpcAccess GoogleCloudRunOpV2VpcAccessResponse `pulumi:"vpcAccess"`
 }
 
-// GoogleCloudRunOpV2RevisionTemplateResponseInput is an input type that accepts GoogleCloudRunOpV2RevisionTemplateResponseArgs and GoogleCloudRunOpV2RevisionTemplateResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2RevisionTemplateResponseInput` via:
-//
-//          GoogleCloudRunOpV2RevisionTemplateResponseArgs{...}
-type GoogleCloudRunOpV2RevisionTemplateResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2RevisionTemplateResponseOutput() GoogleCloudRunOpV2RevisionTemplateResponseOutput
-	ToGoogleCloudRunOpV2RevisionTemplateResponseOutputWithContext(context.Context) GoogleCloudRunOpV2RevisionTemplateResponseOutput
-}
-
-// RevisionTemplate describes the data a revision should have when created from a template.
-type GoogleCloudRunOpV2RevisionTemplateResponseArgs struct {
-	// KRM-style annotations for the resource.
-	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// Enables Confidential Cloud Run in Revisions created using this template.
-	Confidential pulumi.BoolInput `pulumi:"confidential"`
-	// Sets the maximum number of requests that each serving instance can receive.
-	ContainerConcurrency pulumi.IntInput `pulumi:"containerConcurrency"`
-	// Holds the single container that defines the unit of execution for this Revision.
-	Containers GoogleCloudRunOpV2ContainerResponseArrayInput `pulumi:"containers"`
-	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
-	EncryptionKey pulumi.StringInput `pulumi:"encryptionKey"`
-	// The sandbox environment to host this Revision.
-	ExecutionEnvironment pulumi.StringInput `pulumi:"executionEnvironment"`
-	// KRM-style labels for the resource.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
-	Revision pulumi.StringInput `pulumi:"revision"`
-	// Scaling settings for this Revision.
-	Scaling GoogleCloudRunOpV2RevisionScalingResponseInput `pulumi:"scaling"`
-	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
-	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
-	// Max allowed time for an instance to respond to a request.
-	Timeout pulumi.StringInput `pulumi:"timeout"`
-	// A list of Volumes to make available to containers.
-	Volumes GoogleCloudRunOpV2VolumeResponseArrayInput `pulumi:"volumes"`
-	// VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
-	VpcAccess GoogleCloudRunOpV2VpcAccessResponseInput `pulumi:"vpcAccess"`
-}
-
-func (GoogleCloudRunOpV2RevisionTemplateResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2RevisionTemplateResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2RevisionTemplateResponseArgs) ToGoogleCloudRunOpV2RevisionTemplateResponseOutput() GoogleCloudRunOpV2RevisionTemplateResponseOutput {
-	return i.ToGoogleCloudRunOpV2RevisionTemplateResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2RevisionTemplateResponseArgs) ToGoogleCloudRunOpV2RevisionTemplateResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplateResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2RevisionTemplateResponseOutput)
-}
-
-func (i GoogleCloudRunOpV2RevisionTemplateResponseArgs) ToGoogleCloudRunOpV2RevisionTemplateResponsePtrOutput() GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput {
-	return i.ToGoogleCloudRunOpV2RevisionTemplateResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2RevisionTemplateResponseArgs) ToGoogleCloudRunOpV2RevisionTemplateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2RevisionTemplateResponseOutput).ToGoogleCloudRunOpV2RevisionTemplateResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudRunOpV2RevisionTemplateResponsePtrInput is an input type that accepts GoogleCloudRunOpV2RevisionTemplateResponseArgs, GoogleCloudRunOpV2RevisionTemplateResponsePtr and GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2RevisionTemplateResponsePtrInput` via:
-//
-//          GoogleCloudRunOpV2RevisionTemplateResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudRunOpV2RevisionTemplateResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2RevisionTemplateResponsePtrOutput() GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput
-	ToGoogleCloudRunOpV2RevisionTemplateResponsePtrOutputWithContext(context.Context) GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput
-}
-
-type googleCloudRunOpV2RevisionTemplateResponsePtrType GoogleCloudRunOpV2RevisionTemplateResponseArgs
-
-func GoogleCloudRunOpV2RevisionTemplateResponsePtr(v *GoogleCloudRunOpV2RevisionTemplateResponseArgs) GoogleCloudRunOpV2RevisionTemplateResponsePtrInput {
-	return (*googleCloudRunOpV2RevisionTemplateResponsePtrType)(v)
-}
-
-func (*googleCloudRunOpV2RevisionTemplateResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2RevisionTemplateResponse)(nil)).Elem()
-}
-
-func (i *googleCloudRunOpV2RevisionTemplateResponsePtrType) ToGoogleCloudRunOpV2RevisionTemplateResponsePtrOutput() GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput {
-	return i.ToGoogleCloudRunOpV2RevisionTemplateResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudRunOpV2RevisionTemplateResponsePtrType) ToGoogleCloudRunOpV2RevisionTemplateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput)
-}
-
 // RevisionTemplate describes the data a revision should have when created from a template.
 type GoogleCloudRunOpV2RevisionTemplateResponseOutput struct{ *pulumi.OutputState }
 
@@ -2908,16 +1839,6 @@ func (o GoogleCloudRunOpV2RevisionTemplateResponseOutput) ToGoogleCloudRunOpV2Re
 
 func (o GoogleCloudRunOpV2RevisionTemplateResponseOutput) ToGoogleCloudRunOpV2RevisionTemplateResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplateResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRunOpV2RevisionTemplateResponseOutput) ToGoogleCloudRunOpV2RevisionTemplateResponsePtrOutput() GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput {
-	return o.ToGoogleCloudRunOpV2RevisionTemplateResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudRunOpV2RevisionTemplateResponseOutput) ToGoogleCloudRunOpV2RevisionTemplateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunOpV2RevisionTemplateResponse) *GoogleCloudRunOpV2RevisionTemplateResponse {
-		return &v
-	}).(GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput)
 }
 
 // KRM-style annotations for the resource.
@@ -2991,160 +1912,6 @@ func (o GoogleCloudRunOpV2RevisionTemplateResponseOutput) VpcAccess() GoogleClou
 	return o.ApplyT(func(v GoogleCloudRunOpV2RevisionTemplateResponse) GoogleCloudRunOpV2VpcAccessResponse {
 		return v.VpcAccess
 	}).(GoogleCloudRunOpV2VpcAccessResponseOutput)
-}
-
-type GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2RevisionTemplateResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) ToGoogleCloudRunOpV2RevisionTemplateResponsePtrOutput() GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) ToGoogleCloudRunOpV2RevisionTemplateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) Elem() GoogleCloudRunOpV2RevisionTemplateResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateResponse) GoogleCloudRunOpV2RevisionTemplateResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudRunOpV2RevisionTemplateResponse
-		return ret
-	}).(GoogleCloudRunOpV2RevisionTemplateResponseOutput)
-}
-
-// KRM-style annotations for the resource.
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Annotations
-	}).(pulumi.StringMapOutput)
-}
-
-// Enables Confidential Cloud Run in Revisions created using this template.
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) Confidential() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Confidential
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Sets the maximum number of requests that each serving instance can receive.
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.ContainerConcurrency
-	}).(pulumi.IntPtrOutput)
-}
-
-// Holds the single container that defines the unit of execution for this Revision.
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) Containers() GoogleCloudRunOpV2ContainerResponseArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateResponse) []GoogleCloudRunOpV2ContainerResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Containers
-	}).(GoogleCloudRunOpV2ContainerResponseArrayOutput)
-}
-
-// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) EncryptionKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EncryptionKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The sandbox environment to host this Revision.
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) ExecutionEnvironment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExecutionEnvironment
-	}).(pulumi.StringPtrOutput)
-}
-
-// KRM-style labels for the resource.
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) Revision() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Revision
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scaling settings for this Revision.
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) Scaling() GoogleCloudRunOpV2RevisionScalingResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateResponse) *GoogleCloudRunOpV2RevisionScalingResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Scaling
-	}).(GoogleCloudRunOpV2RevisionScalingResponsePtrOutput)
-}
-
-// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccount
-	}).(pulumi.StringPtrOutput)
-}
-
-// Max allowed time for an instance to respond to a request.
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Timeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// A list of Volumes to make available to containers.
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) Volumes() GoogleCloudRunOpV2VolumeResponseArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateResponse) []GoogleCloudRunOpV2VolumeResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Volumes
-	}).(GoogleCloudRunOpV2VolumeResponseArrayOutput)
-}
-
-// VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
-func (o GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput) VpcAccess() GoogleCloudRunOpV2VpcAccessResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateResponse) *GoogleCloudRunOpV2VpcAccessResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.VpcAccess
-	}).(GoogleCloudRunOpV2VpcAccessResponsePtrOutput)
 }
 
 // SecretEnvVarSource represents a source for the value of an EnvVar.
@@ -3312,37 +2079,6 @@ type GoogleCloudRunOpV2SecretKeySelectorResponse struct {
 	Secret string `pulumi:"secret"`
 	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 	Version string `pulumi:"version"`
-}
-
-// GoogleCloudRunOpV2SecretKeySelectorResponseInput is an input type that accepts GoogleCloudRunOpV2SecretKeySelectorResponseArgs and GoogleCloudRunOpV2SecretKeySelectorResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2SecretKeySelectorResponseInput` via:
-//
-//          GoogleCloudRunOpV2SecretKeySelectorResponseArgs{...}
-type GoogleCloudRunOpV2SecretKeySelectorResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2SecretKeySelectorResponseOutput() GoogleCloudRunOpV2SecretKeySelectorResponseOutput
-	ToGoogleCloudRunOpV2SecretKeySelectorResponseOutputWithContext(context.Context) GoogleCloudRunOpV2SecretKeySelectorResponseOutput
-}
-
-// SecretEnvVarSource represents a source for the value of an EnvVar.
-type GoogleCloudRunOpV2SecretKeySelectorResponseArgs struct {
-	// The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
-	Secret pulumi.StringInput `pulumi:"secret"`
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (GoogleCloudRunOpV2SecretKeySelectorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2SecretKeySelectorResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2SecretKeySelectorResponseArgs) ToGoogleCloudRunOpV2SecretKeySelectorResponseOutput() GoogleCloudRunOpV2SecretKeySelectorResponseOutput {
-	return i.ToGoogleCloudRunOpV2SecretKeySelectorResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2SecretKeySelectorResponseArgs) ToGoogleCloudRunOpV2SecretKeySelectorResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2SecretKeySelectorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2SecretKeySelectorResponseOutput)
 }
 
 // SecretEnvVarSource represents a source for the value of an EnvVar.
@@ -3558,39 +2294,6 @@ type GoogleCloudRunOpV2SecretVolumeSourceResponse struct {
 	Secret string `pulumi:"secret"`
 }
 
-// GoogleCloudRunOpV2SecretVolumeSourceResponseInput is an input type that accepts GoogleCloudRunOpV2SecretVolumeSourceResponseArgs and GoogleCloudRunOpV2SecretVolumeSourceResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2SecretVolumeSourceResponseInput` via:
-//
-//          GoogleCloudRunOpV2SecretVolumeSourceResponseArgs{...}
-type GoogleCloudRunOpV2SecretVolumeSourceResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2SecretVolumeSourceResponseOutput() GoogleCloudRunOpV2SecretVolumeSourceResponseOutput
-	ToGoogleCloudRunOpV2SecretVolumeSourceResponseOutputWithContext(context.Context) GoogleCloudRunOpV2SecretVolumeSourceResponseOutput
-}
-
-// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret.
-type GoogleCloudRunOpV2SecretVolumeSourceResponseArgs struct {
-	// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
-	DefaultMode pulumi.IntInput `pulumi:"defaultMode"`
-	// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
-	Items GoogleCloudRunOpV2VersionToPathResponseArrayInput `pulumi:"items"`
-	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
-	Secret pulumi.StringInput `pulumi:"secret"`
-}
-
-func (GoogleCloudRunOpV2SecretVolumeSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2SecretVolumeSourceResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2SecretVolumeSourceResponseArgs) ToGoogleCloudRunOpV2SecretVolumeSourceResponseOutput() GoogleCloudRunOpV2SecretVolumeSourceResponseOutput {
-	return i.ToGoogleCloudRunOpV2SecretVolumeSourceResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2SecretVolumeSourceResponseArgs) ToGoogleCloudRunOpV2SecretVolumeSourceResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2SecretVolumeSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2SecretVolumeSourceResponseOutput)
-}
-
 // The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret.
 type GoogleCloudRunOpV2SecretVolumeSourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -3762,66 +2465,6 @@ type GoogleCloudRunOpV2TrafficTargetResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// GoogleCloudRunOpV2TrafficTargetResponseInput is an input type that accepts GoogleCloudRunOpV2TrafficTargetResponseArgs and GoogleCloudRunOpV2TrafficTargetResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2TrafficTargetResponseInput` via:
-//
-//          GoogleCloudRunOpV2TrafficTargetResponseArgs{...}
-type GoogleCloudRunOpV2TrafficTargetResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2TrafficTargetResponseOutput() GoogleCloudRunOpV2TrafficTargetResponseOutput
-	ToGoogleCloudRunOpV2TrafficTargetResponseOutputWithContext(context.Context) GoogleCloudRunOpV2TrafficTargetResponseOutput
-}
-
-// Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision.
-type GoogleCloudRunOpV2TrafficTargetResponseArgs struct {
-	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single TrafficTarget entry.
-	Percent pulumi.IntInput `pulumi:"percent"`
-	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
-	Revision pulumi.StringInput `pulumi:"revision"`
-	// Indicates a string to be part of the URI to exclusively reference this target.
-	Tag pulumi.StringInput `pulumi:"tag"`
-	// The allocation type for this traffic target.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GoogleCloudRunOpV2TrafficTargetResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2TrafficTargetResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2TrafficTargetResponseArgs) ToGoogleCloudRunOpV2TrafficTargetResponseOutput() GoogleCloudRunOpV2TrafficTargetResponseOutput {
-	return i.ToGoogleCloudRunOpV2TrafficTargetResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2TrafficTargetResponseArgs) ToGoogleCloudRunOpV2TrafficTargetResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2TrafficTargetResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2TrafficTargetResponseOutput)
-}
-
-// GoogleCloudRunOpV2TrafficTargetResponseArrayInput is an input type that accepts GoogleCloudRunOpV2TrafficTargetResponseArray and GoogleCloudRunOpV2TrafficTargetResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2TrafficTargetResponseArrayInput` via:
-//
-//          GoogleCloudRunOpV2TrafficTargetResponseArray{ GoogleCloudRunOpV2TrafficTargetResponseArgs{...} }
-type GoogleCloudRunOpV2TrafficTargetResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2TrafficTargetResponseArrayOutput() GoogleCloudRunOpV2TrafficTargetResponseArrayOutput
-	ToGoogleCloudRunOpV2TrafficTargetResponseArrayOutputWithContext(context.Context) GoogleCloudRunOpV2TrafficTargetResponseArrayOutput
-}
-
-type GoogleCloudRunOpV2TrafficTargetResponseArray []GoogleCloudRunOpV2TrafficTargetResponseInput
-
-func (GoogleCloudRunOpV2TrafficTargetResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRunOpV2TrafficTargetResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2TrafficTargetResponseArray) ToGoogleCloudRunOpV2TrafficTargetResponseArrayOutput() GoogleCloudRunOpV2TrafficTargetResponseArrayOutput {
-	return i.ToGoogleCloudRunOpV2TrafficTargetResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2TrafficTargetResponseArray) ToGoogleCloudRunOpV2TrafficTargetResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunOpV2TrafficTargetResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2TrafficTargetResponseArrayOutput)
-}
-
 // Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision.
 type GoogleCloudRunOpV2TrafficTargetResponseOutput struct{ *pulumi.OutputState }
 
@@ -3889,68 +2532,6 @@ type GoogleCloudRunOpV2TrafficTargetStatusResponse struct {
 	Type string `pulumi:"type"`
 	// Displays the target URI.
 	Uri string `pulumi:"uri"`
-}
-
-// GoogleCloudRunOpV2TrafficTargetStatusResponseInput is an input type that accepts GoogleCloudRunOpV2TrafficTargetStatusResponseArgs and GoogleCloudRunOpV2TrafficTargetStatusResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2TrafficTargetStatusResponseInput` via:
-//
-//          GoogleCloudRunOpV2TrafficTargetStatusResponseArgs{...}
-type GoogleCloudRunOpV2TrafficTargetStatusResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2TrafficTargetStatusResponseOutput() GoogleCloudRunOpV2TrafficTargetStatusResponseOutput
-	ToGoogleCloudRunOpV2TrafficTargetStatusResponseOutputWithContext(context.Context) GoogleCloudRunOpV2TrafficTargetStatusResponseOutput
-}
-
-// Represents the observed state of a single `TrafficTarget` entry.
-type GoogleCloudRunOpV2TrafficTargetStatusResponseArgs struct {
-	// Specifies percent of the traffic to this Revision.
-	Percent pulumi.IntInput `pulumi:"percent"`
-	// Revision to which this traffic is sent.
-	Revision pulumi.StringInput `pulumi:"revision"`
-	// Indicates the string used in the URI to exclusively reference this target.
-	Tag pulumi.StringInput `pulumi:"tag"`
-	// The allocation type for this traffic target.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Displays the target URI.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (GoogleCloudRunOpV2TrafficTargetStatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2TrafficTargetStatusResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2TrafficTargetStatusResponseArgs) ToGoogleCloudRunOpV2TrafficTargetStatusResponseOutput() GoogleCloudRunOpV2TrafficTargetStatusResponseOutput {
-	return i.ToGoogleCloudRunOpV2TrafficTargetStatusResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2TrafficTargetStatusResponseArgs) ToGoogleCloudRunOpV2TrafficTargetStatusResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2TrafficTargetStatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2TrafficTargetStatusResponseOutput)
-}
-
-// GoogleCloudRunOpV2TrafficTargetStatusResponseArrayInput is an input type that accepts GoogleCloudRunOpV2TrafficTargetStatusResponseArray and GoogleCloudRunOpV2TrafficTargetStatusResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2TrafficTargetStatusResponseArrayInput` via:
-//
-//          GoogleCloudRunOpV2TrafficTargetStatusResponseArray{ GoogleCloudRunOpV2TrafficTargetStatusResponseArgs{...} }
-type GoogleCloudRunOpV2TrafficTargetStatusResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2TrafficTargetStatusResponseArrayOutput() GoogleCloudRunOpV2TrafficTargetStatusResponseArrayOutput
-	ToGoogleCloudRunOpV2TrafficTargetStatusResponseArrayOutputWithContext(context.Context) GoogleCloudRunOpV2TrafficTargetStatusResponseArrayOutput
-}
-
-type GoogleCloudRunOpV2TrafficTargetStatusResponseArray []GoogleCloudRunOpV2TrafficTargetStatusResponseInput
-
-func (GoogleCloudRunOpV2TrafficTargetStatusResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRunOpV2TrafficTargetStatusResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2TrafficTargetStatusResponseArray) ToGoogleCloudRunOpV2TrafficTargetStatusResponseArrayOutput() GoogleCloudRunOpV2TrafficTargetStatusResponseArrayOutput {
-	return i.ToGoogleCloudRunOpV2TrafficTargetStatusResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2TrafficTargetStatusResponseArray) ToGoogleCloudRunOpV2TrafficTargetStatusResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunOpV2TrafficTargetStatusResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2TrafficTargetStatusResponseArrayOutput)
 }
 
 // Represents the observed state of a single `TrafficTarget` entry.
@@ -4139,64 +2720,6 @@ type GoogleCloudRunOpV2VersionToPathResponse struct {
 	Path string `pulumi:"path"`
 	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 	Version string `pulumi:"version"`
-}
-
-// GoogleCloudRunOpV2VersionToPathResponseInput is an input type that accepts GoogleCloudRunOpV2VersionToPathResponseArgs and GoogleCloudRunOpV2VersionToPathResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2VersionToPathResponseInput` via:
-//
-//          GoogleCloudRunOpV2VersionToPathResponseArgs{...}
-type GoogleCloudRunOpV2VersionToPathResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2VersionToPathResponseOutput() GoogleCloudRunOpV2VersionToPathResponseOutput
-	ToGoogleCloudRunOpV2VersionToPathResponseOutputWithContext(context.Context) GoogleCloudRunOpV2VersionToPathResponseOutput
-}
-
-// VersionToPath maps a specific version of a secret to a relative file to mount to, relative to VolumeMount's mount_path.
-type GoogleCloudRunOpV2VersionToPathResponseArgs struct {
-	// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
-	Mode pulumi.IntInput `pulumi:"mode"`
-	// The relative path of the secret in the container.
-	Path pulumi.StringInput `pulumi:"path"`
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (GoogleCloudRunOpV2VersionToPathResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2VersionToPathResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2VersionToPathResponseArgs) ToGoogleCloudRunOpV2VersionToPathResponseOutput() GoogleCloudRunOpV2VersionToPathResponseOutput {
-	return i.ToGoogleCloudRunOpV2VersionToPathResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2VersionToPathResponseArgs) ToGoogleCloudRunOpV2VersionToPathResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VersionToPathResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2VersionToPathResponseOutput)
-}
-
-// GoogleCloudRunOpV2VersionToPathResponseArrayInput is an input type that accepts GoogleCloudRunOpV2VersionToPathResponseArray and GoogleCloudRunOpV2VersionToPathResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2VersionToPathResponseArrayInput` via:
-//
-//          GoogleCloudRunOpV2VersionToPathResponseArray{ GoogleCloudRunOpV2VersionToPathResponseArgs{...} }
-type GoogleCloudRunOpV2VersionToPathResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2VersionToPathResponseArrayOutput() GoogleCloudRunOpV2VersionToPathResponseArrayOutput
-	ToGoogleCloudRunOpV2VersionToPathResponseArrayOutputWithContext(context.Context) GoogleCloudRunOpV2VersionToPathResponseArrayOutput
-}
-
-type GoogleCloudRunOpV2VersionToPathResponseArray []GoogleCloudRunOpV2VersionToPathResponseInput
-
-func (GoogleCloudRunOpV2VersionToPathResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRunOpV2VersionToPathResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2VersionToPathResponseArray) ToGoogleCloudRunOpV2VersionToPathResponseArrayOutput() GoogleCloudRunOpV2VersionToPathResponseArrayOutput {
-	return i.ToGoogleCloudRunOpV2VersionToPathResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2VersionToPathResponseArray) ToGoogleCloudRunOpV2VersionToPathResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VersionToPathResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2VersionToPathResponseArrayOutput)
 }
 
 // VersionToPath maps a specific version of a secret to a relative file to mount to, relative to VolumeMount's mount_path.
@@ -4484,62 +3007,6 @@ type GoogleCloudRunOpV2VolumeMountResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// GoogleCloudRunOpV2VolumeMountResponseInput is an input type that accepts GoogleCloudRunOpV2VolumeMountResponseArgs and GoogleCloudRunOpV2VolumeMountResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2VolumeMountResponseInput` via:
-//
-//          GoogleCloudRunOpV2VolumeMountResponseArgs{...}
-type GoogleCloudRunOpV2VolumeMountResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2VolumeMountResponseOutput() GoogleCloudRunOpV2VolumeMountResponseOutput
-	ToGoogleCloudRunOpV2VolumeMountResponseOutputWithContext(context.Context) GoogleCloudRunOpV2VolumeMountResponseOutput
-}
-
-// VolumeMount describes a mounting of a Volume within a container.
-type GoogleCloudRunOpV2VolumeMountResponseArgs struct {
-	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be `/cloudsql`. All instances defined in the Volume will be available as `/cloudsql/[instance]`. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
-	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// This must match the Name of a Volume.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GoogleCloudRunOpV2VolumeMountResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2VolumeMountResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2VolumeMountResponseArgs) ToGoogleCloudRunOpV2VolumeMountResponseOutput() GoogleCloudRunOpV2VolumeMountResponseOutput {
-	return i.ToGoogleCloudRunOpV2VolumeMountResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2VolumeMountResponseArgs) ToGoogleCloudRunOpV2VolumeMountResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VolumeMountResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2VolumeMountResponseOutput)
-}
-
-// GoogleCloudRunOpV2VolumeMountResponseArrayInput is an input type that accepts GoogleCloudRunOpV2VolumeMountResponseArray and GoogleCloudRunOpV2VolumeMountResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2VolumeMountResponseArrayInput` via:
-//
-//          GoogleCloudRunOpV2VolumeMountResponseArray{ GoogleCloudRunOpV2VolumeMountResponseArgs{...} }
-type GoogleCloudRunOpV2VolumeMountResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2VolumeMountResponseArrayOutput() GoogleCloudRunOpV2VolumeMountResponseArrayOutput
-	ToGoogleCloudRunOpV2VolumeMountResponseArrayOutputWithContext(context.Context) GoogleCloudRunOpV2VolumeMountResponseArrayOutput
-}
-
-type GoogleCloudRunOpV2VolumeMountResponseArray []GoogleCloudRunOpV2VolumeMountResponseInput
-
-func (GoogleCloudRunOpV2VolumeMountResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRunOpV2VolumeMountResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2VolumeMountResponseArray) ToGoogleCloudRunOpV2VolumeMountResponseArrayOutput() GoogleCloudRunOpV2VolumeMountResponseArrayOutput {
-	return i.ToGoogleCloudRunOpV2VolumeMountResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2VolumeMountResponseArray) ToGoogleCloudRunOpV2VolumeMountResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VolumeMountResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2VolumeMountResponseArrayOutput)
-}
-
 // VolumeMount describes a mounting of a Volume within a container.
 type GoogleCloudRunOpV2VolumeMountResponseOutput struct{ *pulumi.OutputState }
 
@@ -4593,64 +3060,6 @@ type GoogleCloudRunOpV2VolumeResponse struct {
 	Name string `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 	Secret GoogleCloudRunOpV2SecretVolumeSourceResponse `pulumi:"secret"`
-}
-
-// GoogleCloudRunOpV2VolumeResponseInput is an input type that accepts GoogleCloudRunOpV2VolumeResponseArgs and GoogleCloudRunOpV2VolumeResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2VolumeResponseInput` via:
-//
-//          GoogleCloudRunOpV2VolumeResponseArgs{...}
-type GoogleCloudRunOpV2VolumeResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2VolumeResponseOutput() GoogleCloudRunOpV2VolumeResponseOutput
-	ToGoogleCloudRunOpV2VolumeResponseOutputWithContext(context.Context) GoogleCloudRunOpV2VolumeResponseOutput
-}
-
-// Volume represents a named volume in a container.
-type GoogleCloudRunOpV2VolumeResponseArgs struct {
-	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
-	CloudSqlInstance GoogleCloudRunOpV2CloudSqlInstanceResponseInput `pulumi:"cloudSqlInstance"`
-	// Volume's name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
-	Secret GoogleCloudRunOpV2SecretVolumeSourceResponseInput `pulumi:"secret"`
-}
-
-func (GoogleCloudRunOpV2VolumeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2VolumeResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2VolumeResponseArgs) ToGoogleCloudRunOpV2VolumeResponseOutput() GoogleCloudRunOpV2VolumeResponseOutput {
-	return i.ToGoogleCloudRunOpV2VolumeResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2VolumeResponseArgs) ToGoogleCloudRunOpV2VolumeResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VolumeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2VolumeResponseOutput)
-}
-
-// GoogleCloudRunOpV2VolumeResponseArrayInput is an input type that accepts GoogleCloudRunOpV2VolumeResponseArray and GoogleCloudRunOpV2VolumeResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2VolumeResponseArrayInput` via:
-//
-//          GoogleCloudRunOpV2VolumeResponseArray{ GoogleCloudRunOpV2VolumeResponseArgs{...} }
-type GoogleCloudRunOpV2VolumeResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2VolumeResponseArrayOutput() GoogleCloudRunOpV2VolumeResponseArrayOutput
-	ToGoogleCloudRunOpV2VolumeResponseArrayOutputWithContext(context.Context) GoogleCloudRunOpV2VolumeResponseArrayOutput
-}
-
-type GoogleCloudRunOpV2VolumeResponseArray []GoogleCloudRunOpV2VolumeResponseInput
-
-func (GoogleCloudRunOpV2VolumeResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRunOpV2VolumeResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2VolumeResponseArray) ToGoogleCloudRunOpV2VolumeResponseArrayOutput() GoogleCloudRunOpV2VolumeResponseArrayOutput {
-	return i.ToGoogleCloudRunOpV2VolumeResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2VolumeResponseArray) ToGoogleCloudRunOpV2VolumeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VolumeResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2VolumeResponseArrayOutput)
 }
 
 // Volume represents a named volume in a container.
@@ -4872,78 +3281,6 @@ type GoogleCloudRunOpV2VpcAccessResponse struct {
 	Egress string `pulumi:"egress"`
 }
 
-// GoogleCloudRunOpV2VpcAccessResponseInput is an input type that accepts GoogleCloudRunOpV2VpcAccessResponseArgs and GoogleCloudRunOpV2VpcAccessResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2VpcAccessResponseInput` via:
-//
-//          GoogleCloudRunOpV2VpcAccessResponseArgs{...}
-type GoogleCloudRunOpV2VpcAccessResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2VpcAccessResponseOutput() GoogleCloudRunOpV2VpcAccessResponseOutput
-	ToGoogleCloudRunOpV2VpcAccessResponseOutputWithContext(context.Context) GoogleCloudRunOpV2VpcAccessResponseOutput
-}
-
-// VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
-type GoogleCloudRunOpV2VpcAccessResponseArgs struct {
-	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
-	Connector pulumi.StringInput `pulumi:"connector"`
-	// Traffic VPC egress settings.
-	Egress pulumi.StringInput `pulumi:"egress"`
-}
-
-func (GoogleCloudRunOpV2VpcAccessResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2VpcAccessResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRunOpV2VpcAccessResponseArgs) ToGoogleCloudRunOpV2VpcAccessResponseOutput() GoogleCloudRunOpV2VpcAccessResponseOutput {
-	return i.ToGoogleCloudRunOpV2VpcAccessResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2VpcAccessResponseArgs) ToGoogleCloudRunOpV2VpcAccessResponseOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VpcAccessResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2VpcAccessResponseOutput)
-}
-
-func (i GoogleCloudRunOpV2VpcAccessResponseArgs) ToGoogleCloudRunOpV2VpcAccessResponsePtrOutput() GoogleCloudRunOpV2VpcAccessResponsePtrOutput {
-	return i.ToGoogleCloudRunOpV2VpcAccessResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunOpV2VpcAccessResponseArgs) ToGoogleCloudRunOpV2VpcAccessResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VpcAccessResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2VpcAccessResponseOutput).ToGoogleCloudRunOpV2VpcAccessResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudRunOpV2VpcAccessResponsePtrInput is an input type that accepts GoogleCloudRunOpV2VpcAccessResponseArgs, GoogleCloudRunOpV2VpcAccessResponsePtr and GoogleCloudRunOpV2VpcAccessResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2VpcAccessResponsePtrInput` via:
-//
-//          GoogleCloudRunOpV2VpcAccessResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudRunOpV2VpcAccessResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunOpV2VpcAccessResponsePtrOutput() GoogleCloudRunOpV2VpcAccessResponsePtrOutput
-	ToGoogleCloudRunOpV2VpcAccessResponsePtrOutputWithContext(context.Context) GoogleCloudRunOpV2VpcAccessResponsePtrOutput
-}
-
-type googleCloudRunOpV2VpcAccessResponsePtrType GoogleCloudRunOpV2VpcAccessResponseArgs
-
-func GoogleCloudRunOpV2VpcAccessResponsePtr(v *GoogleCloudRunOpV2VpcAccessResponseArgs) GoogleCloudRunOpV2VpcAccessResponsePtrInput {
-	return (*googleCloudRunOpV2VpcAccessResponsePtrType)(v)
-}
-
-func (*googleCloudRunOpV2VpcAccessResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2VpcAccessResponse)(nil)).Elem()
-}
-
-func (i *googleCloudRunOpV2VpcAccessResponsePtrType) ToGoogleCloudRunOpV2VpcAccessResponsePtrOutput() GoogleCloudRunOpV2VpcAccessResponsePtrOutput {
-	return i.ToGoogleCloudRunOpV2VpcAccessResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudRunOpV2VpcAccessResponsePtrType) ToGoogleCloudRunOpV2VpcAccessResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VpcAccessResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunOpV2VpcAccessResponsePtrOutput)
-}
-
 // VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
 type GoogleCloudRunOpV2VpcAccessResponseOutput struct{ *pulumi.OutputState }
 
@@ -4959,16 +3296,6 @@ func (o GoogleCloudRunOpV2VpcAccessResponseOutput) ToGoogleCloudRunOpV2VpcAccess
 	return o
 }
 
-func (o GoogleCloudRunOpV2VpcAccessResponseOutput) ToGoogleCloudRunOpV2VpcAccessResponsePtrOutput() GoogleCloudRunOpV2VpcAccessResponsePtrOutput {
-	return o.ToGoogleCloudRunOpV2VpcAccessResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudRunOpV2VpcAccessResponseOutput) ToGoogleCloudRunOpV2VpcAccessResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VpcAccessResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunOpV2VpcAccessResponse) *GoogleCloudRunOpV2VpcAccessResponse {
-		return &v
-	}).(GoogleCloudRunOpV2VpcAccessResponsePtrOutput)
-}
-
 // VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
 func (o GoogleCloudRunOpV2VpcAccessResponseOutput) Connector() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunOpV2VpcAccessResponse) string { return v.Connector }).(pulumi.StringOutput)
@@ -4977,50 +3304,6 @@ func (o GoogleCloudRunOpV2VpcAccessResponseOutput) Connector() pulumi.StringOutp
 // Traffic VPC egress settings.
 func (o GoogleCloudRunOpV2VpcAccessResponseOutput) Egress() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunOpV2VpcAccessResponse) string { return v.Egress }).(pulumi.StringOutput)
-}
-
-type GoogleCloudRunOpV2VpcAccessResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRunOpV2VpcAccessResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2VpcAccessResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudRunOpV2VpcAccessResponsePtrOutput) ToGoogleCloudRunOpV2VpcAccessResponsePtrOutput() GoogleCloudRunOpV2VpcAccessResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRunOpV2VpcAccessResponsePtrOutput) ToGoogleCloudRunOpV2VpcAccessResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VpcAccessResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRunOpV2VpcAccessResponsePtrOutput) Elem() GoogleCloudRunOpV2VpcAccessResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2VpcAccessResponse) GoogleCloudRunOpV2VpcAccessResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudRunOpV2VpcAccessResponse
-		return ret
-	}).(GoogleCloudRunOpV2VpcAccessResponseOutput)
-}
-
-// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
-func (o GoogleCloudRunOpV2VpcAccessResponsePtrOutput) Connector() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2VpcAccessResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Connector
-	}).(pulumi.StringPtrOutput)
-}
-
-// Traffic VPC egress settings.
-func (o GoogleCloudRunOpV2VpcAccessResponsePtrOutput) Egress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2VpcAccessResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Egress
-	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
@@ -5138,62 +3421,6 @@ type GoogleIamV1AuditConfigResponse struct {
 	AuditLogConfigs []GoogleIamV1AuditLogConfigResponse `pulumi:"auditLogConfigs"`
 	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
 	Service string `pulumi:"service"`
-}
-
-// GoogleIamV1AuditConfigResponseInput is an input type that accepts GoogleIamV1AuditConfigResponseArgs and GoogleIamV1AuditConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleIamV1AuditConfigResponseInput` via:
-//
-//          GoogleIamV1AuditConfigResponseArgs{...}
-type GoogleIamV1AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleIamV1AuditConfigResponseOutput() GoogleIamV1AuditConfigResponseOutput
-	ToGoogleIamV1AuditConfigResponseOutputWithContext(context.Context) GoogleIamV1AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type GoogleIamV1AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs GoogleIamV1AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (GoogleIamV1AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleIamV1AuditConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleIamV1AuditConfigResponseArgs) ToGoogleIamV1AuditConfigResponseOutput() GoogleIamV1AuditConfigResponseOutput {
-	return i.ToGoogleIamV1AuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleIamV1AuditConfigResponseArgs) ToGoogleIamV1AuditConfigResponseOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigResponseOutput)
-}
-
-// GoogleIamV1AuditConfigResponseArrayInput is an input type that accepts GoogleIamV1AuditConfigResponseArray and GoogleIamV1AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleIamV1AuditConfigResponseArrayInput` via:
-//
-//          GoogleIamV1AuditConfigResponseArray{ GoogleIamV1AuditConfigResponseArgs{...} }
-type GoogleIamV1AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleIamV1AuditConfigResponseArrayOutput() GoogleIamV1AuditConfigResponseArrayOutput
-	ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(context.Context) GoogleIamV1AuditConfigResponseArrayOutput
-}
-
-type GoogleIamV1AuditConfigResponseArray []GoogleIamV1AuditConfigResponseInput
-
-func (GoogleIamV1AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleIamV1AuditConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleIamV1AuditConfigResponseArray) ToGoogleIamV1AuditConfigResponseArrayOutput() GoogleIamV1AuditConfigResponseArrayOutput {
-	return i.ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleIamV1AuditConfigResponseArray) ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigResponseArrayOutput)
 }
 
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
@@ -5356,62 +3583,6 @@ type GoogleIamV1AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// GoogleIamV1AuditLogConfigResponseInput is an input type that accepts GoogleIamV1AuditLogConfigResponseArgs and GoogleIamV1AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleIamV1AuditLogConfigResponseInput` via:
-//
-//          GoogleIamV1AuditLogConfigResponseArgs{...}
-type GoogleIamV1AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleIamV1AuditLogConfigResponseOutput() GoogleIamV1AuditLogConfigResponseOutput
-	ToGoogleIamV1AuditLogConfigResponseOutputWithContext(context.Context) GoogleIamV1AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type GoogleIamV1AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (GoogleIamV1AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleIamV1AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleIamV1AuditLogConfigResponseArgs) ToGoogleIamV1AuditLogConfigResponseOutput() GoogleIamV1AuditLogConfigResponseOutput {
-	return i.ToGoogleIamV1AuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleIamV1AuditLogConfigResponseArgs) ToGoogleIamV1AuditLogConfigResponseOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigResponseOutput)
-}
-
-// GoogleIamV1AuditLogConfigResponseArrayInput is an input type that accepts GoogleIamV1AuditLogConfigResponseArray and GoogleIamV1AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleIamV1AuditLogConfigResponseArrayInput` via:
-//
-//          GoogleIamV1AuditLogConfigResponseArray{ GoogleIamV1AuditLogConfigResponseArgs{...} }
-type GoogleIamV1AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleIamV1AuditLogConfigResponseArrayOutput() GoogleIamV1AuditLogConfigResponseArrayOutput
-	ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput
-}
-
-type GoogleIamV1AuditLogConfigResponseArray []GoogleIamV1AuditLogConfigResponseInput
-
-func (GoogleIamV1AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleIamV1AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleIamV1AuditLogConfigResponseArray) ToGoogleIamV1AuditLogConfigResponseArrayOutput() GoogleIamV1AuditLogConfigResponseArrayOutput {
-	return i.ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleIamV1AuditLogConfigResponseArray) ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -5585,64 +3756,6 @@ type GoogleIamV1BindingResponse struct {
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
-}
-
-// GoogleIamV1BindingResponseInput is an input type that accepts GoogleIamV1BindingResponseArgs and GoogleIamV1BindingResponseOutput values.
-// You can construct a concrete instance of `GoogleIamV1BindingResponseInput` via:
-//
-//          GoogleIamV1BindingResponseArgs{...}
-type GoogleIamV1BindingResponseInput interface {
-	pulumi.Input
-
-	ToGoogleIamV1BindingResponseOutput() GoogleIamV1BindingResponseOutput
-	ToGoogleIamV1BindingResponseOutputWithContext(context.Context) GoogleIamV1BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type GoogleIamV1BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition GoogleTypeExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (GoogleIamV1BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleIamV1BindingResponse)(nil)).Elem()
-}
-
-func (i GoogleIamV1BindingResponseArgs) ToGoogleIamV1BindingResponseOutput() GoogleIamV1BindingResponseOutput {
-	return i.ToGoogleIamV1BindingResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleIamV1BindingResponseArgs) ToGoogleIamV1BindingResponseOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingResponseOutput)
-}
-
-// GoogleIamV1BindingResponseArrayInput is an input type that accepts GoogleIamV1BindingResponseArray and GoogleIamV1BindingResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleIamV1BindingResponseArrayInput` via:
-//
-//          GoogleIamV1BindingResponseArray{ GoogleIamV1BindingResponseArgs{...} }
-type GoogleIamV1BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleIamV1BindingResponseArrayOutput() GoogleIamV1BindingResponseArrayOutput
-	ToGoogleIamV1BindingResponseArrayOutputWithContext(context.Context) GoogleIamV1BindingResponseArrayOutput
-}
-
-type GoogleIamV1BindingResponseArray []GoogleIamV1BindingResponseInput
-
-func (GoogleIamV1BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleIamV1BindingResponse)(nil)).Elem()
-}
-
-func (i GoogleIamV1BindingResponseArray) ToGoogleIamV1BindingResponseArrayOutput() GoogleIamV1BindingResponseArrayOutput {
-	return i.ToGoogleIamV1BindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleIamV1BindingResponseArray) ToGoogleIamV1BindingResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingResponseArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -5904,41 +4017,6 @@ type GoogleTypeExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// GoogleTypeExprResponseInput is an input type that accepts GoogleTypeExprResponseArgs and GoogleTypeExprResponseOutput values.
-// You can construct a concrete instance of `GoogleTypeExprResponseInput` via:
-//
-//          GoogleTypeExprResponseArgs{...}
-type GoogleTypeExprResponseInput interface {
-	pulumi.Input
-
-	ToGoogleTypeExprResponseOutput() GoogleTypeExprResponseOutput
-	ToGoogleTypeExprResponseOutputWithContext(context.Context) GoogleTypeExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type GoogleTypeExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (GoogleTypeExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleTypeExprResponse)(nil)).Elem()
-}
-
-func (i GoogleTypeExprResponseArgs) ToGoogleTypeExprResponseOutput() GoogleTypeExprResponseOutput {
-	return i.ToGoogleTypeExprResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleTypeExprResponseArgs) ToGoogleTypeExprResponseOutputWithContext(ctx context.Context) GoogleTypeExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type GoogleTypeExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -5977,92 +4055,50 @@ func (o GoogleTypeExprResponseOutput) Title() pulumi.StringOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2BinaryAuthorizationInput)(nil)).Elem(), GoogleCloudRunOpV2BinaryAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2BinaryAuthorizationPtrInput)(nil)).Elem(), GoogleCloudRunOpV2BinaryAuthorizationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2BinaryAuthorizationResponseInput)(nil)).Elem(), GoogleCloudRunOpV2BinaryAuthorizationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2BinaryAuthorizationResponsePtrInput)(nil)).Elem(), GoogleCloudRunOpV2BinaryAuthorizationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2CloudSqlInstanceInput)(nil)).Elem(), GoogleCloudRunOpV2CloudSqlInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2CloudSqlInstancePtrInput)(nil)).Elem(), GoogleCloudRunOpV2CloudSqlInstanceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2CloudSqlInstanceResponseInput)(nil)).Elem(), GoogleCloudRunOpV2CloudSqlInstanceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2ConditionResponseInput)(nil)).Elem(), GoogleCloudRunOpV2ConditionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2ConditionResponsePtrInput)(nil)).Elem(), GoogleCloudRunOpV2ConditionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2ConditionResponseArrayInput)(nil)).Elem(), GoogleCloudRunOpV2ConditionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2ContainerInput)(nil)).Elem(), GoogleCloudRunOpV2ContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2ContainerArrayInput)(nil)).Elem(), GoogleCloudRunOpV2ContainerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2ContainerPortInput)(nil)).Elem(), GoogleCloudRunOpV2ContainerPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2ContainerPortArrayInput)(nil)).Elem(), GoogleCloudRunOpV2ContainerPortArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2ContainerPortResponseInput)(nil)).Elem(), GoogleCloudRunOpV2ContainerPortResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2ContainerPortResponseArrayInput)(nil)).Elem(), GoogleCloudRunOpV2ContainerPortResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2ContainerResponseInput)(nil)).Elem(), GoogleCloudRunOpV2ContainerResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2ContainerResponseArrayInput)(nil)).Elem(), GoogleCloudRunOpV2ContainerResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2EnvVarInput)(nil)).Elem(), GoogleCloudRunOpV2EnvVarArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2EnvVarArrayInput)(nil)).Elem(), GoogleCloudRunOpV2EnvVarArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2EnvVarResponseInput)(nil)).Elem(), GoogleCloudRunOpV2EnvVarResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2EnvVarResponseArrayInput)(nil)).Elem(), GoogleCloudRunOpV2EnvVarResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2EnvVarSourceInput)(nil)).Elem(), GoogleCloudRunOpV2EnvVarSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2EnvVarSourcePtrInput)(nil)).Elem(), GoogleCloudRunOpV2EnvVarSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2EnvVarSourceResponseInput)(nil)).Elem(), GoogleCloudRunOpV2EnvVarSourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2ResourceRequirementsInput)(nil)).Elem(), GoogleCloudRunOpV2ResourceRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2ResourceRequirementsPtrInput)(nil)).Elem(), GoogleCloudRunOpV2ResourceRequirementsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2ResourceRequirementsResponseInput)(nil)).Elem(), GoogleCloudRunOpV2ResourceRequirementsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2RevisionScalingInput)(nil)).Elem(), GoogleCloudRunOpV2RevisionScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2RevisionScalingPtrInput)(nil)).Elem(), GoogleCloudRunOpV2RevisionScalingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2RevisionScalingResponseInput)(nil)).Elem(), GoogleCloudRunOpV2RevisionScalingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2RevisionScalingResponsePtrInput)(nil)).Elem(), GoogleCloudRunOpV2RevisionScalingResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2RevisionTemplateInput)(nil)).Elem(), GoogleCloudRunOpV2RevisionTemplateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2RevisionTemplatePtrInput)(nil)).Elem(), GoogleCloudRunOpV2RevisionTemplateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2RevisionTemplateResponseInput)(nil)).Elem(), GoogleCloudRunOpV2RevisionTemplateResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2RevisionTemplateResponsePtrInput)(nil)).Elem(), GoogleCloudRunOpV2RevisionTemplateResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2SecretKeySelectorInput)(nil)).Elem(), GoogleCloudRunOpV2SecretKeySelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2SecretKeySelectorPtrInput)(nil)).Elem(), GoogleCloudRunOpV2SecretKeySelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2SecretKeySelectorResponseInput)(nil)).Elem(), GoogleCloudRunOpV2SecretKeySelectorResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2SecretVolumeSourceInput)(nil)).Elem(), GoogleCloudRunOpV2SecretVolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2SecretVolumeSourcePtrInput)(nil)).Elem(), GoogleCloudRunOpV2SecretVolumeSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2SecretVolumeSourceResponseInput)(nil)).Elem(), GoogleCloudRunOpV2SecretVolumeSourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2TrafficTargetInput)(nil)).Elem(), GoogleCloudRunOpV2TrafficTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2TrafficTargetArrayInput)(nil)).Elem(), GoogleCloudRunOpV2TrafficTargetArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2TrafficTargetResponseInput)(nil)).Elem(), GoogleCloudRunOpV2TrafficTargetResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2TrafficTargetResponseArrayInput)(nil)).Elem(), GoogleCloudRunOpV2TrafficTargetResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2TrafficTargetStatusResponseInput)(nil)).Elem(), GoogleCloudRunOpV2TrafficTargetStatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2TrafficTargetStatusResponseArrayInput)(nil)).Elem(), GoogleCloudRunOpV2TrafficTargetStatusResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VersionToPathInput)(nil)).Elem(), GoogleCloudRunOpV2VersionToPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VersionToPathArrayInput)(nil)).Elem(), GoogleCloudRunOpV2VersionToPathArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VersionToPathResponseInput)(nil)).Elem(), GoogleCloudRunOpV2VersionToPathResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VersionToPathResponseArrayInput)(nil)).Elem(), GoogleCloudRunOpV2VersionToPathResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VolumeInput)(nil)).Elem(), GoogleCloudRunOpV2VolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VolumeArrayInput)(nil)).Elem(), GoogleCloudRunOpV2VolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VolumeMountInput)(nil)).Elem(), GoogleCloudRunOpV2VolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VolumeMountArrayInput)(nil)).Elem(), GoogleCloudRunOpV2VolumeMountArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VolumeMountResponseInput)(nil)).Elem(), GoogleCloudRunOpV2VolumeMountResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VolumeMountResponseArrayInput)(nil)).Elem(), GoogleCloudRunOpV2VolumeMountResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VolumeResponseInput)(nil)).Elem(), GoogleCloudRunOpV2VolumeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VolumeResponseArrayInput)(nil)).Elem(), GoogleCloudRunOpV2VolumeResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VpcAccessInput)(nil)).Elem(), GoogleCloudRunOpV2VpcAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VpcAccessPtrInput)(nil)).Elem(), GoogleCloudRunOpV2VpcAccessArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VpcAccessResponseInput)(nil)).Elem(), GoogleCloudRunOpV2VpcAccessResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VpcAccessResponsePtrInput)(nil)).Elem(), GoogleCloudRunOpV2VpcAccessResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigInput)(nil)).Elem(), GoogleIamV1AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigArrayInput)(nil)).Elem(), GoogleIamV1AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigResponseInput)(nil)).Elem(), GoogleIamV1AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigResponseArrayInput)(nil)).Elem(), GoogleIamV1AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigInput)(nil)).Elem(), GoogleIamV1AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigArrayInput)(nil)).Elem(), GoogleIamV1AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigResponseInput)(nil)).Elem(), GoogleIamV1AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigResponseArrayInput)(nil)).Elem(), GoogleIamV1AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1BindingInput)(nil)).Elem(), GoogleIamV1BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1BindingArrayInput)(nil)).Elem(), GoogleIamV1BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1BindingResponseInput)(nil)).Elem(), GoogleIamV1BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1BindingResponseArrayInput)(nil)).Elem(), GoogleIamV1BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprInput)(nil)).Elem(), GoogleTypeExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprPtrInput)(nil)).Elem(), GoogleTypeExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprResponseInput)(nil)).Elem(), GoogleTypeExprResponseArgs{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2BinaryAuthorizationOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2BinaryAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2BinaryAuthorizationResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunOpV2BinaryAuthorizationResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2CloudSqlInstanceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2CloudSqlInstancePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2CloudSqlInstanceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2ConditionResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunOpV2ConditionResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2ConditionResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2ContainerOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2ContainerArrayOutput{})
@@ -6085,11 +4121,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2RevisionScalingOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2RevisionScalingPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2RevisionScalingResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunOpV2RevisionScalingResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2RevisionTemplateOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunOpV2RevisionTemplatePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2RevisionTemplateResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunOpV2RevisionTemplateResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2SecretKeySelectorOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2SecretKeySelectorPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2SecretKeySelectorResponseOutput{})
@@ -6117,7 +4150,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2VpcAccessOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2VpcAccessPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunOpV2VpcAccessResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunOpV2VpcAccessResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigResponseOutput{})

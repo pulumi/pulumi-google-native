@@ -160,7 +160,7 @@ type RegionSecurityPolicyInput interface {
 }
 
 func (*RegionSecurityPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionSecurityPolicy)(nil))
+	return reflect.TypeOf((**RegionSecurityPolicy)(nil)).Elem()
 }
 
 func (i *RegionSecurityPolicy) ToRegionSecurityPolicyOutput() RegionSecurityPolicyOutput {
@@ -174,7 +174,7 @@ func (i *RegionSecurityPolicy) ToRegionSecurityPolicyOutputWithContext(ctx conte
 type RegionSecurityPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionSecurityPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionSecurityPolicy)(nil))
+	return reflect.TypeOf((**RegionSecurityPolicy)(nil)).Elem()
 }
 
 func (o RegionSecurityPolicyOutput) ToRegionSecurityPolicyOutput() RegionSecurityPolicyOutput {

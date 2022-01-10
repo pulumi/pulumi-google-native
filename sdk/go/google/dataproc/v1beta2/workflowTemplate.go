@@ -134,7 +134,7 @@ type WorkflowTemplateInput interface {
 }
 
 func (*WorkflowTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkflowTemplate)(nil))
+	return reflect.TypeOf((**WorkflowTemplate)(nil)).Elem()
 }
 
 func (i *WorkflowTemplate) ToWorkflowTemplateOutput() WorkflowTemplateOutput {
@@ -148,7 +148,7 @@ func (i *WorkflowTemplate) ToWorkflowTemplateOutputWithContext(ctx context.Conte
 type WorkflowTemplateOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkflowTemplate)(nil))
+	return reflect.TypeOf((**WorkflowTemplate)(nil)).Elem()
 }
 
 func (o WorkflowTemplateOutput) ToWorkflowTemplateOutput() WorkflowTemplateOutput {

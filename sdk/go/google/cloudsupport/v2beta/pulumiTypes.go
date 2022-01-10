@@ -181,82 +181,6 @@ type ActorResponse struct {
 	PrincipalId string `pulumi:"principalId"`
 }
 
-// ActorResponseInput is an input type that accepts ActorResponseArgs and ActorResponseOutput values.
-// You can construct a concrete instance of `ActorResponseInput` via:
-//
-//          ActorResponseArgs{...}
-type ActorResponseInput interface {
-	pulumi.Input
-
-	ToActorResponseOutput() ActorResponseOutput
-	ToActorResponseOutputWithContext(context.Context) ActorResponseOutput
-}
-
-// An object containing information about the effective user and authenticated principal responsible for an action.
-type ActorResponseArgs struct {
-	// The name to display for the actor. If not provided, it is inferred from credentials supplied during case creation. When an email is provided, a display name must also be provided. This will be obfuscated if the user is a Google Support agent.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// The email address of the actor. If not provided, it is inferred from credentials supplied during case creation. If the authenticated principal does not have an email address, one must be provided. When a name is provided, an email must also be provided. This will be obfuscated if the user is a Google Support agent.
-	Email pulumi.StringInput `pulumi:"email"`
-	// Whether the actor is a Google support actor.
-	GoogleSupport pulumi.BoolInput `pulumi:"googleSupport"`
-	// An ID representing the user that was authenticated when the corresponding action was taken. This will be an email address, if one is available, or some other unique ID. See https://cloud.google.com/docs/authentication for more information on types of authentication.
-	PrincipalId pulumi.StringInput `pulumi:"principalId"`
-}
-
-func (ActorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActorResponse)(nil)).Elem()
-}
-
-func (i ActorResponseArgs) ToActorResponseOutput() ActorResponseOutput {
-	return i.ToActorResponseOutputWithContext(context.Background())
-}
-
-func (i ActorResponseArgs) ToActorResponseOutputWithContext(ctx context.Context) ActorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActorResponseOutput)
-}
-
-func (i ActorResponseArgs) ToActorResponsePtrOutput() ActorResponsePtrOutput {
-	return i.ToActorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ActorResponseArgs) ToActorResponsePtrOutputWithContext(ctx context.Context) ActorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActorResponseOutput).ToActorResponsePtrOutputWithContext(ctx)
-}
-
-// ActorResponsePtrInput is an input type that accepts ActorResponseArgs, ActorResponsePtr and ActorResponsePtrOutput values.
-// You can construct a concrete instance of `ActorResponsePtrInput` via:
-//
-//          ActorResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ActorResponsePtrInput interface {
-	pulumi.Input
-
-	ToActorResponsePtrOutput() ActorResponsePtrOutput
-	ToActorResponsePtrOutputWithContext(context.Context) ActorResponsePtrOutput
-}
-
-type actorResponsePtrType ActorResponseArgs
-
-func ActorResponsePtr(v *ActorResponseArgs) ActorResponsePtrInput {
-	return (*actorResponsePtrType)(v)
-}
-
-func (*actorResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActorResponse)(nil)).Elem()
-}
-
-func (i *actorResponsePtrType) ToActorResponsePtrOutput() ActorResponsePtrOutput {
-	return i.ToActorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *actorResponsePtrType) ToActorResponsePtrOutputWithContext(ctx context.Context) ActorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActorResponsePtrOutput)
-}
-
 // An object containing information about the effective user and authenticated principal responsible for an action.
 type ActorResponseOutput struct{ *pulumi.OutputState }
 
@@ -270,16 +194,6 @@ func (o ActorResponseOutput) ToActorResponseOutput() ActorResponseOutput {
 
 func (o ActorResponseOutput) ToActorResponseOutputWithContext(ctx context.Context) ActorResponseOutput {
 	return o
-}
-
-func (o ActorResponseOutput) ToActorResponsePtrOutput() ActorResponsePtrOutput {
-	return o.ToActorResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ActorResponseOutput) ToActorResponsePtrOutputWithContext(ctx context.Context) ActorResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActorResponse) *ActorResponse {
-		return &v
-	}).(ActorResponsePtrOutput)
 }
 
 // The name to display for the actor. If not provided, it is inferred from credentials supplied during case creation. When an email is provided, a display name must also be provided. This will be obfuscated if the user is a Google Support agent.
@@ -300,70 +214,6 @@ func (o ActorResponseOutput) GoogleSupport() pulumi.BoolOutput {
 // An ID representing the user that was authenticated when the corresponding action was taken. This will be an email address, if one is available, or some other unique ID. See https://cloud.google.com/docs/authentication for more information on types of authentication.
 func (o ActorResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ActorResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-type ActorResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ActorResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActorResponse)(nil)).Elem()
-}
-
-func (o ActorResponsePtrOutput) ToActorResponsePtrOutput() ActorResponsePtrOutput {
-	return o
-}
-
-func (o ActorResponsePtrOutput) ToActorResponsePtrOutputWithContext(ctx context.Context) ActorResponsePtrOutput {
-	return o
-}
-
-func (o ActorResponsePtrOutput) Elem() ActorResponseOutput {
-	return o.ApplyT(func(v *ActorResponse) ActorResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ActorResponse
-		return ret
-	}).(ActorResponseOutput)
-}
-
-// The name to display for the actor. If not provided, it is inferred from credentials supplied during case creation. When an email is provided, a display name must also be provided. This will be obfuscated if the user is a Google Support agent.
-func (o ActorResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The email address of the actor. If not provided, it is inferred from credentials supplied during case creation. If the authenticated principal does not have an email address, one must be provided. When a name is provided, an email must also be provided. This will be obfuscated if the user is a Google Support agent.
-func (o ActorResponsePtrOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Email
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether the actor is a Google support actor.
-func (o ActorResponsePtrOutput) GoogleSupport() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ActorResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.GoogleSupport
-	}).(pulumi.BoolPtrOutput)
-}
-
-// An ID representing the user that was authenticated when the corresponding action was taken. This will be an email address, if one is available, or some other unique ID. See https://cloud.google.com/docs/authentication for more information on types of authentication.
-func (o ActorResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
 }
 
 // A classification object with a product type and value.
@@ -531,76 +381,6 @@ type CaseClassificationResponse struct {
 	DisplayName string `pulumi:"displayName"`
 }
 
-// CaseClassificationResponseInput is an input type that accepts CaseClassificationResponseArgs and CaseClassificationResponseOutput values.
-// You can construct a concrete instance of `CaseClassificationResponseInput` via:
-//
-//          CaseClassificationResponseArgs{...}
-type CaseClassificationResponseInput interface {
-	pulumi.Input
-
-	ToCaseClassificationResponseOutput() CaseClassificationResponseOutput
-	ToCaseClassificationResponseOutputWithContext(context.Context) CaseClassificationResponseOutput
-}
-
-// A classification object with a product type and value.
-type CaseClassificationResponseArgs struct {
-	// The display name of the classification.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-}
-
-func (CaseClassificationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaseClassificationResponse)(nil)).Elem()
-}
-
-func (i CaseClassificationResponseArgs) ToCaseClassificationResponseOutput() CaseClassificationResponseOutput {
-	return i.ToCaseClassificationResponseOutputWithContext(context.Background())
-}
-
-func (i CaseClassificationResponseArgs) ToCaseClassificationResponseOutputWithContext(ctx context.Context) CaseClassificationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CaseClassificationResponseOutput)
-}
-
-func (i CaseClassificationResponseArgs) ToCaseClassificationResponsePtrOutput() CaseClassificationResponsePtrOutput {
-	return i.ToCaseClassificationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CaseClassificationResponseArgs) ToCaseClassificationResponsePtrOutputWithContext(ctx context.Context) CaseClassificationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CaseClassificationResponseOutput).ToCaseClassificationResponsePtrOutputWithContext(ctx)
-}
-
-// CaseClassificationResponsePtrInput is an input type that accepts CaseClassificationResponseArgs, CaseClassificationResponsePtr and CaseClassificationResponsePtrOutput values.
-// You can construct a concrete instance of `CaseClassificationResponsePtrInput` via:
-//
-//          CaseClassificationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CaseClassificationResponsePtrInput interface {
-	pulumi.Input
-
-	ToCaseClassificationResponsePtrOutput() CaseClassificationResponsePtrOutput
-	ToCaseClassificationResponsePtrOutputWithContext(context.Context) CaseClassificationResponsePtrOutput
-}
-
-type caseClassificationResponsePtrType CaseClassificationResponseArgs
-
-func CaseClassificationResponsePtr(v *CaseClassificationResponseArgs) CaseClassificationResponsePtrInput {
-	return (*caseClassificationResponsePtrType)(v)
-}
-
-func (*caseClassificationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CaseClassificationResponse)(nil)).Elem()
-}
-
-func (i *caseClassificationResponsePtrType) ToCaseClassificationResponsePtrOutput() CaseClassificationResponsePtrOutput {
-	return i.ToCaseClassificationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *caseClassificationResponsePtrType) ToCaseClassificationResponsePtrOutputWithContext(ctx context.Context) CaseClassificationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CaseClassificationResponsePtrOutput)
-}
-
 // A classification object with a product type and value.
 type CaseClassificationResponseOutput struct{ *pulumi.OutputState }
 
@@ -616,70 +396,20 @@ func (o CaseClassificationResponseOutput) ToCaseClassificationResponseOutputWith
 	return o
 }
 
-func (o CaseClassificationResponseOutput) ToCaseClassificationResponsePtrOutput() CaseClassificationResponsePtrOutput {
-	return o.ToCaseClassificationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CaseClassificationResponseOutput) ToCaseClassificationResponsePtrOutputWithContext(ctx context.Context) CaseClassificationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaseClassificationResponse) *CaseClassificationResponse {
-		return &v
-	}).(CaseClassificationResponsePtrOutput)
-}
-
 // The display name of the classification.
 func (o CaseClassificationResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v CaseClassificationResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-type CaseClassificationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CaseClassificationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CaseClassificationResponse)(nil)).Elem()
-}
-
-func (o CaseClassificationResponsePtrOutput) ToCaseClassificationResponsePtrOutput() CaseClassificationResponsePtrOutput {
-	return o
-}
-
-func (o CaseClassificationResponsePtrOutput) ToCaseClassificationResponsePtrOutputWithContext(ctx context.Context) CaseClassificationResponsePtrOutput {
-	return o
-}
-
-func (o CaseClassificationResponsePtrOutput) Elem() CaseClassificationResponseOutput {
-	return o.ApplyT(func(v *CaseClassificationResponse) CaseClassificationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CaseClassificationResponse
-		return ret
-	}).(CaseClassificationResponseOutput)
-}
-
-// The display name of the classification.
-func (o CaseClassificationResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CaseClassificationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActorInput)(nil)).Elem(), ActorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActorPtrInput)(nil)).Elem(), ActorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActorResponseInput)(nil)).Elem(), ActorResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActorResponsePtrInput)(nil)).Elem(), ActorResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaseClassificationInput)(nil)).Elem(), CaseClassificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaseClassificationPtrInput)(nil)).Elem(), CaseClassificationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CaseClassificationResponseInput)(nil)).Elem(), CaseClassificationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CaseClassificationResponsePtrInput)(nil)).Elem(), CaseClassificationResponseArgs{})
 	pulumi.RegisterOutputType(ActorOutput{})
 	pulumi.RegisterOutputType(ActorPtrOutput{})
 	pulumi.RegisterOutputType(ActorResponseOutput{})
-	pulumi.RegisterOutputType(ActorResponsePtrOutput{})
 	pulumi.RegisterOutputType(CaseClassificationOutput{})
 	pulumi.RegisterOutputType(CaseClassificationPtrOutput{})
 	pulumi.RegisterOutputType(CaseClassificationResponseOutput{})
-	pulumi.RegisterOutputType(CaseClassificationResponsePtrOutput{})
 }

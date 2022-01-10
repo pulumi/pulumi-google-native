@@ -18,78 +18,6 @@ type ActingUserResponse struct {
 	ImageUrl string `pulumi:"imageUrl"`
 }
 
-// ActingUserResponseInput is an input type that accepts ActingUserResponseArgs and ActingUserResponseOutput values.
-// You can construct a concrete instance of `ActingUserResponseInput` via:
-//
-//          ActingUserResponseArgs{...}
-type ActingUserResponseInput interface {
-	pulumi.Input
-
-	ToActingUserResponseOutput() ActingUserResponseOutput
-	ToActingUserResponseOutputWithContext(context.Context) ActingUserResponseOutput
-}
-
-// Contains metadata about the user who performed an action, such as creating a release or finalizing a version.
-type ActingUserResponseArgs struct {
-	// The email address of the user when the user performed the action.
-	Email pulumi.StringInput `pulumi:"email"`
-	// A profile image URL for the user. May not be present if the user has changed their email address or deleted their account.
-	ImageUrl pulumi.StringInput `pulumi:"imageUrl"`
-}
-
-func (ActingUserResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActingUserResponse)(nil)).Elem()
-}
-
-func (i ActingUserResponseArgs) ToActingUserResponseOutput() ActingUserResponseOutput {
-	return i.ToActingUserResponseOutputWithContext(context.Background())
-}
-
-func (i ActingUserResponseArgs) ToActingUserResponseOutputWithContext(ctx context.Context) ActingUserResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActingUserResponseOutput)
-}
-
-func (i ActingUserResponseArgs) ToActingUserResponsePtrOutput() ActingUserResponsePtrOutput {
-	return i.ToActingUserResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ActingUserResponseArgs) ToActingUserResponsePtrOutputWithContext(ctx context.Context) ActingUserResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActingUserResponseOutput).ToActingUserResponsePtrOutputWithContext(ctx)
-}
-
-// ActingUserResponsePtrInput is an input type that accepts ActingUserResponseArgs, ActingUserResponsePtr and ActingUserResponsePtrOutput values.
-// You can construct a concrete instance of `ActingUserResponsePtrInput` via:
-//
-//          ActingUserResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ActingUserResponsePtrInput interface {
-	pulumi.Input
-
-	ToActingUserResponsePtrOutput() ActingUserResponsePtrOutput
-	ToActingUserResponsePtrOutputWithContext(context.Context) ActingUserResponsePtrOutput
-}
-
-type actingUserResponsePtrType ActingUserResponseArgs
-
-func ActingUserResponsePtr(v *ActingUserResponseArgs) ActingUserResponsePtrInput {
-	return (*actingUserResponsePtrType)(v)
-}
-
-func (*actingUserResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActingUserResponse)(nil)).Elem()
-}
-
-func (i *actingUserResponsePtrType) ToActingUserResponsePtrOutput() ActingUserResponsePtrOutput {
-	return i.ToActingUserResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *actingUserResponsePtrType) ToActingUserResponsePtrOutputWithContext(ctx context.Context) ActingUserResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActingUserResponsePtrOutput)
-}
-
 // Contains metadata about the user who performed an action, such as creating a release or finalizing a version.
 type ActingUserResponseOutput struct{ *pulumi.OutputState }
 
@@ -105,16 +33,6 @@ func (o ActingUserResponseOutput) ToActingUserResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o ActingUserResponseOutput) ToActingUserResponsePtrOutput() ActingUserResponsePtrOutput {
-	return o.ToActingUserResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ActingUserResponseOutput) ToActingUserResponsePtrOutputWithContext(ctx context.Context) ActingUserResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActingUserResponse) *ActingUserResponse {
-		return &v
-	}).(ActingUserResponsePtrOutput)
-}
-
 // The email address of the user when the user performed the action.
 func (o ActingUserResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v ActingUserResponse) string { return v.Email }).(pulumi.StringOutput)
@@ -125,128 +43,12 @@ func (o ActingUserResponseOutput) ImageUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ActingUserResponse) string { return v.ImageUrl }).(pulumi.StringOutput)
 }
 
-type ActingUserResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ActingUserResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActingUserResponse)(nil)).Elem()
-}
-
-func (o ActingUserResponsePtrOutput) ToActingUserResponsePtrOutput() ActingUserResponsePtrOutput {
-	return o
-}
-
-func (o ActingUserResponsePtrOutput) ToActingUserResponsePtrOutputWithContext(ctx context.Context) ActingUserResponsePtrOutput {
-	return o
-}
-
-func (o ActingUserResponsePtrOutput) Elem() ActingUserResponseOutput {
-	return o.ApplyT(func(v *ActingUserResponse) ActingUserResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ActingUserResponse
-		return ret
-	}).(ActingUserResponseOutput)
-}
-
-// The email address of the user when the user performed the action.
-func (o ActingUserResponsePtrOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActingUserResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Email
-	}).(pulumi.StringPtrOutput)
-}
-
-// A profile image URL for the user. May not be present if the user has changed their email address or deleted their account.
-func (o ActingUserResponsePtrOutput) ImageUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActingUserResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ImageUrl
-	}).(pulumi.StringPtrOutput)
-}
-
 // Represents a DNS certificate challenge.
 type CertDnsChallengeResponse struct {
 	// The domain name upon which the DNS challenge must be satisfied.
 	DomainName string `pulumi:"domainName"`
 	// The value that must be present as a TXT record on the domain name to satisfy the challenge.
 	Token string `pulumi:"token"`
-}
-
-// CertDnsChallengeResponseInput is an input type that accepts CertDnsChallengeResponseArgs and CertDnsChallengeResponseOutput values.
-// You can construct a concrete instance of `CertDnsChallengeResponseInput` via:
-//
-//          CertDnsChallengeResponseArgs{...}
-type CertDnsChallengeResponseInput interface {
-	pulumi.Input
-
-	ToCertDnsChallengeResponseOutput() CertDnsChallengeResponseOutput
-	ToCertDnsChallengeResponseOutputWithContext(context.Context) CertDnsChallengeResponseOutput
-}
-
-// Represents a DNS certificate challenge.
-type CertDnsChallengeResponseArgs struct {
-	// The domain name upon which the DNS challenge must be satisfied.
-	DomainName pulumi.StringInput `pulumi:"domainName"`
-	// The value that must be present as a TXT record on the domain name to satisfy the challenge.
-	Token pulumi.StringInput `pulumi:"token"`
-}
-
-func (CertDnsChallengeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertDnsChallengeResponse)(nil)).Elem()
-}
-
-func (i CertDnsChallengeResponseArgs) ToCertDnsChallengeResponseOutput() CertDnsChallengeResponseOutput {
-	return i.ToCertDnsChallengeResponseOutputWithContext(context.Background())
-}
-
-func (i CertDnsChallengeResponseArgs) ToCertDnsChallengeResponseOutputWithContext(ctx context.Context) CertDnsChallengeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertDnsChallengeResponseOutput)
-}
-
-func (i CertDnsChallengeResponseArgs) ToCertDnsChallengeResponsePtrOutput() CertDnsChallengeResponsePtrOutput {
-	return i.ToCertDnsChallengeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CertDnsChallengeResponseArgs) ToCertDnsChallengeResponsePtrOutputWithContext(ctx context.Context) CertDnsChallengeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertDnsChallengeResponseOutput).ToCertDnsChallengeResponsePtrOutputWithContext(ctx)
-}
-
-// CertDnsChallengeResponsePtrInput is an input type that accepts CertDnsChallengeResponseArgs, CertDnsChallengeResponsePtr and CertDnsChallengeResponsePtrOutput values.
-// You can construct a concrete instance of `CertDnsChallengeResponsePtrInput` via:
-//
-//          CertDnsChallengeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CertDnsChallengeResponsePtrInput interface {
-	pulumi.Input
-
-	ToCertDnsChallengeResponsePtrOutput() CertDnsChallengeResponsePtrOutput
-	ToCertDnsChallengeResponsePtrOutputWithContext(context.Context) CertDnsChallengeResponsePtrOutput
-}
-
-type certDnsChallengeResponsePtrType CertDnsChallengeResponseArgs
-
-func CertDnsChallengeResponsePtr(v *CertDnsChallengeResponseArgs) CertDnsChallengeResponsePtrInput {
-	return (*certDnsChallengeResponsePtrType)(v)
-}
-
-func (*certDnsChallengeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertDnsChallengeResponse)(nil)).Elem()
-}
-
-func (i *certDnsChallengeResponsePtrType) ToCertDnsChallengeResponsePtrOutput() CertDnsChallengeResponsePtrOutput {
-	return i.ToCertDnsChallengeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *certDnsChallengeResponsePtrType) ToCertDnsChallengeResponsePtrOutputWithContext(ctx context.Context) CertDnsChallengeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertDnsChallengeResponsePtrOutput)
 }
 
 // Represents a DNS certificate challenge.
@@ -264,16 +66,6 @@ func (o CertDnsChallengeResponseOutput) ToCertDnsChallengeResponseOutputWithCont
 	return o
 }
 
-func (o CertDnsChallengeResponseOutput) ToCertDnsChallengeResponsePtrOutput() CertDnsChallengeResponsePtrOutput {
-	return o.ToCertDnsChallengeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CertDnsChallengeResponseOutput) ToCertDnsChallengeResponsePtrOutputWithContext(ctx context.Context) CertDnsChallengeResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertDnsChallengeResponse) *CertDnsChallengeResponse {
-		return &v
-	}).(CertDnsChallengeResponsePtrOutput)
-}
-
 // The domain name upon which the DNS challenge must be satisfied.
 func (o CertDnsChallengeResponseOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v CertDnsChallengeResponse) string { return v.DomainName }).(pulumi.StringOutput)
@@ -284,128 +76,12 @@ func (o CertDnsChallengeResponseOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v CertDnsChallengeResponse) string { return v.Token }).(pulumi.StringOutput)
 }
 
-type CertDnsChallengeResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CertDnsChallengeResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertDnsChallengeResponse)(nil)).Elem()
-}
-
-func (o CertDnsChallengeResponsePtrOutput) ToCertDnsChallengeResponsePtrOutput() CertDnsChallengeResponsePtrOutput {
-	return o
-}
-
-func (o CertDnsChallengeResponsePtrOutput) ToCertDnsChallengeResponsePtrOutputWithContext(ctx context.Context) CertDnsChallengeResponsePtrOutput {
-	return o
-}
-
-func (o CertDnsChallengeResponsePtrOutput) Elem() CertDnsChallengeResponseOutput {
-	return o.ApplyT(func(v *CertDnsChallengeResponse) CertDnsChallengeResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CertDnsChallengeResponse
-		return ret
-	}).(CertDnsChallengeResponseOutput)
-}
-
-// The domain name upon which the DNS challenge must be satisfied.
-func (o CertDnsChallengeResponsePtrOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CertDnsChallengeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DomainName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The value that must be present as a TXT record on the domain name to satisfy the challenge.
-func (o CertDnsChallengeResponsePtrOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CertDnsChallengeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Token
-	}).(pulumi.StringPtrOutput)
-}
-
 // Represents an HTTP certificate challenge.
 type CertHttpChallengeResponse struct {
 	// The URL path on which to serve the specified token to satisfy the certificate challenge.
 	Path string `pulumi:"path"`
 	// The token to serve at the specified URL path to satisfy the certificate challenge.
 	Token string `pulumi:"token"`
-}
-
-// CertHttpChallengeResponseInput is an input type that accepts CertHttpChallengeResponseArgs and CertHttpChallengeResponseOutput values.
-// You can construct a concrete instance of `CertHttpChallengeResponseInput` via:
-//
-//          CertHttpChallengeResponseArgs{...}
-type CertHttpChallengeResponseInput interface {
-	pulumi.Input
-
-	ToCertHttpChallengeResponseOutput() CertHttpChallengeResponseOutput
-	ToCertHttpChallengeResponseOutputWithContext(context.Context) CertHttpChallengeResponseOutput
-}
-
-// Represents an HTTP certificate challenge.
-type CertHttpChallengeResponseArgs struct {
-	// The URL path on which to serve the specified token to satisfy the certificate challenge.
-	Path pulumi.StringInput `pulumi:"path"`
-	// The token to serve at the specified URL path to satisfy the certificate challenge.
-	Token pulumi.StringInput `pulumi:"token"`
-}
-
-func (CertHttpChallengeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertHttpChallengeResponse)(nil)).Elem()
-}
-
-func (i CertHttpChallengeResponseArgs) ToCertHttpChallengeResponseOutput() CertHttpChallengeResponseOutput {
-	return i.ToCertHttpChallengeResponseOutputWithContext(context.Background())
-}
-
-func (i CertHttpChallengeResponseArgs) ToCertHttpChallengeResponseOutputWithContext(ctx context.Context) CertHttpChallengeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertHttpChallengeResponseOutput)
-}
-
-func (i CertHttpChallengeResponseArgs) ToCertHttpChallengeResponsePtrOutput() CertHttpChallengeResponsePtrOutput {
-	return i.ToCertHttpChallengeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CertHttpChallengeResponseArgs) ToCertHttpChallengeResponsePtrOutputWithContext(ctx context.Context) CertHttpChallengeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertHttpChallengeResponseOutput).ToCertHttpChallengeResponsePtrOutputWithContext(ctx)
-}
-
-// CertHttpChallengeResponsePtrInput is an input type that accepts CertHttpChallengeResponseArgs, CertHttpChallengeResponsePtr and CertHttpChallengeResponsePtrOutput values.
-// You can construct a concrete instance of `CertHttpChallengeResponsePtrInput` via:
-//
-//          CertHttpChallengeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CertHttpChallengeResponsePtrInput interface {
-	pulumi.Input
-
-	ToCertHttpChallengeResponsePtrOutput() CertHttpChallengeResponsePtrOutput
-	ToCertHttpChallengeResponsePtrOutputWithContext(context.Context) CertHttpChallengeResponsePtrOutput
-}
-
-type certHttpChallengeResponsePtrType CertHttpChallengeResponseArgs
-
-func CertHttpChallengeResponsePtr(v *CertHttpChallengeResponseArgs) CertHttpChallengeResponsePtrInput {
-	return (*certHttpChallengeResponsePtrType)(v)
-}
-
-func (*certHttpChallengeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertHttpChallengeResponse)(nil)).Elem()
-}
-
-func (i *certHttpChallengeResponsePtrType) ToCertHttpChallengeResponsePtrOutput() CertHttpChallengeResponsePtrOutput {
-	return i.ToCertHttpChallengeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *certHttpChallengeResponsePtrType) ToCertHttpChallengeResponsePtrOutputWithContext(ctx context.Context) CertHttpChallengeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertHttpChallengeResponsePtrOutput)
 }
 
 // Represents an HTTP certificate challenge.
@@ -423,16 +99,6 @@ func (o CertHttpChallengeResponseOutput) ToCertHttpChallengeResponseOutputWithCo
 	return o
 }
 
-func (o CertHttpChallengeResponseOutput) ToCertHttpChallengeResponsePtrOutput() CertHttpChallengeResponsePtrOutput {
-	return o.ToCertHttpChallengeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CertHttpChallengeResponseOutput) ToCertHttpChallengeResponsePtrOutputWithContext(ctx context.Context) CertHttpChallengeResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertHttpChallengeResponse) *CertHttpChallengeResponse {
-		return &v
-	}).(CertHttpChallengeResponsePtrOutput)
-}
-
 // The URL path on which to serve the specified token to satisfy the certificate challenge.
 func (o CertHttpChallengeResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v CertHttpChallengeResponse) string { return v.Path }).(pulumi.StringOutput)
@@ -443,87 +109,12 @@ func (o CertHttpChallengeResponseOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v CertHttpChallengeResponse) string { return v.Token }).(pulumi.StringOutput)
 }
 
-type CertHttpChallengeResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CertHttpChallengeResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertHttpChallengeResponse)(nil)).Elem()
-}
-
-func (o CertHttpChallengeResponsePtrOutput) ToCertHttpChallengeResponsePtrOutput() CertHttpChallengeResponsePtrOutput {
-	return o
-}
-
-func (o CertHttpChallengeResponsePtrOutput) ToCertHttpChallengeResponsePtrOutputWithContext(ctx context.Context) CertHttpChallengeResponsePtrOutput {
-	return o
-}
-
-func (o CertHttpChallengeResponsePtrOutput) Elem() CertHttpChallengeResponseOutput {
-	return o.ApplyT(func(v *CertHttpChallengeResponse) CertHttpChallengeResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CertHttpChallengeResponse
-		return ret
-	}).(CertHttpChallengeResponseOutput)
-}
-
-// The URL path on which to serve the specified token to satisfy the certificate challenge.
-func (o CertHttpChallengeResponsePtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CertHttpChallengeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-// The token to serve at the specified URL path to satisfy the certificate challenge.
-func (o CertHttpChallengeResponsePtrOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CertHttpChallengeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Token
-	}).(pulumi.StringPtrOutput)
-}
-
 // A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
 type CloudRunRewriteResponse struct {
 	// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
 	Region string `pulumi:"region"`
 	// User-defined ID of the Cloud Run service.
 	ServiceId string `pulumi:"serviceId"`
-}
-
-// CloudRunRewriteResponseInput is an input type that accepts CloudRunRewriteResponseArgs and CloudRunRewriteResponseOutput values.
-// You can construct a concrete instance of `CloudRunRewriteResponseInput` via:
-//
-//          CloudRunRewriteResponseArgs{...}
-type CloudRunRewriteResponseInput interface {
-	pulumi.Input
-
-	ToCloudRunRewriteResponseOutput() CloudRunRewriteResponseOutput
-	ToCloudRunRewriteResponseOutputWithContext(context.Context) CloudRunRewriteResponseOutput
-}
-
-// A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
-type CloudRunRewriteResponseArgs struct {
-	// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
-	Region pulumi.StringInput `pulumi:"region"`
-	// User-defined ID of the Cloud Run service.
-	ServiceId pulumi.StringInput `pulumi:"serviceId"`
-}
-
-func (CloudRunRewriteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudRunRewriteResponse)(nil)).Elem()
-}
-
-func (i CloudRunRewriteResponseArgs) ToCloudRunRewriteResponseOutput() CloudRunRewriteResponseOutput {
-	return i.ToCloudRunRewriteResponseOutputWithContext(context.Background())
-}
-
-func (i CloudRunRewriteResponseArgs) ToCloudRunRewriteResponseOutputWithContext(ctx context.Context) CloudRunRewriteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudRunRewriteResponseOutput)
 }
 
 // A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
@@ -571,90 +162,6 @@ type DomainProvisioningResponse struct {
 	ExpectedIps []string `pulumi:"expectedIps"`
 }
 
-// DomainProvisioningResponseInput is an input type that accepts DomainProvisioningResponseArgs and DomainProvisioningResponseOutput values.
-// You can construct a concrete instance of `DomainProvisioningResponseInput` via:
-//
-//          DomainProvisioningResponseArgs{...}
-type DomainProvisioningResponseInput interface {
-	pulumi.Input
-
-	ToDomainProvisioningResponseOutput() DomainProvisioningResponseOutput
-	ToDomainProvisioningResponseOutputWithContext(context.Context) DomainProvisioningResponseOutput
-}
-
-// The current certificate provisioning status information for a domain.
-type DomainProvisioningResponseArgs struct {
-	// The TXT records (for the certificate challenge) that were found at the last DNS fetch.
-	CertChallengeDiscoveredTxt pulumi.StringArrayInput `pulumi:"certChallengeDiscoveredTxt"`
-	// The DNS challenge for generating a certificate.
-	CertChallengeDns CertDnsChallengeResponseInput `pulumi:"certChallengeDns"`
-	// The HTTP challenge for generating a certificate.
-	CertChallengeHttp CertHttpChallengeResponseInput `pulumi:"certChallengeHttp"`
-	// The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain.
-	CertStatus pulumi.StringInput `pulumi:"certStatus"`
-	// The IPs found at the last DNS fetch.
-	DiscoveredIps pulumi.StringArrayInput `pulumi:"discoveredIps"`
-	// The time at which the last DNS fetch occurred.
-	DnsFetchTime pulumi.StringInput `pulumi:"dnsFetchTime"`
-	// The DNS record match status as of the last DNS fetch.
-	DnsStatus pulumi.StringInput `pulumi:"dnsStatus"`
-	// The list of IPs to which the domain is expected to resolve.
-	ExpectedIps pulumi.StringArrayInput `pulumi:"expectedIps"`
-}
-
-func (DomainProvisioningResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainProvisioningResponse)(nil)).Elem()
-}
-
-func (i DomainProvisioningResponseArgs) ToDomainProvisioningResponseOutput() DomainProvisioningResponseOutput {
-	return i.ToDomainProvisioningResponseOutputWithContext(context.Background())
-}
-
-func (i DomainProvisioningResponseArgs) ToDomainProvisioningResponseOutputWithContext(ctx context.Context) DomainProvisioningResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainProvisioningResponseOutput)
-}
-
-func (i DomainProvisioningResponseArgs) ToDomainProvisioningResponsePtrOutput() DomainProvisioningResponsePtrOutput {
-	return i.ToDomainProvisioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DomainProvisioningResponseArgs) ToDomainProvisioningResponsePtrOutputWithContext(ctx context.Context) DomainProvisioningResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainProvisioningResponseOutput).ToDomainProvisioningResponsePtrOutputWithContext(ctx)
-}
-
-// DomainProvisioningResponsePtrInput is an input type that accepts DomainProvisioningResponseArgs, DomainProvisioningResponsePtr and DomainProvisioningResponsePtrOutput values.
-// You can construct a concrete instance of `DomainProvisioningResponsePtrInput` via:
-//
-//          DomainProvisioningResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DomainProvisioningResponsePtrInput interface {
-	pulumi.Input
-
-	ToDomainProvisioningResponsePtrOutput() DomainProvisioningResponsePtrOutput
-	ToDomainProvisioningResponsePtrOutputWithContext(context.Context) DomainProvisioningResponsePtrOutput
-}
-
-type domainProvisioningResponsePtrType DomainProvisioningResponseArgs
-
-func DomainProvisioningResponsePtr(v *DomainProvisioningResponseArgs) DomainProvisioningResponsePtrInput {
-	return (*domainProvisioningResponsePtrType)(v)
-}
-
-func (*domainProvisioningResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainProvisioningResponse)(nil)).Elem()
-}
-
-func (i *domainProvisioningResponsePtrType) ToDomainProvisioningResponsePtrOutput() DomainProvisioningResponsePtrOutput {
-	return i.ToDomainProvisioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *domainProvisioningResponsePtrType) ToDomainProvisioningResponsePtrOutputWithContext(ctx context.Context) DomainProvisioningResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainProvisioningResponsePtrOutput)
-}
-
 // The current certificate provisioning status information for a domain.
 type DomainProvisioningResponseOutput struct{ *pulumi.OutputState }
 
@@ -668,16 +175,6 @@ func (o DomainProvisioningResponseOutput) ToDomainProvisioningResponseOutput() D
 
 func (o DomainProvisioningResponseOutput) ToDomainProvisioningResponseOutputWithContext(ctx context.Context) DomainProvisioningResponseOutput {
 	return o
-}
-
-func (o DomainProvisioningResponseOutput) ToDomainProvisioningResponsePtrOutput() DomainProvisioningResponsePtrOutput {
-	return o.ToDomainProvisioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DomainProvisioningResponseOutput) ToDomainProvisioningResponsePtrOutputWithContext(ctx context.Context) DomainProvisioningResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainProvisioningResponse) *DomainProvisioningResponse {
-		return &v
-	}).(DomainProvisioningResponsePtrOutput)
 }
 
 // The TXT records (for the certificate challenge) that were found at the last DNS fetch.
@@ -718,110 +215,6 @@ func (o DomainProvisioningResponseOutput) DnsStatus() pulumi.StringOutput {
 // The list of IPs to which the domain is expected to resolve.
 func (o DomainProvisioningResponseOutput) ExpectedIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DomainProvisioningResponse) []string { return v.ExpectedIps }).(pulumi.StringArrayOutput)
-}
-
-type DomainProvisioningResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DomainProvisioningResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainProvisioningResponse)(nil)).Elem()
-}
-
-func (o DomainProvisioningResponsePtrOutput) ToDomainProvisioningResponsePtrOutput() DomainProvisioningResponsePtrOutput {
-	return o
-}
-
-func (o DomainProvisioningResponsePtrOutput) ToDomainProvisioningResponsePtrOutputWithContext(ctx context.Context) DomainProvisioningResponsePtrOutput {
-	return o
-}
-
-func (o DomainProvisioningResponsePtrOutput) Elem() DomainProvisioningResponseOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) DomainProvisioningResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DomainProvisioningResponse
-		return ret
-	}).(DomainProvisioningResponseOutput)
-}
-
-// The TXT records (for the certificate challenge) that were found at the last DNS fetch.
-func (o DomainProvisioningResponsePtrOutput) CertChallengeDiscoveredTxt() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CertChallengeDiscoveredTxt
-	}).(pulumi.StringArrayOutput)
-}
-
-// The DNS challenge for generating a certificate.
-func (o DomainProvisioningResponsePtrOutput) CertChallengeDns() CertDnsChallengeResponsePtrOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) *CertDnsChallengeResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CertChallengeDns
-	}).(CertDnsChallengeResponsePtrOutput)
-}
-
-// The HTTP challenge for generating a certificate.
-func (o DomainProvisioningResponsePtrOutput) CertChallengeHttp() CertHttpChallengeResponsePtrOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) *CertHttpChallengeResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CertChallengeHttp
-	}).(CertHttpChallengeResponsePtrOutput)
-}
-
-// The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain.
-func (o DomainProvisioningResponsePtrOutput) CertStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CertStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IPs found at the last DNS fetch.
-func (o DomainProvisioningResponsePtrOutput) DiscoveredIps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DiscoveredIps
-	}).(pulumi.StringArrayOutput)
-}
-
-// The time at which the last DNS fetch occurred.
-func (o DomainProvisioningResponsePtrOutput) DnsFetchTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DnsFetchTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The DNS record match status as of the last DNS fetch.
-func (o DomainProvisioningResponsePtrOutput) DnsStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DnsStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// The list of IPs to which the domain is expected to resolve.
-func (o DomainProvisioningResponsePtrOutput) ExpectedIps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExpectedIps
-	}).(pulumi.StringArrayOutput)
 }
 
 // Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
@@ -991,78 +384,6 @@ type DomainRedirectResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// DomainRedirectResponseInput is an input type that accepts DomainRedirectResponseArgs and DomainRedirectResponseOutput values.
-// You can construct a concrete instance of `DomainRedirectResponseInput` via:
-//
-//          DomainRedirectResponseArgs{...}
-type DomainRedirectResponseInput interface {
-	pulumi.Input
-
-	ToDomainRedirectResponseOutput() DomainRedirectResponseOutput
-	ToDomainRedirectResponseOutputWithContext(context.Context) DomainRedirectResponseOutput
-}
-
-// Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
-type DomainRedirectResponseArgs struct {
-	// The domain name to redirect to.
-	DomainName pulumi.StringInput `pulumi:"domainName"`
-	// The redirect status code.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (DomainRedirectResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainRedirectResponse)(nil)).Elem()
-}
-
-func (i DomainRedirectResponseArgs) ToDomainRedirectResponseOutput() DomainRedirectResponseOutput {
-	return i.ToDomainRedirectResponseOutputWithContext(context.Background())
-}
-
-func (i DomainRedirectResponseArgs) ToDomainRedirectResponseOutputWithContext(ctx context.Context) DomainRedirectResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectResponseOutput)
-}
-
-func (i DomainRedirectResponseArgs) ToDomainRedirectResponsePtrOutput() DomainRedirectResponsePtrOutput {
-	return i.ToDomainRedirectResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DomainRedirectResponseArgs) ToDomainRedirectResponsePtrOutputWithContext(ctx context.Context) DomainRedirectResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectResponseOutput).ToDomainRedirectResponsePtrOutputWithContext(ctx)
-}
-
-// DomainRedirectResponsePtrInput is an input type that accepts DomainRedirectResponseArgs, DomainRedirectResponsePtr and DomainRedirectResponsePtrOutput values.
-// You can construct a concrete instance of `DomainRedirectResponsePtrInput` via:
-//
-//          DomainRedirectResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DomainRedirectResponsePtrInput interface {
-	pulumi.Input
-
-	ToDomainRedirectResponsePtrOutput() DomainRedirectResponsePtrOutput
-	ToDomainRedirectResponsePtrOutputWithContext(context.Context) DomainRedirectResponsePtrOutput
-}
-
-type domainRedirectResponsePtrType DomainRedirectResponseArgs
-
-func DomainRedirectResponsePtr(v *DomainRedirectResponseArgs) DomainRedirectResponsePtrInput {
-	return (*domainRedirectResponsePtrType)(v)
-}
-
-func (*domainRedirectResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainRedirectResponse)(nil)).Elem()
-}
-
-func (i *domainRedirectResponsePtrType) ToDomainRedirectResponsePtrOutput() DomainRedirectResponsePtrOutput {
-	return i.ToDomainRedirectResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *domainRedirectResponsePtrType) ToDomainRedirectResponsePtrOutputWithContext(ctx context.Context) DomainRedirectResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectResponsePtrOutput)
-}
-
 // Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
 type DomainRedirectResponseOutput struct{ *pulumi.OutputState }
 
@@ -1078,16 +399,6 @@ func (o DomainRedirectResponseOutput) ToDomainRedirectResponseOutputWithContext(
 	return o
 }
 
-func (o DomainRedirectResponseOutput) ToDomainRedirectResponsePtrOutput() DomainRedirectResponsePtrOutput {
-	return o.ToDomainRedirectResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DomainRedirectResponseOutput) ToDomainRedirectResponsePtrOutputWithContext(ctx context.Context) DomainRedirectResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainRedirectResponse) *DomainRedirectResponse {
-		return &v
-	}).(DomainRedirectResponsePtrOutput)
-}
-
 // The domain name to redirect to.
 func (o DomainRedirectResponseOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainRedirectResponse) string { return v.DomainName }).(pulumi.StringOutput)
@@ -1098,50 +409,6 @@ func (o DomainRedirectResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainRedirectResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type DomainRedirectResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DomainRedirectResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainRedirectResponse)(nil)).Elem()
-}
-
-func (o DomainRedirectResponsePtrOutput) ToDomainRedirectResponsePtrOutput() DomainRedirectResponsePtrOutput {
-	return o
-}
-
-func (o DomainRedirectResponsePtrOutput) ToDomainRedirectResponsePtrOutputWithContext(ctx context.Context) DomainRedirectResponsePtrOutput {
-	return o
-}
-
-func (o DomainRedirectResponsePtrOutput) Elem() DomainRedirectResponseOutput {
-	return o.ApplyT(func(v *DomainRedirectResponse) DomainRedirectResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DomainRedirectResponse
-		return ret
-	}).(DomainRedirectResponseOutput)
-}
-
-// The domain name to redirect to.
-func (o DomainRedirectResponsePtrOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainRedirectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DomainName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The redirect status code.
-func (o DomainRedirectResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainRedirectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
 // A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
 type HeaderResponse struct {
 	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
@@ -1150,64 +417,6 @@ type HeaderResponse struct {
 	Headers map[string]string `pulumi:"headers"`
 	// The user-supplied RE2 regular expression to match against the request URL path.
 	Regex string `pulumi:"regex"`
-}
-
-// HeaderResponseInput is an input type that accepts HeaderResponseArgs and HeaderResponseOutput values.
-// You can construct a concrete instance of `HeaderResponseInput` via:
-//
-//          HeaderResponseArgs{...}
-type HeaderResponseInput interface {
-	pulumi.Input
-
-	ToHeaderResponseOutput() HeaderResponseOutput
-	ToHeaderResponseOutputWithContext(context.Context) HeaderResponseOutput
-}
-
-// A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
-type HeaderResponseArgs struct {
-	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
-	Glob pulumi.StringInput `pulumi:"glob"`
-	// The additional headers to add to the response.
-	Headers pulumi.StringMapInput `pulumi:"headers"`
-	// The user-supplied RE2 regular expression to match against the request URL path.
-	Regex pulumi.StringInput `pulumi:"regex"`
-}
-
-func (HeaderResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HeaderResponse)(nil)).Elem()
-}
-
-func (i HeaderResponseArgs) ToHeaderResponseOutput() HeaderResponseOutput {
-	return i.ToHeaderResponseOutputWithContext(context.Background())
-}
-
-func (i HeaderResponseArgs) ToHeaderResponseOutputWithContext(ctx context.Context) HeaderResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HeaderResponseOutput)
-}
-
-// HeaderResponseArrayInput is an input type that accepts HeaderResponseArray and HeaderResponseArrayOutput values.
-// You can construct a concrete instance of `HeaderResponseArrayInput` via:
-//
-//          HeaderResponseArray{ HeaderResponseArgs{...} }
-type HeaderResponseArrayInput interface {
-	pulumi.Input
-
-	ToHeaderResponseArrayOutput() HeaderResponseArrayOutput
-	ToHeaderResponseArrayOutputWithContext(context.Context) HeaderResponseArrayOutput
-}
-
-type HeaderResponseArray []HeaderResponseInput
-
-func (HeaderResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HeaderResponse)(nil)).Elem()
-}
-
-func (i HeaderResponseArray) ToHeaderResponseArrayOutput() HeaderResponseArrayOutput {
-	return i.ToHeaderResponseArrayOutputWithContext(context.Background())
-}
-
-func (i HeaderResponseArray) ToHeaderResponseArrayOutputWithContext(ctx context.Context) HeaderResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HeaderResponseArrayOutput)
 }
 
 // A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
@@ -1266,76 +475,6 @@ type I18nConfigResponse struct {
 	Root string `pulumi:"root"`
 }
 
-// I18nConfigResponseInput is an input type that accepts I18nConfigResponseArgs and I18nConfigResponseOutput values.
-// You can construct a concrete instance of `I18nConfigResponseInput` via:
-//
-//          I18nConfigResponseArgs{...}
-type I18nConfigResponseInput interface {
-	pulumi.Input
-
-	ToI18nConfigResponseOutput() I18nConfigResponseOutput
-	ToI18nConfigResponseOutputWithContext(context.Context) I18nConfigResponseOutput
-}
-
-// If provided, i18n rewrites are enabled.
-type I18nConfigResponseArgs struct {
-	// The user-supplied path where country and language specific content will be looked for within the public directory.
-	Root pulumi.StringInput `pulumi:"root"`
-}
-
-func (I18nConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*I18nConfigResponse)(nil)).Elem()
-}
-
-func (i I18nConfigResponseArgs) ToI18nConfigResponseOutput() I18nConfigResponseOutput {
-	return i.ToI18nConfigResponseOutputWithContext(context.Background())
-}
-
-func (i I18nConfigResponseArgs) ToI18nConfigResponseOutputWithContext(ctx context.Context) I18nConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(I18nConfigResponseOutput)
-}
-
-func (i I18nConfigResponseArgs) ToI18nConfigResponsePtrOutput() I18nConfigResponsePtrOutput {
-	return i.ToI18nConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i I18nConfigResponseArgs) ToI18nConfigResponsePtrOutputWithContext(ctx context.Context) I18nConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(I18nConfigResponseOutput).ToI18nConfigResponsePtrOutputWithContext(ctx)
-}
-
-// I18nConfigResponsePtrInput is an input type that accepts I18nConfigResponseArgs, I18nConfigResponsePtr and I18nConfigResponsePtrOutput values.
-// You can construct a concrete instance of `I18nConfigResponsePtrInput` via:
-//
-//          I18nConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type I18nConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToI18nConfigResponsePtrOutput() I18nConfigResponsePtrOutput
-	ToI18nConfigResponsePtrOutputWithContext(context.Context) I18nConfigResponsePtrOutput
-}
-
-type i18nConfigResponsePtrType I18nConfigResponseArgs
-
-func I18nConfigResponsePtr(v *I18nConfigResponseArgs) I18nConfigResponsePtrInput {
-	return (*i18nConfigResponsePtrType)(v)
-}
-
-func (*i18nConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**I18nConfigResponse)(nil)).Elem()
-}
-
-func (i *i18nConfigResponsePtrType) ToI18nConfigResponsePtrOutput() I18nConfigResponsePtrOutput {
-	return i.ToI18nConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *i18nConfigResponsePtrType) ToI18nConfigResponsePtrOutputWithContext(ctx context.Context) I18nConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(I18nConfigResponsePtrOutput)
-}
-
 // If provided, i18n rewrites are enabled.
 type I18nConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -1351,53 +490,9 @@ func (o I18nConfigResponseOutput) ToI18nConfigResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o I18nConfigResponseOutput) ToI18nConfigResponsePtrOutput() I18nConfigResponsePtrOutput {
-	return o.ToI18nConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o I18nConfigResponseOutput) ToI18nConfigResponsePtrOutputWithContext(ctx context.Context) I18nConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v I18nConfigResponse) *I18nConfigResponse {
-		return &v
-	}).(I18nConfigResponsePtrOutput)
-}
-
 // The user-supplied path where country and language specific content will be looked for within the public directory.
 func (o I18nConfigResponseOutput) Root() pulumi.StringOutput {
 	return o.ApplyT(func(v I18nConfigResponse) string { return v.Root }).(pulumi.StringOutput)
-}
-
-type I18nConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (I18nConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**I18nConfigResponse)(nil)).Elem()
-}
-
-func (o I18nConfigResponsePtrOutput) ToI18nConfigResponsePtrOutput() I18nConfigResponsePtrOutput {
-	return o
-}
-
-func (o I18nConfigResponsePtrOutput) ToI18nConfigResponsePtrOutputWithContext(ctx context.Context) I18nConfigResponsePtrOutput {
-	return o
-}
-
-func (o I18nConfigResponsePtrOutput) Elem() I18nConfigResponseOutput {
-	return o.ApplyT(func(v *I18nConfigResponse) I18nConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret I18nConfigResponse
-		return ret
-	}).(I18nConfigResponseOutput)
-}
-
-// The user-supplied path where country and language specific content will be looked for within the public directory.
-func (o I18nConfigResponsePtrOutput) Root() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *I18nConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Root
-	}).(pulumi.StringPtrOutput)
 }
 
 // A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
@@ -1410,66 +505,6 @@ type RedirectResponse struct {
 	Regex string `pulumi:"regex"`
 	// The status HTTP code to return in the response. It must be a valid 3xx status code.
 	StatusCode int `pulumi:"statusCode"`
-}
-
-// RedirectResponseInput is an input type that accepts RedirectResponseArgs and RedirectResponseOutput values.
-// You can construct a concrete instance of `RedirectResponseInput` via:
-//
-//          RedirectResponseArgs{...}
-type RedirectResponseInput interface {
-	pulumi.Input
-
-	ToRedirectResponseOutput() RedirectResponseOutput
-	ToRedirectResponseOutputWithContext(context.Context) RedirectResponseOutput
-}
-
-// A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
-type RedirectResponseArgs struct {
-	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
-	Glob pulumi.StringInput `pulumi:"glob"`
-	// The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
-	Location pulumi.StringInput `pulumi:"location"`
-	// The user-supplied RE2 regular expression to match against the request URL path.
-	Regex pulumi.StringInput `pulumi:"regex"`
-	// The status HTTP code to return in the response. It must be a valid 3xx status code.
-	StatusCode pulumi.IntInput `pulumi:"statusCode"`
-}
-
-func (RedirectResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RedirectResponse)(nil)).Elem()
-}
-
-func (i RedirectResponseArgs) ToRedirectResponseOutput() RedirectResponseOutput {
-	return i.ToRedirectResponseOutputWithContext(context.Background())
-}
-
-func (i RedirectResponseArgs) ToRedirectResponseOutputWithContext(ctx context.Context) RedirectResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RedirectResponseOutput)
-}
-
-// RedirectResponseArrayInput is an input type that accepts RedirectResponseArray and RedirectResponseArrayOutput values.
-// You can construct a concrete instance of `RedirectResponseArrayInput` via:
-//
-//          RedirectResponseArray{ RedirectResponseArgs{...} }
-type RedirectResponseArrayInput interface {
-	pulumi.Input
-
-	ToRedirectResponseArrayOutput() RedirectResponseArrayOutput
-	ToRedirectResponseArrayOutputWithContext(context.Context) RedirectResponseArrayOutput
-}
-
-type RedirectResponseArray []RedirectResponseInput
-
-func (RedirectResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RedirectResponse)(nil)).Elem()
-}
-
-func (i RedirectResponseArray) ToRedirectResponseArrayOutput() RedirectResponseArrayOutput {
-	return i.ToRedirectResponseArrayOutputWithContext(context.Background())
-}
-
-func (i RedirectResponseArray) ToRedirectResponseArrayOutputWithContext(ctx context.Context) RedirectResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RedirectResponseArrayOutput)
 }
 
 // A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
@@ -1543,86 +578,6 @@ type ReleaseResponse struct {
 	Version VersionResponse `pulumi:"version"`
 }
 
-// ReleaseResponseInput is an input type that accepts ReleaseResponseArgs and ReleaseResponseOutput values.
-// You can construct a concrete instance of `ReleaseResponseInput` via:
-//
-//          ReleaseResponseArgs{...}
-type ReleaseResponseInput interface {
-	pulumi.Input
-
-	ToReleaseResponseOutput() ReleaseResponseOutput
-	ToReleaseResponseOutputWithContext(context.Context) ReleaseResponseOutput
-}
-
-//  A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at a particular time.
-type ReleaseResponseArgs struct {
-	// The deploy description when the release was created. The value can be up to 512 characters.
-	Message pulumi.StringInput `pulumi:"message"`
-	// The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create).
-	Name pulumi.StringInput `pulumi:"name"`
-	// The time at which the version is set to be public.
-	ReleaseTime pulumi.StringInput `pulumi:"releaseTime"`
-	// Identifies the user who created the release.
-	ReleaseUser ActingUserResponseInput `pulumi:"releaseUser"`
-	// Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The configuration and content that was released.
-	Version VersionResponseInput `pulumi:"version"`
-}
-
-func (ReleaseResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReleaseResponse)(nil)).Elem()
-}
-
-func (i ReleaseResponseArgs) ToReleaseResponseOutput() ReleaseResponseOutput {
-	return i.ToReleaseResponseOutputWithContext(context.Background())
-}
-
-func (i ReleaseResponseArgs) ToReleaseResponseOutputWithContext(ctx context.Context) ReleaseResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReleaseResponseOutput)
-}
-
-func (i ReleaseResponseArgs) ToReleaseResponsePtrOutput() ReleaseResponsePtrOutput {
-	return i.ToReleaseResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ReleaseResponseArgs) ToReleaseResponsePtrOutputWithContext(ctx context.Context) ReleaseResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReleaseResponseOutput).ToReleaseResponsePtrOutputWithContext(ctx)
-}
-
-// ReleaseResponsePtrInput is an input type that accepts ReleaseResponseArgs, ReleaseResponsePtr and ReleaseResponsePtrOutput values.
-// You can construct a concrete instance of `ReleaseResponsePtrInput` via:
-//
-//          ReleaseResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ReleaseResponsePtrInput interface {
-	pulumi.Input
-
-	ToReleaseResponsePtrOutput() ReleaseResponsePtrOutput
-	ToReleaseResponsePtrOutputWithContext(context.Context) ReleaseResponsePtrOutput
-}
-
-type releaseResponsePtrType ReleaseResponseArgs
-
-func ReleaseResponsePtr(v *ReleaseResponseArgs) ReleaseResponsePtrInput {
-	return (*releaseResponsePtrType)(v)
-}
-
-func (*releaseResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReleaseResponse)(nil)).Elem()
-}
-
-func (i *releaseResponsePtrType) ToReleaseResponsePtrOutput() ReleaseResponsePtrOutput {
-	return i.ToReleaseResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *releaseResponsePtrType) ToReleaseResponsePtrOutputWithContext(ctx context.Context) ReleaseResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReleaseResponsePtrOutput)
-}
-
 //  A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at a particular time.
 type ReleaseResponseOutput struct{ *pulumi.OutputState }
 
@@ -1636,16 +591,6 @@ func (o ReleaseResponseOutput) ToReleaseResponseOutput() ReleaseResponseOutput {
 
 func (o ReleaseResponseOutput) ToReleaseResponseOutputWithContext(ctx context.Context) ReleaseResponseOutput {
 	return o
-}
-
-func (o ReleaseResponseOutput) ToReleaseResponsePtrOutput() ReleaseResponsePtrOutput {
-	return o.ToReleaseResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ReleaseResponseOutput) ToReleaseResponsePtrOutputWithContext(ctx context.Context) ReleaseResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseResponse) *ReleaseResponse {
-		return &v
-	}).(ReleaseResponsePtrOutput)
 }
 
 // The deploy description when the release was created. The value can be up to 512 characters.
@@ -1678,90 +623,6 @@ func (o ReleaseResponseOutput) Version() VersionResponseOutput {
 	return o.ApplyT(func(v ReleaseResponse) VersionResponse { return v.Version }).(VersionResponseOutput)
 }
 
-type ReleaseResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ReleaseResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReleaseResponse)(nil)).Elem()
-}
-
-func (o ReleaseResponsePtrOutput) ToReleaseResponsePtrOutput() ReleaseResponsePtrOutput {
-	return o
-}
-
-func (o ReleaseResponsePtrOutput) ToReleaseResponsePtrOutputWithContext(ctx context.Context) ReleaseResponsePtrOutput {
-	return o
-}
-
-func (o ReleaseResponsePtrOutput) Elem() ReleaseResponseOutput {
-	return o.ApplyT(func(v *ReleaseResponse) ReleaseResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ReleaseResponse
-		return ret
-	}).(ReleaseResponseOutput)
-}
-
-// The deploy description when the release was created. The value can be up to 512 characters.
-func (o ReleaseResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReleaseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
-// The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create).
-func (o ReleaseResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReleaseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time at which the version is set to be public.
-func (o ReleaseResponsePtrOutput) ReleaseTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReleaseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ReleaseTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identifies the user who created the release.
-func (o ReleaseResponsePtrOutput) ReleaseUser() ActingUserResponsePtrOutput {
-	return o.ApplyT(func(v *ReleaseResponse) *ActingUserResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ReleaseUser
-	}).(ActingUserResponsePtrOutput)
-}
-
-// Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
-func (o ReleaseResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReleaseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The configuration and content that was released.
-func (o ReleaseResponsePtrOutput) Version() VersionResponsePtrOutput {
-	return o.ApplyT(func(v *ReleaseResponse) *VersionResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(VersionResponsePtrOutput)
-}
-
 // A [`Rewrite`](https://firebase.google.com/docs/hosting/full-config#rewrites) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
 type RewriteResponse struct {
 	// The request will be forwarded to Firebase Dynamic Links.
@@ -1776,70 +637,6 @@ type RewriteResponse struct {
 	Regex string `pulumi:"regex"`
 	// The request will be forwarded to Cloud Run.
 	Run CloudRunRewriteResponse `pulumi:"run"`
-}
-
-// RewriteResponseInput is an input type that accepts RewriteResponseArgs and RewriteResponseOutput values.
-// You can construct a concrete instance of `RewriteResponseInput` via:
-//
-//          RewriteResponseArgs{...}
-type RewriteResponseInput interface {
-	pulumi.Input
-
-	ToRewriteResponseOutput() RewriteResponseOutput
-	ToRewriteResponseOutputWithContext(context.Context) RewriteResponseOutput
-}
-
-// A [`Rewrite`](https://firebase.google.com/docs/hosting/full-config#rewrites) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
-type RewriteResponseArgs struct {
-	// The request will be forwarded to Firebase Dynamic Links.
-	DynamicLinks pulumi.BoolInput `pulumi:"dynamicLinks"`
-	// The function to proxy requests to. Must match the exported function name exactly.
-	Function pulumi.StringInput `pulumi:"function"`
-	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
-	Glob pulumi.StringInput `pulumi:"glob"`
-	// The URL path to rewrite the request to.
-	Path pulumi.StringInput `pulumi:"path"`
-	// The user-supplied RE2 regular expression to match against the request URL path.
-	Regex pulumi.StringInput `pulumi:"regex"`
-	// The request will be forwarded to Cloud Run.
-	Run CloudRunRewriteResponseInput `pulumi:"run"`
-}
-
-func (RewriteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RewriteResponse)(nil)).Elem()
-}
-
-func (i RewriteResponseArgs) ToRewriteResponseOutput() RewriteResponseOutput {
-	return i.ToRewriteResponseOutputWithContext(context.Background())
-}
-
-func (i RewriteResponseArgs) ToRewriteResponseOutputWithContext(ctx context.Context) RewriteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RewriteResponseOutput)
-}
-
-// RewriteResponseArrayInput is an input type that accepts RewriteResponseArray and RewriteResponseArrayOutput values.
-// You can construct a concrete instance of `RewriteResponseArrayInput` via:
-//
-//          RewriteResponseArray{ RewriteResponseArgs{...} }
-type RewriteResponseArrayInput interface {
-	pulumi.Input
-
-	ToRewriteResponseArrayOutput() RewriteResponseArrayOutput
-	ToRewriteResponseArrayOutputWithContext(context.Context) RewriteResponseArrayOutput
-}
-
-type RewriteResponseArray []RewriteResponseInput
-
-func (RewriteResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RewriteResponse)(nil)).Elem()
-}
-
-func (i RewriteResponseArray) ToRewriteResponseArrayOutput() RewriteResponseArrayOutput {
-	return i.ToRewriteResponseArrayOutputWithContext(context.Background())
-}
-
-func (i RewriteResponseArray) ToRewriteResponseArrayOutputWithContext(ctx context.Context) RewriteResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RewriteResponseArrayOutput)
 }
 
 // A [`Rewrite`](https://firebase.google.com/docs/hosting/full-config#rewrites) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
@@ -1925,88 +722,6 @@ type ServingConfigResponse struct {
 	TrailingSlashBehavior string `pulumi:"trailingSlashBehavior"`
 }
 
-// ServingConfigResponseInput is an input type that accepts ServingConfigResponseArgs and ServingConfigResponseOutput values.
-// You can construct a concrete instance of `ServingConfigResponseInput` via:
-//
-//          ServingConfigResponseArgs{...}
-type ServingConfigResponseInput interface {
-	pulumi.Input
-
-	ToServingConfigResponseOutput() ServingConfigResponseOutput
-	ToServingConfigResponseOutputWithContext(context.Context) ServingConfigResponseOutput
-}
-
-// The configuration for how incoming requests to a site should be routed and processed before serving content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the applicable configuration according to a specific [priority order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order).
-type ServingConfigResponseArgs struct {
-	// How to handle well known App Association files.
-	AppAssociation pulumi.StringInput `pulumi:"appAssociation"`
-	// Defines whether to drop the file extension from uploaded files.
-	CleanUrls pulumi.BoolInput `pulumi:"cleanUrls"`
-	// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
-	Headers HeaderResponseArrayInput `pulumi:"headers"`
-	// Optional. Defines i18n rewrite behavior.
-	I18n I18nConfigResponseInput `pulumi:"i18n"`
-	// An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
-	Redirects RedirectResponseArrayInput `pulumi:"redirects"`
-	// An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
-	Rewrites RewriteResponseArrayInput `pulumi:"rewrites"`
-	// Defines how to handle a trailing slash in the URL path.
-	TrailingSlashBehavior pulumi.StringInput `pulumi:"trailingSlashBehavior"`
-}
-
-func (ServingConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServingConfigResponse)(nil)).Elem()
-}
-
-func (i ServingConfigResponseArgs) ToServingConfigResponseOutput() ServingConfigResponseOutput {
-	return i.ToServingConfigResponseOutputWithContext(context.Background())
-}
-
-func (i ServingConfigResponseArgs) ToServingConfigResponseOutputWithContext(ctx context.Context) ServingConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServingConfigResponseOutput)
-}
-
-func (i ServingConfigResponseArgs) ToServingConfigResponsePtrOutput() ServingConfigResponsePtrOutput {
-	return i.ToServingConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ServingConfigResponseArgs) ToServingConfigResponsePtrOutputWithContext(ctx context.Context) ServingConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServingConfigResponseOutput).ToServingConfigResponsePtrOutputWithContext(ctx)
-}
-
-// ServingConfigResponsePtrInput is an input type that accepts ServingConfigResponseArgs, ServingConfigResponsePtr and ServingConfigResponsePtrOutput values.
-// You can construct a concrete instance of `ServingConfigResponsePtrInput` via:
-//
-//          ServingConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ServingConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToServingConfigResponsePtrOutput() ServingConfigResponsePtrOutput
-	ToServingConfigResponsePtrOutputWithContext(context.Context) ServingConfigResponsePtrOutput
-}
-
-type servingConfigResponsePtrType ServingConfigResponseArgs
-
-func ServingConfigResponsePtr(v *ServingConfigResponseArgs) ServingConfigResponsePtrInput {
-	return (*servingConfigResponsePtrType)(v)
-}
-
-func (*servingConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServingConfigResponse)(nil)).Elem()
-}
-
-func (i *servingConfigResponsePtrType) ToServingConfigResponsePtrOutput() ServingConfigResponsePtrOutput {
-	return i.ToServingConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *servingConfigResponsePtrType) ToServingConfigResponsePtrOutputWithContext(ctx context.Context) ServingConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServingConfigResponsePtrOutput)
-}
-
 // The configuration for how incoming requests to a site should be routed and processed before serving content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the applicable configuration according to a specific [priority order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order).
 type ServingConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2020,16 +735,6 @@ func (o ServingConfigResponseOutput) ToServingConfigResponseOutput() ServingConf
 
 func (o ServingConfigResponseOutput) ToServingConfigResponseOutputWithContext(ctx context.Context) ServingConfigResponseOutput {
 	return o
-}
-
-func (o ServingConfigResponseOutput) ToServingConfigResponsePtrOutput() ServingConfigResponsePtrOutput {
-	return o.ToServingConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ServingConfigResponseOutput) ToServingConfigResponsePtrOutputWithContext(ctx context.Context) ServingConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServingConfigResponse) *ServingConfigResponse {
-		return &v
-	}).(ServingConfigResponsePtrOutput)
 }
 
 // How to handle well known App Association files.
@@ -2067,100 +772,6 @@ func (o ServingConfigResponseOutput) TrailingSlashBehavior() pulumi.StringOutput
 	return o.ApplyT(func(v ServingConfigResponse) string { return v.TrailingSlashBehavior }).(pulumi.StringOutput)
 }
 
-type ServingConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ServingConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServingConfigResponse)(nil)).Elem()
-}
-
-func (o ServingConfigResponsePtrOutput) ToServingConfigResponsePtrOutput() ServingConfigResponsePtrOutput {
-	return o
-}
-
-func (o ServingConfigResponsePtrOutput) ToServingConfigResponsePtrOutputWithContext(ctx context.Context) ServingConfigResponsePtrOutput {
-	return o
-}
-
-func (o ServingConfigResponsePtrOutput) Elem() ServingConfigResponseOutput {
-	return o.ApplyT(func(v *ServingConfigResponse) ServingConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ServingConfigResponse
-		return ret
-	}).(ServingConfigResponseOutput)
-}
-
-// How to handle well known App Association files.
-func (o ServingConfigResponsePtrOutput) AppAssociation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServingConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AppAssociation
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines whether to drop the file extension from uploaded files.
-func (o ServingConfigResponsePtrOutput) CleanUrls() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServingConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.CleanUrls
-	}).(pulumi.BoolPtrOutput)
-}
-
-// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
-func (o ServingConfigResponsePtrOutput) Headers() HeaderResponseArrayOutput {
-	return o.ApplyT(func(v *ServingConfigResponse) []HeaderResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Headers
-	}).(HeaderResponseArrayOutput)
-}
-
-// Optional. Defines i18n rewrite behavior.
-func (o ServingConfigResponsePtrOutput) I18n() I18nConfigResponsePtrOutput {
-	return o.ApplyT(func(v *ServingConfigResponse) *I18nConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.I18n
-	}).(I18nConfigResponsePtrOutput)
-}
-
-// An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
-func (o ServingConfigResponsePtrOutput) Redirects() RedirectResponseArrayOutput {
-	return o.ApplyT(func(v *ServingConfigResponse) []RedirectResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Redirects
-	}).(RedirectResponseArrayOutput)
-}
-
-// An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
-func (o ServingConfigResponsePtrOutput) Rewrites() RewriteResponseArrayOutput {
-	return o.ApplyT(func(v *ServingConfigResponse) []RewriteResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Rewrites
-	}).(RewriteResponseArrayOutput)
-}
-
-// Defines how to handle a trailing slash in the URL path.
-func (o ServingConfigResponsePtrOutput) TrailingSlashBehavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServingConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TrailingSlashBehavior
-	}).(pulumi.StringPtrOutput)
-}
-
 // A `Version` is a configuration and a collection of static files which determine how a site is displayed.
 type VersionResponse struct {
 	// The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.
@@ -2189,98 +800,6 @@ type VersionResponse struct {
 	VersionBytes string `pulumi:"versionBytes"`
 }
 
-// VersionResponseInput is an input type that accepts VersionResponseArgs and VersionResponseOutput values.
-// You can construct a concrete instance of `VersionResponseInput` via:
-//
-//          VersionResponseArgs{...}
-type VersionResponseInput interface {
-	pulumi.Input
-
-	ToVersionResponseOutput() VersionResponseOutput
-	ToVersionResponseOutputWithContext(context.Context) VersionResponseOutput
-}
-
-// A `Version` is a configuration and a collection of static files which determine how a site is displayed.
-type VersionResponseArgs struct {
-	// The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.
-	Config ServingConfigResponseInput `pulumi:"config"`
-	// The time at which the version was created.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Identifies the user who created the version.
-	CreateUser ActingUserResponseInput `pulumi:"createUser"`
-	// The time at which the version was `DELETED`.
-	DeleteTime pulumi.StringInput `pulumi:"deleteTime"`
-	// Identifies the user who `DELETED` the version.
-	DeleteUser ActingUserResponseInput `pulumi:"deleteUser"`
-	// The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
-	FileCount pulumi.StringInput `pulumi:"fileCount"`
-	// The time at which the version was `FINALIZED`.
-	FinalizeTime pulumi.StringInput `pulumi:"finalizeTime"`
-	// Identifies the user who `FINALIZED` the version.
-	FinalizeUser ActingUserResponseInput `pulumi:"finalizeUser"`
-	// The labels used for extra metadata and/or filtering.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
-	Name pulumi.StringInput `pulumi:"name"`
-	// The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
-	Status pulumi.StringInput `pulumi:"status"`
-	// The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
-	VersionBytes pulumi.StringInput `pulumi:"versionBytes"`
-}
-
-func (VersionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VersionResponse)(nil)).Elem()
-}
-
-func (i VersionResponseArgs) ToVersionResponseOutput() VersionResponseOutput {
-	return i.ToVersionResponseOutputWithContext(context.Background())
-}
-
-func (i VersionResponseArgs) ToVersionResponseOutputWithContext(ctx context.Context) VersionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VersionResponseOutput)
-}
-
-func (i VersionResponseArgs) ToVersionResponsePtrOutput() VersionResponsePtrOutput {
-	return i.ToVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i VersionResponseArgs) ToVersionResponsePtrOutputWithContext(ctx context.Context) VersionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VersionResponseOutput).ToVersionResponsePtrOutputWithContext(ctx)
-}
-
-// VersionResponsePtrInput is an input type that accepts VersionResponseArgs, VersionResponsePtr and VersionResponsePtrOutput values.
-// You can construct a concrete instance of `VersionResponsePtrInput` via:
-//
-//          VersionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type VersionResponsePtrInput interface {
-	pulumi.Input
-
-	ToVersionResponsePtrOutput() VersionResponsePtrOutput
-	ToVersionResponsePtrOutputWithContext(context.Context) VersionResponsePtrOutput
-}
-
-type versionResponsePtrType VersionResponseArgs
-
-func VersionResponsePtr(v *VersionResponseArgs) VersionResponsePtrInput {
-	return (*versionResponsePtrType)(v)
-}
-
-func (*versionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VersionResponse)(nil)).Elem()
-}
-
-func (i *versionResponsePtrType) ToVersionResponsePtrOutput() VersionResponsePtrOutput {
-	return i.ToVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *versionResponsePtrType) ToVersionResponsePtrOutputWithContext(ctx context.Context) VersionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VersionResponsePtrOutput)
-}
-
 // A `Version` is a configuration and a collection of static files which determine how a site is displayed.
 type VersionResponseOutput struct{ *pulumi.OutputState }
 
@@ -2294,16 +813,6 @@ func (o VersionResponseOutput) ToVersionResponseOutput() VersionResponseOutput {
 
 func (o VersionResponseOutput) ToVersionResponseOutputWithContext(ctx context.Context) VersionResponseOutput {
 	return o
-}
-
-func (o VersionResponseOutput) ToVersionResponsePtrOutput() VersionResponsePtrOutput {
-	return o.ToVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o VersionResponseOutput) ToVersionResponsePtrOutputWithContext(ctx context.Context) VersionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VersionResponse) *VersionResponse {
-		return &v
-	}).(VersionResponsePtrOutput)
 }
 
 // The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.
@@ -2366,203 +875,25 @@ func (o VersionResponseOutput) VersionBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v VersionResponse) string { return v.VersionBytes }).(pulumi.StringOutput)
 }
 
-type VersionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (VersionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VersionResponse)(nil)).Elem()
-}
-
-func (o VersionResponsePtrOutput) ToVersionResponsePtrOutput() VersionResponsePtrOutput {
-	return o
-}
-
-func (o VersionResponsePtrOutput) ToVersionResponsePtrOutputWithContext(ctx context.Context) VersionResponsePtrOutput {
-	return o
-}
-
-func (o VersionResponsePtrOutput) Elem() VersionResponseOutput {
-	return o.ApplyT(func(v *VersionResponse) VersionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret VersionResponse
-		return ret
-	}).(VersionResponseOutput)
-}
-
-// The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.
-func (o VersionResponsePtrOutput) Config() ServingConfigResponsePtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *ServingConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Config
-	}).(ServingConfigResponsePtrOutput)
-}
-
-// The time at which the version was created.
-func (o VersionResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identifies the user who created the version.
-func (o VersionResponsePtrOutput) CreateUser() ActingUserResponsePtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *ActingUserResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateUser
-	}).(ActingUserResponsePtrOutput)
-}
-
-// The time at which the version was `DELETED`.
-func (o VersionResponsePtrOutput) DeleteTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DeleteTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identifies the user who `DELETED` the version.
-func (o VersionResponsePtrOutput) DeleteUser() ActingUserResponsePtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *ActingUserResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DeleteUser
-	}).(ActingUserResponsePtrOutput)
-}
-
-// The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
-func (o VersionResponsePtrOutput) FileCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FileCount
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time at which the version was `FINALIZED`.
-func (o VersionResponsePtrOutput) FinalizeTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FinalizeTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identifies the user who `FINALIZED` the version.
-func (o VersionResponsePtrOutput) FinalizeUser() ActingUserResponsePtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *ActingUserResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.FinalizeUser
-	}).(ActingUserResponsePtrOutput)
-}
-
-// The labels used for extra metadata and/or filtering.
-func (o VersionResponsePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *VersionResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
-func (o VersionResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
-func (o VersionResponsePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
-func (o VersionResponsePtrOutput) VersionBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VersionBytes
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ActingUserResponseInput)(nil)).Elem(), ActingUserResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActingUserResponsePtrInput)(nil)).Elem(), ActingUserResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertDnsChallengeResponseInput)(nil)).Elem(), CertDnsChallengeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertDnsChallengeResponsePtrInput)(nil)).Elem(), CertDnsChallengeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertHttpChallengeResponseInput)(nil)).Elem(), CertHttpChallengeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertHttpChallengeResponsePtrInput)(nil)).Elem(), CertHttpChallengeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunRewriteResponseInput)(nil)).Elem(), CloudRunRewriteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainProvisioningResponseInput)(nil)).Elem(), DomainProvisioningResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainProvisioningResponsePtrInput)(nil)).Elem(), DomainProvisioningResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectInput)(nil)).Elem(), DomainRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectPtrInput)(nil)).Elem(), DomainRedirectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectResponseInput)(nil)).Elem(), DomainRedirectResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectResponsePtrInput)(nil)).Elem(), DomainRedirectResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HeaderResponseInput)(nil)).Elem(), HeaderResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HeaderResponseArrayInput)(nil)).Elem(), HeaderResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*I18nConfigResponseInput)(nil)).Elem(), I18nConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*I18nConfigResponsePtrInput)(nil)).Elem(), I18nConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RedirectResponseInput)(nil)).Elem(), RedirectResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RedirectResponseArrayInput)(nil)).Elem(), RedirectResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseResponseInput)(nil)).Elem(), ReleaseResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseResponsePtrInput)(nil)).Elem(), ReleaseResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RewriteResponseInput)(nil)).Elem(), RewriteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RewriteResponseArrayInput)(nil)).Elem(), RewriteResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServingConfigResponseInput)(nil)).Elem(), ServingConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServingConfigResponsePtrInput)(nil)).Elem(), ServingConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VersionResponseInput)(nil)).Elem(), VersionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VersionResponsePtrInput)(nil)).Elem(), VersionResponseArgs{})
 	pulumi.RegisterOutputType(ActingUserResponseOutput{})
-	pulumi.RegisterOutputType(ActingUserResponsePtrOutput{})
 	pulumi.RegisterOutputType(CertDnsChallengeResponseOutput{})
-	pulumi.RegisterOutputType(CertDnsChallengeResponsePtrOutput{})
 	pulumi.RegisterOutputType(CertHttpChallengeResponseOutput{})
-	pulumi.RegisterOutputType(CertHttpChallengeResponsePtrOutput{})
 	pulumi.RegisterOutputType(CloudRunRewriteResponseOutput{})
 	pulumi.RegisterOutputType(DomainProvisioningResponseOutput{})
-	pulumi.RegisterOutputType(DomainProvisioningResponsePtrOutput{})
 	pulumi.RegisterOutputType(DomainRedirectOutput{})
 	pulumi.RegisterOutputType(DomainRedirectPtrOutput{})
 	pulumi.RegisterOutputType(DomainRedirectResponseOutput{})
-	pulumi.RegisterOutputType(DomainRedirectResponsePtrOutput{})
 	pulumi.RegisterOutputType(HeaderResponseOutput{})
 	pulumi.RegisterOutputType(HeaderResponseArrayOutput{})
 	pulumi.RegisterOutputType(I18nConfigResponseOutput{})
-	pulumi.RegisterOutputType(I18nConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(RedirectResponseOutput{})
 	pulumi.RegisterOutputType(RedirectResponseArrayOutput{})
 	pulumi.RegisterOutputType(ReleaseResponseOutput{})
-	pulumi.RegisterOutputType(ReleaseResponsePtrOutput{})
 	pulumi.RegisterOutputType(RewriteResponseOutput{})
 	pulumi.RegisterOutputType(RewriteResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServingConfigResponseOutput{})
-	pulumi.RegisterOutputType(ServingConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(VersionResponseOutput{})
-	pulumi.RegisterOutputType(VersionResponsePtrOutput{})
 }

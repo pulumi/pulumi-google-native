@@ -479,106 +479,6 @@ type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse struct {
 	Zone string `pulumi:"zone"`
 }
 
-// GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseInput is an input type that accepts GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseArgs and GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseInput` via:
-//
-//          GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseArgs{...}
-type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput() GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput
-	ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutputWithContext(context.Context) GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput
-}
-
-// The environment values to be set at runtime for a Flex Template.
-type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseArgs struct {
-	// Additional experiment flags for the job.
-	AdditionalExperiments pulumi.StringArrayInput `pulumi:"additionalExperiments"`
-	// Additional user labels to be specified for the job. Keys and values must follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions). An object containing a list of key/value pairs. Example: `{ "name": "wrench", "mass": "1kg", "count": "3" }`.
-	AdditionalUserLabels pulumi.StringMapInput `pulumi:"additionalUserLabels"`
-	// Whether to enable Streaming Engine for the job.
-	EnableStreamingEngine pulumi.BoolInput `pulumi:"enableStreamingEngine"`
-	// Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
-	FlexrsGoal pulumi.StringInput `pulumi:"flexrsGoal"`
-	// Configuration for VM IPs.
-	IpConfiguration pulumi.StringInput `pulumi:"ipConfiguration"`
-	// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
-	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-	// The machine type to use for the job. Defaults to the value from the template if not specified.
-	MachineType pulumi.StringInput `pulumi:"machineType"`
-	// The maximum number of Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
-	MaxWorkers pulumi.IntInput `pulumi:"maxWorkers"`
-	// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
-	Network pulumi.StringInput `pulumi:"network"`
-	// The initial number of Compute Engine instances for the job.
-	NumWorkers pulumi.IntInput `pulumi:"numWorkers"`
-	// The email address of the service account to run the job as.
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
-	// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
-	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
-	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
-	TempLocation pulumi.StringInput `pulumi:"tempLocation"`
-	// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, defaults to the control plane region.
-	WorkerRegion pulumi.StringInput `pulumi:"workerRegion"`
-	// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
-	WorkerZone pulumi.StringInput `pulumi:"workerZone"`
-	// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
-	Zone pulumi.StringInput `pulumi:"zone"`
-}
-
-func (GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseArgs) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput() GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput {
-	return i.ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseArgs) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput)
-}
-
-func (i GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseArgs) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput() GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseArgs) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput).ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrInput is an input type that accepts GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseArgs, GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtr and GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrInput` via:
-//
-//          GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput() GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput
-	ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutputWithContext(context.Context) GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput
-}
-
-type googleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrType GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseArgs
-
-func GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtr(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseArgs) GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrInput {
-	return (*googleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrType)(v)
-}
-
-func (*googleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrType) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput() GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrType) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput)
-}
-
 // The environment values to be set at runtime for a Flex Template.
 type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput struct{ *pulumi.OutputState }
 
@@ -592,16 +492,6 @@ func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput) 
 
 func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput() GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput {
-	return o.ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse {
-		return &v
-	}).(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput)
 }
 
 // Additional experiment flags for the job.
@@ -692,190 +582,6 @@ func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput) 
 // The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
 func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) string { return v.Zone }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput() GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) Elem() GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse
-		return ret
-	}).(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput)
-}
-
-// Additional experiment flags for the job.
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) AdditionalExperiments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalExperiments
-	}).(pulumi.StringArrayOutput)
-}
-
-// Additional user labels to be specified for the job. Keys and values must follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions). An object containing a list of key/value pairs. Example: `{ "name": "wrench", "mass": "1kg", "count": "3" }`.
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) AdditionalUserLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalUserLabels
-	}).(pulumi.StringMapOutput)
-}
-
-// Whether to enable Streaming Engine for the job.
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) EnableStreamingEngine() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableStreamingEngine
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) FlexrsGoal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FlexrsGoal
-	}).(pulumi.StringPtrOutput)
-}
-
-// Configuration for VM IPs.
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) IpConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IpConfiguration
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KmsKeyName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The machine type to use for the job. Defaults to the value from the template if not specified.
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MachineType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The maximum number of Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) MaxWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxWorkers
-	}).(pulumi.IntPtrOutput)
-}
-
-// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Network
-	}).(pulumi.StringPtrOutput)
-}
-
-// The initial number of Compute Engine instances for the job.
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) NumWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.NumWorkers
-	}).(pulumi.IntPtrOutput)
-}
-
-// The email address of the service account to run the job as.
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
-}
-
-// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Subnetwork
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) TempLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TempLocation
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, defaults to the control plane region.
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) WorkerRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkerRegion
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) WorkerZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkerZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Zone
-	}).(pulumi.StringPtrOutput)
 }
 
 // Launch Flex Template parameter.
@@ -1156,88 +862,6 @@ type GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse struct {
 	Update bool `pulumi:"update"`
 }
 
-// GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseArgs and GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseInput` via:
-//
-//          GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseArgs{...}
-type GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput
-	ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutputWithContext(context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput
-}
-
-// Launch Flex Template parameter.
-type GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseArgs struct {
-	// Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
-	ContainerSpecGcsPath pulumi.StringInput `pulumi:"containerSpecGcsPath"`
-	// The runtime environment for the Flex Template job.
-	Environment GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseInput `pulumi:"environment"`
-	// The job name to use for the created job. For an update job request, the job name should be the same as the existing running job.
-	JobName pulumi.StringInput `pulumi:"jobName"`
-	// Launch options for this Flex Template job. This is a common set of options across languages and templates. This should not be used to pass job parameters.
-	LaunchOptions pulumi.StringMapInput `pulumi:"launchOptions"`
-	// The parameters for the Flex Template. Example: `{"num_workers":"5"}`
-	Parameters pulumi.StringMapInput `pulumi:"parameters"`
-	// Use this to pass transform name mappings for streaming update jobs. Example: `{"oldTransformName":"newTransformName",...}`
-	TransformNameMappings pulumi.StringMapInput `pulumi:"transformNameMappings"`
-	// Set this to true if you are sending a request to update a running streaming job. When set, the job name should be the same as the running job.
-	Update pulumi.BoolInput `pulumi:"update"`
-}
-
-func (GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseArgs) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput {
-	return i.ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseArgs) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput)
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseArgs) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseArgs) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput).ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseArgs, GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtr and GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrInput` via:
-//
-//          GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput
-	ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutputWithContext(context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput
-}
-
-type googleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrType GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseArgs
-
-func GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtr(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseArgs) GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrInput {
-	return (*googleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrType)(v)
-}
-
-func (*googleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrType) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrType) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput)
-}
-
 // Launch Flex Template parameter.
 type GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput struct{ *pulumi.OutputState }
 
@@ -1251,16 +875,6 @@ func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput) ToG
 
 func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput {
-	return o.ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse) *GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse {
-		return &v
-	}).(GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput)
 }
 
 // Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
@@ -1306,100 +920,6 @@ func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput) Tra
 // Set this to true if you are sending a request to update a running streaming job. When set, the job name should be the same as the running job.
 func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput) Update() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse) bool { return v.Update }).(pulumi.BoolOutput)
-}
-
-type GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput) Elem() GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse) GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse
-		return ret
-	}).(GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput)
-}
-
-// Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput) ContainerSpecGcsPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ContainerSpecGcsPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// The runtime environment for the Flex Template job.
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput) Environment() GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse) *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Environment
-	}).(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput)
-}
-
-// The job name to use for the created job. For an update job request, the job name should be the same as the existing running job.
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput) JobName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.JobName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Launch options for this Flex Template job. This is a common set of options across languages and templates. This should not be used to pass job parameters.
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput) LaunchOptions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.LaunchOptions
-	}).(pulumi.StringMapOutput)
-}
-
-// The parameters for the Flex Template. Example: `{"num_workers":"5"}`
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Parameters
-	}).(pulumi.StringMapOutput)
-}
-
-// Use this to pass transform name mappings for streaming update jobs. Example: `{"oldTransformName":"newTransformName",...}`
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput) TransformNameMappings() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.TransformNameMappings
-	}).(pulumi.StringMapOutput)
-}
-
-// Set this to true if you are sending a request to update a running streaming job. When set, the job name should be the same as the running job.
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput) Update() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Update
-	}).(pulumi.BoolPtrOutput)
 }
 
 // A request to launch a Dataflow job from a Flex Template.
@@ -1613,82 +1133,6 @@ type GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse struct {
 	ValidateOnly bool `pulumi:"validateOnly"`
 }
 
-// GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseArgs and GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseInput` via:
-//
-//          GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseArgs{...}
-type GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput
-	ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutputWithContext(context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput
-}
-
-// A request to launch a Dataflow job from a Flex Template.
-type GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseArgs struct {
-	// Parameter to launch a job from a Flex Template.
-	LaunchParameter GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseInput `pulumi:"launchParameter"`
-	// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. For example, `us-central1`, `us-west1`.
-	Location pulumi.StringInput `pulumi:"location"`
-	// The ID of the Cloud Platform project that the job belongs to.
-	Project pulumi.StringInput `pulumi:"project"`
-	// If true, the request is validated but not actually executed. Defaults to false.
-	ValidateOnly pulumi.BoolInput `pulumi:"validateOnly"`
-}
-
-func (GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseArgs) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput {
-	return i.ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseArgs) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput)
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseArgs) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseArgs) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput).ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseArgs, GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtr and GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrInput` via:
-//
-//          GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput
-	ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutputWithContext(context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput
-}
-
-type googleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrType GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseArgs
-
-func GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtr(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseArgs) GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrInput {
-	return (*googleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrType)(v)
-}
-
-func (*googleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrType) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrType) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput)
-}
-
 // A request to launch a Dataflow job from a Flex Template.
 type GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput struct{ *pulumi.OutputState }
 
@@ -1702,16 +1146,6 @@ func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput) ToGoo
 
 func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput {
-	return o.ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse) *GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse {
-		return &v
-	}).(GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput)
 }
 
 // Parameter to launch a job from a Flex Template.
@@ -1734,70 +1168,6 @@ func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput) Proje
 // If true, the request is validated but not actually executed. Defaults to false.
 func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput) ValidateOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse) bool { return v.ValidateOnly }).(pulumi.BoolOutput)
-}
-
-type GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput) Elem() GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse) GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse
-		return ret
-	}).(GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput)
-}
-
-// Parameter to launch a job from a Flex Template.
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput) LaunchParameter() GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse) *GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.LaunchParameter
-	}).(GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput)
-}
-
-// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. For example, `us-central1`, `us-west1`.
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of the Cloud Platform project that the job belongs to.
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// If true, the request is validated but not actually executed. Defaults to false.
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ValidateOnly
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Parameters to provide to the template being launched.
@@ -2034,84 +1404,6 @@ type GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse struct {
 	Update bool `pulumi:"update"`
 }
 
-// GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseArgs and GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseInput` via:
-//
-//          GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseArgs{...}
-type GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput() GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput
-	ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutputWithContext(context.Context) GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput
-}
-
-// Parameters to provide to the template being launched.
-type GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseArgs struct {
-	// The runtime environment for the job.
-	Environment GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseInput `pulumi:"environment"`
-	// The job name to use for the created job.
-	JobName pulumi.StringInput `pulumi:"jobName"`
-	// The runtime parameters to pass to the job.
-	Parameters pulumi.StringMapInput `pulumi:"parameters"`
-	// Map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job. Only applicable when updating a pipeline.
-	TransformNameMapping pulumi.StringMapInput `pulumi:"transformNameMapping"`
-	// If set, replace the existing pipeline with the name specified by jobName with this pipeline, preserving state.
-	Update pulumi.BoolInput `pulumi:"update"`
-}
-
-func (GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseArgs) ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput() GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput {
-	return i.ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseArgs) ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput)
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseArgs) ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseArgs) ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput).ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseArgs, GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtr and GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrInput` via:
-//
-//          GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput
-	ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutputWithContext(context.Context) GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput
-}
-
-type googleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrType GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseArgs
-
-func GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtr(v *GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseArgs) GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrInput {
-	return (*googleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrType)(v)
-}
-
-func (*googleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrType) ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrType) ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput)
-}
-
 // Parameters to provide to the template being launched.
 type GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput struct{ *pulumi.OutputState }
 
@@ -2125,16 +1417,6 @@ func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput) ToGoog
 
 func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput) ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput) ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput {
-	return o.ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput) ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse) *GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse {
-		return &v
-	}).(GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput)
 }
 
 // The runtime environment for the job.
@@ -2166,80 +1448,6 @@ func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput) Transf
 // If set, replace the existing pipeline with the name specified by jobName with this pipeline, preserving state.
 func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput) Update() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse) bool { return v.Update }).(pulumi.BoolOutput)
-}
-
-type GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput) ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput) ToGoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput) Elem() GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse) GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse
-		return ret
-	}).(GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput)
-}
-
-// The runtime environment for the job.
-func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput) Environment() GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse) *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Environment
-	}).(GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput)
-}
-
-// The job name to use for the created job.
-func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput) JobName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.JobName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The runtime parameters to pass to the job.
-func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Parameters
-	}).(pulumi.StringMapOutput)
-}
-
-// Map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job. Only applicable when updating a pipeline.
-func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput) TransformNameMapping() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.TransformNameMapping
-	}).(pulumi.StringMapOutput)
-}
-
-// If set, replace the existing pipeline with the name specified by jobName with this pipeline, preserving state.
-func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput) Update() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Update
-	}).(pulumi.BoolPtrOutput)
 }
 
 // A request to launch a template.
@@ -2474,84 +1682,6 @@ type GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse struct {
 	ValidateOnly bool `pulumi:"validateOnly"`
 }
 
-// GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseArgs and GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseInput` via:
-//
-//          GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseArgs{...}
-type GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput() GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput
-	ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutputWithContext(context.Context) GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput
-}
-
-// A request to launch a template.
-type GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseArgs struct {
-	// A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
-	GcsPath pulumi.StringInput `pulumi:"gcsPath"`
-	// The parameters of the template to launch. This should be part of the body of the POST request.
-	LaunchParameters GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseInput `pulumi:"launchParameters"`
-	// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
-	Location pulumi.StringInput `pulumi:"location"`
-	// The ID of the Cloud Platform project that the job belongs to.
-	Project pulumi.StringInput `pulumi:"project"`
-	// If true, the request is validated but not actually executed. Defaults to false.
-	ValidateOnly pulumi.BoolInput `pulumi:"validateOnly"`
-}
-
-func (GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseArgs) ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput() GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput {
-	return i.ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseArgs) ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput)
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseArgs) ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseArgs) ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput).ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseArgs, GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtr and GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrInput` via:
-//
-//          GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput
-	ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutputWithContext(context.Context) GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput
-}
-
-type googleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrType GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseArgs
-
-func GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtr(v *GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseArgs) GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrInput {
-	return (*googleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrType)(v)
-}
-
-func (*googleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrType) ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrType) ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput)
-}
-
 // A request to launch a template.
 type GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput struct{ *pulumi.OutputState }
 
@@ -2565,16 +1695,6 @@ func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput) ToGoogleC
 
 func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput) ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput) ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput {
-	return o.ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput) ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse) *GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse {
-		return &v
-	}).(GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput)
 }
 
 // A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
@@ -2602,80 +1722,6 @@ func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput) Project()
 // If true, the request is validated but not actually executed. Defaults to false.
 func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput) ValidateOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse) bool { return v.ValidateOnly }).(pulumi.BoolOutput)
-}
-
-type GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput) ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput() GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput) ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput) Elem() GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse) GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse
-		return ret
-	}).(GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput)
-}
-
-// A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
-func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput) GcsPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.GcsPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// The parameters of the template to launch. This should be part of the body of the POST request.
-func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput) LaunchParameters() GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse) *GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.LaunchParameters
-	}).(GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput)
-}
-
-// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
-func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of the Cloud Platform project that the job belongs to.
-func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// If true, the request is validated but not actually executed. Defaults to false.
-func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ValidateOnly
-	}).(pulumi.BoolPtrOutput)
 }
 
 // The environment values to set at runtime.
@@ -3141,106 +2187,6 @@ type GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse struct {
 	Zone string `pulumi:"zone"`
 }
 
-// GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseInput is an input type that accepts GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseArgs and GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseInput` via:
-//
-//          GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseArgs{...}
-type GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput() GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput
-	ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutputWithContext(context.Context) GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput
-}
-
-// The environment values to set at runtime.
-type GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseArgs struct {
-	// Additional experiment flags for the job.
-	AdditionalExperiments pulumi.StringArrayInput `pulumi:"additionalExperiments"`
-	// Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of key/value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
-	AdditionalUserLabels pulumi.StringMapInput `pulumi:"additionalUserLabels"`
-	// Whether to bypass the safety checks for the job's temporary directory. Use with caution.
-	BypassTempDirValidation pulumi.BoolInput `pulumi:"bypassTempDirValidation"`
-	// Whether to enable Streaming Engine for the job.
-	EnableStreamingEngine pulumi.BoolInput `pulumi:"enableStreamingEngine"`
-	// Configuration for VM IPs.
-	IpConfiguration pulumi.StringInput `pulumi:"ipConfiguration"`
-	// Name for the Cloud KMS key for the job. The key format is: projects//locations//keyRings//cryptoKeys/
-	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-	// The machine type to use for the job. Defaults to the value from the template if not specified.
-	MachineType pulumi.StringInput `pulumi:"machineType"`
-	// The maximum number of Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
-	MaxWorkers pulumi.IntInput `pulumi:"maxWorkers"`
-	// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
-	Network pulumi.StringInput `pulumi:"network"`
-	// The initial number of Compute Engine instances for the job.
-	NumWorkers pulumi.IntInput `pulumi:"numWorkers"`
-	// The email address of the service account to run the job as.
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
-	// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
-	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
-	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
-	TempLocation pulumi.StringInput `pulumi:"tempLocation"`
-	// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
-	WorkerRegion pulumi.StringInput `pulumi:"workerRegion"`
-	// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
-	WorkerZone pulumi.StringInput `pulumi:"workerZone"`
-	// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
-	Zone pulumi.StringInput `pulumi:"zone"`
-}
-
-func (GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseArgs) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput() GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput {
-	return i.ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseArgs) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput)
-}
-
-func (i GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseArgs) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput() GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseArgs) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput).ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrInput is an input type that accepts GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseArgs, GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtr and GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrInput` via:
-//
-//          GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput() GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput
-	ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutputWithContext(context.Context) GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput
-}
-
-type googleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrType GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseArgs
-
-func GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtr(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseArgs) GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrInput {
-	return (*googleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrType)(v)
-}
-
-func (*googleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrType) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput() GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrType) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput)
-}
-
 // The environment values to set at runtime.
 type GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput struct{ *pulumi.OutputState }
 
@@ -3254,16 +2200,6 @@ func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput) ToGoogleClou
 
 func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput() GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput {
-	return o.ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse {
-		return &v
-	}).(GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput)
 }
 
 // Additional experiment flags for the job.
@@ -3346,190 +2282,6 @@ func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput) WorkerZone()
 // The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
 func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) string { return v.Zone }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput() GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) Elem() GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse
-		return ret
-	}).(GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput)
-}
-
-// Additional experiment flags for the job.
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) AdditionalExperiments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalExperiments
-	}).(pulumi.StringArrayOutput)
-}
-
-// Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of key/value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) AdditionalUserLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalUserLabels
-	}).(pulumi.StringMapOutput)
-}
-
-// Whether to bypass the safety checks for the job's temporary directory. Use with caution.
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) BypassTempDirValidation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.BypassTempDirValidation
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to enable Streaming Engine for the job.
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) EnableStreamingEngine() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableStreamingEngine
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Configuration for VM IPs.
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) IpConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IpConfiguration
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name for the Cloud KMS key for the job. The key format is: projects//locations//keyRings//cryptoKeys/
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KmsKeyName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The machine type to use for the job. Defaults to the value from the template if not specified.
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MachineType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The maximum number of Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) MaxWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxWorkers
-	}).(pulumi.IntPtrOutput)
-}
-
-// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Network
-	}).(pulumi.StringPtrOutput)
-}
-
-// The initial number of Compute Engine instances for the job.
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) NumWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.NumWorkers
-	}).(pulumi.IntPtrOutput)
-}
-
-// The email address of the service account to run the job as.
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
-}
-
-// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Subnetwork
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) TempLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TempLocation
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) WorkerRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkerRegion
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) WorkerZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkerZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Zone
-	}).(pulumi.StringPtrOutput)
 }
 
 // Details of the schedule the pipeline runs on.
@@ -3701,80 +2453,6 @@ type GoogleCloudDatapipelinesV1ScheduleSpecResponse struct {
 	TimeZone string `pulumi:"timeZone"`
 }
 
-// GoogleCloudDatapipelinesV1ScheduleSpecResponseInput is an input type that accepts GoogleCloudDatapipelinesV1ScheduleSpecResponseArgs and GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1ScheduleSpecResponseInput` via:
-//
-//          GoogleCloudDatapipelinesV1ScheduleSpecResponseArgs{...}
-type GoogleCloudDatapipelinesV1ScheduleSpecResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1ScheduleSpecResponseOutput() GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput
-	ToGoogleCloudDatapipelinesV1ScheduleSpecResponseOutputWithContext(context.Context) GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput
-}
-
-// Details of the schedule the pipeline runs on.
-type GoogleCloudDatapipelinesV1ScheduleSpecResponseArgs struct {
-	// When the next Scheduler job is going to run.
-	NextJobTime pulumi.StringInput `pulumi:"nextJobTime"`
-	// Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
-	Schedule pulumi.StringInput `pulumi:"schedule"`
-	// Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.
-	TimeZone pulumi.StringInput `pulumi:"timeZone"`
-}
-
-func (GoogleCloudDatapipelinesV1ScheduleSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatapipelinesV1ScheduleSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatapipelinesV1ScheduleSpecResponseArgs) ToGoogleCloudDatapipelinesV1ScheduleSpecResponseOutput() GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput {
-	return i.ToGoogleCloudDatapipelinesV1ScheduleSpecResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1ScheduleSpecResponseArgs) ToGoogleCloudDatapipelinesV1ScheduleSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput)
-}
-
-func (i GoogleCloudDatapipelinesV1ScheduleSpecResponseArgs) ToGoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput() GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1ScheduleSpecResponseArgs) ToGoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput).ToGoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrInput is an input type that accepts GoogleCloudDatapipelinesV1ScheduleSpecResponseArgs, GoogleCloudDatapipelinesV1ScheduleSpecResponsePtr and GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrInput` via:
-//
-//          GoogleCloudDatapipelinesV1ScheduleSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput() GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput
-	ToGoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutputWithContext(context.Context) GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput
-}
-
-type googleCloudDatapipelinesV1ScheduleSpecResponsePtrType GoogleCloudDatapipelinesV1ScheduleSpecResponseArgs
-
-func GoogleCloudDatapipelinesV1ScheduleSpecResponsePtr(v *GoogleCloudDatapipelinesV1ScheduleSpecResponseArgs) GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrInput {
-	return (*googleCloudDatapipelinesV1ScheduleSpecResponsePtrType)(v)
-}
-
-func (*googleCloudDatapipelinesV1ScheduleSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1ScheduleSpecResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatapipelinesV1ScheduleSpecResponsePtrType) ToGoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput() GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatapipelinesV1ScheduleSpecResponsePtrType) ToGoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput)
-}
-
 // Details of the schedule the pipeline runs on.
 type GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -3790,16 +2468,6 @@ func (o GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput) ToGoogleCloudDatap
 	return o
 }
 
-func (o GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput) ToGoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput() GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput {
-	return o.ToGoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput) ToGoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1ScheduleSpecResponse) *GoogleCloudDatapipelinesV1ScheduleSpecResponse {
-		return &v
-	}).(GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput)
-}
-
 // When the next Scheduler job is going to run.
 func (o GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput) NextJobTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1ScheduleSpecResponse) string { return v.NextJobTime }).(pulumi.StringOutput)
@@ -3813,60 +2481,6 @@ func (o GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput) Schedule() pulumi.
 // Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.
 func (o GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1ScheduleSpecResponse) string { return v.TimeZone }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1ScheduleSpecResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput) ToGoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput() GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput) ToGoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput) Elem() GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1ScheduleSpecResponse) GoogleCloudDatapipelinesV1ScheduleSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatapipelinesV1ScheduleSpecResponse
-		return ret
-	}).(GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput)
-}
-
-// When the next Scheduler job is going to run.
-func (o GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput) NextJobTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1ScheduleSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NextJobTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
-func (o GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput) Schedule() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1ScheduleSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Schedule
-	}).(pulumi.StringPtrOutput)
-}
-
-// Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.
-func (o GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1ScheduleSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TimeZone
-	}).(pulumi.StringPtrOutput)
 }
 
 // Workload details for creating the pipeline jobs.
@@ -4040,78 +2654,6 @@ type GoogleCloudDatapipelinesV1WorkloadResponse struct {
 	DataflowLaunchTemplateRequest GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse `pulumi:"dataflowLaunchTemplateRequest"`
 }
 
-// GoogleCloudDatapipelinesV1WorkloadResponseInput is an input type that accepts GoogleCloudDatapipelinesV1WorkloadResponseArgs and GoogleCloudDatapipelinesV1WorkloadResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1WorkloadResponseInput` via:
-//
-//          GoogleCloudDatapipelinesV1WorkloadResponseArgs{...}
-type GoogleCloudDatapipelinesV1WorkloadResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1WorkloadResponseOutput() GoogleCloudDatapipelinesV1WorkloadResponseOutput
-	ToGoogleCloudDatapipelinesV1WorkloadResponseOutputWithContext(context.Context) GoogleCloudDatapipelinesV1WorkloadResponseOutput
-}
-
-// Workload details for creating the pipeline jobs.
-type GoogleCloudDatapipelinesV1WorkloadResponseArgs struct {
-	// Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
-	DataflowFlexTemplateRequest GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseInput `pulumi:"dataflowFlexTemplateRequest"`
-	// Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-	DataflowLaunchTemplateRequest GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseInput `pulumi:"dataflowLaunchTemplateRequest"`
-}
-
-func (GoogleCloudDatapipelinesV1WorkloadResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatapipelinesV1WorkloadResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatapipelinesV1WorkloadResponseArgs) ToGoogleCloudDatapipelinesV1WorkloadResponseOutput() GoogleCloudDatapipelinesV1WorkloadResponseOutput {
-	return i.ToGoogleCloudDatapipelinesV1WorkloadResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1WorkloadResponseArgs) ToGoogleCloudDatapipelinesV1WorkloadResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1WorkloadResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1WorkloadResponseOutput)
-}
-
-func (i GoogleCloudDatapipelinesV1WorkloadResponseArgs) ToGoogleCloudDatapipelinesV1WorkloadResponsePtrOutput() GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1WorkloadResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatapipelinesV1WorkloadResponseArgs) ToGoogleCloudDatapipelinesV1WorkloadResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1WorkloadResponseOutput).ToGoogleCloudDatapipelinesV1WorkloadResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatapipelinesV1WorkloadResponsePtrInput is an input type that accepts GoogleCloudDatapipelinesV1WorkloadResponseArgs, GoogleCloudDatapipelinesV1WorkloadResponsePtr and GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatapipelinesV1WorkloadResponsePtrInput` via:
-//
-//          GoogleCloudDatapipelinesV1WorkloadResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatapipelinesV1WorkloadResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatapipelinesV1WorkloadResponsePtrOutput() GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput
-	ToGoogleCloudDatapipelinesV1WorkloadResponsePtrOutputWithContext(context.Context) GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput
-}
-
-type googleCloudDatapipelinesV1WorkloadResponsePtrType GoogleCloudDatapipelinesV1WorkloadResponseArgs
-
-func GoogleCloudDatapipelinesV1WorkloadResponsePtr(v *GoogleCloudDatapipelinesV1WorkloadResponseArgs) GoogleCloudDatapipelinesV1WorkloadResponsePtrInput {
-	return (*googleCloudDatapipelinesV1WorkloadResponsePtrType)(v)
-}
-
-func (*googleCloudDatapipelinesV1WorkloadResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1WorkloadResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatapipelinesV1WorkloadResponsePtrType) ToGoogleCloudDatapipelinesV1WorkloadResponsePtrOutput() GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput {
-	return i.ToGoogleCloudDatapipelinesV1WorkloadResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatapipelinesV1WorkloadResponsePtrType) ToGoogleCloudDatapipelinesV1WorkloadResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput)
-}
-
 // Workload details for creating the pipeline jobs.
 type GoogleCloudDatapipelinesV1WorkloadResponseOutput struct{ *pulumi.OutputState }
 
@@ -4125,16 +2667,6 @@ func (o GoogleCloudDatapipelinesV1WorkloadResponseOutput) ToGoogleCloudDatapipel
 
 func (o GoogleCloudDatapipelinesV1WorkloadResponseOutput) ToGoogleCloudDatapipelinesV1WorkloadResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1WorkloadResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1WorkloadResponseOutput) ToGoogleCloudDatapipelinesV1WorkloadResponsePtrOutput() GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput {
-	return o.ToGoogleCloudDatapipelinesV1WorkloadResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatapipelinesV1WorkloadResponseOutput) ToGoogleCloudDatapipelinesV1WorkloadResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1WorkloadResponse) *GoogleCloudDatapipelinesV1WorkloadResponse {
-		return &v
-	}).(GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput)
 }
 
 // Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
@@ -4151,113 +2683,45 @@ func (o GoogleCloudDatapipelinesV1WorkloadResponseOutput) DataflowLaunchTemplate
 	}).(GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput)
 }
 
-type GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatapipelinesV1WorkloadResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput) ToGoogleCloudDatapipelinesV1WorkloadResponsePtrOutput() GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput) ToGoogleCloudDatapipelinesV1WorkloadResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput) Elem() GoogleCloudDatapipelinesV1WorkloadResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1WorkloadResponse) GoogleCloudDatapipelinesV1WorkloadResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatapipelinesV1WorkloadResponse
-		return ret
-	}).(GoogleCloudDatapipelinesV1WorkloadResponseOutput)
-}
-
-// Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
-func (o GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput) DataflowFlexTemplateRequest() GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1WorkloadResponse) *GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DataflowFlexTemplateRequest
-	}).(GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput)
-}
-
-// Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-func (o GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput) DataflowLaunchTemplateRequest() GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatapipelinesV1WorkloadResponse) *GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DataflowLaunchTemplateRequest
-	}).(GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentInput)(nil)).Elem(), GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseInput)(nil)).Elem(), GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchTemplateParametersInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchTemplateParametersPtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchTemplateRequestInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchTemplateRequestPtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1RuntimeEnvironmentInput)(nil)).Elem(), GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1RuntimeEnvironmentPtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseInput)(nil)).Elem(), GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1ScheduleSpecInput)(nil)).Elem(), GoogleCloudDatapipelinesV1ScheduleSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1ScheduleSpecPtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1ScheduleSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1ScheduleSpecResponseInput)(nil)).Elem(), GoogleCloudDatapipelinesV1ScheduleSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1ScheduleSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1WorkloadInput)(nil)).Elem(), GoogleCloudDatapipelinesV1WorkloadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1WorkloadPtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1WorkloadArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1WorkloadResponseInput)(nil)).Elem(), GoogleCloudDatapipelinesV1WorkloadResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatapipelinesV1WorkloadResponsePtrInput)(nil)).Elem(), GoogleCloudDatapipelinesV1WorkloadResponseArgs{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchTemplateParametersOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchTemplateParametersPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchTemplateParametersResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchTemplateRequestOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchTemplateRequestPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1LaunchTemplateRequestResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1RuntimeEnvironmentOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1RuntimeEnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1RuntimeEnvironmentResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1ScheduleSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1ScheduleSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1ScheduleSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1WorkloadOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1WorkloadPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1WorkloadResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatapipelinesV1WorkloadResponsePtrOutput{})
 }

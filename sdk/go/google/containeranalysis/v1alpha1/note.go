@@ -197,7 +197,7 @@ type NoteInput interface {
 }
 
 func (*Note) ElementType() reflect.Type {
-	return reflect.TypeOf((*Note)(nil))
+	return reflect.TypeOf((**Note)(nil)).Elem()
 }
 
 func (i *Note) ToNoteOutput() NoteOutput {
@@ -211,7 +211,7 @@ func (i *Note) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
 type NoteOutput struct{ *pulumi.OutputState }
 
 func (NoteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Note)(nil))
+	return reflect.TypeOf((**Note)(nil)).Elem()
 }
 
 func (o NoteOutput) ToNoteOutput() NoteOutput {

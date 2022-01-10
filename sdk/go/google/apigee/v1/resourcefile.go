@@ -109,7 +109,7 @@ type ResourcefileInput interface {
 }
 
 func (*Resourcefile) ElementType() reflect.Type {
-	return reflect.TypeOf((*Resourcefile)(nil))
+	return reflect.TypeOf((**Resourcefile)(nil)).Elem()
 }
 
 func (i *Resourcefile) ToResourcefileOutput() ResourcefileOutput {
@@ -123,7 +123,7 @@ func (i *Resourcefile) ToResourcefileOutputWithContext(ctx context.Context) Reso
 type ResourcefileOutput struct{ *pulumi.OutputState }
 
 func (ResourcefileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Resourcefile)(nil))
+	return reflect.TypeOf((**Resourcefile)(nil)).Elem()
 }
 
 func (o ResourcefileOutput) ToResourcefileOutput() ResourcefileOutput {

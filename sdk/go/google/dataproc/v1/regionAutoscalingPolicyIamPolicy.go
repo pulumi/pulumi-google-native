@@ -106,7 +106,7 @@ type RegionAutoscalingPolicyIamPolicyInput interface {
 }
 
 func (*RegionAutoscalingPolicyIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionAutoscalingPolicyIamPolicy)(nil))
+	return reflect.TypeOf((**RegionAutoscalingPolicyIamPolicy)(nil)).Elem()
 }
 
 func (i *RegionAutoscalingPolicyIamPolicy) ToRegionAutoscalingPolicyIamPolicyOutput() RegionAutoscalingPolicyIamPolicyOutput {
@@ -120,7 +120,7 @@ func (i *RegionAutoscalingPolicyIamPolicy) ToRegionAutoscalingPolicyIamPolicyOut
 type RegionAutoscalingPolicyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionAutoscalingPolicyIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionAutoscalingPolicyIamPolicy)(nil))
+	return reflect.TypeOf((**RegionAutoscalingPolicyIamPolicy)(nil)).Elem()
 }
 
 func (o RegionAutoscalingPolicyIamPolicyOutput) ToRegionAutoscalingPolicyIamPolicyOutput() RegionAutoscalingPolicyIamPolicyOutput {

@@ -96,7 +96,7 @@ type ReplayInput interface {
 }
 
 func (*Replay) ElementType() reflect.Type {
-	return reflect.TypeOf((*Replay)(nil))
+	return reflect.TypeOf((**Replay)(nil)).Elem()
 }
 
 func (i *Replay) ToReplayOutput() ReplayOutput {
@@ -110,7 +110,7 @@ func (i *Replay) ToReplayOutputWithContext(ctx context.Context) ReplayOutput {
 type ReplayOutput struct{ *pulumi.OutputState }
 
 func (ReplayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Replay)(nil))
+	return reflect.TypeOf((**Replay)(nil)).Elem()
 }
 
 func (o ReplayOutput) ToReplayOutput() ReplayOutput {

@@ -113,7 +113,7 @@ type ConnectionProfileIamPolicyInput interface {
 }
 
 func (*ConnectionProfileIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionProfileIamPolicy)(nil))
+	return reflect.TypeOf((**ConnectionProfileIamPolicy)(nil)).Elem()
 }
 
 func (i *ConnectionProfileIamPolicy) ToConnectionProfileIamPolicyOutput() ConnectionProfileIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *ConnectionProfileIamPolicy) ToConnectionProfileIamPolicyOutputWithConte
 type ConnectionProfileIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionProfileIamPolicy)(nil))
+	return reflect.TypeOf((**ConnectionProfileIamPolicy)(nil)).Elem()
 }
 
 func (o ConnectionProfileIamPolicyOutput) ToConnectionProfileIamPolicyOutput() ConnectionProfileIamPolicyOutput {

@@ -105,7 +105,7 @@ type TargetProjectInput interface {
 }
 
 func (*TargetProject) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetProject)(nil))
+	return reflect.TypeOf((**TargetProject)(nil)).Elem()
 }
 
 func (i *TargetProject) ToTargetProjectOutput() TargetProjectOutput {
@@ -119,7 +119,7 @@ func (i *TargetProject) ToTargetProjectOutputWithContext(ctx context.Context) Ta
 type TargetProjectOutput struct{ *pulumi.OutputState }
 
 func (TargetProjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetProject)(nil))
+	return reflect.TypeOf((**TargetProject)(nil)).Elem()
 }
 
 func (o TargetProjectOutput) ToTargetProjectOutput() TargetProjectOutput {

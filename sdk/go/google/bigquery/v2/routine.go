@@ -163,7 +163,7 @@ type RoutineInput interface {
 }
 
 func (*Routine) ElementType() reflect.Type {
-	return reflect.TypeOf((*Routine)(nil))
+	return reflect.TypeOf((**Routine)(nil)).Elem()
 }
 
 func (i *Routine) ToRoutineOutput() RoutineOutput {
@@ -177,7 +177,7 @@ func (i *Routine) ToRoutineOutputWithContext(ctx context.Context) RoutineOutput 
 type RoutineOutput struct{ *pulumi.OutputState }
 
 func (RoutineOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Routine)(nil))
+	return reflect.TypeOf((**Routine)(nil)).Elem()
 }
 
 func (o RoutineOutput) ToRoutineOutput() RoutineOutput {

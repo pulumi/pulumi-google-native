@@ -171,7 +171,7 @@ type ManagedZoneInput interface {
 }
 
 func (*ManagedZone) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedZone)(nil))
+	return reflect.TypeOf((**ManagedZone)(nil)).Elem()
 }
 
 func (i *ManagedZone) ToManagedZoneOutput() ManagedZoneOutput {
@@ -185,7 +185,7 @@ func (i *ManagedZone) ToManagedZoneOutputWithContext(ctx context.Context) Manage
 type ManagedZoneOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedZone)(nil))
+	return reflect.TypeOf((**ManagedZone)(nil)).Elem()
 }
 
 func (o ManagedZoneOutput) ToManagedZoneOutput() ManagedZoneOutput {

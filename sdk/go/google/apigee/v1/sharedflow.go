@@ -106,7 +106,7 @@ type SharedflowInput interface {
 }
 
 func (*Sharedflow) ElementType() reflect.Type {
-	return reflect.TypeOf((*Sharedflow)(nil))
+	return reflect.TypeOf((**Sharedflow)(nil)).Elem()
 }
 
 func (i *Sharedflow) ToSharedflowOutput() SharedflowOutput {
@@ -120,7 +120,7 @@ func (i *Sharedflow) ToSharedflowOutputWithContext(ctx context.Context) Sharedfl
 type SharedflowOutput struct{ *pulumi.OutputState }
 
 func (SharedflowOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Sharedflow)(nil))
+	return reflect.TypeOf((**Sharedflow)(nil)).Elem()
 }
 
 func (o SharedflowOutput) ToSharedflowOutput() SharedflowOutput {

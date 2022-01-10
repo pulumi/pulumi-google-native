@@ -101,7 +101,7 @@ type PeeringIamPolicyInput interface {
 }
 
 func (*PeeringIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*PeeringIamPolicy)(nil))
+	return reflect.TypeOf((**PeeringIamPolicy)(nil)).Elem()
 }
 
 func (i *PeeringIamPolicy) ToPeeringIamPolicyOutput() PeeringIamPolicyOutput {
@@ -115,7 +115,7 @@ func (i *PeeringIamPolicy) ToPeeringIamPolicyOutputWithContext(ctx context.Conte
 type PeeringIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (PeeringIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PeeringIamPolicy)(nil))
+	return reflect.TypeOf((**PeeringIamPolicy)(nil)).Elem()
 }
 
 func (o PeeringIamPolicyOutput) ToPeeringIamPolicyOutput() PeeringIamPolicyOutput {

@@ -156,76 +156,6 @@ type GoogleCloudChannelV1AssociationInfoResponse struct {
 	BaseEntitlement string `pulumi:"baseEntitlement"`
 }
 
-// GoogleCloudChannelV1AssociationInfoResponseInput is an input type that accepts GoogleCloudChannelV1AssociationInfoResponseArgs and GoogleCloudChannelV1AssociationInfoResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1AssociationInfoResponseInput` via:
-//
-//          GoogleCloudChannelV1AssociationInfoResponseArgs{...}
-type GoogleCloudChannelV1AssociationInfoResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1AssociationInfoResponseOutput() GoogleCloudChannelV1AssociationInfoResponseOutput
-	ToGoogleCloudChannelV1AssociationInfoResponseOutputWithContext(context.Context) GoogleCloudChannelV1AssociationInfoResponseOutput
-}
-
-// Association links that an entitlement has to other entitlements.
-type GoogleCloudChannelV1AssociationInfoResponseArgs struct {
-	// The name of the base entitlement, for which this entitlement is an add-on.
-	BaseEntitlement pulumi.StringInput `pulumi:"baseEntitlement"`
-}
-
-func (GoogleCloudChannelV1AssociationInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudChannelV1AssociationInfoResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudChannelV1AssociationInfoResponseArgs) ToGoogleCloudChannelV1AssociationInfoResponseOutput() GoogleCloudChannelV1AssociationInfoResponseOutput {
-	return i.ToGoogleCloudChannelV1AssociationInfoResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1AssociationInfoResponseArgs) ToGoogleCloudChannelV1AssociationInfoResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1AssociationInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1AssociationInfoResponseOutput)
-}
-
-func (i GoogleCloudChannelV1AssociationInfoResponseArgs) ToGoogleCloudChannelV1AssociationInfoResponsePtrOutput() GoogleCloudChannelV1AssociationInfoResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1AssociationInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1AssociationInfoResponseArgs) ToGoogleCloudChannelV1AssociationInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1AssociationInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1AssociationInfoResponseOutput).ToGoogleCloudChannelV1AssociationInfoResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudChannelV1AssociationInfoResponsePtrInput is an input type that accepts GoogleCloudChannelV1AssociationInfoResponseArgs, GoogleCloudChannelV1AssociationInfoResponsePtr and GoogleCloudChannelV1AssociationInfoResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1AssociationInfoResponsePtrInput` via:
-//
-//          GoogleCloudChannelV1AssociationInfoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudChannelV1AssociationInfoResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1AssociationInfoResponsePtrOutput() GoogleCloudChannelV1AssociationInfoResponsePtrOutput
-	ToGoogleCloudChannelV1AssociationInfoResponsePtrOutputWithContext(context.Context) GoogleCloudChannelV1AssociationInfoResponsePtrOutput
-}
-
-type googleCloudChannelV1AssociationInfoResponsePtrType GoogleCloudChannelV1AssociationInfoResponseArgs
-
-func GoogleCloudChannelV1AssociationInfoResponsePtr(v *GoogleCloudChannelV1AssociationInfoResponseArgs) GoogleCloudChannelV1AssociationInfoResponsePtrInput {
-	return (*googleCloudChannelV1AssociationInfoResponsePtrType)(v)
-}
-
-func (*googleCloudChannelV1AssociationInfoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1AssociationInfoResponse)(nil)).Elem()
-}
-
-func (i *googleCloudChannelV1AssociationInfoResponsePtrType) ToGoogleCloudChannelV1AssociationInfoResponsePtrOutput() GoogleCloudChannelV1AssociationInfoResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1AssociationInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudChannelV1AssociationInfoResponsePtrType) ToGoogleCloudChannelV1AssociationInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1AssociationInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1AssociationInfoResponsePtrOutput)
-}
-
 // Association links that an entitlement has to other entitlements.
 type GoogleCloudChannelV1AssociationInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -241,53 +171,9 @@ func (o GoogleCloudChannelV1AssociationInfoResponseOutput) ToGoogleCloudChannelV
 	return o
 }
 
-func (o GoogleCloudChannelV1AssociationInfoResponseOutput) ToGoogleCloudChannelV1AssociationInfoResponsePtrOutput() GoogleCloudChannelV1AssociationInfoResponsePtrOutput {
-	return o.ToGoogleCloudChannelV1AssociationInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudChannelV1AssociationInfoResponseOutput) ToGoogleCloudChannelV1AssociationInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1AssociationInfoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1AssociationInfoResponse) *GoogleCloudChannelV1AssociationInfoResponse {
-		return &v
-	}).(GoogleCloudChannelV1AssociationInfoResponsePtrOutput)
-}
-
 // The name of the base entitlement, for which this entitlement is an add-on.
 func (o GoogleCloudChannelV1AssociationInfoResponseOutput) BaseEntitlement() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1AssociationInfoResponse) string { return v.BaseEntitlement }).(pulumi.StringOutput)
-}
-
-type GoogleCloudChannelV1AssociationInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudChannelV1AssociationInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1AssociationInfoResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudChannelV1AssociationInfoResponsePtrOutput) ToGoogleCloudChannelV1AssociationInfoResponsePtrOutput() GoogleCloudChannelV1AssociationInfoResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1AssociationInfoResponsePtrOutput) ToGoogleCloudChannelV1AssociationInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1AssociationInfoResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1AssociationInfoResponsePtrOutput) Elem() GoogleCloudChannelV1AssociationInfoResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1AssociationInfoResponse) GoogleCloudChannelV1AssociationInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudChannelV1AssociationInfoResponse
-		return ret
-	}).(GoogleCloudChannelV1AssociationInfoResponseOutput)
-}
-
-// The name of the base entitlement, for which this entitlement is an add-on.
-func (o GoogleCloudChannelV1AssociationInfoResponsePtrOutput) BaseEntitlement() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1AssociationInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BaseEntitlement
-	}).(pulumi.StringPtrOutput)
 }
 
 // Cloud Identity information for the Cloud Channel Customer.
@@ -310,90 +196,6 @@ type GoogleCloudChannelV1CloudIdentityInfoResponse struct {
 	PrimaryDomain string `pulumi:"primaryDomain"`
 }
 
-// GoogleCloudChannelV1CloudIdentityInfoResponseInput is an input type that accepts GoogleCloudChannelV1CloudIdentityInfoResponseArgs and GoogleCloudChannelV1CloudIdentityInfoResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1CloudIdentityInfoResponseInput` via:
-//
-//          GoogleCloudChannelV1CloudIdentityInfoResponseArgs{...}
-type GoogleCloudChannelV1CloudIdentityInfoResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1CloudIdentityInfoResponseOutput() GoogleCloudChannelV1CloudIdentityInfoResponseOutput
-	ToGoogleCloudChannelV1CloudIdentityInfoResponseOutputWithContext(context.Context) GoogleCloudChannelV1CloudIdentityInfoResponseOutput
-}
-
-// Cloud Identity information for the Cloud Channel Customer.
-type GoogleCloudChannelV1CloudIdentityInfoResponseArgs struct {
-	// URI of Customer's Admin console dashboard.
-	AdminConsoleUri pulumi.StringInput `pulumi:"adminConsoleUri"`
-	// The alternate email.
-	AlternateEmail pulumi.StringInput `pulumi:"alternateEmail"`
-	// CustomerType indicates verification type needed for using services.
-	CustomerType pulumi.StringInput `pulumi:"customerType"`
-	// Edu information about the customer.
-	EduData GoogleCloudChannelV1EduDataResponseInput `pulumi:"eduData"`
-	// Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers.
-	IsDomainVerified pulumi.BoolInput `pulumi:"isDomainVerified"`
-	// Language code.
-	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
-	// Phone number associated with the Cloud Identity.
-	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
-	// The primary domain name.
-	PrimaryDomain pulumi.StringInput `pulumi:"primaryDomain"`
-}
-
-func (GoogleCloudChannelV1CloudIdentityInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudChannelV1CloudIdentityInfoResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudChannelV1CloudIdentityInfoResponseArgs) ToGoogleCloudChannelV1CloudIdentityInfoResponseOutput() GoogleCloudChannelV1CloudIdentityInfoResponseOutput {
-	return i.ToGoogleCloudChannelV1CloudIdentityInfoResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1CloudIdentityInfoResponseArgs) ToGoogleCloudChannelV1CloudIdentityInfoResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1CloudIdentityInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1CloudIdentityInfoResponseOutput)
-}
-
-func (i GoogleCloudChannelV1CloudIdentityInfoResponseArgs) ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput() GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1CloudIdentityInfoResponseArgs) ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1CloudIdentityInfoResponseOutput).ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudChannelV1CloudIdentityInfoResponsePtrInput is an input type that accepts GoogleCloudChannelV1CloudIdentityInfoResponseArgs, GoogleCloudChannelV1CloudIdentityInfoResponsePtr and GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1CloudIdentityInfoResponsePtrInput` via:
-//
-//          GoogleCloudChannelV1CloudIdentityInfoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudChannelV1CloudIdentityInfoResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput() GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput
-	ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutputWithContext(context.Context) GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput
-}
-
-type googleCloudChannelV1CloudIdentityInfoResponsePtrType GoogleCloudChannelV1CloudIdentityInfoResponseArgs
-
-func GoogleCloudChannelV1CloudIdentityInfoResponsePtr(v *GoogleCloudChannelV1CloudIdentityInfoResponseArgs) GoogleCloudChannelV1CloudIdentityInfoResponsePtrInput {
-	return (*googleCloudChannelV1CloudIdentityInfoResponsePtrType)(v)
-}
-
-func (*googleCloudChannelV1CloudIdentityInfoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1CloudIdentityInfoResponse)(nil)).Elem()
-}
-
-func (i *googleCloudChannelV1CloudIdentityInfoResponsePtrType) ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput() GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudChannelV1CloudIdentityInfoResponsePtrType) ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput)
-}
-
 // Cloud Identity information for the Cloud Channel Customer.
 type GoogleCloudChannelV1CloudIdentityInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -407,16 +209,6 @@ func (o GoogleCloudChannelV1CloudIdentityInfoResponseOutput) ToGoogleCloudChanne
 
 func (o GoogleCloudChannelV1CloudIdentityInfoResponseOutput) ToGoogleCloudChannelV1CloudIdentityInfoResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1CloudIdentityInfoResponseOutput {
 	return o
-}
-
-func (o GoogleCloudChannelV1CloudIdentityInfoResponseOutput) ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput() GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput {
-	return o.ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudChannelV1CloudIdentityInfoResponseOutput) ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1CloudIdentityInfoResponse) *GoogleCloudChannelV1CloudIdentityInfoResponse {
-		return &v
-	}).(GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput)
 }
 
 // URI of Customer's Admin console dashboard.
@@ -459,110 +251,6 @@ func (o GoogleCloudChannelV1CloudIdentityInfoResponseOutput) PhoneNumber() pulum
 // The primary domain name.
 func (o GoogleCloudChannelV1CloudIdentityInfoResponseOutput) PrimaryDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1CloudIdentityInfoResponse) string { return v.PrimaryDomain }).(pulumi.StringOutput)
-}
-
-type GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1CloudIdentityInfoResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput) ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput() GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput) ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput) Elem() GoogleCloudChannelV1CloudIdentityInfoResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1CloudIdentityInfoResponse) GoogleCloudChannelV1CloudIdentityInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudChannelV1CloudIdentityInfoResponse
-		return ret
-	}).(GoogleCloudChannelV1CloudIdentityInfoResponseOutput)
-}
-
-// URI of Customer's Admin console dashboard.
-func (o GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput) AdminConsoleUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1CloudIdentityInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AdminConsoleUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The alternate email.
-func (o GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput) AlternateEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1CloudIdentityInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AlternateEmail
-	}).(pulumi.StringPtrOutput)
-}
-
-// CustomerType indicates verification type needed for using services.
-func (o GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput) CustomerType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1CloudIdentityInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CustomerType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Edu information about the customer.
-func (o GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput) EduData() GoogleCloudChannelV1EduDataResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1CloudIdentityInfoResponse) *GoogleCloudChannelV1EduDataResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.EduData
-	}).(GoogleCloudChannelV1EduDataResponsePtrOutput)
-}
-
-// Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers.
-func (o GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput) IsDomainVerified() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1CloudIdentityInfoResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.IsDomainVerified
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Language code.
-func (o GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput) LanguageCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1CloudIdentityInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LanguageCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Phone number associated with the Cloud Identity.
-func (o GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput) PhoneNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1CloudIdentityInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PhoneNumber
-	}).(pulumi.StringPtrOutput)
-}
-
-// The primary domain name.
-func (o GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput) PrimaryDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1CloudIdentityInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrimaryDomain
-	}).(pulumi.StringPtrOutput)
 }
 
 // Commitment settings for commitment-based offers.
@@ -717,80 +405,6 @@ type GoogleCloudChannelV1CommitmentSettingsResponse struct {
 	StartTime string `pulumi:"startTime"`
 }
 
-// GoogleCloudChannelV1CommitmentSettingsResponseInput is an input type that accepts GoogleCloudChannelV1CommitmentSettingsResponseArgs and GoogleCloudChannelV1CommitmentSettingsResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1CommitmentSettingsResponseInput` via:
-//
-//          GoogleCloudChannelV1CommitmentSettingsResponseArgs{...}
-type GoogleCloudChannelV1CommitmentSettingsResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1CommitmentSettingsResponseOutput() GoogleCloudChannelV1CommitmentSettingsResponseOutput
-	ToGoogleCloudChannelV1CommitmentSettingsResponseOutputWithContext(context.Context) GoogleCloudChannelV1CommitmentSettingsResponseOutput
-}
-
-// Commitment settings for commitment-based offers.
-type GoogleCloudChannelV1CommitmentSettingsResponseArgs struct {
-	// Commitment end timestamp.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// Optional. Renewal settings applicable for a commitment-based Offer.
-	RenewalSettings GoogleCloudChannelV1RenewalSettingsResponseInput `pulumi:"renewalSettings"`
-	// Commitment start timestamp.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-}
-
-func (GoogleCloudChannelV1CommitmentSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudChannelV1CommitmentSettingsResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudChannelV1CommitmentSettingsResponseArgs) ToGoogleCloudChannelV1CommitmentSettingsResponseOutput() GoogleCloudChannelV1CommitmentSettingsResponseOutput {
-	return i.ToGoogleCloudChannelV1CommitmentSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1CommitmentSettingsResponseArgs) ToGoogleCloudChannelV1CommitmentSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1CommitmentSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1CommitmentSettingsResponseOutput)
-}
-
-func (i GoogleCloudChannelV1CommitmentSettingsResponseArgs) ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutput() GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1CommitmentSettingsResponseArgs) ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1CommitmentSettingsResponseOutput).ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudChannelV1CommitmentSettingsResponsePtrInput is an input type that accepts GoogleCloudChannelV1CommitmentSettingsResponseArgs, GoogleCloudChannelV1CommitmentSettingsResponsePtr and GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1CommitmentSettingsResponsePtrInput` via:
-//
-//          GoogleCloudChannelV1CommitmentSettingsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudChannelV1CommitmentSettingsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutput() GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput
-	ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutputWithContext(context.Context) GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput
-}
-
-type googleCloudChannelV1CommitmentSettingsResponsePtrType GoogleCloudChannelV1CommitmentSettingsResponseArgs
-
-func GoogleCloudChannelV1CommitmentSettingsResponsePtr(v *GoogleCloudChannelV1CommitmentSettingsResponseArgs) GoogleCloudChannelV1CommitmentSettingsResponsePtrInput {
-	return (*googleCloudChannelV1CommitmentSettingsResponsePtrType)(v)
-}
-
-func (*googleCloudChannelV1CommitmentSettingsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1CommitmentSettingsResponse)(nil)).Elem()
-}
-
-func (i *googleCloudChannelV1CommitmentSettingsResponsePtrType) ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutput() GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudChannelV1CommitmentSettingsResponsePtrType) ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput)
-}
-
 // Commitment settings for commitment-based offers.
 type GoogleCloudChannelV1CommitmentSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -804,16 +418,6 @@ func (o GoogleCloudChannelV1CommitmentSettingsResponseOutput) ToGoogleCloudChann
 
 func (o GoogleCloudChannelV1CommitmentSettingsResponseOutput) ToGoogleCloudChannelV1CommitmentSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1CommitmentSettingsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudChannelV1CommitmentSettingsResponseOutput) ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutput() GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput {
-	return o.ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudChannelV1CommitmentSettingsResponseOutput) ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1CommitmentSettingsResponse) *GoogleCloudChannelV1CommitmentSettingsResponse {
-		return &v
-	}).(GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput)
 }
 
 // Commitment end timestamp.
@@ -831,60 +435,6 @@ func (o GoogleCloudChannelV1CommitmentSettingsResponseOutput) RenewalSettings() 
 // Commitment start timestamp.
 func (o GoogleCloudChannelV1CommitmentSettingsResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1CommitmentSettingsResponse) string { return v.StartTime }).(pulumi.StringOutput)
-}
-
-type GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1CommitmentSettingsResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput) ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutput() GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput) ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput) Elem() GoogleCloudChannelV1CommitmentSettingsResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1CommitmentSettingsResponse) GoogleCloudChannelV1CommitmentSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudChannelV1CommitmentSettingsResponse
-		return ret
-	}).(GoogleCloudChannelV1CommitmentSettingsResponseOutput)
-}
-
-// Commitment end timestamp.
-func (o GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1CommitmentSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Renewal settings applicable for a commitment-based Offer.
-func (o GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput) RenewalSettings() GoogleCloudChannelV1RenewalSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1CommitmentSettingsResponse) *GoogleCloudChannelV1RenewalSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.RenewalSettings
-	}).(GoogleCloudChannelV1RenewalSettingsResponsePtrOutput)
-}
-
-// Commitment start timestamp.
-func (o GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1CommitmentSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // Contact information for a customer account.
@@ -1119,86 +669,6 @@ type GoogleCloudChannelV1ContactInfoResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// GoogleCloudChannelV1ContactInfoResponseInput is an input type that accepts GoogleCloudChannelV1ContactInfoResponseArgs and GoogleCloudChannelV1ContactInfoResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1ContactInfoResponseInput` via:
-//
-//          GoogleCloudChannelV1ContactInfoResponseArgs{...}
-type GoogleCloudChannelV1ContactInfoResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1ContactInfoResponseOutput() GoogleCloudChannelV1ContactInfoResponseOutput
-	ToGoogleCloudChannelV1ContactInfoResponseOutputWithContext(context.Context) GoogleCloudChannelV1ContactInfoResponseOutput
-}
-
-// Contact information for a customer account.
-type GoogleCloudChannelV1ContactInfoResponseArgs struct {
-	// The customer account contact's display name, formatted as a combination of the customer's first and last name.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
-	Email pulumi.StringInput `pulumi:"email"`
-	// The customer account contact's first name. Optional for Team customers.
-	FirstName pulumi.StringInput `pulumi:"firstName"`
-	// The customer account contact's last name. Optional for Team customers.
-	LastName pulumi.StringInput `pulumi:"lastName"`
-	// The customer account's contact phone number.
-	Phone pulumi.StringInput `pulumi:"phone"`
-	// Optional. The customer account contact's job title.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (GoogleCloudChannelV1ContactInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudChannelV1ContactInfoResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudChannelV1ContactInfoResponseArgs) ToGoogleCloudChannelV1ContactInfoResponseOutput() GoogleCloudChannelV1ContactInfoResponseOutput {
-	return i.ToGoogleCloudChannelV1ContactInfoResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1ContactInfoResponseArgs) ToGoogleCloudChannelV1ContactInfoResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1ContactInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ContactInfoResponseOutput)
-}
-
-func (i GoogleCloudChannelV1ContactInfoResponseArgs) ToGoogleCloudChannelV1ContactInfoResponsePtrOutput() GoogleCloudChannelV1ContactInfoResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1ContactInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1ContactInfoResponseArgs) ToGoogleCloudChannelV1ContactInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ContactInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ContactInfoResponseOutput).ToGoogleCloudChannelV1ContactInfoResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudChannelV1ContactInfoResponsePtrInput is an input type that accepts GoogleCloudChannelV1ContactInfoResponseArgs, GoogleCloudChannelV1ContactInfoResponsePtr and GoogleCloudChannelV1ContactInfoResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1ContactInfoResponsePtrInput` via:
-//
-//          GoogleCloudChannelV1ContactInfoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudChannelV1ContactInfoResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1ContactInfoResponsePtrOutput() GoogleCloudChannelV1ContactInfoResponsePtrOutput
-	ToGoogleCloudChannelV1ContactInfoResponsePtrOutputWithContext(context.Context) GoogleCloudChannelV1ContactInfoResponsePtrOutput
-}
-
-type googleCloudChannelV1ContactInfoResponsePtrType GoogleCloudChannelV1ContactInfoResponseArgs
-
-func GoogleCloudChannelV1ContactInfoResponsePtr(v *GoogleCloudChannelV1ContactInfoResponseArgs) GoogleCloudChannelV1ContactInfoResponsePtrInput {
-	return (*googleCloudChannelV1ContactInfoResponsePtrType)(v)
-}
-
-func (*googleCloudChannelV1ContactInfoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1ContactInfoResponse)(nil)).Elem()
-}
-
-func (i *googleCloudChannelV1ContactInfoResponsePtrType) ToGoogleCloudChannelV1ContactInfoResponsePtrOutput() GoogleCloudChannelV1ContactInfoResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1ContactInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudChannelV1ContactInfoResponsePtrType) ToGoogleCloudChannelV1ContactInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ContactInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ContactInfoResponsePtrOutput)
-}
-
 // Contact information for a customer account.
 type GoogleCloudChannelV1ContactInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -1212,16 +682,6 @@ func (o GoogleCloudChannelV1ContactInfoResponseOutput) ToGoogleCloudChannelV1Con
 
 func (o GoogleCloudChannelV1ContactInfoResponseOutput) ToGoogleCloudChannelV1ContactInfoResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1ContactInfoResponseOutput {
 	return o
-}
-
-func (o GoogleCloudChannelV1ContactInfoResponseOutput) ToGoogleCloudChannelV1ContactInfoResponsePtrOutput() GoogleCloudChannelV1ContactInfoResponsePtrOutput {
-	return o.ToGoogleCloudChannelV1ContactInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudChannelV1ContactInfoResponseOutput) ToGoogleCloudChannelV1ContactInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ContactInfoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1ContactInfoResponse) *GoogleCloudChannelV1ContactInfoResponse {
-		return &v
-	}).(GoogleCloudChannelV1ContactInfoResponsePtrOutput)
 }
 
 // The customer account contact's display name, formatted as a combination of the customer's first and last name.
@@ -1254,90 +714,6 @@ func (o GoogleCloudChannelV1ContactInfoResponseOutput) Title() pulumi.StringOutp
 	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfoResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type GoogleCloudChannelV1ContactInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudChannelV1ContactInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1ContactInfoResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) ToGoogleCloudChannelV1ContactInfoResponsePtrOutput() GoogleCloudChannelV1ContactInfoResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) ToGoogleCloudChannelV1ContactInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ContactInfoResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) Elem() GoogleCloudChannelV1ContactInfoResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) GoogleCloudChannelV1ContactInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudChannelV1ContactInfoResponse
-		return ret
-	}).(GoogleCloudChannelV1ContactInfoResponseOutput)
-}
-
-// The customer account contact's display name, formatted as a combination of the customer's first and last name.
-func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
-func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Email
-	}).(pulumi.StringPtrOutput)
-}
-
-// The customer account contact's first name. Optional for Team customers.
-func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) FirstName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FirstName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The customer account contact's last name. Optional for Team customers.
-func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) LastName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LastName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The customer account's contact phone number.
-func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) Phone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Phone
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The customer account contact's job title.
-func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
 // Required Edu Attributes
 type GoogleCloudChannelV1EduDataResponse struct {
 	// Size of the institute.
@@ -1346,80 +722,6 @@ type GoogleCloudChannelV1EduDataResponse struct {
 	InstituteType string `pulumi:"instituteType"`
 	// Web address for the edu customer's institution.
 	Website string `pulumi:"website"`
-}
-
-// GoogleCloudChannelV1EduDataResponseInput is an input type that accepts GoogleCloudChannelV1EduDataResponseArgs and GoogleCloudChannelV1EduDataResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1EduDataResponseInput` via:
-//
-//          GoogleCloudChannelV1EduDataResponseArgs{...}
-type GoogleCloudChannelV1EduDataResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1EduDataResponseOutput() GoogleCloudChannelV1EduDataResponseOutput
-	ToGoogleCloudChannelV1EduDataResponseOutputWithContext(context.Context) GoogleCloudChannelV1EduDataResponseOutput
-}
-
-// Required Edu Attributes
-type GoogleCloudChannelV1EduDataResponseArgs struct {
-	// Size of the institute.
-	InstituteSize pulumi.StringInput `pulumi:"instituteSize"`
-	// Designated institute type of customer.
-	InstituteType pulumi.StringInput `pulumi:"instituteType"`
-	// Web address for the edu customer's institution.
-	Website pulumi.StringInput `pulumi:"website"`
-}
-
-func (GoogleCloudChannelV1EduDataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudChannelV1EduDataResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudChannelV1EduDataResponseArgs) ToGoogleCloudChannelV1EduDataResponseOutput() GoogleCloudChannelV1EduDataResponseOutput {
-	return i.ToGoogleCloudChannelV1EduDataResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1EduDataResponseArgs) ToGoogleCloudChannelV1EduDataResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1EduDataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1EduDataResponseOutput)
-}
-
-func (i GoogleCloudChannelV1EduDataResponseArgs) ToGoogleCloudChannelV1EduDataResponsePtrOutput() GoogleCloudChannelV1EduDataResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1EduDataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1EduDataResponseArgs) ToGoogleCloudChannelV1EduDataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1EduDataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1EduDataResponseOutput).ToGoogleCloudChannelV1EduDataResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudChannelV1EduDataResponsePtrInput is an input type that accepts GoogleCloudChannelV1EduDataResponseArgs, GoogleCloudChannelV1EduDataResponsePtr and GoogleCloudChannelV1EduDataResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1EduDataResponsePtrInput` via:
-//
-//          GoogleCloudChannelV1EduDataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudChannelV1EduDataResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1EduDataResponsePtrOutput() GoogleCloudChannelV1EduDataResponsePtrOutput
-	ToGoogleCloudChannelV1EduDataResponsePtrOutputWithContext(context.Context) GoogleCloudChannelV1EduDataResponsePtrOutput
-}
-
-type googleCloudChannelV1EduDataResponsePtrType GoogleCloudChannelV1EduDataResponseArgs
-
-func GoogleCloudChannelV1EduDataResponsePtr(v *GoogleCloudChannelV1EduDataResponseArgs) GoogleCloudChannelV1EduDataResponsePtrInput {
-	return (*googleCloudChannelV1EduDataResponsePtrType)(v)
-}
-
-func (*googleCloudChannelV1EduDataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1EduDataResponse)(nil)).Elem()
-}
-
-func (i *googleCloudChannelV1EduDataResponsePtrType) ToGoogleCloudChannelV1EduDataResponsePtrOutput() GoogleCloudChannelV1EduDataResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1EduDataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudChannelV1EduDataResponsePtrType) ToGoogleCloudChannelV1EduDataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1EduDataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1EduDataResponsePtrOutput)
 }
 
 // Required Edu Attributes
@@ -1437,16 +739,6 @@ func (o GoogleCloudChannelV1EduDataResponseOutput) ToGoogleCloudChannelV1EduData
 	return o
 }
 
-func (o GoogleCloudChannelV1EduDataResponseOutput) ToGoogleCloudChannelV1EduDataResponsePtrOutput() GoogleCloudChannelV1EduDataResponsePtrOutput {
-	return o.ToGoogleCloudChannelV1EduDataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudChannelV1EduDataResponseOutput) ToGoogleCloudChannelV1EduDataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1EduDataResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1EduDataResponse) *GoogleCloudChannelV1EduDataResponse {
-		return &v
-	}).(GoogleCloudChannelV1EduDataResponsePtrOutput)
-}
-
 // Size of the institute.
 func (o GoogleCloudChannelV1EduDataResponseOutput) InstituteSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1EduDataResponse) string { return v.InstituteSize }).(pulumi.StringOutput)
@@ -1460,60 +752,6 @@ func (o GoogleCloudChannelV1EduDataResponseOutput) InstituteType() pulumi.String
 // Web address for the edu customer's institution.
 func (o GoogleCloudChannelV1EduDataResponseOutput) Website() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1EduDataResponse) string { return v.Website }).(pulumi.StringOutput)
-}
-
-type GoogleCloudChannelV1EduDataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudChannelV1EduDataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1EduDataResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudChannelV1EduDataResponsePtrOutput) ToGoogleCloudChannelV1EduDataResponsePtrOutput() GoogleCloudChannelV1EduDataResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1EduDataResponsePtrOutput) ToGoogleCloudChannelV1EduDataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1EduDataResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1EduDataResponsePtrOutput) Elem() GoogleCloudChannelV1EduDataResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1EduDataResponse) GoogleCloudChannelV1EduDataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudChannelV1EduDataResponse
-		return ret
-	}).(GoogleCloudChannelV1EduDataResponseOutput)
-}
-
-// Size of the institute.
-func (o GoogleCloudChannelV1EduDataResponsePtrOutput) InstituteSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1EduDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InstituteSize
-	}).(pulumi.StringPtrOutput)
-}
-
-// Designated institute type of customer.
-func (o GoogleCloudChannelV1EduDataResponsePtrOutput) InstituteType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1EduDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InstituteType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Web address for the edu customer's institution.
-func (o GoogleCloudChannelV1EduDataResponsePtrOutput) Website() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1EduDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Website
-	}).(pulumi.StringPtrOutput)
 }
 
 // Definition for extended entitlement parameters.
@@ -1633,64 +871,6 @@ type GoogleCloudChannelV1ParameterResponse struct {
 	Name string `pulumi:"name"`
 	// Value of the parameter.
 	Value GoogleCloudChannelV1ValueResponse `pulumi:"value"`
-}
-
-// GoogleCloudChannelV1ParameterResponseInput is an input type that accepts GoogleCloudChannelV1ParameterResponseArgs and GoogleCloudChannelV1ParameterResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1ParameterResponseInput` via:
-//
-//          GoogleCloudChannelV1ParameterResponseArgs{...}
-type GoogleCloudChannelV1ParameterResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1ParameterResponseOutput() GoogleCloudChannelV1ParameterResponseOutput
-	ToGoogleCloudChannelV1ParameterResponseOutputWithContext(context.Context) GoogleCloudChannelV1ParameterResponseOutput
-}
-
-// Definition for extended entitlement parameters.
-type GoogleCloudChannelV1ParameterResponseArgs struct {
-	// Specifies whether this parameter is allowed to be changed. For example, for a Google Workspace Business Starter entitlement in commitment plan, num_units is editable when entitlement is active.
-	Editable pulumi.BoolInput `pulumi:"editable"`
-	// Name of the parameter.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Value of the parameter.
-	Value GoogleCloudChannelV1ValueResponseInput `pulumi:"value"`
-}
-
-func (GoogleCloudChannelV1ParameterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudChannelV1ParameterResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudChannelV1ParameterResponseArgs) ToGoogleCloudChannelV1ParameterResponseOutput() GoogleCloudChannelV1ParameterResponseOutput {
-	return i.ToGoogleCloudChannelV1ParameterResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1ParameterResponseArgs) ToGoogleCloudChannelV1ParameterResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1ParameterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ParameterResponseOutput)
-}
-
-// GoogleCloudChannelV1ParameterResponseArrayInput is an input type that accepts GoogleCloudChannelV1ParameterResponseArray and GoogleCloudChannelV1ParameterResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1ParameterResponseArrayInput` via:
-//
-//          GoogleCloudChannelV1ParameterResponseArray{ GoogleCloudChannelV1ParameterResponseArgs{...} }
-type GoogleCloudChannelV1ParameterResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1ParameterResponseArrayOutput() GoogleCloudChannelV1ParameterResponseArrayOutput
-	ToGoogleCloudChannelV1ParameterResponseArrayOutputWithContext(context.Context) GoogleCloudChannelV1ParameterResponseArrayOutput
-}
-
-type GoogleCloudChannelV1ParameterResponseArray []GoogleCloudChannelV1ParameterResponseInput
-
-func (GoogleCloudChannelV1ParameterResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudChannelV1ParameterResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudChannelV1ParameterResponseArray) ToGoogleCloudChannelV1ParameterResponseArrayOutput() GoogleCloudChannelV1ParameterResponseArrayOutput {
-	return i.ToGoogleCloudChannelV1ParameterResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1ParameterResponseArray) ToGoogleCloudChannelV1ParameterResponseArrayOutputWithContext(ctx context.Context) GoogleCloudChannelV1ParameterResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ParameterResponseArrayOutput)
 }
 
 // Definition for extended entitlement parameters.
@@ -1910,78 +1090,6 @@ type GoogleCloudChannelV1PeriodResponse struct {
 	PeriodType string `pulumi:"periodType"`
 }
 
-// GoogleCloudChannelV1PeriodResponseInput is an input type that accepts GoogleCloudChannelV1PeriodResponseArgs and GoogleCloudChannelV1PeriodResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1PeriodResponseInput` via:
-//
-//          GoogleCloudChannelV1PeriodResponseArgs{...}
-type GoogleCloudChannelV1PeriodResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1PeriodResponseOutput() GoogleCloudChannelV1PeriodResponseOutput
-	ToGoogleCloudChannelV1PeriodResponseOutputWithContext(context.Context) GoogleCloudChannelV1PeriodResponseOutput
-}
-
-// Represents period in days/months/years.
-type GoogleCloudChannelV1PeriodResponseArgs struct {
-	// Total duration of Period Type defined.
-	Duration pulumi.IntInput `pulumi:"duration"`
-	// Period Type.
-	PeriodType pulumi.StringInput `pulumi:"periodType"`
-}
-
-func (GoogleCloudChannelV1PeriodResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudChannelV1PeriodResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudChannelV1PeriodResponseArgs) ToGoogleCloudChannelV1PeriodResponseOutput() GoogleCloudChannelV1PeriodResponseOutput {
-	return i.ToGoogleCloudChannelV1PeriodResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1PeriodResponseArgs) ToGoogleCloudChannelV1PeriodResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1PeriodResponseOutput)
-}
-
-func (i GoogleCloudChannelV1PeriodResponseArgs) ToGoogleCloudChannelV1PeriodResponsePtrOutput() GoogleCloudChannelV1PeriodResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1PeriodResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1PeriodResponseArgs) ToGoogleCloudChannelV1PeriodResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1PeriodResponseOutput).ToGoogleCloudChannelV1PeriodResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudChannelV1PeriodResponsePtrInput is an input type that accepts GoogleCloudChannelV1PeriodResponseArgs, GoogleCloudChannelV1PeriodResponsePtr and GoogleCloudChannelV1PeriodResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1PeriodResponsePtrInput` via:
-//
-//          GoogleCloudChannelV1PeriodResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudChannelV1PeriodResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1PeriodResponsePtrOutput() GoogleCloudChannelV1PeriodResponsePtrOutput
-	ToGoogleCloudChannelV1PeriodResponsePtrOutputWithContext(context.Context) GoogleCloudChannelV1PeriodResponsePtrOutput
-}
-
-type googleCloudChannelV1PeriodResponsePtrType GoogleCloudChannelV1PeriodResponseArgs
-
-func GoogleCloudChannelV1PeriodResponsePtr(v *GoogleCloudChannelV1PeriodResponseArgs) GoogleCloudChannelV1PeriodResponsePtrInput {
-	return (*googleCloudChannelV1PeriodResponsePtrType)(v)
-}
-
-func (*googleCloudChannelV1PeriodResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1PeriodResponse)(nil)).Elem()
-}
-
-func (i *googleCloudChannelV1PeriodResponsePtrType) ToGoogleCloudChannelV1PeriodResponsePtrOutput() GoogleCloudChannelV1PeriodResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1PeriodResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudChannelV1PeriodResponsePtrType) ToGoogleCloudChannelV1PeriodResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1PeriodResponsePtrOutput)
-}
-
 // Represents period in days/months/years.
 type GoogleCloudChannelV1PeriodResponseOutput struct{ *pulumi.OutputState }
 
@@ -1997,16 +1105,6 @@ func (o GoogleCloudChannelV1PeriodResponseOutput) ToGoogleCloudChannelV1PeriodRe
 	return o
 }
 
-func (o GoogleCloudChannelV1PeriodResponseOutput) ToGoogleCloudChannelV1PeriodResponsePtrOutput() GoogleCloudChannelV1PeriodResponsePtrOutput {
-	return o.ToGoogleCloudChannelV1PeriodResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudChannelV1PeriodResponseOutput) ToGoogleCloudChannelV1PeriodResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1PeriodResponse) *GoogleCloudChannelV1PeriodResponse {
-		return &v
-	}).(GoogleCloudChannelV1PeriodResponsePtrOutput)
-}
-
 // Total duration of Period Type defined.
 func (o GoogleCloudChannelV1PeriodResponseOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1PeriodResponse) int { return v.Duration }).(pulumi.IntOutput)
@@ -2017,50 +1115,6 @@ func (o GoogleCloudChannelV1PeriodResponseOutput) PeriodType() pulumi.StringOutp
 	return o.ApplyT(func(v GoogleCloudChannelV1PeriodResponse) string { return v.PeriodType }).(pulumi.StringOutput)
 }
 
-type GoogleCloudChannelV1PeriodResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudChannelV1PeriodResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1PeriodResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudChannelV1PeriodResponsePtrOutput) ToGoogleCloudChannelV1PeriodResponsePtrOutput() GoogleCloudChannelV1PeriodResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1PeriodResponsePtrOutput) ToGoogleCloudChannelV1PeriodResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1PeriodResponsePtrOutput) Elem() GoogleCloudChannelV1PeriodResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1PeriodResponse) GoogleCloudChannelV1PeriodResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudChannelV1PeriodResponse
-		return ret
-	}).(GoogleCloudChannelV1PeriodResponseOutput)
-}
-
-// Total duration of Period Type defined.
-func (o GoogleCloudChannelV1PeriodResponsePtrOutput) Duration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1PeriodResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Duration
-	}).(pulumi.IntPtrOutput)
-}
-
-// Period Type.
-func (o GoogleCloudChannelV1PeriodResponsePtrOutput) PeriodType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1PeriodResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PeriodType
-	}).(pulumi.StringPtrOutput)
-}
-
 // Service provisioned for an entitlement.
 type GoogleCloudChannelV1ProvisionedServiceResponse struct {
 	// The product pertaining to the provisioning resource as specified in the Offer.
@@ -2069,80 +1123,6 @@ type GoogleCloudChannelV1ProvisionedServiceResponse struct {
 	ProvisioningId string `pulumi:"provisioningId"`
 	// The SKU pertaining to the provisioning resource as specified in the Offer.
 	SkuId string `pulumi:"skuId"`
-}
-
-// GoogleCloudChannelV1ProvisionedServiceResponseInput is an input type that accepts GoogleCloudChannelV1ProvisionedServiceResponseArgs and GoogleCloudChannelV1ProvisionedServiceResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1ProvisionedServiceResponseInput` via:
-//
-//          GoogleCloudChannelV1ProvisionedServiceResponseArgs{...}
-type GoogleCloudChannelV1ProvisionedServiceResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1ProvisionedServiceResponseOutput() GoogleCloudChannelV1ProvisionedServiceResponseOutput
-	ToGoogleCloudChannelV1ProvisionedServiceResponseOutputWithContext(context.Context) GoogleCloudChannelV1ProvisionedServiceResponseOutput
-}
-
-// Service provisioned for an entitlement.
-type GoogleCloudChannelV1ProvisionedServiceResponseArgs struct {
-	// The product pertaining to the provisioning resource as specified in the Offer.
-	ProductId pulumi.StringInput `pulumi:"productId"`
-	// Provisioning ID of the entitlement. For Google Workspace, this would be the underlying Subscription ID.
-	ProvisioningId pulumi.StringInput `pulumi:"provisioningId"`
-	// The SKU pertaining to the provisioning resource as specified in the Offer.
-	SkuId pulumi.StringInput `pulumi:"skuId"`
-}
-
-func (GoogleCloudChannelV1ProvisionedServiceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudChannelV1ProvisionedServiceResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudChannelV1ProvisionedServiceResponseArgs) ToGoogleCloudChannelV1ProvisionedServiceResponseOutput() GoogleCloudChannelV1ProvisionedServiceResponseOutput {
-	return i.ToGoogleCloudChannelV1ProvisionedServiceResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1ProvisionedServiceResponseArgs) ToGoogleCloudChannelV1ProvisionedServiceResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1ProvisionedServiceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ProvisionedServiceResponseOutput)
-}
-
-func (i GoogleCloudChannelV1ProvisionedServiceResponseArgs) ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutput() GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1ProvisionedServiceResponseArgs) ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ProvisionedServiceResponseOutput).ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudChannelV1ProvisionedServiceResponsePtrInput is an input type that accepts GoogleCloudChannelV1ProvisionedServiceResponseArgs, GoogleCloudChannelV1ProvisionedServiceResponsePtr and GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1ProvisionedServiceResponsePtrInput` via:
-//
-//          GoogleCloudChannelV1ProvisionedServiceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudChannelV1ProvisionedServiceResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutput() GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput
-	ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutputWithContext(context.Context) GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput
-}
-
-type googleCloudChannelV1ProvisionedServiceResponsePtrType GoogleCloudChannelV1ProvisionedServiceResponseArgs
-
-func GoogleCloudChannelV1ProvisionedServiceResponsePtr(v *GoogleCloudChannelV1ProvisionedServiceResponseArgs) GoogleCloudChannelV1ProvisionedServiceResponsePtrInput {
-	return (*googleCloudChannelV1ProvisionedServiceResponsePtrType)(v)
-}
-
-func (*googleCloudChannelV1ProvisionedServiceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1ProvisionedServiceResponse)(nil)).Elem()
-}
-
-func (i *googleCloudChannelV1ProvisionedServiceResponsePtrType) ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutput() GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudChannelV1ProvisionedServiceResponsePtrType) ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput)
 }
 
 // Service provisioned for an entitlement.
@@ -2160,16 +1140,6 @@ func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) ToGoogleCloudChann
 	return o
 }
 
-func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutput() GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput {
-	return o.ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1ProvisionedServiceResponse) *GoogleCloudChannelV1ProvisionedServiceResponse {
-		return &v
-	}).(GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput)
-}
-
 // The product pertaining to the provisioning resource as specified in the Offer.
 func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) ProductId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ProvisionedServiceResponse) string { return v.ProductId }).(pulumi.StringOutput)
@@ -2183,60 +1153,6 @@ func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) ProvisioningId() p
 // The SKU pertaining to the provisioning resource as specified in the Offer.
 func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) SkuId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ProvisionedServiceResponse) string { return v.SkuId }).(pulumi.StringOutput)
-}
-
-type GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1ProvisionedServiceResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput) ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutput() GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput) ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput) Elem() GoogleCloudChannelV1ProvisionedServiceResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1ProvisionedServiceResponse) GoogleCloudChannelV1ProvisionedServiceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudChannelV1ProvisionedServiceResponse
-		return ret
-	}).(GoogleCloudChannelV1ProvisionedServiceResponseOutput)
-}
-
-// The product pertaining to the provisioning resource as specified in the Offer.
-func (o GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput) ProductId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1ProvisionedServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProductId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Provisioning ID of the entitlement. For Google Workspace, this would be the underlying Subscription ID.
-func (o GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput) ProvisioningId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1ProvisionedServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProvisioningId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The SKU pertaining to the provisioning resource as specified in the Offer.
-func (o GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput) SkuId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1ProvisionedServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SkuId
-	}).(pulumi.StringPtrOutput)
 }
 
 // Renewal settings for renewable Offers.
@@ -2450,82 +1366,6 @@ type GoogleCloudChannelV1RenewalSettingsResponse struct {
 	ResizeUnitCount bool `pulumi:"resizeUnitCount"`
 }
 
-// GoogleCloudChannelV1RenewalSettingsResponseInput is an input type that accepts GoogleCloudChannelV1RenewalSettingsResponseArgs and GoogleCloudChannelV1RenewalSettingsResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1RenewalSettingsResponseInput` via:
-//
-//          GoogleCloudChannelV1RenewalSettingsResponseArgs{...}
-type GoogleCloudChannelV1RenewalSettingsResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1RenewalSettingsResponseOutput() GoogleCloudChannelV1RenewalSettingsResponseOutput
-	ToGoogleCloudChannelV1RenewalSettingsResponseOutputWithContext(context.Context) GoogleCloudChannelV1RenewalSettingsResponseOutput
-}
-
-// Renewal settings for renewable Offers.
-type GoogleCloudChannelV1RenewalSettingsResponseArgs struct {
-	// If false, the plan will be completed at the end date.
-	EnableRenewal pulumi.BoolInput `pulumi:"enableRenewal"`
-	// Describes how frequently the reseller will be billed, such as once per month.
-	PaymentCycle GoogleCloudChannelV1PeriodResponseInput `pulumi:"paymentCycle"`
-	// Describes how a reseller will be billed.
-	PaymentPlan pulumi.StringInput `pulumi:"paymentPlan"`
-	// If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.
-	ResizeUnitCount pulumi.BoolInput `pulumi:"resizeUnitCount"`
-}
-
-func (GoogleCloudChannelV1RenewalSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudChannelV1RenewalSettingsResponseArgs) ToGoogleCloudChannelV1RenewalSettingsResponseOutput() GoogleCloudChannelV1RenewalSettingsResponseOutput {
-	return i.ToGoogleCloudChannelV1RenewalSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1RenewalSettingsResponseArgs) ToGoogleCloudChannelV1RenewalSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RenewalSettingsResponseOutput)
-}
-
-func (i GoogleCloudChannelV1RenewalSettingsResponseArgs) ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutput() GoogleCloudChannelV1RenewalSettingsResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1RenewalSettingsResponseArgs) ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RenewalSettingsResponseOutput).ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudChannelV1RenewalSettingsResponsePtrInput is an input type that accepts GoogleCloudChannelV1RenewalSettingsResponseArgs, GoogleCloudChannelV1RenewalSettingsResponsePtr and GoogleCloudChannelV1RenewalSettingsResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1RenewalSettingsResponsePtrInput` via:
-//
-//          GoogleCloudChannelV1RenewalSettingsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudChannelV1RenewalSettingsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutput() GoogleCloudChannelV1RenewalSettingsResponsePtrOutput
-	ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutputWithContext(context.Context) GoogleCloudChannelV1RenewalSettingsResponsePtrOutput
-}
-
-type googleCloudChannelV1RenewalSettingsResponsePtrType GoogleCloudChannelV1RenewalSettingsResponseArgs
-
-func GoogleCloudChannelV1RenewalSettingsResponsePtr(v *GoogleCloudChannelV1RenewalSettingsResponseArgs) GoogleCloudChannelV1RenewalSettingsResponsePtrInput {
-	return (*googleCloudChannelV1RenewalSettingsResponsePtrType)(v)
-}
-
-func (*googleCloudChannelV1RenewalSettingsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1RenewalSettingsResponse)(nil)).Elem()
-}
-
-func (i *googleCloudChannelV1RenewalSettingsResponsePtrType) ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutput() GoogleCloudChannelV1RenewalSettingsResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudChannelV1RenewalSettingsResponsePtrType) ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RenewalSettingsResponsePtrOutput)
-}
-
 // Renewal settings for renewable Offers.
 type GoogleCloudChannelV1RenewalSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -2539,16 +1379,6 @@ func (o GoogleCloudChannelV1RenewalSettingsResponseOutput) ToGoogleCloudChannelV
 
 func (o GoogleCloudChannelV1RenewalSettingsResponseOutput) ToGoogleCloudChannelV1RenewalSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudChannelV1RenewalSettingsResponseOutput) ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutput() GoogleCloudChannelV1RenewalSettingsResponsePtrOutput {
-	return o.ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudChannelV1RenewalSettingsResponseOutput) ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1RenewalSettingsResponse) *GoogleCloudChannelV1RenewalSettingsResponse {
-		return &v
-	}).(GoogleCloudChannelV1RenewalSettingsResponsePtrOutput)
 }
 
 // If false, the plan will be completed at the end date.
@@ -2573,148 +1403,12 @@ func (o GoogleCloudChannelV1RenewalSettingsResponseOutput) ResizeUnitCount() pul
 	return o.ApplyT(func(v GoogleCloudChannelV1RenewalSettingsResponse) bool { return v.ResizeUnitCount }).(pulumi.BoolOutput)
 }
 
-type GoogleCloudChannelV1RenewalSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudChannelV1RenewalSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1RenewalSettingsResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudChannelV1RenewalSettingsResponsePtrOutput) ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutput() GoogleCloudChannelV1RenewalSettingsResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1RenewalSettingsResponsePtrOutput) ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1RenewalSettingsResponsePtrOutput) Elem() GoogleCloudChannelV1RenewalSettingsResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1RenewalSettingsResponse) GoogleCloudChannelV1RenewalSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudChannelV1RenewalSettingsResponse
-		return ret
-	}).(GoogleCloudChannelV1RenewalSettingsResponseOutput)
-}
-
-// If false, the plan will be completed at the end date.
-func (o GoogleCloudChannelV1RenewalSettingsResponsePtrOutput) EnableRenewal() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1RenewalSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableRenewal
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Describes how frequently the reseller will be billed, such as once per month.
-func (o GoogleCloudChannelV1RenewalSettingsResponsePtrOutput) PaymentCycle() GoogleCloudChannelV1PeriodResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1RenewalSettingsResponse) *GoogleCloudChannelV1PeriodResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PaymentCycle
-	}).(GoogleCloudChannelV1PeriodResponsePtrOutput)
-}
-
-// Describes how a reseller will be billed.
-func (o GoogleCloudChannelV1RenewalSettingsResponsePtrOutput) PaymentPlan() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1RenewalSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PaymentPlan
-	}).(pulumi.StringPtrOutput)
-}
-
-// If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.
-func (o GoogleCloudChannelV1RenewalSettingsResponsePtrOutput) ResizeUnitCount() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1RenewalSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ResizeUnitCount
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Settings for trial offers.
 type GoogleCloudChannelV1TrialSettingsResponse struct {
 	// Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com).
 	EndTime string `pulumi:"endTime"`
 	// Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The entitlement is not in trial.
 	Trial bool `pulumi:"trial"`
-}
-
-// GoogleCloudChannelV1TrialSettingsResponseInput is an input type that accepts GoogleCloudChannelV1TrialSettingsResponseArgs and GoogleCloudChannelV1TrialSettingsResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1TrialSettingsResponseInput` via:
-//
-//          GoogleCloudChannelV1TrialSettingsResponseArgs{...}
-type GoogleCloudChannelV1TrialSettingsResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1TrialSettingsResponseOutput() GoogleCloudChannelV1TrialSettingsResponseOutput
-	ToGoogleCloudChannelV1TrialSettingsResponseOutputWithContext(context.Context) GoogleCloudChannelV1TrialSettingsResponseOutput
-}
-
-// Settings for trial offers.
-type GoogleCloudChannelV1TrialSettingsResponseArgs struct {
-	// Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com).
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The entitlement is not in trial.
-	Trial pulumi.BoolInput `pulumi:"trial"`
-}
-
-func (GoogleCloudChannelV1TrialSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudChannelV1TrialSettingsResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudChannelV1TrialSettingsResponseArgs) ToGoogleCloudChannelV1TrialSettingsResponseOutput() GoogleCloudChannelV1TrialSettingsResponseOutput {
-	return i.ToGoogleCloudChannelV1TrialSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1TrialSettingsResponseArgs) ToGoogleCloudChannelV1TrialSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1TrialSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1TrialSettingsResponseOutput)
-}
-
-func (i GoogleCloudChannelV1TrialSettingsResponseArgs) ToGoogleCloudChannelV1TrialSettingsResponsePtrOutput() GoogleCloudChannelV1TrialSettingsResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1TrialSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1TrialSettingsResponseArgs) ToGoogleCloudChannelV1TrialSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1TrialSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1TrialSettingsResponseOutput).ToGoogleCloudChannelV1TrialSettingsResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudChannelV1TrialSettingsResponsePtrInput is an input type that accepts GoogleCloudChannelV1TrialSettingsResponseArgs, GoogleCloudChannelV1TrialSettingsResponsePtr and GoogleCloudChannelV1TrialSettingsResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1TrialSettingsResponsePtrInput` via:
-//
-//          GoogleCloudChannelV1TrialSettingsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudChannelV1TrialSettingsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1TrialSettingsResponsePtrOutput() GoogleCloudChannelV1TrialSettingsResponsePtrOutput
-	ToGoogleCloudChannelV1TrialSettingsResponsePtrOutputWithContext(context.Context) GoogleCloudChannelV1TrialSettingsResponsePtrOutput
-}
-
-type googleCloudChannelV1TrialSettingsResponsePtrType GoogleCloudChannelV1TrialSettingsResponseArgs
-
-func GoogleCloudChannelV1TrialSettingsResponsePtr(v *GoogleCloudChannelV1TrialSettingsResponseArgs) GoogleCloudChannelV1TrialSettingsResponsePtrInput {
-	return (*googleCloudChannelV1TrialSettingsResponsePtrType)(v)
-}
-
-func (*googleCloudChannelV1TrialSettingsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1TrialSettingsResponse)(nil)).Elem()
-}
-
-func (i *googleCloudChannelV1TrialSettingsResponsePtrType) ToGoogleCloudChannelV1TrialSettingsResponsePtrOutput() GoogleCloudChannelV1TrialSettingsResponsePtrOutput {
-	return i.ToGoogleCloudChannelV1TrialSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudChannelV1TrialSettingsResponsePtrType) ToGoogleCloudChannelV1TrialSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1TrialSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1TrialSettingsResponsePtrOutput)
 }
 
 // Settings for trial offers.
@@ -2732,16 +1426,6 @@ func (o GoogleCloudChannelV1TrialSettingsResponseOutput) ToGoogleCloudChannelV1T
 	return o
 }
 
-func (o GoogleCloudChannelV1TrialSettingsResponseOutput) ToGoogleCloudChannelV1TrialSettingsResponsePtrOutput() GoogleCloudChannelV1TrialSettingsResponsePtrOutput {
-	return o.ToGoogleCloudChannelV1TrialSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudChannelV1TrialSettingsResponseOutput) ToGoogleCloudChannelV1TrialSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1TrialSettingsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1TrialSettingsResponse) *GoogleCloudChannelV1TrialSettingsResponse {
-		return &v
-	}).(GoogleCloudChannelV1TrialSettingsResponsePtrOutput)
-}
-
 // Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com).
 func (o GoogleCloudChannelV1TrialSettingsResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1TrialSettingsResponse) string { return v.EndTime }).(pulumi.StringOutput)
@@ -2750,50 +1434,6 @@ func (o GoogleCloudChannelV1TrialSettingsResponseOutput) EndTime() pulumi.String
 // Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The entitlement is not in trial.
 func (o GoogleCloudChannelV1TrialSettingsResponseOutput) Trial() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1TrialSettingsResponse) bool { return v.Trial }).(pulumi.BoolOutput)
-}
-
-type GoogleCloudChannelV1TrialSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudChannelV1TrialSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudChannelV1TrialSettingsResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudChannelV1TrialSettingsResponsePtrOutput) ToGoogleCloudChannelV1TrialSettingsResponsePtrOutput() GoogleCloudChannelV1TrialSettingsResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1TrialSettingsResponsePtrOutput) ToGoogleCloudChannelV1TrialSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1TrialSettingsResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudChannelV1TrialSettingsResponsePtrOutput) Elem() GoogleCloudChannelV1TrialSettingsResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1TrialSettingsResponse) GoogleCloudChannelV1TrialSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudChannelV1TrialSettingsResponse
-		return ret
-	}).(GoogleCloudChannelV1TrialSettingsResponseOutput)
-}
-
-// Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com).
-func (o GoogleCloudChannelV1TrialSettingsResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1TrialSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The entitlement is not in trial.
-func (o GoogleCloudChannelV1TrialSettingsResponsePtrOutput) Trial() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1TrialSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Trial
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Data type and value of a parameter.
@@ -3026,43 +1666,6 @@ type GoogleCloudChannelV1ValueResponse struct {
 	StringValue string `pulumi:"stringValue"`
 }
 
-// GoogleCloudChannelV1ValueResponseInput is an input type that accepts GoogleCloudChannelV1ValueResponseArgs and GoogleCloudChannelV1ValueResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1ValueResponseInput` via:
-//
-//          GoogleCloudChannelV1ValueResponseArgs{...}
-type GoogleCloudChannelV1ValueResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudChannelV1ValueResponseOutput() GoogleCloudChannelV1ValueResponseOutput
-	ToGoogleCloudChannelV1ValueResponseOutputWithContext(context.Context) GoogleCloudChannelV1ValueResponseOutput
-}
-
-// Data type and value of a parameter.
-type GoogleCloudChannelV1ValueResponseArgs struct {
-	// Represents a boolean value.
-	BoolValue pulumi.BoolInput `pulumi:"boolValue"`
-	// Represents a double value.
-	DoubleValue pulumi.Float64Input `pulumi:"doubleValue"`
-	// Represents an int64 value.
-	Int64Value pulumi.StringInput `pulumi:"int64Value"`
-	// Represents an 'Any' proto value.
-	ProtoValue pulumi.StringMapInput `pulumi:"protoValue"`
-	// Represents a string value.
-	StringValue pulumi.StringInput `pulumi:"stringValue"`
-}
-
-func (GoogleCloudChannelV1ValueResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudChannelV1ValueResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudChannelV1ValueResponseArgs) ToGoogleCloudChannelV1ValueResponseOutput() GoogleCloudChannelV1ValueResponseOutput {
-	return i.ToGoogleCloudChannelV1ValueResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudChannelV1ValueResponseArgs) ToGoogleCloudChannelV1ValueResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1ValueResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ValueResponseOutput)
-}
-
 // Data type and value of a parameter.
 type GoogleCloudChannelV1ValueResponseOutput struct{ *pulumi.OutputState }
 
@@ -3178,47 +1781,6 @@ func (i GoogleTypePostalAddressArgs) ToGoogleTypePostalAddressOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypePostalAddressOutput)
 }
 
-func (i GoogleTypePostalAddressArgs) ToGoogleTypePostalAddressPtrOutput() GoogleTypePostalAddressPtrOutput {
-	return i.ToGoogleTypePostalAddressPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleTypePostalAddressArgs) ToGoogleTypePostalAddressPtrOutputWithContext(ctx context.Context) GoogleTypePostalAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypePostalAddressOutput).ToGoogleTypePostalAddressPtrOutputWithContext(ctx)
-}
-
-// GoogleTypePostalAddressPtrInput is an input type that accepts GoogleTypePostalAddressArgs, GoogleTypePostalAddressPtr and GoogleTypePostalAddressPtrOutput values.
-// You can construct a concrete instance of `GoogleTypePostalAddressPtrInput` via:
-//
-//          GoogleTypePostalAddressArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleTypePostalAddressPtrInput interface {
-	pulumi.Input
-
-	ToGoogleTypePostalAddressPtrOutput() GoogleTypePostalAddressPtrOutput
-	ToGoogleTypePostalAddressPtrOutputWithContext(context.Context) GoogleTypePostalAddressPtrOutput
-}
-
-type googleTypePostalAddressPtrType GoogleTypePostalAddressArgs
-
-func GoogleTypePostalAddressPtr(v *GoogleTypePostalAddressArgs) GoogleTypePostalAddressPtrInput {
-	return (*googleTypePostalAddressPtrType)(v)
-}
-
-func (*googleTypePostalAddressPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleTypePostalAddress)(nil)).Elem()
-}
-
-func (i *googleTypePostalAddressPtrType) ToGoogleTypePostalAddressPtrOutput() GoogleTypePostalAddressPtrOutput {
-	return i.ToGoogleTypePostalAddressPtrOutputWithContext(context.Background())
-}
-
-func (i *googleTypePostalAddressPtrType) ToGoogleTypePostalAddressPtrOutputWithContext(ctx context.Context) GoogleTypePostalAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypePostalAddressPtrOutput)
-}
-
 // Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
 type GoogleTypePostalAddressOutput struct{ *pulumi.OutputState }
 
@@ -3232,16 +1794,6 @@ func (o GoogleTypePostalAddressOutput) ToGoogleTypePostalAddressOutput() GoogleT
 
 func (o GoogleTypePostalAddressOutput) ToGoogleTypePostalAddressOutputWithContext(ctx context.Context) GoogleTypePostalAddressOutput {
 	return o
-}
-
-func (o GoogleTypePostalAddressOutput) ToGoogleTypePostalAddressPtrOutput() GoogleTypePostalAddressPtrOutput {
-	return o.ToGoogleTypePostalAddressPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleTypePostalAddressOutput) ToGoogleTypePostalAddressPtrOutputWithContext(ctx context.Context) GoogleTypePostalAddressPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypePostalAddress) *GoogleTypePostalAddress {
-		return &v
-	}).(GoogleTypePostalAddressPtrOutput)
 }
 
 // Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
@@ -3299,140 +1851,6 @@ func (o GoogleTypePostalAddressOutput) Sublocality() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleTypePostalAddress) *string { return v.Sublocality }).(pulumi.StringPtrOutput)
 }
 
-type GoogleTypePostalAddressPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleTypePostalAddressPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleTypePostalAddress)(nil)).Elem()
-}
-
-func (o GoogleTypePostalAddressPtrOutput) ToGoogleTypePostalAddressPtrOutput() GoogleTypePostalAddressPtrOutput {
-	return o
-}
-
-func (o GoogleTypePostalAddressPtrOutput) ToGoogleTypePostalAddressPtrOutputWithContext(ctx context.Context) GoogleTypePostalAddressPtrOutput {
-	return o
-}
-
-func (o GoogleTypePostalAddressPtrOutput) Elem() GoogleTypePostalAddressOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddress) GoogleTypePostalAddress {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleTypePostalAddress
-		return ret
-	}).(GoogleTypePostalAddressOutput)
-}
-
-// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
-func (o GoogleTypePostalAddressPtrOutput) AddressLines() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddress) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AddressLines
-	}).(pulumi.StringArrayOutput)
-}
-
-// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
-func (o GoogleTypePostalAddressPtrOutput) AdministrativeArea() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddress) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AdministrativeArea
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
-func (o GoogleTypePostalAddressPtrOutput) LanguageCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddress) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LanguageCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
-func (o GoogleTypePostalAddressPtrOutput) Locality() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddress) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Locality
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The name of the organization at the address.
-func (o GoogleTypePostalAddressPtrOutput) Organization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddress) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Organization
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
-func (o GoogleTypePostalAddressPtrOutput) PostalCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddress) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PostalCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
-func (o GoogleTypePostalAddressPtrOutput) Recipients() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddress) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Recipients
-	}).(pulumi.StringArrayOutput)
-}
-
-// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-func (o GoogleTypePostalAddressPtrOutput) RegionCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddress) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RegionCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
-func (o GoogleTypePostalAddressPtrOutput) Revision() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddress) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Revision
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
-func (o GoogleTypePostalAddressPtrOutput) SortingCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddress) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SortingCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
-func (o GoogleTypePostalAddressPtrOutput) Sublocality() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddress) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Sublocality
-	}).(pulumi.StringPtrOutput)
-}
-
 // Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
 type GoogleTypePostalAddressResponse struct {
 	// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
@@ -3459,96 +1877,6 @@ type GoogleTypePostalAddressResponse struct {
 	Sublocality string `pulumi:"sublocality"`
 }
 
-// GoogleTypePostalAddressResponseInput is an input type that accepts GoogleTypePostalAddressResponseArgs and GoogleTypePostalAddressResponseOutput values.
-// You can construct a concrete instance of `GoogleTypePostalAddressResponseInput` via:
-//
-//          GoogleTypePostalAddressResponseArgs{...}
-type GoogleTypePostalAddressResponseInput interface {
-	pulumi.Input
-
-	ToGoogleTypePostalAddressResponseOutput() GoogleTypePostalAddressResponseOutput
-	ToGoogleTypePostalAddressResponseOutputWithContext(context.Context) GoogleTypePostalAddressResponseOutput
-}
-
-// Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
-type GoogleTypePostalAddressResponseArgs struct {
-	// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
-	AddressLines pulumi.StringArrayInput `pulumi:"addressLines"`
-	// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
-	AdministrativeArea pulumi.StringInput `pulumi:"administrativeArea"`
-	// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
-	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
-	// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
-	Locality pulumi.StringInput `pulumi:"locality"`
-	// Optional. The name of the organization at the address.
-	Organization pulumi.StringInput `pulumi:"organization"`
-	// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
-	PostalCode pulumi.StringInput `pulumi:"postalCode"`
-	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
-	Recipients pulumi.StringArrayInput `pulumi:"recipients"`
-	// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-	RegionCode pulumi.StringInput `pulumi:"regionCode"`
-	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
-	Revision pulumi.IntInput `pulumi:"revision"`
-	// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
-	SortingCode pulumi.StringInput `pulumi:"sortingCode"`
-	// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
-	Sublocality pulumi.StringInput `pulumi:"sublocality"`
-}
-
-func (GoogleTypePostalAddressResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleTypePostalAddressResponse)(nil)).Elem()
-}
-
-func (i GoogleTypePostalAddressResponseArgs) ToGoogleTypePostalAddressResponseOutput() GoogleTypePostalAddressResponseOutput {
-	return i.ToGoogleTypePostalAddressResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleTypePostalAddressResponseArgs) ToGoogleTypePostalAddressResponseOutputWithContext(ctx context.Context) GoogleTypePostalAddressResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypePostalAddressResponseOutput)
-}
-
-func (i GoogleTypePostalAddressResponseArgs) ToGoogleTypePostalAddressResponsePtrOutput() GoogleTypePostalAddressResponsePtrOutput {
-	return i.ToGoogleTypePostalAddressResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleTypePostalAddressResponseArgs) ToGoogleTypePostalAddressResponsePtrOutputWithContext(ctx context.Context) GoogleTypePostalAddressResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypePostalAddressResponseOutput).ToGoogleTypePostalAddressResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleTypePostalAddressResponsePtrInput is an input type that accepts GoogleTypePostalAddressResponseArgs, GoogleTypePostalAddressResponsePtr and GoogleTypePostalAddressResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleTypePostalAddressResponsePtrInput` via:
-//
-//          GoogleTypePostalAddressResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleTypePostalAddressResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleTypePostalAddressResponsePtrOutput() GoogleTypePostalAddressResponsePtrOutput
-	ToGoogleTypePostalAddressResponsePtrOutputWithContext(context.Context) GoogleTypePostalAddressResponsePtrOutput
-}
-
-type googleTypePostalAddressResponsePtrType GoogleTypePostalAddressResponseArgs
-
-func GoogleTypePostalAddressResponsePtr(v *GoogleTypePostalAddressResponseArgs) GoogleTypePostalAddressResponsePtrInput {
-	return (*googleTypePostalAddressResponsePtrType)(v)
-}
-
-func (*googleTypePostalAddressResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleTypePostalAddressResponse)(nil)).Elem()
-}
-
-func (i *googleTypePostalAddressResponsePtrType) ToGoogleTypePostalAddressResponsePtrOutput() GoogleTypePostalAddressResponsePtrOutput {
-	return i.ToGoogleTypePostalAddressResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleTypePostalAddressResponsePtrType) ToGoogleTypePostalAddressResponsePtrOutputWithContext(ctx context.Context) GoogleTypePostalAddressResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypePostalAddressResponsePtrOutput)
-}
-
 // Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
 type GoogleTypePostalAddressResponseOutput struct{ *pulumi.OutputState }
 
@@ -3562,16 +1890,6 @@ func (o GoogleTypePostalAddressResponseOutput) ToGoogleTypePostalAddressResponse
 
 func (o GoogleTypePostalAddressResponseOutput) ToGoogleTypePostalAddressResponseOutputWithContext(ctx context.Context) GoogleTypePostalAddressResponseOutput {
 	return o
-}
-
-func (o GoogleTypePostalAddressResponseOutput) ToGoogleTypePostalAddressResponsePtrOutput() GoogleTypePostalAddressResponsePtrOutput {
-	return o.ToGoogleTypePostalAddressResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleTypePostalAddressResponseOutput) ToGoogleTypePostalAddressResponsePtrOutputWithContext(ctx context.Context) GoogleTypePostalAddressResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypePostalAddressResponse) *GoogleTypePostalAddressResponse {
-		return &v
-	}).(GoogleTypePostalAddressResponsePtrOutput)
 }
 
 // Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
@@ -3629,196 +1947,33 @@ func (o GoogleTypePostalAddressResponseOutput) Sublocality() pulumi.StringOutput
 	return o.ApplyT(func(v GoogleTypePostalAddressResponse) string { return v.Sublocality }).(pulumi.StringOutput)
 }
 
-type GoogleTypePostalAddressResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleTypePostalAddressResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleTypePostalAddressResponse)(nil)).Elem()
-}
-
-func (o GoogleTypePostalAddressResponsePtrOutput) ToGoogleTypePostalAddressResponsePtrOutput() GoogleTypePostalAddressResponsePtrOutput {
-	return o
-}
-
-func (o GoogleTypePostalAddressResponsePtrOutput) ToGoogleTypePostalAddressResponsePtrOutputWithContext(ctx context.Context) GoogleTypePostalAddressResponsePtrOutput {
-	return o
-}
-
-func (o GoogleTypePostalAddressResponsePtrOutput) Elem() GoogleTypePostalAddressResponseOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) GoogleTypePostalAddressResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleTypePostalAddressResponse
-		return ret
-	}).(GoogleTypePostalAddressResponseOutput)
-}
-
-// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
-func (o GoogleTypePostalAddressResponsePtrOutput) AddressLines() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AddressLines
-	}).(pulumi.StringArrayOutput)
-}
-
-// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
-func (o GoogleTypePostalAddressResponsePtrOutput) AdministrativeArea() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AdministrativeArea
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
-func (o GoogleTypePostalAddressResponsePtrOutput) LanguageCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LanguageCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
-func (o GoogleTypePostalAddressResponsePtrOutput) Locality() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Locality
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The name of the organization at the address.
-func (o GoogleTypePostalAddressResponsePtrOutput) Organization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Organization
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
-func (o GoogleTypePostalAddressResponsePtrOutput) PostalCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PostalCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
-func (o GoogleTypePostalAddressResponsePtrOutput) Recipients() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Recipients
-	}).(pulumi.StringArrayOutput)
-}
-
-// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-func (o GoogleTypePostalAddressResponsePtrOutput) RegionCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RegionCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
-func (o GoogleTypePostalAddressResponsePtrOutput) Revision() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Revision
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
-func (o GoogleTypePostalAddressResponsePtrOutput) SortingCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SortingCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
-func (o GoogleTypePostalAddressResponsePtrOutput) Sublocality() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Sublocality
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1AssociationInfoInput)(nil)).Elem(), GoogleCloudChannelV1AssociationInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1AssociationInfoPtrInput)(nil)).Elem(), GoogleCloudChannelV1AssociationInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1AssociationInfoResponseInput)(nil)).Elem(), GoogleCloudChannelV1AssociationInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1AssociationInfoResponsePtrInput)(nil)).Elem(), GoogleCloudChannelV1AssociationInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1CloudIdentityInfoResponseInput)(nil)).Elem(), GoogleCloudChannelV1CloudIdentityInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1CloudIdentityInfoResponsePtrInput)(nil)).Elem(), GoogleCloudChannelV1CloudIdentityInfoResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1CommitmentSettingsInput)(nil)).Elem(), GoogleCloudChannelV1CommitmentSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1CommitmentSettingsPtrInput)(nil)).Elem(), GoogleCloudChannelV1CommitmentSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1CommitmentSettingsResponseInput)(nil)).Elem(), GoogleCloudChannelV1CommitmentSettingsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1CommitmentSettingsResponsePtrInput)(nil)).Elem(), GoogleCloudChannelV1CommitmentSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ContactInfoInput)(nil)).Elem(), GoogleCloudChannelV1ContactInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ContactInfoPtrInput)(nil)).Elem(), GoogleCloudChannelV1ContactInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ContactInfoResponseInput)(nil)).Elem(), GoogleCloudChannelV1ContactInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ContactInfoResponsePtrInput)(nil)).Elem(), GoogleCloudChannelV1ContactInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1EduDataResponseInput)(nil)).Elem(), GoogleCloudChannelV1EduDataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1EduDataResponsePtrInput)(nil)).Elem(), GoogleCloudChannelV1EduDataResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ParameterInput)(nil)).Elem(), GoogleCloudChannelV1ParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ParameterArrayInput)(nil)).Elem(), GoogleCloudChannelV1ParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ParameterResponseInput)(nil)).Elem(), GoogleCloudChannelV1ParameterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ParameterResponseArrayInput)(nil)).Elem(), GoogleCloudChannelV1ParameterResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1PeriodInput)(nil)).Elem(), GoogleCloudChannelV1PeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1PeriodPtrInput)(nil)).Elem(), GoogleCloudChannelV1PeriodArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1PeriodResponseInput)(nil)).Elem(), GoogleCloudChannelV1PeriodResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1PeriodResponsePtrInput)(nil)).Elem(), GoogleCloudChannelV1PeriodResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ProvisionedServiceResponseInput)(nil)).Elem(), GoogleCloudChannelV1ProvisionedServiceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ProvisionedServiceResponsePtrInput)(nil)).Elem(), GoogleCloudChannelV1ProvisionedServiceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsInput)(nil)).Elem(), GoogleCloudChannelV1RenewalSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsPtrInput)(nil)).Elem(), GoogleCloudChannelV1RenewalSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsResponseInput)(nil)).Elem(), GoogleCloudChannelV1RenewalSettingsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsResponsePtrInput)(nil)).Elem(), GoogleCloudChannelV1RenewalSettingsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1TrialSettingsResponseInput)(nil)).Elem(), GoogleCloudChannelV1TrialSettingsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1TrialSettingsResponsePtrInput)(nil)).Elem(), GoogleCloudChannelV1TrialSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ValueInput)(nil)).Elem(), GoogleCloudChannelV1ValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ValuePtrInput)(nil)).Elem(), GoogleCloudChannelV1ValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ValueResponseInput)(nil)).Elem(), GoogleCloudChannelV1ValueResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypePostalAddressInput)(nil)).Elem(), GoogleTypePostalAddressArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypePostalAddressPtrInput)(nil)).Elem(), GoogleTypePostalAddressArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypePostalAddressResponseInput)(nil)).Elem(), GoogleTypePostalAddressResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypePostalAddressResponsePtrInput)(nil)).Elem(), GoogleTypePostalAddressResponseArgs{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1AssociationInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1AssociationInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1AssociationInfoResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudChannelV1AssociationInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1CloudIdentityInfoResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1CommitmentSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1CommitmentSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1CommitmentSettingsResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ContactInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ContactInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ContactInfoResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudChannelV1ContactInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1EduDataResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudChannelV1EduDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ParameterOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ParameterArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ParameterResponseOutput{})
@@ -3826,20 +1981,14 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudChannelV1PeriodOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1PeriodPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1PeriodResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudChannelV1PeriodResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ProvisionedServiceResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RenewalSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RenewalSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RenewalSettingsResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudChannelV1RenewalSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1TrialSettingsResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudChannelV1TrialSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ValueOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ValuePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ValueResponseOutput{})
 	pulumi.RegisterOutputType(GoogleTypePostalAddressOutput{})
-	pulumi.RegisterOutputType(GoogleTypePostalAddressPtrOutput{})
 	pulumi.RegisterOutputType(GoogleTypePostalAddressResponseOutput{})
-	pulumi.RegisterOutputType(GoogleTypePostalAddressResponsePtrOutput{})
 }

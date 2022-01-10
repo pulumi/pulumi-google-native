@@ -115,7 +115,7 @@ type ReservationIamPolicyInput interface {
 }
 
 func (*ReservationIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReservationIamPolicy)(nil))
+	return reflect.TypeOf((**ReservationIamPolicy)(nil)).Elem()
 }
 
 func (i *ReservationIamPolicy) ToReservationIamPolicyOutput() ReservationIamPolicyOutput {
@@ -129,7 +129,7 @@ func (i *ReservationIamPolicy) ToReservationIamPolicyOutputWithContext(ctx conte
 type ReservationIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ReservationIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReservationIamPolicy)(nil))
+	return reflect.TypeOf((**ReservationIamPolicy)(nil)).Elem()
 }
 
 func (o ReservationIamPolicyOutput) ToReservationIamPolicyOutput() ReservationIamPolicyOutput {

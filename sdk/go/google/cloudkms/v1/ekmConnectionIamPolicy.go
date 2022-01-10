@@ -113,7 +113,7 @@ type EkmConnectionIamPolicyInput interface {
 }
 
 func (*EkmConnectionIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*EkmConnectionIamPolicy)(nil))
+	return reflect.TypeOf((**EkmConnectionIamPolicy)(nil)).Elem()
 }
 
 func (i *EkmConnectionIamPolicy) ToEkmConnectionIamPolicyOutput() EkmConnectionIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *EkmConnectionIamPolicy) ToEkmConnectionIamPolicyOutputWithContext(ctx c
 type EkmConnectionIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (EkmConnectionIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EkmConnectionIamPolicy)(nil))
+	return reflect.TypeOf((**EkmConnectionIamPolicy)(nil)).Elem()
 }
 
 func (o EkmConnectionIamPolicyOutput) ToEkmConnectionIamPolicyOutput() EkmConnectionIamPolicyOutput {

@@ -113,7 +113,7 @@ type GatewayIamPolicyInput interface {
 }
 
 func (*GatewayIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayIamPolicy)(nil))
+	return reflect.TypeOf((**GatewayIamPolicy)(nil)).Elem()
 }
 
 func (i *GatewayIamPolicy) ToGatewayIamPolicyOutput() GatewayIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *GatewayIamPolicy) ToGatewayIamPolicyOutputWithContext(ctx context.Conte
 type GatewayIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (GatewayIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayIamPolicy)(nil))
+	return reflect.TypeOf((**GatewayIamPolicy)(nil)).Elem()
 }
 
 func (o GatewayIamPolicyOutput) ToGatewayIamPolicyOutput() GatewayIamPolicyOutput {

@@ -139,7 +139,7 @@ type CatalogItemInput interface {
 }
 
 func (*CatalogItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*CatalogItem)(nil))
+	return reflect.TypeOf((**CatalogItem)(nil)).Elem()
 }
 
 func (i *CatalogItem) ToCatalogItemOutput() CatalogItemOutput {
@@ -153,7 +153,7 @@ func (i *CatalogItem) ToCatalogItemOutputWithContext(ctx context.Context) Catalo
 type CatalogItemOutput struct{ *pulumi.OutputState }
 
 func (CatalogItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CatalogItem)(nil))
+	return reflect.TypeOf((**CatalogItem)(nil)).Elem()
 }
 
 func (o CatalogItemOutput) ToCatalogItemOutput() CatalogItemOutput {

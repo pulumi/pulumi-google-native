@@ -157,7 +157,7 @@ type ServiceAttachmentInput interface {
 }
 
 func (*ServiceAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceAttachment)(nil))
+	return reflect.TypeOf((**ServiceAttachment)(nil)).Elem()
 }
 
 func (i *ServiceAttachment) ToServiceAttachmentOutput() ServiceAttachmentOutput {
@@ -171,7 +171,7 @@ func (i *ServiceAttachment) ToServiceAttachmentOutputWithContext(ctx context.Con
 type ServiceAttachmentOutput struct{ *pulumi.OutputState }
 
 func (ServiceAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceAttachment)(nil))
+	return reflect.TypeOf((**ServiceAttachment)(nil)).Elem()
 }
 
 func (o ServiceAttachmentOutput) ToServiceAttachmentOutput() ServiceAttachmentOutput {

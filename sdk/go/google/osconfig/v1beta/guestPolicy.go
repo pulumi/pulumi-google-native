@@ -130,7 +130,7 @@ type GuestPolicyInput interface {
 }
 
 func (*GuestPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*GuestPolicy)(nil))
+	return reflect.TypeOf((**GuestPolicy)(nil)).Elem()
 }
 
 func (i *GuestPolicy) ToGuestPolicyOutput() GuestPolicyOutput {
@@ -144,7 +144,7 @@ func (i *GuestPolicy) ToGuestPolicyOutputWithContext(ctx context.Context) GuestP
 type GuestPolicyOutput struct{ *pulumi.OutputState }
 
 func (GuestPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GuestPolicy)(nil))
+	return reflect.TypeOf((**GuestPolicy)(nil)).Elem()
 }
 
 func (o GuestPolicyOutput) ToGuestPolicyOutput() GuestPolicyOutput {

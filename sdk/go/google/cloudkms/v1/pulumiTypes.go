@@ -127,62 +127,6 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
-// You can construct a concrete instance of `AuditConfigResponseInput` via:
-//
-//          AuditConfigResponseArgs{...}
-type AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseOutput() AuditConfigResponseOutput
-	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return i.ToAuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
-}
-
-// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
-//
-//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
-type AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
-	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
-}
-
-type AuditConfigResponseArray []AuditConfigResponseInput
-
-func (AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -343,62 +287,6 @@ type AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
-//
-//          AuditLogConfigResponseArgs{...}
-type AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
-	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
-}
-
-// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
-//
-//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
-type AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
-	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
-}
-
-type AuditLogConfigResponseArray []AuditLogConfigResponseInput
-
-func (AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -574,64 +462,6 @@ type BindingResponse struct {
 	Role string `pulumi:"role"`
 }
 
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
@@ -692,80 +522,6 @@ type CertificateChainsResponse struct {
 	GooglePartitionCerts []string `pulumi:"googlePartitionCerts"`
 }
 
-// CertificateChainsResponseInput is an input type that accepts CertificateChainsResponseArgs and CertificateChainsResponseOutput values.
-// You can construct a concrete instance of `CertificateChainsResponseInput` via:
-//
-//          CertificateChainsResponseArgs{...}
-type CertificateChainsResponseInput interface {
-	pulumi.Input
-
-	ToCertificateChainsResponseOutput() CertificateChainsResponseOutput
-	ToCertificateChainsResponseOutputWithContext(context.Context) CertificateChainsResponseOutput
-}
-
-// Certificate chains needed to verify the attestation. Certificates in chains are PEM-encoded and are ordered based on https://tools.ietf.org/html/rfc5246#section-7.4.2.
-type CertificateChainsResponseArgs struct {
-	// Cavium certificate chain corresponding to the attestation.
-	CaviumCerts pulumi.StringArrayInput `pulumi:"caviumCerts"`
-	// Google card certificate chain corresponding to the attestation.
-	GoogleCardCerts pulumi.StringArrayInput `pulumi:"googleCardCerts"`
-	// Google partition certificate chain corresponding to the attestation.
-	GooglePartitionCerts pulumi.StringArrayInput `pulumi:"googlePartitionCerts"`
-}
-
-func (CertificateChainsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateChainsResponse)(nil)).Elem()
-}
-
-func (i CertificateChainsResponseArgs) ToCertificateChainsResponseOutput() CertificateChainsResponseOutput {
-	return i.ToCertificateChainsResponseOutputWithContext(context.Background())
-}
-
-func (i CertificateChainsResponseArgs) ToCertificateChainsResponseOutputWithContext(ctx context.Context) CertificateChainsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateChainsResponseOutput)
-}
-
-func (i CertificateChainsResponseArgs) ToCertificateChainsResponsePtrOutput() CertificateChainsResponsePtrOutput {
-	return i.ToCertificateChainsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CertificateChainsResponseArgs) ToCertificateChainsResponsePtrOutputWithContext(ctx context.Context) CertificateChainsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateChainsResponseOutput).ToCertificateChainsResponsePtrOutputWithContext(ctx)
-}
-
-// CertificateChainsResponsePtrInput is an input type that accepts CertificateChainsResponseArgs, CertificateChainsResponsePtr and CertificateChainsResponsePtrOutput values.
-// You can construct a concrete instance of `CertificateChainsResponsePtrInput` via:
-//
-//          CertificateChainsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CertificateChainsResponsePtrInput interface {
-	pulumi.Input
-
-	ToCertificateChainsResponsePtrOutput() CertificateChainsResponsePtrOutput
-	ToCertificateChainsResponsePtrOutputWithContext(context.Context) CertificateChainsResponsePtrOutput
-}
-
-type certificateChainsResponsePtrType CertificateChainsResponseArgs
-
-func CertificateChainsResponsePtr(v *CertificateChainsResponseArgs) CertificateChainsResponsePtrInput {
-	return (*certificateChainsResponsePtrType)(v)
-}
-
-func (*certificateChainsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateChainsResponse)(nil)).Elem()
-}
-
-func (i *certificateChainsResponsePtrType) ToCertificateChainsResponsePtrOutput() CertificateChainsResponsePtrOutput {
-	return i.ToCertificateChainsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *certificateChainsResponsePtrType) ToCertificateChainsResponsePtrOutputWithContext(ctx context.Context) CertificateChainsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateChainsResponsePtrOutput)
-}
-
 // Certificate chains needed to verify the attestation. Certificates in chains are PEM-encoded and are ordered based on https://tools.ietf.org/html/rfc5246#section-7.4.2.
 type CertificateChainsResponseOutput struct{ *pulumi.OutputState }
 
@@ -781,16 +537,6 @@ func (o CertificateChainsResponseOutput) ToCertificateChainsResponseOutputWithCo
 	return o
 }
 
-func (o CertificateChainsResponseOutput) ToCertificateChainsResponsePtrOutput() CertificateChainsResponsePtrOutput {
-	return o.ToCertificateChainsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CertificateChainsResponseOutput) ToCertificateChainsResponsePtrOutputWithContext(ctx context.Context) CertificateChainsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateChainsResponse) *CertificateChainsResponse {
-		return &v
-	}).(CertificateChainsResponsePtrOutput)
-}
-
 // Cavium certificate chain corresponding to the attestation.
 func (o CertificateChainsResponseOutput) CaviumCerts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CertificateChainsResponse) []string { return v.CaviumCerts }).(pulumi.StringArrayOutput)
@@ -804,60 +550,6 @@ func (o CertificateChainsResponseOutput) GoogleCardCerts() pulumi.StringArrayOut
 // Google partition certificate chain corresponding to the attestation.
 func (o CertificateChainsResponseOutput) GooglePartitionCerts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CertificateChainsResponse) []string { return v.GooglePartitionCerts }).(pulumi.StringArrayOutput)
-}
-
-type CertificateChainsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CertificateChainsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateChainsResponse)(nil)).Elem()
-}
-
-func (o CertificateChainsResponsePtrOutput) ToCertificateChainsResponsePtrOutput() CertificateChainsResponsePtrOutput {
-	return o
-}
-
-func (o CertificateChainsResponsePtrOutput) ToCertificateChainsResponsePtrOutputWithContext(ctx context.Context) CertificateChainsResponsePtrOutput {
-	return o
-}
-
-func (o CertificateChainsResponsePtrOutput) Elem() CertificateChainsResponseOutput {
-	return o.ApplyT(func(v *CertificateChainsResponse) CertificateChainsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CertificateChainsResponse
-		return ret
-	}).(CertificateChainsResponseOutput)
-}
-
-// Cavium certificate chain corresponding to the attestation.
-func (o CertificateChainsResponsePtrOutput) CaviumCerts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CertificateChainsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CaviumCerts
-	}).(pulumi.StringArrayOutput)
-}
-
-// Google card certificate chain corresponding to the attestation.
-func (o CertificateChainsResponsePtrOutput) GoogleCardCerts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CertificateChainsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.GoogleCardCerts
-	}).(pulumi.StringArrayOutput)
-}
-
-// Google partition certificate chain corresponding to the attestation.
-func (o CertificateChainsResponsePtrOutput) GooglePartitionCerts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CertificateChainsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.GooglePartitionCerts
-	}).(pulumi.StringArrayOutput)
 }
 
 // A CryptoKeyVersion represents an individual cryptographic key, and the associated key material. An ENABLED version can be used for cryptographic operations. For security reasons, the raw cryptographic key material represented by a CryptoKeyVersion can never be viewed or exported. It can only be used to encrypt, decrypt, or sign data when an authorized user or application invokes Cloud KMS.
@@ -892,102 +584,6 @@ type CryptoKeyVersionResponse struct {
 	State string `pulumi:"state"`
 }
 
-// CryptoKeyVersionResponseInput is an input type that accepts CryptoKeyVersionResponseArgs and CryptoKeyVersionResponseOutput values.
-// You can construct a concrete instance of `CryptoKeyVersionResponseInput` via:
-//
-//          CryptoKeyVersionResponseArgs{...}
-type CryptoKeyVersionResponseInput interface {
-	pulumi.Input
-
-	ToCryptoKeyVersionResponseOutput() CryptoKeyVersionResponseOutput
-	ToCryptoKeyVersionResponseOutputWithContext(context.Context) CryptoKeyVersionResponseOutput
-}
-
-// A CryptoKeyVersion represents an individual cryptographic key, and the associated key material. An ENABLED version can be used for cryptographic operations. For security reasons, the raw cryptographic key material represented by a CryptoKeyVersion can never be viewed or exported. It can only be used to encrypt, decrypt, or sign data when an authorized user or application invokes Cloud KMS.
-type CryptoKeyVersionResponseArgs struct {
-	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-	Algorithm pulumi.StringInput `pulumi:"algorithm"`
-	// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
-	Attestation KeyOperationAttestationResponseInput `pulumi:"attestation"`
-	// The time at which this CryptoKeyVersion was created.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
-	DestroyEventTime pulumi.StringInput `pulumi:"destroyEventTime"`
-	// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
-	DestroyTime pulumi.StringInput `pulumi:"destroyTime"`
-	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
-	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsResponseInput `pulumi:"externalProtectionLevelOptions"`
-	// The time this CryptoKeyVersion's key material was generated.
-	GenerateTime pulumi.StringInput `pulumi:"generateTime"`
-	// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
-	ImportFailureReason pulumi.StringInput `pulumi:"importFailureReason"`
-	// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
-	ImportJob pulumi.StringInput `pulumi:"importJob"`
-	// The time at which this CryptoKeyVersion's key material was most recently imported.
-	ImportTime pulumi.StringInput `pulumi:"importTime"`
-	// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
-	ProtectionLevel pulumi.StringInput `pulumi:"protectionLevel"`
-	// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
-	ReimportEligible pulumi.BoolInput `pulumi:"reimportEligible"`
-	// The current state of the CryptoKeyVersion.
-	State pulumi.StringInput `pulumi:"state"`
-}
-
-func (CryptoKeyVersionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyVersionResponse)(nil)).Elem()
-}
-
-func (i CryptoKeyVersionResponseArgs) ToCryptoKeyVersionResponseOutput() CryptoKeyVersionResponseOutput {
-	return i.ToCryptoKeyVersionResponseOutputWithContext(context.Background())
-}
-
-func (i CryptoKeyVersionResponseArgs) ToCryptoKeyVersionResponseOutputWithContext(ctx context.Context) CryptoKeyVersionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionResponseOutput)
-}
-
-func (i CryptoKeyVersionResponseArgs) ToCryptoKeyVersionResponsePtrOutput() CryptoKeyVersionResponsePtrOutput {
-	return i.ToCryptoKeyVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CryptoKeyVersionResponseArgs) ToCryptoKeyVersionResponsePtrOutputWithContext(ctx context.Context) CryptoKeyVersionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionResponseOutput).ToCryptoKeyVersionResponsePtrOutputWithContext(ctx)
-}
-
-// CryptoKeyVersionResponsePtrInput is an input type that accepts CryptoKeyVersionResponseArgs, CryptoKeyVersionResponsePtr and CryptoKeyVersionResponsePtrOutput values.
-// You can construct a concrete instance of `CryptoKeyVersionResponsePtrInput` via:
-//
-//          CryptoKeyVersionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CryptoKeyVersionResponsePtrInput interface {
-	pulumi.Input
-
-	ToCryptoKeyVersionResponsePtrOutput() CryptoKeyVersionResponsePtrOutput
-	ToCryptoKeyVersionResponsePtrOutputWithContext(context.Context) CryptoKeyVersionResponsePtrOutput
-}
-
-type cryptoKeyVersionResponsePtrType CryptoKeyVersionResponseArgs
-
-func CryptoKeyVersionResponsePtr(v *CryptoKeyVersionResponseArgs) CryptoKeyVersionResponsePtrInput {
-	return (*cryptoKeyVersionResponsePtrType)(v)
-}
-
-func (*cryptoKeyVersionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyVersionResponse)(nil)).Elem()
-}
-
-func (i *cryptoKeyVersionResponsePtrType) ToCryptoKeyVersionResponsePtrOutput() CryptoKeyVersionResponsePtrOutput {
-	return i.ToCryptoKeyVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *cryptoKeyVersionResponsePtrType) ToCryptoKeyVersionResponsePtrOutputWithContext(ctx context.Context) CryptoKeyVersionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionResponsePtrOutput)
-}
-
 // A CryptoKeyVersion represents an individual cryptographic key, and the associated key material. An ENABLED version can be used for cryptographic operations. For security reasons, the raw cryptographic key material represented by a CryptoKeyVersion can never be viewed or exported. It can only be used to encrypt, decrypt, or sign data when an authorized user or application invokes Cloud KMS.
 type CryptoKeyVersionResponseOutput struct{ *pulumi.OutputState }
 
@@ -1001,16 +597,6 @@ func (o CryptoKeyVersionResponseOutput) ToCryptoKeyVersionResponseOutput() Crypt
 
 func (o CryptoKeyVersionResponseOutput) ToCryptoKeyVersionResponseOutputWithContext(ctx context.Context) CryptoKeyVersionResponseOutput {
 	return o
-}
-
-func (o CryptoKeyVersionResponseOutput) ToCryptoKeyVersionResponsePtrOutput() CryptoKeyVersionResponsePtrOutput {
-	return o.ToCryptoKeyVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CryptoKeyVersionResponseOutput) ToCryptoKeyVersionResponsePtrOutputWithContext(ctx context.Context) CryptoKeyVersionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionResponse) *CryptoKeyVersionResponse {
-		return &v
-	}).(CryptoKeyVersionResponsePtrOutput)
 }
 
 // The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
@@ -1083,170 +669,6 @@ func (o CryptoKeyVersionResponseOutput) ReimportEligible() pulumi.BoolOutput {
 // The current state of the CryptoKeyVersion.
 func (o CryptoKeyVersionResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyVersionResponse) string { return v.State }).(pulumi.StringOutput)
-}
-
-type CryptoKeyVersionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CryptoKeyVersionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyVersionResponse)(nil)).Elem()
-}
-
-func (o CryptoKeyVersionResponsePtrOutput) ToCryptoKeyVersionResponsePtrOutput() CryptoKeyVersionResponsePtrOutput {
-	return o
-}
-
-func (o CryptoKeyVersionResponsePtrOutput) ToCryptoKeyVersionResponsePtrOutputWithContext(ctx context.Context) CryptoKeyVersionResponsePtrOutput {
-	return o
-}
-
-func (o CryptoKeyVersionResponsePtrOutput) Elem() CryptoKeyVersionResponseOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) CryptoKeyVersionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CryptoKeyVersionResponse
-		return ret
-	}).(CryptoKeyVersionResponseOutput)
-}
-
-// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-func (o CryptoKeyVersionResponsePtrOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Algorithm
-	}).(pulumi.StringPtrOutput)
-}
-
-// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
-func (o CryptoKeyVersionResponsePtrOutput) Attestation() KeyOperationAttestationResponsePtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) *KeyOperationAttestationResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Attestation
-	}).(KeyOperationAttestationResponsePtrOutput)
-}
-
-// The time at which this CryptoKeyVersion was created.
-func (o CryptoKeyVersionResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
-func (o CryptoKeyVersionResponsePtrOutput) DestroyEventTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DestroyEventTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
-func (o CryptoKeyVersionResponsePtrOutput) DestroyTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DestroyTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
-func (o CryptoKeyVersionResponsePtrOutput) ExternalProtectionLevelOptions() ExternalProtectionLevelOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) *ExternalProtectionLevelOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ExternalProtectionLevelOptions
-	}).(ExternalProtectionLevelOptionsResponsePtrOutput)
-}
-
-// The time this CryptoKeyVersion's key material was generated.
-func (o CryptoKeyVersionResponsePtrOutput) GenerateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.GenerateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
-func (o CryptoKeyVersionResponsePtrOutput) ImportFailureReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ImportFailureReason
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
-func (o CryptoKeyVersionResponsePtrOutput) ImportJob() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ImportJob
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time at which this CryptoKeyVersion's key material was most recently imported.
-func (o CryptoKeyVersionResponsePtrOutput) ImportTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ImportTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
-func (o CryptoKeyVersionResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
-func (o CryptoKeyVersionResponsePtrOutput) ProtectionLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProtectionLevel
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
-func (o CryptoKeyVersionResponsePtrOutput) ReimportEligible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ReimportEligible
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The current state of the CryptoKeyVersion.
-func (o CryptoKeyVersionResponsePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.State
-	}).(pulumi.StringPtrOutput)
 }
 
 // A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
@@ -1416,78 +838,6 @@ type CryptoKeyVersionTemplateResponse struct {
 	ProtectionLevel string `pulumi:"protectionLevel"`
 }
 
-// CryptoKeyVersionTemplateResponseInput is an input type that accepts CryptoKeyVersionTemplateResponseArgs and CryptoKeyVersionTemplateResponseOutput values.
-// You can construct a concrete instance of `CryptoKeyVersionTemplateResponseInput` via:
-//
-//          CryptoKeyVersionTemplateResponseArgs{...}
-type CryptoKeyVersionTemplateResponseInput interface {
-	pulumi.Input
-
-	ToCryptoKeyVersionTemplateResponseOutput() CryptoKeyVersionTemplateResponseOutput
-	ToCryptoKeyVersionTemplateResponseOutputWithContext(context.Context) CryptoKeyVersionTemplateResponseOutput
-}
-
-// A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
-type CryptoKeyVersionTemplateResponseArgs struct {
-	// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-	Algorithm pulumi.StringInput `pulumi:"algorithm"`
-	// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
-	ProtectionLevel pulumi.StringInput `pulumi:"protectionLevel"`
-}
-
-func (CryptoKeyVersionTemplateResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyVersionTemplateResponse)(nil)).Elem()
-}
-
-func (i CryptoKeyVersionTemplateResponseArgs) ToCryptoKeyVersionTemplateResponseOutput() CryptoKeyVersionTemplateResponseOutput {
-	return i.ToCryptoKeyVersionTemplateResponseOutputWithContext(context.Background())
-}
-
-func (i CryptoKeyVersionTemplateResponseArgs) ToCryptoKeyVersionTemplateResponseOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionTemplateResponseOutput)
-}
-
-func (i CryptoKeyVersionTemplateResponseArgs) ToCryptoKeyVersionTemplateResponsePtrOutput() CryptoKeyVersionTemplateResponsePtrOutput {
-	return i.ToCryptoKeyVersionTemplateResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CryptoKeyVersionTemplateResponseArgs) ToCryptoKeyVersionTemplateResponsePtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionTemplateResponseOutput).ToCryptoKeyVersionTemplateResponsePtrOutputWithContext(ctx)
-}
-
-// CryptoKeyVersionTemplateResponsePtrInput is an input type that accepts CryptoKeyVersionTemplateResponseArgs, CryptoKeyVersionTemplateResponsePtr and CryptoKeyVersionTemplateResponsePtrOutput values.
-// You can construct a concrete instance of `CryptoKeyVersionTemplateResponsePtrInput` via:
-//
-//          CryptoKeyVersionTemplateResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CryptoKeyVersionTemplateResponsePtrInput interface {
-	pulumi.Input
-
-	ToCryptoKeyVersionTemplateResponsePtrOutput() CryptoKeyVersionTemplateResponsePtrOutput
-	ToCryptoKeyVersionTemplateResponsePtrOutputWithContext(context.Context) CryptoKeyVersionTemplateResponsePtrOutput
-}
-
-type cryptoKeyVersionTemplateResponsePtrType CryptoKeyVersionTemplateResponseArgs
-
-func CryptoKeyVersionTemplateResponsePtr(v *CryptoKeyVersionTemplateResponseArgs) CryptoKeyVersionTemplateResponsePtrInput {
-	return (*cryptoKeyVersionTemplateResponsePtrType)(v)
-}
-
-func (*cryptoKeyVersionTemplateResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyVersionTemplateResponse)(nil)).Elem()
-}
-
-func (i *cryptoKeyVersionTemplateResponsePtrType) ToCryptoKeyVersionTemplateResponsePtrOutput() CryptoKeyVersionTemplateResponsePtrOutput {
-	return i.ToCryptoKeyVersionTemplateResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *cryptoKeyVersionTemplateResponsePtrType) ToCryptoKeyVersionTemplateResponsePtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionTemplateResponsePtrOutput)
-}
-
 // A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
 type CryptoKeyVersionTemplateResponseOutput struct{ *pulumi.OutputState }
 
@@ -1503,16 +853,6 @@ func (o CryptoKeyVersionTemplateResponseOutput) ToCryptoKeyVersionTemplateRespon
 	return o
 }
 
-func (o CryptoKeyVersionTemplateResponseOutput) ToCryptoKeyVersionTemplateResponsePtrOutput() CryptoKeyVersionTemplateResponsePtrOutput {
-	return o.ToCryptoKeyVersionTemplateResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CryptoKeyVersionTemplateResponseOutput) ToCryptoKeyVersionTemplateResponsePtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionTemplateResponse) *CryptoKeyVersionTemplateResponse {
-		return &v
-	}).(CryptoKeyVersionTemplateResponsePtrOutput)
-}
-
 // Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
 func (o CryptoKeyVersionTemplateResponseOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyVersionTemplateResponse) string { return v.Algorithm }).(pulumi.StringOutput)
@@ -1521,50 +861,6 @@ func (o CryptoKeyVersionTemplateResponseOutput) Algorithm() pulumi.StringOutput 
 // ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
 func (o CryptoKeyVersionTemplateResponseOutput) ProtectionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyVersionTemplateResponse) string { return v.ProtectionLevel }).(pulumi.StringOutput)
-}
-
-type CryptoKeyVersionTemplateResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CryptoKeyVersionTemplateResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyVersionTemplateResponse)(nil)).Elem()
-}
-
-func (o CryptoKeyVersionTemplateResponsePtrOutput) ToCryptoKeyVersionTemplateResponsePtrOutput() CryptoKeyVersionTemplateResponsePtrOutput {
-	return o
-}
-
-func (o CryptoKeyVersionTemplateResponsePtrOutput) ToCryptoKeyVersionTemplateResponsePtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateResponsePtrOutput {
-	return o
-}
-
-func (o CryptoKeyVersionTemplateResponsePtrOutput) Elem() CryptoKeyVersionTemplateResponseOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionTemplateResponse) CryptoKeyVersionTemplateResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CryptoKeyVersionTemplateResponse
-		return ret
-	}).(CryptoKeyVersionTemplateResponseOutput)
-}
-
-// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-func (o CryptoKeyVersionTemplateResponsePtrOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionTemplateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Algorithm
-	}).(pulumi.StringPtrOutput)
-}
-
-// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
-func (o CryptoKeyVersionTemplateResponsePtrOutput) ProtectionLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionTemplateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProtectionLevel
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1776,41 +1072,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -1992,76 +1253,6 @@ type ExternalProtectionLevelOptionsResponse struct {
 	ExternalKeyUri string `pulumi:"externalKeyUri"`
 }
 
-// ExternalProtectionLevelOptionsResponseInput is an input type that accepts ExternalProtectionLevelOptionsResponseArgs and ExternalProtectionLevelOptionsResponseOutput values.
-// You can construct a concrete instance of `ExternalProtectionLevelOptionsResponseInput` via:
-//
-//          ExternalProtectionLevelOptionsResponseArgs{...}
-type ExternalProtectionLevelOptionsResponseInput interface {
-	pulumi.Input
-
-	ToExternalProtectionLevelOptionsResponseOutput() ExternalProtectionLevelOptionsResponseOutput
-	ToExternalProtectionLevelOptionsResponseOutputWithContext(context.Context) ExternalProtectionLevelOptionsResponseOutput
-}
-
-// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
-type ExternalProtectionLevelOptionsResponseArgs struct {
-	// The URI for an external resource that this CryptoKeyVersion represents.
-	ExternalKeyUri pulumi.StringInput `pulumi:"externalKeyUri"`
-}
-
-func (ExternalProtectionLevelOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalProtectionLevelOptionsResponse)(nil)).Elem()
-}
-
-func (i ExternalProtectionLevelOptionsResponseArgs) ToExternalProtectionLevelOptionsResponseOutput() ExternalProtectionLevelOptionsResponseOutput {
-	return i.ToExternalProtectionLevelOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i ExternalProtectionLevelOptionsResponseArgs) ToExternalProtectionLevelOptionsResponseOutputWithContext(ctx context.Context) ExternalProtectionLevelOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalProtectionLevelOptionsResponseOutput)
-}
-
-func (i ExternalProtectionLevelOptionsResponseArgs) ToExternalProtectionLevelOptionsResponsePtrOutput() ExternalProtectionLevelOptionsResponsePtrOutput {
-	return i.ToExternalProtectionLevelOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ExternalProtectionLevelOptionsResponseArgs) ToExternalProtectionLevelOptionsResponsePtrOutputWithContext(ctx context.Context) ExternalProtectionLevelOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalProtectionLevelOptionsResponseOutput).ToExternalProtectionLevelOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// ExternalProtectionLevelOptionsResponsePtrInput is an input type that accepts ExternalProtectionLevelOptionsResponseArgs, ExternalProtectionLevelOptionsResponsePtr and ExternalProtectionLevelOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `ExternalProtectionLevelOptionsResponsePtrInput` via:
-//
-//          ExternalProtectionLevelOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ExternalProtectionLevelOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToExternalProtectionLevelOptionsResponsePtrOutput() ExternalProtectionLevelOptionsResponsePtrOutput
-	ToExternalProtectionLevelOptionsResponsePtrOutputWithContext(context.Context) ExternalProtectionLevelOptionsResponsePtrOutput
-}
-
-type externalProtectionLevelOptionsResponsePtrType ExternalProtectionLevelOptionsResponseArgs
-
-func ExternalProtectionLevelOptionsResponsePtr(v *ExternalProtectionLevelOptionsResponseArgs) ExternalProtectionLevelOptionsResponsePtrInput {
-	return (*externalProtectionLevelOptionsResponsePtrType)(v)
-}
-
-func (*externalProtectionLevelOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalProtectionLevelOptionsResponse)(nil)).Elem()
-}
-
-func (i *externalProtectionLevelOptionsResponsePtrType) ToExternalProtectionLevelOptionsResponsePtrOutput() ExternalProtectionLevelOptionsResponsePtrOutput {
-	return i.ToExternalProtectionLevelOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *externalProtectionLevelOptionsResponsePtrType) ToExternalProtectionLevelOptionsResponsePtrOutputWithContext(ctx context.Context) ExternalProtectionLevelOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalProtectionLevelOptionsResponsePtrOutput)
-}
-
 // ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
 type ExternalProtectionLevelOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -2077,53 +1268,9 @@ func (o ExternalProtectionLevelOptionsResponseOutput) ToExternalProtectionLevelO
 	return o
 }
 
-func (o ExternalProtectionLevelOptionsResponseOutput) ToExternalProtectionLevelOptionsResponsePtrOutput() ExternalProtectionLevelOptionsResponsePtrOutput {
-	return o.ToExternalProtectionLevelOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ExternalProtectionLevelOptionsResponseOutput) ToExternalProtectionLevelOptionsResponsePtrOutputWithContext(ctx context.Context) ExternalProtectionLevelOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalProtectionLevelOptionsResponse) *ExternalProtectionLevelOptionsResponse {
-		return &v
-	}).(ExternalProtectionLevelOptionsResponsePtrOutput)
-}
-
 // The URI for an external resource that this CryptoKeyVersion represents.
 func (o ExternalProtectionLevelOptionsResponseOutput) ExternalKeyUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ExternalProtectionLevelOptionsResponse) string { return v.ExternalKeyUri }).(pulumi.StringOutput)
-}
-
-type ExternalProtectionLevelOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ExternalProtectionLevelOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalProtectionLevelOptionsResponse)(nil)).Elem()
-}
-
-func (o ExternalProtectionLevelOptionsResponsePtrOutput) ToExternalProtectionLevelOptionsResponsePtrOutput() ExternalProtectionLevelOptionsResponsePtrOutput {
-	return o
-}
-
-func (o ExternalProtectionLevelOptionsResponsePtrOutput) ToExternalProtectionLevelOptionsResponsePtrOutputWithContext(ctx context.Context) ExternalProtectionLevelOptionsResponsePtrOutput {
-	return o
-}
-
-func (o ExternalProtectionLevelOptionsResponsePtrOutput) Elem() ExternalProtectionLevelOptionsResponseOutput {
-	return o.ApplyT(func(v *ExternalProtectionLevelOptionsResponse) ExternalProtectionLevelOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ExternalProtectionLevelOptionsResponse
-		return ret
-	}).(ExternalProtectionLevelOptionsResponseOutput)
-}
-
-// The URI for an external resource that this CryptoKeyVersion represents.
-func (o ExternalProtectionLevelOptionsResponsePtrOutput) ExternalKeyUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalProtectionLevelOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExternalKeyUri
-	}).(pulumi.StringPtrOutput)
 }
 
 // Contains an HSM-generated attestation about a key operation. For more information, see [Verifying attestations] (https://cloud.google.com/kms/docs/attest-key).
@@ -2134,80 +1281,6 @@ type KeyOperationAttestationResponse struct {
 	Content string `pulumi:"content"`
 	// The format of the attestation data.
 	Format string `pulumi:"format"`
-}
-
-// KeyOperationAttestationResponseInput is an input type that accepts KeyOperationAttestationResponseArgs and KeyOperationAttestationResponseOutput values.
-// You can construct a concrete instance of `KeyOperationAttestationResponseInput` via:
-//
-//          KeyOperationAttestationResponseArgs{...}
-type KeyOperationAttestationResponseInput interface {
-	pulumi.Input
-
-	ToKeyOperationAttestationResponseOutput() KeyOperationAttestationResponseOutput
-	ToKeyOperationAttestationResponseOutputWithContext(context.Context) KeyOperationAttestationResponseOutput
-}
-
-// Contains an HSM-generated attestation about a key operation. For more information, see [Verifying attestations] (https://cloud.google.com/kms/docs/attest-key).
-type KeyOperationAttestationResponseArgs struct {
-	// The certificate chains needed to validate the attestation
-	CertChains CertificateChainsResponseInput `pulumi:"certChains"`
-	// The attestation data provided by the HSM when the key operation was performed.
-	Content pulumi.StringInput `pulumi:"content"`
-	// The format of the attestation data.
-	Format pulumi.StringInput `pulumi:"format"`
-}
-
-func (KeyOperationAttestationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyOperationAttestationResponse)(nil)).Elem()
-}
-
-func (i KeyOperationAttestationResponseArgs) ToKeyOperationAttestationResponseOutput() KeyOperationAttestationResponseOutput {
-	return i.ToKeyOperationAttestationResponseOutputWithContext(context.Background())
-}
-
-func (i KeyOperationAttestationResponseArgs) ToKeyOperationAttestationResponseOutputWithContext(ctx context.Context) KeyOperationAttestationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyOperationAttestationResponseOutput)
-}
-
-func (i KeyOperationAttestationResponseArgs) ToKeyOperationAttestationResponsePtrOutput() KeyOperationAttestationResponsePtrOutput {
-	return i.ToKeyOperationAttestationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i KeyOperationAttestationResponseArgs) ToKeyOperationAttestationResponsePtrOutputWithContext(ctx context.Context) KeyOperationAttestationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyOperationAttestationResponseOutput).ToKeyOperationAttestationResponsePtrOutputWithContext(ctx)
-}
-
-// KeyOperationAttestationResponsePtrInput is an input type that accepts KeyOperationAttestationResponseArgs, KeyOperationAttestationResponsePtr and KeyOperationAttestationResponsePtrOutput values.
-// You can construct a concrete instance of `KeyOperationAttestationResponsePtrInput` via:
-//
-//          KeyOperationAttestationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type KeyOperationAttestationResponsePtrInput interface {
-	pulumi.Input
-
-	ToKeyOperationAttestationResponsePtrOutput() KeyOperationAttestationResponsePtrOutput
-	ToKeyOperationAttestationResponsePtrOutputWithContext(context.Context) KeyOperationAttestationResponsePtrOutput
-}
-
-type keyOperationAttestationResponsePtrType KeyOperationAttestationResponseArgs
-
-func KeyOperationAttestationResponsePtr(v *KeyOperationAttestationResponseArgs) KeyOperationAttestationResponsePtrInput {
-	return (*keyOperationAttestationResponsePtrType)(v)
-}
-
-func (*keyOperationAttestationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyOperationAttestationResponse)(nil)).Elem()
-}
-
-func (i *keyOperationAttestationResponsePtrType) ToKeyOperationAttestationResponsePtrOutput() KeyOperationAttestationResponsePtrOutput {
-	return i.ToKeyOperationAttestationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *keyOperationAttestationResponsePtrType) ToKeyOperationAttestationResponsePtrOutputWithContext(ctx context.Context) KeyOperationAttestationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyOperationAttestationResponsePtrOutput)
 }
 
 // Contains an HSM-generated attestation about a key operation. For more information, see [Verifying attestations] (https://cloud.google.com/kms/docs/attest-key).
@@ -2225,16 +1298,6 @@ func (o KeyOperationAttestationResponseOutput) ToKeyOperationAttestationResponse
 	return o
 }
 
-func (o KeyOperationAttestationResponseOutput) ToKeyOperationAttestationResponsePtrOutput() KeyOperationAttestationResponsePtrOutput {
-	return o.ToKeyOperationAttestationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o KeyOperationAttestationResponseOutput) ToKeyOperationAttestationResponsePtrOutputWithContext(ctx context.Context) KeyOperationAttestationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyOperationAttestationResponse) *KeyOperationAttestationResponse {
-		return &v
-	}).(KeyOperationAttestationResponsePtrOutput)
-}
-
 // The certificate chains needed to validate the attestation
 func (o KeyOperationAttestationResponseOutput) CertChains() CertificateChainsResponseOutput {
 	return o.ApplyT(func(v KeyOperationAttestationResponse) CertificateChainsResponse { return v.CertChains }).(CertificateChainsResponseOutput)
@@ -2250,134 +1313,10 @@ func (o KeyOperationAttestationResponseOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyOperationAttestationResponse) string { return v.Format }).(pulumi.StringOutput)
 }
 
-type KeyOperationAttestationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (KeyOperationAttestationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyOperationAttestationResponse)(nil)).Elem()
-}
-
-func (o KeyOperationAttestationResponsePtrOutput) ToKeyOperationAttestationResponsePtrOutput() KeyOperationAttestationResponsePtrOutput {
-	return o
-}
-
-func (o KeyOperationAttestationResponsePtrOutput) ToKeyOperationAttestationResponsePtrOutputWithContext(ctx context.Context) KeyOperationAttestationResponsePtrOutput {
-	return o
-}
-
-func (o KeyOperationAttestationResponsePtrOutput) Elem() KeyOperationAttestationResponseOutput {
-	return o.ApplyT(func(v *KeyOperationAttestationResponse) KeyOperationAttestationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret KeyOperationAttestationResponse
-		return ret
-	}).(KeyOperationAttestationResponseOutput)
-}
-
-// The certificate chains needed to validate the attestation
-func (o KeyOperationAttestationResponsePtrOutput) CertChains() CertificateChainsResponsePtrOutput {
-	return o.ApplyT(func(v *KeyOperationAttestationResponse) *CertificateChainsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CertChains
-	}).(CertificateChainsResponsePtrOutput)
-}
-
-// The attestation data provided by the HSM when the key operation was performed.
-func (o KeyOperationAttestationResponsePtrOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyOperationAttestationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Content
-	}).(pulumi.StringPtrOutput)
-}
-
-// The format of the attestation data.
-func (o KeyOperationAttestationResponsePtrOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyOperationAttestationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Format
-	}).(pulumi.StringPtrOutput)
-}
-
 // The public key component of the wrapping key. For details of the type of key this public key corresponds to, see the ImportMethod.
 type WrappingPublicKeyResponse struct {
 	// The public key, encoded in PEM format. For more information, see the [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13).
 	Pem string `pulumi:"pem"`
-}
-
-// WrappingPublicKeyResponseInput is an input type that accepts WrappingPublicKeyResponseArgs and WrappingPublicKeyResponseOutput values.
-// You can construct a concrete instance of `WrappingPublicKeyResponseInput` via:
-//
-//          WrappingPublicKeyResponseArgs{...}
-type WrappingPublicKeyResponseInput interface {
-	pulumi.Input
-
-	ToWrappingPublicKeyResponseOutput() WrappingPublicKeyResponseOutput
-	ToWrappingPublicKeyResponseOutputWithContext(context.Context) WrappingPublicKeyResponseOutput
-}
-
-// The public key component of the wrapping key. For details of the type of key this public key corresponds to, see the ImportMethod.
-type WrappingPublicKeyResponseArgs struct {
-	// The public key, encoded in PEM format. For more information, see the [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13).
-	Pem pulumi.StringInput `pulumi:"pem"`
-}
-
-func (WrappingPublicKeyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WrappingPublicKeyResponse)(nil)).Elem()
-}
-
-func (i WrappingPublicKeyResponseArgs) ToWrappingPublicKeyResponseOutput() WrappingPublicKeyResponseOutput {
-	return i.ToWrappingPublicKeyResponseOutputWithContext(context.Background())
-}
-
-func (i WrappingPublicKeyResponseArgs) ToWrappingPublicKeyResponseOutputWithContext(ctx context.Context) WrappingPublicKeyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WrappingPublicKeyResponseOutput)
-}
-
-func (i WrappingPublicKeyResponseArgs) ToWrappingPublicKeyResponsePtrOutput() WrappingPublicKeyResponsePtrOutput {
-	return i.ToWrappingPublicKeyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i WrappingPublicKeyResponseArgs) ToWrappingPublicKeyResponsePtrOutputWithContext(ctx context.Context) WrappingPublicKeyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WrappingPublicKeyResponseOutput).ToWrappingPublicKeyResponsePtrOutputWithContext(ctx)
-}
-
-// WrappingPublicKeyResponsePtrInput is an input type that accepts WrappingPublicKeyResponseArgs, WrappingPublicKeyResponsePtr and WrappingPublicKeyResponsePtrOutput values.
-// You can construct a concrete instance of `WrappingPublicKeyResponsePtrInput` via:
-//
-//          WrappingPublicKeyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type WrappingPublicKeyResponsePtrInput interface {
-	pulumi.Input
-
-	ToWrappingPublicKeyResponsePtrOutput() WrappingPublicKeyResponsePtrOutput
-	ToWrappingPublicKeyResponsePtrOutputWithContext(context.Context) WrappingPublicKeyResponsePtrOutput
-}
-
-type wrappingPublicKeyResponsePtrType WrappingPublicKeyResponseArgs
-
-func WrappingPublicKeyResponsePtr(v *WrappingPublicKeyResponseArgs) WrappingPublicKeyResponsePtrInput {
-	return (*wrappingPublicKeyResponsePtrType)(v)
-}
-
-func (*wrappingPublicKeyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WrappingPublicKeyResponse)(nil)).Elem()
-}
-
-func (i *wrappingPublicKeyResponsePtrType) ToWrappingPublicKeyResponsePtrOutput() WrappingPublicKeyResponsePtrOutput {
-	return i.ToWrappingPublicKeyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *wrappingPublicKeyResponsePtrType) ToWrappingPublicKeyResponsePtrOutputWithContext(ctx context.Context) WrappingPublicKeyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WrappingPublicKeyResponsePtrOutput)
 }
 
 // The public key component of the wrapping key. For details of the type of key this public key corresponds to, see the ImportMethod.
@@ -2395,87 +1334,24 @@ func (o WrappingPublicKeyResponseOutput) ToWrappingPublicKeyResponseOutputWithCo
 	return o
 }
 
-func (o WrappingPublicKeyResponseOutput) ToWrappingPublicKeyResponsePtrOutput() WrappingPublicKeyResponsePtrOutput {
-	return o.ToWrappingPublicKeyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o WrappingPublicKeyResponseOutput) ToWrappingPublicKeyResponsePtrOutputWithContext(ctx context.Context) WrappingPublicKeyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WrappingPublicKeyResponse) *WrappingPublicKeyResponse {
-		return &v
-	}).(WrappingPublicKeyResponsePtrOutput)
-}
-
 // The public key, encoded in PEM format. For more information, see the [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13).
 func (o WrappingPublicKeyResponseOutput) Pem() pulumi.StringOutput {
 	return o.ApplyT(func(v WrappingPublicKeyResponse) string { return v.Pem }).(pulumi.StringOutput)
 }
 
-type WrappingPublicKeyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WrappingPublicKeyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WrappingPublicKeyResponse)(nil)).Elem()
-}
-
-func (o WrappingPublicKeyResponsePtrOutput) ToWrappingPublicKeyResponsePtrOutput() WrappingPublicKeyResponsePtrOutput {
-	return o
-}
-
-func (o WrappingPublicKeyResponsePtrOutput) ToWrappingPublicKeyResponsePtrOutputWithContext(ctx context.Context) WrappingPublicKeyResponsePtrOutput {
-	return o
-}
-
-func (o WrappingPublicKeyResponsePtrOutput) Elem() WrappingPublicKeyResponseOutput {
-	return o.ApplyT(func(v *WrappingPublicKeyResponse) WrappingPublicKeyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WrappingPublicKeyResponse
-		return ret
-	}).(WrappingPublicKeyResponseOutput)
-}
-
-// The public key, encoded in PEM format. For more information, see the [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13).
-func (o WrappingPublicKeyResponsePtrOutput) Pem() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WrappingPublicKeyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Pem
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateChainsResponseInput)(nil)).Elem(), CertificateChainsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateChainsResponsePtrInput)(nil)).Elem(), CertificateChainsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionResponseInput)(nil)).Elem(), CryptoKeyVersionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionResponsePtrInput)(nil)).Elem(), CryptoKeyVersionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplatePtrInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateResponseInput)(nil)).Elem(), CryptoKeyVersionTemplateResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateResponsePtrInput)(nil)).Elem(), CryptoKeyVersionTemplateResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalProtectionLevelOptionsInput)(nil)).Elem(), ExternalProtectionLevelOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalProtectionLevelOptionsPtrInput)(nil)).Elem(), ExternalProtectionLevelOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalProtectionLevelOptionsResponseInput)(nil)).Elem(), ExternalProtectionLevelOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalProtectionLevelOptionsResponsePtrInput)(nil)).Elem(), ExternalProtectionLevelOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyOperationAttestationResponseInput)(nil)).Elem(), KeyOperationAttestationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyOperationAttestationResponsePtrInput)(nil)).Elem(), KeyOperationAttestationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WrappingPublicKeyResponseInput)(nil)).Elem(), WrappingPublicKeyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WrappingPublicKeyResponsePtrInput)(nil)).Elem(), WrappingPublicKeyResponseArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -2489,22 +1365,16 @@ func init() {
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(CertificateChainsResponseOutput{})
-	pulumi.RegisterOutputType(CertificateChainsResponsePtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionResponseOutput{})
-	pulumi.RegisterOutputType(CryptoKeyVersionResponsePtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplateOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplatePtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplateResponseOutput{})
-	pulumi.RegisterOutputType(CryptoKeyVersionTemplateResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(ExternalProtectionLevelOptionsOutput{})
 	pulumi.RegisterOutputType(ExternalProtectionLevelOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ExternalProtectionLevelOptionsResponseOutput{})
-	pulumi.RegisterOutputType(ExternalProtectionLevelOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyOperationAttestationResponseOutput{})
-	pulumi.RegisterOutputType(KeyOperationAttestationResponsePtrOutput{})
 	pulumi.RegisterOutputType(WrappingPublicKeyResponseOutput{})
-	pulumi.RegisterOutputType(WrappingPublicKeyResponsePtrOutput{})
 }

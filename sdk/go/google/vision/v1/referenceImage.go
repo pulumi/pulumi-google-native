@@ -106,7 +106,7 @@ type ReferenceImageInput interface {
 }
 
 func (*ReferenceImage) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReferenceImage)(nil))
+	return reflect.TypeOf((**ReferenceImage)(nil)).Elem()
 }
 
 func (i *ReferenceImage) ToReferenceImageOutput() ReferenceImageOutput {
@@ -120,7 +120,7 @@ func (i *ReferenceImage) ToReferenceImageOutputWithContext(ctx context.Context) 
 type ReferenceImageOutput struct{ *pulumi.OutputState }
 
 func (ReferenceImageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReferenceImage)(nil))
+	return reflect.TypeOf((**ReferenceImage)(nil)).Elem()
 }
 
 func (o ReferenceImageOutput) ToReferenceImageOutput() ReferenceImageOutput {

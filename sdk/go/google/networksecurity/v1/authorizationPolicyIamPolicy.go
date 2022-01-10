@@ -113,7 +113,7 @@ type AuthorizationPolicyIamPolicyInput interface {
 }
 
 func (*AuthorizationPolicyIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorizationPolicyIamPolicy)(nil))
+	return reflect.TypeOf((**AuthorizationPolicyIamPolicy)(nil)).Elem()
 }
 
 func (i *AuthorizationPolicyIamPolicy) ToAuthorizationPolicyIamPolicyOutput() AuthorizationPolicyIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *AuthorizationPolicyIamPolicy) ToAuthorizationPolicyIamPolicyOutputWithC
 type AuthorizationPolicyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationPolicyIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorizationPolicyIamPolicy)(nil))
+	return reflect.TypeOf((**AuthorizationPolicyIamPolicy)(nil)).Elem()
 }
 
 func (o AuthorizationPolicyIamPolicyOutput) ToAuthorizationPolicyIamPolicyOutput() AuthorizationPolicyIamPolicyOutput {
