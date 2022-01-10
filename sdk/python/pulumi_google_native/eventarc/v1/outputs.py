@@ -180,9 +180,9 @@ class CloudRunResponse(dict):
                  service: str):
         """
         Represents a Cloud Run destination.
-        :param str path: Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        :param str path: Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         :param str region: The region the Cloud Run service is deployed in.
-        :param str service: The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+        :param str service: The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project as the trigger object can be addressed.
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "region", region)
@@ -192,7 +192,7 @@ class CloudRunResponse(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         """
         return pulumi.get(self, "path")
 
@@ -208,7 +208,7 @@ class CloudRunResponse(dict):
     @pulumi.getter
     def service(self) -> str:
         """
-        The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+        The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project as the trigger object can be addressed.
         """
         return pulumi.get(self, "service")
 
@@ -241,7 +241,7 @@ class DestinationResponse(dict):
         """
         Represents a target of an invocation over HTTP.
         :param 'CloudRunResponse' cloud_run: Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
-        :param 'GKEResponse' gke: A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+        :param 'GKEResponse' gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         """
         pulumi.set(__self__, "cloud_run", cloud_run)
         pulumi.set(__self__, "gke", gke)
@@ -258,7 +258,7 @@ class DestinationResponse(dict):
     @pulumi.getter
     def gke(self) -> 'outputs.GKEResponse':
         """
-        A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+        A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         """
         return pulumi.get(self, "gke")
 
@@ -365,9 +365,9 @@ class GKEResponse(dict):
         """
         Represents a GKE destination.
         :param str cluster: The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
-        :param str location: The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+        :param str location: The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         :param str namespace: The namespace the GKE service is running in.
-        :param str path: Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        :param str path: Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         :param str service: Name of the GKE service.
         """
         pulumi.set(__self__, "cluster", cluster)
@@ -388,7 +388,7 @@ class GKEResponse(dict):
     @pulumi.getter
     def location(self) -> str:
         """
-        The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+        The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         """
         return pulumi.get(self, "location")
 
@@ -404,7 +404,7 @@ class GKEResponse(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         """
         return pulumi.get(self, "path")
 
@@ -427,8 +427,8 @@ class PubsubResponse(dict):
                  topic: str):
         """
         Represents a Pub/Sub transport.
-        :param str subscription: The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
-        :param str topic: Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+        :param str subscription: The name of the Pub/Sub subscription created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+        :param str topic: Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
         """
         pulumi.set(__self__, "subscription", subscription)
         pulumi.set(__self__, "topic", topic)
@@ -437,7 +437,7 @@ class PubsubResponse(dict):
     @pulumi.getter
     def subscription(self) -> str:
         """
-        The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+        The name of the Pub/Sub subscription created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
         """
         return pulumi.get(self, "subscription")
 
@@ -445,7 +445,7 @@ class PubsubResponse(dict):
     @pulumi.getter
     def topic(self) -> str:
         """
-        Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+        Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
         """
         return pulumi.get(self, "topic")
 
@@ -453,13 +453,13 @@ class PubsubResponse(dict):
 @pulumi.output_type
 class TransportResponse(dict):
     """
-    Represents the transport intermediaries created for the trigger in order to deliver events.
+    Represents the transport intermediaries created for the trigger to deliver events.
     """
     def __init__(__self__, *,
                  pubsub: 'outputs.PubsubResponse'):
         """
-        Represents the transport intermediaries created for the trigger in order to deliver events.
-        :param 'PubsubResponse' pubsub: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+        Represents the transport intermediaries created for the trigger to deliver events.
+        :param 'PubsubResponse' pubsub: The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
         """
         pulumi.set(__self__, "pubsub", pubsub)
 
@@ -467,7 +467,7 @@ class TransportResponse(dict):
     @pulumi.getter
     def pubsub(self) -> 'outputs.PubsubResponse':
         """
-        The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+        The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
         """
         return pulumi.get(self, "pubsub")
 

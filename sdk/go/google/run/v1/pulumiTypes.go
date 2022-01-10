@@ -5537,6 +5537,31 @@ func (i *localObjectReferencePtrType) ToLocalObjectReferencePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(LocalObjectReferencePtrOutput)
 }
 
+// LocalObjectReferenceArrayInput is an input type that accepts LocalObjectReferenceArray and LocalObjectReferenceArrayOutput values.
+// You can construct a concrete instance of `LocalObjectReferenceArrayInput` via:
+//
+//          LocalObjectReferenceArray{ LocalObjectReferenceArgs{...} }
+type LocalObjectReferenceArrayInput interface {
+	pulumi.Input
+
+	ToLocalObjectReferenceArrayOutput() LocalObjectReferenceArrayOutput
+	ToLocalObjectReferenceArrayOutputWithContext(context.Context) LocalObjectReferenceArrayOutput
+}
+
+type LocalObjectReferenceArray []LocalObjectReferenceInput
+
+func (LocalObjectReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocalObjectReference)(nil)).Elem()
+}
+
+func (i LocalObjectReferenceArray) ToLocalObjectReferenceArrayOutput() LocalObjectReferenceArrayOutput {
+	return i.ToLocalObjectReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i LocalObjectReferenceArray) ToLocalObjectReferenceArrayOutputWithContext(ctx context.Context) LocalObjectReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalObjectReferenceArrayOutput)
+}
+
 // Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceOutput struct{ *pulumi.OutputState }
 
@@ -5601,6 +5626,26 @@ func (o LocalObjectReferencePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type LocalObjectReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (LocalObjectReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocalObjectReference)(nil)).Elem()
+}
+
+func (o LocalObjectReferenceArrayOutput) ToLocalObjectReferenceArrayOutput() LocalObjectReferenceArrayOutput {
+	return o
+}
+
+func (o LocalObjectReferenceArrayOutput) ToLocalObjectReferenceArrayOutputWithContext(ctx context.Context) LocalObjectReferenceArrayOutput {
+	return o
+}
+
+func (o LocalObjectReferenceArrayOutput) Index(i pulumi.IntInput) LocalObjectReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocalObjectReference {
+		return vs[0].([]LocalObjectReference)[vs[1].(int)]
+	}).(LocalObjectReferenceOutput)
+}
+
 // Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceResponse struct {
 	// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
@@ -5636,6 +5681,31 @@ func (i LocalObjectReferenceResponseArgs) ToLocalObjectReferenceResponseOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(LocalObjectReferenceResponseOutput)
 }
 
+// LocalObjectReferenceResponseArrayInput is an input type that accepts LocalObjectReferenceResponseArray and LocalObjectReferenceResponseArrayOutput values.
+// You can construct a concrete instance of `LocalObjectReferenceResponseArrayInput` via:
+//
+//          LocalObjectReferenceResponseArray{ LocalObjectReferenceResponseArgs{...} }
+type LocalObjectReferenceResponseArrayInput interface {
+	pulumi.Input
+
+	ToLocalObjectReferenceResponseArrayOutput() LocalObjectReferenceResponseArrayOutput
+	ToLocalObjectReferenceResponseArrayOutputWithContext(context.Context) LocalObjectReferenceResponseArrayOutput
+}
+
+type LocalObjectReferenceResponseArray []LocalObjectReferenceResponseInput
+
+func (LocalObjectReferenceResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocalObjectReferenceResponse)(nil)).Elem()
+}
+
+func (i LocalObjectReferenceResponseArray) ToLocalObjectReferenceResponseArrayOutput() LocalObjectReferenceResponseArrayOutput {
+	return i.ToLocalObjectReferenceResponseArrayOutputWithContext(context.Background())
+}
+
+func (i LocalObjectReferenceResponseArray) ToLocalObjectReferenceResponseArrayOutputWithContext(ctx context.Context) LocalObjectReferenceResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalObjectReferenceResponseArrayOutput)
+}
+
 // Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceResponseOutput struct{ *pulumi.OutputState }
 
@@ -5654,6 +5724,26 @@ func (o LocalObjectReferenceResponseOutput) ToLocalObjectReferenceResponseOutput
 // (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o LocalObjectReferenceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalObjectReferenceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type LocalObjectReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LocalObjectReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocalObjectReferenceResponse)(nil)).Elem()
+}
+
+func (o LocalObjectReferenceResponseArrayOutput) ToLocalObjectReferenceResponseArrayOutput() LocalObjectReferenceResponseArrayOutput {
+	return o
+}
+
+func (o LocalObjectReferenceResponseArrayOutput) ToLocalObjectReferenceResponseArrayOutputWithContext(ctx context.Context) LocalObjectReferenceResponseArrayOutput {
+	return o
+}
+
+func (o LocalObjectReferenceResponseArrayOutput) Index(i pulumi.IntInput) LocalObjectReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocalObjectReferenceResponse {
+		return vs[0].([]LocalObjectReferenceResponse)[vs[1].(int)]
+	}).(LocalObjectReferenceResponseOutput)
 }
 
 // k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
@@ -7610,10 +7700,14 @@ func (o ResourceRequirementsResponseOutput) Requests() pulumi.StringMapOutput {
 
 // RevisionSpec holds the desired state of the Revision (from the client).
 type RevisionSpec struct {
-	// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 	ContainerConcurrency *int `pulumi:"containerConcurrency"`
 	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
 	Containers []Container `pulumi:"containers"`
+	// Indicates whether information about services should be injected into pod's environment variables, matching the syntax of Docker links. Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported, defaults to true.
+	EnableServiceLinks *bool `pulumi:"enableServiceLinks"`
+	// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
+	ImagePullSecrets []LocalObjectReference `pulumi:"imagePullSecrets"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccountName *string `pulumi:"serviceAccountName"`
 	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
@@ -7634,10 +7728,14 @@ type RevisionSpecInput interface {
 
 // RevisionSpec holds the desired state of the Revision (from the client).
 type RevisionSpecArgs struct {
-	// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 	ContainerConcurrency pulumi.IntPtrInput `pulumi:"containerConcurrency"`
 	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
 	Containers ContainerArrayInput `pulumi:"containers"`
+	// Indicates whether information about services should be injected into pod's environment variables, matching the syntax of Docker links. Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported, defaults to true.
+	EnableServiceLinks pulumi.BoolPtrInput `pulumi:"enableServiceLinks"`
+	// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
+	ImagePullSecrets LocalObjectReferenceArrayInput `pulumi:"imagePullSecrets"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccountName pulumi.StringPtrInput `pulumi:"serviceAccountName"`
 	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
@@ -7723,7 +7821,7 @@ func (o RevisionSpecOutput) ToRevisionSpecPtrOutputWithContext(ctx context.Conte
 	}).(RevisionSpecPtrOutput)
 }
 
-// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 func (o RevisionSpecOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RevisionSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
 }
@@ -7731,6 +7829,16 @@ func (o RevisionSpecOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 // Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
 func (o RevisionSpecOutput) Containers() ContainerArrayOutput {
 	return o.ApplyT(func(v RevisionSpec) []Container { return v.Containers }).(ContainerArrayOutput)
+}
+
+// Indicates whether information about services should be injected into pod's environment variables, matching the syntax of Docker links. Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported, defaults to true.
+func (o RevisionSpecOutput) EnableServiceLinks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RevisionSpec) *bool { return v.EnableServiceLinks }).(pulumi.BoolPtrOutput)
+}
+
+// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
+func (o RevisionSpecOutput) ImagePullSecrets() LocalObjectReferenceArrayOutput {
+	return o.ApplyT(func(v RevisionSpec) []LocalObjectReference { return v.ImagePullSecrets }).(LocalObjectReferenceArrayOutput)
 }
 
 // Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -7771,7 +7879,7 @@ func (o RevisionSpecPtrOutput) Elem() RevisionSpecOutput {
 	}).(RevisionSpecOutput)
 }
 
-// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 func (o RevisionSpecPtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RevisionSpec) *int {
 		if v == nil {
@@ -7789,6 +7897,26 @@ func (o RevisionSpecPtrOutput) Containers() ContainerArrayOutput {
 		}
 		return v.Containers
 	}).(ContainerArrayOutput)
+}
+
+// Indicates whether information about services should be injected into pod's environment variables, matching the syntax of Docker links. Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported, defaults to true.
+func (o RevisionSpecPtrOutput) EnableServiceLinks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RevisionSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableServiceLinks
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
+func (o RevisionSpecPtrOutput) ImagePullSecrets() LocalObjectReferenceArrayOutput {
+	return o.ApplyT(func(v *RevisionSpec) []LocalObjectReference {
+		if v == nil {
+			return nil
+		}
+		return v.ImagePullSecrets
+	}).(LocalObjectReferenceArrayOutput)
 }
 
 // Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -7822,10 +7950,14 @@ func (o RevisionSpecPtrOutput) Volumes() VolumeArrayOutput {
 
 // RevisionSpec holds the desired state of the Revision (from the client).
 type RevisionSpecResponse struct {
-	// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 	ContainerConcurrency int `pulumi:"containerConcurrency"`
 	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
 	Containers []ContainerResponse `pulumi:"containers"`
+	// Indicates whether information about services should be injected into pod's environment variables, matching the syntax of Docker links. Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported, defaults to true.
+	EnableServiceLinks bool `pulumi:"enableServiceLinks"`
+	// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
+	ImagePullSecrets []LocalObjectReferenceResponse `pulumi:"imagePullSecrets"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccountName string `pulumi:"serviceAccountName"`
 	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
@@ -7846,10 +7978,14 @@ type RevisionSpecResponseInput interface {
 
 // RevisionSpec holds the desired state of the Revision (from the client).
 type RevisionSpecResponseArgs struct {
-	// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 	ContainerConcurrency pulumi.IntInput `pulumi:"containerConcurrency"`
 	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
 	Containers ContainerResponseArrayInput `pulumi:"containers"`
+	// Indicates whether information about services should be injected into pod's environment variables, matching the syntax of Docker links. Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported, defaults to true.
+	EnableServiceLinks pulumi.BoolInput `pulumi:"enableServiceLinks"`
+	// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
+	ImagePullSecrets LocalObjectReferenceResponseArrayInput `pulumi:"imagePullSecrets"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccountName pulumi.StringInput `pulumi:"serviceAccountName"`
 	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
@@ -7935,7 +8071,7 @@ func (o RevisionSpecResponseOutput) ToRevisionSpecResponsePtrOutputWithContext(c
 	}).(RevisionSpecResponsePtrOutput)
 }
 
-// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 func (o RevisionSpecResponseOutput) ContainerConcurrency() pulumi.IntOutput {
 	return o.ApplyT(func(v RevisionSpecResponse) int { return v.ContainerConcurrency }).(pulumi.IntOutput)
 }
@@ -7943,6 +8079,16 @@ func (o RevisionSpecResponseOutput) ContainerConcurrency() pulumi.IntOutput {
 // Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
 func (o RevisionSpecResponseOutput) Containers() ContainerResponseArrayOutput {
 	return o.ApplyT(func(v RevisionSpecResponse) []ContainerResponse { return v.Containers }).(ContainerResponseArrayOutput)
+}
+
+// Indicates whether information about services should be injected into pod's environment variables, matching the syntax of Docker links. Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported, defaults to true.
+func (o RevisionSpecResponseOutput) EnableServiceLinks() pulumi.BoolOutput {
+	return o.ApplyT(func(v RevisionSpecResponse) bool { return v.EnableServiceLinks }).(pulumi.BoolOutput)
+}
+
+// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
+func (o RevisionSpecResponseOutput) ImagePullSecrets() LocalObjectReferenceResponseArrayOutput {
+	return o.ApplyT(func(v RevisionSpecResponse) []LocalObjectReferenceResponse { return v.ImagePullSecrets }).(LocalObjectReferenceResponseArrayOutput)
 }
 
 // Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -7983,7 +8129,7 @@ func (o RevisionSpecResponsePtrOutput) Elem() RevisionSpecResponseOutput {
 	}).(RevisionSpecResponseOutput)
 }
 
-// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 func (o RevisionSpecResponsePtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RevisionSpecResponse) *int {
 		if v == nil {
@@ -8001,6 +8147,26 @@ func (o RevisionSpecResponsePtrOutput) Containers() ContainerResponseArrayOutput
 		}
 		return v.Containers
 	}).(ContainerResponseArrayOutput)
+}
+
+// Indicates whether information about services should be injected into pod's environment variables, matching the syntax of Docker links. Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported, defaults to true.
+func (o RevisionSpecResponsePtrOutput) EnableServiceLinks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RevisionSpecResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableServiceLinks
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
+func (o RevisionSpecResponsePtrOutput) ImagePullSecrets() LocalObjectReferenceResponseArrayOutput {
+	return o.ApplyT(func(v *RevisionSpecResponse) []LocalObjectReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ImagePullSecrets
+	}).(LocalObjectReferenceResponseArrayOutput)
 }
 
 // Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -11238,7 +11404,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyToPathResponseArrayInput)(nil)).Elem(), KeyToPathResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferenceInput)(nil)).Elem(), LocalObjectReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferencePtrInput)(nil)).Elem(), LocalObjectReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferenceArrayInput)(nil)).Elem(), LocalObjectReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferenceResponseInput)(nil)).Elem(), LocalObjectReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferenceResponseArrayInput)(nil)).Elem(), LocalObjectReferenceResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaInput)(nil)).Elem(), ObjectMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaPtrInput)(nil)).Elem(), ObjectMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaResponseInput)(nil)).Elem(), ObjectMetaResponseArgs{})
@@ -11375,7 +11543,9 @@ func init() {
 	pulumi.RegisterOutputType(KeyToPathResponseArrayOutput{})
 	pulumi.RegisterOutputType(LocalObjectReferenceOutput{})
 	pulumi.RegisterOutputType(LocalObjectReferencePtrOutput{})
+	pulumi.RegisterOutputType(LocalObjectReferenceArrayOutput{})
 	pulumi.RegisterOutputType(LocalObjectReferenceResponseOutput{})
+	pulumi.RegisterOutputType(LocalObjectReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(ObjectMetaOutput{})
 	pulumi.RegisterOutputType(ObjectMetaPtrOutput{})
 	pulumi.RegisterOutputType(ObjectMetaResponseOutput{})

@@ -1900,6 +1900,10 @@ class RevisionSpecResponse(dict):
         suggest = None
         if key == "containerConcurrency":
             suggest = "container_concurrency"
+        elif key == "enableServiceLinks":
+            suggest = "enable_service_links"
+        elif key == "imagePullSecrets":
+            suggest = "image_pull_secrets"
         elif key == "serviceAccountName":
             suggest = "service_account_name"
         elif key == "timeoutSeconds":
@@ -1919,18 +1923,24 @@ class RevisionSpecResponse(dict):
     def __init__(__self__, *,
                  container_concurrency: int,
                  containers: Sequence['outputs.ContainerResponse'],
+                 enable_service_links: bool,
+                 image_pull_secrets: Sequence['outputs.LocalObjectReferenceResponse'],
                  service_account_name: str,
                  timeout_seconds: int,
                  volumes: Sequence['outputs.VolumeResponse']):
         """
         RevisionSpec holds the desired state of the Revision (from the client).
-        :param int container_concurrency: Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+        :param int container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
         :param Sequence['ContainerResponse'] containers: Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
+        :param bool enable_service_links: Indicates whether information about services should be injected into pod's environment variables, matching the syntax of Docker links. Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported, defaults to true.
+        :param Sequence['LocalObjectReferenceResponse'] image_pull_secrets: ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
         :param str service_account_name: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
         :param int timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
         """
         pulumi.set(__self__, "container_concurrency", container_concurrency)
         pulumi.set(__self__, "containers", containers)
+        pulumi.set(__self__, "enable_service_links", enable_service_links)
+        pulumi.set(__self__, "image_pull_secrets", image_pull_secrets)
         pulumi.set(__self__, "service_account_name", service_account_name)
         pulumi.set(__self__, "timeout_seconds", timeout_seconds)
         pulumi.set(__self__, "volumes", volumes)
@@ -1939,7 +1949,7 @@ class RevisionSpecResponse(dict):
     @pulumi.getter(name="containerConcurrency")
     def container_concurrency(self) -> int:
         """
-        Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+        ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
         """
         return pulumi.get(self, "container_concurrency")
 
@@ -1950,6 +1960,22 @@ class RevisionSpecResponse(dict):
         Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
         """
         return pulumi.get(self, "containers")
+
+    @property
+    @pulumi.getter(name="enableServiceLinks")
+    def enable_service_links(self) -> bool:
+        """
+        Indicates whether information about services should be injected into pod's environment variables, matching the syntax of Docker links. Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported, defaults to true.
+        """
+        return pulumi.get(self, "enable_service_links")
+
+    @property
+    @pulumi.getter(name="imagePullSecrets")
+    def image_pull_secrets(self) -> Sequence['outputs.LocalObjectReferenceResponse']:
+        """
+        ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
+        """
+        return pulumi.get(self, "image_pull_secrets")
 
     @property
     @pulumi.getter(name="serviceAccountName")

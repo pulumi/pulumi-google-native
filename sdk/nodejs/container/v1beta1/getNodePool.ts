@@ -73,6 +73,10 @@ export interface GetNodePoolResult {
      */
     readonly networkConfig: outputs.container.v1beta1.NodeNetworkConfigResponse;
     /**
+     * Specifies the node placement policy.
+     */
+    readonly placementPolicy: outputs.container.v1beta1.PlacementPolicyResponse;
+    /**
      * [Output only] The pod CIDR block size per node in this node pool.
      */
     readonly podIpv4CidrSize: number;

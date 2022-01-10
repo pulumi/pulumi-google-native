@@ -41,6 +41,10 @@ export interface GetTriggerResult {
      */
     readonly autodetect: boolean;
     /**
+     * BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+     */
+    readonly bitbucketServerTriggerConfig: outputs.cloudbuild.v1.BitbucketServerTriggerConfigResponse;
+    /**
      * Contents of the build template.
      */
     readonly build: outputs.cloudbuild.v1.BuildResponse;
@@ -57,7 +61,7 @@ export interface GetTriggerResult {
      */
     readonly disabled: boolean;
     /**
-     * Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+     * EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
      */
     readonly eventType: string;
     /**

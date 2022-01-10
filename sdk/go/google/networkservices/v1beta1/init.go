@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EndpointPolicy{}
 	case "google-native:networkservices/v1beta1:EndpointPolicyIamPolicy":
 		r = &EndpointPolicyIamPolicy{}
-	case "google-native:networkservices/v1beta1:ServiceBinding":
-		r = &ServiceBinding{}
 	case "google-native:networkservices/v1beta1:ServiceBindingIamPolicy":
 		r = &ServiceBindingIamPolicy{}
 	default:

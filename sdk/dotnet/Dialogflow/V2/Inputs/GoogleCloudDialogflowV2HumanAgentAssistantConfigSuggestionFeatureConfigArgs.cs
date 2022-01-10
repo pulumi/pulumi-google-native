@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public Input<Inputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs>? ConversationModelConfig { get; set; }
 
         /// <summary>
+        /// Configs for processing conversation.
+        /// </summary>
+        [Input("conversationProcessConfig")]
+        public Input<Inputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigArgs>? ConversationProcessConfig { get; set; }
+
+        /// <summary>
         /// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
         /// </summary>
         [Input("enableEventBasedSuggestion")]

@@ -637,17 +637,21 @@ class DiskConfigArgs:
     def __init__(__self__, *,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  boot_disk_type: Optional[pulumi.Input[str]] = None,
+                 local_ssd_interface: Optional[pulumi.Input[str]] = None,
                  num_local_ssds: Optional[pulumi.Input[int]] = None):
         """
         Specifies the config of disk options for a group of VM instances.
         :param pulumi.Input[int] boot_disk_size_gb: Optional. Size in GB of the boot disk (default is 500GB).
         :param pulumi.Input[str] boot_disk_type: Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
+        :param pulumi.Input[str] local_ssd_interface: Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
         :param pulumi.Input[int] num_local_ssds: Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
             pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if local_ssd_interface is not None:
+            pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
         if num_local_ssds is not None:
             pulumi.set(__self__, "num_local_ssds", num_local_ssds)
 
@@ -674,6 +678,18 @@ class DiskConfigArgs:
     @boot_disk_type.setter
     def boot_disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "boot_disk_type", value)
+
+    @property
+    @pulumi.getter(name="localSsdInterface")
+    def local_ssd_interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+        """
+        return pulumi.get(self, "local_ssd_interface")
+
+    @local_ssd_interface.setter
+    def local_ssd_interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_ssd_interface", value)
 
     @property
     @pulumi.getter(name="numLocalSsds")
@@ -1572,8 +1588,8 @@ class JobSchedulingArgs:
                  max_failures_total: Optional[pulumi.Input[int]] = None):
         """
         Job scheduling options.
-        :param pulumi.Input[int] max_failures_per_hour: Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
-        :param pulumi.Input[int] max_failures_total: Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
+        :param pulumi.Input[int] max_failures_per_hour: Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+        :param pulumi.Input[int] max_failures_total: Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
         """
         if max_failures_per_hour is not None:
             pulumi.set(__self__, "max_failures_per_hour", max_failures_per_hour)
@@ -1584,7 +1600,7 @@ class JobSchedulingArgs:
     @pulumi.getter(name="maxFailuresPerHour")
     def max_failures_per_hour(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
+        Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
         """
         return pulumi.get(self, "max_failures_per_hour")
 
@@ -1596,7 +1612,7 @@ class JobSchedulingArgs:
     @pulumi.getter(name="maxFailuresTotal")
     def max_failures_total(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
+        Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
         """
         return pulumi.get(self, "max_failures_total")
 

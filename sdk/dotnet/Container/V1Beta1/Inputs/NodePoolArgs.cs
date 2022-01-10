@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<Inputs.NodeNetworkConfigArgs>? NetworkConfig { get; set; }
 
         /// <summary>
+        /// Specifies the node placement policy.
+        /// </summary>
+        [Input("placementPolicy")]
+        public Input<Inputs.PlacementPolicyArgs>? PlacementPolicy { get; set; }
+
+        /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.
         /// </summary>
         [Input("upgradeSettings")]

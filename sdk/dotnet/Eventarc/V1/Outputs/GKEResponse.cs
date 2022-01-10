@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
         /// </summary>
         public readonly string Cluster;
         /// <summary>
-        /// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+        /// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         /// </summary>
         public readonly string Location;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
         /// </summary>
         public readonly string Namespace;
         /// <summary>
-        /// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        /// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         /// </summary>
         public readonly string Path;
         /// <summary>

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodePoolResult:
-    def __init__(__self__, autoscaling=None, conditions=None, config=None, initial_node_count=None, instance_group_urls=None, locations=None, management=None, max_pods_constraint=None, name=None, network_config=None, pod_ipv4_cidr_size=None, self_link=None, status=None, upgrade_settings=None, version=None):
+    def __init__(__self__, autoscaling=None, conditions=None, config=None, initial_node_count=None, instance_group_urls=None, locations=None, management=None, max_pods_constraint=None, name=None, network_config=None, placement_policy=None, pod_ipv4_cidr_size=None, self_link=None, status=None, upgrade_settings=None, version=None):
         if autoscaling and not isinstance(autoscaling, dict):
             raise TypeError("Expected argument 'autoscaling' to be a dict")
         pulumi.set(__self__, "autoscaling", autoscaling)
@@ -49,6 +49,9 @@ class GetNodePoolResult:
         if network_config and not isinstance(network_config, dict):
             raise TypeError("Expected argument 'network_config' to be a dict")
         pulumi.set(__self__, "network_config", network_config)
+        if placement_policy and not isinstance(placement_policy, dict):
+            raise TypeError("Expected argument 'placement_policy' to be a dict")
+        pulumi.set(__self__, "placement_policy", placement_policy)
         if pod_ipv4_cidr_size and not isinstance(pod_ipv4_cidr_size, int):
             raise TypeError("Expected argument 'pod_ipv4_cidr_size' to be a int")
         pulumi.set(__self__, "pod_ipv4_cidr_size", pod_ipv4_cidr_size)
@@ -146,6 +149,14 @@ class GetNodePoolResult:
         return pulumi.get(self, "network_config")
 
     @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> 'outputs.PlacementPolicyResponse':
+        """
+        Specifies the node placement policy.
+        """
+        return pulumi.get(self, "placement_policy")
+
+    @property
     @pulumi.getter(name="podIpv4CidrSize")
     def pod_ipv4_cidr_size(self) -> int:
         """
@@ -202,6 +213,7 @@ class AwaitableGetNodePoolResult(GetNodePoolResult):
             max_pods_constraint=self.max_pods_constraint,
             name=self.name,
             network_config=self.network_config,
+            placement_policy=self.placement_policy,
             pod_ipv4_cidr_size=self.pod_ipv4_cidr_size,
             self_link=self.self_link,
             status=self.status,
@@ -239,6 +251,7 @@ def get_node_pool(cluster_id: Optional[str] = None,
         max_pods_constraint=__ret__.max_pods_constraint,
         name=__ret__.name,
         network_config=__ret__.network_config,
+        placement_policy=__ret__.placement_policy,
         pod_ipv4_cidr_size=__ret__.pod_ipv4_cidr_size,
         self_link=__ret__.self_link,
         status=__ret__.status,

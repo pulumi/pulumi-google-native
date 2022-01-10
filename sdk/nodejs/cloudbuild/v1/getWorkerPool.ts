@@ -55,7 +55,7 @@ export interface GetWorkerPoolResult {
      */
     readonly name: string;
     /**
-     * Private Pool using a v1 configuration.
+     * Legacy Private Pool configuration.
      */
     readonly privatePoolV1Config: outputs.cloudbuild.v1.PrivatePoolV1ConfigResponse;
     /**

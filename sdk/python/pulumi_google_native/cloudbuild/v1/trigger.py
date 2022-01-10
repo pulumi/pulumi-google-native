@@ -19,6 +19,7 @@ class TriggerArgs:
                  project_id: pulumi.Input[str],
                  approval_config: Optional[pulumi.Input['ApprovalConfigArgs']] = None,
                  autodetect: Optional[pulumi.Input[bool]] = None,
+                 bitbucket_server_trigger_config: Optional[pulumi.Input['BitbucketServerTriggerConfigArgs']] = None,
                  build: Optional[pulumi.Input['BuildArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -44,10 +45,11 @@ class TriggerArgs:
         The set of arguments for constructing a Trigger resource.
         :param pulumi.Input['ApprovalConfigArgs'] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
         :param pulumi.Input[bool] autodetect: Autodetect build configuration. The following precedence is used (case insensitive): 1. cloudbuild.yaml 2. cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available for GitHub App Triggers.
+        :param pulumi.Input['BitbucketServerTriggerConfigArgs'] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
         :param pulumi.Input['BuildArgs'] build: Contents of the build template.
         :param pulumi.Input[str] description: Human-readable description of this trigger.
         :param pulumi.Input[bool] disabled: If true, the trigger will never automatically execute a build.
-        :param pulumi.Input['TriggerEventType'] event_type: Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+        :param pulumi.Input['TriggerEventType'] event_type: EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
         :param pulumi.Input[str] filename: Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
         :param pulumi.Input[str] filter: A Common Expression Language string.
         :param pulumi.Input['GitFileSourceArgs'] git_file_source: The file source describing the local or remote Build template.
@@ -69,6 +71,8 @@ class TriggerArgs:
             pulumi.set(__self__, "approval_config", approval_config)
         if autodetect is not None:
             pulumi.set(__self__, "autodetect", autodetect)
+        if bitbucket_server_trigger_config is not None:
+            pulumi.set(__self__, "bitbucket_server_trigger_config", bitbucket_server_trigger_config)
         if build is not None:
             pulumi.set(__self__, "build", build)
         if description is not None:
@@ -146,6 +150,18 @@ class TriggerArgs:
         pulumi.set(self, "autodetect", value)
 
     @property
+    @pulumi.getter(name="bitbucketServerTriggerConfig")
+    def bitbucket_server_trigger_config(self) -> Optional[pulumi.Input['BitbucketServerTriggerConfigArgs']]:
+        """
+        BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        """
+        return pulumi.get(self, "bitbucket_server_trigger_config")
+
+    @bitbucket_server_trigger_config.setter
+    def bitbucket_server_trigger_config(self, value: Optional[pulumi.Input['BitbucketServerTriggerConfigArgs']]):
+        pulumi.set(self, "bitbucket_server_trigger_config", value)
+
+    @property
     @pulumi.getter
     def build(self) -> Optional[pulumi.Input['BuildArgs']]:
         """
@@ -185,7 +201,7 @@ class TriggerArgs:
     @pulumi.getter(name="eventType")
     def event_type(self) -> Optional[pulumi.Input['TriggerEventType']]:
         """
-        Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+        EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
         """
         return pulumi.get(self, "event_type")
 
@@ -399,6 +415,7 @@ class Trigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approval_config: Optional[pulumi.Input[pulumi.InputType['ApprovalConfigArgs']]] = None,
                  autodetect: Optional[pulumi.Input[bool]] = None,
+                 bitbucket_server_trigger_config: Optional[pulumi.Input[pulumi.InputType['BitbucketServerTriggerConfigArgs']]] = None,
                  build: Optional[pulumi.Input[pulumi.InputType['BuildArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -429,10 +446,11 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ApprovalConfigArgs']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
         :param pulumi.Input[bool] autodetect: Autodetect build configuration. The following precedence is used (case insensitive): 1. cloudbuild.yaml 2. cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available for GitHub App Triggers.
+        :param pulumi.Input[pulumi.InputType['BitbucketServerTriggerConfigArgs']] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
         :param pulumi.Input[pulumi.InputType['BuildArgs']] build: Contents of the build template.
         :param pulumi.Input[str] description: Human-readable description of this trigger.
         :param pulumi.Input[bool] disabled: If true, the trigger will never automatically execute a build.
-        :param pulumi.Input['TriggerEventType'] event_type: Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+        :param pulumi.Input['TriggerEventType'] event_type: EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
         :param pulumi.Input[str] filename: Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
         :param pulumi.Input[str] filter: A Common Expression Language string.
         :param pulumi.Input[pulumi.InputType['GitFileSourceArgs']] git_file_source: The file source describing the local or remote Build template.
@@ -475,6 +493,7 @@ class Trigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approval_config: Optional[pulumi.Input[pulumi.InputType['ApprovalConfigArgs']]] = None,
                  autodetect: Optional[pulumi.Input[bool]] = None,
+                 bitbucket_server_trigger_config: Optional[pulumi.Input[pulumi.InputType['BitbucketServerTriggerConfigArgs']]] = None,
                  build: Optional[pulumi.Input[pulumi.InputType['BuildArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -511,6 +530,7 @@ class Trigger(pulumi.CustomResource):
 
             __props__.__dict__["approval_config"] = approval_config
             __props__.__dict__["autodetect"] = autodetect
+            __props__.__dict__["bitbucket_server_trigger_config"] = bitbucket_server_trigger_config
             __props__.__dict__["build"] = build
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
@@ -560,6 +580,7 @@ class Trigger(pulumi.CustomResource):
 
         __props__.__dict__["approval_config"] = None
         __props__.__dict__["autodetect"] = None
+        __props__.__dict__["bitbucket_server_trigger_config"] = None
         __props__.__dict__["build"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
@@ -599,6 +620,14 @@ class Trigger(pulumi.CustomResource):
         return pulumi.get(self, "autodetect")
 
     @property
+    @pulumi.getter(name="bitbucketServerTriggerConfig")
+    def bitbucket_server_trigger_config(self) -> pulumi.Output['outputs.BitbucketServerTriggerConfigResponse']:
+        """
+        BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        """
+        return pulumi.get(self, "bitbucket_server_trigger_config")
+
+    @property
     @pulumi.getter
     def build(self) -> pulumi.Output['outputs.BuildResponse']:
         """
@@ -634,7 +663,7 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter(name="eventType")
     def event_type(self) -> pulumi.Output[str]:
         """
-        Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+        EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
         """
         return pulumi.get(self, "event_type")
 

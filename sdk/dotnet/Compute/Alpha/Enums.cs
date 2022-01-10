@@ -1124,6 +1124,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
         /// </summary>
         public static BackendServiceLocalityLbPolicy RoundRobin { get; } = new BackendServiceLocalityLbPolicy("ROUND_ROBIN");
+        /// <summary>
+        /// Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+        /// </summary>
+        public static BackendServiceLocalityLbPolicy WeightedMaglev { get; } = new BackendServiceLocalityLbPolicy("WEIGHTED_MAGLEV");
 
         public static bool operator ==(BackendServiceLocalityLbPolicy left, BackendServiceLocalityLbPolicy right) => left.Equals(right);
         public static bool operator !=(BackendServiceLocalityLbPolicy left, BackendServiceLocalityLbPolicy right) => !left.Equals(right);
@@ -4840,6 +4844,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
         /// </summary>
         public static RegionBackendServiceLocalityLbPolicy RoundRobin { get; } = new RegionBackendServiceLocalityLbPolicy("ROUND_ROBIN");
+        /// <summary>
+        /// Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+        /// </summary>
+        public static RegionBackendServiceLocalityLbPolicy WeightedMaglev { get; } = new RegionBackendServiceLocalityLbPolicy("WEIGHTED_MAGLEV");
 
         public static bool operator ==(RegionBackendServiceLocalityLbPolicy left, RegionBackendServiceLocalityLbPolicy right) => left.Equals(right);
         public static bool operator !=(RegionBackendServiceLocalityLbPolicy left, RegionBackendServiceLocalityLbPolicy right) => !left.Equals(right);

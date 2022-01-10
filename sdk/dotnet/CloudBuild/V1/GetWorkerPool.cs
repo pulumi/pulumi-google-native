@@ -87,7 +87,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Private Pool using a v1 configuration.
+        /// Legacy Private Pool configuration.
         /// </summary>
         public readonly Outputs.PrivatePoolV1ConfigResponse PrivatePoolV1Config;
         /// <summary>

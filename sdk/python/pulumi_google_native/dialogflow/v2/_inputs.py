@@ -17,6 +17,7 @@ __all__ = [
     'GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs',
     'GoogleCloudDialogflowV2FulfillmentArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs',
+    'GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigArgs',
@@ -407,6 +408,30 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArg
 
 
 @pulumi.input_type
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigArgs:
+    def __init__(__self__, *,
+                 recent_sentences_count: Optional[pulumi.Input[int]] = None):
+        """
+        Config to process conversation.
+        :param pulumi.Input[int] recent_sentences_count: Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+        """
+        if recent_sentences_count is not None:
+            pulumi.set(__self__, "recent_sentences_count", recent_sentences_count)
+
+    @property
+    @pulumi.getter(name="recentSentencesCount")
+    def recent_sentences_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+        """
+        return pulumi.get(self, "recent_sentences_count")
+
+    @recent_sentences_count.setter
+    def recent_sentences_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "recent_sentences_count", value)
+
+
+@pulumi.input_type
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs:
     def __init__(__self__, *,
                  enable_entity_extraction: Optional[pulumi.Input[bool]] = None,
@@ -490,6 +515,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs:
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigArgs:
     def __init__(__self__, *,
                  conversation_model_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs']] = None,
+                 conversation_process_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigArgs']] = None,
                  enable_event_based_suggestion: Optional[pulumi.Input[bool]] = None,
                  query_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs']] = None,
                  suggestion_feature: Optional[pulumi.Input['GoogleCloudDialogflowV2SuggestionFeatureArgs']] = None,
@@ -497,6 +523,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigArg
         """
         Config for suggestion features.
         :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs'] conversation_model_config: Configs of custom conversation model.
+        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigArgs'] conversation_process_config: Configs for processing conversation.
         :param pulumi.Input[bool] enable_event_based_suggestion: Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
         :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs'] query_config: Configs of query.
         :param pulumi.Input['GoogleCloudDialogflowV2SuggestionFeatureArgs'] suggestion_feature: The suggestion feature.
@@ -504,6 +531,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigArg
         """
         if conversation_model_config is not None:
             pulumi.set(__self__, "conversation_model_config", conversation_model_config)
+        if conversation_process_config is not None:
+            pulumi.set(__self__, "conversation_process_config", conversation_process_config)
         if enable_event_based_suggestion is not None:
             pulumi.set(__self__, "enable_event_based_suggestion", enable_event_based_suggestion)
         if query_config is not None:
@@ -524,6 +553,18 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigArg
     @conversation_model_config.setter
     def conversation_model_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs']]):
         pulumi.set(self, "conversation_model_config", value)
+
+    @property
+    @pulumi.getter(name="conversationProcessConfig")
+    def conversation_process_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigArgs']]:
+        """
+        Configs for processing conversation.
+        """
+        return pulumi.get(self, "conversation_process_config")
+
+    @conversation_process_config.setter
+    def conversation_process_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigArgs']]):
+        pulumi.set(self, "conversation_process_config", value)
 
     @property
     @pulumi.getter(name="enableEventBasedSuggestion")

@@ -3351,6 +3351,8 @@ type DiskConfig struct {
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
 	BootDiskType *string `pulumi:"bootDiskType"`
+	// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+	LocalSsdInterface *string `pulumi:"localSsdInterface"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
@@ -3372,6 +3374,8 @@ type DiskConfigArgs struct {
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
 	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+	// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+	LocalSsdInterface pulumi.StringPtrInput `pulumi:"localSsdInterface"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
@@ -3464,6 +3468,11 @@ func (o DiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskConfig) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+func (o DiskConfigOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskConfig) *string { return v.LocalSsdInterface }).(pulumi.StringPtrOutput)
+}
+
 // Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 func (o DiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DiskConfig) *int { return v.NumLocalSsds }).(pulumi.IntPtrOutput)
@@ -3513,6 +3522,16 @@ func (o DiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+func (o DiskConfigPtrOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdInterface
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 func (o DiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DiskConfig) *int {
@@ -3529,6 +3548,8 @@ type DiskConfigResponse struct {
 	BootDiskSizeGb int `pulumi:"bootDiskSizeGb"`
 	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
 	BootDiskType string `pulumi:"bootDiskType"`
+	// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+	LocalSsdInterface string `pulumi:"localSsdInterface"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds int `pulumi:"numLocalSsds"`
 }
@@ -3550,6 +3571,8 @@ type DiskConfigResponseArgs struct {
 	BootDiskSizeGb pulumi.IntInput `pulumi:"bootDiskSizeGb"`
 	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
 	BootDiskType pulumi.StringInput `pulumi:"bootDiskType"`
+	// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+	LocalSsdInterface pulumi.StringInput `pulumi:"localSsdInterface"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds pulumi.IntInput `pulumi:"numLocalSsds"`
 }
@@ -3642,6 +3665,11 @@ func (o DiskConfigResponseOutput) BootDiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskConfigResponse) string { return v.BootDiskType }).(pulumi.StringOutput)
 }
 
+// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+func (o DiskConfigResponseOutput) LocalSsdInterface() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskConfigResponse) string { return v.LocalSsdInterface }).(pulumi.StringOutput)
+}
+
 // Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 func (o DiskConfigResponseOutput) NumLocalSsds() pulumi.IntOutput {
 	return o.ApplyT(func(v DiskConfigResponse) int { return v.NumLocalSsds }).(pulumi.IntOutput)
@@ -3688,6 +3716,16 @@ func (o DiskConfigResponsePtrOutput) BootDiskType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+func (o DiskConfigResponsePtrOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LocalSsdInterface
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8599,9 +8637,9 @@ func (o JobReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 
 // Job scheduling options.
 type JobScheduling struct {
-	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
+	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 	MaxFailuresPerHour *int `pulumi:"maxFailuresPerHour"`
-	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
+	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 	MaxFailuresTotal *int `pulumi:"maxFailuresTotal"`
 }
 
@@ -8618,9 +8656,9 @@ type JobSchedulingInput interface {
 
 // Job scheduling options.
 type JobSchedulingArgs struct {
-	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
+	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 	MaxFailuresPerHour pulumi.IntPtrInput `pulumi:"maxFailuresPerHour"`
-	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
+	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 	MaxFailuresTotal pulumi.IntPtrInput `pulumi:"maxFailuresTotal"`
 }
 
@@ -8702,12 +8740,12 @@ func (o JobSchedulingOutput) ToJobSchedulingPtrOutputWithContext(ctx context.Con
 	}).(JobSchedulingPtrOutput)
 }
 
-// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
+// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 func (o JobSchedulingOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobScheduling) *int { return v.MaxFailuresPerHour }).(pulumi.IntPtrOutput)
 }
 
-// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
+// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 func (o JobSchedulingOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobScheduling) *int { return v.MaxFailuresTotal }).(pulumi.IntPtrOutput)
 }
@@ -8736,7 +8774,7 @@ func (o JobSchedulingPtrOutput) Elem() JobSchedulingOutput {
 	}).(JobSchedulingOutput)
 }
 
-// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
+// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 func (o JobSchedulingPtrOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobScheduling) *int {
 		if v == nil {
@@ -8746,7 +8784,7 @@ func (o JobSchedulingPtrOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
+// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 func (o JobSchedulingPtrOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobScheduling) *int {
 		if v == nil {
@@ -8758,9 +8796,9 @@ func (o JobSchedulingPtrOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
 
 // Job scheduling options.
 type JobSchedulingResponse struct {
-	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
+	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 	MaxFailuresPerHour int `pulumi:"maxFailuresPerHour"`
-	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
+	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 	MaxFailuresTotal int `pulumi:"maxFailuresTotal"`
 }
 
@@ -8777,9 +8815,9 @@ type JobSchedulingResponseInput interface {
 
 // Job scheduling options.
 type JobSchedulingResponseArgs struct {
-	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
+	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 	MaxFailuresPerHour pulumi.IntInput `pulumi:"maxFailuresPerHour"`
-	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
+	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 	MaxFailuresTotal pulumi.IntInput `pulumi:"maxFailuresTotal"`
 }
 
@@ -8861,12 +8899,12 @@ func (o JobSchedulingResponseOutput) ToJobSchedulingResponsePtrOutputWithContext
 	}).(JobSchedulingResponsePtrOutput)
 }
 
-// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
+// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 func (o JobSchedulingResponseOutput) MaxFailuresPerHour() pulumi.IntOutput {
 	return o.ApplyT(func(v JobSchedulingResponse) int { return v.MaxFailuresPerHour }).(pulumi.IntOutput)
 }
 
-// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
+// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 func (o JobSchedulingResponseOutput) MaxFailuresTotal() pulumi.IntOutput {
 	return o.ApplyT(func(v JobSchedulingResponse) int { return v.MaxFailuresTotal }).(pulumi.IntOutput)
 }
@@ -8895,7 +8933,7 @@ func (o JobSchedulingResponsePtrOutput) Elem() JobSchedulingResponseOutput {
 	}).(JobSchedulingResponseOutput)
 }
 
-// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
+// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 func (o JobSchedulingResponsePtrOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobSchedulingResponse) *int {
 		if v == nil {
@@ -8905,7 +8943,7 @@ func (o JobSchedulingResponsePtrOutput) MaxFailuresPerHour() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
+// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
 func (o JobSchedulingResponsePtrOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobSchedulingResponse) *int {
 		if v == nil {

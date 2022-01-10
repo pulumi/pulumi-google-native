@@ -3021,6 +3021,173 @@ func (in *nodeTaintEffectPtr) ToNodeTaintEffectPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(NodeTaintEffectPtrOutput)
 }
 
+// The type of placement.
+type PlacementPolicyType string
+
+const (
+	// TYPE_UNSPECIFIED specifies no requirements on nodes placement.
+	PlacementPolicyTypeTypeUnspecified = PlacementPolicyType("TYPE_UNSPECIFIED")
+	// COMPACT specifies node placement in the same availability domain to ensure low communication latency.
+	PlacementPolicyTypeCompact = PlacementPolicyType("COMPACT")
+)
+
+func (PlacementPolicyType) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementPolicyType)(nil)).Elem()
+}
+
+func (e PlacementPolicyType) ToPlacementPolicyTypeOutput() PlacementPolicyTypeOutput {
+	return pulumi.ToOutput(e).(PlacementPolicyTypeOutput)
+}
+
+func (e PlacementPolicyType) ToPlacementPolicyTypeOutputWithContext(ctx context.Context) PlacementPolicyTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PlacementPolicyTypeOutput)
+}
+
+func (e PlacementPolicyType) ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput {
+	return e.ToPlacementPolicyTypePtrOutputWithContext(context.Background())
+}
+
+func (e PlacementPolicyType) ToPlacementPolicyTypePtrOutputWithContext(ctx context.Context) PlacementPolicyTypePtrOutput {
+	return PlacementPolicyType(e).ToPlacementPolicyTypeOutputWithContext(ctx).ToPlacementPolicyTypePtrOutputWithContext(ctx)
+}
+
+func (e PlacementPolicyType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PlacementPolicyType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PlacementPolicyType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PlacementPolicyType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PlacementPolicyTypeOutput struct{ *pulumi.OutputState }
+
+func (PlacementPolicyTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementPolicyType)(nil)).Elem()
+}
+
+func (o PlacementPolicyTypeOutput) ToPlacementPolicyTypeOutput() PlacementPolicyTypeOutput {
+	return o
+}
+
+func (o PlacementPolicyTypeOutput) ToPlacementPolicyTypeOutputWithContext(ctx context.Context) PlacementPolicyTypeOutput {
+	return o
+}
+
+func (o PlacementPolicyTypeOutput) ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput {
+	return o.ToPlacementPolicyTypePtrOutputWithContext(context.Background())
+}
+
+func (o PlacementPolicyTypeOutput) ToPlacementPolicyTypePtrOutputWithContext(ctx context.Context) PlacementPolicyTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PlacementPolicyType) *PlacementPolicyType {
+		return &v
+	}).(PlacementPolicyTypePtrOutput)
+}
+
+func (o PlacementPolicyTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PlacementPolicyTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PlacementPolicyType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PlacementPolicyTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PlacementPolicyTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PlacementPolicyType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PlacementPolicyTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PlacementPolicyTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlacementPolicyType)(nil)).Elem()
+}
+
+func (o PlacementPolicyTypePtrOutput) ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput {
+	return o
+}
+
+func (o PlacementPolicyTypePtrOutput) ToPlacementPolicyTypePtrOutputWithContext(ctx context.Context) PlacementPolicyTypePtrOutput {
+	return o
+}
+
+func (o PlacementPolicyTypePtrOutput) Elem() PlacementPolicyTypeOutput {
+	return o.ApplyT(func(v *PlacementPolicyType) PlacementPolicyType {
+		if v != nil {
+			return *v
+		}
+		var ret PlacementPolicyType
+		return ret
+	}).(PlacementPolicyTypeOutput)
+}
+
+func (o PlacementPolicyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PlacementPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PlacementPolicyType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PlacementPolicyTypeInput is an input type that accepts PlacementPolicyTypeArgs and PlacementPolicyTypeOutput values.
+// You can construct a concrete instance of `PlacementPolicyTypeInput` via:
+//
+//          PlacementPolicyTypeArgs{...}
+type PlacementPolicyTypeInput interface {
+	pulumi.Input
+
+	ToPlacementPolicyTypeOutput() PlacementPolicyTypeOutput
+	ToPlacementPolicyTypeOutputWithContext(context.Context) PlacementPolicyTypeOutput
+}
+
+var placementPolicyTypePtrType = reflect.TypeOf((**PlacementPolicyType)(nil)).Elem()
+
+type PlacementPolicyTypePtrInput interface {
+	pulumi.Input
+
+	ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput
+	ToPlacementPolicyTypePtrOutputWithContext(context.Context) PlacementPolicyTypePtrOutput
+}
+
+type placementPolicyTypePtr string
+
+func PlacementPolicyTypePtr(v string) PlacementPolicyTypePtrInput {
+	return (*placementPolicyTypePtr)(&v)
+}
+
+func (*placementPolicyTypePtr) ElementType() reflect.Type {
+	return placementPolicyTypePtrType
+}
+
+func (in *placementPolicyTypePtr) ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput {
+	return pulumi.ToOutput(in).(PlacementPolicyTypePtrOutput)
+}
+
+func (in *placementPolicyTypePtr) ToPlacementPolicyTypePtrOutputWithContext(ctx context.Context) PlacementPolicyTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PlacementPolicyTypePtrOutput)
+}
+
 // channel specifies which release channel the cluster is subscribed to.
 type ReleaseChannelChannel string
 
@@ -4105,6 +4272,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyProviderPtrInput)(nil)).Elem(), NetworkPolicyProvider("PROVIDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintEffectInput)(nil)).Elem(), NodeTaintEffect("EFFECT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintEffectPtrInput)(nil)).Elem(), NodeTaintEffect("EFFECT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyTypeInput)(nil)).Elem(), PlacementPolicyType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyTypePtrInput)(nil)).Elem(), PlacementPolicyType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelChannelInput)(nil)).Elem(), ReleaseChannelChannel("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelChannelPtrInput)(nil)).Elem(), ReleaseChannelChannel("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypeInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("UNSPECIFIED"))
@@ -4154,6 +4323,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkPolicyProviderPtrOutput{})
 	pulumi.RegisterOutputType(NodeTaintEffectOutput{})
 	pulumi.RegisterOutputType(NodeTaintEffectPtrOutput{})
+	pulumi.RegisterOutputType(PlacementPolicyTypeOutput{})
+	pulumi.RegisterOutputType(PlacementPolicyTypePtrOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelChannelOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelChannelPtrOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypeOutput{})

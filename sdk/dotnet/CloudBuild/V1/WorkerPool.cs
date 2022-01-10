@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Private Pool using a v1 configuration.
+        /// Legacy Private Pool configuration.
         /// </summary>
         [Output("privatePoolV1Config")]
         public Output<Outputs.PrivatePoolV1ConfigResponse> PrivatePoolV1Config { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Private Pool using a v1 configuration.
+        /// Legacy Private Pool configuration.
         /// </summary>
         [Input("privatePoolV1Config")]
         public Input<Inputs.PrivatePoolV1ConfigArgs>? PrivatePoolV1Config { get; set; }

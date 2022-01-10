@@ -684,11 +684,11 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 
 // Represents a Cloud Run destination.
 type CloudRun struct {
-	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path *string `pulumi:"path"`
 	// The region the Cloud Run service is deployed in.
 	Region string `pulumi:"region"`
-	// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+	// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project as the trigger object can be addressed.
 	Service string `pulumi:"service"`
 }
 
@@ -705,11 +705,11 @@ type CloudRunInput interface {
 
 // Represents a Cloud Run destination.
 type CloudRunArgs struct {
-	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The region the Cloud Run service is deployed in.
 	Region pulumi.StringInput `pulumi:"region"`
-	// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+	// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project as the trigger object can be addressed.
 	Service pulumi.StringInput `pulumi:"service"`
 }
 
@@ -791,7 +791,7 @@ func (o CloudRunOutput) ToCloudRunPtrOutputWithContext(ctx context.Context) Clou
 	}).(CloudRunPtrOutput)
 }
 
-// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 func (o CloudRunOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudRun) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -801,7 +801,7 @@ func (o CloudRunOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRun) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project as the trigger object can be addressed.
 func (o CloudRunOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRun) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -830,7 +830,7 @@ func (o CloudRunPtrOutput) Elem() CloudRunOutput {
 	}).(CloudRunOutput)
 }
 
-// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 func (o CloudRunPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudRun) *string {
 		if v == nil {
@@ -850,7 +850,7 @@ func (o CloudRunPtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project as the trigger object can be addressed.
 func (o CloudRunPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudRun) *string {
 		if v == nil {
@@ -862,11 +862,11 @@ func (o CloudRunPtrOutput) Service() pulumi.StringPtrOutput {
 
 // Represents a Cloud Run destination.
 type CloudRunResponse struct {
-	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path string `pulumi:"path"`
 	// The region the Cloud Run service is deployed in.
 	Region string `pulumi:"region"`
-	// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+	// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project as the trigger object can be addressed.
 	Service string `pulumi:"service"`
 }
 
@@ -883,11 +883,11 @@ type CloudRunResponseInput interface {
 
 // Represents a Cloud Run destination.
 type CloudRunResponseArgs struct {
-	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path pulumi.StringInput `pulumi:"path"`
 	// The region the Cloud Run service is deployed in.
 	Region pulumi.StringInput `pulumi:"region"`
-	// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+	// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project as the trigger object can be addressed.
 	Service pulumi.StringInput `pulumi:"service"`
 }
 
@@ -969,7 +969,7 @@ func (o CloudRunResponseOutput) ToCloudRunResponsePtrOutputWithContext(ctx conte
 	}).(CloudRunResponsePtrOutput)
 }
 
-// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 func (o CloudRunResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunResponse) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -979,7 +979,7 @@ func (o CloudRunResponseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunResponse) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project as the trigger object can be addressed.
 func (o CloudRunResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunResponse) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -1008,7 +1008,7 @@ func (o CloudRunResponsePtrOutput) Elem() CloudRunResponseOutput {
 	}).(CloudRunResponseOutput)
 }
 
-// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 func (o CloudRunResponsePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudRunResponse) *string {
 		if v == nil {
@@ -1028,7 +1028,7 @@ func (o CloudRunResponsePtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project as the trigger object can be addressed.
 func (o CloudRunResponsePtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudRunResponse) *string {
 		if v == nil {
@@ -1042,7 +1042,7 @@ func (o CloudRunResponsePtrOutput) Service() pulumi.StringPtrOutput {
 type Destination struct {
 	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun *CloudRun `pulumi:"cloudRun"`
-	// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 	Gke *GKE `pulumi:"gke"`
 }
 
@@ -1061,7 +1061,7 @@ type DestinationInput interface {
 type DestinationArgs struct {
 	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun CloudRunPtrInput `pulumi:"cloudRun"`
-	// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 	Gke GKEPtrInput `pulumi:"gke"`
 }
 
@@ -1148,7 +1148,7 @@ func (o DestinationOutput) CloudRun() CloudRunPtrOutput {
 	return o.ApplyT(func(v Destination) *CloudRun { return v.CloudRun }).(CloudRunPtrOutput)
 }
 
-// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 func (o DestinationOutput) Gke() GKEPtrOutput {
 	return o.ApplyT(func(v Destination) *GKE { return v.Gke }).(GKEPtrOutput)
 }
@@ -1187,7 +1187,7 @@ func (o DestinationPtrOutput) CloudRun() CloudRunPtrOutput {
 	}).(CloudRunPtrOutput)
 }
 
-// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 func (o DestinationPtrOutput) Gke() GKEPtrOutput {
 	return o.ApplyT(func(v *Destination) *GKE {
 		if v == nil {
@@ -1201,7 +1201,7 @@ func (o DestinationPtrOutput) Gke() GKEPtrOutput {
 type DestinationResponse struct {
 	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun CloudRunResponse `pulumi:"cloudRun"`
-	// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 	Gke GKEResponse `pulumi:"gke"`
 }
 
@@ -1220,7 +1220,7 @@ type DestinationResponseInput interface {
 type DestinationResponseArgs struct {
 	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun CloudRunResponseInput `pulumi:"cloudRun"`
-	// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 	Gke GKEResponseInput `pulumi:"gke"`
 }
 
@@ -1307,7 +1307,7 @@ func (o DestinationResponseOutput) CloudRun() CloudRunResponseOutput {
 	return o.ApplyT(func(v DestinationResponse) CloudRunResponse { return v.CloudRun }).(CloudRunResponseOutput)
 }
 
-// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 func (o DestinationResponseOutput) Gke() GKEResponseOutput {
 	return o.ApplyT(func(v DestinationResponse) GKEResponse { return v.Gke }).(GKEResponseOutput)
 }
@@ -1346,7 +1346,7 @@ func (o DestinationResponsePtrOutput) CloudRun() CloudRunResponsePtrOutput {
 	}).(CloudRunResponsePtrOutput)
 }
 
-// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 func (o DestinationResponsePtrOutput) Gke() GKEResponsePtrOutput {
 	return o.ApplyT(func(v *DestinationResponse) *GKEResponse {
 		if v == nil {
@@ -1857,11 +1857,11 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 type GKE struct {
 	// The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
 	Cluster string `pulumi:"cluster"`
-	// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+	// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
 	Location string `pulumi:"location"`
 	// The namespace the GKE service is running in.
 	Namespace string `pulumi:"namespace"`
-	// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path *string `pulumi:"path"`
 	// Name of the GKE service.
 	Service string `pulumi:"service"`
@@ -1882,11 +1882,11 @@ type GKEInput interface {
 type GKEArgs struct {
 	// The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
 	Cluster pulumi.StringInput `pulumi:"cluster"`
-	// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+	// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
 	Location pulumi.StringInput `pulumi:"location"`
 	// The namespace the GKE service is running in.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
-	// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Name of the GKE service.
 	Service pulumi.StringInput `pulumi:"service"`
@@ -1975,7 +1975,7 @@ func (o GKEOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GKE) string { return v.Cluster }).(pulumi.StringOutput)
 }
 
-// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
 func (o GKEOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GKE) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -1985,7 +1985,7 @@ func (o GKEOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GKE) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
-// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 func (o GKEOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GKE) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -2029,7 +2029,7 @@ func (o GKEPtrOutput) Cluster() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
 func (o GKEPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GKE) *string {
 		if v == nil {
@@ -2049,7 +2049,7 @@ func (o GKEPtrOutput) Namespace() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 func (o GKEPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GKE) *string {
 		if v == nil {
@@ -2073,11 +2073,11 @@ func (o GKEPtrOutput) Service() pulumi.StringPtrOutput {
 type GKEResponse struct {
 	// The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
 	Cluster string `pulumi:"cluster"`
-	// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+	// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
 	Location string `pulumi:"location"`
 	// The namespace the GKE service is running in.
 	Namespace string `pulumi:"namespace"`
-	// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path string `pulumi:"path"`
 	// Name of the GKE service.
 	Service string `pulumi:"service"`
@@ -2098,11 +2098,11 @@ type GKEResponseInput interface {
 type GKEResponseArgs struct {
 	// The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
 	Cluster pulumi.StringInput `pulumi:"cluster"`
-	// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+	// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
 	Location pulumi.StringInput `pulumi:"location"`
 	// The namespace the GKE service is running in.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
-	// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path pulumi.StringInput `pulumi:"path"`
 	// Name of the GKE service.
 	Service pulumi.StringInput `pulumi:"service"`
@@ -2191,7 +2191,7 @@ func (o GKEResponseOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GKEResponse) string { return v.Cluster }).(pulumi.StringOutput)
 }
 
-// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
 func (o GKEResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GKEResponse) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -2201,7 +2201,7 @@ func (o GKEResponseOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GKEResponse) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
-// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 func (o GKEResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GKEResponse) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -2245,7 +2245,7 @@ func (o GKEResponsePtrOutput) Cluster() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
 func (o GKEResponsePtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GKEResponse) *string {
 		if v == nil {
@@ -2265,7 +2265,7 @@ func (o GKEResponsePtrOutput) Namespace() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 func (o GKEResponsePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GKEResponse) *string {
 		if v == nil {
@@ -2287,7 +2287,7 @@ func (o GKEResponsePtrOutput) Service() pulumi.StringPtrOutput {
 
 // Represents a Pub/Sub transport.
 type Pubsub struct {
-	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+	// Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
 	Topic *string `pulumi:"topic"`
 }
 
@@ -2304,7 +2304,7 @@ type PubsubInput interface {
 
 // Represents a Pub/Sub transport.
 type PubsubArgs struct {
-	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+	// Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
 }
 
@@ -2386,7 +2386,7 @@ func (o PubsubOutput) ToPubsubPtrOutputWithContext(ctx context.Context) PubsubPt
 	}).(PubsubPtrOutput)
 }
 
-// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+// Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
 func (o PubsubOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Pubsub) *string { return v.Topic }).(pulumi.StringPtrOutput)
 }
@@ -2415,7 +2415,7 @@ func (o PubsubPtrOutput) Elem() PubsubOutput {
 	}).(PubsubOutput)
 }
 
-// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+// Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
 func (o PubsubPtrOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pubsub) *string {
 		if v == nil {
@@ -2427,9 +2427,9 @@ func (o PubsubPtrOutput) Topic() pulumi.StringPtrOutput {
 
 // Represents a Pub/Sub transport.
 type PubsubResponse struct {
-	// The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+	// The name of the Pub/Sub subscription created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 	Subscription string `pulumi:"subscription"`
-	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+	// Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
 	Topic string `pulumi:"topic"`
 }
 
@@ -2446,9 +2446,9 @@ type PubsubResponseInput interface {
 
 // Represents a Pub/Sub transport.
 type PubsubResponseArgs struct {
-	// The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+	// The name of the Pub/Sub subscription created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 	Subscription pulumi.StringInput `pulumi:"subscription"`
-	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+	// Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
 	Topic pulumi.StringInput `pulumi:"topic"`
 }
 
@@ -2530,12 +2530,12 @@ func (o PubsubResponseOutput) ToPubsubResponsePtrOutputWithContext(ctx context.C
 	}).(PubsubResponsePtrOutput)
 }
 
-// The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+// The name of the Pub/Sub subscription created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 func (o PubsubResponseOutput) Subscription() pulumi.StringOutput {
 	return o.ApplyT(func(v PubsubResponse) string { return v.Subscription }).(pulumi.StringOutput)
 }
 
-// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+// Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
 func (o PubsubResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v PubsubResponse) string { return v.Topic }).(pulumi.StringOutput)
 }
@@ -2564,7 +2564,7 @@ func (o PubsubResponsePtrOutput) Elem() PubsubResponseOutput {
 	}).(PubsubResponseOutput)
 }
 
-// The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+// The name of the Pub/Sub subscription created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 func (o PubsubResponsePtrOutput) Subscription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PubsubResponse) *string {
 		if v == nil {
@@ -2574,7 +2574,7 @@ func (o PubsubResponsePtrOutput) Subscription() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+// Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
 func (o PubsubResponsePtrOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PubsubResponse) *string {
 		if v == nil {
@@ -2584,9 +2584,9 @@ func (o PubsubResponsePtrOutput) Topic() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Represents the transport intermediaries created for the trigger in order to deliver events.
+// Represents the transport intermediaries created for the trigger to deliver events.
 type Transport struct {
-	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+	// The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
 	Pubsub *Pubsub `pulumi:"pubsub"`
 }
 
@@ -2601,9 +2601,9 @@ type TransportInput interface {
 	ToTransportOutputWithContext(context.Context) TransportOutput
 }
 
-// Represents the transport intermediaries created for the trigger in order to deliver events.
+// Represents the transport intermediaries created for the trigger to deliver events.
 type TransportArgs struct {
-	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+	// The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
 	Pubsub PubsubPtrInput `pulumi:"pubsub"`
 }
 
@@ -2660,7 +2660,7 @@ func (i *transportPtrType) ToTransportPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TransportPtrOutput)
 }
 
-// Represents the transport intermediaries created for the trigger in order to deliver events.
+// Represents the transport intermediaries created for the trigger to deliver events.
 type TransportOutput struct{ *pulumi.OutputState }
 
 func (TransportOutput) ElementType() reflect.Type {
@@ -2685,7 +2685,7 @@ func (o TransportOutput) ToTransportPtrOutputWithContext(ctx context.Context) Tr
 	}).(TransportPtrOutput)
 }
 
-// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+// The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
 func (o TransportOutput) Pubsub() PubsubPtrOutput {
 	return o.ApplyT(func(v Transport) *Pubsub { return v.Pubsub }).(PubsubPtrOutput)
 }
@@ -2714,7 +2714,7 @@ func (o TransportPtrOutput) Elem() TransportOutput {
 	}).(TransportOutput)
 }
 
-// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+// The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
 func (o TransportPtrOutput) Pubsub() PubsubPtrOutput {
 	return o.ApplyT(func(v *Transport) *Pubsub {
 		if v == nil {
@@ -2724,9 +2724,9 @@ func (o TransportPtrOutput) Pubsub() PubsubPtrOutput {
 	}).(PubsubPtrOutput)
 }
 
-// Represents the transport intermediaries created for the trigger in order to deliver events.
+// Represents the transport intermediaries created for the trigger to deliver events.
 type TransportResponse struct {
-	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+	// The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
 	Pubsub PubsubResponse `pulumi:"pubsub"`
 }
 
@@ -2741,9 +2741,9 @@ type TransportResponseInput interface {
 	ToTransportResponseOutputWithContext(context.Context) TransportResponseOutput
 }
 
-// Represents the transport intermediaries created for the trigger in order to deliver events.
+// Represents the transport intermediaries created for the trigger to deliver events.
 type TransportResponseArgs struct {
-	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+	// The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
 	Pubsub PubsubResponseInput `pulumi:"pubsub"`
 }
 
@@ -2800,7 +2800,7 @@ func (i *transportResponsePtrType) ToTransportResponsePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(TransportResponsePtrOutput)
 }
 
-// Represents the transport intermediaries created for the trigger in order to deliver events.
+// Represents the transport intermediaries created for the trigger to deliver events.
 type TransportResponseOutput struct{ *pulumi.OutputState }
 
 func (TransportResponseOutput) ElementType() reflect.Type {
@@ -2825,7 +2825,7 @@ func (o TransportResponseOutput) ToTransportResponsePtrOutputWithContext(ctx con
 	}).(TransportResponsePtrOutput)
 }
 
-// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+// The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
 func (o TransportResponseOutput) Pubsub() PubsubResponseOutput {
 	return o.ApplyT(func(v TransportResponse) PubsubResponse { return v.Pubsub }).(PubsubResponseOutput)
 }
@@ -2854,7 +2854,7 @@ func (o TransportResponsePtrOutput) Elem() TransportResponseOutput {
 	}).(TransportResponseOutput)
 }
 
-// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+// The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
 func (o TransportResponsePtrOutput) Pubsub() PubsubResponsePtrOutput {
 	return o.ApplyT(func(v *TransportResponse) *PubsubResponse {
 		if v == nil {

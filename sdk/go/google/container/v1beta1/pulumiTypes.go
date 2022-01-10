@@ -258,6 +258,8 @@ type AddonsConfig struct {
 	GcePersistentDiskCsiDriverConfig *GcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// Configuration for the GCP Filestore CSI driver.
 	GcpFilestoreCsiDriverConfig *GcpFilestoreCsiDriverConfig `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// Configuration for the Backup for GKE agent addon.
+	GkeBackupAgentConfig *GkeBackupAgentConfig `pulumi:"gkeBackupAgentConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 	HorizontalPodAutoscaling *HorizontalPodAutoscaling `pulumi:"horizontalPodAutoscaling"`
 	// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -295,6 +297,8 @@ type AddonsConfigArgs struct {
 	GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfigPtrInput `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// Configuration for the GCP Filestore CSI driver.
 	GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfigPtrInput `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// Configuration for the Backup for GKE agent addon.
+	GkeBackupAgentConfig GkeBackupAgentConfigPtrInput `pulumi:"gkeBackupAgentConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 	HorizontalPodAutoscaling HorizontalPodAutoscalingPtrInput `pulumi:"horizontalPodAutoscaling"`
 	// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -412,6 +416,11 @@ func (o AddonsConfigOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCsiDriverC
 	return o.ApplyT(func(v AddonsConfig) *GcpFilestoreCsiDriverConfig { return v.GcpFilestoreCsiDriverConfig }).(GcpFilestoreCsiDriverConfigPtrOutput)
 }
 
+// Configuration for the Backup for GKE agent addon.
+func (o AddonsConfigOutput) GkeBackupAgentConfig() GkeBackupAgentConfigPtrOutput {
+	return o.ApplyT(func(v AddonsConfig) *GkeBackupAgentConfig { return v.GkeBackupAgentConfig }).(GkeBackupAgentConfigPtrOutput)
+}
+
 // Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 func (o AddonsConfigOutput) HorizontalPodAutoscaling() HorizontalPodAutoscalingPtrOutput {
 	return o.ApplyT(func(v AddonsConfig) *HorizontalPodAutoscaling { return v.HorizontalPodAutoscaling }).(HorizontalPodAutoscalingPtrOutput)
@@ -516,6 +525,16 @@ func (o AddonsConfigPtrOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCsiDriv
 	}).(GcpFilestoreCsiDriverConfigPtrOutput)
 }
 
+// Configuration for the Backup for GKE agent addon.
+func (o AddonsConfigPtrOutput) GkeBackupAgentConfig() GkeBackupAgentConfigPtrOutput {
+	return o.ApplyT(func(v *AddonsConfig) *GkeBackupAgentConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GkeBackupAgentConfig
+	}).(GkeBackupAgentConfigPtrOutput)
+}
+
 // Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 func (o AddonsConfigPtrOutput) HorizontalPodAutoscaling() HorizontalPodAutoscalingPtrOutput {
 	return o.ApplyT(func(v *AddonsConfig) *HorizontalPodAutoscaling {
@@ -588,6 +607,8 @@ type AddonsConfigResponse struct {
 	GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfigResponse `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// Configuration for the GCP Filestore CSI driver.
 	GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfigResponse `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// Configuration for the Backup for GKE agent addon.
+	GkeBackupAgentConfig GkeBackupAgentConfigResponse `pulumi:"gkeBackupAgentConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 	HorizontalPodAutoscaling HorizontalPodAutoscalingResponse `pulumi:"horizontalPodAutoscaling"`
 	// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -625,6 +646,8 @@ type AddonsConfigResponseArgs struct {
 	GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfigResponseInput `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// Configuration for the GCP Filestore CSI driver.
 	GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfigResponseInput `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// Configuration for the Backup for GKE agent addon.
+	GkeBackupAgentConfig GkeBackupAgentConfigResponseInput `pulumi:"gkeBackupAgentConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 	HorizontalPodAutoscaling HorizontalPodAutoscalingResponseInput `pulumi:"horizontalPodAutoscaling"`
 	// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -744,6 +767,11 @@ func (o AddonsConfigResponseOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCs
 	return o.ApplyT(func(v AddonsConfigResponse) GcpFilestoreCsiDriverConfigResponse { return v.GcpFilestoreCsiDriverConfig }).(GcpFilestoreCsiDriverConfigResponseOutput)
 }
 
+// Configuration for the Backup for GKE agent addon.
+func (o AddonsConfigResponseOutput) GkeBackupAgentConfig() GkeBackupAgentConfigResponseOutput {
+	return o.ApplyT(func(v AddonsConfigResponse) GkeBackupAgentConfigResponse { return v.GkeBackupAgentConfig }).(GkeBackupAgentConfigResponseOutput)
+}
+
 // Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 func (o AddonsConfigResponseOutput) HorizontalPodAutoscaling() HorizontalPodAutoscalingResponseOutput {
 	return o.ApplyT(func(v AddonsConfigResponse) HorizontalPodAutoscalingResponse { return v.HorizontalPodAutoscaling }).(HorizontalPodAutoscalingResponseOutput)
@@ -846,6 +874,16 @@ func (o AddonsConfigResponsePtrOutput) GcpFilestoreCsiDriverConfig() GcpFilestor
 		}
 		return &v.GcpFilestoreCsiDriverConfig
 	}).(GcpFilestoreCsiDriverConfigResponsePtrOutput)
+}
+
+// Configuration for the Backup for GKE agent addon.
+func (o AddonsConfigResponsePtrOutput) GkeBackupAgentConfig() GkeBackupAgentConfigResponsePtrOutput {
+	return o.ApplyT(func(v *AddonsConfigResponse) *GkeBackupAgentConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GkeBackupAgentConfig
+	}).(GkeBackupAgentConfigResponsePtrOutput)
 }
 
 // Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
@@ -8938,6 +8976,286 @@ func (o GcpFilestoreCsiDriverConfigResponsePtrOutput) Elem() GcpFilestoreCsiDriv
 // Whether the GCP Filestore CSI driver is enabled for this cluster.
 func (o GcpFilestoreCsiDriverConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GcpFilestoreCsiDriverConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the Backup for GKE Agent.
+type GkeBackupAgentConfig struct {
+	// Whether the Backup for GKE agent is enabled for this cluster.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GkeBackupAgentConfigInput is an input type that accepts GkeBackupAgentConfigArgs and GkeBackupAgentConfigOutput values.
+// You can construct a concrete instance of `GkeBackupAgentConfigInput` via:
+//
+//          GkeBackupAgentConfigArgs{...}
+type GkeBackupAgentConfigInput interface {
+	pulumi.Input
+
+	ToGkeBackupAgentConfigOutput() GkeBackupAgentConfigOutput
+	ToGkeBackupAgentConfigOutputWithContext(context.Context) GkeBackupAgentConfigOutput
+}
+
+// Configuration for the Backup for GKE Agent.
+type GkeBackupAgentConfigArgs struct {
+	// Whether the Backup for GKE agent is enabled for this cluster.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GkeBackupAgentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (i GkeBackupAgentConfigArgs) ToGkeBackupAgentConfigOutput() GkeBackupAgentConfigOutput {
+	return i.ToGkeBackupAgentConfigOutputWithContext(context.Background())
+}
+
+func (i GkeBackupAgentConfigArgs) ToGkeBackupAgentConfigOutputWithContext(ctx context.Context) GkeBackupAgentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeBackupAgentConfigOutput)
+}
+
+func (i GkeBackupAgentConfigArgs) ToGkeBackupAgentConfigPtrOutput() GkeBackupAgentConfigPtrOutput {
+	return i.ToGkeBackupAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GkeBackupAgentConfigArgs) ToGkeBackupAgentConfigPtrOutputWithContext(ctx context.Context) GkeBackupAgentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeBackupAgentConfigOutput).ToGkeBackupAgentConfigPtrOutputWithContext(ctx)
+}
+
+// GkeBackupAgentConfigPtrInput is an input type that accepts GkeBackupAgentConfigArgs, GkeBackupAgentConfigPtr and GkeBackupAgentConfigPtrOutput values.
+// You can construct a concrete instance of `GkeBackupAgentConfigPtrInput` via:
+//
+//          GkeBackupAgentConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GkeBackupAgentConfigPtrInput interface {
+	pulumi.Input
+
+	ToGkeBackupAgentConfigPtrOutput() GkeBackupAgentConfigPtrOutput
+	ToGkeBackupAgentConfigPtrOutputWithContext(context.Context) GkeBackupAgentConfigPtrOutput
+}
+
+type gkeBackupAgentConfigPtrType GkeBackupAgentConfigArgs
+
+func GkeBackupAgentConfigPtr(v *GkeBackupAgentConfigArgs) GkeBackupAgentConfigPtrInput {
+	return (*gkeBackupAgentConfigPtrType)(v)
+}
+
+func (*gkeBackupAgentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (i *gkeBackupAgentConfigPtrType) ToGkeBackupAgentConfigPtrOutput() GkeBackupAgentConfigPtrOutput {
+	return i.ToGkeBackupAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gkeBackupAgentConfigPtrType) ToGkeBackupAgentConfigPtrOutputWithContext(ctx context.Context) GkeBackupAgentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeBackupAgentConfigPtrOutput)
+}
+
+// Configuration for the Backup for GKE Agent.
+type GkeBackupAgentConfigOutput struct{ *pulumi.OutputState }
+
+func (GkeBackupAgentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (o GkeBackupAgentConfigOutput) ToGkeBackupAgentConfigOutput() GkeBackupAgentConfigOutput {
+	return o
+}
+
+func (o GkeBackupAgentConfigOutput) ToGkeBackupAgentConfigOutputWithContext(ctx context.Context) GkeBackupAgentConfigOutput {
+	return o
+}
+
+func (o GkeBackupAgentConfigOutput) ToGkeBackupAgentConfigPtrOutput() GkeBackupAgentConfigPtrOutput {
+	return o.ToGkeBackupAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GkeBackupAgentConfigOutput) ToGkeBackupAgentConfigPtrOutputWithContext(ctx context.Context) GkeBackupAgentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeBackupAgentConfig) *GkeBackupAgentConfig {
+		return &v
+	}).(GkeBackupAgentConfigPtrOutput)
+}
+
+// Whether the Backup for GKE agent is enabled for this cluster.
+func (o GkeBackupAgentConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GkeBackupAgentConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GkeBackupAgentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GkeBackupAgentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (o GkeBackupAgentConfigPtrOutput) ToGkeBackupAgentConfigPtrOutput() GkeBackupAgentConfigPtrOutput {
+	return o
+}
+
+func (o GkeBackupAgentConfigPtrOutput) ToGkeBackupAgentConfigPtrOutputWithContext(ctx context.Context) GkeBackupAgentConfigPtrOutput {
+	return o
+}
+
+func (o GkeBackupAgentConfigPtrOutput) Elem() GkeBackupAgentConfigOutput {
+	return o.ApplyT(func(v *GkeBackupAgentConfig) GkeBackupAgentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GkeBackupAgentConfig
+		return ret
+	}).(GkeBackupAgentConfigOutput)
+}
+
+// Whether the Backup for GKE agent is enabled for this cluster.
+func (o GkeBackupAgentConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GkeBackupAgentConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the Backup for GKE Agent.
+type GkeBackupAgentConfigResponse struct {
+	// Whether the Backup for GKE agent is enabled for this cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GkeBackupAgentConfigResponseInput is an input type that accepts GkeBackupAgentConfigResponseArgs and GkeBackupAgentConfigResponseOutput values.
+// You can construct a concrete instance of `GkeBackupAgentConfigResponseInput` via:
+//
+//          GkeBackupAgentConfigResponseArgs{...}
+type GkeBackupAgentConfigResponseInput interface {
+	pulumi.Input
+
+	ToGkeBackupAgentConfigResponseOutput() GkeBackupAgentConfigResponseOutput
+	ToGkeBackupAgentConfigResponseOutputWithContext(context.Context) GkeBackupAgentConfigResponseOutput
+}
+
+// Configuration for the Backup for GKE Agent.
+type GkeBackupAgentConfigResponseArgs struct {
+	// Whether the Backup for GKE agent is enabled for this cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GkeBackupAgentConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeBackupAgentConfigResponse)(nil)).Elem()
+}
+
+func (i GkeBackupAgentConfigResponseArgs) ToGkeBackupAgentConfigResponseOutput() GkeBackupAgentConfigResponseOutput {
+	return i.ToGkeBackupAgentConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GkeBackupAgentConfigResponseArgs) ToGkeBackupAgentConfigResponseOutputWithContext(ctx context.Context) GkeBackupAgentConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeBackupAgentConfigResponseOutput)
+}
+
+func (i GkeBackupAgentConfigResponseArgs) ToGkeBackupAgentConfigResponsePtrOutput() GkeBackupAgentConfigResponsePtrOutput {
+	return i.ToGkeBackupAgentConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GkeBackupAgentConfigResponseArgs) ToGkeBackupAgentConfigResponsePtrOutputWithContext(ctx context.Context) GkeBackupAgentConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeBackupAgentConfigResponseOutput).ToGkeBackupAgentConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GkeBackupAgentConfigResponsePtrInput is an input type that accepts GkeBackupAgentConfigResponseArgs, GkeBackupAgentConfigResponsePtr and GkeBackupAgentConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GkeBackupAgentConfigResponsePtrInput` via:
+//
+//          GkeBackupAgentConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GkeBackupAgentConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGkeBackupAgentConfigResponsePtrOutput() GkeBackupAgentConfigResponsePtrOutput
+	ToGkeBackupAgentConfigResponsePtrOutputWithContext(context.Context) GkeBackupAgentConfigResponsePtrOutput
+}
+
+type gkeBackupAgentConfigResponsePtrType GkeBackupAgentConfigResponseArgs
+
+func GkeBackupAgentConfigResponsePtr(v *GkeBackupAgentConfigResponseArgs) GkeBackupAgentConfigResponsePtrInput {
+	return (*gkeBackupAgentConfigResponsePtrType)(v)
+}
+
+func (*gkeBackupAgentConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeBackupAgentConfigResponse)(nil)).Elem()
+}
+
+func (i *gkeBackupAgentConfigResponsePtrType) ToGkeBackupAgentConfigResponsePtrOutput() GkeBackupAgentConfigResponsePtrOutput {
+	return i.ToGkeBackupAgentConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gkeBackupAgentConfigResponsePtrType) ToGkeBackupAgentConfigResponsePtrOutputWithContext(ctx context.Context) GkeBackupAgentConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeBackupAgentConfigResponsePtrOutput)
+}
+
+// Configuration for the Backup for GKE Agent.
+type GkeBackupAgentConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GkeBackupAgentConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeBackupAgentConfigResponse)(nil)).Elem()
+}
+
+func (o GkeBackupAgentConfigResponseOutput) ToGkeBackupAgentConfigResponseOutput() GkeBackupAgentConfigResponseOutput {
+	return o
+}
+
+func (o GkeBackupAgentConfigResponseOutput) ToGkeBackupAgentConfigResponseOutputWithContext(ctx context.Context) GkeBackupAgentConfigResponseOutput {
+	return o
+}
+
+func (o GkeBackupAgentConfigResponseOutput) ToGkeBackupAgentConfigResponsePtrOutput() GkeBackupAgentConfigResponsePtrOutput {
+	return o.ToGkeBackupAgentConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GkeBackupAgentConfigResponseOutput) ToGkeBackupAgentConfigResponsePtrOutputWithContext(ctx context.Context) GkeBackupAgentConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeBackupAgentConfigResponse) *GkeBackupAgentConfigResponse {
+		return &v
+	}).(GkeBackupAgentConfigResponsePtrOutput)
+}
+
+// Whether the Backup for GKE agent is enabled for this cluster.
+func (o GkeBackupAgentConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GkeBackupAgentConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GkeBackupAgentConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GkeBackupAgentConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeBackupAgentConfigResponse)(nil)).Elem()
+}
+
+func (o GkeBackupAgentConfigResponsePtrOutput) ToGkeBackupAgentConfigResponsePtrOutput() GkeBackupAgentConfigResponsePtrOutput {
+	return o
+}
+
+func (o GkeBackupAgentConfigResponsePtrOutput) ToGkeBackupAgentConfigResponsePtrOutputWithContext(ctx context.Context) GkeBackupAgentConfigResponsePtrOutput {
+	return o
+}
+
+func (o GkeBackupAgentConfigResponsePtrOutput) Elem() GkeBackupAgentConfigResponseOutput {
+	return o.ApplyT(func(v *GkeBackupAgentConfigResponse) GkeBackupAgentConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GkeBackupAgentConfigResponse
+		return ret
+	}).(GkeBackupAgentConfigResponseOutput)
+}
+
+// Whether the Backup for GKE agent is enabled for this cluster.
+func (o GkeBackupAgentConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GkeBackupAgentConfigResponse) *bool {
 		if v == nil {
 			return nil
 		}
@@ -19953,6 +20271,8 @@ type NodePoolType struct {
 	Name *string `pulumi:"name"`
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig *NodeNetworkConfig `pulumi:"networkConfig"`
+	// Specifies the node placement policy.
+	PlacementPolicy *PlacementPolicy `pulumi:"placementPolicy"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -19990,6 +20310,8 @@ type NodePoolTypeArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig NodeNetworkConfigPtrInput `pulumi:"networkConfig"`
+	// Specifies the node placement policy.
+	PlacementPolicy PlacementPolicyPtrInput `pulumi:"placementPolicy"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -20091,6 +20413,11 @@ func (o NodePoolTypeOutput) Name() pulumi.StringPtrOutput {
 // Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 func (o NodePoolTypeOutput) NetworkConfig() NodeNetworkConfigPtrOutput {
 	return o.ApplyT(func(v NodePoolType) *NodeNetworkConfig { return v.NetworkConfig }).(NodeNetworkConfigPtrOutput)
+}
+
+// Specifies the node placement policy.
+func (o NodePoolTypeOutput) PlacementPolicy() PlacementPolicyPtrOutput {
+	return o.ApplyT(func(v NodePoolType) *PlacementPolicy { return v.PlacementPolicy }).(PlacementPolicyPtrOutput)
 }
 
 // Upgrade settings control disruption and speed of the upgrade.
@@ -20819,6 +21146,8 @@ type NodePoolResponse struct {
 	Name string `pulumi:"name"`
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig NodeNetworkConfigResponse `pulumi:"networkConfig"`
+	// Specifies the node placement policy.
+	PlacementPolicy PlacementPolicyResponse `pulumi:"placementPolicy"`
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize int `pulumi:"podIpv4CidrSize"`
 	// [Output only] Server-defined URL for the resource.
@@ -20864,6 +21193,8 @@ type NodePoolResponseArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig NodeNetworkConfigResponseInput `pulumi:"networkConfig"`
+	// Specifies the node placement policy.
+	PlacementPolicy PlacementPolicyResponseInput `pulumi:"placementPolicy"`
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize pulumi.IntInput `pulumi:"podIpv4CidrSize"`
 	// [Output only] Server-defined URL for the resource.
@@ -20976,6 +21307,11 @@ func (o NodePoolResponseOutput) Name() pulumi.StringOutput {
 // Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 func (o NodePoolResponseOutput) NetworkConfig() NodeNetworkConfigResponseOutput {
 	return o.ApplyT(func(v NodePoolResponse) NodeNetworkConfigResponse { return v.NetworkConfig }).(NodeNetworkConfigResponseOutput)
+}
+
+// Specifies the node placement policy.
+func (o NodePoolResponseOutput) PlacementPolicy() PlacementPolicyResponseOutput {
+	return o.ApplyT(func(v NodePoolResponse) PlacementPolicyResponse { return v.PlacementPolicy }).(PlacementPolicyResponseOutput)
 }
 
 // [Output only] The pod CIDR block size per node in this node pool.
@@ -21592,6 +21928,286 @@ func (o NotificationConfigResponsePtrOutput) Pubsub() PubSubResponsePtrOutput {
 		}
 		return &v.Pubsub
 	}).(PubSubResponsePtrOutput)
+}
+
+// PlacementPolicy defines the placement policy used by the node pool.
+type PlacementPolicy struct {
+	// The type of placement.
+	Type *PlacementPolicyType `pulumi:"type"`
+}
+
+// PlacementPolicyInput is an input type that accepts PlacementPolicyArgs and PlacementPolicyOutput values.
+// You can construct a concrete instance of `PlacementPolicyInput` via:
+//
+//          PlacementPolicyArgs{...}
+type PlacementPolicyInput interface {
+	pulumi.Input
+
+	ToPlacementPolicyOutput() PlacementPolicyOutput
+	ToPlacementPolicyOutputWithContext(context.Context) PlacementPolicyOutput
+}
+
+// PlacementPolicy defines the placement policy used by the node pool.
+type PlacementPolicyArgs struct {
+	// The type of placement.
+	Type PlacementPolicyTypePtrInput `pulumi:"type"`
+}
+
+func (PlacementPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementPolicy)(nil)).Elem()
+}
+
+func (i PlacementPolicyArgs) ToPlacementPolicyOutput() PlacementPolicyOutput {
+	return i.ToPlacementPolicyOutputWithContext(context.Background())
+}
+
+func (i PlacementPolicyArgs) ToPlacementPolicyOutputWithContext(ctx context.Context) PlacementPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementPolicyOutput)
+}
+
+func (i PlacementPolicyArgs) ToPlacementPolicyPtrOutput() PlacementPolicyPtrOutput {
+	return i.ToPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i PlacementPolicyArgs) ToPlacementPolicyPtrOutputWithContext(ctx context.Context) PlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementPolicyOutput).ToPlacementPolicyPtrOutputWithContext(ctx)
+}
+
+// PlacementPolicyPtrInput is an input type that accepts PlacementPolicyArgs, PlacementPolicyPtr and PlacementPolicyPtrOutput values.
+// You can construct a concrete instance of `PlacementPolicyPtrInput` via:
+//
+//          PlacementPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type PlacementPolicyPtrInput interface {
+	pulumi.Input
+
+	ToPlacementPolicyPtrOutput() PlacementPolicyPtrOutput
+	ToPlacementPolicyPtrOutputWithContext(context.Context) PlacementPolicyPtrOutput
+}
+
+type placementPolicyPtrType PlacementPolicyArgs
+
+func PlacementPolicyPtr(v *PlacementPolicyArgs) PlacementPolicyPtrInput {
+	return (*placementPolicyPtrType)(v)
+}
+
+func (*placementPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlacementPolicy)(nil)).Elem()
+}
+
+func (i *placementPolicyPtrType) ToPlacementPolicyPtrOutput() PlacementPolicyPtrOutput {
+	return i.ToPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *placementPolicyPtrType) ToPlacementPolicyPtrOutputWithContext(ctx context.Context) PlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementPolicyPtrOutput)
+}
+
+// PlacementPolicy defines the placement policy used by the node pool.
+type PlacementPolicyOutput struct{ *pulumi.OutputState }
+
+func (PlacementPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementPolicy)(nil)).Elem()
+}
+
+func (o PlacementPolicyOutput) ToPlacementPolicyOutput() PlacementPolicyOutput {
+	return o
+}
+
+func (o PlacementPolicyOutput) ToPlacementPolicyOutputWithContext(ctx context.Context) PlacementPolicyOutput {
+	return o
+}
+
+func (o PlacementPolicyOutput) ToPlacementPolicyPtrOutput() PlacementPolicyPtrOutput {
+	return o.ToPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o PlacementPolicyOutput) ToPlacementPolicyPtrOutputWithContext(ctx context.Context) PlacementPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PlacementPolicy) *PlacementPolicy {
+		return &v
+	}).(PlacementPolicyPtrOutput)
+}
+
+// The type of placement.
+func (o PlacementPolicyOutput) Type() PlacementPolicyTypePtrOutput {
+	return o.ApplyT(func(v PlacementPolicy) *PlacementPolicyType { return v.Type }).(PlacementPolicyTypePtrOutput)
+}
+
+type PlacementPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (PlacementPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlacementPolicy)(nil)).Elem()
+}
+
+func (o PlacementPolicyPtrOutput) ToPlacementPolicyPtrOutput() PlacementPolicyPtrOutput {
+	return o
+}
+
+func (o PlacementPolicyPtrOutput) ToPlacementPolicyPtrOutputWithContext(ctx context.Context) PlacementPolicyPtrOutput {
+	return o
+}
+
+func (o PlacementPolicyPtrOutput) Elem() PlacementPolicyOutput {
+	return o.ApplyT(func(v *PlacementPolicy) PlacementPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret PlacementPolicy
+		return ret
+	}).(PlacementPolicyOutput)
+}
+
+// The type of placement.
+func (o PlacementPolicyPtrOutput) Type() PlacementPolicyTypePtrOutput {
+	return o.ApplyT(func(v *PlacementPolicy) *PlacementPolicyType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(PlacementPolicyTypePtrOutput)
+}
+
+// PlacementPolicy defines the placement policy used by the node pool.
+type PlacementPolicyResponse struct {
+	// The type of placement.
+	Type string `pulumi:"type"`
+}
+
+// PlacementPolicyResponseInput is an input type that accepts PlacementPolicyResponseArgs and PlacementPolicyResponseOutput values.
+// You can construct a concrete instance of `PlacementPolicyResponseInput` via:
+//
+//          PlacementPolicyResponseArgs{...}
+type PlacementPolicyResponseInput interface {
+	pulumi.Input
+
+	ToPlacementPolicyResponseOutput() PlacementPolicyResponseOutput
+	ToPlacementPolicyResponseOutputWithContext(context.Context) PlacementPolicyResponseOutput
+}
+
+// PlacementPolicy defines the placement policy used by the node pool.
+type PlacementPolicyResponseArgs struct {
+	// The type of placement.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (PlacementPolicyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementPolicyResponse)(nil)).Elem()
+}
+
+func (i PlacementPolicyResponseArgs) ToPlacementPolicyResponseOutput() PlacementPolicyResponseOutput {
+	return i.ToPlacementPolicyResponseOutputWithContext(context.Background())
+}
+
+func (i PlacementPolicyResponseArgs) ToPlacementPolicyResponseOutputWithContext(ctx context.Context) PlacementPolicyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementPolicyResponseOutput)
+}
+
+func (i PlacementPolicyResponseArgs) ToPlacementPolicyResponsePtrOutput() PlacementPolicyResponsePtrOutput {
+	return i.ToPlacementPolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PlacementPolicyResponseArgs) ToPlacementPolicyResponsePtrOutputWithContext(ctx context.Context) PlacementPolicyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementPolicyResponseOutput).ToPlacementPolicyResponsePtrOutputWithContext(ctx)
+}
+
+// PlacementPolicyResponsePtrInput is an input type that accepts PlacementPolicyResponseArgs, PlacementPolicyResponsePtr and PlacementPolicyResponsePtrOutput values.
+// You can construct a concrete instance of `PlacementPolicyResponsePtrInput` via:
+//
+//          PlacementPolicyResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PlacementPolicyResponsePtrInput interface {
+	pulumi.Input
+
+	ToPlacementPolicyResponsePtrOutput() PlacementPolicyResponsePtrOutput
+	ToPlacementPolicyResponsePtrOutputWithContext(context.Context) PlacementPolicyResponsePtrOutput
+}
+
+type placementPolicyResponsePtrType PlacementPolicyResponseArgs
+
+func PlacementPolicyResponsePtr(v *PlacementPolicyResponseArgs) PlacementPolicyResponsePtrInput {
+	return (*placementPolicyResponsePtrType)(v)
+}
+
+func (*placementPolicyResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlacementPolicyResponse)(nil)).Elem()
+}
+
+func (i *placementPolicyResponsePtrType) ToPlacementPolicyResponsePtrOutput() PlacementPolicyResponsePtrOutput {
+	return i.ToPlacementPolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *placementPolicyResponsePtrType) ToPlacementPolicyResponsePtrOutputWithContext(ctx context.Context) PlacementPolicyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementPolicyResponsePtrOutput)
+}
+
+// PlacementPolicy defines the placement policy used by the node pool.
+type PlacementPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (PlacementPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementPolicyResponse)(nil)).Elem()
+}
+
+func (o PlacementPolicyResponseOutput) ToPlacementPolicyResponseOutput() PlacementPolicyResponseOutput {
+	return o
+}
+
+func (o PlacementPolicyResponseOutput) ToPlacementPolicyResponseOutputWithContext(ctx context.Context) PlacementPolicyResponseOutput {
+	return o
+}
+
+func (o PlacementPolicyResponseOutput) ToPlacementPolicyResponsePtrOutput() PlacementPolicyResponsePtrOutput {
+	return o.ToPlacementPolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PlacementPolicyResponseOutput) ToPlacementPolicyResponsePtrOutputWithContext(ctx context.Context) PlacementPolicyResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PlacementPolicyResponse) *PlacementPolicyResponse {
+		return &v
+	}).(PlacementPolicyResponsePtrOutput)
+}
+
+// The type of placement.
+func (o PlacementPolicyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PlacementPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PlacementPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PlacementPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlacementPolicyResponse)(nil)).Elem()
+}
+
+func (o PlacementPolicyResponsePtrOutput) ToPlacementPolicyResponsePtrOutput() PlacementPolicyResponsePtrOutput {
+	return o
+}
+
+func (o PlacementPolicyResponsePtrOutput) ToPlacementPolicyResponsePtrOutputWithContext(ctx context.Context) PlacementPolicyResponsePtrOutput {
+	return o
+}
+
+func (o PlacementPolicyResponsePtrOutput) Elem() PlacementPolicyResponseOutput {
+	return o.ApplyT(func(v *PlacementPolicyResponse) PlacementPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PlacementPolicyResponse
+		return ret
+	}).(PlacementPolicyResponseOutput)
+}
+
+// The type of placement.
+func (o PlacementPolicyResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PlacementPolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration for the PodSecurityPolicy feature.
@@ -28577,6 +29193,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigPtrInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigResponseInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigResponsePtrInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeBackupAgentConfigInput)(nil)).Elem(), GkeBackupAgentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeBackupAgentConfigPtrInput)(nil)).Elem(), GkeBackupAgentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeBackupAgentConfigResponseInput)(nil)).Elem(), GkeBackupAgentConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeBackupAgentConfigResponsePtrInput)(nil)).Elem(), GkeBackupAgentConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HorizontalPodAutoscalingInput)(nil)).Elem(), HorizontalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HorizontalPodAutoscalingPtrInput)(nil)).Elem(), HorizontalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HorizontalPodAutoscalingResponseInput)(nil)).Elem(), HorizontalPodAutoscalingResponseArgs{})
@@ -28724,6 +29344,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPtrInput)(nil)).Elem(), NotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigResponseInput)(nil)).Elem(), NotificationConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigResponsePtrInput)(nil)).Elem(), NotificationConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyInput)(nil)).Elem(), PlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyPtrInput)(nil)).Elem(), PlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyResponseInput)(nil)).Elem(), PlacementPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyResponsePtrInput)(nil)).Elem(), PlacementPolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicyConfigInput)(nil)).Elem(), PodSecurityPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicyConfigPtrInput)(nil)).Elem(), PodSecurityPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicyConfigResponseInput)(nil)).Elem(), PodSecurityPolicyConfigResponseArgs{})
@@ -28921,6 +29545,10 @@ func init() {
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigResponseOutput{})
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(GkeBackupAgentConfigOutput{})
+	pulumi.RegisterOutputType(GkeBackupAgentConfigPtrOutput{})
+	pulumi.RegisterOutputType(GkeBackupAgentConfigResponseOutput{})
+	pulumi.RegisterOutputType(GkeBackupAgentConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(HorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(HorizontalPodAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(HorizontalPodAutoscalingResponseOutput{})
@@ -29068,6 +29696,10 @@ func init() {
 	pulumi.RegisterOutputType(NotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigResponseOutput{})
 	pulumi.RegisterOutputType(NotificationConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(PlacementPolicyOutput{})
+	pulumi.RegisterOutputType(PlacementPolicyPtrOutput{})
+	pulumi.RegisterOutputType(PlacementPolicyResponseOutput{})
+	pulumi.RegisterOutputType(PlacementPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(PodSecurityPolicyConfigOutput{})
 	pulumi.RegisterOutputType(PodSecurityPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(PodSecurityPolicyConfigResponseOutput{})

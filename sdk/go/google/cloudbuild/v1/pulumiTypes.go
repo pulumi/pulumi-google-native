@@ -1161,6 +1161,1246 @@ func (o ArtifactsResponsePtrOutput) Objects() ArtifactObjectsResponsePtrOutput {
 	}).(ArtifactObjectsResponsePtrOutput)
 }
 
+// BitbucketServerConfig represents the configuration for a Bitbucket Server.
+type BitbucketServerConfigResponse struct {
+	// Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+	ApiKey string `pulumi:"apiKey"`
+	// Connected Bitbucket Server repositories for this config.
+	ConnectedRepositories []BitbucketServerRepositoryIdResponse `pulumi:"connectedRepositories"`
+	// Time when the config was created.
+	CreateTime string `pulumi:"createTime"`
+	// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+	HostUri string `pulumi:"hostUri"`
+	// The resource name for the config.
+	Name string `pulumi:"name"`
+	// Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+	PeeredNetwork string `pulumi:"peeredNetwork"`
+	// Secret Manager secrets needed by the config.
+	Secrets BitbucketServerSecretsResponse `pulumi:"secrets"`
+	// Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+	SslCa string `pulumi:"sslCa"`
+	// Username of the account Cloud Build will use on Bitbucket Server.
+	Username string `pulumi:"username"`
+	// UUID included in webhook requests. The UUID is used to look up the corresponding config.
+	WebhookKey string `pulumi:"webhookKey"`
+}
+
+// BitbucketServerConfigResponseInput is an input type that accepts BitbucketServerConfigResponseArgs and BitbucketServerConfigResponseOutput values.
+// You can construct a concrete instance of `BitbucketServerConfigResponseInput` via:
+//
+//          BitbucketServerConfigResponseArgs{...}
+type BitbucketServerConfigResponseInput interface {
+	pulumi.Input
+
+	ToBitbucketServerConfigResponseOutput() BitbucketServerConfigResponseOutput
+	ToBitbucketServerConfigResponseOutputWithContext(context.Context) BitbucketServerConfigResponseOutput
+}
+
+// BitbucketServerConfig represents the configuration for a Bitbucket Server.
+type BitbucketServerConfigResponseArgs struct {
+	// Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Connected Bitbucket Server repositories for this config.
+	ConnectedRepositories BitbucketServerRepositoryIdResponseArrayInput `pulumi:"connectedRepositories"`
+	// Time when the config was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+	HostUri pulumi.StringInput `pulumi:"hostUri"`
+	// The resource name for the config.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+	PeeredNetwork pulumi.StringInput `pulumi:"peeredNetwork"`
+	// Secret Manager secrets needed by the config.
+	Secrets BitbucketServerSecretsResponseInput `pulumi:"secrets"`
+	// Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+	SslCa pulumi.StringInput `pulumi:"sslCa"`
+	// Username of the account Cloud Build will use on Bitbucket Server.
+	Username pulumi.StringInput `pulumi:"username"`
+	// UUID included in webhook requests. The UUID is used to look up the corresponding config.
+	WebhookKey pulumi.StringInput `pulumi:"webhookKey"`
+}
+
+func (BitbucketServerConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerConfigResponse)(nil)).Elem()
+}
+
+func (i BitbucketServerConfigResponseArgs) ToBitbucketServerConfigResponseOutput() BitbucketServerConfigResponseOutput {
+	return i.ToBitbucketServerConfigResponseOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerConfigResponseArgs) ToBitbucketServerConfigResponseOutputWithContext(ctx context.Context) BitbucketServerConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigResponseOutput)
+}
+
+func (i BitbucketServerConfigResponseArgs) ToBitbucketServerConfigResponsePtrOutput() BitbucketServerConfigResponsePtrOutput {
+	return i.ToBitbucketServerConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerConfigResponseArgs) ToBitbucketServerConfigResponsePtrOutputWithContext(ctx context.Context) BitbucketServerConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigResponseOutput).ToBitbucketServerConfigResponsePtrOutputWithContext(ctx)
+}
+
+// BitbucketServerConfigResponsePtrInput is an input type that accepts BitbucketServerConfigResponseArgs, BitbucketServerConfigResponsePtr and BitbucketServerConfigResponsePtrOutput values.
+// You can construct a concrete instance of `BitbucketServerConfigResponsePtrInput` via:
+//
+//          BitbucketServerConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BitbucketServerConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToBitbucketServerConfigResponsePtrOutput() BitbucketServerConfigResponsePtrOutput
+	ToBitbucketServerConfigResponsePtrOutputWithContext(context.Context) BitbucketServerConfigResponsePtrOutput
+}
+
+type bitbucketServerConfigResponsePtrType BitbucketServerConfigResponseArgs
+
+func BitbucketServerConfigResponsePtr(v *BitbucketServerConfigResponseArgs) BitbucketServerConfigResponsePtrInput {
+	return (*bitbucketServerConfigResponsePtrType)(v)
+}
+
+func (*bitbucketServerConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketServerConfigResponse)(nil)).Elem()
+}
+
+func (i *bitbucketServerConfigResponsePtrType) ToBitbucketServerConfigResponsePtrOutput() BitbucketServerConfigResponsePtrOutput {
+	return i.ToBitbucketServerConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *bitbucketServerConfigResponsePtrType) ToBitbucketServerConfigResponsePtrOutputWithContext(ctx context.Context) BitbucketServerConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigResponsePtrOutput)
+}
+
+// BitbucketServerConfig represents the configuration for a Bitbucket Server.
+type BitbucketServerConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerConfigResponse)(nil)).Elem()
+}
+
+func (o BitbucketServerConfigResponseOutput) ToBitbucketServerConfigResponseOutput() BitbucketServerConfigResponseOutput {
+	return o
+}
+
+func (o BitbucketServerConfigResponseOutput) ToBitbucketServerConfigResponseOutputWithContext(ctx context.Context) BitbucketServerConfigResponseOutput {
+	return o
+}
+
+func (o BitbucketServerConfigResponseOutput) ToBitbucketServerConfigResponsePtrOutput() BitbucketServerConfigResponsePtrOutput {
+	return o.ToBitbucketServerConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BitbucketServerConfigResponseOutput) ToBitbucketServerConfigResponsePtrOutputWithContext(ctx context.Context) BitbucketServerConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BitbucketServerConfigResponse) *BitbucketServerConfigResponse {
+		return &v
+	}).(BitbucketServerConfigResponsePtrOutput)
+}
+
+// Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+func (o BitbucketServerConfigResponseOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerConfigResponse) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// Connected Bitbucket Server repositories for this config.
+func (o BitbucketServerConfigResponseOutput) ConnectedRepositories() BitbucketServerRepositoryIdResponseArrayOutput {
+	return o.ApplyT(func(v BitbucketServerConfigResponse) []BitbucketServerRepositoryIdResponse {
+		return v.ConnectedRepositories
+	}).(BitbucketServerRepositoryIdResponseArrayOutput)
+}
+
+// Time when the config was created.
+func (o BitbucketServerConfigResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerConfigResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+func (o BitbucketServerConfigResponseOutput) HostUri() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerConfigResponse) string { return v.HostUri }).(pulumi.StringOutput)
+}
+
+// The resource name for the config.
+func (o BitbucketServerConfigResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerConfigResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+func (o BitbucketServerConfigResponseOutput) PeeredNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerConfigResponse) string { return v.PeeredNetwork }).(pulumi.StringOutput)
+}
+
+// Secret Manager secrets needed by the config.
+func (o BitbucketServerConfigResponseOutput) Secrets() BitbucketServerSecretsResponseOutput {
+	return o.ApplyT(func(v BitbucketServerConfigResponse) BitbucketServerSecretsResponse { return v.Secrets }).(BitbucketServerSecretsResponseOutput)
+}
+
+// Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+func (o BitbucketServerConfigResponseOutput) SslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerConfigResponse) string { return v.SslCa }).(pulumi.StringOutput)
+}
+
+// Username of the account Cloud Build will use on Bitbucket Server.
+func (o BitbucketServerConfigResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerConfigResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// UUID included in webhook requests. The UUID is used to look up the corresponding config.
+func (o BitbucketServerConfigResponseOutput) WebhookKey() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerConfigResponse) string { return v.WebhookKey }).(pulumi.StringOutput)
+}
+
+type BitbucketServerConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketServerConfigResponse)(nil)).Elem()
+}
+
+func (o BitbucketServerConfigResponsePtrOutput) ToBitbucketServerConfigResponsePtrOutput() BitbucketServerConfigResponsePtrOutput {
+	return o
+}
+
+func (o BitbucketServerConfigResponsePtrOutput) ToBitbucketServerConfigResponsePtrOutputWithContext(ctx context.Context) BitbucketServerConfigResponsePtrOutput {
+	return o
+}
+
+func (o BitbucketServerConfigResponsePtrOutput) Elem() BitbucketServerConfigResponseOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigResponse) BitbucketServerConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BitbucketServerConfigResponse
+		return ret
+	}).(BitbucketServerConfigResponseOutput)
+}
+
+// Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+func (o BitbucketServerConfigResponsePtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connected Bitbucket Server repositories for this config.
+func (o BitbucketServerConfigResponsePtrOutput) ConnectedRepositories() BitbucketServerRepositoryIdResponseArrayOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigResponse) []BitbucketServerRepositoryIdResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectedRepositories
+	}).(BitbucketServerRepositoryIdResponseArrayOutput)
+}
+
+// Time when the config was created.
+func (o BitbucketServerConfigResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+func (o BitbucketServerConfigResponsePtrOutput) HostUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HostUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the config.
+func (o BitbucketServerConfigResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+func (o BitbucketServerConfigResponsePtrOutput) PeeredNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PeeredNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secret Manager secrets needed by the config.
+func (o BitbucketServerConfigResponsePtrOutput) Secrets() BitbucketServerSecretsResponsePtrOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigResponse) *BitbucketServerSecretsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Secrets
+	}).(BitbucketServerSecretsResponsePtrOutput)
+}
+
+// Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+func (o BitbucketServerConfigResponsePtrOutput) SslCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SslCa
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username of the account Cloud Build will use on Bitbucket Server.
+func (o BitbucketServerConfigResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// UUID included in webhook requests. The UUID is used to look up the corresponding config.
+func (o BitbucketServerConfigResponsePtrOutput) WebhookKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WebhookKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// BitbucketServerRepositoryId identifies a specific repository hosted on a Bitbucket Server.
+type BitbucketServerRepositoryIdResponse struct {
+	// Identifier for the project storing the repository.
+	ProjectKey string `pulumi:"projectKey"`
+	// Identifier for the repository.
+	RepoSlug string `pulumi:"repoSlug"`
+	// The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo.
+	WebhookId int `pulumi:"webhookId"`
+}
+
+// BitbucketServerRepositoryIdResponseInput is an input type that accepts BitbucketServerRepositoryIdResponseArgs and BitbucketServerRepositoryIdResponseOutput values.
+// You can construct a concrete instance of `BitbucketServerRepositoryIdResponseInput` via:
+//
+//          BitbucketServerRepositoryIdResponseArgs{...}
+type BitbucketServerRepositoryIdResponseInput interface {
+	pulumi.Input
+
+	ToBitbucketServerRepositoryIdResponseOutput() BitbucketServerRepositoryIdResponseOutput
+	ToBitbucketServerRepositoryIdResponseOutputWithContext(context.Context) BitbucketServerRepositoryIdResponseOutput
+}
+
+// BitbucketServerRepositoryId identifies a specific repository hosted on a Bitbucket Server.
+type BitbucketServerRepositoryIdResponseArgs struct {
+	// Identifier for the project storing the repository.
+	ProjectKey pulumi.StringInput `pulumi:"projectKey"`
+	// Identifier for the repository.
+	RepoSlug pulumi.StringInput `pulumi:"repoSlug"`
+	// The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo.
+	WebhookId pulumi.IntInput `pulumi:"webhookId"`
+}
+
+func (BitbucketServerRepositoryIdResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerRepositoryIdResponse)(nil)).Elem()
+}
+
+func (i BitbucketServerRepositoryIdResponseArgs) ToBitbucketServerRepositoryIdResponseOutput() BitbucketServerRepositoryIdResponseOutput {
+	return i.ToBitbucketServerRepositoryIdResponseOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerRepositoryIdResponseArgs) ToBitbucketServerRepositoryIdResponseOutputWithContext(ctx context.Context) BitbucketServerRepositoryIdResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerRepositoryIdResponseOutput)
+}
+
+// BitbucketServerRepositoryIdResponseArrayInput is an input type that accepts BitbucketServerRepositoryIdResponseArray and BitbucketServerRepositoryIdResponseArrayOutput values.
+// You can construct a concrete instance of `BitbucketServerRepositoryIdResponseArrayInput` via:
+//
+//          BitbucketServerRepositoryIdResponseArray{ BitbucketServerRepositoryIdResponseArgs{...} }
+type BitbucketServerRepositoryIdResponseArrayInput interface {
+	pulumi.Input
+
+	ToBitbucketServerRepositoryIdResponseArrayOutput() BitbucketServerRepositoryIdResponseArrayOutput
+	ToBitbucketServerRepositoryIdResponseArrayOutputWithContext(context.Context) BitbucketServerRepositoryIdResponseArrayOutput
+}
+
+type BitbucketServerRepositoryIdResponseArray []BitbucketServerRepositoryIdResponseInput
+
+func (BitbucketServerRepositoryIdResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BitbucketServerRepositoryIdResponse)(nil)).Elem()
+}
+
+func (i BitbucketServerRepositoryIdResponseArray) ToBitbucketServerRepositoryIdResponseArrayOutput() BitbucketServerRepositoryIdResponseArrayOutput {
+	return i.ToBitbucketServerRepositoryIdResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerRepositoryIdResponseArray) ToBitbucketServerRepositoryIdResponseArrayOutputWithContext(ctx context.Context) BitbucketServerRepositoryIdResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerRepositoryIdResponseArrayOutput)
+}
+
+// BitbucketServerRepositoryId identifies a specific repository hosted on a Bitbucket Server.
+type BitbucketServerRepositoryIdResponseOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerRepositoryIdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerRepositoryIdResponse)(nil)).Elem()
+}
+
+func (o BitbucketServerRepositoryIdResponseOutput) ToBitbucketServerRepositoryIdResponseOutput() BitbucketServerRepositoryIdResponseOutput {
+	return o
+}
+
+func (o BitbucketServerRepositoryIdResponseOutput) ToBitbucketServerRepositoryIdResponseOutputWithContext(ctx context.Context) BitbucketServerRepositoryIdResponseOutput {
+	return o
+}
+
+// Identifier for the project storing the repository.
+func (o BitbucketServerRepositoryIdResponseOutput) ProjectKey() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerRepositoryIdResponse) string { return v.ProjectKey }).(pulumi.StringOutput)
+}
+
+// Identifier for the repository.
+func (o BitbucketServerRepositoryIdResponseOutput) RepoSlug() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerRepositoryIdResponse) string { return v.RepoSlug }).(pulumi.StringOutput)
+}
+
+// The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo.
+func (o BitbucketServerRepositoryIdResponseOutput) WebhookId() pulumi.IntOutput {
+	return o.ApplyT(func(v BitbucketServerRepositoryIdResponse) int { return v.WebhookId }).(pulumi.IntOutput)
+}
+
+type BitbucketServerRepositoryIdResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerRepositoryIdResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BitbucketServerRepositoryIdResponse)(nil)).Elem()
+}
+
+func (o BitbucketServerRepositoryIdResponseArrayOutput) ToBitbucketServerRepositoryIdResponseArrayOutput() BitbucketServerRepositoryIdResponseArrayOutput {
+	return o
+}
+
+func (o BitbucketServerRepositoryIdResponseArrayOutput) ToBitbucketServerRepositoryIdResponseArrayOutputWithContext(ctx context.Context) BitbucketServerRepositoryIdResponseArrayOutput {
+	return o
+}
+
+func (o BitbucketServerRepositoryIdResponseArrayOutput) Index(i pulumi.IntInput) BitbucketServerRepositoryIdResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BitbucketServerRepositoryIdResponse {
+		return vs[0].([]BitbucketServerRepositoryIdResponse)[vs[1].(int)]
+	}).(BitbucketServerRepositoryIdResponseOutput)
+}
+
+// BitbucketServerSecrets represents the secrets in Secret Manager for a Bitbucket Server.
+type BitbucketServerSecrets struct {
+	// The resource name for the admin access token's secret version.
+	AdminAccessTokenVersionName string `pulumi:"adminAccessTokenVersionName"`
+	// The resource name for the read access token's secret version.
+	ReadAccessTokenVersionName string `pulumi:"readAccessTokenVersionName"`
+	// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+	WebhookSecretVersionName string `pulumi:"webhookSecretVersionName"`
+}
+
+// BitbucketServerSecretsInput is an input type that accepts BitbucketServerSecretsArgs and BitbucketServerSecretsOutput values.
+// You can construct a concrete instance of `BitbucketServerSecretsInput` via:
+//
+//          BitbucketServerSecretsArgs{...}
+type BitbucketServerSecretsInput interface {
+	pulumi.Input
+
+	ToBitbucketServerSecretsOutput() BitbucketServerSecretsOutput
+	ToBitbucketServerSecretsOutputWithContext(context.Context) BitbucketServerSecretsOutput
+}
+
+// BitbucketServerSecrets represents the secrets in Secret Manager for a Bitbucket Server.
+type BitbucketServerSecretsArgs struct {
+	// The resource name for the admin access token's secret version.
+	AdminAccessTokenVersionName pulumi.StringInput `pulumi:"adminAccessTokenVersionName"`
+	// The resource name for the read access token's secret version.
+	ReadAccessTokenVersionName pulumi.StringInput `pulumi:"readAccessTokenVersionName"`
+	// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+	WebhookSecretVersionName pulumi.StringInput `pulumi:"webhookSecretVersionName"`
+}
+
+func (BitbucketServerSecretsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerSecrets)(nil)).Elem()
+}
+
+func (i BitbucketServerSecretsArgs) ToBitbucketServerSecretsOutput() BitbucketServerSecretsOutput {
+	return i.ToBitbucketServerSecretsOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerSecretsArgs) ToBitbucketServerSecretsOutputWithContext(ctx context.Context) BitbucketServerSecretsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerSecretsOutput)
+}
+
+func (i BitbucketServerSecretsArgs) ToBitbucketServerSecretsPtrOutput() BitbucketServerSecretsPtrOutput {
+	return i.ToBitbucketServerSecretsPtrOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerSecretsArgs) ToBitbucketServerSecretsPtrOutputWithContext(ctx context.Context) BitbucketServerSecretsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerSecretsOutput).ToBitbucketServerSecretsPtrOutputWithContext(ctx)
+}
+
+// BitbucketServerSecretsPtrInput is an input type that accepts BitbucketServerSecretsArgs, BitbucketServerSecretsPtr and BitbucketServerSecretsPtrOutput values.
+// You can construct a concrete instance of `BitbucketServerSecretsPtrInput` via:
+//
+//          BitbucketServerSecretsArgs{...}
+//
+//  or:
+//
+//          nil
+type BitbucketServerSecretsPtrInput interface {
+	pulumi.Input
+
+	ToBitbucketServerSecretsPtrOutput() BitbucketServerSecretsPtrOutput
+	ToBitbucketServerSecretsPtrOutputWithContext(context.Context) BitbucketServerSecretsPtrOutput
+}
+
+type bitbucketServerSecretsPtrType BitbucketServerSecretsArgs
+
+func BitbucketServerSecretsPtr(v *BitbucketServerSecretsArgs) BitbucketServerSecretsPtrInput {
+	return (*bitbucketServerSecretsPtrType)(v)
+}
+
+func (*bitbucketServerSecretsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketServerSecrets)(nil)).Elem()
+}
+
+func (i *bitbucketServerSecretsPtrType) ToBitbucketServerSecretsPtrOutput() BitbucketServerSecretsPtrOutput {
+	return i.ToBitbucketServerSecretsPtrOutputWithContext(context.Background())
+}
+
+func (i *bitbucketServerSecretsPtrType) ToBitbucketServerSecretsPtrOutputWithContext(ctx context.Context) BitbucketServerSecretsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerSecretsPtrOutput)
+}
+
+// BitbucketServerSecrets represents the secrets in Secret Manager for a Bitbucket Server.
+type BitbucketServerSecretsOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerSecretsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerSecrets)(nil)).Elem()
+}
+
+func (o BitbucketServerSecretsOutput) ToBitbucketServerSecretsOutput() BitbucketServerSecretsOutput {
+	return o
+}
+
+func (o BitbucketServerSecretsOutput) ToBitbucketServerSecretsOutputWithContext(ctx context.Context) BitbucketServerSecretsOutput {
+	return o
+}
+
+func (o BitbucketServerSecretsOutput) ToBitbucketServerSecretsPtrOutput() BitbucketServerSecretsPtrOutput {
+	return o.ToBitbucketServerSecretsPtrOutputWithContext(context.Background())
+}
+
+func (o BitbucketServerSecretsOutput) ToBitbucketServerSecretsPtrOutputWithContext(ctx context.Context) BitbucketServerSecretsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BitbucketServerSecrets) *BitbucketServerSecrets {
+		return &v
+	}).(BitbucketServerSecretsPtrOutput)
+}
+
+// The resource name for the admin access token's secret version.
+func (o BitbucketServerSecretsOutput) AdminAccessTokenVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerSecrets) string { return v.AdminAccessTokenVersionName }).(pulumi.StringOutput)
+}
+
+// The resource name for the read access token's secret version.
+func (o BitbucketServerSecretsOutput) ReadAccessTokenVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerSecrets) string { return v.ReadAccessTokenVersionName }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+func (o BitbucketServerSecretsOutput) WebhookSecretVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerSecrets) string { return v.WebhookSecretVersionName }).(pulumi.StringOutput)
+}
+
+type BitbucketServerSecretsPtrOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerSecretsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketServerSecrets)(nil)).Elem()
+}
+
+func (o BitbucketServerSecretsPtrOutput) ToBitbucketServerSecretsPtrOutput() BitbucketServerSecretsPtrOutput {
+	return o
+}
+
+func (o BitbucketServerSecretsPtrOutput) ToBitbucketServerSecretsPtrOutputWithContext(ctx context.Context) BitbucketServerSecretsPtrOutput {
+	return o
+}
+
+func (o BitbucketServerSecretsPtrOutput) Elem() BitbucketServerSecretsOutput {
+	return o.ApplyT(func(v *BitbucketServerSecrets) BitbucketServerSecrets {
+		if v != nil {
+			return *v
+		}
+		var ret BitbucketServerSecrets
+		return ret
+	}).(BitbucketServerSecretsOutput)
+}
+
+// The resource name for the admin access token's secret version.
+func (o BitbucketServerSecretsPtrOutput) AdminAccessTokenVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerSecrets) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AdminAccessTokenVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the read access token's secret version.
+func (o BitbucketServerSecretsPtrOutput) ReadAccessTokenVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerSecrets) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReadAccessTokenVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+func (o BitbucketServerSecretsPtrOutput) WebhookSecretVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerSecrets) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WebhookSecretVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// BitbucketServerSecrets represents the secrets in Secret Manager for a Bitbucket Server.
+type BitbucketServerSecretsResponse struct {
+	// The resource name for the admin access token's secret version.
+	AdminAccessTokenVersionName string `pulumi:"adminAccessTokenVersionName"`
+	// The resource name for the read access token's secret version.
+	ReadAccessTokenVersionName string `pulumi:"readAccessTokenVersionName"`
+	// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+	WebhookSecretVersionName string `pulumi:"webhookSecretVersionName"`
+}
+
+// BitbucketServerSecretsResponseInput is an input type that accepts BitbucketServerSecretsResponseArgs and BitbucketServerSecretsResponseOutput values.
+// You can construct a concrete instance of `BitbucketServerSecretsResponseInput` via:
+//
+//          BitbucketServerSecretsResponseArgs{...}
+type BitbucketServerSecretsResponseInput interface {
+	pulumi.Input
+
+	ToBitbucketServerSecretsResponseOutput() BitbucketServerSecretsResponseOutput
+	ToBitbucketServerSecretsResponseOutputWithContext(context.Context) BitbucketServerSecretsResponseOutput
+}
+
+// BitbucketServerSecrets represents the secrets in Secret Manager for a Bitbucket Server.
+type BitbucketServerSecretsResponseArgs struct {
+	// The resource name for the admin access token's secret version.
+	AdminAccessTokenVersionName pulumi.StringInput `pulumi:"adminAccessTokenVersionName"`
+	// The resource name for the read access token's secret version.
+	ReadAccessTokenVersionName pulumi.StringInput `pulumi:"readAccessTokenVersionName"`
+	// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+	WebhookSecretVersionName pulumi.StringInput `pulumi:"webhookSecretVersionName"`
+}
+
+func (BitbucketServerSecretsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerSecretsResponse)(nil)).Elem()
+}
+
+func (i BitbucketServerSecretsResponseArgs) ToBitbucketServerSecretsResponseOutput() BitbucketServerSecretsResponseOutput {
+	return i.ToBitbucketServerSecretsResponseOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerSecretsResponseArgs) ToBitbucketServerSecretsResponseOutputWithContext(ctx context.Context) BitbucketServerSecretsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerSecretsResponseOutput)
+}
+
+func (i BitbucketServerSecretsResponseArgs) ToBitbucketServerSecretsResponsePtrOutput() BitbucketServerSecretsResponsePtrOutput {
+	return i.ToBitbucketServerSecretsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerSecretsResponseArgs) ToBitbucketServerSecretsResponsePtrOutputWithContext(ctx context.Context) BitbucketServerSecretsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerSecretsResponseOutput).ToBitbucketServerSecretsResponsePtrOutputWithContext(ctx)
+}
+
+// BitbucketServerSecretsResponsePtrInput is an input type that accepts BitbucketServerSecretsResponseArgs, BitbucketServerSecretsResponsePtr and BitbucketServerSecretsResponsePtrOutput values.
+// You can construct a concrete instance of `BitbucketServerSecretsResponsePtrInput` via:
+//
+//          BitbucketServerSecretsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BitbucketServerSecretsResponsePtrInput interface {
+	pulumi.Input
+
+	ToBitbucketServerSecretsResponsePtrOutput() BitbucketServerSecretsResponsePtrOutput
+	ToBitbucketServerSecretsResponsePtrOutputWithContext(context.Context) BitbucketServerSecretsResponsePtrOutput
+}
+
+type bitbucketServerSecretsResponsePtrType BitbucketServerSecretsResponseArgs
+
+func BitbucketServerSecretsResponsePtr(v *BitbucketServerSecretsResponseArgs) BitbucketServerSecretsResponsePtrInput {
+	return (*bitbucketServerSecretsResponsePtrType)(v)
+}
+
+func (*bitbucketServerSecretsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketServerSecretsResponse)(nil)).Elem()
+}
+
+func (i *bitbucketServerSecretsResponsePtrType) ToBitbucketServerSecretsResponsePtrOutput() BitbucketServerSecretsResponsePtrOutput {
+	return i.ToBitbucketServerSecretsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *bitbucketServerSecretsResponsePtrType) ToBitbucketServerSecretsResponsePtrOutputWithContext(ctx context.Context) BitbucketServerSecretsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerSecretsResponsePtrOutput)
+}
+
+// BitbucketServerSecrets represents the secrets in Secret Manager for a Bitbucket Server.
+type BitbucketServerSecretsResponseOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerSecretsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerSecretsResponse)(nil)).Elem()
+}
+
+func (o BitbucketServerSecretsResponseOutput) ToBitbucketServerSecretsResponseOutput() BitbucketServerSecretsResponseOutput {
+	return o
+}
+
+func (o BitbucketServerSecretsResponseOutput) ToBitbucketServerSecretsResponseOutputWithContext(ctx context.Context) BitbucketServerSecretsResponseOutput {
+	return o
+}
+
+func (o BitbucketServerSecretsResponseOutput) ToBitbucketServerSecretsResponsePtrOutput() BitbucketServerSecretsResponsePtrOutput {
+	return o.ToBitbucketServerSecretsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BitbucketServerSecretsResponseOutput) ToBitbucketServerSecretsResponsePtrOutputWithContext(ctx context.Context) BitbucketServerSecretsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BitbucketServerSecretsResponse) *BitbucketServerSecretsResponse {
+		return &v
+	}).(BitbucketServerSecretsResponsePtrOutput)
+}
+
+// The resource name for the admin access token's secret version.
+func (o BitbucketServerSecretsResponseOutput) AdminAccessTokenVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerSecretsResponse) string { return v.AdminAccessTokenVersionName }).(pulumi.StringOutput)
+}
+
+// The resource name for the read access token's secret version.
+func (o BitbucketServerSecretsResponseOutput) ReadAccessTokenVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerSecretsResponse) string { return v.ReadAccessTokenVersionName }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+func (o BitbucketServerSecretsResponseOutput) WebhookSecretVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerSecretsResponse) string { return v.WebhookSecretVersionName }).(pulumi.StringOutput)
+}
+
+type BitbucketServerSecretsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerSecretsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketServerSecretsResponse)(nil)).Elem()
+}
+
+func (o BitbucketServerSecretsResponsePtrOutput) ToBitbucketServerSecretsResponsePtrOutput() BitbucketServerSecretsResponsePtrOutput {
+	return o
+}
+
+func (o BitbucketServerSecretsResponsePtrOutput) ToBitbucketServerSecretsResponsePtrOutputWithContext(ctx context.Context) BitbucketServerSecretsResponsePtrOutput {
+	return o
+}
+
+func (o BitbucketServerSecretsResponsePtrOutput) Elem() BitbucketServerSecretsResponseOutput {
+	return o.ApplyT(func(v *BitbucketServerSecretsResponse) BitbucketServerSecretsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BitbucketServerSecretsResponse
+		return ret
+	}).(BitbucketServerSecretsResponseOutput)
+}
+
+// The resource name for the admin access token's secret version.
+func (o BitbucketServerSecretsResponsePtrOutput) AdminAccessTokenVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerSecretsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AdminAccessTokenVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the read access token's secret version.
+func (o BitbucketServerSecretsResponsePtrOutput) ReadAccessTokenVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerSecretsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReadAccessTokenVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+func (o BitbucketServerSecretsResponsePtrOutput) WebhookSecretVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerSecretsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WebhookSecretVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+type BitbucketServerTriggerConfig struct {
+	// The Bitbucket server config resource that this trigger config maps to.
+	BitbucketServerConfigResource string `pulumi:"bitbucketServerConfigResource"`
+	// Key of the project that the repo is in. For example: The key for http://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+	ProjectKey string `pulumi:"projectKey"`
+	// Filter to match changes in pull requests.
+	PullRequest *PullRequestFilter `pulumi:"pullRequest"`
+	// Filter to match changes in refs like branches, tags.
+	Push *PushFilter `pulumi:"push"`
+	// Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL. For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in http://mybitbucket.server/projects/TEST/repos/test-repo.
+	RepoSlug string `pulumi:"repoSlug"`
+}
+
+// BitbucketServerTriggerConfigInput is an input type that accepts BitbucketServerTriggerConfigArgs and BitbucketServerTriggerConfigOutput values.
+// You can construct a concrete instance of `BitbucketServerTriggerConfigInput` via:
+//
+//          BitbucketServerTriggerConfigArgs{...}
+type BitbucketServerTriggerConfigInput interface {
+	pulumi.Input
+
+	ToBitbucketServerTriggerConfigOutput() BitbucketServerTriggerConfigOutput
+	ToBitbucketServerTriggerConfigOutputWithContext(context.Context) BitbucketServerTriggerConfigOutput
+}
+
+// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+type BitbucketServerTriggerConfigArgs struct {
+	// The Bitbucket server config resource that this trigger config maps to.
+	BitbucketServerConfigResource pulumi.StringInput `pulumi:"bitbucketServerConfigResource"`
+	// Key of the project that the repo is in. For example: The key for http://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+	ProjectKey pulumi.StringInput `pulumi:"projectKey"`
+	// Filter to match changes in pull requests.
+	PullRequest PullRequestFilterPtrInput `pulumi:"pullRequest"`
+	// Filter to match changes in refs like branches, tags.
+	Push PushFilterPtrInput `pulumi:"push"`
+	// Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL. For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in http://mybitbucket.server/projects/TEST/repos/test-repo.
+	RepoSlug pulumi.StringInput `pulumi:"repoSlug"`
+}
+
+func (BitbucketServerTriggerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerTriggerConfig)(nil)).Elem()
+}
+
+func (i BitbucketServerTriggerConfigArgs) ToBitbucketServerTriggerConfigOutput() BitbucketServerTriggerConfigOutput {
+	return i.ToBitbucketServerTriggerConfigOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerTriggerConfigArgs) ToBitbucketServerTriggerConfigOutputWithContext(ctx context.Context) BitbucketServerTriggerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerTriggerConfigOutput)
+}
+
+func (i BitbucketServerTriggerConfigArgs) ToBitbucketServerTriggerConfigPtrOutput() BitbucketServerTriggerConfigPtrOutput {
+	return i.ToBitbucketServerTriggerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerTriggerConfigArgs) ToBitbucketServerTriggerConfigPtrOutputWithContext(ctx context.Context) BitbucketServerTriggerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerTriggerConfigOutput).ToBitbucketServerTriggerConfigPtrOutputWithContext(ctx)
+}
+
+// BitbucketServerTriggerConfigPtrInput is an input type that accepts BitbucketServerTriggerConfigArgs, BitbucketServerTriggerConfigPtr and BitbucketServerTriggerConfigPtrOutput values.
+// You can construct a concrete instance of `BitbucketServerTriggerConfigPtrInput` via:
+//
+//          BitbucketServerTriggerConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type BitbucketServerTriggerConfigPtrInput interface {
+	pulumi.Input
+
+	ToBitbucketServerTriggerConfigPtrOutput() BitbucketServerTriggerConfigPtrOutput
+	ToBitbucketServerTriggerConfigPtrOutputWithContext(context.Context) BitbucketServerTriggerConfigPtrOutput
+}
+
+type bitbucketServerTriggerConfigPtrType BitbucketServerTriggerConfigArgs
+
+func BitbucketServerTriggerConfigPtr(v *BitbucketServerTriggerConfigArgs) BitbucketServerTriggerConfigPtrInput {
+	return (*bitbucketServerTriggerConfigPtrType)(v)
+}
+
+func (*bitbucketServerTriggerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketServerTriggerConfig)(nil)).Elem()
+}
+
+func (i *bitbucketServerTriggerConfigPtrType) ToBitbucketServerTriggerConfigPtrOutput() BitbucketServerTriggerConfigPtrOutput {
+	return i.ToBitbucketServerTriggerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bitbucketServerTriggerConfigPtrType) ToBitbucketServerTriggerConfigPtrOutputWithContext(ctx context.Context) BitbucketServerTriggerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerTriggerConfigPtrOutput)
+}
+
+// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+type BitbucketServerTriggerConfigOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerTriggerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerTriggerConfig)(nil)).Elem()
+}
+
+func (o BitbucketServerTriggerConfigOutput) ToBitbucketServerTriggerConfigOutput() BitbucketServerTriggerConfigOutput {
+	return o
+}
+
+func (o BitbucketServerTriggerConfigOutput) ToBitbucketServerTriggerConfigOutputWithContext(ctx context.Context) BitbucketServerTriggerConfigOutput {
+	return o
+}
+
+func (o BitbucketServerTriggerConfigOutput) ToBitbucketServerTriggerConfigPtrOutput() BitbucketServerTriggerConfigPtrOutput {
+	return o.ToBitbucketServerTriggerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BitbucketServerTriggerConfigOutput) ToBitbucketServerTriggerConfigPtrOutputWithContext(ctx context.Context) BitbucketServerTriggerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BitbucketServerTriggerConfig) *BitbucketServerTriggerConfig {
+		return &v
+	}).(BitbucketServerTriggerConfigPtrOutput)
+}
+
+// The Bitbucket server config resource that this trigger config maps to.
+func (o BitbucketServerTriggerConfigOutput) BitbucketServerConfigResource() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerTriggerConfig) string { return v.BitbucketServerConfigResource }).(pulumi.StringOutput)
+}
+
+// Key of the project that the repo is in. For example: The key for http://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+func (o BitbucketServerTriggerConfigOutput) ProjectKey() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerTriggerConfig) string { return v.ProjectKey }).(pulumi.StringOutput)
+}
+
+// Filter to match changes in pull requests.
+func (o BitbucketServerTriggerConfigOutput) PullRequest() PullRequestFilterPtrOutput {
+	return o.ApplyT(func(v BitbucketServerTriggerConfig) *PullRequestFilter { return v.PullRequest }).(PullRequestFilterPtrOutput)
+}
+
+// Filter to match changes in refs like branches, tags.
+func (o BitbucketServerTriggerConfigOutput) Push() PushFilterPtrOutput {
+	return o.ApplyT(func(v BitbucketServerTriggerConfig) *PushFilter { return v.Push }).(PushFilterPtrOutput)
+}
+
+// Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL. For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in http://mybitbucket.server/projects/TEST/repos/test-repo.
+func (o BitbucketServerTriggerConfigOutput) RepoSlug() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerTriggerConfig) string { return v.RepoSlug }).(pulumi.StringOutput)
+}
+
+type BitbucketServerTriggerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerTriggerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketServerTriggerConfig)(nil)).Elem()
+}
+
+func (o BitbucketServerTriggerConfigPtrOutput) ToBitbucketServerTriggerConfigPtrOutput() BitbucketServerTriggerConfigPtrOutput {
+	return o
+}
+
+func (o BitbucketServerTriggerConfigPtrOutput) ToBitbucketServerTriggerConfigPtrOutputWithContext(ctx context.Context) BitbucketServerTriggerConfigPtrOutput {
+	return o
+}
+
+func (o BitbucketServerTriggerConfigPtrOutput) Elem() BitbucketServerTriggerConfigOutput {
+	return o.ApplyT(func(v *BitbucketServerTriggerConfig) BitbucketServerTriggerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BitbucketServerTriggerConfig
+		return ret
+	}).(BitbucketServerTriggerConfigOutput)
+}
+
+// The Bitbucket server config resource that this trigger config maps to.
+func (o BitbucketServerTriggerConfigPtrOutput) BitbucketServerConfigResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerTriggerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BitbucketServerConfigResource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key of the project that the repo is in. For example: The key for http://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+func (o BitbucketServerTriggerConfigPtrOutput) ProjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerTriggerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filter to match changes in pull requests.
+func (o BitbucketServerTriggerConfigPtrOutput) PullRequest() PullRequestFilterPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerTriggerConfig) *PullRequestFilter {
+		if v == nil {
+			return nil
+		}
+		return v.PullRequest
+	}).(PullRequestFilterPtrOutput)
+}
+
+// Filter to match changes in refs like branches, tags.
+func (o BitbucketServerTriggerConfigPtrOutput) Push() PushFilterPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerTriggerConfig) *PushFilter {
+		if v == nil {
+			return nil
+		}
+		return v.Push
+	}).(PushFilterPtrOutput)
+}
+
+// Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL. For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in http://mybitbucket.server/projects/TEST/repos/test-repo.
+func (o BitbucketServerTriggerConfigPtrOutput) RepoSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerTriggerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoSlug
+	}).(pulumi.StringPtrOutput)
+}
+
+// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+type BitbucketServerTriggerConfigResponse struct {
+	// The BitbucketServerConfig specified in the bitbucket_server_config_resource field.
+	BitbucketServerConfig BitbucketServerConfigResponse `pulumi:"bitbucketServerConfig"`
+	// The Bitbucket server config resource that this trigger config maps to.
+	BitbucketServerConfigResource string `pulumi:"bitbucketServerConfigResource"`
+	// Key of the project that the repo is in. For example: The key for http://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+	ProjectKey string `pulumi:"projectKey"`
+	// Filter to match changes in pull requests.
+	PullRequest PullRequestFilterResponse `pulumi:"pullRequest"`
+	// Filter to match changes in refs like branches, tags.
+	Push PushFilterResponse `pulumi:"push"`
+	// Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL. For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in http://mybitbucket.server/projects/TEST/repos/test-repo.
+	RepoSlug string `pulumi:"repoSlug"`
+}
+
+// BitbucketServerTriggerConfigResponseInput is an input type that accepts BitbucketServerTriggerConfigResponseArgs and BitbucketServerTriggerConfigResponseOutput values.
+// You can construct a concrete instance of `BitbucketServerTriggerConfigResponseInput` via:
+//
+//          BitbucketServerTriggerConfigResponseArgs{...}
+type BitbucketServerTriggerConfigResponseInput interface {
+	pulumi.Input
+
+	ToBitbucketServerTriggerConfigResponseOutput() BitbucketServerTriggerConfigResponseOutput
+	ToBitbucketServerTriggerConfigResponseOutputWithContext(context.Context) BitbucketServerTriggerConfigResponseOutput
+}
+
+// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+type BitbucketServerTriggerConfigResponseArgs struct {
+	// The BitbucketServerConfig specified in the bitbucket_server_config_resource field.
+	BitbucketServerConfig BitbucketServerConfigResponseInput `pulumi:"bitbucketServerConfig"`
+	// The Bitbucket server config resource that this trigger config maps to.
+	BitbucketServerConfigResource pulumi.StringInput `pulumi:"bitbucketServerConfigResource"`
+	// Key of the project that the repo is in. For example: The key for http://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+	ProjectKey pulumi.StringInput `pulumi:"projectKey"`
+	// Filter to match changes in pull requests.
+	PullRequest PullRequestFilterResponseInput `pulumi:"pullRequest"`
+	// Filter to match changes in refs like branches, tags.
+	Push PushFilterResponseInput `pulumi:"push"`
+	// Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL. For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in http://mybitbucket.server/projects/TEST/repos/test-repo.
+	RepoSlug pulumi.StringInput `pulumi:"repoSlug"`
+}
+
+func (BitbucketServerTriggerConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerTriggerConfigResponse)(nil)).Elem()
+}
+
+func (i BitbucketServerTriggerConfigResponseArgs) ToBitbucketServerTriggerConfigResponseOutput() BitbucketServerTriggerConfigResponseOutput {
+	return i.ToBitbucketServerTriggerConfigResponseOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerTriggerConfigResponseArgs) ToBitbucketServerTriggerConfigResponseOutputWithContext(ctx context.Context) BitbucketServerTriggerConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerTriggerConfigResponseOutput)
+}
+
+func (i BitbucketServerTriggerConfigResponseArgs) ToBitbucketServerTriggerConfigResponsePtrOutput() BitbucketServerTriggerConfigResponsePtrOutput {
+	return i.ToBitbucketServerTriggerConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerTriggerConfigResponseArgs) ToBitbucketServerTriggerConfigResponsePtrOutputWithContext(ctx context.Context) BitbucketServerTriggerConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerTriggerConfigResponseOutput).ToBitbucketServerTriggerConfigResponsePtrOutputWithContext(ctx)
+}
+
+// BitbucketServerTriggerConfigResponsePtrInput is an input type that accepts BitbucketServerTriggerConfigResponseArgs, BitbucketServerTriggerConfigResponsePtr and BitbucketServerTriggerConfigResponsePtrOutput values.
+// You can construct a concrete instance of `BitbucketServerTriggerConfigResponsePtrInput` via:
+//
+//          BitbucketServerTriggerConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BitbucketServerTriggerConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToBitbucketServerTriggerConfigResponsePtrOutput() BitbucketServerTriggerConfigResponsePtrOutput
+	ToBitbucketServerTriggerConfigResponsePtrOutputWithContext(context.Context) BitbucketServerTriggerConfigResponsePtrOutput
+}
+
+type bitbucketServerTriggerConfigResponsePtrType BitbucketServerTriggerConfigResponseArgs
+
+func BitbucketServerTriggerConfigResponsePtr(v *BitbucketServerTriggerConfigResponseArgs) BitbucketServerTriggerConfigResponsePtrInput {
+	return (*bitbucketServerTriggerConfigResponsePtrType)(v)
+}
+
+func (*bitbucketServerTriggerConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketServerTriggerConfigResponse)(nil)).Elem()
+}
+
+func (i *bitbucketServerTriggerConfigResponsePtrType) ToBitbucketServerTriggerConfigResponsePtrOutput() BitbucketServerTriggerConfigResponsePtrOutput {
+	return i.ToBitbucketServerTriggerConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *bitbucketServerTriggerConfigResponsePtrType) ToBitbucketServerTriggerConfigResponsePtrOutputWithContext(ctx context.Context) BitbucketServerTriggerConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerTriggerConfigResponsePtrOutput)
+}
+
+// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+type BitbucketServerTriggerConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerTriggerConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerTriggerConfigResponse)(nil)).Elem()
+}
+
+func (o BitbucketServerTriggerConfigResponseOutput) ToBitbucketServerTriggerConfigResponseOutput() BitbucketServerTriggerConfigResponseOutput {
+	return o
+}
+
+func (o BitbucketServerTriggerConfigResponseOutput) ToBitbucketServerTriggerConfigResponseOutputWithContext(ctx context.Context) BitbucketServerTriggerConfigResponseOutput {
+	return o
+}
+
+func (o BitbucketServerTriggerConfigResponseOutput) ToBitbucketServerTriggerConfigResponsePtrOutput() BitbucketServerTriggerConfigResponsePtrOutput {
+	return o.ToBitbucketServerTriggerConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BitbucketServerTriggerConfigResponseOutput) ToBitbucketServerTriggerConfigResponsePtrOutputWithContext(ctx context.Context) BitbucketServerTriggerConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BitbucketServerTriggerConfigResponse) *BitbucketServerTriggerConfigResponse {
+		return &v
+	}).(BitbucketServerTriggerConfigResponsePtrOutput)
+}
+
+// The BitbucketServerConfig specified in the bitbucket_server_config_resource field.
+func (o BitbucketServerTriggerConfigResponseOutput) BitbucketServerConfig() BitbucketServerConfigResponseOutput {
+	return o.ApplyT(func(v BitbucketServerTriggerConfigResponse) BitbucketServerConfigResponse {
+		return v.BitbucketServerConfig
+	}).(BitbucketServerConfigResponseOutput)
+}
+
+// The Bitbucket server config resource that this trigger config maps to.
+func (o BitbucketServerTriggerConfigResponseOutput) BitbucketServerConfigResource() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerTriggerConfigResponse) string { return v.BitbucketServerConfigResource }).(pulumi.StringOutput)
+}
+
+// Key of the project that the repo is in. For example: The key for http://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+func (o BitbucketServerTriggerConfigResponseOutput) ProjectKey() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerTriggerConfigResponse) string { return v.ProjectKey }).(pulumi.StringOutput)
+}
+
+// Filter to match changes in pull requests.
+func (o BitbucketServerTriggerConfigResponseOutput) PullRequest() PullRequestFilterResponseOutput {
+	return o.ApplyT(func(v BitbucketServerTriggerConfigResponse) PullRequestFilterResponse { return v.PullRequest }).(PullRequestFilterResponseOutput)
+}
+
+// Filter to match changes in refs like branches, tags.
+func (o BitbucketServerTriggerConfigResponseOutput) Push() PushFilterResponseOutput {
+	return o.ApplyT(func(v BitbucketServerTriggerConfigResponse) PushFilterResponse { return v.Push }).(PushFilterResponseOutput)
+}
+
+// Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL. For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in http://mybitbucket.server/projects/TEST/repos/test-repo.
+func (o BitbucketServerTriggerConfigResponseOutput) RepoSlug() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerTriggerConfigResponse) string { return v.RepoSlug }).(pulumi.StringOutput)
+}
+
+type BitbucketServerTriggerConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerTriggerConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketServerTriggerConfigResponse)(nil)).Elem()
+}
+
+func (o BitbucketServerTriggerConfigResponsePtrOutput) ToBitbucketServerTriggerConfigResponsePtrOutput() BitbucketServerTriggerConfigResponsePtrOutput {
+	return o
+}
+
+func (o BitbucketServerTriggerConfigResponsePtrOutput) ToBitbucketServerTriggerConfigResponsePtrOutputWithContext(ctx context.Context) BitbucketServerTriggerConfigResponsePtrOutput {
+	return o
+}
+
+func (o BitbucketServerTriggerConfigResponsePtrOutput) Elem() BitbucketServerTriggerConfigResponseOutput {
+	return o.ApplyT(func(v *BitbucketServerTriggerConfigResponse) BitbucketServerTriggerConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BitbucketServerTriggerConfigResponse
+		return ret
+	}).(BitbucketServerTriggerConfigResponseOutput)
+}
+
+// The BitbucketServerConfig specified in the bitbucket_server_config_resource field.
+func (o BitbucketServerTriggerConfigResponsePtrOutput) BitbucketServerConfig() BitbucketServerConfigResponsePtrOutput {
+	return o.ApplyT(func(v *BitbucketServerTriggerConfigResponse) *BitbucketServerConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.BitbucketServerConfig
+	}).(BitbucketServerConfigResponsePtrOutput)
+}
+
+// The Bitbucket server config resource that this trigger config maps to.
+func (o BitbucketServerTriggerConfigResponsePtrOutput) BitbucketServerConfigResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerTriggerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BitbucketServerConfigResource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key of the project that the repo is in. For example: The key for http://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+func (o BitbucketServerTriggerConfigResponsePtrOutput) ProjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerTriggerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filter to match changes in pull requests.
+func (o BitbucketServerTriggerConfigResponsePtrOutput) PullRequest() PullRequestFilterResponsePtrOutput {
+	return o.ApplyT(func(v *BitbucketServerTriggerConfigResponse) *PullRequestFilterResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.PullRequest
+	}).(PullRequestFilterResponsePtrOutput)
+}
+
+// Filter to match changes in refs like branches, tags.
+func (o BitbucketServerTriggerConfigResponsePtrOutput) Push() PushFilterResponsePtrOutput {
+	return o.ApplyT(func(v *BitbucketServerTriggerConfigResponse) *PushFilterResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Push
+	}).(PushFilterResponsePtrOutput)
+}
+
+// Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL. For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in http://mybitbucket.server/projects/TEST/repos/test-repo.
+func (o BitbucketServerTriggerConfigResponsePtrOutput) RepoSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerTriggerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoSlug
+	}).(pulumi.StringPtrOutput)
+}
+
 // A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
 type BuildType struct {
 	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
@@ -11695,6 +12935,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactsPtrInput)(nil)).Elem(), ArtifactsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactsResponseInput)(nil)).Elem(), ArtifactsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactsResponsePtrInput)(nil)).Elem(), ArtifactsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerConfigResponseInput)(nil)).Elem(), BitbucketServerConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerConfigResponsePtrInput)(nil)).Elem(), BitbucketServerConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerRepositoryIdResponseInput)(nil)).Elem(), BitbucketServerRepositoryIdResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerRepositoryIdResponseArrayInput)(nil)).Elem(), BitbucketServerRepositoryIdResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerSecretsInput)(nil)).Elem(), BitbucketServerSecretsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerSecretsPtrInput)(nil)).Elem(), BitbucketServerSecretsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerSecretsResponseInput)(nil)).Elem(), BitbucketServerSecretsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerSecretsResponsePtrInput)(nil)).Elem(), BitbucketServerSecretsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerTriggerConfigInput)(nil)).Elem(), BitbucketServerTriggerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerTriggerConfigPtrInput)(nil)).Elem(), BitbucketServerTriggerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerTriggerConfigResponseInput)(nil)).Elem(), BitbucketServerTriggerConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerTriggerConfigResponsePtrInput)(nil)).Elem(), BitbucketServerTriggerConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildTypeInput)(nil)).Elem(), BuildTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildTypePtrInput)(nil)).Elem(), BuildTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildApprovalResponseInput)(nil)).Elem(), BuildApprovalResponseArgs{})
@@ -11819,6 +13071,18 @@ func init() {
 	pulumi.RegisterOutputType(ArtifactsPtrOutput{})
 	pulumi.RegisterOutputType(ArtifactsResponseOutput{})
 	pulumi.RegisterOutputType(ArtifactsResponsePtrOutput{})
+	pulumi.RegisterOutputType(BitbucketServerConfigResponseOutput{})
+	pulumi.RegisterOutputType(BitbucketServerConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(BitbucketServerRepositoryIdResponseOutput{})
+	pulumi.RegisterOutputType(BitbucketServerRepositoryIdResponseArrayOutput{})
+	pulumi.RegisterOutputType(BitbucketServerSecretsOutput{})
+	pulumi.RegisterOutputType(BitbucketServerSecretsPtrOutput{})
+	pulumi.RegisterOutputType(BitbucketServerSecretsResponseOutput{})
+	pulumi.RegisterOutputType(BitbucketServerSecretsResponsePtrOutput{})
+	pulumi.RegisterOutputType(BitbucketServerTriggerConfigOutput{})
+	pulumi.RegisterOutputType(BitbucketServerTriggerConfigPtrOutput{})
+	pulumi.RegisterOutputType(BitbucketServerTriggerConfigResponseOutput{})
+	pulumi.RegisterOutputType(BitbucketServerTriggerConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildTypeOutput{})
 	pulumi.RegisterOutputType(BuildTypePtrOutput{})
 	pulumi.RegisterOutputType(BuildApprovalResponseOutput{})

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
         public Input<string> Cluster { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+        /// The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
         public Input<string> Namespace { get; set; } = null!;
 
         /// <summary>
-        /// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        /// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetTriggerResult:
-    def __init__(__self__, approval_config=None, autodetect=None, build=None, create_time=None, description=None, disabled=None, event_type=None, filename=None, filter=None, git_file_source=None, github=None, ignored_files=None, included_files=None, name=None, pubsub_config=None, resource_name=None, service_account=None, source_to_build=None, substitutions=None, tags=None, trigger_template=None, webhook_config=None):
+    def __init__(__self__, approval_config=None, autodetect=None, bitbucket_server_trigger_config=None, build=None, create_time=None, description=None, disabled=None, event_type=None, filename=None, filter=None, git_file_source=None, github=None, ignored_files=None, included_files=None, name=None, pubsub_config=None, resource_name=None, service_account=None, source_to_build=None, substitutions=None, tags=None, trigger_template=None, webhook_config=None):
         if approval_config and not isinstance(approval_config, dict):
             raise TypeError("Expected argument 'approval_config' to be a dict")
         pulumi.set(__self__, "approval_config", approval_config)
         if autodetect and not isinstance(autodetect, bool):
             raise TypeError("Expected argument 'autodetect' to be a bool")
         pulumi.set(__self__, "autodetect", autodetect)
+        if bitbucket_server_trigger_config and not isinstance(bitbucket_server_trigger_config, dict):
+            raise TypeError("Expected argument 'bitbucket_server_trigger_config' to be a dict")
+        pulumi.set(__self__, "bitbucket_server_trigger_config", bitbucket_server_trigger_config)
         if build and not isinstance(build, dict):
             raise TypeError("Expected argument 'build' to be a dict")
         pulumi.set(__self__, "build", build)
@@ -103,6 +106,14 @@ class GetTriggerResult:
         return pulumi.get(self, "autodetect")
 
     @property
+    @pulumi.getter(name="bitbucketServerTriggerConfig")
+    def bitbucket_server_trigger_config(self) -> 'outputs.BitbucketServerTriggerConfigResponse':
+        """
+        BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        """
+        return pulumi.get(self, "bitbucket_server_trigger_config")
+
+    @property
     @pulumi.getter
     def build(self) -> 'outputs.BuildResponse':
         """
@@ -138,7 +149,7 @@ class GetTriggerResult:
     @pulumi.getter(name="eventType")
     def event_type(self) -> str:
         """
-        Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+        EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
         """
         return pulumi.get(self, "event_type")
 
@@ -271,6 +282,7 @@ class AwaitableGetTriggerResult(GetTriggerResult):
         return GetTriggerResult(
             approval_config=self.approval_config,
             autodetect=self.autodetect,
+            bitbucket_server_trigger_config=self.bitbucket_server_trigger_config,
             build=self.build,
             create_time=self.create_time,
             description=self.description,
@@ -315,6 +327,7 @@ def get_trigger(location: Optional[str] = None,
     return AwaitableGetTriggerResult(
         approval_config=__ret__.approval_config,
         autodetect=__ret__.autodetect,
+        bitbucket_server_trigger_config=__ret__.bitbucket_server_trigger_config,
         build=__ret__.build,
         create_time=__ret__.create_time,
         description=__ret__.description,

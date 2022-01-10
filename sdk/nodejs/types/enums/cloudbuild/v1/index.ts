@@ -263,7 +263,7 @@ export const TriggerEventType = {
 } as const;
 
 /**
- * Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+ * EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
  */
 export type TriggerEventType = (typeof TriggerEventType)[keyof typeof TriggerEventType];
 

@@ -37,6 +37,7 @@ __all__ = [
     'GcePersistentDiskCsiDriverConfigArgs',
     'GcfsConfigArgs',
     'GcpFilestoreCsiDriverConfigArgs',
+    'GkeBackupAgentConfigArgs',
     'HorizontalPodAutoscalingArgs',
     'HttpLoadBalancingArgs',
     'IPAllocationPolicyArgs',
@@ -72,6 +73,7 @@ __all__ = [
     'NodePoolArgs',
     'NodeTaintArgs',
     'NotificationConfigArgs',
+    'PlacementPolicyArgs',
     'PodSecurityPolicyConfigArgs',
     'PrivateClusterConfigArgs',
     'PrivateClusterMasterGlobalAccessConfigArgs',
@@ -160,6 +162,7 @@ class AddonsConfigArgs:
                  dns_cache_config: Optional[pulumi.Input['DnsCacheConfigArgs']] = None,
                  gce_persistent_disk_csi_driver_config: Optional[pulumi.Input['GcePersistentDiskCsiDriverConfigArgs']] = None,
                  gcp_filestore_csi_driver_config: Optional[pulumi.Input['GcpFilestoreCsiDriverConfigArgs']] = None,
+                 gke_backup_agent_config: Optional[pulumi.Input['GkeBackupAgentConfigArgs']] = None,
                  horizontal_pod_autoscaling: Optional[pulumi.Input['HorizontalPodAutoscalingArgs']] = None,
                  http_load_balancing: Optional[pulumi.Input['HttpLoadBalancingArgs']] = None,
                  istio_config: Optional[pulumi.Input['IstioConfigArgs']] = None,
@@ -173,6 +176,7 @@ class AddonsConfigArgs:
         :param pulumi.Input['DnsCacheConfigArgs'] dns_cache_config: Configuration for NodeLocalDNS, a dns cache running on cluster nodes
         :param pulumi.Input['GcePersistentDiskCsiDriverConfigArgs'] gce_persistent_disk_csi_driver_config: Configuration for the Compute Engine Persistent Disk CSI driver.
         :param pulumi.Input['GcpFilestoreCsiDriverConfigArgs'] gcp_filestore_csi_driver_config: Configuration for the GCP Filestore CSI driver.
+        :param pulumi.Input['GkeBackupAgentConfigArgs'] gke_backup_agent_config: Configuration for the Backup for GKE agent addon.
         :param pulumi.Input['HorizontalPodAutoscalingArgs'] horizontal_pod_autoscaling: Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
         :param pulumi.Input['HttpLoadBalancingArgs'] http_load_balancing: Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
         :param pulumi.Input['IstioConfigArgs'] istio_config: Configuration for Istio, an open platform to connect, manage, and secure microservices.
@@ -190,6 +194,8 @@ class AddonsConfigArgs:
             pulumi.set(__self__, "gce_persistent_disk_csi_driver_config", gce_persistent_disk_csi_driver_config)
         if gcp_filestore_csi_driver_config is not None:
             pulumi.set(__self__, "gcp_filestore_csi_driver_config", gcp_filestore_csi_driver_config)
+        if gke_backup_agent_config is not None:
+            pulumi.set(__self__, "gke_backup_agent_config", gke_backup_agent_config)
         if horizontal_pod_autoscaling is not None:
             pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         if http_load_balancing is not None:
@@ -262,6 +268,18 @@ class AddonsConfigArgs:
     @gcp_filestore_csi_driver_config.setter
     def gcp_filestore_csi_driver_config(self, value: Optional[pulumi.Input['GcpFilestoreCsiDriverConfigArgs']]):
         pulumi.set(self, "gcp_filestore_csi_driver_config", value)
+
+    @property
+    @pulumi.getter(name="gkeBackupAgentConfig")
+    def gke_backup_agent_config(self) -> Optional[pulumi.Input['GkeBackupAgentConfigArgs']]:
+        """
+        Configuration for the Backup for GKE agent addon.
+        """
+        return pulumi.get(self, "gke_backup_agent_config")
+
+    @gke_backup_agent_config.setter
+    def gke_backup_agent_config(self, value: Optional[pulumi.Input['GkeBackupAgentConfigArgs']]):
+        pulumi.set(self, "gke_backup_agent_config", value)
 
     @property
     @pulumi.getter(name="horizontalPodAutoscaling")
@@ -1217,6 +1235,30 @@ class GcpFilestoreCsiDriverConfigArgs:
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether the GCP Filestore CSI driver is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class GkeBackupAgentConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for the Backup for GKE Agent.
+        :param pulumi.Input[bool] enabled: Whether the Backup for GKE agent is enabled for this cluster.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the Backup for GKE agent is enabled for this cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -2946,6 +2988,7 @@ class NodePoolArgs:
                  max_pods_constraint: Optional[pulumi.Input['MaxPodsConstraintArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NodeNetworkConfigArgs']] = None,
+                 placement_policy: Optional[pulumi.Input['PlacementPolicyArgs']] = None,
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -2959,6 +3002,7 @@ class NodePoolArgs:
         :param pulumi.Input['MaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of the node pool.
         :param pulumi.Input['NodeNetworkConfigArgs'] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        :param pulumi.Input['PlacementPolicyArgs'] placement_policy: Specifies the node placement policy.
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
@@ -2980,6 +3024,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "name", name)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
+        if placement_policy is not None:
+            pulumi.set(__self__, "placement_policy", placement_policy)
         if upgrade_settings is not None:
             pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
@@ -3094,6 +3140,18 @@ class NodePoolArgs:
         pulumi.set(self, "network_config", value)
 
     @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> Optional[pulumi.Input['PlacementPolicyArgs']]:
+        """
+        Specifies the node placement policy.
+        """
+        return pulumi.get(self, "placement_policy")
+
+    @placement_policy.setter
+    def placement_policy(self, value: Optional[pulumi.Input['PlacementPolicyArgs']]):
+        pulumi.set(self, "placement_policy", value)
+
+    @property
     @pulumi.getter(name="upgradeSettings")
     def upgrade_settings(self) -> Optional[pulumi.Input['UpgradeSettingsArgs']]:
         """
@@ -3196,6 +3254,30 @@ class NotificationConfigArgs:
     @pubsub.setter
     def pubsub(self, value: Optional[pulumi.Input['PubSubArgs']]):
         pulumi.set(self, "pubsub", value)
+
+
+@pulumi.input_type
+class PlacementPolicyArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input['PlacementPolicyType']] = None):
+        """
+        PlacementPolicy defines the placement policy used by the node pool.
+        :param pulumi.Input['PlacementPolicyType'] type: The type of placement.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['PlacementPolicyType']]:
+        """
+        The type of placement.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['PlacementPolicyType']]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

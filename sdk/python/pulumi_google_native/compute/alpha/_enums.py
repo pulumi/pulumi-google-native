@@ -699,6 +699,10 @@ class BackendServiceLocalityLbPolicy(str, Enum):
     """
     This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
     """
+    WEIGHTED_MAGLEV = "WEIGHTED_MAGLEV"
+    """
+    Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+    """
 
 
 class BackendServiceProtocol(str, Enum):
@@ -2298,6 +2302,10 @@ class RegionBackendServiceLocalityLbPolicy(str, Enum):
     ROUND_ROBIN = "ROUND_ROBIN"
     """
     This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
+    """
+    WEIGHTED_MAGLEV = "WEIGHTED_MAGLEV"
+    """
+    Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
     """
 
 

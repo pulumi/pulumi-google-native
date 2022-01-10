@@ -48,6 +48,8 @@ type LookupNodePoolResult struct {
 	Name string `pulumi:"name"`
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig NodeNetworkConfigResponse `pulumi:"networkConfig"`
+	// Specifies the node placement policy.
+	PlacementPolicy PlacementPolicyResponse `pulumi:"placementPolicy"`
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize int `pulumi:"podIpv4CidrSize"`
 	// [Output only] Server-defined URL for the resource.
@@ -142,6 +144,11 @@ func (o LookupNodePoolResultOutput) Name() pulumi.StringOutput {
 // Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 func (o LookupNodePoolResultOutput) NetworkConfig() NodeNetworkConfigResponseOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) NodeNetworkConfigResponse { return v.NetworkConfig }).(NodeNetworkConfigResponseOutput)
+}
+
+// Specifies the node placement policy.
+func (o LookupNodePoolResultOutput) PlacementPolicy() PlacementPolicyResponseOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) PlacementPolicyResponse { return v.PlacementPolicy }).(PlacementPolicyResponseOutput)
 }
 
 // [Output only] The pod CIDR block size per node in this node pool.

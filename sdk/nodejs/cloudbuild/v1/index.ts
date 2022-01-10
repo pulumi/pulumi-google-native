@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./bitbucketServerConfig";
 export * from "./build";
+export * from "./getBitbucketServerConfig";
 export * from "./getBuild";
 export * from "./getGithubEnterpriseConfig";
 export * from "./getTrigger";
@@ -18,6 +20,7 @@ export * from "./workerPool";
 export * from "../../types/enums/cloudbuild/v1";
 
 // Import resources to register:
+import { BitbucketServerConfig } from "./bitbucketServerConfig";
 import { Build } from "./build";
 import { GithubEnterpriseConfig } from "./githubEnterpriseConfig";
 import { Trigger } from "./trigger";
@@ -27,6 +30,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:cloudbuild/v1:BitbucketServerConfig":
+                return new BitbucketServerConfig(name, <any>undefined, { urn })
             case "google-native:cloudbuild/v1:Build":
                 return new Build(name, <any>undefined, { urn })
             case "google-native:cloudbuild/v1:GithubEnterpriseConfig":

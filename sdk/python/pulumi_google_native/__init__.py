@@ -632,6 +632,7 @@ _utilities.register(
   "mod": "cloudbuild/v1",
   "fqn": "pulumi_google_native.cloudbuild.v1",
   "classes": {
+   "google-native:cloudbuild/v1:BitbucketServerConfig": "BitbucketServerConfig",
    "google-native:cloudbuild/v1:Build": "Build",
    "google-native:cloudbuild/v1:GithubEnterpriseConfig": "GithubEnterpriseConfig",
    "google-native:cloudbuild/v1:Trigger": "Trigger",
@@ -1613,6 +1614,7 @@ _utilities.register(
   "mod": "eventarc/v1",
   "fqn": "pulumi_google_native.eventarc.v1",
   "classes": {
+   "google-native:eventarc/v1:ChannelConnectionIamPolicy": "ChannelConnectionIamPolicy",
    "google-native:eventarc/v1:ChannelIamPolicy": "ChannelIamPolicy",
    "google-native:eventarc/v1:Trigger": "Trigger",
    "google-native:eventarc/v1:TriggerIamPolicy": "TriggerIamPolicy"
@@ -2116,7 +2118,6 @@ _utilities.register(
   "classes": {
    "google-native:networkservices/v1beta1:EndpointPolicy": "EndpointPolicy",
    "google-native:networkservices/v1beta1:EndpointPolicyIamPolicy": "EndpointPolicyIamPolicy",
-   "google-native:networkservices/v1beta1:ServiceBinding": "ServiceBinding",
    "google-native:networkservices/v1beta1:ServiceBindingIamPolicy": "ServiceBindingIamPolicy"
   }
  },

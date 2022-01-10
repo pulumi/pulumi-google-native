@@ -57,6 +57,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.NodeNetworkConfigResponse NetworkConfig;
         /// <summary>
+        /// Specifies the node placement policy.
+        /// </summary>
+        public readonly Outputs.PlacementPolicyResponse PlacementPolicy;
+        /// <summary>
         /// [Output only] The pod CIDR block size per node in this node pool.
         /// </summary>
         public readonly int PodIpv4CidrSize;
@@ -99,6 +103,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             Outputs.NodeNetworkConfigResponse networkConfig,
 
+            Outputs.PlacementPolicyResponse placementPolicy,
+
             int podIpv4CidrSize,
 
             string selfLink,
@@ -119,6 +125,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             MaxPodsConstraint = maxPodsConstraint;
             Name = name;
             NetworkConfig = networkConfig;
+            PlacementPolicy = placementPolicy;
             PodIpv4CidrSize = podIpv4CidrSize;
             SelfLink = selfLink;
             Status = status;

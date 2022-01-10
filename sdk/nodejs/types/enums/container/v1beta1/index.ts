@@ -345,6 +345,22 @@ export const NodeTaintEffect = {
  */
 export type NodeTaintEffect = (typeof NodeTaintEffect)[keyof typeof NodeTaintEffect];
 
+export const PlacementPolicyType = {
+    /**
+     * TYPE_UNSPECIFIED specifies no requirements on nodes placement.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * COMPACT specifies node placement in the same availability domain to ensure low communication latency.
+     */
+    Compact: "COMPACT",
+} as const;
+
+/**
+ * The type of placement.
+ */
+export type PlacementPolicyType = (typeof PlacementPolicyType)[keyof typeof PlacementPolicyType];
+
 export const ReleaseChannelChannel = {
     /**
      * No channel specified.

@@ -19,7 +19,7 @@ type Topic struct {
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 7 days or less than 10 minutes.
+	// Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
 	MessageRetentionDuration pulumi.StringOutput `pulumi:"messageRetentionDuration"`
 	// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
 	MessageStoragePolicy MessageStoragePolicyResponseOutput `pulumi:"messageStoragePolicy"`
@@ -77,7 +77,7 @@ type topicArgs struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
 	Labels map[string]string `pulumi:"labels"`
-	// Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 7 days or less than 10 minutes.
+	// Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
 	MessageRetentionDuration *string `pulumi:"messageRetentionDuration"`
 	// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
 	MessageStoragePolicy *MessageStoragePolicy `pulumi:"messageStoragePolicy"`
@@ -97,7 +97,7 @@ type TopicArgs struct {
 	KmsKeyName pulumi.StringPtrInput
 	// See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
 	Labels pulumi.StringMapInput
-	// Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 7 days or less than 10 minutes.
+	// Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
 	MessageRetentionDuration pulumi.StringPtrInput
 	// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
 	MessageStoragePolicy MessageStoragePolicyPtrInput

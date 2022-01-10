@@ -1923,7 +1923,7 @@ func (in *pullRequestFilterCommentControlPtr) ToPullRequestFilterCommentControlP
 	return pulumi.ToOutputWithContext(ctx, in).(PullRequestFilterCommentControlPtrOutput)
 }
 
-// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+// EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
 type TriggerEventType string
 
 const (

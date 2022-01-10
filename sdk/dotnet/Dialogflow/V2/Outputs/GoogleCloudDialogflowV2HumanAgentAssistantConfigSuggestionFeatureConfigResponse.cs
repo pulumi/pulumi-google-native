@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse ConversationModelConfig;
         /// <summary>
+        /// Configs for processing conversation.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponse ConversationProcessConfig;
+        /// <summary>
         /// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
         /// </summary>
         public readonly bool EnableEventBasedSuggestion;
@@ -41,6 +45,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
         private GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponse(
             Outputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse conversationModelConfig,
 
+            Outputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponse conversationProcessConfig,
+
             bool enableEventBasedSuggestion,
 
             Outputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponse queryConfig,
@@ -50,6 +56,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
             Outputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponse suggestionTriggerSettings)
         {
             ConversationModelConfig = conversationModelConfig;
+            ConversationProcessConfig = conversationProcessConfig;
             EnableEventBasedSuggestion = enableEventBasedSuggestion;
             QueryConfig = queryConfig;
             SuggestionFeature = suggestionFeature;

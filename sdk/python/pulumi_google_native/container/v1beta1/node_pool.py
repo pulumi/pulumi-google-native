@@ -28,6 +28,7 @@ class NodePoolInitArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NodeNetworkConfigArgs']] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 placement_policy: Optional[pulumi.Input['PlacementPolicyArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
@@ -43,6 +44,7 @@ class NodePoolInitArgs:
         :param pulumi.Input[str] name: The name of the node pool.
         :param pulumi.Input['NodeNetworkConfigArgs'] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[str] parent: The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
+        :param pulumi.Input['PlacementPolicyArgs'] placement_policy: Specifies the node placement policy.
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
@@ -69,6 +71,8 @@ class NodePoolInitArgs:
             pulumi.set(__self__, "network_config", network_config)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if placement_policy is not None:
+            pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if upgrade_settings is not None:
@@ -215,6 +219,18 @@ class NodePoolInitArgs:
         pulumi.set(self, "parent", value)
 
     @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> Optional[pulumi.Input['PlacementPolicyArgs']]:
+        """
+        Specifies the node placement policy.
+        """
+        return pulumi.get(self, "placement_policy")
+
+    @placement_policy.setter
+    def placement_policy(self, value: Optional[pulumi.Input['PlacementPolicyArgs']]):
+        pulumi.set(self, "placement_policy", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -265,6 +281,7 @@ class NodePool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 placement_policy: Optional[pulumi.Input[pulumi.InputType['PlacementPolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -284,6 +301,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the node pool.
         :param pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[str] parent: The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
+        :param pulumi.Input[pulumi.InputType['PlacementPolicyArgs']] placement_policy: Specifies the node placement policy.
         :param pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
@@ -323,6 +341,7 @@ class NodePool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 placement_policy: Optional[pulumi.Input[pulumi.InputType['PlacementPolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -352,6 +371,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["placement_policy"] = placement_policy
             __props__.__dict__["project"] = project
             __props__.__dict__["upgrade_settings"] = upgrade_settings
             __props__.__dict__["version"] = version
@@ -391,6 +411,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["max_pods_constraint"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_config"] = None
+        __props__.__dict__["placement_policy"] = None
         __props__.__dict__["pod_ipv4_cidr_size"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["status"] = None
@@ -477,6 +498,14 @@ class NodePool(pulumi.CustomResource):
         Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         """
         return pulumi.get(self, "network_config")
+
+    @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> pulumi.Output['outputs.PlacementPolicyResponse']:
+        """
+        Specifies the node placement policy.
+        """
+        return pulumi.get(self, "placement_policy")
 
     @property
     @pulumi.getter(name="podIpv4CidrSize")

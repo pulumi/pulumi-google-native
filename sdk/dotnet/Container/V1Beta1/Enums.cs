@@ -708,6 +708,43 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
     }
 
     /// <summary>
+    /// The type of placement.
+    /// </summary>
+    [EnumType]
+    public readonly struct PlacementPolicyType : IEquatable<PlacementPolicyType>
+    {
+        private readonly string _value;
+
+        private PlacementPolicyType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// TYPE_UNSPECIFIED specifies no requirements on nodes placement.
+        /// </summary>
+        public static PlacementPolicyType TypeUnspecified { get; } = new PlacementPolicyType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// COMPACT specifies node placement in the same availability domain to ensure low communication latency.
+        /// </summary>
+        public static PlacementPolicyType Compact { get; } = new PlacementPolicyType("COMPACT");
+
+        public static bool operator ==(PlacementPolicyType left, PlacementPolicyType right) => left.Equals(right);
+        public static bool operator !=(PlacementPolicyType left, PlacementPolicyType right) => !left.Equals(right);
+
+        public static explicit operator string(PlacementPolicyType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PlacementPolicyType other && Equals(other);
+        public bool Equals(PlacementPolicyType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// channel specifies which release channel the cluster is subscribed to.
     /// </summary>
     [EnumType]

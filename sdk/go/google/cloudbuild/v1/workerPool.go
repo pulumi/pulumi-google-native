@@ -28,7 +28,7 @@ type WorkerPool struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Private Pool using a v1 configuration.
+	// Legacy Private Pool configuration.
 	PrivatePoolV1Config PrivatePoolV1ConfigResponseOutput `pulumi:"privatePoolV1Config"`
 	// `WorkerPool` state.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -85,7 +85,7 @@ type workerPoolArgs struct {
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
 	DisplayName *string `pulumi:"displayName"`
 	Location    *string `pulumi:"location"`
-	// Private Pool using a v1 configuration.
+	// Legacy Private Pool configuration.
 	PrivatePoolV1Config *PrivatePoolV1Config `pulumi:"privatePoolV1Config"`
 	Project             *string              `pulumi:"project"`
 	ValidateOnly        *string              `pulumi:"validateOnly"`
@@ -99,7 +99,7 @@ type WorkerPoolArgs struct {
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
 	DisplayName pulumi.StringPtrInput
 	Location    pulumi.StringPtrInput
-	// Private Pool using a v1 configuration.
+	// Legacy Private Pool configuration.
 	PrivatePoolV1Config PrivatePoolV1ConfigPtrInput
 	Project             pulumi.StringPtrInput
 	ValidateOnly        pulumi.StringPtrInput

@@ -167,8 +167,8 @@ class CloudRunArgs:
         """
         Represents a Cloud Run destination.
         :param pulumi.Input[str] region: The region the Cloud Run service is deployed in.
-        :param pulumi.Input[str] service: The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
-        :param pulumi.Input[str] path: Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        :param pulumi.Input[str] service: The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project as the trigger object can be addressed.
+        :param pulumi.Input[str] path: Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         """
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "service", service)
@@ -191,7 +191,7 @@ class CloudRunArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[str]:
         """
-        The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+        The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project as the trigger object can be addressed.
         """
         return pulumi.get(self, "service")
 
@@ -203,7 +203,7 @@ class CloudRunArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         """
         return pulumi.get(self, "path")
 
@@ -220,7 +220,7 @@ class DestinationArgs:
         """
         Represents a target of an invocation over HTTP.
         :param pulumi.Input['CloudRunArgs'] cloud_run: Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
-        :param pulumi.Input['GKEArgs'] gke: A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+        :param pulumi.Input['GKEArgs'] gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         """
         if cloud_run is not None:
             pulumi.set(__self__, "cloud_run", cloud_run)
@@ -243,7 +243,7 @@ class DestinationArgs:
     @pulumi.getter
     def gke(self) -> Optional[pulumi.Input['GKEArgs']]:
         """
-        A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+        A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         """
         return pulumi.get(self, "gke")
 
@@ -373,10 +373,10 @@ class GKEArgs:
         """
         Represents a GKE destination.
         :param pulumi.Input[str] cluster: The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
-        :param pulumi.Input[str] location: The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+        :param pulumi.Input[str] location: The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         :param pulumi.Input[str] namespace: The namespace the GKE service is running in.
         :param pulumi.Input[str] service: Name of the GKE service.
-        :param pulumi.Input[str] path: Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        :param pulumi.Input[str] path: Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         """
         pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "location", location)
@@ -401,7 +401,7 @@ class GKEArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+        The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         """
         return pulumi.get(self, "location")
 
@@ -437,7 +437,7 @@ class GKEArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         """
         return pulumi.get(self, "path")
 
@@ -452,7 +452,7 @@ class PubsubArgs:
                  topic: Optional[pulumi.Input[str]] = None):
         """
         Represents a Pub/Sub transport.
-        :param pulumi.Input[str] topic: Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+        :param pulumi.Input[str] topic: Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
         """
         if topic is not None:
             pulumi.set(__self__, "topic", topic)
@@ -461,7 +461,7 @@ class PubsubArgs:
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+        Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
         """
         return pulumi.get(self, "topic")
 
@@ -475,8 +475,8 @@ class TransportArgs:
     def __init__(__self__, *,
                  pubsub: Optional[pulumi.Input['PubsubArgs']] = None):
         """
-        Represents the transport intermediaries created for the trigger in order to deliver events.
-        :param pulumi.Input['PubsubArgs'] pubsub: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+        Represents the transport intermediaries created for the trigger to deliver events.
+        :param pulumi.Input['PubsubArgs'] pubsub: The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
         """
         if pubsub is not None:
             pulumi.set(__self__, "pubsub", pubsub)
@@ -485,7 +485,7 @@ class TransportArgs:
     @pulumi.getter
     def pubsub(self) -> Optional[pulumi.Input['PubsubArgs']]:
         """
-        The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+        The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
         """
         return pulumi.get(self, "pubsub")
 

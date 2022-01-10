@@ -22,6 +22,7 @@ __all__ = [
     'NetworkConfigPrivateIpv6GoogleAccess',
     'NetworkPolicyProvider',
     'NodeTaintEffect',
+    'PlacementPolicyType',
     'ReleaseChannelChannel',
     'ReservationAffinityConsumeReservationType',
     'SandboxConfigType',
@@ -337,6 +338,20 @@ class NodeTaintEffect(str, Enum):
     NO_EXECUTE = "NO_EXECUTE"
     """
     NoExecute
+    """
+
+
+class PlacementPolicyType(str, Enum):
+    """
+    The type of placement.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    TYPE_UNSPECIFIED specifies no requirements on nodes placement.
+    """
+    COMPACT = "COMPACT"
+    """
+    COMPACT specifies node placement in the same availability domain to ensure low communication latency.
     """
 
 

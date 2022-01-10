@@ -35,6 +35,8 @@ type NodePool struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig NodeNetworkConfigResponseOutput `pulumi:"networkConfig"`
+	// Specifies the node placement policy.
+	PlacementPolicy PlacementPolicyResponseOutput `pulumi:"placementPolicy"`
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize pulumi.IntOutput `pulumi:"podIpv4CidrSize"`
 	// [Output only] Server-defined URL for the resource.
@@ -110,8 +112,10 @@ type nodePoolArgs struct {
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig *NodeNetworkConfig `pulumi:"networkConfig"`
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-	Parent  *string `pulumi:"parent"`
-	Project *string `pulumi:"project"`
+	Parent *string `pulumi:"parent"`
+	// Specifies the node placement policy.
+	PlacementPolicy *PlacementPolicy `pulumi:"placementPolicy"`
+	Project         *string          `pulumi:"project"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -141,8 +145,10 @@ type NodePoolArgs struct {
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig NodeNetworkConfigPtrInput
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-	Parent  pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Parent pulumi.StringPtrInput
+	// Specifies the node placement policy.
+	PlacementPolicy PlacementPolicyPtrInput
+	Project         pulumi.StringPtrInput
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput
 	// The version of the Kubernetes of this node.

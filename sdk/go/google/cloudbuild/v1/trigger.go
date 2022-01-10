@@ -19,6 +19,8 @@ type Trigger struct {
 	ApprovalConfig ApprovalConfigResponseOutput `pulumi:"approvalConfig"`
 	// Autodetect build configuration. The following precedence is used (case insensitive): 1. cloudbuild.yaml 2. cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available for GitHub App Triggers.
 	Autodetect pulumi.BoolOutput `pulumi:"autodetect"`
+	// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+	BitbucketServerTriggerConfig BitbucketServerTriggerConfigResponseOutput `pulumi:"bitbucketServerTriggerConfig"`
 	// Contents of the build template.
 	Build BuildResponseOutput `pulumi:"build"`
 	// Time when the trigger was created.
@@ -27,7 +29,7 @@ type Trigger struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// If true, the trigger will never automatically execute a build.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
-	// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+	// EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
 	EventType pulumi.StringOutput `pulumi:"eventType"`
 	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename pulumi.StringOutput `pulumi:"filename"`
@@ -107,13 +109,15 @@ type triggerArgs struct {
 	ApprovalConfig *ApprovalConfig `pulumi:"approvalConfig"`
 	// Autodetect build configuration. The following precedence is used (case insensitive): 1. cloudbuild.yaml 2. cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available for GitHub App Triggers.
 	Autodetect *bool `pulumi:"autodetect"`
+	// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+	BitbucketServerTriggerConfig *BitbucketServerTriggerConfig `pulumi:"bitbucketServerTriggerConfig"`
 	// Contents of the build template.
 	Build *BuildType `pulumi:"build"`
 	// Human-readable description of this trigger.
 	Description *string `pulumi:"description"`
 	// If true, the trigger will never automatically execute a build.
 	Disabled *bool `pulumi:"disabled"`
-	// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+	// EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
 	EventType *TriggerEventType `pulumi:"eventType"`
 	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename *string `pulumi:"filename"`
@@ -156,13 +160,15 @@ type TriggerArgs struct {
 	ApprovalConfig ApprovalConfigPtrInput
 	// Autodetect build configuration. The following precedence is used (case insensitive): 1. cloudbuild.yaml 2. cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available for GitHub App Triggers.
 	Autodetect pulumi.BoolPtrInput
+	// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+	BitbucketServerTriggerConfig BitbucketServerTriggerConfigPtrInput
 	// Contents of the build template.
 	Build BuildTypePtrInput
 	// Human-readable description of this trigger.
 	Description pulumi.StringPtrInput
 	// If true, the trigger will never automatically execute a build.
 	Disabled pulumi.BoolPtrInput
-	// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+	// EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
 	EventType TriggerEventTypePtrInput
 	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename pulumi.StringPtrInput

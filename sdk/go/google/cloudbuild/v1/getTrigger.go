@@ -32,6 +32,8 @@ type LookupTriggerResult struct {
 	ApprovalConfig ApprovalConfigResponse `pulumi:"approvalConfig"`
 	// Autodetect build configuration. The following precedence is used (case insensitive): 1. cloudbuild.yaml 2. cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available for GitHub App Triggers.
 	Autodetect bool `pulumi:"autodetect"`
+	// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+	BitbucketServerTriggerConfig BitbucketServerTriggerConfigResponse `pulumi:"bitbucketServerTriggerConfig"`
 	// Contents of the build template.
 	Build BuildResponse `pulumi:"build"`
 	// Time when the trigger was created.
@@ -40,7 +42,7 @@ type LookupTriggerResult struct {
 	Description string `pulumi:"description"`
 	// If true, the trigger will never automatically execute a build.
 	Disabled bool `pulumi:"disabled"`
-	// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+	// EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
 	EventType string `pulumi:"eventType"`
 	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename string `pulumi:"filename"`
@@ -118,6 +120,13 @@ func (o LookupTriggerResultOutput) Autodetect() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTriggerResult) bool { return v.Autodetect }).(pulumi.BoolOutput)
 }
 
+// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+func (o LookupTriggerResultOutput) BitbucketServerTriggerConfig() BitbucketServerTriggerConfigResponseOutput {
+	return o.ApplyT(func(v LookupTriggerResult) BitbucketServerTriggerConfigResponse {
+		return v.BitbucketServerTriggerConfig
+	}).(BitbucketServerTriggerConfigResponseOutput)
+}
+
 // Contents of the build template.
 func (o LookupTriggerResultOutput) Build() BuildResponseOutput {
 	return o.ApplyT(func(v LookupTriggerResult) BuildResponse { return v.Build }).(BuildResponseOutput)
@@ -138,7 +147,7 @@ func (o LookupTriggerResultOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTriggerResult) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+// EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
 func (o LookupTriggerResultOutput) EventType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.EventType }).(pulumi.StringOutput)
 }

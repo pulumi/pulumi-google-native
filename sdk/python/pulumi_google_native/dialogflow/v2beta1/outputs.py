@@ -20,6 +20,7 @@ __all__ = [
     'GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse',
     'GoogleCloudDialogflowV2beta1FulfillmentResponse',
     'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigResponse',
+    'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse',
     'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigResponse',
     'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse',
     'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse',
@@ -490,6 +491,45 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConf
 
 
 @pulumi.output_type
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse(dict):
+    """
+    Config to process conversation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "recentSentencesCount":
+            suggest = "recent_sentences_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 recent_sentences_count: int):
+        """
+        Config to process conversation.
+        :param int recent_sentences_count: Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+        """
+        pulumi.set(__self__, "recent_sentences_count", recent_sentences_count)
+
+    @property
+    @pulumi.getter(name="recentSentencesCount")
+    def recent_sentences_count(self) -> int:
+        """
+        Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+        """
+        return pulumi.get(self, "recent_sentences_count")
+
+
+@pulumi.output_type
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigResponse(dict):
     """
     Configuration for analyses to run on each conversation message.
@@ -681,6 +721,8 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConf
         suggest = None
         if key == "conversationModelConfig":
             suggest = "conversation_model_config"
+        elif key == "conversationProcessConfig":
+            suggest = "conversation_process_config"
         elif key == "enableEventBasedSuggestion":
             suggest = "enable_event_based_suggestion"
         elif key == "queryConfig":
@@ -703,6 +745,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConf
 
     def __init__(__self__, *,
                  conversation_model_config: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigResponse',
+                 conversation_process_config: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse',
                  enable_event_based_suggestion: bool,
                  query_config: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse',
                  suggestion_feature: 'outputs.GoogleCloudDialogflowV2beta1SuggestionFeatureResponse',
@@ -710,12 +753,14 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConf
         """
         Config for suggestion features.
         :param 'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigResponse' conversation_model_config: Configs of custom conversation model.
+        :param 'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse' conversation_process_config: Configs for processing conversation.
         :param bool enable_event_based_suggestion: Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
         :param 'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse' query_config: Configs of query.
         :param 'GoogleCloudDialogflowV2beta1SuggestionFeatureResponse' suggestion_feature: The suggestion feature.
         :param 'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsResponse' suggestion_trigger_settings: Settings of suggestion trigger. Currently, only ARTICLE_SUGGESTION, FAQ, and DIALOGFLOW_ASSIST will use this field.
         """
         pulumi.set(__self__, "conversation_model_config", conversation_model_config)
+        pulumi.set(__self__, "conversation_process_config", conversation_process_config)
         pulumi.set(__self__, "enable_event_based_suggestion", enable_event_based_suggestion)
         pulumi.set(__self__, "query_config", query_config)
         pulumi.set(__self__, "suggestion_feature", suggestion_feature)
@@ -728,6 +773,14 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConf
         Configs of custom conversation model.
         """
         return pulumi.get(self, "conversation_model_config")
+
+    @property
+    @pulumi.getter(name="conversationProcessConfig")
+    def conversation_process_config(self) -> 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse':
+        """
+        Configs for processing conversation.
+        """
+        return pulumi.get(self, "conversation_process_config")
 
     @property
     @pulumi.getter(name="enableEventBasedSuggestion")

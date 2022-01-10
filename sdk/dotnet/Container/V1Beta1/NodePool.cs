@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<Outputs.NodeNetworkConfigResponse> NetworkConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the node placement policy.
+        /// </summary>
+        [Output("placementPolicy")]
+        public Output<Outputs.PlacementPolicyResponse> PlacementPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// [Output only] The pod CIDR block size per node in this node pool.
         /// </summary>
         [Output("podIpv4CidrSize")]
@@ -227,6 +233,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
+
+        /// <summary>
+        /// Specifies the node placement policy.
+        /// </summary>
+        [Input("placementPolicy")]
+        public Input<Inputs.PlacementPolicyArgs>? PlacementPolicy { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

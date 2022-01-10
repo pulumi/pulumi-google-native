@@ -9,9 +9,7 @@ export * from "./endpointPolicy";
 export * from "./endpointPolicyIamPolicy";
 export * from "./getEndpointPolicy";
 export * from "./getEndpointPolicyIamPolicy";
-export * from "./getServiceBinding";
 export * from "./getServiceBindingIamPolicy";
-export * from "./serviceBinding";
 export * from "./serviceBindingIamPolicy";
 
 // Export enums:
@@ -20,7 +18,6 @@ export * from "../../types/enums/networkservices/v1beta1";
 // Import resources to register:
 import { EndpointPolicy } from "./endpointPolicy";
 import { EndpointPolicyIamPolicy } from "./endpointPolicyIamPolicy";
-import { ServiceBinding } from "./serviceBinding";
 import { ServiceBindingIamPolicy } from "./serviceBindingIamPolicy";
 
 const _module = {
@@ -31,8 +28,6 @@ const _module = {
                 return new EndpointPolicy(name, <any>undefined, { urn })
             case "google-native:networkservices/v1beta1:EndpointPolicyIamPolicy":
                 return new EndpointPolicyIamPolicy(name, <any>undefined, { urn })
-            case "google-native:networkservices/v1beta1:ServiceBinding":
-                return new ServiceBinding(name, <any>undefined, { urn })
             case "google-native:networkservices/v1beta1:ServiceBindingIamPolicy":
                 return new ServiceBindingIamPolicy(name, <any>undefined, { urn })
             default:

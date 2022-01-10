@@ -27,7 +27,7 @@ class WorkerPoolArgs:
         The set of arguments for constructing a WorkerPool resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-        :param pulumi.Input['PrivatePoolV1ConfigArgs'] private_pool_v1_config: Private Pool using a v1 configuration.
+        :param pulumi.Input['PrivatePoolV1ConfigArgs'] private_pool_v1_config: Legacy Private Pool configuration.
         """
         pulumi.set(__self__, "worker_pool_id", worker_pool_id)
         if annotations is not None:
@@ -89,7 +89,7 @@ class WorkerPoolArgs:
     @pulumi.getter(name="privatePoolV1Config")
     def private_pool_v1_config(self) -> Optional[pulumi.Input['PrivatePoolV1ConfigArgs']]:
         """
-        Private Pool using a v1 configuration.
+        Legacy Private Pool configuration.
         """
         return pulumi.get(self, "private_pool_v1_config")
 
@@ -137,7 +137,7 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-        :param pulumi.Input[pulumi.InputType['PrivatePoolV1ConfigArgs']] private_pool_v1_config: Private Pool using a v1 configuration.
+        :param pulumi.Input[pulumi.InputType['PrivatePoolV1ConfigArgs']] private_pool_v1_config: Legacy Private Pool configuration.
         """
         ...
     @overload
@@ -285,7 +285,7 @@ class WorkerPool(pulumi.CustomResource):
     @pulumi.getter(name="privatePoolV1Config")
     def private_pool_v1_config(self) -> pulumi.Output['outputs.PrivatePoolV1ConfigResponse']:
         """
-        Private Pool using a v1 configuration.
+        Legacy Private Pool configuration.
         """
         return pulumi.get(self, "private_pool_v1_config")
 

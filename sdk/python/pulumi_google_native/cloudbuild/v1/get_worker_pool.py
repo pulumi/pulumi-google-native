@@ -102,7 +102,7 @@ class GetWorkerPoolResult:
     @pulumi.getter(name="privatePoolV1Config")
     def private_pool_v1_config(self) -> 'outputs.PrivatePoolV1ConfigResponse':
         """
-        Private Pool using a v1 configuration.
+        Legacy Private Pool configuration.
         """
         return pulumi.get(self, "private_pool_v1_config")
 

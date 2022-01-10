@@ -61,7 +61,7 @@ export class WorkerPool extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Private Pool using a v1 configuration.
+     * Legacy Private Pool configuration.
      */
     public readonly privatePoolV1Config!: pulumi.Output<outputs.cloudbuild.v1.PrivatePoolV1ConfigResponse>;
     /**
@@ -138,7 +138,7 @@ export interface WorkerPoolArgs {
     displayName?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
-     * Private Pool using a v1 configuration.
+     * Legacy Private Pool configuration.
      */
     privatePoolV1Config?: pulumi.Input<inputs.cloudbuild.v1.PrivatePoolV1ConfigArgs>;
     project?: pulumi.Input<string>;

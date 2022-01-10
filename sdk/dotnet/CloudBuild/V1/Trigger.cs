@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<bool> Autodetect { get; private set; } = null!;
 
         /// <summary>
+        /// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        /// </summary>
+        [Output("bitbucketServerTriggerConfig")]
+        public Output<Outputs.BitbucketServerTriggerConfigResponse> BitbucketServerTriggerConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Contents of the build template.
         /// </summary>
         [Output("build")]
@@ -52,7 +58,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<bool> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+        /// EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
         /// </summary>
         [Output("eventType")]
         public Output<string> EventType { get; private set; } = null!;
@@ -205,6 +211,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Input<bool>? Autodetect { get; set; }
 
         /// <summary>
+        /// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        /// </summary>
+        [Input("bitbucketServerTriggerConfig")]
+        public Input<Inputs.BitbucketServerTriggerConfigArgs>? BitbucketServerTriggerConfig { get; set; }
+
+        /// <summary>
         /// Contents of the build template.
         /// </summary>
         [Input("build")]
@@ -223,7 +235,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+        /// EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
         /// </summary>
         [Input("eventType")]
         public Input<Pulumi.GoogleNative.CloudBuild.V1.TriggerEventType>? EventType { get; set; }

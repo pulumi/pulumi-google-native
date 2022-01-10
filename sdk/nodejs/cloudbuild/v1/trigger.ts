@@ -44,6 +44,10 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly autodetect!: pulumi.Output<boolean>;
     /**
+     * BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+     */
+    public readonly bitbucketServerTriggerConfig!: pulumi.Output<outputs.cloudbuild.v1.BitbucketServerTriggerConfigResponse>;
+    /**
      * Contents of the build template.
      */
     public readonly build!: pulumi.Output<outputs.cloudbuild.v1.BuildResponse>;
@@ -60,7 +64,7 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
-     * Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+     * EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
      */
     public readonly eventType!: pulumi.Output<string>;
     /**
@@ -140,6 +144,7 @@ export class Trigger extends pulumi.CustomResource {
             }
             resourceInputs["approvalConfig"] = args ? args.approvalConfig : undefined;
             resourceInputs["autodetect"] = args ? args.autodetect : undefined;
+            resourceInputs["bitbucketServerTriggerConfig"] = args ? args.bitbucketServerTriggerConfig : undefined;
             resourceInputs["build"] = args ? args.build : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
@@ -166,6 +171,7 @@ export class Trigger extends pulumi.CustomResource {
         } else {
             resourceInputs["approvalConfig"] = undefined /*out*/;
             resourceInputs["autodetect"] = undefined /*out*/;
+            resourceInputs["bitbucketServerTriggerConfig"] = undefined /*out*/;
             resourceInputs["build"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -207,6 +213,10 @@ export interface TriggerArgs {
      */
     autodetect?: pulumi.Input<boolean>;
     /**
+     * BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+     */
+    bitbucketServerTriggerConfig?: pulumi.Input<inputs.cloudbuild.v1.BitbucketServerTriggerConfigArgs>;
+    /**
      * Contents of the build template.
      */
     build?: pulumi.Input<inputs.cloudbuild.v1.BuildArgs>;
@@ -219,7 +229,7 @@ export interface TriggerArgs {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+     * EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
      */
     eventType?: pulumi.Input<enums.cloudbuild.v1.TriggerEventType>;
     /**

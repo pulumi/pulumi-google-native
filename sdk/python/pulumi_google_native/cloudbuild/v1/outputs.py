@@ -15,6 +15,10 @@ __all__ = [
     'ApprovalResultResponse',
     'ArtifactObjectsResponse',
     'ArtifactsResponse',
+    'BitbucketServerConfigResponse',
+    'BitbucketServerRepositoryIdResponse',
+    'BitbucketServerSecretsResponse',
+    'BitbucketServerTriggerConfigResponse',
     'BuildApprovalResponse',
     'BuildOptionsResponse',
     'BuildResponse',
@@ -247,6 +251,388 @@ class ArtifactsResponse(dict):
         A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
         """
         return pulumi.get(self, "objects")
+
+
+@pulumi.output_type
+class BitbucketServerConfigResponse(dict):
+    """
+    BitbucketServerConfig represents the configuration for a Bitbucket Server.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKey":
+            suggest = "api_key"
+        elif key == "connectedRepositories":
+            suggest = "connected_repositories"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "hostUri":
+            suggest = "host_uri"
+        elif key == "peeredNetwork":
+            suggest = "peered_network"
+        elif key == "sslCa":
+            suggest = "ssl_ca"
+        elif key == "webhookKey":
+            suggest = "webhook_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BitbucketServerConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BitbucketServerConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BitbucketServerConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key: str,
+                 connected_repositories: Sequence['outputs.BitbucketServerRepositoryIdResponse'],
+                 create_time: str,
+                 host_uri: str,
+                 name: str,
+                 peered_network: str,
+                 secrets: 'outputs.BitbucketServerSecretsResponse',
+                 ssl_ca: str,
+                 username: str,
+                 webhook_key: str):
+        """
+        BitbucketServerConfig represents the configuration for a Bitbucket Server.
+        :param str api_key: Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+        :param Sequence['BitbucketServerRepositoryIdResponse'] connected_repositories: Connected Bitbucket Server repositories for this config.
+        :param str create_time: Time when the config was created.
+        :param str host_uri: Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+        :param str name: The resource name for the config.
+        :param str peered_network: Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+        :param 'BitbucketServerSecretsResponse' secrets: Secret Manager secrets needed by the config.
+        :param str ssl_ca: Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+        :param str username: Username of the account Cloud Build will use on Bitbucket Server.
+        :param str webhook_key: UUID included in webhook requests. The UUID is used to look up the corresponding config.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        pulumi.set(__self__, "connected_repositories", connected_repositories)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "host_uri", host_uri)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "peered_network", peered_network)
+        pulumi.set(__self__, "secrets", secrets)
+        pulumi.set(__self__, "ssl_ca", ssl_ca)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "webhook_key", webhook_key)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        """
+        Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter(name="connectedRepositories")
+    def connected_repositories(self) -> Sequence['outputs.BitbucketServerRepositoryIdResponse']:
+        """
+        Connected Bitbucket Server repositories for this config.
+        """
+        return pulumi.get(self, "connected_repositories")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Time when the config was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="hostUri")
+    def host_uri(self) -> str:
+        """
+        Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+        """
+        return pulumi.get(self, "host_uri")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name for the config.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="peeredNetwork")
+    def peered_network(self) -> str:
+        """
+        Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+        """
+        return pulumi.get(self, "peered_network")
+
+    @property
+    @pulumi.getter
+    def secrets(self) -> 'outputs.BitbucketServerSecretsResponse':
+        """
+        Secret Manager secrets needed by the config.
+        """
+        return pulumi.get(self, "secrets")
+
+    @property
+    @pulumi.getter(name="sslCa")
+    def ssl_ca(self) -> str:
+        """
+        Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+        """
+        return pulumi.get(self, "ssl_ca")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Username of the account Cloud Build will use on Bitbucket Server.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="webhookKey")
+    def webhook_key(self) -> str:
+        """
+        UUID included in webhook requests. The UUID is used to look up the corresponding config.
+        """
+        return pulumi.get(self, "webhook_key")
+
+
+@pulumi.output_type
+class BitbucketServerRepositoryIdResponse(dict):
+    """
+    BitbucketServerRepositoryId identifies a specific repository hosted on a Bitbucket Server.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectKey":
+            suggest = "project_key"
+        elif key == "repoSlug":
+            suggest = "repo_slug"
+        elif key == "webhookId":
+            suggest = "webhook_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BitbucketServerRepositoryIdResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BitbucketServerRepositoryIdResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BitbucketServerRepositoryIdResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_key: str,
+                 repo_slug: str,
+                 webhook_id: int):
+        """
+        BitbucketServerRepositoryId identifies a specific repository hosted on a Bitbucket Server.
+        :param str project_key: Identifier for the project storing the repository.
+        :param str repo_slug: Identifier for the repository.
+        :param int webhook_id: The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo.
+        """
+        pulumi.set(__self__, "project_key", project_key)
+        pulumi.set(__self__, "repo_slug", repo_slug)
+        pulumi.set(__self__, "webhook_id", webhook_id)
+
+    @property
+    @pulumi.getter(name="projectKey")
+    def project_key(self) -> str:
+        """
+        Identifier for the project storing the repository.
+        """
+        return pulumi.get(self, "project_key")
+
+    @property
+    @pulumi.getter(name="repoSlug")
+    def repo_slug(self) -> str:
+        """
+        Identifier for the repository.
+        """
+        return pulumi.get(self, "repo_slug")
+
+    @property
+    @pulumi.getter(name="webhookId")
+    def webhook_id(self) -> int:
+        """
+        The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo.
+        """
+        return pulumi.get(self, "webhook_id")
+
+
+@pulumi.output_type
+class BitbucketServerSecretsResponse(dict):
+    """
+    BitbucketServerSecrets represents the secrets in Secret Manager for a Bitbucket Server.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminAccessTokenVersionName":
+            suggest = "admin_access_token_version_name"
+        elif key == "readAccessTokenVersionName":
+            suggest = "read_access_token_version_name"
+        elif key == "webhookSecretVersionName":
+            suggest = "webhook_secret_version_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BitbucketServerSecretsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BitbucketServerSecretsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BitbucketServerSecretsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_access_token_version_name: str,
+                 read_access_token_version_name: str,
+                 webhook_secret_version_name: str):
+        """
+        BitbucketServerSecrets represents the secrets in Secret Manager for a Bitbucket Server.
+        :param str admin_access_token_version_name: The resource name for the admin access token's secret version.
+        :param str read_access_token_version_name: The resource name for the read access token's secret version.
+        :param str webhook_secret_version_name: Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+        """
+        pulumi.set(__self__, "admin_access_token_version_name", admin_access_token_version_name)
+        pulumi.set(__self__, "read_access_token_version_name", read_access_token_version_name)
+        pulumi.set(__self__, "webhook_secret_version_name", webhook_secret_version_name)
+
+    @property
+    @pulumi.getter(name="adminAccessTokenVersionName")
+    def admin_access_token_version_name(self) -> str:
+        """
+        The resource name for the admin access token's secret version.
+        """
+        return pulumi.get(self, "admin_access_token_version_name")
+
+    @property
+    @pulumi.getter(name="readAccessTokenVersionName")
+    def read_access_token_version_name(self) -> str:
+        """
+        The resource name for the read access token's secret version.
+        """
+        return pulumi.get(self, "read_access_token_version_name")
+
+    @property
+    @pulumi.getter(name="webhookSecretVersionName")
+    def webhook_secret_version_name(self) -> str:
+        """
+        Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+        """
+        return pulumi.get(self, "webhook_secret_version_name")
+
+
+@pulumi.output_type
+class BitbucketServerTriggerConfigResponse(dict):
+    """
+    BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bitbucketServerConfig":
+            suggest = "bitbucket_server_config"
+        elif key == "bitbucketServerConfigResource":
+            suggest = "bitbucket_server_config_resource"
+        elif key == "projectKey":
+            suggest = "project_key"
+        elif key == "pullRequest":
+            suggest = "pull_request"
+        elif key == "repoSlug":
+            suggest = "repo_slug"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BitbucketServerTriggerConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BitbucketServerTriggerConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BitbucketServerTriggerConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bitbucket_server_config: 'outputs.BitbucketServerConfigResponse',
+                 bitbucket_server_config_resource: str,
+                 project_key: str,
+                 pull_request: 'outputs.PullRequestFilterResponse',
+                 push: 'outputs.PushFilterResponse',
+                 repo_slug: str):
+        """
+        BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        :param 'BitbucketServerConfigResponse' bitbucket_server_config: The BitbucketServerConfig specified in the bitbucket_server_config_resource field.
+        :param str bitbucket_server_config_resource: The Bitbucket server config resource that this trigger config maps to.
+        :param str project_key: Key of the project that the repo is in. For example: The key for http://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+        :param 'PullRequestFilterResponse' pull_request: Filter to match changes in pull requests.
+        :param 'PushFilterResponse' push: Filter to match changes in refs like branches, tags.
+        :param str repo_slug: Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL. For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in http://mybitbucket.server/projects/TEST/repos/test-repo.
+        """
+        pulumi.set(__self__, "bitbucket_server_config", bitbucket_server_config)
+        pulumi.set(__self__, "bitbucket_server_config_resource", bitbucket_server_config_resource)
+        pulumi.set(__self__, "project_key", project_key)
+        pulumi.set(__self__, "pull_request", pull_request)
+        pulumi.set(__self__, "push", push)
+        pulumi.set(__self__, "repo_slug", repo_slug)
+
+    @property
+    @pulumi.getter(name="bitbucketServerConfig")
+    def bitbucket_server_config(self) -> 'outputs.BitbucketServerConfigResponse':
+        """
+        The BitbucketServerConfig specified in the bitbucket_server_config_resource field.
+        """
+        return pulumi.get(self, "bitbucket_server_config")
+
+    @property
+    @pulumi.getter(name="bitbucketServerConfigResource")
+    def bitbucket_server_config_resource(self) -> str:
+        """
+        The Bitbucket server config resource that this trigger config maps to.
+        """
+        return pulumi.get(self, "bitbucket_server_config_resource")
+
+    @property
+    @pulumi.getter(name="projectKey")
+    def project_key(self) -> str:
+        """
+        Key of the project that the repo is in. For example: The key for http://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+        """
+        return pulumi.get(self, "project_key")
+
+    @property
+    @pulumi.getter(name="pullRequest")
+    def pull_request(self) -> 'outputs.PullRequestFilterResponse':
+        """
+        Filter to match changes in pull requests.
+        """
+        return pulumi.get(self, "pull_request")
+
+    @property
+    @pulumi.getter
+    def push(self) -> 'outputs.PushFilterResponse':
+        """
+        Filter to match changes in refs like branches, tags.
+        """
+        return pulumi.get(self, "push")
+
+    @property
+    @pulumi.getter(name="repoSlug")
+    def repo_slug(self) -> str:
+        """
+        Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL. For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in http://mybitbucket.server/projects/TEST/repos/test-repo.
+        """
+        return pulumi.get(self, "repo_slug")
 
 
 @pulumi.output_type

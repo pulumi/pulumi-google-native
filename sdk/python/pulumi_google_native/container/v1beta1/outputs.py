@@ -38,6 +38,7 @@ __all__ = [
     'GcePersistentDiskCsiDriverConfigResponse',
     'GcfsConfigResponse',
     'GcpFilestoreCsiDriverConfigResponse',
+    'GkeBackupAgentConfigResponse',
     'HorizontalPodAutoscalingResponse',
     'HttpLoadBalancingResponse',
     'IPAllocationPolicyResponse',
@@ -73,6 +74,7 @@ __all__ = [
     'NodePoolResponse',
     'NodeTaintResponse',
     'NotificationConfigResponse',
+    'PlacementPolicyResponse',
     'PodSecurityPolicyConfigResponse',
     'PrivateClusterConfigResponse',
     'PrivateClusterMasterGlobalAccessConfigResponse',
@@ -180,6 +182,8 @@ class AddonsConfigResponse(dict):
             suggest = "gce_persistent_disk_csi_driver_config"
         elif key == "gcpFilestoreCsiDriverConfig":
             suggest = "gcp_filestore_csi_driver_config"
+        elif key == "gkeBackupAgentConfig":
+            suggest = "gke_backup_agent_config"
         elif key == "horizontalPodAutoscaling":
             suggest = "horizontal_pod_autoscaling"
         elif key == "httpLoadBalancing":
@@ -210,6 +214,7 @@ class AddonsConfigResponse(dict):
                  dns_cache_config: 'outputs.DnsCacheConfigResponse',
                  gce_persistent_disk_csi_driver_config: 'outputs.GcePersistentDiskCsiDriverConfigResponse',
                  gcp_filestore_csi_driver_config: 'outputs.GcpFilestoreCsiDriverConfigResponse',
+                 gke_backup_agent_config: 'outputs.GkeBackupAgentConfigResponse',
                  horizontal_pod_autoscaling: 'outputs.HorizontalPodAutoscalingResponse',
                  http_load_balancing: 'outputs.HttpLoadBalancingResponse',
                  istio_config: 'outputs.IstioConfigResponse',
@@ -223,6 +228,7 @@ class AddonsConfigResponse(dict):
         :param 'DnsCacheConfigResponse' dns_cache_config: Configuration for NodeLocalDNS, a dns cache running on cluster nodes
         :param 'GcePersistentDiskCsiDriverConfigResponse' gce_persistent_disk_csi_driver_config: Configuration for the Compute Engine Persistent Disk CSI driver.
         :param 'GcpFilestoreCsiDriverConfigResponse' gcp_filestore_csi_driver_config: Configuration for the GCP Filestore CSI driver.
+        :param 'GkeBackupAgentConfigResponse' gke_backup_agent_config: Configuration for the Backup for GKE agent addon.
         :param 'HorizontalPodAutoscalingResponse' horizontal_pod_autoscaling: Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
         :param 'HttpLoadBalancingResponse' http_load_balancing: Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
         :param 'IstioConfigResponse' istio_config: Configuration for Istio, an open platform to connect, manage, and secure microservices.
@@ -235,6 +241,7 @@ class AddonsConfigResponse(dict):
         pulumi.set(__self__, "dns_cache_config", dns_cache_config)
         pulumi.set(__self__, "gce_persistent_disk_csi_driver_config", gce_persistent_disk_csi_driver_config)
         pulumi.set(__self__, "gcp_filestore_csi_driver_config", gcp_filestore_csi_driver_config)
+        pulumi.set(__self__, "gke_backup_agent_config", gke_backup_agent_config)
         pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         pulumi.set(__self__, "http_load_balancing", http_load_balancing)
         pulumi.set(__self__, "istio_config", istio_config)
@@ -281,6 +288,14 @@ class AddonsConfigResponse(dict):
         Configuration for the GCP Filestore CSI driver.
         """
         return pulumi.get(self, "gcp_filestore_csi_driver_config")
+
+    @property
+    @pulumi.getter(name="gkeBackupAgentConfig")
+    def gke_backup_agent_config(self) -> 'outputs.GkeBackupAgentConfigResponse':
+        """
+        Configuration for the Backup for GKE agent addon.
+        """
+        return pulumi.get(self, "gke_backup_agent_config")
 
     @property
     @pulumi.getter(name="horizontalPodAutoscaling")
@@ -1376,6 +1391,28 @@ class GcpFilestoreCsiDriverConfigResponse(dict):
     def enabled(self) -> bool:
         """
         Whether the GCP Filestore CSI driver is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GkeBackupAgentConfigResponse(dict):
+    """
+    Configuration for the Backup for GKE Agent.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for the Backup for GKE Agent.
+        :param bool enabled: Whether the Backup for GKE agent is enabled for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the Backup for GKE agent is enabled for this cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -3205,6 +3242,8 @@ class NodePoolResponse(dict):
             suggest = "max_pods_constraint"
         elif key == "networkConfig":
             suggest = "network_config"
+        elif key == "placementPolicy":
+            suggest = "placement_policy"
         elif key == "podIpv4CidrSize":
             suggest = "pod_ipv4_cidr_size"
         elif key == "selfLink":
@@ -3234,6 +3273,7 @@ class NodePoolResponse(dict):
                  max_pods_constraint: 'outputs.MaxPodsConstraintResponse',
                  name: str,
                  network_config: 'outputs.NodeNetworkConfigResponse',
+                 placement_policy: 'outputs.PlacementPolicyResponse',
                  pod_ipv4_cidr_size: int,
                  self_link: str,
                  status: str,
@@ -3251,6 +3291,7 @@ class NodePoolResponse(dict):
         :param 'MaxPodsConstraintResponse' max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param str name: The name of the node pool.
         :param 'NodeNetworkConfigResponse' network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        :param 'PlacementPolicyResponse' placement_policy: Specifies the node placement policy.
         :param int pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
         :param str self_link: [Output only] Server-defined URL for the resource.
         :param str status: [Output only] The status of the nodes in this pool instance.
@@ -3267,6 +3308,7 @@ class NodePoolResponse(dict):
         pulumi.set(__self__, "max_pods_constraint", max_pods_constraint)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network_config", network_config)
+        pulumi.set(__self__, "placement_policy", placement_policy)
         pulumi.set(__self__, "pod_ipv4_cidr_size", pod_ipv4_cidr_size)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "status", status)
@@ -3352,6 +3394,14 @@ class NodePoolResponse(dict):
         Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         """
         return pulumi.get(self, "network_config")
+
+    @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> 'outputs.PlacementPolicyResponse':
+        """
+        Specifies the node placement policy.
+        """
+        return pulumi.get(self, "placement_policy")
 
     @property
     @pulumi.getter(name="podIpv4CidrSize")
@@ -3458,6 +3508,28 @@ class NotificationConfigResponse(dict):
         Notification config for Pub/Sub.
         """
         return pulumi.get(self, "pubsub")
+
+
+@pulumi.output_type
+class PlacementPolicyResponse(dict):
+    """
+    PlacementPolicy defines the placement policy used by the node pool.
+    """
+    def __init__(__self__, *,
+                 type: str):
+        """
+        PlacementPolicy defines the placement policy used by the node pool.
+        :param str type: The type of placement.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of placement.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

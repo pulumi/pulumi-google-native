@@ -6,7 +6,9 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .bitbucket_server_config import *
 from .build import *
+from .get_bitbucket_server_config import *
 from .get_build import *
 from .get_github_enterprise_config import *
 from .get_trigger import *

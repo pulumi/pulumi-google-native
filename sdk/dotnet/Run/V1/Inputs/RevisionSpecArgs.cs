@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     public sealed class RevisionSpecArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+        /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
         /// </summary>
         [Input("containerConcurrency")]
         public Input<int>? ContainerConcurrency { get; set; }
@@ -31,6 +31,24 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         {
             get => _containers ?? (_containers = new InputList<Inputs.ContainerArgs>());
             set => _containers = value;
+        }
+
+        /// <summary>
+        /// Indicates whether information about services should be injected into pod's environment variables, matching the syntax of Docker links. Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported, defaults to true.
+        /// </summary>
+        [Input("enableServiceLinks")]
+        public Input<bool>? EnableServiceLinks { get; set; }
+
+        [Input("imagePullSecrets")]
+        private InputList<Inputs.LocalObjectReferenceArgs>? _imagePullSecrets;
+
+        /// <summary>
+        /// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
+        /// </summary>
+        public InputList<Inputs.LocalObjectReferenceArgs> ImagePullSecrets
+        {
+            get => _imagePullSecrets ?? (_imagePullSecrets = new InputList<Inputs.LocalObjectReferenceArgs>());
+            set => _imagePullSecrets = value;
         }
 
         /// <summary>

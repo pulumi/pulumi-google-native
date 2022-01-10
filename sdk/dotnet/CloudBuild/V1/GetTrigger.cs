@@ -77,6 +77,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public readonly bool Autodetect;
         /// <summary>
+        /// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        /// </summary>
+        public readonly Outputs.BitbucketServerTriggerConfigResponse BitbucketServerTriggerConfig;
+        /// <summary>
         /// Contents of the build template.
         /// </summary>
         public readonly Outputs.BuildResponse Build;
@@ -93,7 +97,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public readonly bool Disabled;
         /// <summary>
-        /// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+        /// EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
         /// </summary>
         public readonly string EventType;
         /// <summary>
@@ -163,6 +167,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 
             bool autodetect,
 
+            Outputs.BitbucketServerTriggerConfigResponse bitbucketServerTriggerConfig,
+
             Outputs.BuildResponse build,
 
             string createTime,
@@ -205,6 +211,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         {
             ApprovalConfig = approvalConfig;
             Autodetect = autodetect;
+            BitbucketServerTriggerConfig = bitbucketServerTriggerConfig;
             Build = build;
             CreateTime = createTime;
             Description = description;

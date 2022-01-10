@@ -238,7 +238,7 @@ class PullRequestFilterCommentControl(str, Enum):
 
 class TriggerEventType(str, Enum):
     """
-    Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+    EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
     """
     EVENT_TYPE_UNSPECIFIED = "EVENT_TYPE_UNSPECIFIED"
     """

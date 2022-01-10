@@ -76,6 +76,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly networkConfig!: pulumi.Output<outputs.container.v1beta1.NodeNetworkConfigResponse>;
     /**
+     * Specifies the node placement policy.
+     */
+    public readonly placementPolicy!: pulumi.Output<outputs.container.v1beta1.PlacementPolicyResponse>;
+    /**
      * [Output only] The pod CIDR block size per node in this node pool.
      */
     public /*out*/ readonly podIpv4CidrSize!: pulumi.Output<number>;
@@ -122,6 +126,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["placementPolicy"] = args ? args.placementPolicy : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -140,6 +145,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["maxPodsConstraint"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkConfig"] = undefined /*out*/;
+            resourceInputs["placementPolicy"] = undefined /*out*/;
             resourceInputs["podIpv4CidrSize"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -199,6 +205,10 @@ export interface NodePoolArgs {
      * The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*&#47;locations/*&#47;clusters/*`.
      */
     parent?: pulumi.Input<string>;
+    /**
+     * Specifies the node placement policy.
+     */
+    placementPolicy?: pulumi.Input<inputs.container.v1beta1.PlacementPolicyArgs>;
     project?: pulumi.Input<string>;
     /**
      * Upgrade settings control disruption and speed of the upgrade.

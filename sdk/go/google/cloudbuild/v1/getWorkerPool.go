@@ -39,7 +39,7 @@ type LookupWorkerPoolResult struct {
 	Etag string `pulumi:"etag"`
 	// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
 	Name string `pulumi:"name"`
-	// Private Pool using a v1 configuration.
+	// Legacy Private Pool configuration.
 	PrivatePoolV1Config PrivatePoolV1ConfigResponse `pulumi:"privatePoolV1Config"`
 	// `WorkerPool` state.
 	State string `pulumi:"state"`
@@ -112,7 +112,7 @@ func (o LookupWorkerPoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Private Pool using a v1 configuration.
+// Legacy Private Pool configuration.
 func (o LookupWorkerPoolResultOutput) PrivatePoolV1Config() PrivatePoolV1ConfigResponseOutput {
 	return o.ApplyT(func(v LookupWorkerPoolResult) PrivatePoolV1ConfigResponse { return v.PrivatePoolV1Config }).(PrivatePoolV1ConfigResponseOutput)
 }
