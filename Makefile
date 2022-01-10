@@ -25,10 +25,13 @@ generate_schema::
 	echo "Finished generating schema."
 
 codegen::
-	(cd provider && go build -a -o $(WORKING_DIR)/bin/$(CODEGEN) $(VERSION_FLAGS) $(PROJECT)/provider/cmd/$(CODEGEN))
+	(cd provider && go build -o $(WORKING_DIR)/bin/$(CODEGEN) $(VERSION_FLAGS) $(PROJECT)/provider/cmd/$(CODEGEN))
 
 provider::
-	(cd provider && go build -a -o $(WORKING_DIR)/bin/$(PROVIDER) $(VERSION_FLAGS) $(PROJECT)/provider/cmd/$(PROVIDER))
+	(cd provider && go build -o $(WORKING_DIR)/bin/$(PROVIDER) $(VERSION_FLAGS) $(PROJECT)/provider/cmd/$(PROVIDER))
+
+debug_provider::
+	(cd provider && go install -gcflags="all=-N -l" $(VERSION_FLAGS) $(PROJECT)/provider/cmd/$(PROVIDER))
 
 test_provider::
 	(cd provider && go test -v $(PROVIDER_PKGS))

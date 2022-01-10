@@ -66,7 +66,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
      */
-    public readonly project!: pulumi.Output<string>;
+    public readonly projectId!: pulumi.Output<string>;
     /**
      * The project lifecycle state.
      */
@@ -90,7 +90,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -105,7 +105,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
-            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["projectId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -135,5 +135,5 @@ export interface ProjectArgs {
     /**
      * Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
      */
-    project?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
 }

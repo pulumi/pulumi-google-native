@@ -61,8 +61,8 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// <summary>
         /// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
         /// </summary>
-        [Output("project")]
-        public Output<string> ProjectValue { get; private set; } = null!;
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
         /// The project lifecycle state.
@@ -148,8 +148,8 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// <summary>
         /// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
         /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         public ProjectArgs()
         {

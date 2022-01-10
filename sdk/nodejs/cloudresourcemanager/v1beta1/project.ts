@@ -58,7 +58,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
      */
-    public readonly project!: pulumi.Output<string>;
+    public readonly projectId!: pulumi.Output<string>;
     /**
      * The number uniquely identifying the project. Example: `415104041262` Read-only.
      */
@@ -80,7 +80,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["lifecycleState"] = args ? args.lifecycleState : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["projectNumber"] = args ? args.projectNumber : undefined;
             resourceInputs["useLegacyStack"] = args ? args.useLegacyStack : undefined;
         } else {
@@ -89,7 +89,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["lifecycleState"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
-            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["projectId"] = undefined /*out*/;
             resourceInputs["projectNumber"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -126,7 +126,7 @@ export interface ProjectArgs {
     /**
      * The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
      */
-    project?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The number uniquely identifying the project. Example: `415104041262` Read-only.
      */

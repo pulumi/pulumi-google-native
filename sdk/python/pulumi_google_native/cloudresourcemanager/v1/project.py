@@ -21,7 +21,7 @@ class ProjectArgs:
                  lifecycle_state: Optional[pulumi.Input['ProjectLifecycleState']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input['ResourceIdArgs']] = None,
-                 project: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Project resource.
@@ -30,7 +30,7 @@ class ProjectArgs:
         :param pulumi.Input['ProjectLifecycleState'] lifecycle_state: The Project lifecycle state. Read-only.
         :param pulumi.Input[str] name: The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write.
         :param pulumi.Input['ResourceIdArgs'] parent: An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent.
-        :param pulumi.Input[str] project: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
+        :param pulumi.Input[str] project_id: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         :param pulumi.Input[str] project_number: The number uniquely identifying the project. Example: `415104041262` Read-only.
         """
         if create_time is not None:
@@ -43,8 +43,8 @@ class ProjectArgs:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if project_number is not None:
             pulumi.set(__self__, "project_number", project_number)
 
@@ -109,16 +109,16 @@ class ProjectArgs:
         pulumi.set(self, "parent", value)
 
     @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
         """
         The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         """
-        return pulumi.get(self, "project")
+        return pulumi.get(self, "project_id")
 
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project", value)
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter(name="projectNumber")
@@ -143,7 +143,7 @@ class Project(pulumi.CustomResource):
                  lifecycle_state: Optional[pulumi.Input['ProjectLifecycleState']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[pulumi.InputType['ResourceIdArgs']]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -156,7 +156,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input['ProjectLifecycleState'] lifecycle_state: The Project lifecycle state. Read-only.
         :param pulumi.Input[str] name: The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write.
         :param pulumi.Input[pulumi.InputType['ResourceIdArgs']] parent: An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent.
-        :param pulumi.Input[str] project: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
+        :param pulumi.Input[str] project_id: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         :param pulumi.Input[str] project_number: The number uniquely identifying the project. Example: `415104041262` Read-only.
         """
         ...
@@ -188,7 +188,7 @@ class Project(pulumi.CustomResource):
                  lifecycle_state: Optional[pulumi.Input['ProjectLifecycleState']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[pulumi.InputType['ResourceIdArgs']]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -207,7 +207,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["lifecycle_state"] = lifecycle_state
             __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent
-            __props__.__dict__["project"] = project
+            __props__.__dict__["project_id"] = project_id
             __props__.__dict__["project_number"] = project_number
         super(Project, __self__).__init__(
             'google-native:cloudresourcemanager/v1:Project',
@@ -236,7 +236,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["lifecycle_state"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["parent"] = None
-        __props__.__dict__["project"] = None
+        __props__.__dict__["project_id"] = None
         __props__.__dict__["project_number"] = None
         return Project(resource_name, opts=opts, __props__=__props__)
 
@@ -281,12 +281,12 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "parent")
 
     @property
-    @pulumi.getter
-    def project(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
         """
         The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         """
-        return pulumi.get(self, "project")
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="projectNumber")

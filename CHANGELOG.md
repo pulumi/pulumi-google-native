@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-(None)
+- Fix Project resource projectId property in SDKs.
 
 ## 0.10.1 (2021-12-22)
 Bug fixes:

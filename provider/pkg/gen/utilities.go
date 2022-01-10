@@ -4,12 +4,13 @@ package gen
 
 import (
 	"fmt"
+	"regexp"
+	"strings"
+
 	"github.com/gedex/inflector"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
-	"regexp"
-	"strings"
 )
 
 var s = codegen.NewStringSet()
@@ -33,7 +34,10 @@ func apiParamNameToSdkName(name string) string {
 
 // apiPropNameToSdkName returns an SDK name for a given API property name.
 // In particular, it converts pluralized ID names to singular ID names.
-func apiPropNameToSdkName(name string) string {
+func apiPropNameToSdkName(typeName string, name string) string {
+	if typeName == "Project" && name == "projectId" {
+		return name
+	}
 	switch name {
 	case "projectId", "locationId", "managedZoneId", "zoneId":
 		return name[:len(name)-2]

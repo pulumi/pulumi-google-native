@@ -40,7 +40,7 @@ type LookupProjectResult struct {
 	// Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
 	Parent string `pulumi:"parent"`
 	// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
-	Project string `pulumi:"project"`
+	ProjectId string `pulumi:"projectId"`
 	// The project lifecycle state.
 	State string `pulumi:"state"`
 	// The most recent time this resource was modified.
@@ -114,8 +114,8 @@ func (o LookupProjectResultOutput) Parent() pulumi.StringOutput {
 }
 
 // Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
-func (o LookupProjectResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectResult) string { return v.Project }).(pulumi.StringOutput)
+func (o LookupProjectResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // The project lifecycle state.

@@ -40,9 +40,11 @@ var apiPropToSdkNames = map[string]string{
 
 func TestApiPropNameToSdkName(t *testing.T) {
 	for name, expected := range apiPropToSdkNames {
-		actual := apiPropNameToSdkName(name)
+		actual := apiPropNameToSdkName("typeName", name)
 		assert.Equal(t, expected, actual)
 	}
+
+	assert.Equal(t, "projectId", apiPropNameToSdkName("Project", "projectId"))
 }
 
 var namePropertyPatternsValid = map[string]string{

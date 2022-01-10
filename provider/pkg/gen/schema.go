@@ -744,7 +744,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 	}
 	for _, name := range codegen.SortedKeys(typeSchema.Properties) {
 		value := typeSchema.Properties[name]
-		sdkName := apiPropNameToSdkName(name)
+		sdkName := apiPropNameToSdkName(typeName, name)
 
 		if isDeprecated(value.Description) {
 			continue
