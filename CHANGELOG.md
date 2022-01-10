@@ -2,13 +2,26 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+
+(None)
+
+---
+
+## 0.11.0 (2022-01-10)
+
+Improvements:
+
+- Update to support the latest resource definitions and the latest Pulumi SDK
+
+Bug fixes:
+
 - Fix Project resource projectId property in SDKs.
 
 ## 0.10.1 (2021-12-22)
-Bug fixes:
-- Serve valid (decompressed schema) from GetSchema RPC calls
 
----
+Bug fixes:
+
+- Serve valid (decompressed schema) from GetSchema RPC calls
 
 ## 0.10.0 (2021-12-06)
 
