@@ -141,7 +141,7 @@ type RouterInput interface {
 }
 
 func (*Router) ElementType() reflect.Type {
-	return reflect.TypeOf((*Router)(nil))
+	return reflect.TypeOf((**Router)(nil)).Elem()
 }
 
 func (i *Router) ToRouterOutput() RouterOutput {
@@ -155,7 +155,7 @@ func (i *Router) ToRouterOutputWithContext(ctx context.Context) RouterOutput {
 type RouterOutput struct{ *pulumi.OutputState }
 
 func (RouterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Router)(nil))
+	return reflect.TypeOf((**Router)(nil)).Elem()
 }
 
 func (o RouterOutput) ToRouterOutput() RouterOutput {

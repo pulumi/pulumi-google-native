@@ -115,7 +115,7 @@ type ContextInput interface {
 }
 
 func (*Context) ElementType() reflect.Type {
-	return reflect.TypeOf((*Context)(nil))
+	return reflect.TypeOf((**Context)(nil)).Elem()
 }
 
 func (i *Context) ToContextOutput() ContextOutput {
@@ -129,7 +129,7 @@ func (i *Context) ToContextOutputWithContext(ctx context.Context) ContextOutput 
 type ContextOutput struct{ *pulumi.OutputState }
 
 func (ContextOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Context)(nil))
+	return reflect.TypeOf((**Context)(nil)).Elem()
 }
 
 func (o ContextOutput) ToContextOutput() ContextOutput {

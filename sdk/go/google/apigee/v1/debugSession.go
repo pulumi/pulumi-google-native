@@ -132,7 +132,7 @@ type DebugSessionInput interface {
 }
 
 func (*DebugSession) ElementType() reflect.Type {
-	return reflect.TypeOf((*DebugSession)(nil))
+	return reflect.TypeOf((**DebugSession)(nil)).Elem()
 }
 
 func (i *DebugSession) ToDebugSessionOutput() DebugSessionOutput {
@@ -146,7 +146,7 @@ func (i *DebugSession) ToDebugSessionOutputWithContext(ctx context.Context) Debu
 type DebugSessionOutput struct{ *pulumi.OutputState }
 
 func (DebugSessionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DebugSession)(nil))
+	return reflect.TypeOf((**DebugSession)(nil)).Elem()
 }
 
 func (o DebugSessionOutput) ToDebugSessionOutput() DebugSessionOutput {

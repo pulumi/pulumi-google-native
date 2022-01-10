@@ -22,82 +22,6 @@ type AndroidAttributesResponse struct {
 	SupportsWorkProfile bool `pulumi:"supportsWorkProfile"`
 }
 
-// AndroidAttributesResponseInput is an input type that accepts AndroidAttributesResponseArgs and AndroidAttributesResponseOutput values.
-// You can construct a concrete instance of `AndroidAttributesResponseInput` via:
-//
-//          AndroidAttributesResponseArgs{...}
-type AndroidAttributesResponseInput interface {
-	pulumi.Input
-
-	ToAndroidAttributesResponseOutput() AndroidAttributesResponseOutput
-	ToAndroidAttributesResponseOutputWithContext(context.Context) AndroidAttributesResponseOutput
-}
-
-// Resource representing the Android specific attributes of a Device.
-type AndroidAttributesResponseArgs struct {
-	// Whether applications from unknown sources can be installed on device.
-	EnabledUnknownSources pulumi.BoolInput `pulumi:"enabledUnknownSources"`
-	// Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
-	OwnerProfileAccount pulumi.BoolInput `pulumi:"ownerProfileAccount"`
-	// Ownership privileges on device.
-	OwnershipPrivilege pulumi.StringInput `pulumi:"ownershipPrivilege"`
-	// Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
-	SupportsWorkProfile pulumi.BoolInput `pulumi:"supportsWorkProfile"`
-}
-
-func (AndroidAttributesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AndroidAttributesResponse)(nil)).Elem()
-}
-
-func (i AndroidAttributesResponseArgs) ToAndroidAttributesResponseOutput() AndroidAttributesResponseOutput {
-	return i.ToAndroidAttributesResponseOutputWithContext(context.Background())
-}
-
-func (i AndroidAttributesResponseArgs) ToAndroidAttributesResponseOutputWithContext(ctx context.Context) AndroidAttributesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidAttributesResponseOutput)
-}
-
-func (i AndroidAttributesResponseArgs) ToAndroidAttributesResponsePtrOutput() AndroidAttributesResponsePtrOutput {
-	return i.ToAndroidAttributesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AndroidAttributesResponseArgs) ToAndroidAttributesResponsePtrOutputWithContext(ctx context.Context) AndroidAttributesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidAttributesResponseOutput).ToAndroidAttributesResponsePtrOutputWithContext(ctx)
-}
-
-// AndroidAttributesResponsePtrInput is an input type that accepts AndroidAttributesResponseArgs, AndroidAttributesResponsePtr and AndroidAttributesResponsePtrOutput values.
-// You can construct a concrete instance of `AndroidAttributesResponsePtrInput` via:
-//
-//          AndroidAttributesResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AndroidAttributesResponsePtrInput interface {
-	pulumi.Input
-
-	ToAndroidAttributesResponsePtrOutput() AndroidAttributesResponsePtrOutput
-	ToAndroidAttributesResponsePtrOutputWithContext(context.Context) AndroidAttributesResponsePtrOutput
-}
-
-type androidAttributesResponsePtrType AndroidAttributesResponseArgs
-
-func AndroidAttributesResponsePtr(v *AndroidAttributesResponseArgs) AndroidAttributesResponsePtrInput {
-	return (*androidAttributesResponsePtrType)(v)
-}
-
-func (*androidAttributesResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AndroidAttributesResponse)(nil)).Elem()
-}
-
-func (i *androidAttributesResponsePtrType) ToAndroidAttributesResponsePtrOutput() AndroidAttributesResponsePtrOutput {
-	return i.ToAndroidAttributesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *androidAttributesResponsePtrType) ToAndroidAttributesResponsePtrOutputWithContext(ctx context.Context) AndroidAttributesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidAttributesResponsePtrOutput)
-}
-
 // Resource representing the Android specific attributes of a Device.
 type AndroidAttributesResponseOutput struct{ *pulumi.OutputState }
 
@@ -111,16 +35,6 @@ func (o AndroidAttributesResponseOutput) ToAndroidAttributesResponseOutput() And
 
 func (o AndroidAttributesResponseOutput) ToAndroidAttributesResponseOutputWithContext(ctx context.Context) AndroidAttributesResponseOutput {
 	return o
-}
-
-func (o AndroidAttributesResponseOutput) ToAndroidAttributesResponsePtrOutput() AndroidAttributesResponsePtrOutput {
-	return o.ToAndroidAttributesResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AndroidAttributesResponseOutput) ToAndroidAttributesResponsePtrOutputWithContext(ctx context.Context) AndroidAttributesResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidAttributesResponse) *AndroidAttributesResponse {
-		return &v
-	}).(AndroidAttributesResponsePtrOutput)
 }
 
 // Whether applications from unknown sources can be installed on device.
@@ -143,70 +57,6 @@ func (o AndroidAttributesResponseOutput) SupportsWorkProfile() pulumi.BoolOutput
 	return o.ApplyT(func(v AndroidAttributesResponse) bool { return v.SupportsWorkProfile }).(pulumi.BoolOutput)
 }
 
-type AndroidAttributesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AndroidAttributesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AndroidAttributesResponse)(nil)).Elem()
-}
-
-func (o AndroidAttributesResponsePtrOutput) ToAndroidAttributesResponsePtrOutput() AndroidAttributesResponsePtrOutput {
-	return o
-}
-
-func (o AndroidAttributesResponsePtrOutput) ToAndroidAttributesResponsePtrOutputWithContext(ctx context.Context) AndroidAttributesResponsePtrOutput {
-	return o
-}
-
-func (o AndroidAttributesResponsePtrOutput) Elem() AndroidAttributesResponseOutput {
-	return o.ApplyT(func(v *AndroidAttributesResponse) AndroidAttributesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AndroidAttributesResponse
-		return ret
-	}).(AndroidAttributesResponseOutput)
-}
-
-// Whether applications from unknown sources can be installed on device.
-func (o AndroidAttributesResponsePtrOutput) EnabledUnknownSources() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AndroidAttributesResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnabledUnknownSources
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
-func (o AndroidAttributesResponsePtrOutput) OwnerProfileAccount() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AndroidAttributesResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.OwnerProfileAccount
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Ownership privileges on device.
-func (o AndroidAttributesResponsePtrOutput) OwnershipPrivilege() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AndroidAttributesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OwnershipPrivilege
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
-func (o AndroidAttributesResponsePtrOutput) SupportsWorkProfile() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AndroidAttributesResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.SupportsWorkProfile
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Stores information about a certificate.
 type CertificateAttributesResponse struct {
 	// The X.509 extension for CertificateTemplate.
@@ -227,76 +77,6 @@ type CertificateAttributesResponse struct {
 	ValidityExpirationTime string `pulumi:"validityExpirationTime"`
 	// Certificate not valid before this timestamp.
 	ValidityStartTime string `pulumi:"validityStartTime"`
-}
-
-// CertificateAttributesResponseInput is an input type that accepts CertificateAttributesResponseArgs and CertificateAttributesResponseOutput values.
-// You can construct a concrete instance of `CertificateAttributesResponseInput` via:
-//
-//          CertificateAttributesResponseArgs{...}
-type CertificateAttributesResponseInput interface {
-	pulumi.Input
-
-	ToCertificateAttributesResponseOutput() CertificateAttributesResponseOutput
-	ToCertificateAttributesResponseOutputWithContext(context.Context) CertificateAttributesResponseOutput
-}
-
-// Stores information about a certificate.
-type CertificateAttributesResponseArgs struct {
-	// The X.509 extension for CertificateTemplate.
-	CertificateTemplate CertificateTemplateResponseInput `pulumi:"certificateTemplate"`
-	// The encoded certificate fingerprint.
-	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
-	// The name of the issuer of this certificate.
-	Issuer pulumi.StringInput `pulumi:"issuer"`
-	// Serial number of the certificate, Example: "123456789".
-	SerialNumber pulumi.StringInput `pulumi:"serialNumber"`
-	// The subject name of this certificate.
-	Subject pulumi.StringInput `pulumi:"subject"`
-	// The certificate thumbprint.
-	Thumbprint pulumi.StringInput `pulumi:"thumbprint"`
-	// Validation state of this certificate.
-	ValidationState pulumi.StringInput `pulumi:"validationState"`
-	// Certificate not valid at or after this timestamp.
-	ValidityExpirationTime pulumi.StringInput `pulumi:"validityExpirationTime"`
-	// Certificate not valid before this timestamp.
-	ValidityStartTime pulumi.StringInput `pulumi:"validityStartTime"`
-}
-
-func (CertificateAttributesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateAttributesResponse)(nil)).Elem()
-}
-
-func (i CertificateAttributesResponseArgs) ToCertificateAttributesResponseOutput() CertificateAttributesResponseOutput {
-	return i.ToCertificateAttributesResponseOutputWithContext(context.Background())
-}
-
-func (i CertificateAttributesResponseArgs) ToCertificateAttributesResponseOutputWithContext(ctx context.Context) CertificateAttributesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateAttributesResponseOutput)
-}
-
-// CertificateAttributesResponseArrayInput is an input type that accepts CertificateAttributesResponseArray and CertificateAttributesResponseArrayOutput values.
-// You can construct a concrete instance of `CertificateAttributesResponseArrayInput` via:
-//
-//          CertificateAttributesResponseArray{ CertificateAttributesResponseArgs{...} }
-type CertificateAttributesResponseArrayInput interface {
-	pulumi.Input
-
-	ToCertificateAttributesResponseArrayOutput() CertificateAttributesResponseArrayOutput
-	ToCertificateAttributesResponseArrayOutputWithContext(context.Context) CertificateAttributesResponseArrayOutput
-}
-
-type CertificateAttributesResponseArray []CertificateAttributesResponseInput
-
-func (CertificateAttributesResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CertificateAttributesResponse)(nil)).Elem()
-}
-
-func (i CertificateAttributesResponseArray) ToCertificateAttributesResponseArrayOutput() CertificateAttributesResponseArrayOutput {
-	return i.ToCertificateAttributesResponseArrayOutputWithContext(context.Background())
-}
-
-func (i CertificateAttributesResponseArray) ToCertificateAttributesResponseArrayOutputWithContext(ctx context.Context) CertificateAttributesResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateAttributesResponseArrayOutput)
 }
 
 // Stores information about a certificate.
@@ -385,37 +165,6 @@ type CertificateTemplateResponse struct {
 	MajorVersion int `pulumi:"majorVersion"`
 	// The minor version of the template. Example: 12.
 	MinorVersion int `pulumi:"minorVersion"`
-}
-
-// CertificateTemplateResponseInput is an input type that accepts CertificateTemplateResponseArgs and CertificateTemplateResponseOutput values.
-// You can construct a concrete instance of `CertificateTemplateResponseInput` via:
-//
-//          CertificateTemplateResponseArgs{...}
-type CertificateTemplateResponseInput interface {
-	pulumi.Input
-
-	ToCertificateTemplateResponseOutput() CertificateTemplateResponseOutput
-	ToCertificateTemplateResponseOutputWithContext(context.Context) CertificateTemplateResponseOutput
-}
-
-// CertificateTemplate (v3 Extension in X.509).
-type CertificateTemplateResponseArgs struct {
-	// The Major version of the template. Example: 100.
-	MajorVersion pulumi.IntInput `pulumi:"majorVersion"`
-	// The minor version of the template. Example: 12.
-	MinorVersion pulumi.IntInput `pulumi:"minorVersion"`
-}
-
-func (CertificateTemplateResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateTemplateResponse)(nil)).Elem()
-}
-
-func (i CertificateTemplateResponseArgs) ToCertificateTemplateResponseOutput() CertificateTemplateResponseOutput {
-	return i.ToCertificateTemplateResponseOutputWithContext(context.Background())
-}
-
-func (i CertificateTemplateResponseArgs) ToCertificateTemplateResponseOutputWithContext(ctx context.Context) CertificateTemplateResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateResponseOutput)
 }
 
 // CertificateTemplate (v3 Extension in X.509).
@@ -591,78 +340,6 @@ type DynamicGroupMetadataResponse struct {
 	Status DynamicGroupStatusResponse `pulumi:"status"`
 }
 
-// DynamicGroupMetadataResponseInput is an input type that accepts DynamicGroupMetadataResponseArgs and DynamicGroupMetadataResponseOutput values.
-// You can construct a concrete instance of `DynamicGroupMetadataResponseInput` via:
-//
-//          DynamicGroupMetadataResponseArgs{...}
-type DynamicGroupMetadataResponseInput interface {
-	pulumi.Input
-
-	ToDynamicGroupMetadataResponseOutput() DynamicGroupMetadataResponseOutput
-	ToDynamicGroupMetadataResponseOutputWithContext(context.Context) DynamicGroupMetadataResponseOutput
-}
-
-// Dynamic group metadata like queries and status.
-type DynamicGroupMetadataResponseArgs struct {
-	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
-	Queries DynamicGroupQueryResponseArrayInput `pulumi:"queries"`
-	// Status of the dynamic group.
-	Status DynamicGroupStatusResponseInput `pulumi:"status"`
-}
-
-func (DynamicGroupMetadataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DynamicGroupMetadataResponse)(nil)).Elem()
-}
-
-func (i DynamicGroupMetadataResponseArgs) ToDynamicGroupMetadataResponseOutput() DynamicGroupMetadataResponseOutput {
-	return i.ToDynamicGroupMetadataResponseOutputWithContext(context.Background())
-}
-
-func (i DynamicGroupMetadataResponseArgs) ToDynamicGroupMetadataResponseOutputWithContext(ctx context.Context) DynamicGroupMetadataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupMetadataResponseOutput)
-}
-
-func (i DynamicGroupMetadataResponseArgs) ToDynamicGroupMetadataResponsePtrOutput() DynamicGroupMetadataResponsePtrOutput {
-	return i.ToDynamicGroupMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DynamicGroupMetadataResponseArgs) ToDynamicGroupMetadataResponsePtrOutputWithContext(ctx context.Context) DynamicGroupMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupMetadataResponseOutput).ToDynamicGroupMetadataResponsePtrOutputWithContext(ctx)
-}
-
-// DynamicGroupMetadataResponsePtrInput is an input type that accepts DynamicGroupMetadataResponseArgs, DynamicGroupMetadataResponsePtr and DynamicGroupMetadataResponsePtrOutput values.
-// You can construct a concrete instance of `DynamicGroupMetadataResponsePtrInput` via:
-//
-//          DynamicGroupMetadataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DynamicGroupMetadataResponsePtrInput interface {
-	pulumi.Input
-
-	ToDynamicGroupMetadataResponsePtrOutput() DynamicGroupMetadataResponsePtrOutput
-	ToDynamicGroupMetadataResponsePtrOutputWithContext(context.Context) DynamicGroupMetadataResponsePtrOutput
-}
-
-type dynamicGroupMetadataResponsePtrType DynamicGroupMetadataResponseArgs
-
-func DynamicGroupMetadataResponsePtr(v *DynamicGroupMetadataResponseArgs) DynamicGroupMetadataResponsePtrInput {
-	return (*dynamicGroupMetadataResponsePtrType)(v)
-}
-
-func (*dynamicGroupMetadataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DynamicGroupMetadataResponse)(nil)).Elem()
-}
-
-func (i *dynamicGroupMetadataResponsePtrType) ToDynamicGroupMetadataResponsePtrOutput() DynamicGroupMetadataResponsePtrOutput {
-	return i.ToDynamicGroupMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *dynamicGroupMetadataResponsePtrType) ToDynamicGroupMetadataResponsePtrOutputWithContext(ctx context.Context) DynamicGroupMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupMetadataResponsePtrOutput)
-}
-
 // Dynamic group metadata like queries and status.
 type DynamicGroupMetadataResponseOutput struct{ *pulumi.OutputState }
 
@@ -678,16 +355,6 @@ func (o DynamicGroupMetadataResponseOutput) ToDynamicGroupMetadataResponseOutput
 	return o
 }
 
-func (o DynamicGroupMetadataResponseOutput) ToDynamicGroupMetadataResponsePtrOutput() DynamicGroupMetadataResponsePtrOutput {
-	return o.ToDynamicGroupMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DynamicGroupMetadataResponseOutput) ToDynamicGroupMetadataResponsePtrOutputWithContext(ctx context.Context) DynamicGroupMetadataResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DynamicGroupMetadataResponse) *DynamicGroupMetadataResponse {
-		return &v
-	}).(DynamicGroupMetadataResponsePtrOutput)
-}
-
 // Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
 func (o DynamicGroupMetadataResponseOutput) Queries() DynamicGroupQueryResponseArrayOutput {
 	return o.ApplyT(func(v DynamicGroupMetadataResponse) []DynamicGroupQueryResponse { return v.Queries }).(DynamicGroupQueryResponseArrayOutput)
@@ -696,50 +363,6 @@ func (o DynamicGroupMetadataResponseOutput) Queries() DynamicGroupQueryResponseA
 // Status of the dynamic group.
 func (o DynamicGroupMetadataResponseOutput) Status() DynamicGroupStatusResponseOutput {
 	return o.ApplyT(func(v DynamicGroupMetadataResponse) DynamicGroupStatusResponse { return v.Status }).(DynamicGroupStatusResponseOutput)
-}
-
-type DynamicGroupMetadataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DynamicGroupMetadataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DynamicGroupMetadataResponse)(nil)).Elem()
-}
-
-func (o DynamicGroupMetadataResponsePtrOutput) ToDynamicGroupMetadataResponsePtrOutput() DynamicGroupMetadataResponsePtrOutput {
-	return o
-}
-
-func (o DynamicGroupMetadataResponsePtrOutput) ToDynamicGroupMetadataResponsePtrOutputWithContext(ctx context.Context) DynamicGroupMetadataResponsePtrOutput {
-	return o
-}
-
-func (o DynamicGroupMetadataResponsePtrOutput) Elem() DynamicGroupMetadataResponseOutput {
-	return o.ApplyT(func(v *DynamicGroupMetadataResponse) DynamicGroupMetadataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DynamicGroupMetadataResponse
-		return ret
-	}).(DynamicGroupMetadataResponseOutput)
-}
-
-// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
-func (o DynamicGroupMetadataResponsePtrOutput) Queries() DynamicGroupQueryResponseArrayOutput {
-	return o.ApplyT(func(v *DynamicGroupMetadataResponse) []DynamicGroupQueryResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Queries
-	}).(DynamicGroupQueryResponseArrayOutput)
-}
-
-// Status of the dynamic group.
-func (o DynamicGroupMetadataResponsePtrOutput) Status() DynamicGroupStatusResponsePtrOutput {
-	return o.ApplyT(func(v *DynamicGroupMetadataResponse) *DynamicGroupStatusResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(DynamicGroupStatusResponsePtrOutput)
 }
 
 // Defines a query on a resource.
@@ -855,61 +478,6 @@ type DynamicGroupQueryResponse struct {
 	ResourceType string `pulumi:"resourceType"`
 }
 
-// DynamicGroupQueryResponseInput is an input type that accepts DynamicGroupQueryResponseArgs and DynamicGroupQueryResponseOutput values.
-// You can construct a concrete instance of `DynamicGroupQueryResponseInput` via:
-//
-//          DynamicGroupQueryResponseArgs{...}
-type DynamicGroupQueryResponseInput interface {
-	pulumi.Input
-
-	ToDynamicGroupQueryResponseOutput() DynamicGroupQueryResponseOutput
-	ToDynamicGroupQueryResponseOutputWithContext(context.Context) DynamicGroupQueryResponseOutput
-}
-
-// Defines a query on a resource.
-type DynamicGroupQueryResponseArgs struct {
-	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
-	Query        pulumi.StringInput `pulumi:"query"`
-	ResourceType pulumi.StringInput `pulumi:"resourceType"`
-}
-
-func (DynamicGroupQueryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DynamicGroupQueryResponse)(nil)).Elem()
-}
-
-func (i DynamicGroupQueryResponseArgs) ToDynamicGroupQueryResponseOutput() DynamicGroupQueryResponseOutput {
-	return i.ToDynamicGroupQueryResponseOutputWithContext(context.Background())
-}
-
-func (i DynamicGroupQueryResponseArgs) ToDynamicGroupQueryResponseOutputWithContext(ctx context.Context) DynamicGroupQueryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupQueryResponseOutput)
-}
-
-// DynamicGroupQueryResponseArrayInput is an input type that accepts DynamicGroupQueryResponseArray and DynamicGroupQueryResponseArrayOutput values.
-// You can construct a concrete instance of `DynamicGroupQueryResponseArrayInput` via:
-//
-//          DynamicGroupQueryResponseArray{ DynamicGroupQueryResponseArgs{...} }
-type DynamicGroupQueryResponseArrayInput interface {
-	pulumi.Input
-
-	ToDynamicGroupQueryResponseArrayOutput() DynamicGroupQueryResponseArrayOutput
-	ToDynamicGroupQueryResponseArrayOutputWithContext(context.Context) DynamicGroupQueryResponseArrayOutput
-}
-
-type DynamicGroupQueryResponseArray []DynamicGroupQueryResponseInput
-
-func (DynamicGroupQueryResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DynamicGroupQueryResponse)(nil)).Elem()
-}
-
-func (i DynamicGroupQueryResponseArray) ToDynamicGroupQueryResponseArrayOutput() DynamicGroupQueryResponseArrayOutput {
-	return i.ToDynamicGroupQueryResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DynamicGroupQueryResponseArray) ToDynamicGroupQueryResponseArrayOutputWithContext(ctx context.Context) DynamicGroupQueryResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupQueryResponseArrayOutput)
-}
-
 // Defines a query on a resource.
 type DynamicGroupQueryResponseOutput struct{ *pulumi.OutputState }
 
@@ -962,78 +530,6 @@ type DynamicGroupStatusResponse struct {
 	StatusTime string `pulumi:"statusTime"`
 }
 
-// DynamicGroupStatusResponseInput is an input type that accepts DynamicGroupStatusResponseArgs and DynamicGroupStatusResponseOutput values.
-// You can construct a concrete instance of `DynamicGroupStatusResponseInput` via:
-//
-//          DynamicGroupStatusResponseArgs{...}
-type DynamicGroupStatusResponseInput interface {
-	pulumi.Input
-
-	ToDynamicGroupStatusResponseOutput() DynamicGroupStatusResponseOutput
-	ToDynamicGroupStatusResponseOutputWithContext(context.Context) DynamicGroupStatusResponseOutput
-}
-
-// The current status of a dynamic group along with timestamp.
-type DynamicGroupStatusResponseArgs struct {
-	// Status of the dynamic group.
-	Status pulumi.StringInput `pulumi:"status"`
-	// The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
-	StatusTime pulumi.StringInput `pulumi:"statusTime"`
-}
-
-func (DynamicGroupStatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DynamicGroupStatusResponse)(nil)).Elem()
-}
-
-func (i DynamicGroupStatusResponseArgs) ToDynamicGroupStatusResponseOutput() DynamicGroupStatusResponseOutput {
-	return i.ToDynamicGroupStatusResponseOutputWithContext(context.Background())
-}
-
-func (i DynamicGroupStatusResponseArgs) ToDynamicGroupStatusResponseOutputWithContext(ctx context.Context) DynamicGroupStatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupStatusResponseOutput)
-}
-
-func (i DynamicGroupStatusResponseArgs) ToDynamicGroupStatusResponsePtrOutput() DynamicGroupStatusResponsePtrOutput {
-	return i.ToDynamicGroupStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DynamicGroupStatusResponseArgs) ToDynamicGroupStatusResponsePtrOutputWithContext(ctx context.Context) DynamicGroupStatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupStatusResponseOutput).ToDynamicGroupStatusResponsePtrOutputWithContext(ctx)
-}
-
-// DynamicGroupStatusResponsePtrInput is an input type that accepts DynamicGroupStatusResponseArgs, DynamicGroupStatusResponsePtr and DynamicGroupStatusResponsePtrOutput values.
-// You can construct a concrete instance of `DynamicGroupStatusResponsePtrInput` via:
-//
-//          DynamicGroupStatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DynamicGroupStatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToDynamicGroupStatusResponsePtrOutput() DynamicGroupStatusResponsePtrOutput
-	ToDynamicGroupStatusResponsePtrOutputWithContext(context.Context) DynamicGroupStatusResponsePtrOutput
-}
-
-type dynamicGroupStatusResponsePtrType DynamicGroupStatusResponseArgs
-
-func DynamicGroupStatusResponsePtr(v *DynamicGroupStatusResponseArgs) DynamicGroupStatusResponsePtrInput {
-	return (*dynamicGroupStatusResponsePtrType)(v)
-}
-
-func (*dynamicGroupStatusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DynamicGroupStatusResponse)(nil)).Elem()
-}
-
-func (i *dynamicGroupStatusResponsePtrType) ToDynamicGroupStatusResponsePtrOutput() DynamicGroupStatusResponsePtrOutput {
-	return i.ToDynamicGroupStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *dynamicGroupStatusResponsePtrType) ToDynamicGroupStatusResponsePtrOutputWithContext(ctx context.Context) DynamicGroupStatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupStatusResponsePtrOutput)
-}
-
 // The current status of a dynamic group along with timestamp.
 type DynamicGroupStatusResponseOutput struct{ *pulumi.OutputState }
 
@@ -1049,16 +545,6 @@ func (o DynamicGroupStatusResponseOutput) ToDynamicGroupStatusResponseOutputWith
 	return o
 }
 
-func (o DynamicGroupStatusResponseOutput) ToDynamicGroupStatusResponsePtrOutput() DynamicGroupStatusResponsePtrOutput {
-	return o.ToDynamicGroupStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DynamicGroupStatusResponseOutput) ToDynamicGroupStatusResponsePtrOutputWithContext(ctx context.Context) DynamicGroupStatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DynamicGroupStatusResponse) *DynamicGroupStatusResponse {
-		return &v
-	}).(DynamicGroupStatusResponsePtrOutput)
-}
-
 // Status of the dynamic group.
 func (o DynamicGroupStatusResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v DynamicGroupStatusResponse) string { return v.Status }).(pulumi.StringOutput)
@@ -1069,124 +555,10 @@ func (o DynamicGroupStatusResponseOutput) StatusTime() pulumi.StringOutput {
 	return o.ApplyT(func(v DynamicGroupStatusResponse) string { return v.StatusTime }).(pulumi.StringOutput)
 }
 
-type DynamicGroupStatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DynamicGroupStatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DynamicGroupStatusResponse)(nil)).Elem()
-}
-
-func (o DynamicGroupStatusResponsePtrOutput) ToDynamicGroupStatusResponsePtrOutput() DynamicGroupStatusResponsePtrOutput {
-	return o
-}
-
-func (o DynamicGroupStatusResponsePtrOutput) ToDynamicGroupStatusResponsePtrOutputWithContext(ctx context.Context) DynamicGroupStatusResponsePtrOutput {
-	return o
-}
-
-func (o DynamicGroupStatusResponsePtrOutput) Elem() DynamicGroupStatusResponseOutput {
-	return o.ApplyT(func(v *DynamicGroupStatusResponse) DynamicGroupStatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DynamicGroupStatusResponse
-		return ret
-	}).(DynamicGroupStatusResponseOutput)
-}
-
-// Status of the dynamic group.
-func (o DynamicGroupStatusResponsePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DynamicGroupStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
-func (o DynamicGroupStatusResponsePtrOutput) StatusTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DynamicGroupStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StatusTime
-	}).(pulumi.StringPtrOutput)
-}
-
 // Resource representing the Endpoint Verification-specific attributes of a Device. https://cloud.google.com/endpoint-verification/docs/overview
 type EndpointVerificationSpecificAttributesResponse struct {
 	// Details of certificates.
 	CertificateAttributes []CertificateAttributesResponse `pulumi:"certificateAttributes"`
-}
-
-// EndpointVerificationSpecificAttributesResponseInput is an input type that accepts EndpointVerificationSpecificAttributesResponseArgs and EndpointVerificationSpecificAttributesResponseOutput values.
-// You can construct a concrete instance of `EndpointVerificationSpecificAttributesResponseInput` via:
-//
-//          EndpointVerificationSpecificAttributesResponseArgs{...}
-type EndpointVerificationSpecificAttributesResponseInput interface {
-	pulumi.Input
-
-	ToEndpointVerificationSpecificAttributesResponseOutput() EndpointVerificationSpecificAttributesResponseOutput
-	ToEndpointVerificationSpecificAttributesResponseOutputWithContext(context.Context) EndpointVerificationSpecificAttributesResponseOutput
-}
-
-// Resource representing the Endpoint Verification-specific attributes of a Device. https://cloud.google.com/endpoint-verification/docs/overview
-type EndpointVerificationSpecificAttributesResponseArgs struct {
-	// Details of certificates.
-	CertificateAttributes CertificateAttributesResponseArrayInput `pulumi:"certificateAttributes"`
-}
-
-func (EndpointVerificationSpecificAttributesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointVerificationSpecificAttributesResponse)(nil)).Elem()
-}
-
-func (i EndpointVerificationSpecificAttributesResponseArgs) ToEndpointVerificationSpecificAttributesResponseOutput() EndpointVerificationSpecificAttributesResponseOutput {
-	return i.ToEndpointVerificationSpecificAttributesResponseOutputWithContext(context.Background())
-}
-
-func (i EndpointVerificationSpecificAttributesResponseArgs) ToEndpointVerificationSpecificAttributesResponseOutputWithContext(ctx context.Context) EndpointVerificationSpecificAttributesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointVerificationSpecificAttributesResponseOutput)
-}
-
-func (i EndpointVerificationSpecificAttributesResponseArgs) ToEndpointVerificationSpecificAttributesResponsePtrOutput() EndpointVerificationSpecificAttributesResponsePtrOutput {
-	return i.ToEndpointVerificationSpecificAttributesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EndpointVerificationSpecificAttributesResponseArgs) ToEndpointVerificationSpecificAttributesResponsePtrOutputWithContext(ctx context.Context) EndpointVerificationSpecificAttributesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointVerificationSpecificAttributesResponseOutput).ToEndpointVerificationSpecificAttributesResponsePtrOutputWithContext(ctx)
-}
-
-// EndpointVerificationSpecificAttributesResponsePtrInput is an input type that accepts EndpointVerificationSpecificAttributesResponseArgs, EndpointVerificationSpecificAttributesResponsePtr and EndpointVerificationSpecificAttributesResponsePtrOutput values.
-// You can construct a concrete instance of `EndpointVerificationSpecificAttributesResponsePtrInput` via:
-//
-//          EndpointVerificationSpecificAttributesResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EndpointVerificationSpecificAttributesResponsePtrInput interface {
-	pulumi.Input
-
-	ToEndpointVerificationSpecificAttributesResponsePtrOutput() EndpointVerificationSpecificAttributesResponsePtrOutput
-	ToEndpointVerificationSpecificAttributesResponsePtrOutputWithContext(context.Context) EndpointVerificationSpecificAttributesResponsePtrOutput
-}
-
-type endpointVerificationSpecificAttributesResponsePtrType EndpointVerificationSpecificAttributesResponseArgs
-
-func EndpointVerificationSpecificAttributesResponsePtr(v *EndpointVerificationSpecificAttributesResponseArgs) EndpointVerificationSpecificAttributesResponsePtrInput {
-	return (*endpointVerificationSpecificAttributesResponsePtrType)(v)
-}
-
-func (*endpointVerificationSpecificAttributesResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointVerificationSpecificAttributesResponse)(nil)).Elem()
-}
-
-func (i *endpointVerificationSpecificAttributesResponsePtrType) ToEndpointVerificationSpecificAttributesResponsePtrOutput() EndpointVerificationSpecificAttributesResponsePtrOutput {
-	return i.ToEndpointVerificationSpecificAttributesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *endpointVerificationSpecificAttributesResponsePtrType) ToEndpointVerificationSpecificAttributesResponsePtrOutputWithContext(ctx context.Context) EndpointVerificationSpecificAttributesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointVerificationSpecificAttributesResponsePtrOutput)
 }
 
 // Resource representing the Endpoint Verification-specific attributes of a Device. https://cloud.google.com/endpoint-verification/docs/overview
@@ -1204,53 +576,9 @@ func (o EndpointVerificationSpecificAttributesResponseOutput) ToEndpointVerifica
 	return o
 }
 
-func (o EndpointVerificationSpecificAttributesResponseOutput) ToEndpointVerificationSpecificAttributesResponsePtrOutput() EndpointVerificationSpecificAttributesResponsePtrOutput {
-	return o.ToEndpointVerificationSpecificAttributesResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EndpointVerificationSpecificAttributesResponseOutput) ToEndpointVerificationSpecificAttributesResponsePtrOutputWithContext(ctx context.Context) EndpointVerificationSpecificAttributesResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointVerificationSpecificAttributesResponse) *EndpointVerificationSpecificAttributesResponse {
-		return &v
-	}).(EndpointVerificationSpecificAttributesResponsePtrOutput)
-}
-
 // Details of certificates.
 func (o EndpointVerificationSpecificAttributesResponseOutput) CertificateAttributes() CertificateAttributesResponseArrayOutput {
 	return o.ApplyT(func(v EndpointVerificationSpecificAttributesResponse) []CertificateAttributesResponse {
-		return v.CertificateAttributes
-	}).(CertificateAttributesResponseArrayOutput)
-}
-
-type EndpointVerificationSpecificAttributesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EndpointVerificationSpecificAttributesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointVerificationSpecificAttributesResponse)(nil)).Elem()
-}
-
-func (o EndpointVerificationSpecificAttributesResponsePtrOutput) ToEndpointVerificationSpecificAttributesResponsePtrOutput() EndpointVerificationSpecificAttributesResponsePtrOutput {
-	return o
-}
-
-func (o EndpointVerificationSpecificAttributesResponsePtrOutput) ToEndpointVerificationSpecificAttributesResponsePtrOutputWithContext(ctx context.Context) EndpointVerificationSpecificAttributesResponsePtrOutput {
-	return o
-}
-
-func (o EndpointVerificationSpecificAttributesResponsePtrOutput) Elem() EndpointVerificationSpecificAttributesResponseOutput {
-	return o.ApplyT(func(v *EndpointVerificationSpecificAttributesResponse) EndpointVerificationSpecificAttributesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EndpointVerificationSpecificAttributesResponse
-		return ret
-	}).(EndpointVerificationSpecificAttributesResponseOutput)
-}
-
-// Details of certificates.
-func (o EndpointVerificationSpecificAttributesResponsePtrOutput) CertificateAttributes() CertificateAttributesResponseArrayOutput {
-	return o.ApplyT(func(v *EndpointVerificationSpecificAttributesResponse) []CertificateAttributesResponse {
-		if v == nil {
-			return nil
-		}
 		return v.CertificateAttributes
 	}).(CertificateAttributesResponseArrayOutput)
 }
@@ -1465,101 +793,6 @@ type EntityKeyResponse struct {
 	Namespace string `pulumi:"namespace"`
 }
 
-// EntityKeyResponseInput is an input type that accepts EntityKeyResponseArgs and EntityKeyResponseOutput values.
-// You can construct a concrete instance of `EntityKeyResponseInput` via:
-//
-//          EntityKeyResponseArgs{...}
-type EntityKeyResponseInput interface {
-	pulumi.Input
-
-	ToEntityKeyResponseOutput() EntityKeyResponseOutput
-	ToEntityKeyResponseOutputWithContext(context.Context) EntityKeyResponseOutput
-}
-
-// A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
-type EntityKeyResponseArgs struct {
-	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
-	Namespace pulumi.StringInput `pulumi:"namespace"`
-}
-
-func (EntityKeyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntityKeyResponse)(nil)).Elem()
-}
-
-func (i EntityKeyResponseArgs) ToEntityKeyResponseOutput() EntityKeyResponseOutput {
-	return i.ToEntityKeyResponseOutputWithContext(context.Background())
-}
-
-func (i EntityKeyResponseArgs) ToEntityKeyResponseOutputWithContext(ctx context.Context) EntityKeyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntityKeyResponseOutput)
-}
-
-func (i EntityKeyResponseArgs) ToEntityKeyResponsePtrOutput() EntityKeyResponsePtrOutput {
-	return i.ToEntityKeyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EntityKeyResponseArgs) ToEntityKeyResponsePtrOutputWithContext(ctx context.Context) EntityKeyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntityKeyResponseOutput).ToEntityKeyResponsePtrOutputWithContext(ctx)
-}
-
-// EntityKeyResponsePtrInput is an input type that accepts EntityKeyResponseArgs, EntityKeyResponsePtr and EntityKeyResponsePtrOutput values.
-// You can construct a concrete instance of `EntityKeyResponsePtrInput` via:
-//
-//          EntityKeyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EntityKeyResponsePtrInput interface {
-	pulumi.Input
-
-	ToEntityKeyResponsePtrOutput() EntityKeyResponsePtrOutput
-	ToEntityKeyResponsePtrOutputWithContext(context.Context) EntityKeyResponsePtrOutput
-}
-
-type entityKeyResponsePtrType EntityKeyResponseArgs
-
-func EntityKeyResponsePtr(v *EntityKeyResponseArgs) EntityKeyResponsePtrInput {
-	return (*entityKeyResponsePtrType)(v)
-}
-
-func (*entityKeyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EntityKeyResponse)(nil)).Elem()
-}
-
-func (i *entityKeyResponsePtrType) ToEntityKeyResponsePtrOutput() EntityKeyResponsePtrOutput {
-	return i.ToEntityKeyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *entityKeyResponsePtrType) ToEntityKeyResponsePtrOutputWithContext(ctx context.Context) EntityKeyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntityKeyResponsePtrOutput)
-}
-
-// EntityKeyResponseArrayInput is an input type that accepts EntityKeyResponseArray and EntityKeyResponseArrayOutput values.
-// You can construct a concrete instance of `EntityKeyResponseArrayInput` via:
-//
-//          EntityKeyResponseArray{ EntityKeyResponseArgs{...} }
-type EntityKeyResponseArrayInput interface {
-	pulumi.Input
-
-	ToEntityKeyResponseArrayOutput() EntityKeyResponseArrayOutput
-	ToEntityKeyResponseArrayOutputWithContext(context.Context) EntityKeyResponseArrayOutput
-}
-
-type EntityKeyResponseArray []EntityKeyResponseInput
-
-func (EntityKeyResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EntityKeyResponse)(nil)).Elem()
-}
-
-func (i EntityKeyResponseArray) ToEntityKeyResponseArrayOutput() EntityKeyResponseArrayOutput {
-	return i.ToEntityKeyResponseArrayOutputWithContext(context.Background())
-}
-
-func (i EntityKeyResponseArray) ToEntityKeyResponseArrayOutputWithContext(ctx context.Context) EntityKeyResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntityKeyResponseArrayOutput)
-}
-
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKeyResponseOutput struct{ *pulumi.OutputState }
 
@@ -1575,53 +808,9 @@ func (o EntityKeyResponseOutput) ToEntityKeyResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o EntityKeyResponseOutput) ToEntityKeyResponsePtrOutput() EntityKeyResponsePtrOutput {
-	return o.ToEntityKeyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EntityKeyResponseOutput) ToEntityKeyResponsePtrOutputWithContext(ctx context.Context) EntityKeyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityKeyResponse) *EntityKeyResponse {
-		return &v
-	}).(EntityKeyResponsePtrOutput)
-}
-
 // The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
 func (o EntityKeyResponseOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v EntityKeyResponse) string { return v.Namespace }).(pulumi.StringOutput)
-}
-
-type EntityKeyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EntityKeyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EntityKeyResponse)(nil)).Elem()
-}
-
-func (o EntityKeyResponsePtrOutput) ToEntityKeyResponsePtrOutput() EntityKeyResponsePtrOutput {
-	return o
-}
-
-func (o EntityKeyResponsePtrOutput) ToEntityKeyResponsePtrOutputWithContext(ctx context.Context) EntityKeyResponsePtrOutput {
-	return o
-}
-
-func (o EntityKeyResponsePtrOutput) Elem() EntityKeyResponseOutput {
-	return o.ApplyT(func(v *EntityKeyResponse) EntityKeyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EntityKeyResponse
-		return ret
-	}).(EntityKeyResponseOutput)
-}
-
-// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
-func (o EntityKeyResponsePtrOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EntityKeyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Namespace
-	}).(pulumi.StringPtrOutput)
 }
 
 type EntityKeyResponseArrayOutput struct{ *pulumi.OutputState }
@@ -1790,35 +979,6 @@ type ExpiryDetailResponse struct {
 	ExpireTime string `pulumi:"expireTime"`
 }
 
-// ExpiryDetailResponseInput is an input type that accepts ExpiryDetailResponseArgs and ExpiryDetailResponseOutput values.
-// You can construct a concrete instance of `ExpiryDetailResponseInput` via:
-//
-//          ExpiryDetailResponseArgs{...}
-type ExpiryDetailResponseInput interface {
-	pulumi.Input
-
-	ToExpiryDetailResponseOutput() ExpiryDetailResponseOutput
-	ToExpiryDetailResponseOutputWithContext(context.Context) ExpiryDetailResponseOutput
-}
-
-// The `MembershipRole` expiry details.
-type ExpiryDetailResponseArgs struct {
-	// The time at which the `MembershipRole` will expire.
-	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
-}
-
-func (ExpiryDetailResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpiryDetailResponse)(nil)).Elem()
-}
-
-func (i ExpiryDetailResponseArgs) ToExpiryDetailResponseOutput() ExpiryDetailResponseOutput {
-	return i.ToExpiryDetailResponseOutputWithContext(context.Background())
-}
-
-func (i ExpiryDetailResponseArgs) ToExpiryDetailResponseOutputWithContext(ctx context.Context) ExpiryDetailResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpiryDetailResponseOutput)
-}
-
 // The `MembershipRole` expiry details.
 type ExpiryDetailResponseOutput struct{ *pulumi.OutputState }
 
@@ -1965,64 +1125,6 @@ type MembershipRoleResponse struct {
 	Name string `pulumi:"name"`
 	// Evaluations of restrictions applied to parent group on this membership.
 	RestrictionEvaluations RestrictionEvaluationsResponse `pulumi:"restrictionEvaluations"`
-}
-
-// MembershipRoleResponseInput is an input type that accepts MembershipRoleResponseArgs and MembershipRoleResponseOutput values.
-// You can construct a concrete instance of `MembershipRoleResponseInput` via:
-//
-//          MembershipRoleResponseArgs{...}
-type MembershipRoleResponseInput interface {
-	pulumi.Input
-
-	ToMembershipRoleResponseOutput() MembershipRoleResponseOutput
-	ToMembershipRoleResponseOutputWithContext(context.Context) MembershipRoleResponseOutput
-}
-
-// A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
-type MembershipRoleResponseArgs struct {
-	// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
-	ExpiryDetail ExpiryDetailResponseInput `pulumi:"expiryDetail"`
-	// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Evaluations of restrictions applied to parent group on this membership.
-	RestrictionEvaluations RestrictionEvaluationsResponseInput `pulumi:"restrictionEvaluations"`
-}
-
-func (MembershipRoleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MembershipRoleResponse)(nil)).Elem()
-}
-
-func (i MembershipRoleResponseArgs) ToMembershipRoleResponseOutput() MembershipRoleResponseOutput {
-	return i.ToMembershipRoleResponseOutputWithContext(context.Background())
-}
-
-func (i MembershipRoleResponseArgs) ToMembershipRoleResponseOutputWithContext(ctx context.Context) MembershipRoleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MembershipRoleResponseOutput)
-}
-
-// MembershipRoleResponseArrayInput is an input type that accepts MembershipRoleResponseArray and MembershipRoleResponseArrayOutput values.
-// You can construct a concrete instance of `MembershipRoleResponseArrayInput` via:
-//
-//          MembershipRoleResponseArray{ MembershipRoleResponseArgs{...} }
-type MembershipRoleResponseArrayInput interface {
-	pulumi.Input
-
-	ToMembershipRoleResponseArrayOutput() MembershipRoleResponseArrayOutput
-	ToMembershipRoleResponseArrayOutputWithContext(context.Context) MembershipRoleResponseArrayOutput
-}
-
-type MembershipRoleResponseArray []MembershipRoleResponseInput
-
-func (MembershipRoleResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MembershipRoleResponse)(nil)).Elem()
-}
-
-func (i MembershipRoleResponseArray) ToMembershipRoleResponseArrayOutput() MembershipRoleResponseArrayOutput {
-	return i.ToMembershipRoleResponseArrayOutputWithContext(context.Background())
-}
-
-func (i MembershipRoleResponseArray) ToMembershipRoleResponseArrayOutputWithContext(ctx context.Context) MembershipRoleResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MembershipRoleResponseArrayOutput)
 }
 
 // A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
@@ -2202,35 +1304,6 @@ type MembershipRoleRestrictionEvaluationResponse struct {
 	State string `pulumi:"state"`
 }
 
-// MembershipRoleRestrictionEvaluationResponseInput is an input type that accepts MembershipRoleRestrictionEvaluationResponseArgs and MembershipRoleRestrictionEvaluationResponseOutput values.
-// You can construct a concrete instance of `MembershipRoleRestrictionEvaluationResponseInput` via:
-//
-//          MembershipRoleRestrictionEvaluationResponseArgs{...}
-type MembershipRoleRestrictionEvaluationResponseInput interface {
-	pulumi.Input
-
-	ToMembershipRoleRestrictionEvaluationResponseOutput() MembershipRoleRestrictionEvaluationResponseOutput
-	ToMembershipRoleRestrictionEvaluationResponseOutputWithContext(context.Context) MembershipRoleRestrictionEvaluationResponseOutput
-}
-
-// The evaluated state of this restriction.
-type MembershipRoleRestrictionEvaluationResponseArgs struct {
-	// The current state of the restriction
-	State pulumi.StringInput `pulumi:"state"`
-}
-
-func (MembershipRoleRestrictionEvaluationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MembershipRoleRestrictionEvaluationResponse)(nil)).Elem()
-}
-
-func (i MembershipRoleRestrictionEvaluationResponseArgs) ToMembershipRoleRestrictionEvaluationResponseOutput() MembershipRoleRestrictionEvaluationResponseOutput {
-	return i.ToMembershipRoleRestrictionEvaluationResponseOutputWithContext(context.Background())
-}
-
-func (i MembershipRoleRestrictionEvaluationResponseArgs) ToMembershipRoleRestrictionEvaluationResponseOutputWithContext(ctx context.Context) MembershipRoleRestrictionEvaluationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MembershipRoleRestrictionEvaluationResponseOutput)
-}
-
 // The evaluated state of this restriction.
 type MembershipRoleRestrictionEvaluationResponseOutput struct{ *pulumi.OutputState }
 
@@ -2377,64 +1450,6 @@ type PosixGroupResponse struct {
 	Name string `pulumi:"name"`
 	// System identifier for which group name and gid apply to. If not specified it will default to empty value.
 	SystemId string `pulumi:"systemId"`
-}
-
-// PosixGroupResponseInput is an input type that accepts PosixGroupResponseArgs and PosixGroupResponseOutput values.
-// You can construct a concrete instance of `PosixGroupResponseInput` via:
-//
-//          PosixGroupResponseArgs{...}
-type PosixGroupResponseInput interface {
-	pulumi.Input
-
-	ToPosixGroupResponseOutput() PosixGroupResponseOutput
-	ToPosixGroupResponseOutputWithContext(context.Context) PosixGroupResponseOutput
-}
-
-// POSIX Group definition to represent a group in a POSIX compliant system.
-type PosixGroupResponseArgs struct {
-	// GID of the POSIX group.
-	Gid pulumi.StringInput `pulumi:"gid"`
-	// Name of the POSIX group.
-	Name pulumi.StringInput `pulumi:"name"`
-	// System identifier for which group name and gid apply to. If not specified it will default to empty value.
-	SystemId pulumi.StringInput `pulumi:"systemId"`
-}
-
-func (PosixGroupResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PosixGroupResponse)(nil)).Elem()
-}
-
-func (i PosixGroupResponseArgs) ToPosixGroupResponseOutput() PosixGroupResponseOutput {
-	return i.ToPosixGroupResponseOutputWithContext(context.Background())
-}
-
-func (i PosixGroupResponseArgs) ToPosixGroupResponseOutputWithContext(ctx context.Context) PosixGroupResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PosixGroupResponseOutput)
-}
-
-// PosixGroupResponseArrayInput is an input type that accepts PosixGroupResponseArray and PosixGroupResponseArrayOutput values.
-// You can construct a concrete instance of `PosixGroupResponseArrayInput` via:
-//
-//          PosixGroupResponseArray{ PosixGroupResponseArgs{...} }
-type PosixGroupResponseArrayInput interface {
-	pulumi.Input
-
-	ToPosixGroupResponseArrayOutput() PosixGroupResponseArrayOutput
-	ToPosixGroupResponseArrayOutputWithContext(context.Context) PosixGroupResponseArrayOutput
-}
-
-type PosixGroupResponseArray []PosixGroupResponseInput
-
-func (PosixGroupResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PosixGroupResponse)(nil)).Elem()
-}
-
-func (i PosixGroupResponseArray) ToPosixGroupResponseArrayOutput() PosixGroupResponseArrayOutput {
-	return i.ToPosixGroupResponseArrayOutputWithContext(context.Background())
-}
-
-func (i PosixGroupResponseArray) ToPosixGroupResponseArrayOutputWithContext(ctx context.Context) PosixGroupResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PosixGroupResponseArrayOutput)
 }
 
 // POSIX Group definition to represent a group in a POSIX compliant system.
@@ -2635,35 +1650,6 @@ type RestrictionEvaluationsResponse struct {
 	MemberRestrictionEvaluation MembershipRoleRestrictionEvaluationResponse `pulumi:"memberRestrictionEvaluation"`
 }
 
-// RestrictionEvaluationsResponseInput is an input type that accepts RestrictionEvaluationsResponseArgs and RestrictionEvaluationsResponseOutput values.
-// You can construct a concrete instance of `RestrictionEvaluationsResponseInput` via:
-//
-//          RestrictionEvaluationsResponseArgs{...}
-type RestrictionEvaluationsResponseInput interface {
-	pulumi.Input
-
-	ToRestrictionEvaluationsResponseOutput() RestrictionEvaluationsResponseOutput
-	ToRestrictionEvaluationsResponseOutputWithContext(context.Context) RestrictionEvaluationsResponseOutput
-}
-
-// Evaluations of restrictions applied to parent group on this membership.
-type RestrictionEvaluationsResponseArgs struct {
-	// Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
-	MemberRestrictionEvaluation MembershipRoleRestrictionEvaluationResponseInput `pulumi:"memberRestrictionEvaluation"`
-}
-
-func (RestrictionEvaluationsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RestrictionEvaluationsResponse)(nil)).Elem()
-}
-
-func (i RestrictionEvaluationsResponseArgs) ToRestrictionEvaluationsResponseOutput() RestrictionEvaluationsResponseOutput {
-	return i.ToRestrictionEvaluationsResponseOutputWithContext(context.Background())
-}
-
-func (i RestrictionEvaluationsResponseArgs) ToRestrictionEvaluationsResponseOutputWithContext(ctx context.Context) RestrictionEvaluationsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestrictionEvaluationsResponseOutput)
-}
-
 // Evaluations of restrictions applied to parent group on this membership.
 type RestrictionEvaluationsResponseOutput struct{ *pulumi.OutputState }
 
@@ -2687,68 +1673,40 @@ func (o RestrictionEvaluationsResponseOutput) MemberRestrictionEvaluation() Memb
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*AndroidAttributesResponseInput)(nil)).Elem(), AndroidAttributesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AndroidAttributesResponsePtrInput)(nil)).Elem(), AndroidAttributesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAttributesResponseInput)(nil)).Elem(), CertificateAttributesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAttributesResponseArrayInput)(nil)).Elem(), CertificateAttributesResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplateResponseInput)(nil)).Elem(), CertificateTemplateResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataInput)(nil)).Elem(), DynamicGroupMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataPtrInput)(nil)).Elem(), DynamicGroupMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataResponseInput)(nil)).Elem(), DynamicGroupMetadataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataResponsePtrInput)(nil)).Elem(), DynamicGroupMetadataResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryInput)(nil)).Elem(), DynamicGroupQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryArrayInput)(nil)).Elem(), DynamicGroupQueryArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryResponseInput)(nil)).Elem(), DynamicGroupQueryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryResponseArrayInput)(nil)).Elem(), DynamicGroupQueryResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupStatusResponseInput)(nil)).Elem(), DynamicGroupStatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupStatusResponsePtrInput)(nil)).Elem(), DynamicGroupStatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointVerificationSpecificAttributesResponseInput)(nil)).Elem(), EndpointVerificationSpecificAttributesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointVerificationSpecificAttributesResponsePtrInput)(nil)).Elem(), EndpointVerificationSpecificAttributesResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyInput)(nil)).Elem(), EntityKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyPtrInput)(nil)).Elem(), EntityKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyArrayInput)(nil)).Elem(), EntityKeyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyResponseInput)(nil)).Elem(), EntityKeyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyResponsePtrInput)(nil)).Elem(), EntityKeyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyResponseArrayInput)(nil)).Elem(), EntityKeyResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExpiryDetailInput)(nil)).Elem(), ExpiryDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExpiryDetailPtrInput)(nil)).Elem(), ExpiryDetailArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExpiryDetailResponseInput)(nil)).Elem(), ExpiryDetailResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleInput)(nil)).Elem(), MembershipRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleArrayInput)(nil)).Elem(), MembershipRoleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleResponseInput)(nil)).Elem(), MembershipRoleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleResponseArrayInput)(nil)).Elem(), MembershipRoleResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleRestrictionEvaluationInput)(nil)).Elem(), MembershipRoleRestrictionEvaluationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleRestrictionEvaluationPtrInput)(nil)).Elem(), MembershipRoleRestrictionEvaluationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleRestrictionEvaluationResponseInput)(nil)).Elem(), MembershipRoleRestrictionEvaluationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosixGroupInput)(nil)).Elem(), PosixGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosixGroupArrayInput)(nil)).Elem(), PosixGroupArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PosixGroupResponseInput)(nil)).Elem(), PosixGroupResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PosixGroupResponseArrayInput)(nil)).Elem(), PosixGroupResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestrictionEvaluationsInput)(nil)).Elem(), RestrictionEvaluationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestrictionEvaluationsPtrInput)(nil)).Elem(), RestrictionEvaluationsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RestrictionEvaluationsResponseInput)(nil)).Elem(), RestrictionEvaluationsResponseArgs{})
 	pulumi.RegisterOutputType(AndroidAttributesResponseOutput{})
-	pulumi.RegisterOutputType(AndroidAttributesResponsePtrOutput{})
 	pulumi.RegisterOutputType(CertificateAttributesResponseOutput{})
 	pulumi.RegisterOutputType(CertificateAttributesResponseArrayOutput{})
 	pulumi.RegisterOutputType(CertificateTemplateResponseOutput{})
 	pulumi.RegisterOutputType(DynamicGroupMetadataOutput{})
 	pulumi.RegisterOutputType(DynamicGroupMetadataPtrOutput{})
 	pulumi.RegisterOutputType(DynamicGroupMetadataResponseOutput{})
-	pulumi.RegisterOutputType(DynamicGroupMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(DynamicGroupQueryOutput{})
 	pulumi.RegisterOutputType(DynamicGroupQueryArrayOutput{})
 	pulumi.RegisterOutputType(DynamicGroupQueryResponseOutput{})
 	pulumi.RegisterOutputType(DynamicGroupQueryResponseArrayOutput{})
 	pulumi.RegisterOutputType(DynamicGroupStatusResponseOutput{})
-	pulumi.RegisterOutputType(DynamicGroupStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(EndpointVerificationSpecificAttributesResponseOutput{})
-	pulumi.RegisterOutputType(EndpointVerificationSpecificAttributesResponsePtrOutput{})
 	pulumi.RegisterOutputType(EntityKeyOutput{})
 	pulumi.RegisterOutputType(EntityKeyPtrOutput{})
 	pulumi.RegisterOutputType(EntityKeyArrayOutput{})
 	pulumi.RegisterOutputType(EntityKeyResponseOutput{})
-	pulumi.RegisterOutputType(EntityKeyResponsePtrOutput{})
 	pulumi.RegisterOutputType(EntityKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExpiryDetailOutput{})
 	pulumi.RegisterOutputType(ExpiryDetailPtrOutput{})

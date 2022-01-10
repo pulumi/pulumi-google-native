@@ -108,7 +108,7 @@ type LicenseInput interface {
 }
 
 func (*License) ElementType() reflect.Type {
-	return reflect.TypeOf((*License)(nil))
+	return reflect.TypeOf((**License)(nil)).Elem()
 }
 
 func (i *License) ToLicenseOutput() LicenseOutput {
@@ -122,7 +122,7 @@ func (i *License) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput 
 type LicenseOutput struct{ *pulumi.OutputState }
 
 func (LicenseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*License)(nil))
+	return reflect.TypeOf((**License)(nil)).Elem()
 }
 
 func (o LicenseOutput) ToLicenseOutput() LicenseOutput {

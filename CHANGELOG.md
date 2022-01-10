@@ -3,7 +3,9 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-(None)
+Improvements:
+
+- Update dependencies to pulumi/pulumi 3.21.1
 
 ---
 

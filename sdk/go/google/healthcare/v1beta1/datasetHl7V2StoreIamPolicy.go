@@ -118,7 +118,7 @@ type DatasetHl7V2StoreIamPolicyInput interface {
 }
 
 func (*DatasetHl7V2StoreIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetHl7V2StoreIamPolicy)(nil))
+	return reflect.TypeOf((**DatasetHl7V2StoreIamPolicy)(nil)).Elem()
 }
 
 func (i *DatasetHl7V2StoreIamPolicy) ToDatasetHl7V2StoreIamPolicyOutput() DatasetHl7V2StoreIamPolicyOutput {
@@ -132,7 +132,7 @@ func (i *DatasetHl7V2StoreIamPolicy) ToDatasetHl7V2StoreIamPolicyOutputWithConte
 type DatasetHl7V2StoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DatasetHl7V2StoreIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetHl7V2StoreIamPolicy)(nil))
+	return reflect.TypeOf((**DatasetHl7V2StoreIamPolicy)(nil)).Elem()
 }
 
 func (o DatasetHl7V2StoreIamPolicyOutput) ToDatasetHl7V2StoreIamPolicyOutput() DatasetHl7V2StoreIamPolicyOutput {

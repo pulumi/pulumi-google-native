@@ -127,62 +127,6 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
-// You can construct a concrete instance of `AuditConfigResponseInput` via:
-//
-//          AuditConfigResponseArgs{...}
-type AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseOutput() AuditConfigResponseOutput
-	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return i.ToAuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
-}
-
-// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
-//
-//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
-type AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
-	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
-}
-
-type AuditConfigResponseArray []AuditConfigResponseInput
-
-func (AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -343,62 +287,6 @@ type AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
-//
-//          AuditLogConfigResponseArgs{...}
-type AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
-	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
-}
-
-// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
-//
-//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
-type AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
-	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
-}
-
-type AuditLogConfigResponseArray []AuditLogConfigResponseInput
-
-func (AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -572,64 +460,6 @@ type BindingResponse struct {
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
-}
-
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -891,41 +721,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -1128,78 +923,6 @@ type LinkedInterconnectAttachmentsResponse struct {
 	Uris []string `pulumi:"uris"`
 }
 
-// LinkedInterconnectAttachmentsResponseInput is an input type that accepts LinkedInterconnectAttachmentsResponseArgs and LinkedInterconnectAttachmentsResponseOutput values.
-// You can construct a concrete instance of `LinkedInterconnectAttachmentsResponseInput` via:
-//
-//          LinkedInterconnectAttachmentsResponseArgs{...}
-type LinkedInterconnectAttachmentsResponseInput interface {
-	pulumi.Input
-
-	ToLinkedInterconnectAttachmentsResponseOutput() LinkedInterconnectAttachmentsResponseOutput
-	ToLinkedInterconnectAttachmentsResponseOutputWithContext(context.Context) LinkedInterconnectAttachmentsResponseOutput
-}
-
-// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
-type LinkedInterconnectAttachmentsResponseArgs struct {
-	// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
-	SiteToSiteDataTransfer pulumi.BoolInput `pulumi:"siteToSiteDataTransfer"`
-	// The URIs of linked interconnect attachment resources
-	Uris pulumi.StringArrayInput `pulumi:"uris"`
-}
-
-func (LinkedInterconnectAttachmentsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkedInterconnectAttachmentsResponse)(nil)).Elem()
-}
-
-func (i LinkedInterconnectAttachmentsResponseArgs) ToLinkedInterconnectAttachmentsResponseOutput() LinkedInterconnectAttachmentsResponseOutput {
-	return i.ToLinkedInterconnectAttachmentsResponseOutputWithContext(context.Background())
-}
-
-func (i LinkedInterconnectAttachmentsResponseArgs) ToLinkedInterconnectAttachmentsResponseOutputWithContext(ctx context.Context) LinkedInterconnectAttachmentsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinkedInterconnectAttachmentsResponseOutput)
-}
-
-func (i LinkedInterconnectAttachmentsResponseArgs) ToLinkedInterconnectAttachmentsResponsePtrOutput() LinkedInterconnectAttachmentsResponsePtrOutput {
-	return i.ToLinkedInterconnectAttachmentsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i LinkedInterconnectAttachmentsResponseArgs) ToLinkedInterconnectAttachmentsResponsePtrOutputWithContext(ctx context.Context) LinkedInterconnectAttachmentsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinkedInterconnectAttachmentsResponseOutput).ToLinkedInterconnectAttachmentsResponsePtrOutputWithContext(ctx)
-}
-
-// LinkedInterconnectAttachmentsResponsePtrInput is an input type that accepts LinkedInterconnectAttachmentsResponseArgs, LinkedInterconnectAttachmentsResponsePtr and LinkedInterconnectAttachmentsResponsePtrOutput values.
-// You can construct a concrete instance of `LinkedInterconnectAttachmentsResponsePtrInput` via:
-//
-//          LinkedInterconnectAttachmentsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type LinkedInterconnectAttachmentsResponsePtrInput interface {
-	pulumi.Input
-
-	ToLinkedInterconnectAttachmentsResponsePtrOutput() LinkedInterconnectAttachmentsResponsePtrOutput
-	ToLinkedInterconnectAttachmentsResponsePtrOutputWithContext(context.Context) LinkedInterconnectAttachmentsResponsePtrOutput
-}
-
-type linkedInterconnectAttachmentsResponsePtrType LinkedInterconnectAttachmentsResponseArgs
-
-func LinkedInterconnectAttachmentsResponsePtr(v *LinkedInterconnectAttachmentsResponseArgs) LinkedInterconnectAttachmentsResponsePtrInput {
-	return (*linkedInterconnectAttachmentsResponsePtrType)(v)
-}
-
-func (*linkedInterconnectAttachmentsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LinkedInterconnectAttachmentsResponse)(nil)).Elem()
-}
-
-func (i *linkedInterconnectAttachmentsResponsePtrType) ToLinkedInterconnectAttachmentsResponsePtrOutput() LinkedInterconnectAttachmentsResponsePtrOutput {
-	return i.ToLinkedInterconnectAttachmentsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *linkedInterconnectAttachmentsResponsePtrType) ToLinkedInterconnectAttachmentsResponsePtrOutputWithContext(ctx context.Context) LinkedInterconnectAttachmentsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinkedInterconnectAttachmentsResponsePtrOutput)
-}
-
 // A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 type LinkedInterconnectAttachmentsResponseOutput struct{ *pulumi.OutputState }
 
@@ -1215,16 +938,6 @@ func (o LinkedInterconnectAttachmentsResponseOutput) ToLinkedInterconnectAttachm
 	return o
 }
 
-func (o LinkedInterconnectAttachmentsResponseOutput) ToLinkedInterconnectAttachmentsResponsePtrOutput() LinkedInterconnectAttachmentsResponsePtrOutput {
-	return o.ToLinkedInterconnectAttachmentsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o LinkedInterconnectAttachmentsResponseOutput) ToLinkedInterconnectAttachmentsResponsePtrOutputWithContext(ctx context.Context) LinkedInterconnectAttachmentsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinkedInterconnectAttachmentsResponse) *LinkedInterconnectAttachmentsResponse {
-		return &v
-	}).(LinkedInterconnectAttachmentsResponsePtrOutput)
-}
-
 // A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
 func (o LinkedInterconnectAttachmentsResponseOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v LinkedInterconnectAttachmentsResponse) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
@@ -1233,50 +946,6 @@ func (o LinkedInterconnectAttachmentsResponseOutput) SiteToSiteDataTransfer() pu
 // The URIs of linked interconnect attachment resources
 func (o LinkedInterconnectAttachmentsResponseOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LinkedInterconnectAttachmentsResponse) []string { return v.Uris }).(pulumi.StringArrayOutput)
-}
-
-type LinkedInterconnectAttachmentsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LinkedInterconnectAttachmentsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LinkedInterconnectAttachmentsResponse)(nil)).Elem()
-}
-
-func (o LinkedInterconnectAttachmentsResponsePtrOutput) ToLinkedInterconnectAttachmentsResponsePtrOutput() LinkedInterconnectAttachmentsResponsePtrOutput {
-	return o
-}
-
-func (o LinkedInterconnectAttachmentsResponsePtrOutput) ToLinkedInterconnectAttachmentsResponsePtrOutputWithContext(ctx context.Context) LinkedInterconnectAttachmentsResponsePtrOutput {
-	return o
-}
-
-func (o LinkedInterconnectAttachmentsResponsePtrOutput) Elem() LinkedInterconnectAttachmentsResponseOutput {
-	return o.ApplyT(func(v *LinkedInterconnectAttachmentsResponse) LinkedInterconnectAttachmentsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LinkedInterconnectAttachmentsResponse
-		return ret
-	}).(LinkedInterconnectAttachmentsResponseOutput)
-}
-
-// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
-func (o LinkedInterconnectAttachmentsResponsePtrOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *LinkedInterconnectAttachmentsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.SiteToSiteDataTransfer
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The URIs of linked interconnect attachment resources
-func (o LinkedInterconnectAttachmentsResponsePtrOutput) Uris() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *LinkedInterconnectAttachmentsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Uris
-	}).(pulumi.StringArrayOutput)
 }
 
 // A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
@@ -1446,78 +1115,6 @@ type LinkedRouterApplianceInstancesResponse struct {
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
 }
 
-// LinkedRouterApplianceInstancesResponseInput is an input type that accepts LinkedRouterApplianceInstancesResponseArgs and LinkedRouterApplianceInstancesResponseOutput values.
-// You can construct a concrete instance of `LinkedRouterApplianceInstancesResponseInput` via:
-//
-//          LinkedRouterApplianceInstancesResponseArgs{...}
-type LinkedRouterApplianceInstancesResponseInput interface {
-	pulumi.Input
-
-	ToLinkedRouterApplianceInstancesResponseOutput() LinkedRouterApplianceInstancesResponseOutput
-	ToLinkedRouterApplianceInstancesResponseOutputWithContext(context.Context) LinkedRouterApplianceInstancesResponseOutput
-}
-
-// A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
-type LinkedRouterApplianceInstancesResponseArgs struct {
-	// The list of router appliance instances.
-	Instances RouterApplianceInstanceResponseArrayInput `pulumi:"instances"`
-	// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
-	SiteToSiteDataTransfer pulumi.BoolInput `pulumi:"siteToSiteDataTransfer"`
-}
-
-func (LinkedRouterApplianceInstancesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkedRouterApplianceInstancesResponse)(nil)).Elem()
-}
-
-func (i LinkedRouterApplianceInstancesResponseArgs) ToLinkedRouterApplianceInstancesResponseOutput() LinkedRouterApplianceInstancesResponseOutput {
-	return i.ToLinkedRouterApplianceInstancesResponseOutputWithContext(context.Background())
-}
-
-func (i LinkedRouterApplianceInstancesResponseArgs) ToLinkedRouterApplianceInstancesResponseOutputWithContext(ctx context.Context) LinkedRouterApplianceInstancesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinkedRouterApplianceInstancesResponseOutput)
-}
-
-func (i LinkedRouterApplianceInstancesResponseArgs) ToLinkedRouterApplianceInstancesResponsePtrOutput() LinkedRouterApplianceInstancesResponsePtrOutput {
-	return i.ToLinkedRouterApplianceInstancesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i LinkedRouterApplianceInstancesResponseArgs) ToLinkedRouterApplianceInstancesResponsePtrOutputWithContext(ctx context.Context) LinkedRouterApplianceInstancesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinkedRouterApplianceInstancesResponseOutput).ToLinkedRouterApplianceInstancesResponsePtrOutputWithContext(ctx)
-}
-
-// LinkedRouterApplianceInstancesResponsePtrInput is an input type that accepts LinkedRouterApplianceInstancesResponseArgs, LinkedRouterApplianceInstancesResponsePtr and LinkedRouterApplianceInstancesResponsePtrOutput values.
-// You can construct a concrete instance of `LinkedRouterApplianceInstancesResponsePtrInput` via:
-//
-//          LinkedRouterApplianceInstancesResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type LinkedRouterApplianceInstancesResponsePtrInput interface {
-	pulumi.Input
-
-	ToLinkedRouterApplianceInstancesResponsePtrOutput() LinkedRouterApplianceInstancesResponsePtrOutput
-	ToLinkedRouterApplianceInstancesResponsePtrOutputWithContext(context.Context) LinkedRouterApplianceInstancesResponsePtrOutput
-}
-
-type linkedRouterApplianceInstancesResponsePtrType LinkedRouterApplianceInstancesResponseArgs
-
-func LinkedRouterApplianceInstancesResponsePtr(v *LinkedRouterApplianceInstancesResponseArgs) LinkedRouterApplianceInstancesResponsePtrInput {
-	return (*linkedRouterApplianceInstancesResponsePtrType)(v)
-}
-
-func (*linkedRouterApplianceInstancesResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LinkedRouterApplianceInstancesResponse)(nil)).Elem()
-}
-
-func (i *linkedRouterApplianceInstancesResponsePtrType) ToLinkedRouterApplianceInstancesResponsePtrOutput() LinkedRouterApplianceInstancesResponsePtrOutput {
-	return i.ToLinkedRouterApplianceInstancesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *linkedRouterApplianceInstancesResponsePtrType) ToLinkedRouterApplianceInstancesResponsePtrOutputWithContext(ctx context.Context) LinkedRouterApplianceInstancesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinkedRouterApplianceInstancesResponsePtrOutput)
-}
-
 // A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
 type LinkedRouterApplianceInstancesResponseOutput struct{ *pulumi.OutputState }
 
@@ -1533,16 +1130,6 @@ func (o LinkedRouterApplianceInstancesResponseOutput) ToLinkedRouterApplianceIns
 	return o
 }
 
-func (o LinkedRouterApplianceInstancesResponseOutput) ToLinkedRouterApplianceInstancesResponsePtrOutput() LinkedRouterApplianceInstancesResponsePtrOutput {
-	return o.ToLinkedRouterApplianceInstancesResponsePtrOutputWithContext(context.Background())
-}
-
-func (o LinkedRouterApplianceInstancesResponseOutput) ToLinkedRouterApplianceInstancesResponsePtrOutputWithContext(ctx context.Context) LinkedRouterApplianceInstancesResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinkedRouterApplianceInstancesResponse) *LinkedRouterApplianceInstancesResponse {
-		return &v
-	}).(LinkedRouterApplianceInstancesResponsePtrOutput)
-}
-
 // The list of router appliance instances.
 func (o LinkedRouterApplianceInstancesResponseOutput) Instances() RouterApplianceInstanceResponseArrayOutput {
 	return o.ApplyT(func(v LinkedRouterApplianceInstancesResponse) []RouterApplianceInstanceResponse { return v.Instances }).(RouterApplianceInstanceResponseArrayOutput)
@@ -1551,50 +1138,6 @@ func (o LinkedRouterApplianceInstancesResponseOutput) Instances() RouterApplianc
 // A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
 func (o LinkedRouterApplianceInstancesResponseOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v LinkedRouterApplianceInstancesResponse) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
-}
-
-type LinkedRouterApplianceInstancesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LinkedRouterApplianceInstancesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LinkedRouterApplianceInstancesResponse)(nil)).Elem()
-}
-
-func (o LinkedRouterApplianceInstancesResponsePtrOutput) ToLinkedRouterApplianceInstancesResponsePtrOutput() LinkedRouterApplianceInstancesResponsePtrOutput {
-	return o
-}
-
-func (o LinkedRouterApplianceInstancesResponsePtrOutput) ToLinkedRouterApplianceInstancesResponsePtrOutputWithContext(ctx context.Context) LinkedRouterApplianceInstancesResponsePtrOutput {
-	return o
-}
-
-func (o LinkedRouterApplianceInstancesResponsePtrOutput) Elem() LinkedRouterApplianceInstancesResponseOutput {
-	return o.ApplyT(func(v *LinkedRouterApplianceInstancesResponse) LinkedRouterApplianceInstancesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LinkedRouterApplianceInstancesResponse
-		return ret
-	}).(LinkedRouterApplianceInstancesResponseOutput)
-}
-
-// The list of router appliance instances.
-func (o LinkedRouterApplianceInstancesResponsePtrOutput) Instances() RouterApplianceInstanceResponseArrayOutput {
-	return o.ApplyT(func(v *LinkedRouterApplianceInstancesResponse) []RouterApplianceInstanceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Instances
-	}).(RouterApplianceInstanceResponseArrayOutput)
-}
-
-// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
-func (o LinkedRouterApplianceInstancesResponsePtrOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *LinkedRouterApplianceInstancesResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.SiteToSiteDataTransfer
-	}).(pulumi.BoolPtrOutput)
 }
 
 // A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
@@ -1764,78 +1307,6 @@ type LinkedVpnTunnelsResponse struct {
 	Uris []string `pulumi:"uris"`
 }
 
-// LinkedVpnTunnelsResponseInput is an input type that accepts LinkedVpnTunnelsResponseArgs and LinkedVpnTunnelsResponseOutput values.
-// You can construct a concrete instance of `LinkedVpnTunnelsResponseInput` via:
-//
-//          LinkedVpnTunnelsResponseArgs{...}
-type LinkedVpnTunnelsResponseInput interface {
-	pulumi.Input
-
-	ToLinkedVpnTunnelsResponseOutput() LinkedVpnTunnelsResponseOutput
-	ToLinkedVpnTunnelsResponseOutputWithContext(context.Context) LinkedVpnTunnelsResponseOutput
-}
-
-// A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
-type LinkedVpnTunnelsResponseArgs struct {
-	// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
-	SiteToSiteDataTransfer pulumi.BoolInput `pulumi:"siteToSiteDataTransfer"`
-	// The URIs of linked VPN tunnel resources.
-	Uris pulumi.StringArrayInput `pulumi:"uris"`
-}
-
-func (LinkedVpnTunnelsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkedVpnTunnelsResponse)(nil)).Elem()
-}
-
-func (i LinkedVpnTunnelsResponseArgs) ToLinkedVpnTunnelsResponseOutput() LinkedVpnTunnelsResponseOutput {
-	return i.ToLinkedVpnTunnelsResponseOutputWithContext(context.Background())
-}
-
-func (i LinkedVpnTunnelsResponseArgs) ToLinkedVpnTunnelsResponseOutputWithContext(ctx context.Context) LinkedVpnTunnelsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinkedVpnTunnelsResponseOutput)
-}
-
-func (i LinkedVpnTunnelsResponseArgs) ToLinkedVpnTunnelsResponsePtrOutput() LinkedVpnTunnelsResponsePtrOutput {
-	return i.ToLinkedVpnTunnelsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i LinkedVpnTunnelsResponseArgs) ToLinkedVpnTunnelsResponsePtrOutputWithContext(ctx context.Context) LinkedVpnTunnelsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinkedVpnTunnelsResponseOutput).ToLinkedVpnTunnelsResponsePtrOutputWithContext(ctx)
-}
-
-// LinkedVpnTunnelsResponsePtrInput is an input type that accepts LinkedVpnTunnelsResponseArgs, LinkedVpnTunnelsResponsePtr and LinkedVpnTunnelsResponsePtrOutput values.
-// You can construct a concrete instance of `LinkedVpnTunnelsResponsePtrInput` via:
-//
-//          LinkedVpnTunnelsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type LinkedVpnTunnelsResponsePtrInput interface {
-	pulumi.Input
-
-	ToLinkedVpnTunnelsResponsePtrOutput() LinkedVpnTunnelsResponsePtrOutput
-	ToLinkedVpnTunnelsResponsePtrOutputWithContext(context.Context) LinkedVpnTunnelsResponsePtrOutput
-}
-
-type linkedVpnTunnelsResponsePtrType LinkedVpnTunnelsResponseArgs
-
-func LinkedVpnTunnelsResponsePtr(v *LinkedVpnTunnelsResponseArgs) LinkedVpnTunnelsResponsePtrInput {
-	return (*linkedVpnTunnelsResponsePtrType)(v)
-}
-
-func (*linkedVpnTunnelsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LinkedVpnTunnelsResponse)(nil)).Elem()
-}
-
-func (i *linkedVpnTunnelsResponsePtrType) ToLinkedVpnTunnelsResponsePtrOutput() LinkedVpnTunnelsResponsePtrOutput {
-	return i.ToLinkedVpnTunnelsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *linkedVpnTunnelsResponsePtrType) ToLinkedVpnTunnelsResponsePtrOutputWithContext(ctx context.Context) LinkedVpnTunnelsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinkedVpnTunnelsResponsePtrOutput)
-}
-
 // A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
 type LinkedVpnTunnelsResponseOutput struct{ *pulumi.OutputState }
 
@@ -1851,16 +1322,6 @@ func (o LinkedVpnTunnelsResponseOutput) ToLinkedVpnTunnelsResponseOutputWithCont
 	return o
 }
 
-func (o LinkedVpnTunnelsResponseOutput) ToLinkedVpnTunnelsResponsePtrOutput() LinkedVpnTunnelsResponsePtrOutput {
-	return o.ToLinkedVpnTunnelsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o LinkedVpnTunnelsResponseOutput) ToLinkedVpnTunnelsResponsePtrOutputWithContext(ctx context.Context) LinkedVpnTunnelsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinkedVpnTunnelsResponse) *LinkedVpnTunnelsResponse {
-		return &v
-	}).(LinkedVpnTunnelsResponsePtrOutput)
-}
-
 // A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
 func (o LinkedVpnTunnelsResponseOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v LinkedVpnTunnelsResponse) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
@@ -1869,50 +1330,6 @@ func (o LinkedVpnTunnelsResponseOutput) SiteToSiteDataTransfer() pulumi.BoolOutp
 // The URIs of linked VPN tunnel resources.
 func (o LinkedVpnTunnelsResponseOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LinkedVpnTunnelsResponse) []string { return v.Uris }).(pulumi.StringArrayOutput)
-}
-
-type LinkedVpnTunnelsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LinkedVpnTunnelsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LinkedVpnTunnelsResponse)(nil)).Elem()
-}
-
-func (o LinkedVpnTunnelsResponsePtrOutput) ToLinkedVpnTunnelsResponsePtrOutput() LinkedVpnTunnelsResponsePtrOutput {
-	return o
-}
-
-func (o LinkedVpnTunnelsResponsePtrOutput) ToLinkedVpnTunnelsResponsePtrOutputWithContext(ctx context.Context) LinkedVpnTunnelsResponsePtrOutput {
-	return o
-}
-
-func (o LinkedVpnTunnelsResponsePtrOutput) Elem() LinkedVpnTunnelsResponseOutput {
-	return o.ApplyT(func(v *LinkedVpnTunnelsResponse) LinkedVpnTunnelsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LinkedVpnTunnelsResponse
-		return ret
-	}).(LinkedVpnTunnelsResponseOutput)
-}
-
-// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
-func (o LinkedVpnTunnelsResponsePtrOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *LinkedVpnTunnelsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.SiteToSiteDataTransfer
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The URIs of linked VPN tunnel resources.
-func (o LinkedVpnTunnelsResponsePtrOutput) Uris() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *LinkedVpnTunnelsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Uris
-	}).(pulumi.StringArrayOutput)
 }
 
 // A router appliance instance is a Compute Engine virtual machine (VM) instance that acts as a BGP speaker. A router appliance instance is specified by the URI of the VM and the internal IP address of one of the VM's network interfaces.
@@ -2030,62 +1447,6 @@ type RouterApplianceInstanceResponse struct {
 	IpAddress string `pulumi:"ipAddress"`
 	// The URI of the VM.
 	VirtualMachine string `pulumi:"virtualMachine"`
-}
-
-// RouterApplianceInstanceResponseInput is an input type that accepts RouterApplianceInstanceResponseArgs and RouterApplianceInstanceResponseOutput values.
-// You can construct a concrete instance of `RouterApplianceInstanceResponseInput` via:
-//
-//          RouterApplianceInstanceResponseArgs{...}
-type RouterApplianceInstanceResponseInput interface {
-	pulumi.Input
-
-	ToRouterApplianceInstanceResponseOutput() RouterApplianceInstanceResponseOutput
-	ToRouterApplianceInstanceResponseOutputWithContext(context.Context) RouterApplianceInstanceResponseOutput
-}
-
-// A router appliance instance is a Compute Engine virtual machine (VM) instance that acts as a BGP speaker. A router appliance instance is specified by the URI of the VM and the internal IP address of one of the VM's network interfaces.
-type RouterApplianceInstanceResponseArgs struct {
-	// The IP address on the VM to use for peering.
-	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
-	// The URI of the VM.
-	VirtualMachine pulumi.StringInput `pulumi:"virtualMachine"`
-}
-
-func (RouterApplianceInstanceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouterApplianceInstanceResponse)(nil)).Elem()
-}
-
-func (i RouterApplianceInstanceResponseArgs) ToRouterApplianceInstanceResponseOutput() RouterApplianceInstanceResponseOutput {
-	return i.ToRouterApplianceInstanceResponseOutputWithContext(context.Background())
-}
-
-func (i RouterApplianceInstanceResponseArgs) ToRouterApplianceInstanceResponseOutputWithContext(ctx context.Context) RouterApplianceInstanceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouterApplianceInstanceResponseOutput)
-}
-
-// RouterApplianceInstanceResponseArrayInput is an input type that accepts RouterApplianceInstanceResponseArray and RouterApplianceInstanceResponseArrayOutput values.
-// You can construct a concrete instance of `RouterApplianceInstanceResponseArrayInput` via:
-//
-//          RouterApplianceInstanceResponseArray{ RouterApplianceInstanceResponseArgs{...} }
-type RouterApplianceInstanceResponseArrayInput interface {
-	pulumi.Input
-
-	ToRouterApplianceInstanceResponseArrayOutput() RouterApplianceInstanceResponseArrayOutput
-	ToRouterApplianceInstanceResponseArrayOutputWithContext(context.Context) RouterApplianceInstanceResponseArrayOutput
-}
-
-type RouterApplianceInstanceResponseArray []RouterApplianceInstanceResponseInput
-
-func (RouterApplianceInstanceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouterApplianceInstanceResponse)(nil)).Elem()
-}
-
-func (i RouterApplianceInstanceResponseArray) ToRouterApplianceInstanceResponseArrayOutput() RouterApplianceInstanceResponseArrayOutput {
-	return i.ToRouterApplianceInstanceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i RouterApplianceInstanceResponseArray) ToRouterApplianceInstanceResponseArrayOutputWithContext(ctx context.Context) RouterApplianceInstanceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouterApplianceInstanceResponseArrayOutput)
 }
 
 // A router appliance instance is a Compute Engine virtual machine (VM) instance that acts as a BGP speaker. A router appliance instance is specified by the URI of the VM and the internal IP address of one of the VM's network interfaces.
@@ -2241,62 +1602,6 @@ type RoutingVPCResponse struct {
 	Uri string `pulumi:"uri"`
 }
 
-// RoutingVPCResponseInput is an input type that accepts RoutingVPCResponseArgs and RoutingVPCResponseOutput values.
-// You can construct a concrete instance of `RoutingVPCResponseInput` via:
-//
-//          RoutingVPCResponseArgs{...}
-type RoutingVPCResponseInput interface {
-	pulumi.Input
-
-	ToRoutingVPCResponseOutput() RoutingVPCResponseOutput
-	ToRoutingVPCResponseOutputWithContext(context.Context) RoutingVPCResponseOutput
-}
-
-// RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
-type RoutingVPCResponseArgs struct {
-	// If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network.
-	RequiredForNewSiteToSiteDataTransferSpokes pulumi.BoolInput `pulumi:"requiredForNewSiteToSiteDataTransferSpokes"`
-	// The URI of the VPC network.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (RoutingVPCResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingVPCResponse)(nil)).Elem()
-}
-
-func (i RoutingVPCResponseArgs) ToRoutingVPCResponseOutput() RoutingVPCResponseOutput {
-	return i.ToRoutingVPCResponseOutputWithContext(context.Background())
-}
-
-func (i RoutingVPCResponseArgs) ToRoutingVPCResponseOutputWithContext(ctx context.Context) RoutingVPCResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingVPCResponseOutput)
-}
-
-// RoutingVPCResponseArrayInput is an input type that accepts RoutingVPCResponseArray and RoutingVPCResponseArrayOutput values.
-// You can construct a concrete instance of `RoutingVPCResponseArrayInput` via:
-//
-//          RoutingVPCResponseArray{ RoutingVPCResponseArgs{...} }
-type RoutingVPCResponseArrayInput interface {
-	pulumi.Input
-
-	ToRoutingVPCResponseArrayOutput() RoutingVPCResponseArrayOutput
-	ToRoutingVPCResponseArrayOutputWithContext(context.Context) RoutingVPCResponseArrayOutput
-}
-
-type RoutingVPCResponseArray []RoutingVPCResponseInput
-
-func (RoutingVPCResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoutingVPCResponse)(nil)).Elem()
-}
-
-func (i RoutingVPCResponseArray) ToRoutingVPCResponseArrayOutput() RoutingVPCResponseArrayOutput {
-	return i.ToRoutingVPCResponseArrayOutputWithContext(context.Background())
-}
-
-func (i RoutingVPCResponseArray) ToRoutingVPCResponseArrayOutputWithContext(ctx context.Context) RoutingVPCResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingVPCResponseArrayOutput)
-}
-
 // RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
 type RoutingVPCResponseOutput struct{ *pulumi.OutputState }
 
@@ -2345,39 +1650,22 @@ func (o RoutingVPCResponseArrayOutput) Index(i pulumi.IntInput) RoutingVPCRespon
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedInterconnectAttachmentsInput)(nil)).Elem(), LinkedInterconnectAttachmentsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedInterconnectAttachmentsPtrInput)(nil)).Elem(), LinkedInterconnectAttachmentsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LinkedInterconnectAttachmentsResponseInput)(nil)).Elem(), LinkedInterconnectAttachmentsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LinkedInterconnectAttachmentsResponsePtrInput)(nil)).Elem(), LinkedInterconnectAttachmentsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedRouterApplianceInstancesInput)(nil)).Elem(), LinkedRouterApplianceInstancesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedRouterApplianceInstancesPtrInput)(nil)).Elem(), LinkedRouterApplianceInstancesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LinkedRouterApplianceInstancesResponseInput)(nil)).Elem(), LinkedRouterApplianceInstancesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LinkedRouterApplianceInstancesResponsePtrInput)(nil)).Elem(), LinkedRouterApplianceInstancesResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedVpnTunnelsInput)(nil)).Elem(), LinkedVpnTunnelsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedVpnTunnelsPtrInput)(nil)).Elem(), LinkedVpnTunnelsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LinkedVpnTunnelsResponseInput)(nil)).Elem(), LinkedVpnTunnelsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LinkedVpnTunnelsResponsePtrInput)(nil)).Elem(), LinkedVpnTunnelsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterApplianceInstanceInput)(nil)).Elem(), RouterApplianceInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterApplianceInstanceArrayInput)(nil)).Elem(), RouterApplianceInstanceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RouterApplianceInstanceResponseInput)(nil)).Elem(), RouterApplianceInstanceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RouterApplianceInstanceResponseArrayInput)(nil)).Elem(), RouterApplianceInstanceResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutingVPCInput)(nil)).Elem(), RoutingVPCArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutingVPCArrayInput)(nil)).Elem(), RoutingVPCArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RoutingVPCResponseInput)(nil)).Elem(), RoutingVPCResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RoutingVPCResponseArrayInput)(nil)).Elem(), RoutingVPCResponseArray{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -2396,15 +1684,12 @@ func init() {
 	pulumi.RegisterOutputType(LinkedInterconnectAttachmentsOutput{})
 	pulumi.RegisterOutputType(LinkedInterconnectAttachmentsPtrOutput{})
 	pulumi.RegisterOutputType(LinkedInterconnectAttachmentsResponseOutput{})
-	pulumi.RegisterOutputType(LinkedInterconnectAttachmentsResponsePtrOutput{})
 	pulumi.RegisterOutputType(LinkedRouterApplianceInstancesOutput{})
 	pulumi.RegisterOutputType(LinkedRouterApplianceInstancesPtrOutput{})
 	pulumi.RegisterOutputType(LinkedRouterApplianceInstancesResponseOutput{})
-	pulumi.RegisterOutputType(LinkedRouterApplianceInstancesResponsePtrOutput{})
 	pulumi.RegisterOutputType(LinkedVpnTunnelsOutput{})
 	pulumi.RegisterOutputType(LinkedVpnTunnelsPtrOutput{})
 	pulumi.RegisterOutputType(LinkedVpnTunnelsResponseOutput{})
-	pulumi.RegisterOutputType(LinkedVpnTunnelsResponsePtrOutput{})
 	pulumi.RegisterOutputType(RouterApplianceInstanceOutput{})
 	pulumi.RegisterOutputType(RouterApplianceInstanceArrayOutput{})
 	pulumi.RegisterOutputType(RouterApplianceInstanceResponseOutput{})

@@ -135,7 +135,7 @@ type AttributeDefinitionInput interface {
 }
 
 func (*AttributeDefinition) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttributeDefinition)(nil))
+	return reflect.TypeOf((**AttributeDefinition)(nil)).Elem()
 }
 
 func (i *AttributeDefinition) ToAttributeDefinitionOutput() AttributeDefinitionOutput {
@@ -149,7 +149,7 @@ func (i *AttributeDefinition) ToAttributeDefinitionOutputWithContext(ctx context
 type AttributeDefinitionOutput struct{ *pulumi.OutputState }
 
 func (AttributeDefinitionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttributeDefinition)(nil))
+	return reflect.TypeOf((**AttributeDefinition)(nil)).Elem()
 }
 
 func (o AttributeDefinitionOutput) ToAttributeDefinitionOutput() AttributeDefinitionOutput {

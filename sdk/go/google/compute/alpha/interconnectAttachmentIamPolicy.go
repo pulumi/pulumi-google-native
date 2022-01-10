@@ -118,7 +118,7 @@ type InterconnectAttachmentIamPolicyInput interface {
 }
 
 func (*InterconnectAttachmentIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterconnectAttachmentIamPolicy)(nil))
+	return reflect.TypeOf((**InterconnectAttachmentIamPolicy)(nil)).Elem()
 }
 
 func (i *InterconnectAttachmentIamPolicy) ToInterconnectAttachmentIamPolicyOutput() InterconnectAttachmentIamPolicyOutput {
@@ -132,7 +132,7 @@ func (i *InterconnectAttachmentIamPolicy) ToInterconnectAttachmentIamPolicyOutpu
 type InterconnectAttachmentIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (InterconnectAttachmentIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterconnectAttachmentIamPolicy)(nil))
+	return reflect.TypeOf((**InterconnectAttachmentIamPolicy)(nil)).Elem()
 }
 
 func (o InterconnectAttachmentIamPolicyOutput) ToInterconnectAttachmentIamPolicyOutput() InterconnectAttachmentIamPolicyOutput {

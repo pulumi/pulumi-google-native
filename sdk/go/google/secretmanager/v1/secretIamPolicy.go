@@ -111,7 +111,7 @@ type SecretIamPolicyInput interface {
 }
 
 func (*SecretIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretIamPolicy)(nil))
+	return reflect.TypeOf((**SecretIamPolicy)(nil)).Elem()
 }
 
 func (i *SecretIamPolicy) ToSecretIamPolicyOutput() SecretIamPolicyOutput {
@@ -125,7 +125,7 @@ func (i *SecretIamPolicy) ToSecretIamPolicyOutputWithContext(ctx context.Context
 type SecretIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (SecretIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretIamPolicy)(nil))
+	return reflect.TypeOf((**SecretIamPolicy)(nil)).Elem()
 }
 
 func (o SecretIamPolicyOutput) ToSecretIamPolicyOutput() SecretIamPolicyOutput {

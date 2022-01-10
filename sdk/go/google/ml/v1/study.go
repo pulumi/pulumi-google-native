@@ -101,7 +101,7 @@ type StudyInput interface {
 }
 
 func (*Study) ElementType() reflect.Type {
-	return reflect.TypeOf((*Study)(nil))
+	return reflect.TypeOf((**Study)(nil)).Elem()
 }
 
 func (i *Study) ToStudyOutput() StudyOutput {
@@ -115,7 +115,7 @@ func (i *Study) ToStudyOutputWithContext(ctx context.Context) StudyOutput {
 type StudyOutput struct{ *pulumi.OutputState }
 
 func (StudyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Study)(nil))
+	return reflect.TypeOf((**Study)(nil)).Elem()
 }
 
 func (o StudyOutput) ToStudyOutput() StudyOutput {

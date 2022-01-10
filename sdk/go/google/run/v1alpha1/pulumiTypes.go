@@ -198,39 +198,6 @@ type ConfigMapEnvSourceResponse struct {
 	Optional bool `pulumi:"optional"`
 }
 
-// ConfigMapEnvSourceResponseInput is an input type that accepts ConfigMapEnvSourceResponseArgs and ConfigMapEnvSourceResponseOutput values.
-// You can construct a concrete instance of `ConfigMapEnvSourceResponseInput` via:
-//
-//          ConfigMapEnvSourceResponseArgs{...}
-type ConfigMapEnvSourceResponseInput interface {
-	pulumi.Input
-
-	ToConfigMapEnvSourceResponseOutput() ConfigMapEnvSourceResponseOutput
-	ToConfigMapEnvSourceResponseOutputWithContext(context.Context) ConfigMapEnvSourceResponseOutput
-}
-
-// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
-type ConfigMapEnvSourceResponseArgs struct {
-	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
-	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
-	// The ConfigMap to select from.
-	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Specify whether the ConfigMap must be defined
-	Optional pulumi.BoolInput `pulumi:"optional"`
-}
-
-func (ConfigMapEnvSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigMapEnvSourceResponse)(nil)).Elem()
-}
-
-func (i ConfigMapEnvSourceResponseArgs) ToConfigMapEnvSourceResponseOutput() ConfigMapEnvSourceResponseOutput {
-	return i.ToConfigMapEnvSourceResponseOutputWithContext(context.Background())
-}
-
-func (i ConfigMapEnvSourceResponseArgs) ToConfigMapEnvSourceResponseOutputWithContext(ctx context.Context) ConfigMapEnvSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapEnvSourceResponseOutput)
-}
-
 // Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -468,41 +435,6 @@ type ConfigMapKeySelectorResponse struct {
 	Name string `pulumi:"name"`
 	// (Optional) Specify whether the ConfigMap or its key must be defined
 	Optional bool `pulumi:"optional"`
-}
-
-// ConfigMapKeySelectorResponseInput is an input type that accepts ConfigMapKeySelectorResponseArgs and ConfigMapKeySelectorResponseOutput values.
-// You can construct a concrete instance of `ConfigMapKeySelectorResponseInput` via:
-//
-//          ConfigMapKeySelectorResponseArgs{...}
-type ConfigMapKeySelectorResponseInput interface {
-	pulumi.Input
-
-	ToConfigMapKeySelectorResponseOutput() ConfigMapKeySelectorResponseOutput
-	ToConfigMapKeySelectorResponseOutputWithContext(context.Context) ConfigMapKeySelectorResponseOutput
-}
-
-// Not supported by Cloud Run Selects a key from a ConfigMap.
-type ConfigMapKeySelectorResponseArgs struct {
-	// The key to select.
-	Key pulumi.StringInput `pulumi:"key"`
-	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
-	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
-	// The ConfigMap to select from.
-	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Specify whether the ConfigMap or its key must be defined
-	Optional pulumi.BoolInput `pulumi:"optional"`
-}
-
-func (ConfigMapKeySelectorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigMapKeySelectorResponse)(nil)).Elem()
-}
-
-func (i ConfigMapKeySelectorResponseArgs) ToConfigMapKeySelectorResponseOutput() ConfigMapKeySelectorResponseOutput {
-	return i.ToConfigMapKeySelectorResponseOutputWithContext(context.Background())
-}
-
-func (i ConfigMapKeySelectorResponseArgs) ToConfigMapKeySelectorResponseOutputWithContext(ctx context.Context) ConfigMapKeySelectorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapKeySelectorResponseOutput)
 }
 
 // Not supported by Cloud Run Selects a key from a ConfigMap.
@@ -747,41 +679,6 @@ type ConfigMapVolumeSourceResponse struct {
 	Name string `pulumi:"name"`
 	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional bool `pulumi:"optional"`
-}
-
-// ConfigMapVolumeSourceResponseInput is an input type that accepts ConfigMapVolumeSourceResponseArgs and ConfigMapVolumeSourceResponseOutput values.
-// You can construct a concrete instance of `ConfigMapVolumeSourceResponseInput` via:
-//
-//          ConfigMapVolumeSourceResponseArgs{...}
-type ConfigMapVolumeSourceResponseInput interface {
-	pulumi.Input
-
-	ToConfigMapVolumeSourceResponseOutput() ConfigMapVolumeSourceResponseOutput
-	ToConfigMapVolumeSourceResponseOutputWithContext(context.Context) ConfigMapVolumeSourceResponseOutput
-}
-
-// Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
-type ConfigMapVolumeSourceResponseArgs struct {
-	// (Optional) Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
-	DefaultMode pulumi.IntInput `pulumi:"defaultMode"`
-	// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
-	Items KeyToPathResponseArrayInput `pulumi:"items"`
-	// Name of the config.
-	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Specify whether the Secret or its keys must be defined.
-	Optional pulumi.BoolInput `pulumi:"optional"`
-}
-
-func (ConfigMapVolumeSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigMapVolumeSourceResponse)(nil)).Elem()
-}
-
-func (i ConfigMapVolumeSourceResponseArgs) ToConfigMapVolumeSourceResponseOutput() ConfigMapVolumeSourceResponseOutput {
-	return i.ToConfigMapVolumeSourceResponseOutputWithContext(context.Background())
-}
-
-func (i ConfigMapVolumeSourceResponseArgs) ToConfigMapVolumeSourceResponseOutputWithContext(ctx context.Context) ConfigMapVolumeSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapVolumeSourceResponseOutput)
 }
 
 // Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
@@ -1188,64 +1085,6 @@ type ContainerPortResponse struct {
 	Protocol string `pulumi:"protocol"`
 }
 
-// ContainerPortResponseInput is an input type that accepts ContainerPortResponseArgs and ContainerPortResponseOutput values.
-// You can construct a concrete instance of `ContainerPortResponseInput` via:
-//
-//          ContainerPortResponseArgs{...}
-type ContainerPortResponseInput interface {
-	pulumi.Input
-
-	ToContainerPortResponseOutput() ContainerPortResponseOutput
-	ToContainerPortResponseOutputWithContext(context.Context) ContainerPortResponseOutput
-}
-
-// ContainerPort represents a network port in a single container.
-type ContainerPortResponseArgs struct {
-	// (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
-	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
-	// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
-	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
-	Protocol pulumi.StringInput `pulumi:"protocol"`
-}
-
-func (ContainerPortResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerPortResponse)(nil)).Elem()
-}
-
-func (i ContainerPortResponseArgs) ToContainerPortResponseOutput() ContainerPortResponseOutput {
-	return i.ToContainerPortResponseOutputWithContext(context.Background())
-}
-
-func (i ContainerPortResponseArgs) ToContainerPortResponseOutputWithContext(ctx context.Context) ContainerPortResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerPortResponseOutput)
-}
-
-// ContainerPortResponseArrayInput is an input type that accepts ContainerPortResponseArray and ContainerPortResponseArrayOutput values.
-// You can construct a concrete instance of `ContainerPortResponseArrayInput` via:
-//
-//          ContainerPortResponseArray{ ContainerPortResponseArgs{...} }
-type ContainerPortResponseArrayInput interface {
-	pulumi.Input
-
-	ToContainerPortResponseArrayOutput() ContainerPortResponseArrayOutput
-	ToContainerPortResponseArrayOutputWithContext(context.Context) ContainerPortResponseArrayOutput
-}
-
-type ContainerPortResponseArray []ContainerPortResponseInput
-
-func (ContainerPortResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ContainerPortResponse)(nil)).Elem()
-}
-
-func (i ContainerPortResponseArray) ToContainerPortResponseArrayOutput() ContainerPortResponseArrayOutput {
-	return i.ToContainerPortResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ContainerPortResponseArray) ToContainerPortResponseArrayOutputWithContext(ctx context.Context) ContainerPortResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerPortResponseArrayOutput)
-}
-
 // ContainerPort represents a network port in a single container.
 type ContainerPortResponseOutput struct{ *pulumi.OutputState }
 
@@ -1331,91 +1170,6 @@ type ContainerResponse struct {
 	VolumeMounts []VolumeMountResponse `pulumi:"volumeMounts"`
 	// (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 	WorkingDir string `pulumi:"workingDir"`
-}
-
-// ContainerResponseInput is an input type that accepts ContainerResponseArgs and ContainerResponseOutput values.
-// You can construct a concrete instance of `ContainerResponseInput` via:
-//
-//          ContainerResponseArgs{...}
-type ContainerResponseInput interface {
-	pulumi.Input
-
-	ToContainerResponseOutput() ContainerResponseOutput
-	ToContainerResponseOutputWithContext(context.Context) ContainerResponseOutput
-}
-
-// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
-type ContainerResponseArgs struct {
-	// (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-	Args    pulumi.StringArrayInput `pulumi:"args"`
-	Command pulumi.StringArrayInput `pulumi:"command"`
-	// (Optional) List of environment variables to set in the container.
-	Env EnvVarResponseArrayInput `pulumi:"env"`
-	// (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
-	EnvFrom EnvFromSourceResponseArrayInput `pulumi:"envFrom"`
-	// Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
-	Image pulumi.StringInput `pulumi:"image"`
-	// (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
-	ImagePullPolicy pulumi.StringInput `pulumi:"imagePullPolicy"`
-	// (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-	LivenessProbe ProbeResponseInput `pulumi:"livenessProbe"`
-	// (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
-	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
-	Ports ContainerPortResponseArrayInput `pulumi:"ports"`
-	// (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-	ReadinessProbe ProbeResponseInput `pulumi:"readinessProbe"`
-	// (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
-	Resources ResourceRequirementsResponseInput `pulumi:"resources"`
-	// (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-	SecurityContext SecurityContextResponseInput `pulumi:"securityContext"`
-	// (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-	StartupProbe ProbeResponseInput `pulumi:"startupProbe"`
-	// (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
-	TerminationMessagePath pulumi.StringInput `pulumi:"terminationMessagePath"`
-	// (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
-	TerminationMessagePolicy pulumi.StringInput `pulumi:"terminationMessagePolicy"`
-	// (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
-	VolumeMounts VolumeMountResponseArrayInput `pulumi:"volumeMounts"`
-	// (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
-	WorkingDir pulumi.StringInput `pulumi:"workingDir"`
-}
-
-func (ContainerResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerResponse)(nil)).Elem()
-}
-
-func (i ContainerResponseArgs) ToContainerResponseOutput() ContainerResponseOutput {
-	return i.ToContainerResponseOutputWithContext(context.Background())
-}
-
-func (i ContainerResponseArgs) ToContainerResponseOutputWithContext(ctx context.Context) ContainerResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerResponseOutput)
-}
-
-// ContainerResponseArrayInput is an input type that accepts ContainerResponseArray and ContainerResponseArrayOutput values.
-// You can construct a concrete instance of `ContainerResponseArrayInput` via:
-//
-//          ContainerResponseArray{ ContainerResponseArgs{...} }
-type ContainerResponseArrayInput interface {
-	pulumi.Input
-
-	ToContainerResponseArrayOutput() ContainerResponseArrayOutput
-	ToContainerResponseArrayOutputWithContext(context.Context) ContainerResponseArrayOutput
-}
-
-type ContainerResponseArray []ContainerResponseInput
-
-func (ContainerResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ContainerResponse)(nil)).Elem()
-}
-
-func (i ContainerResponseArray) ToContainerResponseArrayOutput() ContainerResponseArrayOutput {
-	return i.ToContainerResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ContainerResponseArray) ToContainerResponseArrayOutputWithContext(ctx context.Context) ContainerResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerResponseArrayOutput)
 }
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
@@ -1665,64 +1419,6 @@ type EnvFromSourceResponse struct {
 	SecretRef SecretEnvSourceResponse `pulumi:"secretRef"`
 }
 
-// EnvFromSourceResponseInput is an input type that accepts EnvFromSourceResponseArgs and EnvFromSourceResponseOutput values.
-// You can construct a concrete instance of `EnvFromSourceResponseInput` via:
-//
-//          EnvFromSourceResponseArgs{...}
-type EnvFromSourceResponseInput interface {
-	pulumi.Input
-
-	ToEnvFromSourceResponseOutput() EnvFromSourceResponseOutput
-	ToEnvFromSourceResponseOutputWithContext(context.Context) EnvFromSourceResponseOutput
-}
-
-// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
-type EnvFromSourceResponseArgs struct {
-	// (Optional) The ConfigMap to select from
-	ConfigMapRef ConfigMapEnvSourceResponseInput `pulumi:"configMapRef"`
-	// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
-	Prefix pulumi.StringInput `pulumi:"prefix"`
-	// (Optional) The Secret to select from
-	SecretRef SecretEnvSourceResponseInput `pulumi:"secretRef"`
-}
-
-func (EnvFromSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvFromSourceResponse)(nil)).Elem()
-}
-
-func (i EnvFromSourceResponseArgs) ToEnvFromSourceResponseOutput() EnvFromSourceResponseOutput {
-	return i.ToEnvFromSourceResponseOutputWithContext(context.Background())
-}
-
-func (i EnvFromSourceResponseArgs) ToEnvFromSourceResponseOutputWithContext(ctx context.Context) EnvFromSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvFromSourceResponseOutput)
-}
-
-// EnvFromSourceResponseArrayInput is an input type that accepts EnvFromSourceResponseArray and EnvFromSourceResponseArrayOutput values.
-// You can construct a concrete instance of `EnvFromSourceResponseArrayInput` via:
-//
-//          EnvFromSourceResponseArray{ EnvFromSourceResponseArgs{...} }
-type EnvFromSourceResponseArrayInput interface {
-	pulumi.Input
-
-	ToEnvFromSourceResponseArrayOutput() EnvFromSourceResponseArrayOutput
-	ToEnvFromSourceResponseArrayOutputWithContext(context.Context) EnvFromSourceResponseArrayOutput
-}
-
-type EnvFromSourceResponseArray []EnvFromSourceResponseInput
-
-func (EnvFromSourceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnvFromSourceResponse)(nil)).Elem()
-}
-
-func (i EnvFromSourceResponseArray) ToEnvFromSourceResponseArrayOutput() EnvFromSourceResponseArrayOutput {
-	return i.ToEnvFromSourceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i EnvFromSourceResponseArray) ToEnvFromSourceResponseArrayOutputWithContext(ctx context.Context) EnvFromSourceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvFromSourceResponseArrayOutput)
-}
-
 // Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -1899,64 +1595,6 @@ type EnvVarResponse struct {
 	Value string `pulumi:"value"`
 	// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
 	ValueFrom EnvVarSourceResponse `pulumi:"valueFrom"`
-}
-
-// EnvVarResponseInput is an input type that accepts EnvVarResponseArgs and EnvVarResponseOutput values.
-// You can construct a concrete instance of `EnvVarResponseInput` via:
-//
-//          EnvVarResponseArgs{...}
-type EnvVarResponseInput interface {
-	pulumi.Input
-
-	ToEnvVarResponseOutput() EnvVarResponseOutput
-	ToEnvVarResponseOutputWithContext(context.Context) EnvVarResponseOutput
-}
-
-// EnvVar represents an environment variable present in a Container.
-type EnvVarResponseArgs struct {
-	// Name of the environment variable. Must be a C_IDENTIFIER.
-	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
-	Value pulumi.StringInput `pulumi:"value"`
-	// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
-	ValueFrom EnvVarSourceResponseInput `pulumi:"valueFrom"`
-}
-
-func (EnvVarResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvVarResponse)(nil)).Elem()
-}
-
-func (i EnvVarResponseArgs) ToEnvVarResponseOutput() EnvVarResponseOutput {
-	return i.ToEnvVarResponseOutputWithContext(context.Background())
-}
-
-func (i EnvVarResponseArgs) ToEnvVarResponseOutputWithContext(ctx context.Context) EnvVarResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvVarResponseOutput)
-}
-
-// EnvVarResponseArrayInput is an input type that accepts EnvVarResponseArray and EnvVarResponseArrayOutput values.
-// You can construct a concrete instance of `EnvVarResponseArrayInput` via:
-//
-//          EnvVarResponseArray{ EnvVarResponseArgs{...} }
-type EnvVarResponseArrayInput interface {
-	pulumi.Input
-
-	ToEnvVarResponseArrayOutput() EnvVarResponseArrayOutput
-	ToEnvVarResponseArrayOutputWithContext(context.Context) EnvVarResponseArrayOutput
-}
-
-type EnvVarResponseArray []EnvVarResponseInput
-
-func (EnvVarResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnvVarResponse)(nil)).Elem()
-}
-
-func (i EnvVarResponseArray) ToEnvVarResponseArrayOutput() EnvVarResponseArrayOutput {
-	return i.ToEnvVarResponseArrayOutputWithContext(context.Background())
-}
-
-func (i EnvVarResponseArray) ToEnvVarResponseArrayOutputWithContext(ctx context.Context) EnvVarResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvVarResponseArrayOutput)
 }
 
 // EnvVar represents an environment variable present in a Container.
@@ -2176,37 +1814,6 @@ type EnvVarSourceResponse struct {
 	SecretKeyRef SecretKeySelectorResponse `pulumi:"secretKeyRef"`
 }
 
-// EnvVarSourceResponseInput is an input type that accepts EnvVarSourceResponseArgs and EnvVarSourceResponseOutput values.
-// You can construct a concrete instance of `EnvVarSourceResponseInput` via:
-//
-//          EnvVarSourceResponseArgs{...}
-type EnvVarSourceResponseInput interface {
-	pulumi.Input
-
-	ToEnvVarSourceResponseOutput() EnvVarSourceResponseOutput
-	ToEnvVarSourceResponseOutputWithContext(context.Context) EnvVarSourceResponseOutput
-}
-
-// EnvVarSource represents a source for the value of an EnvVar.
-type EnvVarSourceResponseArgs struct {
-	// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
-	ConfigMapKeyRef ConfigMapKeySelectorResponseInput `pulumi:"configMapKeyRef"`
-	// (Optional) Selects a key (version) of a secret in Secret Manager.
-	SecretKeyRef SecretKeySelectorResponseInput `pulumi:"secretKeyRef"`
-}
-
-func (EnvVarSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvVarSourceResponse)(nil)).Elem()
-}
-
-func (i EnvVarSourceResponseArgs) ToEnvVarSourceResponseOutput() EnvVarSourceResponseOutput {
-	return i.ToEnvVarSourceResponseOutputWithContext(context.Background())
-}
-
-func (i EnvVarSourceResponseArgs) ToEnvVarSourceResponseOutputWithContext(ctx context.Context) EnvVarSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvVarSourceResponseOutput)
-}
-
 // EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -2376,35 +1983,6 @@ func (o ExecActionPtrOutput) Command() pulumi.StringArrayOutput {
 type ExecActionResponse struct {
 	// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 	Command []string `pulumi:"command"`
-}
-
-// ExecActionResponseInput is an input type that accepts ExecActionResponseArgs and ExecActionResponseOutput values.
-// You can construct a concrete instance of `ExecActionResponseInput` via:
-//
-//          ExecActionResponseArgs{...}
-type ExecActionResponseInput interface {
-	pulumi.Input
-
-	ToExecActionResponseOutput() ExecActionResponseOutput
-	ToExecActionResponseOutputWithContext(context.Context) ExecActionResponseOutput
-}
-
-// Not supported by Cloud Run ExecAction describes a "run in container" action.
-type ExecActionResponseArgs struct {
-	// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
-	Command pulumi.StringArrayInput `pulumi:"command"`
-}
-
-func (ExecActionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExecActionResponse)(nil)).Elem()
-}
-
-func (i ExecActionResponseArgs) ToExecActionResponseOutput() ExecActionResponseOutput {
-	return i.ToExecActionResponseOutputWithContext(context.Background())
-}
-
-func (i ExecActionResponseArgs) ToExecActionResponseOutputWithContext(ctx context.Context) ExecActionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecActionResponseOutput)
 }
 
 // Not supported by Cloud Run ExecAction describes a "run in container" action.
@@ -2613,39 +2191,6 @@ type GoogleRpcStatusResponse struct {
 	Details []map[string]string `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
-}
-
-// GoogleRpcStatusResponseInput is an input type that accepts GoogleRpcStatusResponseArgs and GoogleRpcStatusResponseOutput values.
-// You can construct a concrete instance of `GoogleRpcStatusResponseInput` via:
-//
-//          GoogleRpcStatusResponseArgs{...}
-type GoogleRpcStatusResponseInput interface {
-	pulumi.Input
-
-	ToGoogleRpcStatusResponseOutput() GoogleRpcStatusResponseOutput
-	ToGoogleRpcStatusResponseOutputWithContext(context.Context) GoogleRpcStatusResponseOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type GoogleRpcStatusResponseArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (GoogleRpcStatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleRpcStatusResponse)(nil)).Elem()
-}
-
-func (i GoogleRpcStatusResponseArgs) ToGoogleRpcStatusResponseOutput() GoogleRpcStatusResponseOutput {
-	return i.ToGoogleRpcStatusResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleRpcStatusResponseArgs) ToGoogleRpcStatusResponseOutputWithContext(ctx context.Context) GoogleRpcStatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusResponseOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -2887,41 +2432,6 @@ type HTTPGetActionResponse struct {
 	Scheme string `pulumi:"scheme"`
 }
 
-// HTTPGetActionResponseInput is an input type that accepts HTTPGetActionResponseArgs and HTTPGetActionResponseOutput values.
-// You can construct a concrete instance of `HTTPGetActionResponseInput` via:
-//
-//          HTTPGetActionResponseArgs{...}
-type HTTPGetActionResponseInput interface {
-	pulumi.Input
-
-	ToHTTPGetActionResponseOutput() HTTPGetActionResponseOutput
-	ToHTTPGetActionResponseOutputWithContext(context.Context) HTTPGetActionResponseOutput
-}
-
-// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
-type HTTPGetActionResponseArgs struct {
-	// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host pulumi.StringInput `pulumi:"host"`
-	// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
-	HttpHeaders HTTPHeaderResponseArrayInput `pulumi:"httpHeaders"`
-	// (Optional) Path to access on the HTTP server.
-	Path pulumi.StringInput `pulumi:"path"`
-	// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
-	Scheme pulumi.StringInput `pulumi:"scheme"`
-}
-
-func (HTTPGetActionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HTTPGetActionResponse)(nil)).Elem()
-}
-
-func (i HTTPGetActionResponseArgs) ToHTTPGetActionResponseOutput() HTTPGetActionResponseOutput {
-	return i.ToHTTPGetActionResponseOutputWithContext(context.Background())
-}
-
-func (i HTTPGetActionResponseArgs) ToHTTPGetActionResponseOutputWithContext(ctx context.Context) HTTPGetActionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HTTPGetActionResponseOutput)
-}
-
 // Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetActionResponseOutput struct{ *pulumi.OutputState }
 
@@ -3072,62 +2582,6 @@ type HTTPHeaderResponse struct {
 	Name string `pulumi:"name"`
 	// The header field value
 	Value string `pulumi:"value"`
-}
-
-// HTTPHeaderResponseInput is an input type that accepts HTTPHeaderResponseArgs and HTTPHeaderResponseOutput values.
-// You can construct a concrete instance of `HTTPHeaderResponseInput` via:
-//
-//          HTTPHeaderResponseArgs{...}
-type HTTPHeaderResponseInput interface {
-	pulumi.Input
-
-	ToHTTPHeaderResponseOutput() HTTPHeaderResponseOutput
-	ToHTTPHeaderResponseOutputWithContext(context.Context) HTTPHeaderResponseOutput
-}
-
-// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
-type HTTPHeaderResponseArgs struct {
-	// The header field name
-	Name pulumi.StringInput `pulumi:"name"`
-	// The header field value
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (HTTPHeaderResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HTTPHeaderResponse)(nil)).Elem()
-}
-
-func (i HTTPHeaderResponseArgs) ToHTTPHeaderResponseOutput() HTTPHeaderResponseOutput {
-	return i.ToHTTPHeaderResponseOutputWithContext(context.Background())
-}
-
-func (i HTTPHeaderResponseArgs) ToHTTPHeaderResponseOutputWithContext(ctx context.Context) HTTPHeaderResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HTTPHeaderResponseOutput)
-}
-
-// HTTPHeaderResponseArrayInput is an input type that accepts HTTPHeaderResponseArray and HTTPHeaderResponseArrayOutput values.
-// You can construct a concrete instance of `HTTPHeaderResponseArrayInput` via:
-//
-//          HTTPHeaderResponseArray{ HTTPHeaderResponseArgs{...} }
-type HTTPHeaderResponseArrayInput interface {
-	pulumi.Input
-
-	ToHTTPHeaderResponseArrayOutput() HTTPHeaderResponseArrayOutput
-	ToHTTPHeaderResponseArrayOutputWithContext(context.Context) HTTPHeaderResponseArrayOutput
-}
-
-type HTTPHeaderResponseArray []HTTPHeaderResponseInput
-
-func (HTTPHeaderResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HTTPHeaderResponse)(nil)).Elem()
-}
-
-func (i HTTPHeaderResponseArray) ToHTTPHeaderResponseArrayOutput() HTTPHeaderResponseArrayOutput {
-	return i.ToHTTPHeaderResponseArrayOutputWithContext(context.Background())
-}
-
-func (i HTTPHeaderResponseArray) ToHTTPHeaderResponseArrayOutputWithContext(ctx context.Context) HTTPHeaderResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HTTPHeaderResponseArrayOutput)
 }
 
 // Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
@@ -3340,37 +2794,6 @@ type InstanceAttemptResultResponse struct {
 	ExitCode int `pulumi:"exitCode"`
 	// Optional. The status of this attempt. If the status code is OK, then the attempt succeeded.
 	Status GoogleRpcStatusResponse `pulumi:"status"`
-}
-
-// InstanceAttemptResultResponseInput is an input type that accepts InstanceAttemptResultResponseArgs and InstanceAttemptResultResponseOutput values.
-// You can construct a concrete instance of `InstanceAttemptResultResponseInput` via:
-//
-//          InstanceAttemptResultResponseArgs{...}
-type InstanceAttemptResultResponseInput interface {
-	pulumi.Input
-
-	ToInstanceAttemptResultResponseOutput() InstanceAttemptResultResponseOutput
-	ToInstanceAttemptResultResponseOutputWithContext(context.Context) InstanceAttemptResultResponseOutput
-}
-
-// Result of an instance attempt.
-type InstanceAttemptResultResponseArgs struct {
-	// Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with a code due to some other failure. See status field for possible failure details.
-	ExitCode pulumi.IntInput `pulumi:"exitCode"`
-	// Optional. The status of this attempt. If the status code is OK, then the attempt succeeded.
-	Status GoogleRpcStatusResponseInput `pulumi:"status"`
-}
-
-func (InstanceAttemptResultResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceAttemptResultResponse)(nil)).Elem()
-}
-
-func (i InstanceAttemptResultResponseArgs) ToInstanceAttemptResultResponseOutput() InstanceAttemptResultResponseOutput {
-	return i.ToInstanceAttemptResultResponseOutputWithContext(context.Background())
-}
-
-func (i InstanceAttemptResultResponseArgs) ToInstanceAttemptResultResponseOutputWithContext(ctx context.Context) InstanceAttemptResultResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceAttemptResultResponseOutput)
 }
 
 // Result of an instance attempt.
@@ -3649,86 +3072,6 @@ type InstanceSpecResponse struct {
 	Volumes []VolumeResponse `pulumi:"volumes"`
 }
 
-// InstanceSpecResponseInput is an input type that accepts InstanceSpecResponseArgs and InstanceSpecResponseOutput values.
-// You can construct a concrete instance of `InstanceSpecResponseInput` via:
-//
-//          InstanceSpecResponseArgs{...}
-type InstanceSpecResponseInput interface {
-	pulumi.Input
-
-	ToInstanceSpecResponseOutput() InstanceSpecResponseOutput
-	ToInstanceSpecResponseOutputWithContext(context.Context) InstanceSpecResponseOutput
-}
-
-// InstanceSpec is a description of an instance.
-type InstanceSpecResponseArgs struct {
-	// Optional. Optional duration in seconds the instance may be active relative to StartTime before the system will actively try to mark it failed and kill associated containers. If set to zero, the system will never attempt to kill an instance based on time. Otherwise, value must be a positive integer. +optional
-	ActiveDeadlineSeconds pulumi.StringInput `pulumi:"activeDeadlineSeconds"`
-	// Optional. List of containers belonging to the instance. We disallow a number of fields on this Container. Only a single container may be provided.
-	Containers ContainerResponseArrayInput `pulumi:"containers"`
-	// Optional. Restart policy for all containers within the instance. Allowed values are: - OnFailure: Instances will always be restarted on failure if the backoffLimit has not been reached. - Never: Instances are never restarted and all failures are permanent. Cannot be used if backoffLimit is set. +optional
-	RestartPolicy pulumi.StringInput `pulumi:"restartPolicy"`
-	// Optional. Email address of the IAM service account associated with the instance of a Job. The service account represents the identity of the running instance, and determines what permissions the instance has. If not provided, the instance will use the project's default service account. +optional
-	ServiceAccountName pulumi.StringInput `pulumi:"serviceAccountName"`
-	// Optional. Optional duration in seconds the instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates delete immediately. The grace period is the duration in seconds after the processes running in the instance are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. +optional
-	TerminationGracePeriodSeconds pulumi.StringInput `pulumi:"terminationGracePeriodSeconds"`
-	// Optional. List of volumes that can be mounted by containers belonging to the instance. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
-	Volumes VolumeResponseArrayInput `pulumi:"volumes"`
-}
-
-func (InstanceSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceSpecResponse)(nil)).Elem()
-}
-
-func (i InstanceSpecResponseArgs) ToInstanceSpecResponseOutput() InstanceSpecResponseOutput {
-	return i.ToInstanceSpecResponseOutputWithContext(context.Background())
-}
-
-func (i InstanceSpecResponseArgs) ToInstanceSpecResponseOutputWithContext(ctx context.Context) InstanceSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecResponseOutput)
-}
-
-func (i InstanceSpecResponseArgs) ToInstanceSpecResponsePtrOutput() InstanceSpecResponsePtrOutput {
-	return i.ToInstanceSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i InstanceSpecResponseArgs) ToInstanceSpecResponsePtrOutputWithContext(ctx context.Context) InstanceSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecResponseOutput).ToInstanceSpecResponsePtrOutputWithContext(ctx)
-}
-
-// InstanceSpecResponsePtrInput is an input type that accepts InstanceSpecResponseArgs, InstanceSpecResponsePtr and InstanceSpecResponsePtrOutput values.
-// You can construct a concrete instance of `InstanceSpecResponsePtrInput` via:
-//
-//          InstanceSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type InstanceSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToInstanceSpecResponsePtrOutput() InstanceSpecResponsePtrOutput
-	ToInstanceSpecResponsePtrOutputWithContext(context.Context) InstanceSpecResponsePtrOutput
-}
-
-type instanceSpecResponsePtrType InstanceSpecResponseArgs
-
-func InstanceSpecResponsePtr(v *InstanceSpecResponseArgs) InstanceSpecResponsePtrInput {
-	return (*instanceSpecResponsePtrType)(v)
-}
-
-func (*instanceSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceSpecResponse)(nil)).Elem()
-}
-
-func (i *instanceSpecResponsePtrType) ToInstanceSpecResponsePtrOutput() InstanceSpecResponsePtrOutput {
-	return i.ToInstanceSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *instanceSpecResponsePtrType) ToInstanceSpecResponsePtrOutputWithContext(ctx context.Context) InstanceSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecResponsePtrOutput)
-}
-
 // InstanceSpec is a description of an instance.
 type InstanceSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -3742,16 +3085,6 @@ func (o InstanceSpecResponseOutput) ToInstanceSpecResponseOutput() InstanceSpecR
 
 func (o InstanceSpecResponseOutput) ToInstanceSpecResponseOutputWithContext(ctx context.Context) InstanceSpecResponseOutput {
 	return o
-}
-
-func (o InstanceSpecResponseOutput) ToInstanceSpecResponsePtrOutput() InstanceSpecResponsePtrOutput {
-	return o.ToInstanceSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o InstanceSpecResponseOutput) ToInstanceSpecResponsePtrOutputWithContext(ctx context.Context) InstanceSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceSpecResponse) *InstanceSpecResponse {
-		return &v
-	}).(InstanceSpecResponsePtrOutput)
 }
 
 // Optional. Optional duration in seconds the instance may be active relative to StartTime before the system will actively try to mark it failed and kill associated containers. If set to zero, the system will never attempt to kill an instance based on time. Otherwise, value must be a positive integer. +optional
@@ -3782,90 +3115,6 @@ func (o InstanceSpecResponseOutput) TerminationGracePeriodSeconds() pulumi.Strin
 // Optional. List of volumes that can be mounted by containers belonging to the instance. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
 func (o InstanceSpecResponseOutput) Volumes() VolumeResponseArrayOutput {
 	return o.ApplyT(func(v InstanceSpecResponse) []VolumeResponse { return v.Volumes }).(VolumeResponseArrayOutput)
-}
-
-type InstanceSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceSpecResponse)(nil)).Elem()
-}
-
-func (o InstanceSpecResponsePtrOutput) ToInstanceSpecResponsePtrOutput() InstanceSpecResponsePtrOutput {
-	return o
-}
-
-func (o InstanceSpecResponsePtrOutput) ToInstanceSpecResponsePtrOutputWithContext(ctx context.Context) InstanceSpecResponsePtrOutput {
-	return o
-}
-
-func (o InstanceSpecResponsePtrOutput) Elem() InstanceSpecResponseOutput {
-	return o.ApplyT(func(v *InstanceSpecResponse) InstanceSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceSpecResponse
-		return ret
-	}).(InstanceSpecResponseOutput)
-}
-
-// Optional. Optional duration in seconds the instance may be active relative to StartTime before the system will actively try to mark it failed and kill associated containers. If set to zero, the system will never attempt to kill an instance based on time. Otherwise, value must be a positive integer. +optional
-func (o InstanceSpecResponsePtrOutput) ActiveDeadlineSeconds() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ActiveDeadlineSeconds
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. List of containers belonging to the instance. We disallow a number of fields on this Container. Only a single container may be provided.
-func (o InstanceSpecResponsePtrOutput) Containers() ContainerResponseArrayOutput {
-	return o.ApplyT(func(v *InstanceSpecResponse) []ContainerResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Containers
-	}).(ContainerResponseArrayOutput)
-}
-
-// Optional. Restart policy for all containers within the instance. Allowed values are: - OnFailure: Instances will always be restarted on failure if the backoffLimit has not been reached. - Never: Instances are never restarted and all failures are permanent. Cannot be used if backoffLimit is set. +optional
-func (o InstanceSpecResponsePtrOutput) RestartPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RestartPolicy
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Email address of the IAM service account associated with the instance of a Job. The service account represents the identity of the running instance, and determines what permissions the instance has. If not provided, the instance will use the project's default service account. +optional
-func (o InstanceSpecResponsePtrOutput) ServiceAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccountName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Optional duration in seconds the instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates delete immediately. The grace period is the duration in seconds after the processes running in the instance are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. +optional
-func (o InstanceSpecResponsePtrOutput) TerminationGracePeriodSeconds() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TerminationGracePeriodSeconds
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. List of volumes that can be mounted by containers belonging to the instance. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
-func (o InstanceSpecResponsePtrOutput) Volumes() VolumeResponseArrayOutput {
-	return o.ApplyT(func(v *InstanceSpecResponse) []VolumeResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Volumes
-	}).(VolumeResponseArrayOutput)
 }
 
 // Instance represents the status of an instance of a Job.
@@ -4049,74 +3298,6 @@ type InstanceStatusResponse struct {
 	StartTime string `pulumi:"startTime"`
 	// Optional. The number of times this instance exited with code == 0. +optional
 	Succeeded int `pulumi:"succeeded"`
-}
-
-// InstanceStatusResponseInput is an input type that accepts InstanceStatusResponseArgs and InstanceStatusResponseOutput values.
-// You can construct a concrete instance of `InstanceStatusResponseInput` via:
-//
-//          InstanceStatusResponseArgs{...}
-type InstanceStatusResponseInput interface {
-	pulumi.Input
-
-	ToInstanceStatusResponseOutput() InstanceStatusResponseOutput
-	ToInstanceStatusResponseOutputWithContext(context.Context) InstanceStatusResponseOutput
-}
-
-// Instance represents the status of an instance of a Job.
-type InstanceStatusResponseArgs struct {
-	// Optional. Represents time when the instance was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
-	CompletionTime pulumi.StringInput `pulumi:"completionTime"`
-	// Optional. The number of times this instance exited with code > 0; +optional
-	Failed pulumi.IntInput `pulumi:"failed"`
-	// Index of the instance, unique per Job, and beginning at 0.
-	Index pulumi.IntInput `pulumi:"index"`
-	// Optional. Result of the last attempt of this instance. +optional
-	LastAttemptResult InstanceAttemptResultResponseInput `pulumi:"lastAttemptResult"`
-	// Optional. Last exit code seen for this instance. +optional
-	LastExitCode pulumi.IntInput `pulumi:"lastExitCode"`
-	// Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
-	Restarted pulumi.IntInput `pulumi:"restarted"`
-	// Optional. Represents time when the instance was created by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// Optional. The number of times this instance exited with code == 0. +optional
-	Succeeded pulumi.IntInput `pulumi:"succeeded"`
-}
-
-func (InstanceStatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceStatusResponse)(nil)).Elem()
-}
-
-func (i InstanceStatusResponseArgs) ToInstanceStatusResponseOutput() InstanceStatusResponseOutput {
-	return i.ToInstanceStatusResponseOutputWithContext(context.Background())
-}
-
-func (i InstanceStatusResponseArgs) ToInstanceStatusResponseOutputWithContext(ctx context.Context) InstanceStatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceStatusResponseOutput)
-}
-
-// InstanceStatusResponseArrayInput is an input type that accepts InstanceStatusResponseArray and InstanceStatusResponseArrayOutput values.
-// You can construct a concrete instance of `InstanceStatusResponseArrayInput` via:
-//
-//          InstanceStatusResponseArray{ InstanceStatusResponseArgs{...} }
-type InstanceStatusResponseArrayInput interface {
-	pulumi.Input
-
-	ToInstanceStatusResponseArrayOutput() InstanceStatusResponseArrayOutput
-	ToInstanceStatusResponseArrayOutputWithContext(context.Context) InstanceStatusResponseArrayOutput
-}
-
-type InstanceStatusResponseArray []InstanceStatusResponseInput
-
-func (InstanceStatusResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceStatusResponse)(nil)).Elem()
-}
-
-func (i InstanceStatusResponseArray) ToInstanceStatusResponseArrayOutput() InstanceStatusResponseArrayOutput {
-	return i.ToInstanceStatusResponseArrayOutputWithContext(context.Background())
-}
-
-func (i InstanceStatusResponseArray) ToInstanceStatusResponseArrayOutputWithContext(ctx context.Context) InstanceStatusResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceStatusResponseArrayOutput)
 }
 
 // Instance represents the status of an instance of a Job.
@@ -4340,76 +3521,6 @@ type InstanceTemplateSpecResponse struct {
 	Spec InstanceSpecResponse `pulumi:"spec"`
 }
 
-// InstanceTemplateSpecResponseInput is an input type that accepts InstanceTemplateSpecResponseArgs and InstanceTemplateSpecResponseOutput values.
-// You can construct a concrete instance of `InstanceTemplateSpecResponseInput` via:
-//
-//          InstanceTemplateSpecResponseArgs{...}
-type InstanceTemplateSpecResponseInput interface {
-	pulumi.Input
-
-	ToInstanceTemplateSpecResponseOutput() InstanceTemplateSpecResponseOutput
-	ToInstanceTemplateSpecResponseOutputWithContext(context.Context) InstanceTemplateSpecResponseOutput
-}
-
-// InstanceTemplateSpec describes the data an instance should have when created from a template.
-type InstanceTemplateSpecResponseArgs struct {
-	// Optional. Specification of the desired behavior of the instance. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
-	Spec InstanceSpecResponseInput `pulumi:"spec"`
-}
-
-func (InstanceTemplateSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceTemplateSpecResponse)(nil)).Elem()
-}
-
-func (i InstanceTemplateSpecResponseArgs) ToInstanceTemplateSpecResponseOutput() InstanceTemplateSpecResponseOutput {
-	return i.ToInstanceTemplateSpecResponseOutputWithContext(context.Background())
-}
-
-func (i InstanceTemplateSpecResponseArgs) ToInstanceTemplateSpecResponseOutputWithContext(ctx context.Context) InstanceTemplateSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateSpecResponseOutput)
-}
-
-func (i InstanceTemplateSpecResponseArgs) ToInstanceTemplateSpecResponsePtrOutput() InstanceTemplateSpecResponsePtrOutput {
-	return i.ToInstanceTemplateSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i InstanceTemplateSpecResponseArgs) ToInstanceTemplateSpecResponsePtrOutputWithContext(ctx context.Context) InstanceTemplateSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateSpecResponseOutput).ToInstanceTemplateSpecResponsePtrOutputWithContext(ctx)
-}
-
-// InstanceTemplateSpecResponsePtrInput is an input type that accepts InstanceTemplateSpecResponseArgs, InstanceTemplateSpecResponsePtr and InstanceTemplateSpecResponsePtrOutput values.
-// You can construct a concrete instance of `InstanceTemplateSpecResponsePtrInput` via:
-//
-//          InstanceTemplateSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type InstanceTemplateSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToInstanceTemplateSpecResponsePtrOutput() InstanceTemplateSpecResponsePtrOutput
-	ToInstanceTemplateSpecResponsePtrOutputWithContext(context.Context) InstanceTemplateSpecResponsePtrOutput
-}
-
-type instanceTemplateSpecResponsePtrType InstanceTemplateSpecResponseArgs
-
-func InstanceTemplateSpecResponsePtr(v *InstanceTemplateSpecResponseArgs) InstanceTemplateSpecResponsePtrInput {
-	return (*instanceTemplateSpecResponsePtrType)(v)
-}
-
-func (*instanceTemplateSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceTemplateSpecResponse)(nil)).Elem()
-}
-
-func (i *instanceTemplateSpecResponsePtrType) ToInstanceTemplateSpecResponsePtrOutput() InstanceTemplateSpecResponsePtrOutput {
-	return i.ToInstanceTemplateSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *instanceTemplateSpecResponsePtrType) ToInstanceTemplateSpecResponsePtrOutputWithContext(ctx context.Context) InstanceTemplateSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateSpecResponsePtrOutput)
-}
-
 // InstanceTemplateSpec describes the data an instance should have when created from a template.
 type InstanceTemplateSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -4425,53 +3536,9 @@ func (o InstanceTemplateSpecResponseOutput) ToInstanceTemplateSpecResponseOutput
 	return o
 }
 
-func (o InstanceTemplateSpecResponseOutput) ToInstanceTemplateSpecResponsePtrOutput() InstanceTemplateSpecResponsePtrOutput {
-	return o.ToInstanceTemplateSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o InstanceTemplateSpecResponseOutput) ToInstanceTemplateSpecResponsePtrOutputWithContext(ctx context.Context) InstanceTemplateSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceTemplateSpecResponse) *InstanceTemplateSpecResponse {
-		return &v
-	}).(InstanceTemplateSpecResponsePtrOutput)
-}
-
 // Optional. Specification of the desired behavior of the instance. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
 func (o InstanceTemplateSpecResponseOutput) Spec() InstanceSpecResponseOutput {
 	return o.ApplyT(func(v InstanceTemplateSpecResponse) InstanceSpecResponse { return v.Spec }).(InstanceSpecResponseOutput)
-}
-
-type InstanceTemplateSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceTemplateSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceTemplateSpecResponse)(nil)).Elem()
-}
-
-func (o InstanceTemplateSpecResponsePtrOutput) ToInstanceTemplateSpecResponsePtrOutput() InstanceTemplateSpecResponsePtrOutput {
-	return o
-}
-
-func (o InstanceTemplateSpecResponsePtrOutput) ToInstanceTemplateSpecResponsePtrOutputWithContext(ctx context.Context) InstanceTemplateSpecResponsePtrOutput {
-	return o
-}
-
-func (o InstanceTemplateSpecResponsePtrOutput) Elem() InstanceTemplateSpecResponseOutput {
-	return o.ApplyT(func(v *InstanceTemplateSpecResponse) InstanceTemplateSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceTemplateSpecResponse
-		return ret
-	}).(InstanceTemplateSpecResponseOutput)
-}
-
-// Optional. Specification of the desired behavior of the instance. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
-func (o InstanceTemplateSpecResponsePtrOutput) Spec() InstanceSpecResponsePtrOutput {
-	return o.ApplyT(func(v *InstanceTemplateSpecResponse) *InstanceSpecResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Spec
-	}).(InstanceSpecResponsePtrOutput)
 }
 
 // JobCondition defines a readiness condition for a Revision.
@@ -4633,70 +3700,6 @@ type JobConditionResponse struct {
 	Status string `pulumi:"status"`
 	// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
 	Type string `pulumi:"type"`
-}
-
-// JobConditionResponseInput is an input type that accepts JobConditionResponseArgs and JobConditionResponseOutput values.
-// You can construct a concrete instance of `JobConditionResponseInput` via:
-//
-//          JobConditionResponseArgs{...}
-type JobConditionResponseInput interface {
-	pulumi.Input
-
-	ToJobConditionResponseOutput() JobConditionResponseOutput
-	ToJobConditionResponseOutputWithContext(context.Context) JobConditionResponseOutput
-}
-
-// JobCondition defines a readiness condition for a Revision.
-type JobConditionResponseArgs struct {
-	// Optional. Last time the condition transitioned from one status to another.
-	LastTransitionTime pulumi.StringInput `pulumi:"lastTransitionTime"`
-	// Optional. Human readable message indicating details about the current status.
-	Message pulumi.StringInput `pulumi:"message"`
-	// Optional. One-word CamelCase reason for the condition's last transition.
-	Reason pulumi.StringInput `pulumi:"reason"`
-	// Optional. How to interpret failures of this condition, one of Error, Warning, Info
-	Severity pulumi.StringInput `pulumi:"severity"`
-	// Status of the condition, one of True, False, Unknown.
-	Status pulumi.StringInput `pulumi:"status"`
-	// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (JobConditionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobConditionResponse)(nil)).Elem()
-}
-
-func (i JobConditionResponseArgs) ToJobConditionResponseOutput() JobConditionResponseOutput {
-	return i.ToJobConditionResponseOutputWithContext(context.Background())
-}
-
-func (i JobConditionResponseArgs) ToJobConditionResponseOutputWithContext(ctx context.Context) JobConditionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConditionResponseOutput)
-}
-
-// JobConditionResponseArrayInput is an input type that accepts JobConditionResponseArray and JobConditionResponseArrayOutput values.
-// You can construct a concrete instance of `JobConditionResponseArrayInput` via:
-//
-//          JobConditionResponseArray{ JobConditionResponseArgs{...} }
-type JobConditionResponseArrayInput interface {
-	pulumi.Input
-
-	ToJobConditionResponseArrayOutput() JobConditionResponseArrayOutput
-	ToJobConditionResponseArrayOutputWithContext(context.Context) JobConditionResponseArrayOutput
-}
-
-type JobConditionResponseArray []JobConditionResponseInput
-
-func (JobConditionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobConditionResponse)(nil)).Elem()
-}
-
-func (i JobConditionResponseArray) ToJobConditionResponseArrayOutput() JobConditionResponseArrayOutput {
-	return i.ToJobConditionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i JobConditionResponseArray) ToJobConditionResponseArrayOutputWithContext(ctx context.Context) JobConditionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConditionResponseArrayOutput)
 }
 
 // JobCondition defines a readiness condition for a Revision.
@@ -5015,86 +4018,6 @@ type JobSpecResponse struct {
 	TtlSecondsAfterFinished int `pulumi:"ttlSecondsAfterFinished"`
 }
 
-// JobSpecResponseInput is an input type that accepts JobSpecResponseArgs and JobSpecResponseOutput values.
-// You can construct a concrete instance of `JobSpecResponseInput` via:
-//
-//          JobSpecResponseArgs{...}
-type JobSpecResponseInput interface {
-	pulumi.Input
-
-	ToJobSpecResponseOutput() JobSpecResponseOutput
-	ToJobSpecResponseOutputWithContext(context.Context) JobSpecResponseOutput
-}
-
-// JobSpec describes how the job execution will look like.
-type JobSpecResponseArgs struct {
-	// Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
-	ActiveDeadlineSeconds pulumi.StringInput `pulumi:"activeDeadlineSeconds"`
-	// Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
-	BackoffLimit pulumi.IntInput `pulumi:"backoffLimit"`
-	// Optional. Specifies the desired number of successfully finished instances the job should be run with. Setting to 1 means that parallelism is limited to 1 and the success of that instance signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
-	Completions pulumi.IntInput `pulumi:"completions"`
-	// Optional. Specifies the maximum desired number of instances the job should run at any given time. Must be <= completions. The actual number of instances running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
-	Parallelism pulumi.IntInput `pulumi:"parallelism"`
-	// Optional. Describes the instance that will be created when executing a job.
-	Template InstanceTemplateSpecResponseInput `pulumi:"template"`
-	// Optional. Not supported. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
-	TtlSecondsAfterFinished pulumi.IntInput `pulumi:"ttlSecondsAfterFinished"`
-}
-
-func (JobSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobSpecResponse)(nil)).Elem()
-}
-
-func (i JobSpecResponseArgs) ToJobSpecResponseOutput() JobSpecResponseOutput {
-	return i.ToJobSpecResponseOutputWithContext(context.Background())
-}
-
-func (i JobSpecResponseArgs) ToJobSpecResponseOutputWithContext(ctx context.Context) JobSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobSpecResponseOutput)
-}
-
-func (i JobSpecResponseArgs) ToJobSpecResponsePtrOutput() JobSpecResponsePtrOutput {
-	return i.ToJobSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobSpecResponseArgs) ToJobSpecResponsePtrOutputWithContext(ctx context.Context) JobSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobSpecResponseOutput).ToJobSpecResponsePtrOutputWithContext(ctx)
-}
-
-// JobSpecResponsePtrInput is an input type that accepts JobSpecResponseArgs, JobSpecResponsePtr and JobSpecResponsePtrOutput values.
-// You can construct a concrete instance of `JobSpecResponsePtrInput` via:
-//
-//          JobSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobSpecResponsePtrOutput() JobSpecResponsePtrOutput
-	ToJobSpecResponsePtrOutputWithContext(context.Context) JobSpecResponsePtrOutput
-}
-
-type jobSpecResponsePtrType JobSpecResponseArgs
-
-func JobSpecResponsePtr(v *JobSpecResponseArgs) JobSpecResponsePtrInput {
-	return (*jobSpecResponsePtrType)(v)
-}
-
-func (*jobSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobSpecResponse)(nil)).Elem()
-}
-
-func (i *jobSpecResponsePtrType) ToJobSpecResponsePtrOutput() JobSpecResponsePtrOutput {
-	return i.ToJobSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobSpecResponsePtrType) ToJobSpecResponsePtrOutputWithContext(ctx context.Context) JobSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobSpecResponsePtrOutput)
-}
-
 // JobSpec describes how the job execution will look like.
 type JobSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -5108,16 +4031,6 @@ func (o JobSpecResponseOutput) ToJobSpecResponseOutput() JobSpecResponseOutput {
 
 func (o JobSpecResponseOutput) ToJobSpecResponseOutputWithContext(ctx context.Context) JobSpecResponseOutput {
 	return o
-}
-
-func (o JobSpecResponseOutput) ToJobSpecResponsePtrOutput() JobSpecResponsePtrOutput {
-	return o.ToJobSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobSpecResponseOutput) ToJobSpecResponsePtrOutputWithContext(ctx context.Context) JobSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobSpecResponse) *JobSpecResponse {
-		return &v
-	}).(JobSpecResponsePtrOutput)
 }
 
 // Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
@@ -5148,90 +4061,6 @@ func (o JobSpecResponseOutput) Template() InstanceTemplateSpecResponseOutput {
 // Optional. Not supported. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
 func (o JobSpecResponseOutput) TtlSecondsAfterFinished() pulumi.IntOutput {
 	return o.ApplyT(func(v JobSpecResponse) int { return v.TtlSecondsAfterFinished }).(pulumi.IntOutput)
-}
-
-type JobSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobSpecResponse)(nil)).Elem()
-}
-
-func (o JobSpecResponsePtrOutput) ToJobSpecResponsePtrOutput() JobSpecResponsePtrOutput {
-	return o
-}
-
-func (o JobSpecResponsePtrOutput) ToJobSpecResponsePtrOutputWithContext(ctx context.Context) JobSpecResponsePtrOutput {
-	return o
-}
-
-func (o JobSpecResponsePtrOutput) Elem() JobSpecResponseOutput {
-	return o.ApplyT(func(v *JobSpecResponse) JobSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JobSpecResponse
-		return ret
-	}).(JobSpecResponseOutput)
-}
-
-// Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
-func (o JobSpecResponsePtrOutput) ActiveDeadlineSeconds() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ActiveDeadlineSeconds
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
-func (o JobSpecResponsePtrOutput) BackoffLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobSpecResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.BackoffLimit
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. Specifies the desired number of successfully finished instances the job should be run with. Setting to 1 means that parallelism is limited to 1 and the success of that instance signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
-func (o JobSpecResponsePtrOutput) Completions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobSpecResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Completions
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. Specifies the maximum desired number of instances the job should run at any given time. Must be <= completions. The actual number of instances running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
-func (o JobSpecResponsePtrOutput) Parallelism() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobSpecResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Parallelism
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. Describes the instance that will be created when executing a job.
-func (o JobSpecResponsePtrOutput) Template() InstanceTemplateSpecResponsePtrOutput {
-	return o.ApplyT(func(v *JobSpecResponse) *InstanceTemplateSpecResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Template
-	}).(InstanceTemplateSpecResponsePtrOutput)
-}
-
-// Optional. Not supported. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
-func (o JobSpecResponsePtrOutput) TtlSecondsAfterFinished() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobSpecResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.TtlSecondsAfterFinished
-	}).(pulumi.IntPtrOutput)
 }
 
 // JobStatus represents the current state of a Job.
@@ -5548,92 +4377,6 @@ type JobStatusResponse struct {
 	Succeeded int `pulumi:"succeeded"`
 }
 
-// JobStatusResponseInput is an input type that accepts JobStatusResponseArgs and JobStatusResponseOutput values.
-// You can construct a concrete instance of `JobStatusResponseInput` via:
-//
-//          JobStatusResponseArgs{...}
-type JobStatusResponseInput interface {
-	pulumi.Input
-
-	ToJobStatusResponseOutput() JobStatusResponseOutput
-	ToJobStatusResponseOutputWithContext(context.Context) JobStatusResponseOutput
-}
-
-// JobStatus represents the current state of a Job.
-type JobStatusResponseArgs struct {
-	// Optional. The number of actively running instances. +optional
-	Active pulumi.IntInput `pulumi:"active"`
-	// Optional. Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
-	CompletionTime pulumi.StringInput `pulumi:"completionTime"`
-	// Optional. The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
-	Conditions JobConditionResponseArrayInput `pulumi:"conditions"`
-	// Optional. The number of instances which reached phase Failed. +optional
-	Failed pulumi.IntInput `pulumi:"failed"`
-	// Optional. ImageDigest holds the resolved digest for the image specified within .Spec.Template.Spec.Container.Image. The digest is resolved during the creation of the Job. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
-	ImageDigest pulumi.StringInput `pulumi:"imageDigest"`
-	// Optional. Status of completed, failed, and running instances. +optional
-	Instances InstanceStatusResponseArrayInput `pulumi:"instances"`
-	// Optional. The 'generation' of the job that was last processed by the controller.
-	ObservedGeneration pulumi.IntInput `pulumi:"observedGeneration"`
-	// Optional. Represents time when the job was acknowledged by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// Optional. The number of instances which reached phase Succeeded. +optional
-	Succeeded pulumi.IntInput `pulumi:"succeeded"`
-}
-
-func (JobStatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatusResponse)(nil)).Elem()
-}
-
-func (i JobStatusResponseArgs) ToJobStatusResponseOutput() JobStatusResponseOutput {
-	return i.ToJobStatusResponseOutputWithContext(context.Background())
-}
-
-func (i JobStatusResponseArgs) ToJobStatusResponseOutputWithContext(ctx context.Context) JobStatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatusResponseOutput)
-}
-
-func (i JobStatusResponseArgs) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
-	return i.ToJobStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobStatusResponseArgs) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatusResponseOutput).ToJobStatusResponsePtrOutputWithContext(ctx)
-}
-
-// JobStatusResponsePtrInput is an input type that accepts JobStatusResponseArgs, JobStatusResponsePtr and JobStatusResponsePtrOutput values.
-// You can construct a concrete instance of `JobStatusResponsePtrInput` via:
-//
-//          JobStatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobStatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput
-	ToJobStatusResponsePtrOutputWithContext(context.Context) JobStatusResponsePtrOutput
-}
-
-type jobStatusResponsePtrType JobStatusResponseArgs
-
-func JobStatusResponsePtr(v *JobStatusResponseArgs) JobStatusResponsePtrInput {
-	return (*jobStatusResponsePtrType)(v)
-}
-
-func (*jobStatusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatusResponse)(nil)).Elem()
-}
-
-func (i *jobStatusResponsePtrType) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
-	return i.ToJobStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobStatusResponsePtrType) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatusResponsePtrOutput)
-}
-
 // JobStatus represents the current state of a Job.
 type JobStatusResponseOutput struct{ *pulumi.OutputState }
 
@@ -5647,16 +4390,6 @@ func (o JobStatusResponseOutput) ToJobStatusResponseOutput() JobStatusResponseOu
 
 func (o JobStatusResponseOutput) ToJobStatusResponseOutputWithContext(ctx context.Context) JobStatusResponseOutput {
 	return o
-}
-
-func (o JobStatusResponseOutput) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
-	return o.ToJobStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobStatusResponseOutput) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatusResponse) *JobStatusResponse {
-		return &v
-	}).(JobStatusResponsePtrOutput)
 }
 
 // Optional. The number of actively running instances. +optional
@@ -5702,120 +4435,6 @@ func (o JobStatusResponseOutput) StartTime() pulumi.StringOutput {
 // Optional. The number of instances which reached phase Succeeded. +optional
 func (o JobStatusResponseOutput) Succeeded() pulumi.IntOutput {
 	return o.ApplyT(func(v JobStatusResponse) int { return v.Succeeded }).(pulumi.IntOutput)
-}
-
-type JobStatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobStatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatusResponse)(nil)).Elem()
-}
-
-func (o JobStatusResponsePtrOutput) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
-	return o
-}
-
-func (o JobStatusResponsePtrOutput) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
-	return o
-}
-
-func (o JobStatusResponsePtrOutput) Elem() JobStatusResponseOutput {
-	return o.ApplyT(func(v *JobStatusResponse) JobStatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JobStatusResponse
-		return ret
-	}).(JobStatusResponseOutput)
-}
-
-// Optional. The number of actively running instances. +optional
-func (o JobStatusResponsePtrOutput) Active() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobStatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Active
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
-func (o JobStatusResponsePtrOutput) CompletionTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CompletionTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
-func (o JobStatusResponsePtrOutput) Conditions() JobConditionResponseArrayOutput {
-	return o.ApplyT(func(v *JobStatusResponse) []JobConditionResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Conditions
-	}).(JobConditionResponseArrayOutput)
-}
-
-// Optional. The number of instances which reached phase Failed. +optional
-func (o JobStatusResponsePtrOutput) Failed() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobStatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Failed
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. ImageDigest holds the resolved digest for the image specified within .Spec.Template.Spec.Container.Image. The digest is resolved during the creation of the Job. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
-func (o JobStatusResponsePtrOutput) ImageDigest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ImageDigest
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Status of completed, failed, and running instances. +optional
-func (o JobStatusResponsePtrOutput) Instances() InstanceStatusResponseArrayOutput {
-	return o.ApplyT(func(v *JobStatusResponse) []InstanceStatusResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Instances
-	}).(InstanceStatusResponseArrayOutput)
-}
-
-// Optional. The 'generation' of the job that was last processed by the controller.
-func (o JobStatusResponsePtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobStatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.ObservedGeneration
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. Represents time when the job was acknowledged by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
-func (o JobStatusResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The number of instances which reached phase Succeeded. +optional
-func (o JobStatusResponsePtrOutput) Succeeded() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobStatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Succeeded
-	}).(pulumi.IntPtrOutput)
 }
 
 // Maps a string key to a path within a volume.
@@ -5944,64 +4563,6 @@ type KeyToPathResponse struct {
 	Mode int `pulumi:"mode"`
 	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path string `pulumi:"path"`
-}
-
-// KeyToPathResponseInput is an input type that accepts KeyToPathResponseArgs and KeyToPathResponseOutput values.
-// You can construct a concrete instance of `KeyToPathResponseInput` via:
-//
-//          KeyToPathResponseArgs{...}
-type KeyToPathResponseInput interface {
-	pulumi.Input
-
-	ToKeyToPathResponseOutput() KeyToPathResponseOutput
-	ToKeyToPathResponseOutputWithContext(context.Context) KeyToPathResponseOutput
-}
-
-// Maps a string key to a path within a volume.
-type KeyToPathResponseArgs struct {
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
-	Key pulumi.StringInput `pulumi:"key"`
-	// (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
-	Mode pulumi.IntInput `pulumi:"mode"`
-	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
-	Path pulumi.StringInput `pulumi:"path"`
-}
-
-func (KeyToPathResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyToPathResponse)(nil)).Elem()
-}
-
-func (i KeyToPathResponseArgs) ToKeyToPathResponseOutput() KeyToPathResponseOutput {
-	return i.ToKeyToPathResponseOutputWithContext(context.Background())
-}
-
-func (i KeyToPathResponseArgs) ToKeyToPathResponseOutputWithContext(ctx context.Context) KeyToPathResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyToPathResponseOutput)
-}
-
-// KeyToPathResponseArrayInput is an input type that accepts KeyToPathResponseArray and KeyToPathResponseArrayOutput values.
-// You can construct a concrete instance of `KeyToPathResponseArrayInput` via:
-//
-//          KeyToPathResponseArray{ KeyToPathResponseArgs{...} }
-type KeyToPathResponseArrayInput interface {
-	pulumi.Input
-
-	ToKeyToPathResponseArrayOutput() KeyToPathResponseArrayOutput
-	ToKeyToPathResponseArrayOutputWithContext(context.Context) KeyToPathResponseArrayOutput
-}
-
-type KeyToPathResponseArray []KeyToPathResponseInput
-
-func (KeyToPathResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KeyToPathResponse)(nil)).Elem()
-}
-
-func (i KeyToPathResponseArray) ToKeyToPathResponseArrayOutput() KeyToPathResponseArrayOutput {
-	return i.ToKeyToPathResponseArrayOutputWithContext(context.Background())
-}
-
-func (i KeyToPathResponseArray) ToKeyToPathResponseArrayOutputWithContext(ctx context.Context) KeyToPathResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyToPathResponseArrayOutput)
 }
 
 // Maps a string key to a path within a volume.
@@ -6198,35 +4759,6 @@ func (o LocalObjectReferencePtrOutput) Name() pulumi.StringPtrOutput {
 type LocalObjectReferenceResponse struct {
 	// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
-}
-
-// LocalObjectReferenceResponseInput is an input type that accepts LocalObjectReferenceResponseArgs and LocalObjectReferenceResponseOutput values.
-// You can construct a concrete instance of `LocalObjectReferenceResponseInput` via:
-//
-//          LocalObjectReferenceResponseArgs{...}
-type LocalObjectReferenceResponseInput interface {
-	pulumi.Input
-
-	ToLocalObjectReferenceResponseOutput() LocalObjectReferenceResponseOutput
-	ToLocalObjectReferenceResponseOutputWithContext(context.Context) LocalObjectReferenceResponseOutput
-}
-
-// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
-type LocalObjectReferenceResponseArgs struct {
-	// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (LocalObjectReferenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocalObjectReferenceResponse)(nil)).Elem()
-}
-
-func (i LocalObjectReferenceResponseArgs) ToLocalObjectReferenceResponseOutput() LocalObjectReferenceResponseOutput {
-	return i.ToLocalObjectReferenceResponseOutputWithContext(context.Background())
-}
-
-func (i LocalObjectReferenceResponseArgs) ToLocalObjectReferenceResponseOutputWithContext(ctx context.Context) LocalObjectReferenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocalObjectReferenceResponseOutput)
 }
 
 // Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
@@ -6689,104 +5221,6 @@ type ObjectMetaResponse struct {
 	Uid string `pulumi:"uid"`
 }
 
-// ObjectMetaResponseInput is an input type that accepts ObjectMetaResponseArgs and ObjectMetaResponseOutput values.
-// You can construct a concrete instance of `ObjectMetaResponseInput` via:
-//
-//          ObjectMetaResponseArgs{...}
-type ObjectMetaResponseInput interface {
-	pulumi.Input
-
-	ToObjectMetaResponseOutput() ObjectMetaResponseOutput
-	ToObjectMetaResponseOutputWithContext(context.Context) ObjectMetaResponseOutput
-}
-
-// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
-type ObjectMetaResponseArgs struct {
-	// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
-	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
-	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
-	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
-	// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
-	DeletionGracePeriodSeconds pulumi.IntInput `pulumi:"deletionGracePeriodSeconds"`
-	// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
-	DeletionTimestamp pulumi.StringInput `pulumi:"deletionTimestamp"`
-	// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
-	Finalizers pulumi.StringArrayInput `pulumi:"finalizers"`
-	// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
-	GenerateName pulumi.StringInput `pulumi:"generateName"`
-	// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
-	Generation pulumi.IntInput `pulumi:"generation"`
-	// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
-	Name pulumi.StringInput `pulumi:"name"`
-	// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
-	Namespace pulumi.StringInput `pulumi:"namespace"`
-	// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
-	OwnerReferences OwnerReferenceResponseArrayInput `pulumi:"ownerReferences"`
-	// Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
-	ResourceVersion pulumi.StringInput `pulumi:"resourceVersion"`
-	// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
-	SelfLink pulumi.StringInput `pulumi:"selfLink"`
-	// (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
-	Uid pulumi.StringInput `pulumi:"uid"`
-}
-
-func (ObjectMetaResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectMetaResponse)(nil)).Elem()
-}
-
-func (i ObjectMetaResponseArgs) ToObjectMetaResponseOutput() ObjectMetaResponseOutput {
-	return i.ToObjectMetaResponseOutputWithContext(context.Background())
-}
-
-func (i ObjectMetaResponseArgs) ToObjectMetaResponseOutputWithContext(ctx context.Context) ObjectMetaResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaResponseOutput)
-}
-
-func (i ObjectMetaResponseArgs) ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput {
-	return i.ToObjectMetaResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ObjectMetaResponseArgs) ToObjectMetaResponsePtrOutputWithContext(ctx context.Context) ObjectMetaResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaResponseOutput).ToObjectMetaResponsePtrOutputWithContext(ctx)
-}
-
-// ObjectMetaResponsePtrInput is an input type that accepts ObjectMetaResponseArgs, ObjectMetaResponsePtr and ObjectMetaResponsePtrOutput values.
-// You can construct a concrete instance of `ObjectMetaResponsePtrInput` via:
-//
-//          ObjectMetaResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ObjectMetaResponsePtrInput interface {
-	pulumi.Input
-
-	ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput
-	ToObjectMetaResponsePtrOutputWithContext(context.Context) ObjectMetaResponsePtrOutput
-}
-
-type objectMetaResponsePtrType ObjectMetaResponseArgs
-
-func ObjectMetaResponsePtr(v *ObjectMetaResponseArgs) ObjectMetaResponsePtrInput {
-	return (*objectMetaResponsePtrType)(v)
-}
-
-func (*objectMetaResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectMetaResponse)(nil)).Elem()
-}
-
-func (i *objectMetaResponsePtrType) ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput {
-	return i.ToObjectMetaResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *objectMetaResponsePtrType) ToObjectMetaResponsePtrOutputWithContext(ctx context.Context) ObjectMetaResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaResponsePtrOutput)
-}
-
 // k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMetaResponseOutput struct{ *pulumi.OutputState }
 
@@ -6800,16 +5234,6 @@ func (o ObjectMetaResponseOutput) ToObjectMetaResponseOutput() ObjectMetaRespons
 
 func (o ObjectMetaResponseOutput) ToObjectMetaResponseOutputWithContext(ctx context.Context) ObjectMetaResponseOutput {
 	return o
-}
-
-func (o ObjectMetaResponseOutput) ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput {
-	return o.ToObjectMetaResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ObjectMetaResponseOutput) ToObjectMetaResponsePtrOutputWithContext(ctx context.Context) ObjectMetaResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectMetaResponse) *ObjectMetaResponse {
-		return &v
-	}).(ObjectMetaResponsePtrOutput)
 }
 
 // (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
@@ -6885,180 +5309,6 @@ func (o ObjectMetaResponseOutput) SelfLink() pulumi.StringOutput {
 // (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 func (o ObjectMetaResponseOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.Uid }).(pulumi.StringOutput)
-}
-
-type ObjectMetaResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ObjectMetaResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectMetaResponse)(nil)).Elem()
-}
-
-func (o ObjectMetaResponsePtrOutput) ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput {
-	return o
-}
-
-func (o ObjectMetaResponsePtrOutput) ToObjectMetaResponsePtrOutputWithContext(ctx context.Context) ObjectMetaResponsePtrOutput {
-	return o
-}
-
-func (o ObjectMetaResponsePtrOutput) Elem() ObjectMetaResponseOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) ObjectMetaResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ObjectMetaResponse
-		return ret
-	}).(ObjectMetaResponseOutput)
-}
-
-// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
-func (o ObjectMetaResponsePtrOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Annotations
-	}).(pulumi.StringMapOutput)
-}
-
-// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
-func (o ObjectMetaResponsePtrOutput) ClusterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClusterName
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
-func (o ObjectMetaResponsePtrOutput) CreationTimestamp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreationTimestamp
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
-func (o ObjectMetaResponsePtrOutput) DeletionGracePeriodSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DeletionGracePeriodSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
-func (o ObjectMetaResponsePtrOutput) DeletionTimestamp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DeletionTimestamp
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
-func (o ObjectMetaResponsePtrOutput) Finalizers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Finalizers
-	}).(pulumi.StringArrayOutput)
-}
-
-// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
-func (o ObjectMetaResponsePtrOutput) GenerateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.GenerateName
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
-func (o ObjectMetaResponsePtrOutput) Generation() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Generation
-	}).(pulumi.IntPtrOutput)
-}
-
-// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
-func (o ObjectMetaResponsePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
-func (o ObjectMetaResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
-func (o ObjectMetaResponsePtrOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Namespace
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
-func (o ObjectMetaResponsePtrOutput) OwnerReferences() OwnerReferenceResponseArrayOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) []OwnerReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.OwnerReferences
-	}).(OwnerReferenceResponseArrayOutput)
-}
-
-// Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
-func (o ObjectMetaResponsePtrOutput) ResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourceVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
-func (o ObjectMetaResponsePtrOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SelfLink
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
-func (o ObjectMetaResponsePtrOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uid
-	}).(pulumi.StringPtrOutput)
 }
 
 // OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.
@@ -7220,70 +5470,6 @@ type OwnerReferenceResponse struct {
 	Name string `pulumi:"name"`
 	// UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 	Uid string `pulumi:"uid"`
-}
-
-// OwnerReferenceResponseInput is an input type that accepts OwnerReferenceResponseArgs and OwnerReferenceResponseOutput values.
-// You can construct a concrete instance of `OwnerReferenceResponseInput` via:
-//
-//          OwnerReferenceResponseArgs{...}
-type OwnerReferenceResponseInput interface {
-	pulumi.Input
-
-	ToOwnerReferenceResponseOutput() OwnerReferenceResponseOutput
-	ToOwnerReferenceResponseOutputWithContext(context.Context) OwnerReferenceResponseOutput
-}
-
-// OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.
-type OwnerReferenceResponseArgs struct {
-	// API version of the referent.
-	ApiVersion pulumi.StringInput `pulumi:"apiVersion"`
-	// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned. +optional
-	BlockOwnerDeletion pulumi.BoolInput `pulumi:"blockOwnerDeletion"`
-	// If true, this reference points to the managing controller. +optional
-	Controller pulumi.BoolInput `pulumi:"controller"`
-	// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind pulumi.StringInput `pulumi:"kind"`
-	// Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names
-	Name pulumi.StringInput `pulumi:"name"`
-	// UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
-	Uid pulumi.StringInput `pulumi:"uid"`
-}
-
-func (OwnerReferenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OwnerReferenceResponse)(nil)).Elem()
-}
-
-func (i OwnerReferenceResponseArgs) ToOwnerReferenceResponseOutput() OwnerReferenceResponseOutput {
-	return i.ToOwnerReferenceResponseOutputWithContext(context.Background())
-}
-
-func (i OwnerReferenceResponseArgs) ToOwnerReferenceResponseOutputWithContext(ctx context.Context) OwnerReferenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OwnerReferenceResponseOutput)
-}
-
-// OwnerReferenceResponseArrayInput is an input type that accepts OwnerReferenceResponseArray and OwnerReferenceResponseArrayOutput values.
-// You can construct a concrete instance of `OwnerReferenceResponseArrayInput` via:
-//
-//          OwnerReferenceResponseArray{ OwnerReferenceResponseArgs{...} }
-type OwnerReferenceResponseArrayInput interface {
-	pulumi.Input
-
-	ToOwnerReferenceResponseArrayOutput() OwnerReferenceResponseArrayOutput
-	ToOwnerReferenceResponseArrayOutputWithContext(context.Context) OwnerReferenceResponseArrayOutput
-}
-
-type OwnerReferenceResponseArray []OwnerReferenceResponseInput
-
-func (OwnerReferenceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OwnerReferenceResponse)(nil)).Elem()
-}
-
-func (i OwnerReferenceResponseArray) ToOwnerReferenceResponseArrayOutput() OwnerReferenceResponseArrayOutput {
-	return i.ToOwnerReferenceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OwnerReferenceResponseArray) ToOwnerReferenceResponseArrayOutputWithContext(ctx context.Context) OwnerReferenceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OwnerReferenceResponseArrayOutput)
 }
 
 // OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.
@@ -7644,49 +5830,6 @@ type ProbeResponse struct {
 	TimeoutSeconds int `pulumi:"timeoutSeconds"`
 }
 
-// ProbeResponseInput is an input type that accepts ProbeResponseArgs and ProbeResponseOutput values.
-// You can construct a concrete instance of `ProbeResponseInput` via:
-//
-//          ProbeResponseArgs{...}
-type ProbeResponseInput interface {
-	pulumi.Input
-
-	ToProbeResponseOutput() ProbeResponseOutput
-	ToProbeResponseOutputWithContext(context.Context) ProbeResponseOutput
-}
-
-// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
-type ProbeResponseArgs struct {
-	// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
-	Exec ExecActionResponseInput `pulumi:"exec"`
-	// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-	FailureThreshold pulumi.IntInput `pulumi:"failureThreshold"`
-	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
-	HttpGet HTTPGetActionResponseInput `pulumi:"httpGet"`
-	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-	InitialDelaySeconds pulumi.IntInput `pulumi:"initialDelaySeconds"`
-	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
-	PeriodSeconds pulumi.IntInput `pulumi:"periodSeconds"`
-	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
-	SuccessThreshold pulumi.IntInput `pulumi:"successThreshold"`
-	// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
-	TcpSocket TCPSocketActionResponseInput `pulumi:"tcpSocket"`
-	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-	TimeoutSeconds pulumi.IntInput `pulumi:"timeoutSeconds"`
-}
-
-func (ProbeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProbeResponse)(nil)).Elem()
-}
-
-func (i ProbeResponseArgs) ToProbeResponseOutput() ProbeResponseOutput {
-	return i.ToProbeResponseOutputWithContext(context.Background())
-}
-
-func (i ProbeResponseArgs) ToProbeResponseOutputWithContext(ctx context.Context) ProbeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProbeResponseOutput)
-}
-
 // Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type ProbeResponseOutput struct{ *pulumi.OutputState }
 
@@ -7909,37 +6052,6 @@ type ResourceRequirementsResponse struct {
 	Requests map[string]string `pulumi:"requests"`
 }
 
-// ResourceRequirementsResponseInput is an input type that accepts ResourceRequirementsResponseArgs and ResourceRequirementsResponseOutput values.
-// You can construct a concrete instance of `ResourceRequirementsResponseInput` via:
-//
-//          ResourceRequirementsResponseArgs{...}
-type ResourceRequirementsResponseInput interface {
-	pulumi.Input
-
-	ToResourceRequirementsResponseOutput() ResourceRequirementsResponseOutput
-	ToResourceRequirementsResponseOutputWithContext(context.Context) ResourceRequirementsResponseOutput
-}
-
-// ResourceRequirements describes the compute resource requirements.
-type ResourceRequirementsResponseArgs struct {
-	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-	Limits pulumi.StringMapInput `pulumi:"limits"`
-	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-	Requests pulumi.StringMapInput `pulumi:"requests"`
-}
-
-func (ResourceRequirementsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceRequirementsResponse)(nil)).Elem()
-}
-
-func (i ResourceRequirementsResponseArgs) ToResourceRequirementsResponseOutput() ResourceRequirementsResponseOutput {
-	return i.ToResourceRequirementsResponseOutputWithContext(context.Background())
-}
-
-func (i ResourceRequirementsResponseArgs) ToResourceRequirementsResponseOutputWithContext(ctx context.Context) ResourceRequirementsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceRequirementsResponseOutput)
-}
-
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirementsResponseOutput struct{ *pulumi.OutputState }
 
@@ -8151,39 +6263,6 @@ type SecretEnvSourceResponse struct {
 	Name string `pulumi:"name"`
 	// (Optional) Specify whether the Secret must be defined
 	Optional bool `pulumi:"optional"`
-}
-
-// SecretEnvSourceResponseInput is an input type that accepts SecretEnvSourceResponseArgs and SecretEnvSourceResponseOutput values.
-// You can construct a concrete instance of `SecretEnvSourceResponseInput` via:
-//
-//          SecretEnvSourceResponseArgs{...}
-type SecretEnvSourceResponseInput interface {
-	pulumi.Input
-
-	ToSecretEnvSourceResponseOutput() SecretEnvSourceResponseOutput
-	ToSecretEnvSourceResponseOutputWithContext(context.Context) SecretEnvSourceResponseOutput
-}
-
-// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
-type SecretEnvSourceResponseArgs struct {
-	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
-	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
-	// The Secret to select from.
-	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Specify whether the Secret must be defined
-	Optional pulumi.BoolInput `pulumi:"optional"`
-}
-
-func (SecretEnvSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretEnvSourceResponse)(nil)).Elem()
-}
-
-func (i SecretEnvSourceResponseArgs) ToSecretEnvSourceResponseOutput() SecretEnvSourceResponseOutput {
-	return i.ToSecretEnvSourceResponseOutputWithContext(context.Background())
-}
-
-func (i SecretEnvSourceResponseArgs) ToSecretEnvSourceResponseOutputWithContext(ctx context.Context) SecretEnvSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvSourceResponseOutput)
 }
 
 // Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
@@ -8423,41 +6502,6 @@ type SecretKeySelectorResponse struct {
 	Name string `pulumi:"name"`
 	// (Optional) Specify whether the Secret or its key must be defined
 	Optional bool `pulumi:"optional"`
-}
-
-// SecretKeySelectorResponseInput is an input type that accepts SecretKeySelectorResponseArgs and SecretKeySelectorResponseOutput values.
-// You can construct a concrete instance of `SecretKeySelectorResponseInput` via:
-//
-//          SecretKeySelectorResponseArgs{...}
-type SecretKeySelectorResponseInput interface {
-	pulumi.Input
-
-	ToSecretKeySelectorResponseOutput() SecretKeySelectorResponseOutput
-	ToSecretKeySelectorResponseOutputWithContext(context.Context) SecretKeySelectorResponseOutput
-}
-
-// SecretKeySelector selects a key of a Secret.
-type SecretKeySelectorResponseArgs struct {
-	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
-	Key pulumi.StringInput `pulumi:"key"`
-	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
-	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
-	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
-	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Specify whether the Secret or its key must be defined
-	Optional pulumi.BoolInput `pulumi:"optional"`
-}
-
-func (SecretKeySelectorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretKeySelectorResponse)(nil)).Elem()
-}
-
-func (i SecretKeySelectorResponseArgs) ToSecretKeySelectorResponseOutput() SecretKeySelectorResponseOutput {
-	return i.ToSecretKeySelectorResponseOutputWithContext(context.Background())
-}
-
-func (i SecretKeySelectorResponseArgs) ToSecretKeySelectorResponseOutputWithContext(ctx context.Context) SecretKeySelectorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretKeySelectorResponseOutput)
 }
 
 // SecretKeySelector selects a key of a Secret.
@@ -8704,41 +6748,6 @@ type SecretVolumeSourceResponse struct {
 	SecretName string `pulumi:"secretName"`
 }
 
-// SecretVolumeSourceResponseInput is an input type that accepts SecretVolumeSourceResponseArgs and SecretVolumeSourceResponseOutput values.
-// You can construct a concrete instance of `SecretVolumeSourceResponseInput` via:
-//
-//          SecretVolumeSourceResponseArgs{...}
-type SecretVolumeSourceResponseInput interface {
-	pulumi.Input
-
-	ToSecretVolumeSourceResponseOutput() SecretVolumeSourceResponseOutput
-	ToSecretVolumeSourceResponseOutputWithContext(context.Context) SecretVolumeSourceResponseOutput
-}
-
-// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
-type SecretVolumeSourceResponseArgs struct {
-	// Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
-	DefaultMode pulumi.IntInput `pulumi:"defaultMode"`
-	// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
-	Items KeyToPathResponseArrayInput `pulumi:"items"`
-	// (Optional) Specify whether the Secret or its keys must be defined.
-	Optional pulumi.BoolInput `pulumi:"optional"`
-	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
-	SecretName pulumi.StringInput `pulumi:"secretName"`
-}
-
-func (SecretVolumeSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretVolumeSourceResponse)(nil)).Elem()
-}
-
-func (i SecretVolumeSourceResponseArgs) ToSecretVolumeSourceResponseOutput() SecretVolumeSourceResponseOutput {
-	return i.ToSecretVolumeSourceResponseOutputWithContext(context.Background())
-}
-
-func (i SecretVolumeSourceResponseArgs) ToSecretVolumeSourceResponseOutputWithContext(ctx context.Context) SecretVolumeSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeSourceResponseOutput)
-}
-
 // The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -8918,35 +6927,6 @@ func (o SecurityContextPtrOutput) RunAsUser() pulumi.IntPtrOutput {
 type SecurityContextResponse struct {
 	// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 	RunAsUser int `pulumi:"runAsUser"`
-}
-
-// SecurityContextResponseInput is an input type that accepts SecurityContextResponseArgs and SecurityContextResponseOutput values.
-// You can construct a concrete instance of `SecurityContextResponseInput` via:
-//
-//          SecurityContextResponseArgs{...}
-type SecurityContextResponseInput interface {
-	pulumi.Input
-
-	ToSecurityContextResponseOutput() SecurityContextResponseOutput
-	ToSecurityContextResponseOutputWithContext(context.Context) SecurityContextResponseOutput
-}
-
-// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
-type SecurityContextResponseArgs struct {
-	// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-	RunAsUser pulumi.IntInput `pulumi:"runAsUser"`
-}
-
-func (SecurityContextResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityContextResponse)(nil)).Elem()
-}
-
-func (i SecurityContextResponseArgs) ToSecurityContextResponseOutput() SecurityContextResponseOutput {
-	return i.ToSecurityContextResponseOutputWithContext(context.Background())
-}
-
-func (i SecurityContextResponseArgs) ToSecurityContextResponseOutputWithContext(ctx context.Context) SecurityContextResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityContextResponseOutput)
 }
 
 // Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
@@ -9134,37 +7114,6 @@ type TCPSocketActionResponse struct {
 	Host string `pulumi:"host"`
 	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
 	Port int `pulumi:"port"`
-}
-
-// TCPSocketActionResponseInput is an input type that accepts TCPSocketActionResponseArgs and TCPSocketActionResponseOutput values.
-// You can construct a concrete instance of `TCPSocketActionResponseInput` via:
-//
-//          TCPSocketActionResponseArgs{...}
-type TCPSocketActionResponseInput interface {
-	pulumi.Input
-
-	ToTCPSocketActionResponseOutput() TCPSocketActionResponseOutput
-	ToTCPSocketActionResponseOutputWithContext(context.Context) TCPSocketActionResponseOutput
-}
-
-// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
-type TCPSocketActionResponseArgs struct {
-	// (Optional) Optional: Host name to connect to, defaults to the pod IP.
-	Host pulumi.StringInput `pulumi:"host"`
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
-	Port pulumi.IntInput `pulumi:"port"`
-}
-
-func (TCPSocketActionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TCPSocketActionResponse)(nil)).Elem()
-}
-
-func (i TCPSocketActionResponseArgs) ToTCPSocketActionResponseOutput() TCPSocketActionResponseOutput {
-	return i.ToTCPSocketActionResponseOutputWithContext(context.Background())
-}
-
-func (i TCPSocketActionResponseArgs) ToTCPSocketActionResponseOutputWithContext(ctx context.Context) TCPSocketActionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TCPSocketActionResponseOutput)
 }
 
 // Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
@@ -9443,66 +7392,6 @@ type VolumeMountResponse struct {
 	SubPath string `pulumi:"subPath"`
 }
 
-// VolumeMountResponseInput is an input type that accepts VolumeMountResponseArgs and VolumeMountResponseOutput values.
-// You can construct a concrete instance of `VolumeMountResponseInput` via:
-//
-//          VolumeMountResponseArgs{...}
-type VolumeMountResponseInput interface {
-	pulumi.Input
-
-	ToVolumeMountResponseOutput() VolumeMountResponseOutput
-	ToVolumeMountResponseOutputWithContext(context.Context) VolumeMountResponseOutput
-}
-
-// VolumeMount describes a mounting of a Volume within a container.
-type VolumeMountResponseArgs struct {
-	// Path within the container at which the volume should be mounted. Must not contain ':'.
-	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// The name of the volume. There must be a corresponding Volume with the same name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Only true is accepted. Defaults to true.
-	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
-	// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
-	SubPath pulumi.StringInput `pulumi:"subPath"`
-}
-
-func (VolumeMountResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeMountResponse)(nil)).Elem()
-}
-
-func (i VolumeMountResponseArgs) ToVolumeMountResponseOutput() VolumeMountResponseOutput {
-	return i.ToVolumeMountResponseOutputWithContext(context.Background())
-}
-
-func (i VolumeMountResponseArgs) ToVolumeMountResponseOutputWithContext(ctx context.Context) VolumeMountResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeMountResponseOutput)
-}
-
-// VolumeMountResponseArrayInput is an input type that accepts VolumeMountResponseArray and VolumeMountResponseArrayOutput values.
-// You can construct a concrete instance of `VolumeMountResponseArrayInput` via:
-//
-//          VolumeMountResponseArray{ VolumeMountResponseArgs{...} }
-type VolumeMountResponseArrayInput interface {
-	pulumi.Input
-
-	ToVolumeMountResponseArrayOutput() VolumeMountResponseArrayOutput
-	ToVolumeMountResponseArrayOutputWithContext(context.Context) VolumeMountResponseArrayOutput
-}
-
-type VolumeMountResponseArray []VolumeMountResponseInput
-
-func (VolumeMountResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeMountResponse)(nil)).Elem()
-}
-
-func (i VolumeMountResponseArray) ToVolumeMountResponseArrayOutput() VolumeMountResponseArrayOutput {
-	return i.ToVolumeMountResponseArrayOutputWithContext(context.Background())
-}
-
-func (i VolumeMountResponseArray) ToVolumeMountResponseArrayOutputWithContext(ctx context.Context) VolumeMountResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeMountResponseArrayOutput)
-}
-
 // VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountResponseOutput struct{ *pulumi.OutputState }
 
@@ -9566,62 +7455,6 @@ type VolumeResponse struct {
 	Secret SecretVolumeSourceResponse `pulumi:"secret"`
 }
 
-// VolumeResponseInput is an input type that accepts VolumeResponseArgs and VolumeResponseOutput values.
-// You can construct a concrete instance of `VolumeResponseInput` via:
-//
-//          VolumeResponseArgs{...}
-type VolumeResponseInput interface {
-	pulumi.Input
-
-	ToVolumeResponseOutput() VolumeResponseOutput
-	ToVolumeResponseOutputWithContext(context.Context) VolumeResponseOutput
-}
-
-// Volume represents a named volume in a container.
-type VolumeResponseArgs struct {
-	ConfigMap ConfigMapVolumeSourceResponseInput `pulumi:"configMap"`
-	// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
-	Name   pulumi.StringInput              `pulumi:"name"`
-	Secret SecretVolumeSourceResponseInput `pulumi:"secret"`
-}
-
-func (VolumeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeResponse)(nil)).Elem()
-}
-
-func (i VolumeResponseArgs) ToVolumeResponseOutput() VolumeResponseOutput {
-	return i.ToVolumeResponseOutputWithContext(context.Background())
-}
-
-func (i VolumeResponseArgs) ToVolumeResponseOutputWithContext(ctx context.Context) VolumeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeResponseOutput)
-}
-
-// VolumeResponseArrayInput is an input type that accepts VolumeResponseArray and VolumeResponseArrayOutput values.
-// You can construct a concrete instance of `VolumeResponseArrayInput` via:
-//
-//          VolumeResponseArray{ VolumeResponseArgs{...} }
-type VolumeResponseArrayInput interface {
-	pulumi.Input
-
-	ToVolumeResponseArrayOutput() VolumeResponseArrayOutput
-	ToVolumeResponseArrayOutputWithContext(context.Context) VolumeResponseArrayOutput
-}
-
-type VolumeResponseArray []VolumeResponseInput
-
-func (VolumeResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeResponse)(nil)).Elem()
-}
-
-func (i VolumeResponseArray) ToVolumeResponseArrayOutput() VolumeResponseArrayOutput {
-	return i.ToVolumeResponseArrayOutputWithContext(context.Background())
-}
-
-func (i VolumeResponseArray) ToVolumeResponseArrayOutputWithContext(ctx context.Context) VolumeResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeResponseArrayOutput)
-}
-
 // Volume represents a named volume in a container.
 type VolumeResponseOutput struct{ *pulumi.OutputState }
 
@@ -9673,116 +7506,68 @@ func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapEnvSourceInput)(nil)).Elem(), ConfigMapEnvSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapEnvSourcePtrInput)(nil)).Elem(), ConfigMapEnvSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapEnvSourceResponseInput)(nil)).Elem(), ConfigMapEnvSourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapKeySelectorInput)(nil)).Elem(), ConfigMapKeySelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapKeySelectorPtrInput)(nil)).Elem(), ConfigMapKeySelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapKeySelectorResponseInput)(nil)).Elem(), ConfigMapKeySelectorResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapVolumeSourceInput)(nil)).Elem(), ConfigMapVolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapVolumeSourcePtrInput)(nil)).Elem(), ConfigMapVolumeSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapVolumeSourceResponseInput)(nil)).Elem(), ConfigMapVolumeSourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerInput)(nil)).Elem(), ContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerArrayInput)(nil)).Elem(), ContainerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPortInput)(nil)).Elem(), ContainerPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPortArrayInput)(nil)).Elem(), ContainerPortArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPortResponseInput)(nil)).Elem(), ContainerPortResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPortResponseArrayInput)(nil)).Elem(), ContainerPortResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ContainerResponseInput)(nil)).Elem(), ContainerResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ContainerResponseArrayInput)(nil)).Elem(), ContainerResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceInput)(nil)).Elem(), EnvFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceArrayInput)(nil)).Elem(), EnvFromSourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceResponseInput)(nil)).Elem(), EnvFromSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceResponseArrayInput)(nil)).Elem(), EnvFromSourceResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarInput)(nil)).Elem(), EnvVarArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarArrayInput)(nil)).Elem(), EnvVarArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarResponseInput)(nil)).Elem(), EnvVarResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarResponseArrayInput)(nil)).Elem(), EnvVarResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarSourceInput)(nil)).Elem(), EnvVarSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarSourcePtrInput)(nil)).Elem(), EnvVarSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarSourceResponseInput)(nil)).Elem(), EnvVarSourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecActionInput)(nil)).Elem(), ExecActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecActionPtrInput)(nil)).Elem(), ExecActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExecActionResponseInput)(nil)).Elem(), ExecActionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleRpcStatusInput)(nil)).Elem(), GoogleRpcStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleRpcStatusPtrInput)(nil)).Elem(), GoogleRpcStatusArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleRpcStatusResponseInput)(nil)).Elem(), GoogleRpcStatusResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTPGetActionInput)(nil)).Elem(), HTTPGetActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTPGetActionPtrInput)(nil)).Elem(), HTTPGetActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HTTPGetActionResponseInput)(nil)).Elem(), HTTPGetActionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHeaderInput)(nil)).Elem(), HTTPHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHeaderArrayInput)(nil)).Elem(), HTTPHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHeaderResponseInput)(nil)).Elem(), HTTPHeaderResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHeaderResponseArrayInput)(nil)).Elem(), HTTPHeaderResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAttemptResultInput)(nil)).Elem(), InstanceAttemptResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAttemptResultPtrInput)(nil)).Elem(), InstanceAttemptResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAttemptResultResponseInput)(nil)).Elem(), InstanceAttemptResultResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecInput)(nil)).Elem(), InstanceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecPtrInput)(nil)).Elem(), InstanceSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecResponseInput)(nil)).Elem(), InstanceSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecResponsePtrInput)(nil)).Elem(), InstanceSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStatusInput)(nil)).Elem(), InstanceStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStatusArrayInput)(nil)).Elem(), InstanceStatusArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStatusResponseInput)(nil)).Elem(), InstanceStatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStatusResponseArrayInput)(nil)).Elem(), InstanceStatusResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTemplateSpecInput)(nil)).Elem(), InstanceTemplateSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTemplateSpecPtrInput)(nil)).Elem(), InstanceTemplateSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTemplateSpecResponseInput)(nil)).Elem(), InstanceTemplateSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTemplateSpecResponsePtrInput)(nil)).Elem(), InstanceTemplateSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConditionInput)(nil)).Elem(), JobConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConditionArrayInput)(nil)).Elem(), JobConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobConditionResponseInput)(nil)).Elem(), JobConditionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobConditionResponseArrayInput)(nil)).Elem(), JobConditionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSpecInput)(nil)).Elem(), JobSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSpecPtrInput)(nil)).Elem(), JobSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobSpecResponseInput)(nil)).Elem(), JobSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobSpecResponsePtrInput)(nil)).Elem(), JobSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusInput)(nil)).Elem(), JobStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusPtrInput)(nil)).Elem(), JobStatusArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusResponseInput)(nil)).Elem(), JobStatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusResponsePtrInput)(nil)).Elem(), JobStatusResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyToPathInput)(nil)).Elem(), KeyToPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyToPathArrayInput)(nil)).Elem(), KeyToPathArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyToPathResponseInput)(nil)).Elem(), KeyToPathResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyToPathResponseArrayInput)(nil)).Elem(), KeyToPathResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferenceInput)(nil)).Elem(), LocalObjectReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferencePtrInput)(nil)).Elem(), LocalObjectReferenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferenceResponseInput)(nil)).Elem(), LocalObjectReferenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaInput)(nil)).Elem(), ObjectMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaPtrInput)(nil)).Elem(), ObjectMetaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaResponseInput)(nil)).Elem(), ObjectMetaResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaResponsePtrInput)(nil)).Elem(), ObjectMetaResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceInput)(nil)).Elem(), OwnerReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceArrayInput)(nil)).Elem(), OwnerReferenceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceResponseInput)(nil)).Elem(), OwnerReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceResponseArrayInput)(nil)).Elem(), OwnerReferenceResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProbeInput)(nil)).Elem(), ProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProbePtrInput)(nil)).Elem(), ProbeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProbeResponseInput)(nil)).Elem(), ProbeResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRequirementsInput)(nil)).Elem(), ResourceRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRequirementsPtrInput)(nil)).Elem(), ResourceRequirementsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRequirementsResponseInput)(nil)).Elem(), ResourceRequirementsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvSourceInput)(nil)).Elem(), SecretEnvSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvSourcePtrInput)(nil)).Elem(), SecretEnvSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvSourceResponseInput)(nil)).Elem(), SecretEnvSourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretKeySelectorInput)(nil)).Elem(), SecretKeySelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretKeySelectorPtrInput)(nil)).Elem(), SecretKeySelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretKeySelectorResponseInput)(nil)).Elem(), SecretKeySelectorResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeSourceInput)(nil)).Elem(), SecretVolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeSourcePtrInput)(nil)).Elem(), SecretVolumeSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeSourceResponseInput)(nil)).Elem(), SecretVolumeSourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityContextInput)(nil)).Elem(), SecurityContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityContextPtrInput)(nil)).Elem(), SecurityContextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityContextResponseInput)(nil)).Elem(), SecurityContextResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TCPSocketActionInput)(nil)).Elem(), TCPSocketActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TCPSocketActionPtrInput)(nil)).Elem(), TCPSocketActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TCPSocketActionResponseInput)(nil)).Elem(), TCPSocketActionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeInput)(nil)).Elem(), VolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeArrayInput)(nil)).Elem(), VolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountInput)(nil)).Elem(), VolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountArrayInput)(nil)).Elem(), VolumeMountArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountResponseInput)(nil)).Elem(), VolumeMountResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountResponseArrayInput)(nil)).Elem(), VolumeMountResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VolumeResponseInput)(nil)).Elem(), VolumeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VolumeResponseArrayInput)(nil)).Elem(), VolumeResponseArray{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourceOutput{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourcePtrOutput{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourceResponseOutput{})
@@ -9830,7 +7615,6 @@ func init() {
 	pulumi.RegisterOutputType(InstanceSpecOutput{})
 	pulumi.RegisterOutputType(InstanceSpecPtrOutput{})
 	pulumi.RegisterOutputType(InstanceSpecResponseOutput{})
-	pulumi.RegisterOutputType(InstanceSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(InstanceStatusOutput{})
 	pulumi.RegisterOutputType(InstanceStatusArrayOutput{})
 	pulumi.RegisterOutputType(InstanceStatusResponseOutput{})
@@ -9838,7 +7622,6 @@ func init() {
 	pulumi.RegisterOutputType(InstanceTemplateSpecOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateSpecPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateSpecResponseOutput{})
-	pulumi.RegisterOutputType(InstanceTemplateSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobConditionOutput{})
 	pulumi.RegisterOutputType(JobConditionArrayOutput{})
 	pulumi.RegisterOutputType(JobConditionResponseOutput{})
@@ -9846,11 +7629,9 @@ func init() {
 	pulumi.RegisterOutputType(JobSpecOutput{})
 	pulumi.RegisterOutputType(JobSpecPtrOutput{})
 	pulumi.RegisterOutputType(JobSpecResponseOutput{})
-	pulumi.RegisterOutputType(JobSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobStatusOutput{})
 	pulumi.RegisterOutputType(JobStatusPtrOutput{})
 	pulumi.RegisterOutputType(JobStatusResponseOutput{})
-	pulumi.RegisterOutputType(JobStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyToPathOutput{})
 	pulumi.RegisterOutputType(KeyToPathArrayOutput{})
 	pulumi.RegisterOutputType(KeyToPathResponseOutput{})
@@ -9861,7 +7642,6 @@ func init() {
 	pulumi.RegisterOutputType(ObjectMetaOutput{})
 	pulumi.RegisterOutputType(ObjectMetaPtrOutput{})
 	pulumi.RegisterOutputType(ObjectMetaResponseOutput{})
-	pulumi.RegisterOutputType(ObjectMetaResponsePtrOutput{})
 	pulumi.RegisterOutputType(OwnerReferenceOutput{})
 	pulumi.RegisterOutputType(OwnerReferenceArrayOutput{})
 	pulumi.RegisterOutputType(OwnerReferenceResponseOutput{})

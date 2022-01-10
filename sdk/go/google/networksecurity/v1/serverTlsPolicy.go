@@ -123,7 +123,7 @@ type ServerTlsPolicyInput interface {
 }
 
 func (*ServerTlsPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerTlsPolicy)(nil))
+	return reflect.TypeOf((**ServerTlsPolicy)(nil)).Elem()
 }
 
 func (i *ServerTlsPolicy) ToServerTlsPolicyOutput() ServerTlsPolicyOutput {
@@ -137,7 +137,7 @@ func (i *ServerTlsPolicy) ToServerTlsPolicyOutputWithContext(ctx context.Context
 type ServerTlsPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServerTlsPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerTlsPolicy)(nil))
+	return reflect.TypeOf((**ServerTlsPolicy)(nil)).Elem()
 }
 
 func (o ServerTlsPolicyOutput) ToServerTlsPolicyOutput() ServerTlsPolicyOutput {

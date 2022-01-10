@@ -103,7 +103,7 @@ type TaxonomyIamPolicyInput interface {
 }
 
 func (*TaxonomyIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaxonomyIamPolicy)(nil))
+	return reflect.TypeOf((**TaxonomyIamPolicy)(nil)).Elem()
 }
 
 func (i *TaxonomyIamPolicy) ToTaxonomyIamPolicyOutput() TaxonomyIamPolicyOutput {
@@ -117,7 +117,7 @@ func (i *TaxonomyIamPolicy) ToTaxonomyIamPolicyOutputWithContext(ctx context.Con
 type TaxonomyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaxonomyIamPolicy)(nil))
+	return reflect.TypeOf((**TaxonomyIamPolicy)(nil)).Elem()
 }
 
 func (o TaxonomyIamPolicyOutput) ToTaxonomyIamPolicyOutput() TaxonomyIamPolicyOutput {

@@ -140,7 +140,7 @@ type MessageInput interface {
 }
 
 func (*Message) ElementType() reflect.Type {
-	return reflect.TypeOf((*Message)(nil))
+	return reflect.TypeOf((**Message)(nil)).Elem()
 }
 
 func (i *Message) ToMessageOutput() MessageOutput {
@@ -154,7 +154,7 @@ func (i *Message) ToMessageOutputWithContext(ctx context.Context) MessageOutput 
 type MessageOutput struct{ *pulumi.OutputState }
 
 func (MessageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Message)(nil))
+	return reflect.TypeOf((**Message)(nil)).Elem()
 }
 
 func (o MessageOutput) ToMessageOutput() MessageOutput {

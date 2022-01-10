@@ -159,7 +159,7 @@ type TransferConfigInput interface {
 }
 
 func (*TransferConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransferConfig)(nil))
+	return reflect.TypeOf((**TransferConfig)(nil)).Elem()
 }
 
 func (i *TransferConfig) ToTransferConfigOutput() TransferConfigOutput {
@@ -173,7 +173,7 @@ func (i *TransferConfig) ToTransferConfigOutputWithContext(ctx context.Context) 
 type TransferConfigOutput struct{ *pulumi.OutputState }
 
 func (TransferConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransferConfig)(nil))
+	return reflect.TypeOf((**TransferConfig)(nil)).Elem()
 }
 
 func (o TransferConfigOutput) ToTransferConfigOutput() TransferConfigOutput {

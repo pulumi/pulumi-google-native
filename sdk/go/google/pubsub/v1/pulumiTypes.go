@@ -138,64 +138,6 @@ type BindingResponse struct {
 	Role string `pulumi:"role"`
 }
 
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
@@ -413,78 +355,6 @@ type DeadLetterPolicyResponse struct {
 	MaxDeliveryAttempts int `pulumi:"maxDeliveryAttempts"`
 }
 
-// DeadLetterPolicyResponseInput is an input type that accepts DeadLetterPolicyResponseArgs and DeadLetterPolicyResponseOutput values.
-// You can construct a concrete instance of `DeadLetterPolicyResponseInput` via:
-//
-//          DeadLetterPolicyResponseArgs{...}
-type DeadLetterPolicyResponseInput interface {
-	pulumi.Input
-
-	ToDeadLetterPolicyResponseOutput() DeadLetterPolicyResponseOutput
-	ToDeadLetterPolicyResponseOutputWithContext(context.Context) DeadLetterPolicyResponseOutput
-}
-
-// Dead lettering is done on a best effort basis. The same message might be dead lettered multiple times. If validation on any of the fields fails at subscription creation/updation, the create/update subscription request will fail.
-type DeadLetterPolicyResponseArgs struct {
-	// The name of the topic to which dead letter messages should be published. Format is `projects/{project}/topics/{topic}`.The Cloud Pub/Sub service account associated with the enclosing subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Publish() to this topic. The operation will fail if the topic does not exist. Users should ensure that there is a subscription attached to this topic since messages published to a topic with no subscriptions are lost.
-	DeadLetterTopic pulumi.StringInput `pulumi:"deadLetterTopic"`
-	// The maximum number of delivery attempts for any message. The value must be between 5 and 100. The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the acknowledgement deadline has been exceeded for the message). A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a default value of 5 is used.
-	MaxDeliveryAttempts pulumi.IntInput `pulumi:"maxDeliveryAttempts"`
-}
-
-func (DeadLetterPolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeadLetterPolicyResponse)(nil)).Elem()
-}
-
-func (i DeadLetterPolicyResponseArgs) ToDeadLetterPolicyResponseOutput() DeadLetterPolicyResponseOutput {
-	return i.ToDeadLetterPolicyResponseOutputWithContext(context.Background())
-}
-
-func (i DeadLetterPolicyResponseArgs) ToDeadLetterPolicyResponseOutputWithContext(ctx context.Context) DeadLetterPolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeadLetterPolicyResponseOutput)
-}
-
-func (i DeadLetterPolicyResponseArgs) ToDeadLetterPolicyResponsePtrOutput() DeadLetterPolicyResponsePtrOutput {
-	return i.ToDeadLetterPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DeadLetterPolicyResponseArgs) ToDeadLetterPolicyResponsePtrOutputWithContext(ctx context.Context) DeadLetterPolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeadLetterPolicyResponseOutput).ToDeadLetterPolicyResponsePtrOutputWithContext(ctx)
-}
-
-// DeadLetterPolicyResponsePtrInput is an input type that accepts DeadLetterPolicyResponseArgs, DeadLetterPolicyResponsePtr and DeadLetterPolicyResponsePtrOutput values.
-// You can construct a concrete instance of `DeadLetterPolicyResponsePtrInput` via:
-//
-//          DeadLetterPolicyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DeadLetterPolicyResponsePtrInput interface {
-	pulumi.Input
-
-	ToDeadLetterPolicyResponsePtrOutput() DeadLetterPolicyResponsePtrOutput
-	ToDeadLetterPolicyResponsePtrOutputWithContext(context.Context) DeadLetterPolicyResponsePtrOutput
-}
-
-type deadLetterPolicyResponsePtrType DeadLetterPolicyResponseArgs
-
-func DeadLetterPolicyResponsePtr(v *DeadLetterPolicyResponseArgs) DeadLetterPolicyResponsePtrInput {
-	return (*deadLetterPolicyResponsePtrType)(v)
-}
-
-func (*deadLetterPolicyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeadLetterPolicyResponse)(nil)).Elem()
-}
-
-func (i *deadLetterPolicyResponsePtrType) ToDeadLetterPolicyResponsePtrOutput() DeadLetterPolicyResponsePtrOutput {
-	return i.ToDeadLetterPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *deadLetterPolicyResponsePtrType) ToDeadLetterPolicyResponsePtrOutputWithContext(ctx context.Context) DeadLetterPolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeadLetterPolicyResponsePtrOutput)
-}
-
 // Dead lettering is done on a best effort basis. The same message might be dead lettered multiple times. If validation on any of the fields fails at subscription creation/updation, the create/update subscription request will fail.
 type DeadLetterPolicyResponseOutput struct{ *pulumi.OutputState }
 
@@ -500,16 +370,6 @@ func (o DeadLetterPolicyResponseOutput) ToDeadLetterPolicyResponseOutputWithCont
 	return o
 }
 
-func (o DeadLetterPolicyResponseOutput) ToDeadLetterPolicyResponsePtrOutput() DeadLetterPolicyResponsePtrOutput {
-	return o.ToDeadLetterPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DeadLetterPolicyResponseOutput) ToDeadLetterPolicyResponsePtrOutputWithContext(ctx context.Context) DeadLetterPolicyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeadLetterPolicyResponse) *DeadLetterPolicyResponse {
-		return &v
-	}).(DeadLetterPolicyResponsePtrOutput)
-}
-
 // The name of the topic to which dead letter messages should be published. Format is `projects/{project}/topics/{topic}`.The Cloud Pub/Sub service account associated with the enclosing subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Publish() to this topic. The operation will fail if the topic does not exist. Users should ensure that there is a subscription attached to this topic since messages published to a topic with no subscriptions are lost.
 func (o DeadLetterPolicyResponseOutput) DeadLetterTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v DeadLetterPolicyResponse) string { return v.DeadLetterTopic }).(pulumi.StringOutput)
@@ -518,50 +378,6 @@ func (o DeadLetterPolicyResponseOutput) DeadLetterTopic() pulumi.StringOutput {
 // The maximum number of delivery attempts for any message. The value must be between 5 and 100. The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the acknowledgement deadline has been exceeded for the message). A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a default value of 5 is used.
 func (o DeadLetterPolicyResponseOutput) MaxDeliveryAttempts() pulumi.IntOutput {
 	return o.ApplyT(func(v DeadLetterPolicyResponse) int { return v.MaxDeliveryAttempts }).(pulumi.IntOutput)
-}
-
-type DeadLetterPolicyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DeadLetterPolicyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeadLetterPolicyResponse)(nil)).Elem()
-}
-
-func (o DeadLetterPolicyResponsePtrOutput) ToDeadLetterPolicyResponsePtrOutput() DeadLetterPolicyResponsePtrOutput {
-	return o
-}
-
-func (o DeadLetterPolicyResponsePtrOutput) ToDeadLetterPolicyResponsePtrOutputWithContext(ctx context.Context) DeadLetterPolicyResponsePtrOutput {
-	return o
-}
-
-func (o DeadLetterPolicyResponsePtrOutput) Elem() DeadLetterPolicyResponseOutput {
-	return o.ApplyT(func(v *DeadLetterPolicyResponse) DeadLetterPolicyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DeadLetterPolicyResponse
-		return ret
-	}).(DeadLetterPolicyResponseOutput)
-}
-
-// The name of the topic to which dead letter messages should be published. Format is `projects/{project}/topics/{topic}`.The Cloud Pub/Sub service account associated with the enclosing subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Publish() to this topic. The operation will fail if the topic does not exist. Users should ensure that there is a subscription attached to this topic since messages published to a topic with no subscriptions are lost.
-func (o DeadLetterPolicyResponsePtrOutput) DeadLetterTopic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeadLetterPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DeadLetterTopic
-	}).(pulumi.StringPtrOutput)
-}
-
-// The maximum number of delivery attempts for any message. The value must be between 5 and 100. The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the acknowledgement deadline has been exceeded for the message). A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a default value of 5 is used.
-func (o DeadLetterPolicyResponsePtrOutput) MaxDeliveryAttempts() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DeadLetterPolicyResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxDeliveryAttempts
-	}).(pulumi.IntPtrOutput)
 }
 
 // A policy that specifies the conditions for resource expiration (i.e., automatic resource deletion).
@@ -710,76 +526,6 @@ type ExpirationPolicyResponse struct {
 	Ttl string `pulumi:"ttl"`
 }
 
-// ExpirationPolicyResponseInput is an input type that accepts ExpirationPolicyResponseArgs and ExpirationPolicyResponseOutput values.
-// You can construct a concrete instance of `ExpirationPolicyResponseInput` via:
-//
-//          ExpirationPolicyResponseArgs{...}
-type ExpirationPolicyResponseInput interface {
-	pulumi.Input
-
-	ToExpirationPolicyResponseOutput() ExpirationPolicyResponseOutput
-	ToExpirationPolicyResponseOutputWithContext(context.Context) ExpirationPolicyResponseOutput
-}
-
-// A policy that specifies the conditions for resource expiration (i.e., automatic resource deletion).
-type ExpirationPolicyResponseArgs struct {
-	// Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of `ttl`. The definition of "activity" depends on the type of the associated resource. The minimum and maximum allowed values for `ttl` depend on the type of the associated resource, as well. If `ttl` is not set, the associated resource never expires.
-	Ttl pulumi.StringInput `pulumi:"ttl"`
-}
-
-func (ExpirationPolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpirationPolicyResponse)(nil)).Elem()
-}
-
-func (i ExpirationPolicyResponseArgs) ToExpirationPolicyResponseOutput() ExpirationPolicyResponseOutput {
-	return i.ToExpirationPolicyResponseOutputWithContext(context.Background())
-}
-
-func (i ExpirationPolicyResponseArgs) ToExpirationPolicyResponseOutputWithContext(ctx context.Context) ExpirationPolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpirationPolicyResponseOutput)
-}
-
-func (i ExpirationPolicyResponseArgs) ToExpirationPolicyResponsePtrOutput() ExpirationPolicyResponsePtrOutput {
-	return i.ToExpirationPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ExpirationPolicyResponseArgs) ToExpirationPolicyResponsePtrOutputWithContext(ctx context.Context) ExpirationPolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpirationPolicyResponseOutput).ToExpirationPolicyResponsePtrOutputWithContext(ctx)
-}
-
-// ExpirationPolicyResponsePtrInput is an input type that accepts ExpirationPolicyResponseArgs, ExpirationPolicyResponsePtr and ExpirationPolicyResponsePtrOutput values.
-// You can construct a concrete instance of `ExpirationPolicyResponsePtrInput` via:
-//
-//          ExpirationPolicyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ExpirationPolicyResponsePtrInput interface {
-	pulumi.Input
-
-	ToExpirationPolicyResponsePtrOutput() ExpirationPolicyResponsePtrOutput
-	ToExpirationPolicyResponsePtrOutputWithContext(context.Context) ExpirationPolicyResponsePtrOutput
-}
-
-type expirationPolicyResponsePtrType ExpirationPolicyResponseArgs
-
-func ExpirationPolicyResponsePtr(v *ExpirationPolicyResponseArgs) ExpirationPolicyResponsePtrInput {
-	return (*expirationPolicyResponsePtrType)(v)
-}
-
-func (*expirationPolicyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExpirationPolicyResponse)(nil)).Elem()
-}
-
-func (i *expirationPolicyResponsePtrType) ToExpirationPolicyResponsePtrOutput() ExpirationPolicyResponsePtrOutput {
-	return i.ToExpirationPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *expirationPolicyResponsePtrType) ToExpirationPolicyResponsePtrOutputWithContext(ctx context.Context) ExpirationPolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpirationPolicyResponsePtrOutput)
-}
-
 // A policy that specifies the conditions for resource expiration (i.e., automatic resource deletion).
 type ExpirationPolicyResponseOutput struct{ *pulumi.OutputState }
 
@@ -795,53 +541,9 @@ func (o ExpirationPolicyResponseOutput) ToExpirationPolicyResponseOutputWithCont
 	return o
 }
 
-func (o ExpirationPolicyResponseOutput) ToExpirationPolicyResponsePtrOutput() ExpirationPolicyResponsePtrOutput {
-	return o.ToExpirationPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ExpirationPolicyResponseOutput) ToExpirationPolicyResponsePtrOutputWithContext(ctx context.Context) ExpirationPolicyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpirationPolicyResponse) *ExpirationPolicyResponse {
-		return &v
-	}).(ExpirationPolicyResponsePtrOutput)
-}
-
 // Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of `ttl`. The definition of "activity" depends on the type of the associated resource. The minimum and maximum allowed values for `ttl` depend on the type of the associated resource, as well. If `ttl` is not set, the associated resource never expires.
 func (o ExpirationPolicyResponseOutput) Ttl() pulumi.StringOutput {
 	return o.ApplyT(func(v ExpirationPolicyResponse) string { return v.Ttl }).(pulumi.StringOutput)
-}
-
-type ExpirationPolicyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ExpirationPolicyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExpirationPolicyResponse)(nil)).Elem()
-}
-
-func (o ExpirationPolicyResponsePtrOutput) ToExpirationPolicyResponsePtrOutput() ExpirationPolicyResponsePtrOutput {
-	return o
-}
-
-func (o ExpirationPolicyResponsePtrOutput) ToExpirationPolicyResponsePtrOutputWithContext(ctx context.Context) ExpirationPolicyResponsePtrOutput {
-	return o
-}
-
-func (o ExpirationPolicyResponsePtrOutput) Elem() ExpirationPolicyResponseOutput {
-	return o.ApplyT(func(v *ExpirationPolicyResponse) ExpirationPolicyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ExpirationPolicyResponse
-		return ret
-	}).(ExpirationPolicyResponseOutput)
-}
-
-// Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of `ttl`. The definition of "activity" depends on the type of the associated resource. The minimum and maximum allowed values for `ttl` depend on the type of the associated resource, as well. If `ttl` is not set, the associated resource never expires.
-func (o ExpirationPolicyResponsePtrOutput) Ttl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExpirationPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Ttl
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1053,41 +755,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -1269,76 +936,6 @@ type MessageStoragePolicyResponse struct {
 	AllowedPersistenceRegions []string `pulumi:"allowedPersistenceRegions"`
 }
 
-// MessageStoragePolicyResponseInput is an input type that accepts MessageStoragePolicyResponseArgs and MessageStoragePolicyResponseOutput values.
-// You can construct a concrete instance of `MessageStoragePolicyResponseInput` via:
-//
-//          MessageStoragePolicyResponseArgs{...}
-type MessageStoragePolicyResponseInput interface {
-	pulumi.Input
-
-	ToMessageStoragePolicyResponseOutput() MessageStoragePolicyResponseOutput
-	ToMessageStoragePolicyResponseOutputWithContext(context.Context) MessageStoragePolicyResponseOutput
-}
-
-// A policy constraining the storage of messages published to the topic.
-type MessageStoragePolicyResponseArgs struct {
-	// A list of IDs of GCP regions where messages that are published to the topic may be persisted in storage. Messages published by publishers running in non-allowed GCP regions (or running outside of GCP altogether) will be routed for storage in one of the allowed regions. An empty list means that no regions are allowed, and is not a valid configuration.
-	AllowedPersistenceRegions pulumi.StringArrayInput `pulumi:"allowedPersistenceRegions"`
-}
-
-func (MessageStoragePolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MessageStoragePolicyResponse)(nil)).Elem()
-}
-
-func (i MessageStoragePolicyResponseArgs) ToMessageStoragePolicyResponseOutput() MessageStoragePolicyResponseOutput {
-	return i.ToMessageStoragePolicyResponseOutputWithContext(context.Background())
-}
-
-func (i MessageStoragePolicyResponseArgs) ToMessageStoragePolicyResponseOutputWithContext(ctx context.Context) MessageStoragePolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MessageStoragePolicyResponseOutput)
-}
-
-func (i MessageStoragePolicyResponseArgs) ToMessageStoragePolicyResponsePtrOutput() MessageStoragePolicyResponsePtrOutput {
-	return i.ToMessageStoragePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MessageStoragePolicyResponseArgs) ToMessageStoragePolicyResponsePtrOutputWithContext(ctx context.Context) MessageStoragePolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MessageStoragePolicyResponseOutput).ToMessageStoragePolicyResponsePtrOutputWithContext(ctx)
-}
-
-// MessageStoragePolicyResponsePtrInput is an input type that accepts MessageStoragePolicyResponseArgs, MessageStoragePolicyResponsePtr and MessageStoragePolicyResponsePtrOutput values.
-// You can construct a concrete instance of `MessageStoragePolicyResponsePtrInput` via:
-//
-//          MessageStoragePolicyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MessageStoragePolicyResponsePtrInput interface {
-	pulumi.Input
-
-	ToMessageStoragePolicyResponsePtrOutput() MessageStoragePolicyResponsePtrOutput
-	ToMessageStoragePolicyResponsePtrOutputWithContext(context.Context) MessageStoragePolicyResponsePtrOutput
-}
-
-type messageStoragePolicyResponsePtrType MessageStoragePolicyResponseArgs
-
-func MessageStoragePolicyResponsePtr(v *MessageStoragePolicyResponseArgs) MessageStoragePolicyResponsePtrInput {
-	return (*messageStoragePolicyResponsePtrType)(v)
-}
-
-func (*messageStoragePolicyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MessageStoragePolicyResponse)(nil)).Elem()
-}
-
-func (i *messageStoragePolicyResponsePtrType) ToMessageStoragePolicyResponsePtrOutput() MessageStoragePolicyResponsePtrOutput {
-	return i.ToMessageStoragePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *messageStoragePolicyResponsePtrType) ToMessageStoragePolicyResponsePtrOutputWithContext(ctx context.Context) MessageStoragePolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MessageStoragePolicyResponsePtrOutput)
-}
-
 // A policy constraining the storage of messages published to the topic.
 type MessageStoragePolicyResponseOutput struct{ *pulumi.OutputState }
 
@@ -1354,53 +951,9 @@ func (o MessageStoragePolicyResponseOutput) ToMessageStoragePolicyResponseOutput
 	return o
 }
 
-func (o MessageStoragePolicyResponseOutput) ToMessageStoragePolicyResponsePtrOutput() MessageStoragePolicyResponsePtrOutput {
-	return o.ToMessageStoragePolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MessageStoragePolicyResponseOutput) ToMessageStoragePolicyResponsePtrOutputWithContext(ctx context.Context) MessageStoragePolicyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MessageStoragePolicyResponse) *MessageStoragePolicyResponse {
-		return &v
-	}).(MessageStoragePolicyResponsePtrOutput)
-}
-
 // A list of IDs of GCP regions where messages that are published to the topic may be persisted in storage. Messages published by publishers running in non-allowed GCP regions (or running outside of GCP altogether) will be routed for storage in one of the allowed regions. An empty list means that no regions are allowed, and is not a valid configuration.
 func (o MessageStoragePolicyResponseOutput) AllowedPersistenceRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MessageStoragePolicyResponse) []string { return v.AllowedPersistenceRegions }).(pulumi.StringArrayOutput)
-}
-
-type MessageStoragePolicyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MessageStoragePolicyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MessageStoragePolicyResponse)(nil)).Elem()
-}
-
-func (o MessageStoragePolicyResponsePtrOutput) ToMessageStoragePolicyResponsePtrOutput() MessageStoragePolicyResponsePtrOutput {
-	return o
-}
-
-func (o MessageStoragePolicyResponsePtrOutput) ToMessageStoragePolicyResponsePtrOutputWithContext(ctx context.Context) MessageStoragePolicyResponsePtrOutput {
-	return o
-}
-
-func (o MessageStoragePolicyResponsePtrOutput) Elem() MessageStoragePolicyResponseOutput {
-	return o.ApplyT(func(v *MessageStoragePolicyResponse) MessageStoragePolicyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MessageStoragePolicyResponse
-		return ret
-	}).(MessageStoragePolicyResponseOutput)
-}
-
-// A list of IDs of GCP regions where messages that are published to the topic may be persisted in storage. Messages published by publishers running in non-allowed GCP regions (or running outside of GCP altogether) will be routed for storage in one of the allowed regions. An empty list means that no regions are allowed, and is not a valid configuration.
-func (o MessageStoragePolicyResponsePtrOutput) AllowedPersistenceRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MessageStoragePolicyResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AllowedPersistenceRegions
-	}).(pulumi.StringArrayOutput)
 }
 
 // Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
@@ -1570,78 +1123,6 @@ type OidcTokenResponse struct {
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 }
 
-// OidcTokenResponseInput is an input type that accepts OidcTokenResponseArgs and OidcTokenResponseOutput values.
-// You can construct a concrete instance of `OidcTokenResponseInput` via:
-//
-//          OidcTokenResponseArgs{...}
-type OidcTokenResponseInput interface {
-	pulumi.Input
-
-	ToOidcTokenResponseOutput() OidcTokenResponseOutput
-	ToOidcTokenResponseOutputWithContext(context.Context) OidcTokenResponseOutput
-}
-
-// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
-type OidcTokenResponseArgs struct {
-	// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
-	Audience pulumi.StringInput `pulumi:"audience"`
-	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account.
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
-}
-
-func (OidcTokenResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OidcTokenResponse)(nil)).Elem()
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponseOutput() OidcTokenResponseOutput {
-	return i.ToOidcTokenResponseOutputWithContext(context.Background())
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponseOutputWithContext(ctx context.Context) OidcTokenResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenResponseOutput)
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return i.ToOidcTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenResponseOutput).ToOidcTokenResponsePtrOutputWithContext(ctx)
-}
-
-// OidcTokenResponsePtrInput is an input type that accepts OidcTokenResponseArgs, OidcTokenResponsePtr and OidcTokenResponsePtrOutput values.
-// You can construct a concrete instance of `OidcTokenResponsePtrInput` via:
-//
-//          OidcTokenResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OidcTokenResponsePtrInput interface {
-	pulumi.Input
-
-	ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput
-	ToOidcTokenResponsePtrOutputWithContext(context.Context) OidcTokenResponsePtrOutput
-}
-
-type oidcTokenResponsePtrType OidcTokenResponseArgs
-
-func OidcTokenResponsePtr(v *OidcTokenResponseArgs) OidcTokenResponsePtrInput {
-	return (*oidcTokenResponsePtrType)(v)
-}
-
-func (*oidcTokenResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OidcTokenResponse)(nil)).Elem()
-}
-
-func (i *oidcTokenResponsePtrType) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return i.ToOidcTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *oidcTokenResponsePtrType) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenResponsePtrOutput)
-}
-
 // Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
 type OidcTokenResponseOutput struct{ *pulumi.OutputState }
 
@@ -1657,16 +1138,6 @@ func (o OidcTokenResponseOutput) ToOidcTokenResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return o.ToOidcTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OidcTokenResponse) *OidcTokenResponse {
-		return &v
-	}).(OidcTokenResponsePtrOutput)
-}
-
 // Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
 func (o OidcTokenResponseOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.Audience }).(pulumi.StringOutput)
@@ -1675,50 +1146,6 @@ func (o OidcTokenResponseOutput) Audience() pulumi.StringOutput {
 // [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account.
 func (o OidcTokenResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
-}
-
-type OidcTokenResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OidcTokenResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OidcTokenResponse)(nil)).Elem()
-}
-
-func (o OidcTokenResponsePtrOutput) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return o
-}
-
-func (o OidcTokenResponsePtrOutput) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return o
-}
-
-func (o OidcTokenResponsePtrOutput) Elem() OidcTokenResponseOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) OidcTokenResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OidcTokenResponse
-		return ret
-	}).(OidcTokenResponseOutput)
-}
-
-// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
-func (o OidcTokenResponsePtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Audience
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account.
-func (o OidcTokenResponsePtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration for a push delivery endpoint.
@@ -1909,80 +1336,6 @@ type PushConfigResponse struct {
 	PushEndpoint string `pulumi:"pushEndpoint"`
 }
 
-// PushConfigResponseInput is an input type that accepts PushConfigResponseArgs and PushConfigResponseOutput values.
-// You can construct a concrete instance of `PushConfigResponseInput` via:
-//
-//          PushConfigResponseArgs{...}
-type PushConfigResponseInput interface {
-	pulumi.Input
-
-	ToPushConfigResponseOutput() PushConfigResponseOutput
-	ToPushConfigResponseOutputWithContext(context.Context) PushConfigResponseOutput
-}
-
-// Configuration for a push delivery endpoint.
-type PushConfigResponseArgs struct {
-	// Endpoint configuration attributes that can be used to control different aspects of the message delivery. The only currently supported attribute is `x-goog-version`, which you can use to change the format of the pushed message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the pushed message (i.e., its fields and metadata). If not present during the `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call. If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The only supported values for the `x-goog-version` attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. For example: attributes { "x-goog-version": "v1" }
-	Attributes pulumi.StringMapInput `pulumi:"attributes"`
-	// If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message.
-	OidcToken OidcTokenResponseInput `pulumi:"oidcToken"`
-	// A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use `https://example.com/push`.
-	PushEndpoint pulumi.StringInput `pulumi:"pushEndpoint"`
-}
-
-func (PushConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PushConfigResponse)(nil)).Elem()
-}
-
-func (i PushConfigResponseArgs) ToPushConfigResponseOutput() PushConfigResponseOutput {
-	return i.ToPushConfigResponseOutputWithContext(context.Background())
-}
-
-func (i PushConfigResponseArgs) ToPushConfigResponseOutputWithContext(ctx context.Context) PushConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PushConfigResponseOutput)
-}
-
-func (i PushConfigResponseArgs) ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput {
-	return i.ToPushConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PushConfigResponseArgs) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PushConfigResponseOutput).ToPushConfigResponsePtrOutputWithContext(ctx)
-}
-
-// PushConfigResponsePtrInput is an input type that accepts PushConfigResponseArgs, PushConfigResponsePtr and PushConfigResponsePtrOutput values.
-// You can construct a concrete instance of `PushConfigResponsePtrInput` via:
-//
-//          PushConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PushConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput
-	ToPushConfigResponsePtrOutputWithContext(context.Context) PushConfigResponsePtrOutput
-}
-
-type pushConfigResponsePtrType PushConfigResponseArgs
-
-func PushConfigResponsePtr(v *PushConfigResponseArgs) PushConfigResponsePtrInput {
-	return (*pushConfigResponsePtrType)(v)
-}
-
-func (*pushConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PushConfigResponse)(nil)).Elem()
-}
-
-func (i *pushConfigResponsePtrType) ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput {
-	return i.ToPushConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *pushConfigResponsePtrType) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PushConfigResponsePtrOutput)
-}
-
 // Configuration for a push delivery endpoint.
 type PushConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -1998,16 +1351,6 @@ func (o PushConfigResponseOutput) ToPushConfigResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o PushConfigResponseOutput) ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput {
-	return o.ToPushConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PushConfigResponseOutput) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PushConfigResponse) *PushConfigResponse {
-		return &v
-	}).(PushConfigResponsePtrOutput)
-}
-
 // Endpoint configuration attributes that can be used to control different aspects of the message delivery. The only currently supported attribute is `x-goog-version`, which you can use to change the format of the pushed message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the pushed message (i.e., its fields and metadata). If not present during the `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call. If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The only supported values for the `x-goog-version` attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. For example: attributes { "x-goog-version": "v1" }
 func (o PushConfigResponseOutput) Attributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PushConfigResponse) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
@@ -2021,60 +1364,6 @@ func (o PushConfigResponseOutput) OidcToken() OidcTokenResponseOutput {
 // A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use `https://example.com/push`.
 func (o PushConfigResponseOutput) PushEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v PushConfigResponse) string { return v.PushEndpoint }).(pulumi.StringOutput)
-}
-
-type PushConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PushConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PushConfigResponse)(nil)).Elem()
-}
-
-func (o PushConfigResponsePtrOutput) ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput {
-	return o
-}
-
-func (o PushConfigResponsePtrOutput) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
-	return o
-}
-
-func (o PushConfigResponsePtrOutput) Elem() PushConfigResponseOutput {
-	return o.ApplyT(func(v *PushConfigResponse) PushConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PushConfigResponse
-		return ret
-	}).(PushConfigResponseOutput)
-}
-
-// Endpoint configuration attributes that can be used to control different aspects of the message delivery. The only currently supported attribute is `x-goog-version`, which you can use to change the format of the pushed message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the pushed message (i.e., its fields and metadata). If not present during the `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call. If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The only supported values for the `x-goog-version` attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. For example: attributes { "x-goog-version": "v1" }
-func (o PushConfigResponsePtrOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *PushConfigResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Attributes
-	}).(pulumi.StringMapOutput)
-}
-
-// If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message.
-func (o PushConfigResponsePtrOutput) OidcToken() OidcTokenResponsePtrOutput {
-	return o.ApplyT(func(v *PushConfigResponse) *OidcTokenResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.OidcToken
-	}).(OidcTokenResponsePtrOutput)
-}
-
-// A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use `https://example.com/push`.
-func (o PushConfigResponsePtrOutput) PushEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PushConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PushEndpoint
-	}).(pulumi.StringPtrOutput)
 }
 
 // A policy that specifies how Cloud Pub/Sub retries message delivery. Retry delay will be exponential based on provided minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message. Retry Policy is implemented on a best effort basis. At times, the delay between consecutive deliveries may not match the configuration. That is, delay can be more or less than configured backoff.
@@ -2244,78 +1533,6 @@ type RetryPolicyResponse struct {
 	MinimumBackoff string `pulumi:"minimumBackoff"`
 }
 
-// RetryPolicyResponseInput is an input type that accepts RetryPolicyResponseArgs and RetryPolicyResponseOutput values.
-// You can construct a concrete instance of `RetryPolicyResponseInput` via:
-//
-//          RetryPolicyResponseArgs{...}
-type RetryPolicyResponseInput interface {
-	pulumi.Input
-
-	ToRetryPolicyResponseOutput() RetryPolicyResponseOutput
-	ToRetryPolicyResponseOutputWithContext(context.Context) RetryPolicyResponseOutput
-}
-
-// A policy that specifies how Cloud Pub/Sub retries message delivery. Retry delay will be exponential based on provided minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message. Retry Policy is implemented on a best effort basis. At times, the delay between consecutive deliveries may not match the configuration. That is, delay can be more or less than configured backoff.
-type RetryPolicyResponseArgs struct {
-	// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
-	MaximumBackoff pulumi.StringInput `pulumi:"maximumBackoff"`
-	// The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
-	MinimumBackoff pulumi.StringInput `pulumi:"minimumBackoff"`
-}
-
-func (RetryPolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RetryPolicyResponse)(nil)).Elem()
-}
-
-func (i RetryPolicyResponseArgs) ToRetryPolicyResponseOutput() RetryPolicyResponseOutput {
-	return i.ToRetryPolicyResponseOutputWithContext(context.Background())
-}
-
-func (i RetryPolicyResponseArgs) ToRetryPolicyResponseOutputWithContext(ctx context.Context) RetryPolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetryPolicyResponseOutput)
-}
-
-func (i RetryPolicyResponseArgs) ToRetryPolicyResponsePtrOutput() RetryPolicyResponsePtrOutput {
-	return i.ToRetryPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RetryPolicyResponseArgs) ToRetryPolicyResponsePtrOutputWithContext(ctx context.Context) RetryPolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetryPolicyResponseOutput).ToRetryPolicyResponsePtrOutputWithContext(ctx)
-}
-
-// RetryPolicyResponsePtrInput is an input type that accepts RetryPolicyResponseArgs, RetryPolicyResponsePtr and RetryPolicyResponsePtrOutput values.
-// You can construct a concrete instance of `RetryPolicyResponsePtrInput` via:
-//
-//          RetryPolicyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RetryPolicyResponsePtrInput interface {
-	pulumi.Input
-
-	ToRetryPolicyResponsePtrOutput() RetryPolicyResponsePtrOutput
-	ToRetryPolicyResponsePtrOutputWithContext(context.Context) RetryPolicyResponsePtrOutput
-}
-
-type retryPolicyResponsePtrType RetryPolicyResponseArgs
-
-func RetryPolicyResponsePtr(v *RetryPolicyResponseArgs) RetryPolicyResponsePtrInput {
-	return (*retryPolicyResponsePtrType)(v)
-}
-
-func (*retryPolicyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RetryPolicyResponse)(nil)).Elem()
-}
-
-func (i *retryPolicyResponsePtrType) ToRetryPolicyResponsePtrOutput() RetryPolicyResponsePtrOutput {
-	return i.ToRetryPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *retryPolicyResponsePtrType) ToRetryPolicyResponsePtrOutputWithContext(ctx context.Context) RetryPolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetryPolicyResponsePtrOutput)
-}
-
 // A policy that specifies how Cloud Pub/Sub retries message delivery. Retry delay will be exponential based on provided minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message. Retry Policy is implemented on a best effort basis. At times, the delay between consecutive deliveries may not match the configuration. That is, delay can be more or less than configured backoff.
 type RetryPolicyResponseOutput struct{ *pulumi.OutputState }
 
@@ -2331,16 +1548,6 @@ func (o RetryPolicyResponseOutput) ToRetryPolicyResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o RetryPolicyResponseOutput) ToRetryPolicyResponsePtrOutput() RetryPolicyResponsePtrOutput {
-	return o.ToRetryPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RetryPolicyResponseOutput) ToRetryPolicyResponsePtrOutputWithContext(ctx context.Context) RetryPolicyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryPolicyResponse) *RetryPolicyResponse {
-		return &v
-	}).(RetryPolicyResponsePtrOutput)
-}
-
 // The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
 func (o RetryPolicyResponseOutput) MaximumBackoff() pulumi.StringOutput {
 	return o.ApplyT(func(v RetryPolicyResponse) string { return v.MaximumBackoff }).(pulumi.StringOutput)
@@ -2349,50 +1556,6 @@ func (o RetryPolicyResponseOutput) MaximumBackoff() pulumi.StringOutput {
 // The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
 func (o RetryPolicyResponseOutput) MinimumBackoff() pulumi.StringOutput {
 	return o.ApplyT(func(v RetryPolicyResponse) string { return v.MinimumBackoff }).(pulumi.StringOutput)
-}
-
-type RetryPolicyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RetryPolicyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RetryPolicyResponse)(nil)).Elem()
-}
-
-func (o RetryPolicyResponsePtrOutput) ToRetryPolicyResponsePtrOutput() RetryPolicyResponsePtrOutput {
-	return o
-}
-
-func (o RetryPolicyResponsePtrOutput) ToRetryPolicyResponsePtrOutputWithContext(ctx context.Context) RetryPolicyResponsePtrOutput {
-	return o
-}
-
-func (o RetryPolicyResponsePtrOutput) Elem() RetryPolicyResponseOutput {
-	return o.ApplyT(func(v *RetryPolicyResponse) RetryPolicyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RetryPolicyResponse
-		return ret
-	}).(RetryPolicyResponseOutput)
-}
-
-// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
-func (o RetryPolicyResponsePtrOutput) MaximumBackoff() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RetryPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MaximumBackoff
-	}).(pulumi.StringPtrOutput)
-}
-
-// The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
-func (o RetryPolicyResponsePtrOutput) MinimumBackoff() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RetryPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MinimumBackoff
-	}).(pulumi.StringPtrOutput)
 }
 
 // Settings for validating messages published against a schema.
@@ -2562,78 +1725,6 @@ type SchemaSettingsResponse struct {
 	Schema string `pulumi:"schema"`
 }
 
-// SchemaSettingsResponseInput is an input type that accepts SchemaSettingsResponseArgs and SchemaSettingsResponseOutput values.
-// You can construct a concrete instance of `SchemaSettingsResponseInput` via:
-//
-//          SchemaSettingsResponseArgs{...}
-type SchemaSettingsResponseInput interface {
-	pulumi.Input
-
-	ToSchemaSettingsResponseOutput() SchemaSettingsResponseOutput
-	ToSchemaSettingsResponseOutputWithContext(context.Context) SchemaSettingsResponseOutput
-}
-
-// Settings for validating messages published against a schema.
-type SchemaSettingsResponseArgs struct {
-	// The encoding of messages validated against `schema`.
-	Encoding pulumi.StringInput `pulumi:"encoding"`
-	// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
-	Schema pulumi.StringInput `pulumi:"schema"`
-}
-
-func (SchemaSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchemaSettingsResponse)(nil)).Elem()
-}
-
-func (i SchemaSettingsResponseArgs) ToSchemaSettingsResponseOutput() SchemaSettingsResponseOutput {
-	return i.ToSchemaSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i SchemaSettingsResponseArgs) ToSchemaSettingsResponseOutputWithContext(ctx context.Context) SchemaSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaSettingsResponseOutput)
-}
-
-func (i SchemaSettingsResponseArgs) ToSchemaSettingsResponsePtrOutput() SchemaSettingsResponsePtrOutput {
-	return i.ToSchemaSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SchemaSettingsResponseArgs) ToSchemaSettingsResponsePtrOutputWithContext(ctx context.Context) SchemaSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaSettingsResponseOutput).ToSchemaSettingsResponsePtrOutputWithContext(ctx)
-}
-
-// SchemaSettingsResponsePtrInput is an input type that accepts SchemaSettingsResponseArgs, SchemaSettingsResponsePtr and SchemaSettingsResponsePtrOutput values.
-// You can construct a concrete instance of `SchemaSettingsResponsePtrInput` via:
-//
-//          SchemaSettingsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SchemaSettingsResponsePtrInput interface {
-	pulumi.Input
-
-	ToSchemaSettingsResponsePtrOutput() SchemaSettingsResponsePtrOutput
-	ToSchemaSettingsResponsePtrOutputWithContext(context.Context) SchemaSettingsResponsePtrOutput
-}
-
-type schemaSettingsResponsePtrType SchemaSettingsResponseArgs
-
-func SchemaSettingsResponsePtr(v *SchemaSettingsResponseArgs) SchemaSettingsResponsePtrInput {
-	return (*schemaSettingsResponsePtrType)(v)
-}
-
-func (*schemaSettingsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchemaSettingsResponse)(nil)).Elem()
-}
-
-func (i *schemaSettingsResponsePtrType) ToSchemaSettingsResponsePtrOutput() SchemaSettingsResponsePtrOutput {
-	return i.ToSchemaSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *schemaSettingsResponsePtrType) ToSchemaSettingsResponsePtrOutputWithContext(ctx context.Context) SchemaSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaSettingsResponsePtrOutput)
-}
-
 // Settings for validating messages published against a schema.
 type SchemaSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -2649,16 +1740,6 @@ func (o SchemaSettingsResponseOutput) ToSchemaSettingsResponseOutputWithContext(
 	return o
 }
 
-func (o SchemaSettingsResponseOutput) ToSchemaSettingsResponsePtrOutput() SchemaSettingsResponsePtrOutput {
-	return o.ToSchemaSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SchemaSettingsResponseOutput) ToSchemaSettingsResponsePtrOutputWithContext(ctx context.Context) SchemaSettingsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaSettingsResponse) *SchemaSettingsResponse {
-		return &v
-	}).(SchemaSettingsResponsePtrOutput)
-}
-
 // The encoding of messages validated against `schema`.
 func (o SchemaSettingsResponseOutput) Encoding() pulumi.StringOutput {
 	return o.ApplyT(func(v SchemaSettingsResponse) string { return v.Encoding }).(pulumi.StringOutput)
@@ -2669,86 +1750,25 @@ func (o SchemaSettingsResponseOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v SchemaSettingsResponse) string { return v.Schema }).(pulumi.StringOutput)
 }
 
-type SchemaSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SchemaSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchemaSettingsResponse)(nil)).Elem()
-}
-
-func (o SchemaSettingsResponsePtrOutput) ToSchemaSettingsResponsePtrOutput() SchemaSettingsResponsePtrOutput {
-	return o
-}
-
-func (o SchemaSettingsResponsePtrOutput) ToSchemaSettingsResponsePtrOutputWithContext(ctx context.Context) SchemaSettingsResponsePtrOutput {
-	return o
-}
-
-func (o SchemaSettingsResponsePtrOutput) Elem() SchemaSettingsResponseOutput {
-	return o.ApplyT(func(v *SchemaSettingsResponse) SchemaSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SchemaSettingsResponse
-		return ret
-	}).(SchemaSettingsResponseOutput)
-}
-
-// The encoding of messages validated against `schema`.
-func (o SchemaSettingsResponsePtrOutput) Encoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SchemaSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Encoding
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
-func (o SchemaSettingsResponsePtrOutput) Schema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SchemaSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Schema
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeadLetterPolicyInput)(nil)).Elem(), DeadLetterPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeadLetterPolicyPtrInput)(nil)).Elem(), DeadLetterPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeadLetterPolicyResponseInput)(nil)).Elem(), DeadLetterPolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeadLetterPolicyResponsePtrInput)(nil)).Elem(), DeadLetterPolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExpirationPolicyInput)(nil)).Elem(), ExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExpirationPolicyPtrInput)(nil)).Elem(), ExpirationPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExpirationPolicyResponseInput)(nil)).Elem(), ExpirationPolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExpirationPolicyResponsePtrInput)(nil)).Elem(), ExpirationPolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageStoragePolicyInput)(nil)).Elem(), MessageStoragePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageStoragePolicyPtrInput)(nil)).Elem(), MessageStoragePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MessageStoragePolicyResponseInput)(nil)).Elem(), MessageStoragePolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MessageStoragePolicyResponsePtrInput)(nil)).Elem(), MessageStoragePolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenInput)(nil)).Elem(), OidcTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenPtrInput)(nil)).Elem(), OidcTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenResponseInput)(nil)).Elem(), OidcTokenResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenResponsePtrInput)(nil)).Elem(), OidcTokenResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigInput)(nil)).Elem(), PushConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigPtrInput)(nil)).Elem(), PushConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigResponseInput)(nil)).Elem(), PushConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigResponsePtrInput)(nil)).Elem(), PushConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryPolicyInput)(nil)).Elem(), RetryPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryPolicyPtrInput)(nil)).Elem(), RetryPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RetryPolicyResponseInput)(nil)).Elem(), RetryPolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RetryPolicyResponsePtrInput)(nil)).Elem(), RetryPolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaSettingsInput)(nil)).Elem(), SchemaSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaSettingsPtrInput)(nil)).Elem(), SchemaSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchemaSettingsResponseInput)(nil)).Elem(), SchemaSettingsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchemaSettingsResponsePtrInput)(nil)).Elem(), SchemaSettingsResponseArgs{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -2756,32 +1776,25 @@ func init() {
 	pulumi.RegisterOutputType(DeadLetterPolicyOutput{})
 	pulumi.RegisterOutputType(DeadLetterPolicyPtrOutput{})
 	pulumi.RegisterOutputType(DeadLetterPolicyResponseOutput{})
-	pulumi.RegisterOutputType(DeadLetterPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExpirationPolicyOutput{})
 	pulumi.RegisterOutputType(ExpirationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ExpirationPolicyResponseOutput{})
-	pulumi.RegisterOutputType(ExpirationPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(MessageStoragePolicyOutput{})
 	pulumi.RegisterOutputType(MessageStoragePolicyPtrOutput{})
 	pulumi.RegisterOutputType(MessageStoragePolicyResponseOutput{})
-	pulumi.RegisterOutputType(MessageStoragePolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(OidcTokenOutput{})
 	pulumi.RegisterOutputType(OidcTokenPtrOutput{})
 	pulumi.RegisterOutputType(OidcTokenResponseOutput{})
-	pulumi.RegisterOutputType(OidcTokenResponsePtrOutput{})
 	pulumi.RegisterOutputType(PushConfigOutput{})
 	pulumi.RegisterOutputType(PushConfigPtrOutput{})
 	pulumi.RegisterOutputType(PushConfigResponseOutput{})
-	pulumi.RegisterOutputType(PushConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(RetryPolicyOutput{})
 	pulumi.RegisterOutputType(RetryPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RetryPolicyResponseOutput{})
-	pulumi.RegisterOutputType(RetryPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(SchemaSettingsOutput{})
 	pulumi.RegisterOutputType(SchemaSettingsPtrOutput{})
 	pulumi.RegisterOutputType(SchemaSettingsResponseOutput{})
-	pulumi.RegisterOutputType(SchemaSettingsResponsePtrOutput{})
 }

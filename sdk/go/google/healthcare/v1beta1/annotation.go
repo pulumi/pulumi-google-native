@@ -124,7 +124,7 @@ type AnnotationInput interface {
 }
 
 func (*Annotation) ElementType() reflect.Type {
-	return reflect.TypeOf((*Annotation)(nil))
+	return reflect.TypeOf((**Annotation)(nil)).Elem()
 }
 
 func (i *Annotation) ToAnnotationOutput() AnnotationOutput {
@@ -138,7 +138,7 @@ func (i *Annotation) ToAnnotationOutputWithContext(ctx context.Context) Annotati
 type AnnotationOutput struct{ *pulumi.OutputState }
 
 func (AnnotationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Annotation)(nil))
+	return reflect.TypeOf((**Annotation)(nil)).Elem()
 }
 
 func (o AnnotationOutput) ToAnnotationOutput() AnnotationOutput {

@@ -122,7 +122,7 @@ type UserDataMappingInput interface {
 }
 
 func (*UserDataMapping) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserDataMapping)(nil))
+	return reflect.TypeOf((**UserDataMapping)(nil)).Elem()
 }
 
 func (i *UserDataMapping) ToUserDataMappingOutput() UserDataMappingOutput {
@@ -136,7 +136,7 @@ func (i *UserDataMapping) ToUserDataMappingOutputWithContext(ctx context.Context
 type UserDataMappingOutput struct{ *pulumi.OutputState }
 
 func (UserDataMappingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserDataMapping)(nil))
+	return reflect.TypeOf((**UserDataMapping)(nil)).Elem()
 }
 
 func (o UserDataMappingOutput) ToUserDataMappingOutput() UserDataMappingOutput {

@@ -113,7 +113,7 @@ type EdgeCacheOriginIamPolicyInput interface {
 }
 
 func (*EdgeCacheOriginIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeCacheOriginIamPolicy)(nil))
+	return reflect.TypeOf((**EdgeCacheOriginIamPolicy)(nil)).Elem()
 }
 
 func (i *EdgeCacheOriginIamPolicy) ToEdgeCacheOriginIamPolicyOutput() EdgeCacheOriginIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *EdgeCacheOriginIamPolicy) ToEdgeCacheOriginIamPolicyOutputWithContext(c
 type EdgeCacheOriginIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheOriginIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeCacheOriginIamPolicy)(nil))
+	return reflect.TypeOf((**EdgeCacheOriginIamPolicy)(nil)).Elem()
 }
 
 func (o EdgeCacheOriginIamPolicyOutput) ToEdgeCacheOriginIamPolicyOutput() EdgeCacheOriginIamPolicyOutput {

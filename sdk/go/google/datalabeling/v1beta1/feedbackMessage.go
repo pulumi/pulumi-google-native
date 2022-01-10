@@ -121,7 +121,7 @@ type FeedbackMessageInput interface {
 }
 
 func (*FeedbackMessage) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeedbackMessage)(nil))
+	return reflect.TypeOf((**FeedbackMessage)(nil)).Elem()
 }
 
 func (i *FeedbackMessage) ToFeedbackMessageOutput() FeedbackMessageOutput {
@@ -135,7 +135,7 @@ func (i *FeedbackMessage) ToFeedbackMessageOutputWithContext(ctx context.Context
 type FeedbackMessageOutput struct{ *pulumi.OutputState }
 
 func (FeedbackMessageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeedbackMessage)(nil))
+	return reflect.TypeOf((**FeedbackMessage)(nil)).Elem()
 }
 
 func (o FeedbackMessageOutput) ToFeedbackMessageOutput() FeedbackMessageOutput {

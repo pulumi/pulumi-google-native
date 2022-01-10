@@ -99,7 +99,7 @@ type OrganizationReplayInput interface {
 }
 
 func (*OrganizationReplay) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationReplay)(nil))
+	return reflect.TypeOf((**OrganizationReplay)(nil)).Elem()
 }
 
 func (i *OrganizationReplay) ToOrganizationReplayOutput() OrganizationReplayOutput {
@@ -113,7 +113,7 @@ func (i *OrganizationReplay) ToOrganizationReplayOutputWithContext(ctx context.C
 type OrganizationReplayOutput struct{ *pulumi.OutputState }
 
 func (OrganizationReplayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationReplay)(nil))
+	return reflect.TypeOf((**OrganizationReplay)(nil)).Elem()
 }
 
 func (o OrganizationReplayOutput) ToOrganizationReplayOutput() OrganizationReplayOutput {

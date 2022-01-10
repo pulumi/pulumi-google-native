@@ -96,7 +96,7 @@ type FolderInput interface {
 }
 
 func (*Folder) ElementType() reflect.Type {
-	return reflect.TypeOf((*Folder)(nil))
+	return reflect.TypeOf((**Folder)(nil)).Elem()
 }
 
 func (i *Folder) ToFolderOutput() FolderOutput {
@@ -110,7 +110,7 @@ func (i *Folder) ToFolderOutputWithContext(ctx context.Context) FolderOutput {
 type FolderOutput struct{ *pulumi.OutputState }
 
 func (FolderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Folder)(nil))
+	return reflect.TypeOf((**Folder)(nil)).Elem()
 }
 
 func (o FolderOutput) ToFolderOutput() FolderOutput {

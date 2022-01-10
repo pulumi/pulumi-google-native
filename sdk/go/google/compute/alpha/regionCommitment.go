@@ -169,7 +169,7 @@ type RegionCommitmentInput interface {
 }
 
 func (*RegionCommitment) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionCommitment)(nil))
+	return reflect.TypeOf((**RegionCommitment)(nil)).Elem()
 }
 
 func (i *RegionCommitment) ToRegionCommitmentOutput() RegionCommitmentOutput {
@@ -183,7 +183,7 @@ func (i *RegionCommitment) ToRegionCommitmentOutputWithContext(ctx context.Conte
 type RegionCommitmentOutput struct{ *pulumi.OutputState }
 
 func (RegionCommitmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionCommitment)(nil))
+	return reflect.TypeOf((**RegionCommitment)(nil)).Elem()
 }
 
 func (o RegionCommitmentOutput) ToRegionCommitmentOutput() RegionCommitmentOutput {

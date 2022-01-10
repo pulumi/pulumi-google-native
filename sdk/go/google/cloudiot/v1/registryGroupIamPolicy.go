@@ -108,7 +108,7 @@ type RegistryGroupIamPolicyInput interface {
 }
 
 func (*RegistryGroupIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryGroupIamPolicy)(nil))
+	return reflect.TypeOf((**RegistryGroupIamPolicy)(nil)).Elem()
 }
 
 func (i *RegistryGroupIamPolicy) ToRegistryGroupIamPolicyOutput() RegistryGroupIamPolicyOutput {
@@ -122,7 +122,7 @@ func (i *RegistryGroupIamPolicy) ToRegistryGroupIamPolicyOutputWithContext(ctx c
 type RegistryGroupIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegistryGroupIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryGroupIamPolicy)(nil))
+	return reflect.TypeOf((**RegistryGroupIamPolicy)(nil)).Elem()
 }
 
 func (o RegistryGroupIamPolicyOutput) ToRegistryGroupIamPolicyOutput() RegistryGroupIamPolicyOutput {

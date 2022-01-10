@@ -125,7 +125,7 @@ type ImportJobInput interface {
 }
 
 func (*ImportJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImportJob)(nil))
+	return reflect.TypeOf((**ImportJob)(nil)).Elem()
 }
 
 func (i *ImportJob) ToImportJobOutput() ImportJobOutput {
@@ -139,7 +139,7 @@ func (i *ImportJob) ToImportJobOutputWithContext(ctx context.Context) ImportJobO
 type ImportJobOutput struct{ *pulumi.OutputState }
 
 func (ImportJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImportJob)(nil))
+	return reflect.TypeOf((**ImportJob)(nil)).Elem()
 }
 
 func (o ImportJobOutput) ToImportJobOutput() ImportJobOutput {

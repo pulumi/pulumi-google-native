@@ -132,7 +132,7 @@ type TestCaseInput interface {
 }
 
 func (*TestCase) ElementType() reflect.Type {
-	return reflect.TypeOf((*TestCase)(nil))
+	return reflect.TypeOf((**TestCase)(nil)).Elem()
 }
 
 func (i *TestCase) ToTestCaseOutput() TestCaseOutput {
@@ -146,7 +146,7 @@ func (i *TestCase) ToTestCaseOutputWithContext(ctx context.Context) TestCaseOutp
 type TestCaseOutput struct{ *pulumi.OutputState }
 
 func (TestCaseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TestCase)(nil))
+	return reflect.TypeOf((**TestCase)(nil)).Elem()
 }
 
 func (o TestCaseOutput) ToTestCaseOutput() TestCaseOutput {

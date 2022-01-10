@@ -141,7 +141,7 @@ type BitbucketServerConfigInput interface {
 }
 
 func (*BitbucketServerConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*BitbucketServerConfig)(nil))
+	return reflect.TypeOf((**BitbucketServerConfig)(nil)).Elem()
 }
 
 func (i *BitbucketServerConfig) ToBitbucketServerConfigOutput() BitbucketServerConfigOutput {
@@ -155,7 +155,7 @@ func (i *BitbucketServerConfig) ToBitbucketServerConfigOutputWithContext(ctx con
 type BitbucketServerConfigOutput struct{ *pulumi.OutputState }
 
 func (BitbucketServerConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BitbucketServerConfig)(nil))
+	return reflect.TypeOf((**BitbucketServerConfig)(nil)).Elem()
 }
 
 func (o BitbucketServerConfigOutput) ToBitbucketServerConfigOutput() BitbucketServerConfigOutput {

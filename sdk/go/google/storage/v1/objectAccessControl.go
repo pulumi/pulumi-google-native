@@ -194,7 +194,7 @@ type ObjectAccessControlInput interface {
 }
 
 func (*ObjectAccessControl) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectAccessControl)(nil))
+	return reflect.TypeOf((**ObjectAccessControl)(nil)).Elem()
 }
 
 func (i *ObjectAccessControl) ToObjectAccessControlOutput() ObjectAccessControlOutput {
@@ -208,7 +208,7 @@ func (i *ObjectAccessControl) ToObjectAccessControlOutputWithContext(ctx context
 type ObjectAccessControlOutput struct{ *pulumi.OutputState }
 
 func (ObjectAccessControlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectAccessControl)(nil))
+	return reflect.TypeOf((**ObjectAccessControl)(nil)).Elem()
 }
 
 func (o ObjectAccessControlOutput) ToObjectAccessControlOutput() ObjectAccessControlOutput {

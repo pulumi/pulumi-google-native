@@ -111,7 +111,7 @@ type GlossaryInput interface {
 }
 
 func (*Glossary) ElementType() reflect.Type {
-	return reflect.TypeOf((*Glossary)(nil))
+	return reflect.TypeOf((**Glossary)(nil)).Elem()
 }
 
 func (i *Glossary) ToGlossaryOutput() GlossaryOutput {
@@ -125,7 +125,7 @@ func (i *Glossary) ToGlossaryOutputWithContext(ctx context.Context) GlossaryOutp
 type GlossaryOutput struct{ *pulumi.OutputState }
 
 func (GlossaryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Glossary)(nil))
+	return reflect.TypeOf((**Glossary)(nil)).Elem()
 }
 
 func (o GlossaryOutput) ToGlossaryOutput() GlossaryOutput {

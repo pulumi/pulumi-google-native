@@ -123,7 +123,7 @@ type RegionTargetHttpProxyInput interface {
 }
 
 func (*RegionTargetHttpProxy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionTargetHttpProxy)(nil))
+	return reflect.TypeOf((**RegionTargetHttpProxy)(nil)).Elem()
 }
 
 func (i *RegionTargetHttpProxy) ToRegionTargetHttpProxyOutput() RegionTargetHttpProxyOutput {
@@ -137,7 +137,7 @@ func (i *RegionTargetHttpProxy) ToRegionTargetHttpProxyOutputWithContext(ctx con
 type RegionTargetHttpProxyOutput struct{ *pulumi.OutputState }
 
 func (RegionTargetHttpProxyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionTargetHttpProxy)(nil))
+	return reflect.TypeOf((**RegionTargetHttpProxy)(nil)).Elem()
 }
 
 func (o RegionTargetHttpProxyOutput) ToRegionTargetHttpProxyOutput() RegionTargetHttpProxyOutput {

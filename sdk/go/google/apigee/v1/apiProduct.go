@@ -172,7 +172,7 @@ type ApiProductInput interface {
 }
 
 func (*ApiProduct) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiProduct)(nil))
+	return reflect.TypeOf((**ApiProduct)(nil)).Elem()
 }
 
 func (i *ApiProduct) ToApiProductOutput() ApiProductOutput {
@@ -186,7 +186,7 @@ func (i *ApiProduct) ToApiProductOutputWithContext(ctx context.Context) ApiProdu
 type ApiProductOutput struct{ *pulumi.OutputState }
 
 func (ApiProductOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiProduct)(nil))
+	return reflect.TypeOf((**ApiProduct)(nil)).Elem()
 }
 
 func (o ApiProductOutput) ToApiProductOutput() ApiProductOutput {

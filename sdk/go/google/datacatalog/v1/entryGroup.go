@@ -103,7 +103,7 @@ type EntryGroupInput interface {
 }
 
 func (*EntryGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntryGroup)(nil))
+	return reflect.TypeOf((**EntryGroup)(nil)).Elem()
 }
 
 func (i *EntryGroup) ToEntryGroupOutput() EntryGroupOutput {
@@ -117,7 +117,7 @@ func (i *EntryGroup) ToEntryGroupOutputWithContext(ctx context.Context) EntryGro
 type EntryGroupOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntryGroup)(nil))
+	return reflect.TypeOf((**EntryGroup)(nil)).Elem()
 }
 
 func (o EntryGroupOutput) ToEntryGroupOutput() EntryGroupOutput {

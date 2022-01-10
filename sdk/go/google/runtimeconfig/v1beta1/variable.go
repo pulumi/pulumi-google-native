@@ -105,7 +105,7 @@ type VariableInput interface {
 }
 
 func (*Variable) ElementType() reflect.Type {
-	return reflect.TypeOf((*Variable)(nil))
+	return reflect.TypeOf((**Variable)(nil)).Elem()
 }
 
 func (i *Variable) ToVariableOutput() VariableOutput {
@@ -119,7 +119,7 @@ func (i *Variable) ToVariableOutputWithContext(ctx context.Context) VariableOutp
 type VariableOutput struct{ *pulumi.OutputState }
 
 func (VariableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Variable)(nil))
+	return reflect.TypeOf((**Variable)(nil)).Elem()
 }
 
 func (o VariableOutput) ToVariableOutput() VariableOutput {

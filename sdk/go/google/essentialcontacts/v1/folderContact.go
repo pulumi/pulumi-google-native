@@ -119,7 +119,7 @@ type FolderContactInput interface {
 }
 
 func (*FolderContact) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderContact)(nil))
+	return reflect.TypeOf((**FolderContact)(nil)).Elem()
 }
 
 func (i *FolderContact) ToFolderContactOutput() FolderContactOutput {
@@ -133,7 +133,7 @@ func (i *FolderContact) ToFolderContactOutputWithContext(ctx context.Context) Fo
 type FolderContactOutput struct{ *pulumi.OutputState }
 
 func (FolderContactOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderContact)(nil))
+	return reflect.TypeOf((**FolderContact)(nil)).Elem()
 }
 
 func (o FolderContactOutput) ToFolderContactOutput() FolderContactOutput {

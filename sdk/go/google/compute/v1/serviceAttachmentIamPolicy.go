@@ -118,7 +118,7 @@ type ServiceAttachmentIamPolicyInput interface {
 }
 
 func (*ServiceAttachmentIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceAttachmentIamPolicy)(nil))
+	return reflect.TypeOf((**ServiceAttachmentIamPolicy)(nil)).Elem()
 }
 
 func (i *ServiceAttachmentIamPolicy) ToServiceAttachmentIamPolicyOutput() ServiceAttachmentIamPolicyOutput {
@@ -132,7 +132,7 @@ func (i *ServiceAttachmentIamPolicy) ToServiceAttachmentIamPolicyOutputWithConte
 type ServiceAttachmentIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServiceAttachmentIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceAttachmentIamPolicy)(nil))
+	return reflect.TypeOf((**ServiceAttachmentIamPolicy)(nil)).Elem()
 }
 
 func (o ServiceAttachmentIamPolicyOutput) ToServiceAttachmentIamPolicyOutput() ServiceAttachmentIamPolicyOutput {

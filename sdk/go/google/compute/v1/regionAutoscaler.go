@@ -125,7 +125,7 @@ type RegionAutoscalerInput interface {
 }
 
 func (*RegionAutoscaler) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionAutoscaler)(nil))
+	return reflect.TypeOf((**RegionAutoscaler)(nil)).Elem()
 }
 
 func (i *RegionAutoscaler) ToRegionAutoscalerOutput() RegionAutoscalerOutput {
@@ -139,7 +139,7 @@ func (i *RegionAutoscaler) ToRegionAutoscalerOutputWithContext(ctx context.Conte
 type RegionAutoscalerOutput struct{ *pulumi.OutputState }
 
 func (RegionAutoscalerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionAutoscaler)(nil))
+	return reflect.TypeOf((**RegionAutoscaler)(nil)).Elem()
 }
 
 func (o RegionAutoscalerOutput) ToRegionAutoscalerOutput() RegionAutoscalerOutput {

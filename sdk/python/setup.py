@@ -55,6 +55,7 @@ setup(name='pulumi_google_native',
       package_data={
           'pulumi_google_native': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

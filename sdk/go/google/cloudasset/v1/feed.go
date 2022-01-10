@@ -140,7 +140,7 @@ type FeedInput interface {
 }
 
 func (*Feed) ElementType() reflect.Type {
-	return reflect.TypeOf((*Feed)(nil))
+	return reflect.TypeOf((**Feed)(nil)).Elem()
 }
 
 func (i *Feed) ToFeedOutput() FeedOutput {
@@ -154,7 +154,7 @@ func (i *Feed) ToFeedOutputWithContext(ctx context.Context) FeedOutput {
 type FeedOutput struct{ *pulumi.OutputState }
 
 func (FeedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Feed)(nil))
+	return reflect.TypeOf((**Feed)(nil)).Elem()
 }
 
 func (o FeedOutput) ToFeedOutput() FeedOutput {

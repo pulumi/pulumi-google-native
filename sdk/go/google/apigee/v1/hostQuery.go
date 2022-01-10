@@ -154,7 +154,7 @@ type HostQueryInput interface {
 }
 
 func (*HostQuery) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostQuery)(nil))
+	return reflect.TypeOf((**HostQuery)(nil)).Elem()
 }
 
 func (i *HostQuery) ToHostQueryOutput() HostQueryOutput {
@@ -168,7 +168,7 @@ func (i *HostQuery) ToHostQueryOutputWithContext(ctx context.Context) HostQueryO
 type HostQueryOutput struct{ *pulumi.OutputState }
 
 func (HostQueryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostQuery)(nil))
+	return reflect.TypeOf((**HostQuery)(nil)).Elem()
 }
 
 func (o HostQueryOutput) ToHostQueryOutput() HostQueryOutput {

@@ -114,7 +114,7 @@ type ProcessorInput interface {
 }
 
 func (*Processor) ElementType() reflect.Type {
-	return reflect.TypeOf((*Processor)(nil))
+	return reflect.TypeOf((**Processor)(nil)).Elem()
 }
 
 func (i *Processor) ToProcessorOutput() ProcessorOutput {
@@ -128,7 +128,7 @@ func (i *Processor) ToProcessorOutputWithContext(ctx context.Context) ProcessorO
 type ProcessorOutput struct{ *pulumi.OutputState }
 
 func (ProcessorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Processor)(nil))
+	return reflect.TypeOf((**Processor)(nil)).Elem()
 }
 
 func (o ProcessorOutput) ToProcessorOutput() ProcessorOutput {

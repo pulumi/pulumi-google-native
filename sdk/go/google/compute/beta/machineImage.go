@@ -145,7 +145,7 @@ type MachineImageInput interface {
 }
 
 func (*MachineImage) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineImage)(nil))
+	return reflect.TypeOf((**MachineImage)(nil)).Elem()
 }
 
 func (i *MachineImage) ToMachineImageOutput() MachineImageOutput {
@@ -159,7 +159,7 @@ func (i *MachineImage) ToMachineImageOutputWithContext(ctx context.Context) Mach
 type MachineImageOutput struct{ *pulumi.OutputState }
 
 func (MachineImageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineImage)(nil))
+	return reflect.TypeOf((**MachineImage)(nil)).Elem()
 }
 
 func (o MachineImageOutput) ToMachineImageOutput() MachineImageOutput {

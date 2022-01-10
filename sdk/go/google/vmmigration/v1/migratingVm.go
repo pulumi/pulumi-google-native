@@ -149,7 +149,7 @@ type MigratingVmInput interface {
 }
 
 func (*MigratingVm) ElementType() reflect.Type {
-	return reflect.TypeOf((*MigratingVm)(nil))
+	return reflect.TypeOf((**MigratingVm)(nil)).Elem()
 }
 
 func (i *MigratingVm) ToMigratingVmOutput() MigratingVmOutput {
@@ -163,7 +163,7 @@ func (i *MigratingVm) ToMigratingVmOutputWithContext(ctx context.Context) Migrat
 type MigratingVmOutput struct{ *pulumi.OutputState }
 
 func (MigratingVmOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MigratingVm)(nil))
+	return reflect.TypeOf((**MigratingVm)(nil)).Elem()
 }
 
 func (o MigratingVmOutput) ToMigratingVmOutput() MigratingVmOutput {

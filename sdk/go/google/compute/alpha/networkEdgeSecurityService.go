@@ -116,7 +116,7 @@ type NetworkEdgeSecurityServiceInput interface {
 }
 
 func (*NetworkEdgeSecurityService) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEdgeSecurityService)(nil))
+	return reflect.TypeOf((**NetworkEdgeSecurityService)(nil)).Elem()
 }
 
 func (i *NetworkEdgeSecurityService) ToNetworkEdgeSecurityServiceOutput() NetworkEdgeSecurityServiceOutput {
@@ -130,7 +130,7 @@ func (i *NetworkEdgeSecurityService) ToNetworkEdgeSecurityServiceOutputWithConte
 type NetworkEdgeSecurityServiceOutput struct{ *pulumi.OutputState }
 
 func (NetworkEdgeSecurityServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEdgeSecurityService)(nil))
+	return reflect.TypeOf((**NetworkEdgeSecurityService)(nil)).Elem()
 }
 
 func (o NetworkEdgeSecurityServiceOutput) ToNetworkEdgeSecurityServiceOutput() NetworkEdgeSecurityServiceOutput {

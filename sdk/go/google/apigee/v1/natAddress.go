@@ -94,7 +94,7 @@ type NatAddressInput interface {
 }
 
 func (*NatAddress) ElementType() reflect.Type {
-	return reflect.TypeOf((*NatAddress)(nil))
+	return reflect.TypeOf((**NatAddress)(nil)).Elem()
 }
 
 func (i *NatAddress) ToNatAddressOutput() NatAddressOutput {
@@ -108,7 +108,7 @@ func (i *NatAddress) ToNatAddressOutputWithContext(ctx context.Context) NatAddre
 type NatAddressOutput struct{ *pulumi.OutputState }
 
 func (NatAddressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NatAddress)(nil))
+	return reflect.TypeOf((**NatAddress)(nil)).Elem()
 }
 
 func (o NatAddressOutput) ToNatAddressOutput() NatAddressOutput {

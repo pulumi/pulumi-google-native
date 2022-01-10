@@ -141,7 +141,7 @@ type UrlMapInput interface {
 }
 
 func (*UrlMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*UrlMap)(nil))
+	return reflect.TypeOf((**UrlMap)(nil)).Elem()
 }
 
 func (i *UrlMap) ToUrlMapOutput() UrlMapOutput {
@@ -155,7 +155,7 @@ func (i *UrlMap) ToUrlMapOutputWithContext(ctx context.Context) UrlMapOutput {
 type UrlMapOutput struct{ *pulumi.OutputState }
 
 func (UrlMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UrlMap)(nil))
+	return reflect.TypeOf((**UrlMap)(nil)).Elem()
 }
 
 func (o UrlMapOutput) ToUrlMapOutput() UrlMapOutput {

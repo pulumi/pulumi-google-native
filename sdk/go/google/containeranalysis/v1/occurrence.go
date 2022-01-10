@@ -175,7 +175,7 @@ type OccurrenceInput interface {
 }
 
 func (*Occurrence) ElementType() reflect.Type {
-	return reflect.TypeOf((*Occurrence)(nil))
+	return reflect.TypeOf((**Occurrence)(nil)).Elem()
 }
 
 func (i *Occurrence) ToOccurrenceOutput() OccurrenceOutput {
@@ -189,7 +189,7 @@ func (i *Occurrence) ToOccurrenceOutputWithContext(ctx context.Context) Occurren
 type OccurrenceOutput struct{ *pulumi.OutputState }
 
 func (OccurrenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Occurrence)(nil))
+	return reflect.TypeOf((**Occurrence)(nil)).Elem()
 }
 
 func (o OccurrenceOutput) ToOccurrenceOutput() OccurrenceOutput {

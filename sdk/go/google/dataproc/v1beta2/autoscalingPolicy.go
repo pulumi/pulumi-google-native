@@ -106,7 +106,7 @@ type AutoscalingPolicyInput interface {
 }
 
 func (*AutoscalingPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutoscalingPolicy)(nil))
+	return reflect.TypeOf((**AutoscalingPolicy)(nil)).Elem()
 }
 
 func (i *AutoscalingPolicy) ToAutoscalingPolicyOutput() AutoscalingPolicyOutput {
@@ -120,7 +120,7 @@ func (i *AutoscalingPolicy) ToAutoscalingPolicyOutputWithContext(ctx context.Con
 type AutoscalingPolicyOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutoscalingPolicy)(nil))
+	return reflect.TypeOf((**AutoscalingPolicy)(nil)).Elem()
 }
 
 func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutput() AutoscalingPolicyOutput {

@@ -115,7 +115,7 @@ type MuteConfigInput interface {
 }
 
 func (*MuteConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*MuteConfig)(nil))
+	return reflect.TypeOf((**MuteConfig)(nil)).Elem()
 }
 
 func (i *MuteConfig) ToMuteConfigOutput() MuteConfigOutput {
@@ -129,7 +129,7 @@ func (i *MuteConfig) ToMuteConfigOutputWithContext(ctx context.Context) MuteConf
 type MuteConfigOutput struct{ *pulumi.OutputState }
 
 func (MuteConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MuteConfig)(nil))
+	return reflect.TypeOf((**MuteConfig)(nil)).Elem()
 }
 
 func (o MuteConfigOutput) ToMuteConfigOutput() MuteConfigOutput {

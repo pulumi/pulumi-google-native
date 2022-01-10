@@ -108,7 +108,7 @@ type ConversationInput interface {
 }
 
 func (*Conversation) ElementType() reflect.Type {
-	return reflect.TypeOf((*Conversation)(nil))
+	return reflect.TypeOf((**Conversation)(nil)).Elem()
 }
 
 func (i *Conversation) ToConversationOutput() ConversationOutput {
@@ -122,7 +122,7 @@ func (i *Conversation) ToConversationOutputWithContext(ctx context.Context) Conv
 type ConversationOutput struct{ *pulumi.OutputState }
 
 func (ConversationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Conversation)(nil))
+	return reflect.TypeOf((**Conversation)(nil)).Elem()
 }
 
 func (o ConversationOutput) ToConversationOutput() ConversationOutput {

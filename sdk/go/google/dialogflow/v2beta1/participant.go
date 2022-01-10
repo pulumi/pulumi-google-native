@@ -109,7 +109,7 @@ type ParticipantInput interface {
 }
 
 func (*Participant) ElementType() reflect.Type {
-	return reflect.TypeOf((*Participant)(nil))
+	return reflect.TypeOf((**Participant)(nil)).Elem()
 }
 
 func (i *Participant) ToParticipantOutput() ParticipantOutput {
@@ -123,7 +123,7 @@ func (i *Participant) ToParticipantOutputWithContext(ctx context.Context) Partic
 type ParticipantOutput struct{ *pulumi.OutputState }
 
 func (ParticipantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Participant)(nil))
+	return reflect.TypeOf((**Participant)(nil)).Elem()
 }
 
 func (o ParticipantOutput) ToParticipantOutput() ParticipantOutput {

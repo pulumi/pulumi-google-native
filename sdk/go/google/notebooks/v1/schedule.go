@@ -121,7 +121,7 @@ type ScheduleInput interface {
 }
 
 func (*Schedule) ElementType() reflect.Type {
-	return reflect.TypeOf((*Schedule)(nil))
+	return reflect.TypeOf((**Schedule)(nil)).Elem()
 }
 
 func (i *Schedule) ToScheduleOutput() ScheduleOutput {
@@ -135,7 +135,7 @@ func (i *Schedule) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutp
 type ScheduleOutput struct{ *pulumi.OutputState }
 
 func (ScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Schedule)(nil))
+	return reflect.TypeOf((**Schedule)(nil)).Elem()
 }
 
 func (o ScheduleOutput) ToScheduleOutput() ScheduleOutput {

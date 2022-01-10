@@ -104,7 +104,7 @@ type ProviderNoteIamPolicyInput interface {
 }
 
 func (*ProviderNoteIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProviderNoteIamPolicy)(nil))
+	return reflect.TypeOf((**ProviderNoteIamPolicy)(nil)).Elem()
 }
 
 func (i *ProviderNoteIamPolicy) ToProviderNoteIamPolicyOutput() ProviderNoteIamPolicyOutput {
@@ -118,7 +118,7 @@ func (i *ProviderNoteIamPolicy) ToProviderNoteIamPolicyOutputWithContext(ctx con
 type ProviderNoteIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ProviderNoteIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProviderNoteIamPolicy)(nil))
+	return reflect.TypeOf((**ProviderNoteIamPolicy)(nil)).Elem()
 }
 
 func (o ProviderNoteIamPolicyOutput) ToProviderNoteIamPolicyOutput() ProviderNoteIamPolicyOutput {

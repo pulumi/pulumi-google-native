@@ -157,7 +157,7 @@ type WorkloadInput interface {
 }
 
 func (*Workload) ElementType() reflect.Type {
-	return reflect.TypeOf((*Workload)(nil))
+	return reflect.TypeOf((**Workload)(nil)).Elem()
 }
 
 func (i *Workload) ToWorkloadOutput() WorkloadOutput {
@@ -171,7 +171,7 @@ func (i *Workload) ToWorkloadOutputWithContext(ctx context.Context) WorkloadOutp
 type WorkloadOutput struct{ *pulumi.OutputState }
 
 func (WorkloadOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Workload)(nil))
+	return reflect.TypeOf((**Workload)(nil)).Elem()
 }
 
 func (o WorkloadOutput) ToWorkloadOutput() WorkloadOutput {

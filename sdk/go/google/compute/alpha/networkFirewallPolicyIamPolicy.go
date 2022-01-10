@@ -113,7 +113,7 @@ type NetworkFirewallPolicyIamPolicyInput interface {
 }
 
 func (*NetworkFirewallPolicyIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkFirewallPolicyIamPolicy)(nil))
+	return reflect.TypeOf((**NetworkFirewallPolicyIamPolicy)(nil)).Elem()
 }
 
 func (i *NetworkFirewallPolicyIamPolicy) ToNetworkFirewallPolicyIamPolicyOutput() NetworkFirewallPolicyIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *NetworkFirewallPolicyIamPolicy) ToNetworkFirewallPolicyIamPolicyOutputW
 type NetworkFirewallPolicyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (NetworkFirewallPolicyIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkFirewallPolicyIamPolicy)(nil))
+	return reflect.TypeOf((**NetworkFirewallPolicyIamPolicy)(nil)).Elem()
 }
 
 func (o NetworkFirewallPolicyIamPolicyOutput) ToNetworkFirewallPolicyIamPolicyOutput() NetworkFirewallPolicyIamPolicyOutput {

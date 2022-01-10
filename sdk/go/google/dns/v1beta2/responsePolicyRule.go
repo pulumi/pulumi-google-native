@@ -111,7 +111,7 @@ type ResponsePolicyRuleInput interface {
 }
 
 func (*ResponsePolicyRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResponsePolicyRule)(nil))
+	return reflect.TypeOf((**ResponsePolicyRule)(nil)).Elem()
 }
 
 func (i *ResponsePolicyRule) ToResponsePolicyRuleOutput() ResponsePolicyRuleOutput {
@@ -125,7 +125,7 @@ func (i *ResponsePolicyRule) ToResponsePolicyRuleOutputWithContext(ctx context.C
 type ResponsePolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (ResponsePolicyRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResponsePolicyRule)(nil))
+	return reflect.TypeOf((**ResponsePolicyRule)(nil)).Elem()
 }
 
 func (o ResponsePolicyRuleOutput) ToResponsePolicyRuleOutput() ResponsePolicyRuleOutput {

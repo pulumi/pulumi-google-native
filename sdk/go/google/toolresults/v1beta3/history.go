@@ -103,7 +103,7 @@ type HistoryInput interface {
 }
 
 func (*History) ElementType() reflect.Type {
-	return reflect.TypeOf((*History)(nil))
+	return reflect.TypeOf((**History)(nil)).Elem()
 }
 
 func (i *History) ToHistoryOutput() HistoryOutput {
@@ -117,7 +117,7 @@ func (i *History) ToHistoryOutputWithContext(ctx context.Context) HistoryOutput 
 type HistoryOutput struct{ *pulumi.OutputState }
 
 func (HistoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*History)(nil))
+	return reflect.TypeOf((**History)(nil)).Elem()
 }
 
 func (o HistoryOutput) ToHistoryOutput() HistoryOutput {

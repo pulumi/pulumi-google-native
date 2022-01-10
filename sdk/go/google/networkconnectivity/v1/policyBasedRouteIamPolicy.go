@@ -111,7 +111,7 @@ type PolicyBasedRouteIamPolicyInput interface {
 }
 
 func (*PolicyBasedRouteIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyBasedRouteIamPolicy)(nil))
+	return reflect.TypeOf((**PolicyBasedRouteIamPolicy)(nil)).Elem()
 }
 
 func (i *PolicyBasedRouteIamPolicy) ToPolicyBasedRouteIamPolicyOutput() PolicyBasedRouteIamPolicyOutput {
@@ -125,7 +125,7 @@ func (i *PolicyBasedRouteIamPolicy) ToPolicyBasedRouteIamPolicyOutputWithContext
 type PolicyBasedRouteIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (PolicyBasedRouteIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyBasedRouteIamPolicy)(nil))
+	return reflect.TypeOf((**PolicyBasedRouteIamPolicy)(nil)).Elem()
 }
 
 func (o PolicyBasedRouteIamPolicyOutput) ToPolicyBasedRouteIamPolicyOutput() PolicyBasedRouteIamPolicyOutput {

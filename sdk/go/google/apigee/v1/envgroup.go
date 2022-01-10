@@ -100,7 +100,7 @@ type EnvgroupInput interface {
 }
 
 func (*Envgroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*Envgroup)(nil))
+	return reflect.TypeOf((**Envgroup)(nil)).Elem()
 }
 
 func (i *Envgroup) ToEnvgroupOutput() EnvgroupOutput {
@@ -114,7 +114,7 @@ func (i *Envgroup) ToEnvgroupOutputWithContext(ctx context.Context) EnvgroupOutp
 type EnvgroupOutput struct{ *pulumi.OutputState }
 
 func (EnvgroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Envgroup)(nil))
+	return reflect.TypeOf((**Envgroup)(nil)).Elem()
 }
 
 func (o EnvgroupOutput) ToEnvgroupOutput() EnvgroupOutput {

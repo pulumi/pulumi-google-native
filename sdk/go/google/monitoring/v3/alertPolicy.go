@@ -147,7 +147,7 @@ type AlertPolicyInput interface {
 }
 
 func (*AlertPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlertPolicy)(nil))
+	return reflect.TypeOf((**AlertPolicy)(nil)).Elem()
 }
 
 func (i *AlertPolicy) ToAlertPolicyOutput() AlertPolicyOutput {
@@ -161,7 +161,7 @@ func (i *AlertPolicy) ToAlertPolicyOutputWithContext(ctx context.Context) AlertP
 type AlertPolicyOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlertPolicy)(nil))
+	return reflect.TypeOf((**AlertPolicy)(nil)).Elem()
 }
 
 func (o AlertPolicyOutput) ToAlertPolicyOutput() AlertPolicyOutput {

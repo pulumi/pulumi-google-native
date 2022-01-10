@@ -103,7 +103,7 @@ type PhraseSetInput interface {
 }
 
 func (*PhraseSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhraseSet)(nil))
+	return reflect.TypeOf((**PhraseSet)(nil)).Elem()
 }
 
 func (i *PhraseSet) ToPhraseSetOutput() PhraseSetOutput {
@@ -117,7 +117,7 @@ func (i *PhraseSet) ToPhraseSetOutputWithContext(ctx context.Context) PhraseSetO
 type PhraseSetOutput struct{ *pulumi.OutputState }
 
 func (PhraseSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhraseSet)(nil))
+	return reflect.TypeOf((**PhraseSet)(nil)).Elem()
 }
 
 func (o PhraseSetOutput) ToPhraseSetOutput() PhraseSetOutput {

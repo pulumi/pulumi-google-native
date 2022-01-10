@@ -109,7 +109,7 @@ type ResponsePolicyInput interface {
 }
 
 func (*ResponsePolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResponsePolicy)(nil))
+	return reflect.TypeOf((**ResponsePolicy)(nil)).Elem()
 }
 
 func (i *ResponsePolicy) ToResponsePolicyOutput() ResponsePolicyOutput {
@@ -123,7 +123,7 @@ func (i *ResponsePolicy) ToResponsePolicyOutputWithContext(ctx context.Context) 
 type ResponsePolicyOutput struct{ *pulumi.OutputState }
 
 func (ResponsePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResponsePolicy)(nil))
+	return reflect.TypeOf((**ResponsePolicy)(nil)).Elem()
 }
 
 func (o ResponsePolicyOutput) ToResponsePolicyOutput() ResponsePolicyOutput {

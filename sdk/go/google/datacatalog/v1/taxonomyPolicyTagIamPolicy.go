@@ -108,7 +108,7 @@ type TaxonomyPolicyTagIamPolicyInput interface {
 }
 
 func (*TaxonomyPolicyTagIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaxonomyPolicyTagIamPolicy)(nil))
+	return reflect.TypeOf((**TaxonomyPolicyTagIamPolicy)(nil)).Elem()
 }
 
 func (i *TaxonomyPolicyTagIamPolicy) ToTaxonomyPolicyTagIamPolicyOutput() TaxonomyPolicyTagIamPolicyOutput {
@@ -122,7 +122,7 @@ func (i *TaxonomyPolicyTagIamPolicy) ToTaxonomyPolicyTagIamPolicyOutputWithConte
 type TaxonomyPolicyTagIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyPolicyTagIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaxonomyPolicyTagIamPolicy)(nil))
+	return reflect.TypeOf((**TaxonomyPolicyTagIamPolicy)(nil)).Elem()
 }
 
 func (o TaxonomyPolicyTagIamPolicyOutput) ToTaxonomyPolicyTagIamPolicyOutput() TaxonomyPolicyTagIamPolicyOutput {

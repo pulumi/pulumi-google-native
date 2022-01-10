@@ -101,7 +101,7 @@ type SubscriptionIamPolicyInput interface {
 }
 
 func (*SubscriptionIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubscriptionIamPolicy)(nil))
+	return reflect.TypeOf((**SubscriptionIamPolicy)(nil)).Elem()
 }
 
 func (i *SubscriptionIamPolicy) ToSubscriptionIamPolicyOutput() SubscriptionIamPolicyOutput {
@@ -115,7 +115,7 @@ func (i *SubscriptionIamPolicy) ToSubscriptionIamPolicyOutputWithContext(ctx con
 type SubscriptionIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubscriptionIamPolicy)(nil))
+	return reflect.TypeOf((**SubscriptionIamPolicy)(nil)).Elem()
 }
 
 func (o SubscriptionIamPolicyOutput) ToSubscriptionIamPolicyOutput() SubscriptionIamPolicyOutput {

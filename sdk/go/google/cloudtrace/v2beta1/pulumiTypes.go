@@ -45,47 +45,6 @@ func (i OutputConfigArgs) ToOutputConfigOutputWithContext(ctx context.Context) O
 	return pulumi.ToOutputWithContext(ctx, i).(OutputConfigOutput)
 }
 
-func (i OutputConfigArgs) ToOutputConfigPtrOutput() OutputConfigPtrOutput {
-	return i.ToOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (i OutputConfigArgs) ToOutputConfigPtrOutputWithContext(ctx context.Context) OutputConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputConfigOutput).ToOutputConfigPtrOutputWithContext(ctx)
-}
-
-// OutputConfigPtrInput is an input type that accepts OutputConfigArgs, OutputConfigPtr and OutputConfigPtrOutput values.
-// You can construct a concrete instance of `OutputConfigPtrInput` via:
-//
-//          OutputConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type OutputConfigPtrInput interface {
-	pulumi.Input
-
-	ToOutputConfigPtrOutput() OutputConfigPtrOutput
-	ToOutputConfigPtrOutputWithContext(context.Context) OutputConfigPtrOutput
-}
-
-type outputConfigPtrType OutputConfigArgs
-
-func OutputConfigPtr(v *OutputConfigArgs) OutputConfigPtrInput {
-	return (*outputConfigPtrType)(v)
-}
-
-func (*outputConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OutputConfig)(nil)).Elem()
-}
-
-func (i *outputConfigPtrType) ToOutputConfigPtrOutput() OutputConfigPtrOutput {
-	return i.ToOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *outputConfigPtrType) ToOutputConfigPtrOutputWithContext(ctx context.Context) OutputConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputConfigPtrOutput)
-}
-
 // OutputConfig contains a destination for writing trace data.
 type OutputConfigOutput struct{ *pulumi.OutputState }
 
@@ -101,129 +60,15 @@ func (o OutputConfigOutput) ToOutputConfigOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o OutputConfigOutput) ToOutputConfigPtrOutput() OutputConfigPtrOutput {
-	return o.ToOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (o OutputConfigOutput) ToOutputConfigPtrOutputWithContext(ctx context.Context) OutputConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OutputConfig) *OutputConfig {
-		return &v
-	}).(OutputConfigPtrOutput)
-}
-
 // The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
 func (o OutputConfigOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OutputConfig) *string { return v.Destination }).(pulumi.StringPtrOutput)
-}
-
-type OutputConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (OutputConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OutputConfig)(nil)).Elem()
-}
-
-func (o OutputConfigPtrOutput) ToOutputConfigPtrOutput() OutputConfigPtrOutput {
-	return o
-}
-
-func (o OutputConfigPtrOutput) ToOutputConfigPtrOutputWithContext(ctx context.Context) OutputConfigPtrOutput {
-	return o
-}
-
-func (o OutputConfigPtrOutput) Elem() OutputConfigOutput {
-	return o.ApplyT(func(v *OutputConfig) OutputConfig {
-		if v != nil {
-			return *v
-		}
-		var ret OutputConfig
-		return ret
-	}).(OutputConfigOutput)
-}
-
-// The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-func (o OutputConfigPtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OutputConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Destination
-	}).(pulumi.StringPtrOutput)
 }
 
 // OutputConfig contains a destination for writing trace data.
 type OutputConfigResponse struct {
 	// The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
 	Destination string `pulumi:"destination"`
-}
-
-// OutputConfigResponseInput is an input type that accepts OutputConfigResponseArgs and OutputConfigResponseOutput values.
-// You can construct a concrete instance of `OutputConfigResponseInput` via:
-//
-//          OutputConfigResponseArgs{...}
-type OutputConfigResponseInput interface {
-	pulumi.Input
-
-	ToOutputConfigResponseOutput() OutputConfigResponseOutput
-	ToOutputConfigResponseOutputWithContext(context.Context) OutputConfigResponseOutput
-}
-
-// OutputConfig contains a destination for writing trace data.
-type OutputConfigResponseArgs struct {
-	// The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-	Destination pulumi.StringInput `pulumi:"destination"`
-}
-
-func (OutputConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OutputConfigResponse)(nil)).Elem()
-}
-
-func (i OutputConfigResponseArgs) ToOutputConfigResponseOutput() OutputConfigResponseOutput {
-	return i.ToOutputConfigResponseOutputWithContext(context.Background())
-}
-
-func (i OutputConfigResponseArgs) ToOutputConfigResponseOutputWithContext(ctx context.Context) OutputConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputConfigResponseOutput)
-}
-
-func (i OutputConfigResponseArgs) ToOutputConfigResponsePtrOutput() OutputConfigResponsePtrOutput {
-	return i.ToOutputConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OutputConfigResponseArgs) ToOutputConfigResponsePtrOutputWithContext(ctx context.Context) OutputConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputConfigResponseOutput).ToOutputConfigResponsePtrOutputWithContext(ctx)
-}
-
-// OutputConfigResponsePtrInput is an input type that accepts OutputConfigResponseArgs, OutputConfigResponsePtr and OutputConfigResponsePtrOutput values.
-// You can construct a concrete instance of `OutputConfigResponsePtrInput` via:
-//
-//          OutputConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OutputConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToOutputConfigResponsePtrOutput() OutputConfigResponsePtrOutput
-	ToOutputConfigResponsePtrOutputWithContext(context.Context) OutputConfigResponsePtrOutput
-}
-
-type outputConfigResponsePtrType OutputConfigResponseArgs
-
-func OutputConfigResponsePtr(v *OutputConfigResponseArgs) OutputConfigResponsePtrInput {
-	return (*outputConfigResponsePtrType)(v)
-}
-
-func (*outputConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OutputConfigResponse)(nil)).Elem()
-}
-
-func (i *outputConfigResponsePtrType) ToOutputConfigResponsePtrOutput() OutputConfigResponsePtrOutput {
-	return i.ToOutputConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *outputConfigResponsePtrType) ToOutputConfigResponsePtrOutputWithContext(ctx context.Context) OutputConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputConfigResponsePtrOutput)
 }
 
 // OutputConfig contains a destination for writing trace data.
@@ -241,62 +86,13 @@ func (o OutputConfigResponseOutput) ToOutputConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o OutputConfigResponseOutput) ToOutputConfigResponsePtrOutput() OutputConfigResponsePtrOutput {
-	return o.ToOutputConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OutputConfigResponseOutput) ToOutputConfigResponsePtrOutputWithContext(ctx context.Context) OutputConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OutputConfigResponse) *OutputConfigResponse {
-		return &v
-	}).(OutputConfigResponsePtrOutput)
-}
-
 // The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
 func (o OutputConfigResponseOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v OutputConfigResponse) string { return v.Destination }).(pulumi.StringOutput)
 }
 
-type OutputConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OutputConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OutputConfigResponse)(nil)).Elem()
-}
-
-func (o OutputConfigResponsePtrOutput) ToOutputConfigResponsePtrOutput() OutputConfigResponsePtrOutput {
-	return o
-}
-
-func (o OutputConfigResponsePtrOutput) ToOutputConfigResponsePtrOutputWithContext(ctx context.Context) OutputConfigResponsePtrOutput {
-	return o
-}
-
-func (o OutputConfigResponsePtrOutput) Elem() OutputConfigResponseOutput {
-	return o.ApplyT(func(v *OutputConfigResponse) OutputConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OutputConfigResponse
-		return ret
-	}).(OutputConfigResponseOutput)
-}
-
-// The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-func (o OutputConfigResponsePtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OutputConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Destination
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OutputConfigInput)(nil)).Elem(), OutputConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OutputConfigPtrInput)(nil)).Elem(), OutputConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OutputConfigResponseInput)(nil)).Elem(), OutputConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OutputConfigResponsePtrInput)(nil)).Elem(), OutputConfigResponseArgs{})
 	pulumi.RegisterOutputType(OutputConfigOutput{})
-	pulumi.RegisterOutputType(OutputConfigPtrOutput{})
 	pulumi.RegisterOutputType(OutputConfigResponseOutput{})
-	pulumi.RegisterOutputType(OutputConfigResponsePtrOutput{})
 }

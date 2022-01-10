@@ -113,7 +113,7 @@ type WaiterInput interface {
 }
 
 func (*Waiter) ElementType() reflect.Type {
-	return reflect.TypeOf((*Waiter)(nil))
+	return reflect.TypeOf((**Waiter)(nil)).Elem()
 }
 
 func (i *Waiter) ToWaiterOutput() WaiterOutput {
@@ -127,7 +127,7 @@ func (i *Waiter) ToWaiterOutputWithContext(ctx context.Context) WaiterOutput {
 type WaiterOutput struct{ *pulumi.OutputState }
 
 func (WaiterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Waiter)(nil))
+	return reflect.TypeOf((**Waiter)(nil)).Elem()
 }
 
 func (o WaiterOutput) ToWaiterOutput() WaiterOutput {

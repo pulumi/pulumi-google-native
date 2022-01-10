@@ -173,7 +173,7 @@ type NodeInput interface {
 }
 
 func (*Node) ElementType() reflect.Type {
-	return reflect.TypeOf((*Node)(nil))
+	return reflect.TypeOf((**Node)(nil)).Elem()
 }
 
 func (i *Node) ToNodeOutput() NodeOutput {
@@ -187,7 +187,7 @@ func (i *Node) ToNodeOutputWithContext(ctx context.Context) NodeOutput {
 type NodeOutput struct{ *pulumi.OutputState }
 
 func (NodeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Node)(nil))
+	return reflect.TypeOf((**Node)(nil)).Elem()
 }
 
 func (o NodeOutput) ToNodeOutput() NodeOutput {

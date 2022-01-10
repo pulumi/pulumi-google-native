@@ -110,7 +110,7 @@ type PerfSampleSeriesInput interface {
 }
 
 func (*PerfSampleSeries) ElementType() reflect.Type {
-	return reflect.TypeOf((*PerfSampleSeries)(nil))
+	return reflect.TypeOf((**PerfSampleSeries)(nil)).Elem()
 }
 
 func (i *PerfSampleSeries) ToPerfSampleSeriesOutput() PerfSampleSeriesOutput {
@@ -124,7 +124,7 @@ func (i *PerfSampleSeries) ToPerfSampleSeriesOutputWithContext(ctx context.Conte
 type PerfSampleSeriesOutput struct{ *pulumi.OutputState }
 
 func (PerfSampleSeriesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PerfSampleSeries)(nil))
+	return reflect.TypeOf((**PerfSampleSeries)(nil)).Elem()
 }
 
 func (o PerfSampleSeriesOutput) ToPerfSampleSeriesOutput() PerfSampleSeriesOutput {

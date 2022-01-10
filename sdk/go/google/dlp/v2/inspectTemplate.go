@@ -106,7 +106,7 @@ type InspectTemplateInput interface {
 }
 
 func (*InspectTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*InspectTemplate)(nil))
+	return reflect.TypeOf((**InspectTemplate)(nil)).Elem()
 }
 
 func (i *InspectTemplate) ToInspectTemplateOutput() InspectTemplateOutput {
@@ -120,7 +120,7 @@ func (i *InspectTemplate) ToInspectTemplateOutputWithContext(ctx context.Context
 type InspectTemplateOutput struct{ *pulumi.OutputState }
 
 func (InspectTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InspectTemplate)(nil))
+	return reflect.TypeOf((**InspectTemplate)(nil)).Elem()
 }
 
 func (o InspectTemplateOutput) ToInspectTemplateOutput() InspectTemplateOutput {

@@ -128,7 +128,7 @@ type FutureReservationInput interface {
 }
 
 func (*FutureReservation) ElementType() reflect.Type {
-	return reflect.TypeOf((*FutureReservation)(nil))
+	return reflect.TypeOf((**FutureReservation)(nil)).Elem()
 }
 
 func (i *FutureReservation) ToFutureReservationOutput() FutureReservationOutput {
@@ -142,7 +142,7 @@ func (i *FutureReservation) ToFutureReservationOutputWithContext(ctx context.Con
 type FutureReservationOutput struct{ *pulumi.OutputState }
 
 func (FutureReservationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FutureReservation)(nil))
+	return reflect.TypeOf((**FutureReservation)(nil)).Elem()
 }
 
 func (o FutureReservationOutput) ToFutureReservationOutput() FutureReservationOutput {

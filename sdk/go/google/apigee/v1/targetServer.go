@@ -132,7 +132,7 @@ type TargetServerInput interface {
 }
 
 func (*TargetServer) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetServer)(nil))
+	return reflect.TypeOf((**TargetServer)(nil)).Elem()
 }
 
 func (i *TargetServer) ToTargetServerOutput() TargetServerOutput {
@@ -146,7 +146,7 @@ func (i *TargetServer) ToTargetServerOutputWithContext(ctx context.Context) Targ
 type TargetServerOutput struct{ *pulumi.OutputState }
 
 func (TargetServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetServer)(nil))
+	return reflect.TypeOf((**TargetServer)(nil)).Elem()
 }
 
 func (o TargetServerOutput) ToTargetServerOutput() TargetServerOutput {

@@ -138,64 +138,6 @@ type BindingResponse struct {
 	Role string `pulumi:"role"`
 }
 
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
@@ -455,41 +397,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -692,78 +599,6 @@ type OidcTokenResponse struct {
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 }
 
-// OidcTokenResponseInput is an input type that accepts OidcTokenResponseArgs and OidcTokenResponseOutput values.
-// You can construct a concrete instance of `OidcTokenResponseInput` via:
-//
-//          OidcTokenResponseArgs{...}
-type OidcTokenResponseInput interface {
-	pulumi.Input
-
-	ToOidcTokenResponseOutput() OidcTokenResponseOutput
-	ToOidcTokenResponseOutputWithContext(context.Context) OidcTokenResponseOutput
-}
-
-// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
-type OidcTokenResponseArgs struct {
-	// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
-	Audience pulumi.StringInput `pulumi:"audience"`
-	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account.
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
-}
-
-func (OidcTokenResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OidcTokenResponse)(nil)).Elem()
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponseOutput() OidcTokenResponseOutput {
-	return i.ToOidcTokenResponseOutputWithContext(context.Background())
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponseOutputWithContext(ctx context.Context) OidcTokenResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenResponseOutput)
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return i.ToOidcTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenResponseOutput).ToOidcTokenResponsePtrOutputWithContext(ctx)
-}
-
-// OidcTokenResponsePtrInput is an input type that accepts OidcTokenResponseArgs, OidcTokenResponsePtr and OidcTokenResponsePtrOutput values.
-// You can construct a concrete instance of `OidcTokenResponsePtrInput` via:
-//
-//          OidcTokenResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OidcTokenResponsePtrInput interface {
-	pulumi.Input
-
-	ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput
-	ToOidcTokenResponsePtrOutputWithContext(context.Context) OidcTokenResponsePtrOutput
-}
-
-type oidcTokenResponsePtrType OidcTokenResponseArgs
-
-func OidcTokenResponsePtr(v *OidcTokenResponseArgs) OidcTokenResponsePtrInput {
-	return (*oidcTokenResponsePtrType)(v)
-}
-
-func (*oidcTokenResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OidcTokenResponse)(nil)).Elem()
-}
-
-func (i *oidcTokenResponsePtrType) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return i.ToOidcTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *oidcTokenResponsePtrType) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenResponsePtrOutput)
-}
-
 // Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
 type OidcTokenResponseOutput struct{ *pulumi.OutputState }
 
@@ -779,16 +614,6 @@ func (o OidcTokenResponseOutput) ToOidcTokenResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return o.ToOidcTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OidcTokenResponse) *OidcTokenResponse {
-		return &v
-	}).(OidcTokenResponsePtrOutput)
-}
-
 // Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
 func (o OidcTokenResponseOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.Audience }).(pulumi.StringOutput)
@@ -797,50 +622,6 @@ func (o OidcTokenResponseOutput) Audience() pulumi.StringOutput {
 // [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account.
 func (o OidcTokenResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
-}
-
-type OidcTokenResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OidcTokenResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OidcTokenResponse)(nil)).Elem()
-}
-
-func (o OidcTokenResponsePtrOutput) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return o
-}
-
-func (o OidcTokenResponsePtrOutput) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return o
-}
-
-func (o OidcTokenResponsePtrOutput) Elem() OidcTokenResponseOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) OidcTokenResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OidcTokenResponse
-		return ret
-	}).(OidcTokenResponseOutput)
-}
-
-// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
-func (o OidcTokenResponsePtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Audience
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account.
-func (o OidcTokenResponsePtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration for a push delivery endpoint.
@@ -1031,80 +812,6 @@ type PushConfigResponse struct {
 	PushEndpoint string `pulumi:"pushEndpoint"`
 }
 
-// PushConfigResponseInput is an input type that accepts PushConfigResponseArgs and PushConfigResponseOutput values.
-// You can construct a concrete instance of `PushConfigResponseInput` via:
-//
-//          PushConfigResponseArgs{...}
-type PushConfigResponseInput interface {
-	pulumi.Input
-
-	ToPushConfigResponseOutput() PushConfigResponseOutput
-	ToPushConfigResponseOutputWithContext(context.Context) PushConfigResponseOutput
-}
-
-// Configuration for a push delivery endpoint.
-type PushConfigResponseArgs struct {
-	// Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
-	Attributes pulumi.StringMapInput `pulumi:"attributes"`
-	// If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message.
-	OidcToken OidcTokenResponseInput `pulumi:"oidcToken"`
-	// A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
-	PushEndpoint pulumi.StringInput `pulumi:"pushEndpoint"`
-}
-
-func (PushConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PushConfigResponse)(nil)).Elem()
-}
-
-func (i PushConfigResponseArgs) ToPushConfigResponseOutput() PushConfigResponseOutput {
-	return i.ToPushConfigResponseOutputWithContext(context.Background())
-}
-
-func (i PushConfigResponseArgs) ToPushConfigResponseOutputWithContext(ctx context.Context) PushConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PushConfigResponseOutput)
-}
-
-func (i PushConfigResponseArgs) ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput {
-	return i.ToPushConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PushConfigResponseArgs) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PushConfigResponseOutput).ToPushConfigResponsePtrOutputWithContext(ctx)
-}
-
-// PushConfigResponsePtrInput is an input type that accepts PushConfigResponseArgs, PushConfigResponsePtr and PushConfigResponsePtrOutput values.
-// You can construct a concrete instance of `PushConfigResponsePtrInput` via:
-//
-//          PushConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PushConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput
-	ToPushConfigResponsePtrOutputWithContext(context.Context) PushConfigResponsePtrOutput
-}
-
-type pushConfigResponsePtrType PushConfigResponseArgs
-
-func PushConfigResponsePtr(v *PushConfigResponseArgs) PushConfigResponsePtrInput {
-	return (*pushConfigResponsePtrType)(v)
-}
-
-func (*pushConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PushConfigResponse)(nil)).Elem()
-}
-
-func (i *pushConfigResponsePtrType) ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput {
-	return i.ToPushConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *pushConfigResponsePtrType) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PushConfigResponsePtrOutput)
-}
-
 // Configuration for a push delivery endpoint.
 type PushConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -1118,16 +825,6 @@ func (o PushConfigResponseOutput) ToPushConfigResponseOutput() PushConfigRespons
 
 func (o PushConfigResponseOutput) ToPushConfigResponseOutputWithContext(ctx context.Context) PushConfigResponseOutput {
 	return o
-}
-
-func (o PushConfigResponseOutput) ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput {
-	return o.ToPushConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PushConfigResponseOutput) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PushConfigResponse) *PushConfigResponse {
-		return &v
-	}).(PushConfigResponsePtrOutput)
 }
 
 // Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
@@ -1145,76 +842,15 @@ func (o PushConfigResponseOutput) PushEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v PushConfigResponse) string { return v.PushEndpoint }).(pulumi.StringOutput)
 }
 
-type PushConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PushConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PushConfigResponse)(nil)).Elem()
-}
-
-func (o PushConfigResponsePtrOutput) ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput {
-	return o
-}
-
-func (o PushConfigResponsePtrOutput) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
-	return o
-}
-
-func (o PushConfigResponsePtrOutput) Elem() PushConfigResponseOutput {
-	return o.ApplyT(func(v *PushConfigResponse) PushConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PushConfigResponse
-		return ret
-	}).(PushConfigResponseOutput)
-}
-
-// Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
-func (o PushConfigResponsePtrOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *PushConfigResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Attributes
-	}).(pulumi.StringMapOutput)
-}
-
-// If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message.
-func (o PushConfigResponsePtrOutput) OidcToken() OidcTokenResponsePtrOutput {
-	return o.ApplyT(func(v *PushConfigResponse) *OidcTokenResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.OidcToken
-	}).(OidcTokenResponsePtrOutput)
-}
-
-// A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
-func (o PushConfigResponsePtrOutput) PushEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PushConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PushEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenInput)(nil)).Elem(), OidcTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenPtrInput)(nil)).Elem(), OidcTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenResponseInput)(nil)).Elem(), OidcTokenResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenResponsePtrInput)(nil)).Elem(), OidcTokenResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigInput)(nil)).Elem(), PushConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigPtrInput)(nil)).Elem(), PushConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigResponseInput)(nil)).Elem(), PushConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigResponsePtrInput)(nil)).Elem(), PushConfigResponseArgs{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -1225,9 +861,7 @@ func init() {
 	pulumi.RegisterOutputType(OidcTokenOutput{})
 	pulumi.RegisterOutputType(OidcTokenPtrOutput{})
 	pulumi.RegisterOutputType(OidcTokenResponseOutput{})
-	pulumi.RegisterOutputType(OidcTokenResponsePtrOutput{})
 	pulumi.RegisterOutputType(PushConfigOutput{})
 	pulumi.RegisterOutputType(PushConfigPtrOutput{})
 	pulumi.RegisterOutputType(PushConfigResponseOutput{})
-	pulumi.RegisterOutputType(PushConfigResponsePtrOutput{})
 }

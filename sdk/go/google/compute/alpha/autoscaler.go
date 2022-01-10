@@ -123,7 +123,7 @@ type AutoscalerInput interface {
 }
 
 func (*Autoscaler) ElementType() reflect.Type {
-	return reflect.TypeOf((*Autoscaler)(nil))
+	return reflect.TypeOf((**Autoscaler)(nil)).Elem()
 }
 
 func (i *Autoscaler) ToAutoscalerOutput() AutoscalerOutput {
@@ -137,7 +137,7 @@ func (i *Autoscaler) ToAutoscalerOutputWithContext(ctx context.Context) Autoscal
 type AutoscalerOutput struct{ *pulumi.OutputState }
 
 func (AutoscalerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Autoscaler)(nil))
+	return reflect.TypeOf((**Autoscaler)(nil)).Elem()
 }
 
 func (o AutoscalerOutput) ToAutoscalerOutput() AutoscalerOutput {

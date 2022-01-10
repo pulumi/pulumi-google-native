@@ -91,7 +91,7 @@ type ReleaseInput interface {
 }
 
 func (*Release) ElementType() reflect.Type {
-	return reflect.TypeOf((*Release)(nil))
+	return reflect.TypeOf((**Release)(nil)).Elem()
 }
 
 func (i *Release) ToReleaseOutput() ReleaseOutput {
@@ -105,7 +105,7 @@ func (i *Release) ToReleaseOutputWithContext(ctx context.Context) ReleaseOutput 
 type ReleaseOutput struct{ *pulumi.OutputState }
 
 func (ReleaseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Release)(nil))
+	return reflect.TypeOf((**Release)(nil)).Elem()
 }
 
 func (o ReleaseOutput) ToReleaseOutput() ReleaseOutput {

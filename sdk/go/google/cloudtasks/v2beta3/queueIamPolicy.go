@@ -103,7 +103,7 @@ type QueueIamPolicyInput interface {
 }
 
 func (*QueueIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueueIamPolicy)(nil))
+	return reflect.TypeOf((**QueueIamPolicy)(nil)).Elem()
 }
 
 func (i *QueueIamPolicy) ToQueueIamPolicyOutput() QueueIamPolicyOutput {
@@ -117,7 +117,7 @@ func (i *QueueIamPolicy) ToQueueIamPolicyOutputWithContext(ctx context.Context) 
 type QueueIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (QueueIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueueIamPolicy)(nil))
+	return reflect.TypeOf((**QueueIamPolicy)(nil)).Elem()
 }
 
 func (o QueueIamPolicyOutput) ToQueueIamPolicyOutput() QueueIamPolicyOutput {

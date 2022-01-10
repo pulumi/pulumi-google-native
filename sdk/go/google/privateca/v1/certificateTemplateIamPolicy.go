@@ -113,7 +113,7 @@ type CertificateTemplateIamPolicyInput interface {
 }
 
 func (*CertificateTemplateIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateTemplateIamPolicy)(nil))
+	return reflect.TypeOf((**CertificateTemplateIamPolicy)(nil)).Elem()
 }
 
 func (i *CertificateTemplateIamPolicy) ToCertificateTemplateIamPolicyOutput() CertificateTemplateIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *CertificateTemplateIamPolicy) ToCertificateTemplateIamPolicyOutputWithC
 type CertificateTemplateIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (CertificateTemplateIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateTemplateIamPolicy)(nil))
+	return reflect.TypeOf((**CertificateTemplateIamPolicy)(nil)).Elem()
 }
 
 func (o CertificateTemplateIamPolicyOutput) ToCertificateTemplateIamPolicyOutput() CertificateTemplateIamPolicyOutput {

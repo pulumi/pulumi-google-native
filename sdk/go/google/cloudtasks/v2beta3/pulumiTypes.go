@@ -156,76 +156,6 @@ type AppEngineHttpQueueResponse struct {
 	AppEngineRoutingOverride AppEngineRoutingResponse `pulumi:"appEngineRoutingOverride"`
 }
 
-// AppEngineHttpQueueResponseInput is an input type that accepts AppEngineHttpQueueResponseArgs and AppEngineHttpQueueResponseOutput values.
-// You can construct a concrete instance of `AppEngineHttpQueueResponseInput` via:
-//
-//          AppEngineHttpQueueResponseArgs{...}
-type AppEngineHttpQueueResponseInput interface {
-	pulumi.Input
-
-	ToAppEngineHttpQueueResponseOutput() AppEngineHttpQueueResponseOutput
-	ToAppEngineHttpQueueResponseOutputWithContext(context.Context) AppEngineHttpQueueResponseOutput
-}
-
-// App Engine HTTP queue. The task will be delivered to the App Engine application hostname specified by its AppEngineHttpQueue and AppEngineHttpRequest. The documentation for AppEngineHttpRequest explains how the task's host URL is constructed. Using AppEngineHttpQueue requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control) Google IAM permission for the project and the following scope: `https://www.googleapis.com/auth/cloud-platform`
-type AppEngineHttpQueueResponseArgs struct {
-	// Overrides for the task-level app_engine_routing. If set, `app_engine_routing_override` is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
-	AppEngineRoutingOverride AppEngineRoutingResponseInput `pulumi:"appEngineRoutingOverride"`
-}
-
-func (AppEngineHttpQueueResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineHttpQueueResponse)(nil)).Elem()
-}
-
-func (i AppEngineHttpQueueResponseArgs) ToAppEngineHttpQueueResponseOutput() AppEngineHttpQueueResponseOutput {
-	return i.ToAppEngineHttpQueueResponseOutputWithContext(context.Background())
-}
-
-func (i AppEngineHttpQueueResponseArgs) ToAppEngineHttpQueueResponseOutputWithContext(ctx context.Context) AppEngineHttpQueueResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineHttpQueueResponseOutput)
-}
-
-func (i AppEngineHttpQueueResponseArgs) ToAppEngineHttpQueueResponsePtrOutput() AppEngineHttpQueueResponsePtrOutput {
-	return i.ToAppEngineHttpQueueResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AppEngineHttpQueueResponseArgs) ToAppEngineHttpQueueResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpQueueResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineHttpQueueResponseOutput).ToAppEngineHttpQueueResponsePtrOutputWithContext(ctx)
-}
-
-// AppEngineHttpQueueResponsePtrInput is an input type that accepts AppEngineHttpQueueResponseArgs, AppEngineHttpQueueResponsePtr and AppEngineHttpQueueResponsePtrOutput values.
-// You can construct a concrete instance of `AppEngineHttpQueueResponsePtrInput` via:
-//
-//          AppEngineHttpQueueResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AppEngineHttpQueueResponsePtrInput interface {
-	pulumi.Input
-
-	ToAppEngineHttpQueueResponsePtrOutput() AppEngineHttpQueueResponsePtrOutput
-	ToAppEngineHttpQueueResponsePtrOutputWithContext(context.Context) AppEngineHttpQueueResponsePtrOutput
-}
-
-type appEngineHttpQueueResponsePtrType AppEngineHttpQueueResponseArgs
-
-func AppEngineHttpQueueResponsePtr(v *AppEngineHttpQueueResponseArgs) AppEngineHttpQueueResponsePtrInput {
-	return (*appEngineHttpQueueResponsePtrType)(v)
-}
-
-func (*appEngineHttpQueueResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineHttpQueueResponse)(nil)).Elem()
-}
-
-func (i *appEngineHttpQueueResponsePtrType) ToAppEngineHttpQueueResponsePtrOutput() AppEngineHttpQueueResponsePtrOutput {
-	return i.ToAppEngineHttpQueueResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *appEngineHttpQueueResponsePtrType) ToAppEngineHttpQueueResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpQueueResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineHttpQueueResponsePtrOutput)
-}
-
 // App Engine HTTP queue. The task will be delivered to the App Engine application hostname specified by its AppEngineHttpQueue and AppEngineHttpRequest. The documentation for AppEngineHttpRequest explains how the task's host URL is constructed. Using AppEngineHttpQueue requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control) Google IAM permission for the project and the following scope: `https://www.googleapis.com/auth/cloud-platform`
 type AppEngineHttpQueueResponseOutput struct{ *pulumi.OutputState }
 
@@ -241,53 +171,9 @@ func (o AppEngineHttpQueueResponseOutput) ToAppEngineHttpQueueResponseOutputWith
 	return o
 }
 
-func (o AppEngineHttpQueueResponseOutput) ToAppEngineHttpQueueResponsePtrOutput() AppEngineHttpQueueResponsePtrOutput {
-	return o.ToAppEngineHttpQueueResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AppEngineHttpQueueResponseOutput) ToAppEngineHttpQueueResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpQueueResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineHttpQueueResponse) *AppEngineHttpQueueResponse {
-		return &v
-	}).(AppEngineHttpQueueResponsePtrOutput)
-}
-
 // Overrides for the task-level app_engine_routing. If set, `app_engine_routing_override` is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
 func (o AppEngineHttpQueueResponseOutput) AppEngineRoutingOverride() AppEngineRoutingResponseOutput {
 	return o.ApplyT(func(v AppEngineHttpQueueResponse) AppEngineRoutingResponse { return v.AppEngineRoutingOverride }).(AppEngineRoutingResponseOutput)
-}
-
-type AppEngineHttpQueueResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AppEngineHttpQueueResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineHttpQueueResponse)(nil)).Elem()
-}
-
-func (o AppEngineHttpQueueResponsePtrOutput) ToAppEngineHttpQueueResponsePtrOutput() AppEngineHttpQueueResponsePtrOutput {
-	return o
-}
-
-func (o AppEngineHttpQueueResponsePtrOutput) ToAppEngineHttpQueueResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpQueueResponsePtrOutput {
-	return o
-}
-
-func (o AppEngineHttpQueueResponsePtrOutput) Elem() AppEngineHttpQueueResponseOutput {
-	return o.ApplyT(func(v *AppEngineHttpQueueResponse) AppEngineHttpQueueResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AppEngineHttpQueueResponse
-		return ret
-	}).(AppEngineHttpQueueResponseOutput)
-}
-
-// Overrides for the task-level app_engine_routing. If set, `app_engine_routing_override` is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
-func (o AppEngineHttpQueueResponsePtrOutput) AppEngineRoutingOverride() AppEngineRoutingResponsePtrOutput {
-	return o.ApplyT(func(v *AppEngineHttpQueueResponse) *AppEngineRoutingResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AppEngineRoutingOverride
-	}).(AppEngineRoutingResponsePtrOutput)
 }
 
 // App Engine HTTP request. The message defines the HTTP request that is sent to an App Engine app when the task is dispatched. Using AppEngineHttpRequest requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control) Google IAM permission for the project and the following scope: `https://www.googleapis.com/auth/cloud-platform` The task will be delivered to the App Engine app which belongs to the same project as the queue. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and how routing is affected by [dispatch files](https://cloud.google.com/appengine/docs/python/config/dispatchref). Traffic is encrypted during transport and never leaves Google datacenters. Because this traffic is carried over a communication mechanism internal to Google, you cannot explicitly set the protocol (for example, HTTP or HTTPS). The request to the handler, however, will appear to have used the HTTP protocol. The AppEngineRouting used to construct the URL that the task is delivered to can be set at the queue-level or task-level: * If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing. The `url` that the task will be sent to is: * `url =` host `+` relative_uri Tasks can be dispatched to secure app handlers, unsecure app handlers, and URIs restricted with [`login: admin`](https://cloud.google.com/appengine/docs/standard/python/config/appref). Because tasks are not run as any user, they cannot be dispatched to URIs restricted with [`login: required`](https://cloud.google.com/appengine/docs/standard/python/config/appref) Task dispatches also do not follow redirects. The task attempt has succeeded if the app's request handler returns an HTTP response code in the range [`200` - `299`]. The task attempt has failed if the app's handler returns a non-2xx response code or Cloud Tasks does not receive response before the deadline. Failed tasks will be retried according to the retry configuration. `503` (Service Unavailable) is considered an App Engine system error instead of an application error and will cause Cloud Tasks' traffic congestion control to temporarily throttle the queue's dispatches. Unlike other types of task targets, a `429` (Too Many Requests) response from an app handler does not cause traffic congestion control to throttle the queue.
@@ -520,84 +406,6 @@ type AppEngineHttpRequestResponse struct {
 	RelativeUri string `pulumi:"relativeUri"`
 }
 
-// AppEngineHttpRequestResponseInput is an input type that accepts AppEngineHttpRequestResponseArgs and AppEngineHttpRequestResponseOutput values.
-// You can construct a concrete instance of `AppEngineHttpRequestResponseInput` via:
-//
-//          AppEngineHttpRequestResponseArgs{...}
-type AppEngineHttpRequestResponseInput interface {
-	pulumi.Input
-
-	ToAppEngineHttpRequestResponseOutput() AppEngineHttpRequestResponseOutput
-	ToAppEngineHttpRequestResponseOutputWithContext(context.Context) AppEngineHttpRequestResponseOutput
-}
-
-// App Engine HTTP request. The message defines the HTTP request that is sent to an App Engine app when the task is dispatched. Using AppEngineHttpRequest requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control) Google IAM permission for the project and the following scope: `https://www.googleapis.com/auth/cloud-platform` The task will be delivered to the App Engine app which belongs to the same project as the queue. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and how routing is affected by [dispatch files](https://cloud.google.com/appengine/docs/python/config/dispatchref). Traffic is encrypted during transport and never leaves Google datacenters. Because this traffic is carried over a communication mechanism internal to Google, you cannot explicitly set the protocol (for example, HTTP or HTTPS). The request to the handler, however, will appear to have used the HTTP protocol. The AppEngineRouting used to construct the URL that the task is delivered to can be set at the queue-level or task-level: * If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing. The `url` that the task will be sent to is: * `url =` host `+` relative_uri Tasks can be dispatched to secure app handlers, unsecure app handlers, and URIs restricted with [`login: admin`](https://cloud.google.com/appengine/docs/standard/python/config/appref). Because tasks are not run as any user, they cannot be dispatched to URIs restricted with [`login: required`](https://cloud.google.com/appengine/docs/standard/python/config/appref) Task dispatches also do not follow redirects. The task attempt has succeeded if the app's request handler returns an HTTP response code in the range [`200` - `299`]. The task attempt has failed if the app's handler returns a non-2xx response code or Cloud Tasks does not receive response before the deadline. Failed tasks will be retried according to the retry configuration. `503` (Service Unavailable) is considered an App Engine system error instead of an application error and will cause Cloud Tasks' traffic congestion control to temporarily throttle the queue's dispatches. Unlike other types of task targets, a `429` (Too Many Requests) response from an app handler does not cause traffic congestion control to throttle the queue.
-type AppEngineHttpRequestResponseArgs struct {
-	// Task-level setting for App Engine routing. If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
-	AppEngineRouting AppEngineRoutingResponseInput `pulumi:"appEngineRouting"`
-	// HTTP request body. A request body is allowed only if the HTTP method is POST or PUT. It is an error to set a body on a task with an incompatible HttpMethod.
-	Body pulumi.StringInput `pulumi:"body"`
-	// HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. Repeated headers are not supported but a header value can contain commas. Cloud Tasks sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Tasks will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. If the task has a body, Cloud Tasks sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explicitly setting `Content-Type` to a particular media type when the task is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Tasks. This value is output only. It cannot be changed. The headers below cannot be set or overridden: * `Host` * `X-Google-*` * `X-AppEngine-*` In addition, Cloud Tasks sets some headers when the task is dispatched, such as headers containing information about the task; see [request headers](https://cloud.google.com/tasks/docs/creating-appengine-handlers#reading_request_headers). These headers are set only when the task is dispatched, so they are not visible when the task is returned in a Cloud Tasks response. Although there is no specific limit for the maximum number of headers or the size, there is a limit on the maximum size of the Task. For more information, see the CreateTask documentation.
-	Headers pulumi.StringMapInput `pulumi:"headers"`
-	// The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
-	HttpMethod pulumi.StringInput `pulumi:"httpMethod"`
-	// The relative URI. The relative URI must begin with "/" and must be a valid HTTP relative URI. It can contain a path and query string arguments. If the relative URI is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.
-	RelativeUri pulumi.StringInput `pulumi:"relativeUri"`
-}
-
-func (AppEngineHttpRequestResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineHttpRequestResponse)(nil)).Elem()
-}
-
-func (i AppEngineHttpRequestResponseArgs) ToAppEngineHttpRequestResponseOutput() AppEngineHttpRequestResponseOutput {
-	return i.ToAppEngineHttpRequestResponseOutputWithContext(context.Background())
-}
-
-func (i AppEngineHttpRequestResponseArgs) ToAppEngineHttpRequestResponseOutputWithContext(ctx context.Context) AppEngineHttpRequestResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineHttpRequestResponseOutput)
-}
-
-func (i AppEngineHttpRequestResponseArgs) ToAppEngineHttpRequestResponsePtrOutput() AppEngineHttpRequestResponsePtrOutput {
-	return i.ToAppEngineHttpRequestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AppEngineHttpRequestResponseArgs) ToAppEngineHttpRequestResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpRequestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineHttpRequestResponseOutput).ToAppEngineHttpRequestResponsePtrOutputWithContext(ctx)
-}
-
-// AppEngineHttpRequestResponsePtrInput is an input type that accepts AppEngineHttpRequestResponseArgs, AppEngineHttpRequestResponsePtr and AppEngineHttpRequestResponsePtrOutput values.
-// You can construct a concrete instance of `AppEngineHttpRequestResponsePtrInput` via:
-//
-//          AppEngineHttpRequestResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AppEngineHttpRequestResponsePtrInput interface {
-	pulumi.Input
-
-	ToAppEngineHttpRequestResponsePtrOutput() AppEngineHttpRequestResponsePtrOutput
-	ToAppEngineHttpRequestResponsePtrOutputWithContext(context.Context) AppEngineHttpRequestResponsePtrOutput
-}
-
-type appEngineHttpRequestResponsePtrType AppEngineHttpRequestResponseArgs
-
-func AppEngineHttpRequestResponsePtr(v *AppEngineHttpRequestResponseArgs) AppEngineHttpRequestResponsePtrInput {
-	return (*appEngineHttpRequestResponsePtrType)(v)
-}
-
-func (*appEngineHttpRequestResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineHttpRequestResponse)(nil)).Elem()
-}
-
-func (i *appEngineHttpRequestResponsePtrType) ToAppEngineHttpRequestResponsePtrOutput() AppEngineHttpRequestResponsePtrOutput {
-	return i.ToAppEngineHttpRequestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *appEngineHttpRequestResponsePtrType) ToAppEngineHttpRequestResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpRequestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineHttpRequestResponsePtrOutput)
-}
-
 // App Engine HTTP request. The message defines the HTTP request that is sent to an App Engine app when the task is dispatched. Using AppEngineHttpRequest requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control) Google IAM permission for the project and the following scope: `https://www.googleapis.com/auth/cloud-platform` The task will be delivered to the App Engine app which belongs to the same project as the queue. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and how routing is affected by [dispatch files](https://cloud.google.com/appengine/docs/python/config/dispatchref). Traffic is encrypted during transport and never leaves Google datacenters. Because this traffic is carried over a communication mechanism internal to Google, you cannot explicitly set the protocol (for example, HTTP or HTTPS). The request to the handler, however, will appear to have used the HTTP protocol. The AppEngineRouting used to construct the URL that the task is delivered to can be set at the queue-level or task-level: * If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing. The `url` that the task will be sent to is: * `url =` host `+` relative_uri Tasks can be dispatched to secure app handlers, unsecure app handlers, and URIs restricted with [`login: admin`](https://cloud.google.com/appengine/docs/standard/python/config/appref). Because tasks are not run as any user, they cannot be dispatched to URIs restricted with [`login: required`](https://cloud.google.com/appengine/docs/standard/python/config/appref) Task dispatches also do not follow redirects. The task attempt has succeeded if the app's request handler returns an HTTP response code in the range [`200` - `299`]. The task attempt has failed if the app's handler returns a non-2xx response code or Cloud Tasks does not receive response before the deadline. Failed tasks will be retried according to the retry configuration. `503` (Service Unavailable) is considered an App Engine system error instead of an application error and will cause Cloud Tasks' traffic congestion control to temporarily throttle the queue's dispatches. Unlike other types of task targets, a `429` (Too Many Requests) response from an app handler does not cause traffic congestion control to throttle the queue.
 type AppEngineHttpRequestResponseOutput struct{ *pulumi.OutputState }
 
@@ -611,16 +419,6 @@ func (o AppEngineHttpRequestResponseOutput) ToAppEngineHttpRequestResponseOutput
 
 func (o AppEngineHttpRequestResponseOutput) ToAppEngineHttpRequestResponseOutputWithContext(ctx context.Context) AppEngineHttpRequestResponseOutput {
 	return o
-}
-
-func (o AppEngineHttpRequestResponseOutput) ToAppEngineHttpRequestResponsePtrOutput() AppEngineHttpRequestResponsePtrOutput {
-	return o.ToAppEngineHttpRequestResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AppEngineHttpRequestResponseOutput) ToAppEngineHttpRequestResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpRequestResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineHttpRequestResponse) *AppEngineHttpRequestResponse {
-		return &v
-	}).(AppEngineHttpRequestResponsePtrOutput)
 }
 
 // Task-level setting for App Engine routing. If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
@@ -646,80 +444,6 @@ func (o AppEngineHttpRequestResponseOutput) HttpMethod() pulumi.StringOutput {
 // The relative URI. The relative URI must begin with "/" and must be a valid HTTP relative URI. It can contain a path and query string arguments. If the relative URI is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.
 func (o AppEngineHttpRequestResponseOutput) RelativeUri() pulumi.StringOutput {
 	return o.ApplyT(func(v AppEngineHttpRequestResponse) string { return v.RelativeUri }).(pulumi.StringOutput)
-}
-
-type AppEngineHttpRequestResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AppEngineHttpRequestResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineHttpRequestResponse)(nil)).Elem()
-}
-
-func (o AppEngineHttpRequestResponsePtrOutput) ToAppEngineHttpRequestResponsePtrOutput() AppEngineHttpRequestResponsePtrOutput {
-	return o
-}
-
-func (o AppEngineHttpRequestResponsePtrOutput) ToAppEngineHttpRequestResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpRequestResponsePtrOutput {
-	return o
-}
-
-func (o AppEngineHttpRequestResponsePtrOutput) Elem() AppEngineHttpRequestResponseOutput {
-	return o.ApplyT(func(v *AppEngineHttpRequestResponse) AppEngineHttpRequestResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AppEngineHttpRequestResponse
-		return ret
-	}).(AppEngineHttpRequestResponseOutput)
-}
-
-// Task-level setting for App Engine routing. If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
-func (o AppEngineHttpRequestResponsePtrOutput) AppEngineRouting() AppEngineRoutingResponsePtrOutput {
-	return o.ApplyT(func(v *AppEngineHttpRequestResponse) *AppEngineRoutingResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AppEngineRouting
-	}).(AppEngineRoutingResponsePtrOutput)
-}
-
-// HTTP request body. A request body is allowed only if the HTTP method is POST or PUT. It is an error to set a body on a task with an incompatible HttpMethod.
-func (o AppEngineHttpRequestResponsePtrOutput) Body() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineHttpRequestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Body
-	}).(pulumi.StringPtrOutput)
-}
-
-// HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. Repeated headers are not supported but a header value can contain commas. Cloud Tasks sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Tasks will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. If the task has a body, Cloud Tasks sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explicitly setting `Content-Type` to a particular media type when the task is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Tasks. This value is output only. It cannot be changed. The headers below cannot be set or overridden: * `Host` * `X-Google-*` * `X-AppEngine-*` In addition, Cloud Tasks sets some headers when the task is dispatched, such as headers containing information about the task; see [request headers](https://cloud.google.com/tasks/docs/creating-appengine-handlers#reading_request_headers). These headers are set only when the task is dispatched, so they are not visible when the task is returned in a Cloud Tasks response. Although there is no specific limit for the maximum number of headers or the size, there is a limit on the maximum size of the Task. For more information, see the CreateTask documentation.
-func (o AppEngineHttpRequestResponsePtrOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *AppEngineHttpRequestResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Headers
-	}).(pulumi.StringMapOutput)
-}
-
-// The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
-func (o AppEngineHttpRequestResponsePtrOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineHttpRequestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HttpMethod
-	}).(pulumi.StringPtrOutput)
-}
-
-// The relative URI. The relative URI must begin with "/" and must be a valid HTTP relative URI. It can contain a path and query string arguments. If the relative URI is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.
-func (o AppEngineHttpRequestResponsePtrOutput) RelativeUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineHttpRequestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RelativeUri
-	}).(pulumi.StringPtrOutput)
 }
 
 // App Engine Routing. Defines routing characteristics specific to App Engine - service, version, and instance. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
@@ -912,82 +636,6 @@ type AppEngineRoutingResponse struct {
 	Version string `pulumi:"version"`
 }
 
-// AppEngineRoutingResponseInput is an input type that accepts AppEngineRoutingResponseArgs and AppEngineRoutingResponseOutput values.
-// You can construct a concrete instance of `AppEngineRoutingResponseInput` via:
-//
-//          AppEngineRoutingResponseArgs{...}
-type AppEngineRoutingResponseInput interface {
-	pulumi.Input
-
-	ToAppEngineRoutingResponseOutput() AppEngineRoutingResponseOutput
-	ToAppEngineRoutingResponseOutputWithContext(context.Context) AppEngineRoutingResponseOutput
-}
-
-// App Engine Routing. Defines routing characteristics specific to App Engine - service, version, and instance. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
-type AppEngineRoutingResponseArgs struct {
-	// The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
-	Host pulumi.StringInput `pulumi:"host"`
-	// App instance. By default, the task is sent to an instance which is available when the task is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
-	Instance pulumi.StringInput `pulumi:"instance"`
-	// App service. By default, the task is sent to the service which is the default service when the task is attempted. For some queues or tasks which were created using the App Engine Task Queue API, host is not parsable into service, version, and instance. For example, some tasks which were created using the App Engine SDK use a custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable, then service, version, and instance are the empty string.
-	Service pulumi.StringInput `pulumi:"service"`
-	// App version. By default, the task is sent to the version which is the default version when the task is attempted. For some queues or tasks which were created using the App Engine Task Queue API, host is not parsable into service, version, and instance. For example, some tasks which were created using the App Engine SDK use a custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable, then service, version, and instance are the empty string.
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (AppEngineRoutingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineRoutingResponse)(nil)).Elem()
-}
-
-func (i AppEngineRoutingResponseArgs) ToAppEngineRoutingResponseOutput() AppEngineRoutingResponseOutput {
-	return i.ToAppEngineRoutingResponseOutputWithContext(context.Background())
-}
-
-func (i AppEngineRoutingResponseArgs) ToAppEngineRoutingResponseOutputWithContext(ctx context.Context) AppEngineRoutingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineRoutingResponseOutput)
-}
-
-func (i AppEngineRoutingResponseArgs) ToAppEngineRoutingResponsePtrOutput() AppEngineRoutingResponsePtrOutput {
-	return i.ToAppEngineRoutingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AppEngineRoutingResponseArgs) ToAppEngineRoutingResponsePtrOutputWithContext(ctx context.Context) AppEngineRoutingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineRoutingResponseOutput).ToAppEngineRoutingResponsePtrOutputWithContext(ctx)
-}
-
-// AppEngineRoutingResponsePtrInput is an input type that accepts AppEngineRoutingResponseArgs, AppEngineRoutingResponsePtr and AppEngineRoutingResponsePtrOutput values.
-// You can construct a concrete instance of `AppEngineRoutingResponsePtrInput` via:
-//
-//          AppEngineRoutingResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AppEngineRoutingResponsePtrInput interface {
-	pulumi.Input
-
-	ToAppEngineRoutingResponsePtrOutput() AppEngineRoutingResponsePtrOutput
-	ToAppEngineRoutingResponsePtrOutputWithContext(context.Context) AppEngineRoutingResponsePtrOutput
-}
-
-type appEngineRoutingResponsePtrType AppEngineRoutingResponseArgs
-
-func AppEngineRoutingResponsePtr(v *AppEngineRoutingResponseArgs) AppEngineRoutingResponsePtrInput {
-	return (*appEngineRoutingResponsePtrType)(v)
-}
-
-func (*appEngineRoutingResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineRoutingResponse)(nil)).Elem()
-}
-
-func (i *appEngineRoutingResponsePtrType) ToAppEngineRoutingResponsePtrOutput() AppEngineRoutingResponsePtrOutput {
-	return i.ToAppEngineRoutingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *appEngineRoutingResponsePtrType) ToAppEngineRoutingResponsePtrOutputWithContext(ctx context.Context) AppEngineRoutingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineRoutingResponsePtrOutput)
-}
-
 // App Engine Routing. Defines routing characteristics specific to App Engine - service, version, and instance. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
 type AppEngineRoutingResponseOutput struct{ *pulumi.OutputState }
 
@@ -1001,16 +649,6 @@ func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponseOutput() AppEn
 
 func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponseOutputWithContext(ctx context.Context) AppEngineRoutingResponseOutput {
 	return o
-}
-
-func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponsePtrOutput() AppEngineRoutingResponsePtrOutput {
-	return o.ToAppEngineRoutingResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponsePtrOutputWithContext(ctx context.Context) AppEngineRoutingResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineRoutingResponse) *AppEngineRoutingResponse {
-		return &v
-	}).(AppEngineRoutingResponsePtrOutput)
 }
 
 // The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
@@ -1033,70 +671,6 @@ func (o AppEngineRoutingResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v AppEngineRoutingResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
-type AppEngineRoutingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AppEngineRoutingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineRoutingResponse)(nil)).Elem()
-}
-
-func (o AppEngineRoutingResponsePtrOutput) ToAppEngineRoutingResponsePtrOutput() AppEngineRoutingResponsePtrOutput {
-	return o
-}
-
-func (o AppEngineRoutingResponsePtrOutput) ToAppEngineRoutingResponsePtrOutputWithContext(ctx context.Context) AppEngineRoutingResponsePtrOutput {
-	return o
-}
-
-func (o AppEngineRoutingResponsePtrOutput) Elem() AppEngineRoutingResponseOutput {
-	return o.ApplyT(func(v *AppEngineRoutingResponse) AppEngineRoutingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AppEngineRoutingResponse
-		return ret
-	}).(AppEngineRoutingResponseOutput)
-}
-
-// The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
-func (o AppEngineRoutingResponsePtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineRoutingResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// App instance. By default, the task is sent to an instance which is available when the task is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
-func (o AppEngineRoutingResponsePtrOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineRoutingResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Instance
-	}).(pulumi.StringPtrOutput)
-}
-
-// App service. By default, the task is sent to the service which is the default service when the task is attempted. For some queues or tasks which were created using the App Engine Task Queue API, host is not parsable into service, version, and instance. For example, some tasks which were created using the App Engine SDK use a custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable, then service, version, and instance are the empty string.
-func (o AppEngineRoutingResponsePtrOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineRoutingResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Service
-	}).(pulumi.StringPtrOutput)
-}
-
-// App version. By default, the task is sent to the version which is the default version when the task is attempted. For some queues or tasks which were created using the App Engine Task Queue API, host is not parsable into service, version, and instance. For example, some tasks which were created using the App Engine SDK use a custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable, then service, version, and instance are the empty string.
-func (o AppEngineRoutingResponsePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineRoutingResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
 // The status of a task attempt.
 type AttemptResponse struct {
 	// The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
@@ -1107,82 +681,6 @@ type AttemptResponse struct {
 	ResponseTime string `pulumi:"responseTime"`
 	// The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
 	ScheduleTime string `pulumi:"scheduleTime"`
-}
-
-// AttemptResponseInput is an input type that accepts AttemptResponseArgs and AttemptResponseOutput values.
-// You can construct a concrete instance of `AttemptResponseInput` via:
-//
-//          AttemptResponseArgs{...}
-type AttemptResponseInput interface {
-	pulumi.Input
-
-	ToAttemptResponseOutput() AttemptResponseOutput
-	ToAttemptResponseOutputWithContext(context.Context) AttemptResponseOutput
-}
-
-// The status of a task attempt.
-type AttemptResponseArgs struct {
-	// The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
-	DispatchTime pulumi.StringInput `pulumi:"dispatchTime"`
-	// The response from the worker for this attempt. If `response_time` is unset, then the task has not been attempted or is currently running and the `response_status` field is meaningless.
-	ResponseStatus StatusResponseInput `pulumi:"responseStatus"`
-	// The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
-	ResponseTime pulumi.StringInput `pulumi:"responseTime"`
-	// The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
-	ScheduleTime pulumi.StringInput `pulumi:"scheduleTime"`
-}
-
-func (AttemptResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttemptResponse)(nil)).Elem()
-}
-
-func (i AttemptResponseArgs) ToAttemptResponseOutput() AttemptResponseOutput {
-	return i.ToAttemptResponseOutputWithContext(context.Background())
-}
-
-func (i AttemptResponseArgs) ToAttemptResponseOutputWithContext(ctx context.Context) AttemptResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttemptResponseOutput)
-}
-
-func (i AttemptResponseArgs) ToAttemptResponsePtrOutput() AttemptResponsePtrOutput {
-	return i.ToAttemptResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AttemptResponseArgs) ToAttemptResponsePtrOutputWithContext(ctx context.Context) AttemptResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttemptResponseOutput).ToAttemptResponsePtrOutputWithContext(ctx)
-}
-
-// AttemptResponsePtrInput is an input type that accepts AttemptResponseArgs, AttemptResponsePtr and AttemptResponsePtrOutput values.
-// You can construct a concrete instance of `AttemptResponsePtrInput` via:
-//
-//          AttemptResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AttemptResponsePtrInput interface {
-	pulumi.Input
-
-	ToAttemptResponsePtrOutput() AttemptResponsePtrOutput
-	ToAttemptResponsePtrOutputWithContext(context.Context) AttemptResponsePtrOutput
-}
-
-type attemptResponsePtrType AttemptResponseArgs
-
-func AttemptResponsePtr(v *AttemptResponseArgs) AttemptResponsePtrInput {
-	return (*attemptResponsePtrType)(v)
-}
-
-func (*attemptResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AttemptResponse)(nil)).Elem()
-}
-
-func (i *attemptResponsePtrType) ToAttemptResponsePtrOutput() AttemptResponsePtrOutput {
-	return i.ToAttemptResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *attemptResponsePtrType) ToAttemptResponsePtrOutputWithContext(ctx context.Context) AttemptResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttemptResponsePtrOutput)
 }
 
 // The status of a task attempt.
@@ -1198,16 +696,6 @@ func (o AttemptResponseOutput) ToAttemptResponseOutput() AttemptResponseOutput {
 
 func (o AttemptResponseOutput) ToAttemptResponseOutputWithContext(ctx context.Context) AttemptResponseOutput {
 	return o
-}
-
-func (o AttemptResponseOutput) ToAttemptResponsePtrOutput() AttemptResponsePtrOutput {
-	return o.ToAttemptResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AttemptResponseOutput) ToAttemptResponsePtrOutputWithContext(ctx context.Context) AttemptResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttemptResponse) *AttemptResponse {
-		return &v
-	}).(AttemptResponsePtrOutput)
 }
 
 // The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
@@ -1228,70 +716,6 @@ func (o AttemptResponseOutput) ResponseTime() pulumi.StringOutput {
 // The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
 func (o AttemptResponseOutput) ScheduleTime() pulumi.StringOutput {
 	return o.ApplyT(func(v AttemptResponse) string { return v.ScheduleTime }).(pulumi.StringOutput)
-}
-
-type AttemptResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AttemptResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AttemptResponse)(nil)).Elem()
-}
-
-func (o AttemptResponsePtrOutput) ToAttemptResponsePtrOutput() AttemptResponsePtrOutput {
-	return o
-}
-
-func (o AttemptResponsePtrOutput) ToAttemptResponsePtrOutputWithContext(ctx context.Context) AttemptResponsePtrOutput {
-	return o
-}
-
-func (o AttemptResponsePtrOutput) Elem() AttemptResponseOutput {
-	return o.ApplyT(func(v *AttemptResponse) AttemptResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AttemptResponse
-		return ret
-	}).(AttemptResponseOutput)
-}
-
-// The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
-func (o AttemptResponsePtrOutput) DispatchTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AttemptResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DispatchTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The response from the worker for this attempt. If `response_time` is unset, then the task has not been attempted or is currently running and the `response_status` field is meaningless.
-func (o AttemptResponsePtrOutput) ResponseStatus() StatusResponsePtrOutput {
-	return o.ApplyT(func(v *AttemptResponse) *StatusResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ResponseStatus
-	}).(StatusResponsePtrOutput)
-}
-
-// The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
-func (o AttemptResponsePtrOutput) ResponseTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AttemptResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResponseTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
-func (o AttemptResponsePtrOutput) ScheduleTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AttemptResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ScheduleTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -1420,64 +844,6 @@ type BindingResponse struct {
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
-}
-
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -1737,41 +1103,6 @@ type ExprResponse struct {
 	Location string `pulumi:"location"`
 	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 	Title string `pulumi:"title"`
-}
-
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -2060,86 +1391,6 @@ type HttpRequestResponse struct {
 	Url string `pulumi:"url"`
 }
 
-// HttpRequestResponseInput is an input type that accepts HttpRequestResponseArgs and HttpRequestResponseOutput values.
-// You can construct a concrete instance of `HttpRequestResponseInput` via:
-//
-//          HttpRequestResponseArgs{...}
-type HttpRequestResponseInput interface {
-	pulumi.Input
-
-	ToHttpRequestResponseOutput() HttpRequestResponseOutput
-	ToHttpRequestResponseOutputWithContext(context.Context) HttpRequestResponseOutput
-}
-
-// HTTP request. The task will be pushed to the worker as an HTTP request. If the worker or the redirected worker acknowledges the task by returning a successful HTTP response code ([`200` - `299`]), the task will be removed from the queue. If any other HTTP response code is returned or no response is received, the task will be retried according to the following: * User-specified throttling: retry configuration, rate limits, and the queue's state. * System throttling: To prevent the worker from overloading, Cloud Tasks may temporarily reduce the queue's effective rate. User-specified settings will not be changed. System throttling happens because: * Cloud Tasks backs off on all errors. Normally the backoff specified in rate limits will be used. But if the worker returns `429` (Too Many Requests), `503` (Service Unavailable), or the rate of errors is high, Cloud Tasks will use a higher backoff rate. The retry specified in the `Retry-After` HTTP response header is considered. * To prevent traffic spikes and to smooth sudden increases in traffic, dispatches ramp up slowly when the queue is newly created or idle and if large numbers of tasks suddenly become available to dispatch (due to spikes in create task rates, the queue being unpaused, or many tasks that are scheduled at the same time).
-type HttpRequestResponseArgs struct {
-	// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
-	Body pulumi.StringInput `pulumi:"body"`
-	// HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
-	Headers pulumi.StringMapInput `pulumi:"headers"`
-	// The HTTP method to use for the request. The default is POST.
-	HttpMethod pulumi.StringInput `pulumi:"httpMethod"`
-	// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
-	OauthToken OAuthTokenResponseInput `pulumi:"oauthToken"`
-	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
-	OidcToken OidcTokenResponseInput `pulumi:"oidcToken"`
-	// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (HttpRequestResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HttpRequestResponse)(nil)).Elem()
-}
-
-func (i HttpRequestResponseArgs) ToHttpRequestResponseOutput() HttpRequestResponseOutput {
-	return i.ToHttpRequestResponseOutputWithContext(context.Background())
-}
-
-func (i HttpRequestResponseArgs) ToHttpRequestResponseOutputWithContext(ctx context.Context) HttpRequestResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HttpRequestResponseOutput)
-}
-
-func (i HttpRequestResponseArgs) ToHttpRequestResponsePtrOutput() HttpRequestResponsePtrOutput {
-	return i.ToHttpRequestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i HttpRequestResponseArgs) ToHttpRequestResponsePtrOutputWithContext(ctx context.Context) HttpRequestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HttpRequestResponseOutput).ToHttpRequestResponsePtrOutputWithContext(ctx)
-}
-
-// HttpRequestResponsePtrInput is an input type that accepts HttpRequestResponseArgs, HttpRequestResponsePtr and HttpRequestResponsePtrOutput values.
-// You can construct a concrete instance of `HttpRequestResponsePtrInput` via:
-//
-//          HttpRequestResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type HttpRequestResponsePtrInput interface {
-	pulumi.Input
-
-	ToHttpRequestResponsePtrOutput() HttpRequestResponsePtrOutput
-	ToHttpRequestResponsePtrOutputWithContext(context.Context) HttpRequestResponsePtrOutput
-}
-
-type httpRequestResponsePtrType HttpRequestResponseArgs
-
-func HttpRequestResponsePtr(v *HttpRequestResponseArgs) HttpRequestResponsePtrInput {
-	return (*httpRequestResponsePtrType)(v)
-}
-
-func (*httpRequestResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HttpRequestResponse)(nil)).Elem()
-}
-
-func (i *httpRequestResponsePtrType) ToHttpRequestResponsePtrOutput() HttpRequestResponsePtrOutput {
-	return i.ToHttpRequestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *httpRequestResponsePtrType) ToHttpRequestResponsePtrOutputWithContext(ctx context.Context) HttpRequestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HttpRequestResponsePtrOutput)
-}
-
 // HTTP request. The task will be pushed to the worker as an HTTP request. If the worker or the redirected worker acknowledges the task by returning a successful HTTP response code ([`200` - `299`]), the task will be removed from the queue. If any other HTTP response code is returned or no response is received, the task will be retried according to the following: * User-specified throttling: retry configuration, rate limits, and the queue's state. * System throttling: To prevent the worker from overloading, Cloud Tasks may temporarily reduce the queue's effective rate. User-specified settings will not be changed. System throttling happens because: * Cloud Tasks backs off on all errors. Normally the backoff specified in rate limits will be used. But if the worker returns `429` (Too Many Requests), `503` (Service Unavailable), or the rate of errors is high, Cloud Tasks will use a higher backoff rate. The retry specified in the `Retry-After` HTTP response header is considered. * To prevent traffic spikes and to smooth sudden increases in traffic, dispatches ramp up slowly when the queue is newly created or idle and if large numbers of tasks suddenly become available to dispatch (due to spikes in create task rates, the queue being unpaused, or many tasks that are scheduled at the same time).
 type HttpRequestResponseOutput struct{ *pulumi.OutputState }
 
@@ -2153,16 +1404,6 @@ func (o HttpRequestResponseOutput) ToHttpRequestResponseOutput() HttpRequestResp
 
 func (o HttpRequestResponseOutput) ToHttpRequestResponseOutputWithContext(ctx context.Context) HttpRequestResponseOutput {
 	return o
-}
-
-func (o HttpRequestResponseOutput) ToHttpRequestResponsePtrOutput() HttpRequestResponsePtrOutput {
-	return o.ToHttpRequestResponsePtrOutputWithContext(context.Background())
-}
-
-func (o HttpRequestResponseOutput) ToHttpRequestResponsePtrOutputWithContext(ctx context.Context) HttpRequestResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRequestResponse) *HttpRequestResponse {
-		return &v
-	}).(HttpRequestResponsePtrOutput)
 }
 
 // HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
@@ -2193,90 +1434,6 @@ func (o HttpRequestResponseOutput) OidcToken() OidcTokenResponseOutput {
 // The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
 func (o HttpRequestResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRequestResponse) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type HttpRequestResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (HttpRequestResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HttpRequestResponse)(nil)).Elem()
-}
-
-func (o HttpRequestResponsePtrOutput) ToHttpRequestResponsePtrOutput() HttpRequestResponsePtrOutput {
-	return o
-}
-
-func (o HttpRequestResponsePtrOutput) ToHttpRequestResponsePtrOutputWithContext(ctx context.Context) HttpRequestResponsePtrOutput {
-	return o
-}
-
-func (o HttpRequestResponsePtrOutput) Elem() HttpRequestResponseOutput {
-	return o.ApplyT(func(v *HttpRequestResponse) HttpRequestResponse {
-		if v != nil {
-			return *v
-		}
-		var ret HttpRequestResponse
-		return ret
-	}).(HttpRequestResponseOutput)
-}
-
-// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
-func (o HttpRequestResponsePtrOutput) Body() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HttpRequestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Body
-	}).(pulumi.StringPtrOutput)
-}
-
-// HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
-func (o HttpRequestResponsePtrOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *HttpRequestResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Headers
-	}).(pulumi.StringMapOutput)
-}
-
-// The HTTP method to use for the request. The default is POST.
-func (o HttpRequestResponsePtrOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HttpRequestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HttpMethod
-	}).(pulumi.StringPtrOutput)
-}
-
-// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
-func (o HttpRequestResponsePtrOutput) OauthToken() OAuthTokenResponsePtrOutput {
-	return o.ApplyT(func(v *HttpRequestResponse) *OAuthTokenResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.OauthToken
-	}).(OAuthTokenResponsePtrOutput)
-}
-
-// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
-func (o HttpRequestResponsePtrOutput) OidcToken() OidcTokenResponsePtrOutput {
-	return o.ApplyT(func(v *HttpRequestResponse) *OidcTokenResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.OidcToken
-	}).(OidcTokenResponsePtrOutput)
-}
-
-// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
-func (o HttpRequestResponsePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HttpRequestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Url
-	}).(pulumi.StringPtrOutput)
 }
 
 // Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
@@ -2446,78 +1603,6 @@ type OAuthTokenResponse struct {
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 }
 
-// OAuthTokenResponseInput is an input type that accepts OAuthTokenResponseArgs and OAuthTokenResponseOutput values.
-// You can construct a concrete instance of `OAuthTokenResponseInput` via:
-//
-//          OAuthTokenResponseArgs{...}
-type OAuthTokenResponseInput interface {
-	pulumi.Input
-
-	ToOAuthTokenResponseOutput() OAuthTokenResponseOutput
-	ToOAuthTokenResponseOutputWithContext(context.Context) OAuthTokenResponseOutput
-}
-
-// Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
-type OAuthTokenResponseArgs struct {
-	// OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
-	Scope pulumi.StringInput `pulumi:"scope"`
-	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
-}
-
-func (OAuthTokenResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OAuthTokenResponse)(nil)).Elem()
-}
-
-func (i OAuthTokenResponseArgs) ToOAuthTokenResponseOutput() OAuthTokenResponseOutput {
-	return i.ToOAuthTokenResponseOutputWithContext(context.Background())
-}
-
-func (i OAuthTokenResponseArgs) ToOAuthTokenResponseOutputWithContext(ctx context.Context) OAuthTokenResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OAuthTokenResponseOutput)
-}
-
-func (i OAuthTokenResponseArgs) ToOAuthTokenResponsePtrOutput() OAuthTokenResponsePtrOutput {
-	return i.ToOAuthTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OAuthTokenResponseArgs) ToOAuthTokenResponsePtrOutputWithContext(ctx context.Context) OAuthTokenResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OAuthTokenResponseOutput).ToOAuthTokenResponsePtrOutputWithContext(ctx)
-}
-
-// OAuthTokenResponsePtrInput is an input type that accepts OAuthTokenResponseArgs, OAuthTokenResponsePtr and OAuthTokenResponsePtrOutput values.
-// You can construct a concrete instance of `OAuthTokenResponsePtrInput` via:
-//
-//          OAuthTokenResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OAuthTokenResponsePtrInput interface {
-	pulumi.Input
-
-	ToOAuthTokenResponsePtrOutput() OAuthTokenResponsePtrOutput
-	ToOAuthTokenResponsePtrOutputWithContext(context.Context) OAuthTokenResponsePtrOutput
-}
-
-type oauthTokenResponsePtrType OAuthTokenResponseArgs
-
-func OAuthTokenResponsePtr(v *OAuthTokenResponseArgs) OAuthTokenResponsePtrInput {
-	return (*oauthTokenResponsePtrType)(v)
-}
-
-func (*oauthTokenResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OAuthTokenResponse)(nil)).Elem()
-}
-
-func (i *oauthTokenResponsePtrType) ToOAuthTokenResponsePtrOutput() OAuthTokenResponsePtrOutput {
-	return i.ToOAuthTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *oauthTokenResponsePtrType) ToOAuthTokenResponsePtrOutputWithContext(ctx context.Context) OAuthTokenResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OAuthTokenResponsePtrOutput)
-}
-
 // Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
 type OAuthTokenResponseOutput struct{ *pulumi.OutputState }
 
@@ -2533,16 +1618,6 @@ func (o OAuthTokenResponseOutput) ToOAuthTokenResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o OAuthTokenResponseOutput) ToOAuthTokenResponsePtrOutput() OAuthTokenResponsePtrOutput {
-	return o.ToOAuthTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OAuthTokenResponseOutput) ToOAuthTokenResponsePtrOutputWithContext(ctx context.Context) OAuthTokenResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OAuthTokenResponse) *OAuthTokenResponse {
-		return &v
-	}).(OAuthTokenResponsePtrOutput)
-}
-
 // OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
 func (o OAuthTokenResponseOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v OAuthTokenResponse) string { return v.Scope }).(pulumi.StringOutput)
@@ -2551,50 +1626,6 @@ func (o OAuthTokenResponseOutput) Scope() pulumi.StringOutput {
 // [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
 func (o OAuthTokenResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v OAuthTokenResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
-}
-
-type OAuthTokenResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OAuthTokenResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OAuthTokenResponse)(nil)).Elem()
-}
-
-func (o OAuthTokenResponsePtrOutput) ToOAuthTokenResponsePtrOutput() OAuthTokenResponsePtrOutput {
-	return o
-}
-
-func (o OAuthTokenResponsePtrOutput) ToOAuthTokenResponsePtrOutputWithContext(ctx context.Context) OAuthTokenResponsePtrOutput {
-	return o
-}
-
-func (o OAuthTokenResponsePtrOutput) Elem() OAuthTokenResponseOutput {
-	return o.ApplyT(func(v *OAuthTokenResponse) OAuthTokenResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OAuthTokenResponse
-		return ret
-	}).(OAuthTokenResponseOutput)
-}
-
-// OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
-func (o OAuthTokenResponsePtrOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OAuthTokenResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Scope
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
-func (o OAuthTokenResponsePtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OAuthTokenResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
 }
 
 // Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
@@ -2764,78 +1795,6 @@ type OidcTokenResponse struct {
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 }
 
-// OidcTokenResponseInput is an input type that accepts OidcTokenResponseArgs and OidcTokenResponseOutput values.
-// You can construct a concrete instance of `OidcTokenResponseInput` via:
-//
-//          OidcTokenResponseArgs{...}
-type OidcTokenResponseInput interface {
-	pulumi.Input
-
-	ToOidcTokenResponseOutput() OidcTokenResponseOutput
-	ToOidcTokenResponseOutputWithContext(context.Context) OidcTokenResponseOutput
-}
-
-// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
-type OidcTokenResponseArgs struct {
-	// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
-	Audience pulumi.StringInput `pulumi:"audience"`
-	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
-}
-
-func (OidcTokenResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OidcTokenResponse)(nil)).Elem()
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponseOutput() OidcTokenResponseOutput {
-	return i.ToOidcTokenResponseOutputWithContext(context.Background())
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponseOutputWithContext(ctx context.Context) OidcTokenResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenResponseOutput)
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return i.ToOidcTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenResponseOutput).ToOidcTokenResponsePtrOutputWithContext(ctx)
-}
-
-// OidcTokenResponsePtrInput is an input type that accepts OidcTokenResponseArgs, OidcTokenResponsePtr and OidcTokenResponsePtrOutput values.
-// You can construct a concrete instance of `OidcTokenResponsePtrInput` via:
-//
-//          OidcTokenResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OidcTokenResponsePtrInput interface {
-	pulumi.Input
-
-	ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput
-	ToOidcTokenResponsePtrOutputWithContext(context.Context) OidcTokenResponsePtrOutput
-}
-
-type oidcTokenResponsePtrType OidcTokenResponseArgs
-
-func OidcTokenResponsePtr(v *OidcTokenResponseArgs) OidcTokenResponsePtrInput {
-	return (*oidcTokenResponsePtrType)(v)
-}
-
-func (*oidcTokenResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OidcTokenResponse)(nil)).Elem()
-}
-
-func (i *oidcTokenResponsePtrType) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return i.ToOidcTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *oidcTokenResponsePtrType) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenResponsePtrOutput)
-}
-
 // Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 type OidcTokenResponseOutput struct{ *pulumi.OutputState }
 
@@ -2851,16 +1810,6 @@ func (o OidcTokenResponseOutput) ToOidcTokenResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return o.ToOidcTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OidcTokenResponse) *OidcTokenResponse {
-		return &v
-	}).(OidcTokenResponsePtrOutput)
-}
-
 // Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
 func (o OidcTokenResponseOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.Audience }).(pulumi.StringOutput)
@@ -2869,50 +1818,6 @@ func (o OidcTokenResponseOutput) Audience() pulumi.StringOutput {
 // [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
 func (o OidcTokenResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
-}
-
-type OidcTokenResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OidcTokenResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OidcTokenResponse)(nil)).Elem()
-}
-
-func (o OidcTokenResponsePtrOutput) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return o
-}
-
-func (o OidcTokenResponsePtrOutput) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return o
-}
-
-func (o OidcTokenResponsePtrOutput) Elem() OidcTokenResponseOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) OidcTokenResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OidcTokenResponse
-		return ret
-	}).(OidcTokenResponseOutput)
-}
-
-// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
-func (o OidcTokenResponsePtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Audience
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
-func (o OidcTokenResponsePtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
 }
 
 // Pull Message. This proto can only be used for tasks in a queue which has PULL type. It currently exists for backwards compatibility with the App Engine Task Queue SDK. This message type maybe returned with methods list and get, when the response view is FULL.
@@ -3082,78 +1987,6 @@ type PullMessageResponse struct {
 	Tag string `pulumi:"tag"`
 }
 
-// PullMessageResponseInput is an input type that accepts PullMessageResponseArgs and PullMessageResponseOutput values.
-// You can construct a concrete instance of `PullMessageResponseInput` via:
-//
-//          PullMessageResponseArgs{...}
-type PullMessageResponseInput interface {
-	pulumi.Input
-
-	ToPullMessageResponseOutput() PullMessageResponseOutput
-	ToPullMessageResponseOutputWithContext(context.Context) PullMessageResponseOutput
-}
-
-// Pull Message. This proto can only be used for tasks in a queue which has PULL type. It currently exists for backwards compatibility with the App Engine Task Queue SDK. This message type maybe returned with methods list and get, when the response view is FULL.
-type PullMessageResponseArgs struct {
-	// A data payload consumed by the worker to execute the task.
-	Payload pulumi.StringInput `pulumi:"payload"`
-	// The tasks's tag. The tag is less than 500 characters. SDK compatibility: Although the SDK allows tags to be either string or [bytes](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-), only UTF-8 encoded tags can be used in Cloud Tasks. If a tag isn't UTF-8 encoded, the tag will be empty when the task is returned by Cloud Tasks.
-	Tag pulumi.StringInput `pulumi:"tag"`
-}
-
-func (PullMessageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PullMessageResponse)(nil)).Elem()
-}
-
-func (i PullMessageResponseArgs) ToPullMessageResponseOutput() PullMessageResponseOutput {
-	return i.ToPullMessageResponseOutputWithContext(context.Background())
-}
-
-func (i PullMessageResponseArgs) ToPullMessageResponseOutputWithContext(ctx context.Context) PullMessageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PullMessageResponseOutput)
-}
-
-func (i PullMessageResponseArgs) ToPullMessageResponsePtrOutput() PullMessageResponsePtrOutput {
-	return i.ToPullMessageResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PullMessageResponseArgs) ToPullMessageResponsePtrOutputWithContext(ctx context.Context) PullMessageResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PullMessageResponseOutput).ToPullMessageResponsePtrOutputWithContext(ctx)
-}
-
-// PullMessageResponsePtrInput is an input type that accepts PullMessageResponseArgs, PullMessageResponsePtr and PullMessageResponsePtrOutput values.
-// You can construct a concrete instance of `PullMessageResponsePtrInput` via:
-//
-//          PullMessageResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PullMessageResponsePtrInput interface {
-	pulumi.Input
-
-	ToPullMessageResponsePtrOutput() PullMessageResponsePtrOutput
-	ToPullMessageResponsePtrOutputWithContext(context.Context) PullMessageResponsePtrOutput
-}
-
-type pullMessageResponsePtrType PullMessageResponseArgs
-
-func PullMessageResponsePtr(v *PullMessageResponseArgs) PullMessageResponsePtrInput {
-	return (*pullMessageResponsePtrType)(v)
-}
-
-func (*pullMessageResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PullMessageResponse)(nil)).Elem()
-}
-
-func (i *pullMessageResponsePtrType) ToPullMessageResponsePtrOutput() PullMessageResponsePtrOutput {
-	return i.ToPullMessageResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *pullMessageResponsePtrType) ToPullMessageResponsePtrOutputWithContext(ctx context.Context) PullMessageResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PullMessageResponsePtrOutput)
-}
-
 // Pull Message. This proto can only be used for tasks in a queue which has PULL type. It currently exists for backwards compatibility with the App Engine Task Queue SDK. This message type maybe returned with methods list and get, when the response view is FULL.
 type PullMessageResponseOutput struct{ *pulumi.OutputState }
 
@@ -3169,16 +2002,6 @@ func (o PullMessageResponseOutput) ToPullMessageResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o PullMessageResponseOutput) ToPullMessageResponsePtrOutput() PullMessageResponsePtrOutput {
-	return o.ToPullMessageResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PullMessageResponseOutput) ToPullMessageResponsePtrOutputWithContext(ctx context.Context) PullMessageResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PullMessageResponse) *PullMessageResponse {
-		return &v
-	}).(PullMessageResponsePtrOutput)
-}
-
 // A data payload consumed by the worker to execute the task.
 func (o PullMessageResponseOutput) Payload() pulumi.StringOutput {
 	return o.ApplyT(func(v PullMessageResponse) string { return v.Payload }).(pulumi.StringOutput)
@@ -3187,50 +2010,6 @@ func (o PullMessageResponseOutput) Payload() pulumi.StringOutput {
 // The tasks's tag. The tag is less than 500 characters. SDK compatibility: Although the SDK allows tags to be either string or [bytes](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-), only UTF-8 encoded tags can be used in Cloud Tasks. If a tag isn't UTF-8 encoded, the tag will be empty when the task is returned by Cloud Tasks.
 func (o PullMessageResponseOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v PullMessageResponse) string { return v.Tag }).(pulumi.StringOutput)
-}
-
-type PullMessageResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PullMessageResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PullMessageResponse)(nil)).Elem()
-}
-
-func (o PullMessageResponsePtrOutput) ToPullMessageResponsePtrOutput() PullMessageResponsePtrOutput {
-	return o
-}
-
-func (o PullMessageResponsePtrOutput) ToPullMessageResponsePtrOutputWithContext(ctx context.Context) PullMessageResponsePtrOutput {
-	return o
-}
-
-func (o PullMessageResponsePtrOutput) Elem() PullMessageResponseOutput {
-	return o.ApplyT(func(v *PullMessageResponse) PullMessageResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PullMessageResponse
-		return ret
-	}).(PullMessageResponseOutput)
-}
-
-// A data payload consumed by the worker to execute the task.
-func (o PullMessageResponsePtrOutput) Payload() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PullMessageResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Payload
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tasks's tag. The tag is less than 500 characters. SDK compatibility: Although the SDK allows tags to be either string or [bytes](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-), only UTF-8 encoded tags can be used in Cloud Tasks. If a tag isn't UTF-8 encoded, the tag will be empty when the task is returned by Cloud Tasks.
-func (o PullMessageResponsePtrOutput) Tag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PullMessageResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Tag
-	}).(pulumi.StringPtrOutput)
 }
 
 // Statistics for a queue.
@@ -3247,84 +2026,6 @@ type QueueStatsResponse struct {
 	TasksCount string `pulumi:"tasksCount"`
 }
 
-// QueueStatsResponseInput is an input type that accepts QueueStatsResponseArgs and QueueStatsResponseOutput values.
-// You can construct a concrete instance of `QueueStatsResponseInput` via:
-//
-//          QueueStatsResponseArgs{...}
-type QueueStatsResponseInput interface {
-	pulumi.Input
-
-	ToQueueStatsResponseOutput() QueueStatsResponseOutput
-	ToQueueStatsResponseOutputWithContext(context.Context) QueueStatsResponseOutput
-}
-
-// Statistics for a queue.
-type QueueStatsResponseArgs struct {
-	// The number of requests that the queue has dispatched but has not received a reply for yet.
-	ConcurrentDispatchesCount pulumi.StringInput `pulumi:"concurrentDispatchesCount"`
-	// The current maximum number of tasks per second executed by the queue. The maximum value of this variable is controlled by the RateLimits of the Queue. However, this value could be less to avoid overloading the endpoints tasks in the queue are targeting.
-	EffectiveExecutionRate pulumi.Float64Input `pulumi:"effectiveExecutionRate"`
-	// The number of tasks that the queue has dispatched and received a reply for during the last minute. This variable counts both successful and non-successful executions.
-	ExecutedLastMinuteCount pulumi.StringInput `pulumi:"executedLastMinuteCount"`
-	// An estimation of the nearest time in the future where a task in the queue is scheduled to be executed.
-	OldestEstimatedArrivalTime pulumi.StringInput `pulumi:"oldestEstimatedArrivalTime"`
-	// An estimation of the number of tasks in the queue, that is, the tasks in the queue that haven't been executed, the tasks in the queue which the queue has dispatched but has not yet received a reply for, and the failed tasks that the queue is retrying.
-	TasksCount pulumi.StringInput `pulumi:"tasksCount"`
-}
-
-func (QueueStatsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueueStatsResponse)(nil)).Elem()
-}
-
-func (i QueueStatsResponseArgs) ToQueueStatsResponseOutput() QueueStatsResponseOutput {
-	return i.ToQueueStatsResponseOutputWithContext(context.Background())
-}
-
-func (i QueueStatsResponseArgs) ToQueueStatsResponseOutputWithContext(ctx context.Context) QueueStatsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueueStatsResponseOutput)
-}
-
-func (i QueueStatsResponseArgs) ToQueueStatsResponsePtrOutput() QueueStatsResponsePtrOutput {
-	return i.ToQueueStatsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i QueueStatsResponseArgs) ToQueueStatsResponsePtrOutputWithContext(ctx context.Context) QueueStatsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueueStatsResponseOutput).ToQueueStatsResponsePtrOutputWithContext(ctx)
-}
-
-// QueueStatsResponsePtrInput is an input type that accepts QueueStatsResponseArgs, QueueStatsResponsePtr and QueueStatsResponsePtrOutput values.
-// You can construct a concrete instance of `QueueStatsResponsePtrInput` via:
-//
-//          QueueStatsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type QueueStatsResponsePtrInput interface {
-	pulumi.Input
-
-	ToQueueStatsResponsePtrOutput() QueueStatsResponsePtrOutput
-	ToQueueStatsResponsePtrOutputWithContext(context.Context) QueueStatsResponsePtrOutput
-}
-
-type queueStatsResponsePtrType QueueStatsResponseArgs
-
-func QueueStatsResponsePtr(v *QueueStatsResponseArgs) QueueStatsResponsePtrInput {
-	return (*queueStatsResponsePtrType)(v)
-}
-
-func (*queueStatsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**QueueStatsResponse)(nil)).Elem()
-}
-
-func (i *queueStatsResponsePtrType) ToQueueStatsResponsePtrOutput() QueueStatsResponsePtrOutput {
-	return i.ToQueueStatsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *queueStatsResponsePtrType) ToQueueStatsResponsePtrOutputWithContext(ctx context.Context) QueueStatsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueueStatsResponsePtrOutput)
-}
-
 // Statistics for a queue.
 type QueueStatsResponseOutput struct{ *pulumi.OutputState }
 
@@ -3338,16 +2039,6 @@ func (o QueueStatsResponseOutput) ToQueueStatsResponseOutput() QueueStatsRespons
 
 func (o QueueStatsResponseOutput) ToQueueStatsResponseOutputWithContext(ctx context.Context) QueueStatsResponseOutput {
 	return o
-}
-
-func (o QueueStatsResponseOutput) ToQueueStatsResponsePtrOutput() QueueStatsResponsePtrOutput {
-	return o.ToQueueStatsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o QueueStatsResponseOutput) ToQueueStatsResponsePtrOutputWithContext(ctx context.Context) QueueStatsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueStatsResponse) *QueueStatsResponse {
-		return &v
-	}).(QueueStatsResponsePtrOutput)
 }
 
 // The number of requests that the queue has dispatched but has not received a reply for yet.
@@ -3373,80 +2064,6 @@ func (o QueueStatsResponseOutput) OldestEstimatedArrivalTime() pulumi.StringOutp
 // An estimation of the number of tasks in the queue, that is, the tasks in the queue that haven't been executed, the tasks in the queue which the queue has dispatched but has not yet received a reply for, and the failed tasks that the queue is retrying.
 func (o QueueStatsResponseOutput) TasksCount() pulumi.StringOutput {
 	return o.ApplyT(func(v QueueStatsResponse) string { return v.TasksCount }).(pulumi.StringOutput)
-}
-
-type QueueStatsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (QueueStatsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QueueStatsResponse)(nil)).Elem()
-}
-
-func (o QueueStatsResponsePtrOutput) ToQueueStatsResponsePtrOutput() QueueStatsResponsePtrOutput {
-	return o
-}
-
-func (o QueueStatsResponsePtrOutput) ToQueueStatsResponsePtrOutputWithContext(ctx context.Context) QueueStatsResponsePtrOutput {
-	return o
-}
-
-func (o QueueStatsResponsePtrOutput) Elem() QueueStatsResponseOutput {
-	return o.ApplyT(func(v *QueueStatsResponse) QueueStatsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret QueueStatsResponse
-		return ret
-	}).(QueueStatsResponseOutput)
-}
-
-// The number of requests that the queue has dispatched but has not received a reply for yet.
-func (o QueueStatsResponsePtrOutput) ConcurrentDispatchesCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QueueStatsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ConcurrentDispatchesCount
-	}).(pulumi.StringPtrOutput)
-}
-
-// The current maximum number of tasks per second executed by the queue. The maximum value of this variable is controlled by the RateLimits of the Queue. However, this value could be less to avoid overloading the endpoints tasks in the queue are targeting.
-func (o QueueStatsResponsePtrOutput) EffectiveExecutionRate() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *QueueStatsResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.EffectiveExecutionRate
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The number of tasks that the queue has dispatched and received a reply for during the last minute. This variable counts both successful and non-successful executions.
-func (o QueueStatsResponsePtrOutput) ExecutedLastMinuteCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QueueStatsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExecutedLastMinuteCount
-	}).(pulumi.StringPtrOutput)
-}
-
-// An estimation of the nearest time in the future where a task in the queue is scheduled to be executed.
-func (o QueueStatsResponsePtrOutput) OldestEstimatedArrivalTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QueueStatsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OldestEstimatedArrivalTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// An estimation of the number of tasks in the queue, that is, the tasks in the queue that haven't been executed, the tasks in the queue which the queue has dispatched but has not yet received a reply for, and the failed tasks that the queue is retrying.
-func (o QueueStatsResponsePtrOutput) TasksCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QueueStatsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TasksCount
-	}).(pulumi.StringPtrOutput)
 }
 
 // Rate limits. This message determines the maximum rate that tasks can be dispatched by a queue, regardless of whether the dispatch is a first task attempt or a retry. Note: The debugging command, RunTask, will run a task even if the queue has reached its RateLimits.
@@ -3637,80 +2254,6 @@ type RateLimitsResponse struct {
 	MaxDispatchesPerSecond float64 `pulumi:"maxDispatchesPerSecond"`
 }
 
-// RateLimitsResponseInput is an input type that accepts RateLimitsResponseArgs and RateLimitsResponseOutput values.
-// You can construct a concrete instance of `RateLimitsResponseInput` via:
-//
-//          RateLimitsResponseArgs{...}
-type RateLimitsResponseInput interface {
-	pulumi.Input
-
-	ToRateLimitsResponseOutput() RateLimitsResponseOutput
-	ToRateLimitsResponseOutputWithContext(context.Context) RateLimitsResponseOutput
-}
-
-// Rate limits. This message determines the maximum rate that tasks can be dispatched by a queue, regardless of whether the dispatch is a first task attempt or a retry. Note: The debugging command, RunTask, will run a task even if the queue has reached its RateLimits.
-type RateLimitsResponseArgs struct {
-	// The max burst size. Max burst size limits how fast tasks in queue are processed when many tasks are in the queue and the rate is high. This field allows the queue to have a high rate so processing starts shortly after a task is enqueued, but still limits resource usage when many tasks are enqueued in a short period of time. The [token bucket](https://wikipedia.org/wiki/Token_Bucket) algorithm is used to control the rate of task dispatches. Each queue has a token bucket that holds tokens, up to the maximum specified by `max_burst_size`. Each time a task is dispatched, a token is removed from the bucket. Tasks will be dispatched until the queue's bucket runs out of tokens. The bucket will be continuously refilled with new tokens based on max_dispatches_per_second. The default value of `max_burst_size` is picked by Cloud Tasks based on the value of max_dispatches_per_second. The maximum value of `max_burst_size` is 500. For App Engine queues that were created or updated using `queue.yaml/xml`, `max_burst_size` is equal to [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size). If UpdateQueue is called on a queue without explicitly setting a value for `max_burst_size`, `max_burst_size` value will get updated if UpdateQueue is updating max_dispatches_per_second.
-	MaxBurstSize pulumi.IntInput `pulumi:"maxBurstSize"`
-	// The maximum number of concurrent tasks that Cloud Tasks allows to be dispatched for this queue. After this threshold has been reached, Cloud Tasks stops dispatching tasks until the number of concurrent requests decreases. If unspecified when the queue is created, Cloud Tasks will pick the default. The maximum allowed value is 5,000. This field has the same meaning as [max_concurrent_requests in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
-	MaxConcurrentDispatches pulumi.IntInput `pulumi:"maxConcurrentDispatches"`
-	// The maximum rate at which tasks are dispatched from this queue. If unspecified when the queue is created, Cloud Tasks will pick the default. * For App Engine queues, the maximum allowed value is 500. This field has the same meaning as [rate in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).
-	MaxDispatchesPerSecond pulumi.Float64Input `pulumi:"maxDispatchesPerSecond"`
-}
-
-func (RateLimitsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitsResponse)(nil)).Elem()
-}
-
-func (i RateLimitsResponseArgs) ToRateLimitsResponseOutput() RateLimitsResponseOutput {
-	return i.ToRateLimitsResponseOutputWithContext(context.Background())
-}
-
-func (i RateLimitsResponseArgs) ToRateLimitsResponseOutputWithContext(ctx context.Context) RateLimitsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitsResponseOutput)
-}
-
-func (i RateLimitsResponseArgs) ToRateLimitsResponsePtrOutput() RateLimitsResponsePtrOutput {
-	return i.ToRateLimitsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RateLimitsResponseArgs) ToRateLimitsResponsePtrOutputWithContext(ctx context.Context) RateLimitsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitsResponseOutput).ToRateLimitsResponsePtrOutputWithContext(ctx)
-}
-
-// RateLimitsResponsePtrInput is an input type that accepts RateLimitsResponseArgs, RateLimitsResponsePtr and RateLimitsResponsePtrOutput values.
-// You can construct a concrete instance of `RateLimitsResponsePtrInput` via:
-//
-//          RateLimitsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RateLimitsResponsePtrInput interface {
-	pulumi.Input
-
-	ToRateLimitsResponsePtrOutput() RateLimitsResponsePtrOutput
-	ToRateLimitsResponsePtrOutputWithContext(context.Context) RateLimitsResponsePtrOutput
-}
-
-type rateLimitsResponsePtrType RateLimitsResponseArgs
-
-func RateLimitsResponsePtr(v *RateLimitsResponseArgs) RateLimitsResponsePtrInput {
-	return (*rateLimitsResponsePtrType)(v)
-}
-
-func (*rateLimitsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RateLimitsResponse)(nil)).Elem()
-}
-
-func (i *rateLimitsResponsePtrType) ToRateLimitsResponsePtrOutput() RateLimitsResponsePtrOutput {
-	return i.ToRateLimitsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *rateLimitsResponsePtrType) ToRateLimitsResponsePtrOutputWithContext(ctx context.Context) RateLimitsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitsResponsePtrOutput)
-}
-
 // Rate limits. This message determines the maximum rate that tasks can be dispatched by a queue, regardless of whether the dispatch is a first task attempt or a retry. Note: The debugging command, RunTask, will run a task even if the queue has reached its RateLimits.
 type RateLimitsResponseOutput struct{ *pulumi.OutputState }
 
@@ -3726,16 +2269,6 @@ func (o RateLimitsResponseOutput) ToRateLimitsResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o RateLimitsResponseOutput) ToRateLimitsResponsePtrOutput() RateLimitsResponsePtrOutput {
-	return o.ToRateLimitsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RateLimitsResponseOutput) ToRateLimitsResponsePtrOutputWithContext(ctx context.Context) RateLimitsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitsResponse) *RateLimitsResponse {
-		return &v
-	}).(RateLimitsResponsePtrOutput)
-}
-
 // The max burst size. Max burst size limits how fast tasks in queue are processed when many tasks are in the queue and the rate is high. This field allows the queue to have a high rate so processing starts shortly after a task is enqueued, but still limits resource usage when many tasks are enqueued in a short period of time. The [token bucket](https://wikipedia.org/wiki/Token_Bucket) algorithm is used to control the rate of task dispatches. Each queue has a token bucket that holds tokens, up to the maximum specified by `max_burst_size`. Each time a task is dispatched, a token is removed from the bucket. Tasks will be dispatched until the queue's bucket runs out of tokens. The bucket will be continuously refilled with new tokens based on max_dispatches_per_second. The default value of `max_burst_size` is picked by Cloud Tasks based on the value of max_dispatches_per_second. The maximum value of `max_burst_size` is 500. For App Engine queues that were created or updated using `queue.yaml/xml`, `max_burst_size` is equal to [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size). If UpdateQueue is called on a queue without explicitly setting a value for `max_burst_size`, `max_burst_size` value will get updated if UpdateQueue is updating max_dispatches_per_second.
 func (o RateLimitsResponseOutput) MaxBurstSize() pulumi.IntOutput {
 	return o.ApplyT(func(v RateLimitsResponse) int { return v.MaxBurstSize }).(pulumi.IntOutput)
@@ -3749,60 +2282,6 @@ func (o RateLimitsResponseOutput) MaxConcurrentDispatches() pulumi.IntOutput {
 // The maximum rate at which tasks are dispatched from this queue. If unspecified when the queue is created, Cloud Tasks will pick the default. * For App Engine queues, the maximum allowed value is 500. This field has the same meaning as [rate in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).
 func (o RateLimitsResponseOutput) MaxDispatchesPerSecond() pulumi.Float64Output {
 	return o.ApplyT(func(v RateLimitsResponse) float64 { return v.MaxDispatchesPerSecond }).(pulumi.Float64Output)
-}
-
-type RateLimitsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RateLimitsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RateLimitsResponse)(nil)).Elem()
-}
-
-func (o RateLimitsResponsePtrOutput) ToRateLimitsResponsePtrOutput() RateLimitsResponsePtrOutput {
-	return o
-}
-
-func (o RateLimitsResponsePtrOutput) ToRateLimitsResponsePtrOutputWithContext(ctx context.Context) RateLimitsResponsePtrOutput {
-	return o
-}
-
-func (o RateLimitsResponsePtrOutput) Elem() RateLimitsResponseOutput {
-	return o.ApplyT(func(v *RateLimitsResponse) RateLimitsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RateLimitsResponse
-		return ret
-	}).(RateLimitsResponseOutput)
-}
-
-// The max burst size. Max burst size limits how fast tasks in queue are processed when many tasks are in the queue and the rate is high. This field allows the queue to have a high rate so processing starts shortly after a task is enqueued, but still limits resource usage when many tasks are enqueued in a short period of time. The [token bucket](https://wikipedia.org/wiki/Token_Bucket) algorithm is used to control the rate of task dispatches. Each queue has a token bucket that holds tokens, up to the maximum specified by `max_burst_size`. Each time a task is dispatched, a token is removed from the bucket. Tasks will be dispatched until the queue's bucket runs out of tokens. The bucket will be continuously refilled with new tokens based on max_dispatches_per_second. The default value of `max_burst_size` is picked by Cloud Tasks based on the value of max_dispatches_per_second. The maximum value of `max_burst_size` is 500. For App Engine queues that were created or updated using `queue.yaml/xml`, `max_burst_size` is equal to [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size). If UpdateQueue is called on a queue without explicitly setting a value for `max_burst_size`, `max_burst_size` value will get updated if UpdateQueue is updating max_dispatches_per_second.
-func (o RateLimitsResponsePtrOutput) MaxBurstSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RateLimitsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxBurstSize
-	}).(pulumi.IntPtrOutput)
-}
-
-// The maximum number of concurrent tasks that Cloud Tasks allows to be dispatched for this queue. After this threshold has been reached, Cloud Tasks stops dispatching tasks until the number of concurrent requests decreases. If unspecified when the queue is created, Cloud Tasks will pick the default. The maximum allowed value is 5,000. This field has the same meaning as [max_concurrent_requests in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
-func (o RateLimitsResponsePtrOutput) MaxConcurrentDispatches() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RateLimitsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxConcurrentDispatches
-	}).(pulumi.IntPtrOutput)
-}
-
-// The maximum rate at which tasks are dispatched from this queue. If unspecified when the queue is created, Cloud Tasks will pick the default. * For App Engine queues, the maximum allowed value is 500. This field has the same meaning as [rate in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).
-func (o RateLimitsResponsePtrOutput) MaxDispatchesPerSecond() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *RateLimitsResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxDispatchesPerSecond
-	}).(pulumi.Float64PtrOutput)
 }
 
 // Retry config. These settings determine when a failed task attempt is retried.
@@ -4035,84 +2514,6 @@ type RetryConfigResponse struct {
 	MinBackoff string `pulumi:"minBackoff"`
 }
 
-// RetryConfigResponseInput is an input type that accepts RetryConfigResponseArgs and RetryConfigResponseOutput values.
-// You can construct a concrete instance of `RetryConfigResponseInput` via:
-//
-//          RetryConfigResponseArgs{...}
-type RetryConfigResponseInput interface {
-	pulumi.Input
-
-	ToRetryConfigResponseOutput() RetryConfigResponseOutput
-	ToRetryConfigResponseOutputWithContext(context.Context) RetryConfigResponseOutput
-}
-
-// Retry config. These settings determine when a failed task attempt is retried.
-type RetryConfigResponseArgs struct {
-	// Number of attempts per task. Cloud Tasks will attempt the task `max_attempts` times (that is, if the first attempt fails, then there will be `max_attempts - 1` retries). Must be >= -1. If unspecified when the queue is created, Cloud Tasks will pick the default. -1 indicates unlimited attempts. This field has the same meaning as [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-	MaxAttempts pulumi.IntInput `pulumi:"maxAttempts"`
-	// A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created, Cloud Tasks will pick the default. `max_backoff` will be truncated to the nearest second. This field has the same meaning as [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-	MaxBackoff pulumi.StringInput `pulumi:"maxBackoff"`
-	// The time between retries will double `max_doublings` times. A task's retry interval starts at min_backoff, then doubles `max_doublings` times, then increases linearly, and finally retries at intervals of max_backoff up to max_attempts times. For example, if min_backoff is 10s, max_backoff is 300s, and `max_doublings` is 3, then the a task will first be retried in 10s. The retry interval will double three times, and then increase linearly by 2^3 * 10s. Finally, the task will retry at intervals of max_backoff until the task has been attempted max_attempts times. Thus, the requests will retry at 10s, 20s, 40s, 80s, 160s, 240s, 300s, 300s, .... If unspecified when the queue is created, Cloud Tasks will pick the default. This field has the same meaning as [max_doublings in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-	MaxDoublings pulumi.IntInput `pulumi:"maxDoublings"`
-	// If positive, `max_retry_duration` specifies the time limit for retrying a failed task, measured from when the task was first attempted. Once `max_retry_duration` time has passed *and* the task has been attempted max_attempts times, no further attempts will be made and the task will be deleted. If zero, then the task age is unlimited. If unspecified when the queue is created, Cloud Tasks will pick the default. `max_retry_duration` will be truncated to the nearest second. This field has the same meaning as [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-	MaxRetryDuration pulumi.StringInput `pulumi:"maxRetryDuration"`
-	// A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created, Cloud Tasks will pick the default. `min_backoff` will be truncated to the nearest second. This field has the same meaning as [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-	MinBackoff pulumi.StringInput `pulumi:"minBackoff"`
-}
-
-func (RetryConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RetryConfigResponse)(nil)).Elem()
-}
-
-func (i RetryConfigResponseArgs) ToRetryConfigResponseOutput() RetryConfigResponseOutput {
-	return i.ToRetryConfigResponseOutputWithContext(context.Background())
-}
-
-func (i RetryConfigResponseArgs) ToRetryConfigResponseOutputWithContext(ctx context.Context) RetryConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetryConfigResponseOutput)
-}
-
-func (i RetryConfigResponseArgs) ToRetryConfigResponsePtrOutput() RetryConfigResponsePtrOutput {
-	return i.ToRetryConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RetryConfigResponseArgs) ToRetryConfigResponsePtrOutputWithContext(ctx context.Context) RetryConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetryConfigResponseOutput).ToRetryConfigResponsePtrOutputWithContext(ctx)
-}
-
-// RetryConfigResponsePtrInput is an input type that accepts RetryConfigResponseArgs, RetryConfigResponsePtr and RetryConfigResponsePtrOutput values.
-// You can construct a concrete instance of `RetryConfigResponsePtrInput` via:
-//
-//          RetryConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RetryConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToRetryConfigResponsePtrOutput() RetryConfigResponsePtrOutput
-	ToRetryConfigResponsePtrOutputWithContext(context.Context) RetryConfigResponsePtrOutput
-}
-
-type retryConfigResponsePtrType RetryConfigResponseArgs
-
-func RetryConfigResponsePtr(v *RetryConfigResponseArgs) RetryConfigResponsePtrInput {
-	return (*retryConfigResponsePtrType)(v)
-}
-
-func (*retryConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RetryConfigResponse)(nil)).Elem()
-}
-
-func (i *retryConfigResponsePtrType) ToRetryConfigResponsePtrOutput() RetryConfigResponsePtrOutput {
-	return i.ToRetryConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *retryConfigResponsePtrType) ToRetryConfigResponsePtrOutputWithContext(ctx context.Context) RetryConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetryConfigResponsePtrOutput)
-}
-
 // Retry config. These settings determine when a failed task attempt is retried.
 type RetryConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -4126,16 +2527,6 @@ func (o RetryConfigResponseOutput) ToRetryConfigResponseOutput() RetryConfigResp
 
 func (o RetryConfigResponseOutput) ToRetryConfigResponseOutputWithContext(ctx context.Context) RetryConfigResponseOutput {
 	return o
-}
-
-func (o RetryConfigResponseOutput) ToRetryConfigResponsePtrOutput() RetryConfigResponsePtrOutput {
-	return o.ToRetryConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RetryConfigResponseOutput) ToRetryConfigResponsePtrOutputWithContext(ctx context.Context) RetryConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryConfigResponse) *RetryConfigResponse {
-		return &v
-	}).(RetryConfigResponsePtrOutput)
 }
 
 // Number of attempts per task. Cloud Tasks will attempt the task `max_attempts` times (that is, if the first attempt fails, then there will be `max_attempts - 1` retries). Must be >= -1. If unspecified when the queue is created, Cloud Tasks will pick the default. -1 indicates unlimited attempts. This field has the same meaning as [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
@@ -4161,80 +2552,6 @@ func (o RetryConfigResponseOutput) MaxRetryDuration() pulumi.StringOutput {
 // A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created, Cloud Tasks will pick the default. `min_backoff` will be truncated to the nearest second. This field has the same meaning as [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
 func (o RetryConfigResponseOutput) MinBackoff() pulumi.StringOutput {
 	return o.ApplyT(func(v RetryConfigResponse) string { return v.MinBackoff }).(pulumi.StringOutput)
-}
-
-type RetryConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RetryConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RetryConfigResponse)(nil)).Elem()
-}
-
-func (o RetryConfigResponsePtrOutput) ToRetryConfigResponsePtrOutput() RetryConfigResponsePtrOutput {
-	return o
-}
-
-func (o RetryConfigResponsePtrOutput) ToRetryConfigResponsePtrOutputWithContext(ctx context.Context) RetryConfigResponsePtrOutput {
-	return o
-}
-
-func (o RetryConfigResponsePtrOutput) Elem() RetryConfigResponseOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) RetryConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RetryConfigResponse
-		return ret
-	}).(RetryConfigResponseOutput)
-}
-
-// Number of attempts per task. Cloud Tasks will attempt the task `max_attempts` times (that is, if the first attempt fails, then there will be `max_attempts - 1` retries). Must be >= -1. If unspecified when the queue is created, Cloud Tasks will pick the default. -1 indicates unlimited attempts. This field has the same meaning as [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-func (o RetryConfigResponsePtrOutput) MaxAttempts() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxAttempts
-	}).(pulumi.IntPtrOutput)
-}
-
-// A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created, Cloud Tasks will pick the default. `max_backoff` will be truncated to the nearest second. This field has the same meaning as [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-func (o RetryConfigResponsePtrOutput) MaxBackoff() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxBackoff
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time between retries will double `max_doublings` times. A task's retry interval starts at min_backoff, then doubles `max_doublings` times, then increases linearly, and finally retries at intervals of max_backoff up to max_attempts times. For example, if min_backoff is 10s, max_backoff is 300s, and `max_doublings` is 3, then the a task will first be retried in 10s. The retry interval will double three times, and then increase linearly by 2^3 * 10s. Finally, the task will retry at intervals of max_backoff until the task has been attempted max_attempts times. Thus, the requests will retry at 10s, 20s, 40s, 80s, 160s, 240s, 300s, 300s, .... If unspecified when the queue is created, Cloud Tasks will pick the default. This field has the same meaning as [max_doublings in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-func (o RetryConfigResponsePtrOutput) MaxDoublings() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxDoublings
-	}).(pulumi.IntPtrOutput)
-}
-
-// If positive, `max_retry_duration` specifies the time limit for retrying a failed task, measured from when the task was first attempted. Once `max_retry_duration` time has passed *and* the task has been attempted max_attempts times, no further attempts will be made and the task will be deleted. If zero, then the task age is unlimited. If unspecified when the queue is created, Cloud Tasks will pick the default. `max_retry_duration` will be truncated to the nearest second. This field has the same meaning as [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-func (o RetryConfigResponsePtrOutput) MaxRetryDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxRetryDuration
-	}).(pulumi.StringPtrOutput)
-}
-
-// A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created, Cloud Tasks will pick the default. `min_backoff` will be truncated to the nearest second. This field has the same meaning as [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-func (o RetryConfigResponsePtrOutput) MinBackoff() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MinBackoff
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/).
@@ -4383,76 +2700,6 @@ type StackdriverLoggingConfigResponse struct {
 	SamplingRatio float64 `pulumi:"samplingRatio"`
 }
 
-// StackdriverLoggingConfigResponseInput is an input type that accepts StackdriverLoggingConfigResponseArgs and StackdriverLoggingConfigResponseOutput values.
-// You can construct a concrete instance of `StackdriverLoggingConfigResponseInput` via:
-//
-//          StackdriverLoggingConfigResponseArgs{...}
-type StackdriverLoggingConfigResponseInput interface {
-	pulumi.Input
-
-	ToStackdriverLoggingConfigResponseOutput() StackdriverLoggingConfigResponseOutput
-	ToStackdriverLoggingConfigResponseOutputWithContext(context.Context) StackdriverLoggingConfigResponseOutput
-}
-
-// Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/).
-type StackdriverLoggingConfigResponseArgs struct {
-	// Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged.
-	SamplingRatio pulumi.Float64Input `pulumi:"samplingRatio"`
-}
-
-func (StackdriverLoggingConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackdriverLoggingConfigResponse)(nil)).Elem()
-}
-
-func (i StackdriverLoggingConfigResponseArgs) ToStackdriverLoggingConfigResponseOutput() StackdriverLoggingConfigResponseOutput {
-	return i.ToStackdriverLoggingConfigResponseOutputWithContext(context.Background())
-}
-
-func (i StackdriverLoggingConfigResponseArgs) ToStackdriverLoggingConfigResponseOutputWithContext(ctx context.Context) StackdriverLoggingConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackdriverLoggingConfigResponseOutput)
-}
-
-func (i StackdriverLoggingConfigResponseArgs) ToStackdriverLoggingConfigResponsePtrOutput() StackdriverLoggingConfigResponsePtrOutput {
-	return i.ToStackdriverLoggingConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StackdriverLoggingConfigResponseArgs) ToStackdriverLoggingConfigResponsePtrOutputWithContext(ctx context.Context) StackdriverLoggingConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackdriverLoggingConfigResponseOutput).ToStackdriverLoggingConfigResponsePtrOutputWithContext(ctx)
-}
-
-// StackdriverLoggingConfigResponsePtrInput is an input type that accepts StackdriverLoggingConfigResponseArgs, StackdriverLoggingConfigResponsePtr and StackdriverLoggingConfigResponsePtrOutput values.
-// You can construct a concrete instance of `StackdriverLoggingConfigResponsePtrInput` via:
-//
-//          StackdriverLoggingConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StackdriverLoggingConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToStackdriverLoggingConfigResponsePtrOutput() StackdriverLoggingConfigResponsePtrOutput
-	ToStackdriverLoggingConfigResponsePtrOutputWithContext(context.Context) StackdriverLoggingConfigResponsePtrOutput
-}
-
-type stackdriverLoggingConfigResponsePtrType StackdriverLoggingConfigResponseArgs
-
-func StackdriverLoggingConfigResponsePtr(v *StackdriverLoggingConfigResponseArgs) StackdriverLoggingConfigResponsePtrInput {
-	return (*stackdriverLoggingConfigResponsePtrType)(v)
-}
-
-func (*stackdriverLoggingConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StackdriverLoggingConfigResponse)(nil)).Elem()
-}
-
-func (i *stackdriverLoggingConfigResponsePtrType) ToStackdriverLoggingConfigResponsePtrOutput() StackdriverLoggingConfigResponsePtrOutput {
-	return i.ToStackdriverLoggingConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *stackdriverLoggingConfigResponsePtrType) ToStackdriverLoggingConfigResponsePtrOutputWithContext(ctx context.Context) StackdriverLoggingConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackdriverLoggingConfigResponsePtrOutput)
-}
-
 // Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/).
 type StackdriverLoggingConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -4468,53 +2715,9 @@ func (o StackdriverLoggingConfigResponseOutput) ToStackdriverLoggingConfigRespon
 	return o
 }
 
-func (o StackdriverLoggingConfigResponseOutput) ToStackdriverLoggingConfigResponsePtrOutput() StackdriverLoggingConfigResponsePtrOutput {
-	return o.ToStackdriverLoggingConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StackdriverLoggingConfigResponseOutput) ToStackdriverLoggingConfigResponsePtrOutputWithContext(ctx context.Context) StackdriverLoggingConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StackdriverLoggingConfigResponse) *StackdriverLoggingConfigResponse {
-		return &v
-	}).(StackdriverLoggingConfigResponsePtrOutput)
-}
-
 // Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged.
 func (o StackdriverLoggingConfigResponseOutput) SamplingRatio() pulumi.Float64Output {
 	return o.ApplyT(func(v StackdriverLoggingConfigResponse) float64 { return v.SamplingRatio }).(pulumi.Float64Output)
-}
-
-type StackdriverLoggingConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StackdriverLoggingConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StackdriverLoggingConfigResponse)(nil)).Elem()
-}
-
-func (o StackdriverLoggingConfigResponsePtrOutput) ToStackdriverLoggingConfigResponsePtrOutput() StackdriverLoggingConfigResponsePtrOutput {
-	return o
-}
-
-func (o StackdriverLoggingConfigResponsePtrOutput) ToStackdriverLoggingConfigResponsePtrOutputWithContext(ctx context.Context) StackdriverLoggingConfigResponsePtrOutput {
-	return o
-}
-
-func (o StackdriverLoggingConfigResponsePtrOutput) Elem() StackdriverLoggingConfigResponseOutput {
-	return o.ApplyT(func(v *StackdriverLoggingConfigResponse) StackdriverLoggingConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StackdriverLoggingConfigResponse
-		return ret
-	}).(StackdriverLoggingConfigResponseOutput)
-}
-
-// Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged.
-func (o StackdriverLoggingConfigResponsePtrOutput) SamplingRatio() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *StackdriverLoggingConfigResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.SamplingRatio
-	}).(pulumi.Float64PtrOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -4525,80 +2728,6 @@ type StatusResponse struct {
 	Details []map[string]string `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
-}
-
-// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
-// You can construct a concrete instance of `StatusResponseInput` via:
-//
-//          StatusResponseArgs{...}
-type StatusResponseInput interface {
-	pulumi.Input
-
-	ToStatusResponseOutput() StatusResponseOutput
-	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusResponseArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (StatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
-	return i.ToStatusResponseOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
-}
-
-// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
-// You can construct a concrete instance of `StatusResponsePtrInput` via:
-//
-//          StatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToStatusResponsePtrOutput() StatusResponsePtrOutput
-	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
-}
-
-type statusResponsePtrType StatusResponseArgs
-
-func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
-	return (*statusResponsePtrType)(v)
-}
-
-func (*statusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -4616,16 +2745,6 @@ func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
-		return &v
-	}).(StatusResponsePtrOutput)
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o StatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -4641,128 +2760,41 @@ func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
-type StatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StatusResponse
-		return ret
-	}).(StatusResponseOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Code
-	}).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *StatusResponse) []map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpQueueInput)(nil)).Elem(), AppEngineHttpQueueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpQueuePtrInput)(nil)).Elem(), AppEngineHttpQueueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpQueueResponseInput)(nil)).Elem(), AppEngineHttpQueueResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpQueueResponsePtrInput)(nil)).Elem(), AppEngineHttpQueueResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpRequestInput)(nil)).Elem(), AppEngineHttpRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpRequestPtrInput)(nil)).Elem(), AppEngineHttpRequestArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpRequestResponseInput)(nil)).Elem(), AppEngineHttpRequestResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpRequestResponsePtrInput)(nil)).Elem(), AppEngineHttpRequestResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineRoutingInput)(nil)).Elem(), AppEngineRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineRoutingPtrInput)(nil)).Elem(), AppEngineRoutingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineRoutingResponseInput)(nil)).Elem(), AppEngineRoutingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineRoutingResponsePtrInput)(nil)).Elem(), AppEngineRoutingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AttemptResponseInput)(nil)).Elem(), AttemptResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AttemptResponsePtrInput)(nil)).Elem(), AttemptResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestInput)(nil)).Elem(), HttpRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestPtrInput)(nil)).Elem(), HttpRequestArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestResponseInput)(nil)).Elem(), HttpRequestResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestResponsePtrInput)(nil)).Elem(), HttpRequestResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OAuthTokenInput)(nil)).Elem(), OAuthTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OAuthTokenPtrInput)(nil)).Elem(), OAuthTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OAuthTokenResponseInput)(nil)).Elem(), OAuthTokenResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OAuthTokenResponsePtrInput)(nil)).Elem(), OAuthTokenResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenInput)(nil)).Elem(), OidcTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenPtrInput)(nil)).Elem(), OidcTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenResponseInput)(nil)).Elem(), OidcTokenResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenResponsePtrInput)(nil)).Elem(), OidcTokenResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PullMessageInput)(nil)).Elem(), PullMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PullMessagePtrInput)(nil)).Elem(), PullMessageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PullMessageResponseInput)(nil)).Elem(), PullMessageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PullMessageResponsePtrInput)(nil)).Elem(), PullMessageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueueStatsResponseInput)(nil)).Elem(), QueueStatsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueueStatsResponsePtrInput)(nil)).Elem(), QueueStatsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitsInput)(nil)).Elem(), RateLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitsPtrInput)(nil)).Elem(), RateLimitsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitsResponseInput)(nil)).Elem(), RateLimitsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitsResponsePtrInput)(nil)).Elem(), RateLimitsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryConfigInput)(nil)).Elem(), RetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryConfigPtrInput)(nil)).Elem(), RetryConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RetryConfigResponseInput)(nil)).Elem(), RetryConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RetryConfigResponsePtrInput)(nil)).Elem(), RetryConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackdriverLoggingConfigInput)(nil)).Elem(), StackdriverLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackdriverLoggingConfigPtrInput)(nil)).Elem(), StackdriverLoggingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StackdriverLoggingConfigResponseInput)(nil)).Elem(), StackdriverLoggingConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StackdriverLoggingConfigResponsePtrInput)(nil)).Elem(), StackdriverLoggingConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
 	pulumi.RegisterOutputType(AppEngineHttpQueueOutput{})
 	pulumi.RegisterOutputType(AppEngineHttpQueuePtrOutput{})
 	pulumi.RegisterOutputType(AppEngineHttpQueueResponseOutput{})
-	pulumi.RegisterOutputType(AppEngineHttpQueueResponsePtrOutput{})
 	pulumi.RegisterOutputType(AppEngineHttpRequestOutput{})
 	pulumi.RegisterOutputType(AppEngineHttpRequestPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineHttpRequestResponseOutput{})
-	pulumi.RegisterOutputType(AppEngineHttpRequestResponsePtrOutput{})
 	pulumi.RegisterOutputType(AppEngineRoutingOutput{})
 	pulumi.RegisterOutputType(AppEngineRoutingPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineRoutingResponseOutput{})
-	pulumi.RegisterOutputType(AppEngineRoutingResponsePtrOutput{})
 	pulumi.RegisterOutputType(AttemptResponseOutput{})
-	pulumi.RegisterOutputType(AttemptResponsePtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -4773,33 +2805,24 @@ func init() {
 	pulumi.RegisterOutputType(HttpRequestOutput{})
 	pulumi.RegisterOutputType(HttpRequestPtrOutput{})
 	pulumi.RegisterOutputType(HttpRequestResponseOutput{})
-	pulumi.RegisterOutputType(HttpRequestResponsePtrOutput{})
 	pulumi.RegisterOutputType(OAuthTokenOutput{})
 	pulumi.RegisterOutputType(OAuthTokenPtrOutput{})
 	pulumi.RegisterOutputType(OAuthTokenResponseOutput{})
-	pulumi.RegisterOutputType(OAuthTokenResponsePtrOutput{})
 	pulumi.RegisterOutputType(OidcTokenOutput{})
 	pulumi.RegisterOutputType(OidcTokenPtrOutput{})
 	pulumi.RegisterOutputType(OidcTokenResponseOutput{})
-	pulumi.RegisterOutputType(OidcTokenResponsePtrOutput{})
 	pulumi.RegisterOutputType(PullMessageOutput{})
 	pulumi.RegisterOutputType(PullMessagePtrOutput{})
 	pulumi.RegisterOutputType(PullMessageResponseOutput{})
-	pulumi.RegisterOutputType(PullMessageResponsePtrOutput{})
 	pulumi.RegisterOutputType(QueueStatsResponseOutput{})
-	pulumi.RegisterOutputType(QueueStatsResponsePtrOutput{})
 	pulumi.RegisterOutputType(RateLimitsOutput{})
 	pulumi.RegisterOutputType(RateLimitsPtrOutput{})
 	pulumi.RegisterOutputType(RateLimitsResponseOutput{})
-	pulumi.RegisterOutputType(RateLimitsResponsePtrOutput{})
 	pulumi.RegisterOutputType(RetryConfigOutput{})
 	pulumi.RegisterOutputType(RetryConfigPtrOutput{})
 	pulumi.RegisterOutputType(RetryConfigResponseOutput{})
-	pulumi.RegisterOutputType(RetryConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(StackdriverLoggingConfigOutput{})
 	pulumi.RegisterOutputType(StackdriverLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(StackdriverLoggingConfigResponseOutput{})
-	pulumi.RegisterOutputType(StackdriverLoggingConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
-	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 }

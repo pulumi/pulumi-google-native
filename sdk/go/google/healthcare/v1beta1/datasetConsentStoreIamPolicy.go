@@ -118,7 +118,7 @@ type DatasetConsentStoreIamPolicyInput interface {
 }
 
 func (*DatasetConsentStoreIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetConsentStoreIamPolicy)(nil))
+	return reflect.TypeOf((**DatasetConsentStoreIamPolicy)(nil)).Elem()
 }
 
 func (i *DatasetConsentStoreIamPolicy) ToDatasetConsentStoreIamPolicyOutput() DatasetConsentStoreIamPolicyOutput {
@@ -132,7 +132,7 @@ func (i *DatasetConsentStoreIamPolicy) ToDatasetConsentStoreIamPolicyOutputWithC
 type DatasetConsentStoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DatasetConsentStoreIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetConsentStoreIamPolicy)(nil))
+	return reflect.TypeOf((**DatasetConsentStoreIamPolicy)(nil)).Elem()
 }
 
 func (o DatasetConsentStoreIamPolicyOutput) ToDatasetConsentStoreIamPolicyOutput() DatasetConsentStoreIamPolicyOutput {

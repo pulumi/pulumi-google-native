@@ -117,7 +117,7 @@ type IosAppInput interface {
 }
 
 func (*IosApp) ElementType() reflect.Type {
-	return reflect.TypeOf((*IosApp)(nil))
+	return reflect.TypeOf((**IosApp)(nil)).Elem()
 }
 
 func (i *IosApp) ToIosAppOutput() IosAppOutput {
@@ -131,7 +131,7 @@ func (i *IosApp) ToIosAppOutputWithContext(ctx context.Context) IosAppOutput {
 type IosAppOutput struct{ *pulumi.OutputState }
 
 func (IosAppOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IosApp)(nil))
+	return reflect.TypeOf((**IosApp)(nil)).Elem()
 }
 
 func (o IosAppOutput) ToIosAppOutput() IosAppOutput {

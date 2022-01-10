@@ -166,7 +166,7 @@ type RegionHealthCheckInput interface {
 }
 
 func (*RegionHealthCheck) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionHealthCheck)(nil))
+	return reflect.TypeOf((**RegionHealthCheck)(nil)).Elem()
 }
 
 func (i *RegionHealthCheck) ToRegionHealthCheckOutput() RegionHealthCheckOutput {
@@ -180,7 +180,7 @@ func (i *RegionHealthCheck) ToRegionHealthCheckOutputWithContext(ctx context.Con
 type RegionHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (RegionHealthCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionHealthCheck)(nil))
+	return reflect.TypeOf((**RegionHealthCheck)(nil)).Elem()
 }
 
 func (o RegionHealthCheckOutput) ToRegionHealthCheckOutput() RegionHealthCheckOutput {

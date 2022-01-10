@@ -172,7 +172,7 @@ type ScanConfigInput interface {
 }
 
 func (*ScanConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScanConfig)(nil))
+	return reflect.TypeOf((**ScanConfig)(nil)).Elem()
 }
 
 func (i *ScanConfig) ToScanConfigOutput() ScanConfigOutput {
@@ -186,7 +186,7 @@ func (i *ScanConfig) ToScanConfigOutputWithContext(ctx context.Context) ScanConf
 type ScanConfigOutput struct{ *pulumi.OutputState }
 
 func (ScanConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScanConfig)(nil))
+	return reflect.TypeOf((**ScanConfig)(nil)).Elem()
 }
 
 func (o ScanConfigOutput) ToScanConfigOutput() ScanConfigOutput {

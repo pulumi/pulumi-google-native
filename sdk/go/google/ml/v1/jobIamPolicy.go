@@ -111,7 +111,7 @@ type JobIamPolicyInput interface {
 }
 
 func (*JobIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIamPolicy)(nil))
+	return reflect.TypeOf((**JobIamPolicy)(nil)).Elem()
 }
 
 func (i *JobIamPolicy) ToJobIamPolicyOutput() JobIamPolicyOutput {
@@ -125,7 +125,7 @@ func (i *JobIamPolicy) ToJobIamPolicyOutputWithContext(ctx context.Context) JobI
 type JobIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (JobIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIamPolicy)(nil))
+	return reflect.TypeOf((**JobIamPolicy)(nil)).Elem()
 }
 
 func (o JobIamPolicyOutput) ToJobIamPolicyOutput() JobIamPolicyOutput {

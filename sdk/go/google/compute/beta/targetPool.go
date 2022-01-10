@@ -133,7 +133,7 @@ type TargetPoolInput interface {
 }
 
 func (*TargetPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetPool)(nil))
+	return reflect.TypeOf((**TargetPool)(nil)).Elem()
 }
 
 func (i *TargetPool) ToTargetPoolOutput() TargetPoolOutput {
@@ -147,7 +147,7 @@ func (i *TargetPool) ToTargetPoolOutputWithContext(ctx context.Context) TargetPo
 type TargetPoolOutput struct{ *pulumi.OutputState }
 
 func (TargetPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetPool)(nil))
+	return reflect.TypeOf((**TargetPool)(nil)).Elem()
 }
 
 func (o TargetPoolOutput) ToTargetPoolOutput() TargetPoolOutput {

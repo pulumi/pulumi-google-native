@@ -135,7 +135,7 @@ type PageInput interface {
 }
 
 func (*Page) ElementType() reflect.Type {
-	return reflect.TypeOf((*Page)(nil))
+	return reflect.TypeOf((**Page)(nil)).Elem()
 }
 
 func (i *Page) ToPageOutput() PageOutput {
@@ -149,7 +149,7 @@ func (i *Page) ToPageOutputWithContext(ctx context.Context) PageOutput {
 type PageOutput struct{ *pulumi.OutputState }
 
 func (PageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Page)(nil))
+	return reflect.TypeOf((**Page)(nil)).Elem()
 }
 
 func (o PageOutput) ToPageOutput() PageOutput {

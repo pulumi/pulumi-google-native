@@ -109,7 +109,7 @@ type ProductInput interface {
 }
 
 func (*Product) ElementType() reflect.Type {
-	return reflect.TypeOf((*Product)(nil))
+	return reflect.TypeOf((**Product)(nil)).Elem()
 }
 
 func (i *Product) ToProductOutput() ProductOutput {
@@ -123,7 +123,7 @@ func (i *Product) ToProductOutputWithContext(ctx context.Context) ProductOutput 
 type ProductOutput struct{ *pulumi.OutputState }
 
 func (ProductOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Product)(nil))
+	return reflect.TypeOf((**Product)(nil)).Elem()
 }
 
 func (o ProductOutput) ToProductOutput() ProductOutput {

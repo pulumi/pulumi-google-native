@@ -122,7 +122,7 @@ type WorkerPoolInput interface {
 }
 
 func (*WorkerPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerPool)(nil))
+	return reflect.TypeOf((**WorkerPool)(nil)).Elem()
 }
 
 func (i *WorkerPool) ToWorkerPoolOutput() WorkerPoolOutput {
@@ -136,7 +136,7 @@ func (i *WorkerPool) ToWorkerPoolOutputWithContext(ctx context.Context) WorkerPo
 type WorkerPoolOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerPool)(nil))
+	return reflect.TypeOf((**WorkerPool)(nil)).Elem()
 }
 
 func (o WorkerPoolOutput) ToWorkerPoolOutput() WorkerPoolOutput {

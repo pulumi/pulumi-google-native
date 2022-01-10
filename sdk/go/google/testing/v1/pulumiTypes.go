@@ -156,76 +156,6 @@ type AccountResponse struct {
 	GoogleAuto GoogleAutoResponse `pulumi:"googleAuto"`
 }
 
-// AccountResponseInput is an input type that accepts AccountResponseArgs and AccountResponseOutput values.
-// You can construct a concrete instance of `AccountResponseInput` via:
-//
-//          AccountResponseArgs{...}
-type AccountResponseInput interface {
-	pulumi.Input
-
-	ToAccountResponseOutput() AccountResponseOutput
-	ToAccountResponseOutputWithContext(context.Context) AccountResponseOutput
-}
-
-// Identifies an account and how to log into it.
-type AccountResponseArgs struct {
-	// An automatic google login account.
-	GoogleAuto GoogleAutoResponseInput `pulumi:"googleAuto"`
-}
-
-func (AccountResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountResponse)(nil)).Elem()
-}
-
-func (i AccountResponseArgs) ToAccountResponseOutput() AccountResponseOutput {
-	return i.ToAccountResponseOutputWithContext(context.Background())
-}
-
-func (i AccountResponseArgs) ToAccountResponseOutputWithContext(ctx context.Context) AccountResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountResponseOutput)
-}
-
-func (i AccountResponseArgs) ToAccountResponsePtrOutput() AccountResponsePtrOutput {
-	return i.ToAccountResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AccountResponseArgs) ToAccountResponsePtrOutputWithContext(ctx context.Context) AccountResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountResponseOutput).ToAccountResponsePtrOutputWithContext(ctx)
-}
-
-// AccountResponsePtrInput is an input type that accepts AccountResponseArgs, AccountResponsePtr and AccountResponsePtrOutput values.
-// You can construct a concrete instance of `AccountResponsePtrInput` via:
-//
-//          AccountResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AccountResponsePtrInput interface {
-	pulumi.Input
-
-	ToAccountResponsePtrOutput() AccountResponsePtrOutput
-	ToAccountResponsePtrOutputWithContext(context.Context) AccountResponsePtrOutput
-}
-
-type accountResponsePtrType AccountResponseArgs
-
-func AccountResponsePtr(v *AccountResponseArgs) AccountResponsePtrInput {
-	return (*accountResponsePtrType)(v)
-}
-
-func (*accountResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccountResponse)(nil)).Elem()
-}
-
-func (i *accountResponsePtrType) ToAccountResponsePtrOutput() AccountResponsePtrOutput {
-	return i.ToAccountResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *accountResponsePtrType) ToAccountResponsePtrOutputWithContext(ctx context.Context) AccountResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountResponsePtrOutput)
-}
-
 // Identifies an account and how to log into it.
 type AccountResponseOutput struct{ *pulumi.OutputState }
 
@@ -241,53 +171,9 @@ func (o AccountResponseOutput) ToAccountResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o AccountResponseOutput) ToAccountResponsePtrOutput() AccountResponsePtrOutput {
-	return o.ToAccountResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AccountResponseOutput) ToAccountResponsePtrOutputWithContext(ctx context.Context) AccountResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountResponse) *AccountResponse {
-		return &v
-	}).(AccountResponsePtrOutput)
-}
-
 // An automatic google login account.
 func (o AccountResponseOutput) GoogleAuto() GoogleAutoResponseOutput {
 	return o.ApplyT(func(v AccountResponse) GoogleAutoResponse { return v.GoogleAuto }).(GoogleAutoResponseOutput)
-}
-
-type AccountResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AccountResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccountResponse)(nil)).Elem()
-}
-
-func (o AccountResponsePtrOutput) ToAccountResponsePtrOutput() AccountResponsePtrOutput {
-	return o
-}
-
-func (o AccountResponsePtrOutput) ToAccountResponsePtrOutputWithContext(ctx context.Context) AccountResponsePtrOutput {
-	return o
-}
-
-func (o AccountResponsePtrOutput) Elem() AccountResponseOutput {
-	return o.ApplyT(func(v *AccountResponse) AccountResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AccountResponse
-		return ret
-	}).(AccountResponseOutput)
-}
-
-// An automatic google login account.
-func (o AccountResponsePtrOutput) GoogleAuto() GoogleAutoResponsePtrOutput {
-	return o.ApplyT(func(v *AccountResponse) *GoogleAutoResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.GoogleAuto
-	}).(GoogleAutoResponsePtrOutput)
 }
 
 // A single Android device.
@@ -563,76 +449,6 @@ type AndroidDeviceListResponse struct {
 	AndroidDevices []AndroidDeviceResponse `pulumi:"androidDevices"`
 }
 
-// AndroidDeviceListResponseInput is an input type that accepts AndroidDeviceListResponseArgs and AndroidDeviceListResponseOutput values.
-// You can construct a concrete instance of `AndroidDeviceListResponseInput` via:
-//
-//          AndroidDeviceListResponseArgs{...}
-type AndroidDeviceListResponseInput interface {
-	pulumi.Input
-
-	ToAndroidDeviceListResponseOutput() AndroidDeviceListResponseOutput
-	ToAndroidDeviceListResponseOutputWithContext(context.Context) AndroidDeviceListResponseOutput
-}
-
-// A list of Android device configurations in which the test is to be executed.
-type AndroidDeviceListResponseArgs struct {
-	// A list of Android devices.
-	AndroidDevices AndroidDeviceResponseArrayInput `pulumi:"androidDevices"`
-}
-
-func (AndroidDeviceListResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AndroidDeviceListResponse)(nil)).Elem()
-}
-
-func (i AndroidDeviceListResponseArgs) ToAndroidDeviceListResponseOutput() AndroidDeviceListResponseOutput {
-	return i.ToAndroidDeviceListResponseOutputWithContext(context.Background())
-}
-
-func (i AndroidDeviceListResponseArgs) ToAndroidDeviceListResponseOutputWithContext(ctx context.Context) AndroidDeviceListResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidDeviceListResponseOutput)
-}
-
-func (i AndroidDeviceListResponseArgs) ToAndroidDeviceListResponsePtrOutput() AndroidDeviceListResponsePtrOutput {
-	return i.ToAndroidDeviceListResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AndroidDeviceListResponseArgs) ToAndroidDeviceListResponsePtrOutputWithContext(ctx context.Context) AndroidDeviceListResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidDeviceListResponseOutput).ToAndroidDeviceListResponsePtrOutputWithContext(ctx)
-}
-
-// AndroidDeviceListResponsePtrInput is an input type that accepts AndroidDeviceListResponseArgs, AndroidDeviceListResponsePtr and AndroidDeviceListResponsePtrOutput values.
-// You can construct a concrete instance of `AndroidDeviceListResponsePtrInput` via:
-//
-//          AndroidDeviceListResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AndroidDeviceListResponsePtrInput interface {
-	pulumi.Input
-
-	ToAndroidDeviceListResponsePtrOutput() AndroidDeviceListResponsePtrOutput
-	ToAndroidDeviceListResponsePtrOutputWithContext(context.Context) AndroidDeviceListResponsePtrOutput
-}
-
-type androidDeviceListResponsePtrType AndroidDeviceListResponseArgs
-
-func AndroidDeviceListResponsePtr(v *AndroidDeviceListResponseArgs) AndroidDeviceListResponsePtrInput {
-	return (*androidDeviceListResponsePtrType)(v)
-}
-
-func (*androidDeviceListResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AndroidDeviceListResponse)(nil)).Elem()
-}
-
-func (i *androidDeviceListResponsePtrType) ToAndroidDeviceListResponsePtrOutput() AndroidDeviceListResponsePtrOutput {
-	return i.ToAndroidDeviceListResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *androidDeviceListResponsePtrType) ToAndroidDeviceListResponsePtrOutputWithContext(ctx context.Context) AndroidDeviceListResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidDeviceListResponsePtrOutput)
-}
-
 // A list of Android device configurations in which the test is to be executed.
 type AndroidDeviceListResponseOutput struct{ *pulumi.OutputState }
 
@@ -648,53 +464,9 @@ func (o AndroidDeviceListResponseOutput) ToAndroidDeviceListResponseOutputWithCo
 	return o
 }
 
-func (o AndroidDeviceListResponseOutput) ToAndroidDeviceListResponsePtrOutput() AndroidDeviceListResponsePtrOutput {
-	return o.ToAndroidDeviceListResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AndroidDeviceListResponseOutput) ToAndroidDeviceListResponsePtrOutputWithContext(ctx context.Context) AndroidDeviceListResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidDeviceListResponse) *AndroidDeviceListResponse {
-		return &v
-	}).(AndroidDeviceListResponsePtrOutput)
-}
-
 // A list of Android devices.
 func (o AndroidDeviceListResponseOutput) AndroidDevices() AndroidDeviceResponseArrayOutput {
 	return o.ApplyT(func(v AndroidDeviceListResponse) []AndroidDeviceResponse { return v.AndroidDevices }).(AndroidDeviceResponseArrayOutput)
-}
-
-type AndroidDeviceListResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AndroidDeviceListResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AndroidDeviceListResponse)(nil)).Elem()
-}
-
-func (o AndroidDeviceListResponsePtrOutput) ToAndroidDeviceListResponsePtrOutput() AndroidDeviceListResponsePtrOutput {
-	return o
-}
-
-func (o AndroidDeviceListResponsePtrOutput) ToAndroidDeviceListResponsePtrOutputWithContext(ctx context.Context) AndroidDeviceListResponsePtrOutput {
-	return o
-}
-
-func (o AndroidDeviceListResponsePtrOutput) Elem() AndroidDeviceListResponseOutput {
-	return o.ApplyT(func(v *AndroidDeviceListResponse) AndroidDeviceListResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AndroidDeviceListResponse
-		return ret
-	}).(AndroidDeviceListResponseOutput)
-}
-
-// A list of Android devices.
-func (o AndroidDeviceListResponsePtrOutput) AndroidDevices() AndroidDeviceResponseArrayOutput {
-	return o.ApplyT(func(v *AndroidDeviceListResponse) []AndroidDeviceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AndroidDevices
-	}).(AndroidDeviceResponseArrayOutput)
 }
 
 // A single Android device.
@@ -707,66 +479,6 @@ type AndroidDeviceResponse struct {
 	Locale string `pulumi:"locale"`
 	// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
 	Orientation string `pulumi:"orientation"`
-}
-
-// AndroidDeviceResponseInput is an input type that accepts AndroidDeviceResponseArgs and AndroidDeviceResponseOutput values.
-// You can construct a concrete instance of `AndroidDeviceResponseInput` via:
-//
-//          AndroidDeviceResponseArgs{...}
-type AndroidDeviceResponseInput interface {
-	pulumi.Input
-
-	ToAndroidDeviceResponseOutput() AndroidDeviceResponseOutput
-	ToAndroidDeviceResponseOutputWithContext(context.Context) AndroidDeviceResponseOutput
-}
-
-// A single Android device.
-type AndroidDeviceResponseArgs struct {
-	// The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-	AndroidModelId pulumi.StringInput `pulumi:"androidModelId"`
-	// The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-	AndroidVersionId pulumi.StringInput `pulumi:"androidVersionId"`
-	// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-	Locale pulumi.StringInput `pulumi:"locale"`
-	// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
-	Orientation pulumi.StringInput `pulumi:"orientation"`
-}
-
-func (AndroidDeviceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AndroidDeviceResponse)(nil)).Elem()
-}
-
-func (i AndroidDeviceResponseArgs) ToAndroidDeviceResponseOutput() AndroidDeviceResponseOutput {
-	return i.ToAndroidDeviceResponseOutputWithContext(context.Background())
-}
-
-func (i AndroidDeviceResponseArgs) ToAndroidDeviceResponseOutputWithContext(ctx context.Context) AndroidDeviceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidDeviceResponseOutput)
-}
-
-// AndroidDeviceResponseArrayInput is an input type that accepts AndroidDeviceResponseArray and AndroidDeviceResponseArrayOutput values.
-// You can construct a concrete instance of `AndroidDeviceResponseArrayInput` via:
-//
-//          AndroidDeviceResponseArray{ AndroidDeviceResponseArgs{...} }
-type AndroidDeviceResponseArrayInput interface {
-	pulumi.Input
-
-	ToAndroidDeviceResponseArrayOutput() AndroidDeviceResponseArrayOutput
-	ToAndroidDeviceResponseArrayOutputWithContext(context.Context) AndroidDeviceResponseArrayOutput
-}
-
-type AndroidDeviceResponseArray []AndroidDeviceResponseInput
-
-func (AndroidDeviceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AndroidDeviceResponse)(nil)).Elem()
-}
-
-func (i AndroidDeviceResponseArray) ToAndroidDeviceResponseArrayOutput() AndroidDeviceResponseArrayOutput {
-	return i.ToAndroidDeviceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AndroidDeviceResponseArray) ToAndroidDeviceResponseArrayOutputWithContext(ctx context.Context) AndroidDeviceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidDeviceResponseArrayOutput)
 }
 
 // A single Android device.
@@ -1140,92 +852,6 @@ type AndroidInstrumentationTestResponse struct {
 	TestTargets []string `pulumi:"testTargets"`
 }
 
-// AndroidInstrumentationTestResponseInput is an input type that accepts AndroidInstrumentationTestResponseArgs and AndroidInstrumentationTestResponseOutput values.
-// You can construct a concrete instance of `AndroidInstrumentationTestResponseInput` via:
-//
-//          AndroidInstrumentationTestResponseArgs{...}
-type AndroidInstrumentationTestResponseInput interface {
-	pulumi.Input
-
-	ToAndroidInstrumentationTestResponseOutput() AndroidInstrumentationTestResponseOutput
-	ToAndroidInstrumentationTestResponseOutputWithContext(context.Context) AndroidInstrumentationTestResponseOutput
-}
-
-// A test of an Android application that can control an Android component independently of its normal lifecycle. Android instrumentation tests run an application APK and test APK inside the same process on a virtual or physical AndroidDevice. They also specify a test runner class, such as com.google.GoogleTestRunner, which can vary on the specific instrumentation framework chosen. See for more information on types of Android tests.
-type AndroidInstrumentationTestResponseArgs struct {
-	// The APK for the application under test.
-	AppApk FileReferenceResponseInput `pulumi:"appApk"`
-	// A multi-apk app bundle for the application under test.
-	AppBundle AppBundleResponseInput `pulumi:"appBundle"`
-	// The java package for the application under test. The default value is determined by examining the application's manifest.
-	AppPackageId pulumi.StringInput `pulumi:"appPackageId"`
-	// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
-	OrchestratorOption pulumi.StringInput `pulumi:"orchestratorOption"`
-	// The option to run tests in multiple shards in parallel.
-	ShardingOption ShardingOptionResponseInput `pulumi:"shardingOption"`
-	// The APK containing the test code to be executed.
-	TestApk FileReferenceResponseInput `pulumi:"testApk"`
-	// The java package for the test to be executed. The default value is determined by examining the application's manifest.
-	TestPackageId pulumi.StringInput `pulumi:"testPackageId"`
-	// The InstrumentationTestRunner class. The default value is determined by examining the application's manifest.
-	TestRunnerClass pulumi.StringInput `pulumi:"testRunnerClass"`
-	// Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run.
-	TestTargets pulumi.StringArrayInput `pulumi:"testTargets"`
-}
-
-func (AndroidInstrumentationTestResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AndroidInstrumentationTestResponse)(nil)).Elem()
-}
-
-func (i AndroidInstrumentationTestResponseArgs) ToAndroidInstrumentationTestResponseOutput() AndroidInstrumentationTestResponseOutput {
-	return i.ToAndroidInstrumentationTestResponseOutputWithContext(context.Background())
-}
-
-func (i AndroidInstrumentationTestResponseArgs) ToAndroidInstrumentationTestResponseOutputWithContext(ctx context.Context) AndroidInstrumentationTestResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidInstrumentationTestResponseOutput)
-}
-
-func (i AndroidInstrumentationTestResponseArgs) ToAndroidInstrumentationTestResponsePtrOutput() AndroidInstrumentationTestResponsePtrOutput {
-	return i.ToAndroidInstrumentationTestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AndroidInstrumentationTestResponseArgs) ToAndroidInstrumentationTestResponsePtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidInstrumentationTestResponseOutput).ToAndroidInstrumentationTestResponsePtrOutputWithContext(ctx)
-}
-
-// AndroidInstrumentationTestResponsePtrInput is an input type that accepts AndroidInstrumentationTestResponseArgs, AndroidInstrumentationTestResponsePtr and AndroidInstrumentationTestResponsePtrOutput values.
-// You can construct a concrete instance of `AndroidInstrumentationTestResponsePtrInput` via:
-//
-//          AndroidInstrumentationTestResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AndroidInstrumentationTestResponsePtrInput interface {
-	pulumi.Input
-
-	ToAndroidInstrumentationTestResponsePtrOutput() AndroidInstrumentationTestResponsePtrOutput
-	ToAndroidInstrumentationTestResponsePtrOutputWithContext(context.Context) AndroidInstrumentationTestResponsePtrOutput
-}
-
-type androidInstrumentationTestResponsePtrType AndroidInstrumentationTestResponseArgs
-
-func AndroidInstrumentationTestResponsePtr(v *AndroidInstrumentationTestResponseArgs) AndroidInstrumentationTestResponsePtrInput {
-	return (*androidInstrumentationTestResponsePtrType)(v)
-}
-
-func (*androidInstrumentationTestResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AndroidInstrumentationTestResponse)(nil)).Elem()
-}
-
-func (i *androidInstrumentationTestResponsePtrType) ToAndroidInstrumentationTestResponsePtrOutput() AndroidInstrumentationTestResponsePtrOutput {
-	return i.ToAndroidInstrumentationTestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *androidInstrumentationTestResponsePtrType) ToAndroidInstrumentationTestResponsePtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidInstrumentationTestResponsePtrOutput)
-}
-
 // A test of an Android application that can control an Android component independently of its normal lifecycle. Android instrumentation tests run an application APK and test APK inside the same process on a virtual or physical AndroidDevice. They also specify a test runner class, such as com.google.GoogleTestRunner, which can vary on the specific instrumentation framework chosen. See for more information on types of Android tests.
 type AndroidInstrumentationTestResponseOutput struct{ *pulumi.OutputState }
 
@@ -1239,16 +865,6 @@ func (o AndroidInstrumentationTestResponseOutput) ToAndroidInstrumentationTestRe
 
 func (o AndroidInstrumentationTestResponseOutput) ToAndroidInstrumentationTestResponseOutputWithContext(ctx context.Context) AndroidInstrumentationTestResponseOutput {
 	return o
-}
-
-func (o AndroidInstrumentationTestResponseOutput) ToAndroidInstrumentationTestResponsePtrOutput() AndroidInstrumentationTestResponsePtrOutput {
-	return o.ToAndroidInstrumentationTestResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AndroidInstrumentationTestResponseOutput) ToAndroidInstrumentationTestResponsePtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidInstrumentationTestResponse) *AndroidInstrumentationTestResponse {
-		return &v
-	}).(AndroidInstrumentationTestResponsePtrOutput)
 }
 
 // The APK for the application under test.
@@ -1294,120 +910,6 @@ func (o AndroidInstrumentationTestResponseOutput) TestRunnerClass() pulumi.Strin
 // Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run.
 func (o AndroidInstrumentationTestResponseOutput) TestTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AndroidInstrumentationTestResponse) []string { return v.TestTargets }).(pulumi.StringArrayOutput)
-}
-
-type AndroidInstrumentationTestResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AndroidInstrumentationTestResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AndroidInstrumentationTestResponse)(nil)).Elem()
-}
-
-func (o AndroidInstrumentationTestResponsePtrOutput) ToAndroidInstrumentationTestResponsePtrOutput() AndroidInstrumentationTestResponsePtrOutput {
-	return o
-}
-
-func (o AndroidInstrumentationTestResponsePtrOutput) ToAndroidInstrumentationTestResponsePtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestResponsePtrOutput {
-	return o
-}
-
-func (o AndroidInstrumentationTestResponsePtrOutput) Elem() AndroidInstrumentationTestResponseOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) AndroidInstrumentationTestResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AndroidInstrumentationTestResponse
-		return ret
-	}).(AndroidInstrumentationTestResponseOutput)
-}
-
-// The APK for the application under test.
-func (o AndroidInstrumentationTestResponsePtrOutput) AppApk() FileReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) *FileReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AppApk
-	}).(FileReferenceResponsePtrOutput)
-}
-
-// A multi-apk app bundle for the application under test.
-func (o AndroidInstrumentationTestResponsePtrOutput) AppBundle() AppBundleResponsePtrOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) *AppBundleResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AppBundle
-	}).(AppBundleResponsePtrOutput)
-}
-
-// The java package for the application under test. The default value is determined by examining the application's manifest.
-func (o AndroidInstrumentationTestResponsePtrOutput) AppPackageId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AppPackageId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
-func (o AndroidInstrumentationTestResponsePtrOutput) OrchestratorOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OrchestratorOption
-	}).(pulumi.StringPtrOutput)
-}
-
-// The option to run tests in multiple shards in parallel.
-func (o AndroidInstrumentationTestResponsePtrOutput) ShardingOption() ShardingOptionResponsePtrOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) *ShardingOptionResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ShardingOption
-	}).(ShardingOptionResponsePtrOutput)
-}
-
-// The APK containing the test code to be executed.
-func (o AndroidInstrumentationTestResponsePtrOutput) TestApk() FileReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) *FileReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TestApk
-	}).(FileReferenceResponsePtrOutput)
-}
-
-// The java package for the test to be executed. The default value is determined by examining the application's manifest.
-func (o AndroidInstrumentationTestResponsePtrOutput) TestPackageId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TestPackageId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The InstrumentationTestRunner class. The default value is determined by examining the application's manifest.
-func (o AndroidInstrumentationTestResponsePtrOutput) TestRunnerClass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TestRunnerClass
-	}).(pulumi.StringPtrOutput)
-}
-
-// Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run.
-func (o AndroidInstrumentationTestResponsePtrOutput) TestTargets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.TestTargets
-	}).(pulumi.StringArrayOutput)
 }
 
 // A set of Android device configuration permutations is defined by the the cross-product of the given axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported permutations will be instantiated. Invalid permutations (e.g., incompatible models/versions) are ignored.
@@ -1619,82 +1121,6 @@ type AndroidMatrixResponse struct {
 	Orientations []string `pulumi:"orientations"`
 }
 
-// AndroidMatrixResponseInput is an input type that accepts AndroidMatrixResponseArgs and AndroidMatrixResponseOutput values.
-// You can construct a concrete instance of `AndroidMatrixResponseInput` via:
-//
-//          AndroidMatrixResponseArgs{...}
-type AndroidMatrixResponseInput interface {
-	pulumi.Input
-
-	ToAndroidMatrixResponseOutput() AndroidMatrixResponseOutput
-	ToAndroidMatrixResponseOutputWithContext(context.Context) AndroidMatrixResponseOutput
-}
-
-// A set of Android device configuration permutations is defined by the the cross-product of the given axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported permutations will be instantiated. Invalid permutations (e.g., incompatible models/versions) are ignored.
-type AndroidMatrixResponseArgs struct {
-	// The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-	AndroidModelIds pulumi.StringArrayInput `pulumi:"androidModelIds"`
-	// The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-	AndroidVersionIds pulumi.StringArrayInput `pulumi:"androidVersionIds"`
-	// The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-	Locales pulumi.StringArrayInput `pulumi:"locales"`
-	// The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
-	Orientations pulumi.StringArrayInput `pulumi:"orientations"`
-}
-
-func (AndroidMatrixResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AndroidMatrixResponse)(nil)).Elem()
-}
-
-func (i AndroidMatrixResponseArgs) ToAndroidMatrixResponseOutput() AndroidMatrixResponseOutput {
-	return i.ToAndroidMatrixResponseOutputWithContext(context.Background())
-}
-
-func (i AndroidMatrixResponseArgs) ToAndroidMatrixResponseOutputWithContext(ctx context.Context) AndroidMatrixResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidMatrixResponseOutput)
-}
-
-func (i AndroidMatrixResponseArgs) ToAndroidMatrixResponsePtrOutput() AndroidMatrixResponsePtrOutput {
-	return i.ToAndroidMatrixResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AndroidMatrixResponseArgs) ToAndroidMatrixResponsePtrOutputWithContext(ctx context.Context) AndroidMatrixResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidMatrixResponseOutput).ToAndroidMatrixResponsePtrOutputWithContext(ctx)
-}
-
-// AndroidMatrixResponsePtrInput is an input type that accepts AndroidMatrixResponseArgs, AndroidMatrixResponsePtr and AndroidMatrixResponsePtrOutput values.
-// You can construct a concrete instance of `AndroidMatrixResponsePtrInput` via:
-//
-//          AndroidMatrixResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AndroidMatrixResponsePtrInput interface {
-	pulumi.Input
-
-	ToAndroidMatrixResponsePtrOutput() AndroidMatrixResponsePtrOutput
-	ToAndroidMatrixResponsePtrOutputWithContext(context.Context) AndroidMatrixResponsePtrOutput
-}
-
-type androidMatrixResponsePtrType AndroidMatrixResponseArgs
-
-func AndroidMatrixResponsePtr(v *AndroidMatrixResponseArgs) AndroidMatrixResponsePtrInput {
-	return (*androidMatrixResponsePtrType)(v)
-}
-
-func (*androidMatrixResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AndroidMatrixResponse)(nil)).Elem()
-}
-
-func (i *androidMatrixResponsePtrType) ToAndroidMatrixResponsePtrOutput() AndroidMatrixResponsePtrOutput {
-	return i.ToAndroidMatrixResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *androidMatrixResponsePtrType) ToAndroidMatrixResponsePtrOutputWithContext(ctx context.Context) AndroidMatrixResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidMatrixResponsePtrOutput)
-}
-
 // A set of Android device configuration permutations is defined by the the cross-product of the given axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported permutations will be instantiated. Invalid permutations (e.g., incompatible models/versions) are ignored.
 type AndroidMatrixResponseOutput struct{ *pulumi.OutputState }
 
@@ -1708,16 +1134,6 @@ func (o AndroidMatrixResponseOutput) ToAndroidMatrixResponseOutput() AndroidMatr
 
 func (o AndroidMatrixResponseOutput) ToAndroidMatrixResponseOutputWithContext(ctx context.Context) AndroidMatrixResponseOutput {
 	return o
-}
-
-func (o AndroidMatrixResponseOutput) ToAndroidMatrixResponsePtrOutput() AndroidMatrixResponsePtrOutput {
-	return o.ToAndroidMatrixResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AndroidMatrixResponseOutput) ToAndroidMatrixResponsePtrOutputWithContext(ctx context.Context) AndroidMatrixResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidMatrixResponse) *AndroidMatrixResponse {
-		return &v
-	}).(AndroidMatrixResponsePtrOutput)
 }
 
 // The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
@@ -1738,70 +1154,6 @@ func (o AndroidMatrixResponseOutput) Locales() pulumi.StringArrayOutput {
 // The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixResponseOutput) Orientations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AndroidMatrixResponse) []string { return v.Orientations }).(pulumi.StringArrayOutput)
-}
-
-type AndroidMatrixResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AndroidMatrixResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AndroidMatrixResponse)(nil)).Elem()
-}
-
-func (o AndroidMatrixResponsePtrOutput) ToAndroidMatrixResponsePtrOutput() AndroidMatrixResponsePtrOutput {
-	return o
-}
-
-func (o AndroidMatrixResponsePtrOutput) ToAndroidMatrixResponsePtrOutputWithContext(ctx context.Context) AndroidMatrixResponsePtrOutput {
-	return o
-}
-
-func (o AndroidMatrixResponsePtrOutput) Elem() AndroidMatrixResponseOutput {
-	return o.ApplyT(func(v *AndroidMatrixResponse) AndroidMatrixResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AndroidMatrixResponse
-		return ret
-	}).(AndroidMatrixResponseOutput)
-}
-
-// The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-func (o AndroidMatrixResponsePtrOutput) AndroidModelIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AndroidMatrixResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AndroidModelIds
-	}).(pulumi.StringArrayOutput)
-}
-
-// The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-func (o AndroidMatrixResponsePtrOutput) AndroidVersionIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AndroidMatrixResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AndroidVersionIds
-	}).(pulumi.StringArrayOutput)
-}
-
-// The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-func (o AndroidMatrixResponsePtrOutput) Locales() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AndroidMatrixResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Locales
-	}).(pulumi.StringArrayOutput)
-}
-
-// The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
-func (o AndroidMatrixResponsePtrOutput) Orientations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AndroidMatrixResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Orientations
-	}).(pulumi.StringArrayOutput)
 }
 
 // A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes.
@@ -2097,90 +1449,6 @@ type AndroidRoboTestResponse struct {
 	StartingIntents []RoboStartingIntentResponse `pulumi:"startingIntents"`
 }
 
-// AndroidRoboTestResponseInput is an input type that accepts AndroidRoboTestResponseArgs and AndroidRoboTestResponseOutput values.
-// You can construct a concrete instance of `AndroidRoboTestResponseInput` via:
-//
-//          AndroidRoboTestResponseArgs{...}
-type AndroidRoboTestResponseInput interface {
-	pulumi.Input
-
-	ToAndroidRoboTestResponseOutput() AndroidRoboTestResponseOutput
-	ToAndroidRoboTestResponseOutputWithContext(context.Context) AndroidRoboTestResponseOutput
-}
-
-// A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes.
-type AndroidRoboTestResponseArgs struct {
-	// The APK for the application under test.
-	AppApk FileReferenceResponseInput `pulumi:"appApk"`
-	// A multi-apk app bundle for the application under test.
-	AppBundle AppBundleResponseInput `pulumi:"appBundle"`
-	// The initial activity that should be used to start the app.
-	AppInitialActivity pulumi.StringInput `pulumi:"appInitialActivity"`
-	// The java package for the application under test. The default value is determined by examining the application's manifest.
-	AppPackageId pulumi.StringInput `pulumi:"appPackageId"`
-	// A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
-	RoboDirectives RoboDirectiveResponseArrayInput `pulumi:"roboDirectives"`
-	// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
-	RoboMode pulumi.StringInput `pulumi:"roboMode"`
-	// A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
-	RoboScript FileReferenceResponseInput `pulumi:"roboScript"`
-	// The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is launched. If some are provided, then only those provided are launched (the main launcher activity must be provided explicitly).
-	StartingIntents RoboStartingIntentResponseArrayInput `pulumi:"startingIntents"`
-}
-
-func (AndroidRoboTestResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AndroidRoboTestResponse)(nil)).Elem()
-}
-
-func (i AndroidRoboTestResponseArgs) ToAndroidRoboTestResponseOutput() AndroidRoboTestResponseOutput {
-	return i.ToAndroidRoboTestResponseOutputWithContext(context.Background())
-}
-
-func (i AndroidRoboTestResponseArgs) ToAndroidRoboTestResponseOutputWithContext(ctx context.Context) AndroidRoboTestResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidRoboTestResponseOutput)
-}
-
-func (i AndroidRoboTestResponseArgs) ToAndroidRoboTestResponsePtrOutput() AndroidRoboTestResponsePtrOutput {
-	return i.ToAndroidRoboTestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AndroidRoboTestResponseArgs) ToAndroidRoboTestResponsePtrOutputWithContext(ctx context.Context) AndroidRoboTestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidRoboTestResponseOutput).ToAndroidRoboTestResponsePtrOutputWithContext(ctx)
-}
-
-// AndroidRoboTestResponsePtrInput is an input type that accepts AndroidRoboTestResponseArgs, AndroidRoboTestResponsePtr and AndroidRoboTestResponsePtrOutput values.
-// You can construct a concrete instance of `AndroidRoboTestResponsePtrInput` via:
-//
-//          AndroidRoboTestResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AndroidRoboTestResponsePtrInput interface {
-	pulumi.Input
-
-	ToAndroidRoboTestResponsePtrOutput() AndroidRoboTestResponsePtrOutput
-	ToAndroidRoboTestResponsePtrOutputWithContext(context.Context) AndroidRoboTestResponsePtrOutput
-}
-
-type androidRoboTestResponsePtrType AndroidRoboTestResponseArgs
-
-func AndroidRoboTestResponsePtr(v *AndroidRoboTestResponseArgs) AndroidRoboTestResponsePtrInput {
-	return (*androidRoboTestResponsePtrType)(v)
-}
-
-func (*androidRoboTestResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AndroidRoboTestResponse)(nil)).Elem()
-}
-
-func (i *androidRoboTestResponsePtrType) ToAndroidRoboTestResponsePtrOutput() AndroidRoboTestResponsePtrOutput {
-	return i.ToAndroidRoboTestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *androidRoboTestResponsePtrType) ToAndroidRoboTestResponsePtrOutputWithContext(ctx context.Context) AndroidRoboTestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidRoboTestResponsePtrOutput)
-}
-
 // A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes.
 type AndroidRoboTestResponseOutput struct{ *pulumi.OutputState }
 
@@ -2194,16 +1462,6 @@ func (o AndroidRoboTestResponseOutput) ToAndroidRoboTestResponseOutput() Android
 
 func (o AndroidRoboTestResponseOutput) ToAndroidRoboTestResponseOutputWithContext(ctx context.Context) AndroidRoboTestResponseOutput {
 	return o
-}
-
-func (o AndroidRoboTestResponseOutput) ToAndroidRoboTestResponsePtrOutput() AndroidRoboTestResponsePtrOutput {
-	return o.ToAndroidRoboTestResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AndroidRoboTestResponseOutput) ToAndroidRoboTestResponsePtrOutputWithContext(ctx context.Context) AndroidRoboTestResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidRoboTestResponse) *AndroidRoboTestResponse {
-		return &v
-	}).(AndroidRoboTestResponsePtrOutput)
 }
 
 // The APK for the application under test.
@@ -2244,110 +1502,6 @@ func (o AndroidRoboTestResponseOutput) RoboScript() FileReferenceResponseOutput 
 // The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is launched. If some are provided, then only those provided are launched (the main launcher activity must be provided explicitly).
 func (o AndroidRoboTestResponseOutput) StartingIntents() RoboStartingIntentResponseArrayOutput {
 	return o.ApplyT(func(v AndroidRoboTestResponse) []RoboStartingIntentResponse { return v.StartingIntents }).(RoboStartingIntentResponseArrayOutput)
-}
-
-type AndroidRoboTestResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AndroidRoboTestResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AndroidRoboTestResponse)(nil)).Elem()
-}
-
-func (o AndroidRoboTestResponsePtrOutput) ToAndroidRoboTestResponsePtrOutput() AndroidRoboTestResponsePtrOutput {
-	return o
-}
-
-func (o AndroidRoboTestResponsePtrOutput) ToAndroidRoboTestResponsePtrOutputWithContext(ctx context.Context) AndroidRoboTestResponsePtrOutput {
-	return o
-}
-
-func (o AndroidRoboTestResponsePtrOutput) Elem() AndroidRoboTestResponseOutput {
-	return o.ApplyT(func(v *AndroidRoboTestResponse) AndroidRoboTestResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AndroidRoboTestResponse
-		return ret
-	}).(AndroidRoboTestResponseOutput)
-}
-
-// The APK for the application under test.
-func (o AndroidRoboTestResponsePtrOutput) AppApk() FileReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *AndroidRoboTestResponse) *FileReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AppApk
-	}).(FileReferenceResponsePtrOutput)
-}
-
-// A multi-apk app bundle for the application under test.
-func (o AndroidRoboTestResponsePtrOutput) AppBundle() AppBundleResponsePtrOutput {
-	return o.ApplyT(func(v *AndroidRoboTestResponse) *AppBundleResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AppBundle
-	}).(AppBundleResponsePtrOutput)
-}
-
-// The initial activity that should be used to start the app.
-func (o AndroidRoboTestResponsePtrOutput) AppInitialActivity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AndroidRoboTestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AppInitialActivity
-	}).(pulumi.StringPtrOutput)
-}
-
-// The java package for the application under test. The default value is determined by examining the application's manifest.
-func (o AndroidRoboTestResponsePtrOutput) AppPackageId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AndroidRoboTestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AppPackageId
-	}).(pulumi.StringPtrOutput)
-}
-
-// A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
-func (o AndroidRoboTestResponsePtrOutput) RoboDirectives() RoboDirectiveResponseArrayOutput {
-	return o.ApplyT(func(v *AndroidRoboTestResponse) []RoboDirectiveResponse {
-		if v == nil {
-			return nil
-		}
-		return v.RoboDirectives
-	}).(RoboDirectiveResponseArrayOutput)
-}
-
-// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
-func (o AndroidRoboTestResponsePtrOutput) RoboMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AndroidRoboTestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RoboMode
-	}).(pulumi.StringPtrOutput)
-}
-
-// A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
-func (o AndroidRoboTestResponsePtrOutput) RoboScript() FileReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *AndroidRoboTestResponse) *FileReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.RoboScript
-	}).(FileReferenceResponsePtrOutput)
-}
-
-// The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is launched. If some are provided, then only those provided are launched (the main launcher activity must be provided explicitly).
-func (o AndroidRoboTestResponsePtrOutput) StartingIntents() RoboStartingIntentResponseArrayOutput {
-	return o.ApplyT(func(v *AndroidRoboTestResponse) []RoboStartingIntentResponse {
-		if v == nil {
-			return nil
-		}
-		return v.StartingIntents
-	}).(RoboStartingIntentResponseArrayOutput)
 }
 
 // A test of an Android Application with a Test Loop. The intent \ will be implicitly added, since Games is the only user of this api, for the time being.
@@ -2580,84 +1734,6 @@ type AndroidTestLoopResponse struct {
 	Scenarios []int `pulumi:"scenarios"`
 }
 
-// AndroidTestLoopResponseInput is an input type that accepts AndroidTestLoopResponseArgs and AndroidTestLoopResponseOutput values.
-// You can construct a concrete instance of `AndroidTestLoopResponseInput` via:
-//
-//          AndroidTestLoopResponseArgs{...}
-type AndroidTestLoopResponseInput interface {
-	pulumi.Input
-
-	ToAndroidTestLoopResponseOutput() AndroidTestLoopResponseOutput
-	ToAndroidTestLoopResponseOutputWithContext(context.Context) AndroidTestLoopResponseOutput
-}
-
-// A test of an Android Application with a Test Loop. The intent \ will be implicitly added, since Games is the only user of this api, for the time being.
-type AndroidTestLoopResponseArgs struct {
-	// The APK for the application under test.
-	AppApk FileReferenceResponseInput `pulumi:"appApk"`
-	// A multi-apk app bundle for the application under test.
-	AppBundle AppBundleResponseInput `pulumi:"appBundle"`
-	// The java package for the application under test. The default is determined by examining the application's manifest.
-	AppPackageId pulumi.StringInput `pulumi:"appPackageId"`
-	// The list of scenario labels that should be run during the test. The scenario labels should map to labels defined in the application's manifest. For example, player_experience and com.google.test.loops.player_experience add all of the loops labeled in the manifest with the com.google.test.loops.player_experience name to the execution. Scenarios can also be specified in the scenarios field.
-	ScenarioLabels pulumi.StringArrayInput `pulumi:"scenarioLabels"`
-	// The list of scenarios that should be run during the test. The default is all test loops, derived from the application's manifest.
-	Scenarios pulumi.IntArrayInput `pulumi:"scenarios"`
-}
-
-func (AndroidTestLoopResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AndroidTestLoopResponse)(nil)).Elem()
-}
-
-func (i AndroidTestLoopResponseArgs) ToAndroidTestLoopResponseOutput() AndroidTestLoopResponseOutput {
-	return i.ToAndroidTestLoopResponseOutputWithContext(context.Background())
-}
-
-func (i AndroidTestLoopResponseArgs) ToAndroidTestLoopResponseOutputWithContext(ctx context.Context) AndroidTestLoopResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidTestLoopResponseOutput)
-}
-
-func (i AndroidTestLoopResponseArgs) ToAndroidTestLoopResponsePtrOutput() AndroidTestLoopResponsePtrOutput {
-	return i.ToAndroidTestLoopResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AndroidTestLoopResponseArgs) ToAndroidTestLoopResponsePtrOutputWithContext(ctx context.Context) AndroidTestLoopResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidTestLoopResponseOutput).ToAndroidTestLoopResponsePtrOutputWithContext(ctx)
-}
-
-// AndroidTestLoopResponsePtrInput is an input type that accepts AndroidTestLoopResponseArgs, AndroidTestLoopResponsePtr and AndroidTestLoopResponsePtrOutput values.
-// You can construct a concrete instance of `AndroidTestLoopResponsePtrInput` via:
-//
-//          AndroidTestLoopResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AndroidTestLoopResponsePtrInput interface {
-	pulumi.Input
-
-	ToAndroidTestLoopResponsePtrOutput() AndroidTestLoopResponsePtrOutput
-	ToAndroidTestLoopResponsePtrOutputWithContext(context.Context) AndroidTestLoopResponsePtrOutput
-}
-
-type androidTestLoopResponsePtrType AndroidTestLoopResponseArgs
-
-func AndroidTestLoopResponsePtr(v *AndroidTestLoopResponseArgs) AndroidTestLoopResponsePtrInput {
-	return (*androidTestLoopResponsePtrType)(v)
-}
-
-func (*androidTestLoopResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AndroidTestLoopResponse)(nil)).Elem()
-}
-
-func (i *androidTestLoopResponsePtrType) ToAndroidTestLoopResponsePtrOutput() AndroidTestLoopResponsePtrOutput {
-	return i.ToAndroidTestLoopResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *androidTestLoopResponsePtrType) ToAndroidTestLoopResponsePtrOutputWithContext(ctx context.Context) AndroidTestLoopResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AndroidTestLoopResponsePtrOutput)
-}
-
 // A test of an Android Application with a Test Loop. The intent \ will be implicitly added, since Games is the only user of this api, for the time being.
 type AndroidTestLoopResponseOutput struct{ *pulumi.OutputState }
 
@@ -2671,16 +1747,6 @@ func (o AndroidTestLoopResponseOutput) ToAndroidTestLoopResponseOutput() Android
 
 func (o AndroidTestLoopResponseOutput) ToAndroidTestLoopResponseOutputWithContext(ctx context.Context) AndroidTestLoopResponseOutput {
 	return o
-}
-
-func (o AndroidTestLoopResponseOutput) ToAndroidTestLoopResponsePtrOutput() AndroidTestLoopResponsePtrOutput {
-	return o.ToAndroidTestLoopResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AndroidTestLoopResponseOutput) ToAndroidTestLoopResponsePtrOutputWithContext(ctx context.Context) AndroidTestLoopResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidTestLoopResponse) *AndroidTestLoopResponse {
-		return &v
-	}).(AndroidTestLoopResponsePtrOutput)
 }
 
 // The APK for the application under test.
@@ -2706,80 +1772,6 @@ func (o AndroidTestLoopResponseOutput) ScenarioLabels() pulumi.StringArrayOutput
 // The list of scenarios that should be run during the test. The default is all test loops, derived from the application's manifest.
 func (o AndroidTestLoopResponseOutput) Scenarios() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v AndroidTestLoopResponse) []int { return v.Scenarios }).(pulumi.IntArrayOutput)
-}
-
-type AndroidTestLoopResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AndroidTestLoopResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AndroidTestLoopResponse)(nil)).Elem()
-}
-
-func (o AndroidTestLoopResponsePtrOutput) ToAndroidTestLoopResponsePtrOutput() AndroidTestLoopResponsePtrOutput {
-	return o
-}
-
-func (o AndroidTestLoopResponsePtrOutput) ToAndroidTestLoopResponsePtrOutputWithContext(ctx context.Context) AndroidTestLoopResponsePtrOutput {
-	return o
-}
-
-func (o AndroidTestLoopResponsePtrOutput) Elem() AndroidTestLoopResponseOutput {
-	return o.ApplyT(func(v *AndroidTestLoopResponse) AndroidTestLoopResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AndroidTestLoopResponse
-		return ret
-	}).(AndroidTestLoopResponseOutput)
-}
-
-// The APK for the application under test.
-func (o AndroidTestLoopResponsePtrOutput) AppApk() FileReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *AndroidTestLoopResponse) *FileReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AppApk
-	}).(FileReferenceResponsePtrOutput)
-}
-
-// A multi-apk app bundle for the application under test.
-func (o AndroidTestLoopResponsePtrOutput) AppBundle() AppBundleResponsePtrOutput {
-	return o.ApplyT(func(v *AndroidTestLoopResponse) *AppBundleResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AppBundle
-	}).(AppBundleResponsePtrOutput)
-}
-
-// The java package for the application under test. The default is determined by examining the application's manifest.
-func (o AndroidTestLoopResponsePtrOutput) AppPackageId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AndroidTestLoopResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AppPackageId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The list of scenario labels that should be run during the test. The scenario labels should map to labels defined in the application's manifest. For example, player_experience and com.google.test.loops.player_experience add all of the loops labeled in the manifest with the com.google.test.loops.player_experience name to the execution. Scenarios can also be specified in the scenarios field.
-func (o AndroidTestLoopResponsePtrOutput) ScenarioLabels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AndroidTestLoopResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ScenarioLabels
-	}).(pulumi.StringArrayOutput)
-}
-
-// The list of scenarios that should be run during the test. The default is all test loops, derived from the application's manifest.
-func (o AndroidTestLoopResponsePtrOutput) Scenarios() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *AndroidTestLoopResponse) []int {
-		if v == nil {
-			return nil
-		}
-		return v.Scenarios
-	}).(pulumi.IntArrayOutput)
 }
 
 // An Android package file to install.
@@ -2897,62 +1889,6 @@ type ApkResponse struct {
 	Location FileReferenceResponse `pulumi:"location"`
 	// The java package for the APK to be installed. Value is determined by examining the application's manifest.
 	PackageName string `pulumi:"packageName"`
-}
-
-// ApkResponseInput is an input type that accepts ApkResponseArgs and ApkResponseOutput values.
-// You can construct a concrete instance of `ApkResponseInput` via:
-//
-//          ApkResponseArgs{...}
-type ApkResponseInput interface {
-	pulumi.Input
-
-	ToApkResponseOutput() ApkResponseOutput
-	ToApkResponseOutputWithContext(context.Context) ApkResponseOutput
-}
-
-// An Android package file to install.
-type ApkResponseArgs struct {
-	// The path to an APK to be installed on the device before the test begins.
-	Location FileReferenceResponseInput `pulumi:"location"`
-	// The java package for the APK to be installed. Value is determined by examining the application's manifest.
-	PackageName pulumi.StringInput `pulumi:"packageName"`
-}
-
-func (ApkResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApkResponse)(nil)).Elem()
-}
-
-func (i ApkResponseArgs) ToApkResponseOutput() ApkResponseOutput {
-	return i.ToApkResponseOutputWithContext(context.Background())
-}
-
-func (i ApkResponseArgs) ToApkResponseOutputWithContext(ctx context.Context) ApkResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApkResponseOutput)
-}
-
-// ApkResponseArrayInput is an input type that accepts ApkResponseArray and ApkResponseArrayOutput values.
-// You can construct a concrete instance of `ApkResponseArrayInput` via:
-//
-//          ApkResponseArray{ ApkResponseArgs{...} }
-type ApkResponseArrayInput interface {
-	pulumi.Input
-
-	ToApkResponseArrayOutput() ApkResponseArrayOutput
-	ToApkResponseArrayOutputWithContext(context.Context) ApkResponseArrayOutput
-}
-
-type ApkResponseArray []ApkResponseInput
-
-func (ApkResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApkResponse)(nil)).Elem()
-}
-
-func (i ApkResponseArray) ToApkResponseArrayOutput() ApkResponseArrayOutput {
-	return i.ToApkResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ApkResponseArray) ToApkResponseArrayOutputWithContext(ctx context.Context) ApkResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApkResponseArrayOutput)
 }
 
 // An Android package file to install.
@@ -3146,76 +2082,6 @@ type AppBundleResponse struct {
 	BundleLocation FileReferenceResponse `pulumi:"bundleLocation"`
 }
 
-// AppBundleResponseInput is an input type that accepts AppBundleResponseArgs and AppBundleResponseOutput values.
-// You can construct a concrete instance of `AppBundleResponseInput` via:
-//
-//          AppBundleResponseArgs{...}
-type AppBundleResponseInput interface {
-	pulumi.Input
-
-	ToAppBundleResponseOutput() AppBundleResponseOutput
-	ToAppBundleResponseOutputWithContext(context.Context) AppBundleResponseOutput
-}
-
-// An Android App Bundle file format, containing a BundleConfig.pb file, a base module directory, zero or more dynamic feature module directories. See https://developer.android.com/guide/app-bundle/build for guidance on building App Bundles.
-type AppBundleResponseArgs struct {
-	// .aab file representing the app bundle under test.
-	BundleLocation FileReferenceResponseInput `pulumi:"bundleLocation"`
-}
-
-func (AppBundleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppBundleResponse)(nil)).Elem()
-}
-
-func (i AppBundleResponseArgs) ToAppBundleResponseOutput() AppBundleResponseOutput {
-	return i.ToAppBundleResponseOutputWithContext(context.Background())
-}
-
-func (i AppBundleResponseArgs) ToAppBundleResponseOutputWithContext(ctx context.Context) AppBundleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppBundleResponseOutput)
-}
-
-func (i AppBundleResponseArgs) ToAppBundleResponsePtrOutput() AppBundleResponsePtrOutput {
-	return i.ToAppBundleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AppBundleResponseArgs) ToAppBundleResponsePtrOutputWithContext(ctx context.Context) AppBundleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppBundleResponseOutput).ToAppBundleResponsePtrOutputWithContext(ctx)
-}
-
-// AppBundleResponsePtrInput is an input type that accepts AppBundleResponseArgs, AppBundleResponsePtr and AppBundleResponsePtrOutput values.
-// You can construct a concrete instance of `AppBundleResponsePtrInput` via:
-//
-//          AppBundleResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AppBundleResponsePtrInput interface {
-	pulumi.Input
-
-	ToAppBundleResponsePtrOutput() AppBundleResponsePtrOutput
-	ToAppBundleResponsePtrOutputWithContext(context.Context) AppBundleResponsePtrOutput
-}
-
-type appBundleResponsePtrType AppBundleResponseArgs
-
-func AppBundleResponsePtr(v *AppBundleResponseArgs) AppBundleResponsePtrInput {
-	return (*appBundleResponsePtrType)(v)
-}
-
-func (*appBundleResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppBundleResponse)(nil)).Elem()
-}
-
-func (i *appBundleResponsePtrType) ToAppBundleResponsePtrOutput() AppBundleResponsePtrOutput {
-	return i.ToAppBundleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *appBundleResponsePtrType) ToAppBundleResponsePtrOutputWithContext(ctx context.Context) AppBundleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppBundleResponsePtrOutput)
-}
-
 // An Android App Bundle file format, containing a BundleConfig.pb file, a base module directory, zero or more dynamic feature module directories. See https://developer.android.com/guide/app-bundle/build for guidance on building App Bundles.
 type AppBundleResponseOutput struct{ *pulumi.OutputState }
 
@@ -3231,53 +2097,9 @@ func (o AppBundleResponseOutput) ToAppBundleResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o AppBundleResponseOutput) ToAppBundleResponsePtrOutput() AppBundleResponsePtrOutput {
-	return o.ToAppBundleResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AppBundleResponseOutput) ToAppBundleResponsePtrOutputWithContext(ctx context.Context) AppBundleResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppBundleResponse) *AppBundleResponse {
-		return &v
-	}).(AppBundleResponsePtrOutput)
-}
-
 // .aab file representing the app bundle under test.
 func (o AppBundleResponseOutput) BundleLocation() FileReferenceResponseOutput {
 	return o.ApplyT(func(v AppBundleResponse) FileReferenceResponse { return v.BundleLocation }).(FileReferenceResponseOutput)
-}
-
-type AppBundleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AppBundleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppBundleResponse)(nil)).Elem()
-}
-
-func (o AppBundleResponsePtrOutput) ToAppBundleResponsePtrOutput() AppBundleResponsePtrOutput {
-	return o
-}
-
-func (o AppBundleResponsePtrOutput) ToAppBundleResponsePtrOutputWithContext(ctx context.Context) AppBundleResponsePtrOutput {
-	return o
-}
-
-func (o AppBundleResponsePtrOutput) Elem() AppBundleResponseOutput {
-	return o.ApplyT(func(v *AppBundleResponse) AppBundleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AppBundleResponse
-		return ret
-	}).(AppBundleResponseOutput)
-}
-
-// .aab file representing the app bundle under test.
-func (o AppBundleResponsePtrOutput) BundleLocation() FileReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *AppBundleResponse) *FileReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BundleLocation
-	}).(FileReferenceResponsePtrOutput)
 }
 
 // Information about the client which invoked the test.
@@ -3556,62 +2378,6 @@ type ClientInfoDetailResponse struct {
 	Value string `pulumi:"value"`
 }
 
-// ClientInfoDetailResponseInput is an input type that accepts ClientInfoDetailResponseArgs and ClientInfoDetailResponseOutput values.
-// You can construct a concrete instance of `ClientInfoDetailResponseInput` via:
-//
-//          ClientInfoDetailResponseArgs{...}
-type ClientInfoDetailResponseInput interface {
-	pulumi.Input
-
-	ToClientInfoDetailResponseOutput() ClientInfoDetailResponseOutput
-	ToClientInfoDetailResponseOutputWithContext(context.Context) ClientInfoDetailResponseOutput
-}
-
-// Key-value pair of detailed information about the client which invoked the test. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.
-type ClientInfoDetailResponseArgs struct {
-	// The key of detailed client information.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The value of detailed client information.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (ClientInfoDetailResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientInfoDetailResponse)(nil)).Elem()
-}
-
-func (i ClientInfoDetailResponseArgs) ToClientInfoDetailResponseOutput() ClientInfoDetailResponseOutput {
-	return i.ToClientInfoDetailResponseOutputWithContext(context.Background())
-}
-
-func (i ClientInfoDetailResponseArgs) ToClientInfoDetailResponseOutputWithContext(ctx context.Context) ClientInfoDetailResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientInfoDetailResponseOutput)
-}
-
-// ClientInfoDetailResponseArrayInput is an input type that accepts ClientInfoDetailResponseArray and ClientInfoDetailResponseArrayOutput values.
-// You can construct a concrete instance of `ClientInfoDetailResponseArrayInput` via:
-//
-//          ClientInfoDetailResponseArray{ ClientInfoDetailResponseArgs{...} }
-type ClientInfoDetailResponseArrayInput interface {
-	pulumi.Input
-
-	ToClientInfoDetailResponseArrayOutput() ClientInfoDetailResponseArrayOutput
-	ToClientInfoDetailResponseArrayOutputWithContext(context.Context) ClientInfoDetailResponseArrayOutput
-}
-
-type ClientInfoDetailResponseArray []ClientInfoDetailResponseInput
-
-func (ClientInfoDetailResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClientInfoDetailResponse)(nil)).Elem()
-}
-
-func (i ClientInfoDetailResponseArray) ToClientInfoDetailResponseArrayOutput() ClientInfoDetailResponseArrayOutput {
-	return i.ToClientInfoDetailResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ClientInfoDetailResponseArray) ToClientInfoDetailResponseArrayOutputWithContext(ctx context.Context) ClientInfoDetailResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientInfoDetailResponseArrayOutput)
-}
-
 // Key-value pair of detailed information about the client which invoked the test. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.
 type ClientInfoDetailResponseOutput struct{ *pulumi.OutputState }
 
@@ -3665,78 +2431,6 @@ type ClientInfoResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// ClientInfoResponseInput is an input type that accepts ClientInfoResponseArgs and ClientInfoResponseOutput values.
-// You can construct a concrete instance of `ClientInfoResponseInput` via:
-//
-//          ClientInfoResponseArgs{...}
-type ClientInfoResponseInput interface {
-	pulumi.Input
-
-	ToClientInfoResponseOutput() ClientInfoResponseOutput
-	ToClientInfoResponseOutputWithContext(context.Context) ClientInfoResponseOutput
-}
-
-// Information about the client which invoked the test.
-type ClientInfoResponseArgs struct {
-	// The list of detailed information about client.
-	ClientInfoDetails ClientInfoDetailResponseArrayInput `pulumi:"clientInfoDetails"`
-	// Client name, such as gcloud.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (ClientInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientInfoResponse)(nil)).Elem()
-}
-
-func (i ClientInfoResponseArgs) ToClientInfoResponseOutput() ClientInfoResponseOutput {
-	return i.ToClientInfoResponseOutputWithContext(context.Background())
-}
-
-func (i ClientInfoResponseArgs) ToClientInfoResponseOutputWithContext(ctx context.Context) ClientInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientInfoResponseOutput)
-}
-
-func (i ClientInfoResponseArgs) ToClientInfoResponsePtrOutput() ClientInfoResponsePtrOutput {
-	return i.ToClientInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ClientInfoResponseArgs) ToClientInfoResponsePtrOutputWithContext(ctx context.Context) ClientInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientInfoResponseOutput).ToClientInfoResponsePtrOutputWithContext(ctx)
-}
-
-// ClientInfoResponsePtrInput is an input type that accepts ClientInfoResponseArgs, ClientInfoResponsePtr and ClientInfoResponsePtrOutput values.
-// You can construct a concrete instance of `ClientInfoResponsePtrInput` via:
-//
-//          ClientInfoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ClientInfoResponsePtrInput interface {
-	pulumi.Input
-
-	ToClientInfoResponsePtrOutput() ClientInfoResponsePtrOutput
-	ToClientInfoResponsePtrOutputWithContext(context.Context) ClientInfoResponsePtrOutput
-}
-
-type clientInfoResponsePtrType ClientInfoResponseArgs
-
-func ClientInfoResponsePtr(v *ClientInfoResponseArgs) ClientInfoResponsePtrInput {
-	return (*clientInfoResponsePtrType)(v)
-}
-
-func (*clientInfoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientInfoResponse)(nil)).Elem()
-}
-
-func (i *clientInfoResponsePtrType) ToClientInfoResponsePtrOutput() ClientInfoResponsePtrOutput {
-	return i.ToClientInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *clientInfoResponsePtrType) ToClientInfoResponsePtrOutputWithContext(ctx context.Context) ClientInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientInfoResponsePtrOutput)
-}
-
 // Information about the client which invoked the test.
 type ClientInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -3752,16 +2446,6 @@ func (o ClientInfoResponseOutput) ToClientInfoResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o ClientInfoResponseOutput) ToClientInfoResponsePtrOutput() ClientInfoResponsePtrOutput {
-	return o.ToClientInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ClientInfoResponseOutput) ToClientInfoResponsePtrOutputWithContext(ctx context.Context) ClientInfoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientInfoResponse) *ClientInfoResponse {
-		return &v
-	}).(ClientInfoResponsePtrOutput)
-}
-
 // The list of detailed information about client.
 func (o ClientInfoResponseOutput) ClientInfoDetails() ClientInfoDetailResponseArrayOutput {
 	return o.ApplyT(func(v ClientInfoResponse) []ClientInfoDetailResponse { return v.ClientInfoDetails }).(ClientInfoDetailResponseArrayOutput)
@@ -3770,50 +2454,6 @@ func (o ClientInfoResponseOutput) ClientInfoDetails() ClientInfoDetailResponseAr
 // Client name, such as gcloud.
 func (o ClientInfoResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientInfoResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type ClientInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ClientInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientInfoResponse)(nil)).Elem()
-}
-
-func (o ClientInfoResponsePtrOutput) ToClientInfoResponsePtrOutput() ClientInfoResponsePtrOutput {
-	return o
-}
-
-func (o ClientInfoResponsePtrOutput) ToClientInfoResponsePtrOutputWithContext(ctx context.Context) ClientInfoResponsePtrOutput {
-	return o
-}
-
-func (o ClientInfoResponsePtrOutput) Elem() ClientInfoResponseOutput {
-	return o.ApplyT(func(v *ClientInfoResponse) ClientInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ClientInfoResponse
-		return ret
-	}).(ClientInfoResponseOutput)
-}
-
-// The list of detailed information about client.
-func (o ClientInfoResponsePtrOutput) ClientInfoDetails() ClientInfoDetailResponseArrayOutput {
-	return o.ApplyT(func(v *ClientInfoResponse) []ClientInfoDetailResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ClientInfoDetails
-	}).(ClientInfoDetailResponseArrayOutput)
-}
-
-// Client name, such as gcloud.
-func (o ClientInfoResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // A single device file description.
@@ -3933,62 +2573,6 @@ type DeviceFileResponse struct {
 	RegularFile RegularFileResponse `pulumi:"regularFile"`
 }
 
-// DeviceFileResponseInput is an input type that accepts DeviceFileResponseArgs and DeviceFileResponseOutput values.
-// You can construct a concrete instance of `DeviceFileResponseInput` via:
-//
-//          DeviceFileResponseArgs{...}
-type DeviceFileResponseInput interface {
-	pulumi.Input
-
-	ToDeviceFileResponseOutput() DeviceFileResponseOutput
-	ToDeviceFileResponseOutputWithContext(context.Context) DeviceFileResponseOutput
-}
-
-// A single device file description.
-type DeviceFileResponseArgs struct {
-	// A reference to an opaque binary blob file.
-	ObbFile ObbFileResponseInput `pulumi:"obbFile"`
-	// A reference to a regular file.
-	RegularFile RegularFileResponseInput `pulumi:"regularFile"`
-}
-
-func (DeviceFileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceFileResponse)(nil)).Elem()
-}
-
-func (i DeviceFileResponseArgs) ToDeviceFileResponseOutput() DeviceFileResponseOutput {
-	return i.ToDeviceFileResponseOutputWithContext(context.Background())
-}
-
-func (i DeviceFileResponseArgs) ToDeviceFileResponseOutputWithContext(ctx context.Context) DeviceFileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceFileResponseOutput)
-}
-
-// DeviceFileResponseArrayInput is an input type that accepts DeviceFileResponseArray and DeviceFileResponseArrayOutput values.
-// You can construct a concrete instance of `DeviceFileResponseArrayInput` via:
-//
-//          DeviceFileResponseArray{ DeviceFileResponseArgs{...} }
-type DeviceFileResponseArrayInput interface {
-	pulumi.Input
-
-	ToDeviceFileResponseArrayOutput() DeviceFileResponseArrayOutput
-	ToDeviceFileResponseArrayOutputWithContext(context.Context) DeviceFileResponseArrayOutput
-}
-
-type DeviceFileResponseArray []DeviceFileResponseInput
-
-func (DeviceFileResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DeviceFileResponse)(nil)).Elem()
-}
-
-func (i DeviceFileResponseArray) ToDeviceFileResponseArrayOutput() DeviceFileResponseArrayOutput {
-	return i.ToDeviceFileResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DeviceFileResponseArray) ToDeviceFileResponseArrayOutputWithContext(ctx context.Context) DeviceFileResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceFileResponseArrayOutput)
-}
-
 // A single device file description.
 type DeviceFileResponseOutput struct{ *pulumi.OutputState }
 
@@ -4077,47 +2661,6 @@ func (i EnvironmentMatrixArgs) ToEnvironmentMatrixOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentMatrixOutput)
 }
 
-func (i EnvironmentMatrixArgs) ToEnvironmentMatrixPtrOutput() EnvironmentMatrixPtrOutput {
-	return i.ToEnvironmentMatrixPtrOutputWithContext(context.Background())
-}
-
-func (i EnvironmentMatrixArgs) ToEnvironmentMatrixPtrOutputWithContext(ctx context.Context) EnvironmentMatrixPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentMatrixOutput).ToEnvironmentMatrixPtrOutputWithContext(ctx)
-}
-
-// EnvironmentMatrixPtrInput is an input type that accepts EnvironmentMatrixArgs, EnvironmentMatrixPtr and EnvironmentMatrixPtrOutput values.
-// You can construct a concrete instance of `EnvironmentMatrixPtrInput` via:
-//
-//          EnvironmentMatrixArgs{...}
-//
-//  or:
-//
-//          nil
-type EnvironmentMatrixPtrInput interface {
-	pulumi.Input
-
-	ToEnvironmentMatrixPtrOutput() EnvironmentMatrixPtrOutput
-	ToEnvironmentMatrixPtrOutputWithContext(context.Context) EnvironmentMatrixPtrOutput
-}
-
-type environmentMatrixPtrType EnvironmentMatrixArgs
-
-func EnvironmentMatrixPtr(v *EnvironmentMatrixArgs) EnvironmentMatrixPtrInput {
-	return (*environmentMatrixPtrType)(v)
-}
-
-func (*environmentMatrixPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentMatrix)(nil)).Elem()
-}
-
-func (i *environmentMatrixPtrType) ToEnvironmentMatrixPtrOutput() EnvironmentMatrixPtrOutput {
-	return i.ToEnvironmentMatrixPtrOutputWithContext(context.Background())
-}
-
-func (i *environmentMatrixPtrType) ToEnvironmentMatrixPtrOutputWithContext(ctx context.Context) EnvironmentMatrixPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentMatrixPtrOutput)
-}
-
 // The matrix of environments in which the test is to be executed.
 type EnvironmentMatrixOutput struct{ *pulumi.OutputState }
 
@@ -4131,16 +2674,6 @@ func (o EnvironmentMatrixOutput) ToEnvironmentMatrixOutput() EnvironmentMatrixOu
 
 func (o EnvironmentMatrixOutput) ToEnvironmentMatrixOutputWithContext(ctx context.Context) EnvironmentMatrixOutput {
 	return o
-}
-
-func (o EnvironmentMatrixOutput) ToEnvironmentMatrixPtrOutput() EnvironmentMatrixPtrOutput {
-	return o.ToEnvironmentMatrixPtrOutputWithContext(context.Background())
-}
-
-func (o EnvironmentMatrixOutput) ToEnvironmentMatrixPtrOutputWithContext(ctx context.Context) EnvironmentMatrixPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentMatrix) *EnvironmentMatrix {
-		return &v
-	}).(EnvironmentMatrixPtrOutput)
 }
 
 // A list of Android devices; the test will be run only on the specified devices.
@@ -4158,60 +2691,6 @@ func (o EnvironmentMatrixOutput) IosDeviceList() IosDeviceListPtrOutput {
 	return o.ApplyT(func(v EnvironmentMatrix) *IosDeviceList { return v.IosDeviceList }).(IosDeviceListPtrOutput)
 }
 
-type EnvironmentMatrixPtrOutput struct{ *pulumi.OutputState }
-
-func (EnvironmentMatrixPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentMatrix)(nil)).Elem()
-}
-
-func (o EnvironmentMatrixPtrOutput) ToEnvironmentMatrixPtrOutput() EnvironmentMatrixPtrOutput {
-	return o
-}
-
-func (o EnvironmentMatrixPtrOutput) ToEnvironmentMatrixPtrOutputWithContext(ctx context.Context) EnvironmentMatrixPtrOutput {
-	return o
-}
-
-func (o EnvironmentMatrixPtrOutput) Elem() EnvironmentMatrixOutput {
-	return o.ApplyT(func(v *EnvironmentMatrix) EnvironmentMatrix {
-		if v != nil {
-			return *v
-		}
-		var ret EnvironmentMatrix
-		return ret
-	}).(EnvironmentMatrixOutput)
-}
-
-// A list of Android devices; the test will be run only on the specified devices.
-func (o EnvironmentMatrixPtrOutput) AndroidDeviceList() AndroidDeviceListPtrOutput {
-	return o.ApplyT(func(v *EnvironmentMatrix) *AndroidDeviceList {
-		if v == nil {
-			return nil
-		}
-		return v.AndroidDeviceList
-	}).(AndroidDeviceListPtrOutput)
-}
-
-// A matrix of Android devices.
-func (o EnvironmentMatrixPtrOutput) AndroidMatrix() AndroidMatrixPtrOutput {
-	return o.ApplyT(func(v *EnvironmentMatrix) *AndroidMatrix {
-		if v == nil {
-			return nil
-		}
-		return v.AndroidMatrix
-	}).(AndroidMatrixPtrOutput)
-}
-
-// A list of iOS devices.
-func (o EnvironmentMatrixPtrOutput) IosDeviceList() IosDeviceListPtrOutput {
-	return o.ApplyT(func(v *EnvironmentMatrix) *IosDeviceList {
-		if v == nil {
-			return nil
-		}
-		return v.IosDeviceList
-	}).(IosDeviceListPtrOutput)
-}
-
 // The matrix of environments in which the test is to be executed.
 type EnvironmentMatrixResponse struct {
 	// A list of Android devices; the test will be run only on the specified devices.
@@ -4220,80 +2699,6 @@ type EnvironmentMatrixResponse struct {
 	AndroidMatrix AndroidMatrixResponse `pulumi:"androidMatrix"`
 	// A list of iOS devices.
 	IosDeviceList IosDeviceListResponse `pulumi:"iosDeviceList"`
-}
-
-// EnvironmentMatrixResponseInput is an input type that accepts EnvironmentMatrixResponseArgs and EnvironmentMatrixResponseOutput values.
-// You can construct a concrete instance of `EnvironmentMatrixResponseInput` via:
-//
-//          EnvironmentMatrixResponseArgs{...}
-type EnvironmentMatrixResponseInput interface {
-	pulumi.Input
-
-	ToEnvironmentMatrixResponseOutput() EnvironmentMatrixResponseOutput
-	ToEnvironmentMatrixResponseOutputWithContext(context.Context) EnvironmentMatrixResponseOutput
-}
-
-// The matrix of environments in which the test is to be executed.
-type EnvironmentMatrixResponseArgs struct {
-	// A list of Android devices; the test will be run only on the specified devices.
-	AndroidDeviceList AndroidDeviceListResponseInput `pulumi:"androidDeviceList"`
-	// A matrix of Android devices.
-	AndroidMatrix AndroidMatrixResponseInput `pulumi:"androidMatrix"`
-	// A list of iOS devices.
-	IosDeviceList IosDeviceListResponseInput `pulumi:"iosDeviceList"`
-}
-
-func (EnvironmentMatrixResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvironmentMatrixResponse)(nil)).Elem()
-}
-
-func (i EnvironmentMatrixResponseArgs) ToEnvironmentMatrixResponseOutput() EnvironmentMatrixResponseOutput {
-	return i.ToEnvironmentMatrixResponseOutputWithContext(context.Background())
-}
-
-func (i EnvironmentMatrixResponseArgs) ToEnvironmentMatrixResponseOutputWithContext(ctx context.Context) EnvironmentMatrixResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentMatrixResponseOutput)
-}
-
-func (i EnvironmentMatrixResponseArgs) ToEnvironmentMatrixResponsePtrOutput() EnvironmentMatrixResponsePtrOutput {
-	return i.ToEnvironmentMatrixResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EnvironmentMatrixResponseArgs) ToEnvironmentMatrixResponsePtrOutputWithContext(ctx context.Context) EnvironmentMatrixResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentMatrixResponseOutput).ToEnvironmentMatrixResponsePtrOutputWithContext(ctx)
-}
-
-// EnvironmentMatrixResponsePtrInput is an input type that accepts EnvironmentMatrixResponseArgs, EnvironmentMatrixResponsePtr and EnvironmentMatrixResponsePtrOutput values.
-// You can construct a concrete instance of `EnvironmentMatrixResponsePtrInput` via:
-//
-//          EnvironmentMatrixResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EnvironmentMatrixResponsePtrInput interface {
-	pulumi.Input
-
-	ToEnvironmentMatrixResponsePtrOutput() EnvironmentMatrixResponsePtrOutput
-	ToEnvironmentMatrixResponsePtrOutputWithContext(context.Context) EnvironmentMatrixResponsePtrOutput
-}
-
-type environmentMatrixResponsePtrType EnvironmentMatrixResponseArgs
-
-func EnvironmentMatrixResponsePtr(v *EnvironmentMatrixResponseArgs) EnvironmentMatrixResponsePtrInput {
-	return (*environmentMatrixResponsePtrType)(v)
-}
-
-func (*environmentMatrixResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentMatrixResponse)(nil)).Elem()
-}
-
-func (i *environmentMatrixResponsePtrType) ToEnvironmentMatrixResponsePtrOutput() EnvironmentMatrixResponsePtrOutput {
-	return i.ToEnvironmentMatrixResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *environmentMatrixResponsePtrType) ToEnvironmentMatrixResponsePtrOutputWithContext(ctx context.Context) EnvironmentMatrixResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentMatrixResponsePtrOutput)
 }
 
 // The matrix of environments in which the test is to be executed.
@@ -4311,16 +2716,6 @@ func (o EnvironmentMatrixResponseOutput) ToEnvironmentMatrixResponseOutputWithCo
 	return o
 }
 
-func (o EnvironmentMatrixResponseOutput) ToEnvironmentMatrixResponsePtrOutput() EnvironmentMatrixResponsePtrOutput {
-	return o.ToEnvironmentMatrixResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EnvironmentMatrixResponseOutput) ToEnvironmentMatrixResponsePtrOutputWithContext(ctx context.Context) EnvironmentMatrixResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentMatrixResponse) *EnvironmentMatrixResponse {
-		return &v
-	}).(EnvironmentMatrixResponsePtrOutput)
-}
-
 // A list of Android devices; the test will be run only on the specified devices.
 func (o EnvironmentMatrixResponseOutput) AndroidDeviceList() AndroidDeviceListResponseOutput {
 	return o.ApplyT(func(v EnvironmentMatrixResponse) AndroidDeviceListResponse { return v.AndroidDeviceList }).(AndroidDeviceListResponseOutput)
@@ -4336,97 +2731,12 @@ func (o EnvironmentMatrixResponseOutput) IosDeviceList() IosDeviceListResponseOu
 	return o.ApplyT(func(v EnvironmentMatrixResponse) IosDeviceListResponse { return v.IosDeviceList }).(IosDeviceListResponseOutput)
 }
 
-type EnvironmentMatrixResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EnvironmentMatrixResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentMatrixResponse)(nil)).Elem()
-}
-
-func (o EnvironmentMatrixResponsePtrOutput) ToEnvironmentMatrixResponsePtrOutput() EnvironmentMatrixResponsePtrOutput {
-	return o
-}
-
-func (o EnvironmentMatrixResponsePtrOutput) ToEnvironmentMatrixResponsePtrOutputWithContext(ctx context.Context) EnvironmentMatrixResponsePtrOutput {
-	return o
-}
-
-func (o EnvironmentMatrixResponsePtrOutput) Elem() EnvironmentMatrixResponseOutput {
-	return o.ApplyT(func(v *EnvironmentMatrixResponse) EnvironmentMatrixResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EnvironmentMatrixResponse
-		return ret
-	}).(EnvironmentMatrixResponseOutput)
-}
-
-// A list of Android devices; the test will be run only on the specified devices.
-func (o EnvironmentMatrixResponsePtrOutput) AndroidDeviceList() AndroidDeviceListResponsePtrOutput {
-	return o.ApplyT(func(v *EnvironmentMatrixResponse) *AndroidDeviceListResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AndroidDeviceList
-	}).(AndroidDeviceListResponsePtrOutput)
-}
-
-// A matrix of Android devices.
-func (o EnvironmentMatrixResponsePtrOutput) AndroidMatrix() AndroidMatrixResponsePtrOutput {
-	return o.ApplyT(func(v *EnvironmentMatrixResponse) *AndroidMatrixResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AndroidMatrix
-	}).(AndroidMatrixResponsePtrOutput)
-}
-
-// A list of iOS devices.
-func (o EnvironmentMatrixResponsePtrOutput) IosDeviceList() IosDeviceListResponsePtrOutput {
-	return o.ApplyT(func(v *EnvironmentMatrixResponse) *IosDeviceListResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IosDeviceList
-	}).(IosDeviceListResponsePtrOutput)
-}
-
 // The environment in which the test is run.
 type EnvironmentResponse struct {
 	// An Android device which must be used with an Android test.
 	AndroidDevice AndroidDeviceResponse `pulumi:"androidDevice"`
 	// An iOS device which must be used with an iOS test.
 	IosDevice IosDeviceResponse `pulumi:"iosDevice"`
-}
-
-// EnvironmentResponseInput is an input type that accepts EnvironmentResponseArgs and EnvironmentResponseOutput values.
-// You can construct a concrete instance of `EnvironmentResponseInput` via:
-//
-//          EnvironmentResponseArgs{...}
-type EnvironmentResponseInput interface {
-	pulumi.Input
-
-	ToEnvironmentResponseOutput() EnvironmentResponseOutput
-	ToEnvironmentResponseOutputWithContext(context.Context) EnvironmentResponseOutput
-}
-
-// The environment in which the test is run.
-type EnvironmentResponseArgs struct {
-	// An Android device which must be used with an Android test.
-	AndroidDevice AndroidDeviceResponseInput `pulumi:"androidDevice"`
-	// An iOS device which must be used with an iOS test.
-	IosDevice IosDeviceResponseInput `pulumi:"iosDevice"`
-}
-
-func (EnvironmentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvironmentResponse)(nil)).Elem()
-}
-
-func (i EnvironmentResponseArgs) ToEnvironmentResponseOutput() EnvironmentResponseOutput {
-	return i.ToEnvironmentResponseOutputWithContext(context.Background())
-}
-
-func (i EnvironmentResponseArgs) ToEnvironmentResponseOutputWithContext(ctx context.Context) EnvironmentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentResponseOutput)
 }
 
 // The environment in which the test is run.
@@ -4569,62 +2879,6 @@ type EnvironmentVariableResponse struct {
 	Key string `pulumi:"key"`
 	// Value for the environment variable.
 	Value string `pulumi:"value"`
-}
-
-// EnvironmentVariableResponseInput is an input type that accepts EnvironmentVariableResponseArgs and EnvironmentVariableResponseOutput values.
-// You can construct a concrete instance of `EnvironmentVariableResponseInput` via:
-//
-//          EnvironmentVariableResponseArgs{...}
-type EnvironmentVariableResponseInput interface {
-	pulumi.Input
-
-	ToEnvironmentVariableResponseOutput() EnvironmentVariableResponseOutput
-	ToEnvironmentVariableResponseOutputWithContext(context.Context) EnvironmentVariableResponseOutput
-}
-
-// A key-value pair passed as an environment variable to the test.
-type EnvironmentVariableResponseArgs struct {
-	// Key for the environment variable.
-	Key pulumi.StringInput `pulumi:"key"`
-	// Value for the environment variable.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (EnvironmentVariableResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvironmentVariableResponse)(nil)).Elem()
-}
-
-func (i EnvironmentVariableResponseArgs) ToEnvironmentVariableResponseOutput() EnvironmentVariableResponseOutput {
-	return i.ToEnvironmentVariableResponseOutputWithContext(context.Background())
-}
-
-func (i EnvironmentVariableResponseArgs) ToEnvironmentVariableResponseOutputWithContext(ctx context.Context) EnvironmentVariableResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentVariableResponseOutput)
-}
-
-// EnvironmentVariableResponseArrayInput is an input type that accepts EnvironmentVariableResponseArray and EnvironmentVariableResponseArrayOutput values.
-// You can construct a concrete instance of `EnvironmentVariableResponseArrayInput` via:
-//
-//          EnvironmentVariableResponseArray{ EnvironmentVariableResponseArgs{...} }
-type EnvironmentVariableResponseArrayInput interface {
-	pulumi.Input
-
-	ToEnvironmentVariableResponseArrayOutput() EnvironmentVariableResponseArrayOutput
-	ToEnvironmentVariableResponseArrayOutputWithContext(context.Context) EnvironmentVariableResponseArrayOutput
-}
-
-type EnvironmentVariableResponseArray []EnvironmentVariableResponseInput
-
-func (EnvironmentVariableResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnvironmentVariableResponse)(nil)).Elem()
-}
-
-func (i EnvironmentVariableResponseArray) ToEnvironmentVariableResponseArrayOutput() EnvironmentVariableResponseArrayOutput {
-	return i.ToEnvironmentVariableResponseArrayOutputWithContext(context.Background())
-}
-
-func (i EnvironmentVariableResponseArray) ToEnvironmentVariableResponseArrayOutputWithContext(ctx context.Context) EnvironmentVariableResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentVariableResponseArrayOutput)
 }
 
 // A key-value pair passed as an environment variable to the test.
@@ -4863,101 +3117,6 @@ type FileReferenceResponse struct {
 	GcsPath string `pulumi:"gcsPath"`
 }
 
-// FileReferenceResponseInput is an input type that accepts FileReferenceResponseArgs and FileReferenceResponseOutput values.
-// You can construct a concrete instance of `FileReferenceResponseInput` via:
-//
-//          FileReferenceResponseArgs{...}
-type FileReferenceResponseInput interface {
-	pulumi.Input
-
-	ToFileReferenceResponseOutput() FileReferenceResponseOutput
-	ToFileReferenceResponseOutputWithContext(context.Context) FileReferenceResponseOutput
-}
-
-// A reference to a file, used for user inputs.
-type FileReferenceResponseArgs struct {
-	// A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding)
-	GcsPath pulumi.StringInput `pulumi:"gcsPath"`
-}
-
-func (FileReferenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileReferenceResponse)(nil)).Elem()
-}
-
-func (i FileReferenceResponseArgs) ToFileReferenceResponseOutput() FileReferenceResponseOutput {
-	return i.ToFileReferenceResponseOutputWithContext(context.Background())
-}
-
-func (i FileReferenceResponseArgs) ToFileReferenceResponseOutputWithContext(ctx context.Context) FileReferenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileReferenceResponseOutput)
-}
-
-func (i FileReferenceResponseArgs) ToFileReferenceResponsePtrOutput() FileReferenceResponsePtrOutput {
-	return i.ToFileReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i FileReferenceResponseArgs) ToFileReferenceResponsePtrOutputWithContext(ctx context.Context) FileReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileReferenceResponseOutput).ToFileReferenceResponsePtrOutputWithContext(ctx)
-}
-
-// FileReferenceResponsePtrInput is an input type that accepts FileReferenceResponseArgs, FileReferenceResponsePtr and FileReferenceResponsePtrOutput values.
-// You can construct a concrete instance of `FileReferenceResponsePtrInput` via:
-//
-//          FileReferenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type FileReferenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToFileReferenceResponsePtrOutput() FileReferenceResponsePtrOutput
-	ToFileReferenceResponsePtrOutputWithContext(context.Context) FileReferenceResponsePtrOutput
-}
-
-type fileReferenceResponsePtrType FileReferenceResponseArgs
-
-func FileReferenceResponsePtr(v *FileReferenceResponseArgs) FileReferenceResponsePtrInput {
-	return (*fileReferenceResponsePtrType)(v)
-}
-
-func (*fileReferenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FileReferenceResponse)(nil)).Elem()
-}
-
-func (i *fileReferenceResponsePtrType) ToFileReferenceResponsePtrOutput() FileReferenceResponsePtrOutput {
-	return i.ToFileReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *fileReferenceResponsePtrType) ToFileReferenceResponsePtrOutputWithContext(ctx context.Context) FileReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileReferenceResponsePtrOutput)
-}
-
-// FileReferenceResponseArrayInput is an input type that accepts FileReferenceResponseArray and FileReferenceResponseArrayOutput values.
-// You can construct a concrete instance of `FileReferenceResponseArrayInput` via:
-//
-//          FileReferenceResponseArray{ FileReferenceResponseArgs{...} }
-type FileReferenceResponseArrayInput interface {
-	pulumi.Input
-
-	ToFileReferenceResponseArrayOutput() FileReferenceResponseArrayOutput
-	ToFileReferenceResponseArrayOutputWithContext(context.Context) FileReferenceResponseArrayOutput
-}
-
-type FileReferenceResponseArray []FileReferenceResponseInput
-
-func (FileReferenceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FileReferenceResponse)(nil)).Elem()
-}
-
-func (i FileReferenceResponseArray) ToFileReferenceResponseArrayOutput() FileReferenceResponseArrayOutput {
-	return i.ToFileReferenceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i FileReferenceResponseArray) ToFileReferenceResponseArrayOutputWithContext(ctx context.Context) FileReferenceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileReferenceResponseArrayOutput)
-}
-
 // A reference to a file, used for user inputs.
 type FileReferenceResponseOutput struct{ *pulumi.OutputState }
 
@@ -4973,53 +3132,9 @@ func (o FileReferenceResponseOutput) ToFileReferenceResponseOutputWithContext(ct
 	return o
 }
 
-func (o FileReferenceResponseOutput) ToFileReferenceResponsePtrOutput() FileReferenceResponsePtrOutput {
-	return o.ToFileReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o FileReferenceResponseOutput) ToFileReferenceResponsePtrOutputWithContext(ctx context.Context) FileReferenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileReferenceResponse) *FileReferenceResponse {
-		return &v
-	}).(FileReferenceResponsePtrOutput)
-}
-
 // A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding)
 func (o FileReferenceResponseOutput) GcsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v FileReferenceResponse) string { return v.GcsPath }).(pulumi.StringOutput)
-}
-
-type FileReferenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (FileReferenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FileReferenceResponse)(nil)).Elem()
-}
-
-func (o FileReferenceResponsePtrOutput) ToFileReferenceResponsePtrOutput() FileReferenceResponsePtrOutput {
-	return o
-}
-
-func (o FileReferenceResponsePtrOutput) ToFileReferenceResponsePtrOutputWithContext(ctx context.Context) FileReferenceResponsePtrOutput {
-	return o
-}
-
-func (o FileReferenceResponsePtrOutput) Elem() FileReferenceResponseOutput {
-	return o.ApplyT(func(v *FileReferenceResponse) FileReferenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret FileReferenceResponse
-		return ret
-	}).(FileReferenceResponseOutput)
-}
-
-// A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding)
-func (o FileReferenceResponsePtrOutput) GcsPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.GcsPath
-	}).(pulumi.StringPtrOutput)
 }
 
 type FileReferenceResponseArrayOutput struct{ *pulumi.OutputState }
@@ -5167,74 +3282,6 @@ func (o GoogleAutoPtrOutput) Elem() GoogleAutoOutput {
 type GoogleAutoResponse struct {
 }
 
-// GoogleAutoResponseInput is an input type that accepts GoogleAutoResponseArgs and GoogleAutoResponseOutput values.
-// You can construct a concrete instance of `GoogleAutoResponseInput` via:
-//
-//          GoogleAutoResponseArgs{...}
-type GoogleAutoResponseInput interface {
-	pulumi.Input
-
-	ToGoogleAutoResponseOutput() GoogleAutoResponseOutput
-	ToGoogleAutoResponseOutputWithContext(context.Context) GoogleAutoResponseOutput
-}
-
-// Enables automatic Google account login. If set, the service automatically generates a Google test account and adds it to the device, before executing the test. Note that test accounts might be reused. Many applications show their full set of functionalities when an account is present on the device. Logging into the device with these generated accounts allows testing more functionalities.
-type GoogleAutoResponseArgs struct {
-}
-
-func (GoogleAutoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleAutoResponse)(nil)).Elem()
-}
-
-func (i GoogleAutoResponseArgs) ToGoogleAutoResponseOutput() GoogleAutoResponseOutput {
-	return i.ToGoogleAutoResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleAutoResponseArgs) ToGoogleAutoResponseOutputWithContext(ctx context.Context) GoogleAutoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleAutoResponseOutput)
-}
-
-func (i GoogleAutoResponseArgs) ToGoogleAutoResponsePtrOutput() GoogleAutoResponsePtrOutput {
-	return i.ToGoogleAutoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleAutoResponseArgs) ToGoogleAutoResponsePtrOutputWithContext(ctx context.Context) GoogleAutoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleAutoResponseOutput).ToGoogleAutoResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleAutoResponsePtrInput is an input type that accepts GoogleAutoResponseArgs, GoogleAutoResponsePtr and GoogleAutoResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleAutoResponsePtrInput` via:
-//
-//          GoogleAutoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleAutoResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleAutoResponsePtrOutput() GoogleAutoResponsePtrOutput
-	ToGoogleAutoResponsePtrOutputWithContext(context.Context) GoogleAutoResponsePtrOutput
-}
-
-type googleAutoResponsePtrType GoogleAutoResponseArgs
-
-func GoogleAutoResponsePtr(v *GoogleAutoResponseArgs) GoogleAutoResponsePtrInput {
-	return (*googleAutoResponsePtrType)(v)
-}
-
-func (*googleAutoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleAutoResponse)(nil)).Elem()
-}
-
-func (i *googleAutoResponsePtrType) ToGoogleAutoResponsePtrOutput() GoogleAutoResponsePtrOutput {
-	return i.ToGoogleAutoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleAutoResponsePtrType) ToGoogleAutoResponsePtrOutputWithContext(ctx context.Context) GoogleAutoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleAutoResponsePtrOutput)
-}
-
 // Enables automatic Google account login. If set, the service automatically generates a Google test account and adds it to the device, before executing the test. Note that test accounts might be reused. Many applications show their full set of functionalities when an account is present on the device. Logging into the device with these generated accounts allows testing more functionalities.
 type GoogleAutoResponseOutput struct{ *pulumi.OutputState }
 
@@ -5248,40 +3295,6 @@ func (o GoogleAutoResponseOutput) ToGoogleAutoResponseOutput() GoogleAutoRespons
 
 func (o GoogleAutoResponseOutput) ToGoogleAutoResponseOutputWithContext(ctx context.Context) GoogleAutoResponseOutput {
 	return o
-}
-
-func (o GoogleAutoResponseOutput) ToGoogleAutoResponsePtrOutput() GoogleAutoResponsePtrOutput {
-	return o.ToGoogleAutoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleAutoResponseOutput) ToGoogleAutoResponsePtrOutputWithContext(ctx context.Context) GoogleAutoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleAutoResponse) *GoogleAutoResponse {
-		return &v
-	}).(GoogleAutoResponsePtrOutput)
-}
-
-type GoogleAutoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleAutoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleAutoResponse)(nil)).Elem()
-}
-
-func (o GoogleAutoResponsePtrOutput) ToGoogleAutoResponsePtrOutput() GoogleAutoResponsePtrOutput {
-	return o
-}
-
-func (o GoogleAutoResponsePtrOutput) ToGoogleAutoResponsePtrOutputWithContext(ctx context.Context) GoogleAutoResponsePtrOutput {
-	return o
-}
-
-func (o GoogleAutoResponsePtrOutput) Elem() GoogleAutoResponseOutput {
-	return o.ApplyT(func(v *GoogleAutoResponse) GoogleAutoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleAutoResponse
-		return ret
-	}).(GoogleAutoResponseOutput)
 }
 
 // A storage location within Google cloud storage (GCS).
@@ -5319,47 +3332,6 @@ func (i GoogleCloudStorageArgs) ToGoogleCloudStorageOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudStorageOutput)
 }
 
-func (i GoogleCloudStorageArgs) ToGoogleCloudStoragePtrOutput() GoogleCloudStoragePtrOutput {
-	return i.ToGoogleCloudStoragePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudStorageArgs) ToGoogleCloudStoragePtrOutputWithContext(ctx context.Context) GoogleCloudStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudStorageOutput).ToGoogleCloudStoragePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudStoragePtrInput is an input type that accepts GoogleCloudStorageArgs, GoogleCloudStoragePtr and GoogleCloudStoragePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudStoragePtrInput` via:
-//
-//          GoogleCloudStorageArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudStoragePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudStoragePtrOutput() GoogleCloudStoragePtrOutput
-	ToGoogleCloudStoragePtrOutputWithContext(context.Context) GoogleCloudStoragePtrOutput
-}
-
-type googleCloudStoragePtrType GoogleCloudStorageArgs
-
-func GoogleCloudStoragePtr(v *GoogleCloudStorageArgs) GoogleCloudStoragePtrInput {
-	return (*googleCloudStoragePtrType)(v)
-}
-
-func (*googleCloudStoragePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudStorage)(nil)).Elem()
-}
-
-func (i *googleCloudStoragePtrType) ToGoogleCloudStoragePtrOutput() GoogleCloudStoragePtrOutput {
-	return i.ToGoogleCloudStoragePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudStoragePtrType) ToGoogleCloudStoragePtrOutputWithContext(ctx context.Context) GoogleCloudStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudStoragePtrOutput)
-}
-
 // A storage location within Google cloud storage (GCS).
 type GoogleCloudStorageOutput struct{ *pulumi.OutputState }
 
@@ -5375,129 +3347,15 @@ func (o GoogleCloudStorageOutput) ToGoogleCloudStorageOutputWithContext(ctx cont
 	return o
 }
 
-func (o GoogleCloudStorageOutput) ToGoogleCloudStoragePtrOutput() GoogleCloudStoragePtrOutput {
-	return o.ToGoogleCloudStoragePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudStorageOutput) ToGoogleCloudStoragePtrOutputWithContext(ctx context.Context) GoogleCloudStoragePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudStorage) *GoogleCloudStorage {
-		return &v
-	}).(GoogleCloudStoragePtrOutput)
-}
-
 // The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
 func (o GoogleCloudStorageOutput) GcsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudStorage) string { return v.GcsPath }).(pulumi.StringOutput)
-}
-
-type GoogleCloudStoragePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudStoragePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudStorage)(nil)).Elem()
-}
-
-func (o GoogleCloudStoragePtrOutput) ToGoogleCloudStoragePtrOutput() GoogleCloudStoragePtrOutput {
-	return o
-}
-
-func (o GoogleCloudStoragePtrOutput) ToGoogleCloudStoragePtrOutputWithContext(ctx context.Context) GoogleCloudStoragePtrOutput {
-	return o
-}
-
-func (o GoogleCloudStoragePtrOutput) Elem() GoogleCloudStorageOutput {
-	return o.ApplyT(func(v *GoogleCloudStorage) GoogleCloudStorage {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudStorage
-		return ret
-	}).(GoogleCloudStorageOutput)
-}
-
-// The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
-func (o GoogleCloudStoragePtrOutput) GcsPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudStorage) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.GcsPath
-	}).(pulumi.StringPtrOutput)
 }
 
 // A storage location within Google cloud storage (GCS).
 type GoogleCloudStorageResponse struct {
 	// The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
 	GcsPath string `pulumi:"gcsPath"`
-}
-
-// GoogleCloudStorageResponseInput is an input type that accepts GoogleCloudStorageResponseArgs and GoogleCloudStorageResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudStorageResponseInput` via:
-//
-//          GoogleCloudStorageResponseArgs{...}
-type GoogleCloudStorageResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudStorageResponseOutput() GoogleCloudStorageResponseOutput
-	ToGoogleCloudStorageResponseOutputWithContext(context.Context) GoogleCloudStorageResponseOutput
-}
-
-// A storage location within Google cloud storage (GCS).
-type GoogleCloudStorageResponseArgs struct {
-	// The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
-	GcsPath pulumi.StringInput `pulumi:"gcsPath"`
-}
-
-func (GoogleCloudStorageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudStorageResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudStorageResponseArgs) ToGoogleCloudStorageResponseOutput() GoogleCloudStorageResponseOutput {
-	return i.ToGoogleCloudStorageResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudStorageResponseArgs) ToGoogleCloudStorageResponseOutputWithContext(ctx context.Context) GoogleCloudStorageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudStorageResponseOutput)
-}
-
-func (i GoogleCloudStorageResponseArgs) ToGoogleCloudStorageResponsePtrOutput() GoogleCloudStorageResponsePtrOutput {
-	return i.ToGoogleCloudStorageResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudStorageResponseArgs) ToGoogleCloudStorageResponsePtrOutputWithContext(ctx context.Context) GoogleCloudStorageResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudStorageResponseOutput).ToGoogleCloudStorageResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudStorageResponsePtrInput is an input type that accepts GoogleCloudStorageResponseArgs, GoogleCloudStorageResponsePtr and GoogleCloudStorageResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudStorageResponsePtrInput` via:
-//
-//          GoogleCloudStorageResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudStorageResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudStorageResponsePtrOutput() GoogleCloudStorageResponsePtrOutput
-	ToGoogleCloudStorageResponsePtrOutputWithContext(context.Context) GoogleCloudStorageResponsePtrOutput
-}
-
-type googleCloudStorageResponsePtrType GoogleCloudStorageResponseArgs
-
-func GoogleCloudStorageResponsePtr(v *GoogleCloudStorageResponseArgs) GoogleCloudStorageResponsePtrInput {
-	return (*googleCloudStorageResponsePtrType)(v)
-}
-
-func (*googleCloudStorageResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudStorageResponse)(nil)).Elem()
-}
-
-func (i *googleCloudStorageResponsePtrType) ToGoogleCloudStorageResponsePtrOutput() GoogleCloudStorageResponsePtrOutput {
-	return i.ToGoogleCloudStorageResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudStorageResponsePtrType) ToGoogleCloudStorageResponsePtrOutputWithContext(ctx context.Context) GoogleCloudStorageResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudStorageResponsePtrOutput)
 }
 
 // A storage location within Google cloud storage (GCS).
@@ -5515,53 +3373,9 @@ func (o GoogleCloudStorageResponseOutput) ToGoogleCloudStorageResponseOutputWith
 	return o
 }
 
-func (o GoogleCloudStorageResponseOutput) ToGoogleCloudStorageResponsePtrOutput() GoogleCloudStorageResponsePtrOutput {
-	return o.ToGoogleCloudStorageResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudStorageResponseOutput) ToGoogleCloudStorageResponsePtrOutputWithContext(ctx context.Context) GoogleCloudStorageResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudStorageResponse) *GoogleCloudStorageResponse {
-		return &v
-	}).(GoogleCloudStorageResponsePtrOutput)
-}
-
 // The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
 func (o GoogleCloudStorageResponseOutput) GcsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudStorageResponse) string { return v.GcsPath }).(pulumi.StringOutput)
-}
-
-type GoogleCloudStorageResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudStorageResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudStorageResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudStorageResponsePtrOutput) ToGoogleCloudStorageResponsePtrOutput() GoogleCloudStorageResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudStorageResponsePtrOutput) ToGoogleCloudStorageResponsePtrOutputWithContext(ctx context.Context) GoogleCloudStorageResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudStorageResponsePtrOutput) Elem() GoogleCloudStorageResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudStorageResponse) GoogleCloudStorageResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudStorageResponse
-		return ret
-	}).(GoogleCloudStorageResponseOutput)
-}
-
-// The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
-func (o GoogleCloudStorageResponsePtrOutput) GcsPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudStorageResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.GcsPath
-	}).(pulumi.StringPtrOutput)
 }
 
 // A single iOS device.
@@ -5819,64 +3633,6 @@ type IosDeviceFileResponse struct {
 	DevicePath string `pulumi:"devicePath"`
 }
 
-// IosDeviceFileResponseInput is an input type that accepts IosDeviceFileResponseArgs and IosDeviceFileResponseOutput values.
-// You can construct a concrete instance of `IosDeviceFileResponseInput` via:
-//
-//          IosDeviceFileResponseArgs{...}
-type IosDeviceFileResponseInput interface {
-	pulumi.Input
-
-	ToIosDeviceFileResponseOutput() IosDeviceFileResponseOutput
-	ToIosDeviceFileResponseOutputWithContext(context.Context) IosDeviceFileResponseOutput
-}
-
-// A file or directory to install on the device before the test starts.
-type IosDeviceFileResponseArgs struct {
-	// The bundle id of the app where this file lives. iOS apps sandbox their own filesystem, so app files must specify which app installed on the device.
-	BundleId pulumi.StringInput `pulumi:"bundleId"`
-	// The source file
-	Content FileReferenceResponseInput `pulumi:"content"`
-	// Location of the file on the device, inside the app's sandboxed filesystem
-	DevicePath pulumi.StringInput `pulumi:"devicePath"`
-}
-
-func (IosDeviceFileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IosDeviceFileResponse)(nil)).Elem()
-}
-
-func (i IosDeviceFileResponseArgs) ToIosDeviceFileResponseOutput() IosDeviceFileResponseOutput {
-	return i.ToIosDeviceFileResponseOutputWithContext(context.Background())
-}
-
-func (i IosDeviceFileResponseArgs) ToIosDeviceFileResponseOutputWithContext(ctx context.Context) IosDeviceFileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosDeviceFileResponseOutput)
-}
-
-// IosDeviceFileResponseArrayInput is an input type that accepts IosDeviceFileResponseArray and IosDeviceFileResponseArrayOutput values.
-// You can construct a concrete instance of `IosDeviceFileResponseArrayInput` via:
-//
-//          IosDeviceFileResponseArray{ IosDeviceFileResponseArgs{...} }
-type IosDeviceFileResponseArrayInput interface {
-	pulumi.Input
-
-	ToIosDeviceFileResponseArrayOutput() IosDeviceFileResponseArrayOutput
-	ToIosDeviceFileResponseArrayOutputWithContext(context.Context) IosDeviceFileResponseArrayOutput
-}
-
-type IosDeviceFileResponseArray []IosDeviceFileResponseInput
-
-func (IosDeviceFileResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IosDeviceFileResponse)(nil)).Elem()
-}
-
-func (i IosDeviceFileResponseArray) ToIosDeviceFileResponseArrayOutput() IosDeviceFileResponseArrayOutput {
-	return i.ToIosDeviceFileResponseArrayOutputWithContext(context.Background())
-}
-
-func (i IosDeviceFileResponseArray) ToIosDeviceFileResponseArrayOutputWithContext(ctx context.Context) IosDeviceFileResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosDeviceFileResponseArrayOutput)
-}
-
 // A file or directory to install on the device before the test starts.
 type IosDeviceFileResponseOutput struct{ *pulumi.OutputState }
 
@@ -6073,76 +3829,6 @@ type IosDeviceListResponse struct {
 	IosDevices []IosDeviceResponse `pulumi:"iosDevices"`
 }
 
-// IosDeviceListResponseInput is an input type that accepts IosDeviceListResponseArgs and IosDeviceListResponseOutput values.
-// You can construct a concrete instance of `IosDeviceListResponseInput` via:
-//
-//          IosDeviceListResponseArgs{...}
-type IosDeviceListResponseInput interface {
-	pulumi.Input
-
-	ToIosDeviceListResponseOutput() IosDeviceListResponseOutput
-	ToIosDeviceListResponseOutputWithContext(context.Context) IosDeviceListResponseOutput
-}
-
-// A list of iOS device configurations in which the test is to be executed.
-type IosDeviceListResponseArgs struct {
-	// A list of iOS devices.
-	IosDevices IosDeviceResponseArrayInput `pulumi:"iosDevices"`
-}
-
-func (IosDeviceListResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IosDeviceListResponse)(nil)).Elem()
-}
-
-func (i IosDeviceListResponseArgs) ToIosDeviceListResponseOutput() IosDeviceListResponseOutput {
-	return i.ToIosDeviceListResponseOutputWithContext(context.Background())
-}
-
-func (i IosDeviceListResponseArgs) ToIosDeviceListResponseOutputWithContext(ctx context.Context) IosDeviceListResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosDeviceListResponseOutput)
-}
-
-func (i IosDeviceListResponseArgs) ToIosDeviceListResponsePtrOutput() IosDeviceListResponsePtrOutput {
-	return i.ToIosDeviceListResponsePtrOutputWithContext(context.Background())
-}
-
-func (i IosDeviceListResponseArgs) ToIosDeviceListResponsePtrOutputWithContext(ctx context.Context) IosDeviceListResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosDeviceListResponseOutput).ToIosDeviceListResponsePtrOutputWithContext(ctx)
-}
-
-// IosDeviceListResponsePtrInput is an input type that accepts IosDeviceListResponseArgs, IosDeviceListResponsePtr and IosDeviceListResponsePtrOutput values.
-// You can construct a concrete instance of `IosDeviceListResponsePtrInput` via:
-//
-//          IosDeviceListResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type IosDeviceListResponsePtrInput interface {
-	pulumi.Input
-
-	ToIosDeviceListResponsePtrOutput() IosDeviceListResponsePtrOutput
-	ToIosDeviceListResponsePtrOutputWithContext(context.Context) IosDeviceListResponsePtrOutput
-}
-
-type iosDeviceListResponsePtrType IosDeviceListResponseArgs
-
-func IosDeviceListResponsePtr(v *IosDeviceListResponseArgs) IosDeviceListResponsePtrInput {
-	return (*iosDeviceListResponsePtrType)(v)
-}
-
-func (*iosDeviceListResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IosDeviceListResponse)(nil)).Elem()
-}
-
-func (i *iosDeviceListResponsePtrType) ToIosDeviceListResponsePtrOutput() IosDeviceListResponsePtrOutput {
-	return i.ToIosDeviceListResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *iosDeviceListResponsePtrType) ToIosDeviceListResponsePtrOutputWithContext(ctx context.Context) IosDeviceListResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosDeviceListResponsePtrOutput)
-}
-
 // A list of iOS device configurations in which the test is to be executed.
 type IosDeviceListResponseOutput struct{ *pulumi.OutputState }
 
@@ -6158,53 +3844,9 @@ func (o IosDeviceListResponseOutput) ToIosDeviceListResponseOutputWithContext(ct
 	return o
 }
 
-func (o IosDeviceListResponseOutput) ToIosDeviceListResponsePtrOutput() IosDeviceListResponsePtrOutput {
-	return o.ToIosDeviceListResponsePtrOutputWithContext(context.Background())
-}
-
-func (o IosDeviceListResponseOutput) ToIosDeviceListResponsePtrOutputWithContext(ctx context.Context) IosDeviceListResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosDeviceListResponse) *IosDeviceListResponse {
-		return &v
-	}).(IosDeviceListResponsePtrOutput)
-}
-
 // A list of iOS devices.
 func (o IosDeviceListResponseOutput) IosDevices() IosDeviceResponseArrayOutput {
 	return o.ApplyT(func(v IosDeviceListResponse) []IosDeviceResponse { return v.IosDevices }).(IosDeviceResponseArrayOutput)
-}
-
-type IosDeviceListResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IosDeviceListResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IosDeviceListResponse)(nil)).Elem()
-}
-
-func (o IosDeviceListResponsePtrOutput) ToIosDeviceListResponsePtrOutput() IosDeviceListResponsePtrOutput {
-	return o
-}
-
-func (o IosDeviceListResponsePtrOutput) ToIosDeviceListResponsePtrOutputWithContext(ctx context.Context) IosDeviceListResponsePtrOutput {
-	return o
-}
-
-func (o IosDeviceListResponsePtrOutput) Elem() IosDeviceListResponseOutput {
-	return o.ApplyT(func(v *IosDeviceListResponse) IosDeviceListResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IosDeviceListResponse
-		return ret
-	}).(IosDeviceListResponseOutput)
-}
-
-// A list of iOS devices.
-func (o IosDeviceListResponsePtrOutput) IosDevices() IosDeviceResponseArrayOutput {
-	return o.ApplyT(func(v *IosDeviceListResponse) []IosDeviceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.IosDevices
-	}).(IosDeviceResponseArrayOutput)
 }
 
 // A single iOS device.
@@ -6217,66 +3859,6 @@ type IosDeviceResponse struct {
 	Locale string `pulumi:"locale"`
 	// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
 	Orientation string `pulumi:"orientation"`
-}
-
-// IosDeviceResponseInput is an input type that accepts IosDeviceResponseArgs and IosDeviceResponseOutput values.
-// You can construct a concrete instance of `IosDeviceResponseInput` via:
-//
-//          IosDeviceResponseArgs{...}
-type IosDeviceResponseInput interface {
-	pulumi.Input
-
-	ToIosDeviceResponseOutput() IosDeviceResponseOutput
-	ToIosDeviceResponseOutputWithContext(context.Context) IosDeviceResponseOutput
-}
-
-// A single iOS device.
-type IosDeviceResponseArgs struct {
-	// The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-	IosModelId pulumi.StringInput `pulumi:"iosModelId"`
-	// The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-	IosVersionId pulumi.StringInput `pulumi:"iosVersionId"`
-	// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-	Locale pulumi.StringInput `pulumi:"locale"`
-	// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
-	Orientation pulumi.StringInput `pulumi:"orientation"`
-}
-
-func (IosDeviceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IosDeviceResponse)(nil)).Elem()
-}
-
-func (i IosDeviceResponseArgs) ToIosDeviceResponseOutput() IosDeviceResponseOutput {
-	return i.ToIosDeviceResponseOutputWithContext(context.Background())
-}
-
-func (i IosDeviceResponseArgs) ToIosDeviceResponseOutputWithContext(ctx context.Context) IosDeviceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosDeviceResponseOutput)
-}
-
-// IosDeviceResponseArrayInput is an input type that accepts IosDeviceResponseArray and IosDeviceResponseArrayOutput values.
-// You can construct a concrete instance of `IosDeviceResponseArrayInput` via:
-//
-//          IosDeviceResponseArray{ IosDeviceResponseArgs{...} }
-type IosDeviceResponseArrayInput interface {
-	pulumi.Input
-
-	ToIosDeviceResponseArrayOutput() IosDeviceResponseArrayOutput
-	ToIosDeviceResponseArrayOutputWithContext(context.Context) IosDeviceResponseArrayOutput
-}
-
-type IosDeviceResponseArray []IosDeviceResponseInput
-
-func (IosDeviceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IosDeviceResponse)(nil)).Elem()
-}
-
-func (i IosDeviceResponseArray) ToIosDeviceResponseArrayOutput() IosDeviceResponseArrayOutput {
-	return i.ToIosDeviceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i IosDeviceResponseArray) ToIosDeviceResponseArrayOutputWithContext(ctx context.Context) IosDeviceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosDeviceResponseArrayOutput)
 }
 
 // A single iOS device.
@@ -6503,80 +4085,6 @@ type IosTestLoopResponse struct {
 	Scenarios []int `pulumi:"scenarios"`
 }
 
-// IosTestLoopResponseInput is an input type that accepts IosTestLoopResponseArgs and IosTestLoopResponseOutput values.
-// You can construct a concrete instance of `IosTestLoopResponseInput` via:
-//
-//          IosTestLoopResponseArgs{...}
-type IosTestLoopResponseInput interface {
-	pulumi.Input
-
-	ToIosTestLoopResponseOutput() IosTestLoopResponseOutput
-	ToIosTestLoopResponseOutputWithContext(context.Context) IosTestLoopResponseOutput
-}
-
-// A test of an iOS application that implements one or more game loop scenarios. This test type accepts an archived application (.ipa file) and a list of integer scenarios that will be executed on the app sequentially.
-type IosTestLoopResponseArgs struct {
-	// The bundle id for the application under test.
-	AppBundleId pulumi.StringInput `pulumi:"appBundleId"`
-	// The .ipa of the application to test.
-	AppIpa FileReferenceResponseInput `pulumi:"appIpa"`
-	// The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
-	Scenarios pulumi.IntArrayInput `pulumi:"scenarios"`
-}
-
-func (IosTestLoopResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IosTestLoopResponse)(nil)).Elem()
-}
-
-func (i IosTestLoopResponseArgs) ToIosTestLoopResponseOutput() IosTestLoopResponseOutput {
-	return i.ToIosTestLoopResponseOutputWithContext(context.Background())
-}
-
-func (i IosTestLoopResponseArgs) ToIosTestLoopResponseOutputWithContext(ctx context.Context) IosTestLoopResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosTestLoopResponseOutput)
-}
-
-func (i IosTestLoopResponseArgs) ToIosTestLoopResponsePtrOutput() IosTestLoopResponsePtrOutput {
-	return i.ToIosTestLoopResponsePtrOutputWithContext(context.Background())
-}
-
-func (i IosTestLoopResponseArgs) ToIosTestLoopResponsePtrOutputWithContext(ctx context.Context) IosTestLoopResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosTestLoopResponseOutput).ToIosTestLoopResponsePtrOutputWithContext(ctx)
-}
-
-// IosTestLoopResponsePtrInput is an input type that accepts IosTestLoopResponseArgs, IosTestLoopResponsePtr and IosTestLoopResponsePtrOutput values.
-// You can construct a concrete instance of `IosTestLoopResponsePtrInput` via:
-//
-//          IosTestLoopResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type IosTestLoopResponsePtrInput interface {
-	pulumi.Input
-
-	ToIosTestLoopResponsePtrOutput() IosTestLoopResponsePtrOutput
-	ToIosTestLoopResponsePtrOutputWithContext(context.Context) IosTestLoopResponsePtrOutput
-}
-
-type iosTestLoopResponsePtrType IosTestLoopResponseArgs
-
-func IosTestLoopResponsePtr(v *IosTestLoopResponseArgs) IosTestLoopResponsePtrInput {
-	return (*iosTestLoopResponsePtrType)(v)
-}
-
-func (*iosTestLoopResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IosTestLoopResponse)(nil)).Elem()
-}
-
-func (i *iosTestLoopResponsePtrType) ToIosTestLoopResponsePtrOutput() IosTestLoopResponsePtrOutput {
-	return i.ToIosTestLoopResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *iosTestLoopResponsePtrType) ToIosTestLoopResponsePtrOutputWithContext(ctx context.Context) IosTestLoopResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosTestLoopResponsePtrOutput)
-}
-
 // A test of an iOS application that implements one or more game loop scenarios. This test type accepts an archived application (.ipa file) and a list of integer scenarios that will be executed on the app sequentially.
 type IosTestLoopResponseOutput struct{ *pulumi.OutputState }
 
@@ -6592,16 +4100,6 @@ func (o IosTestLoopResponseOutput) ToIosTestLoopResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o IosTestLoopResponseOutput) ToIosTestLoopResponsePtrOutput() IosTestLoopResponsePtrOutput {
-	return o.ToIosTestLoopResponsePtrOutputWithContext(context.Background())
-}
-
-func (o IosTestLoopResponseOutput) ToIosTestLoopResponsePtrOutputWithContext(ctx context.Context) IosTestLoopResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosTestLoopResponse) *IosTestLoopResponse {
-		return &v
-	}).(IosTestLoopResponsePtrOutput)
-}
-
 // The bundle id for the application under test.
 func (o IosTestLoopResponseOutput) AppBundleId() pulumi.StringOutput {
 	return o.ApplyT(func(v IosTestLoopResponse) string { return v.AppBundleId }).(pulumi.StringOutput)
@@ -6615,60 +4113,6 @@ func (o IosTestLoopResponseOutput) AppIpa() FileReferenceResponseOutput {
 // The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
 func (o IosTestLoopResponseOutput) Scenarios() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v IosTestLoopResponse) []int { return v.Scenarios }).(pulumi.IntArrayOutput)
-}
-
-type IosTestLoopResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IosTestLoopResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IosTestLoopResponse)(nil)).Elem()
-}
-
-func (o IosTestLoopResponsePtrOutput) ToIosTestLoopResponsePtrOutput() IosTestLoopResponsePtrOutput {
-	return o
-}
-
-func (o IosTestLoopResponsePtrOutput) ToIosTestLoopResponsePtrOutputWithContext(ctx context.Context) IosTestLoopResponsePtrOutput {
-	return o
-}
-
-func (o IosTestLoopResponsePtrOutput) Elem() IosTestLoopResponseOutput {
-	return o.ApplyT(func(v *IosTestLoopResponse) IosTestLoopResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IosTestLoopResponse
-		return ret
-	}).(IosTestLoopResponseOutput)
-}
-
-// The bundle id for the application under test.
-func (o IosTestLoopResponsePtrOutput) AppBundleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IosTestLoopResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AppBundleId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The .ipa of the application to test.
-func (o IosTestLoopResponsePtrOutput) AppIpa() FileReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *IosTestLoopResponse) *FileReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AppIpa
-	}).(FileReferenceResponsePtrOutput)
-}
-
-// The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
-func (o IosTestLoopResponsePtrOutput) Scenarios() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *IosTestLoopResponse) []int {
-		if v == nil {
-			return nil
-		}
-		return v.Scenarios
-	}).(pulumi.IntArrayOutput)
 }
 
 // A description of how to set up an iOS device prior to running the test.
@@ -6880,82 +4324,6 @@ type IosTestSetupResponse struct {
 	PushFiles []IosDeviceFileResponse `pulumi:"pushFiles"`
 }
 
-// IosTestSetupResponseInput is an input type that accepts IosTestSetupResponseArgs and IosTestSetupResponseOutput values.
-// You can construct a concrete instance of `IosTestSetupResponseInput` via:
-//
-//          IosTestSetupResponseArgs{...}
-type IosTestSetupResponseInput interface {
-	pulumi.Input
-
-	ToIosTestSetupResponseOutput() IosTestSetupResponseOutput
-	ToIosTestSetupResponseOutputWithContext(context.Context) IosTestSetupResponseOutput
-}
-
-// A description of how to set up an iOS device prior to running the test.
-type IosTestSetupResponseArgs struct {
-	// iOS apps to install in addition to those being directly tested.
-	AdditionalIpas FileReferenceResponseArrayInput `pulumi:"additionalIpas"`
-	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
-	NetworkProfile pulumi.StringInput `pulumi:"networkProfile"`
-	// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
-	PullDirectories IosDeviceFileResponseArrayInput `pulumi:"pullDirectories"`
-	// List of files to push to the device before starting the test.
-	PushFiles IosDeviceFileResponseArrayInput `pulumi:"pushFiles"`
-}
-
-func (IosTestSetupResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IosTestSetupResponse)(nil)).Elem()
-}
-
-func (i IosTestSetupResponseArgs) ToIosTestSetupResponseOutput() IosTestSetupResponseOutput {
-	return i.ToIosTestSetupResponseOutputWithContext(context.Background())
-}
-
-func (i IosTestSetupResponseArgs) ToIosTestSetupResponseOutputWithContext(ctx context.Context) IosTestSetupResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosTestSetupResponseOutput)
-}
-
-func (i IosTestSetupResponseArgs) ToIosTestSetupResponsePtrOutput() IosTestSetupResponsePtrOutput {
-	return i.ToIosTestSetupResponsePtrOutputWithContext(context.Background())
-}
-
-func (i IosTestSetupResponseArgs) ToIosTestSetupResponsePtrOutputWithContext(ctx context.Context) IosTestSetupResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosTestSetupResponseOutput).ToIosTestSetupResponsePtrOutputWithContext(ctx)
-}
-
-// IosTestSetupResponsePtrInput is an input type that accepts IosTestSetupResponseArgs, IosTestSetupResponsePtr and IosTestSetupResponsePtrOutput values.
-// You can construct a concrete instance of `IosTestSetupResponsePtrInput` via:
-//
-//          IosTestSetupResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type IosTestSetupResponsePtrInput interface {
-	pulumi.Input
-
-	ToIosTestSetupResponsePtrOutput() IosTestSetupResponsePtrOutput
-	ToIosTestSetupResponsePtrOutputWithContext(context.Context) IosTestSetupResponsePtrOutput
-}
-
-type iosTestSetupResponsePtrType IosTestSetupResponseArgs
-
-func IosTestSetupResponsePtr(v *IosTestSetupResponseArgs) IosTestSetupResponsePtrInput {
-	return (*iosTestSetupResponsePtrType)(v)
-}
-
-func (*iosTestSetupResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IosTestSetupResponse)(nil)).Elem()
-}
-
-func (i *iosTestSetupResponsePtrType) ToIosTestSetupResponsePtrOutput() IosTestSetupResponsePtrOutput {
-	return i.ToIosTestSetupResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *iosTestSetupResponsePtrType) ToIosTestSetupResponsePtrOutputWithContext(ctx context.Context) IosTestSetupResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosTestSetupResponsePtrOutput)
-}
-
 // A description of how to set up an iOS device prior to running the test.
 type IosTestSetupResponseOutput struct{ *pulumi.OutputState }
 
@@ -6969,16 +4337,6 @@ func (o IosTestSetupResponseOutput) ToIosTestSetupResponseOutput() IosTestSetupR
 
 func (o IosTestSetupResponseOutput) ToIosTestSetupResponseOutputWithContext(ctx context.Context) IosTestSetupResponseOutput {
 	return o
-}
-
-func (o IosTestSetupResponseOutput) ToIosTestSetupResponsePtrOutput() IosTestSetupResponsePtrOutput {
-	return o.ToIosTestSetupResponsePtrOutputWithContext(context.Background())
-}
-
-func (o IosTestSetupResponseOutput) ToIosTestSetupResponsePtrOutputWithContext(ctx context.Context) IosTestSetupResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosTestSetupResponse) *IosTestSetupResponse {
-		return &v
-	}).(IosTestSetupResponsePtrOutput)
 }
 
 // iOS apps to install in addition to those being directly tested.
@@ -6999,70 +4357,6 @@ func (o IosTestSetupResponseOutput) PullDirectories() IosDeviceFileResponseArray
 // List of files to push to the device before starting the test.
 func (o IosTestSetupResponseOutput) PushFiles() IosDeviceFileResponseArrayOutput {
 	return o.ApplyT(func(v IosTestSetupResponse) []IosDeviceFileResponse { return v.PushFiles }).(IosDeviceFileResponseArrayOutput)
-}
-
-type IosTestSetupResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IosTestSetupResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IosTestSetupResponse)(nil)).Elem()
-}
-
-func (o IosTestSetupResponsePtrOutput) ToIosTestSetupResponsePtrOutput() IosTestSetupResponsePtrOutput {
-	return o
-}
-
-func (o IosTestSetupResponsePtrOutput) ToIosTestSetupResponsePtrOutputWithContext(ctx context.Context) IosTestSetupResponsePtrOutput {
-	return o
-}
-
-func (o IosTestSetupResponsePtrOutput) Elem() IosTestSetupResponseOutput {
-	return o.ApplyT(func(v *IosTestSetupResponse) IosTestSetupResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IosTestSetupResponse
-		return ret
-	}).(IosTestSetupResponseOutput)
-}
-
-// iOS apps to install in addition to those being directly tested.
-func (o IosTestSetupResponsePtrOutput) AdditionalIpas() FileReferenceResponseArrayOutput {
-	return o.ApplyT(func(v *IosTestSetupResponse) []FileReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalIpas
-	}).(FileReferenceResponseArrayOutput)
-}
-
-// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
-func (o IosTestSetupResponsePtrOutput) NetworkProfile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IosTestSetupResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NetworkProfile
-	}).(pulumi.StringPtrOutput)
-}
-
-// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
-func (o IosTestSetupResponsePtrOutput) PullDirectories() IosDeviceFileResponseArrayOutput {
-	return o.ApplyT(func(v *IosTestSetupResponse) []IosDeviceFileResponse {
-		if v == nil {
-			return nil
-		}
-		return v.PullDirectories
-	}).(IosDeviceFileResponseArrayOutput)
-}
-
-// List of files to push to the device before starting the test.
-func (o IosTestSetupResponsePtrOutput) PushFiles() IosDeviceFileResponseArrayOutput {
-	return o.ApplyT(func(v *IosTestSetupResponse) []IosDeviceFileResponse {
-		if v == nil {
-			return nil
-		}
-		return v.PushFiles
-	}).(IosDeviceFileResponseArrayOutput)
 }
 
 // A test of an iOS application that uses the XCTest framework. Xcode supports the option to "build for testing", which generates an .xctestrun file that contains a test specification (arguments, test methods, etc). This test type accepts a zip file containing the .xctestrun file and the corresponding contents of the Build/Products directory that contains all the binaries needed to run the tests.
@@ -7276,84 +4570,6 @@ type IosXcTestResponse struct {
 	Xctestrun FileReferenceResponse `pulumi:"xctestrun"`
 }
 
-// IosXcTestResponseInput is an input type that accepts IosXcTestResponseArgs and IosXcTestResponseOutput values.
-// You can construct a concrete instance of `IosXcTestResponseInput` via:
-//
-//          IosXcTestResponseArgs{...}
-type IosXcTestResponseInput interface {
-	pulumi.Input
-
-	ToIosXcTestResponseOutput() IosXcTestResponseOutput
-	ToIosXcTestResponseOutputWithContext(context.Context) IosXcTestResponseOutput
-}
-
-// A test of an iOS application that uses the XCTest framework. Xcode supports the option to "build for testing", which generates an .xctestrun file that contains a test specification (arguments, test methods, etc). This test type accepts a zip file containing the .xctestrun file and the corresponding contents of the Build/Products directory that contains all the binaries needed to run the tests.
-type IosXcTestResponseArgs struct {
-	// The bundle id for the application under test.
-	AppBundleId pulumi.StringInput `pulumi:"appBundleId"`
-	// The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
-	TestSpecialEntitlements pulumi.BoolInput `pulumi:"testSpecialEntitlements"`
-	// The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
-	TestsZip FileReferenceResponseInput `pulumi:"testsZip"`
-	// The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.
-	XcodeVersion pulumi.StringInput `pulumi:"xcodeVersion"`
-	// An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be useful for sharding tests. Default is taken from the tests zip.
-	Xctestrun FileReferenceResponseInput `pulumi:"xctestrun"`
-}
-
-func (IosXcTestResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IosXcTestResponse)(nil)).Elem()
-}
-
-func (i IosXcTestResponseArgs) ToIosXcTestResponseOutput() IosXcTestResponseOutput {
-	return i.ToIosXcTestResponseOutputWithContext(context.Background())
-}
-
-func (i IosXcTestResponseArgs) ToIosXcTestResponseOutputWithContext(ctx context.Context) IosXcTestResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosXcTestResponseOutput)
-}
-
-func (i IosXcTestResponseArgs) ToIosXcTestResponsePtrOutput() IosXcTestResponsePtrOutput {
-	return i.ToIosXcTestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i IosXcTestResponseArgs) ToIosXcTestResponsePtrOutputWithContext(ctx context.Context) IosXcTestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosXcTestResponseOutput).ToIosXcTestResponsePtrOutputWithContext(ctx)
-}
-
-// IosXcTestResponsePtrInput is an input type that accepts IosXcTestResponseArgs, IosXcTestResponsePtr and IosXcTestResponsePtrOutput values.
-// You can construct a concrete instance of `IosXcTestResponsePtrInput` via:
-//
-//          IosXcTestResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type IosXcTestResponsePtrInput interface {
-	pulumi.Input
-
-	ToIosXcTestResponsePtrOutput() IosXcTestResponsePtrOutput
-	ToIosXcTestResponsePtrOutputWithContext(context.Context) IosXcTestResponsePtrOutput
-}
-
-type iosXcTestResponsePtrType IosXcTestResponseArgs
-
-func IosXcTestResponsePtr(v *IosXcTestResponseArgs) IosXcTestResponsePtrInput {
-	return (*iosXcTestResponsePtrType)(v)
-}
-
-func (*iosXcTestResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IosXcTestResponse)(nil)).Elem()
-}
-
-func (i *iosXcTestResponsePtrType) ToIosXcTestResponsePtrOutput() IosXcTestResponsePtrOutput {
-	return i.ToIosXcTestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *iosXcTestResponsePtrType) ToIosXcTestResponsePtrOutputWithContext(ctx context.Context) IosXcTestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IosXcTestResponsePtrOutput)
-}
-
 // A test of an iOS application that uses the XCTest framework. Xcode supports the option to "build for testing", which generates an .xctestrun file that contains a test specification (arguments, test methods, etc). This test type accepts a zip file containing the .xctestrun file and the corresponding contents of the Build/Products directory that contains all the binaries needed to run the tests.
 type IosXcTestResponseOutput struct{ *pulumi.OutputState }
 
@@ -7367,16 +4583,6 @@ func (o IosXcTestResponseOutput) ToIosXcTestResponseOutput() IosXcTestResponseOu
 
 func (o IosXcTestResponseOutput) ToIosXcTestResponseOutputWithContext(ctx context.Context) IosXcTestResponseOutput {
 	return o
-}
-
-func (o IosXcTestResponseOutput) ToIosXcTestResponsePtrOutput() IosXcTestResponsePtrOutput {
-	return o.ToIosXcTestResponsePtrOutputWithContext(context.Background())
-}
-
-func (o IosXcTestResponseOutput) ToIosXcTestResponsePtrOutputWithContext(ctx context.Context) IosXcTestResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosXcTestResponse) *IosXcTestResponse {
-		return &v
-	}).(IosXcTestResponsePtrOutput)
 }
 
 // The bundle id for the application under test.
@@ -7402,80 +4608,6 @@ func (o IosXcTestResponseOutput) XcodeVersion() pulumi.StringOutput {
 // An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be useful for sharding tests. Default is taken from the tests zip.
 func (o IosXcTestResponseOutput) Xctestrun() FileReferenceResponseOutput {
 	return o.ApplyT(func(v IosXcTestResponse) FileReferenceResponse { return v.Xctestrun }).(FileReferenceResponseOutput)
-}
-
-type IosXcTestResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IosXcTestResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IosXcTestResponse)(nil)).Elem()
-}
-
-func (o IosXcTestResponsePtrOutput) ToIosXcTestResponsePtrOutput() IosXcTestResponsePtrOutput {
-	return o
-}
-
-func (o IosXcTestResponsePtrOutput) ToIosXcTestResponsePtrOutputWithContext(ctx context.Context) IosXcTestResponsePtrOutput {
-	return o
-}
-
-func (o IosXcTestResponsePtrOutput) Elem() IosXcTestResponseOutput {
-	return o.ApplyT(func(v *IosXcTestResponse) IosXcTestResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IosXcTestResponse
-		return ret
-	}).(IosXcTestResponseOutput)
-}
-
-// The bundle id for the application under test.
-func (o IosXcTestResponsePtrOutput) AppBundleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IosXcTestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AppBundleId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
-func (o IosXcTestResponsePtrOutput) TestSpecialEntitlements() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *IosXcTestResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.TestSpecialEntitlements
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
-func (o IosXcTestResponsePtrOutput) TestsZip() FileReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *IosXcTestResponse) *FileReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TestsZip
-	}).(FileReferenceResponsePtrOutput)
-}
-
-// The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.
-func (o IosXcTestResponsePtrOutput) XcodeVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IosXcTestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.XcodeVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be useful for sharding tests. Default is taken from the tests zip.
-func (o IosXcTestResponsePtrOutput) Xctestrun() FileReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *IosXcTestResponse) *FileReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Xctestrun
-	}).(FileReferenceResponsePtrOutput)
 }
 
 // Specifies an intent that starts the main launcher activity.
@@ -7601,33 +4733,6 @@ func (o LauncherActivityIntentPtrOutput) Elem() LauncherActivityIntentOutput {
 
 // Specifies an intent that starts the main launcher activity.
 type LauncherActivityIntentResponse struct {
-}
-
-// LauncherActivityIntentResponseInput is an input type that accepts LauncherActivityIntentResponseArgs and LauncherActivityIntentResponseOutput values.
-// You can construct a concrete instance of `LauncherActivityIntentResponseInput` via:
-//
-//          LauncherActivityIntentResponseArgs{...}
-type LauncherActivityIntentResponseInput interface {
-	pulumi.Input
-
-	ToLauncherActivityIntentResponseOutput() LauncherActivityIntentResponseOutput
-	ToLauncherActivityIntentResponseOutputWithContext(context.Context) LauncherActivityIntentResponseOutput
-}
-
-// Specifies an intent that starts the main launcher activity.
-type LauncherActivityIntentResponseArgs struct {
-}
-
-func (LauncherActivityIntentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LauncherActivityIntentResponse)(nil)).Elem()
-}
-
-func (i LauncherActivityIntentResponseArgs) ToLauncherActivityIntentResponseOutput() LauncherActivityIntentResponseOutput {
-	return i.ToLauncherActivityIntentResponseOutputWithContext(context.Background())
-}
-
-func (i LauncherActivityIntentResponseArgs) ToLauncherActivityIntentResponseOutputWithContext(ctx context.Context) LauncherActivityIntentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LauncherActivityIntentResponseOutput)
 }
 
 // Specifies an intent that starts the main launcher activity.
@@ -7791,76 +4896,6 @@ type ManualShardingResponse struct {
 	TestTargetsForShard []TestTargetsForShardResponse `pulumi:"testTargetsForShard"`
 }
 
-// ManualShardingResponseInput is an input type that accepts ManualShardingResponseArgs and ManualShardingResponseOutput values.
-// You can construct a concrete instance of `ManualShardingResponseInput` via:
-//
-//          ManualShardingResponseArgs{...}
-type ManualShardingResponseInput interface {
-	pulumi.Input
-
-	ToManualShardingResponseOutput() ManualShardingResponseOutput
-	ToManualShardingResponseOutputWithContext(context.Context) ManualShardingResponseOutput
-}
-
-// Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
-type ManualShardingResponseArgs struct {
-	// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
-	TestTargetsForShard TestTargetsForShardResponseArrayInput `pulumi:"testTargetsForShard"`
-}
-
-func (ManualShardingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManualShardingResponse)(nil)).Elem()
-}
-
-func (i ManualShardingResponseArgs) ToManualShardingResponseOutput() ManualShardingResponseOutput {
-	return i.ToManualShardingResponseOutputWithContext(context.Background())
-}
-
-func (i ManualShardingResponseArgs) ToManualShardingResponseOutputWithContext(ctx context.Context) ManualShardingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManualShardingResponseOutput)
-}
-
-func (i ManualShardingResponseArgs) ToManualShardingResponsePtrOutput() ManualShardingResponsePtrOutput {
-	return i.ToManualShardingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ManualShardingResponseArgs) ToManualShardingResponsePtrOutputWithContext(ctx context.Context) ManualShardingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManualShardingResponseOutput).ToManualShardingResponsePtrOutputWithContext(ctx)
-}
-
-// ManualShardingResponsePtrInput is an input type that accepts ManualShardingResponseArgs, ManualShardingResponsePtr and ManualShardingResponsePtrOutput values.
-// You can construct a concrete instance of `ManualShardingResponsePtrInput` via:
-//
-//          ManualShardingResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ManualShardingResponsePtrInput interface {
-	pulumi.Input
-
-	ToManualShardingResponsePtrOutput() ManualShardingResponsePtrOutput
-	ToManualShardingResponsePtrOutputWithContext(context.Context) ManualShardingResponsePtrOutput
-}
-
-type manualShardingResponsePtrType ManualShardingResponseArgs
-
-func ManualShardingResponsePtr(v *ManualShardingResponseArgs) ManualShardingResponsePtrInput {
-	return (*manualShardingResponsePtrType)(v)
-}
-
-func (*manualShardingResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManualShardingResponse)(nil)).Elem()
-}
-
-func (i *manualShardingResponsePtrType) ToManualShardingResponsePtrOutput() ManualShardingResponsePtrOutput {
-	return i.ToManualShardingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *manualShardingResponsePtrType) ToManualShardingResponsePtrOutputWithContext(ctx context.Context) ManualShardingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManualShardingResponsePtrOutput)
-}
-
 // Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
 type ManualShardingResponseOutput struct{ *pulumi.OutputState }
 
@@ -7876,53 +4911,9 @@ func (o ManualShardingResponseOutput) ToManualShardingResponseOutputWithContext(
 	return o
 }
 
-func (o ManualShardingResponseOutput) ToManualShardingResponsePtrOutput() ManualShardingResponsePtrOutput {
-	return o.ToManualShardingResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ManualShardingResponseOutput) ToManualShardingResponsePtrOutputWithContext(ctx context.Context) ManualShardingResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManualShardingResponse) *ManualShardingResponse {
-		return &v
-	}).(ManualShardingResponsePtrOutput)
-}
-
 // Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 func (o ManualShardingResponseOutput) TestTargetsForShard() TestTargetsForShardResponseArrayOutput {
 	return o.ApplyT(func(v ManualShardingResponse) []TestTargetsForShardResponse { return v.TestTargetsForShard }).(TestTargetsForShardResponseArrayOutput)
-}
-
-type ManualShardingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManualShardingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManualShardingResponse)(nil)).Elem()
-}
-
-func (o ManualShardingResponsePtrOutput) ToManualShardingResponsePtrOutput() ManualShardingResponsePtrOutput {
-	return o
-}
-
-func (o ManualShardingResponsePtrOutput) ToManualShardingResponsePtrOutputWithContext(ctx context.Context) ManualShardingResponsePtrOutput {
-	return o
-}
-
-func (o ManualShardingResponsePtrOutput) Elem() ManualShardingResponseOutput {
-	return o.ApplyT(func(v *ManualShardingResponse) ManualShardingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ManualShardingResponse
-		return ret
-	}).(ManualShardingResponseOutput)
-}
-
-// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
-func (o ManualShardingResponsePtrOutput) TestTargetsForShard() TestTargetsForShardResponseArrayOutput {
-	return o.ApplyT(func(v *ManualShardingResponse) []TestTargetsForShardResponse {
-		if v == nil {
-			return nil
-		}
-		return v.TestTargetsForShard
-	}).(TestTargetsForShardResponseArrayOutput)
 }
 
 // An opaque binary blob file to install on the device before the test starts.
@@ -8090,37 +5081,6 @@ type ObbFileResponse struct {
 	Obb FileReferenceResponse `pulumi:"obb"`
 	// OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
 	ObbFileName string `pulumi:"obbFileName"`
-}
-
-// ObbFileResponseInput is an input type that accepts ObbFileResponseArgs and ObbFileResponseOutput values.
-// You can construct a concrete instance of `ObbFileResponseInput` via:
-//
-//          ObbFileResponseArgs{...}
-type ObbFileResponseInput interface {
-	pulumi.Input
-
-	ToObbFileResponseOutput() ObbFileResponseOutput
-	ToObbFileResponseOutputWithContext(context.Context) ObbFileResponseOutput
-}
-
-// An opaque binary blob file to install on the device before the test starts.
-type ObbFileResponseArgs struct {
-	// Opaque Binary Blob (OBB) file(s) to install on the device.
-	Obb FileReferenceResponseInput `pulumi:"obb"`
-	// OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
-	ObbFileName pulumi.StringInput `pulumi:"obbFileName"`
-}
-
-func (ObbFileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObbFileResponse)(nil)).Elem()
-}
-
-func (i ObbFileResponseArgs) ToObbFileResponseOutput() ObbFileResponseOutput {
-	return i.ToObbFileResponseOutputWithContext(context.Background())
-}
-
-func (i ObbFileResponseArgs) ToObbFileResponseOutputWithContext(ctx context.Context) ObbFileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObbFileResponseOutput)
 }
 
 // An opaque binary blob file to install on the device before the test starts.
@@ -8315,37 +5275,6 @@ type RegularFileResponse struct {
 	DevicePath string `pulumi:"devicePath"`
 }
 
-// RegularFileResponseInput is an input type that accepts RegularFileResponseArgs and RegularFileResponseOutput values.
-// You can construct a concrete instance of `RegularFileResponseInput` via:
-//
-//          RegularFileResponseArgs{...}
-type RegularFileResponseInput interface {
-	pulumi.Input
-
-	ToRegularFileResponseOutput() RegularFileResponseOutput
-	ToRegularFileResponseOutputWithContext(context.Context) RegularFileResponseOutput
-}
-
-// A file or directory to install on the device before the test starts.
-type RegularFileResponseArgs struct {
-	// The source file.
-	Content FileReferenceResponseInput `pulumi:"content"`
-	// Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
-	DevicePath pulumi.StringInput `pulumi:"devicePath"`
-}
-
-func (RegularFileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegularFileResponse)(nil)).Elem()
-}
-
-func (i RegularFileResponseArgs) ToRegularFileResponseOutput() RegularFileResponseOutput {
-	return i.ToRegularFileResponseOutputWithContext(context.Background())
-}
-
-func (i RegularFileResponseArgs) ToRegularFileResponseOutputWithContext(ctx context.Context) RegularFileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegularFileResponseOutput)
-}
-
 // A file or directory to install on the device before the test starts.
 type RegularFileResponseOutput struct{ *pulumi.OutputState }
 
@@ -8410,47 +5339,6 @@ func (i ResultStorageArgs) ToResultStorageOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ResultStorageOutput)
 }
 
-func (i ResultStorageArgs) ToResultStoragePtrOutput() ResultStoragePtrOutput {
-	return i.ToResultStoragePtrOutputWithContext(context.Background())
-}
-
-func (i ResultStorageArgs) ToResultStoragePtrOutputWithContext(ctx context.Context) ResultStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResultStorageOutput).ToResultStoragePtrOutputWithContext(ctx)
-}
-
-// ResultStoragePtrInput is an input type that accepts ResultStorageArgs, ResultStoragePtr and ResultStoragePtrOutput values.
-// You can construct a concrete instance of `ResultStoragePtrInput` via:
-//
-//          ResultStorageArgs{...}
-//
-//  or:
-//
-//          nil
-type ResultStoragePtrInput interface {
-	pulumi.Input
-
-	ToResultStoragePtrOutput() ResultStoragePtrOutput
-	ToResultStoragePtrOutputWithContext(context.Context) ResultStoragePtrOutput
-}
-
-type resultStoragePtrType ResultStorageArgs
-
-func ResultStoragePtr(v *ResultStorageArgs) ResultStoragePtrInput {
-	return (*resultStoragePtrType)(v)
-}
-
-func (*resultStoragePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResultStorage)(nil)).Elem()
-}
-
-func (i *resultStoragePtrType) ToResultStoragePtrOutput() ResultStoragePtrOutput {
-	return i.ToResultStoragePtrOutputWithContext(context.Background())
-}
-
-func (i *resultStoragePtrType) ToResultStoragePtrOutputWithContext(ctx context.Context) ResultStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResultStoragePtrOutput)
-}
-
 // Locations where the results of running the test are stored.
 type ResultStorageOutput struct{ *pulumi.OutputState }
 
@@ -8466,16 +5354,6 @@ func (o ResultStorageOutput) ToResultStorageOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o ResultStorageOutput) ToResultStoragePtrOutput() ResultStoragePtrOutput {
-	return o.ToResultStoragePtrOutputWithContext(context.Background())
-}
-
-func (o ResultStorageOutput) ToResultStoragePtrOutputWithContext(ctx context.Context) ResultStoragePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResultStorage) *ResultStorage {
-		return &v
-	}).(ResultStoragePtrOutput)
-}
-
 // Required.
 func (o ResultStorageOutput) GoogleCloudStorage() GoogleCloudStorageOutput {
 	return o.ApplyT(func(v ResultStorage) GoogleCloudStorage { return v.GoogleCloudStorage }).(GoogleCloudStorageOutput)
@@ -8484,50 +5362,6 @@ func (o ResultStorageOutput) GoogleCloudStorage() GoogleCloudStorageOutput {
 // The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
 func (o ResultStorageOutput) ToolResultsHistory() ToolResultsHistoryPtrOutput {
 	return o.ApplyT(func(v ResultStorage) *ToolResultsHistory { return v.ToolResultsHistory }).(ToolResultsHistoryPtrOutput)
-}
-
-type ResultStoragePtrOutput struct{ *pulumi.OutputState }
-
-func (ResultStoragePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResultStorage)(nil)).Elem()
-}
-
-func (o ResultStoragePtrOutput) ToResultStoragePtrOutput() ResultStoragePtrOutput {
-	return o
-}
-
-func (o ResultStoragePtrOutput) ToResultStoragePtrOutputWithContext(ctx context.Context) ResultStoragePtrOutput {
-	return o
-}
-
-func (o ResultStoragePtrOutput) Elem() ResultStorageOutput {
-	return o.ApplyT(func(v *ResultStorage) ResultStorage {
-		if v != nil {
-			return *v
-		}
-		var ret ResultStorage
-		return ret
-	}).(ResultStorageOutput)
-}
-
-// Required.
-func (o ResultStoragePtrOutput) GoogleCloudStorage() GoogleCloudStoragePtrOutput {
-	return o.ApplyT(func(v *ResultStorage) *GoogleCloudStorage {
-		if v == nil {
-			return nil
-		}
-		return &v.GoogleCloudStorage
-	}).(GoogleCloudStoragePtrOutput)
-}
-
-// The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
-func (o ResultStoragePtrOutput) ToolResultsHistory() ToolResultsHistoryPtrOutput {
-	return o.ApplyT(func(v *ResultStorage) *ToolResultsHistory {
-		if v == nil {
-			return nil
-		}
-		return v.ToolResultsHistory
-	}).(ToolResultsHistoryPtrOutput)
 }
 
 // Locations where the results of running the test are stored.
@@ -8540,82 +5374,6 @@ type ResultStorageResponse struct {
 	ToolResultsExecution ToolResultsExecutionResponse `pulumi:"toolResultsExecution"`
 	// The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
 	ToolResultsHistory ToolResultsHistoryResponse `pulumi:"toolResultsHistory"`
-}
-
-// ResultStorageResponseInput is an input type that accepts ResultStorageResponseArgs and ResultStorageResponseOutput values.
-// You can construct a concrete instance of `ResultStorageResponseInput` via:
-//
-//          ResultStorageResponseArgs{...}
-type ResultStorageResponseInput interface {
-	pulumi.Input
-
-	ToResultStorageResponseOutput() ResultStorageResponseOutput
-	ToResultStorageResponseOutputWithContext(context.Context) ResultStorageResponseOutput
-}
-
-// Locations where the results of running the test are stored.
-type ResultStorageResponseArgs struct {
-	// Required.
-	GoogleCloudStorage GoogleCloudStorageResponseInput `pulumi:"googleCloudStorage"`
-	// URL to the results in the Firebase Web Console.
-	ResultsUrl pulumi.StringInput `pulumi:"resultsUrl"`
-	// The tool results execution that results are written to.
-	ToolResultsExecution ToolResultsExecutionResponseInput `pulumi:"toolResultsExecution"`
-	// The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
-	ToolResultsHistory ToolResultsHistoryResponseInput `pulumi:"toolResultsHistory"`
-}
-
-func (ResultStorageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResultStorageResponse)(nil)).Elem()
-}
-
-func (i ResultStorageResponseArgs) ToResultStorageResponseOutput() ResultStorageResponseOutput {
-	return i.ToResultStorageResponseOutputWithContext(context.Background())
-}
-
-func (i ResultStorageResponseArgs) ToResultStorageResponseOutputWithContext(ctx context.Context) ResultStorageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResultStorageResponseOutput)
-}
-
-func (i ResultStorageResponseArgs) ToResultStorageResponsePtrOutput() ResultStorageResponsePtrOutput {
-	return i.ToResultStorageResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ResultStorageResponseArgs) ToResultStorageResponsePtrOutputWithContext(ctx context.Context) ResultStorageResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResultStorageResponseOutput).ToResultStorageResponsePtrOutputWithContext(ctx)
-}
-
-// ResultStorageResponsePtrInput is an input type that accepts ResultStorageResponseArgs, ResultStorageResponsePtr and ResultStorageResponsePtrOutput values.
-// You can construct a concrete instance of `ResultStorageResponsePtrInput` via:
-//
-//          ResultStorageResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ResultStorageResponsePtrInput interface {
-	pulumi.Input
-
-	ToResultStorageResponsePtrOutput() ResultStorageResponsePtrOutput
-	ToResultStorageResponsePtrOutputWithContext(context.Context) ResultStorageResponsePtrOutput
-}
-
-type resultStorageResponsePtrType ResultStorageResponseArgs
-
-func ResultStorageResponsePtr(v *ResultStorageResponseArgs) ResultStorageResponsePtrInput {
-	return (*resultStorageResponsePtrType)(v)
-}
-
-func (*resultStorageResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResultStorageResponse)(nil)).Elem()
-}
-
-func (i *resultStorageResponsePtrType) ToResultStorageResponsePtrOutput() ResultStorageResponsePtrOutput {
-	return i.ToResultStorageResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *resultStorageResponsePtrType) ToResultStorageResponsePtrOutputWithContext(ctx context.Context) ResultStorageResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResultStorageResponsePtrOutput)
 }
 
 // Locations where the results of running the test are stored.
@@ -8631,16 +5389,6 @@ func (o ResultStorageResponseOutput) ToResultStorageResponseOutput() ResultStora
 
 func (o ResultStorageResponseOutput) ToResultStorageResponseOutputWithContext(ctx context.Context) ResultStorageResponseOutput {
 	return o
-}
-
-func (o ResultStorageResponseOutput) ToResultStorageResponsePtrOutput() ResultStorageResponsePtrOutput {
-	return o.ToResultStorageResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ResultStorageResponseOutput) ToResultStorageResponsePtrOutputWithContext(ctx context.Context) ResultStorageResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResultStorageResponse) *ResultStorageResponse {
-		return &v
-	}).(ResultStorageResponsePtrOutput)
 }
 
 // Required.
@@ -8661,70 +5409,6 @@ func (o ResultStorageResponseOutput) ToolResultsExecution() ToolResultsExecution
 // The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
 func (o ResultStorageResponseOutput) ToolResultsHistory() ToolResultsHistoryResponseOutput {
 	return o.ApplyT(func(v ResultStorageResponse) ToolResultsHistoryResponse { return v.ToolResultsHistory }).(ToolResultsHistoryResponseOutput)
-}
-
-type ResultStorageResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ResultStorageResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResultStorageResponse)(nil)).Elem()
-}
-
-func (o ResultStorageResponsePtrOutput) ToResultStorageResponsePtrOutput() ResultStorageResponsePtrOutput {
-	return o
-}
-
-func (o ResultStorageResponsePtrOutput) ToResultStorageResponsePtrOutputWithContext(ctx context.Context) ResultStorageResponsePtrOutput {
-	return o
-}
-
-func (o ResultStorageResponsePtrOutput) Elem() ResultStorageResponseOutput {
-	return o.ApplyT(func(v *ResultStorageResponse) ResultStorageResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ResultStorageResponse
-		return ret
-	}).(ResultStorageResponseOutput)
-}
-
-// Required.
-func (o ResultStorageResponsePtrOutput) GoogleCloudStorage() GoogleCloudStorageResponsePtrOutput {
-	return o.ApplyT(func(v *ResultStorageResponse) *GoogleCloudStorageResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.GoogleCloudStorage
-	}).(GoogleCloudStorageResponsePtrOutput)
-}
-
-// URL to the results in the Firebase Web Console.
-func (o ResultStorageResponsePtrOutput) ResultsUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResultStorageResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResultsUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tool results execution that results are written to.
-func (o ResultStorageResponsePtrOutput) ToolResultsExecution() ToolResultsExecutionResponsePtrOutput {
-	return o.ApplyT(func(v *ResultStorageResponse) *ToolResultsExecutionResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ToolResultsExecution
-	}).(ToolResultsExecutionResponsePtrOutput)
-}
-
-// The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
-func (o ResultStorageResponsePtrOutput) ToolResultsHistory() ToolResultsHistoryResponsePtrOutput {
-	return o.ApplyT(func(v *ResultStorageResponse) *ToolResultsHistoryResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ToolResultsHistory
-	}).(ToolResultsHistoryResponsePtrOutput)
 }
 
 // Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
@@ -8853,64 +5537,6 @@ type RoboDirectiveResponse struct {
 	InputText string `pulumi:"inputText"`
 	// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
 	ResourceName string `pulumi:"resourceName"`
-}
-
-// RoboDirectiveResponseInput is an input type that accepts RoboDirectiveResponseArgs and RoboDirectiveResponseOutput values.
-// You can construct a concrete instance of `RoboDirectiveResponseInput` via:
-//
-//          RoboDirectiveResponseArgs{...}
-type RoboDirectiveResponseInput interface {
-	pulumi.Input
-
-	ToRoboDirectiveResponseOutput() RoboDirectiveResponseOutput
-	ToRoboDirectiveResponseOutputWithContext(context.Context) RoboDirectiveResponseOutput
-}
-
-// Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
-type RoboDirectiveResponseArgs struct {
-	// The type of action that Robo should perform on the specified element.
-	ActionType pulumi.StringInput `pulumi:"actionType"`
-	// The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
-	InputText pulumi.StringInput `pulumi:"inputText"`
-	// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
-	ResourceName pulumi.StringInput `pulumi:"resourceName"`
-}
-
-func (RoboDirectiveResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoboDirectiveResponse)(nil)).Elem()
-}
-
-func (i RoboDirectiveResponseArgs) ToRoboDirectiveResponseOutput() RoboDirectiveResponseOutput {
-	return i.ToRoboDirectiveResponseOutputWithContext(context.Background())
-}
-
-func (i RoboDirectiveResponseArgs) ToRoboDirectiveResponseOutputWithContext(ctx context.Context) RoboDirectiveResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoboDirectiveResponseOutput)
-}
-
-// RoboDirectiveResponseArrayInput is an input type that accepts RoboDirectiveResponseArray and RoboDirectiveResponseArrayOutput values.
-// You can construct a concrete instance of `RoboDirectiveResponseArrayInput` via:
-//
-//          RoboDirectiveResponseArray{ RoboDirectiveResponseArgs{...} }
-type RoboDirectiveResponseArrayInput interface {
-	pulumi.Input
-
-	ToRoboDirectiveResponseArrayOutput() RoboDirectiveResponseArrayOutput
-	ToRoboDirectiveResponseArrayOutputWithContext(context.Context) RoboDirectiveResponseArrayOutput
-}
-
-type RoboDirectiveResponseArray []RoboDirectiveResponseInput
-
-func (RoboDirectiveResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoboDirectiveResponse)(nil)).Elem()
-}
-
-func (i RoboDirectiveResponseArray) ToRoboDirectiveResponseArrayOutput() RoboDirectiveResponseArrayOutput {
-	return i.ToRoboDirectiveResponseArrayOutputWithContext(context.Background())
-}
-
-func (i RoboDirectiveResponseArray) ToRoboDirectiveResponseArrayOutputWithContext(ctx context.Context) RoboDirectiveResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoboDirectiveResponseArrayOutput)
 }
 
 // Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
@@ -9091,64 +5717,6 @@ type RoboStartingIntentResponse struct {
 	Timeout string `pulumi:"timeout"`
 }
 
-// RoboStartingIntentResponseInput is an input type that accepts RoboStartingIntentResponseArgs and RoboStartingIntentResponseOutput values.
-// You can construct a concrete instance of `RoboStartingIntentResponseInput` via:
-//
-//          RoboStartingIntentResponseArgs{...}
-type RoboStartingIntentResponseInput interface {
-	pulumi.Input
-
-	ToRoboStartingIntentResponseOutput() RoboStartingIntentResponseOutput
-	ToRoboStartingIntentResponseOutputWithContext(context.Context) RoboStartingIntentResponseOutput
-}
-
-// Message for specifying the start activities to crawl.
-type RoboStartingIntentResponseArgs struct {
-	// An intent that starts the main launcher activity.
-	LauncherActivity LauncherActivityIntentResponseInput `pulumi:"launcherActivity"`
-	// An intent that starts an activity with specific details.
-	StartActivity StartActivityIntentResponseInput `pulumi:"startActivity"`
-	// Timeout in seconds for each intent.
-	Timeout pulumi.StringInput `pulumi:"timeout"`
-}
-
-func (RoboStartingIntentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoboStartingIntentResponse)(nil)).Elem()
-}
-
-func (i RoboStartingIntentResponseArgs) ToRoboStartingIntentResponseOutput() RoboStartingIntentResponseOutput {
-	return i.ToRoboStartingIntentResponseOutputWithContext(context.Background())
-}
-
-func (i RoboStartingIntentResponseArgs) ToRoboStartingIntentResponseOutputWithContext(ctx context.Context) RoboStartingIntentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoboStartingIntentResponseOutput)
-}
-
-// RoboStartingIntentResponseArrayInput is an input type that accepts RoboStartingIntentResponseArray and RoboStartingIntentResponseArrayOutput values.
-// You can construct a concrete instance of `RoboStartingIntentResponseArrayInput` via:
-//
-//          RoboStartingIntentResponseArray{ RoboStartingIntentResponseArgs{...} }
-type RoboStartingIntentResponseArrayInput interface {
-	pulumi.Input
-
-	ToRoboStartingIntentResponseArrayOutput() RoboStartingIntentResponseArrayOutput
-	ToRoboStartingIntentResponseArrayOutputWithContext(context.Context) RoboStartingIntentResponseArrayOutput
-}
-
-type RoboStartingIntentResponseArray []RoboStartingIntentResponseInput
-
-func (RoboStartingIntentResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoboStartingIntentResponse)(nil)).Elem()
-}
-
-func (i RoboStartingIntentResponseArray) ToRoboStartingIntentResponseArrayOutput() RoboStartingIntentResponseArrayOutput {
-	return i.ToRoboStartingIntentResponseArrayOutputWithContext(context.Background())
-}
-
-func (i RoboStartingIntentResponseArray) ToRoboStartingIntentResponseArrayOutputWithContext(ctx context.Context) RoboStartingIntentResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoboStartingIntentResponseArrayOutput)
-}
-
 // Message for specifying the start activities to crawl.
 type RoboStartingIntentResponseOutput struct{ *pulumi.OutputState }
 
@@ -9207,39 +5775,6 @@ type ShardResponse struct {
 	ShardIndex int `pulumi:"shardIndex"`
 	// Test targets for each shard.
 	TestTargetsForShard TestTargetsForShardResponse `pulumi:"testTargetsForShard"`
-}
-
-// ShardResponseInput is an input type that accepts ShardResponseArgs and ShardResponseOutput values.
-// You can construct a concrete instance of `ShardResponseInput` via:
-//
-//          ShardResponseArgs{...}
-type ShardResponseInput interface {
-	pulumi.Input
-
-	ToShardResponseOutput() ShardResponseOutput
-	ToShardResponseOutputWithContext(context.Context) ShardResponseOutput
-}
-
-// Output only. Details about the shard.
-type ShardResponseArgs struct {
-	// The total number of shards.
-	NumShards pulumi.IntInput `pulumi:"numShards"`
-	// The index of the shard among all the shards.
-	ShardIndex pulumi.IntInput `pulumi:"shardIndex"`
-	// Test targets for each shard.
-	TestTargetsForShard TestTargetsForShardResponseInput `pulumi:"testTargetsForShard"`
-}
-
-func (ShardResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShardResponse)(nil)).Elem()
-}
-
-func (i ShardResponseArgs) ToShardResponseOutput() ShardResponseOutput {
-	return i.ToShardResponseOutputWithContext(context.Background())
-}
-
-func (i ShardResponseArgs) ToShardResponseOutputWithContext(ctx context.Context) ShardResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShardResponseOutput)
 }
 
 // Output only. Details about the shard.
@@ -9439,78 +5974,6 @@ type ShardingOptionResponse struct {
 	UniformSharding UniformShardingResponse `pulumi:"uniformSharding"`
 }
 
-// ShardingOptionResponseInput is an input type that accepts ShardingOptionResponseArgs and ShardingOptionResponseOutput values.
-// You can construct a concrete instance of `ShardingOptionResponseInput` via:
-//
-//          ShardingOptionResponseArgs{...}
-type ShardingOptionResponseInput interface {
-	pulumi.Input
-
-	ToShardingOptionResponseOutput() ShardingOptionResponseOutput
-	ToShardingOptionResponseOutputWithContext(context.Context) ShardingOptionResponseOutput
-}
-
-// Options for enabling sharding.
-type ShardingOptionResponseArgs struct {
-	// Shards test cases into the specified groups of packages, classes, and/or methods.
-	ManualSharding ManualShardingResponseInput `pulumi:"manualSharding"`
-	// Uniformly shards test cases given a total number of shards.
-	UniformSharding UniformShardingResponseInput `pulumi:"uniformSharding"`
-}
-
-func (ShardingOptionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShardingOptionResponse)(nil)).Elem()
-}
-
-func (i ShardingOptionResponseArgs) ToShardingOptionResponseOutput() ShardingOptionResponseOutput {
-	return i.ToShardingOptionResponseOutputWithContext(context.Background())
-}
-
-func (i ShardingOptionResponseArgs) ToShardingOptionResponseOutputWithContext(ctx context.Context) ShardingOptionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShardingOptionResponseOutput)
-}
-
-func (i ShardingOptionResponseArgs) ToShardingOptionResponsePtrOutput() ShardingOptionResponsePtrOutput {
-	return i.ToShardingOptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ShardingOptionResponseArgs) ToShardingOptionResponsePtrOutputWithContext(ctx context.Context) ShardingOptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShardingOptionResponseOutput).ToShardingOptionResponsePtrOutputWithContext(ctx)
-}
-
-// ShardingOptionResponsePtrInput is an input type that accepts ShardingOptionResponseArgs, ShardingOptionResponsePtr and ShardingOptionResponsePtrOutput values.
-// You can construct a concrete instance of `ShardingOptionResponsePtrInput` via:
-//
-//          ShardingOptionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ShardingOptionResponsePtrInput interface {
-	pulumi.Input
-
-	ToShardingOptionResponsePtrOutput() ShardingOptionResponsePtrOutput
-	ToShardingOptionResponsePtrOutputWithContext(context.Context) ShardingOptionResponsePtrOutput
-}
-
-type shardingOptionResponsePtrType ShardingOptionResponseArgs
-
-func ShardingOptionResponsePtr(v *ShardingOptionResponseArgs) ShardingOptionResponsePtrInput {
-	return (*shardingOptionResponsePtrType)(v)
-}
-
-func (*shardingOptionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ShardingOptionResponse)(nil)).Elem()
-}
-
-func (i *shardingOptionResponsePtrType) ToShardingOptionResponsePtrOutput() ShardingOptionResponsePtrOutput {
-	return i.ToShardingOptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *shardingOptionResponsePtrType) ToShardingOptionResponsePtrOutputWithContext(ctx context.Context) ShardingOptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShardingOptionResponsePtrOutput)
-}
-
 // Options for enabling sharding.
 type ShardingOptionResponseOutput struct{ *pulumi.OutputState }
 
@@ -9526,16 +5989,6 @@ func (o ShardingOptionResponseOutput) ToShardingOptionResponseOutputWithContext(
 	return o
 }
 
-func (o ShardingOptionResponseOutput) ToShardingOptionResponsePtrOutput() ShardingOptionResponsePtrOutput {
-	return o.ToShardingOptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ShardingOptionResponseOutput) ToShardingOptionResponsePtrOutputWithContext(ctx context.Context) ShardingOptionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShardingOptionResponse) *ShardingOptionResponse {
-		return &v
-	}).(ShardingOptionResponsePtrOutput)
-}
-
 // Shards test cases into the specified groups of packages, classes, and/or methods.
 func (o ShardingOptionResponseOutput) ManualSharding() ManualShardingResponseOutput {
 	return o.ApplyT(func(v ShardingOptionResponse) ManualShardingResponse { return v.ManualSharding }).(ManualShardingResponseOutput)
@@ -9544,50 +5997,6 @@ func (o ShardingOptionResponseOutput) ManualSharding() ManualShardingResponseOut
 // Uniformly shards test cases given a total number of shards.
 func (o ShardingOptionResponseOutput) UniformSharding() UniformShardingResponseOutput {
 	return o.ApplyT(func(v ShardingOptionResponse) UniformShardingResponse { return v.UniformSharding }).(UniformShardingResponseOutput)
-}
-
-type ShardingOptionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ShardingOptionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ShardingOptionResponse)(nil)).Elem()
-}
-
-func (o ShardingOptionResponsePtrOutput) ToShardingOptionResponsePtrOutput() ShardingOptionResponsePtrOutput {
-	return o
-}
-
-func (o ShardingOptionResponsePtrOutput) ToShardingOptionResponsePtrOutputWithContext(ctx context.Context) ShardingOptionResponsePtrOutput {
-	return o
-}
-
-func (o ShardingOptionResponsePtrOutput) Elem() ShardingOptionResponseOutput {
-	return o.ApplyT(func(v *ShardingOptionResponse) ShardingOptionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ShardingOptionResponse
-		return ret
-	}).(ShardingOptionResponseOutput)
-}
-
-// Shards test cases into the specified groups of packages, classes, and/or methods.
-func (o ShardingOptionResponsePtrOutput) ManualSharding() ManualShardingResponsePtrOutput {
-	return o.ApplyT(func(v *ShardingOptionResponse) *ManualShardingResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ManualSharding
-	}).(ManualShardingResponsePtrOutput)
-}
-
-// Uniformly shards test cases given a total number of shards.
-func (o ShardingOptionResponsePtrOutput) UniformSharding() UniformShardingResponsePtrOutput {
-	return o.ApplyT(func(v *ShardingOptionResponse) *UniformShardingResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.UniformSharding
-	}).(UniformShardingResponsePtrOutput)
 }
 
 // A starting intent specified by an action, uri, and categories.
@@ -9778,39 +6187,6 @@ type StartActivityIntentResponse struct {
 	Uri string `pulumi:"uri"`
 }
 
-// StartActivityIntentResponseInput is an input type that accepts StartActivityIntentResponseArgs and StartActivityIntentResponseOutput values.
-// You can construct a concrete instance of `StartActivityIntentResponseInput` via:
-//
-//          StartActivityIntentResponseArgs{...}
-type StartActivityIntentResponseInput interface {
-	pulumi.Input
-
-	ToStartActivityIntentResponseOutput() StartActivityIntentResponseOutput
-	ToStartActivityIntentResponseOutputWithContext(context.Context) StartActivityIntentResponseOutput
-}
-
-// A starting intent specified by an action, uri, and categories.
-type StartActivityIntentResponseArgs struct {
-	// Action name. Required for START_ACTIVITY.
-	Action pulumi.StringInput `pulumi:"action"`
-	// Intent categories to set on the intent.
-	Categories pulumi.StringArrayInput `pulumi:"categories"`
-	// URI for the action.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (StartActivityIntentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StartActivityIntentResponse)(nil)).Elem()
-}
-
-func (i StartActivityIntentResponseArgs) ToStartActivityIntentResponseOutput() StartActivityIntentResponseOutput {
-	return i.ToStartActivityIntentResponseOutputWithContext(context.Background())
-}
-
-func (i StartActivityIntentResponseArgs) ToStartActivityIntentResponseOutputWithContext(ctx context.Context) StartActivityIntentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StartActivityIntentResponseOutput)
-}
-
 // A starting intent specified by an action, uri, and categories.
 type StartActivityIntentResponseOutput struct{ *pulumi.OutputState }
 
@@ -9847,37 +6223,6 @@ type TestDetailsResponse struct {
 	ErrorMessage string `pulumi:"errorMessage"`
 	// Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end of progress_messages.
 	ProgressMessages []string `pulumi:"progressMessages"`
-}
-
-// TestDetailsResponseInput is an input type that accepts TestDetailsResponseArgs and TestDetailsResponseOutput values.
-// You can construct a concrete instance of `TestDetailsResponseInput` via:
-//
-//          TestDetailsResponseArgs{...}
-type TestDetailsResponseInput interface {
-	pulumi.Input
-
-	ToTestDetailsResponseOutput() TestDetailsResponseOutput
-	ToTestDetailsResponseOutputWithContext(context.Context) TestDetailsResponseOutput
-}
-
-// Additional details about the progress of the running test.
-type TestDetailsResponseArgs struct {
-	// If the TestState is ERROR, then this string will contain human-readable details about the error.
-	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
-	// Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end of progress_messages.
-	ProgressMessages pulumi.StringArrayInput `pulumi:"progressMessages"`
-}
-
-func (TestDetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TestDetailsResponse)(nil)).Elem()
-}
-
-func (i TestDetailsResponseArgs) ToTestDetailsResponseOutput() TestDetailsResponseOutput {
-	return i.ToTestDetailsResponseOutputWithContext(context.Background())
-}
-
-func (i TestDetailsResponseArgs) ToTestDetailsResponseOutputWithContext(ctx context.Context) TestDetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TestDetailsResponseOutput)
 }
 
 // Additional details about the progress of the running test.
@@ -9925,76 +6270,6 @@ type TestExecutionResponse struct {
 	Timestamp string `pulumi:"timestamp"`
 	// Where the results for this execution are written.
 	ToolResultsStep ToolResultsStepResponse `pulumi:"toolResultsStep"`
-}
-
-// TestExecutionResponseInput is an input type that accepts TestExecutionResponseArgs and TestExecutionResponseOutput values.
-// You can construct a concrete instance of `TestExecutionResponseInput` via:
-//
-//          TestExecutionResponseArgs{...}
-type TestExecutionResponseInput interface {
-	pulumi.Input
-
-	ToTestExecutionResponseOutput() TestExecutionResponseOutput
-	ToTestExecutionResponseOutputWithContext(context.Context) TestExecutionResponseOutput
-}
-
-// A single test executed in a single environment.
-type TestExecutionResponseArgs struct {
-	// How the host machine(s) are configured.
-	Environment EnvironmentResponseInput `pulumi:"environment"`
-	// Id of the containing TestMatrix.
-	MatrixId pulumi.StringInput `pulumi:"matrixId"`
-	// The cloud project that owns the test execution.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Details about the shard.
-	Shard ShardResponseInput `pulumi:"shard"`
-	// Indicates the current progress of the test execution (e.g., FINISHED).
-	State pulumi.StringInput `pulumi:"state"`
-	// Additional details about the running test.
-	TestDetails TestDetailsResponseInput `pulumi:"testDetails"`
-	// How to run the test.
-	TestSpecification TestSpecificationResponseInput `pulumi:"testSpecification"`
-	// The time this test execution was initially created.
-	Timestamp pulumi.StringInput `pulumi:"timestamp"`
-	// Where the results for this execution are written.
-	ToolResultsStep ToolResultsStepResponseInput `pulumi:"toolResultsStep"`
-}
-
-func (TestExecutionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TestExecutionResponse)(nil)).Elem()
-}
-
-func (i TestExecutionResponseArgs) ToTestExecutionResponseOutput() TestExecutionResponseOutput {
-	return i.ToTestExecutionResponseOutputWithContext(context.Background())
-}
-
-func (i TestExecutionResponseArgs) ToTestExecutionResponseOutputWithContext(ctx context.Context) TestExecutionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TestExecutionResponseOutput)
-}
-
-// TestExecutionResponseArrayInput is an input type that accepts TestExecutionResponseArray and TestExecutionResponseArrayOutput values.
-// You can construct a concrete instance of `TestExecutionResponseArrayInput` via:
-//
-//          TestExecutionResponseArray{ TestExecutionResponseArgs{...} }
-type TestExecutionResponseArrayInput interface {
-	pulumi.Input
-
-	ToTestExecutionResponseArrayOutput() TestExecutionResponseArrayOutput
-	ToTestExecutionResponseArrayOutputWithContext(context.Context) TestExecutionResponseArrayOutput
-}
-
-type TestExecutionResponseArray []TestExecutionResponseInput
-
-func (TestExecutionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TestExecutionResponse)(nil)).Elem()
-}
-
-func (i TestExecutionResponseArray) ToTestExecutionResponseArrayOutput() TestExecutionResponseArrayOutput {
-	return i.ToTestExecutionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i TestExecutionResponseArray) ToTestExecutionResponseArrayOutputWithContext(ctx context.Context) TestExecutionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TestExecutionResponseArrayOutput)
 }
 
 // A single test executed in a single environment.
@@ -10349,88 +6624,6 @@ type TestSetupResponse struct {
 	NetworkProfile string `pulumi:"networkProfile"`
 }
 
-// TestSetupResponseInput is an input type that accepts TestSetupResponseArgs and TestSetupResponseOutput values.
-// You can construct a concrete instance of `TestSetupResponseInput` via:
-//
-//          TestSetupResponseArgs{...}
-type TestSetupResponseInput interface {
-	pulumi.Input
-
-	ToTestSetupResponseOutput() TestSetupResponseOutput
-	ToTestSetupResponseOutputWithContext(context.Context) TestSetupResponseOutput
-}
-
-// A description of how to set up the Android device prior to running the test.
-type TestSetupResponseArgs struct {
-	// The device will be logged in on this account for the duration of the test.
-	Account AccountResponseInput `pulumi:"account"`
-	// APKs to install in addition to those being directly tested. Currently capped at 100.
-	AdditionalApks ApkResponseArrayInput `pulumi:"additionalApks"`
-	// List of directories on the device to upload to GCS at the end of the test; they must be absolute paths under /sdcard, /storage or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - . + and / Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device.
-	DirectoriesToPull pulumi.StringArrayInput `pulumi:"directoriesToPull"`
-	// Whether to prevent all runtime permissions to be granted at app install
-	DontAutograntPermissions pulumi.BoolInput `pulumi:"dontAutograntPermissions"`
-	// Environment variables to set for the test (only applicable for instrumentation tests).
-	EnvironmentVariables EnvironmentVariableResponseArrayInput `pulumi:"environmentVariables"`
-	// List of files to push to the device before starting the test.
-	FilesToPush DeviceFileResponseArrayInput `pulumi:"filesToPush"`
-	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
-	NetworkProfile pulumi.StringInput `pulumi:"networkProfile"`
-}
-
-func (TestSetupResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TestSetupResponse)(nil)).Elem()
-}
-
-func (i TestSetupResponseArgs) ToTestSetupResponseOutput() TestSetupResponseOutput {
-	return i.ToTestSetupResponseOutputWithContext(context.Background())
-}
-
-func (i TestSetupResponseArgs) ToTestSetupResponseOutputWithContext(ctx context.Context) TestSetupResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TestSetupResponseOutput)
-}
-
-func (i TestSetupResponseArgs) ToTestSetupResponsePtrOutput() TestSetupResponsePtrOutput {
-	return i.ToTestSetupResponsePtrOutputWithContext(context.Background())
-}
-
-func (i TestSetupResponseArgs) ToTestSetupResponsePtrOutputWithContext(ctx context.Context) TestSetupResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TestSetupResponseOutput).ToTestSetupResponsePtrOutputWithContext(ctx)
-}
-
-// TestSetupResponsePtrInput is an input type that accepts TestSetupResponseArgs, TestSetupResponsePtr and TestSetupResponsePtrOutput values.
-// You can construct a concrete instance of `TestSetupResponsePtrInput` via:
-//
-//          TestSetupResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type TestSetupResponsePtrInput interface {
-	pulumi.Input
-
-	ToTestSetupResponsePtrOutput() TestSetupResponsePtrOutput
-	ToTestSetupResponsePtrOutputWithContext(context.Context) TestSetupResponsePtrOutput
-}
-
-type testSetupResponsePtrType TestSetupResponseArgs
-
-func TestSetupResponsePtr(v *TestSetupResponseArgs) TestSetupResponsePtrInput {
-	return (*testSetupResponsePtrType)(v)
-}
-
-func (*testSetupResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TestSetupResponse)(nil)).Elem()
-}
-
-func (i *testSetupResponsePtrType) ToTestSetupResponsePtrOutput() TestSetupResponsePtrOutput {
-	return i.ToTestSetupResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *testSetupResponsePtrType) ToTestSetupResponsePtrOutputWithContext(ctx context.Context) TestSetupResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TestSetupResponsePtrOutput)
-}
-
 // A description of how to set up the Android device prior to running the test.
 type TestSetupResponseOutput struct{ *pulumi.OutputState }
 
@@ -10444,16 +6637,6 @@ func (o TestSetupResponseOutput) ToTestSetupResponseOutput() TestSetupResponseOu
 
 func (o TestSetupResponseOutput) ToTestSetupResponseOutputWithContext(ctx context.Context) TestSetupResponseOutput {
 	return o
-}
-
-func (o TestSetupResponseOutput) ToTestSetupResponsePtrOutput() TestSetupResponsePtrOutput {
-	return o.ToTestSetupResponsePtrOutputWithContext(context.Background())
-}
-
-func (o TestSetupResponseOutput) ToTestSetupResponsePtrOutputWithContext(ctx context.Context) TestSetupResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestSetupResponse) *TestSetupResponse {
-		return &v
-	}).(TestSetupResponsePtrOutput)
 }
 
 // The device will be logged in on this account for the duration of the test.
@@ -10489,100 +6672,6 @@ func (o TestSetupResponseOutput) FilesToPush() DeviceFileResponseArrayOutput {
 // The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 func (o TestSetupResponseOutput) NetworkProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v TestSetupResponse) string { return v.NetworkProfile }).(pulumi.StringOutput)
-}
-
-type TestSetupResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TestSetupResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TestSetupResponse)(nil)).Elem()
-}
-
-func (o TestSetupResponsePtrOutput) ToTestSetupResponsePtrOutput() TestSetupResponsePtrOutput {
-	return o
-}
-
-func (o TestSetupResponsePtrOutput) ToTestSetupResponsePtrOutputWithContext(ctx context.Context) TestSetupResponsePtrOutput {
-	return o
-}
-
-func (o TestSetupResponsePtrOutput) Elem() TestSetupResponseOutput {
-	return o.ApplyT(func(v *TestSetupResponse) TestSetupResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TestSetupResponse
-		return ret
-	}).(TestSetupResponseOutput)
-}
-
-// The device will be logged in on this account for the duration of the test.
-func (o TestSetupResponsePtrOutput) Account() AccountResponsePtrOutput {
-	return o.ApplyT(func(v *TestSetupResponse) *AccountResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Account
-	}).(AccountResponsePtrOutput)
-}
-
-// APKs to install in addition to those being directly tested. Currently capped at 100.
-func (o TestSetupResponsePtrOutput) AdditionalApks() ApkResponseArrayOutput {
-	return o.ApplyT(func(v *TestSetupResponse) []ApkResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalApks
-	}).(ApkResponseArrayOutput)
-}
-
-// List of directories on the device to upload to GCS at the end of the test; they must be absolute paths under /sdcard, /storage or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - . + and / Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device.
-func (o TestSetupResponsePtrOutput) DirectoriesToPull() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TestSetupResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DirectoriesToPull
-	}).(pulumi.StringArrayOutput)
-}
-
-// Whether to prevent all runtime permissions to be granted at app install
-func (o TestSetupResponsePtrOutput) DontAutograntPermissions() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TestSetupResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.DontAutograntPermissions
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Environment variables to set for the test (only applicable for instrumentation tests).
-func (o TestSetupResponsePtrOutput) EnvironmentVariables() EnvironmentVariableResponseArrayOutput {
-	return o.ApplyT(func(v *TestSetupResponse) []EnvironmentVariableResponse {
-		if v == nil {
-			return nil
-		}
-		return v.EnvironmentVariables
-	}).(EnvironmentVariableResponseArrayOutput)
-}
-
-// List of files to push to the device before starting the test.
-func (o TestSetupResponsePtrOutput) FilesToPush() DeviceFileResponseArrayOutput {
-	return o.ApplyT(func(v *TestSetupResponse) []DeviceFileResponse {
-		if v == nil {
-			return nil
-		}
-		return v.FilesToPush
-	}).(DeviceFileResponseArrayOutput)
-}
-
-// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
-func (o TestSetupResponsePtrOutput) NetworkProfile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TestSetupResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NetworkProfile
-	}).(pulumi.StringPtrOutput)
 }
 
 // A description of how to run the test.
@@ -10656,47 +6745,6 @@ func (i TestSpecificationArgs) ToTestSpecificationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TestSpecificationOutput)
 }
 
-func (i TestSpecificationArgs) ToTestSpecificationPtrOutput() TestSpecificationPtrOutput {
-	return i.ToTestSpecificationPtrOutputWithContext(context.Background())
-}
-
-func (i TestSpecificationArgs) ToTestSpecificationPtrOutputWithContext(ctx context.Context) TestSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TestSpecificationOutput).ToTestSpecificationPtrOutputWithContext(ctx)
-}
-
-// TestSpecificationPtrInput is an input type that accepts TestSpecificationArgs, TestSpecificationPtr and TestSpecificationPtrOutput values.
-// You can construct a concrete instance of `TestSpecificationPtrInput` via:
-//
-//          TestSpecificationArgs{...}
-//
-//  or:
-//
-//          nil
-type TestSpecificationPtrInput interface {
-	pulumi.Input
-
-	ToTestSpecificationPtrOutput() TestSpecificationPtrOutput
-	ToTestSpecificationPtrOutputWithContext(context.Context) TestSpecificationPtrOutput
-}
-
-type testSpecificationPtrType TestSpecificationArgs
-
-func TestSpecificationPtr(v *TestSpecificationArgs) TestSpecificationPtrInput {
-	return (*testSpecificationPtrType)(v)
-}
-
-func (*testSpecificationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TestSpecification)(nil)).Elem()
-}
-
-func (i *testSpecificationPtrType) ToTestSpecificationPtrOutput() TestSpecificationPtrOutput {
-	return i.ToTestSpecificationPtrOutputWithContext(context.Background())
-}
-
-func (i *testSpecificationPtrType) ToTestSpecificationPtrOutputWithContext(ctx context.Context) TestSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TestSpecificationPtrOutput)
-}
-
 // A description of how to run the test.
 type TestSpecificationOutput struct{ *pulumi.OutputState }
 
@@ -10710,16 +6758,6 @@ func (o TestSpecificationOutput) ToTestSpecificationOutput() TestSpecificationOu
 
 func (o TestSpecificationOutput) ToTestSpecificationOutputWithContext(ctx context.Context) TestSpecificationOutput {
 	return o
-}
-
-func (o TestSpecificationOutput) ToTestSpecificationPtrOutput() TestSpecificationPtrOutput {
-	return o.ToTestSpecificationPtrOutputWithContext(context.Background())
-}
-
-func (o TestSpecificationOutput) ToTestSpecificationPtrOutputWithContext(ctx context.Context) TestSpecificationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestSpecification) *TestSpecification {
-		return &v
-	}).(TestSpecificationPtrOutput)
 }
 
 // An Android instrumentation test.
@@ -10772,130 +6810,6 @@ func (o TestSpecificationOutput) TestTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TestSpecification) *string { return v.TestTimeout }).(pulumi.StringPtrOutput)
 }
 
-type TestSpecificationPtrOutput struct{ *pulumi.OutputState }
-
-func (TestSpecificationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TestSpecification)(nil)).Elem()
-}
-
-func (o TestSpecificationPtrOutput) ToTestSpecificationPtrOutput() TestSpecificationPtrOutput {
-	return o
-}
-
-func (o TestSpecificationPtrOutput) ToTestSpecificationPtrOutputWithContext(ctx context.Context) TestSpecificationPtrOutput {
-	return o
-}
-
-func (o TestSpecificationPtrOutput) Elem() TestSpecificationOutput {
-	return o.ApplyT(func(v *TestSpecification) TestSpecification {
-		if v != nil {
-			return *v
-		}
-		var ret TestSpecification
-		return ret
-	}).(TestSpecificationOutput)
-}
-
-// An Android instrumentation test.
-func (o TestSpecificationPtrOutput) AndroidInstrumentationTest() AndroidInstrumentationTestPtrOutput {
-	return o.ApplyT(func(v *TestSpecification) *AndroidInstrumentationTest {
-		if v == nil {
-			return nil
-		}
-		return v.AndroidInstrumentationTest
-	}).(AndroidInstrumentationTestPtrOutput)
-}
-
-// An Android robo test.
-func (o TestSpecificationPtrOutput) AndroidRoboTest() AndroidRoboTestPtrOutput {
-	return o.ApplyT(func(v *TestSpecification) *AndroidRoboTest {
-		if v == nil {
-			return nil
-		}
-		return v.AndroidRoboTest
-	}).(AndroidRoboTestPtrOutput)
-}
-
-// An Android Application with a Test Loop.
-func (o TestSpecificationPtrOutput) AndroidTestLoop() AndroidTestLoopPtrOutput {
-	return o.ApplyT(func(v *TestSpecification) *AndroidTestLoop {
-		if v == nil {
-			return nil
-		}
-		return v.AndroidTestLoop
-	}).(AndroidTestLoopPtrOutput)
-}
-
-// Disables performance metrics recording. May reduce test latency.
-func (o TestSpecificationPtrOutput) DisablePerformanceMetrics() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TestSpecification) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DisablePerformanceMetrics
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Disables video recording. May reduce test latency.
-func (o TestSpecificationPtrOutput) DisableVideoRecording() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TestSpecification) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DisableVideoRecording
-	}).(pulumi.BoolPtrOutput)
-}
-
-// An iOS application with a test loop.
-func (o TestSpecificationPtrOutput) IosTestLoop() IosTestLoopPtrOutput {
-	return o.ApplyT(func(v *TestSpecification) *IosTestLoop {
-		if v == nil {
-			return nil
-		}
-		return v.IosTestLoop
-	}).(IosTestLoopPtrOutput)
-}
-
-// Test setup requirements for iOS.
-func (o TestSpecificationPtrOutput) IosTestSetup() IosTestSetupPtrOutput {
-	return o.ApplyT(func(v *TestSpecification) *IosTestSetup {
-		if v == nil {
-			return nil
-		}
-		return v.IosTestSetup
-	}).(IosTestSetupPtrOutput)
-}
-
-// An iOS XCTest, via an .xctestrun file.
-func (o TestSpecificationPtrOutput) IosXcTest() IosXcTestPtrOutput {
-	return o.ApplyT(func(v *TestSpecification) *IosXcTest {
-		if v == nil {
-			return nil
-		}
-		return v.IosXcTest
-	}).(IosXcTestPtrOutput)
-}
-
-// Test setup requirements for Android e.g. files to install, bootstrap scripts.
-func (o TestSpecificationPtrOutput) TestSetup() TestSetupPtrOutput {
-	return o.ApplyT(func(v *TestSpecification) *TestSetup {
-		if v == nil {
-			return nil
-		}
-		return v.TestSetup
-	}).(TestSetupPtrOutput)
-}
-
-// Max time a test execution is allowed to run before it is automatically cancelled. The default value is 5 min.
-func (o TestSpecificationPtrOutput) TestTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TestSpecification) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TestTimeout
-	}).(pulumi.StringPtrOutput)
-}
-
 // A description of how to run the test.
 type TestSpecificationResponse struct {
 	// An Android instrumentation test.
@@ -10920,94 +6834,6 @@ type TestSpecificationResponse struct {
 	TestTimeout string `pulumi:"testTimeout"`
 }
 
-// TestSpecificationResponseInput is an input type that accepts TestSpecificationResponseArgs and TestSpecificationResponseOutput values.
-// You can construct a concrete instance of `TestSpecificationResponseInput` via:
-//
-//          TestSpecificationResponseArgs{...}
-type TestSpecificationResponseInput interface {
-	pulumi.Input
-
-	ToTestSpecificationResponseOutput() TestSpecificationResponseOutput
-	ToTestSpecificationResponseOutputWithContext(context.Context) TestSpecificationResponseOutput
-}
-
-// A description of how to run the test.
-type TestSpecificationResponseArgs struct {
-	// An Android instrumentation test.
-	AndroidInstrumentationTest AndroidInstrumentationTestResponseInput `pulumi:"androidInstrumentationTest"`
-	// An Android robo test.
-	AndroidRoboTest AndroidRoboTestResponseInput `pulumi:"androidRoboTest"`
-	// An Android Application with a Test Loop.
-	AndroidTestLoop AndroidTestLoopResponseInput `pulumi:"androidTestLoop"`
-	// Disables performance metrics recording. May reduce test latency.
-	DisablePerformanceMetrics pulumi.BoolInput `pulumi:"disablePerformanceMetrics"`
-	// Disables video recording. May reduce test latency.
-	DisableVideoRecording pulumi.BoolInput `pulumi:"disableVideoRecording"`
-	// An iOS application with a test loop.
-	IosTestLoop IosTestLoopResponseInput `pulumi:"iosTestLoop"`
-	// Test setup requirements for iOS.
-	IosTestSetup IosTestSetupResponseInput `pulumi:"iosTestSetup"`
-	// An iOS XCTest, via an .xctestrun file.
-	IosXcTest IosXcTestResponseInput `pulumi:"iosXcTest"`
-	// Test setup requirements for Android e.g. files to install, bootstrap scripts.
-	TestSetup TestSetupResponseInput `pulumi:"testSetup"`
-	// Max time a test execution is allowed to run before it is automatically cancelled. The default value is 5 min.
-	TestTimeout pulumi.StringInput `pulumi:"testTimeout"`
-}
-
-func (TestSpecificationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TestSpecificationResponse)(nil)).Elem()
-}
-
-func (i TestSpecificationResponseArgs) ToTestSpecificationResponseOutput() TestSpecificationResponseOutput {
-	return i.ToTestSpecificationResponseOutputWithContext(context.Background())
-}
-
-func (i TestSpecificationResponseArgs) ToTestSpecificationResponseOutputWithContext(ctx context.Context) TestSpecificationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TestSpecificationResponseOutput)
-}
-
-func (i TestSpecificationResponseArgs) ToTestSpecificationResponsePtrOutput() TestSpecificationResponsePtrOutput {
-	return i.ToTestSpecificationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i TestSpecificationResponseArgs) ToTestSpecificationResponsePtrOutputWithContext(ctx context.Context) TestSpecificationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TestSpecificationResponseOutput).ToTestSpecificationResponsePtrOutputWithContext(ctx)
-}
-
-// TestSpecificationResponsePtrInput is an input type that accepts TestSpecificationResponseArgs, TestSpecificationResponsePtr and TestSpecificationResponsePtrOutput values.
-// You can construct a concrete instance of `TestSpecificationResponsePtrInput` via:
-//
-//          TestSpecificationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type TestSpecificationResponsePtrInput interface {
-	pulumi.Input
-
-	ToTestSpecificationResponsePtrOutput() TestSpecificationResponsePtrOutput
-	ToTestSpecificationResponsePtrOutputWithContext(context.Context) TestSpecificationResponsePtrOutput
-}
-
-type testSpecificationResponsePtrType TestSpecificationResponseArgs
-
-func TestSpecificationResponsePtr(v *TestSpecificationResponseArgs) TestSpecificationResponsePtrInput {
-	return (*testSpecificationResponsePtrType)(v)
-}
-
-func (*testSpecificationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TestSpecificationResponse)(nil)).Elem()
-}
-
-func (i *testSpecificationResponsePtrType) ToTestSpecificationResponsePtrOutput() TestSpecificationResponsePtrOutput {
-	return i.ToTestSpecificationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *testSpecificationResponsePtrType) ToTestSpecificationResponsePtrOutputWithContext(ctx context.Context) TestSpecificationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TestSpecificationResponsePtrOutput)
-}
-
 // A description of how to run the test.
 type TestSpecificationResponseOutput struct{ *pulumi.OutputState }
 
@@ -11021,16 +6847,6 @@ func (o TestSpecificationResponseOutput) ToTestSpecificationResponseOutput() Tes
 
 func (o TestSpecificationResponseOutput) ToTestSpecificationResponseOutputWithContext(ctx context.Context) TestSpecificationResponseOutput {
 	return o
-}
-
-func (o TestSpecificationResponseOutput) ToTestSpecificationResponsePtrOutput() TestSpecificationResponsePtrOutput {
-	return o.ToTestSpecificationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o TestSpecificationResponseOutput) ToTestSpecificationResponsePtrOutputWithContext(ctx context.Context) TestSpecificationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestSpecificationResponse) *TestSpecificationResponse {
-		return &v
-	}).(TestSpecificationResponsePtrOutput)
 }
 
 // An Android instrumentation test.
@@ -11083,130 +6899,6 @@ func (o TestSpecificationResponseOutput) TestSetup() TestSetupResponseOutput {
 // Max time a test execution is allowed to run before it is automatically cancelled. The default value is 5 min.
 func (o TestSpecificationResponseOutput) TestTimeout() pulumi.StringOutput {
 	return o.ApplyT(func(v TestSpecificationResponse) string { return v.TestTimeout }).(pulumi.StringOutput)
-}
-
-type TestSpecificationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TestSpecificationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TestSpecificationResponse)(nil)).Elem()
-}
-
-func (o TestSpecificationResponsePtrOutput) ToTestSpecificationResponsePtrOutput() TestSpecificationResponsePtrOutput {
-	return o
-}
-
-func (o TestSpecificationResponsePtrOutput) ToTestSpecificationResponsePtrOutputWithContext(ctx context.Context) TestSpecificationResponsePtrOutput {
-	return o
-}
-
-func (o TestSpecificationResponsePtrOutput) Elem() TestSpecificationResponseOutput {
-	return o.ApplyT(func(v *TestSpecificationResponse) TestSpecificationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TestSpecificationResponse
-		return ret
-	}).(TestSpecificationResponseOutput)
-}
-
-// An Android instrumentation test.
-func (o TestSpecificationResponsePtrOutput) AndroidInstrumentationTest() AndroidInstrumentationTestResponsePtrOutput {
-	return o.ApplyT(func(v *TestSpecificationResponse) *AndroidInstrumentationTestResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AndroidInstrumentationTest
-	}).(AndroidInstrumentationTestResponsePtrOutput)
-}
-
-// An Android robo test.
-func (o TestSpecificationResponsePtrOutput) AndroidRoboTest() AndroidRoboTestResponsePtrOutput {
-	return o.ApplyT(func(v *TestSpecificationResponse) *AndroidRoboTestResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AndroidRoboTest
-	}).(AndroidRoboTestResponsePtrOutput)
-}
-
-// An Android Application with a Test Loop.
-func (o TestSpecificationResponsePtrOutput) AndroidTestLoop() AndroidTestLoopResponsePtrOutput {
-	return o.ApplyT(func(v *TestSpecificationResponse) *AndroidTestLoopResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AndroidTestLoop
-	}).(AndroidTestLoopResponsePtrOutput)
-}
-
-// Disables performance metrics recording. May reduce test latency.
-func (o TestSpecificationResponsePtrOutput) DisablePerformanceMetrics() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TestSpecificationResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.DisablePerformanceMetrics
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Disables video recording. May reduce test latency.
-func (o TestSpecificationResponsePtrOutput) DisableVideoRecording() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TestSpecificationResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.DisableVideoRecording
-	}).(pulumi.BoolPtrOutput)
-}
-
-// An iOS application with a test loop.
-func (o TestSpecificationResponsePtrOutput) IosTestLoop() IosTestLoopResponsePtrOutput {
-	return o.ApplyT(func(v *TestSpecificationResponse) *IosTestLoopResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IosTestLoop
-	}).(IosTestLoopResponsePtrOutput)
-}
-
-// Test setup requirements for iOS.
-func (o TestSpecificationResponsePtrOutput) IosTestSetup() IosTestSetupResponsePtrOutput {
-	return o.ApplyT(func(v *TestSpecificationResponse) *IosTestSetupResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IosTestSetup
-	}).(IosTestSetupResponsePtrOutput)
-}
-
-// An iOS XCTest, via an .xctestrun file.
-func (o TestSpecificationResponsePtrOutput) IosXcTest() IosXcTestResponsePtrOutput {
-	return o.ApplyT(func(v *TestSpecificationResponse) *IosXcTestResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IosXcTest
-	}).(IosXcTestResponsePtrOutput)
-}
-
-// Test setup requirements for Android e.g. files to install, bootstrap scripts.
-func (o TestSpecificationResponsePtrOutput) TestSetup() TestSetupResponsePtrOutput {
-	return o.ApplyT(func(v *TestSpecificationResponse) *TestSetupResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TestSetup
-	}).(TestSetupResponsePtrOutput)
-}
-
-// Max time a test execution is allowed to run before it is automatically cancelled. The default value is 5 min.
-func (o TestSpecificationResponsePtrOutput) TestTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TestSpecificationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TestTimeout
-	}).(pulumi.StringPtrOutput)
 }
 
 // Test targets for a shard.
@@ -11315,60 +7007,6 @@ type TestTargetsForShardResponse struct {
 	TestTargets []string `pulumi:"testTargets"`
 }
 
-// TestTargetsForShardResponseInput is an input type that accepts TestTargetsForShardResponseArgs and TestTargetsForShardResponseOutput values.
-// You can construct a concrete instance of `TestTargetsForShardResponseInput` via:
-//
-//          TestTargetsForShardResponseArgs{...}
-type TestTargetsForShardResponseInput interface {
-	pulumi.Input
-
-	ToTestTargetsForShardResponseOutput() TestTargetsForShardResponseOutput
-	ToTestTargetsForShardResponseOutputWithContext(context.Context) TestTargetsForShardResponseOutput
-}
-
-// Test targets for a shard.
-type TestTargetsForShardResponseArgs struct {
-	// Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of shard_test_targets must be greater than 0.
-	TestTargets pulumi.StringArrayInput `pulumi:"testTargets"`
-}
-
-func (TestTargetsForShardResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TestTargetsForShardResponse)(nil)).Elem()
-}
-
-func (i TestTargetsForShardResponseArgs) ToTestTargetsForShardResponseOutput() TestTargetsForShardResponseOutput {
-	return i.ToTestTargetsForShardResponseOutputWithContext(context.Background())
-}
-
-func (i TestTargetsForShardResponseArgs) ToTestTargetsForShardResponseOutputWithContext(ctx context.Context) TestTargetsForShardResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TestTargetsForShardResponseOutput)
-}
-
-// TestTargetsForShardResponseArrayInput is an input type that accepts TestTargetsForShardResponseArray and TestTargetsForShardResponseArrayOutput values.
-// You can construct a concrete instance of `TestTargetsForShardResponseArrayInput` via:
-//
-//          TestTargetsForShardResponseArray{ TestTargetsForShardResponseArgs{...} }
-type TestTargetsForShardResponseArrayInput interface {
-	pulumi.Input
-
-	ToTestTargetsForShardResponseArrayOutput() TestTargetsForShardResponseArrayOutput
-	ToTestTargetsForShardResponseArrayOutputWithContext(context.Context) TestTargetsForShardResponseArrayOutput
-}
-
-type TestTargetsForShardResponseArray []TestTargetsForShardResponseInput
-
-func (TestTargetsForShardResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TestTargetsForShardResponse)(nil)).Elem()
-}
-
-func (i TestTargetsForShardResponseArray) ToTestTargetsForShardResponseArrayOutput() TestTargetsForShardResponseArrayOutput {
-	return i.ToTestTargetsForShardResponseArrayOutputWithContext(context.Background())
-}
-
-func (i TestTargetsForShardResponseArray) ToTestTargetsForShardResponseArrayOutputWithContext(ctx context.Context) TestTargetsForShardResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TestTargetsForShardResponseArrayOutput)
-}
-
 // Test targets for a shard.
 type TestTargetsForShardResponseOutput struct{ *pulumi.OutputState }
 
@@ -11419,80 +7057,6 @@ type ToolResultsExecutionResponse struct {
 	Project string `pulumi:"project"`
 }
 
-// ToolResultsExecutionResponseInput is an input type that accepts ToolResultsExecutionResponseArgs and ToolResultsExecutionResponseOutput values.
-// You can construct a concrete instance of `ToolResultsExecutionResponseInput` via:
-//
-//          ToolResultsExecutionResponseArgs{...}
-type ToolResultsExecutionResponseInput interface {
-	pulumi.Input
-
-	ToToolResultsExecutionResponseOutput() ToolResultsExecutionResponseOutput
-	ToToolResultsExecutionResponseOutputWithContext(context.Context) ToolResultsExecutionResponseOutput
-}
-
-// Represents a tool results execution resource. This has the results of a TestMatrix.
-type ToolResultsExecutionResponseArgs struct {
-	// A tool results execution ID.
-	ExecutionId pulumi.StringInput `pulumi:"executionId"`
-	// A tool results history ID.
-	HistoryId pulumi.StringInput `pulumi:"historyId"`
-	// The cloud project that owns the tool results execution.
-	Project pulumi.StringInput `pulumi:"project"`
-}
-
-func (ToolResultsExecutionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ToolResultsExecutionResponse)(nil)).Elem()
-}
-
-func (i ToolResultsExecutionResponseArgs) ToToolResultsExecutionResponseOutput() ToolResultsExecutionResponseOutput {
-	return i.ToToolResultsExecutionResponseOutputWithContext(context.Background())
-}
-
-func (i ToolResultsExecutionResponseArgs) ToToolResultsExecutionResponseOutputWithContext(ctx context.Context) ToolResultsExecutionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ToolResultsExecutionResponseOutput)
-}
-
-func (i ToolResultsExecutionResponseArgs) ToToolResultsExecutionResponsePtrOutput() ToolResultsExecutionResponsePtrOutput {
-	return i.ToToolResultsExecutionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ToolResultsExecutionResponseArgs) ToToolResultsExecutionResponsePtrOutputWithContext(ctx context.Context) ToolResultsExecutionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ToolResultsExecutionResponseOutput).ToToolResultsExecutionResponsePtrOutputWithContext(ctx)
-}
-
-// ToolResultsExecutionResponsePtrInput is an input type that accepts ToolResultsExecutionResponseArgs, ToolResultsExecutionResponsePtr and ToolResultsExecutionResponsePtrOutput values.
-// You can construct a concrete instance of `ToolResultsExecutionResponsePtrInput` via:
-//
-//          ToolResultsExecutionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ToolResultsExecutionResponsePtrInput interface {
-	pulumi.Input
-
-	ToToolResultsExecutionResponsePtrOutput() ToolResultsExecutionResponsePtrOutput
-	ToToolResultsExecutionResponsePtrOutputWithContext(context.Context) ToolResultsExecutionResponsePtrOutput
-}
-
-type toolResultsExecutionResponsePtrType ToolResultsExecutionResponseArgs
-
-func ToolResultsExecutionResponsePtr(v *ToolResultsExecutionResponseArgs) ToolResultsExecutionResponsePtrInput {
-	return (*toolResultsExecutionResponsePtrType)(v)
-}
-
-func (*toolResultsExecutionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ToolResultsExecutionResponse)(nil)).Elem()
-}
-
-func (i *toolResultsExecutionResponsePtrType) ToToolResultsExecutionResponsePtrOutput() ToolResultsExecutionResponsePtrOutput {
-	return i.ToToolResultsExecutionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *toolResultsExecutionResponsePtrType) ToToolResultsExecutionResponsePtrOutputWithContext(ctx context.Context) ToolResultsExecutionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ToolResultsExecutionResponsePtrOutput)
-}
-
 // Represents a tool results execution resource. This has the results of a TestMatrix.
 type ToolResultsExecutionResponseOutput struct{ *pulumi.OutputState }
 
@@ -11508,16 +7072,6 @@ func (o ToolResultsExecutionResponseOutput) ToToolResultsExecutionResponseOutput
 	return o
 }
 
-func (o ToolResultsExecutionResponseOutput) ToToolResultsExecutionResponsePtrOutput() ToolResultsExecutionResponsePtrOutput {
-	return o.ToToolResultsExecutionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ToolResultsExecutionResponseOutput) ToToolResultsExecutionResponsePtrOutputWithContext(ctx context.Context) ToolResultsExecutionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolResultsExecutionResponse) *ToolResultsExecutionResponse {
-		return &v
-	}).(ToolResultsExecutionResponsePtrOutput)
-}
-
 // A tool results execution ID.
 func (o ToolResultsExecutionResponseOutput) ExecutionId() pulumi.StringOutput {
 	return o.ApplyT(func(v ToolResultsExecutionResponse) string { return v.ExecutionId }).(pulumi.StringOutput)
@@ -11531,60 +7085,6 @@ func (o ToolResultsExecutionResponseOutput) HistoryId() pulumi.StringOutput {
 // The cloud project that owns the tool results execution.
 func (o ToolResultsExecutionResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v ToolResultsExecutionResponse) string { return v.Project }).(pulumi.StringOutput)
-}
-
-type ToolResultsExecutionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ToolResultsExecutionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ToolResultsExecutionResponse)(nil)).Elem()
-}
-
-func (o ToolResultsExecutionResponsePtrOutput) ToToolResultsExecutionResponsePtrOutput() ToolResultsExecutionResponsePtrOutput {
-	return o
-}
-
-func (o ToolResultsExecutionResponsePtrOutput) ToToolResultsExecutionResponsePtrOutputWithContext(ctx context.Context) ToolResultsExecutionResponsePtrOutput {
-	return o
-}
-
-func (o ToolResultsExecutionResponsePtrOutput) Elem() ToolResultsExecutionResponseOutput {
-	return o.ApplyT(func(v *ToolResultsExecutionResponse) ToolResultsExecutionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ToolResultsExecutionResponse
-		return ret
-	}).(ToolResultsExecutionResponseOutput)
-}
-
-// A tool results execution ID.
-func (o ToolResultsExecutionResponsePtrOutput) ExecutionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ToolResultsExecutionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExecutionId
-	}).(pulumi.StringPtrOutput)
-}
-
-// A tool results history ID.
-func (o ToolResultsExecutionResponsePtrOutput) HistoryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ToolResultsExecutionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HistoryId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The cloud project that owns the tool results execution.
-func (o ToolResultsExecutionResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ToolResultsExecutionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a tool results history resource.
@@ -11754,78 +7254,6 @@ type ToolResultsHistoryResponse struct {
 	Project string `pulumi:"project"`
 }
 
-// ToolResultsHistoryResponseInput is an input type that accepts ToolResultsHistoryResponseArgs and ToolResultsHistoryResponseOutput values.
-// You can construct a concrete instance of `ToolResultsHistoryResponseInput` via:
-//
-//          ToolResultsHistoryResponseArgs{...}
-type ToolResultsHistoryResponseInput interface {
-	pulumi.Input
-
-	ToToolResultsHistoryResponseOutput() ToolResultsHistoryResponseOutput
-	ToToolResultsHistoryResponseOutputWithContext(context.Context) ToolResultsHistoryResponseOutput
-}
-
-// Represents a tool results history resource.
-type ToolResultsHistoryResponseArgs struct {
-	// A tool results history ID.
-	HistoryId pulumi.StringInput `pulumi:"historyId"`
-	// The cloud project that owns the tool results history.
-	Project pulumi.StringInput `pulumi:"project"`
-}
-
-func (ToolResultsHistoryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ToolResultsHistoryResponse)(nil)).Elem()
-}
-
-func (i ToolResultsHistoryResponseArgs) ToToolResultsHistoryResponseOutput() ToolResultsHistoryResponseOutput {
-	return i.ToToolResultsHistoryResponseOutputWithContext(context.Background())
-}
-
-func (i ToolResultsHistoryResponseArgs) ToToolResultsHistoryResponseOutputWithContext(ctx context.Context) ToolResultsHistoryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ToolResultsHistoryResponseOutput)
-}
-
-func (i ToolResultsHistoryResponseArgs) ToToolResultsHistoryResponsePtrOutput() ToolResultsHistoryResponsePtrOutput {
-	return i.ToToolResultsHistoryResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ToolResultsHistoryResponseArgs) ToToolResultsHistoryResponsePtrOutputWithContext(ctx context.Context) ToolResultsHistoryResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ToolResultsHistoryResponseOutput).ToToolResultsHistoryResponsePtrOutputWithContext(ctx)
-}
-
-// ToolResultsHistoryResponsePtrInput is an input type that accepts ToolResultsHistoryResponseArgs, ToolResultsHistoryResponsePtr and ToolResultsHistoryResponsePtrOutput values.
-// You can construct a concrete instance of `ToolResultsHistoryResponsePtrInput` via:
-//
-//          ToolResultsHistoryResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ToolResultsHistoryResponsePtrInput interface {
-	pulumi.Input
-
-	ToToolResultsHistoryResponsePtrOutput() ToolResultsHistoryResponsePtrOutput
-	ToToolResultsHistoryResponsePtrOutputWithContext(context.Context) ToolResultsHistoryResponsePtrOutput
-}
-
-type toolResultsHistoryResponsePtrType ToolResultsHistoryResponseArgs
-
-func ToolResultsHistoryResponsePtr(v *ToolResultsHistoryResponseArgs) ToolResultsHistoryResponsePtrInput {
-	return (*toolResultsHistoryResponsePtrType)(v)
-}
-
-func (*toolResultsHistoryResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ToolResultsHistoryResponse)(nil)).Elem()
-}
-
-func (i *toolResultsHistoryResponsePtrType) ToToolResultsHistoryResponsePtrOutput() ToolResultsHistoryResponsePtrOutput {
-	return i.ToToolResultsHistoryResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *toolResultsHistoryResponsePtrType) ToToolResultsHistoryResponsePtrOutputWithContext(ctx context.Context) ToolResultsHistoryResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ToolResultsHistoryResponsePtrOutput)
-}
-
 // Represents a tool results history resource.
 type ToolResultsHistoryResponseOutput struct{ *pulumi.OutputState }
 
@@ -11841,16 +7269,6 @@ func (o ToolResultsHistoryResponseOutput) ToToolResultsHistoryResponseOutputWith
 	return o
 }
 
-func (o ToolResultsHistoryResponseOutput) ToToolResultsHistoryResponsePtrOutput() ToolResultsHistoryResponsePtrOutput {
-	return o.ToToolResultsHistoryResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ToolResultsHistoryResponseOutput) ToToolResultsHistoryResponsePtrOutputWithContext(ctx context.Context) ToolResultsHistoryResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolResultsHistoryResponse) *ToolResultsHistoryResponse {
-		return &v
-	}).(ToolResultsHistoryResponsePtrOutput)
-}
-
 // A tool results history ID.
 func (o ToolResultsHistoryResponseOutput) HistoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v ToolResultsHistoryResponse) string { return v.HistoryId }).(pulumi.StringOutput)
@@ -11859,50 +7277,6 @@ func (o ToolResultsHistoryResponseOutput) HistoryId() pulumi.StringOutput {
 // The cloud project that owns the tool results history.
 func (o ToolResultsHistoryResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v ToolResultsHistoryResponse) string { return v.Project }).(pulumi.StringOutput)
-}
-
-type ToolResultsHistoryResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ToolResultsHistoryResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ToolResultsHistoryResponse)(nil)).Elem()
-}
-
-func (o ToolResultsHistoryResponsePtrOutput) ToToolResultsHistoryResponsePtrOutput() ToolResultsHistoryResponsePtrOutput {
-	return o
-}
-
-func (o ToolResultsHistoryResponsePtrOutput) ToToolResultsHistoryResponsePtrOutputWithContext(ctx context.Context) ToolResultsHistoryResponsePtrOutput {
-	return o
-}
-
-func (o ToolResultsHistoryResponsePtrOutput) Elem() ToolResultsHistoryResponseOutput {
-	return o.ApplyT(func(v *ToolResultsHistoryResponse) ToolResultsHistoryResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ToolResultsHistoryResponse
-		return ret
-	}).(ToolResultsHistoryResponseOutput)
-}
-
-// A tool results history ID.
-func (o ToolResultsHistoryResponsePtrOutput) HistoryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ToolResultsHistoryResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HistoryId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The cloud project that owns the tool results history.
-func (o ToolResultsHistoryResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ToolResultsHistoryResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a tool results step resource. This has the results of a TestExecution.
@@ -11915,41 +7289,6 @@ type ToolResultsStepResponse struct {
 	Project string `pulumi:"project"`
 	// A tool results step ID.
 	StepId string `pulumi:"stepId"`
-}
-
-// ToolResultsStepResponseInput is an input type that accepts ToolResultsStepResponseArgs and ToolResultsStepResponseOutput values.
-// You can construct a concrete instance of `ToolResultsStepResponseInput` via:
-//
-//          ToolResultsStepResponseArgs{...}
-type ToolResultsStepResponseInput interface {
-	pulumi.Input
-
-	ToToolResultsStepResponseOutput() ToolResultsStepResponseOutput
-	ToToolResultsStepResponseOutputWithContext(context.Context) ToolResultsStepResponseOutput
-}
-
-// Represents a tool results step resource. This has the results of a TestExecution.
-type ToolResultsStepResponseArgs struct {
-	// A tool results execution ID.
-	ExecutionId pulumi.StringInput `pulumi:"executionId"`
-	// A tool results history ID.
-	HistoryId pulumi.StringInput `pulumi:"historyId"`
-	// The cloud project that owns the tool results step.
-	Project pulumi.StringInput `pulumi:"project"`
-	// A tool results step ID.
-	StepId pulumi.StringInput `pulumi:"stepId"`
-}
-
-func (ToolResultsStepResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ToolResultsStepResponse)(nil)).Elem()
-}
-
-func (i ToolResultsStepResponseArgs) ToToolResultsStepResponseOutput() ToolResultsStepResponseOutput {
-	return i.ToToolResultsStepResponseOutputWithContext(context.Background())
-}
-
-func (i ToolResultsStepResponseArgs) ToToolResultsStepResponseOutputWithContext(ctx context.Context) ToolResultsStepResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ToolResultsStepResponseOutput)
 }
 
 // Represents a tool results step resource. This has the results of a TestExecution.
@@ -12133,76 +7472,6 @@ type UniformShardingResponse struct {
 	NumShards int `pulumi:"numShards"`
 }
 
-// UniformShardingResponseInput is an input type that accepts UniformShardingResponseArgs and UniformShardingResponseOutput values.
-// You can construct a concrete instance of `UniformShardingResponseInput` via:
-//
-//          UniformShardingResponseArgs{...}
-type UniformShardingResponseInput interface {
-	pulumi.Input
-
-	ToUniformShardingResponseOutput() UniformShardingResponseOutput
-	ToUniformShardingResponseOutputWithContext(context.Context) UniformShardingResponseOutput
-}
-
-// Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
-type UniformShardingResponseArgs struct {
-	// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
-	NumShards pulumi.IntInput `pulumi:"numShards"`
-}
-
-func (UniformShardingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UniformShardingResponse)(nil)).Elem()
-}
-
-func (i UniformShardingResponseArgs) ToUniformShardingResponseOutput() UniformShardingResponseOutput {
-	return i.ToUniformShardingResponseOutputWithContext(context.Background())
-}
-
-func (i UniformShardingResponseArgs) ToUniformShardingResponseOutputWithContext(ctx context.Context) UniformShardingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UniformShardingResponseOutput)
-}
-
-func (i UniformShardingResponseArgs) ToUniformShardingResponsePtrOutput() UniformShardingResponsePtrOutput {
-	return i.ToUniformShardingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i UniformShardingResponseArgs) ToUniformShardingResponsePtrOutputWithContext(ctx context.Context) UniformShardingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UniformShardingResponseOutput).ToUniformShardingResponsePtrOutputWithContext(ctx)
-}
-
-// UniformShardingResponsePtrInput is an input type that accepts UniformShardingResponseArgs, UniformShardingResponsePtr and UniformShardingResponsePtrOutput values.
-// You can construct a concrete instance of `UniformShardingResponsePtrInput` via:
-//
-//          UniformShardingResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type UniformShardingResponsePtrInput interface {
-	pulumi.Input
-
-	ToUniformShardingResponsePtrOutput() UniformShardingResponsePtrOutput
-	ToUniformShardingResponsePtrOutputWithContext(context.Context) UniformShardingResponsePtrOutput
-}
-
-type uniformShardingResponsePtrType UniformShardingResponseArgs
-
-func UniformShardingResponsePtr(v *UniformShardingResponseArgs) UniformShardingResponsePtrInput {
-	return (*uniformShardingResponsePtrType)(v)
-}
-
-func (*uniformShardingResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**UniformShardingResponse)(nil)).Elem()
-}
-
-func (i *uniformShardingResponsePtrType) ToUniformShardingResponsePtrOutput() UniformShardingResponsePtrOutput {
-	return i.ToUniformShardingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *uniformShardingResponsePtrType) ToUniformShardingResponsePtrOutputWithContext(ctx context.Context) UniformShardingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UniformShardingResponsePtrOutput)
-}
-
 // Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
 type UniformShardingResponseOutput struct{ *pulumi.OutputState }
 
@@ -12218,238 +7487,105 @@ func (o UniformShardingResponseOutput) ToUniformShardingResponseOutputWithContex
 	return o
 }
 
-func (o UniformShardingResponseOutput) ToUniformShardingResponsePtrOutput() UniformShardingResponsePtrOutput {
-	return o.ToUniformShardingResponsePtrOutputWithContext(context.Background())
-}
-
-func (o UniformShardingResponseOutput) ToUniformShardingResponsePtrOutputWithContext(ctx context.Context) UniformShardingResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v UniformShardingResponse) *UniformShardingResponse {
-		return &v
-	}).(UniformShardingResponsePtrOutput)
-}
-
 // Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 func (o UniformShardingResponseOutput) NumShards() pulumi.IntOutput {
 	return o.ApplyT(func(v UniformShardingResponse) int { return v.NumShards }).(pulumi.IntOutput)
 }
 
-type UniformShardingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (UniformShardingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UniformShardingResponse)(nil)).Elem()
-}
-
-func (o UniformShardingResponsePtrOutput) ToUniformShardingResponsePtrOutput() UniformShardingResponsePtrOutput {
-	return o
-}
-
-func (o UniformShardingResponsePtrOutput) ToUniformShardingResponsePtrOutputWithContext(ctx context.Context) UniformShardingResponsePtrOutput {
-	return o
-}
-
-func (o UniformShardingResponsePtrOutput) Elem() UniformShardingResponseOutput {
-	return o.ApplyT(func(v *UniformShardingResponse) UniformShardingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret UniformShardingResponse
-		return ret
-	}).(UniformShardingResponseOutput)
-}
-
-// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
-func (o UniformShardingResponsePtrOutput) NumShards() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *UniformShardingResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.NumShards
-	}).(pulumi.IntPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountInput)(nil)).Elem(), AccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountPtrInput)(nil)).Elem(), AccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccountResponseInput)(nil)).Elem(), AccountResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccountResponsePtrInput)(nil)).Elem(), AccountResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidDeviceInput)(nil)).Elem(), AndroidDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidDeviceArrayInput)(nil)).Elem(), AndroidDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidDeviceListInput)(nil)).Elem(), AndroidDeviceListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidDeviceListPtrInput)(nil)).Elem(), AndroidDeviceListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AndroidDeviceListResponseInput)(nil)).Elem(), AndroidDeviceListResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AndroidDeviceListResponsePtrInput)(nil)).Elem(), AndroidDeviceListResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AndroidDeviceResponseInput)(nil)).Elem(), AndroidDeviceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AndroidDeviceResponseArrayInput)(nil)).Elem(), AndroidDeviceResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidInstrumentationTestInput)(nil)).Elem(), AndroidInstrumentationTestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidInstrumentationTestPtrInput)(nil)).Elem(), AndroidInstrumentationTestArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AndroidInstrumentationTestResponseInput)(nil)).Elem(), AndroidInstrumentationTestResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AndroidInstrumentationTestResponsePtrInput)(nil)).Elem(), AndroidInstrumentationTestResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidMatrixInput)(nil)).Elem(), AndroidMatrixArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidMatrixPtrInput)(nil)).Elem(), AndroidMatrixArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AndroidMatrixResponseInput)(nil)).Elem(), AndroidMatrixResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AndroidMatrixResponsePtrInput)(nil)).Elem(), AndroidMatrixResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidRoboTestInput)(nil)).Elem(), AndroidRoboTestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidRoboTestPtrInput)(nil)).Elem(), AndroidRoboTestArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AndroidRoboTestResponseInput)(nil)).Elem(), AndroidRoboTestResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AndroidRoboTestResponsePtrInput)(nil)).Elem(), AndroidRoboTestResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidTestLoopInput)(nil)).Elem(), AndroidTestLoopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidTestLoopPtrInput)(nil)).Elem(), AndroidTestLoopArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AndroidTestLoopResponseInput)(nil)).Elem(), AndroidTestLoopResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AndroidTestLoopResponsePtrInput)(nil)).Elem(), AndroidTestLoopResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApkInput)(nil)).Elem(), ApkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApkArrayInput)(nil)).Elem(), ApkArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApkResponseInput)(nil)).Elem(), ApkResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApkResponseArrayInput)(nil)).Elem(), ApkResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppBundleInput)(nil)).Elem(), AppBundleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppBundlePtrInput)(nil)).Elem(), AppBundleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppBundleResponseInput)(nil)).Elem(), AppBundleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppBundleResponsePtrInput)(nil)).Elem(), AppBundleResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientInfoInput)(nil)).Elem(), ClientInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientInfoPtrInput)(nil)).Elem(), ClientInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientInfoDetailInput)(nil)).Elem(), ClientInfoDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientInfoDetailArrayInput)(nil)).Elem(), ClientInfoDetailArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClientInfoDetailResponseInput)(nil)).Elem(), ClientInfoDetailResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClientInfoDetailResponseArrayInput)(nil)).Elem(), ClientInfoDetailResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClientInfoResponseInput)(nil)).Elem(), ClientInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClientInfoResponsePtrInput)(nil)).Elem(), ClientInfoResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceFileInput)(nil)).Elem(), DeviceFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceFileArrayInput)(nil)).Elem(), DeviceFileArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeviceFileResponseInput)(nil)).Elem(), DeviceFileResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeviceFileResponseArrayInput)(nil)).Elem(), DeviceFileResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentMatrixInput)(nil)).Elem(), EnvironmentMatrixArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentMatrixPtrInput)(nil)).Elem(), EnvironmentMatrixArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentMatrixResponseInput)(nil)).Elem(), EnvironmentMatrixResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentMatrixResponsePtrInput)(nil)).Elem(), EnvironmentMatrixResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentResponseInput)(nil)).Elem(), EnvironmentResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentVariableInput)(nil)).Elem(), EnvironmentVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentVariableArrayInput)(nil)).Elem(), EnvironmentVariableArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentVariableResponseInput)(nil)).Elem(), EnvironmentVariableResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentVariableResponseArrayInput)(nil)).Elem(), EnvironmentVariableResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileReferenceInput)(nil)).Elem(), FileReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileReferencePtrInput)(nil)).Elem(), FileReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileReferenceArrayInput)(nil)).Elem(), FileReferenceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FileReferenceResponseInput)(nil)).Elem(), FileReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FileReferenceResponsePtrInput)(nil)).Elem(), FileReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FileReferenceResponseArrayInput)(nil)).Elem(), FileReferenceResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleAutoInput)(nil)).Elem(), GoogleAutoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleAutoPtrInput)(nil)).Elem(), GoogleAutoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleAutoResponseInput)(nil)).Elem(), GoogleAutoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleAutoResponsePtrInput)(nil)).Elem(), GoogleAutoResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudStorageInput)(nil)).Elem(), GoogleCloudStorageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudStoragePtrInput)(nil)).Elem(), GoogleCloudStorageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudStorageResponseInput)(nil)).Elem(), GoogleCloudStorageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudStorageResponsePtrInput)(nil)).Elem(), GoogleCloudStorageResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceInput)(nil)).Elem(), IosDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceArrayInput)(nil)).Elem(), IosDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceFileInput)(nil)).Elem(), IosDeviceFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceFileArrayInput)(nil)).Elem(), IosDeviceFileArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceFileResponseInput)(nil)).Elem(), IosDeviceFileResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceFileResponseArrayInput)(nil)).Elem(), IosDeviceFileResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceListInput)(nil)).Elem(), IosDeviceListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceListPtrInput)(nil)).Elem(), IosDeviceListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceListResponseInput)(nil)).Elem(), IosDeviceListResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceListResponsePtrInput)(nil)).Elem(), IosDeviceListResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceResponseInput)(nil)).Elem(), IosDeviceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceResponseArrayInput)(nil)).Elem(), IosDeviceResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosTestLoopInput)(nil)).Elem(), IosTestLoopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosTestLoopPtrInput)(nil)).Elem(), IosTestLoopArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IosTestLoopResponseInput)(nil)).Elem(), IosTestLoopResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IosTestLoopResponsePtrInput)(nil)).Elem(), IosTestLoopResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosTestSetupInput)(nil)).Elem(), IosTestSetupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosTestSetupPtrInput)(nil)).Elem(), IosTestSetupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IosTestSetupResponseInput)(nil)).Elem(), IosTestSetupResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IosTestSetupResponsePtrInput)(nil)).Elem(), IosTestSetupResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosXcTestInput)(nil)).Elem(), IosXcTestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosXcTestPtrInput)(nil)).Elem(), IosXcTestArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IosXcTestResponseInput)(nil)).Elem(), IosXcTestResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IosXcTestResponsePtrInput)(nil)).Elem(), IosXcTestResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LauncherActivityIntentInput)(nil)).Elem(), LauncherActivityIntentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LauncherActivityIntentPtrInput)(nil)).Elem(), LauncherActivityIntentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LauncherActivityIntentResponseInput)(nil)).Elem(), LauncherActivityIntentResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManualShardingInput)(nil)).Elem(), ManualShardingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManualShardingPtrInput)(nil)).Elem(), ManualShardingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManualShardingResponseInput)(nil)).Elem(), ManualShardingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManualShardingResponsePtrInput)(nil)).Elem(), ManualShardingResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObbFileInput)(nil)).Elem(), ObbFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObbFilePtrInput)(nil)).Elem(), ObbFileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObbFileResponseInput)(nil)).Elem(), ObbFileResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegularFileInput)(nil)).Elem(), RegularFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegularFilePtrInput)(nil)).Elem(), RegularFileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegularFileResponseInput)(nil)).Elem(), RegularFileResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResultStorageInput)(nil)).Elem(), ResultStorageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResultStoragePtrInput)(nil)).Elem(), ResultStorageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResultStorageResponseInput)(nil)).Elem(), ResultStorageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResultStorageResponsePtrInput)(nil)).Elem(), ResultStorageResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoboDirectiveInput)(nil)).Elem(), RoboDirectiveArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoboDirectiveArrayInput)(nil)).Elem(), RoboDirectiveArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RoboDirectiveResponseInput)(nil)).Elem(), RoboDirectiveResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RoboDirectiveResponseArrayInput)(nil)).Elem(), RoboDirectiveResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoboStartingIntentInput)(nil)).Elem(), RoboStartingIntentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoboStartingIntentArrayInput)(nil)).Elem(), RoboStartingIntentArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RoboStartingIntentResponseInput)(nil)).Elem(), RoboStartingIntentResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RoboStartingIntentResponseArrayInput)(nil)).Elem(), RoboStartingIntentResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ShardResponseInput)(nil)).Elem(), ShardResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingOptionInput)(nil)).Elem(), ShardingOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingOptionPtrInput)(nil)).Elem(), ShardingOptionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ShardingOptionResponseInput)(nil)).Elem(), ShardingOptionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ShardingOptionResponsePtrInput)(nil)).Elem(), ShardingOptionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StartActivityIntentInput)(nil)).Elem(), StartActivityIntentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StartActivityIntentPtrInput)(nil)).Elem(), StartActivityIntentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StartActivityIntentResponseInput)(nil)).Elem(), StartActivityIntentResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TestDetailsResponseInput)(nil)).Elem(), TestDetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TestExecutionResponseInput)(nil)).Elem(), TestExecutionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TestExecutionResponseArrayInput)(nil)).Elem(), TestExecutionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TestSetupInput)(nil)).Elem(), TestSetupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TestSetupPtrInput)(nil)).Elem(), TestSetupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TestSetupResponseInput)(nil)).Elem(), TestSetupResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TestSetupResponsePtrInput)(nil)).Elem(), TestSetupResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TestSpecificationInput)(nil)).Elem(), TestSpecificationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TestSpecificationPtrInput)(nil)).Elem(), TestSpecificationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TestSpecificationResponseInput)(nil)).Elem(), TestSpecificationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TestSpecificationResponsePtrInput)(nil)).Elem(), TestSpecificationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TestTargetsForShardInput)(nil)).Elem(), TestTargetsForShardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TestTargetsForShardArrayInput)(nil)).Elem(), TestTargetsForShardArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TestTargetsForShardResponseInput)(nil)).Elem(), TestTargetsForShardResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TestTargetsForShardResponseArrayInput)(nil)).Elem(), TestTargetsForShardResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ToolResultsExecutionResponseInput)(nil)).Elem(), ToolResultsExecutionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ToolResultsExecutionResponsePtrInput)(nil)).Elem(), ToolResultsExecutionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolResultsHistoryInput)(nil)).Elem(), ToolResultsHistoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolResultsHistoryPtrInput)(nil)).Elem(), ToolResultsHistoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ToolResultsHistoryResponseInput)(nil)).Elem(), ToolResultsHistoryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ToolResultsHistoryResponsePtrInput)(nil)).Elem(), ToolResultsHistoryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ToolResultsStepResponseInput)(nil)).Elem(), ToolResultsStepResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UniformShardingInput)(nil)).Elem(), UniformShardingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UniformShardingPtrInput)(nil)).Elem(), UniformShardingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UniformShardingResponseInput)(nil)).Elem(), UniformShardingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UniformShardingResponsePtrInput)(nil)).Elem(), UniformShardingResponseArgs{})
 	pulumi.RegisterOutputType(AccountOutput{})
 	pulumi.RegisterOutputType(AccountPtrOutput{})
 	pulumi.RegisterOutputType(AccountResponseOutput{})
-	pulumi.RegisterOutputType(AccountResponsePtrOutput{})
 	pulumi.RegisterOutputType(AndroidDeviceOutput{})
 	pulumi.RegisterOutputType(AndroidDeviceArrayOutput{})
 	pulumi.RegisterOutputType(AndroidDeviceListOutput{})
 	pulumi.RegisterOutputType(AndroidDeviceListPtrOutput{})
 	pulumi.RegisterOutputType(AndroidDeviceListResponseOutput{})
-	pulumi.RegisterOutputType(AndroidDeviceListResponsePtrOutput{})
 	pulumi.RegisterOutputType(AndroidDeviceResponseOutput{})
 	pulumi.RegisterOutputType(AndroidDeviceResponseArrayOutput{})
 	pulumi.RegisterOutputType(AndroidInstrumentationTestOutput{})
 	pulumi.RegisterOutputType(AndroidInstrumentationTestPtrOutput{})
 	pulumi.RegisterOutputType(AndroidInstrumentationTestResponseOutput{})
-	pulumi.RegisterOutputType(AndroidInstrumentationTestResponsePtrOutput{})
 	pulumi.RegisterOutputType(AndroidMatrixOutput{})
 	pulumi.RegisterOutputType(AndroidMatrixPtrOutput{})
 	pulumi.RegisterOutputType(AndroidMatrixResponseOutput{})
-	pulumi.RegisterOutputType(AndroidMatrixResponsePtrOutput{})
 	pulumi.RegisterOutputType(AndroidRoboTestOutput{})
 	pulumi.RegisterOutputType(AndroidRoboTestPtrOutput{})
 	pulumi.RegisterOutputType(AndroidRoboTestResponseOutput{})
-	pulumi.RegisterOutputType(AndroidRoboTestResponsePtrOutput{})
 	pulumi.RegisterOutputType(AndroidTestLoopOutput{})
 	pulumi.RegisterOutputType(AndroidTestLoopPtrOutput{})
 	pulumi.RegisterOutputType(AndroidTestLoopResponseOutput{})
-	pulumi.RegisterOutputType(AndroidTestLoopResponsePtrOutput{})
 	pulumi.RegisterOutputType(ApkOutput{})
 	pulumi.RegisterOutputType(ApkArrayOutput{})
 	pulumi.RegisterOutputType(ApkResponseOutput{})
@@ -12457,7 +7593,6 @@ func init() {
 	pulumi.RegisterOutputType(AppBundleOutput{})
 	pulumi.RegisterOutputType(AppBundlePtrOutput{})
 	pulumi.RegisterOutputType(AppBundleResponseOutput{})
-	pulumi.RegisterOutputType(AppBundleResponsePtrOutput{})
 	pulumi.RegisterOutputType(ClientInfoOutput{})
 	pulumi.RegisterOutputType(ClientInfoPtrOutput{})
 	pulumi.RegisterOutputType(ClientInfoDetailOutput{})
@@ -12465,15 +7600,12 @@ func init() {
 	pulumi.RegisterOutputType(ClientInfoDetailResponseOutput{})
 	pulumi.RegisterOutputType(ClientInfoDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(ClientInfoResponseOutput{})
-	pulumi.RegisterOutputType(ClientInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeviceFileOutput{})
 	pulumi.RegisterOutputType(DeviceFileArrayOutput{})
 	pulumi.RegisterOutputType(DeviceFileResponseOutput{})
 	pulumi.RegisterOutputType(DeviceFileResponseArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentMatrixOutput{})
-	pulumi.RegisterOutputType(EnvironmentMatrixPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentMatrixResponseOutput{})
-	pulumi.RegisterOutputType(EnvironmentMatrixResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentVariableOutput{})
 	pulumi.RegisterOutputType(EnvironmentVariableArrayOutput{})
@@ -12483,16 +7615,12 @@ func init() {
 	pulumi.RegisterOutputType(FileReferencePtrOutput{})
 	pulumi.RegisterOutputType(FileReferenceArrayOutput{})
 	pulumi.RegisterOutputType(FileReferenceResponseOutput{})
-	pulumi.RegisterOutputType(FileReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(FileReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleAutoOutput{})
 	pulumi.RegisterOutputType(GoogleAutoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleAutoResponseOutput{})
-	pulumi.RegisterOutputType(GoogleAutoResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudStorageOutput{})
-	pulumi.RegisterOutputType(GoogleCloudStoragePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudStorageResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudStorageResponsePtrOutput{})
 	pulumi.RegisterOutputType(IosDeviceOutput{})
 	pulumi.RegisterOutputType(IosDeviceArrayOutput{})
 	pulumi.RegisterOutputType(IosDeviceFileOutput{})
@@ -12502,28 +7630,23 @@ func init() {
 	pulumi.RegisterOutputType(IosDeviceListOutput{})
 	pulumi.RegisterOutputType(IosDeviceListPtrOutput{})
 	pulumi.RegisterOutputType(IosDeviceListResponseOutput{})
-	pulumi.RegisterOutputType(IosDeviceListResponsePtrOutput{})
 	pulumi.RegisterOutputType(IosDeviceResponseOutput{})
 	pulumi.RegisterOutputType(IosDeviceResponseArrayOutput{})
 	pulumi.RegisterOutputType(IosTestLoopOutput{})
 	pulumi.RegisterOutputType(IosTestLoopPtrOutput{})
 	pulumi.RegisterOutputType(IosTestLoopResponseOutput{})
-	pulumi.RegisterOutputType(IosTestLoopResponsePtrOutput{})
 	pulumi.RegisterOutputType(IosTestSetupOutput{})
 	pulumi.RegisterOutputType(IosTestSetupPtrOutput{})
 	pulumi.RegisterOutputType(IosTestSetupResponseOutput{})
-	pulumi.RegisterOutputType(IosTestSetupResponsePtrOutput{})
 	pulumi.RegisterOutputType(IosXcTestOutput{})
 	pulumi.RegisterOutputType(IosXcTestPtrOutput{})
 	pulumi.RegisterOutputType(IosXcTestResponseOutput{})
-	pulumi.RegisterOutputType(IosXcTestResponsePtrOutput{})
 	pulumi.RegisterOutputType(LauncherActivityIntentOutput{})
 	pulumi.RegisterOutputType(LauncherActivityIntentPtrOutput{})
 	pulumi.RegisterOutputType(LauncherActivityIntentResponseOutput{})
 	pulumi.RegisterOutputType(ManualShardingOutput{})
 	pulumi.RegisterOutputType(ManualShardingPtrOutput{})
 	pulumi.RegisterOutputType(ManualShardingResponseOutput{})
-	pulumi.RegisterOutputType(ManualShardingResponsePtrOutput{})
 	pulumi.RegisterOutputType(ObbFileOutput{})
 	pulumi.RegisterOutputType(ObbFilePtrOutput{})
 	pulumi.RegisterOutputType(ObbFileResponseOutput{})
@@ -12531,9 +7654,7 @@ func init() {
 	pulumi.RegisterOutputType(RegularFilePtrOutput{})
 	pulumi.RegisterOutputType(RegularFileResponseOutput{})
 	pulumi.RegisterOutputType(ResultStorageOutput{})
-	pulumi.RegisterOutputType(ResultStoragePtrOutput{})
 	pulumi.RegisterOutputType(ResultStorageResponseOutput{})
-	pulumi.RegisterOutputType(ResultStorageResponsePtrOutput{})
 	pulumi.RegisterOutputType(RoboDirectiveOutput{})
 	pulumi.RegisterOutputType(RoboDirectiveArrayOutput{})
 	pulumi.RegisterOutputType(RoboDirectiveResponseOutput{})
@@ -12546,7 +7667,6 @@ func init() {
 	pulumi.RegisterOutputType(ShardingOptionOutput{})
 	pulumi.RegisterOutputType(ShardingOptionPtrOutput{})
 	pulumi.RegisterOutputType(ShardingOptionResponseOutput{})
-	pulumi.RegisterOutputType(ShardingOptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(StartActivityIntentOutput{})
 	pulumi.RegisterOutputType(StartActivityIntentPtrOutput{})
 	pulumi.RegisterOutputType(StartActivityIntentResponseOutput{})
@@ -12556,24 +7676,18 @@ func init() {
 	pulumi.RegisterOutputType(TestSetupOutput{})
 	pulumi.RegisterOutputType(TestSetupPtrOutput{})
 	pulumi.RegisterOutputType(TestSetupResponseOutput{})
-	pulumi.RegisterOutputType(TestSetupResponsePtrOutput{})
 	pulumi.RegisterOutputType(TestSpecificationOutput{})
-	pulumi.RegisterOutputType(TestSpecificationPtrOutput{})
 	pulumi.RegisterOutputType(TestSpecificationResponseOutput{})
-	pulumi.RegisterOutputType(TestSpecificationResponsePtrOutput{})
 	pulumi.RegisterOutputType(TestTargetsForShardOutput{})
 	pulumi.RegisterOutputType(TestTargetsForShardArrayOutput{})
 	pulumi.RegisterOutputType(TestTargetsForShardResponseOutput{})
 	pulumi.RegisterOutputType(TestTargetsForShardResponseArrayOutput{})
 	pulumi.RegisterOutputType(ToolResultsExecutionResponseOutput{})
-	pulumi.RegisterOutputType(ToolResultsExecutionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ToolResultsHistoryOutput{})
 	pulumi.RegisterOutputType(ToolResultsHistoryPtrOutput{})
 	pulumi.RegisterOutputType(ToolResultsHistoryResponseOutput{})
-	pulumi.RegisterOutputType(ToolResultsHistoryResponsePtrOutput{})
 	pulumi.RegisterOutputType(ToolResultsStepResponseOutput{})
 	pulumi.RegisterOutputType(UniformShardingOutput{})
 	pulumi.RegisterOutputType(UniformShardingPtrOutput{})
 	pulumi.RegisterOutputType(UniformShardingResponseOutput{})
-	pulumi.RegisterOutputType(UniformShardingResponsePtrOutput{})
 }

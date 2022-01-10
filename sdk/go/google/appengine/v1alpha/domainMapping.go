@@ -98,7 +98,7 @@ type DomainMappingInput interface {
 }
 
 func (*DomainMapping) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainMapping)(nil))
+	return reflect.TypeOf((**DomainMapping)(nil)).Elem()
 }
 
 func (i *DomainMapping) ToDomainMappingOutput() DomainMappingOutput {
@@ -112,7 +112,7 @@ func (i *DomainMapping) ToDomainMappingOutputWithContext(ctx context.Context) Do
 type DomainMappingOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainMapping)(nil))
+	return reflect.TypeOf((**DomainMapping)(nil)).Elem()
 }
 
 func (o DomainMappingOutput) ToDomainMappingOutput() DomainMappingOutput {

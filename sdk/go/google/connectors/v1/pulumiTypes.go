@@ -127,62 +127,6 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
-// You can construct a concrete instance of `AuditConfigResponseInput` via:
-//
-//          AuditConfigResponseArgs{...}
-type AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseOutput() AuditConfigResponseOutput
-	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return i.ToAuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
-}
-
-// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
-//
-//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
-type AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
-	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
-}
-
-type AuditConfigResponseArray []AuditConfigResponseInput
-
-func (AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -343,62 +287,6 @@ type AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
-//
-//          AuditLogConfigResponseArgs{...}
-type AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
-	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
-}
-
-// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
-//
-//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
-type AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
-	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
-}
-
-type AuditLogConfigResponseArray []AuditLogConfigResponseInput
-
-func (AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -676,84 +564,6 @@ type AuthConfigResponse struct {
 	UserPassword UserPasswordResponse `pulumi:"userPassword"`
 }
 
-// AuthConfigResponseInput is an input type that accepts AuthConfigResponseArgs and AuthConfigResponseOutput values.
-// You can construct a concrete instance of `AuthConfigResponseInput` via:
-//
-//          AuthConfigResponseArgs{...}
-type AuthConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuthConfigResponseOutput() AuthConfigResponseOutput
-	ToAuthConfigResponseOutputWithContext(context.Context) AuthConfigResponseOutput
-}
-
-// AuthConfig defines details of a authentication type.
-type AuthConfigResponseArgs struct {
-	// List containing additional auth configs.
-	AdditionalVariables ConfigVariableResponseArrayInput `pulumi:"additionalVariables"`
-	// The type of authentication configured.
-	AuthType pulumi.StringInput `pulumi:"authType"`
-	// Oauth2ClientCredentials.
-	Oauth2ClientCredentials Oauth2ClientCredentialsResponseInput `pulumi:"oauth2ClientCredentials"`
-	// Oauth2JwtBearer.
-	Oauth2JwtBearer Oauth2JwtBearerResponseInput `pulumi:"oauth2JwtBearer"`
-	// UserPassword.
-	UserPassword UserPasswordResponseInput `pulumi:"userPassword"`
-}
-
-func (AuthConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigResponse)(nil)).Elem()
-}
-
-func (i AuthConfigResponseArgs) ToAuthConfigResponseOutput() AuthConfigResponseOutput {
-	return i.ToAuthConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuthConfigResponseArgs) ToAuthConfigResponseOutputWithContext(ctx context.Context) AuthConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigResponseOutput)
-}
-
-func (i AuthConfigResponseArgs) ToAuthConfigResponsePtrOutput() AuthConfigResponsePtrOutput {
-	return i.ToAuthConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AuthConfigResponseArgs) ToAuthConfigResponsePtrOutputWithContext(ctx context.Context) AuthConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigResponseOutput).ToAuthConfigResponsePtrOutputWithContext(ctx)
-}
-
-// AuthConfigResponsePtrInput is an input type that accepts AuthConfigResponseArgs, AuthConfigResponsePtr and AuthConfigResponsePtrOutput values.
-// You can construct a concrete instance of `AuthConfigResponsePtrInput` via:
-//
-//          AuthConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AuthConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToAuthConfigResponsePtrOutput() AuthConfigResponsePtrOutput
-	ToAuthConfigResponsePtrOutputWithContext(context.Context) AuthConfigResponsePtrOutput
-}
-
-type authConfigResponsePtrType AuthConfigResponseArgs
-
-func AuthConfigResponsePtr(v *AuthConfigResponseArgs) AuthConfigResponsePtrInput {
-	return (*authConfigResponsePtrType)(v)
-}
-
-func (*authConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthConfigResponse)(nil)).Elem()
-}
-
-func (i *authConfigResponsePtrType) ToAuthConfigResponsePtrOutput() AuthConfigResponsePtrOutput {
-	return i.ToAuthConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *authConfigResponsePtrType) ToAuthConfigResponsePtrOutputWithContext(ctx context.Context) AuthConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigResponsePtrOutput)
-}
-
 // AuthConfig defines details of a authentication type.
 type AuthConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -767,16 +577,6 @@ func (o AuthConfigResponseOutput) ToAuthConfigResponseOutput() AuthConfigRespons
 
 func (o AuthConfigResponseOutput) ToAuthConfigResponseOutputWithContext(ctx context.Context) AuthConfigResponseOutput {
 	return o
-}
-
-func (o AuthConfigResponseOutput) ToAuthConfigResponsePtrOutput() AuthConfigResponsePtrOutput {
-	return o.ToAuthConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AuthConfigResponseOutput) ToAuthConfigResponsePtrOutputWithContext(ctx context.Context) AuthConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthConfigResponse) *AuthConfigResponse {
-		return &v
-	}).(AuthConfigResponsePtrOutput)
 }
 
 // List containing additional auth configs.
@@ -802,80 +602,6 @@ func (o AuthConfigResponseOutput) Oauth2JwtBearer() Oauth2JwtBearerResponseOutpu
 // UserPassword.
 func (o AuthConfigResponseOutput) UserPassword() UserPasswordResponseOutput {
 	return o.ApplyT(func(v AuthConfigResponse) UserPasswordResponse { return v.UserPassword }).(UserPasswordResponseOutput)
-}
-
-type AuthConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AuthConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthConfigResponse)(nil)).Elem()
-}
-
-func (o AuthConfigResponsePtrOutput) ToAuthConfigResponsePtrOutput() AuthConfigResponsePtrOutput {
-	return o
-}
-
-func (o AuthConfigResponsePtrOutput) ToAuthConfigResponsePtrOutputWithContext(ctx context.Context) AuthConfigResponsePtrOutput {
-	return o
-}
-
-func (o AuthConfigResponsePtrOutput) Elem() AuthConfigResponseOutput {
-	return o.ApplyT(func(v *AuthConfigResponse) AuthConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AuthConfigResponse
-		return ret
-	}).(AuthConfigResponseOutput)
-}
-
-// List containing additional auth configs.
-func (o AuthConfigResponsePtrOutput) AdditionalVariables() ConfigVariableResponseArrayOutput {
-	return o.ApplyT(func(v *AuthConfigResponse) []ConfigVariableResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalVariables
-	}).(ConfigVariableResponseArrayOutput)
-}
-
-// The type of authentication configured.
-func (o AuthConfigResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AuthType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Oauth2ClientCredentials.
-func (o AuthConfigResponsePtrOutput) Oauth2ClientCredentials() Oauth2ClientCredentialsResponsePtrOutput {
-	return o.ApplyT(func(v *AuthConfigResponse) *Oauth2ClientCredentialsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Oauth2ClientCredentials
-	}).(Oauth2ClientCredentialsResponsePtrOutput)
-}
-
-// Oauth2JwtBearer.
-func (o AuthConfigResponsePtrOutput) Oauth2JwtBearer() Oauth2JwtBearerResponsePtrOutput {
-	return o.ApplyT(func(v *AuthConfigResponse) *Oauth2JwtBearerResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Oauth2JwtBearer
-	}).(Oauth2JwtBearerResponsePtrOutput)
-}
-
-// UserPassword.
-func (o AuthConfigResponsePtrOutput) UserPassword() UserPasswordResponsePtrOutput {
-	return o.ApplyT(func(v *AuthConfigResponse) *UserPasswordResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.UserPassword
-	}).(UserPasswordResponsePtrOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -1004,64 +730,6 @@ type BindingResponse struct {
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
-}
-
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -1264,68 +932,6 @@ type ConfigVariableResponse struct {
 	StringValue string `pulumi:"stringValue"`
 }
 
-// ConfigVariableResponseInput is an input type that accepts ConfigVariableResponseArgs and ConfigVariableResponseOutput values.
-// You can construct a concrete instance of `ConfigVariableResponseInput` via:
-//
-//          ConfigVariableResponseArgs{...}
-type ConfigVariableResponseInput interface {
-	pulumi.Input
-
-	ToConfigVariableResponseOutput() ConfigVariableResponseOutput
-	ToConfigVariableResponseOutputWithContext(context.Context) ConfigVariableResponseOutput
-}
-
-// ConfigVariable represents a configuration variable present in a Connection. or AuthConfig.
-type ConfigVariableResponseArgs struct {
-	// Value is a bool.
-	BoolValue pulumi.BoolInput `pulumi:"boolValue"`
-	// Value is an integer
-	IntValue pulumi.StringInput `pulumi:"intValue"`
-	// Key of the config variable.
-	Key pulumi.StringInput `pulumi:"key"`
-	// Value is a secret.
-	SecretValue SecretResponseInput `pulumi:"secretValue"`
-	// Value is a string.
-	StringValue pulumi.StringInput `pulumi:"stringValue"`
-}
-
-func (ConfigVariableResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigVariableResponse)(nil)).Elem()
-}
-
-func (i ConfigVariableResponseArgs) ToConfigVariableResponseOutput() ConfigVariableResponseOutput {
-	return i.ToConfigVariableResponseOutputWithContext(context.Background())
-}
-
-func (i ConfigVariableResponseArgs) ToConfigVariableResponseOutputWithContext(ctx context.Context) ConfigVariableResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigVariableResponseOutput)
-}
-
-// ConfigVariableResponseArrayInput is an input type that accepts ConfigVariableResponseArray and ConfigVariableResponseArrayOutput values.
-// You can construct a concrete instance of `ConfigVariableResponseArrayInput` via:
-//
-//          ConfigVariableResponseArray{ ConfigVariableResponseArgs{...} }
-type ConfigVariableResponseArrayInput interface {
-	pulumi.Input
-
-	ToConfigVariableResponseArrayOutput() ConfigVariableResponseArrayOutput
-	ToConfigVariableResponseArrayOutputWithContext(context.Context) ConfigVariableResponseArrayOutput
-}
-
-type ConfigVariableResponseArray []ConfigVariableResponseInput
-
-func (ConfigVariableResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConfigVariableResponse)(nil)).Elem()
-}
-
-func (i ConfigVariableResponseArray) ToConfigVariableResponseArrayOutput() ConfigVariableResponseArrayOutput {
-	return i.ToConfigVariableResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ConfigVariableResponseArray) ToConfigVariableResponseArrayOutputWithContext(ctx context.Context) ConfigVariableResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigVariableResponseArrayOutput)
-}
-
 // ConfigVariable represents a configuration variable present in a Connection. or AuthConfig.
 type ConfigVariableResponseOutput struct{ *pulumi.OutputState }
 
@@ -1396,80 +1002,6 @@ type ConnectionStatusResponse struct {
 	Status string `pulumi:"status"`
 }
 
-// ConnectionStatusResponseInput is an input type that accepts ConnectionStatusResponseArgs and ConnectionStatusResponseOutput values.
-// You can construct a concrete instance of `ConnectionStatusResponseInput` via:
-//
-//          ConnectionStatusResponseArgs{...}
-type ConnectionStatusResponseInput interface {
-	pulumi.Input
-
-	ToConnectionStatusResponseOutput() ConnectionStatusResponseOutput
-	ToConnectionStatusResponseOutputWithContext(context.Context) ConnectionStatusResponseOutput
-}
-
-// ConnectionStatus indicates the state of the connection.
-type ConnectionStatusResponseArgs struct {
-	// Description.
-	Description pulumi.StringInput `pulumi:"description"`
-	// State.
-	State pulumi.StringInput `pulumi:"state"`
-	// Status provides detailed information for the state.
-	Status pulumi.StringInput `pulumi:"status"`
-}
-
-func (ConnectionStatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionStatusResponse)(nil)).Elem()
-}
-
-func (i ConnectionStatusResponseArgs) ToConnectionStatusResponseOutput() ConnectionStatusResponseOutput {
-	return i.ToConnectionStatusResponseOutputWithContext(context.Background())
-}
-
-func (i ConnectionStatusResponseArgs) ToConnectionStatusResponseOutputWithContext(ctx context.Context) ConnectionStatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionStatusResponseOutput)
-}
-
-func (i ConnectionStatusResponseArgs) ToConnectionStatusResponsePtrOutput() ConnectionStatusResponsePtrOutput {
-	return i.ToConnectionStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ConnectionStatusResponseArgs) ToConnectionStatusResponsePtrOutputWithContext(ctx context.Context) ConnectionStatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionStatusResponseOutput).ToConnectionStatusResponsePtrOutputWithContext(ctx)
-}
-
-// ConnectionStatusResponsePtrInput is an input type that accepts ConnectionStatusResponseArgs, ConnectionStatusResponsePtr and ConnectionStatusResponsePtrOutput values.
-// You can construct a concrete instance of `ConnectionStatusResponsePtrInput` via:
-//
-//          ConnectionStatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ConnectionStatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToConnectionStatusResponsePtrOutput() ConnectionStatusResponsePtrOutput
-	ToConnectionStatusResponsePtrOutputWithContext(context.Context) ConnectionStatusResponsePtrOutput
-}
-
-type connectionStatusResponsePtrType ConnectionStatusResponseArgs
-
-func ConnectionStatusResponsePtr(v *ConnectionStatusResponseArgs) ConnectionStatusResponsePtrInput {
-	return (*connectionStatusResponsePtrType)(v)
-}
-
-func (*connectionStatusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionStatusResponse)(nil)).Elem()
-}
-
-func (i *connectionStatusResponsePtrType) ToConnectionStatusResponsePtrOutput() ConnectionStatusResponsePtrOutput {
-	return i.ToConnectionStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *connectionStatusResponsePtrType) ToConnectionStatusResponsePtrOutputWithContext(ctx context.Context) ConnectionStatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionStatusResponsePtrOutput)
-}
-
 // ConnectionStatus indicates the state of the connection.
 type ConnectionStatusResponseOutput struct{ *pulumi.OutputState }
 
@@ -1485,16 +1017,6 @@ func (o ConnectionStatusResponseOutput) ToConnectionStatusResponseOutputWithCont
 	return o
 }
 
-func (o ConnectionStatusResponseOutput) ToConnectionStatusResponsePtrOutput() ConnectionStatusResponsePtrOutput {
-	return o.ToConnectionStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ConnectionStatusResponseOutput) ToConnectionStatusResponsePtrOutputWithContext(ctx context.Context) ConnectionStatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionStatusResponse) *ConnectionStatusResponse {
-		return &v
-	}).(ConnectionStatusResponsePtrOutput)
-}
-
 // Description.
 func (o ConnectionStatusResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionStatusResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1508,60 +1030,6 @@ func (o ConnectionStatusResponseOutput) State() pulumi.StringOutput {
 // Status provides detailed information for the state.
 func (o ConnectionStatusResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionStatusResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type ConnectionStatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ConnectionStatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionStatusResponse)(nil)).Elem()
-}
-
-func (o ConnectionStatusResponsePtrOutput) ToConnectionStatusResponsePtrOutput() ConnectionStatusResponsePtrOutput {
-	return o
-}
-
-func (o ConnectionStatusResponsePtrOutput) ToConnectionStatusResponsePtrOutputWithContext(ctx context.Context) ConnectionStatusResponsePtrOutput {
-	return o
-}
-
-func (o ConnectionStatusResponsePtrOutput) Elem() ConnectionStatusResponseOutput {
-	return o.ApplyT(func(v *ConnectionStatusResponse) ConnectionStatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ConnectionStatusResponse
-		return ret
-	}).(ConnectionStatusResponseOutput)
-}
-
-// Description.
-func (o ConnectionStatusResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// State.
-func (o ConnectionStatusResponsePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// Status provides detailed information for the state.
-func (o ConnectionStatusResponsePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1771,41 +1239,6 @@ type ExprResponse struct {
 	Location string `pulumi:"location"`
 	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 	Title string `pulumi:"title"`
-}
-
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -2031,80 +1464,6 @@ type JwtClaimsResponse struct {
 	Subject string `pulumi:"subject"`
 }
 
-// JwtClaimsResponseInput is an input type that accepts JwtClaimsResponseArgs and JwtClaimsResponseOutput values.
-// You can construct a concrete instance of `JwtClaimsResponseInput` via:
-//
-//          JwtClaimsResponseArgs{...}
-type JwtClaimsResponseInput interface {
-	pulumi.Input
-
-	ToJwtClaimsResponseOutput() JwtClaimsResponseOutput
-	ToJwtClaimsResponseOutputWithContext(context.Context) JwtClaimsResponseOutput
-}
-
-// JWT claims used for the jwt-bearer authorization grant.
-type JwtClaimsResponseArgs struct {
-	// Value for the "aud" claim.
-	Audience pulumi.StringInput `pulumi:"audience"`
-	// Value for the "iss" claim.
-	Issuer pulumi.StringInput `pulumi:"issuer"`
-	// Value for the "sub" claim.
-	Subject pulumi.StringInput `pulumi:"subject"`
-}
-
-func (JwtClaimsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JwtClaimsResponse)(nil)).Elem()
-}
-
-func (i JwtClaimsResponseArgs) ToJwtClaimsResponseOutput() JwtClaimsResponseOutput {
-	return i.ToJwtClaimsResponseOutputWithContext(context.Background())
-}
-
-func (i JwtClaimsResponseArgs) ToJwtClaimsResponseOutputWithContext(ctx context.Context) JwtClaimsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JwtClaimsResponseOutput)
-}
-
-func (i JwtClaimsResponseArgs) ToJwtClaimsResponsePtrOutput() JwtClaimsResponsePtrOutput {
-	return i.ToJwtClaimsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JwtClaimsResponseArgs) ToJwtClaimsResponsePtrOutputWithContext(ctx context.Context) JwtClaimsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JwtClaimsResponseOutput).ToJwtClaimsResponsePtrOutputWithContext(ctx)
-}
-
-// JwtClaimsResponsePtrInput is an input type that accepts JwtClaimsResponseArgs, JwtClaimsResponsePtr and JwtClaimsResponsePtrOutput values.
-// You can construct a concrete instance of `JwtClaimsResponsePtrInput` via:
-//
-//          JwtClaimsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JwtClaimsResponsePtrInput interface {
-	pulumi.Input
-
-	ToJwtClaimsResponsePtrOutput() JwtClaimsResponsePtrOutput
-	ToJwtClaimsResponsePtrOutputWithContext(context.Context) JwtClaimsResponsePtrOutput
-}
-
-type jwtClaimsResponsePtrType JwtClaimsResponseArgs
-
-func JwtClaimsResponsePtr(v *JwtClaimsResponseArgs) JwtClaimsResponsePtrInput {
-	return (*jwtClaimsResponsePtrType)(v)
-}
-
-func (*jwtClaimsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JwtClaimsResponse)(nil)).Elem()
-}
-
-func (i *jwtClaimsResponsePtrType) ToJwtClaimsResponsePtrOutput() JwtClaimsResponsePtrOutput {
-	return i.ToJwtClaimsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jwtClaimsResponsePtrType) ToJwtClaimsResponsePtrOutputWithContext(ctx context.Context) JwtClaimsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JwtClaimsResponsePtrOutput)
-}
-
 // JWT claims used for the jwt-bearer authorization grant.
 type JwtClaimsResponseOutput struct{ *pulumi.OutputState }
 
@@ -2120,16 +1479,6 @@ func (o JwtClaimsResponseOutput) ToJwtClaimsResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o JwtClaimsResponseOutput) ToJwtClaimsResponsePtrOutput() JwtClaimsResponsePtrOutput {
-	return o.ToJwtClaimsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JwtClaimsResponseOutput) ToJwtClaimsResponsePtrOutputWithContext(ctx context.Context) JwtClaimsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JwtClaimsResponse) *JwtClaimsResponse {
-		return &v
-	}).(JwtClaimsResponsePtrOutput)
-}
-
 // Value for the "aud" claim.
 func (o JwtClaimsResponseOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v JwtClaimsResponse) string { return v.Audience }).(pulumi.StringOutput)
@@ -2143,60 +1492,6 @@ func (o JwtClaimsResponseOutput) Issuer() pulumi.StringOutput {
 // Value for the "sub" claim.
 func (o JwtClaimsResponseOutput) Subject() pulumi.StringOutput {
 	return o.ApplyT(func(v JwtClaimsResponse) string { return v.Subject }).(pulumi.StringOutput)
-}
-
-type JwtClaimsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JwtClaimsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JwtClaimsResponse)(nil)).Elem()
-}
-
-func (o JwtClaimsResponsePtrOutput) ToJwtClaimsResponsePtrOutput() JwtClaimsResponsePtrOutput {
-	return o
-}
-
-func (o JwtClaimsResponsePtrOutput) ToJwtClaimsResponsePtrOutputWithContext(ctx context.Context) JwtClaimsResponsePtrOutput {
-	return o
-}
-
-func (o JwtClaimsResponsePtrOutput) Elem() JwtClaimsResponseOutput {
-	return o.ApplyT(func(v *JwtClaimsResponse) JwtClaimsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JwtClaimsResponse
-		return ret
-	}).(JwtClaimsResponseOutput)
-}
-
-// Value for the "aud" claim.
-func (o JwtClaimsResponsePtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JwtClaimsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Audience
-	}).(pulumi.StringPtrOutput)
-}
-
-// Value for the "iss" claim.
-func (o JwtClaimsResponsePtrOutput) Issuer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JwtClaimsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Issuer
-	}).(pulumi.StringPtrOutput)
-}
-
-// Value for the "sub" claim.
-func (o JwtClaimsResponsePtrOutput) Subject() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JwtClaimsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Subject
-	}).(pulumi.StringPtrOutput)
 }
 
 // Determines whether or no a connection is locked. If locked, a reason must be specified.
@@ -2366,78 +1661,6 @@ type LockConfigResponse struct {
 	Reason string `pulumi:"reason"`
 }
 
-// LockConfigResponseInput is an input type that accepts LockConfigResponseArgs and LockConfigResponseOutput values.
-// You can construct a concrete instance of `LockConfigResponseInput` via:
-//
-//          LockConfigResponseArgs{...}
-type LockConfigResponseInput interface {
-	pulumi.Input
-
-	ToLockConfigResponseOutput() LockConfigResponseOutput
-	ToLockConfigResponseOutputWithContext(context.Context) LockConfigResponseOutput
-}
-
-// Determines whether or no a connection is locked. If locked, a reason must be specified.
-type LockConfigResponseArgs struct {
-	// Indicates whether or not the connection is locked.
-	Locked pulumi.BoolInput `pulumi:"locked"`
-	// Describes why a connection is locked.
-	Reason pulumi.StringInput `pulumi:"reason"`
-}
-
-func (LockConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LockConfigResponse)(nil)).Elem()
-}
-
-func (i LockConfigResponseArgs) ToLockConfigResponseOutput() LockConfigResponseOutput {
-	return i.ToLockConfigResponseOutputWithContext(context.Background())
-}
-
-func (i LockConfigResponseArgs) ToLockConfigResponseOutputWithContext(ctx context.Context) LockConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LockConfigResponseOutput)
-}
-
-func (i LockConfigResponseArgs) ToLockConfigResponsePtrOutput() LockConfigResponsePtrOutput {
-	return i.ToLockConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i LockConfigResponseArgs) ToLockConfigResponsePtrOutputWithContext(ctx context.Context) LockConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LockConfigResponseOutput).ToLockConfigResponsePtrOutputWithContext(ctx)
-}
-
-// LockConfigResponsePtrInput is an input type that accepts LockConfigResponseArgs, LockConfigResponsePtr and LockConfigResponsePtrOutput values.
-// You can construct a concrete instance of `LockConfigResponsePtrInput` via:
-//
-//          LockConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type LockConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToLockConfigResponsePtrOutput() LockConfigResponsePtrOutput
-	ToLockConfigResponsePtrOutputWithContext(context.Context) LockConfigResponsePtrOutput
-}
-
-type lockConfigResponsePtrType LockConfigResponseArgs
-
-func LockConfigResponsePtr(v *LockConfigResponseArgs) LockConfigResponsePtrInput {
-	return (*lockConfigResponsePtrType)(v)
-}
-
-func (*lockConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LockConfigResponse)(nil)).Elem()
-}
-
-func (i *lockConfigResponsePtrType) ToLockConfigResponsePtrOutput() LockConfigResponsePtrOutput {
-	return i.ToLockConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *lockConfigResponsePtrType) ToLockConfigResponsePtrOutputWithContext(ctx context.Context) LockConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LockConfigResponsePtrOutput)
-}
-
 // Determines whether or no a connection is locked. If locked, a reason must be specified.
 type LockConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2453,16 +1676,6 @@ func (o LockConfigResponseOutput) ToLockConfigResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o LockConfigResponseOutput) ToLockConfigResponsePtrOutput() LockConfigResponsePtrOutput {
-	return o.ToLockConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o LockConfigResponseOutput) ToLockConfigResponsePtrOutputWithContext(ctx context.Context) LockConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LockConfigResponse) *LockConfigResponse {
-		return &v
-	}).(LockConfigResponsePtrOutput)
-}
-
 // Indicates whether or not the connection is locked.
 func (o LockConfigResponseOutput) Locked() pulumi.BoolOutput {
 	return o.ApplyT(func(v LockConfigResponse) bool { return v.Locked }).(pulumi.BoolOutput)
@@ -2471,50 +1684,6 @@ func (o LockConfigResponseOutput) Locked() pulumi.BoolOutput {
 // Describes why a connection is locked.
 func (o LockConfigResponseOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v LockConfigResponse) string { return v.Reason }).(pulumi.StringOutput)
-}
-
-type LockConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LockConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LockConfigResponse)(nil)).Elem()
-}
-
-func (o LockConfigResponsePtrOutput) ToLockConfigResponsePtrOutput() LockConfigResponsePtrOutput {
-	return o
-}
-
-func (o LockConfigResponsePtrOutput) ToLockConfigResponsePtrOutputWithContext(ctx context.Context) LockConfigResponsePtrOutput {
-	return o
-}
-
-func (o LockConfigResponsePtrOutput) Elem() LockConfigResponseOutput {
-	return o.ApplyT(func(v *LockConfigResponse) LockConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LockConfigResponse
-		return ret
-	}).(LockConfigResponseOutput)
-}
-
-// Indicates whether or not the connection is locked.
-func (o LockConfigResponsePtrOutput) Locked() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *LockConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Locked
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Describes why a connection is locked.
-func (o LockConfigResponsePtrOutput) Reason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LockConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Reason
-	}).(pulumi.StringPtrOutput)
 }
 
 // Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
@@ -2684,78 +1853,6 @@ type Oauth2ClientCredentialsResponse struct {
 	ClientSecret SecretResponse `pulumi:"clientSecret"`
 }
 
-// Oauth2ClientCredentialsResponseInput is an input type that accepts Oauth2ClientCredentialsResponseArgs and Oauth2ClientCredentialsResponseOutput values.
-// You can construct a concrete instance of `Oauth2ClientCredentialsResponseInput` via:
-//
-//          Oauth2ClientCredentialsResponseArgs{...}
-type Oauth2ClientCredentialsResponseInput interface {
-	pulumi.Input
-
-	ToOauth2ClientCredentialsResponseOutput() Oauth2ClientCredentialsResponseOutput
-	ToOauth2ClientCredentialsResponseOutputWithContext(context.Context) Oauth2ClientCredentialsResponseOutput
-}
-
-// Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
-type Oauth2ClientCredentialsResponseArgs struct {
-	// The client identifier.
-	ClientId pulumi.StringInput `pulumi:"clientId"`
-	// Secret version reference containing the client secret.
-	ClientSecret SecretResponseInput `pulumi:"clientSecret"`
-}
-
-func (Oauth2ClientCredentialsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Oauth2ClientCredentialsResponse)(nil)).Elem()
-}
-
-func (i Oauth2ClientCredentialsResponseArgs) ToOauth2ClientCredentialsResponseOutput() Oauth2ClientCredentialsResponseOutput {
-	return i.ToOauth2ClientCredentialsResponseOutputWithContext(context.Background())
-}
-
-func (i Oauth2ClientCredentialsResponseArgs) ToOauth2ClientCredentialsResponseOutputWithContext(ctx context.Context) Oauth2ClientCredentialsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Oauth2ClientCredentialsResponseOutput)
-}
-
-func (i Oauth2ClientCredentialsResponseArgs) ToOauth2ClientCredentialsResponsePtrOutput() Oauth2ClientCredentialsResponsePtrOutput {
-	return i.ToOauth2ClientCredentialsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i Oauth2ClientCredentialsResponseArgs) ToOauth2ClientCredentialsResponsePtrOutputWithContext(ctx context.Context) Oauth2ClientCredentialsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Oauth2ClientCredentialsResponseOutput).ToOauth2ClientCredentialsResponsePtrOutputWithContext(ctx)
-}
-
-// Oauth2ClientCredentialsResponsePtrInput is an input type that accepts Oauth2ClientCredentialsResponseArgs, Oauth2ClientCredentialsResponsePtr and Oauth2ClientCredentialsResponsePtrOutput values.
-// You can construct a concrete instance of `Oauth2ClientCredentialsResponsePtrInput` via:
-//
-//          Oauth2ClientCredentialsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type Oauth2ClientCredentialsResponsePtrInput interface {
-	pulumi.Input
-
-	ToOauth2ClientCredentialsResponsePtrOutput() Oauth2ClientCredentialsResponsePtrOutput
-	ToOauth2ClientCredentialsResponsePtrOutputWithContext(context.Context) Oauth2ClientCredentialsResponsePtrOutput
-}
-
-type oauth2ClientCredentialsResponsePtrType Oauth2ClientCredentialsResponseArgs
-
-func Oauth2ClientCredentialsResponsePtr(v *Oauth2ClientCredentialsResponseArgs) Oauth2ClientCredentialsResponsePtrInput {
-	return (*oauth2ClientCredentialsResponsePtrType)(v)
-}
-
-func (*oauth2ClientCredentialsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Oauth2ClientCredentialsResponse)(nil)).Elem()
-}
-
-func (i *oauth2ClientCredentialsResponsePtrType) ToOauth2ClientCredentialsResponsePtrOutput() Oauth2ClientCredentialsResponsePtrOutput {
-	return i.ToOauth2ClientCredentialsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *oauth2ClientCredentialsResponsePtrType) ToOauth2ClientCredentialsResponsePtrOutputWithContext(ctx context.Context) Oauth2ClientCredentialsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Oauth2ClientCredentialsResponsePtrOutput)
-}
-
 // Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
 type Oauth2ClientCredentialsResponseOutput struct{ *pulumi.OutputState }
 
@@ -2771,16 +1868,6 @@ func (o Oauth2ClientCredentialsResponseOutput) ToOauth2ClientCredentialsResponse
 	return o
 }
 
-func (o Oauth2ClientCredentialsResponseOutput) ToOauth2ClientCredentialsResponsePtrOutput() Oauth2ClientCredentialsResponsePtrOutput {
-	return o.ToOauth2ClientCredentialsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o Oauth2ClientCredentialsResponseOutput) ToOauth2ClientCredentialsResponsePtrOutputWithContext(ctx context.Context) Oauth2ClientCredentialsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Oauth2ClientCredentialsResponse) *Oauth2ClientCredentialsResponse {
-		return &v
-	}).(Oauth2ClientCredentialsResponsePtrOutput)
-}
-
 // The client identifier.
 func (o Oauth2ClientCredentialsResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v Oauth2ClientCredentialsResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -2789,50 +1876,6 @@ func (o Oauth2ClientCredentialsResponseOutput) ClientId() pulumi.StringOutput {
 // Secret version reference containing the client secret.
 func (o Oauth2ClientCredentialsResponseOutput) ClientSecret() SecretResponseOutput {
 	return o.ApplyT(func(v Oauth2ClientCredentialsResponse) SecretResponse { return v.ClientSecret }).(SecretResponseOutput)
-}
-
-type Oauth2ClientCredentialsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (Oauth2ClientCredentialsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Oauth2ClientCredentialsResponse)(nil)).Elem()
-}
-
-func (o Oauth2ClientCredentialsResponsePtrOutput) ToOauth2ClientCredentialsResponsePtrOutput() Oauth2ClientCredentialsResponsePtrOutput {
-	return o
-}
-
-func (o Oauth2ClientCredentialsResponsePtrOutput) ToOauth2ClientCredentialsResponsePtrOutputWithContext(ctx context.Context) Oauth2ClientCredentialsResponsePtrOutput {
-	return o
-}
-
-func (o Oauth2ClientCredentialsResponsePtrOutput) Elem() Oauth2ClientCredentialsResponseOutput {
-	return o.ApplyT(func(v *Oauth2ClientCredentialsResponse) Oauth2ClientCredentialsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret Oauth2ClientCredentialsResponse
-		return ret
-	}).(Oauth2ClientCredentialsResponseOutput)
-}
-
-// The client identifier.
-func (o Oauth2ClientCredentialsResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Oauth2ClientCredentialsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Secret version reference containing the client secret.
-func (o Oauth2ClientCredentialsResponsePtrOutput) ClientSecret() SecretResponsePtrOutput {
-	return o.ApplyT(func(v *Oauth2ClientCredentialsResponse) *SecretResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientSecret
-	}).(SecretResponsePtrOutput)
 }
 
 // Parameters to support JSON Web Token (JWT) Profile for Oauth 2.0 Authorization Grant based authentication. See https://tools.ietf.org/html/rfc7523 for more details.
@@ -3002,78 +2045,6 @@ type Oauth2JwtBearerResponse struct {
 	JwtClaims JwtClaimsResponse `pulumi:"jwtClaims"`
 }
 
-// Oauth2JwtBearerResponseInput is an input type that accepts Oauth2JwtBearerResponseArgs and Oauth2JwtBearerResponseOutput values.
-// You can construct a concrete instance of `Oauth2JwtBearerResponseInput` via:
-//
-//          Oauth2JwtBearerResponseArgs{...}
-type Oauth2JwtBearerResponseInput interface {
-	pulumi.Input
-
-	ToOauth2JwtBearerResponseOutput() Oauth2JwtBearerResponseOutput
-	ToOauth2JwtBearerResponseOutputWithContext(context.Context) Oauth2JwtBearerResponseOutput
-}
-
-// Parameters to support JSON Web Token (JWT) Profile for Oauth 2.0 Authorization Grant based authentication. See https://tools.ietf.org/html/rfc7523 for more details.
-type Oauth2JwtBearerResponseArgs struct {
-	// Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/*/secrets/*/versions/*`.
-	ClientKey SecretResponseInput `pulumi:"clientKey"`
-	// JwtClaims providers fields to generate the token.
-	JwtClaims JwtClaimsResponseInput `pulumi:"jwtClaims"`
-}
-
-func (Oauth2JwtBearerResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Oauth2JwtBearerResponse)(nil)).Elem()
-}
-
-func (i Oauth2JwtBearerResponseArgs) ToOauth2JwtBearerResponseOutput() Oauth2JwtBearerResponseOutput {
-	return i.ToOauth2JwtBearerResponseOutputWithContext(context.Background())
-}
-
-func (i Oauth2JwtBearerResponseArgs) ToOauth2JwtBearerResponseOutputWithContext(ctx context.Context) Oauth2JwtBearerResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Oauth2JwtBearerResponseOutput)
-}
-
-func (i Oauth2JwtBearerResponseArgs) ToOauth2JwtBearerResponsePtrOutput() Oauth2JwtBearerResponsePtrOutput {
-	return i.ToOauth2JwtBearerResponsePtrOutputWithContext(context.Background())
-}
-
-func (i Oauth2JwtBearerResponseArgs) ToOauth2JwtBearerResponsePtrOutputWithContext(ctx context.Context) Oauth2JwtBearerResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Oauth2JwtBearerResponseOutput).ToOauth2JwtBearerResponsePtrOutputWithContext(ctx)
-}
-
-// Oauth2JwtBearerResponsePtrInput is an input type that accepts Oauth2JwtBearerResponseArgs, Oauth2JwtBearerResponsePtr and Oauth2JwtBearerResponsePtrOutput values.
-// You can construct a concrete instance of `Oauth2JwtBearerResponsePtrInput` via:
-//
-//          Oauth2JwtBearerResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type Oauth2JwtBearerResponsePtrInput interface {
-	pulumi.Input
-
-	ToOauth2JwtBearerResponsePtrOutput() Oauth2JwtBearerResponsePtrOutput
-	ToOauth2JwtBearerResponsePtrOutputWithContext(context.Context) Oauth2JwtBearerResponsePtrOutput
-}
-
-type oauth2JwtBearerResponsePtrType Oauth2JwtBearerResponseArgs
-
-func Oauth2JwtBearerResponsePtr(v *Oauth2JwtBearerResponseArgs) Oauth2JwtBearerResponsePtrInput {
-	return (*oauth2JwtBearerResponsePtrType)(v)
-}
-
-func (*oauth2JwtBearerResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Oauth2JwtBearerResponse)(nil)).Elem()
-}
-
-func (i *oauth2JwtBearerResponsePtrType) ToOauth2JwtBearerResponsePtrOutput() Oauth2JwtBearerResponsePtrOutput {
-	return i.ToOauth2JwtBearerResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *oauth2JwtBearerResponsePtrType) ToOauth2JwtBearerResponsePtrOutputWithContext(ctx context.Context) Oauth2JwtBearerResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Oauth2JwtBearerResponsePtrOutput)
-}
-
 // Parameters to support JSON Web Token (JWT) Profile for Oauth 2.0 Authorization Grant based authentication. See https://tools.ietf.org/html/rfc7523 for more details.
 type Oauth2JwtBearerResponseOutput struct{ *pulumi.OutputState }
 
@@ -3089,16 +2060,6 @@ func (o Oauth2JwtBearerResponseOutput) ToOauth2JwtBearerResponseOutputWithContex
 	return o
 }
 
-func (o Oauth2JwtBearerResponseOutput) ToOauth2JwtBearerResponsePtrOutput() Oauth2JwtBearerResponsePtrOutput {
-	return o.ToOauth2JwtBearerResponsePtrOutputWithContext(context.Background())
-}
-
-func (o Oauth2JwtBearerResponseOutput) ToOauth2JwtBearerResponsePtrOutputWithContext(ctx context.Context) Oauth2JwtBearerResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Oauth2JwtBearerResponse) *Oauth2JwtBearerResponse {
-		return &v
-	}).(Oauth2JwtBearerResponsePtrOutput)
-}
-
 // Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/*/secrets/*/versions/*`.
 func (o Oauth2JwtBearerResponseOutput) ClientKey() SecretResponseOutput {
 	return o.ApplyT(func(v Oauth2JwtBearerResponse) SecretResponse { return v.ClientKey }).(SecretResponseOutput)
@@ -3107,50 +2068,6 @@ func (o Oauth2JwtBearerResponseOutput) ClientKey() SecretResponseOutput {
 // JwtClaims providers fields to generate the token.
 func (o Oauth2JwtBearerResponseOutput) JwtClaims() JwtClaimsResponseOutput {
 	return o.ApplyT(func(v Oauth2JwtBearerResponse) JwtClaimsResponse { return v.JwtClaims }).(JwtClaimsResponseOutput)
-}
-
-type Oauth2JwtBearerResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (Oauth2JwtBearerResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Oauth2JwtBearerResponse)(nil)).Elem()
-}
-
-func (o Oauth2JwtBearerResponsePtrOutput) ToOauth2JwtBearerResponsePtrOutput() Oauth2JwtBearerResponsePtrOutput {
-	return o
-}
-
-func (o Oauth2JwtBearerResponsePtrOutput) ToOauth2JwtBearerResponsePtrOutputWithContext(ctx context.Context) Oauth2JwtBearerResponsePtrOutput {
-	return o
-}
-
-func (o Oauth2JwtBearerResponsePtrOutput) Elem() Oauth2JwtBearerResponseOutput {
-	return o.ApplyT(func(v *Oauth2JwtBearerResponse) Oauth2JwtBearerResponse {
-		if v != nil {
-			return *v
-		}
-		var ret Oauth2JwtBearerResponse
-		return ret
-	}).(Oauth2JwtBearerResponseOutput)
-}
-
-// Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/*/secrets/*/versions/*`.
-func (o Oauth2JwtBearerResponsePtrOutput) ClientKey() SecretResponsePtrOutput {
-	return o.ApplyT(func(v *Oauth2JwtBearerResponse) *SecretResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientKey
-	}).(SecretResponsePtrOutput)
-}
-
-// JwtClaims providers fields to generate the token.
-func (o Oauth2JwtBearerResponsePtrOutput) JwtClaims() JwtClaimsResponsePtrOutput {
-	return o.ApplyT(func(v *Oauth2JwtBearerResponse) *JwtClaimsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.JwtClaims
-	}).(JwtClaimsResponsePtrOutput)
 }
 
 // Secret provides a reference to entries in Secret Manager.
@@ -3299,76 +2216,6 @@ type SecretResponse struct {
 	SecretVersion string `pulumi:"secretVersion"`
 }
 
-// SecretResponseInput is an input type that accepts SecretResponseArgs and SecretResponseOutput values.
-// You can construct a concrete instance of `SecretResponseInput` via:
-//
-//          SecretResponseArgs{...}
-type SecretResponseInput interface {
-	pulumi.Input
-
-	ToSecretResponseOutput() SecretResponseOutput
-	ToSecretResponseOutputWithContext(context.Context) SecretResponseOutput
-}
-
-// Secret provides a reference to entries in Secret Manager.
-type SecretResponseArgs struct {
-	// The resource name of the secret version in the format, format as: `projects/*/secrets/*/versions/*`.
-	SecretVersion pulumi.StringInput `pulumi:"secretVersion"`
-}
-
-func (SecretResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretResponse)(nil)).Elem()
-}
-
-func (i SecretResponseArgs) ToSecretResponseOutput() SecretResponseOutput {
-	return i.ToSecretResponseOutputWithContext(context.Background())
-}
-
-func (i SecretResponseArgs) ToSecretResponseOutputWithContext(ctx context.Context) SecretResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretResponseOutput)
-}
-
-func (i SecretResponseArgs) ToSecretResponsePtrOutput() SecretResponsePtrOutput {
-	return i.ToSecretResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SecretResponseArgs) ToSecretResponsePtrOutputWithContext(ctx context.Context) SecretResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretResponseOutput).ToSecretResponsePtrOutputWithContext(ctx)
-}
-
-// SecretResponsePtrInput is an input type that accepts SecretResponseArgs, SecretResponsePtr and SecretResponsePtrOutput values.
-// You can construct a concrete instance of `SecretResponsePtrInput` via:
-//
-//          SecretResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SecretResponsePtrInput interface {
-	pulumi.Input
-
-	ToSecretResponsePtrOutput() SecretResponsePtrOutput
-	ToSecretResponsePtrOutputWithContext(context.Context) SecretResponsePtrOutput
-}
-
-type secretResponsePtrType SecretResponseArgs
-
-func SecretResponsePtr(v *SecretResponseArgs) SecretResponsePtrInput {
-	return (*secretResponsePtrType)(v)
-}
-
-func (*secretResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecretResponse)(nil)).Elem()
-}
-
-func (i *secretResponsePtrType) ToSecretResponsePtrOutput() SecretResponsePtrOutput {
-	return i.ToSecretResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *secretResponsePtrType) ToSecretResponsePtrOutputWithContext(ctx context.Context) SecretResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretResponsePtrOutput)
-}
-
 // Secret provides a reference to entries in Secret Manager.
 type SecretResponseOutput struct{ *pulumi.OutputState }
 
@@ -3384,53 +2231,9 @@ func (o SecretResponseOutput) ToSecretResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o SecretResponseOutput) ToSecretResponsePtrOutput() SecretResponsePtrOutput {
-	return o.ToSecretResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SecretResponseOutput) ToSecretResponsePtrOutputWithContext(ctx context.Context) SecretResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretResponse) *SecretResponse {
-		return &v
-	}).(SecretResponsePtrOutput)
-}
-
 // The resource name of the secret version in the format, format as: `projects/*/secrets/*/versions/*`.
 func (o SecretResponseOutput) SecretVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretResponse) string { return v.SecretVersion }).(pulumi.StringOutput)
-}
-
-type SecretResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SecretResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecretResponse)(nil)).Elem()
-}
-
-func (o SecretResponsePtrOutput) ToSecretResponsePtrOutput() SecretResponsePtrOutput {
-	return o
-}
-
-func (o SecretResponsePtrOutput) ToSecretResponsePtrOutputWithContext(ctx context.Context) SecretResponsePtrOutput {
-	return o
-}
-
-func (o SecretResponsePtrOutput) Elem() SecretResponseOutput {
-	return o.ApplyT(func(v *SecretResponse) SecretResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SecretResponse
-		return ret
-	}).(SecretResponseOutput)
-}
-
-// The resource name of the secret version in the format, format as: `projects/*/secrets/*/versions/*`.
-func (o SecretResponsePtrOutput) SecretVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecretResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SecretVersion
-	}).(pulumi.StringPtrOutput)
 }
 
 // Parameters to support Username and Password Authentication.
@@ -3600,78 +2403,6 @@ type UserPasswordResponse struct {
 	Username string `pulumi:"username"`
 }
 
-// UserPasswordResponseInput is an input type that accepts UserPasswordResponseArgs and UserPasswordResponseOutput values.
-// You can construct a concrete instance of `UserPasswordResponseInput` via:
-//
-//          UserPasswordResponseArgs{...}
-type UserPasswordResponseInput interface {
-	pulumi.Input
-
-	ToUserPasswordResponseOutput() UserPasswordResponseOutput
-	ToUserPasswordResponseOutputWithContext(context.Context) UserPasswordResponseOutput
-}
-
-// Parameters to support Username and Password Authentication.
-type UserPasswordResponseArgs struct {
-	// Secret version reference containing the password.
-	Password SecretResponseInput `pulumi:"password"`
-	// Username.
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (UserPasswordResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserPasswordResponse)(nil)).Elem()
-}
-
-func (i UserPasswordResponseArgs) ToUserPasswordResponseOutput() UserPasswordResponseOutput {
-	return i.ToUserPasswordResponseOutputWithContext(context.Background())
-}
-
-func (i UserPasswordResponseArgs) ToUserPasswordResponseOutputWithContext(ctx context.Context) UserPasswordResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordResponseOutput)
-}
-
-func (i UserPasswordResponseArgs) ToUserPasswordResponsePtrOutput() UserPasswordResponsePtrOutput {
-	return i.ToUserPasswordResponsePtrOutputWithContext(context.Background())
-}
-
-func (i UserPasswordResponseArgs) ToUserPasswordResponsePtrOutputWithContext(ctx context.Context) UserPasswordResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordResponseOutput).ToUserPasswordResponsePtrOutputWithContext(ctx)
-}
-
-// UserPasswordResponsePtrInput is an input type that accepts UserPasswordResponseArgs, UserPasswordResponsePtr and UserPasswordResponsePtrOutput values.
-// You can construct a concrete instance of `UserPasswordResponsePtrInput` via:
-//
-//          UserPasswordResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type UserPasswordResponsePtrInput interface {
-	pulumi.Input
-
-	ToUserPasswordResponsePtrOutput() UserPasswordResponsePtrOutput
-	ToUserPasswordResponsePtrOutputWithContext(context.Context) UserPasswordResponsePtrOutput
-}
-
-type userPasswordResponsePtrType UserPasswordResponseArgs
-
-func UserPasswordResponsePtr(v *UserPasswordResponseArgs) UserPasswordResponsePtrInput {
-	return (*userPasswordResponsePtrType)(v)
-}
-
-func (*userPasswordResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserPasswordResponse)(nil)).Elem()
-}
-
-func (i *userPasswordResponsePtrType) ToUserPasswordResponsePtrOutput() UserPasswordResponsePtrOutput {
-	return i.ToUserPasswordResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *userPasswordResponsePtrType) ToUserPasswordResponsePtrOutputWithContext(ctx context.Context) UserPasswordResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordResponsePtrOutput)
-}
-
 // Parameters to support Username and Password Authentication.
 type UserPasswordResponseOutput struct{ *pulumi.OutputState }
 
@@ -3687,16 +2418,6 @@ func (o UserPasswordResponseOutput) ToUserPasswordResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o UserPasswordResponseOutput) ToUserPasswordResponsePtrOutput() UserPasswordResponsePtrOutput {
-	return o.ToUserPasswordResponsePtrOutputWithContext(context.Background())
-}
-
-func (o UserPasswordResponseOutput) ToUserPasswordResponsePtrOutputWithContext(ctx context.Context) UserPasswordResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserPasswordResponse) *UserPasswordResponse {
-		return &v
-	}).(UserPasswordResponsePtrOutput)
-}
-
 // Secret version reference containing the password.
 func (o UserPasswordResponseOutput) Password() SecretResponseOutput {
 	return o.ApplyT(func(v UserPasswordResponse) SecretResponse { return v.Password }).(SecretResponseOutput)
@@ -3707,100 +2428,31 @@ func (o UserPasswordResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v UserPasswordResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
-type UserPasswordResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (UserPasswordResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserPasswordResponse)(nil)).Elem()
-}
-
-func (o UserPasswordResponsePtrOutput) ToUserPasswordResponsePtrOutput() UserPasswordResponsePtrOutput {
-	return o
-}
-
-func (o UserPasswordResponsePtrOutput) ToUserPasswordResponsePtrOutputWithContext(ctx context.Context) UserPasswordResponsePtrOutput {
-	return o
-}
-
-func (o UserPasswordResponsePtrOutput) Elem() UserPasswordResponseOutput {
-	return o.ApplyT(func(v *UserPasswordResponse) UserPasswordResponse {
-		if v != nil {
-			return *v
-		}
-		var ret UserPasswordResponse
-		return ret
-	}).(UserPasswordResponseOutput)
-}
-
-// Secret version reference containing the password.
-func (o UserPasswordResponsePtrOutput) Password() SecretResponsePtrOutput {
-	return o.ApplyT(func(v *UserPasswordResponse) *SecretResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Password
-	}).(SecretResponsePtrOutput)
-}
-
-// Username.
-func (o UserPasswordResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UserPasswordResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Username
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigInput)(nil)).Elem(), AuthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigPtrInput)(nil)).Elem(), AuthConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigResponseInput)(nil)).Elem(), AuthConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigResponsePtrInput)(nil)).Elem(), AuthConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableInput)(nil)).Elem(), ConfigVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableArrayInput)(nil)).Elem(), ConfigVariableArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableResponseInput)(nil)).Elem(), ConfigVariableResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableResponseArrayInput)(nil)).Elem(), ConfigVariableResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionStatusResponseInput)(nil)).Elem(), ConnectionStatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionStatusResponsePtrInput)(nil)).Elem(), ConnectionStatusResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JwtClaimsInput)(nil)).Elem(), JwtClaimsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JwtClaimsPtrInput)(nil)).Elem(), JwtClaimsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JwtClaimsResponseInput)(nil)).Elem(), JwtClaimsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JwtClaimsResponsePtrInput)(nil)).Elem(), JwtClaimsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LockConfigInput)(nil)).Elem(), LockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LockConfigPtrInput)(nil)).Elem(), LockConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LockConfigResponseInput)(nil)).Elem(), LockConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LockConfigResponsePtrInput)(nil)).Elem(), LockConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2ClientCredentialsInput)(nil)).Elem(), Oauth2ClientCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2ClientCredentialsPtrInput)(nil)).Elem(), Oauth2ClientCredentialsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2ClientCredentialsResponseInput)(nil)).Elem(), Oauth2ClientCredentialsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2ClientCredentialsResponsePtrInput)(nil)).Elem(), Oauth2ClientCredentialsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2JwtBearerInput)(nil)).Elem(), Oauth2JwtBearerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2JwtBearerPtrInput)(nil)).Elem(), Oauth2JwtBearerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2JwtBearerResponseInput)(nil)).Elem(), Oauth2JwtBearerResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2JwtBearerResponsePtrInput)(nil)).Elem(), Oauth2JwtBearerResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretInput)(nil)).Elem(), SecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretPtrInput)(nil)).Elem(), SecretArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretResponseInput)(nil)).Elem(), SecretResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretResponsePtrInput)(nil)).Elem(), SecretResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordInput)(nil)).Elem(), UserPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordPtrInput)(nil)).Elem(), UserPasswordArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordResponseInput)(nil)).Elem(), UserPasswordResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordResponsePtrInput)(nil)).Elem(), UserPasswordResponseArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -3812,7 +2464,6 @@ func init() {
 	pulumi.RegisterOutputType(AuthConfigOutput{})
 	pulumi.RegisterOutputType(AuthConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigResponseOutput{})
-	pulumi.RegisterOutputType(AuthConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -3822,32 +2473,25 @@ func init() {
 	pulumi.RegisterOutputType(ConfigVariableResponseOutput{})
 	pulumi.RegisterOutputType(ConfigVariableResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionStatusResponseOutput{})
-	pulumi.RegisterOutputType(ConnectionStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(JwtClaimsOutput{})
 	pulumi.RegisterOutputType(JwtClaimsPtrOutput{})
 	pulumi.RegisterOutputType(JwtClaimsResponseOutput{})
-	pulumi.RegisterOutputType(JwtClaimsResponsePtrOutput{})
 	pulumi.RegisterOutputType(LockConfigOutput{})
 	pulumi.RegisterOutputType(LockConfigPtrOutput{})
 	pulumi.RegisterOutputType(LockConfigResponseOutput{})
-	pulumi.RegisterOutputType(LockConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(Oauth2ClientCredentialsOutput{})
 	pulumi.RegisterOutputType(Oauth2ClientCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(Oauth2ClientCredentialsResponseOutput{})
-	pulumi.RegisterOutputType(Oauth2ClientCredentialsResponsePtrOutput{})
 	pulumi.RegisterOutputType(Oauth2JwtBearerOutput{})
 	pulumi.RegisterOutputType(Oauth2JwtBearerPtrOutput{})
 	pulumi.RegisterOutputType(Oauth2JwtBearerResponseOutput{})
-	pulumi.RegisterOutputType(Oauth2JwtBearerResponsePtrOutput{})
 	pulumi.RegisterOutputType(SecretOutput{})
 	pulumi.RegisterOutputType(SecretPtrOutput{})
 	pulumi.RegisterOutputType(SecretResponseOutput{})
-	pulumi.RegisterOutputType(SecretResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserPasswordOutput{})
 	pulumi.RegisterOutputType(UserPasswordPtrOutput{})
 	pulumi.RegisterOutputType(UserPasswordResponseOutput{})
-	pulumi.RegisterOutputType(UserPasswordResponsePtrOutput{})
 }

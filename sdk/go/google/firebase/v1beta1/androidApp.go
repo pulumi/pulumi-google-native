@@ -105,7 +105,7 @@ type AndroidAppInput interface {
 }
 
 func (*AndroidApp) ElementType() reflect.Type {
-	return reflect.TypeOf((*AndroidApp)(nil))
+	return reflect.TypeOf((**AndroidApp)(nil)).Elem()
 }
 
 func (i *AndroidApp) ToAndroidAppOutput() AndroidAppOutput {
@@ -119,7 +119,7 @@ func (i *AndroidApp) ToAndroidAppOutputWithContext(ctx context.Context) AndroidA
 type AndroidAppOutput struct{ *pulumi.OutputState }
 
 func (AndroidAppOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AndroidApp)(nil))
+	return reflect.TypeOf((**AndroidApp)(nil)).Elem()
 }
 
 func (o AndroidAppOutput) ToAndroidAppOutput() AndroidAppOutput {

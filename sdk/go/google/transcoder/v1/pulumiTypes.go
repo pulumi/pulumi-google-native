@@ -116,60 +116,6 @@ type AdBreakResponse struct {
 	StartTimeOffset string `pulumi:"startTimeOffset"`
 }
 
-// AdBreakResponseInput is an input type that accepts AdBreakResponseArgs and AdBreakResponseOutput values.
-// You can construct a concrete instance of `AdBreakResponseInput` via:
-//
-//          AdBreakResponseArgs{...}
-type AdBreakResponseInput interface {
-	pulumi.Input
-
-	ToAdBreakResponseOutput() AdBreakResponseOutput
-	ToAdBreakResponseOutputWithContext(context.Context) AdBreakResponseOutput
-}
-
-// Ad break.
-type AdBreakResponseArgs struct {
-	// Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`.
-	StartTimeOffset pulumi.StringInput `pulumi:"startTimeOffset"`
-}
-
-func (AdBreakResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdBreakResponse)(nil)).Elem()
-}
-
-func (i AdBreakResponseArgs) ToAdBreakResponseOutput() AdBreakResponseOutput {
-	return i.ToAdBreakResponseOutputWithContext(context.Background())
-}
-
-func (i AdBreakResponseArgs) ToAdBreakResponseOutputWithContext(ctx context.Context) AdBreakResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdBreakResponseOutput)
-}
-
-// AdBreakResponseArrayInput is an input type that accepts AdBreakResponseArray and AdBreakResponseArrayOutput values.
-// You can construct a concrete instance of `AdBreakResponseArrayInput` via:
-//
-//          AdBreakResponseArray{ AdBreakResponseArgs{...} }
-type AdBreakResponseArrayInput interface {
-	pulumi.Input
-
-	ToAdBreakResponseArrayOutput() AdBreakResponseArrayOutput
-	ToAdBreakResponseArrayOutputWithContext(context.Context) AdBreakResponseArrayOutput
-}
-
-type AdBreakResponseArray []AdBreakResponseInput
-
-func (AdBreakResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AdBreakResponse)(nil)).Elem()
-}
-
-func (i AdBreakResponseArray) ToAdBreakResponseArrayOutput() AdBreakResponseArrayOutput {
-	return i.ToAdBreakResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AdBreakResponseArray) ToAdBreakResponseArrayOutputWithContext(ctx context.Context) AdBreakResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdBreakResponseArrayOutput)
-}
-
 // Ad break.
 type AdBreakResponseOutput struct{ *pulumi.OutputState }
 
@@ -474,35 +420,6 @@ type AnimationEndResponse struct {
 	StartTimeOffset string `pulumi:"startTimeOffset"`
 }
 
-// AnimationEndResponseInput is an input type that accepts AnimationEndResponseArgs and AnimationEndResponseOutput values.
-// You can construct a concrete instance of `AnimationEndResponseInput` via:
-//
-//          AnimationEndResponseArgs{...}
-type AnimationEndResponseInput interface {
-	pulumi.Input
-
-	ToAnimationEndResponseOutput() AnimationEndResponseOutput
-	ToAnimationEndResponseOutputWithContext(context.Context) AnimationEndResponseOutput
-}
-
-// End previous overlay animation from the video. Without AnimationEnd, the overlay object will keep the state of previous animation until the end of the video.
-type AnimationEndResponseArgs struct {
-	// The time to end overlay object, in seconds. Default: 0
-	StartTimeOffset pulumi.StringInput `pulumi:"startTimeOffset"`
-}
-
-func (AnimationEndResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnimationEndResponse)(nil)).Elem()
-}
-
-func (i AnimationEndResponseArgs) ToAnimationEndResponseOutput() AnimationEndResponseOutput {
-	return i.ToAnimationEndResponseOutputWithContext(context.Background())
-}
-
-func (i AnimationEndResponseArgs) ToAnimationEndResponseOutputWithContext(ctx context.Context) AnimationEndResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnimationEndResponseOutput)
-}
-
 // End previous overlay animation from the video. Without AnimationEnd, the overlay object will keep the state of previous animation until the end of the video.
 type AnimationEndResponseOutput struct{ *pulumi.OutputState }
 
@@ -732,41 +649,6 @@ type AnimationFadeResponse struct {
 	Xy NormalizedCoordinateResponse `pulumi:"xy"`
 }
 
-// AnimationFadeResponseInput is an input type that accepts AnimationFadeResponseArgs and AnimationFadeResponseOutput values.
-// You can construct a concrete instance of `AnimationFadeResponseInput` via:
-//
-//          AnimationFadeResponseArgs{...}
-type AnimationFadeResponseInput interface {
-	pulumi.Input
-
-	ToAnimationFadeResponseOutput() AnimationFadeResponseOutput
-	ToAnimationFadeResponseOutputWithContext(context.Context) AnimationFadeResponseOutput
-}
-
-// Display overlay object with fade animation.
-type AnimationFadeResponseArgs struct {
-	// The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
-	EndTimeOffset pulumi.StringInput `pulumi:"endTimeOffset"`
-	// Type of fade animation: `FADE_IN` or `FADE_OUT`.
-	FadeType pulumi.StringInput `pulumi:"fadeType"`
-	// The time to start the fade animation, in seconds. Default: 0
-	StartTimeOffset pulumi.StringInput `pulumi:"startTimeOffset"`
-	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
-	Xy NormalizedCoordinateResponseInput `pulumi:"xy"`
-}
-
-func (AnimationFadeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnimationFadeResponse)(nil)).Elem()
-}
-
-func (i AnimationFadeResponseArgs) ToAnimationFadeResponseOutput() AnimationFadeResponseOutput {
-	return i.ToAnimationFadeResponseOutputWithContext(context.Background())
-}
-
-func (i AnimationFadeResponseArgs) ToAnimationFadeResponseOutputWithContext(ctx context.Context) AnimationFadeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnimationFadeResponseOutput)
-}
-
 // Display overlay object with fade animation.
 type AnimationFadeResponseOutput struct{ *pulumi.OutputState }
 
@@ -810,64 +692,6 @@ type AnimationResponse struct {
 	AnimationFade AnimationFadeResponse `pulumi:"animationFade"`
 	// Display static overlay object.
 	AnimationStatic AnimationStaticResponse `pulumi:"animationStatic"`
-}
-
-// AnimationResponseInput is an input type that accepts AnimationResponseArgs and AnimationResponseOutput values.
-// You can construct a concrete instance of `AnimationResponseInput` via:
-//
-//          AnimationResponseArgs{...}
-type AnimationResponseInput interface {
-	pulumi.Input
-
-	ToAnimationResponseOutput() AnimationResponseOutput
-	ToAnimationResponseOutputWithContext(context.Context) AnimationResponseOutput
-}
-
-// Animation types.
-type AnimationResponseArgs struct {
-	// End previous animation.
-	AnimationEnd AnimationEndResponseInput `pulumi:"animationEnd"`
-	// Display overlay object with fade animation.
-	AnimationFade AnimationFadeResponseInput `pulumi:"animationFade"`
-	// Display static overlay object.
-	AnimationStatic AnimationStaticResponseInput `pulumi:"animationStatic"`
-}
-
-func (AnimationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnimationResponse)(nil)).Elem()
-}
-
-func (i AnimationResponseArgs) ToAnimationResponseOutput() AnimationResponseOutput {
-	return i.ToAnimationResponseOutputWithContext(context.Background())
-}
-
-func (i AnimationResponseArgs) ToAnimationResponseOutputWithContext(ctx context.Context) AnimationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnimationResponseOutput)
-}
-
-// AnimationResponseArrayInput is an input type that accepts AnimationResponseArray and AnimationResponseArrayOutput values.
-// You can construct a concrete instance of `AnimationResponseArrayInput` via:
-//
-//          AnimationResponseArray{ AnimationResponseArgs{...} }
-type AnimationResponseArrayInput interface {
-	pulumi.Input
-
-	ToAnimationResponseArrayOutput() AnimationResponseArrayOutput
-	ToAnimationResponseArrayOutputWithContext(context.Context) AnimationResponseArrayOutput
-}
-
-type AnimationResponseArray []AnimationResponseInput
-
-func (AnimationResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AnimationResponse)(nil)).Elem()
-}
-
-func (i AnimationResponseArray) ToAnimationResponseArrayOutput() AnimationResponseArrayOutput {
-	return i.ToAnimationResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AnimationResponseArray) ToAnimationResponseArrayOutputWithContext(ctx context.Context) AnimationResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnimationResponseArrayOutput)
 }
 
 // Animation types.
@@ -1085,37 +909,6 @@ type AnimationStaticResponse struct {
 	StartTimeOffset string `pulumi:"startTimeOffset"`
 	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
 	Xy NormalizedCoordinateResponse `pulumi:"xy"`
-}
-
-// AnimationStaticResponseInput is an input type that accepts AnimationStaticResponseArgs and AnimationStaticResponseOutput values.
-// You can construct a concrete instance of `AnimationStaticResponseInput` via:
-//
-//          AnimationStaticResponseArgs{...}
-type AnimationStaticResponseInput interface {
-	pulumi.Input
-
-	ToAnimationStaticResponseOutput() AnimationStaticResponseOutput
-	ToAnimationStaticResponseOutputWithContext(context.Context) AnimationStaticResponseOutput
-}
-
-// Display static overlay object.
-type AnimationStaticResponseArgs struct {
-	// The time to start displaying the overlay object, in seconds. Default: 0
-	StartTimeOffset pulumi.StringInput `pulumi:"startTimeOffset"`
-	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
-	Xy NormalizedCoordinateResponseInput `pulumi:"xy"`
-}
-
-func (AnimationStaticResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnimationStaticResponse)(nil)).Elem()
-}
-
-func (i AnimationStaticResponseArgs) ToAnimationStaticResponseOutput() AnimationStaticResponseOutput {
-	return i.ToAnimationStaticResponseOutputWithContext(context.Background())
-}
-
-func (i AnimationStaticResponseArgs) ToAnimationStaticResponseOutputWithContext(ctx context.Context) AnimationStaticResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnimationStaticResponseOutput)
 }
 
 // Display static overlay object.
@@ -1482,70 +1275,6 @@ type AudioMappingResponse struct {
 	OutputChannel int `pulumi:"outputChannel"`
 }
 
-// AudioMappingResponseInput is an input type that accepts AudioMappingResponseArgs and AudioMappingResponseOutput values.
-// You can construct a concrete instance of `AudioMappingResponseInput` via:
-//
-//          AudioMappingResponseArgs{...}
-type AudioMappingResponseInput interface {
-	pulumi.Input
-
-	ToAudioMappingResponseOutput() AudioMappingResponseOutput
-	ToAudioMappingResponseOutputWithContext(context.Context) AudioMappingResponseOutput
-}
-
-// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
-type AudioMappingResponseArgs struct {
-	// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
-	AtomKey pulumi.StringInput `pulumi:"atomKey"`
-	// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
-	GainDb pulumi.Float64Input `pulumi:"gainDb"`
-	// The zero-based index of the channel in the input audio stream.
-	InputChannel pulumi.IntInput `pulumi:"inputChannel"`
-	// The `Input.key` that identifies the input file.
-	InputKey pulumi.StringInput `pulumi:"inputKey"`
-	// The zero-based index of the track in the input file.
-	InputTrack pulumi.IntInput `pulumi:"inputTrack"`
-	// The zero-based index of the channel in the output audio stream.
-	OutputChannel pulumi.IntInput `pulumi:"outputChannel"`
-}
-
-func (AudioMappingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AudioMappingResponse)(nil)).Elem()
-}
-
-func (i AudioMappingResponseArgs) ToAudioMappingResponseOutput() AudioMappingResponseOutput {
-	return i.ToAudioMappingResponseOutputWithContext(context.Background())
-}
-
-func (i AudioMappingResponseArgs) ToAudioMappingResponseOutputWithContext(ctx context.Context) AudioMappingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AudioMappingResponseOutput)
-}
-
-// AudioMappingResponseArrayInput is an input type that accepts AudioMappingResponseArray and AudioMappingResponseArrayOutput values.
-// You can construct a concrete instance of `AudioMappingResponseArrayInput` via:
-//
-//          AudioMappingResponseArray{ AudioMappingResponseArgs{...} }
-type AudioMappingResponseArrayInput interface {
-	pulumi.Input
-
-	ToAudioMappingResponseArrayOutput() AudioMappingResponseArrayOutput
-	ToAudioMappingResponseArrayOutputWithContext(context.Context) AudioMappingResponseArrayOutput
-}
-
-type AudioMappingResponseArray []AudioMappingResponseInput
-
-func (AudioMappingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AudioMappingResponse)(nil)).Elem()
-}
-
-func (i AudioMappingResponseArray) ToAudioMappingResponseArrayOutput() AudioMappingResponseArrayOutput {
-	return i.ToAudioMappingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AudioMappingResponseArray) ToAudioMappingResponseArrayOutputWithContext(ctx context.Context) AudioMappingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AudioMappingResponseArrayOutput)
-}
-
 // The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
 type AudioMappingResponseOutput struct{ *pulumi.OutputState }
 
@@ -1619,39 +1348,6 @@ type AudioResponse struct {
 	LowBoost bool `pulumi:"lowBoost"`
 	// Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
 	Lufs float64 `pulumi:"lufs"`
-}
-
-// AudioResponseInput is an input type that accepts AudioResponseArgs and AudioResponseOutput values.
-// You can construct a concrete instance of `AudioResponseInput` via:
-//
-//          AudioResponseArgs{...}
-type AudioResponseInput interface {
-	pulumi.Input
-
-	ToAudioResponseOutput() AudioResponseOutput
-	ToAudioResponseOutputWithContext(context.Context) AudioResponseOutput
-}
-
-// Audio preprocessing configuration.
-type AudioResponseArgs struct {
-	// Enable boosting high frequency components. The default is `false`.
-	HighBoost pulumi.BoolInput `pulumi:"highBoost"`
-	// Enable boosting low frequency components. The default is `false`.
-	LowBoost pulumi.BoolInput `pulumi:"lowBoost"`
-	// Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
-	Lufs pulumi.Float64Input `pulumi:"lufs"`
-}
-
-func (AudioResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AudioResponse)(nil)).Elem()
-}
-
-func (i AudioResponseArgs) ToAudioResponseOutput() AudioResponseOutput {
-	return i.ToAudioResponseOutputWithContext(context.Background())
-}
-
-func (i AudioResponseArgs) ToAudioResponseOutputWithContext(ctx context.Context) AudioResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AudioResponseOutput)
 }
 
 // Audio preprocessing configuration.
@@ -1935,45 +1631,6 @@ type AudioStreamResponse struct {
 	SampleRateHertz int `pulumi:"sampleRateHertz"`
 }
 
-// AudioStreamResponseInput is an input type that accepts AudioStreamResponseArgs and AudioStreamResponseOutput values.
-// You can construct a concrete instance of `AudioStreamResponseInput` via:
-//
-//          AudioStreamResponseArgs{...}
-type AudioStreamResponseInput interface {
-	pulumi.Input
-
-	ToAudioStreamResponseOutput() AudioStreamResponseOutput
-	ToAudioStreamResponseOutputWithContext(context.Context) AudioStreamResponseOutput
-}
-
-// Audio stream resource.
-type AudioStreamResponseArgs struct {
-	// Audio bitrate in bits per second. Must be between 1 and 10,000,000.
-	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
-	// Number of audio channels. Must be between 1 and 6. The default is 2.
-	ChannelCount pulumi.IntInput `pulumi:"channelCount"`
-	// A list of channel names specifying layout of the audio channels. This only affects the metadata embedded in the container headers, if supported by the specified format. The default is `["fl", "fr"]`. Supported channel names: - `fl` - Front left channel - `fr` - Front right channel - `sl` - Side left channel - `sr` - Side right channel - `fc` - Front center channel - `lfe` - Low frequency
-	ChannelLayout pulumi.StringArrayInput `pulumi:"channelLayout"`
-	// The codec for this audio stream. The default is `aac`. Supported audio codecs: - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3`
-	Codec pulumi.StringInput `pulumi:"codec"`
-	// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
-	Mapping AudioMappingResponseArrayInput `pulumi:"mapping"`
-	// The audio sample rate in Hertz. The default is 48000 Hertz.
-	SampleRateHertz pulumi.IntInput `pulumi:"sampleRateHertz"`
-}
-
-func (AudioStreamResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AudioStreamResponse)(nil)).Elem()
-}
-
-func (i AudioStreamResponseArgs) ToAudioStreamResponseOutput() AudioStreamResponseOutput {
-	return i.ToAudioStreamResponseOutputWithContext(context.Background())
-}
-
-func (i AudioStreamResponseArgs) ToAudioStreamResponseOutputWithContext(ctx context.Context) AudioStreamResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AudioStreamResponseOutput)
-}
-
 // Audio stream resource.
 type AudioStreamResponseOutput struct{ *pulumi.OutputState }
 
@@ -2205,39 +1862,6 @@ type ColorResponse struct {
 	Contrast float64 `pulumi:"contrast"`
 	// Control color saturation of the video. Enter a value between -1 and 1, where -1 is fully desaturated and 1 is maximum saturation. 0 is no change. The default is 0.
 	Saturation float64 `pulumi:"saturation"`
-}
-
-// ColorResponseInput is an input type that accepts ColorResponseArgs and ColorResponseOutput values.
-// You can construct a concrete instance of `ColorResponseInput` via:
-//
-//          ColorResponseArgs{...}
-type ColorResponseInput interface {
-	pulumi.Input
-
-	ToColorResponseOutput() ColorResponseOutput
-	ToColorResponseOutputWithContext(context.Context) ColorResponseOutput
-}
-
-// Color preprocessing configuration.
-type ColorResponseArgs struct {
-	// Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.
-	Brightness pulumi.Float64Input `pulumi:"brightness"`
-	// Control black and white contrast of the video. Enter a value between -1 and 1, where -1 is minimum contrast and 1 is maximum contrast. 0 is no change. The default is 0.
-	Contrast pulumi.Float64Input `pulumi:"contrast"`
-	// Control color saturation of the video. Enter a value between -1 and 1, where -1 is fully desaturated and 1 is maximum saturation. 0 is no change. The default is 0.
-	Saturation pulumi.Float64Input `pulumi:"saturation"`
-}
-
-func (ColorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ColorResponse)(nil)).Elem()
-}
-
-func (i ColorResponseArgs) ToColorResponseOutput() ColorResponseOutput {
-	return i.ToColorResponseOutputWithContext(context.Background())
-}
-
-func (i ColorResponseArgs) ToColorResponseOutputWithContext(ctx context.Context) ColorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ColorResponseOutput)
 }
 
 // Color preprocessing configuration.
@@ -2479,41 +2103,6 @@ type CropResponse struct {
 	TopPixels int `pulumi:"topPixels"`
 }
 
-// CropResponseInput is an input type that accepts CropResponseArgs and CropResponseOutput values.
-// You can construct a concrete instance of `CropResponseInput` via:
-//
-//          CropResponseArgs{...}
-type CropResponseInput interface {
-	pulumi.Input
-
-	ToCropResponseOutput() CropResponseOutput
-	ToCropResponseOutputWithContext(context.Context) CropResponseOutput
-}
-
-// Video cropping configuration for the input video. The cropped input video is scaled to match the output resolution.
-type CropResponseArgs struct {
-	// The number of pixels to crop from the bottom. The default is 0.
-	BottomPixels pulumi.IntInput `pulumi:"bottomPixels"`
-	// The number of pixels to crop from the left. The default is 0.
-	LeftPixels pulumi.IntInput `pulumi:"leftPixels"`
-	// The number of pixels to crop from the right. The default is 0.
-	RightPixels pulumi.IntInput `pulumi:"rightPixels"`
-	// The number of pixels to crop from the top. The default is 0.
-	TopPixels pulumi.IntInput `pulumi:"topPixels"`
-}
-
-func (CropResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CropResponse)(nil)).Elem()
-}
-
-func (i CropResponseArgs) ToCropResponseOutput() CropResponseOutput {
-	return i.ToCropResponseOutputWithContext(context.Background())
-}
-
-func (i CropResponseArgs) ToCropResponseOutputWithContext(ctx context.Context) CropResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CropResponseOutput)
-}
-
 // Video cropping configuration for the input video. The cropped input video is scaled to match the output resolution.
 type CropResponseOutput struct{ *pulumi.OutputState }
 
@@ -2716,37 +2305,6 @@ type DeblockResponse struct {
 	Strength float64 `pulumi:"strength"`
 }
 
-// DeblockResponseInput is an input type that accepts DeblockResponseArgs and DeblockResponseOutput values.
-// You can construct a concrete instance of `DeblockResponseInput` via:
-//
-//          DeblockResponseArgs{...}
-type DeblockResponseInput interface {
-	pulumi.Input
-
-	ToDeblockResponseOutput() DeblockResponseOutput
-	ToDeblockResponseOutputWithContext(context.Context) DeblockResponseOutput
-}
-
-// Deblock preprocessing configuration.
-type DeblockResponseArgs struct {
-	// Enable deblocker. The default is `false`.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Set strength of the deblocker. Enter a value between 0 and 1. The higher the value, the stronger the block removal. 0 is no deblocking. The default is 0.
-	Strength pulumi.Float64Input `pulumi:"strength"`
-}
-
-func (DeblockResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeblockResponse)(nil)).Elem()
-}
-
-func (i DeblockResponseArgs) ToDeblockResponseOutput() DeblockResponseOutput {
-	return i.ToDeblockResponseOutputWithContext(context.Background())
-}
-
-func (i DeblockResponseArgs) ToDeblockResponseOutputWithContext(ctx context.Context) DeblockResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeblockResponseOutput)
-}
-
 // Deblock preprocessing configuration.
 type DeblockResponseOutput struct{ *pulumi.OutputState }
 
@@ -2939,37 +2497,6 @@ type DenoiseResponse struct {
 	Tune string `pulumi:"tune"`
 }
 
-// DenoiseResponseInput is an input type that accepts DenoiseResponseArgs and DenoiseResponseOutput values.
-// You can construct a concrete instance of `DenoiseResponseInput` via:
-//
-//          DenoiseResponseArgs{...}
-type DenoiseResponseInput interface {
-	pulumi.Input
-
-	ToDenoiseResponseOutput() DenoiseResponseOutput
-	ToDenoiseResponseOutputWithContext(context.Context) DenoiseResponseOutput
-}
-
-// Denoise preprocessing configuration.
-type DenoiseResponseArgs struct {
-	// Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.
-	Strength pulumi.Float64Input `pulumi:"strength"`
-	// Set the denoiser mode. The default is `standard`. Supported denoiser modes: - `standard` - `grain`
-	Tune pulumi.StringInput `pulumi:"tune"`
-}
-
-func (DenoiseResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DenoiseResponse)(nil)).Elem()
-}
-
-func (i DenoiseResponseArgs) ToDenoiseResponseOutput() DenoiseResponseOutput {
-	return i.ToDenoiseResponseOutputWithContext(context.Background())
-}
-
-func (i DenoiseResponseArgs) ToDenoiseResponseOutputWithContext(ctx context.Context) DenoiseResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DenoiseResponseOutput)
-}
-
 // Denoise preprocessing configuration.
 type DenoiseResponseOutput struct{ *pulumi.OutputState }
 
@@ -3132,66 +2659,6 @@ type EditAtomResponse struct {
 	Key string `pulumi:"key"`
 	// Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
 	StartTimeOffset string `pulumi:"startTimeOffset"`
-}
-
-// EditAtomResponseInput is an input type that accepts EditAtomResponseArgs and EditAtomResponseOutput values.
-// You can construct a concrete instance of `EditAtomResponseInput` via:
-//
-//          EditAtomResponseArgs{...}
-type EditAtomResponseInput interface {
-	pulumi.Input
-
-	ToEditAtomResponseOutput() EditAtomResponseOutput
-	ToEditAtomResponseOutputWithContext(context.Context) EditAtomResponseOutput
-}
-
-// Edit atom.
-type EditAtomResponseArgs struct {
-	// End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.
-	EndTimeOffset pulumi.StringInput `pulumi:"endTimeOffset"`
-	// List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
-	Inputs pulumi.StringArrayInput `pulumi:"inputs"`
-	// A unique key for this atom. Must be specified when using advanced mapping.
-	Key pulumi.StringInput `pulumi:"key"`
-	// Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
-	StartTimeOffset pulumi.StringInput `pulumi:"startTimeOffset"`
-}
-
-func (EditAtomResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EditAtomResponse)(nil)).Elem()
-}
-
-func (i EditAtomResponseArgs) ToEditAtomResponseOutput() EditAtomResponseOutput {
-	return i.ToEditAtomResponseOutputWithContext(context.Background())
-}
-
-func (i EditAtomResponseArgs) ToEditAtomResponseOutputWithContext(ctx context.Context) EditAtomResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EditAtomResponseOutput)
-}
-
-// EditAtomResponseArrayInput is an input type that accepts EditAtomResponseArray and EditAtomResponseArrayOutput values.
-// You can construct a concrete instance of `EditAtomResponseArrayInput` via:
-//
-//          EditAtomResponseArray{ EditAtomResponseArgs{...} }
-type EditAtomResponseArrayInput interface {
-	pulumi.Input
-
-	ToEditAtomResponseArrayOutput() EditAtomResponseArrayOutput
-	ToEditAtomResponseArrayOutputWithContext(context.Context) EditAtomResponseArrayOutput
-}
-
-type EditAtomResponseArray []EditAtomResponseInput
-
-func (EditAtomResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EditAtomResponse)(nil)).Elem()
-}
-
-func (i EditAtomResponseArray) ToEditAtomResponseArrayOutput() EditAtomResponseArrayOutput {
-	return i.ToEditAtomResponseArrayOutputWithContext(context.Background())
-}
-
-func (i EditAtomResponseArray) ToEditAtomResponseArrayOutputWithContext(ctx context.Context) EditAtomResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EditAtomResponseArrayOutput)
 }
 
 // Edit atom.
@@ -3386,66 +2853,6 @@ type ElementaryStreamResponse struct {
 	TextStream TextStreamResponse `pulumi:"textStream"`
 	// Encoding of a video stream.
 	VideoStream VideoStreamResponse `pulumi:"videoStream"`
-}
-
-// ElementaryStreamResponseInput is an input type that accepts ElementaryStreamResponseArgs and ElementaryStreamResponseOutput values.
-// You can construct a concrete instance of `ElementaryStreamResponseInput` via:
-//
-//          ElementaryStreamResponseArgs{...}
-type ElementaryStreamResponseInput interface {
-	pulumi.Input
-
-	ToElementaryStreamResponseOutput() ElementaryStreamResponseOutput
-	ToElementaryStreamResponseOutputWithContext(context.Context) ElementaryStreamResponseOutput
-}
-
-// Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats.
-type ElementaryStreamResponseArgs struct {
-	// Encoding of an audio stream.
-	AudioStream AudioStreamResponseInput `pulumi:"audioStream"`
-	// A unique key for this elementary stream.
-	Key pulumi.StringInput `pulumi:"key"`
-	// Encoding of a text stream. For example, closed captions or subtitles.
-	TextStream TextStreamResponseInput `pulumi:"textStream"`
-	// Encoding of a video stream.
-	VideoStream VideoStreamResponseInput `pulumi:"videoStream"`
-}
-
-func (ElementaryStreamResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElementaryStreamResponse)(nil)).Elem()
-}
-
-func (i ElementaryStreamResponseArgs) ToElementaryStreamResponseOutput() ElementaryStreamResponseOutput {
-	return i.ToElementaryStreamResponseOutputWithContext(context.Background())
-}
-
-func (i ElementaryStreamResponseArgs) ToElementaryStreamResponseOutputWithContext(ctx context.Context) ElementaryStreamResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElementaryStreamResponseOutput)
-}
-
-// ElementaryStreamResponseArrayInput is an input type that accepts ElementaryStreamResponseArray and ElementaryStreamResponseArrayOutput values.
-// You can construct a concrete instance of `ElementaryStreamResponseArrayInput` via:
-//
-//          ElementaryStreamResponseArray{ ElementaryStreamResponseArgs{...} }
-type ElementaryStreamResponseArrayInput interface {
-	pulumi.Input
-
-	ToElementaryStreamResponseArrayOutput() ElementaryStreamResponseArrayOutput
-	ToElementaryStreamResponseArrayOutputWithContext(context.Context) ElementaryStreamResponseArrayOutput
-}
-
-type ElementaryStreamResponseArray []ElementaryStreamResponseInput
-
-func (ElementaryStreamResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElementaryStreamResponse)(nil)).Elem()
-}
-
-func (i ElementaryStreamResponseArray) ToElementaryStreamResponseArrayOutput() ElementaryStreamResponseArrayOutput {
-	return i.ToElementaryStreamResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ElementaryStreamResponseArray) ToElementaryStreamResponseArrayOutputWithContext(ctx context.Context) ElementaryStreamResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElementaryStreamResponseArrayOutput)
 }
 
 // Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats.
@@ -4046,73 +3453,6 @@ type H264CodecSettingsResponse struct {
 	VbvSizeBits int `pulumi:"vbvSizeBits"`
 	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
 	WidthPixels int `pulumi:"widthPixels"`
-}
-
-// H264CodecSettingsResponseInput is an input type that accepts H264CodecSettingsResponseArgs and H264CodecSettingsResponseOutput values.
-// You can construct a concrete instance of `H264CodecSettingsResponseInput` via:
-//
-//          H264CodecSettingsResponseArgs{...}
-type H264CodecSettingsResponseInput interface {
-	pulumi.Input
-
-	ToH264CodecSettingsResponseOutput() H264CodecSettingsResponseOutput
-	ToH264CodecSettingsResponseOutputWithContext(context.Context) H264CodecSettingsResponseOutput
-}
-
-// H264 codec settings.
-type H264CodecSettingsResponseArgs struct {
-	// Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
-	AllowOpenGop pulumi.BoolInput `pulumi:"allowOpenGop"`
-	// Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
-	AqStrength pulumi.Float64Input `pulumi:"aqStrength"`
-	// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
-	BFrameCount pulumi.IntInput `pulumi:"bFrameCount"`
-	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
-	BPyramid pulumi.BoolInput `pulumi:"bPyramid"`
-	// The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 800,000,000.
-	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
-	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
-	CrfLevel pulumi.IntInput `pulumi:"crfLevel"`
-	// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
-	EnableTwoPass pulumi.BoolInput `pulumi:"enableTwoPass"`
-	// The entropy coder to use. The default is `cabac`. Supported entropy coders: - `cavlc` - `cabac`
-	EntropyCoder pulumi.StringInput `pulumi:"entropyCoder"`
-	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
-	FrameRate pulumi.Float64Input `pulumi:"frameRate"`
-	// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
-	GopDuration pulumi.StringInput `pulumi:"gopDuration"`
-	// Select the GOP size based on the specified frame count. Must be greater than zero.
-	GopFrameCount pulumi.IntInput `pulumi:"gopFrameCount"`
-	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
-	HeightPixels pulumi.IntInput `pulumi:"heightPixels"`
-	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
-	PixelFormat pulumi.StringInput `pulumi:"pixelFormat"`
-	// Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Preset). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
-	Preset pulumi.StringInput `pulumi:"preset"`
-	// Enforces the specified codec profile. The following profiles are supported: * `baseline` * `main` * `high` (default) The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
-	Profile pulumi.StringInput `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
-	RateControlMode pulumi.StringInput `pulumi:"rateControlMode"`
-	// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
-	Tune pulumi.StringInput `pulumi:"tune"`
-	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
-	VbvFullnessBits pulumi.IntInput `pulumi:"vbvFullnessBits"`
-	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
-	VbvSizeBits pulumi.IntInput `pulumi:"vbvSizeBits"`
-	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
-	WidthPixels pulumi.IntInput `pulumi:"widthPixels"`
-}
-
-func (H264CodecSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*H264CodecSettingsResponse)(nil)).Elem()
-}
-
-func (i H264CodecSettingsResponseArgs) ToH264CodecSettingsResponseOutput() H264CodecSettingsResponseOutput {
-	return i.ToH264CodecSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i H264CodecSettingsResponseArgs) ToH264CodecSettingsResponseOutputWithContext(ctx context.Context) H264CodecSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(H264CodecSettingsResponseOutput)
 }
 
 // H264 codec settings.
@@ -4754,71 +4094,6 @@ type H265CodecSettingsResponse struct {
 	WidthPixels int `pulumi:"widthPixels"`
 }
 
-// H265CodecSettingsResponseInput is an input type that accepts H265CodecSettingsResponseArgs and H265CodecSettingsResponseOutput values.
-// You can construct a concrete instance of `H265CodecSettingsResponseInput` via:
-//
-//          H265CodecSettingsResponseArgs{...}
-type H265CodecSettingsResponseInput interface {
-	pulumi.Input
-
-	ToH265CodecSettingsResponseOutput() H265CodecSettingsResponseOutput
-	ToH265CodecSettingsResponseOutputWithContext(context.Context) H265CodecSettingsResponseOutput
-}
-
-// H265 codec settings.
-type H265CodecSettingsResponseArgs struct {
-	// Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
-	AllowOpenGop pulumi.BoolInput `pulumi:"allowOpenGop"`
-	// Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
-	AqStrength pulumi.Float64Input `pulumi:"aqStrength"`
-	// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
-	BFrameCount pulumi.IntInput `pulumi:"bFrameCount"`
-	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
-	BPyramid pulumi.BoolInput `pulumi:"bPyramid"`
-	// The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 800,000,000.
-	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
-	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
-	CrfLevel pulumi.IntInput `pulumi:"crfLevel"`
-	// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
-	EnableTwoPass pulumi.BoolInput `pulumi:"enableTwoPass"`
-	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
-	FrameRate pulumi.Float64Input `pulumi:"frameRate"`
-	// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
-	GopDuration pulumi.StringInput `pulumi:"gopDuration"`
-	// Select the GOP size based on the specified frame count. Must be greater than zero.
-	GopFrameCount pulumi.IntInput `pulumi:"gopFrameCount"`
-	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
-	HeightPixels pulumi.IntInput `pulumi:"heightPixels"`
-	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
-	PixelFormat pulumi.StringInput `pulumi:"pixelFormat"`
-	// Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
-	Preset pulumi.StringInput `pulumi:"preset"`
-	// Enforces the specified codec profile. The following profiles are supported: * 8-bit profiles * `main` (default) * `main-intra` * `mainstillpicture` * 10-bit profiles * `main10` (default) * `main10-intra` * `main422-10` * `main422-10-intra` * `main444-10` * `main444-10-intra` * 12-bit profiles * `main12` (default) * `main12-intra` * `main422-12` * `main422-12-intra` * `main444-12` * `main444-12-intra` The available options are [FFmpeg-compatible](https://x265.readthedocs.io/). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
-	Profile pulumi.StringInput `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
-	RateControlMode pulumi.StringInput `pulumi:"rateControlMode"`
-	// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
-	Tune pulumi.StringInput `pulumi:"tune"`
-	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
-	VbvFullnessBits pulumi.IntInput `pulumi:"vbvFullnessBits"`
-	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
-	VbvSizeBits pulumi.IntInput `pulumi:"vbvSizeBits"`
-	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
-	WidthPixels pulumi.IntInput `pulumi:"widthPixels"`
-}
-
-func (H265CodecSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*H265CodecSettingsResponse)(nil)).Elem()
-}
-
-func (i H265CodecSettingsResponseArgs) ToH265CodecSettingsResponseOutput() H265CodecSettingsResponseOutput {
-	return i.ToH265CodecSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i H265CodecSettingsResponseArgs) ToH265CodecSettingsResponseOutputWithContext(ctx context.Context) H265CodecSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(H265CodecSettingsResponseOutput)
-}
-
 // H265 codec settings.
 type H265CodecSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -5117,39 +4392,6 @@ type ImageResponse struct {
 	Uri string `pulumi:"uri"`
 }
 
-// ImageResponseInput is an input type that accepts ImageResponseArgs and ImageResponseOutput values.
-// You can construct a concrete instance of `ImageResponseInput` via:
-//
-//          ImageResponseArgs{...}
-type ImageResponseInput interface {
-	pulumi.Input
-
-	ToImageResponseOutput() ImageResponseOutput
-	ToImageResponseOutputWithContext(context.Context) ImageResponseOutput
-}
-
-// Overlaid jpeg image.
-type ImageResponseArgs struct {
-	// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
-	Alpha pulumi.Float64Input `pulumi:"alpha"`
-	// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
-	Resolution NormalizedCoordinateResponseInput `pulumi:"resolution"`
-	// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (ImageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageResponse)(nil)).Elem()
-}
-
-func (i ImageResponseArgs) ToImageResponseOutput() ImageResponseOutput {
-	return i.ToImageResponseOutputWithContext(context.Background())
-}
-
-func (i ImageResponseArgs) ToImageResponseOutputWithContext(ctx context.Context) ImageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageResponseOutput)
-}
-
 // Overlaid jpeg image.
 type ImageResponseOutput struct{ *pulumi.OutputState }
 
@@ -5306,64 +4548,6 @@ type InputResponse struct {
 	PreprocessingConfig PreprocessingConfigResponse `pulumi:"preprocessingConfig"`
 	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
 	Uri string `pulumi:"uri"`
-}
-
-// InputResponseInput is an input type that accepts InputResponseArgs and InputResponseOutput values.
-// You can construct a concrete instance of `InputResponseInput` via:
-//
-//          InputResponseArgs{...}
-type InputResponseInput interface {
-	pulumi.Input
-
-	ToInputResponseOutput() InputResponseOutput
-	ToInputResponseOutputWithContext(context.Context) InputResponseOutput
-}
-
-// Input asset.
-type InputResponseArgs struct {
-	// A unique key for this input. Must be specified when using advanced mapping and edit lists.
-	Key pulumi.StringInput `pulumi:"key"`
-	// Preprocessing configurations.
-	PreprocessingConfig PreprocessingConfigResponseInput `pulumi:"preprocessingConfig"`
-	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (InputResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InputResponse)(nil)).Elem()
-}
-
-func (i InputResponseArgs) ToInputResponseOutput() InputResponseOutput {
-	return i.ToInputResponseOutputWithContext(context.Background())
-}
-
-func (i InputResponseArgs) ToInputResponseOutputWithContext(ctx context.Context) InputResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InputResponseOutput)
-}
-
-// InputResponseArrayInput is an input type that accepts InputResponseArray and InputResponseArrayOutput values.
-// You can construct a concrete instance of `InputResponseArrayInput` via:
-//
-//          InputResponseArray{ InputResponseArgs{...} }
-type InputResponseArrayInput interface {
-	pulumi.Input
-
-	ToInputResponseArrayOutput() InputResponseArrayOutput
-	ToInputResponseArrayOutputWithContext(context.Context) InputResponseArrayOutput
-}
-
-type InputResponseArray []InputResponseInput
-
-func (InputResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InputResponse)(nil)).Elem()
-}
-
-func (i InputResponseArray) ToInputResponseArrayOutput() InputResponseArrayOutput {
-	return i.ToInputResponseArrayOutputWithContext(context.Background())
-}
-
-func (i InputResponseArray) ToInputResponseArrayOutputWithContext(ctx context.Context) InputResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InputResponseArrayOutput)
 }
 
 // Input asset.
@@ -5751,94 +4935,6 @@ type JobConfigResponse struct {
 	SpriteSheets []SpriteSheetResponse `pulumi:"spriteSheets"`
 }
 
-// JobConfigResponseInput is an input type that accepts JobConfigResponseArgs and JobConfigResponseOutput values.
-// You can construct a concrete instance of `JobConfigResponseInput` via:
-//
-//          JobConfigResponseArgs{...}
-type JobConfigResponseInput interface {
-	pulumi.Input
-
-	ToJobConfigResponseOutput() JobConfigResponseOutput
-	ToJobConfigResponseOutputWithContext(context.Context) JobConfigResponseOutput
-}
-
-// Job configuration
-type JobConfigResponseArgs struct {
-	// List of ad breaks. Specifies where to insert ad break tags in the output manifests.
-	AdBreaks AdBreakResponseArrayInput `pulumi:"adBreaks"`
-	// List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.
-	EditList EditAtomResponseArrayInput `pulumi:"editList"`
-	// List of elementary streams.
-	ElementaryStreams ElementaryStreamResponseArrayInput `pulumi:"elementaryStreams"`
-	// List of input assets stored in Cloud Storage.
-	Inputs InputResponseArrayInput `pulumi:"inputs"`
-	// List of output manifests.
-	Manifests ManifestResponseArrayInput `pulumi:"manifests"`
-	// List of multiplexing settings for output streams.
-	MuxStreams MuxStreamResponseArrayInput `pulumi:"muxStreams"`
-	// Output configuration.
-	Output OutputResponseInput `pulumi:"output"`
-	// List of overlays on the output video, in descending Z-order.
-	Overlays OverlayResponseArrayInput `pulumi:"overlays"`
-	// Destination on Pub/Sub.
-	PubsubDestination PubsubDestinationResponseInput `pulumi:"pubsubDestination"`
-	// List of output sprite sheets.
-	SpriteSheets SpriteSheetResponseArrayInput `pulumi:"spriteSheets"`
-}
-
-func (JobConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobConfigResponse)(nil)).Elem()
-}
-
-func (i JobConfigResponseArgs) ToJobConfigResponseOutput() JobConfigResponseOutput {
-	return i.ToJobConfigResponseOutputWithContext(context.Background())
-}
-
-func (i JobConfigResponseArgs) ToJobConfigResponseOutputWithContext(ctx context.Context) JobConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigResponseOutput)
-}
-
-func (i JobConfigResponseArgs) ToJobConfigResponsePtrOutput() JobConfigResponsePtrOutput {
-	return i.ToJobConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobConfigResponseArgs) ToJobConfigResponsePtrOutputWithContext(ctx context.Context) JobConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigResponseOutput).ToJobConfigResponsePtrOutputWithContext(ctx)
-}
-
-// JobConfigResponsePtrInput is an input type that accepts JobConfigResponseArgs, JobConfigResponsePtr and JobConfigResponsePtrOutput values.
-// You can construct a concrete instance of `JobConfigResponsePtrInput` via:
-//
-//          JobConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobConfigResponsePtrOutput() JobConfigResponsePtrOutput
-	ToJobConfigResponsePtrOutputWithContext(context.Context) JobConfigResponsePtrOutput
-}
-
-type jobConfigResponsePtrType JobConfigResponseArgs
-
-func JobConfigResponsePtr(v *JobConfigResponseArgs) JobConfigResponsePtrInput {
-	return (*jobConfigResponsePtrType)(v)
-}
-
-func (*jobConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobConfigResponse)(nil)).Elem()
-}
-
-func (i *jobConfigResponsePtrType) ToJobConfigResponsePtrOutput() JobConfigResponsePtrOutput {
-	return i.ToJobConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobConfigResponsePtrType) ToJobConfigResponsePtrOutputWithContext(ctx context.Context) JobConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobConfigResponsePtrOutput)
-}
-
 // Job configuration
 type JobConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -5852,16 +4948,6 @@ func (o JobConfigResponseOutput) ToJobConfigResponseOutput() JobConfigResponseOu
 
 func (o JobConfigResponseOutput) ToJobConfigResponseOutputWithContext(ctx context.Context) JobConfigResponseOutput {
 	return o
-}
-
-func (o JobConfigResponseOutput) ToJobConfigResponsePtrOutput() JobConfigResponsePtrOutput {
-	return o.ToJobConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobConfigResponseOutput) ToJobConfigResponsePtrOutputWithContext(ctx context.Context) JobConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigResponse) *JobConfigResponse {
-		return &v
-	}).(JobConfigResponsePtrOutput)
 }
 
 // List of ad breaks. Specifies where to insert ad break tags in the output manifests.
@@ -5912,130 +4998,6 @@ func (o JobConfigResponseOutput) PubsubDestination() PubsubDestinationResponseOu
 // List of output sprite sheets.
 func (o JobConfigResponseOutput) SpriteSheets() SpriteSheetResponseArrayOutput {
 	return o.ApplyT(func(v JobConfigResponse) []SpriteSheetResponse { return v.SpriteSheets }).(SpriteSheetResponseArrayOutput)
-}
-
-type JobConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobConfigResponse)(nil)).Elem()
-}
-
-func (o JobConfigResponsePtrOutput) ToJobConfigResponsePtrOutput() JobConfigResponsePtrOutput {
-	return o
-}
-
-func (o JobConfigResponsePtrOutput) ToJobConfigResponsePtrOutputWithContext(ctx context.Context) JobConfigResponsePtrOutput {
-	return o
-}
-
-func (o JobConfigResponsePtrOutput) Elem() JobConfigResponseOutput {
-	return o.ApplyT(func(v *JobConfigResponse) JobConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JobConfigResponse
-		return ret
-	}).(JobConfigResponseOutput)
-}
-
-// List of ad breaks. Specifies where to insert ad break tags in the output manifests.
-func (o JobConfigResponsePtrOutput) AdBreaks() AdBreakResponseArrayOutput {
-	return o.ApplyT(func(v *JobConfigResponse) []AdBreakResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AdBreaks
-	}).(AdBreakResponseArrayOutput)
-}
-
-// List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.
-func (o JobConfigResponsePtrOutput) EditList() EditAtomResponseArrayOutput {
-	return o.ApplyT(func(v *JobConfigResponse) []EditAtomResponse {
-		if v == nil {
-			return nil
-		}
-		return v.EditList
-	}).(EditAtomResponseArrayOutput)
-}
-
-// List of elementary streams.
-func (o JobConfigResponsePtrOutput) ElementaryStreams() ElementaryStreamResponseArrayOutput {
-	return o.ApplyT(func(v *JobConfigResponse) []ElementaryStreamResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ElementaryStreams
-	}).(ElementaryStreamResponseArrayOutput)
-}
-
-// List of input assets stored in Cloud Storage.
-func (o JobConfigResponsePtrOutput) Inputs() InputResponseArrayOutput {
-	return o.ApplyT(func(v *JobConfigResponse) []InputResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Inputs
-	}).(InputResponseArrayOutput)
-}
-
-// List of output manifests.
-func (o JobConfigResponsePtrOutput) Manifests() ManifestResponseArrayOutput {
-	return o.ApplyT(func(v *JobConfigResponse) []ManifestResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Manifests
-	}).(ManifestResponseArrayOutput)
-}
-
-// List of multiplexing settings for output streams.
-func (o JobConfigResponsePtrOutput) MuxStreams() MuxStreamResponseArrayOutput {
-	return o.ApplyT(func(v *JobConfigResponse) []MuxStreamResponse {
-		if v == nil {
-			return nil
-		}
-		return v.MuxStreams
-	}).(MuxStreamResponseArrayOutput)
-}
-
-// Output configuration.
-func (o JobConfigResponsePtrOutput) Output() OutputResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigResponse) *OutputResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Output
-	}).(OutputResponsePtrOutput)
-}
-
-// List of overlays on the output video, in descending Z-order.
-func (o JobConfigResponsePtrOutput) Overlays() OverlayResponseArrayOutput {
-	return o.ApplyT(func(v *JobConfigResponse) []OverlayResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Overlays
-	}).(OverlayResponseArrayOutput)
-}
-
-// Destination on Pub/Sub.
-func (o JobConfigResponsePtrOutput) PubsubDestination() PubsubDestinationResponsePtrOutput {
-	return o.ApplyT(func(v *JobConfigResponse) *PubsubDestinationResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PubsubDestination
-	}).(PubsubDestinationResponsePtrOutput)
-}
-
-// List of output sprite sheets.
-func (o JobConfigResponsePtrOutput) SpriteSheets() SpriteSheetResponseArrayOutput {
-	return o.ApplyT(func(v *JobConfigResponse) []SpriteSheetResponse {
-		if v == nil {
-			return nil
-		}
-		return v.SpriteSheets
-	}).(SpriteSheetResponseArrayOutput)
 }
 
 // Manifest configuration.
@@ -6164,64 +5126,6 @@ type ManifestResponse struct {
 	MuxStreams []string `pulumi:"muxStreams"`
 	// Type of the manifest, can be `HLS` or `DASH`.
 	Type string `pulumi:"type"`
-}
-
-// ManifestResponseInput is an input type that accepts ManifestResponseArgs and ManifestResponseOutput values.
-// You can construct a concrete instance of `ManifestResponseInput` via:
-//
-//          ManifestResponseArgs{...}
-type ManifestResponseInput interface {
-	pulumi.Input
-
-	ToManifestResponseOutput() ManifestResponseOutput
-	ToManifestResponseOutputWithContext(context.Context) ManifestResponseOutput
-}
-
-// Manifest configuration.
-type ManifestResponseArgs struct {
-	// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.
-	FileName pulumi.StringInput `pulumi:"fileName"`
-	// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
-	MuxStreams pulumi.StringArrayInput `pulumi:"muxStreams"`
-	// Type of the manifest, can be `HLS` or `DASH`.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (ManifestResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManifestResponse)(nil)).Elem()
-}
-
-func (i ManifestResponseArgs) ToManifestResponseOutput() ManifestResponseOutput {
-	return i.ToManifestResponseOutputWithContext(context.Background())
-}
-
-func (i ManifestResponseArgs) ToManifestResponseOutputWithContext(ctx context.Context) ManifestResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManifestResponseOutput)
-}
-
-// ManifestResponseArrayInput is an input type that accepts ManifestResponseArray and ManifestResponseArrayOutput values.
-// You can construct a concrete instance of `ManifestResponseArrayInput` via:
-//
-//          ManifestResponseArray{ ManifestResponseArgs{...} }
-type ManifestResponseArrayInput interface {
-	pulumi.Input
-
-	ToManifestResponseArrayOutput() ManifestResponseArrayOutput
-	ToManifestResponseArrayOutputWithContext(context.Context) ManifestResponseArrayOutput
-}
-
-type ManifestResponseArray []ManifestResponseInput
-
-func (ManifestResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManifestResponse)(nil)).Elem()
-}
-
-func (i ManifestResponseArray) ToManifestResponseArrayOutput() ManifestResponseArrayOutput {
-	return i.ToManifestResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ManifestResponseArray) ToManifestResponseArrayOutputWithContext(ctx context.Context) ManifestResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManifestResponseArrayOutput)
 }
 
 // Manifest configuration.
@@ -6422,68 +5326,6 @@ type MuxStreamResponse struct {
 	Key string `pulumi:"key"`
 	// Segment settings for `ts`, `fmp4` and `vtt`.
 	SegmentSettings SegmentSettingsResponse `pulumi:"segmentSettings"`
-}
-
-// MuxStreamResponseInput is an input type that accepts MuxStreamResponseArgs and MuxStreamResponseOutput values.
-// You can construct a concrete instance of `MuxStreamResponseInput` via:
-//
-//          MuxStreamResponseArgs{...}
-type MuxStreamResponseInput interface {
-	pulumi.Input
-
-	ToMuxStreamResponseOutput() MuxStreamResponseOutput
-	ToMuxStreamResponseOutputWithContext(context.Context) MuxStreamResponseOutput
-}
-
-// Multiplexing settings for output stream.
-type MuxStreamResponseArgs struct {
-	// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt`
-	Container pulumi.StringInput `pulumi:"container"`
-	// List of `ElementaryStream.key`s multiplexed in this stream.
-	ElementaryStreams pulumi.StringArrayInput `pulumi:"elementaryStreams"`
-	// The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
-	FileName pulumi.StringInput `pulumi:"fileName"`
-	// A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `.m3u8` extension suffix.
-	Key pulumi.StringInput `pulumi:"key"`
-	// Segment settings for `ts`, `fmp4` and `vtt`.
-	SegmentSettings SegmentSettingsResponseInput `pulumi:"segmentSettings"`
-}
-
-func (MuxStreamResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MuxStreamResponse)(nil)).Elem()
-}
-
-func (i MuxStreamResponseArgs) ToMuxStreamResponseOutput() MuxStreamResponseOutput {
-	return i.ToMuxStreamResponseOutputWithContext(context.Background())
-}
-
-func (i MuxStreamResponseArgs) ToMuxStreamResponseOutputWithContext(ctx context.Context) MuxStreamResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MuxStreamResponseOutput)
-}
-
-// MuxStreamResponseArrayInput is an input type that accepts MuxStreamResponseArray and MuxStreamResponseArrayOutput values.
-// You can construct a concrete instance of `MuxStreamResponseArrayInput` via:
-//
-//          MuxStreamResponseArray{ MuxStreamResponseArgs{...} }
-type MuxStreamResponseArrayInput interface {
-	pulumi.Input
-
-	ToMuxStreamResponseArrayOutput() MuxStreamResponseArrayOutput
-	ToMuxStreamResponseArrayOutputWithContext(context.Context) MuxStreamResponseArrayOutput
-}
-
-type MuxStreamResponseArray []MuxStreamResponseInput
-
-func (MuxStreamResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MuxStreamResponse)(nil)).Elem()
-}
-
-func (i MuxStreamResponseArray) ToMuxStreamResponseArrayOutput() MuxStreamResponseArrayOutput {
-	return i.ToMuxStreamResponseArrayOutputWithContext(context.Background())
-}
-
-func (i MuxStreamResponseArray) ToMuxStreamResponseArrayOutputWithContext(ctx context.Context) MuxStreamResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MuxStreamResponseArrayOutput)
 }
 
 // Multiplexing settings for output stream.
@@ -6713,37 +5555,6 @@ type NormalizedCoordinateResponse struct {
 	Y float64 `pulumi:"y"`
 }
 
-// NormalizedCoordinateResponseInput is an input type that accepts NormalizedCoordinateResponseArgs and NormalizedCoordinateResponseOutput values.
-// You can construct a concrete instance of `NormalizedCoordinateResponseInput` via:
-//
-//          NormalizedCoordinateResponseArgs{...}
-type NormalizedCoordinateResponseInput interface {
-	pulumi.Input
-
-	ToNormalizedCoordinateResponseOutput() NormalizedCoordinateResponseOutput
-	ToNormalizedCoordinateResponseOutputWithContext(context.Context) NormalizedCoordinateResponseOutput
-}
-
-// 2D normalized coordinates. Default: `{0.0, 0.0}`
-type NormalizedCoordinateResponseArgs struct {
-	// Normalized x coordinate.
-	X pulumi.Float64Input `pulumi:"x"`
-	// Normalized y coordinate.
-	Y pulumi.Float64Input `pulumi:"y"`
-}
-
-func (NormalizedCoordinateResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NormalizedCoordinateResponse)(nil)).Elem()
-}
-
-func (i NormalizedCoordinateResponseArgs) ToNormalizedCoordinateResponseOutput() NormalizedCoordinateResponseOutput {
-	return i.ToNormalizedCoordinateResponseOutputWithContext(context.Background())
-}
-
-func (i NormalizedCoordinateResponseArgs) ToNormalizedCoordinateResponseOutputWithContext(ctx context.Context) NormalizedCoordinateResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NormalizedCoordinateResponseOutput)
-}
-
 // 2D normalized coordinates. Default: `{0.0, 0.0}`
 type NormalizedCoordinateResponseOutput struct{ *pulumi.OutputState }
 
@@ -6915,76 +5726,6 @@ type OutputResponse struct {
 	Uri string `pulumi:"uri"`
 }
 
-// OutputResponseInput is an input type that accepts OutputResponseArgs and OutputResponseOutput values.
-// You can construct a concrete instance of `OutputResponseInput` via:
-//
-//          OutputResponseArgs{...}
-type OutputResponseInput interface {
-	pulumi.Input
-
-	ToOutputResponseOutput() OutputResponseOutput
-	ToOutputResponseOutputWithContext(context.Context) OutputResponseOutput
-}
-
-// Location of output file(s) in a Cloud Storage bucket.
-type OutputResponseArgs struct {
-	// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (OutputResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OutputResponse)(nil)).Elem()
-}
-
-func (i OutputResponseArgs) ToOutputResponseOutput() OutputResponseOutput {
-	return i.ToOutputResponseOutputWithContext(context.Background())
-}
-
-func (i OutputResponseArgs) ToOutputResponseOutputWithContext(ctx context.Context) OutputResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputResponseOutput)
-}
-
-func (i OutputResponseArgs) ToOutputResponsePtrOutput() OutputResponsePtrOutput {
-	return i.ToOutputResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OutputResponseArgs) ToOutputResponsePtrOutputWithContext(ctx context.Context) OutputResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputResponseOutput).ToOutputResponsePtrOutputWithContext(ctx)
-}
-
-// OutputResponsePtrInput is an input type that accepts OutputResponseArgs, OutputResponsePtr and OutputResponsePtrOutput values.
-// You can construct a concrete instance of `OutputResponsePtrInput` via:
-//
-//          OutputResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OutputResponsePtrInput interface {
-	pulumi.Input
-
-	ToOutputResponsePtrOutput() OutputResponsePtrOutput
-	ToOutputResponsePtrOutputWithContext(context.Context) OutputResponsePtrOutput
-}
-
-type outputResponsePtrType OutputResponseArgs
-
-func OutputResponsePtr(v *OutputResponseArgs) OutputResponsePtrInput {
-	return (*outputResponsePtrType)(v)
-}
-
-func (*outputResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OutputResponse)(nil)).Elem()
-}
-
-func (i *outputResponsePtrType) ToOutputResponsePtrOutput() OutputResponsePtrOutput {
-	return i.ToOutputResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *outputResponsePtrType) ToOutputResponsePtrOutputWithContext(ctx context.Context) OutputResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputResponsePtrOutput)
-}
-
 // Location of output file(s) in a Cloud Storage bucket.
 type OutputResponseOutput struct{ *pulumi.OutputState }
 
@@ -7000,53 +5741,9 @@ func (o OutputResponseOutput) ToOutputResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o OutputResponseOutput) ToOutputResponsePtrOutput() OutputResponsePtrOutput {
-	return o.ToOutputResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OutputResponseOutput) ToOutputResponsePtrOutputWithContext(ctx context.Context) OutputResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OutputResponse) *OutputResponse {
-		return &v
-	}).(OutputResponsePtrOutput)
-}
-
 // URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
 func (o OutputResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OutputResponse) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-type OutputResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OutputResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OutputResponse)(nil)).Elem()
-}
-
-func (o OutputResponsePtrOutput) ToOutputResponsePtrOutput() OutputResponsePtrOutput {
-	return o
-}
-
-func (o OutputResponsePtrOutput) ToOutputResponsePtrOutputWithContext(ctx context.Context) OutputResponsePtrOutput {
-	return o
-}
-
-func (o OutputResponsePtrOutput) Elem() OutputResponseOutput {
-	return o.ApplyT(func(v *OutputResponse) OutputResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OutputResponse
-		return ret
-	}).(OutputResponseOutput)
-}
-
-// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
-func (o OutputResponsePtrOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OutputResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uri
-	}).(pulumi.StringPtrOutput)
 }
 
 // Overlay configuration.
@@ -7164,62 +5861,6 @@ type OverlayResponse struct {
 	Animations []AnimationResponse `pulumi:"animations"`
 	// Image overlay.
 	Image ImageResponse `pulumi:"image"`
-}
-
-// OverlayResponseInput is an input type that accepts OverlayResponseArgs and OverlayResponseOutput values.
-// You can construct a concrete instance of `OverlayResponseInput` via:
-//
-//          OverlayResponseArgs{...}
-type OverlayResponseInput interface {
-	pulumi.Input
-
-	ToOverlayResponseOutput() OverlayResponseOutput
-	ToOverlayResponseOutputWithContext(context.Context) OverlayResponseOutput
-}
-
-// Overlay configuration.
-type OverlayResponseArgs struct {
-	// List of Animations. The list should be chronological, without any time overlap.
-	Animations AnimationResponseArrayInput `pulumi:"animations"`
-	// Image overlay.
-	Image ImageResponseInput `pulumi:"image"`
-}
-
-func (OverlayResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OverlayResponse)(nil)).Elem()
-}
-
-func (i OverlayResponseArgs) ToOverlayResponseOutput() OverlayResponseOutput {
-	return i.ToOverlayResponseOutputWithContext(context.Background())
-}
-
-func (i OverlayResponseArgs) ToOverlayResponseOutputWithContext(ctx context.Context) OverlayResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OverlayResponseOutput)
-}
-
-// OverlayResponseArrayInput is an input type that accepts OverlayResponseArray and OverlayResponseArrayOutput values.
-// You can construct a concrete instance of `OverlayResponseArrayInput` via:
-//
-//          OverlayResponseArray{ OverlayResponseArgs{...} }
-type OverlayResponseArrayInput interface {
-	pulumi.Input
-
-	ToOverlayResponseArrayOutput() OverlayResponseArrayOutput
-	ToOverlayResponseArrayOutputWithContext(context.Context) OverlayResponseArrayOutput
-}
-
-type OverlayResponseArray []OverlayResponseInput
-
-func (OverlayResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OverlayResponse)(nil)).Elem()
-}
-
-func (i OverlayResponseArray) ToOverlayResponseArrayOutput() OverlayResponseArrayOutput {
-	return i.ToOverlayResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OverlayResponseArray) ToOverlayResponseArrayOutputWithContext(ctx context.Context) OverlayResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OverlayResponseArrayOutput)
 }
 
 // Overlay configuration.
@@ -7474,41 +6115,6 @@ type PadResponse struct {
 	RightPixels int `pulumi:"rightPixels"`
 	// The number of pixels to add to the top. The default is 0.
 	TopPixels int `pulumi:"topPixels"`
-}
-
-// PadResponseInput is an input type that accepts PadResponseArgs and PadResponseOutput values.
-// You can construct a concrete instance of `PadResponseInput` via:
-//
-//          PadResponseArgs{...}
-type PadResponseInput interface {
-	pulumi.Input
-
-	ToPadResponseOutput() PadResponseOutput
-	ToPadResponseOutputWithContext(context.Context) PadResponseOutput
-}
-
-// Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution.
-type PadResponseArgs struct {
-	// The number of pixels to add to the bottom. The default is 0.
-	BottomPixels pulumi.IntInput `pulumi:"bottomPixels"`
-	// The number of pixels to add to the left. The default is 0.
-	LeftPixels pulumi.IntInput `pulumi:"leftPixels"`
-	// The number of pixels to add to the right. The default is 0.
-	RightPixels pulumi.IntInput `pulumi:"rightPixels"`
-	// The number of pixels to add to the top. The default is 0.
-	TopPixels pulumi.IntInput `pulumi:"topPixels"`
-}
-
-func (PadResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PadResponse)(nil)).Elem()
-}
-
-func (i PadResponseArgs) ToPadResponseOutput() PadResponseOutput {
-	return i.ToPadResponseOutputWithContext(context.Background())
-}
-
-func (i PadResponseArgs) ToPadResponseOutputWithContext(ctx context.Context) PadResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PadResponseOutput)
 }
 
 // Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution.
@@ -7797,45 +6403,6 @@ type PreprocessingConfigResponse struct {
 	Pad PadResponse `pulumi:"pad"`
 }
 
-// PreprocessingConfigResponseInput is an input type that accepts PreprocessingConfigResponseArgs and PreprocessingConfigResponseOutput values.
-// You can construct a concrete instance of `PreprocessingConfigResponseInput` via:
-//
-//          PreprocessingConfigResponseArgs{...}
-type PreprocessingConfigResponseInput interface {
-	pulumi.Input
-
-	ToPreprocessingConfigResponseOutput() PreprocessingConfigResponseOutput
-	ToPreprocessingConfigResponseOutputWithContext(context.Context) PreprocessingConfigResponseOutput
-}
-
-// Preprocessing configurations.
-type PreprocessingConfigResponseArgs struct {
-	// Audio preprocessing configuration.
-	Audio AudioResponseInput `pulumi:"audio"`
-	// Color preprocessing configuration.
-	Color ColorResponseInput `pulumi:"color"`
-	// Specify the video cropping configuration.
-	Crop CropResponseInput `pulumi:"crop"`
-	// Deblock preprocessing configuration.
-	Deblock DeblockResponseInput `pulumi:"deblock"`
-	// Denoise preprocessing configuration.
-	Denoise DenoiseResponseInput `pulumi:"denoise"`
-	// Specify the video pad filter configuration.
-	Pad PadResponseInput `pulumi:"pad"`
-}
-
-func (PreprocessingConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreprocessingConfigResponse)(nil)).Elem()
-}
-
-func (i PreprocessingConfigResponseArgs) ToPreprocessingConfigResponseOutput() PreprocessingConfigResponseOutput {
-	return i.ToPreprocessingConfigResponseOutputWithContext(context.Background())
-}
-
-func (i PreprocessingConfigResponseArgs) ToPreprocessingConfigResponseOutputWithContext(ctx context.Context) PreprocessingConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreprocessingConfigResponseOutput)
-}
-
 // Preprocessing configurations.
 type PreprocessingConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -8027,76 +6594,6 @@ type PubsubDestinationResponse struct {
 	Topic string `pulumi:"topic"`
 }
 
-// PubsubDestinationResponseInput is an input type that accepts PubsubDestinationResponseArgs and PubsubDestinationResponseOutput values.
-// You can construct a concrete instance of `PubsubDestinationResponseInput` via:
-//
-//          PubsubDestinationResponseArgs{...}
-type PubsubDestinationResponseInput interface {
-	pulumi.Input
-
-	ToPubsubDestinationResponseOutput() PubsubDestinationResponseOutput
-	ToPubsubDestinationResponseOutputWithContext(context.Context) PubsubDestinationResponseOutput
-}
-
-// A Pub/Sub destination.
-type PubsubDestinationResponseArgs struct {
-	// The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
-	Topic pulumi.StringInput `pulumi:"topic"`
-}
-
-func (PubsubDestinationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PubsubDestinationResponse)(nil)).Elem()
-}
-
-func (i PubsubDestinationResponseArgs) ToPubsubDestinationResponseOutput() PubsubDestinationResponseOutput {
-	return i.ToPubsubDestinationResponseOutputWithContext(context.Background())
-}
-
-func (i PubsubDestinationResponseArgs) ToPubsubDestinationResponseOutputWithContext(ctx context.Context) PubsubDestinationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubsubDestinationResponseOutput)
-}
-
-func (i PubsubDestinationResponseArgs) ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput {
-	return i.ToPubsubDestinationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PubsubDestinationResponseArgs) ToPubsubDestinationResponsePtrOutputWithContext(ctx context.Context) PubsubDestinationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubsubDestinationResponseOutput).ToPubsubDestinationResponsePtrOutputWithContext(ctx)
-}
-
-// PubsubDestinationResponsePtrInput is an input type that accepts PubsubDestinationResponseArgs, PubsubDestinationResponsePtr and PubsubDestinationResponsePtrOutput values.
-// You can construct a concrete instance of `PubsubDestinationResponsePtrInput` via:
-//
-//          PubsubDestinationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PubsubDestinationResponsePtrInput interface {
-	pulumi.Input
-
-	ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput
-	ToPubsubDestinationResponsePtrOutputWithContext(context.Context) PubsubDestinationResponsePtrOutput
-}
-
-type pubsubDestinationResponsePtrType PubsubDestinationResponseArgs
-
-func PubsubDestinationResponsePtr(v *PubsubDestinationResponseArgs) PubsubDestinationResponsePtrInput {
-	return (*pubsubDestinationResponsePtrType)(v)
-}
-
-func (*pubsubDestinationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PubsubDestinationResponse)(nil)).Elem()
-}
-
-func (i *pubsubDestinationResponsePtrType) ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput {
-	return i.ToPubsubDestinationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *pubsubDestinationResponsePtrType) ToPubsubDestinationResponsePtrOutputWithContext(ctx context.Context) PubsubDestinationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubsubDestinationResponsePtrOutput)
-}
-
 // A Pub/Sub destination.
 type PubsubDestinationResponseOutput struct{ *pulumi.OutputState }
 
@@ -8112,53 +6609,9 @@ func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponseOutputWithCo
 	return o
 }
 
-func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput {
-	return o.ToPubsubDestinationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponsePtrOutputWithContext(ctx context.Context) PubsubDestinationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubDestinationResponse) *PubsubDestinationResponse {
-		return &v
-	}).(PubsubDestinationResponsePtrOutput)
-}
-
 // The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
 func (o PubsubDestinationResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v PubsubDestinationResponse) string { return v.Topic }).(pulumi.StringOutput)
-}
-
-type PubsubDestinationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PubsubDestinationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PubsubDestinationResponse)(nil)).Elem()
-}
-
-func (o PubsubDestinationResponsePtrOutput) ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput {
-	return o
-}
-
-func (o PubsubDestinationResponsePtrOutput) ToPubsubDestinationResponsePtrOutputWithContext(ctx context.Context) PubsubDestinationResponsePtrOutput {
-	return o
-}
-
-func (o PubsubDestinationResponsePtrOutput) Elem() PubsubDestinationResponseOutput {
-	return o.ApplyT(func(v *PubsubDestinationResponse) PubsubDestinationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PubsubDestinationResponse
-		return ret
-	}).(PubsubDestinationResponseOutput)
-}
-
-// The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
-func (o PubsubDestinationResponsePtrOutput) Topic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PubsubDestinationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Topic
-	}).(pulumi.StringPtrOutput)
 }
 
 // Segment settings for `ts`, `fmp4` and `vtt`.
@@ -8326,37 +6779,6 @@ type SegmentSettingsResponse struct {
 	IndividualSegments bool `pulumi:"individualSegments"`
 	// Duration of the segments in seconds. The default is `6.0s`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
 	SegmentDuration string `pulumi:"segmentDuration"`
-}
-
-// SegmentSettingsResponseInput is an input type that accepts SegmentSettingsResponseArgs and SegmentSettingsResponseOutput values.
-// You can construct a concrete instance of `SegmentSettingsResponseInput` via:
-//
-//          SegmentSettingsResponseArgs{...}
-type SegmentSettingsResponseInput interface {
-	pulumi.Input
-
-	ToSegmentSettingsResponseOutput() SegmentSettingsResponseOutput
-	ToSegmentSettingsResponseOutputWithContext(context.Context) SegmentSettingsResponseOutput
-}
-
-// Segment settings for `ts`, `fmp4` and `vtt`.
-type SegmentSettingsResponseArgs struct {
-	// Create an individual segment file. The default is `false`.
-	IndividualSegments pulumi.BoolInput `pulumi:"individualSegments"`
-	// Duration of the segments in seconds. The default is `6.0s`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
-	SegmentDuration pulumi.StringInput `pulumi:"segmentDuration"`
-}
-
-func (SegmentSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SegmentSettingsResponse)(nil)).Elem()
-}
-
-func (i SegmentSettingsResponseArgs) ToSegmentSettingsResponseOutput() SegmentSettingsResponseOutput {
-	return i.ToSegmentSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i SegmentSettingsResponseArgs) ToSegmentSettingsResponseOutputWithContext(ctx context.Context) SegmentSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SegmentSettingsResponseOutput)
 }
 
 // Segment settings for `ts`, `fmp4` and `vtt`.
@@ -8600,80 +7022,6 @@ type SpriteSheetResponse struct {
 	TotalCount int `pulumi:"totalCount"`
 }
 
-// SpriteSheetResponseInput is an input type that accepts SpriteSheetResponseArgs and SpriteSheetResponseOutput values.
-// You can construct a concrete instance of `SpriteSheetResponseInput` via:
-//
-//          SpriteSheetResponseArgs{...}
-type SpriteSheetResponseInput interface {
-	pulumi.Input
-
-	ToSpriteSheetResponseOutput() SpriteSheetResponseOutput
-	ToSpriteSheetResponseOutputWithContext(context.Context) SpriteSheetResponseOutput
-}
-
-// Sprite sheet configuration.
-type SpriteSheetResponseArgs struct {
-	// The maximum number of sprites per row in a sprite sheet. The default is 0, which indicates no maximum limit.
-	ColumnCount pulumi.IntInput `pulumi:"columnCount"`
-	// End time in seconds, relative to the output file timeline. When `end_time_offset` is not specified, the sprites are generated until the end of the output file.
-	EndTimeOffset pulumi.StringInput `pulumi:"endTimeOffset"`
-	// File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `sprite_sheet0000000123.jpeg`.
-	FilePrefix pulumi.StringInput `pulumi:"filePrefix"`
-	// Format type. The default is `jpeg`. Supported formats: - `jpeg`
-	Format pulumi.StringInput `pulumi:"format"`
-	// Starting from `0s`, create sprites at regular intervals. Specify the interval value in seconds.
-	Interval pulumi.StringInput `pulumi:"interval"`
-	// The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data compression ratio.
-	Quality pulumi.IntInput `pulumi:"quality"`
-	// The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
-	RowCount pulumi.IntInput `pulumi:"rowCount"`
-	// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
-	SpriteHeightPixels pulumi.IntInput `pulumi:"spriteHeightPixels"`
-	// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
-	SpriteWidthPixels pulumi.IntInput `pulumi:"spriteWidthPixels"`
-	// Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
-	StartTimeOffset pulumi.StringInput `pulumi:"startTimeOffset"`
-	// Total number of sprites. Create the specified number of sprites distributed evenly across the timeline of the output media. The default is 100.
-	TotalCount pulumi.IntInput `pulumi:"totalCount"`
-}
-
-func (SpriteSheetResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpriteSheetResponse)(nil)).Elem()
-}
-
-func (i SpriteSheetResponseArgs) ToSpriteSheetResponseOutput() SpriteSheetResponseOutput {
-	return i.ToSpriteSheetResponseOutputWithContext(context.Background())
-}
-
-func (i SpriteSheetResponseArgs) ToSpriteSheetResponseOutputWithContext(ctx context.Context) SpriteSheetResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpriteSheetResponseOutput)
-}
-
-// SpriteSheetResponseArrayInput is an input type that accepts SpriteSheetResponseArray and SpriteSheetResponseArrayOutput values.
-// You can construct a concrete instance of `SpriteSheetResponseArrayInput` via:
-//
-//          SpriteSheetResponseArray{ SpriteSheetResponseArgs{...} }
-type SpriteSheetResponseArrayInput interface {
-	pulumi.Input
-
-	ToSpriteSheetResponseArrayOutput() SpriteSheetResponseArrayOutput
-	ToSpriteSheetResponseArrayOutputWithContext(context.Context) SpriteSheetResponseArrayOutput
-}
-
-type SpriteSheetResponseArray []SpriteSheetResponseInput
-
-func (SpriteSheetResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SpriteSheetResponse)(nil)).Elem()
-}
-
-func (i SpriteSheetResponseArray) ToSpriteSheetResponseArrayOutput() SpriteSheetResponseArrayOutput {
-	return i.ToSpriteSheetResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SpriteSheetResponseArray) ToSpriteSheetResponseArrayOutputWithContext(ctx context.Context) SpriteSheetResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpriteSheetResponseArrayOutput)
-}
-
 // Sprite sheet configuration.
 type SpriteSheetResponseOutput struct{ *pulumi.OutputState }
 
@@ -8774,80 +7122,6 @@ type StatusResponse struct {
 	Message string `pulumi:"message"`
 }
 
-// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
-// You can construct a concrete instance of `StatusResponseInput` via:
-//
-//          StatusResponseArgs{...}
-type StatusResponseInput interface {
-	pulumi.Input
-
-	ToStatusResponseOutput() StatusResponseOutput
-	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusResponseArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (StatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
-	return i.ToStatusResponseOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
-}
-
-// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
-// You can construct a concrete instance of `StatusResponsePtrInput` via:
-//
-//          StatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToStatusResponsePtrOutput() StatusResponsePtrOutput
-	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
-}
-
-type statusResponsePtrType StatusResponseArgs
-
-func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
-	return (*statusResponsePtrType)(v)
-}
-
-func (*statusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
-}
-
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponseOutput struct{ *pulumi.OutputState }
 
@@ -8863,16 +7137,6 @@ func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
-		return &v
-	}).(StatusResponsePtrOutput)
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o StatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -8886,60 +7150,6 @@ func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
-}
-
-type StatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StatusResponse
-		return ret
-	}).(StatusResponseOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Code
-	}).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *StatusResponse) []map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
 }
 
 // The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
@@ -9068,64 +7278,6 @@ type TextMappingResponse struct {
 	InputKey string `pulumi:"inputKey"`
 	// The zero-based index of the track in the input file.
 	InputTrack int `pulumi:"inputTrack"`
-}
-
-// TextMappingResponseInput is an input type that accepts TextMappingResponseArgs and TextMappingResponseOutput values.
-// You can construct a concrete instance of `TextMappingResponseInput` via:
-//
-//          TextMappingResponseArgs{...}
-type TextMappingResponseInput interface {
-	pulumi.Input
-
-	ToTextMappingResponseOutput() TextMappingResponseOutput
-	ToTextMappingResponseOutputWithContext(context.Context) TextMappingResponseOutput
-}
-
-// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
-type TextMappingResponseArgs struct {
-	// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
-	AtomKey pulumi.StringInput `pulumi:"atomKey"`
-	// The `Input.key` that identifies the input file.
-	InputKey pulumi.StringInput `pulumi:"inputKey"`
-	// The zero-based index of the track in the input file.
-	InputTrack pulumi.IntInput `pulumi:"inputTrack"`
-}
-
-func (TextMappingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TextMappingResponse)(nil)).Elem()
-}
-
-func (i TextMappingResponseArgs) ToTextMappingResponseOutput() TextMappingResponseOutput {
-	return i.ToTextMappingResponseOutputWithContext(context.Background())
-}
-
-func (i TextMappingResponseArgs) ToTextMappingResponseOutputWithContext(ctx context.Context) TextMappingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TextMappingResponseOutput)
-}
-
-// TextMappingResponseArrayInput is an input type that accepts TextMappingResponseArray and TextMappingResponseArrayOutput values.
-// You can construct a concrete instance of `TextMappingResponseArrayInput` via:
-//
-//          TextMappingResponseArray{ TextMappingResponseArgs{...} }
-type TextMappingResponseArrayInput interface {
-	pulumi.Input
-
-	ToTextMappingResponseArrayOutput() TextMappingResponseArrayOutput
-	ToTextMappingResponseArrayOutputWithContext(context.Context) TextMappingResponseArrayOutput
-}
-
-type TextMappingResponseArray []TextMappingResponseInput
-
-func (TextMappingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TextMappingResponse)(nil)).Elem()
-}
-
-func (i TextMappingResponseArray) ToTextMappingResponseArrayOutput() TextMappingResponseArrayOutput {
-	return i.ToTextMappingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i TextMappingResponseArray) ToTextMappingResponseArrayOutputWithContext(ctx context.Context) TextMappingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TextMappingResponseArrayOutput)
 }
 
 // The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
@@ -9345,37 +7497,6 @@ type TextStreamResponse struct {
 	Mapping []TextMappingResponse `pulumi:"mapping"`
 }
 
-// TextStreamResponseInput is an input type that accepts TextStreamResponseArgs and TextStreamResponseOutput values.
-// You can construct a concrete instance of `TextStreamResponseInput` via:
-//
-//          TextStreamResponseArgs{...}
-type TextStreamResponseInput interface {
-	pulumi.Input
-
-	ToTextStreamResponseOutput() TextStreamResponseOutput
-	ToTextStreamResponseOutputWithContext(context.Context) TextStreamResponseOutput
-}
-
-// Encoding of a text stream. For example, closed captions or subtitles.
-type TextStreamResponseArgs struct {
-	// The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
-	Codec pulumi.StringInput `pulumi:"codec"`
-	// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
-	Mapping TextMappingResponseArrayInput `pulumi:"mapping"`
-}
-
-func (TextStreamResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TextStreamResponse)(nil)).Elem()
-}
-
-func (i TextStreamResponseArgs) ToTextStreamResponseOutput() TextStreamResponseOutput {
-	return i.ToTextStreamResponseOutputWithContext(context.Background())
-}
-
-func (i TextStreamResponseArgs) ToTextStreamResponseOutputWithContext(ctx context.Context) TextStreamResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TextStreamResponseOutput)
-}
-
 // Encoding of a text stream. For example, closed captions or subtitles.
 type TextStreamResponseOutput struct{ *pulumi.OutputState }
 
@@ -9587,39 +7708,6 @@ type VideoStreamResponse struct {
 	H265 H265CodecSettingsResponse `pulumi:"h265"`
 	// VP9 codec settings.
 	Vp9 Vp9CodecSettingsResponse `pulumi:"vp9"`
-}
-
-// VideoStreamResponseInput is an input type that accepts VideoStreamResponseArgs and VideoStreamResponseOutput values.
-// You can construct a concrete instance of `VideoStreamResponseInput` via:
-//
-//          VideoStreamResponseArgs{...}
-type VideoStreamResponseInput interface {
-	pulumi.Input
-
-	ToVideoStreamResponseOutput() VideoStreamResponseOutput
-	ToVideoStreamResponseOutputWithContext(context.Context) VideoStreamResponseOutput
-}
-
-// Video stream resource.
-type VideoStreamResponseArgs struct {
-	// H264 codec settings.
-	H264 H264CodecSettingsResponseInput `pulumi:"h264"`
-	// H265 codec settings.
-	H265 H265CodecSettingsResponseInput `pulumi:"h265"`
-	// VP9 codec settings.
-	Vp9 Vp9CodecSettingsResponseInput `pulumi:"vp9"`
-}
-
-func (VideoStreamResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VideoStreamResponse)(nil)).Elem()
-}
-
-func (i VideoStreamResponseArgs) ToVideoStreamResponseOutput() VideoStreamResponseOutput {
-	return i.ToVideoStreamResponseOutputWithContext(context.Background())
-}
-
-func (i VideoStreamResponseArgs) ToVideoStreamResponseOutputWithContext(ctx context.Context) VideoStreamResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VideoStreamResponseOutput)
 }
 
 // Video stream resource.
@@ -9987,53 +8075,6 @@ type Vp9CodecSettingsResponse struct {
 	WidthPixels int `pulumi:"widthPixels"`
 }
 
-// Vp9CodecSettingsResponseInput is an input type that accepts Vp9CodecSettingsResponseArgs and Vp9CodecSettingsResponseOutput values.
-// You can construct a concrete instance of `Vp9CodecSettingsResponseInput` via:
-//
-//          Vp9CodecSettingsResponseArgs{...}
-type Vp9CodecSettingsResponseInput interface {
-	pulumi.Input
-
-	ToVp9CodecSettingsResponseOutput() Vp9CodecSettingsResponseOutput
-	ToVp9CodecSettingsResponseOutputWithContext(context.Context) Vp9CodecSettingsResponseOutput
-}
-
-// VP9 codec settings.
-type Vp9CodecSettingsResponseArgs struct {
-	// The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.
-	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
-	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
-	CrfLevel pulumi.IntInput `pulumi:"crfLevel"`
-	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
-	FrameRate pulumi.Float64Input `pulumi:"frameRate"`
-	// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
-	GopDuration pulumi.StringInput `pulumi:"gopDuration"`
-	// Select the GOP size based on the specified frame count. Must be greater than zero.
-	GopFrameCount pulumi.IntInput `pulumi:"gopFrameCount"`
-	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
-	HeightPixels pulumi.IntInput `pulumi:"heightPixels"`
-	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
-	PixelFormat pulumi.StringInput `pulumi:"pixelFormat"`
-	// Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message.
-	Profile pulumi.StringInput `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
-	RateControlMode pulumi.StringInput `pulumi:"rateControlMode"`
-	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
-	WidthPixels pulumi.IntInput `pulumi:"widthPixels"`
-}
-
-func (Vp9CodecSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vp9CodecSettingsResponse)(nil)).Elem()
-}
-
-func (i Vp9CodecSettingsResponseArgs) ToVp9CodecSettingsResponseOutput() Vp9CodecSettingsResponseOutput {
-	return i.ToVp9CodecSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i Vp9CodecSettingsResponseArgs) ToVp9CodecSettingsResponseOutputWithContext(ctx context.Context) Vp9CodecSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Vp9CodecSettingsResponseOutput)
-}
-
 // VP9 codec settings.
 type Vp9CodecSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -10102,119 +8143,70 @@ func (o Vp9CodecSettingsResponseOutput) WidthPixels() pulumi.IntOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AdBreakInput)(nil)).Elem(), AdBreakArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AdBreakArrayInput)(nil)).Elem(), AdBreakArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AdBreakResponseInput)(nil)).Elem(), AdBreakResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AdBreakResponseArrayInput)(nil)).Elem(), AdBreakResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationInput)(nil)).Elem(), AnimationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationArrayInput)(nil)).Elem(), AnimationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationEndInput)(nil)).Elem(), AnimationEndArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationEndPtrInput)(nil)).Elem(), AnimationEndArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AnimationEndResponseInput)(nil)).Elem(), AnimationEndResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationFadeInput)(nil)).Elem(), AnimationFadeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationFadePtrInput)(nil)).Elem(), AnimationFadeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AnimationFadeResponseInput)(nil)).Elem(), AnimationFadeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AnimationResponseInput)(nil)).Elem(), AnimationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AnimationResponseArrayInput)(nil)).Elem(), AnimationResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationStaticInput)(nil)).Elem(), AnimationStaticArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationStaticPtrInput)(nil)).Elem(), AnimationStaticArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AnimationStaticResponseInput)(nil)).Elem(), AnimationStaticResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AudioInput)(nil)).Elem(), AudioArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AudioPtrInput)(nil)).Elem(), AudioArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AudioMappingInput)(nil)).Elem(), AudioMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AudioMappingArrayInput)(nil)).Elem(), AudioMappingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AudioMappingResponseInput)(nil)).Elem(), AudioMappingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AudioMappingResponseArrayInput)(nil)).Elem(), AudioMappingResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AudioResponseInput)(nil)).Elem(), AudioResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AudioStreamInput)(nil)).Elem(), AudioStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AudioStreamPtrInput)(nil)).Elem(), AudioStreamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AudioStreamResponseInput)(nil)).Elem(), AudioStreamResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ColorInput)(nil)).Elem(), ColorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ColorPtrInput)(nil)).Elem(), ColorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ColorResponseInput)(nil)).Elem(), ColorResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CropInput)(nil)).Elem(), CropArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CropPtrInput)(nil)).Elem(), CropArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CropResponseInput)(nil)).Elem(), CropResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeblockInput)(nil)).Elem(), DeblockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeblockPtrInput)(nil)).Elem(), DeblockArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeblockResponseInput)(nil)).Elem(), DeblockResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenoiseInput)(nil)).Elem(), DenoiseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenoisePtrInput)(nil)).Elem(), DenoiseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DenoiseResponseInput)(nil)).Elem(), DenoiseResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EditAtomInput)(nil)).Elem(), EditAtomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EditAtomArrayInput)(nil)).Elem(), EditAtomArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EditAtomResponseInput)(nil)).Elem(), EditAtomResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EditAtomResponseArrayInput)(nil)).Elem(), EditAtomResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElementaryStreamInput)(nil)).Elem(), ElementaryStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElementaryStreamArrayInput)(nil)).Elem(), ElementaryStreamArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElementaryStreamResponseInput)(nil)).Elem(), ElementaryStreamResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElementaryStreamResponseArrayInput)(nil)).Elem(), ElementaryStreamResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*H264CodecSettingsInput)(nil)).Elem(), H264CodecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*H264CodecSettingsPtrInput)(nil)).Elem(), H264CodecSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*H264CodecSettingsResponseInput)(nil)).Elem(), H264CodecSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*H265CodecSettingsInput)(nil)).Elem(), H265CodecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*H265CodecSettingsPtrInput)(nil)).Elem(), H265CodecSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*H265CodecSettingsResponseInput)(nil)).Elem(), H265CodecSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageInput)(nil)).Elem(), ImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImagePtrInput)(nil)).Elem(), ImageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageResponseInput)(nil)).Elem(), ImageResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InputInput)(nil)).Elem(), InputArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InputArrayInput)(nil)).Elem(), InputArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InputResponseInput)(nil)).Elem(), InputResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InputResponseArrayInput)(nil)).Elem(), InputResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigInput)(nil)).Elem(), JobConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigPtrInput)(nil)).Elem(), JobConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigResponseInput)(nil)).Elem(), JobConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigResponsePtrInput)(nil)).Elem(), JobConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManifestInput)(nil)).Elem(), ManifestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManifestArrayInput)(nil)).Elem(), ManifestArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManifestResponseInput)(nil)).Elem(), ManifestResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManifestResponseArrayInput)(nil)).Elem(), ManifestResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MuxStreamInput)(nil)).Elem(), MuxStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MuxStreamArrayInput)(nil)).Elem(), MuxStreamArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MuxStreamResponseInput)(nil)).Elem(), MuxStreamResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MuxStreamResponseArrayInput)(nil)).Elem(), MuxStreamResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NormalizedCoordinateInput)(nil)).Elem(), NormalizedCoordinateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NormalizedCoordinatePtrInput)(nil)).Elem(), NormalizedCoordinateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NormalizedCoordinateResponseInput)(nil)).Elem(), NormalizedCoordinateResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OutputInput)(nil)).Elem(), OutputArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OutputPtrInput)(nil)).Elem(), OutputArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OutputResponseInput)(nil)).Elem(), OutputResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OutputResponsePtrInput)(nil)).Elem(), OutputResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OverlayInput)(nil)).Elem(), OverlayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OverlayArrayInput)(nil)).Elem(), OverlayArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OverlayResponseInput)(nil)).Elem(), OverlayResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OverlayResponseArrayInput)(nil)).Elem(), OverlayResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PadInput)(nil)).Elem(), PadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PadPtrInput)(nil)).Elem(), PadArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PadResponseInput)(nil)).Elem(), PadResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreprocessingConfigInput)(nil)).Elem(), PreprocessingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreprocessingConfigPtrInput)(nil)).Elem(), PreprocessingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PreprocessingConfigResponseInput)(nil)).Elem(), PreprocessingConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubDestinationInput)(nil)).Elem(), PubsubDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubDestinationPtrInput)(nil)).Elem(), PubsubDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PubsubDestinationResponseInput)(nil)).Elem(), PubsubDestinationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PubsubDestinationResponsePtrInput)(nil)).Elem(), PubsubDestinationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentSettingsInput)(nil)).Elem(), SegmentSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentSettingsPtrInput)(nil)).Elem(), SegmentSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SegmentSettingsResponseInput)(nil)).Elem(), SegmentSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpriteSheetInput)(nil)).Elem(), SpriteSheetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpriteSheetArrayInput)(nil)).Elem(), SpriteSheetArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SpriteSheetResponseInput)(nil)).Elem(), SpriteSheetResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SpriteSheetResponseArrayInput)(nil)).Elem(), SpriteSheetResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TextMappingInput)(nil)).Elem(), TextMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TextMappingArrayInput)(nil)).Elem(), TextMappingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TextMappingResponseInput)(nil)).Elem(), TextMappingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TextMappingResponseArrayInput)(nil)).Elem(), TextMappingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TextStreamInput)(nil)).Elem(), TextStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TextStreamPtrInput)(nil)).Elem(), TextStreamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TextStreamResponseInput)(nil)).Elem(), TextStreamResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VideoStreamInput)(nil)).Elem(), VideoStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VideoStreamPtrInput)(nil)).Elem(), VideoStreamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VideoStreamResponseInput)(nil)).Elem(), VideoStreamResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vp9CodecSettingsInput)(nil)).Elem(), Vp9CodecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vp9CodecSettingsPtrInput)(nil)).Elem(), Vp9CodecSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Vp9CodecSettingsResponseInput)(nil)).Elem(), Vp9CodecSettingsResponseArgs{})
 	pulumi.RegisterOutputType(AdBreakOutput{})
 	pulumi.RegisterOutputType(AdBreakArrayOutput{})
 	pulumi.RegisterOutputType(AdBreakResponseOutput{})
@@ -10278,7 +8270,6 @@ func init() {
 	pulumi.RegisterOutputType(JobConfigOutput{})
 	pulumi.RegisterOutputType(JobConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobConfigResponseOutput{})
-	pulumi.RegisterOutputType(JobConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManifestOutput{})
 	pulumi.RegisterOutputType(ManifestArrayOutput{})
 	pulumi.RegisterOutputType(ManifestResponseOutput{})
@@ -10293,7 +8284,6 @@ func init() {
 	pulumi.RegisterOutputType(OutputOutput{})
 	pulumi.RegisterOutputType(OutputPtrOutput{})
 	pulumi.RegisterOutputType(OutputResponseOutput{})
-	pulumi.RegisterOutputType(OutputResponsePtrOutput{})
 	pulumi.RegisterOutputType(OverlayOutput{})
 	pulumi.RegisterOutputType(OverlayArrayOutput{})
 	pulumi.RegisterOutputType(OverlayResponseOutput{})
@@ -10307,7 +8297,6 @@ func init() {
 	pulumi.RegisterOutputType(PubsubDestinationOutput{})
 	pulumi.RegisterOutputType(PubsubDestinationPtrOutput{})
 	pulumi.RegisterOutputType(PubsubDestinationResponseOutput{})
-	pulumi.RegisterOutputType(PubsubDestinationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SegmentSettingsOutput{})
 	pulumi.RegisterOutputType(SegmentSettingsPtrOutput{})
 	pulumi.RegisterOutputType(SegmentSettingsResponseOutput{})
@@ -10316,7 +8305,6 @@ func init() {
 	pulumi.RegisterOutputType(SpriteSheetResponseOutput{})
 	pulumi.RegisterOutputType(SpriteSheetResponseArrayOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
-	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(TextMappingOutput{})
 	pulumi.RegisterOutputType(TextMappingArrayOutput{})
 	pulumi.RegisterOutputType(TextMappingResponseOutput{})

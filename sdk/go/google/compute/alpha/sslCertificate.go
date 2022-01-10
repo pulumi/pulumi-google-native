@@ -133,7 +133,7 @@ type SslCertificateInput interface {
 }
 
 func (*SslCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslCertificate)(nil))
+	return reflect.TypeOf((**SslCertificate)(nil)).Elem()
 }
 
 func (i *SslCertificate) ToSslCertificateOutput() SslCertificateOutput {
@@ -147,7 +147,7 @@ func (i *SslCertificate) ToSslCertificateOutputWithContext(ctx context.Context) 
 type SslCertificateOutput struct{ *pulumi.OutputState }
 
 func (SslCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslCertificate)(nil))
+	return reflect.TypeOf((**SslCertificate)(nil)).Elem()
 }
 
 func (o SslCertificateOutput) ToSslCertificateOutput() SslCertificateOutput {

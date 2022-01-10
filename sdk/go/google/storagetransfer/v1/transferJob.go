@@ -135,7 +135,7 @@ type TransferJobInput interface {
 }
 
 func (*TransferJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransferJob)(nil))
+	return reflect.TypeOf((**TransferJob)(nil)).Elem()
 }
 
 func (i *TransferJob) ToTransferJobOutput() TransferJobOutput {
@@ -149,7 +149,7 @@ func (i *TransferJob) ToTransferJobOutputWithContext(ctx context.Context) Transf
 type TransferJobOutput struct{ *pulumi.OutputState }
 
 func (TransferJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransferJob)(nil))
+	return reflect.TypeOf((**TransferJob)(nil)).Elem()
 }
 
 func (o TransferJobOutput) ToTransferJobOutput() TransferJobOutput {

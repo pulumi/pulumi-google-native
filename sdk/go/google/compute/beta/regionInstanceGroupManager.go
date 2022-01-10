@@ -185,7 +185,7 @@ type RegionInstanceGroupManagerInput interface {
 }
 
 func (*RegionInstanceGroupManager) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceGroupManager)(nil))
+	return reflect.TypeOf((**RegionInstanceGroupManager)(nil)).Elem()
 }
 
 func (i *RegionInstanceGroupManager) ToRegionInstanceGroupManagerOutput() RegionInstanceGroupManagerOutput {
@@ -199,7 +199,7 @@ func (i *RegionInstanceGroupManager) ToRegionInstanceGroupManagerOutputWithConte
 type RegionInstanceGroupManagerOutput struct{ *pulumi.OutputState }
 
 func (RegionInstanceGroupManagerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceGroupManager)(nil))
+	return reflect.TypeOf((**RegionInstanceGroupManager)(nil)).Elem()
 }
 
 func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerOutput() RegionInstanceGroupManagerOutput {

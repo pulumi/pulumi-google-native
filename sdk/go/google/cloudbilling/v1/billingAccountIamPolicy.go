@@ -109,7 +109,7 @@ type BillingAccountIamPolicyInput interface {
 }
 
 func (*BillingAccountIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingAccountIamPolicy)(nil))
+	return reflect.TypeOf((**BillingAccountIamPolicy)(nil)).Elem()
 }
 
 func (i *BillingAccountIamPolicy) ToBillingAccountIamPolicyOutput() BillingAccountIamPolicyOutput {
@@ -123,7 +123,7 @@ func (i *BillingAccountIamPolicy) ToBillingAccountIamPolicyOutputWithContext(ctx
 type BillingAccountIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingAccountIamPolicy)(nil))
+	return reflect.TypeOf((**BillingAccountIamPolicy)(nil)).Elem()
 }
 
 func (o BillingAccountIamPolicyOutput) ToBillingAccountIamPolicyOutput() BillingAccountIamPolicyOutput {

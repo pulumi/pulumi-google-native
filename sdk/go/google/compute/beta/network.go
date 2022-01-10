@@ -119,7 +119,7 @@ type NetworkInput interface {
 }
 
 func (*Network) ElementType() reflect.Type {
-	return reflect.TypeOf((*Network)(nil))
+	return reflect.TypeOf((**Network)(nil)).Elem()
 }
 
 func (i *Network) ToNetworkOutput() NetworkOutput {
@@ -133,7 +133,7 @@ func (i *Network) ToNetworkOutputWithContext(ctx context.Context) NetworkOutput 
 type NetworkOutput struct{ *pulumi.OutputState }
 
 func (NetworkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Network)(nil))
+	return reflect.TypeOf((**Network)(nil)).Elem()
 }
 
 func (o NetworkOutput) ToNetworkOutput() NetworkOutput {

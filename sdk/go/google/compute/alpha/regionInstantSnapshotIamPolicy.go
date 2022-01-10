@@ -118,7 +118,7 @@ type RegionInstantSnapshotIamPolicyInput interface {
 }
 
 func (*RegionInstantSnapshotIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstantSnapshotIamPolicy)(nil))
+	return reflect.TypeOf((**RegionInstantSnapshotIamPolicy)(nil)).Elem()
 }
 
 func (i *RegionInstantSnapshotIamPolicy) ToRegionInstantSnapshotIamPolicyOutput() RegionInstantSnapshotIamPolicyOutput {
@@ -132,7 +132,7 @@ func (i *RegionInstantSnapshotIamPolicy) ToRegionInstantSnapshotIamPolicyOutputW
 type RegionInstantSnapshotIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionInstantSnapshotIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstantSnapshotIamPolicy)(nil))
+	return reflect.TypeOf((**RegionInstantSnapshotIamPolicy)(nil)).Elem()
 }
 
 func (o RegionInstantSnapshotIamPolicyOutput) ToRegionInstantSnapshotIamPolicyOutput() RegionInstantSnapshotIamPolicyOutput {

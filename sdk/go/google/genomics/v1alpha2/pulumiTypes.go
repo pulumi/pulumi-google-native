@@ -171,70 +171,6 @@ type DiskResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// DiskResponseInput is an input type that accepts DiskResponseArgs and DiskResponseOutput values.
-// You can construct a concrete instance of `DiskResponseInput` via:
-//
-//          DiskResponseArgs{...}
-type DiskResponseInput interface {
-	pulumi.Input
-
-	ToDiskResponseOutput() DiskResponseOutput
-	ToDiskResponseOutputWithContext(context.Context) DiskResponseOutput
-}
-
-// A Google Compute Engine disk resource specification.
-type DiskResponseArgs struct {
-	// Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
-	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
-	// The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies how a sourced-base persistent disk will be mounted. See https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only be set at create time.
-	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
-	// The size of the disk. Defaults to 500 (GB). This field is not applicable for local SSD.
-	SizeGb pulumi.IntInput `pulumi:"sizeGb"`
-	// The full or partial URL of the persistent disk to attach. See https://cloud.google.com/compute/docs/reference/latest/instances#resource and https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.
-	Source pulumi.StringInput `pulumi:"source"`
-	// The type of the disk to create.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (DiskResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskResponse)(nil)).Elem()
-}
-
-func (i DiskResponseArgs) ToDiskResponseOutput() DiskResponseOutput {
-	return i.ToDiskResponseOutputWithContext(context.Background())
-}
-
-func (i DiskResponseArgs) ToDiskResponseOutputWithContext(ctx context.Context) DiskResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskResponseOutput)
-}
-
-// DiskResponseArrayInput is an input type that accepts DiskResponseArray and DiskResponseArrayOutput values.
-// You can construct a concrete instance of `DiskResponseArrayInput` via:
-//
-//          DiskResponseArray{ DiskResponseArgs{...} }
-type DiskResponseArrayInput interface {
-	pulumi.Input
-
-	ToDiskResponseArrayOutput() DiskResponseArrayOutput
-	ToDiskResponseArrayOutputWithContext(context.Context) DiskResponseArrayOutput
-}
-
-type DiskResponseArray []DiskResponseInput
-
-func (DiskResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DiskResponse)(nil)).Elem()
-}
-
-func (i DiskResponseArray) ToDiskResponseArrayOutput() DiskResponseArrayOutput {
-	return i.ToDiskResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DiskResponseArray) ToDiskResponseArrayOutputWithContext(ctx context.Context) DiskResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskResponseArrayOutput)
-}
-
 // A Google Compute Engine disk resource specification.
 type DiskResponseOutput struct{ *pulumi.OutputState }
 
@@ -467,78 +403,6 @@ type DockerExecutorResponse struct {
 	ImageName string `pulumi:"imageName"`
 }
 
-// DockerExecutorResponseInput is an input type that accepts DockerExecutorResponseArgs and DockerExecutorResponseOutput values.
-// You can construct a concrete instance of `DockerExecutorResponseInput` via:
-//
-//          DockerExecutorResponseArgs{...}
-type DockerExecutorResponseInput interface {
-	pulumi.Input
-
-	ToDockerExecutorResponseOutput() DockerExecutorResponseOutput
-	ToDockerExecutorResponseOutputWithContext(context.Context) DockerExecutorResponseOutput
-}
-
-// The Docker execuctor specification.
-type DockerExecutorResponseArgs struct {
-	// The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
-	Cmd pulumi.StringInput `pulumi:"cmd"`
-	// Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
-	ImageName pulumi.StringInput `pulumi:"imageName"`
-}
-
-func (DockerExecutorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DockerExecutorResponse)(nil)).Elem()
-}
-
-func (i DockerExecutorResponseArgs) ToDockerExecutorResponseOutput() DockerExecutorResponseOutput {
-	return i.ToDockerExecutorResponseOutputWithContext(context.Background())
-}
-
-func (i DockerExecutorResponseArgs) ToDockerExecutorResponseOutputWithContext(ctx context.Context) DockerExecutorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DockerExecutorResponseOutput)
-}
-
-func (i DockerExecutorResponseArgs) ToDockerExecutorResponsePtrOutput() DockerExecutorResponsePtrOutput {
-	return i.ToDockerExecutorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DockerExecutorResponseArgs) ToDockerExecutorResponsePtrOutputWithContext(ctx context.Context) DockerExecutorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DockerExecutorResponseOutput).ToDockerExecutorResponsePtrOutputWithContext(ctx)
-}
-
-// DockerExecutorResponsePtrInput is an input type that accepts DockerExecutorResponseArgs, DockerExecutorResponsePtr and DockerExecutorResponsePtrOutput values.
-// You can construct a concrete instance of `DockerExecutorResponsePtrInput` via:
-//
-//          DockerExecutorResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DockerExecutorResponsePtrInput interface {
-	pulumi.Input
-
-	ToDockerExecutorResponsePtrOutput() DockerExecutorResponsePtrOutput
-	ToDockerExecutorResponsePtrOutputWithContext(context.Context) DockerExecutorResponsePtrOutput
-}
-
-type dockerExecutorResponsePtrType DockerExecutorResponseArgs
-
-func DockerExecutorResponsePtr(v *DockerExecutorResponseArgs) DockerExecutorResponsePtrInput {
-	return (*dockerExecutorResponsePtrType)(v)
-}
-
-func (*dockerExecutorResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DockerExecutorResponse)(nil)).Elem()
-}
-
-func (i *dockerExecutorResponsePtrType) ToDockerExecutorResponsePtrOutput() DockerExecutorResponsePtrOutput {
-	return i.ToDockerExecutorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *dockerExecutorResponsePtrType) ToDockerExecutorResponsePtrOutputWithContext(ctx context.Context) DockerExecutorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DockerExecutorResponsePtrOutput)
-}
-
 // The Docker execuctor specification.
 type DockerExecutorResponseOutput struct{ *pulumi.OutputState }
 
@@ -554,16 +418,6 @@ func (o DockerExecutorResponseOutput) ToDockerExecutorResponseOutputWithContext(
 	return o
 }
 
-func (o DockerExecutorResponseOutput) ToDockerExecutorResponsePtrOutput() DockerExecutorResponsePtrOutput {
-	return o.ToDockerExecutorResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DockerExecutorResponseOutput) ToDockerExecutorResponsePtrOutputWithContext(ctx context.Context) DockerExecutorResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DockerExecutorResponse) *DockerExecutorResponse {
-		return &v
-	}).(DockerExecutorResponsePtrOutput)
-}
-
 // The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
 func (o DockerExecutorResponseOutput) Cmd() pulumi.StringOutput {
 	return o.ApplyT(func(v DockerExecutorResponse) string { return v.Cmd }).(pulumi.StringOutput)
@@ -572,50 +426,6 @@ func (o DockerExecutorResponseOutput) Cmd() pulumi.StringOutput {
 // Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
 func (o DockerExecutorResponseOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v DockerExecutorResponse) string { return v.ImageName }).(pulumi.StringOutput)
-}
-
-type DockerExecutorResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DockerExecutorResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DockerExecutorResponse)(nil)).Elem()
-}
-
-func (o DockerExecutorResponsePtrOutput) ToDockerExecutorResponsePtrOutput() DockerExecutorResponsePtrOutput {
-	return o
-}
-
-func (o DockerExecutorResponsePtrOutput) ToDockerExecutorResponsePtrOutputWithContext(ctx context.Context) DockerExecutorResponsePtrOutput {
-	return o
-}
-
-func (o DockerExecutorResponsePtrOutput) Elem() DockerExecutorResponseOutput {
-	return o.ApplyT(func(v *DockerExecutorResponse) DockerExecutorResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DockerExecutorResponse
-		return ret
-	}).(DockerExecutorResponseOutput)
-}
-
-// The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
-func (o DockerExecutorResponsePtrOutput) Cmd() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DockerExecutorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Cmd
-	}).(pulumi.StringPtrOutput)
-}
-
-// Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
-func (o DockerExecutorResponsePtrOutput) ImageName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DockerExecutorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ImageName
-	}).(pulumi.StringPtrOutput)
 }
 
 // LocalCopy defines how a remote file should be copied to and from the VM.
@@ -785,37 +595,6 @@ type LocalCopyResponse struct {
 	Path string `pulumi:"path"`
 }
 
-// LocalCopyResponseInput is an input type that accepts LocalCopyResponseArgs and LocalCopyResponseOutput values.
-// You can construct a concrete instance of `LocalCopyResponseInput` via:
-//
-//          LocalCopyResponseArgs{...}
-type LocalCopyResponseInput interface {
-	pulumi.Input
-
-	ToLocalCopyResponseOutput() LocalCopyResponseOutput
-	ToLocalCopyResponseOutputWithContext(context.Context) LocalCopyResponseOutput
-}
-
-// LocalCopy defines how a remote file should be copied to and from the VM.
-type LocalCopyResponseArgs struct {
-	// The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
-	Disk pulumi.StringInput `pulumi:"disk"`
-	// The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
-	Path pulumi.StringInput `pulumi:"path"`
-}
-
-func (LocalCopyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocalCopyResponse)(nil)).Elem()
-}
-
-func (i LocalCopyResponseArgs) ToLocalCopyResponseOutput() LocalCopyResponseOutput {
-	return i.ToLocalCopyResponseOutputWithContext(context.Background())
-}
-
-func (i LocalCopyResponseArgs) ToLocalCopyResponseOutputWithContext(ctx context.Context) LocalCopyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocalCopyResponseOutput)
-}
-
 // LocalCopy defines how a remote file should be copied to and from the VM.
 type LocalCopyResponseOutput struct{ *pulumi.OutputState }
 
@@ -980,66 +759,6 @@ type PipelineParameterResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// PipelineParameterResponseInput is an input type that accepts PipelineParameterResponseArgs and PipelineParameterResponseOutput values.
-// You can construct a concrete instance of `PipelineParameterResponseInput` via:
-//
-//          PipelineParameterResponseArgs{...}
-type PipelineParameterResponseInput interface {
-	pulumi.Input
-
-	ToPipelineParameterResponseOutput() PipelineParameterResponseOutput
-	ToPipelineParameterResponseOutputWithContext(context.Context) PipelineParameterResponseOutput
-}
-
-// Parameters facilitate setting and delivering data into the pipeline's execution environment. They are defined at create time, with optional defaults, and can be overridden at run time. If `localCopy` is unset, then the parameter specifies a string that is passed as-is into the pipeline, as the value of the environment variable with the given name. A default value can be optionally specified at create time. The default can be overridden at run time using the inputs map. If no default is given, a value must be supplied at runtime. If `localCopy` is defined, then the parameter specifies a data source or sink, both in Google Cloud Storage and on the Docker container where the pipeline computation is run. The service account associated with the Pipeline (by default the project's Compute Engine service account) must have access to the Google Cloud Storage paths. At run time, the Google Cloud Storage paths can be overridden if a default was provided at create time, or must be set otherwise. The pipeline runner should add a key/value pair to either the inputs or outputs map. The indicated data copies will be carried out before/after pipeline execution, just as if the corresponding arguments were provided to `gsutil cp`. For example: Given the following `PipelineParameter`, specified in the `inputParameters` list: ```{name: "input_file", localCopy: {path: "file.txt", disk: "pd1"}}``` where `disk` is defined in the `PipelineResources` object as: ```{name: "pd1", mountPoint: "/mnt/disk/"}``` We create a disk named `pd1`, mount it on the host VM, and map `/mnt/pd1` to `/mnt/disk` in the docker container. At runtime, an entry for `input_file` would be required in the inputs map, such as: ```inputs["input_file"] = "gs://my-bucket/bar.txt"``` This would generate the following gsutil call: ```gsutil cp gs://my-bucket/bar.txt /mnt/pd1/file.txt``` The file `/mnt/pd1/file.txt` maps to `/mnt/disk/file.txt` in the Docker container. Acceptable paths are: Google Cloud storage pathLocal path file file glob directory For outputs, the direction of the copy is reversed: ```gsutil cp /mnt/disk/file.txt gs://my-bucket/bar.txt``` Acceptable paths are: Local pathGoogle Cloud Storage path file file file directory - directory must already exist glob directory - directory will be created if it doesn't exist One restriction due to docker limitations, is that for outputs that are found on the boot disk, the local path cannot be a glob and must be a file.
-type PipelineParameterResponseArgs struct {
-	// The default value for this parameter. Can be overridden at runtime. If `localCopy` is present, then this must be a Google Cloud Storage path beginning with `gs://`.
-	DefaultValue pulumi.StringInput `pulumi:"defaultValue"`
-	// Human-readable description.
-	Description pulumi.StringInput `pulumi:"description"`
-	// If present, this parameter is marked for copying to and from the VM. `LocalCopy` indicates where on the VM the file should be. The value given to this parameter (either at runtime or using `defaultValue`) must be the remote path where the file should be.
-	LocalCopy LocalCopyResponseInput `pulumi:"localCopy"`
-	// Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (PipelineParameterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineParameterResponse)(nil)).Elem()
-}
-
-func (i PipelineParameterResponseArgs) ToPipelineParameterResponseOutput() PipelineParameterResponseOutput {
-	return i.ToPipelineParameterResponseOutputWithContext(context.Background())
-}
-
-func (i PipelineParameterResponseArgs) ToPipelineParameterResponseOutputWithContext(ctx context.Context) PipelineParameterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineParameterResponseOutput)
-}
-
-// PipelineParameterResponseArrayInput is an input type that accepts PipelineParameterResponseArray and PipelineParameterResponseArrayOutput values.
-// You can construct a concrete instance of `PipelineParameterResponseArrayInput` via:
-//
-//          PipelineParameterResponseArray{ PipelineParameterResponseArgs{...} }
-type PipelineParameterResponseArrayInput interface {
-	pulumi.Input
-
-	ToPipelineParameterResponseArrayOutput() PipelineParameterResponseArrayOutput
-	ToPipelineParameterResponseArrayOutputWithContext(context.Context) PipelineParameterResponseArrayOutput
-}
-
-type PipelineParameterResponseArray []PipelineParameterResponseInput
-
-func (PipelineParameterResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PipelineParameterResponse)(nil)).Elem()
-}
-
-func (i PipelineParameterResponseArray) ToPipelineParameterResponseArrayOutput() PipelineParameterResponseArrayOutput {
-	return i.ToPipelineParameterResponseArrayOutputWithContext(context.Background())
-}
-
-func (i PipelineParameterResponseArray) ToPipelineParameterResponseArrayOutputWithContext(ctx context.Context) PipelineParameterResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineParameterResponseArrayOutput)
-}
-
 // Parameters facilitate setting and delivering data into the pipeline's execution environment. They are defined at create time, with optional defaults, and can be overridden at run time. If `localCopy` is unset, then the parameter specifies a string that is passed as-is into the pipeline, as the value of the environment variable with the given name. A default value can be optionally specified at create time. The default can be overridden at run time using the inputs map. If no default is given, a value must be supplied at runtime. If `localCopy` is defined, then the parameter specifies a data source or sink, both in Google Cloud Storage and on the Docker container where the pipeline computation is run. The service account associated with the Pipeline (by default the project's Compute Engine service account) must have access to the Google Cloud Storage paths. At run time, the Google Cloud Storage paths can be overridden if a default was provided at create time, or must be set otherwise. The pipeline runner should add a key/value pair to either the inputs or outputs map. The indicated data copies will be carried out before/after pipeline execution, just as if the corresponding arguments were provided to `gsutil cp`. For example: Given the following `PipelineParameter`, specified in the `inputParameters` list: ```{name: "input_file", localCopy: {path: "file.txt", disk: "pd1"}}``` where `disk` is defined in the `PipelineResources` object as: ```{name: "pd1", mountPoint: "/mnt/disk/"}``` We create a disk named `pd1`, mount it on the host VM, and map `/mnt/pd1` to `/mnt/disk` in the docker container. At runtime, an entry for `input_file` would be required in the inputs map, such as: ```inputs["input_file"] = "gs://my-bucket/bar.txt"``` This would generate the following gsutil call: ```gsutil cp gs://my-bucket/bar.txt /mnt/pd1/file.txt``` The file `/mnt/pd1/file.txt` maps to `/mnt/disk/file.txt` in the Docker container. Acceptable paths are: Google Cloud storage pathLocal path file file glob directory For outputs, the direction of the copy is reversed: ```gsutil cp /mnt/disk/file.txt gs://my-bucket/bar.txt``` Acceptable paths are: Local pathGoogle Cloud Storage path file file file directory - directory must already exist glob directory - directory will be created if it doesn't exist One restriction due to docker limitations, is that for outputs that are found on the boot disk, the local path cannot be a glob and must be a file.
 type PipelineParameterResponseOutput struct{ *pulumi.OutputState }
 
@@ -1162,47 +881,6 @@ func (i PipelineResourcesArgs) ToPipelineResourcesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineResourcesOutput)
 }
 
-func (i PipelineResourcesArgs) ToPipelineResourcesPtrOutput() PipelineResourcesPtrOutput {
-	return i.ToPipelineResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i PipelineResourcesArgs) ToPipelineResourcesPtrOutputWithContext(ctx context.Context) PipelineResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineResourcesOutput).ToPipelineResourcesPtrOutputWithContext(ctx)
-}
-
-// PipelineResourcesPtrInput is an input type that accepts PipelineResourcesArgs, PipelineResourcesPtr and PipelineResourcesPtrOutput values.
-// You can construct a concrete instance of `PipelineResourcesPtrInput` via:
-//
-//          PipelineResourcesArgs{...}
-//
-//  or:
-//
-//          nil
-type PipelineResourcesPtrInput interface {
-	pulumi.Input
-
-	ToPipelineResourcesPtrOutput() PipelineResourcesPtrOutput
-	ToPipelineResourcesPtrOutputWithContext(context.Context) PipelineResourcesPtrOutput
-}
-
-type pipelineResourcesPtrType PipelineResourcesArgs
-
-func PipelineResourcesPtr(v *PipelineResourcesArgs) PipelineResourcesPtrInput {
-	return (*pipelineResourcesPtrType)(v)
-}
-
-func (*pipelineResourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineResources)(nil)).Elem()
-}
-
-func (i *pipelineResourcesPtrType) ToPipelineResourcesPtrOutput() PipelineResourcesPtrOutput {
-	return i.ToPipelineResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *pipelineResourcesPtrType) ToPipelineResourcesPtrOutputWithContext(ctx context.Context) PipelineResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineResourcesPtrOutput)
-}
-
 // The system resources for the pipeline run.
 type PipelineResourcesOutput struct{ *pulumi.OutputState }
 
@@ -1216,16 +894,6 @@ func (o PipelineResourcesOutput) ToPipelineResourcesOutput() PipelineResourcesOu
 
 func (o PipelineResourcesOutput) ToPipelineResourcesOutputWithContext(ctx context.Context) PipelineResourcesOutput {
 	return o
-}
-
-func (o PipelineResourcesOutput) ToPipelineResourcesPtrOutput() PipelineResourcesPtrOutput {
-	return o.ToPipelineResourcesPtrOutputWithContext(context.Background())
-}
-
-func (o PipelineResourcesOutput) ToPipelineResourcesPtrOutputWithContext(ctx context.Context) PipelineResourcesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineResources) *PipelineResources {
-		return &v
-	}).(PipelineResourcesPtrOutput)
 }
 
 // Optional. The number of accelerators of the specified type to attach. By specifying this parameter, you will download and install the following third-party software onto your managed Compute Engine instances: NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit.
@@ -1273,120 +941,6 @@ func (o PipelineResourcesOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PipelineResources) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
-type PipelineResourcesPtrOutput struct{ *pulumi.OutputState }
-
-func (PipelineResourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineResources)(nil)).Elem()
-}
-
-func (o PipelineResourcesPtrOutput) ToPipelineResourcesPtrOutput() PipelineResourcesPtrOutput {
-	return o
-}
-
-func (o PipelineResourcesPtrOutput) ToPipelineResourcesPtrOutputWithContext(ctx context.Context) PipelineResourcesPtrOutput {
-	return o
-}
-
-func (o PipelineResourcesPtrOutput) Elem() PipelineResourcesOutput {
-	return o.ApplyT(func(v *PipelineResources) PipelineResources {
-		if v != nil {
-			return *v
-		}
-		var ret PipelineResources
-		return ret
-	}).(PipelineResourcesOutput)
-}
-
-// Optional. The number of accelerators of the specified type to attach. By specifying this parameter, you will download and install the following third-party software onto your managed Compute Engine instances: NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit.
-func (o PipelineResourcesPtrOutput) AcceleratorCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineResources) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AcceleratorCount
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The Compute Engine defined accelerator type. By specifying this parameter, you will download and install the following third-party software onto your managed Compute Engine instances: NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit. Please see https://cloud.google.com/compute/docs/gpus/ for a list of available accelerator types.
-func (o PipelineResourcesPtrOutput) AcceleratorType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineResources) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AcceleratorType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The size of the boot disk. Defaults to 10 (GB).
-func (o PipelineResourcesPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PipelineResources) *int {
-		if v == nil {
-			return nil
-		}
-		return v.BootDiskSizeGb
-	}).(pulumi.IntPtrOutput)
-}
-
-// Disks to attach.
-func (o PipelineResourcesPtrOutput) Disks() DiskArrayOutput {
-	return o.ApplyT(func(v *PipelineResources) []Disk {
-		if v == nil {
-			return nil
-		}
-		return v.Disks
-	}).(DiskArrayOutput)
-}
-
-// The minimum number of cores to use. Defaults to 1.
-func (o PipelineResourcesPtrOutput) MinimumCpuCores() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PipelineResources) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MinimumCpuCores
-	}).(pulumi.IntPtrOutput)
-}
-
-// The minimum amount of RAM to use. Defaults to 3.75 (GB)
-func (o PipelineResourcesPtrOutput) MinimumRamGb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *PipelineResources) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.MinimumRamGb
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Whether to assign an external IP to the instance. This is an experimental feature that may go away. Defaults to false. Corresponds to `--no_address` flag for [gcloud compute instances create] (https://cloud.google.com/sdk/gcloud/reference/compute/instances/create). In order to use this, must be true for both create time and run time. Cannot be true at run time if false at create time. If you need to ssh into a private IP VM for debugging, you can ssh to a public VM and then ssh into the private VM's Internal IP. If noAddress is set, this pipeline run may only load docker images from Google Container Registry and not Docker Hub. Before using this, you must [configure access to Google services from internal IPs](https://cloud.google.com/compute/docs/configure-private-google-access#configuring_access_to_google_services_from_internal_ips).
-func (o PipelineResourcesPtrOutput) NoAddress() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PipelineResources) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.NoAddress
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to use preemptible VMs. Defaults to `false`. In order to use this, must be true for both create time and run time. Cannot be true at run time if false at create time.
-func (o PipelineResourcesPtrOutput) Preemptible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PipelineResources) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Preemptible
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of Google Compute Engine availability zones to which resource creation will restricted. If empty, any zone may be chosen.
-func (o PipelineResourcesPtrOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PipelineResources) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Zones
-	}).(pulumi.StringArrayOutput)
-}
-
 // The system resources for the pipeline run.
 type PipelineResourcesResponse struct {
 	// Optional. The number of accelerators of the specified type to attach. By specifying this parameter, you will download and install the following third-party software onto your managed Compute Engine instances: NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit.
@@ -1409,92 +963,6 @@ type PipelineResourcesResponse struct {
 	Zones []string `pulumi:"zones"`
 }
 
-// PipelineResourcesResponseInput is an input type that accepts PipelineResourcesResponseArgs and PipelineResourcesResponseOutput values.
-// You can construct a concrete instance of `PipelineResourcesResponseInput` via:
-//
-//          PipelineResourcesResponseArgs{...}
-type PipelineResourcesResponseInput interface {
-	pulumi.Input
-
-	ToPipelineResourcesResponseOutput() PipelineResourcesResponseOutput
-	ToPipelineResourcesResponseOutputWithContext(context.Context) PipelineResourcesResponseOutput
-}
-
-// The system resources for the pipeline run.
-type PipelineResourcesResponseArgs struct {
-	// Optional. The number of accelerators of the specified type to attach. By specifying this parameter, you will download and install the following third-party software onto your managed Compute Engine instances: NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit.
-	AcceleratorCount pulumi.StringInput `pulumi:"acceleratorCount"`
-	// Optional. The Compute Engine defined accelerator type. By specifying this parameter, you will download and install the following third-party software onto your managed Compute Engine instances: NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit. Please see https://cloud.google.com/compute/docs/gpus/ for a list of available accelerator types.
-	AcceleratorType pulumi.StringInput `pulumi:"acceleratorType"`
-	// The size of the boot disk. Defaults to 10 (GB).
-	BootDiskSizeGb pulumi.IntInput `pulumi:"bootDiskSizeGb"`
-	// Disks to attach.
-	Disks DiskResponseArrayInput `pulumi:"disks"`
-	// The minimum number of cores to use. Defaults to 1.
-	MinimumCpuCores pulumi.IntInput `pulumi:"minimumCpuCores"`
-	// The minimum amount of RAM to use. Defaults to 3.75 (GB)
-	MinimumRamGb pulumi.Float64Input `pulumi:"minimumRamGb"`
-	// Whether to assign an external IP to the instance. This is an experimental feature that may go away. Defaults to false. Corresponds to `--no_address` flag for [gcloud compute instances create] (https://cloud.google.com/sdk/gcloud/reference/compute/instances/create). In order to use this, must be true for both create time and run time. Cannot be true at run time if false at create time. If you need to ssh into a private IP VM for debugging, you can ssh to a public VM and then ssh into the private VM's Internal IP. If noAddress is set, this pipeline run may only load docker images from Google Container Registry and not Docker Hub. Before using this, you must [configure access to Google services from internal IPs](https://cloud.google.com/compute/docs/configure-private-google-access#configuring_access_to_google_services_from_internal_ips).
-	NoAddress pulumi.BoolInput `pulumi:"noAddress"`
-	// Whether to use preemptible VMs. Defaults to `false`. In order to use this, must be true for both create time and run time. Cannot be true at run time if false at create time.
-	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
-	// List of Google Compute Engine availability zones to which resource creation will restricted. If empty, any zone may be chosen.
-	Zones pulumi.StringArrayInput `pulumi:"zones"`
-}
-
-func (PipelineResourcesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineResourcesResponse)(nil)).Elem()
-}
-
-func (i PipelineResourcesResponseArgs) ToPipelineResourcesResponseOutput() PipelineResourcesResponseOutput {
-	return i.ToPipelineResourcesResponseOutputWithContext(context.Background())
-}
-
-func (i PipelineResourcesResponseArgs) ToPipelineResourcesResponseOutputWithContext(ctx context.Context) PipelineResourcesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineResourcesResponseOutput)
-}
-
-func (i PipelineResourcesResponseArgs) ToPipelineResourcesResponsePtrOutput() PipelineResourcesResponsePtrOutput {
-	return i.ToPipelineResourcesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PipelineResourcesResponseArgs) ToPipelineResourcesResponsePtrOutputWithContext(ctx context.Context) PipelineResourcesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineResourcesResponseOutput).ToPipelineResourcesResponsePtrOutputWithContext(ctx)
-}
-
-// PipelineResourcesResponsePtrInput is an input type that accepts PipelineResourcesResponseArgs, PipelineResourcesResponsePtr and PipelineResourcesResponsePtrOutput values.
-// You can construct a concrete instance of `PipelineResourcesResponsePtrInput` via:
-//
-//          PipelineResourcesResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PipelineResourcesResponsePtrInput interface {
-	pulumi.Input
-
-	ToPipelineResourcesResponsePtrOutput() PipelineResourcesResponsePtrOutput
-	ToPipelineResourcesResponsePtrOutputWithContext(context.Context) PipelineResourcesResponsePtrOutput
-}
-
-type pipelineResourcesResponsePtrType PipelineResourcesResponseArgs
-
-func PipelineResourcesResponsePtr(v *PipelineResourcesResponseArgs) PipelineResourcesResponsePtrInput {
-	return (*pipelineResourcesResponsePtrType)(v)
-}
-
-func (*pipelineResourcesResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineResourcesResponse)(nil)).Elem()
-}
-
-func (i *pipelineResourcesResponsePtrType) ToPipelineResourcesResponsePtrOutput() PipelineResourcesResponsePtrOutput {
-	return i.ToPipelineResourcesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *pipelineResourcesResponsePtrType) ToPipelineResourcesResponsePtrOutputWithContext(ctx context.Context) PipelineResourcesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineResourcesResponsePtrOutput)
-}
-
 // The system resources for the pipeline run.
 type PipelineResourcesResponseOutput struct{ *pulumi.OutputState }
 
@@ -1508,16 +976,6 @@ func (o PipelineResourcesResponseOutput) ToPipelineResourcesResponseOutput() Pip
 
 func (o PipelineResourcesResponseOutput) ToPipelineResourcesResponseOutputWithContext(ctx context.Context) PipelineResourcesResponseOutput {
 	return o
-}
-
-func (o PipelineResourcesResponseOutput) ToPipelineResourcesResponsePtrOutput() PipelineResourcesResponsePtrOutput {
-	return o.ToPipelineResourcesResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PipelineResourcesResponseOutput) ToPipelineResourcesResponsePtrOutputWithContext(ctx context.Context) PipelineResourcesResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineResourcesResponse) *PipelineResourcesResponse {
-		return &v
-	}).(PipelineResourcesResponsePtrOutput)
 }
 
 // Optional. The number of accelerators of the specified type to attach. By specifying this parameter, you will download and install the following third-party software onto your managed Compute Engine instances: NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit.
@@ -1565,140 +1023,16 @@ func (o PipelineResourcesResponseOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PipelineResourcesResponse) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
-type PipelineResourcesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PipelineResourcesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineResourcesResponse)(nil)).Elem()
-}
-
-func (o PipelineResourcesResponsePtrOutput) ToPipelineResourcesResponsePtrOutput() PipelineResourcesResponsePtrOutput {
-	return o
-}
-
-func (o PipelineResourcesResponsePtrOutput) ToPipelineResourcesResponsePtrOutputWithContext(ctx context.Context) PipelineResourcesResponsePtrOutput {
-	return o
-}
-
-func (o PipelineResourcesResponsePtrOutput) Elem() PipelineResourcesResponseOutput {
-	return o.ApplyT(func(v *PipelineResourcesResponse) PipelineResourcesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PipelineResourcesResponse
-		return ret
-	}).(PipelineResourcesResponseOutput)
-}
-
-// Optional. The number of accelerators of the specified type to attach. By specifying this parameter, you will download and install the following third-party software onto your managed Compute Engine instances: NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit.
-func (o PipelineResourcesResponsePtrOutput) AcceleratorCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineResourcesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AcceleratorCount
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The Compute Engine defined accelerator type. By specifying this parameter, you will download and install the following third-party software onto your managed Compute Engine instances: NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit. Please see https://cloud.google.com/compute/docs/gpus/ for a list of available accelerator types.
-func (o PipelineResourcesResponsePtrOutput) AcceleratorType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineResourcesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AcceleratorType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The size of the boot disk. Defaults to 10 (GB).
-func (o PipelineResourcesResponsePtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PipelineResourcesResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.BootDiskSizeGb
-	}).(pulumi.IntPtrOutput)
-}
-
-// Disks to attach.
-func (o PipelineResourcesResponsePtrOutput) Disks() DiskResponseArrayOutput {
-	return o.ApplyT(func(v *PipelineResourcesResponse) []DiskResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Disks
-	}).(DiskResponseArrayOutput)
-}
-
-// The minimum number of cores to use. Defaults to 1.
-func (o PipelineResourcesResponsePtrOutput) MinimumCpuCores() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PipelineResourcesResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MinimumCpuCores
-	}).(pulumi.IntPtrOutput)
-}
-
-// The minimum amount of RAM to use. Defaults to 3.75 (GB)
-func (o PipelineResourcesResponsePtrOutput) MinimumRamGb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *PipelineResourcesResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.MinimumRamGb
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Whether to assign an external IP to the instance. This is an experimental feature that may go away. Defaults to false. Corresponds to `--no_address` flag for [gcloud compute instances create] (https://cloud.google.com/sdk/gcloud/reference/compute/instances/create). In order to use this, must be true for both create time and run time. Cannot be true at run time if false at create time. If you need to ssh into a private IP VM for debugging, you can ssh to a public VM and then ssh into the private VM's Internal IP. If noAddress is set, this pipeline run may only load docker images from Google Container Registry and not Docker Hub. Before using this, you must [configure access to Google services from internal IPs](https://cloud.google.com/compute/docs/configure-private-google-access#configuring_access_to_google_services_from_internal_ips).
-func (o PipelineResourcesResponsePtrOutput) NoAddress() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PipelineResourcesResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.NoAddress
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to use preemptible VMs. Defaults to `false`. In order to use this, must be true for both create time and run time. Cannot be true at run time if false at create time.
-func (o PipelineResourcesResponsePtrOutput) Preemptible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PipelineResourcesResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Preemptible
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of Google Compute Engine availability zones to which resource creation will restricted. If empty, any zone may be chosen.
-func (o PipelineResourcesResponsePtrOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PipelineResourcesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Zones
-	}).(pulumi.StringArrayOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInput)(nil)).Elem(), DiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskArrayInput)(nil)).Elem(), DiskArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DiskResponseInput)(nil)).Elem(), DiskResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DiskResponseArrayInput)(nil)).Elem(), DiskResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerExecutorInput)(nil)).Elem(), DockerExecutorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerExecutorPtrInput)(nil)).Elem(), DockerExecutorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DockerExecutorResponseInput)(nil)).Elem(), DockerExecutorResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DockerExecutorResponsePtrInput)(nil)).Elem(), DockerExecutorResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalCopyInput)(nil)).Elem(), LocalCopyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalCopyPtrInput)(nil)).Elem(), LocalCopyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LocalCopyResponseInput)(nil)).Elem(), LocalCopyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineParameterInput)(nil)).Elem(), PipelineParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineParameterArrayInput)(nil)).Elem(), PipelineParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineParameterResponseInput)(nil)).Elem(), PipelineParameterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineParameterResponseArrayInput)(nil)).Elem(), PipelineParameterResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineResourcesInput)(nil)).Elem(), PipelineResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineResourcesPtrInput)(nil)).Elem(), PipelineResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineResourcesResponseInput)(nil)).Elem(), PipelineResourcesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineResourcesResponsePtrInput)(nil)).Elem(), PipelineResourcesResponseArgs{})
 	pulumi.RegisterOutputType(DiskOutput{})
 	pulumi.RegisterOutputType(DiskArrayOutput{})
 	pulumi.RegisterOutputType(DiskResponseOutput{})
@@ -1706,7 +1040,6 @@ func init() {
 	pulumi.RegisterOutputType(DockerExecutorOutput{})
 	pulumi.RegisterOutputType(DockerExecutorPtrOutput{})
 	pulumi.RegisterOutputType(DockerExecutorResponseOutput{})
-	pulumi.RegisterOutputType(DockerExecutorResponsePtrOutput{})
 	pulumi.RegisterOutputType(LocalCopyOutput{})
 	pulumi.RegisterOutputType(LocalCopyPtrOutput{})
 	pulumi.RegisterOutputType(LocalCopyResponseOutput{})
@@ -1715,7 +1048,5 @@ func init() {
 	pulumi.RegisterOutputType(PipelineParameterResponseOutput{})
 	pulumi.RegisterOutputType(PipelineParameterResponseArrayOutput{})
 	pulumi.RegisterOutputType(PipelineResourcesOutput{})
-	pulumi.RegisterOutputType(PipelineResourcesPtrOutput{})
 	pulumi.RegisterOutputType(PipelineResourcesResponseOutput{})
-	pulumi.RegisterOutputType(PipelineResourcesResponsePtrOutput{})
 }

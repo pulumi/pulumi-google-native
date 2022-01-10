@@ -131,7 +131,7 @@ type PhraseMatcherInput interface {
 }
 
 func (*PhraseMatcher) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhraseMatcher)(nil))
+	return reflect.TypeOf((**PhraseMatcher)(nil)).Elem()
 }
 
 func (i *PhraseMatcher) ToPhraseMatcherOutput() PhraseMatcherOutput {
@@ -145,7 +145,7 @@ func (i *PhraseMatcher) ToPhraseMatcherOutputWithContext(ctx context.Context) Ph
 type PhraseMatcherOutput struct{ *pulumi.OutputState }
 
 func (PhraseMatcherOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhraseMatcher)(nil))
+	return reflect.TypeOf((**PhraseMatcher)(nil)).Elem()
 }
 
 func (o PhraseMatcherOutput) ToPhraseMatcherOutput() PhraseMatcherOutput {

@@ -96,7 +96,7 @@ type StoredInfoTypeInput interface {
 }
 
 func (*StoredInfoType) ElementType() reflect.Type {
-	return reflect.TypeOf((*StoredInfoType)(nil))
+	return reflect.TypeOf((**StoredInfoType)(nil)).Elem()
 }
 
 func (i *StoredInfoType) ToStoredInfoTypeOutput() StoredInfoTypeOutput {
@@ -110,7 +110,7 @@ func (i *StoredInfoType) ToStoredInfoTypeOutputWithContext(ctx context.Context) 
 type StoredInfoTypeOutput struct{ *pulumi.OutputState }
 
 func (StoredInfoTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StoredInfoType)(nil))
+	return reflect.TypeOf((**StoredInfoType)(nil)).Elem()
 }
 
 func (o StoredInfoTypeOutput) ToStoredInfoTypeOutput() StoredInfoTypeOutput {

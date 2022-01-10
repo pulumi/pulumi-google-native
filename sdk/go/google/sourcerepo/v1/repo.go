@@ -105,7 +105,7 @@ type RepoInput interface {
 }
 
 func (*Repo) ElementType() reflect.Type {
-	return reflect.TypeOf((*Repo)(nil))
+	return reflect.TypeOf((**Repo)(nil)).Elem()
 }
 
 func (i *Repo) ToRepoOutput() RepoOutput {
@@ -119,7 +119,7 @@ func (i *Repo) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
 type RepoOutput struct{ *pulumi.OutputState }
 
 func (RepoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Repo)(nil))
+	return reflect.TypeOf((**Repo)(nil)).Elem()
 }
 
 func (o RepoOutput) ToRepoOutput() RepoOutput {

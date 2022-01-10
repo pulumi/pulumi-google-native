@@ -113,7 +113,7 @@ type LicenseCodeIamPolicyInput interface {
 }
 
 func (*LicenseCodeIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseCodeIamPolicy)(nil))
+	return reflect.TypeOf((**LicenseCodeIamPolicy)(nil)).Elem()
 }
 
 func (i *LicenseCodeIamPolicy) ToLicenseCodeIamPolicyOutput() LicenseCodeIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *LicenseCodeIamPolicy) ToLicenseCodeIamPolicyOutputWithContext(ctx conte
 type LicenseCodeIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (LicenseCodeIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseCodeIamPolicy)(nil))
+	return reflect.TypeOf((**LicenseCodeIamPolicy)(nil)).Elem()
 }
 
 func (o LicenseCodeIamPolicyOutput) ToLicenseCodeIamPolicyOutput() LicenseCodeIamPolicyOutput {

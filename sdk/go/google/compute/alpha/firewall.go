@@ -175,7 +175,7 @@ type FirewallInput interface {
 }
 
 func (*Firewall) ElementType() reflect.Type {
-	return reflect.TypeOf((*Firewall)(nil))
+	return reflect.TypeOf((**Firewall)(nil)).Elem()
 }
 
 func (i *Firewall) ToFirewallOutput() FirewallOutput {
@@ -189,7 +189,7 @@ func (i *Firewall) ToFirewallOutputWithContext(ctx context.Context) FirewallOutp
 type FirewallOutput struct{ *pulumi.OutputState }
 
 func (FirewallOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Firewall)(nil))
+	return reflect.TypeOf((**Firewall)(nil)).Elem()
 }
 
 func (o FirewallOutput) ToFirewallOutput() FirewallOutput {

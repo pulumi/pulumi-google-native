@@ -92,7 +92,7 @@ type IdentityAwareProxyClientInput interface {
 }
 
 func (*IdentityAwareProxyClient) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityAwareProxyClient)(nil))
+	return reflect.TypeOf((**IdentityAwareProxyClient)(nil)).Elem()
 }
 
 func (i *IdentityAwareProxyClient) ToIdentityAwareProxyClientOutput() IdentityAwareProxyClientOutput {
@@ -106,7 +106,7 @@ func (i *IdentityAwareProxyClient) ToIdentityAwareProxyClientOutputWithContext(c
 type IdentityAwareProxyClientOutput struct{ *pulumi.OutputState }
 
 func (IdentityAwareProxyClientOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityAwareProxyClient)(nil))
+	return reflect.TypeOf((**IdentityAwareProxyClient)(nil)).Elem()
 }
 
 func (o IdentityAwareProxyClientOutput) ToIdentityAwareProxyClientOutput() IdentityAwareProxyClientOutput {

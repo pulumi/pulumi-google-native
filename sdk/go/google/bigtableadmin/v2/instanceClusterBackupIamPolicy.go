@@ -121,7 +121,7 @@ type InstanceClusterBackupIamPolicyInput interface {
 }
 
 func (*InstanceClusterBackupIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceClusterBackupIamPolicy)(nil))
+	return reflect.TypeOf((**InstanceClusterBackupIamPolicy)(nil)).Elem()
 }
 
 func (i *InstanceClusterBackupIamPolicy) ToInstanceClusterBackupIamPolicyOutput() InstanceClusterBackupIamPolicyOutput {
@@ -135,7 +135,7 @@ func (i *InstanceClusterBackupIamPolicy) ToInstanceClusterBackupIamPolicyOutputW
 type InstanceClusterBackupIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (InstanceClusterBackupIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceClusterBackupIamPolicy)(nil))
+	return reflect.TypeOf((**InstanceClusterBackupIamPolicy)(nil)).Elem()
 }
 
 func (o InstanceClusterBackupIamPolicyOutput) ToInstanceClusterBackupIamPolicyOutput() InstanceClusterBackupIamPolicyOutput {
