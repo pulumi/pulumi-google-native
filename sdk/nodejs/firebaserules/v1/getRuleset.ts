@@ -13,9 +13,7 @@ export function getRuleset(args: GetRulesetArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:firebaserules/v1:getRuleset", {
         "project": args.project,
         "rulesetId": args.rulesetId,

@@ -13,9 +13,7 @@ export function getJobTrigger(args: GetJobTriggerArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:dlp/v2:getJobTrigger", {
         "jobTriggerId": args.jobTriggerId,
         "location": args.location,

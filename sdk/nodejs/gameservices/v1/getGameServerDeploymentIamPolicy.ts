@@ -13,9 +13,7 @@ export function getGameServerDeploymentIamPolicy(args: GetGameServerDeploymentIa
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:gameservices/v1:getGameServerDeploymentIamPolicy", {
         "gameServerDeploymentId": args.gameServerDeploymentId,
         "location": args.location,

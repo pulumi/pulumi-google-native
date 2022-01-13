@@ -123,9 +123,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["writerIdentity"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BillingAccountSink.__pulumiType, name, resourceInputs, opts);
     }
 }

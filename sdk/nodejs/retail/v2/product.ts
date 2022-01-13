@@ -259,9 +259,7 @@ export class Product extends pulumi.CustomResource {
             resourceInputs["uri"] = undefined /*out*/;
             resourceInputs["variants"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Product.__pulumiType, name, resourceInputs, opts);
     }
 }

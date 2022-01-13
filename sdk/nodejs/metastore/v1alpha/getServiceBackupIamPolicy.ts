@@ -13,9 +13,7 @@ export function getServiceBackupIamPolicy(args: GetServiceBackupIamPolicyArgs, o
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:metastore/v1alpha:getServiceBackupIamPolicy", {
         "backupId": args.backupId,
         "location": args.location,

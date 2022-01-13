@@ -86,9 +86,7 @@ export class Hl7V2Store extends pulumi.CustomResource {
             resourceInputs["parserConfig"] = undefined /*out*/;
             resourceInputs["rejectDuplicateMessage"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Hl7V2Store.__pulumiType, name, resourceInputs, opts);
     }
 }

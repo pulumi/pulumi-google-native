@@ -13,9 +13,7 @@ export function getNode(args: GetNodeArgs, opts?: pulumi.InvokeOptions): Promise
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:tpu/v1alpha1:getNode", {
         "location": args.location,
         "nodeId": args.nodeId,

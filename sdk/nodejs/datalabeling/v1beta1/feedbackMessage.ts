@@ -92,9 +92,7 @@ export class FeedbackMessage extends pulumi.CustomResource {
             resourceInputs["operatorFeedbackMetadata"] = undefined /*out*/;
             resourceInputs["requesterFeedbackMetadata"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FeedbackMessage.__pulumiType, name, resourceInputs, opts);
     }
 }

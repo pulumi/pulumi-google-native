@@ -91,9 +91,7 @@ export class Taxonomy extends pulumi.CustomResource {
             resourceInputs["policyTagCount"] = undefined /*out*/;
             resourceInputs["taxonomyTimestamps"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Taxonomy.__pulumiType, name, resourceInputs, opts);
     }
 }

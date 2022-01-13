@@ -83,9 +83,7 @@ export class Reference extends pulumi.CustomResource {
             resourceInputs["refers"] = undefined /*out*/;
             resourceInputs["resourceType"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Reference.__pulumiType, name, resourceInputs, opts);
     }
 }

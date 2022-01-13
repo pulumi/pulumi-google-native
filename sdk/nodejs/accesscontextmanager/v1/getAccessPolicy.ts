@@ -12,9 +12,7 @@ export function getAccessPolicy(args: GetAccessPolicyArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:accesscontextmanager/v1:getAccessPolicy", {
         "accessPolicyId": args.accessPolicyId,
     }, opts);

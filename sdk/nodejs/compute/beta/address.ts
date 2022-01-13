@@ -162,9 +162,7 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Address.__pulumiType, name, resourceInputs, opts);
     }
 }

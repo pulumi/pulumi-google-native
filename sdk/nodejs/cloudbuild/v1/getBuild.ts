@@ -13,9 +13,7 @@ export function getBuild(args: GetBuildArgs, opts?: pulumi.InvokeOptions): Promi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:cloudbuild/v1:getBuild", {
         "buildId": args.buildId,
         "id": args.id,

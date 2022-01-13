@@ -138,9 +138,7 @@ export class RegionSslPolicy extends pulumi.CustomResource {
             resourceInputs["tlsSettings"] = undefined /*out*/;
             resourceInputs["warnings"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegionSslPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

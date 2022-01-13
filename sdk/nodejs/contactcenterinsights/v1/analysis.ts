@@ -79,9 +79,7 @@ export class Analysis extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["requestTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Analysis.__pulumiType, name, resourceInputs, opts);
     }
 }

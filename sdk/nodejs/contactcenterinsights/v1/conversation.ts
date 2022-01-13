@@ -166,9 +166,7 @@ export class Conversation extends pulumi.CustomResource {
             resourceInputs["turnCount"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Conversation.__pulumiType, name, resourceInputs, opts);
     }
 }

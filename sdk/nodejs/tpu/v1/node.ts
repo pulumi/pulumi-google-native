@@ -161,9 +161,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["tensorflowVersion"] = undefined /*out*/;
             resourceInputs["useServiceNetworking"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Node.__pulumiType, name, resourceInputs, opts);
     }
 }

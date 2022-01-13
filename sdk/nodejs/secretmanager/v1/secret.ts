@@ -112,9 +112,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["topics"] = undefined /*out*/;
             resourceInputs["ttl"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Secret.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -93,9 +93,7 @@ export class OrganizationContact extends pulumi.CustomResource {
             resourceInputs["validateTime"] = undefined /*out*/;
             resourceInputs["validationState"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationContact.__pulumiType, name, resourceInputs, opts);
     }
 }

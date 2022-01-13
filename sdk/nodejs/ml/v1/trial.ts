@@ -116,9 +116,7 @@ export class Trial extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["trialInfeasible"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Trial.__pulumiType, name, resourceInputs, opts);
     }
 }

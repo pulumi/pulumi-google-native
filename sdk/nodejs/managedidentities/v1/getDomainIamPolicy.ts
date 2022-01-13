@@ -13,9 +13,7 @@ export function getDomainIamPolicy(args: GetDomainIamPolicyArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:managedidentities/v1:getDomainIamPolicy", {
         "domainId": args.domainId,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,

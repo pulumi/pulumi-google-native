@@ -13,9 +13,7 @@ export function getV1beta1IamPolicy(args: GetV1beta1IamPolicyArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:iap/v1beta1:getV1beta1IamPolicy", {
         "v1beta1Id": args.v1beta1Id,
     }, opts);

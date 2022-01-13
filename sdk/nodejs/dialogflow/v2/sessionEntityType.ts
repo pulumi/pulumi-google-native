@@ -91,9 +91,7 @@ export class SessionEntityType extends pulumi.CustomResource {
             resourceInputs["entityOverrideMode"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SessionEntityType.__pulumiType, name, resourceInputs, opts);
     }
 }

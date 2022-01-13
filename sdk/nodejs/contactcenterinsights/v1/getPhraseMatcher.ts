@@ -13,9 +13,7 @@ export function getPhraseMatcher(args: GetPhraseMatcherArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:contactcenterinsights/v1:getPhraseMatcher", {
         "location": args.location,
         "phraseMatcherId": args.phraseMatcherId,

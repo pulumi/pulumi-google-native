@@ -13,9 +13,7 @@ export function getNodePool(args: GetNodePoolArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:container/v1:getNodePool", {
         "clusterId": args.clusterId,
         "location": args.location,

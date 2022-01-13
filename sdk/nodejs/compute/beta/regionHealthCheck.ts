@@ -144,9 +144,7 @@ export class RegionHealthCheck extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["unhealthyThreshold"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegionHealthCheck.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -13,9 +13,7 @@ export function getTaxonomy(args: GetTaxonomyArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:datacatalog/v1beta1:getTaxonomy", {
         "location": args.location,
         "project": args.project,

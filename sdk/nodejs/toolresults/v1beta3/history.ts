@@ -77,9 +77,7 @@ export class History extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["testPlatform"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(History.__pulumiType, name, resourceInputs, opts);
     }
 }

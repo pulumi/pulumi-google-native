@@ -77,9 +77,7 @@ export class DebugToken extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["token"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DebugToken.__pulumiType, name, resourceInputs, opts);
     }
 }

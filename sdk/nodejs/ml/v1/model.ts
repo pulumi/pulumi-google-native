@@ -98,9 +98,7 @@ export class Model extends pulumi.CustomResource {
             resourceInputs["onlinePredictionLogging"] = undefined /*out*/;
             resourceInputs["regions"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Model.__pulumiType, name, resourceInputs, opts);
     }
 }

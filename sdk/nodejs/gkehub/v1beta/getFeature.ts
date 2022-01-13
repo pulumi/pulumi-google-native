@@ -13,9 +13,7 @@ export function getFeature(args: GetFeatureArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:gkehub/v1beta:getFeature", {
         "featureId": args.featureId,
         "location": args.location,

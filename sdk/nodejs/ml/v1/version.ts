@@ -216,9 +216,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Version.__pulumiType, name, resourceInputs, opts);
     }
 }

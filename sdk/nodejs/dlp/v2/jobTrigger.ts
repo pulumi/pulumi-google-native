@@ -115,9 +115,7 @@ export class JobTrigger extends pulumi.CustomResource {
             resourceInputs["triggers"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(JobTrigger.__pulumiType, name, resourceInputs, opts);
     }
 }

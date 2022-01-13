@@ -13,9 +13,7 @@ export function getBackupRun(args: GetBackupRunArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:sqladmin/v1beta4:getBackupRun", {
         "id": args.id,
         "instance": args.instance,

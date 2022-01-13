@@ -13,9 +13,7 @@ export function getMetadataImport(args: GetMetadataImportArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:metastore/v1alpha:getMetadataImport", {
         "location": args.location,
         "metadataImportId": args.metadataImportId,

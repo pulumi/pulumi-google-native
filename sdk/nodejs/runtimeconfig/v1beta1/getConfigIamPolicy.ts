@@ -13,9 +13,7 @@ export function getConfigIamPolicy(args: GetConfigIamPolicyArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:runtimeconfig/v1beta1:getConfigIamPolicy", {
         "configId": args.configId,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,

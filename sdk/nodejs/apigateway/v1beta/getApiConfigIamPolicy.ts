@@ -13,9 +13,7 @@ export function getApiConfigIamPolicy(args: GetApiConfigIamPolicyArgs, opts?: pu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:apigateway/v1beta:getApiConfigIamPolicy", {
         "apiId": args.apiId,
         "configId": args.configId,

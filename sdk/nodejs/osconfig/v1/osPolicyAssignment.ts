@@ -142,9 +142,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
             resourceInputs["rolloutState"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OsPolicyAssignment.__pulumiType, name, resourceInputs, opts);
     }
 }

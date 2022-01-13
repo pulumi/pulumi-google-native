@@ -13,9 +13,7 @@ export function getEntryGroupIamPolicy(args: GetEntryGroupIamPolicyArgs, opts?: 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:datacatalog/v1:getEntryGroupIamPolicy", {
         "entryGroupId": args.entryGroupId,
         "location": args.location,

@@ -76,9 +76,7 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
             resourceInputs["groupKey"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GcpUserAccessBinding.__pulumiType, name, resourceInputs, opts);
     }
 }

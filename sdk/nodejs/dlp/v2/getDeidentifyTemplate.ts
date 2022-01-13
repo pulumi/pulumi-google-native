@@ -13,9 +13,7 @@ export function getDeidentifyTemplate(args: GetDeidentifyTemplateArgs, opts?: pu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:dlp/v2:getDeidentifyTemplate", {
         "deidentifyTemplateId": args.deidentifyTemplateId,
         "location": args.location,

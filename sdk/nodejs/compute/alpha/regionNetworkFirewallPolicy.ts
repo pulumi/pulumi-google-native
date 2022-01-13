@@ -133,9 +133,7 @@ export class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["shortName"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegionNetworkFirewallPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

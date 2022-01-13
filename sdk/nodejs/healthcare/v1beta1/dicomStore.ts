@@ -80,9 +80,7 @@ export class DicomStore extends pulumi.CustomResource {
             resourceInputs["notificationConfig"] = undefined /*out*/;
             resourceInputs["streamConfigs"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DicomStore.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -13,9 +13,7 @@ export function getManagedZone(args: GetManagedZoneArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:dns/v1:getManagedZone", {
         "clientOperationId": args.clientOperationId,
         "managedZone": args.managedZone,

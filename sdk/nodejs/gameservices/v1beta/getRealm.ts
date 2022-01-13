@@ -12,9 +12,7 @@ export function getRealm(args: GetRealmArgs, opts?: pulumi.InvokeOptions): Promi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:gameservices/v1beta:getRealm", {
         "location": args.location,
         "project": args.project,

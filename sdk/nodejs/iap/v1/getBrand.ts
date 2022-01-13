@@ -12,9 +12,7 @@ export function getBrand(args: GetBrandArgs, opts?: pulumi.InvokeOptions): Promi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:iap/v1:getBrand", {
         "brandId": args.brandId,
         "project": args.project,

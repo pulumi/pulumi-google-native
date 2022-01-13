@@ -13,9 +13,7 @@ export function getBucketIamPolicy(args: GetBucketIamPolicyArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:storage/v1:getBucketIamPolicy", {
         "bucket": args.bucket,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,

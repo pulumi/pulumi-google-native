@@ -144,9 +144,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["userSpecifiedSystem"] = undefined /*out*/;
             resourceInputs["userSpecifiedType"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Entry.__pulumiType, name, resourceInputs, opts);
     }
 }

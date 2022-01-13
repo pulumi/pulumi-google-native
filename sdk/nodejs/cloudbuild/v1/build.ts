@@ -228,9 +228,7 @@ export class Build extends pulumi.CustomResource {
             resourceInputs["timing"] = undefined /*out*/;
             resourceInputs["warnings"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Build.__pulumiType, name, resourceInputs, opts);
     }
 }

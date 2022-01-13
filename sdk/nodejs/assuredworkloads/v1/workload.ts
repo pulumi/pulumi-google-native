@@ -145,9 +145,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["resources"] = undefined /*out*/;
             resourceInputs["saaEnrollmentResponse"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Workload.__pulumiType, name, resourceInputs, opts);
     }
 }

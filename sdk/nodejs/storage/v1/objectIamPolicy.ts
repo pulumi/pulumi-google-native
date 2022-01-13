@@ -92,9 +92,7 @@ export class ObjectIamPolicy extends pulumi.CustomResource {
             resourceInputs["resourceId"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ObjectIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

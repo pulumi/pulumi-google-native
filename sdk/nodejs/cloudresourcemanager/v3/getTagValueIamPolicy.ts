@@ -13,9 +13,7 @@ export function getTagValueIamPolicy(args: GetTagValueIamPolicyArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v3:getTagValueIamPolicy", {
         "tagValueId": args.tagValueId,
     }, opts);

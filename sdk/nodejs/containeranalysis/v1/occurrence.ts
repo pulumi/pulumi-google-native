@@ -165,9 +165,7 @@ export class Occurrence extends pulumi.CustomResource {
             resourceInputs["upgrade"] = undefined /*out*/;
             resourceInputs["vulnerability"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Occurrence.__pulumiType, name, resourceInputs, opts);
     }
 }

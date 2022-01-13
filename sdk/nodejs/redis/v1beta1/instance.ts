@@ -240,9 +240,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tier"] = undefined /*out*/;
             resourceInputs["transitEncryptionMode"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }

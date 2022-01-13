@@ -111,9 +111,7 @@ export class TargetSslProxy extends pulumi.CustomResource {
             resourceInputs["sslCertificates"] = undefined /*out*/;
             resourceInputs["sslPolicy"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TargetSslProxy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -243,9 +243,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["vpcConnector"] = undefined /*out*/;
             resourceInputs["vpcConnectorEgressSettings"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Function.__pulumiType, name, resourceInputs, opts);
     }
 }

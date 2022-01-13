@@ -189,9 +189,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["storageBytesStatus"] = undefined /*out*/;
             resourceInputs["storageLocations"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Snapshot.__pulumiType, name, resourceInputs, opts);
     }
 }

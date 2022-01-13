@@ -13,9 +13,7 @@ export function getTestMatrix(args: GetTestMatrixArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:testing/v1:getTestMatrix", {
         "project": args.project,
         "testMatrixId": args.testMatrixId,

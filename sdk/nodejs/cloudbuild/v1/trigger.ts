@@ -193,9 +193,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["triggerTemplate"] = undefined /*out*/;
             resourceInputs["webhookConfig"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Trigger.__pulumiType, name, resourceInputs, opts);
     }
 }

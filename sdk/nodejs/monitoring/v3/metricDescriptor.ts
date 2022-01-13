@@ -116,9 +116,7 @@ export class MetricDescriptor extends pulumi.CustomResource {
             resourceInputs["unit"] = undefined /*out*/;
             resourceInputs["valueType"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MetricDescriptor.__pulumiType, name, resourceInputs, opts);
     }
 }

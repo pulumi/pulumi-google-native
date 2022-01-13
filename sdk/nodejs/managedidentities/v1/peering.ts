@@ -108,9 +108,7 @@ export class Peering extends pulumi.CustomResource {
             resourceInputs["statusMessage"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Peering.__pulumiType, name, resourceInputs, opts);
     }
 }

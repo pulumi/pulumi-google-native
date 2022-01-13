@@ -78,9 +78,7 @@ export class IngressRule extends pulumi.CustomResource {
             resourceInputs["priority"] = undefined /*out*/;
             resourceInputs["sourceRange"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IngressRule.__pulumiType, name, resourceInputs, opts);
     }
 }

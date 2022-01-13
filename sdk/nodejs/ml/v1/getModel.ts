@@ -13,9 +13,7 @@ export function getModel(args: GetModelArgs, opts?: pulumi.InvokeOptions): Promi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:ml/v1:getModel", {
         "modelId": args.modelId,
         "project": args.project,

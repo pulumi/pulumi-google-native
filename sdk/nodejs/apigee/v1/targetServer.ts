@@ -105,9 +105,7 @@ export class TargetServer extends pulumi.CustomResource {
             resourceInputs["protocol"] = undefined /*out*/;
             resourceInputs["sSLInfo"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TargetServer.__pulumiType, name, resourceInputs, opts);
     }
 }

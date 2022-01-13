@@ -13,9 +13,7 @@ export function getInspectTemplate(args: GetInspectTemplateArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:dlp/v2:getInspectTemplate", {
         "inspectTemplateId": args.inspectTemplateId,
         "location": args.location,

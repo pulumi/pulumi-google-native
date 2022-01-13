@@ -166,9 +166,7 @@ export class RatePlan extends pulumi.CustomResource {
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RatePlan.__pulumiType, name, resourceInputs, opts);
     }
 }

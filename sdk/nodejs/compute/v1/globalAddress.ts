@@ -147,9 +147,7 @@ export class GlobalAddress extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GlobalAddress.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -13,9 +13,7 @@ export function getPhraseSet(args: GetPhraseSetArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:speech/v1:getPhraseSet", {
         "location": args.location,
         "phraseSetId": args.phraseSetId,

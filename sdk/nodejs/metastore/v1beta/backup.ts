@@ -102,9 +102,7 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["serviceRevision"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Backup.__pulumiType, name, resourceInputs, opts);
     }
 }

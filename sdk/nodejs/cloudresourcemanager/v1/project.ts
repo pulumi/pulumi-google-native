@@ -91,9 +91,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["projectId"] = undefined /*out*/;
             resourceInputs["projectNumber"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Project.__pulumiType, name, resourceInputs, opts);
     }
 }

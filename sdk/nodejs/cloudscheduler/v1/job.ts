@@ -135,9 +135,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["timeZone"] = undefined /*out*/;
             resourceInputs["userUpdateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }

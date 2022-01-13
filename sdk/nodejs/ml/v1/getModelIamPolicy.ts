@@ -13,9 +13,7 @@ export function getModelIamPolicy(args: GetModelIamPolicyArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:ml/v1:getModelIamPolicy", {
         "modelId": args.modelId,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,

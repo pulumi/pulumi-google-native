@@ -281,9 +281,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["vm"] = undefined /*out*/;
             resourceInputs["vpcAccessConnector"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Version.__pulumiType, name, resourceInputs, opts);
     }
 }

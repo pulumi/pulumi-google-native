@@ -248,9 +248,7 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["timeStorageClassUpdated"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketObject.__pulumiType, name, resourceInputs, opts);
     }
 }

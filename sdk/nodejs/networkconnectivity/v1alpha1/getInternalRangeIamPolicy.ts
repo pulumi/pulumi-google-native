@@ -13,9 +13,7 @@ export function getInternalRangeIamPolicy(args: GetInternalRangeIamPolicyArgs, o
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:networkconnectivity/v1alpha1:getInternalRangeIamPolicy", {
         "internalRangeId": args.internalRangeId,
         "location": args.location,

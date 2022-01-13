@@ -120,9 +120,7 @@ export class VpnGateway extends pulumi.CustomResource {
             resourceInputs["stackType"] = undefined /*out*/;
             resourceInputs["vpnInterfaces"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VpnGateway.__pulumiType, name, resourceInputs, opts);
     }
 }

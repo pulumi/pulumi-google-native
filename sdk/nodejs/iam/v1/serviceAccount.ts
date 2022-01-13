@@ -101,9 +101,7 @@ export class ServiceAccount extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceAccount.__pulumiType, name, resourceInputs, opts);
     }
 }

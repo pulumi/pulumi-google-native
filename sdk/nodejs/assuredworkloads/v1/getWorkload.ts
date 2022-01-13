@@ -13,9 +13,7 @@ export function getWorkload(args: GetWorkloadArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:assuredworkloads/v1:getWorkload", {
         "location": args.location,
         "organizationId": args.organizationId,

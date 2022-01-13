@@ -13,9 +13,7 @@ export function getProvider(args: GetProviderArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:iam/v1:getProvider", {
         "location": args.location,
         "project": args.project,

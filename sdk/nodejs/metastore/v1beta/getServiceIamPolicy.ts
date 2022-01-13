@@ -13,9 +13,7 @@ export function getServiceIamPolicy(args: GetServiceIamPolicyArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:metastore/v1beta:getServiceIamPolicy", {
         "location": args.location,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,

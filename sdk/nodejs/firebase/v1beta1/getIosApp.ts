@@ -12,9 +12,7 @@ export function getIosApp(args: GetIosAppArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:firebase/v1beta1:getIosApp", {
         "iosAppId": args.iosAppId,
         "project": args.project,

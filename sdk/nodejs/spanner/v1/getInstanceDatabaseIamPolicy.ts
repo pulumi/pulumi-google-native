@@ -13,9 +13,7 @@ export function getInstanceDatabaseIamPolicy(args: GetInstanceDatabaseIamPolicyA
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:spanner/v1:getInstanceDatabaseIamPolicy", {
         "databaseId": args.databaseId,
         "instanceId": args.instanceId,

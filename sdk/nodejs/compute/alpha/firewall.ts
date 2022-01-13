@@ -165,9 +165,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["targetServiceAccounts"] = undefined /*out*/;
             resourceInputs["targetTags"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Firewall.__pulumiType, name, resourceInputs, opts);
     }
 }

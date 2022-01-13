@@ -173,9 +173,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["symptoms"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Node.__pulumiType, name, resourceInputs, opts);
     }
 }

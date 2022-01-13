@@ -13,9 +13,7 @@ export function getAuthorizationPolicyIamPolicy(args: GetAuthorizationPolicyIamP
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:networksecurity/v1beta1:getAuthorizationPolicyIamPolicy", {
         "authorizationPolicyId": args.authorizationPolicyId,
         "location": args.location,

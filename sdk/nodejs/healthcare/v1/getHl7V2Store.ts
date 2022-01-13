@@ -13,9 +13,7 @@ export function getHl7V2Store(args: GetHl7V2StoreArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:healthcare/v1:getHl7V2Store", {
         "datasetId": args.datasetId,
         "hl7V2StoreId": args.hl7V2StoreId,

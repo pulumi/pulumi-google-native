@@ -108,9 +108,7 @@ export class PrivateConnection extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["vpcPeeringConfig"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PrivateConnection.__pulumiType, name, resourceInputs, opts);
     }
 }
