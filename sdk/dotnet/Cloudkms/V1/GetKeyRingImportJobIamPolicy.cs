@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetKeyRingImportJobIamPolicyResult> InvokeAsync(GetKeyRingImportJobIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyRingImportJobIamPolicyResult>("google-native:cloudkms/v1:getKeyRingImportJobIamPolicy", args ?? new GetKeyRingImportJobIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyRingImportJobIamPolicyResult>("google-native:cloudkms/v1:getKeyRingImportJobIamPolicy", args ?? new GetKeyRingImportJobIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetKeyRingImportJobIamPolicyResult> Invoke(GetKeyRingImportJobIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKeyRingImportJobIamPolicyResult>("google-native:cloudkms/v1:getKeyRingImportJobIamPolicy", args ?? new GetKeyRingImportJobIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKeyRingImportJobIamPolicyResult>("google-native:cloudkms/v1:getKeyRingImportJobIamPolicy", args ?? new GetKeyRingImportJobIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

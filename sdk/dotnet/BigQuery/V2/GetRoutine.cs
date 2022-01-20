@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// Gets the specified routine resource by routine ID.
         /// </summary>
         public static Task<GetRoutineResult> InvokeAsync(GetRoutineArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRoutineResult>("google-native:bigquery/v2:getRoutine", args ?? new GetRoutineArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRoutineResult>("google-native:bigquery/v2:getRoutine", args ?? new GetRoutineArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified routine resource by routine ID.
         /// </summary>
         public static Output<GetRoutineResult> Invoke(GetRoutineInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRoutineResult>("google-native:bigquery/v2:getRoutine", args ?? new GetRoutineInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRoutineResult>("google-native:bigquery/v2:getRoutine", args ?? new GetRoutineInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets the contents of a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
         /// </summary>
         public static Task<GetResourcefileResult> InvokeAsync(GetResourcefileArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcefileResult>("google-native:apigee/v1:getResourcefile", args ?? new GetResourcefileArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcefileResult>("google-native:apigee/v1:getResourcefile", args ?? new GetResourcefileArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the contents of a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
         /// </summary>
         public static Output<GetResourcefileResult> Invoke(GetResourcefileInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResourcefileResult>("google-native:apigee/v1:getResourcefile", args ?? new GetResourcefileInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetResourcefileResult>("google-native:apigee/v1:getResourcefile", args ?? new GetResourcefileInvokeArgs(), options.WithDefaults());
     }
 
 

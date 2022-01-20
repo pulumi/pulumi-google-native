@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         /// Gets details of a single Spoke.
         /// </summary>
         public static Task<GetSpokeResult> InvokeAsync(GetSpokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSpokeResult>("google-native:networkconnectivity/v1alpha1:getSpoke", args ?? new GetSpokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSpokeResult>("google-native:networkconnectivity/v1alpha1:getSpoke", args ?? new GetSpokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Spoke.
         /// </summary>
         public static Output<GetSpokeResult> Invoke(GetSpokeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSpokeResult>("google-native:networkconnectivity/v1alpha1:getSpoke", args ?? new GetSpokeInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSpokeResult>("google-native:networkconnectivity/v1alpha1:getSpoke", args ?? new GetSpokeInvokeArgs(), options.WithDefaults());
     }
 
 

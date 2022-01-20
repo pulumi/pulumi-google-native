@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         /// Gets a Product.
         /// </summary>
         public static Task<GetProductResult> InvokeAsync(GetProductArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProductResult>("google-native:retail/v2alpha:getProduct", args ?? new GetProductArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProductResult>("google-native:retail/v2alpha:getProduct", args ?? new GetProductArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a Product.
         /// </summary>
         public static Output<GetProductResult> Invoke(GetProductInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProductResult>("google-native:retail/v2alpha:getProduct", args ?? new GetProductInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetProductResult>("google-native:retail/v2alpha:getProduct", args ?? new GetProductInvokeArgs(), options.WithDefaults());
     }
 
 

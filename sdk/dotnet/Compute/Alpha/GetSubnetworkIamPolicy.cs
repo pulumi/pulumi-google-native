@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetSubnetworkIamPolicyResult> InvokeAsync(GetSubnetworkIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkIamPolicyResult>("google-native:compute/alpha:getSubnetworkIamPolicy", args ?? new GetSubnetworkIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkIamPolicyResult>("google-native:compute/alpha:getSubnetworkIamPolicy", args ?? new GetSubnetworkIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetSubnetworkIamPolicyResult> Invoke(GetSubnetworkIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSubnetworkIamPolicyResult>("google-native:compute/alpha:getSubnetworkIamPolicy", args ?? new GetSubnetworkIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSubnetworkIamPolicyResult>("google-native:compute/alpha:getSubnetworkIamPolicy", args ?? new GetSubnetworkIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

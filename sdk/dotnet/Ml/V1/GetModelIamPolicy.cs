@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetModelIamPolicyResult> InvokeAsync(GetModelIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetModelIamPolicyResult>("google-native:ml/v1:getModelIamPolicy", args ?? new GetModelIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetModelIamPolicyResult>("google-native:ml/v1:getModelIamPolicy", args ?? new GetModelIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetModelIamPolicyResult> Invoke(GetModelIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetModelIamPolicyResult>("google-native:ml/v1:getModelIamPolicy", args ?? new GetModelIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetModelIamPolicyResult>("google-native:ml/v1:getModelIamPolicy", args ?? new GetModelIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

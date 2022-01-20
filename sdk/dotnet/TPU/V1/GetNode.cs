@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.TPU.V1
         /// Gets the details of a node.
         /// </summary>
         public static Task<GetNodeResult> InvokeAsync(GetNodeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeResult>("google-native:tpu/v1:getNode", args ?? new GetNodeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeResult>("google-native:tpu/v1:getNode", args ?? new GetNodeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the details of a node.
         /// </summary>
         public static Output<GetNodeResult> Invoke(GetNodeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodeResult>("google-native:tpu/v1:getNode", args ?? new GetNodeInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNodeResult>("google-native:tpu/v1:getNode", args ?? new GetNodeInvokeArgs(), options.WithDefaults());
     }
 
 

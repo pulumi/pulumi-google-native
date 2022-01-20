@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// Get a ServiceLevelObjective by name.
         /// </summary>
         public static Task<GetServiceLevelObjectiveResult> InvokeAsync(GetServiceLevelObjectiveArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceLevelObjectiveResult>("google-native:monitoring/v3:getServiceLevelObjective", args ?? new GetServiceLevelObjectiveArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceLevelObjectiveResult>("google-native:monitoring/v3:getServiceLevelObjective", args ?? new GetServiceLevelObjectiveArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a ServiceLevelObjective by name.
         /// </summary>
         public static Output<GetServiceLevelObjectiveResult> Invoke(GetServiceLevelObjectiveInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceLevelObjectiveResult>("google-native:monitoring/v3:getServiceLevelObjective", args ?? new GetServiceLevelObjectiveInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceLevelObjectiveResult>("google-native:monitoring/v3:getServiceLevelObjective", args ?? new GetServiceLevelObjectiveInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// Retrieves the specified agent.
         /// </summary>
         public static Task<GetAgentResult> InvokeAsync(GetAgentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentResult>("google-native:dialogflow/v3:getAgent", args ?? new GetAgentArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentResult>("google-native:dialogflow/v3:getAgent", args ?? new GetAgentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified agent.
         /// </summary>
         public static Output<GetAgentResult> Invoke(GetAgentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAgentResult>("google-native:dialogflow/v3:getAgent", args ?? new GetAgentInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAgentResult>("google-native:dialogflow/v3:getAgent", args ?? new GetAgentInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// Gets Assured Workload associated with a CRM Node
         /// </summary>
         public static Task<GetWorkloadResult> InvokeAsync(GetWorkloadArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWorkloadResult>("google-native:assuredworkloads/v1:getWorkload", args ?? new GetWorkloadArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetWorkloadResult>("google-native:assuredworkloads/v1:getWorkload", args ?? new GetWorkloadArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets Assured Workload associated with a CRM Node
         /// </summary>
         public static Output<GetWorkloadResult> Invoke(GetWorkloadInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWorkloadResult>("google-native:assuredworkloads/v1:getWorkload", args ?? new GetWorkloadInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetWorkloadResult>("google-native:assuredworkloads/v1:getWorkload", args ?? new GetWorkloadInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         /// Retrieve the specified case.
         /// </summary>
         public static Task<GetCaseResult> InvokeAsync(GetCaseArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCaseResult>("google-native:cloudsupport/v2beta:getCase", args ?? new GetCaseArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCaseResult>("google-native:cloudsupport/v2beta:getCase", args ?? new GetCaseArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve the specified case.
         /// </summary>
         public static Output<GetCaseResult> Invoke(GetCaseInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCaseResult>("google-native:cloudsupport/v2beta:getCase", args ?? new GetCaseInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCaseResult>("google-native:cloudsupport/v2beta:getCase", args ?? new GetCaseInvokeArgs(), options.WithDefaults());
     }
 
 

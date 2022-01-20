@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetNodeGroupIamPolicyResult> InvokeAsync(GetNodeGroupIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeGroupIamPolicyResult>("google-native:compute/beta:getNodeGroupIamPolicy", args ?? new GetNodeGroupIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeGroupIamPolicyResult>("google-native:compute/beta:getNodeGroupIamPolicy", args ?? new GetNodeGroupIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetNodeGroupIamPolicyResult> Invoke(GetNodeGroupIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodeGroupIamPolicyResult>("google-native:compute/beta:getNodeGroupIamPolicy", args ?? new GetNodeGroupIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNodeGroupIamPolicyResult>("google-native:compute/beta:getNodeGroupIamPolicy", args ?? new GetNodeGroupIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

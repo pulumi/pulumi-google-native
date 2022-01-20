@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// Gets the resource representation for a cluster in a project.
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("google-native:dataproc/v1:getCluster", args ?? new GetClusterArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("google-native:dataproc/v1:getCluster", args ?? new GetClusterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the resource representation for a cluster in a project.
         /// </summary>
         public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterResult>("google-native:dataproc/v1:getCluster", args ?? new GetClusterInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetClusterResult>("google-native:dataproc/v1:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());
     }
 
 

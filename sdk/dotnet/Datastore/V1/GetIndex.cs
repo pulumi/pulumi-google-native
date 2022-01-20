@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Datastore.V1
         /// Gets an index.
         /// </summary>
         public static Task<GetIndexResult> InvokeAsync(GetIndexArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIndexResult>("google-native:datastore/v1:getIndex", args ?? new GetIndexArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIndexResult>("google-native:datastore/v1:getIndex", args ?? new GetIndexArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an index.
         /// </summary>
         public static Output<GetIndexResult> Invoke(GetIndexInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIndexResult>("google-native:datastore/v1:getIndex", args ?? new GetIndexInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIndexResult>("google-native:datastore/v1:getIndex", args ?? new GetIndexInvokeArgs(), options.WithDefaults());
     }
 
 

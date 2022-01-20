@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Returns the details for a developer app.
         /// </summary>
         public static Task<GetAppResult> InvokeAsync(GetAppArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("google-native:apigee/v1:getApp", args ?? new GetAppArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("google-native:apigee/v1:getApp", args ?? new GetAppArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the details for a developer app.
         /// </summary>
         public static Output<GetAppResult> Invoke(GetAppInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAppResult>("google-native:apigee/v1:getApp", args ?? new GetAppInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAppResult>("google-native:apigee/v1:getApp", args ?? new GetAppInvokeArgs(), options.WithDefaults());
     }
 
 

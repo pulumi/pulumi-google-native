@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         /// Gets a tag.
         /// </summary>
         public static Task<GetTagResult> InvokeAsync(GetTagArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("google-native:artifactregistry/v1beta2:getTag", args ?? new GetTagArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("google-native:artifactregistry/v1beta2:getTag", args ?? new GetTagArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a tag.
         /// </summary>
         public static Output<GetTagResult> Invoke(GetTagInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTagResult>("google-native:artifactregistry/v1beta2:getTag", args ?? new GetTagInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTagResult>("google-native:artifactregistry/v1beta2:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());
     }
 
 

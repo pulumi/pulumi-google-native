@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         /// Gets details of a single Domain.
         /// </summary>
         public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("google-native:managedidentities/v1alpha1:getDomain", args ?? new GetDomainArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("google-native:managedidentities/v1alpha1:getDomain", args ?? new GetDomainArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Domain.
         /// </summary>
         public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainResult>("google-native:managedidentities/v1alpha1:getDomain", args ?? new GetDomainInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDomainResult>("google-native:managedidentities/v1alpha1:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());
     }
 
 

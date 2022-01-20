@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
         /// Gets the configuration of a topic.
         /// </summary>
         public static Task<GetTopicResult> InvokeAsync(GetTopicArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicResult>("google-native:pubsub/v1beta2:getTopic", args ?? new GetTopicArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicResult>("google-native:pubsub/v1beta2:getTopic", args ?? new GetTopicArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the configuration of a topic.
         /// </summary>
         public static Output<GetTopicResult> Invoke(GetTopicInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTopicResult>("google-native:pubsub/v1beta2:getTopic", args ?? new GetTopicInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTopicResult>("google-native:pubsub/v1beta2:getTopic", args ?? new GetTopicInvokeArgs(), options.WithDefaults());
     }
 
 

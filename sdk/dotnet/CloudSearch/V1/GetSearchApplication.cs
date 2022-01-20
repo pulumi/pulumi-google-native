@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// Gets the specified search application. **Note:** This API requires an admin account to execute.
         /// </summary>
         public static Task<GetSearchApplicationResult> InvokeAsync(GetSearchApplicationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSearchApplicationResult>("google-native:cloudsearch/v1:getSearchApplication", args ?? new GetSearchApplicationArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSearchApplicationResult>("google-native:cloudsearch/v1:getSearchApplication", args ?? new GetSearchApplicationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified search application. **Note:** This API requires an admin account to execute.
         /// </summary>
         public static Output<GetSearchApplicationResult> Invoke(GetSearchApplicationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSearchApplicationResult>("google-native:cloudsearch/v1:getSearchApplication", args ?? new GetSearchApplicationInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSearchApplicationResult>("google-native:cloudsearch/v1:getSearchApplication", args ?? new GetSearchApplicationInvokeArgs(), options.WithDefaults());
     }
 
 

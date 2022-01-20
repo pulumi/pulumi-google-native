@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// Gets a single alerting policy.
         /// </summary>
         public static Task<GetAlertPolicyResult> InvokeAsync(GetAlertPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAlertPolicyResult>("google-native:monitoring/v3:getAlertPolicy", args ?? new GetAlertPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAlertPolicyResult>("google-native:monitoring/v3:getAlertPolicy", args ?? new GetAlertPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a single alerting policy.
         /// </summary>
         public static Output<GetAlertPolicyResult> Invoke(GetAlertPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAlertPolicyResult>("google-native:monitoring/v3:getAlertPolicy", args ?? new GetAlertPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAlertPolicyResult>("google-native:monitoring/v3:getAlertPolicy", args ?? new GetAlertPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

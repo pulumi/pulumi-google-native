@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// Gets an Execution. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Execution does not exist
         /// </summary>
         public static Task<GetExecutionResult> InvokeAsync(GetExecutionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetExecutionResult>("google-native:toolresults/v1beta3:getExecution", args ?? new GetExecutionArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetExecutionResult>("google-native:toolresults/v1beta3:getExecution", args ?? new GetExecutionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an Execution. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Execution does not exist
         /// </summary>
         public static Output<GetExecutionResult> Invoke(GetExecutionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetExecutionResult>("google-native:toolresults/v1beta3:getExecution", args ?? new GetExecutionInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetExecutionResult>("google-native:toolresults/v1beta3:getExecution", args ?? new GetExecutionInvokeArgs(), options.WithDefaults());
     }
 
 

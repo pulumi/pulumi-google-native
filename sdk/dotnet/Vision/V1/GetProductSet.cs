@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Vision.V1
         /// Gets information associated with a ProductSet. Possible errors: * Returns NOT_FOUND if the ProductSet does not exist.
         /// </summary>
         public static Task<GetProductSetResult> InvokeAsync(GetProductSetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProductSetResult>("google-native:vision/v1:getProductSet", args ?? new GetProductSetArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProductSetResult>("google-native:vision/v1:getProductSet", args ?? new GetProductSetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information associated with a ProductSet. Possible errors: * Returns NOT_FOUND if the ProductSet does not exist.
         /// </summary>
         public static Output<GetProductSetResult> Invoke(GetProductSetInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProductSetResult>("google-native:vision/v1:getProductSet", args ?? new GetProductSetInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetProductSetResult>("google-native:vision/v1:getProductSet", args ?? new GetProductSetInvokeArgs(), options.WithDefaults());
     }
 
 

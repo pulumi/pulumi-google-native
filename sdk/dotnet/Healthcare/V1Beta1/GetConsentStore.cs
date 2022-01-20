@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// Gets the specified consent store.
         /// </summary>
         public static Task<GetConsentStoreResult> InvokeAsync(GetConsentStoreArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConsentStoreResult>("google-native:healthcare/v1beta1:getConsentStore", args ?? new GetConsentStoreArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConsentStoreResult>("google-native:healthcare/v1beta1:getConsentStore", args ?? new GetConsentStoreArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified consent store.
         /// </summary>
         public static Output<GetConsentStoreResult> Invoke(GetConsentStoreInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConsentStoreResult>("google-native:healthcare/v1beta1:getConsentStore", args ?? new GetConsentStoreInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConsentStoreResult>("google-native:healthcare/v1beta1:getConsentStore", args ?? new GetConsentStoreInvokeArgs(), options.WithDefaults());
     }
 
 

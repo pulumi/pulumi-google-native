@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified network firewall policy.
         /// </summary>
         public static Task<GetNetworkFirewallPolicyResult> InvokeAsync(GetNetworkFirewallPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkFirewallPolicyResult>("google-native:compute/alpha:getNetworkFirewallPolicy", args ?? new GetNetworkFirewallPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkFirewallPolicyResult>("google-native:compute/alpha:getNetworkFirewallPolicy", args ?? new GetNetworkFirewallPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified network firewall policy.
         /// </summary>
         public static Output<GetNetworkFirewallPolicyResult> Invoke(GetNetworkFirewallPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworkFirewallPolicyResult>("google-native:compute/alpha:getNetworkFirewallPolicy", args ?? new GetNetworkFirewallPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkFirewallPolicyResult>("google-native:compute/alpha:getNetworkFirewallPolicy", args ?? new GetNetworkFirewallPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

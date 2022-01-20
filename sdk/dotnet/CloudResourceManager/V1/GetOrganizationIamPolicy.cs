@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1
         /// Gets the access control policy for an Organization resource. May be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123". Authorization requires the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the specified organization
         /// </summary>
         public static Task<GetOrganizationIamPolicyResult> InvokeAsync(GetOrganizationIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationIamPolicyResult>("google-native:cloudresourcemanager/v1:getOrganizationIamPolicy", args ?? new GetOrganizationIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationIamPolicyResult>("google-native:cloudresourcemanager/v1:getOrganizationIamPolicy", args ?? new GetOrganizationIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for an Organization resource. May be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123". Authorization requires the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the specified organization
         /// </summary>
         public static Output<GetOrganizationIamPolicyResult> Invoke(GetOrganizationIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationIamPolicyResult>("google-native:cloudresourcemanager/v1:getOrganizationIamPolicy", args ?? new GetOrganizationIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationIamPolicyResult>("google-native:cloudresourcemanager/v1:getOrganizationIamPolicy", args ?? new GetOrganizationIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

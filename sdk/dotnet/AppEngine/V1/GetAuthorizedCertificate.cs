@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// Gets the specified SSL certificate.
         /// </summary>
         public static Task<GetAuthorizedCertificateResult> InvokeAsync(GetAuthorizedCertificateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizedCertificateResult>("google-native:appengine/v1:getAuthorizedCertificate", args ?? new GetAuthorizedCertificateArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizedCertificateResult>("google-native:appengine/v1:getAuthorizedCertificate", args ?? new GetAuthorizedCertificateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified SSL certificate.
         /// </summary>
         public static Output<GetAuthorizedCertificateResult> Invoke(GetAuthorizedCertificateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAuthorizedCertificateResult>("google-native:appengine/v1:getAuthorizedCertificate", args ?? new GetAuthorizedCertificateInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAuthorizedCertificateResult>("google-native:appengine/v1:getAuthorizedCertificate", args ?? new GetAuthorizedCertificateInvokeArgs(), options.WithDefaults());
     }
 
 

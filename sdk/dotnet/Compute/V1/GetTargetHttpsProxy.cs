@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by making a list() request.
         /// </summary>
         public static Task<GetTargetHttpsProxyResult> InvokeAsync(GetTargetHttpsProxyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetHttpsProxyResult>("google-native:compute/v1:getTargetHttpsProxy", args ?? new GetTargetHttpsProxyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetHttpsProxyResult>("google-native:compute/v1:getTargetHttpsProxy", args ?? new GetTargetHttpsProxyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by making a list() request.
         /// </summary>
         public static Output<GetTargetHttpsProxyResult> Invoke(GetTargetHttpsProxyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTargetHttpsProxyResult>("google-native:compute/v1:getTargetHttpsProxy", args ?? new GetTargetHttpsProxyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTargetHttpsProxyResult>("google-native:compute/v1:getTargetHttpsProxy", args ?? new GetTargetHttpsProxyInvokeArgs(), options.WithDefaults());
     }
 
 

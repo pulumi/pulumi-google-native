@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// Gets a notification config.
         /// </summary>
         public static Task<GetNotificationConfigResult> InvokeAsync(GetNotificationConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationConfigResult>("google-native:securitycenter/v1:getNotificationConfig", args ?? new GetNotificationConfigArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationConfigResult>("google-native:securitycenter/v1:getNotificationConfig", args ?? new GetNotificationConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a notification config.
         /// </summary>
         public static Output<GetNotificationConfigResult> Invoke(GetNotificationConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNotificationConfigResult>("google-native:securitycenter/v1:getNotificationConfig", args ?? new GetNotificationConfigInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNotificationConfigResult>("google-native:securitycenter/v1:getNotificationConfig", args ?? new GetNotificationConfigInvokeArgs(), options.WithDefaults());
     }
 
 

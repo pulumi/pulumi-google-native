@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// Get the template associated with a template.
         /// </summary>
         public static Task<GetTemplateResult> InvokeAsync(GetTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTemplateResult>("google-native:dataflow/v1b3:getTemplate", args ?? new GetTemplateArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTemplateResult>("google-native:dataflow/v1b3:getTemplate", args ?? new GetTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get the template associated with a template.
         /// </summary>
         public static Output<GetTemplateResult> Invoke(GetTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTemplateResult>("google-native:dataflow/v1b3:getTemplate", args ?? new GetTemplateInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTemplateResult>("google-native:dataflow/v1b3:getTemplate", args ?? new GetTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

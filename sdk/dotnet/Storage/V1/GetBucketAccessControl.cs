@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// Returns the ACL entry for the specified entity on the specified bucket.
         /// </summary>
         public static Task<GetBucketAccessControlResult> InvokeAsync(GetBucketAccessControlArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketAccessControlResult>("google-native:storage/v1:getBucketAccessControl", args ?? new GetBucketAccessControlArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketAccessControlResult>("google-native:storage/v1:getBucketAccessControl", args ?? new GetBucketAccessControlArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the ACL entry for the specified entity on the specified bucket.
         /// </summary>
         public static Output<GetBucketAccessControlResult> Invoke(GetBucketAccessControlInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBucketAccessControlResult>("google-native:storage/v1:getBucketAccessControl", args ?? new GetBucketAccessControlInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBucketAccessControlResult>("google-native:storage/v1:getBucketAccessControl", args ?? new GetBucketAccessControlInvokeArgs(), options.WithDefaults());
     }
 
 

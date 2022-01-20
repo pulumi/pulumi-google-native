@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// Gets details of a single Target.
         /// </summary>
         public static Task<GetTargetResult> InvokeAsync(GetTargetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetResult>("google-native:clouddeploy/v1:getTarget", args ?? new GetTargetArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetResult>("google-native:clouddeploy/v1:getTarget", args ?? new GetTargetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Target.
         /// </summary>
         public static Output<GetTargetResult> Invoke(GetTargetInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTargetResult>("google-native:clouddeploy/v1:getTarget", args ?? new GetTargetInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTargetResult>("google-native:clouddeploy/v1:getTarget", args ?? new GetTargetInvokeArgs(), options.WithDefaults());
     }
 
 

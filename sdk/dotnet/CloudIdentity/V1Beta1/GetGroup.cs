@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         /// Retrieves a `Group`.
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("google-native:cloudidentity/v1beta1:getGroup", args ?? new GetGroupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("google-native:cloudidentity/v1beta1:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a `Group`.
         /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGroupResult>("google-native:cloudidentity/v1beta1:getGroup", args ?? new GetGroupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetGroupResult>("google-native:cloudidentity/v1beta1:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
     }
 
 

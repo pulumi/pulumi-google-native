@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images. 
         /// </summary>
         public static Task<GetLicenseIamPolicyResult> InvokeAsync(GetLicenseIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLicenseIamPolicyResult>("google-native:compute/v1:getLicenseIamPolicy", args ?? new GetLicenseIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLicenseIamPolicyResult>("google-native:compute/v1:getLicenseIamPolicy", args ?? new GetLicenseIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images. 
         /// </summary>
         public static Output<GetLicenseIamPolicyResult> Invoke(GetLicenseIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLicenseIamPolicyResult>("google-native:compute/v1:getLicenseIamPolicy", args ?? new GetLicenseIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetLicenseIamPolicyResult>("google-native:compute/v1:getLicenseIamPolicy", args ?? new GetLicenseIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

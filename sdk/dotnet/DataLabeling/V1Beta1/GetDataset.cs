@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// Gets dataset by resource name.
         /// </summary>
         public static Task<GetDatasetResult> InvokeAsync(GetDatasetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetResult>("google-native:datalabeling/v1beta1:getDataset", args ?? new GetDatasetArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetResult>("google-native:datalabeling/v1beta1:getDataset", args ?? new GetDatasetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets dataset by resource name.
         /// </summary>
         public static Output<GetDatasetResult> Invoke(GetDatasetInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatasetResult>("google-native:datalabeling/v1beta1:getDataset", args ?? new GetDatasetInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDatasetResult>("google-native:datalabeling/v1beta1:getDataset", args ?? new GetDatasetInvokeArgs(), options.WithDefaults());
     }
 
 

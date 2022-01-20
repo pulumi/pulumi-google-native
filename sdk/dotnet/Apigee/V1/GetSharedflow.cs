@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets a shared flow by name, including a list of its revisions.
         /// </summary>
         public static Task<GetSharedflowResult> InvokeAsync(GetSharedflowArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSharedflowResult>("google-native:apigee/v1:getSharedflow", args ?? new GetSharedflowArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSharedflowResult>("google-native:apigee/v1:getSharedflow", args ?? new GetSharedflowArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a shared flow by name, including a list of its revisions.
         /// </summary>
         public static Output<GetSharedflowResult> Invoke(GetSharedflowInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSharedflowResult>("google-native:apigee/v1:getSharedflow", args ?? new GetSharedflowInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSharedflowResult>("google-native:apigee/v1:getSharedflow", args ?? new GetSharedflowInvokeArgs(), options.WithDefaults());
     }
 
 

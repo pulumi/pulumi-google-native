@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// Get the named Service.
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("google-native:monitoring/v3:getService", args ?? new GetServiceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("google-native:monitoring/v3:getService", args ?? new GetServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get the named Service.
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("google-native:monitoring/v3:getService", args ?? new GetServiceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("google-native:monitoring/v3:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

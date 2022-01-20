@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// Gets a trial.
         /// </summary>
         public static Task<GetTrialResult> InvokeAsync(GetTrialArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTrialResult>("google-native:ml/v1:getTrial", args ?? new GetTrialArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTrialResult>("google-native:ml/v1:getTrial", args ?? new GetTrialArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a trial.
         /// </summary>
         public static Output<GetTrialResult> Invoke(GetTrialInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTrialResult>("google-native:ml/v1:getTrial", args ?? new GetTrialInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTrialResult>("google-native:ml/v1:getTrial", args ?? new GetTrialInvokeArgs(), options.WithDefaults());
     }
 
 

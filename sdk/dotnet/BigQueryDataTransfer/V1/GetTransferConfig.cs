@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         /// Returns information about a data transfer config.
         /// </summary>
         public static Task<GetTransferConfigResult> InvokeAsync(GetTransferConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTransferConfigResult>("google-native:bigquerydatatransfer/v1:getTransferConfig", args ?? new GetTransferConfigArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTransferConfigResult>("google-native:bigquerydatatransfer/v1:getTransferConfig", args ?? new GetTransferConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns information about a data transfer config.
         /// </summary>
         public static Output<GetTransferConfigResult> Invoke(GetTransferConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTransferConfigResult>("google-native:bigquerydatatransfer/v1:getTransferConfig", args ?? new GetTransferConfigInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTransferConfigResult>("google-native:bigquerydatatransfer/v1:getTransferConfig", args ?? new GetTransferConfigInvokeArgs(), options.WithDefaults());
     }
 
 

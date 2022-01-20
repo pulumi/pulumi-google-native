@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns the specified address resource.
         /// </summary>
         public static Task<GetAddressResult> InvokeAsync(GetAddressArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressResult>("google-native:compute/beta:getAddress", args ?? new GetAddressArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressResult>("google-native:compute/beta:getAddress", args ?? new GetAddressArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified address resource.
         /// </summary>
         public static Output<GetAddressResult> Invoke(GetAddressInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAddressResult>("google-native:compute/beta:getAddress", args ?? new GetAddressInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAddressResult>("google-native:compute/beta:getAddress", args ?? new GetAddressInvokeArgs(), options.WithDefaults());
     }
 
 

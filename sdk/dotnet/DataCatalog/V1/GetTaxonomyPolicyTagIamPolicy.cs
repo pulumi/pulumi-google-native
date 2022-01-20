@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// Gets the IAM policy for a policy tag or a taxonomy.
         /// </summary>
         public static Task<GetTaxonomyPolicyTagIamPolicyResult> InvokeAsync(GetTaxonomyPolicyTagIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTaxonomyPolicyTagIamPolicyResult>("google-native:datacatalog/v1:getTaxonomyPolicyTagIamPolicy", args ?? new GetTaxonomyPolicyTagIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTaxonomyPolicyTagIamPolicyResult>("google-native:datacatalog/v1:getTaxonomyPolicyTagIamPolicy", args ?? new GetTaxonomyPolicyTagIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the IAM policy for a policy tag or a taxonomy.
         /// </summary>
         public static Output<GetTaxonomyPolicyTagIamPolicyResult> Invoke(GetTaxonomyPolicyTagIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTaxonomyPolicyTagIamPolicyResult>("google-native:datacatalog/v1:getTaxonomyPolicyTagIamPolicy", args ?? new GetTaxonomyPolicyTagIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTaxonomyPolicyTagIamPolicyResult>("google-native:datacatalog/v1:getTaxonomyPolicyTagIamPolicy", args ?? new GetTaxonomyPolicyTagIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

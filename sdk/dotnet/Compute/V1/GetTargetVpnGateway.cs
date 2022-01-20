@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified target VPN gateway. Gets a list of available target VPN gateways by making a list() request.
         /// </summary>
         public static Task<GetTargetVpnGatewayResult> InvokeAsync(GetTargetVpnGatewayArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetVpnGatewayResult>("google-native:compute/v1:getTargetVpnGateway", args ?? new GetTargetVpnGatewayArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetVpnGatewayResult>("google-native:compute/v1:getTargetVpnGateway", args ?? new GetTargetVpnGatewayArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified target VPN gateway. Gets a list of available target VPN gateways by making a list() request.
         /// </summary>
         public static Output<GetTargetVpnGatewayResult> Invoke(GetTargetVpnGatewayInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTargetVpnGatewayResult>("google-native:compute/v1:getTargetVpnGateway", args ?? new GetTargetVpnGatewayInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTargetVpnGatewayResult>("google-native:compute/v1:getTargetVpnGateway", args ?? new GetTargetVpnGatewayInvokeArgs(), options.WithDefaults());
     }
 
 

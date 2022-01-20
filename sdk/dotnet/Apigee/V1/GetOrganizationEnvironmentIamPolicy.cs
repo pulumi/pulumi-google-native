@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets the IAM policy on an environment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.getIamPolicy` permission to call this API.
         /// </summary>
         public static Task<GetOrganizationEnvironmentIamPolicyResult> InvokeAsync(GetOrganizationEnvironmentIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationEnvironmentIamPolicyResult>("google-native:apigee/v1:getOrganizationEnvironmentIamPolicy", args ?? new GetOrganizationEnvironmentIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationEnvironmentIamPolicyResult>("google-native:apigee/v1:getOrganizationEnvironmentIamPolicy", args ?? new GetOrganizationEnvironmentIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the IAM policy on an environment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.getIamPolicy` permission to call this API.
         /// </summary>
         public static Output<GetOrganizationEnvironmentIamPolicyResult> Invoke(GetOrganizationEnvironmentIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationEnvironmentIamPolicyResult>("google-native:apigee/v1:getOrganizationEnvironmentIamPolicy", args ?? new GetOrganizationEnvironmentIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationEnvironmentIamPolicyResult>("google-native:apigee/v1:getOrganizationEnvironmentIamPolicy", args ?? new GetOrganizationEnvironmentIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

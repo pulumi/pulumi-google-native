@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.GameServices.V1
         /// Gets details of a single game server deployment.
         /// </summary>
         public static Task<GetGameServerDeploymentResult> InvokeAsync(GetGameServerDeploymentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGameServerDeploymentResult>("google-native:gameservices/v1:getGameServerDeployment", args ?? new GetGameServerDeploymentArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGameServerDeploymentResult>("google-native:gameservices/v1:getGameServerDeployment", args ?? new GetGameServerDeploymentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single game server deployment.
         /// </summary>
         public static Output<GetGameServerDeploymentResult> Invoke(GetGameServerDeploymentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGameServerDeploymentResult>("google-native:gameservices/v1:getGameServerDeployment", args ?? new GetGameServerDeploymentInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetGameServerDeploymentResult>("google-native:gameservices/v1:getGameServerDeployment", args ?? new GetGameServerDeploymentInvokeArgs(), options.WithDefaults());
     }
 
 

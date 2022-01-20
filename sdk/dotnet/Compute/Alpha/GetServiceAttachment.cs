@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified ServiceAttachment resource in the given scope.
         /// </summary>
         public static Task<GetServiceAttachmentResult> InvokeAsync(GetServiceAttachmentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceAttachmentResult>("google-native:compute/alpha:getServiceAttachment", args ?? new GetServiceAttachmentArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceAttachmentResult>("google-native:compute/alpha:getServiceAttachment", args ?? new GetServiceAttachmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified ServiceAttachment resource in the given scope.
         /// </summary>
         public static Output<GetServiceAttachmentResult> Invoke(GetServiceAttachmentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceAttachmentResult>("google-native:compute/alpha:getServiceAttachment", args ?? new GetServiceAttachmentInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceAttachmentResult>("google-native:compute/alpha:getServiceAttachment", args ?? new GetServiceAttachmentInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetRegionNetworkFirewallPolicyIamPolicyResult> InvokeAsync(GetRegionNetworkFirewallPolicyIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionNetworkFirewallPolicyIamPolicyResult>("google-native:compute/alpha:getRegionNetworkFirewallPolicyIamPolicy", args ?? new GetRegionNetworkFirewallPolicyIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionNetworkFirewallPolicyIamPolicyResult>("google-native:compute/alpha:getRegionNetworkFirewallPolicyIamPolicy", args ?? new GetRegionNetworkFirewallPolicyIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetRegionNetworkFirewallPolicyIamPolicyResult> Invoke(GetRegionNetworkFirewallPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionNetworkFirewallPolicyIamPolicyResult>("google-native:compute/alpha:getRegionNetworkFirewallPolicyIamPolicy", args ?? new GetRegionNetworkFirewallPolicyIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRegionNetworkFirewallPolicyIamPolicyResult>("google-native:compute/alpha:getRegionNetworkFirewallPolicyIamPolicy", args ?? new GetRegionNetworkFirewallPolicyIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

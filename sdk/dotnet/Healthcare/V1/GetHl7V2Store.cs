@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// Gets the specified HL7v2 store.
         /// </summary>
         public static Task<GetHl7V2StoreResult> InvokeAsync(GetHl7V2StoreArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHl7V2StoreResult>("google-native:healthcare/v1:getHl7V2Store", args ?? new GetHl7V2StoreArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetHl7V2StoreResult>("google-native:healthcare/v1:getHl7V2Store", args ?? new GetHl7V2StoreArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified HL7v2 store.
         /// </summary>
         public static Output<GetHl7V2StoreResult> Invoke(GetHl7V2StoreInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHl7V2StoreResult>("google-native:healthcare/v1:getHl7V2Store", args ?? new GetHl7V2StoreInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetHl7V2StoreResult>("google-native:healthcare/v1:getHl7V2Store", args ?? new GetHl7V2StoreInvokeArgs(), options.WithDefaults());
     }
 
 

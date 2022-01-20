@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetConnectionProfileIamPolicyResult> InvokeAsync(GetConnectionProfileIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionProfileIamPolicyResult>("google-native:datamigration/v1beta1:getConnectionProfileIamPolicy", args ?? new GetConnectionProfileIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionProfileIamPolicyResult>("google-native:datamigration/v1beta1:getConnectionProfileIamPolicy", args ?? new GetConnectionProfileIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetConnectionProfileIamPolicyResult> Invoke(GetConnectionProfileIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConnectionProfileIamPolicyResult>("google-native:datamigration/v1beta1:getConnectionProfileIamPolicy", args ?? new GetConnectionProfileIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConnectionProfileIamPolicyResult>("google-native:datamigration/v1beta1:getConnectionProfileIamPolicy", args ?? new GetConnectionProfileIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

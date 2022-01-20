@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// Retrieves the specified agent version.
         /// </summary>
         public static Task<GetVersionResult> InvokeAsync(GetVersionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("google-native:dialogflow/v2:getVersion", args ?? new GetVersionArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("google-native:dialogflow/v2:getVersion", args ?? new GetVersionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified agent version.
         /// </summary>
         public static Output<GetVersionResult> Invoke(GetVersionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVersionResult>("google-native:dialogflow/v2:getVersion", args ?? new GetVersionInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVersionResult>("google-native:dialogflow/v2:getVersion", args ?? new GetVersionInvokeArgs(), options.WithDefaults());
     }
 
 

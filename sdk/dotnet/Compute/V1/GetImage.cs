@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified image. Gets a list of available images by making a list() request.
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("google-native:compute/v1:getImage", args ?? new GetImageArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("google-native:compute/v1:getImage", args ?? new GetImageArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified image. Gets a list of available images by making a list() request.
         /// </summary>
         public static Output<GetImageResult> Invoke(GetImageInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImageResult>("google-native:compute/v1:getImage", args ?? new GetImageInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetImageResult>("google-native:compute/v1:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
     }
 
 

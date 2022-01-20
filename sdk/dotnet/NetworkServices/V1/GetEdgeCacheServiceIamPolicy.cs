@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetEdgeCacheServiceIamPolicyResult> InvokeAsync(GetEdgeCacheServiceIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEdgeCacheServiceIamPolicyResult>("google-native:networkservices/v1:getEdgeCacheServiceIamPolicy", args ?? new GetEdgeCacheServiceIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEdgeCacheServiceIamPolicyResult>("google-native:networkservices/v1:getEdgeCacheServiceIamPolicy", args ?? new GetEdgeCacheServiceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetEdgeCacheServiceIamPolicyResult> Invoke(GetEdgeCacheServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEdgeCacheServiceIamPolicyResult>("google-native:networkservices/v1:getEdgeCacheServiceIamPolicy", args ?? new GetEdgeCacheServiceIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEdgeCacheServiceIamPolicyResult>("google-native:networkservices/v1:getEdgeCacheServiceIamPolicy", args ?? new GetEdgeCacheServiceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

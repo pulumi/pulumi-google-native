@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets a TargetServer resource.
         /// </summary>
         public static Task<GetTargetServerResult> InvokeAsync(GetTargetServerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetServerResult>("google-native:apigee/v1:getTargetServer", args ?? new GetTargetServerArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetServerResult>("google-native:apigee/v1:getTargetServer", args ?? new GetTargetServerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a TargetServer resource.
         /// </summary>
         public static Output<GetTargetServerResult> Invoke(GetTargetServerInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTargetServerResult>("google-native:apigee/v1:getTargetServer", args ?? new GetTargetServerInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTargetServerResult>("google-native:apigee/v1:getTargetServer", args ?? new GetTargetServerInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
         /// Gets a model resource.
         /// </summary>
         public static Task<GetModelResult> InvokeAsync(GetModelArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetModelResult>("google-native:firebaseml/v1beta2:getModel", args ?? new GetModelArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetModelResult>("google-native:firebaseml/v1beta2:getModel", args ?? new GetModelArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a model resource.
         /// </summary>
         public static Output<GetModelResult> Invoke(GetModelInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetModelResult>("google-native:firebaseml/v1beta2:getModel", args ?? new GetModelInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetModelResult>("google-native:firebaseml/v1beta2:getModel", args ?? new GetModelInvokeArgs(), options.WithDefaults());
     }
 
 

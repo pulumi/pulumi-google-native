@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// Retrieves TagValue. If the TagValue or namespaced name does not exist, or if the user does not have permission to view it, this method will return `PERMISSION_DENIED`.
         /// </summary>
         public static Task<GetTagValueResult> InvokeAsync(GetTagValueArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagValueResult>("google-native:cloudresourcemanager/v3:getTagValue", args ?? new GetTagValueArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTagValueResult>("google-native:cloudresourcemanager/v3:getTagValue", args ?? new GetTagValueArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves TagValue. If the TagValue or namespaced name does not exist, or if the user does not have permission to view it, this method will return `PERMISSION_DENIED`.
         /// </summary>
         public static Output<GetTagValueResult> Invoke(GetTagValueInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTagValueResult>("google-native:cloudresourcemanager/v3:getTagValue", args ?? new GetTagValueInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTagValueResult>("google-native:cloudresourcemanager/v3:getTagValue", args ?? new GetTagValueInvokeArgs(), options.WithDefaults());
     }
 
 

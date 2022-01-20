@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Retrieves information about the specified reservation.
         /// </summary>
         public static Task<GetReservationResult> InvokeAsync(GetReservationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReservationResult>("google-native:compute/beta:getReservation", args ?? new GetReservationArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetReservationResult>("google-native:compute/beta:getReservation", args ?? new GetReservationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about the specified reservation.
         /// </summary>
         public static Output<GetReservationResult> Invoke(GetReservationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReservationResult>("google-native:compute/beta:getReservation", args ?? new GetReservationInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetReservationResult>("google-native:compute/beta:getReservation", args ?? new GetReservationInvokeArgs(), options.WithDefaults());
     }
 
 
