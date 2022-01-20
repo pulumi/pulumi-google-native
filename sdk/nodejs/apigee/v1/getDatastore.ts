@@ -13,9 +13,7 @@ export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:apigee/v1:getDatastore", {
         "datastoreId": args.datastoreId,
         "organizationId": args.organizationId,

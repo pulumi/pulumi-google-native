@@ -126,9 +126,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Router.__pulumiType, name, resourceInputs, opts);
     }
 }

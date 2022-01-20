@@ -13,9 +13,7 @@ export function getTransitionRouteGroup(args: GetTransitionRouteGroupArgs, opts?
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:dialogflow/v3beta1:getTransitionRouteGroup", {
         "agentId": args.agentId,
         "flowId": args.flowId,

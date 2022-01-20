@@ -90,9 +90,7 @@ export class CaPool extends pulumi.CustomResource {
             resourceInputs["publishingOptions"] = undefined /*out*/;
             resourceInputs["tier"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CaPool.__pulumiType, name, resourceInputs, opts);
     }
 }

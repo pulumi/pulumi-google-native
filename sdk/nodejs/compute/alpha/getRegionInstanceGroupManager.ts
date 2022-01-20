@@ -13,9 +13,7 @@ export function getRegionInstanceGroupManager(args: GetRegionInstanceGroupManage
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/alpha:getRegionInstanceGroupManager", {
         "instanceGroupManager": args.instanceGroupManager,
         "project": args.project,

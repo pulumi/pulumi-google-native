@@ -13,9 +13,7 @@ export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:retail/v2beta:getProduct", {
         "branchId": args.branchId,
         "catalogId": args.catalogId,

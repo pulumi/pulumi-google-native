@@ -71,9 +71,7 @@ export class KnowledgeBase extends pulumi.CustomResource {
             resourceInputs["languageCode"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KnowledgeBase.__pulumiType, name, resourceInputs, opts);
     }
 }

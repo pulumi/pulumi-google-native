@@ -241,9 +241,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["suspensionReason"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }

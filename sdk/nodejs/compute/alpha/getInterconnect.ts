@@ -13,9 +13,7 @@ export function getInterconnect(args: GetInterconnectArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/alpha:getInterconnect", {
         "interconnect": args.interconnect,
         "project": args.project,

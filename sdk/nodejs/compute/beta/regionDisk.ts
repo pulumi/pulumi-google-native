@@ -288,9 +288,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["users"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegionDisk.__pulumiType, name, resourceInputs, opts);
     }
 }

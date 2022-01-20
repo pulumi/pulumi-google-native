@@ -13,9 +13,7 @@ export function getApicategory(args: GetApicategoryArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:apigee/v1:getApicategory", {
         "apicategoryId": args.apicategoryId,
         "organizationId": args.organizationId,

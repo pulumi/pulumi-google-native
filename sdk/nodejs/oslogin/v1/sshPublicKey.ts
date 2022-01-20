@@ -77,9 +77,7 @@ export class SshPublicKey extends pulumi.CustomResource {
             resourceInputs["key"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SshPublicKey.__pulumiType, name, resourceInputs, opts);
     }
 }

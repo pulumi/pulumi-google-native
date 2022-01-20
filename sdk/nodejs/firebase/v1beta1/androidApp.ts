@@ -80,9 +80,7 @@ export class AndroidApp extends pulumi.CustomResource {
             resourceInputs["packageName"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AndroidApp.__pulumiType, name, resourceInputs, opts);
     }
 }

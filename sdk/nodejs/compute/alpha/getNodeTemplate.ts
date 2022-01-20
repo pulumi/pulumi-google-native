@@ -13,9 +13,7 @@ export function getNodeTemplate(args: GetNodeTemplateArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/alpha:getNodeTemplate", {
         "nodeTemplate": args.nodeTemplate,
         "project": args.project,

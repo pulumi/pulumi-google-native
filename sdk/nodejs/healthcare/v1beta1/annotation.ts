@@ -95,9 +95,7 @@ export class Annotation extends pulumi.CustomResource {
             resourceInputs["resourceAnnotation"] = undefined /*out*/;
             resourceInputs["textAnnotation"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Annotation.__pulumiType, name, resourceInputs, opts);
     }
 }

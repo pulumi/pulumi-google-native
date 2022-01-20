@@ -12,9 +12,7 @@ export function getHistory(args: GetHistoryArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:toolresults/v1beta3:getHistory", {
         "historyId": args.historyId,
         "project": args.project,

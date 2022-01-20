@@ -13,9 +13,7 @@ export function getBucket(args: GetBucketArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:storage/v1:getBucket", {
         "bucket": args.bucket,
         "ifMetagenerationMatch": args.ifMetagenerationMatch,

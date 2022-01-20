@@ -13,9 +13,7 @@ export function getSearchApplication(args: GetSearchApplicationArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:cloudsearch/v1:getSearchApplication", {
         "debugOptionsEnableDebugging": args.debugOptionsEnableDebugging,
         "searchapplicationId": args.searchapplicationId,

@@ -105,9 +105,7 @@ export class Page extends pulumi.CustomResource {
             resourceInputs["transitionRouteGroups"] = undefined /*out*/;
             resourceInputs["transitionRoutes"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Page.__pulumiType, name, resourceInputs, opts);
     }
 }

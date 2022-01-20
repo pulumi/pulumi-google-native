@@ -134,9 +134,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["trainingInput"] = undefined /*out*/;
             resourceInputs["trainingOutput"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }

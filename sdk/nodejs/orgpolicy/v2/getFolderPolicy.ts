@@ -13,9 +13,7 @@ export function getFolderPolicy(args: GetFolderPolicyArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:orgpolicy/v2:getFolderPolicy", {
         "folderId": args.folderId,
         "policyId": args.policyId,

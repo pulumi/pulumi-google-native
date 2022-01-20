@@ -142,9 +142,7 @@ export class ManagedZone extends pulumi.CustomResource {
             resourceInputs["serviceDirectoryConfig"] = undefined /*out*/;
             resourceInputs["visibility"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ManagedZone.__pulumiType, name, resourceInputs, opts);
     }
 }

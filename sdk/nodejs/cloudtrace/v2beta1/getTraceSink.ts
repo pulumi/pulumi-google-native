@@ -13,9 +13,7 @@ export function getTraceSink(args: GetTraceSinkArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:cloudtrace/v2beta1:getTraceSink", {
         "project": args.project,
         "traceSinkId": args.traceSinkId,

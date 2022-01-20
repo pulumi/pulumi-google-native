@@ -12,9 +12,7 @@ export function getTenant(args: GetTenantArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:jobs/v4:getTenant", {
         "project": args.project,
         "tenantId": args.tenantId,

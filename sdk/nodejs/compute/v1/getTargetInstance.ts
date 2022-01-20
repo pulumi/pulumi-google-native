@@ -12,9 +12,7 @@ export function getTargetInstance(args: GetTargetInstanceArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/v1:getTargetInstance", {
         "project": args.project,
         "targetInstance": args.targetInstance,

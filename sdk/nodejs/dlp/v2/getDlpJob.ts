@@ -13,9 +13,7 @@ export function getDlpJob(args: GetDlpJobArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:dlp/v2:getDlpJob", {
         "dlpJobId": args.dlpJobId,
         "location": args.location,

@@ -13,9 +13,7 @@ export function getBitbucketServerConfig(args: GetBitbucketServerConfigArgs, opt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:cloudbuild/v1:getBitbucketServerConfig", {
         "bitbucketServerConfigId": args.bitbucketServerConfigId,
         "location": args.location,

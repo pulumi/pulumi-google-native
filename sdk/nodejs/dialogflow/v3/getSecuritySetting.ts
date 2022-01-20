@@ -13,9 +13,7 @@ export function getSecuritySetting(args: GetSecuritySettingArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:dialogflow/v3:getSecuritySetting", {
         "location": args.location,
         "project": args.project,

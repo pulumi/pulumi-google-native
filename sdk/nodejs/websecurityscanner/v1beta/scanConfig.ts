@@ -146,9 +146,7 @@ export class ScanConfig extends pulumi.CustomResource {
             resourceInputs["targetPlatforms"] = undefined /*out*/;
             resourceInputs["userAgent"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ScanConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

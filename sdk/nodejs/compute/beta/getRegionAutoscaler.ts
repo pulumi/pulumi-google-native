@@ -13,9 +13,7 @@ export function getRegionAutoscaler(args: GetRegionAutoscalerArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/beta:getRegionAutoscaler", {
         "autoscaler": args.autoscaler,
         "project": args.project,

@@ -12,9 +12,7 @@ export function getExport(args: GetExportArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:apigee/v1:getExport", {
         "environmentId": args.environmentId,
         "exportId": args.exportId,

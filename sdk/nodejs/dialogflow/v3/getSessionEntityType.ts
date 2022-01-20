@@ -13,9 +13,7 @@ export function getSessionEntityType(args: GetSessionEntityTypeArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:dialogflow/v3:getSessionEntityType", {
         "agentId": args.agentId,
         "entityTypeId": args.entityTypeId,

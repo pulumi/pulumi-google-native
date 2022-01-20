@@ -13,9 +13,7 @@ export function getPolicyBasedRouteIamPolicy(args: GetPolicyBasedRouteIamPolicyA
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:networkconnectivity/v1:getPolicyBasedRouteIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "policyBasedRouteId": args.policyBasedRouteId,

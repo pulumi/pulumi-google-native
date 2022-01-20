@@ -13,9 +13,7 @@ export function getInterconnectAttachment(args: GetInterconnectAttachmentArgs, o
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/v1:getInterconnectAttachment", {
         "interconnectAttachment": args.interconnectAttachment,
         "project": args.project,

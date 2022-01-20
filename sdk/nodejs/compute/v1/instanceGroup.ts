@@ -123,9 +123,7 @@ export class InstanceGroup extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceGroup.__pulumiType, name, resourceInputs, opts);
     }
 }

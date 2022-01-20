@@ -99,9 +99,7 @@ export class Datastore extends pulumi.CustomResource {
             resourceInputs["self"] = undefined /*out*/;
             resourceInputs["targetType"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Datastore.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -83,9 +83,7 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
             resourceInputs["localData"] = undefined /*out*/;
             resourceInputs["ruleName"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ResponsePolicyRule.__pulumiType, name, resourceInputs, opts);
     }
 }

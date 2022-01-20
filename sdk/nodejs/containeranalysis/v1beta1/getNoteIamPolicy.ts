@@ -13,9 +13,7 @@ export function getNoteIamPolicy(args: GetNoteIamPolicyArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:containeranalysis/v1beta1:getNoteIamPolicy", {
         "noteId": args.noteId,
         "project": args.project,

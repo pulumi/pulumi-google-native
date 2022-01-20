@@ -13,9 +13,7 @@ export function getProjectIamPolicy(args: GetProjectIamPolicyArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v1beta1:getProjectIamPolicy", {
         "resource": args.resource,
     }, opts);

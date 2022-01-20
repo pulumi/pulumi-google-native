@@ -100,9 +100,7 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AuthorizationPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

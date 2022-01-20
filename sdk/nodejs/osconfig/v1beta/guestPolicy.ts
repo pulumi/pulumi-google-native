@@ -111,9 +111,7 @@ export class GuestPolicy extends pulumi.CustomResource {
             resourceInputs["recipes"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GuestPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

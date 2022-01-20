@@ -12,9 +12,7 @@ export function getContext(args: GetContextArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:dialogflow/v2beta1:getContext", {
         "contextId": args.contextId,
         "environmentId": args.environmentId,

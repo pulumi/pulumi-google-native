@@ -13,9 +13,7 @@ export function getRegionUrlMap(args: GetRegionUrlMapArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/alpha:getRegionUrlMap", {
         "project": args.project,
         "region": args.region,

@@ -96,9 +96,7 @@ export class Glossary extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["submitTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Glossary.__pulumiType, name, resourceInputs, opts);
     }
 }

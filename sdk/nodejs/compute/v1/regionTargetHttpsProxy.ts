@@ -138,9 +138,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["sslPolicy"] = undefined /*out*/;
             resourceInputs["urlMap"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegionTargetHttpsProxy.__pulumiType, name, resourceInputs, opts);
     }
 }

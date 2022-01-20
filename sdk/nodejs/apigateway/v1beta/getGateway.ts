@@ -12,9 +12,7 @@ export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:apigateway/v1beta:getGateway", {
         "gatewayId": args.gatewayId,
         "location": args.location,

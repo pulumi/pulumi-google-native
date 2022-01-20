@@ -12,9 +12,7 @@ export function getNatAddress(args: GetNatAddressArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:apigee/v1:getNatAddress", {
         "instanceId": args.instanceId,
         "natAddressId": args.natAddressId,

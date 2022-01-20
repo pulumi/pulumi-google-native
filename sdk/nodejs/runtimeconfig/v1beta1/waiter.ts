@@ -97,9 +97,7 @@ export class Waiter extends pulumi.CustomResource {
             resourceInputs["success"] = undefined /*out*/;
             resourceInputs["timeout"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Waiter.__pulumiType, name, resourceInputs, opts);
     }
 }

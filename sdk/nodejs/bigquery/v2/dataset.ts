@@ -150,9 +150,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["satisfiesPZS"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Dataset.__pulumiType, name, resourceInputs, opts);
     }
 }

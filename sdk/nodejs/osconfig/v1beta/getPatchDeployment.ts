@@ -13,9 +13,7 @@ export function getPatchDeployment(args: GetPatchDeploymentArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:osconfig/v1beta:getPatchDeployment", {
         "patchDeploymentId": args.patchDeploymentId,
         "project": args.project,

@@ -13,9 +13,7 @@ export function getWaiter(args: GetWaiterArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:runtimeconfig/v1beta1:getWaiter", {
         "configId": args.configId,
         "project": args.project,

@@ -122,9 +122,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             resourceInputs["tcpCheck"] = undefined /*out*/;
             resourceInputs["timeout"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UptimeCheckConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

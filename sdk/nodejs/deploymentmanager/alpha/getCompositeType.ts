@@ -13,9 +13,7 @@ export function getCompositeType(args: GetCompositeTypeArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:deploymentmanager/alpha:getCompositeType", {
         "compositeType": args.compositeType,
         "project": args.project,

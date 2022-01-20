@@ -12,9 +12,7 @@ export function getArchiveDeployment(args: GetArchiveDeploymentArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:apigee/v1:getArchiveDeployment", {
         "archiveDeploymentId": args.archiveDeploymentId,
         "environmentId": args.environmentId,

@@ -91,9 +91,7 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["trafficPercentStrategy"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Rollout.__pulumiType, name, resourceInputs, opts);
     }
 }

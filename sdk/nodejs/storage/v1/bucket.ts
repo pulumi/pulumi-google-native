@@ -230,9 +230,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["versioning"] = undefined /*out*/;
             resourceInputs["website"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Bucket.__pulumiType, name, resourceInputs, opts);
     }
 }

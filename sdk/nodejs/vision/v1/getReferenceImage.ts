@@ -13,9 +13,7 @@ export function getReferenceImage(args: GetReferenceImageArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:vision/v1:getReferenceImage", {
         "location": args.location,
         "productId": args.productId,

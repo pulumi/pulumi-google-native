@@ -92,9 +92,7 @@ export class IosApp extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["teamId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IosApp.__pulumiType, name, resourceInputs, opts);
     }
 }

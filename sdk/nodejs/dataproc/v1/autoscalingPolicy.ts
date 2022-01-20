@@ -86,9 +86,7 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
             resourceInputs["secondaryWorkerConfig"] = undefined /*out*/;
             resourceInputs["workerConfig"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AutoscalingPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

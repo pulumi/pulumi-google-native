@@ -146,9 +146,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["upgradeSettings"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NodePool.__pulumiType, name, resourceInputs, opts);
     }
 }

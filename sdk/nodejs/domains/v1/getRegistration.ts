@@ -13,9 +13,7 @@ export function getRegistration(args: GetRegistrationArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:domains/v1:getRegistration", {
         "location": args.location,
         "project": args.project,

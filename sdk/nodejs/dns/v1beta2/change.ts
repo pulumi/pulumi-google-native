@@ -92,9 +92,7 @@ export class Change extends pulumi.CustomResource {
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Change.__pulumiType, name, resourceInputs, opts);
     }
 }

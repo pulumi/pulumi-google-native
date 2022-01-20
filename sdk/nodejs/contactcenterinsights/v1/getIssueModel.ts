@@ -13,9 +13,7 @@ export function getIssueModel(args: GetIssueModelArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:contactcenterinsights/v1:getIssueModel", {
         "issueModelId": args.issueModelId,
         "location": args.location,

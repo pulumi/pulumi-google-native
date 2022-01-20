@@ -13,9 +13,7 @@ export function getBillingAccountIamPolicy(args: GetBillingAccountIamPolicyArgs,
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:cloudbilling/v1:getBillingAccountIamPolicy", {
         "billingAccountId": args.billingAccountId,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,

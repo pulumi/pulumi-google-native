@@ -13,9 +13,7 @@ export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:vpcaccess/v1:getConnector", {
         "connectorId": args.connectorId,
         "location": args.location,

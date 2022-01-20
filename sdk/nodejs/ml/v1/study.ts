@@ -89,9 +89,7 @@ export class Study extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["studyConfig"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Study.__pulumiType, name, resourceInputs, opts);
     }
 }

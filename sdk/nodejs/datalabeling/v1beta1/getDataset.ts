@@ -13,9 +13,7 @@ export function getDataset(args: GetDatasetArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:datalabeling/v1beta1:getDataset", {
         "datasetId": args.datasetId,
         "project": args.project,

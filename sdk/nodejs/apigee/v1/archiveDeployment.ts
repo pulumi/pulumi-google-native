@@ -92,9 +92,7 @@ export class ArchiveDeployment extends pulumi.CustomResource {
             resourceInputs["operation"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ArchiveDeployment.__pulumiType, name, resourceInputs, opts);
     }
 }

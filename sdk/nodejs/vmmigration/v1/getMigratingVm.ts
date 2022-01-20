@@ -13,9 +13,7 @@ export function getMigratingVm(args: GetMigratingVmArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:vmmigration/v1:getMigratingVm", {
         "location": args.location,
         "migratingVmId": args.migratingVmId,

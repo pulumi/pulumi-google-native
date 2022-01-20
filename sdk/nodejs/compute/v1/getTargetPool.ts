@@ -12,9 +12,7 @@ export function getTargetPool(args: GetTargetPoolArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/v1:getTargetPool", {
         "project": args.project,
         "region": args.region,

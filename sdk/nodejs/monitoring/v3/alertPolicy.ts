@@ -122,9 +122,7 @@ export class AlertPolicy extends pulumi.CustomResource {
             resourceInputs["userLabels"] = undefined /*out*/;
             resourceInputs["validity"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlertPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

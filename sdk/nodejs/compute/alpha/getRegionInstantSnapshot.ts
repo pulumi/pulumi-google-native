@@ -13,9 +13,7 @@ export function getRegionInstantSnapshot(args: GetRegionInstantSnapshotArgs, opt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/alpha:getRegionInstantSnapshot", {
         "instantSnapshot": args.instantSnapshot,
         "project": args.project,

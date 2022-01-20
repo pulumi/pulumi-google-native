@@ -13,9 +13,7 @@ export function getRegionOperationIamPolicy(args: GetRegionOperationIamPolicyArg
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:dataproc/v1:getRegionOperationIamPolicy", {
         "operationId": args.operationId,
         "project": args.project,

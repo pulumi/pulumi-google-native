@@ -132,9 +132,7 @@ export class RegionAutoscaler extends pulumi.CustomResource {
             resourceInputs["target"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegionAutoscaler.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -90,9 +90,7 @@ export class RegionInstantSnapshotIamPolicy extends pulumi.CustomResource {
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegionInstantSnapshotIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
