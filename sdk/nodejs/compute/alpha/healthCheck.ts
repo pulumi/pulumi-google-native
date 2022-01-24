@@ -150,9 +150,7 @@ export class HealthCheck extends pulumi.CustomResource {
             resourceInputs["udpHealthCheck"] = undefined /*out*/;
             resourceInputs["unhealthyThreshold"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HealthCheck.__pulumiType, name, resourceInputs, opts);
     }
 }

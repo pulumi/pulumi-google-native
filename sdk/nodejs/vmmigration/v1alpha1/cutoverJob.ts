@@ -121,9 +121,7 @@ export class CutoverJob extends pulumi.CustomResource {
             resourceInputs["stateMessage"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CutoverJob.__pulumiType, name, resourceInputs, opts);
     }
 }

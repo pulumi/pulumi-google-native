@@ -13,9 +13,7 @@ export function getTriggerIamPolicy(args: GetTriggerIamPolicyArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:eventarc/v1beta1:getTriggerIamPolicy", {
         "location": args.location,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,

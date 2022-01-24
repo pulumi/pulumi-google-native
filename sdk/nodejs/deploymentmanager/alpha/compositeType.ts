@@ -96,9 +96,7 @@ export class CompositeType extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["templateContents"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CompositeType.__pulumiType, name, resourceInputs, opts);
     }
 }

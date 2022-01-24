@@ -150,9 +150,7 @@ export class Developer extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["userName"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Developer.__pulumiType, name, resourceInputs, opts);
     }
 }

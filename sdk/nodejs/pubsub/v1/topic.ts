@@ -96,9 +96,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["schemaSettings"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Topic.__pulumiType, name, resourceInputs, opts);
     }
 }

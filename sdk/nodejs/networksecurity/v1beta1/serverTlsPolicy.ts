@@ -103,9 +103,7 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
             resourceInputs["serverCertificate"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServerTlsPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -179,9 +179,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["vpcPeeringConnectivity"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MigrationJob.__pulumiType, name, resourceInputs, opts);
     }
 }

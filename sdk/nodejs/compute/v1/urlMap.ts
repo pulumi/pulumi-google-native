@@ -135,9 +135,7 @@ export class UrlMap extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["tests"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UrlMap.__pulumiType, name, resourceInputs, opts);
     }
 }

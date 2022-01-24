@@ -80,9 +80,7 @@ export class Repo extends pulumi.CustomResource {
             resourceInputs["size"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Repo.__pulumiType, name, resourceInputs, opts);
     }
 }

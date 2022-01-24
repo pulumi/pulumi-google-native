@@ -151,9 +151,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecurityPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -13,9 +13,7 @@ export function getAppProfile(args: GetAppProfileArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:bigtableadmin/v2:getAppProfile", {
         "appProfileId": args.appProfileId,
         "instanceId": args.instanceId,

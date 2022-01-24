@@ -101,9 +101,7 @@ export class UserDataMapping extends pulumi.CustomResource {
             resourceInputs["resourceAttributes"] = undefined /*out*/;
             resourceInputs["userId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserDataMapping.__pulumiType, name, resourceInputs, opts);
     }
 }

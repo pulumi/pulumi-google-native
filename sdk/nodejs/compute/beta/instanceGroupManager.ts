@@ -189,9 +189,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["versions"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceGroupManager.__pulumiType, name, resourceInputs, opts);
     }
 }

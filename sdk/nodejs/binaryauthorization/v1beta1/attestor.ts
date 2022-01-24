@@ -78,9 +78,7 @@ export class Attestor extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["userOwnedDrydockNote"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Attestor.__pulumiType, name, resourceInputs, opts);
     }
 }

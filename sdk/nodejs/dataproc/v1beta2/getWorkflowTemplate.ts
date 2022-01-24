@@ -13,9 +13,7 @@ export function getWorkflowTemplate(args: GetWorkflowTemplateArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:dataproc/v1beta2:getWorkflowTemplate", {
         "location": args.location,
         "project": args.project,

@@ -234,9 +234,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["vlans"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Subnetwork.__pulumiType, name, resourceInputs, opts);
     }
 }

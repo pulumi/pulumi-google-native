@@ -13,9 +13,7 @@ export function getStream(args: GetStreamArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:datastream/v1alpha1:getStream", {
         "location": args.location,
         "project": args.project,

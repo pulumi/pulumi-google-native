@@ -13,9 +13,7 @@ export function getOrganizationSourceIamPolicy(args: GetOrganizationSourceIamPol
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:securitycenter/v1:getOrganizationSourceIamPolicy", {
         "organizationId": args.organizationId,
         "sourceId": args.sourceId,

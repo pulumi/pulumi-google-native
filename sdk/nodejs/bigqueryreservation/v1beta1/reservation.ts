@@ -81,9 +81,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["slotCapacity"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Reservation.__pulumiType, name, resourceInputs, opts);
     }
 }

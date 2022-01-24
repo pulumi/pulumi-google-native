@@ -110,9 +110,7 @@ export class GithubEnterpriseConfig extends pulumi.CustomResource {
             resourceInputs["sslCa"] = undefined /*out*/;
             resourceInputs["webhookKey"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GithubEnterpriseConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

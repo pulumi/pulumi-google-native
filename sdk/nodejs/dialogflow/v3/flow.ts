@@ -101,9 +101,7 @@ export class Flow extends pulumi.CustomResource {
             resourceInputs["transitionRouteGroups"] = undefined /*out*/;
             resourceInputs["transitionRoutes"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Flow.__pulumiType, name, resourceInputs, opts);
     }
 }

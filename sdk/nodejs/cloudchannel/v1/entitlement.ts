@@ -136,9 +136,7 @@ export class Entitlement extends pulumi.CustomResource {
             resourceInputs["trialSettings"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Entitlement.__pulumiType, name, resourceInputs, opts);
     }
 }

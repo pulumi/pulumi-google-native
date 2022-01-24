@@ -122,9 +122,7 @@ export class Task extends pulumi.CustomResource {
             resourceInputs["scheduleTime"] = undefined /*out*/;
             resourceInputs["view"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Task.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -156,9 +156,7 @@ export class Batch extends pulumi.CustomResource {
             resourceInputs["stateTime"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Batch.__pulumiType, name, resourceInputs, opts);
     }
 }

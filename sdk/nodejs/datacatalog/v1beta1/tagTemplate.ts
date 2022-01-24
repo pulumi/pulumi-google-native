@@ -75,9 +75,7 @@ export class TagTemplate extends pulumi.CustomResource {
             resourceInputs["fields"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TagTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }

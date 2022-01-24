@@ -121,9 +121,7 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["subnet"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Connector.__pulumiType, name, resourceInputs, opts);
     }
 }

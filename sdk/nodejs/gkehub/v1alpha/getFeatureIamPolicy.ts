@@ -13,9 +13,7 @@ export function getFeatureIamPolicy(args: GetFeatureIamPolicyArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:gkehub/v1alpha:getFeatureIamPolicy", {
         "featureId": args.featureId,
         "location": args.location,

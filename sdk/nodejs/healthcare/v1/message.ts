@@ -119,9 +119,7 @@ export class Message extends pulumi.CustomResource {
             resourceInputs["sendFacility"] = undefined /*out*/;
             resourceInputs["sendTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Message.__pulumiType, name, resourceInputs, opts);
     }
 }

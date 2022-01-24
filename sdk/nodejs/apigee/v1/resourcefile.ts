@@ -79,9 +79,7 @@ export class Resourcefile extends pulumi.CustomResource {
             resourceInputs["data"] = undefined /*out*/;
             resourceInputs["extensions"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Resourcefile.__pulumiType, name, resourceInputs, opts);
     }
 }

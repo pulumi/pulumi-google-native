@@ -138,9 +138,7 @@ export class Company extends pulumi.CustomResource {
             resourceInputs["suspended"] = undefined /*out*/;
             resourceInputs["websiteUri"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Company.__pulumiType, name, resourceInputs, opts);
     }
 }

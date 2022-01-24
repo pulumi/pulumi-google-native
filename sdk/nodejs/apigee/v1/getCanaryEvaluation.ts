@@ -13,9 +13,7 @@ export function getCanaryEvaluation(args: GetCanaryEvaluationArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:apigee/v1:getCanaryEvaluation", {
         "canaryevaluationId": args.canaryevaluationId,
         "instanceId": args.instanceId,

@@ -119,9 +119,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["telemetry"] = undefined /*out*/;
             resourceInputs["userLabels"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Service.__pulumiType, name, resourceInputs, opts);
     }
 }

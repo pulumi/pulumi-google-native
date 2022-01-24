@@ -13,9 +13,7 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:bigtableadmin/v2:getCluster", {
         "clusterId": args.clusterId,
         "instanceId": args.instanceId,

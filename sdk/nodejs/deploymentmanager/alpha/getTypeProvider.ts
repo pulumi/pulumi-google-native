@@ -13,9 +13,7 @@ export function getTypeProvider(args: GetTypeProviderArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:deploymentmanager/alpha:getTypeProvider", {
         "project": args.project,
         "typeProvider": args.typeProvider,

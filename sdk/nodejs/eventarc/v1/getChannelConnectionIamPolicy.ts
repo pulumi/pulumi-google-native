@@ -13,9 +13,7 @@ export function getChannelConnectionIamPolicy(args: GetChannelConnectionIamPolic
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:eventarc/v1:getChannelConnectionIamPolicy", {
         "channelConnectionId": args.channelConnectionId,
         "location": args.location,

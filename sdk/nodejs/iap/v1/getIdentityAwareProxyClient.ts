@@ -12,9 +12,7 @@ export function getIdentityAwareProxyClient(args: GetIdentityAwareProxyClientArg
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:iap/v1:getIdentityAwareProxyClient", {
         "brandId": args.brandId,
         "identityAwareProxyClientId": args.identityAwareProxyClientId,

@@ -12,9 +12,7 @@ export function getTagKey(args: GetTagKeyArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v3:getTagKey", {
         "tagKeyId": args.tagKeyId,
     }, opts);

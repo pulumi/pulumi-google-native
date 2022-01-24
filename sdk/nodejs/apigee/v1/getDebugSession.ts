@@ -12,9 +12,7 @@ export function getDebugSession(args: GetDebugSessionArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:apigee/v1:getDebugSession", {
         "apiId": args.apiId,
         "debugsessionId": args.debugsessionId,

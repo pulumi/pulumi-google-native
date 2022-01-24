@@ -12,9 +12,7 @@ export function getSshPublicKey(args: GetSshPublicKeyArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:oslogin/v1alpha:getSshPublicKey", {
         "sshPublicKeyId": args.sshPublicKeyId,
         "userId": args.userId,

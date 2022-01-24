@@ -191,9 +191,7 @@ export class VpnTunnel extends pulumi.CustomResource {
             resourceInputs["vpnGateway"] = undefined /*out*/;
             resourceInputs["vpnGatewayInterface"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VpnTunnel.__pulumiType, name, resourceInputs, opts);
     }
 }

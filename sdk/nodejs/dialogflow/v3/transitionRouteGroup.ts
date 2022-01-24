@@ -81,9 +81,7 @@ export class TransitionRouteGroup extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["transitionRoutes"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TransitionRouteGroup.__pulumiType, name, resourceInputs, opts);
     }
 }

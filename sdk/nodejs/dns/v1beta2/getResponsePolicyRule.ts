@@ -13,9 +13,7 @@ export function getResponsePolicyRule(args: GetResponsePolicyRuleArgs, opts?: pu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:dns/v1beta2:getResponsePolicyRule", {
         "clientOperationId": args.clientOperationId,
         "project": args.project,

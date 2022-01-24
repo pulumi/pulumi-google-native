@@ -95,9 +95,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
             resourceInputs["title"] = undefined /*out*/;
             resourceInputs["useExplicitDryRunSpec"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServicePerimeter.__pulumiType, name, resourceInputs, opts);
     }
 }

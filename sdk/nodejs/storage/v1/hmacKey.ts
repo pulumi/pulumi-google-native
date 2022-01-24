@@ -107,9 +107,7 @@ export class HmacKey extends pulumi.CustomResource {
             resourceInputs["timeCreated"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HmacKey.__pulumiType, name, resourceInputs, opts);
     }
 }

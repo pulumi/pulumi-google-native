@@ -105,9 +105,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
             resourceInputs["redundancyType"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ExternalVpnGateway.__pulumiType, name, resourceInputs, opts);
     }
 }

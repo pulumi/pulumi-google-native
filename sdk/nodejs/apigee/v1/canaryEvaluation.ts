@@ -129,9 +129,7 @@ export class CanaryEvaluation extends pulumi.CustomResource {
             resourceInputs["treatment"] = undefined /*out*/;
             resourceInputs["verdict"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CanaryEvaluation.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -13,9 +13,7 @@ export function getRowAccessPolicyIamPolicy(args: GetRowAccessPolicyIamPolicyArg
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:bigquery/v2:getRowAccessPolicyIamPolicy", {
         "datasetId": args.datasetId,
         "project": args.project,

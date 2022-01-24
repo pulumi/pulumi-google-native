@@ -13,9 +13,7 @@ export function getBackendBucket(args: GetBackendBucketArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/beta:getBackendBucket", {
         "backendBucket": args.backendBucket,
         "project": args.project,

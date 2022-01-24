@@ -13,9 +13,7 @@ export function getGuestPolicy(args: GetGuestPolicyArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:osconfig/v1beta:getGuestPolicy", {
         "guestPolicyId": args.guestPolicyId,
         "project": args.project,

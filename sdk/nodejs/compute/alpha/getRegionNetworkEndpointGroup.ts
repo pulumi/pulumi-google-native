@@ -13,9 +13,7 @@ export function getRegionNetworkEndpointGroup(args: GetRegionNetworkEndpointGrou
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/alpha:getRegionNetworkEndpointGroup", {
         "networkEndpointGroup": args.networkEndpointGroup,
         "project": args.project,

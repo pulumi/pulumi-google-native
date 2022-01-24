@@ -13,9 +13,7 @@ export function getCaPool(args: GetCaPoolArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:privateca/v1:getCaPool", {
         "caPoolId": args.caPoolId,
         "location": args.location,

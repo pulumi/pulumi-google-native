@@ -81,9 +81,7 @@ export class Replay extends pulumi.CustomResource {
             resourceInputs["resultsSummary"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Replay.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -13,9 +13,7 @@ export function getJobIamPolicy(args: GetJobIamPolicyArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:ml/v1:getJobIamPolicy", {
         "jobId": args.jobId,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,

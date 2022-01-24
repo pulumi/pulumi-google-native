@@ -67,9 +67,7 @@ export class JobTemplate extends pulumi.CustomResource {
             resourceInputs["config"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(JobTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }

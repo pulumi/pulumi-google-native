@@ -12,9 +12,7 @@ export function getBillingAccountExclusion(args: GetBillingAccountExclusionArgs,
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:logging/v2:getBillingAccountExclusion", {
         "billingAccountId": args.billingAccountId,
         "exclusionId": args.exclusionId,

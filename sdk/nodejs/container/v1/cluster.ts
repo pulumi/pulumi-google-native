@@ -363,9 +363,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["verticalPodAutoscaling"] = undefined /*out*/;
             resourceInputs["workloadIdentityConfig"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }

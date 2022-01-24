@@ -13,9 +13,7 @@ export function getResourceRecordSet(args: GetResourceRecordSetArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:dns/v1beta2:getResourceRecordSet", {
         "clientOperationId": args.clientOperationId,
         "managedZone": args.managedZone,

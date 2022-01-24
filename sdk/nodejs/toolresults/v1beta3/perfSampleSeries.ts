@@ -97,9 +97,7 @@ export class PerfSampleSeries extends pulumi.CustomResource {
             resourceInputs["sampleSeriesId"] = undefined /*out*/;
             resourceInputs["stepId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PerfSampleSeries.__pulumiType, name, resourceInputs, opts);
     }
 }

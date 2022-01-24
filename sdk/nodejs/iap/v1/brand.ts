@@ -76,9 +76,7 @@ export class Brand extends pulumi.CustomResource {
             resourceInputs["orgInternalOnly"] = undefined /*out*/;
             resourceInputs["supportEmail"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Brand.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -12,9 +12,7 @@ export function getTargetSslProxy(args: GetTargetSslProxyArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/alpha:getTargetSslProxy", {
         "project": args.project,
         "targetSslProxy": args.targetSslProxy,

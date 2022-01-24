@@ -12,9 +12,7 @@ export function getFleet(args: GetFleetArgs, opts?: pulumi.InvokeOptions): Promi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:gkehub/v1alpha:getFleet", {
         "fleetId": args.fleetId,
         "location": args.location,

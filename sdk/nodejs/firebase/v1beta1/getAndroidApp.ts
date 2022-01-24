@@ -12,9 +12,7 @@ export function getAndroidApp(args: GetAndroidAppArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:firebase/v1beta1:getAndroidApp", {
         "androidAppId": args.androidAppId,
         "project": args.project,

@@ -13,9 +13,7 @@ export function getPacketMirroring(args: GetPacketMirroringArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/beta:getPacketMirroring", {
         "packetMirroring": args.packetMirroring,
         "project": args.project,

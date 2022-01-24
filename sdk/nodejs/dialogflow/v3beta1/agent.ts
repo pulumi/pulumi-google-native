@@ -138,9 +138,7 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["supportedLanguageCodes"] = undefined /*out*/;
             resourceInputs["timeZone"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Agent.__pulumiType, name, resourceInputs, opts);
     }
 }

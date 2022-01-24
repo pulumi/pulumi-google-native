@@ -151,9 +151,7 @@ export class Step extends pulumi.CustomResource {
             resourceInputs["testExecutionStep"] = undefined /*out*/;
             resourceInputs["toolExecutionStep"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Step.__pulumiType, name, resourceInputs, opts);
     }
 }

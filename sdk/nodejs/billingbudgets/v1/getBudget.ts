@@ -13,9 +13,7 @@ export function getBudget(args: GetBudgetArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:billingbudgets/v1:getBudget", {
         "billingAccountId": args.billingAccountId,
         "budgetId": args.budgetId,

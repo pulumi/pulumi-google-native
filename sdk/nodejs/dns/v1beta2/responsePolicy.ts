@@ -80,9 +80,7 @@ export class ResponsePolicy extends pulumi.CustomResource {
             resourceInputs["networks"] = undefined /*out*/;
             resourceInputs["responsePolicyName"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ResponsePolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -13,9 +13,7 @@ export function getSecurityPolicy(args: GetSecurityPolicyArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/v1:getSecurityPolicy", {
         "project": args.project,
         "securityPolicy": args.securityPolicy,

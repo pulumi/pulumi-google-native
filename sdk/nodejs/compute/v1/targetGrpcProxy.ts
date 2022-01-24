@@ -104,9 +104,7 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
             resourceInputs["urlMap"] = undefined /*out*/;
             resourceInputs["validateForProxyless"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TargetGrpcProxy.__pulumiType, name, resourceInputs, opts);
     }
 }

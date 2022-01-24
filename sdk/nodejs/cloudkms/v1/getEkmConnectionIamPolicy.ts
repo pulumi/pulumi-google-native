@@ -13,9 +13,7 @@ export function getEkmConnectionIamPolicy(args: GetEkmConnectionIamPolicyArgs, o
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:cloudkms/v1:getEkmConnectionIamPolicy", {
         "ekmConnectionId": args.ekmConnectionId,
         "location": args.location,

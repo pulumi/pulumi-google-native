@@ -13,9 +13,7 @@ export function getMembershipIamPolicy(args: GetMembershipIamPolicyArgs, opts?: 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:gkehub/v1alpha2:getMembershipIamPolicy", {
         "location": args.location,
         "membershipId": args.membershipId,

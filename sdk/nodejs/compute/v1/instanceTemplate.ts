@@ -99,9 +99,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             resourceInputs["sourceInstance"] = undefined /*out*/;
             resourceInputs["sourceInstanceParams"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }

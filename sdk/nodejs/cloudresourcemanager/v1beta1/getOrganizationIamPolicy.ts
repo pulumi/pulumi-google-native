@@ -13,9 +13,7 @@ export function getOrganizationIamPolicy(args: GetOrganizationIamPolicyArgs, opt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v1beta1:getOrganizationIamPolicy", {
         "organizationId": args.organizationId,
     }, opts);

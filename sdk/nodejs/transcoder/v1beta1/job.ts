@@ -141,9 +141,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["templateId"] = undefined /*out*/;
             resourceInputs["ttlAfterCompletionDays"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }

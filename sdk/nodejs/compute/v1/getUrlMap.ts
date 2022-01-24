@@ -13,9 +13,7 @@ export function getUrlMap(args: GetUrlMapArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/v1:getUrlMap", {
         "project": args.project,
         "urlMap": args.urlMap,

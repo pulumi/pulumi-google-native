@@ -12,9 +12,7 @@ export function getProcessor(args: GetProcessorArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:documentai/v1:getProcessor", {
         "location": args.location,
         "processorId": args.processorId,

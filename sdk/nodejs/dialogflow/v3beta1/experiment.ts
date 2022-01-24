@@ -152,9 +152,7 @@ export class Experiment extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["variantsHistory"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Experiment.__pulumiType, name, resourceInputs, opts);
     }
 }
