@@ -123,9 +123,7 @@ export class CryptoKey extends pulumi.CustomResource {
             resourceInputs["rotationPeriod"] = undefined /*out*/;
             resourceInputs["versionTemplate"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CryptoKey.__pulumiType, name, resourceInputs, opts);
     }
 }

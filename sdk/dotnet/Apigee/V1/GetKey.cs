@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
         /// </summary>
         public static Task<GetKeyResult> InvokeAsync(GetKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("google-native:apigee/v1:getKey", args ?? new GetKeyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("google-native:apigee/v1:getKey", args ?? new GetKeyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
         /// </summary>
         public static Output<GetKeyResult> Invoke(GetKeyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKeyResult>("google-native:apigee/v1:getKey", args ?? new GetKeyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKeyResult>("google-native:apigee/v1:getKey", args ?? new GetKeyInvokeArgs(), options.WithDefaults());
     }
 
 

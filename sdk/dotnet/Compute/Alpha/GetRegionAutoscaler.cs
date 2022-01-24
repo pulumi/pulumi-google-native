@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified autoscaler.
         /// </summary>
         public static Task<GetRegionAutoscalerResult> InvokeAsync(GetRegionAutoscalerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionAutoscalerResult>("google-native:compute/alpha:getRegionAutoscaler", args ?? new GetRegionAutoscalerArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionAutoscalerResult>("google-native:compute/alpha:getRegionAutoscaler", args ?? new GetRegionAutoscalerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified autoscaler.
         /// </summary>
         public static Output<GetRegionAutoscalerResult> Invoke(GetRegionAutoscalerInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionAutoscalerResult>("google-native:compute/alpha:getRegionAutoscaler", args ?? new GetRegionAutoscalerInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRegionAutoscalerResult>("google-native:compute/alpha:getRegionAutoscaler", args ?? new GetRegionAutoscalerInvokeArgs(), options.WithDefaults());
     }
 
 

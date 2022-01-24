@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// Gets a session. Returns `NOT_FOUND` if the session does not exist. This is mainly useful for determining whether a session is still alive.
         /// </summary>
         public static Task<GetSessionResult> InvokeAsync(GetSessionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSessionResult>("google-native:spanner/v1:getSession", args ?? new GetSessionArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSessionResult>("google-native:spanner/v1:getSession", args ?? new GetSessionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a session. Returns `NOT_FOUND` if the session does not exist. This is mainly useful for determining whether a session is still alive.
         /// </summary>
         public static Output<GetSessionResult> Invoke(GetSessionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSessionResult>("google-native:spanner/v1:getSession", args ?? new GetSessionInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSessionResult>("google-native:spanner/v1:getSession", args ?? new GetSessionInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -93,9 +93,7 @@ export class IssueModel extends pulumi.CustomResource {
             resourceInputs["trainingStats"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IssueModel.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// Fetches the representation of an existing Response Policy Rule.
         /// </summary>
         public static Task<GetResponsePolicyRuleResult> InvokeAsync(GetResponsePolicyRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResponsePolicyRuleResult>("google-native:dns/v1:getResponsePolicyRule", args ?? new GetResponsePolicyRuleArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResponsePolicyRuleResult>("google-native:dns/v1:getResponsePolicyRule", args ?? new GetResponsePolicyRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Fetches the representation of an existing Response Policy Rule.
         /// </summary>
         public static Output<GetResponsePolicyRuleResult> Invoke(GetResponsePolicyRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResponsePolicyRuleResult>("google-native:dns/v1:getResponsePolicyRule", args ?? new GetResponsePolicyRuleInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetResponsePolicyRuleResult>("google-native:dns/v1:getResponsePolicyRule", args ?? new GetResponsePolicyRuleInvokeArgs(), options.WithDefaults());
     }
 
 

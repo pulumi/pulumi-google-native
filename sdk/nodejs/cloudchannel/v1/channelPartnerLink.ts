@@ -110,9 +110,7 @@ export class ChannelPartnerLink extends pulumi.CustomResource {
             resourceInputs["resellerCloudIdentityId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ChannelPartnerLink.__pulumiType, name, resourceInputs, opts);
     }
 }

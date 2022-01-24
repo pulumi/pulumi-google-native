@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Get query status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
         /// </summary>
         public static Task<GetQueryResult> InvokeAsync(GetQueryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQueryResult>("google-native:apigee/v1:getQuery", args ?? new GetQueryArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetQueryResult>("google-native:apigee/v1:getQuery", args ?? new GetQueryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get query status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
         /// </summary>
         public static Output<GetQueryResult> Invoke(GetQueryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQueryResult>("google-native:apigee/v1:getQuery", args ?? new GetQueryInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetQueryResult>("google-native:apigee/v1:getQuery", args ?? new GetQueryInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -12,9 +12,7 @@ export function getServiceAccount(args: GetServiceAccountArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:iam/v1:getServiceAccount", {
         "project": args.project,
         "serviceAccountId": args.serviceAccountId,

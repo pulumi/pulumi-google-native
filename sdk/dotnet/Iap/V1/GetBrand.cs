@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Iap.V1
         /// Retrieves the OAuth brand of the project.
         /// </summary>
         public static Task<GetBrandResult> InvokeAsync(GetBrandArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBrandResult>("google-native:iap/v1:getBrand", args ?? new GetBrandArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBrandResult>("google-native:iap/v1:getBrand", args ?? new GetBrandArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the OAuth brand of the project.
         /// </summary>
         public static Output<GetBrandResult> Invoke(GetBrandInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBrandResult>("google-native:iap/v1:getBrand", args ?? new GetBrandInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBrandResult>("google-native:iap/v1:getBrand", args ?? new GetBrandInvokeArgs(), options.WithDefaults());
     }
 
 

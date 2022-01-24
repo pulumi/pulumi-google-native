@@ -108,9 +108,7 @@ export class SecuritySetting extends pulumi.CustomResource {
             resourceInputs["redactionStrategy"] = undefined /*out*/;
             resourceInputs["retentionWindowDays"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecuritySetting.__pulumiType, name, resourceInputs, opts);
     }
 }

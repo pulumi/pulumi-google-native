@@ -263,9 +263,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["upgradeHistory"] = undefined /*out*/;
             resourceInputs["vmImage"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }

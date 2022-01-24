@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
         /// Gets the access control policy for a Queue. Returns an empty policy if the resource exists and does not have a policy set. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.getIamPolicy`
         /// </summary>
         public static Task<GetQueueIamPolicyResult> InvokeAsync(GetQueueIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQueueIamPolicyResult>("google-native:cloudtasks/v2beta3:getQueueIamPolicy", args ?? new GetQueueIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetQueueIamPolicyResult>("google-native:cloudtasks/v2beta3:getQueueIamPolicy", args ?? new GetQueueIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a Queue. Returns an empty policy if the resource exists and does not have a policy set. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.getIamPolicy`
         /// </summary>
         public static Output<GetQueueIamPolicyResult> Invoke(GetQueueIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQueueIamPolicyResult>("google-native:cloudtasks/v2beta3:getQueueIamPolicy", args ?? new GetQueueIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetQueueIamPolicyResult>("google-native:cloudtasks/v2beta3:getQueueIamPolicy", args ?? new GetQueueIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

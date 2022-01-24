@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetTargetIamPolicyResult> InvokeAsync(GetTargetIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetIamPolicyResult>("google-native:clouddeploy/v1:getTargetIamPolicy", args ?? new GetTargetIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetIamPolicyResult>("google-native:clouddeploy/v1:getTargetIamPolicy", args ?? new GetTargetIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetTargetIamPolicyResult> Invoke(GetTargetIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTargetIamPolicyResult>("google-native:clouddeploy/v1:getTargetIamPolicy", args ?? new GetTargetIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTargetIamPolicyResult>("google-native:clouddeploy/v1:getTargetIamPolicy", args ?? new GetTargetIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

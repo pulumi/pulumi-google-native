@@ -13,9 +13,7 @@ export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:orgpolicy/v2:getOrganizationPolicy", {
         "organizationId": args.organizationId,
         "policyId": args.policyId,

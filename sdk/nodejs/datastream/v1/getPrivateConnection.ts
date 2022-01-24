@@ -13,9 +13,7 @@ export function getPrivateConnection(args: GetPrivateConnectionArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:datastream/v1:getPrivateConnection", {
         "location": args.location,
         "privateConnectionId": args.privateConnectionId,

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// Retrieve a `BitbucketServerConfig`. This API is experimental.
         /// </summary>
         public static Task<GetBitbucketServerConfigResult> InvokeAsync(GetBitbucketServerConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBitbucketServerConfigResult>("google-native:cloudbuild/v1:getBitbucketServerConfig", args ?? new GetBitbucketServerConfigArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBitbucketServerConfigResult>("google-native:cloudbuild/v1:getBitbucketServerConfig", args ?? new GetBitbucketServerConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve a `BitbucketServerConfig`. This API is experimental.
         /// </summary>
         public static Output<GetBitbucketServerConfigResult> Invoke(GetBitbucketServerConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBitbucketServerConfigResult>("google-native:cloudbuild/v1:getBitbucketServerConfig", args ?? new GetBitbucketServerConfigInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBitbucketServerConfigResult>("google-native:cloudbuild/v1:getBitbucketServerConfig", args ?? new GetBitbucketServerConfigInvokeArgs(), options.WithDefaults());
     }
 
 

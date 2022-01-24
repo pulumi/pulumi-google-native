@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// Gets details of a single Connection.
         /// </summary>
         public static Task<GetConnectionResult> InvokeAsync(GetConnectionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("google-native:connectors/v1:getConnection", args ?? new GetConnectionArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("google-native:connectors/v1:getConnection", args ?? new GetConnectionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Connection.
         /// </summary>
         public static Output<GetConnectionResult> Invoke(GetConnectionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConnectionResult>("google-native:connectors/v1:getConnection", args ?? new GetConnectionInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConnectionResult>("google-native:connectors/v1:getConnection", args ?? new GetConnectionInvokeArgs(), options.WithDefaults());
     }
 
 

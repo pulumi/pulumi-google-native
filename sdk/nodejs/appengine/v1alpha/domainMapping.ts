@@ -75,9 +75,7 @@ export class DomainMapping extends pulumi.CustomResource {
             resourceInputs["resourceRecords"] = undefined /*out*/;
             resourceInputs["sslSettings"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DomainMapping.__pulumiType, name, resourceInputs, opts);
     }
 }

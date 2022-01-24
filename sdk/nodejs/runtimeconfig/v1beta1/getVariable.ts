@@ -12,9 +12,7 @@ export function getVariable(args: GetVariableArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:runtimeconfig/v1beta1:getVariable", {
         "configId": args.configId,
         "project": args.project,

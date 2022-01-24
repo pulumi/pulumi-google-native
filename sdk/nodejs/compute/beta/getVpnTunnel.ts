@@ -12,9 +12,7 @@ export function getVpnTunnel(args: GetVpnTunnelArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/beta:getVpnTunnel", {
         "project": args.project,
         "region": args.region,

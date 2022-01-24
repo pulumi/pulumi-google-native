@@ -13,9 +13,7 @@ export function getCloneJob(args: GetCloneJobArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:vmmigration/v1:getCloneJob", {
         "cloneJobId": args.cloneJobId,
         "location": args.location,

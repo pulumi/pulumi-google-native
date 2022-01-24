@@ -13,9 +13,7 @@ export function getTaxonomyIamPolicy(args: GetTaxonomyIamPolicyArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:datacatalog/v1:getTaxonomyIamPolicy", {
         "location": args.location,
         "project": args.project,

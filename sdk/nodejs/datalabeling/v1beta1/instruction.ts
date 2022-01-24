@@ -105,9 +105,7 @@ export class Instruction extends pulumi.CustomResource {
             resourceInputs["pdfInstruction"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instruction.__pulumiType, name, resourceInputs, opts);
     }
 }

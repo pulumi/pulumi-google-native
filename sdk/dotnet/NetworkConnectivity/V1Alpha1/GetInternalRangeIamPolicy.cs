@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetInternalRangeIamPolicyResult> InvokeAsync(GetInternalRangeIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInternalRangeIamPolicyResult>("google-native:networkconnectivity/v1alpha1:getInternalRangeIamPolicy", args ?? new GetInternalRangeIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInternalRangeIamPolicyResult>("google-native:networkconnectivity/v1alpha1:getInternalRangeIamPolicy", args ?? new GetInternalRangeIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetInternalRangeIamPolicyResult> Invoke(GetInternalRangeIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInternalRangeIamPolicyResult>("google-native:networkconnectivity/v1alpha1:getInternalRangeIamPolicy", args ?? new GetInternalRangeIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetInternalRangeIamPolicyResult>("google-native:networkconnectivity/v1alpha1:getInternalRangeIamPolicy", args ?? new GetInternalRangeIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

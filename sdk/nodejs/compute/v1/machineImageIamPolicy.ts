@@ -86,9 +86,7 @@ export class MachineImageIamPolicy extends pulumi.CustomResource {
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MachineImageIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

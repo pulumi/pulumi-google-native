@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets a Reference resource.
         /// </summary>
         public static Task<GetReferenceResult> InvokeAsync(GetReferenceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReferenceResult>("google-native:apigee/v1:getReference", args ?? new GetReferenceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetReferenceResult>("google-native:apigee/v1:getReference", args ?? new GetReferenceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a Reference resource.
         /// </summary>
         public static Output<GetReferenceResult> Invoke(GetReferenceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReferenceResult>("google-native:apigee/v1:getReference", args ?? new GetReferenceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetReferenceResult>("google-native:apigee/v1:getReference", args ?? new GetReferenceInvokeArgs(), options.WithDefaults());
     }
 
 

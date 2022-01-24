@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Run.V2
         /// Get the IAM Access Control policy currently in effect for the given Cloud Run Service. This result does not include any inherited policies.
         /// </summary>
         public static Task<GetServiceIamPolicyResult> InvokeAsync(GetServiceIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIamPolicyResult>("google-native:run/v2:getServiceIamPolicy", args ?? new GetServiceIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIamPolicyResult>("google-native:run/v2:getServiceIamPolicy", args ?? new GetServiceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get the IAM Access Control policy currently in effect for the given Cloud Run Service. This result does not include any inherited policies.
         /// </summary>
         public static Output<GetServiceIamPolicyResult> Invoke(GetServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceIamPolicyResult>("google-native:run/v2:getServiceIamPolicy", args ?? new GetServiceIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceIamPolicyResult>("google-native:run/v2:getServiceIamPolicy", args ?? new GetServiceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

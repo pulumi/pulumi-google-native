@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         /// Gets information about a specific type provider.
         /// </summary>
         public static Task<GetTypeProviderResult> InvokeAsync(GetTypeProviderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTypeProviderResult>("google-native:deploymentmanager/v2beta:getTypeProvider", args ?? new GetTypeProviderArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTypeProviderResult>("google-native:deploymentmanager/v2beta:getTypeProvider", args ?? new GetTypeProviderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about a specific type provider.
         /// </summary>
         public static Output<GetTypeProviderResult> Invoke(GetTypeProviderInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTypeProviderResult>("google-native:deploymentmanager/v2beta:getTypeProvider", args ?? new GetTypeProviderInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTypeProviderResult>("google-native:deploymentmanager/v2beta:getTypeProvider", args ?? new GetTypeProviderInvokeArgs(), options.WithDefaults());
     }
 
 

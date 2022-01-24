@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         /// Gets details of a single realm.
         /// </summary>
         public static Task<GetRealmResult> InvokeAsync(GetRealmArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRealmResult>("google-native:gameservices/v1beta:getRealm", args ?? new GetRealmArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRealmResult>("google-native:gameservices/v1beta:getRealm", args ?? new GetRealmArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single realm.
         /// </summary>
         public static Output<GetRealmResult> Invoke(GetRealmInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRealmResult>("google-native:gameservices/v1beta:getRealm", args ?? new GetRealmInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRealmResult>("google-native:gameservices/v1beta:getRealm", args ?? new GetRealmInvokeArgs(), options.WithDefaults());
     }
 
 

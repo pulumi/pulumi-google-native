@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// Gets details of a single import.
         /// </summary>
         public static Task<GetMetadataImportResult> InvokeAsync(GetMetadataImportArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMetadataImportResult>("google-native:metastore/v1beta:getMetadataImport", args ?? new GetMetadataImportArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMetadataImportResult>("google-native:metastore/v1beta:getMetadataImport", args ?? new GetMetadataImportArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single import.
         /// </summary>
         public static Output<GetMetadataImportResult> Invoke(GetMetadataImportInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMetadataImportResult>("google-native:metastore/v1beta:getMetadataImport", args ?? new GetMetadataImportInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMetadataImportResult>("google-native:metastore/v1beta:getMetadataImport", args ?? new GetMetadataImportInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -13,9 +13,7 @@ export function getUptimeCheckConfig(args: GetUptimeCheckConfigArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:monitoring/v3:getUptimeCheckConfig", {
         "project": args.project,
         "uptimeCheckConfigId": args.uptimeCheckConfigId,

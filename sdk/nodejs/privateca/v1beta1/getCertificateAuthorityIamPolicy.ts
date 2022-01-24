@@ -13,9 +13,7 @@ export function getCertificateAuthorityIamPolicy(args: GetCertificateAuthorityIa
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:privateca/v1beta1:getCertificateAuthorityIamPolicy", {
         "certificateAuthorityId": args.certificateAuthorityId,
         "location": args.location,

@@ -13,9 +13,7 @@ export function getCertificateAuthorityCertificateRevocationListIamPolicy(args: 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:privateca/v1beta1:getCertificateAuthorityCertificateRevocationListIamPolicy", {
         "certificateAuthorityId": args.certificateAuthorityId,
         "certificateRevocationListId": args.certificateRevocationListId,

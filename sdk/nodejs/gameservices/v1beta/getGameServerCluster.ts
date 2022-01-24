@@ -13,9 +13,7 @@ export function getGameServerCluster(args: GetGameServerClusterArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:gameservices/v1beta:getGameServerCluster", {
         "gameServerClusterId": args.gameServerClusterId,
         "location": args.location,

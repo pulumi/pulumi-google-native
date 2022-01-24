@@ -12,9 +12,7 @@ export function getTagValue(args: GetTagValueArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v3:getTagValue", {
         "tagValueId": args.tagValueId,
     }, opts);

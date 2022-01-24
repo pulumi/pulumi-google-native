@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         /// Gets details of a single Source.
         /// </summary>
         public static Task<GetSourceResult> InvokeAsync(GetSourceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSourceResult>("google-native:vmmigration/v1:getSource", args ?? new GetSourceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSourceResult>("google-native:vmmigration/v1:getSource", args ?? new GetSourceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Source.
         /// </summary>
         public static Output<GetSourceResult> Invoke(GetSourceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSourceResult>("google-native:vmmigration/v1:getSource", args ?? new GetSourceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSourceResult>("google-native:vmmigration/v1:getSource", args ?? new GetSourceInvokeArgs(), options.WithDefaults());
     }
 
 

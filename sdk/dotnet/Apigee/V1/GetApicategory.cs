@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets a category on the portal.
         /// </summary>
         public static Task<GetApicategoryResult> InvokeAsync(GetApicategoryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApicategoryResult>("google-native:apigee/v1:getApicategory", args ?? new GetApicategoryArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetApicategoryResult>("google-native:apigee/v1:getApicategory", args ?? new GetApicategoryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a category on the portal.
         /// </summary>
         public static Output<GetApicategoryResult> Invoke(GetApicategoryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApicategoryResult>("google-native:apigee/v1:getApicategory", args ?? new GetApicategoryInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetApicategoryResult>("google-native:apigee/v1:getApicategory", args ?? new GetApicategoryInvokeArgs(), options.WithDefaults());
     }
 
 

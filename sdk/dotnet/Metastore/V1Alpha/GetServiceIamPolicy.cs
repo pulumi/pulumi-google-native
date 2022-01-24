@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetServiceIamPolicyResult> InvokeAsync(GetServiceIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIamPolicyResult>("google-native:metastore/v1alpha:getServiceIamPolicy", args ?? new GetServiceIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIamPolicyResult>("google-native:metastore/v1alpha:getServiceIamPolicy", args ?? new GetServiceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetServiceIamPolicyResult> Invoke(GetServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceIamPolicyResult>("google-native:metastore/v1alpha:getServiceIamPolicy", args ?? new GetServiceIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceIamPolicyResult>("google-native:metastore/v1alpha:getServiceIamPolicy", args ?? new GetServiceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

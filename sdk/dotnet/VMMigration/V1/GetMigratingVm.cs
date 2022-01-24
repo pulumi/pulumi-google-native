@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         /// Gets details of a single MigratingVm.
         /// </summary>
         public static Task<GetMigratingVmResult> InvokeAsync(GetMigratingVmArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMigratingVmResult>("google-native:vmmigration/v1:getMigratingVm", args ?? new GetMigratingVmArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMigratingVmResult>("google-native:vmmigration/v1:getMigratingVm", args ?? new GetMigratingVmArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single MigratingVm.
         /// </summary>
         public static Output<GetMigratingVmResult> Invoke(GetMigratingVmInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMigratingVmResult>("google-native:vmmigration/v1:getMigratingVm", args ?? new GetMigratingVmInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMigratingVmResult>("google-native:vmmigration/v1:getMigratingVm", args ?? new GetMigratingVmInvokeArgs(), options.WithDefaults());
     }
 
 

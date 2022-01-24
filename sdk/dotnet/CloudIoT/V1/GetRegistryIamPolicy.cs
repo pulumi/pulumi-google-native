@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetRegistryIamPolicyResult> InvokeAsync(GetRegistryIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryIamPolicyResult>("google-native:cloudiot/v1:getRegistryIamPolicy", args ?? new GetRegistryIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryIamPolicyResult>("google-native:cloudiot/v1:getRegistryIamPolicy", args ?? new GetRegistryIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetRegistryIamPolicyResult> Invoke(GetRegistryIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegistryIamPolicyResult>("google-native:cloudiot/v1:getRegistryIamPolicy", args ?? new GetRegistryIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRegistryIamPolicyResult>("google-native:cloudiot/v1:getRegistryIamPolicy", args ?? new GetRegistryIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

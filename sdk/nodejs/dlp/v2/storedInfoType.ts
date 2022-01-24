@@ -75,9 +75,7 @@ export class StoredInfoType extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pendingVersions"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StoredInfoType.__pulumiType, name, resourceInputs, opts);
     }
 }

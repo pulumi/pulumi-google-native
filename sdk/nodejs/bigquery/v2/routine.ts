@@ -148,9 +148,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["routineType"] = undefined /*out*/;
             resourceInputs["strictMode"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Routine.__pulumiType, name, resourceInputs, opts);
     }
 }

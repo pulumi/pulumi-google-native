@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         /// Gets the IAM policy for a given resource.
         /// </summary>
         public static Task<GetRepositoryIamPolicyResult> InvokeAsync(GetRepositoryIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryIamPolicyResult>("google-native:artifactregistry/v1beta2:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryIamPolicyResult>("google-native:artifactregistry/v1beta2:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the IAM policy for a given resource.
         /// </summary>
         public static Output<GetRepositoryIamPolicyResult> Invoke(GetRepositoryIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRepositoryIamPolicyResult>("google-native:artifactregistry/v1beta2:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRepositoryIamPolicyResult>("google-native:artifactregistry/v1beta2:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

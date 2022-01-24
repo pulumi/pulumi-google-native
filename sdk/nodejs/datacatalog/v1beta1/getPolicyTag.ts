@@ -12,9 +12,7 @@ export function getPolicyTag(args: GetPolicyTagArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:datacatalog/v1beta1:getPolicyTag", {
         "location": args.location,
         "policyTagId": args.policyTagId,

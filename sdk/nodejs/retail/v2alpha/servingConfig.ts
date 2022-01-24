@@ -168,9 +168,7 @@ export class ServingConfig extends pulumi.CustomResource {
             resourceInputs["solutionTypes"] = undefined /*out*/;
             resourceInputs["twowaySynonymsControlIds"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServingConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -177,9 +177,7 @@ export class Intent extends pulumi.CustomResource {
             resourceInputs["trainingPhrases"] = undefined /*out*/;
             resourceInputs["webhookState"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Intent.__pulumiType, name, resourceInputs, opts);
     }
 }

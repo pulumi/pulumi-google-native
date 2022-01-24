@@ -13,9 +13,7 @@ export function getServiceLevelObjective(args: GetServiceLevelObjectiveArgs, opt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:monitoring/v3:getServiceLevelObjective", {
         "serviceId": args.serviceId,
         "serviceLevelObjectiveId": args.serviceLevelObjectiveId,

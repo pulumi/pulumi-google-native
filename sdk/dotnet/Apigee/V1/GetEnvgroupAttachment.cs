@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets an environment group attachment.
         /// </summary>
         public static Task<GetEnvgroupAttachmentResult> InvokeAsync(GetEnvgroupAttachmentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEnvgroupAttachmentResult>("google-native:apigee/v1:getEnvgroupAttachment", args ?? new GetEnvgroupAttachmentArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEnvgroupAttachmentResult>("google-native:apigee/v1:getEnvgroupAttachment", args ?? new GetEnvgroupAttachmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an environment group attachment.
         /// </summary>
         public static Output<GetEnvgroupAttachmentResult> Invoke(GetEnvgroupAttachmentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEnvgroupAttachmentResult>("google-native:apigee/v1:getEnvgroupAttachment", args ?? new GetEnvgroupAttachmentInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEnvgroupAttachmentResult>("google-native:apigee/v1:getEnvgroupAttachment", args ?? new GetEnvgroupAttachmentInvokeArgs(), options.WithDefaults());
     }
 
 

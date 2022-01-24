@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// Gets an individual WorkloadIdentityPoolProvider.
         /// </summary>
         public static Task<GetProviderResult> InvokeAsync(GetProviderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProviderResult>("google-native:iam/v1:getProvider", args ?? new GetProviderArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProviderResult>("google-native:iam/v1:getProvider", args ?? new GetProviderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an individual WorkloadIdentityPoolProvider.
         /// </summary>
         public static Output<GetProviderResult> Invoke(GetProviderInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProviderResult>("google-native:iam/v1:getProvider", args ?? new GetProviderInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetProviderResult>("google-native:iam/v1:getProvider", args ?? new GetProviderInvokeArgs(), options.WithDefaults());
     }
 
 

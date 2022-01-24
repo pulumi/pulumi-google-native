@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// Gets an Annotation.
         /// </summary>
         public static Task<GetAnnotationResult> InvokeAsync(GetAnnotationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAnnotationResult>("google-native:healthcare/v1beta1:getAnnotation", args ?? new GetAnnotationArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAnnotationResult>("google-native:healthcare/v1beta1:getAnnotation", args ?? new GetAnnotationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an Annotation.
         /// </summary>
         public static Output<GetAnnotationResult> Invoke(GetAnnotationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAnnotationResult>("google-native:healthcare/v1beta1:getAnnotation", args ?? new GetAnnotationInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAnnotationResult>("google-native:healthcare/v1beta1:getAnnotation", args ?? new GetAnnotationInvokeArgs(), options.WithDefaults());
     }
 
 

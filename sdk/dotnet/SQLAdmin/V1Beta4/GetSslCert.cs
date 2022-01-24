@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.
         /// </summary>
         public static Task<GetSslCertResult> InvokeAsync(GetSslCertArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSslCertResult>("google-native:sqladmin/v1beta4:getSslCert", args ?? new GetSslCertArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSslCertResult>("google-native:sqladmin/v1beta4:getSslCert", args ?? new GetSslCertArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.
         /// </summary>
         public static Output<GetSslCertResult> Invoke(GetSslCertInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSslCertResult>("google-native:sqladmin/v1beta4:getSslCert", args ?? new GetSslCertInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSslCertResult>("google-native:sqladmin/v1beta4:getSslCert", args ?? new GetSslCertInvokeArgs(), options.WithDefaults());
     }
 
 

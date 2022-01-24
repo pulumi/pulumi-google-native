@@ -121,9 +121,7 @@ export class UtilizationReport extends pulumi.CustomResource {
             resourceInputs["vmCount"] = undefined /*out*/;
             resourceInputs["vms"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UtilizationReport.__pulumiType, name, resourceInputs, opts);
     }
 }

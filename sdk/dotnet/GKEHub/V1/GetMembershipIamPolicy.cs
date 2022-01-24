@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.GKEHub.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetMembershipIamPolicyResult> InvokeAsync(GetMembershipIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMembershipIamPolicyResult>("google-native:gkehub/v1:getMembershipIamPolicy", args ?? new GetMembershipIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMembershipIamPolicyResult>("google-native:gkehub/v1:getMembershipIamPolicy", args ?? new GetMembershipIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetMembershipIamPolicyResult> Invoke(GetMembershipIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMembershipIamPolicyResult>("google-native:gkehub/v1:getMembershipIamPolicy", args ?? new GetMembershipIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMembershipIamPolicyResult>("google-native:gkehub/v1:getMembershipIamPolicy", args ?? new GetMembershipIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

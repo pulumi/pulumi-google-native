@@ -122,9 +122,7 @@ export class Spoke extends pulumi.CustomResource {
             resourceInputs["uniqueId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Spoke.__pulumiType, name, resourceInputs, opts);
     }
 }

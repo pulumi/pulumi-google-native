@@ -102,9 +102,7 @@ export class DebugSession extends pulumi.CustomResource {
             resourceInputs["tracesize"] = undefined /*out*/;
             resourceInputs["validity"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DebugSession.__pulumiType, name, resourceInputs, opts);
     }
 }

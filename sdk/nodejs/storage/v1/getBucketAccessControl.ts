@@ -13,9 +13,7 @@ export function getBucketAccessControl(args: GetBucketAccessControlArgs, opts?: 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:storage/v1:getBucketAccessControl", {
         "bucket": args.bucket,
         "entity": args.entity,

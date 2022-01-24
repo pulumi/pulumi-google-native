@@ -84,9 +84,7 @@ export class Lien extends pulumi.CustomResource {
             resourceInputs["reason"] = undefined /*out*/;
             resourceInputs["restrictions"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Lien.__pulumiType, name, resourceInputs, opts);
     }
 }

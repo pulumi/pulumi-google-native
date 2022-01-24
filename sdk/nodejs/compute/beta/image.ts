@@ -250,9 +250,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["storageLocations"] = undefined /*out*/;
             resourceInputs["userLicenses"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Image.__pulumiType, name, resourceInputs, opts);
     }
 }

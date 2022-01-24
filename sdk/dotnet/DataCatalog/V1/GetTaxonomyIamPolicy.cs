@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// Gets the IAM policy for a policy tag or a taxonomy.
         /// </summary>
         public static Task<GetTaxonomyIamPolicyResult> InvokeAsync(GetTaxonomyIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTaxonomyIamPolicyResult>("google-native:datacatalog/v1:getTaxonomyIamPolicy", args ?? new GetTaxonomyIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTaxonomyIamPolicyResult>("google-native:datacatalog/v1:getTaxonomyIamPolicy", args ?? new GetTaxonomyIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the IAM policy for a policy tag or a taxonomy.
         /// </summary>
         public static Output<GetTaxonomyIamPolicyResult> Invoke(GetTaxonomyIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTaxonomyIamPolicyResult>("google-native:datacatalog/v1:getTaxonomyIamPolicy", args ?? new GetTaxonomyIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTaxonomyIamPolicyResult>("google-native:datacatalog/v1:getTaxonomyIamPolicy", args ?? new GetTaxonomyIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

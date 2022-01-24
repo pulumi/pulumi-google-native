@@ -188,9 +188,7 @@ export class Report extends pulumi.CustomResource {
             resourceInputs["toTime"] = undefined /*out*/;
             resourceInputs["topk"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Report.__pulumiType, name, resourceInputs, opts);
     }
 }

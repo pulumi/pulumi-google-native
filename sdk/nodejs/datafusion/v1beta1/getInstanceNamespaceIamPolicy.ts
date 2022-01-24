@@ -13,9 +13,7 @@ export function getInstanceNamespaceIamPolicy(args: GetInstanceNamespaceIamPolic
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:datafusion/v1beta1:getInstanceNamespaceIamPolicy", {
         "instanceId": args.instanceId,
         "location": args.location,

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// Gets a view.
         /// </summary>
         public static Task<GetViewResult> InvokeAsync(GetViewArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetViewResult>("google-native:contactcenterinsights/v1:getView", args ?? new GetViewArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetViewResult>("google-native:contactcenterinsights/v1:getView", args ?? new GetViewArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a view.
         /// </summary>
         public static Output<GetViewResult> Invoke(GetViewInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetViewResult>("google-native:contactcenterinsights/v1:getView", args ?? new GetViewInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetViewResult>("google-native:contactcenterinsights/v1:getView", args ?? new GetViewInvokeArgs(), options.WithDefaults());
     }
 
 

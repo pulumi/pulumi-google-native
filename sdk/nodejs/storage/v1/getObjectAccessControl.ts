@@ -13,9 +13,7 @@ export function getObjectAccessControl(args: GetObjectAccessControlArgs, opts?: 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:storage/v1:getObjectAccessControl", {
         "bucket": args.bucket,
         "entity": args.entity,

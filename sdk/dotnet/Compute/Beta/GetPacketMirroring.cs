@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns the specified PacketMirroring resource.
         /// </summary>
         public static Task<GetPacketMirroringResult> InvokeAsync(GetPacketMirroringArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPacketMirroringResult>("google-native:compute/beta:getPacketMirroring", args ?? new GetPacketMirroringArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPacketMirroringResult>("google-native:compute/beta:getPacketMirroring", args ?? new GetPacketMirroringArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified PacketMirroring resource.
         /// </summary>
         public static Output<GetPacketMirroringResult> Invoke(GetPacketMirroringInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPacketMirroringResult>("google-native:compute/beta:getPacketMirroring", args ?? new GetPacketMirroringInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetPacketMirroringResult>("google-native:compute/beta:getPacketMirroring", args ?? new GetPacketMirroringInvokeArgs(), options.WithDefaults());
     }
 
 

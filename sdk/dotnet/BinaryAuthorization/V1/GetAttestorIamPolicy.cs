@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetAttestorIamPolicyResult> InvokeAsync(GetAttestorIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAttestorIamPolicyResult>("google-native:binaryauthorization/v1:getAttestorIamPolicy", args ?? new GetAttestorIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAttestorIamPolicyResult>("google-native:binaryauthorization/v1:getAttestorIamPolicy", args ?? new GetAttestorIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetAttestorIamPolicyResult> Invoke(GetAttestorIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAttestorIamPolicyResult>("google-native:binaryauthorization/v1:getAttestorIamPolicy", args ?? new GetAttestorIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAttestorIamPolicyResult>("google-native:binaryauthorization/v1:getAttestorIamPolicy", args ?? new GetAttestorIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// View a notification configuration.
         /// </summary>
         public static Task<GetNotificationResult> InvokeAsync(GetNotificationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationResult>("google-native:storage/v1:getNotification", args ?? new GetNotificationArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationResult>("google-native:storage/v1:getNotification", args ?? new GetNotificationArgs(), options.WithDefaults());
 
         /// <summary>
         /// View a notification configuration.
         /// </summary>
         public static Output<GetNotificationResult> Invoke(GetNotificationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNotificationResult>("google-native:storage/v1:getNotification", args ?? new GetNotificationInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNotificationResult>("google-native:storage/v1:getNotification", args ?? new GetNotificationInvokeArgs(), options.WithDefaults());
     }
 
 

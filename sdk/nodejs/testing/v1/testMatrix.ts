@@ -140,9 +140,7 @@ export class TestMatrix extends pulumi.CustomResource {
             resourceInputs["testSpecification"] = undefined /*out*/;
             resourceInputs["timestamp"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TestMatrix.__pulumiType, name, resourceInputs, opts);
     }
 }

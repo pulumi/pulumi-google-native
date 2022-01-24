@@ -115,9 +115,7 @@ export class SearchApplication extends pulumi.CustomResource {
             resourceInputs["scoringConfig"] = undefined /*out*/;
             resourceInputs["sourceConfig"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SearchApplication.__pulumiType, name, resourceInputs, opts);
     }
 }

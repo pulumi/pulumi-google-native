@@ -129,9 +129,7 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["trafficLogs"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Endpoint.__pulumiType, name, resourceInputs, opts);
     }
 }

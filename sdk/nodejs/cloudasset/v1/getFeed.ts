@@ -13,9 +13,7 @@ export function getFeed(args: GetFeedArgs, opts?: pulumi.InvokeOptions): Promise
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:cloudasset/v1:getFeed", {
         "feedId": args.feedId,
         "v1Id": args.v1Id,

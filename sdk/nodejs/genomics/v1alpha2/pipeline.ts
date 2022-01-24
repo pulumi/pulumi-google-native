@@ -100,9 +100,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Pipeline.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// Gets an annotation spec set by resource name.
         /// </summary>
         public static Task<GetAnnotationSpecSetResult> InvokeAsync(GetAnnotationSpecSetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAnnotationSpecSetResult>("google-native:datalabeling/v1beta1:getAnnotationSpecSet", args ?? new GetAnnotationSpecSetArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAnnotationSpecSetResult>("google-native:datalabeling/v1beta1:getAnnotationSpecSet", args ?? new GetAnnotationSpecSetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an annotation spec set by resource name.
         /// </summary>
         public static Output<GetAnnotationSpecSetResult> Invoke(GetAnnotationSpecSetInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAnnotationSpecSetResult>("google-native:datalabeling/v1beta1:getAnnotationSpecSet", args ?? new GetAnnotationSpecSetInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAnnotationSpecSetResult>("google-native:datalabeling/v1beta1:getAnnotationSpecSet", args ?? new GetAnnotationSpecSetInvokeArgs(), options.WithDefaults());
     }
 
 

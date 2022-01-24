@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// Gets a service configuration (version) for a managed service.
         /// </summary>
         public static Task<GetConfigResult> InvokeAsync(GetConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigResult>("google-native:servicemanagement/v1:getConfig", args ?? new GetConfigArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigResult>("google-native:servicemanagement/v1:getConfig", args ?? new GetConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a service configuration (version) for a managed service.
         /// </summary>
         public static Output<GetConfigResult> Invoke(GetConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConfigResult>("google-native:servicemanagement/v1:getConfig", args ?? new GetConfigInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConfigResult>("google-native:servicemanagement/v1:getConfig", args ?? new GetConfigInvokeArgs(), options.WithDefaults());
     }
 
 

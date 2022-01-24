@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// Gets details of a single connection profile.
         /// </summary>
         public static Task<GetConnectionProfileResult> InvokeAsync(GetConnectionProfileArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionProfileResult>("google-native:datamigration/v1:getConnectionProfile", args ?? new GetConnectionProfileArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionProfileResult>("google-native:datamigration/v1:getConnectionProfile", args ?? new GetConnectionProfileArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single connection profile.
         /// </summary>
         public static Output<GetConnectionProfileResult> Invoke(GetConnectionProfileInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConnectionProfileResult>("google-native:datamigration/v1:getConnectionProfile", args ?? new GetConnectionProfileInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConnectionProfileResult>("google-native:datamigration/v1:getConnectionProfile", args ?? new GetConnectionProfileInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets a keystore or truststore.
         /// </summary>
         public static Task<GetKeystoreResult> InvokeAsync(GetKeystoreArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeystoreResult>("google-native:apigee/v1:getKeystore", args ?? new GetKeystoreArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeystoreResult>("google-native:apigee/v1:getKeystore", args ?? new GetKeystoreArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a keystore or truststore.
         /// </summary>
         public static Output<GetKeystoreResult> Invoke(GetKeystoreInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKeystoreResult>("google-native:apigee/v1:getKeystore", args ?? new GetKeystoreInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKeystoreResult>("google-native:apigee/v1:getKeystore", args ?? new GetKeystoreInvokeArgs(), options.WithDefaults());
     }
 
 

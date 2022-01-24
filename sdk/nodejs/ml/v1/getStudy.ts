@@ -13,9 +13,7 @@ export function getStudy(args: GetStudyArgs, opts?: pulumi.InvokeOptions): Promi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:ml/v1:getStudy", {
         "location": args.location,
         "project": args.project,

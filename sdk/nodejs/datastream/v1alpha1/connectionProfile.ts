@@ -132,9 +132,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["staticServiceIpConnectivity"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectionProfile.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -13,9 +13,7 @@ export function getSslPolicy(args: GetSslPolicyArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/beta:getSslPolicy", {
         "project": args.project,
         "sslPolicy": args.sslPolicy,

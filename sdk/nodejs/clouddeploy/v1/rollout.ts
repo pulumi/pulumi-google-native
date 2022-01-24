@@ -172,9 +172,7 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["targetId"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Rollout.__pulumiType, name, resourceInputs, opts);
     }
 }

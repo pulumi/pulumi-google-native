@@ -222,9 +222,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = undefined /*out*/;
             resourceInputs["target"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ForwardingRule.__pulumiType, name, resourceInputs, opts);
     }
 }

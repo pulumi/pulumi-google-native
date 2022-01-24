@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         /// Gets a single contact.
         /// </summary>
         public static Task<GetFolderContactResult> InvokeAsync(GetFolderContactArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderContactResult>("google-native:essentialcontacts/v1:getFolderContact", args ?? new GetFolderContactArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderContactResult>("google-native:essentialcontacts/v1:getFolderContact", args ?? new GetFolderContactArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a single contact.
         /// </summary>
         public static Output<GetFolderContactResult> Invoke(GetFolderContactInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFolderContactResult>("google-native:essentialcontacts/v1:getFolderContact", args ?? new GetFolderContactInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetFolderContactResult>("google-native:essentialcontacts/v1:getFolderContact", args ?? new GetFolderContactInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// Gets the specified firewall rule.
         /// </summary>
         public static Task<GetIngressRuleResult> InvokeAsync(GetIngressRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIngressRuleResult>("google-native:appengine/v1:getIngressRule", args ?? new GetIngressRuleArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIngressRuleResult>("google-native:appengine/v1:getIngressRule", args ?? new GetIngressRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified firewall rule.
         /// </summary>
         public static Output<GetIngressRuleResult> Invoke(GetIngressRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIngressRuleResult>("google-native:appengine/v1:getIngressRule", args ?? new GetIngressRuleInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIngressRuleResult>("google-native:appengine/v1:getIngressRule", args ?? new GetIngressRuleInvokeArgs(), options.WithDefaults());
     }
 
 

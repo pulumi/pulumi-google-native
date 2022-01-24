@@ -13,9 +13,7 @@ export function getInstanceTableIamPolicy(args: GetInstanceTableIamPolicyArgs, o
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:bigtableadmin/v2:getInstanceTableIamPolicy", {
         "instanceId": args.instanceId,
         "project": args.project,

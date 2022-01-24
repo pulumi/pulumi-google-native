@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// Retrieves the specified session entity type.
         /// </summary>
         public static Task<GetSessionEntityTypeResult> InvokeAsync(GetSessionEntityTypeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSessionEntityTypeResult>("google-native:dialogflow/v3beta1:getSessionEntityType", args ?? new GetSessionEntityTypeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSessionEntityTypeResult>("google-native:dialogflow/v3beta1:getSessionEntityType", args ?? new GetSessionEntityTypeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified session entity type.
         /// </summary>
         public static Output<GetSessionEntityTypeResult> Invoke(GetSessionEntityTypeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSessionEntityTypeResult>("google-native:dialogflow/v3beta1:getSessionEntityType", args ?? new GetSessionEntityTypeInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSessionEntityTypeResult>("google-native:dialogflow/v3beta1:getSessionEntityType", args ?? new GetSessionEntityTypeInvokeArgs(), options.WithDefaults());
     }
 
 

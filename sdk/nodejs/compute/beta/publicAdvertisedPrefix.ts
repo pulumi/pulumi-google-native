@@ -117,9 +117,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["sharedSecret"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PublicAdvertisedPrefix.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -13,9 +13,7 @@ export function getTransferJob(args: GetTransferJobArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:storagetransfer/v1:getTransferJob", {
         "projectId": args.projectId,
         "transferJobId": args.transferJobId,

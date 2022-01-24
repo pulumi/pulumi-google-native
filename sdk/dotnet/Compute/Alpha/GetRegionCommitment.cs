@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified commitment resource. Gets a list of available commitments by making a list() request.
         /// </summary>
         public static Task<GetRegionCommitmentResult> InvokeAsync(GetRegionCommitmentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionCommitmentResult>("google-native:compute/alpha:getRegionCommitment", args ?? new GetRegionCommitmentArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionCommitmentResult>("google-native:compute/alpha:getRegionCommitment", args ?? new GetRegionCommitmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified commitment resource. Gets a list of available commitments by making a list() request.
         /// </summary>
         public static Output<GetRegionCommitmentResult> Invoke(GetRegionCommitmentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionCommitmentResult>("google-native:compute/alpha:getRegionCommitment", args ?? new GetRegionCommitmentInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRegionCommitmentResult>("google-native:compute/alpha:getRegionCommitment", args ?? new GetRegionCommitmentInvokeArgs(), options.WithDefaults());
     }
 
 

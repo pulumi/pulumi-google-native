@@ -12,9 +12,7 @@ export function getRegionHealthCheckService(args: GetRegionHealthCheckServiceArg
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/v1:getRegionHealthCheckService", {
         "healthCheckService": args.healthCheckService,
         "project": args.project,

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.DocumentAI.V1Beta3
         /// Gets a processor detail.
         /// </summary>
         public static Task<GetProcessorResult> InvokeAsync(GetProcessorArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProcessorResult>("google-native:documentai/v1beta3:getProcessor", args ?? new GetProcessorArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProcessorResult>("google-native:documentai/v1beta3:getProcessor", args ?? new GetProcessorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a processor detail.
         /// </summary>
         public static Output<GetProcessorResult> Invoke(GetProcessorInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProcessorResult>("google-native:documentai/v1beta3:getProcessor", args ?? new GetProcessorInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetProcessorResult>("google-native:documentai/v1beta3:getProcessor", args ?? new GetProcessorInvokeArgs(), options.WithDefaults());
     }
 
 

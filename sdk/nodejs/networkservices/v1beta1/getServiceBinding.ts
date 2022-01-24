@@ -12,9 +12,7 @@ export function getServiceBinding(args: GetServiceBindingArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:networkservices/v1beta1:getServiceBinding", {
         "location": args.location,
         "project": args.project,

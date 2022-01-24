@@ -117,9 +117,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BackendBucket.__pulumiType, name, resourceInputs, opts);
     }
 }

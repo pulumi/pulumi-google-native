@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// Gets the specified AndroidApp.
         /// </summary>
         public static Task<GetAndroidAppResult> InvokeAsync(GetAndroidAppArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAndroidAppResult>("google-native:firebase/v1beta1:getAndroidApp", args ?? new GetAndroidAppArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAndroidAppResult>("google-native:firebase/v1beta1:getAndroidApp", args ?? new GetAndroidAppArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified AndroidApp.
         /// </summary>
         public static Output<GetAndroidAppResult> Invoke(GetAndroidAppInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAndroidAppResult>("google-native:firebase/v1beta1:getAndroidApp", args ?? new GetAndroidAppInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAndroidAppResult>("google-native:firebase/v1beta1:getAndroidApp", args ?? new GetAndroidAppInvokeArgs(), options.WithDefaults());
     }
 
 

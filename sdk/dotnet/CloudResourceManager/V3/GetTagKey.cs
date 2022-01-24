@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// Retrieves a TagKey. This method will return `PERMISSION_DENIED` if the key does not exist or the user does not have permission to view it.
         /// </summary>
         public static Task<GetTagKeyResult> InvokeAsync(GetTagKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagKeyResult>("google-native:cloudresourcemanager/v3:getTagKey", args ?? new GetTagKeyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTagKeyResult>("google-native:cloudresourcemanager/v3:getTagKey", args ?? new GetTagKeyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a TagKey. This method will return `PERMISSION_DENIED` if the key does not exist or the user does not have permission to view it.
         /// </summary>
         public static Output<GetTagKeyResult> Invoke(GetTagKeyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTagKeyResult>("google-native:cloudresourcemanager/v3:getTagKey", args ?? new GetTagKeyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTagKeyResult>("google-native:cloudresourcemanager/v3:getTagKey", args ?? new GetTagKeyInvokeArgs(), options.WithDefaults());
     }
 
 

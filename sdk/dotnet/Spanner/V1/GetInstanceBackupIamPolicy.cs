@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource.
         /// </summary>
         public static Task<GetInstanceBackupIamPolicyResult> InvokeAsync(GetInstanceBackupIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceBackupIamPolicyResult>("google-native:spanner/v1:getInstanceBackupIamPolicy", args ?? new GetInstanceBackupIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceBackupIamPolicyResult>("google-native:spanner/v1:getInstanceBackupIamPolicy", args ?? new GetInstanceBackupIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource.
         /// </summary>
         public static Output<GetInstanceBackupIamPolicyResult> Invoke(GetInstanceBackupIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceBackupIamPolicyResult>("google-native:spanner/v1:getInstanceBackupIamPolicy", args ?? new GetInstanceBackupIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceBackupIamPolicyResult>("google-native:spanner/v1:getInstanceBackupIamPolicy", args ?? new GetInstanceBackupIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

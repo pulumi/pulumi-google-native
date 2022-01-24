@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// Gets the batch workload resource representation.
         /// </summary>
         public static Task<GetBatchResult> InvokeAsync(GetBatchArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBatchResult>("google-native:dataproc/v1:getBatch", args ?? new GetBatchArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBatchResult>("google-native:dataproc/v1:getBatch", args ?? new GetBatchArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the batch workload resource representation.
         /// </summary>
         public static Output<GetBatchResult> Invoke(GetBatchInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBatchResult>("google-native:dataproc/v1:getBatch", args ?? new GetBatchInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBatchResult>("google-native:dataproc/v1:getBatch", args ?? new GetBatchInvokeArgs(), options.WithDefaults());
     }
 
 

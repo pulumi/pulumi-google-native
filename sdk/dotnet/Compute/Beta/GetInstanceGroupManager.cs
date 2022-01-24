@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns all of the details about the specified managed instance group. Gets a list of available managed instance groups by making a list() request.
         /// </summary>
         public static Task<GetInstanceGroupManagerResult> InvokeAsync(GetInstanceGroupManagerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupManagerResult>("google-native:compute/beta:getInstanceGroupManager", args ?? new GetInstanceGroupManagerArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupManagerResult>("google-native:compute/beta:getInstanceGroupManager", args ?? new GetInstanceGroupManagerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns all of the details about the specified managed instance group. Gets a list of available managed instance groups by making a list() request.
         /// </summary>
         public static Output<GetInstanceGroupManagerResult> Invoke(GetInstanceGroupManagerInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceGroupManagerResult>("google-native:compute/beta:getInstanceGroupManager", args ?? new GetInstanceGroupManagerInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceGroupManagerResult>("google-native:compute/beta:getInstanceGroupManager", args ?? new GetInstanceGroupManagerInvokeArgs(), options.WithDefaults());
     }
 
 

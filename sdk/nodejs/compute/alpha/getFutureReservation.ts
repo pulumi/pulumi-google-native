@@ -13,9 +13,7 @@ export function getFutureReservation(args: GetFutureReservationArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/alpha:getFutureReservation", {
         "futureReservation": args.futureReservation,
         "project": args.project,

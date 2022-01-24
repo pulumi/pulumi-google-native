@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets the details and status of an analytics export job. If the export job is still in progress, its `state` is set to "running". After the export job has completed successfully, its `state` is set to "completed". If the export job fails, its `state` is set to `failed`.
         /// </summary>
         public static Task<GetExportResult> InvokeAsync(GetExportArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetExportResult>("google-native:apigee/v1:getExport", args ?? new GetExportArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetExportResult>("google-native:apigee/v1:getExport", args ?? new GetExportArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the details and status of an analytics export job. If the export job is still in progress, its `state` is set to "running". After the export job has completed successfully, its `state` is set to "completed". If the export job fails, its `state` is set to `failed`.
         /// </summary>
         public static Output<GetExportResult> Invoke(GetExportInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetExportResult>("google-native:apigee/v1:getExport", args ?? new GetExportInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetExportResult>("google-native:apigee/v1:getExport", args ?? new GetExportInvokeArgs(), options.WithDefaults());
     }
 
 

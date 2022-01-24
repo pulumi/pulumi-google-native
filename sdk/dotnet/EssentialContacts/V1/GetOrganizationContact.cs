@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         /// Gets a single contact.
         /// </summary>
         public static Task<GetOrganizationContactResult> InvokeAsync(GetOrganizationContactArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationContactResult>("google-native:essentialcontacts/v1:getOrganizationContact", args ?? new GetOrganizationContactArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationContactResult>("google-native:essentialcontacts/v1:getOrganizationContact", args ?? new GetOrganizationContactArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a single contact.
         /// </summary>
         public static Output<GetOrganizationContactResult> Invoke(GetOrganizationContactInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationContactResult>("google-native:essentialcontacts/v1:getOrganizationContact", args ?? new GetOrganizationContactInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationContactResult>("google-native:essentialcontacts/v1:getOrganizationContact", args ?? new GetOrganizationContactInvokeArgs(), options.WithDefaults());
     }
 
 

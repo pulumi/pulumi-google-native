@@ -13,9 +13,7 @@ export function getNotificationConfig(args: GetNotificationConfigArgs, opts?: pu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:securitycenter/v1:getNotificationConfig", {
         "notificationConfigId": args.notificationConfigId,
         "organizationId": args.organizationId,

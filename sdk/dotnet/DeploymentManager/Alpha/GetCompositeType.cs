@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         /// Gets information about a specific composite type.
         /// </summary>
         public static Task<GetCompositeTypeResult> InvokeAsync(GetCompositeTypeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCompositeTypeResult>("google-native:deploymentmanager/alpha:getCompositeType", args ?? new GetCompositeTypeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCompositeTypeResult>("google-native:deploymentmanager/alpha:getCompositeType", args ?? new GetCompositeTypeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about a specific composite type.
         /// </summary>
         public static Output<GetCompositeTypeResult> Invoke(GetCompositeTypeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCompositeTypeResult>("google-native:deploymentmanager/alpha:getCompositeType", args ?? new GetCompositeTypeInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCompositeTypeResult>("google-native:deploymentmanager/alpha:getCompositeType", args ?? new GetCompositeTypeInvokeArgs(), options.WithDefaults());
     }
 
 

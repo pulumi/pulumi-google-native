@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.GameServices.V1
         /// Gets details of a single game server config.
         /// </summary>
         public static Task<GetConfigResult> InvokeAsync(GetConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigResult>("google-native:gameservices/v1:getConfig", args ?? new GetConfigArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigResult>("google-native:gameservices/v1:getConfig", args ?? new GetConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single game server config.
         /// </summary>
         public static Output<GetConfigResult> Invoke(GetConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConfigResult>("google-native:gameservices/v1:getConfig", args ?? new GetConfigInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConfigResult>("google-native:gameservices/v1:getConfig", args ?? new GetConfigInvokeArgs(), options.WithDefaults());
     }
 
 

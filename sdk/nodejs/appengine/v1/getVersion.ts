@@ -13,9 +13,7 @@ export function getVersion(args: GetVersionArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:appengine/v1:getVersion", {
         "appId": args.appId,
         "serviceId": args.serviceId,

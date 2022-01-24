@@ -106,9 +106,7 @@ export class DataSource extends pulumi.CustomResource {
             resourceInputs["returnThumbnailUrls"] = undefined /*out*/;
             resourceInputs["shortName"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DataSource.__pulumiType, name, resourceInputs, opts);
     }
 }

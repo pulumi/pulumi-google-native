@@ -89,9 +89,7 @@ export class Alias extends pulumi.CustomResource {
             resourceInputs["certsInfo"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Alias.__pulumiType, name, resourceInputs, opts);
     }
 }

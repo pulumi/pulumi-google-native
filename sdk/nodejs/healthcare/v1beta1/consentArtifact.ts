@@ -110,9 +110,7 @@ export class ConsentArtifact extends pulumi.CustomResource {
             resourceInputs["userSignature"] = undefined /*out*/;
             resourceInputs["witnessSignature"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConsentArtifact.__pulumiType, name, resourceInputs, opts);
     }
 }

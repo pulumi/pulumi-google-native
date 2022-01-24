@@ -13,9 +13,7 @@ export function getNamespaceServiceIamPolicy(args: GetNamespaceServiceIamPolicyA
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:servicedirectory/v1beta1:getNamespaceServiceIamPolicy", {
         "location": args.location,
         "namespaceId": args.namespaceId,

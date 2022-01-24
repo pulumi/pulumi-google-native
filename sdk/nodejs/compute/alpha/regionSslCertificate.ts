@@ -138,9 +138,7 @@ export class RegionSslCertificate extends pulumi.CustomResource {
             resourceInputs["subjectAlternativeNames"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegionSslCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }

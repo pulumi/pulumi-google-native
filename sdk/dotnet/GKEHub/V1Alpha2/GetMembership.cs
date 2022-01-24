@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha2
         /// Gets the details of a Membership.
         /// </summary>
         public static Task<GetMembershipResult> InvokeAsync(GetMembershipArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMembershipResult>("google-native:gkehub/v1alpha2:getMembership", args ?? new GetMembershipArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMembershipResult>("google-native:gkehub/v1alpha2:getMembership", args ?? new GetMembershipArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the details of a Membership.
         /// </summary>
         public static Output<GetMembershipResult> Invoke(GetMembershipInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMembershipResult>("google-native:gkehub/v1alpha2:getMembership", args ?? new GetMembershipInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMembershipResult>("google-native:gkehub/v1alpha2:getMembership", args ?? new GetMembershipInvokeArgs(), options.WithDefaults());
     }
 
 

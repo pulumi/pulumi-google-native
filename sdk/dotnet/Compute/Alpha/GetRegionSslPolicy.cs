@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Lists all of the ordered rules present in a single specified policy.
         /// </summary>
         public static Task<GetRegionSslPolicyResult> InvokeAsync(GetRegionSslPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionSslPolicyResult>("google-native:compute/alpha:getRegionSslPolicy", args ?? new GetRegionSslPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionSslPolicyResult>("google-native:compute/alpha:getRegionSslPolicy", args ?? new GetRegionSslPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Lists all of the ordered rules present in a single specified policy.
         /// </summary>
         public static Output<GetRegionSslPolicyResult> Invoke(GetRegionSslPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionSslPolicyResult>("google-native:compute/alpha:getRegionSslPolicy", args ?? new GetRegionSslPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRegionSslPolicyResult>("google-native:compute/alpha:getRegionSslPolicy", args ?? new GetRegionSslPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

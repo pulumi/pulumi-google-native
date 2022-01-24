@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role.
         /// </summary>
         public static Task<GetJobResult> InvokeAsync(GetJobArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("google-native:bigquery/v2:getJob", args ?? new GetJobArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("google-native:bigquery/v2:getJob", args ?? new GetJobArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role.
         /// </summary>
         public static Output<GetJobResult> Invoke(GetJobInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetJobResult>("google-native:bigquery/v2:getJob", args ?? new GetJobInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetJobResult>("google-native:bigquery/v2:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -13,9 +13,7 @@ export function getChannel(args: GetChannelArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:firebasehosting/v1beta1:getChannel", {
         "channelId": args.channelId,
         "project": args.project,

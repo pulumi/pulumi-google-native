@@ -13,9 +13,7 @@ export function getReservation(args: GetReservationArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:compute/alpha:getReservation", {
         "project": args.project,
         "reservation": args.reservation,

@@ -83,9 +83,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["title"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServicePerimeter.__pulumiType, name, resourceInputs, opts);
     }
 }

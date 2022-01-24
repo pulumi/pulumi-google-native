@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets the details of a NAT address. **Note:** Not supported for Apigee hybrid.
         /// </summary>
         public static Task<GetNatAddressResult> InvokeAsync(GetNatAddressArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNatAddressResult>("google-native:apigee/v1:getNatAddress", args ?? new GetNatAddressArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNatAddressResult>("google-native:apigee/v1:getNatAddress", args ?? new GetNatAddressArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the details of a NAT address. **Note:** Not supported for Apigee hybrid.
         /// </summary>
         public static Output<GetNatAddressResult> Invoke(GetNatAddressInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNatAddressResult>("google-native:apigee/v1:getNatAddress", args ?? new GetNatAddressInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNatAddressResult>("google-native:apigee/v1:getNatAddress", args ?? new GetNatAddressInvokeArgs(), options.WithDefaults());
     }
 
 

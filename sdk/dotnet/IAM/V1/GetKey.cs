@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// Gets a ServiceAccountKey.
         /// </summary>
         public static Task<GetKeyResult> InvokeAsync(GetKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("google-native:iam/v1:getKey", args ?? new GetKeyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("google-native:iam/v1:getKey", args ?? new GetKeyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a ServiceAccountKey.
         /// </summary>
         public static Output<GetKeyResult> Invoke(GetKeyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKeyResult>("google-native:iam/v1:getKey", args ?? new GetKeyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKeyResult>("google-native:iam/v1:getKey", args ?? new GetKeyInvokeArgs(), options.WithDefaults());
     }
 
 

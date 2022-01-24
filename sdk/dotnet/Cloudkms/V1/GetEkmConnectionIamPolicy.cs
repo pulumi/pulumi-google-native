@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetEkmConnectionIamPolicyResult> InvokeAsync(GetEkmConnectionIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEkmConnectionIamPolicyResult>("google-native:cloudkms/v1:getEkmConnectionIamPolicy", args ?? new GetEkmConnectionIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEkmConnectionIamPolicyResult>("google-native:cloudkms/v1:getEkmConnectionIamPolicy", args ?? new GetEkmConnectionIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetEkmConnectionIamPolicyResult> Invoke(GetEkmConnectionIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEkmConnectionIamPolicyResult>("google-native:cloudkms/v1:getEkmConnectionIamPolicy", args ?? new GetEkmConnectionIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEkmConnectionIamPolicyResult>("google-native:cloudkms/v1:getEkmConnectionIamPolicy", args ?? new GetEkmConnectionIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

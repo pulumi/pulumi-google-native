@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// Gets the details of a specific snapshot.
         /// </summary>
         public static Task<GetSnapshotResult> InvokeAsync(GetSnapshotArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("google-native:file/v1beta1:getSnapshot", args ?? new GetSnapshotArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("google-native:file/v1beta1:getSnapshot", args ?? new GetSnapshotArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the details of a specific snapshot.
         /// </summary>
         public static Output<GetSnapshotResult> Invoke(GetSnapshotInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSnapshotResult>("google-native:file/v1beta1:getSnapshot", args ?? new GetSnapshotInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSnapshotResult>("google-native:file/v1beta1:getSnapshot", args ?? new GetSnapshotInvokeArgs(), options.WithDefaults());
     }
 
 

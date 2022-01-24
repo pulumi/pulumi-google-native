@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetDatasetConsentStoreIamPolicyResult> InvokeAsync(GetDatasetConsentStoreIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetConsentStoreIamPolicyResult>("google-native:healthcare/v1:getDatasetConsentStoreIamPolicy", args ?? new GetDatasetConsentStoreIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetConsentStoreIamPolicyResult>("google-native:healthcare/v1:getDatasetConsentStoreIamPolicy", args ?? new GetDatasetConsentStoreIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetDatasetConsentStoreIamPolicyResult> Invoke(GetDatasetConsentStoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatasetConsentStoreIamPolicyResult>("google-native:healthcare/v1:getDatasetConsentStoreIamPolicy", args ?? new GetDatasetConsentStoreIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDatasetConsentStoreIamPolicyResult>("google-native:healthcare/v1:getDatasetConsentStoreIamPolicy", args ?? new GetDatasetConsentStoreIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

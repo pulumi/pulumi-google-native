@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta2
         /// Gets a composite index.
         /// </summary>
         public static Task<GetIndexResult> InvokeAsync(GetIndexArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIndexResult>("google-native:firestore/v1beta2:getIndex", args ?? new GetIndexArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIndexResult>("google-native:firestore/v1beta2:getIndex", args ?? new GetIndexArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a composite index.
         /// </summary>
         public static Output<GetIndexResult> Invoke(GetIndexInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIndexResult>("google-native:firestore/v1beta2:getIndex", args ?? new GetIndexInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIndexResult>("google-native:firestore/v1beta2:getIndex", args ?? new GetIndexInvokeArgs(), options.WithDefaults());
     }
 
 

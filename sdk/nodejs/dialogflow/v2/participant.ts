@@ -81,9 +81,7 @@ export class Participant extends pulumi.CustomResource {
             resourceInputs["role"] = undefined /*out*/;
             resourceInputs["sipRecordingMediaLabel"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Participant.__pulumiType, name, resourceInputs, opts);
     }
 }

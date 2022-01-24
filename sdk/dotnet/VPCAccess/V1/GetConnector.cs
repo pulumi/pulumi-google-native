@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
         /// Gets a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
         /// </summary>
         public static Task<GetConnectorResult> InvokeAsync(GetConnectorArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectorResult>("google-native:vpcaccess/v1:getConnector", args ?? new GetConnectorArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectorResult>("google-native:vpcaccess/v1:getConnector", args ?? new GetConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
         /// </summary>
         public static Output<GetConnectorResult> Invoke(GetConnectorInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConnectorResult>("google-native:vpcaccess/v1:getConnector", args ?? new GetConnectorInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConnectorResult>("google-native:vpcaccess/v1:getConnector", args ?? new GetConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

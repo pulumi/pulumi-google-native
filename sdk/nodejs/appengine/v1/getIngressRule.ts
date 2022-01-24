@@ -12,9 +12,7 @@ export function getIngressRule(args: GetIngressRuleArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:appengine/v1:getIngressRule", {
         "appId": args.appId,
         "ingressRuleId": args.ingressRuleId,

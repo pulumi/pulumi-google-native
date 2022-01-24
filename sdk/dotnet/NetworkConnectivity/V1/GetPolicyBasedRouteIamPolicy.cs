@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetPolicyBasedRouteIamPolicyResult> InvokeAsync(GetPolicyBasedRouteIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyBasedRouteIamPolicyResult>("google-native:networkconnectivity/v1:getPolicyBasedRouteIamPolicy", args ?? new GetPolicyBasedRouteIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyBasedRouteIamPolicyResult>("google-native:networkconnectivity/v1:getPolicyBasedRouteIamPolicy", args ?? new GetPolicyBasedRouteIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetPolicyBasedRouteIamPolicyResult> Invoke(GetPolicyBasedRouteIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPolicyBasedRouteIamPolicyResult>("google-native:networkconnectivity/v1:getPolicyBasedRouteIamPolicy", args ?? new GetPolicyBasedRouteIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetPolicyBasedRouteIamPolicyResult>("google-native:networkconnectivity/v1:getPolicyBasedRouteIamPolicy", args ?? new GetPolicyBasedRouteIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

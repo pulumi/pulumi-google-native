@@ -13,9 +13,7 @@ export function getVersion(args: GetVersionArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:dialogflow/v3:getVersion", {
         "agentId": args.agentId,
         "flowId": args.flowId,

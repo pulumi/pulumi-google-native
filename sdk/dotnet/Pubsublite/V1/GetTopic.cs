@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         /// Returns the topic configuration.
         /// </summary>
         public static Task<GetTopicResult> InvokeAsync(GetTopicArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicResult>("google-native:pubsublite/v1:getTopic", args ?? new GetTopicArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicResult>("google-native:pubsublite/v1:getTopic", args ?? new GetTopicArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the topic configuration.
         /// </summary>
         public static Output<GetTopicResult> Invoke(GetTopicInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTopicResult>("google-native:pubsublite/v1:getTopic", args ?? new GetTopicInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTopicResult>("google-native:pubsublite/v1:getTopic", args ?? new GetTopicInvokeArgs(), options.WithDefaults());
     }
 
 

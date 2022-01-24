@@ -128,9 +128,7 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
             resourceInputs["timeoutSec"] = undefined /*out*/;
             resourceInputs["unhealthyThreshold"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HttpsHealthCheck.__pulumiType, name, resourceInputs, opts);
     }
 }

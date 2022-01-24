@@ -128,9 +128,7 @@ export class Consent extends pulumi.CustomResource {
             resourceInputs["ttl"] = undefined /*out*/;
             resourceInputs["userId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Consent.__pulumiType, name, resourceInputs, opts);
     }
 }

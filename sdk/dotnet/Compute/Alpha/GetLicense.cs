@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified License resource. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images. 
         /// </summary>
         public static Task<GetLicenseResult> InvokeAsync(GetLicenseArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLicenseResult>("google-native:compute/alpha:getLicense", args ?? new GetLicenseArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLicenseResult>("google-native:compute/alpha:getLicense", args ?? new GetLicenseArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified License resource. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images. 
         /// </summary>
         public static Output<GetLicenseResult> Invoke(GetLicenseInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLicenseResult>("google-native:compute/alpha:getLicense", args ?? new GetLicenseInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetLicenseResult>("google-native:compute/alpha:getLicense", args ?? new GetLicenseInvokeArgs(), options.WithDefaults());
     }
 
 

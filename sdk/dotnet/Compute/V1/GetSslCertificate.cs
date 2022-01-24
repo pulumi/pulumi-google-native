@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making a list() request.
         /// </summary>
         public static Task<GetSslCertificateResult> InvokeAsync(GetSslCertificateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSslCertificateResult>("google-native:compute/v1:getSslCertificate", args ?? new GetSslCertificateArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSslCertificateResult>("google-native:compute/v1:getSslCertificate", args ?? new GetSslCertificateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making a list() request.
         /// </summary>
         public static Output<GetSslCertificateResult> Invoke(GetSslCertificateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSslCertificateResult>("google-native:compute/v1:getSslCertificate", args ?? new GetSslCertificateInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSslCertificateResult>("google-native:compute/v1:getSslCertificate", args ?? new GetSslCertificateInvokeArgs(), options.WithDefaults());
     }
 
 

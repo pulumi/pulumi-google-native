@@ -75,9 +75,7 @@ export class BillingAccount extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["open"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BillingAccount.__pulumiType, name, resourceInputs, opts);
     }
 }

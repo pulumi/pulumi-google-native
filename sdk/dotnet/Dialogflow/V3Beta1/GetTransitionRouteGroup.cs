@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// Retrieves the specified TransitionRouteGroup.
         /// </summary>
         public static Task<GetTransitionRouteGroupResult> InvokeAsync(GetTransitionRouteGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTransitionRouteGroupResult>("google-native:dialogflow/v3beta1:getTransitionRouteGroup", args ?? new GetTransitionRouteGroupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTransitionRouteGroupResult>("google-native:dialogflow/v3beta1:getTransitionRouteGroup", args ?? new GetTransitionRouteGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified TransitionRouteGroup.
         /// </summary>
         public static Output<GetTransitionRouteGroupResult> Invoke(GetTransitionRouteGroupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTransitionRouteGroupResult>("google-native:dialogflow/v3beta1:getTransitionRouteGroup", args ?? new GetTransitionRouteGroupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTransitionRouteGroupResult>("google-native:dialogflow/v3beta1:getTransitionRouteGroup", args ?? new GetTransitionRouteGroupInvokeArgs(), options.WithDefaults());
     }
 
 

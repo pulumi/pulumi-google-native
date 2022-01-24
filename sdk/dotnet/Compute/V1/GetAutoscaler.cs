@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list() request.
         /// </summary>
         public static Task<GetAutoscalerResult> InvokeAsync(GetAutoscalerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAutoscalerResult>("google-native:compute/v1:getAutoscaler", args ?? new GetAutoscalerArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAutoscalerResult>("google-native:compute/v1:getAutoscaler", args ?? new GetAutoscalerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list() request.
         /// </summary>
         public static Output<GetAutoscalerResult> Invoke(GetAutoscalerInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAutoscalerResult>("google-native:compute/v1:getAutoscaler", args ?? new GetAutoscalerInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAutoscalerResult>("google-native:compute/v1:getAutoscaler", args ?? new GetAutoscalerInvokeArgs(), options.WithDefaults());
     }
 
 

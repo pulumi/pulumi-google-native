@@ -13,9 +13,7 @@ export function getDomainBackupIamPolicy(args: GetDomainBackupIamPolicyArgs, opt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:managedidentities/v1beta1:getDomainBackupIamPolicy", {
         "backupId": args.backupId,
         "domainId": args.domainId,

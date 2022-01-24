@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// Gets details of a single Group.
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("google-native:vmmigration/v1alpha1:getGroup", args ?? new GetGroupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("google-native:vmmigration/v1alpha1:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Group.
         /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGroupResult>("google-native:vmmigration/v1alpha1:getGroup", args ?? new GetGroupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetGroupResult>("google-native:vmmigration/v1alpha1:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
     }
 
 

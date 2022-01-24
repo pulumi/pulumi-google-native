@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// Fetches the representation of an existing ManagedZone.
         /// </summary>
         public static Task<GetManagedZoneResult> InvokeAsync(GetManagedZoneArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("google-native:dns/v1:getManagedZone", args ?? new GetManagedZoneArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("google-native:dns/v1:getManagedZone", args ?? new GetManagedZoneArgs(), options.WithDefaults());
 
         /// <summary>
         /// Fetches the representation of an existing ManagedZone.
         /// </summary>
         public static Output<GetManagedZoneResult> Invoke(GetManagedZoneInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetManagedZoneResult>("google-native:dns/v1:getManagedZone", args ?? new GetManagedZoneInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetManagedZoneResult>("google-native:dns/v1:getManagedZone", args ?? new GetManagedZoneInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// Returns an execution of the given name.
         /// </summary>
         public static Task<GetExecutionResult> InvokeAsync(GetExecutionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetExecutionResult>("google-native:workflowexecutions/v1:getExecution", args ?? new GetExecutionArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetExecutionResult>("google-native:workflowexecutions/v1:getExecution", args ?? new GetExecutionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns an execution of the given name.
         /// </summary>
         public static Output<GetExecutionResult> Invoke(GetExecutionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetExecutionResult>("google-native:workflowexecutions/v1:getExecution", args ?? new GetExecutionInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetExecutionResult>("google-native:workflowexecutions/v1:getExecution", args ?? new GetExecutionInvokeArgs(), options.WithDefaults());
     }
 
 

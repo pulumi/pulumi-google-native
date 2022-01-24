@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// Returns a CertificateAuthority.
         /// </summary>
         public static Task<GetCertificateAuthorityResult> InvokeAsync(GetCertificateAuthorityArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateAuthorityResult>("google-native:privateca/v1:getCertificateAuthority", args ?? new GetCertificateAuthorityArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateAuthorityResult>("google-native:privateca/v1:getCertificateAuthority", args ?? new GetCertificateAuthorityArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns a CertificateAuthority.
         /// </summary>
         public static Output<GetCertificateAuthorityResult> Invoke(GetCertificateAuthorityInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCertificateAuthorityResult>("google-native:privateca/v1:getCertificateAuthority", args ?? new GetCertificateAuthorityInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCertificateAuthorityResult>("google-native:privateca/v1:getCertificateAuthority", args ?? new GetCertificateAuthorityInvokeArgs(), options.WithDefaults());
     }
 
 

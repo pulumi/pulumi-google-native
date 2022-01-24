@@ -12,9 +12,7 @@ export function getOrganizationRole(args: GetOrganizationRoleArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:iam/v1:getOrganizationRole", {
         "organizationId": args.organizationId,
         "roleId": args.roleId,

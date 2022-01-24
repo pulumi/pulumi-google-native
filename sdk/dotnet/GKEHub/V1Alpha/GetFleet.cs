@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         /// Returns the details of a fleet.
         /// </summary>
         public static Task<GetFleetResult> InvokeAsync(GetFleetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFleetResult>("google-native:gkehub/v1alpha:getFleet", args ?? new GetFleetArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFleetResult>("google-native:gkehub/v1alpha:getFleet", args ?? new GetFleetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the details of a fleet.
         /// </summary>
         public static Output<GetFleetResult> Invoke(GetFleetInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFleetResult>("google-native:gkehub/v1alpha:getFleet", args ?? new GetFleetInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetFleetResult>("google-native:gkehub/v1alpha:getFleet", args ?? new GetFleetInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -119,9 +119,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["transport"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Trigger.__pulumiType, name, resourceInputs, opts);
     }
 }
