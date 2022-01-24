@@ -15,18 +15,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// </summary>
     public sealed class GooglePrivacyDlpV2InspectConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("contentOptions")]
-        private InputList<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2InspectConfigContentOptionsItem>? _contentOptions;
-
-        /// <summary>
-        /// List of options defining data content to scan. If empty, text, images, and other content will be included.
-        /// </summary>
-        public InputList<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2InspectConfigContentOptionsItem> ContentOptions
-        {
-            get => _contentOptions ?? (_contentOptions = new InputList<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2InspectConfigContentOptionsItem>());
-            set => _contentOptions = value;
-        }
-
         [Input("customInfoTypes")]
         private InputList<Inputs.GooglePrivacyDlpV2CustomInfoTypeArgs>? _customInfoTypes;
 
@@ -40,13 +28,13 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         }
 
         /// <summary>
-        /// When true, excludes type information of the findings.
+        /// When true, excludes type information of the findings. This is not used for data profiling.
         /// </summary>
         [Input("excludeInfoTypes")]
         public Input<bool>? ExcludeInfoTypes { get; set; }
 
         /// <summary>
-        /// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
+        /// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
         /// </summary>
         [Input("includeQuote")]
         public Input<bool>? IncludeQuote { get; set; }
@@ -64,7 +52,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         }
 
         /// <summary>
-        /// Configuration to control the number of findings returned.
+        /// Configuration to control the number of findings returned. This is not used for data profiling.
         /// </summary>
         [Input("limits")]
         public Input<Inputs.GooglePrivacyDlpV2FindingLimitsArgs>? Limits { get; set; }

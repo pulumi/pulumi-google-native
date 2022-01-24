@@ -1892,7 +1892,9 @@ class PatchConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "postStep":
+        if key == "migInstancesAllowed":
+            suggest = "mig_instances_allowed"
+        elif key == "postStep":
             suggest = "post_step"
         elif key == "preStep":
             suggest = "pre_step"
@@ -1915,6 +1917,7 @@ class PatchConfigResponse(dict):
     def __init__(__self__, *,
                  apt: 'outputs.AptSettingsResponse',
                  goo: 'outputs.GooSettingsResponse',
+                 mig_instances_allowed: bool,
                  post_step: 'outputs.ExecStepResponse',
                  pre_step: 'outputs.ExecStepResponse',
                  reboot_config: str,
@@ -1925,6 +1928,7 @@ class PatchConfigResponse(dict):
         Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
         :param 'AptSettingsResponse' apt: Apt update settings. Use this setting to override the default `apt` patch rules.
         :param 'GooSettingsResponse' goo: Goo update settings. Use this setting to override the default `goo` patch rules.
+        :param bool mig_instances_allowed: Allows the patch job to run on Managed instance groups (MIGs).
         :param 'ExecStepResponse' post_step: The `ExecStep` to run after the patch update.
         :param 'ExecStepResponse' pre_step: The `ExecStep` to run before the patch update.
         :param str reboot_config: Post-patch reboot settings.
@@ -1934,6 +1938,7 @@ class PatchConfigResponse(dict):
         """
         pulumi.set(__self__, "apt", apt)
         pulumi.set(__self__, "goo", goo)
+        pulumi.set(__self__, "mig_instances_allowed", mig_instances_allowed)
         pulumi.set(__self__, "post_step", post_step)
         pulumi.set(__self__, "pre_step", pre_step)
         pulumi.set(__self__, "reboot_config", reboot_config)
@@ -1956,6 +1961,14 @@ class PatchConfigResponse(dict):
         Goo update settings. Use this setting to override the default `goo` patch rules.
         """
         return pulumi.get(self, "goo")
+
+    @property
+    @pulumi.getter(name="migInstancesAllowed")
+    def mig_instances_allowed(self) -> bool:
+        """
+        Allows the patch job to run on Managed instance groups (MIGs).
+        """
+        return pulumi.get(self, "mig_instances_allowed")
 
     @property
     @pulumi.getter(name="postStep")

@@ -10,6 +10,7 @@ __all__ = [
     'DatabaseDumpType',
     'HiveMetastoreConfigEndpointProtocol',
     'MaintenanceWindowDayOfWeek',
+    'ServiceDatabaseType',
     'ServiceReleaseChannel',
     'ServiceTier',
 ]
@@ -122,6 +123,24 @@ class MaintenanceWindowDayOfWeek(str, Enum):
     SUNDAY = "SUNDAY"
     """
     Sunday
+    """
+
+
+class ServiceDatabaseType(str, Enum):
+    """
+    Immutable. The database type that the Metastore service stores its data.
+    """
+    DATABASE_TYPE_UNSPECIFIED = "DATABASE_TYPE_UNSPECIFIED"
+    """
+    The DATABASE_TYPE is not set.
+    """
+    MYSQL = "MYSQL"
+    """
+    MySQL is used to persist the metastore data.
+    """
+    SPANNER = "SPANNER"
+    """
+    Spanner is used to persist the metastore data.
     """
 
 

@@ -29,7 +29,7 @@ type LookupJobArgs struct {
 type LookupJobResult struct {
 	// App Engine HTTP target.
 	AppEngineHttpTarget AppEngineHttpTargetResponse `pulumi:"appEngineHttpTarget"`
-	// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. * For PubSub targets, this field is ignored.
+	// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours 15 seconds. * For PubSub targets, this field is ignored.
 	AttemptDeadline string `pulumi:"attemptDeadline"`
 	// Optionally caller-specified in CreateJob or UpdateJob. A human-readable description for the job. This string must not contain more than 500 characters.
 	Description string `pulumi:"description"`
@@ -97,7 +97,7 @@ func (o LookupJobResultOutput) AppEngineHttpTarget() AppEngineHttpTargetResponse
 	return o.ApplyT(func(v LookupJobResult) AppEngineHttpTargetResponse { return v.AppEngineHttpTarget }).(AppEngineHttpTargetResponseOutput)
 }
 
-// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. * For PubSub targets, this field is ignored.
+// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours 15 seconds. * For PubSub targets, this field is ignored.
 func (o LookupJobResultOutput) AttemptDeadline() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.AttemptDeadline }).(pulumi.StringOutput)
 }

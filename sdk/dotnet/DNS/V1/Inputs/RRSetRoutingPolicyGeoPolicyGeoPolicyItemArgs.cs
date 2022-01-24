@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1.Inputs
 {
 
+    /// <summary>
+    /// ResourceRecordSet data for one geo location.
+    /// </summary>
     public sealed class RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs : Pulumi.ResourceArgs
     {
         [Input("kind")]
@@ -33,7 +36,7 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
         private InputList<string>? _signatureRrdatas;
 
         /// <summary>
-        /// DNSSEC generated signatures for the above geo_rrdata.
+        /// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
         /// </summary>
         public InputList<string> SignatureRrdatas
         {

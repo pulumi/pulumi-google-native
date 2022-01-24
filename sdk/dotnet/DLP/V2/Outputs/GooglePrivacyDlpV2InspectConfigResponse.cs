@@ -17,19 +17,15 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
     public sealed class GooglePrivacyDlpV2InspectConfigResponse
     {
         /// <summary>
-        /// List of options defining data content to scan. If empty, text, images, and other content will be included.
-        /// </summary>
-        public readonly ImmutableArray<string> ContentOptions;
-        /// <summary>
         /// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
         /// </summary>
         public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2CustomInfoTypeResponse> CustomInfoTypes;
         /// <summary>
-        /// When true, excludes type information of the findings.
+        /// When true, excludes type information of the findings. This is not used for data profiling.
         /// </summary>
         public readonly bool ExcludeInfoTypes;
         /// <summary>
-        /// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
+        /// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
         /// </summary>
         public readonly bool IncludeQuote;
         /// <summary>
@@ -37,7 +33,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2InfoTypeResponse> InfoTypes;
         /// <summary>
-        /// Configuration to control the number of findings returned.
+        /// Configuration to control the number of findings returned. This is not used for data profiling.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2FindingLimitsResponse Limits;
         /// <summary>
@@ -51,8 +47,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 
         [OutputConstructor]
         private GooglePrivacyDlpV2InspectConfigResponse(
-            ImmutableArray<string> contentOptions,
-
             ImmutableArray<Outputs.GooglePrivacyDlpV2CustomInfoTypeResponse> customInfoTypes,
 
             bool excludeInfoTypes,
@@ -67,7 +61,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 
             ImmutableArray<Outputs.GooglePrivacyDlpV2InspectionRuleSetResponse> ruleSet)
         {
-            ContentOptions = contentOptions;
             CustomInfoTypes = customInfoTypes;
             ExcludeInfoTypes = excludeInfoTypes;
             IncludeQuote = includeQuote;

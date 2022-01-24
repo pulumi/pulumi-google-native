@@ -20,6 +20,7 @@ __all__ = [
     'NotificationChannelVerificationStatus',
     'ResourceGroupResourceType',
     'ServiceLevelObjectiveCalendarPeriod',
+    'UptimeCheckConfigCheckerType',
     'UptimeCheckConfigSelectedRegionsItem',
 ]
 
@@ -483,6 +484,24 @@ class ServiceLevelObjectiveCalendarPeriod(str, Enum):
     YEAR = "YEAR"
     """
     A year.
+    """
+
+
+class UptimeCheckConfigCheckerType(str, Enum):
+    """
+    The type of checkers to use to execute the Uptime check.
+    """
+    CHECKER_TYPE_UNSPECIFIED = "CHECKER_TYPE_UNSPECIFIED"
+    """
+    The default checker type. Currently converted to STATIC_IP_CHECKERS on creation, the default conversion behavior may change in the future.
+    """
+    STATIC_IP_CHECKERS = "STATIC_IP_CHECKERS"
+    """
+    STATIC_IP_CHECKERS are used for uptime checks that perform egress across the public internet. STATIC_IP_CHECKERS use the static IP addresses returned by ListUptimeCheckIps.
+    """
+    VPC_CHECKERS = "VPC_CHECKERS"
+    """
+    VPC_CHECKERS are used for uptime checks that perform egress using Service Directory and private network access. When using VPC_CHECKERS, the monitored resource type must be servicedirectory_service.
     """
 
 

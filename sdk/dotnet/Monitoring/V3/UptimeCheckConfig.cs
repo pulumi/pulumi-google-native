@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     public partial class UptimeCheckConfig : Pulumi.CustomResource
     {
         /// <summary>
+        /// The type of checkers to use to execute the Uptime check.
+        /// </summary>
+        [Output("checkerType")]
+        public Output<string> CheckerType { get; private set; } = null!;
+
+        /// <summary>
         /// The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
         /// </summary>
         [Output("contentMatchers")]
@@ -132,6 +138,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
 
     public sealed class UptimeCheckConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of checkers to use to execute the Uptime check.
+        /// </summary>
+        [Input("checkerType")]
+        public Input<Pulumi.GoogleNative.Monitoring.V3.UptimeCheckConfigCheckerType>? CheckerType { get; set; }
+
         [Input("contentMatchers")]
         private InputList<Inputs.ContentMatcherArgs>? _contentMatchers;
 

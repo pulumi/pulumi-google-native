@@ -233,6 +233,47 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
     }
 
     /// <summary>
+    /// Immutable. The database type that the Metastore service stores its data.
+    /// </summary>
+    [EnumType]
+    public readonly struct ServiceDatabaseType : IEquatable<ServiceDatabaseType>
+    {
+        private readonly string _value;
+
+        private ServiceDatabaseType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The DATABASE_TYPE is not set.
+        /// </summary>
+        public static ServiceDatabaseType DatabaseTypeUnspecified { get; } = new ServiceDatabaseType("DATABASE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// MySQL is used to persist the metastore data.
+        /// </summary>
+        public static ServiceDatabaseType Mysql { get; } = new ServiceDatabaseType("MYSQL");
+        /// <summary>
+        /// Spanner is used to persist the metastore data.
+        /// </summary>
+        public static ServiceDatabaseType Spanner { get; } = new ServiceDatabaseType("SPANNER");
+
+        public static bool operator ==(ServiceDatabaseType left, ServiceDatabaseType right) => left.Equals(right);
+        public static bool operator !=(ServiceDatabaseType left, ServiceDatabaseType right) => !left.Equals(right);
+
+        public static explicit operator string(ServiceDatabaseType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ServiceDatabaseType other && Equals(other);
+        public bool Equals(ServiceDatabaseType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
     /// </summary>
     [EnumType]

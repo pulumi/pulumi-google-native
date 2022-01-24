@@ -44,6 +44,10 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Immutable. The database type that the Metastore service stores its data.
+     */
+    public readonly databaseType!: pulumi.Output<string>;
+    /**
      * Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
      */
     public readonly encryptionConfig!: pulumi.Output<outputs.metastore.v1alpha.EncryptionConfigResponse>;
@@ -126,6 +130,7 @@ export class Service extends pulumi.CustomResource {
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
+            resourceInputs["databaseType"] = args ? args.databaseType : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["hiveMetastoreConfig"] = args ? args.hiveMetastoreConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -152,6 +157,7 @@ export class Service extends pulumi.CustomResource {
         } else {
             resourceInputs["artifactGcsUri"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["databaseType"] = undefined /*out*/;
             resourceInputs["encryptionConfig"] = undefined /*out*/;
             resourceInputs["endpointUri"] = undefined /*out*/;
             resourceInputs["hiveMetastoreConfig"] = undefined /*out*/;
@@ -181,6 +187,10 @@ export class Service extends pulumi.CustomResource {
  * The set of arguments for constructing a Service resource.
  */
 export interface ServiceArgs {
+    /**
+     * Immutable. The database type that the Metastore service stores its data.
+     */
+    databaseType?: pulumi.Input<enums.metastore.v1alpha.ServiceDatabaseType>;
     /**
      * Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
      */

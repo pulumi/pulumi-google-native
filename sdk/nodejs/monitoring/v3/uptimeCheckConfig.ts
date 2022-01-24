@@ -36,6 +36,10 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
     }
 
     /**
+     * The type of checkers to use to execute the Uptime check.
+     */
+    public readonly checkerType!: pulumi.Output<string>;
+    /**
      * The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
      */
     public readonly contentMatchers!: pulumi.Output<outputs.monitoring.v3.ContentMatcherResponse[]>;
@@ -95,6 +99,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["checkerType"] = args ? args.checkerType : undefined;
             resourceInputs["contentMatchers"] = args ? args.contentMatchers : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["httpCheck"] = args ? args.httpCheck : undefined;
@@ -109,6 +114,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             resourceInputs["tcpCheck"] = args ? args.tcpCheck : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
         } else {
+            resourceInputs["checkerType"] = undefined /*out*/;
             resourceInputs["contentMatchers"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["httpCheck"] = undefined /*out*/;
@@ -133,6 +139,10 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
  * The set of arguments for constructing a UptimeCheckConfig resource.
  */
 export interface UptimeCheckConfigArgs {
+    /**
+     * The type of checkers to use to execute the Uptime check.
+     */
+    checkerType?: pulumi.Input<enums.monitoring.v3.UptimeCheckConfigCheckerType>;
     /**
      * The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
      */

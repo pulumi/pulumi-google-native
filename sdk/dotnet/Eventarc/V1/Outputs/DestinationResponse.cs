@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
     public sealed class DestinationResponse
     {
         /// <summary>
+        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        /// </summary>
+        public readonly string CloudFunction;
+        /// <summary>
         /// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
         /// </summary>
         public readonly Outputs.CloudRunResponse CloudRun;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
 
         [OutputConstructor]
         private DestinationResponse(
+            string cloudFunction,
+
             Outputs.CloudRunResponse cloudRun,
 
             Outputs.GKEResponse gke)
         {
+            CloudFunction = cloudFunction;
             CloudRun = cloudRun;
             Gke = gke;
         }

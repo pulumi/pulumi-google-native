@@ -59,6 +59,7 @@ import * as genomics from "./genomics";
 import * as gkehub from "./gkehub";
 import * as healthcare from "./healthcare";
 import * as iam from "./iam";
+import * as ids from "./ids";
 import * as jobs from "./jobs";
 import * as memcache from "./memcache";
 import * as metastore from "./metastore";
@@ -152,6 +153,7 @@ export {
     gkehub,
     healthcare,
     iam,
+    ids,
     jobs,
     memcache,
     metastore,

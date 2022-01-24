@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         private InputMap<string>? _limits;
 
         /// <summary>
-        /// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        /// (Optional) Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         /// </summary>
         public InputMap<string> Limits
         {
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         private InputMap<string>? _requests;
 
         /// <summary>
-        /// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        /// (Optional) Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         /// </summary>
         public InputMap<string> Requests
         {

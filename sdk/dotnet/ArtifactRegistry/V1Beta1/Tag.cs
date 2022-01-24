@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+        /// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         public Input<string>? TagId { get; set; }
 
         /// <summary>
-        /// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+        /// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

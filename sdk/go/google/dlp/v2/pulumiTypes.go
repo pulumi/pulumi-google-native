@@ -7561,7 +7561,7 @@ func (o GooglePrivacyDlpV2FileSetResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2FileSetResponse) string { return v.Url }).(pulumi.StringOutput)
 }
 
-// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
+// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
 type GooglePrivacyDlpV2FindingLimits struct {
 	// Configuration of findings limit given for specified infoTypes.
 	MaxFindingsPerInfoType []GooglePrivacyDlpV2InfoTypeLimit `pulumi:"maxFindingsPerInfoType"`
@@ -7582,7 +7582,7 @@ type GooglePrivacyDlpV2FindingLimitsInput interface {
 	ToGooglePrivacyDlpV2FindingLimitsOutputWithContext(context.Context) GooglePrivacyDlpV2FindingLimitsOutput
 }
 
-// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
+// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
 type GooglePrivacyDlpV2FindingLimitsArgs struct {
 	// Configuration of findings limit given for specified infoTypes.
 	MaxFindingsPerInfoType GooglePrivacyDlpV2InfoTypeLimitArrayInput `pulumi:"maxFindingsPerInfoType"`
@@ -7645,7 +7645,7 @@ func (i *googlePrivacyDlpV2FindingLimitsPtrType) ToGooglePrivacyDlpV2FindingLimi
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FindingLimitsPtrOutput)
 }
 
-// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
+// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
 type GooglePrivacyDlpV2FindingLimitsOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2FindingLimitsOutput) ElementType() reflect.Type {
@@ -7741,7 +7741,7 @@ func (o GooglePrivacyDlpV2FindingLimitsPtrOutput) MaxFindingsPerRequest() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
+// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
 type GooglePrivacyDlpV2FindingLimitsResponse struct {
 	// Configuration of findings limit given for specified infoTypes.
 	MaxFindingsPerInfoType []GooglePrivacyDlpV2InfoTypeLimitResponse `pulumi:"maxFindingsPerInfoType"`
@@ -7751,7 +7751,7 @@ type GooglePrivacyDlpV2FindingLimitsResponse struct {
 	MaxFindingsPerRequest int `pulumi:"maxFindingsPerRequest"`
 }
 
-// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
+// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
 type GooglePrivacyDlpV2FindingLimitsResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2FindingLimitsResponseOutput) ElementType() reflect.Type {
@@ -9325,17 +9325,15 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput) Transformations
 
 // Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
 type GooglePrivacyDlpV2InspectConfig struct {
-	// List of options defining data content to scan. If empty, text, images, and other content will be included.
-	ContentOptions []GooglePrivacyDlpV2InspectConfigContentOptionsItem `pulumi:"contentOptions"`
 	// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 	CustomInfoTypes []GooglePrivacyDlpV2CustomInfoType `pulumi:"customInfoTypes"`
-	// When true, excludes type information of the findings.
+	// When true, excludes type information of the findings. This is not used for data profiling.
 	ExcludeInfoTypes *bool `pulumi:"excludeInfoTypes"`
-	// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
+	// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
 	IncludeQuote *bool `pulumi:"includeQuote"`
 	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes []GooglePrivacyDlpV2InfoType `pulumi:"infoTypes"`
-	// Configuration to control the number of findings returned.
+	// Configuration to control the number of findings returned. This is not used for data profiling.
 	Limits *GooglePrivacyDlpV2FindingLimits `pulumi:"limits"`
 	// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
 	MinLikelihood *GooglePrivacyDlpV2InspectConfigMinLikelihood `pulumi:"minLikelihood"`
@@ -9356,17 +9354,15 @@ type GooglePrivacyDlpV2InspectConfigInput interface {
 
 // Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
 type GooglePrivacyDlpV2InspectConfigArgs struct {
-	// List of options defining data content to scan. If empty, text, images, and other content will be included.
-	ContentOptions GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayInput `pulumi:"contentOptions"`
 	// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 	CustomInfoTypes GooglePrivacyDlpV2CustomInfoTypeArrayInput `pulumi:"customInfoTypes"`
-	// When true, excludes type information of the findings.
+	// When true, excludes type information of the findings. This is not used for data profiling.
 	ExcludeInfoTypes pulumi.BoolPtrInput `pulumi:"excludeInfoTypes"`
-	// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
+	// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
 	IncludeQuote pulumi.BoolPtrInput `pulumi:"includeQuote"`
 	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes GooglePrivacyDlpV2InfoTypeArrayInput `pulumi:"infoTypes"`
-	// Configuration to control the number of findings returned.
+	// Configuration to control the number of findings returned. This is not used for data profiling.
 	Limits GooglePrivacyDlpV2FindingLimitsPtrInput `pulumi:"limits"`
 	// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
 	MinLikelihood GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrInput `pulumi:"minLikelihood"`
@@ -9452,24 +9448,17 @@ func (o GooglePrivacyDlpV2InspectConfigOutput) ToGooglePrivacyDlpV2InspectConfig
 	}).(GooglePrivacyDlpV2InspectConfigPtrOutput)
 }
 
-// List of options defining data content to scan. If empty, text, images, and other content will be included.
-func (o GooglePrivacyDlpV2InspectConfigOutput) ContentOptions() GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2InspectConfigContentOptionsItem {
-		return v.ContentOptions
-	}).(GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput)
-}
-
 // CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 func (o GooglePrivacyDlpV2InspectConfigOutput) CustomInfoTypes() GooglePrivacyDlpV2CustomInfoTypeArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2CustomInfoType { return v.CustomInfoTypes }).(GooglePrivacyDlpV2CustomInfoTypeArrayOutput)
 }
 
-// When true, excludes type information of the findings.
+// When true, excludes type information of the findings. This is not used for data profiling.
 func (o GooglePrivacyDlpV2InspectConfigOutput) ExcludeInfoTypes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) *bool { return v.ExcludeInfoTypes }).(pulumi.BoolPtrOutput)
 }
 
-// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
+// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
 func (o GooglePrivacyDlpV2InspectConfigOutput) IncludeQuote() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) *bool { return v.IncludeQuote }).(pulumi.BoolPtrOutput)
 }
@@ -9479,7 +9468,7 @@ func (o GooglePrivacyDlpV2InspectConfigOutput) InfoTypes() GooglePrivacyDlpV2Inf
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2InfoType { return v.InfoTypes }).(GooglePrivacyDlpV2InfoTypeArrayOutput)
 }
 
-// Configuration to control the number of findings returned.
+// Configuration to control the number of findings returned. This is not used for data profiling.
 func (o GooglePrivacyDlpV2InspectConfigOutput) Limits() GooglePrivacyDlpV2FindingLimitsPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) *GooglePrivacyDlpV2FindingLimits { return v.Limits }).(GooglePrivacyDlpV2FindingLimitsPtrOutput)
 }
@@ -9520,16 +9509,6 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) Elem() GooglePrivacyDlpV2Inspe
 	}).(GooglePrivacyDlpV2InspectConfigOutput)
 }
 
-// List of options defining data content to scan. If empty, text, images, and other content will be included.
-func (o GooglePrivacyDlpV2InspectConfigPtrOutput) ContentOptions() GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2InspectConfigContentOptionsItem {
-		if v == nil {
-			return nil
-		}
-		return v.ContentOptions
-	}).(GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput)
-}
-
 // CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 func (o GooglePrivacyDlpV2InspectConfigPtrOutput) CustomInfoTypes() GooglePrivacyDlpV2CustomInfoTypeArrayOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2CustomInfoType {
@@ -9540,7 +9519,7 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) CustomInfoTypes() GooglePrivac
 	}).(GooglePrivacyDlpV2CustomInfoTypeArrayOutput)
 }
 
-// When true, excludes type information of the findings.
+// When true, excludes type information of the findings. This is not used for data profiling.
 func (o GooglePrivacyDlpV2InspectConfigPtrOutput) ExcludeInfoTypes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) *bool {
 		if v == nil {
@@ -9550,7 +9529,7 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) ExcludeInfoTypes() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
-// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
+// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
 func (o GooglePrivacyDlpV2InspectConfigPtrOutput) IncludeQuote() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) *bool {
 		if v == nil {
@@ -9570,7 +9549,7 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) InfoTypes() GooglePrivacyDlpV2
 	}).(GooglePrivacyDlpV2InfoTypeArrayOutput)
 }
 
-// Configuration to control the number of findings returned.
+// Configuration to control the number of findings returned. This is not used for data profiling.
 func (o GooglePrivacyDlpV2InspectConfigPtrOutput) Limits() GooglePrivacyDlpV2FindingLimitsPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) *GooglePrivacyDlpV2FindingLimits {
 		if v == nil {
@@ -9602,17 +9581,15 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) RuleSet() GooglePrivacyDlpV2In
 
 // Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
 type GooglePrivacyDlpV2InspectConfigResponse struct {
-	// List of options defining data content to scan. If empty, text, images, and other content will be included.
-	ContentOptions []string `pulumi:"contentOptions"`
 	// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 	CustomInfoTypes []GooglePrivacyDlpV2CustomInfoTypeResponse `pulumi:"customInfoTypes"`
-	// When true, excludes type information of the findings.
+	// When true, excludes type information of the findings. This is not used for data profiling.
 	ExcludeInfoTypes bool `pulumi:"excludeInfoTypes"`
-	// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
+	// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
 	IncludeQuote bool `pulumi:"includeQuote"`
 	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes []GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoTypes"`
-	// Configuration to control the number of findings returned.
+	// Configuration to control the number of findings returned. This is not used for data profiling.
 	Limits GooglePrivacyDlpV2FindingLimitsResponse `pulumi:"limits"`
 	// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
 	MinLikelihood string `pulumi:"minLikelihood"`
@@ -9635,11 +9612,6 @@ func (o GooglePrivacyDlpV2InspectConfigResponseOutput) ToGooglePrivacyDlpV2Inspe
 	return o
 }
 
-// List of options defining data content to scan. If empty, text, images, and other content will be included.
-func (o GooglePrivacyDlpV2InspectConfigResponseOutput) ContentOptions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) []string { return v.ContentOptions }).(pulumi.StringArrayOutput)
-}
-
 // CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 func (o GooglePrivacyDlpV2InspectConfigResponseOutput) CustomInfoTypes() GooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) []GooglePrivacyDlpV2CustomInfoTypeResponse {
@@ -9647,12 +9619,12 @@ func (o GooglePrivacyDlpV2InspectConfigResponseOutput) CustomInfoTypes() GoogleP
 	}).(GooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput)
 }
 
-// When true, excludes type information of the findings.
+// When true, excludes type information of the findings. This is not used for data profiling.
 func (o GooglePrivacyDlpV2InspectConfigResponseOutput) ExcludeInfoTypes() pulumi.BoolOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) bool { return v.ExcludeInfoTypes }).(pulumi.BoolOutput)
 }
 
-// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
+// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
 func (o GooglePrivacyDlpV2InspectConfigResponseOutput) IncludeQuote() pulumi.BoolOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) bool { return v.IncludeQuote }).(pulumi.BoolOutput)
 }
@@ -9664,7 +9636,7 @@ func (o GooglePrivacyDlpV2InspectConfigResponseOutput) InfoTypes() GooglePrivacy
 	}).(GooglePrivacyDlpV2InfoTypeResponseArrayOutput)
 }
 
-// Configuration to control the number of findings returned.
+// Configuration to control the number of findings returned. This is not used for data profiling.
 func (o GooglePrivacyDlpV2InspectConfigResponseOutput) Limits() GooglePrivacyDlpV2FindingLimitsResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) GooglePrivacyDlpV2FindingLimitsResponse {
 		return v.Limits

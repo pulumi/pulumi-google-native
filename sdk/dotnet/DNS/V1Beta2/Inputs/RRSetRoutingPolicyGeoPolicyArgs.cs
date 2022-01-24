@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
 {
 
+    /// <summary>
+    /// Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
+    /// </summary>
     public sealed class RRSetRoutingPolicyGeoPolicyArgs : Pulumi.ResourceArgs
     {
         [Input("items")]

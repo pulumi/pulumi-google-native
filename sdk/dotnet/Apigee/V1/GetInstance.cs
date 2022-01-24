@@ -77,6 +77,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Host;
         /// <summary>
+        /// Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
+        /// </summary>
+        public readonly string IpRange;
+        /// <summary>
         /// Time the instance was last modified in milliseconds since epoch.
         /// </summary>
         public readonly string LastModifiedAt;
@@ -117,6 +121,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string host,
 
+            string ipRange,
+
             string lastModifiedAt,
 
             string location,
@@ -136,6 +142,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
             DiskEncryptionKeyName = diskEncryptionKeyName;
             DisplayName = displayName;
             Host = host;
+            IpRange = ipRange;
             LastModifiedAt = lastModifiedAt;
             Location = location;
             Name = name;

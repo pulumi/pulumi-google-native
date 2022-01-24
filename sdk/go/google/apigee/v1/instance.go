@@ -25,6 +25,8 @@ type Instance struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
 	Host pulumi.StringOutput `pulumi:"host"`
+	// Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
+	IpRange pulumi.StringOutput `pulumi:"ipRange"`
 	// Time the instance was last modified in milliseconds since epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
 	// Compute Engine location where the instance resides.
@@ -89,6 +91,8 @@ type instanceArgs struct {
 	DiskEncryptionKeyName *string `pulumi:"diskEncryptionKeyName"`
 	// Optional. Display name for the instance.
 	DisplayName *string `pulumi:"displayName"`
+	// Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
+	IpRange *string `pulumi:"ipRange"`
 	// Compute Engine location where the instance resides.
 	Location *string `pulumi:"location"`
 	// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
@@ -106,6 +110,8 @@ type InstanceArgs struct {
 	DiskEncryptionKeyName pulumi.StringPtrInput
 	// Optional. Display name for the instance.
 	DisplayName pulumi.StringPtrInput
+	// Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
+	IpRange pulumi.StringPtrInput
 	// Compute Engine location where the instance resides.
 	Location pulumi.StringPtrInput
 	// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.

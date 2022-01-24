@@ -1175,16 +1175,16 @@ class GoogleCloudApigeeV1TlsInfoArgs:
                  protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trust_store: Optional[pulumi.Input[str]] = None):
         """
-        TLS configuration information for VirtualHosts and TargetServers.
+        TLS configuration information for virtual hosts and TargetServers.
         :param pulumi.Input[bool] enabled: Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ciphers: The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
         :param pulumi.Input[bool] client_auth_enabled: Optional. Enables two-way TLS.
         :param pulumi.Input['GoogleCloudApigeeV1TlsInfoCommonNameArgs'] common_name: The TLS Common Name of the certificate.
         :param pulumi.Input[bool] ignore_validation_errors: If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
         :param pulumi.Input[str] key_alias: Required if `client_auth_enabled` is true. The resource ID for the alias containing the private key and cert.
-        :param pulumi.Input[str] key_store: Required if `client_auth_enabled` is true. The resource ID of the keystore. References not yet supported.
+        :param pulumi.Input[str] key_store: Required if `client_auth_enabled` is true. The resource ID of the keystore.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protocols: The TLS versioins to be used.
-        :param pulumi.Input[str] trust_store: The resource ID of the truststore. References not yet supported.
+        :param pulumi.Input[str] trust_store: The resource ID of the truststore.
         """
         pulumi.set(__self__, "enabled", enabled)
         if ciphers is not None:
@@ -1280,7 +1280,7 @@ class GoogleCloudApigeeV1TlsInfoArgs:
     @pulumi.getter(name="keyStore")
     def key_store(self) -> Optional[pulumi.Input[str]]:
         """
-        Required if `client_auth_enabled` is true. The resource ID of the keystore. References not yet supported.
+        Required if `client_auth_enabled` is true. The resource ID of the keystore.
         """
         return pulumi.get(self, "key_store")
 
@@ -1304,7 +1304,7 @@ class GoogleCloudApigeeV1TlsInfoArgs:
     @pulumi.getter(name="trustStore")
     def trust_store(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource ID of the truststore. References not yet supported.
+        The resource ID of the truststore.
         """
         return pulumi.get(self, "trust_store")
 

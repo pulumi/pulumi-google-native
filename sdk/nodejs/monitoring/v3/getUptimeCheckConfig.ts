@@ -29,6 +29,10 @@ export interface GetUptimeCheckConfigArgs {
 
 export interface GetUptimeCheckConfigResult {
     /**
+     * The type of checkers to use to execute the Uptime check.
+     */
+    readonly checkerType: string;
+    /**
      * The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
      */
     readonly contentMatchers: outputs.monitoring.v3.ContentMatcherResponse[];

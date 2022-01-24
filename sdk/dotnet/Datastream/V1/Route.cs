@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Datastream.V1
 {
     /// <summary>
-    /// Use this method to create a route for a private connectivity in a project and location.
+    /// Use this method to create a route for a private connectivity configuration in a project and location.
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datastream/v1:Route")]

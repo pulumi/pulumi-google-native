@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public Input<Inputs.GooSettingsArgs>? Goo { get; set; }
 
         /// <summary>
+        /// Allows the patch job to run on Managed instance groups (MIGs).
+        /// </summary>
+        [Input("migInstancesAllowed")]
+        public Input<bool>? MigInstancesAllowed { get; set; }
+
+        /// <summary>
         /// The `ExecStep` to run after the patch update.
         /// </summary>
         [Input("postStep")]

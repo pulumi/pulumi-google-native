@@ -77,6 +77,8 @@ type LookupInstanceResult struct {
 	ReplicaCount int `pulumi:"replicaCount"`
 	// Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
 	ReservedIpRange string `pulumi:"reservedIpRange"`
+	// Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1 secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap with the reserved_ip_range. Not supported during instance creation.
+	SecondaryIpRange string `pulumi:"secondaryIpRange"`
 	// List of server CA certificates for the instance.
 	ServerCaCerts []TlsCertificateResponse `pulumi:"serverCaCerts"`
 	// The current state of this instance.
@@ -245,6 +247,11 @@ func (o LookupInstanceResultOutput) ReplicaCount() pulumi.IntOutput {
 // Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
 func (o LookupInstanceResultOutput) ReservedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.ReservedIpRange }).(pulumi.StringOutput)
+}
+
+// Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1 secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap with the reserved_ip_range. Not supported during instance creation.
+func (o LookupInstanceResultOutput) SecondaryIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.SecondaryIpRange }).(pulumi.StringOutput)
 }
 
 // List of server CA certificates for the instance.

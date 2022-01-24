@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
+        /// </summary>
+        [Output("network")]
+        public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Service Directory rejects values outside of `[0, 65535]`.
         /// </summary>
         [Output("port")]
@@ -116,6 +122,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
 
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;
+
+        /// <summary>
+        /// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
 
         /// <summary>
         /// Optional. Service Directory rejects values outside of `[0, 65535]`.

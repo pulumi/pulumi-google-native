@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         /// </summary>
         public static AuthorizationPolicyAction Allow { get; } = new AuthorizationPolicyAction("ALLOW");
         /// <summary>
-        /// Deny access.
+        /// Deny access. Deny rules should be avoided unless they are used to provide a default "deny all" fallback.
         /// </summary>
         public static AuthorizationPolicyAction Deny { get; } = new AuthorizationPolicyAction("DENY");
 

@@ -146,6 +146,7 @@ class DestinationConfigResponse(dict):
         """
         The configuration of the stream destination.
         :param str destination_connection_profile_name: Destination connection profile identifier.
+        :param 'GcsDestinationConfigResponse' gcs_destination_config: GCS destination configuration.
         """
         pulumi.set(__self__, "destination_connection_profile_name", destination_connection_profile_name)
         pulumi.set(__self__, "gcs_destination_config", gcs_destination_config)
@@ -161,6 +162,9 @@ class DestinationConfigResponse(dict):
     @property
     @pulumi.getter(name="gcsDestinationConfig")
     def gcs_destination_config(self) -> 'outputs.GcsDestinationConfigResponse':
+        """
+        GCS destination configuration.
+        """
         return pulumi.get(self, "gcs_destination_config")
 
 

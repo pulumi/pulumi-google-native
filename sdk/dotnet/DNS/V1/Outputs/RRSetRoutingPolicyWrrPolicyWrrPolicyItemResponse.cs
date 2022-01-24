@@ -10,13 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1.Outputs
 {
 
+    /// <summary>
+    /// A routing block which contains the routing information for one WRR item.
+    /// </summary>
     [OutputType]
     public sealed class RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse
     {
         public readonly string Kind;
         public readonly ImmutableArray<string> Rrdatas;
         /// <summary>
-        /// DNSSEC generated signatures for the above wrr_rrdata.
+        /// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
         /// </summary>
         public readonly ImmutableArray<string> SignatureRrdatas;
         /// <summary>

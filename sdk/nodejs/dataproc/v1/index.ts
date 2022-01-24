@@ -7,9 +7,11 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./autoscalingPolicy";
 export * from "./autoscalingPolicyIamPolicy";
+export * from "./batch";
 export * from "./cluster";
 export * from "./getAutoscalingPolicy";
 export * from "./getAutoscalingPolicyIamPolicy";
+export * from "./getBatch";
 export * from "./getCluster";
 export * from "./getJob";
 export * from "./getRegionAutoscalingPolicyIamPolicy";
@@ -34,6 +36,7 @@ export * from "../../types/enums/dataproc/v1";
 // Import resources to register:
 import { AutoscalingPolicy } from "./autoscalingPolicy";
 import { AutoscalingPolicyIamPolicy } from "./autoscalingPolicyIamPolicy";
+import { Batch } from "./batch";
 import { Cluster } from "./cluster";
 import { Job } from "./job";
 import { RegionAutoscalingPolicyIamPolicy } from "./regionAutoscalingPolicyIamPolicy";
@@ -52,6 +55,8 @@ const _module = {
                 return new AutoscalingPolicy(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:AutoscalingPolicyIamPolicy":
                 return new AutoscalingPolicyIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:Batch":
+                return new Batch(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:Job":

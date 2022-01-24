@@ -122,6 +122,26 @@ export const MaintenanceWindowDayOfWeek = {
  */
 export type MaintenanceWindowDayOfWeek = (typeof MaintenanceWindowDayOfWeek)[keyof typeof MaintenanceWindowDayOfWeek];
 
+export const ServiceDatabaseType = {
+    /**
+     * The DATABASE_TYPE is not set.
+     */
+    DatabaseTypeUnspecified: "DATABASE_TYPE_UNSPECIFIED",
+    /**
+     * MySQL is used to persist the metastore data.
+     */
+    Mysql: "MYSQL",
+    /**
+     * Spanner is used to persist the metastore data.
+     */
+    Spanner: "SPANNER",
+} as const;
+
+/**
+ * Immutable. The database type that the Metastore service stores its data.
+ */
+export type ServiceDatabaseType = (typeof ServiceDatabaseType)[keyof typeof ServiceDatabaseType];
+
 export const ServiceReleaseChannel = {
     /**
      * Release channel is not specified.

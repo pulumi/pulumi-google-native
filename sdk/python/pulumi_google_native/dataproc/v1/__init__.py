@@ -8,9 +8,11 @@ import typing
 from ._enums import *
 from .autoscaling_policy import *
 from .autoscaling_policy_iam_policy import *
+from .batch import *
 from .cluster import *
 from .get_autoscaling_policy import *
 from .get_autoscaling_policy_iam_policy import *
+from .get_batch import *
 from .get_cluster import *
 from .get_job import *
 from .get_region_autoscaling_policy_iam_policy import *

@@ -47,6 +47,10 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
+     */
+    public readonly network!: pulumi.Output<string>;
+    /**
      * Optional. Service Directory rejects values outside of `[0, 65535]`.
      */
     public readonly port!: pulumi.Output<number>;
@@ -77,6 +81,7 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
@@ -84,6 +89,7 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["address"] = undefined /*out*/;
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["network"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -112,6 +118,10 @@ export interface EndpointArgs {
      */
     name?: pulumi.Input<string>;
     namespaceId: pulumi.Input<string>;
+    /**
+     * Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
+     */
+    network?: pulumi.Input<string>;
     /**
      * Optional. Service Directory rejects values outside of `[0, 65535]`.
      */

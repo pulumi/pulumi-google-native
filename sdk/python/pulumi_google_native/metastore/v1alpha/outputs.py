@@ -467,7 +467,9 @@ class HiveMetastoreConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "configOverrides":
+        if key == "auxiliaryVersions":
+            suggest = "auxiliary_versions"
+        elif key == "configOverrides":
             suggest = "config_overrides"
         elif key == "endpointProtocol":
             suggest = "endpoint_protocol"
@@ -486,21 +488,32 @@ class HiveMetastoreConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 auxiliary_versions: Mapping[str, str],
                  config_overrides: Mapping[str, str],
                  endpoint_protocol: str,
                  kerberos_config: 'outputs.KerberosConfigResponse',
                  version: str):
         """
         Specifies configuration information specific to running Hive metastore software as the metastore service.
+        :param Mapping[str, str] auxiliary_versions: A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param Mapping[str, str] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
         :param str endpoint_protocol: The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
         :param 'KerberosConfigResponse' kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
         :param str version: Immutable. The Hive metastore schema version.
         """
+        pulumi.set(__self__, "auxiliary_versions", auxiliary_versions)
         pulumi.set(__self__, "config_overrides", config_overrides)
         pulumi.set(__self__, "endpoint_protocol", endpoint_protocol)
         pulumi.set(__self__, "kerberos_config", kerberos_config)
         pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="auxiliaryVersions")
+    def auxiliary_versions(self) -> Mapping[str, str]:
+        """
+        A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        """
+        return pulumi.get(self, "auxiliary_versions")
 
     @property
     @pulumi.getter(name="configOverrides")
@@ -1008,6 +1021,8 @@ class ServiceResponse(dict):
             suggest = "artifact_gcs_uri"
         elif key == "createTime":
             suggest = "create_time"
+        elif key == "databaseType":
+            suggest = "database_type"
         elif key == "encryptionConfig":
             suggest = "encryption_config"
         elif key == "endpointUri":
@@ -1043,6 +1058,7 @@ class ServiceResponse(dict):
     def __init__(__self__, *,
                  artifact_gcs_uri: str,
                  create_time: str,
+                 database_type: str,
                  encryption_config: 'outputs.EncryptionConfigResponse',
                  endpoint_uri: str,
                  hive_metastore_config: 'outputs.HiveMetastoreConfigResponse',
@@ -1064,6 +1080,7 @@ class ServiceResponse(dict):
         A managed metastore service that serves metadata queries.
         :param str artifact_gcs_uri: A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
         :param str create_time: The time when the metastore service was created.
+        :param str database_type: Immutable. The database type that the Metastore service stores its data.
         :param 'EncryptionConfigResponse' encryption_config: Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
         :param str endpoint_uri: The URI of the endpoint used to access the metastore service.
         :param 'HiveMetastoreConfigResponse' hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
@@ -1084,6 +1101,7 @@ class ServiceResponse(dict):
         """
         pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "database_type", database_type)
         pulumi.set(__self__, "encryption_config", encryption_config)
         pulumi.set(__self__, "endpoint_uri", endpoint_uri)
         pulumi.set(__self__, "hive_metastore_config", hive_metastore_config)
@@ -1117,6 +1135,14 @@ class ServiceResponse(dict):
         The time when the metastore service was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="databaseType")
+    def database_type(self) -> str:
+        """
+        Immutable. The database type that the Metastore service stores its data.
+        """
+        return pulumi.get(self, "database_type")
 
     @property
     @pulumi.getter(name="encryptionConfig")

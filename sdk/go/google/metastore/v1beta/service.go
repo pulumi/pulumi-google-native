@@ -19,6 +19,8 @@ type Service struct {
 	ArtifactGcsUri pulumi.StringOutput `pulumi:"artifactGcsUri"`
 	// The time when the metastore service was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Immutable. The database type that the Metastore service stores its data.
+	DatabaseType pulumi.StringOutput `pulumi:"databaseType"`
 	// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
 	EncryptionConfig EncryptionConfigResponseOutput `pulumi:"encryptionConfig"`
 	// The URI of the endpoint used to access the metastore service.
@@ -97,6 +99,8 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
+	// Immutable. The database type that the Metastore service stores its data.
+	DatabaseType *ServiceDatabaseType `pulumi:"databaseType"`
 	// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Configuration information specific to running Hive metastore software as the metastore service.
@@ -127,6 +131,8 @@ type serviceArgs struct {
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
+	// Immutable. The database type that the Metastore service stores its data.
+	DatabaseType ServiceDatabaseTypePtrInput
 	// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
 	EncryptionConfig EncryptionConfigPtrInput
 	// Configuration information specific to running Hive metastore software as the metastore service.

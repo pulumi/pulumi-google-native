@@ -2872,7 +2872,7 @@ class GoogleCloudDialogflowCxV3beta1RolloutStateResponse(dict):
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponse(dict):
     """
-    Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+    Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2894,7 +2894,7 @@ class GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsRespon
     def __init__(__self__, *,
                  enable_insights_export: bool):
         """
-        Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+        Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
         :param bool enable_insights_export: If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
         """
         pulumi.set(__self__, "enable_insights_export", enable_insights_export)

@@ -496,7 +496,7 @@ class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs:
                  test_cases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The configuration for continuous tests.
-        :param pulumi.Input[bool] enable_continuous_run: Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+        :param pulumi.Input[bool] enable_continuous_run: Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
         :param pulumi.Input[bool] enable_predeployment_run: Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] test_cases: A list of test case names to run. They should be under the same agent. Format of each test case name: `projects//locations/ /agents//testCases/`
         """
@@ -511,7 +511,7 @@ class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs:
     @pulumi.getter(name="enableContinuousRun")
     def enable_continuous_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+        Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
         """
         return pulumi.get(self, "enable_continuous_run")
 
@@ -2540,7 +2540,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs:
     def __init__(__self__, *,
                  enable_insights_export: Optional[pulumi.Input[bool]] = None):
         """
-        Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+        Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
         :param pulumi.Input[bool] enable_insights_export: If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
         """
         if enable_insights_export is not None:

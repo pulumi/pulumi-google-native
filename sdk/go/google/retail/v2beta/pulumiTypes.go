@@ -1143,7 +1143,7 @@ type GoogleCloudRetailV2betaProductResponse struct {
 	CollectionMemberIds []string `pulumi:"collectionMemberIds"`
 	// The color of the product. Corresponding properties: Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 	ColorInfo GoogleCloudRetailV2betaColorInfoResponse `pulumi:"colorInfo"`
-	// The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used". A maximum of 5 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://schema.org/itemCondition).
+	// The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used". A maximum of 1 value is allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://schema.org/itemCondition).
 	Conditions []string `pulumi:"conditions"`
 	// Product description. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [description](https://support.google.com/merchants/answer/6324468). Schema.org property [Product.description](https://schema.org/description).
 	Description string `pulumi:"description"`
@@ -1255,7 +1255,7 @@ func (o GoogleCloudRetailV2betaProductResponseOutput) ColorInfo() GoogleCloudRet
 	}).(GoogleCloudRetailV2betaColorInfoResponseOutput)
 }
 
-// The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used". A maximum of 5 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://schema.org/itemCondition).
+// The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used". A maximum of 1 value is allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://schema.org/itemCondition).
 func (o GoogleCloudRetailV2betaProductResponseOutput) Conditions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) []string { return v.Conditions }).(pulumi.StringArrayOutput)
 }

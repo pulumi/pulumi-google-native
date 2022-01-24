@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 {
 
     /// <summary>
-    /// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+    /// Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponse

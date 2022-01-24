@@ -104,6 +104,7 @@ class DestinationConfigArgs:
         """
         The configuration of the stream destination.
         :param pulumi.Input[str] destination_connection_profile_name: Destination connection profile identifier.
+        :param pulumi.Input['GcsDestinationConfigArgs'] gcs_destination_config: GCS destination configuration.
         """
         pulumi.set(__self__, "destination_connection_profile_name", destination_connection_profile_name)
         if gcs_destination_config is not None:
@@ -124,6 +125,9 @@ class DestinationConfigArgs:
     @property
     @pulumi.getter(name="gcsDestinationConfig")
     def gcs_destination_config(self) -> Optional[pulumi.Input['GcsDestinationConfigArgs']]:
+        """
+        GCS destination configuration.
+        """
         return pulumi.get(self, "gcs_destination_config")
 
     @gcs_destination_config.setter

@@ -35,6 +35,8 @@ type LookupEndpointResult struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
 	Name string `pulumi:"name"`
+	// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
+	Network string `pulumi:"network"`
 	// Optional. Service Directory rejects values outside of `[0, 65535]`.
 	Port int `pulumi:"port"`
 }
@@ -87,6 +89,11 @@ func (o LookupEndpointResultOutput) Annotations() pulumi.StringMapOutput {
 // Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
 func (o LookupEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
+func (o LookupEndpointResultOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEndpointResult) string { return v.Network }).(pulumi.StringOutput)
 }
 
 // Optional. Service Directory rejects values outside of `[0, 65535]`.

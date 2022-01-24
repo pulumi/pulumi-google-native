@@ -2583,7 +2583,7 @@ class GooglePrivacyDlpV2FileSetResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2FindingLimitsResponse(dict):
     """
-    Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
+    Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2611,7 +2611,7 @@ class GooglePrivacyDlpV2FindingLimitsResponse(dict):
                  max_findings_per_item: int,
                  max_findings_per_request: int):
         """
-        Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
+        Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
         :param Sequence['GooglePrivacyDlpV2InfoTypeLimitResponse'] max_findings_per_info_type: Configuration of findings limit given for specified infoTypes.
         :param int max_findings_per_item: Max number of findings that will be returned for each item scanned. When set within `InspectJobConfig`, the maximum returned is 2000 regardless if this is set higher. When set within `InspectContentRequest`, this field is ignored.
         :param int max_findings_per_request: Max number of findings that will be returned per request/job. When set within `InspectContentRequest`, the maximum returned is 2000 regardless if this is set higher.
@@ -3129,9 +3129,7 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "contentOptions":
-            suggest = "content_options"
-        elif key == "customInfoTypes":
+        if key == "customInfoTypes":
             suggest = "custom_info_types"
         elif key == "excludeInfoTypes":
             suggest = "exclude_info_types"
@@ -3156,7 +3154,6 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 content_options: Sequence[str],
                  custom_info_types: Sequence['outputs.GooglePrivacyDlpV2CustomInfoTypeResponse'],
                  exclude_info_types: bool,
                  include_quote: bool,
@@ -3166,16 +3163,14 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
                  rule_set: Sequence['outputs.GooglePrivacyDlpV2InspectionRuleSetResponse']):
         """
         Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
-        :param Sequence[str] content_options: List of options defining data content to scan. If empty, text, images, and other content will be included.
         :param Sequence['GooglePrivacyDlpV2CustomInfoTypeResponse'] custom_info_types: CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
-        :param bool exclude_info_types: When true, excludes type information of the findings.
-        :param bool include_quote: When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
+        :param bool exclude_info_types: When true, excludes type information of the findings. This is not used for data profiling.
+        :param bool include_quote: When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
         :param Sequence['GooglePrivacyDlpV2InfoTypeResponse'] info_types: Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
-        :param 'GooglePrivacyDlpV2FindingLimitsResponse' limits: Configuration to control the number of findings returned.
+        :param 'GooglePrivacyDlpV2FindingLimitsResponse' limits: Configuration to control the number of findings returned. This is not used for data profiling.
         :param str min_likelihood: Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
         :param Sequence['GooglePrivacyDlpV2InspectionRuleSetResponse'] rule_set: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
         """
-        pulumi.set(__self__, "content_options", content_options)
         pulumi.set(__self__, "custom_info_types", custom_info_types)
         pulumi.set(__self__, "exclude_info_types", exclude_info_types)
         pulumi.set(__self__, "include_quote", include_quote)
@@ -3183,14 +3178,6 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
         pulumi.set(__self__, "limits", limits)
         pulumi.set(__self__, "min_likelihood", min_likelihood)
         pulumi.set(__self__, "rule_set", rule_set)
-
-    @property
-    @pulumi.getter(name="contentOptions")
-    def content_options(self) -> Sequence[str]:
-        """
-        List of options defining data content to scan. If empty, text, images, and other content will be included.
-        """
-        return pulumi.get(self, "content_options")
 
     @property
     @pulumi.getter(name="customInfoTypes")
@@ -3204,7 +3191,7 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
     @pulumi.getter(name="excludeInfoTypes")
     def exclude_info_types(self) -> bool:
         """
-        When true, excludes type information of the findings.
+        When true, excludes type information of the findings. This is not used for data profiling.
         """
         return pulumi.get(self, "exclude_info_types")
 
@@ -3212,7 +3199,7 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
     @pulumi.getter(name="includeQuote")
     def include_quote(self) -> bool:
         """
-        When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
+        When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
         """
         return pulumi.get(self, "include_quote")
 
@@ -3228,7 +3215,7 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
     @pulumi.getter
     def limits(self) -> 'outputs.GooglePrivacyDlpV2FindingLimitsResponse':
         """
-        Configuration to control the number of findings returned.
+        Configuration to control the number of findings returned. This is not used for data profiling.
         """
         return pulumi.get(self, "limits")
 

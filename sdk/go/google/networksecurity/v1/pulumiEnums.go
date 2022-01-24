@@ -18,7 +18,7 @@ const (
 	AuthorizationPolicyActionActionUnspecified = AuthorizationPolicyAction("ACTION_UNSPECIFIED")
 	// Grant access.
 	AuthorizationPolicyActionAllow = AuthorizationPolicyAction("ALLOW")
-	// Deny access.
+	// Deny access. Deny rules should be avoided unless they are used to provide a default "deny all" fallback.
 	AuthorizationPolicyActionDeny = AuthorizationPolicyAction("DENY")
 )
 

@@ -1827,7 +1827,7 @@ func (o GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponseArrayOutput) In
 
 // The configuration for continuous tests.
 type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig struct {
-	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 	EnableContinuousRun *bool `pulumi:"enableContinuousRun"`
 	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
 	EnablePredeploymentRun *bool `pulumi:"enablePredeploymentRun"`
@@ -1848,7 +1848,7 @@ type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigInput interface {
 
 // The configuration for continuous tests.
 type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs struct {
-	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 	EnableContinuousRun pulumi.BoolPtrInput `pulumi:"enableContinuousRun"`
 	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
 	EnablePredeploymentRun pulumi.BoolPtrInput `pulumi:"enablePredeploymentRun"`
@@ -1934,7 +1934,7 @@ func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput) ToGoogleCloud
 	}).(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput)
 }
 
-// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput) EnableContinuousRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig) *bool { return v.EnableContinuousRun }).(pulumi.BoolPtrOutput)
 }
@@ -1973,7 +1973,7 @@ func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput) Elem() Goo
 	}).(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput)
 }
 
-// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput) EnableContinuousRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig) *bool {
 		if v == nil {
@@ -2005,7 +2005,7 @@ func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput) TestCases(
 
 // The configuration for continuous tests.
 type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse struct {
-	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 	EnableContinuousRun bool `pulumi:"enableContinuousRun"`
 	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
 	EnablePredeploymentRun bool `pulumi:"enablePredeploymentRun"`
@@ -2028,7 +2028,7 @@ func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput) ToGoo
 	return o
 }
 
-// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput) EnableContinuousRun() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse) bool { return v.EnableContinuousRun }).(pulumi.BoolOutput)
 }
@@ -9661,7 +9661,7 @@ func (o GoogleCloudDialogflowCxV3RolloutStateResponseOutput) StepIndex() pulumi.
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutStateResponse) int { return v.StepIndex }).(pulumi.IntOutput)
 }
 
-// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+// Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
 type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings struct {
 	// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
 	EnableInsightsExport *bool `pulumi:"enableInsightsExport"`
@@ -9678,7 +9678,7 @@ type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsInput interf
 	ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutputWithContext(context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput
 }
 
-// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+// Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
 type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs struct {
 	// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
 	EnableInsightsExport pulumi.BoolPtrInput `pulumi:"enableInsightsExport"`
@@ -9737,7 +9737,7 @@ func (i *googleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrType)
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput)
 }
 
-// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+// Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
 type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput) ElementType() reflect.Type {
@@ -9803,13 +9803,13 @@ func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+// Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
 type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse struct {
 	// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
 	EnableInsightsExport bool `pulumi:"enableInsightsExport"`
 }
 
-// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+// Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
 type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput) ElementType() reflect.Type {

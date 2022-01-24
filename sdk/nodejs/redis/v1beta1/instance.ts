@@ -136,6 +136,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly reservedIpRange!: pulumi.Output<string>;
     /**
+     * Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1 secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap with the reserved_ip_range. Not supported during instance creation.
+     */
+    public readonly secondaryIpRange!: pulumi.Output<string>;
+    /**
      * List of server CA certificates for the instance.
      */
     public /*out*/ readonly serverCaCerts!: pulumi.Output<outputs.redis.v1beta1.TlsCertificateResponse[]>;
@@ -194,6 +198,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["redisVersion"] = args ? args.redisVersion : undefined;
             resourceInputs["replicaCount"] = args ? args.replicaCount : undefined;
             resourceInputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
+            resourceInputs["secondaryIpRange"] = args ? args.secondaryIpRange : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -234,6 +239,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["redisVersion"] = undefined /*out*/;
             resourceInputs["replicaCount"] = undefined /*out*/;
             resourceInputs["reservedIpRange"] = undefined /*out*/;
+            resourceInputs["secondaryIpRange"] = undefined /*out*/;
             resourceInputs["serverCaCerts"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
@@ -317,6 +323,10 @@ export interface InstanceArgs {
      * Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
      */
     reservedIpRange?: pulumi.Input<string>;
+    /**
+     * Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1 secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap with the reserved_ip_range. Not supported during instance creation.
+     */
+    secondaryIpRange?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
      */

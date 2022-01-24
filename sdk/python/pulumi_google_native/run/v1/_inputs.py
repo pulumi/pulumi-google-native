@@ -1140,7 +1140,7 @@ class GoogleCloudRunV1ConditionArgs:
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        Condition defines a generic condition for a Resource
+        Condition defines a generic condition for a Resource.
         :param pulumi.Input[str] last_transition_time: Optional. Last time the condition transitioned from one status to another.
         :param pulumi.Input[str] message: Optional. Human readable message indicating details about the current status.
         :param pulumi.Input[str] reason: Optional. One-word CamelCase reason for the condition's last transition.
@@ -1977,8 +1977,8 @@ class ResourceRequirementsArgs:
                  requests: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         ResourceRequirements describes the compute resource requirements.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] requests: (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: (Optional) Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] requests: (Optional) Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
@@ -1989,7 +1989,7 @@ class ResourceRequirementsArgs:
     @pulumi.getter
     def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        (Optional) Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
@@ -2001,7 +2001,7 @@ class ResourceRequirementsArgs:
     @pulumi.getter
     def requests(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        (Optional) Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "requests")
 

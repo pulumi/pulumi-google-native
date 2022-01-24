@@ -221,7 +221,9 @@ class DestinationResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "cloudRun":
+        if key == "cloudFunction":
+            suggest = "cloud_function"
+        elif key == "cloudRun":
             suggest = "cloud_run"
 
         if suggest:
@@ -236,15 +238,26 @@ class DestinationResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cloud_function: str,
                  cloud_run: 'outputs.CloudRunResponse',
                  gke: 'outputs.GKEResponse'):
         """
         Represents a target of an invocation over HTTP.
+        :param str cloud_function: The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
         :param 'CloudRunResponse' cloud_run: Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
         :param 'GKEResponse' gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         """
+        pulumi.set(__self__, "cloud_function", cloud_function)
         pulumi.set(__self__, "cloud_run", cloud_run)
         pulumi.set(__self__, "gke", gke)
+
+    @property
+    @pulumi.getter(name="cloudFunction")
+    def cloud_function(self) -> str:
+        """
+        The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        """
+        return pulumi.get(self, "cloud_function")
 
     @property
     @pulumi.getter(name="cloudRun")

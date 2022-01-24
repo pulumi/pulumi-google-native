@@ -1844,7 +1844,7 @@ func (o GridLayoutResponseOutput) Widgets() WidgetResponseArrayOutput {
 type LogsPanel struct {
 	// A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
 	Filter *string `pulumi:"filter"`
-	// The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+	// The names of logging resources to collect logs for. Currently only projects are supported. If empty, the widget will default to the host project.
 	ResourceNames []string `pulumi:"resourceNames"`
 }
 
@@ -1863,7 +1863,7 @@ type LogsPanelInput interface {
 type LogsPanelArgs struct {
 	// A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	// The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+	// The names of logging resources to collect logs for. Currently only projects are supported. If empty, the widget will default to the host project.
 	ResourceNames pulumi.StringArrayInput `pulumi:"resourceNames"`
 }
 
@@ -1950,7 +1950,7 @@ func (o LogsPanelOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogsPanel) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
-// The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+// The names of logging resources to collect logs for. Currently only projects are supported. If empty, the widget will default to the host project.
 func (o LogsPanelOutput) ResourceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LogsPanel) []string { return v.ResourceNames }).(pulumi.StringArrayOutput)
 }
@@ -1989,7 +1989,7 @@ func (o LogsPanelPtrOutput) Filter() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+// The names of logging resources to collect logs for. Currently only projects are supported. If empty, the widget will default to the host project.
 func (o LogsPanelPtrOutput) ResourceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LogsPanel) []string {
 		if v == nil {
@@ -2003,7 +2003,7 @@ func (o LogsPanelPtrOutput) ResourceNames() pulumi.StringArrayOutput {
 type LogsPanelResponse struct {
 	// A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
 	Filter string `pulumi:"filter"`
-	// The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+	// The names of logging resources to collect logs for. Currently only projects are supported. If empty, the widget will default to the host project.
 	ResourceNames []string `pulumi:"resourceNames"`
 }
 
@@ -2027,7 +2027,7 @@ func (o LogsPanelResponseOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v LogsPanelResponse) string { return v.Filter }).(pulumi.StringOutput)
 }
 
-// The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+// The names of logging resources to collect logs for. Currently only projects are supported. If empty, the widget will default to the host project.
 func (o LogsPanelResponseOutput) ResourceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LogsPanelResponse) []string { return v.ResourceNames }).(pulumi.StringArrayOutput)
 }

@@ -14,6 +14,8 @@ import (
 type UptimeCheckConfig struct {
 	pulumi.CustomResourceState
 
+	// The type of checkers to use to execute the Uptime check.
+	CheckerType pulumi.StringOutput `pulumi:"checkerType"`
 	// The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
 	ContentMatchers ContentMatcherResponseArrayOutput `pulumi:"contentMatchers"`
 	// A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
@@ -79,6 +81,8 @@ func (UptimeCheckConfigState) ElementType() reflect.Type {
 }
 
 type uptimeCheckConfigArgs struct {
+	// The type of checkers to use to execute the Uptime check.
+	CheckerType *UptimeCheckConfigCheckerType `pulumi:"checkerType"`
 	// The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
 	ContentMatchers []ContentMatcher `pulumi:"contentMatchers"`
 	// A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
@@ -108,6 +112,8 @@ type uptimeCheckConfigArgs struct {
 
 // The set of arguments for constructing a UptimeCheckConfig resource.
 type UptimeCheckConfigArgs struct {
+	// The type of checkers to use to execute the Uptime check.
+	CheckerType UptimeCheckConfigCheckerTypePtrInput
 	// The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
 	ContentMatchers ContentMatcherArrayInput
 	// A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.

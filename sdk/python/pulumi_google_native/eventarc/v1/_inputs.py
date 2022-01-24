@@ -215,17 +215,33 @@ class CloudRunArgs:
 @pulumi.input_type
 class DestinationArgs:
     def __init__(__self__, *,
+                 cloud_function: Optional[pulumi.Input[str]] = None,
                  cloud_run: Optional[pulumi.Input['CloudRunArgs']] = None,
                  gke: Optional[pulumi.Input['GKEArgs']] = None):
         """
         Represents a target of an invocation over HTTP.
+        :param pulumi.Input[str] cloud_function: The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
         :param pulumi.Input['CloudRunArgs'] cloud_run: Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
         :param pulumi.Input['GKEArgs'] gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         """
+        if cloud_function is not None:
+            pulumi.set(__self__, "cloud_function", cloud_function)
         if cloud_run is not None:
             pulumi.set(__self__, "cloud_run", cloud_run)
         if gke is not None:
             pulumi.set(__self__, "gke", gke)
+
+    @property
+    @pulumi.getter(name="cloudFunction")
+    def cloud_function(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        """
+        return pulumi.get(self, "cloud_function")
+
+    @cloud_function.setter
+    def cloud_function(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_function", value)
 
     @property
     @pulumi.getter(name="cloudRun")

@@ -2925,6 +2925,7 @@ func (o RRSetRoutingPolicyPtrOutput) Wrr() RRSetRoutingPolicyWrrPolicyPtrOutput 
 	}).(RRSetRoutingPolicyWrrPolicyPtrOutput)
 }
 
+// Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
 type RRSetRoutingPolicyGeoPolicy struct {
 	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 	Items []RRSetRoutingPolicyGeoPolicyGeoPolicyItem `pulumi:"items"`
@@ -2942,6 +2943,7 @@ type RRSetRoutingPolicyGeoPolicyInput interface {
 	ToRRSetRoutingPolicyGeoPolicyOutputWithContext(context.Context) RRSetRoutingPolicyGeoPolicyOutput
 }
 
+// Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
 type RRSetRoutingPolicyGeoPolicyArgs struct {
 	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 	Items RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayInput `pulumi:"items"`
@@ -3001,6 +3003,7 @@ func (i *rrsetRoutingPolicyGeoPolicyPtrType) ToRRSetRoutingPolicyGeoPolicyPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyGeoPolicyPtrOutput)
 }
 
+// Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
 type RRSetRoutingPolicyGeoPolicyOutput struct{ *pulumi.OutputState }
 
 func (RRSetRoutingPolicyGeoPolicyOutput) ElementType() reflect.Type {
@@ -3077,12 +3080,13 @@ func (o RRSetRoutingPolicyGeoPolicyPtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// ResourceRecordSet data for one geo location.
 type RRSetRoutingPolicyGeoPolicyGeoPolicyItem struct {
 	Kind *string `pulumi:"kind"`
 	// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
 	Location *string  `pulumi:"location"`
 	Rrdatas  []string `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for the above geo_rrdata.
+	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
 	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
 }
 
@@ -3097,12 +3101,13 @@ type RRSetRoutingPolicyGeoPolicyGeoPolicyItemInput interface {
 	ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemOutputWithContext(context.Context) RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput
 }
 
+// ResourceRecordSet data for one geo location.
 type RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
 	Location pulumi.StringPtrInput   `pulumi:"location"`
 	Rrdatas  pulumi.StringArrayInput `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for the above geo_rrdata.
+	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
 	SignatureRrdatas pulumi.StringArrayInput `pulumi:"signatureRrdatas"`
 }
 
@@ -3143,6 +3148,7 @@ func (i RRSetRoutingPolicyGeoPolicyGeoPolicyItemArray) ToRRSetRoutingPolicyGeoPo
 	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput)
 }
 
+// ResourceRecordSet data for one geo location.
 type RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput struct{ *pulumi.OutputState }
 
 func (RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) ElementType() reflect.Type {
@@ -3170,7 +3176,7 @@ func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) Rrdatas() pulumi.StringA
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItem) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
 }
 
-// DNSSEC generated signatures for the above geo_rrdata.
+// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
 func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) SignatureRrdatas() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItem) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
 }
@@ -3195,15 +3201,17 @@ func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput) Index(i pulumi.IntI
 	}).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput)
 }
 
+// ResourceRecordSet data for one geo location.
 type RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse struct {
 	Kind string `pulumi:"kind"`
 	// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
 	Location string   `pulumi:"location"`
 	Rrdatas  []string `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for the above geo_rrdata.
+	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
 	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
 }
 
+// ResourceRecordSet data for one geo location.
 type RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseOutput struct{ *pulumi.OutputState }
 
 func (RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseOutput) ElementType() reflect.Type {
@@ -3231,7 +3239,7 @@ func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseOutput) Rrdatas() pulumi
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
 }
 
-// DNSSEC generated signatures for the above geo_rrdata.
+// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
 func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseOutput) SignatureRrdatas() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
 }
@@ -3256,12 +3264,14 @@ func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseArrayOutput) Index(i pul
 	}).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseOutput)
 }
 
+// Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
 type RRSetRoutingPolicyGeoPolicyResponse struct {
 	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 	Items []RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse `pulumi:"items"`
 	Kind  string                                             `pulumi:"kind"`
 }
 
+// Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
 type RRSetRoutingPolicyGeoPolicyResponseOutput struct{ *pulumi.OutputState }
 
 func (RRSetRoutingPolicyGeoPolicyResponseOutput) ElementType() reflect.Type {
@@ -3321,6 +3331,7 @@ func (o RRSetRoutingPolicyResponseOutput) Wrr() RRSetRoutingPolicyWrrPolicyRespo
 	return o.ApplyT(func(v RRSetRoutingPolicyResponse) RRSetRoutingPolicyWrrPolicyResponse { return v.Wrr }).(RRSetRoutingPolicyWrrPolicyResponseOutput)
 }
 
+// Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
 type RRSetRoutingPolicyWrrPolicy struct {
 	Items []RRSetRoutingPolicyWrrPolicyWrrPolicyItem `pulumi:"items"`
 	Kind  *string                                    `pulumi:"kind"`
@@ -3337,6 +3348,7 @@ type RRSetRoutingPolicyWrrPolicyInput interface {
 	ToRRSetRoutingPolicyWrrPolicyOutputWithContext(context.Context) RRSetRoutingPolicyWrrPolicyOutput
 }
 
+// Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
 type RRSetRoutingPolicyWrrPolicyArgs struct {
 	Items RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayInput `pulumi:"items"`
 	Kind  pulumi.StringPtrInput                              `pulumi:"kind"`
@@ -3395,6 +3407,7 @@ func (i *rrsetRoutingPolicyWrrPolicyPtrType) ToRRSetRoutingPolicyWrrPolicyPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyWrrPolicyPtrOutput)
 }
 
+// Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
 type RRSetRoutingPolicyWrrPolicyOutput struct{ *pulumi.OutputState }
 
 func (RRSetRoutingPolicyWrrPolicyOutput) ElementType() reflect.Type {
@@ -3469,11 +3482,13 @@ func (o RRSetRoutingPolicyWrrPolicyPtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
 type RRSetRoutingPolicyWrrPolicyResponse struct {
 	Items []RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse `pulumi:"items"`
 	Kind  string                                             `pulumi:"kind"`
 }
 
+// Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
 type RRSetRoutingPolicyWrrPolicyResponseOutput struct{ *pulumi.OutputState }
 
 func (RRSetRoutingPolicyWrrPolicyResponseOutput) ElementType() reflect.Type {
@@ -3498,10 +3513,11 @@ func (o RRSetRoutingPolicyWrrPolicyResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// A routing block which contains the routing information for one WRR item.
 type RRSetRoutingPolicyWrrPolicyWrrPolicyItem struct {
 	Kind    *string  `pulumi:"kind"`
 	Rrdatas []string `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for the above wrr_rrdata.
+	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
 	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
 	// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
 	Weight *float64 `pulumi:"weight"`
@@ -3518,10 +3534,11 @@ type RRSetRoutingPolicyWrrPolicyWrrPolicyItemInput interface {
 	ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemOutputWithContext(context.Context) RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput
 }
 
+// A routing block which contains the routing information for one WRR item.
 type RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs struct {
 	Kind    pulumi.StringPtrInput   `pulumi:"kind"`
 	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for the above wrr_rrdata.
+	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
 	SignatureRrdatas pulumi.StringArrayInput `pulumi:"signatureRrdatas"`
 	// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
 	Weight pulumi.Float64PtrInput `pulumi:"weight"`
@@ -3564,6 +3581,7 @@ func (i RRSetRoutingPolicyWrrPolicyWrrPolicyItemArray) ToRRSetRoutingPolicyWrrPo
 	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput)
 }
 
+// A routing block which contains the routing information for one WRR item.
 type RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput struct{ *pulumi.OutputState }
 
 func (RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) ElementType() reflect.Type {
@@ -3586,7 +3604,7 @@ func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) Rrdatas() pulumi.StringA
 	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItem) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
 }
 
-// DNSSEC generated signatures for the above wrr_rrdata.
+// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
 func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) SignatureRrdatas() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItem) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
 }
@@ -3616,15 +3634,17 @@ func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput) Index(i pulumi.IntI
 	}).(RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput)
 }
 
+// A routing block which contains the routing information for one WRR item.
 type RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse struct {
 	Kind    string   `pulumi:"kind"`
 	Rrdatas []string `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for the above wrr_rrdata.
+	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
 	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
 	// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
 	Weight float64 `pulumi:"weight"`
 }
 
+// A routing block which contains the routing information for one WRR item.
 type RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutput struct{ *pulumi.OutputState }
 
 func (RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutput) ElementType() reflect.Type {
@@ -3647,7 +3667,7 @@ func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutput) Rrdatas() pulumi
 	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
 }
 
-// DNSSEC generated signatures for the above wrr_rrdata.
+// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
 func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutput) SignatureRrdatas() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
 }

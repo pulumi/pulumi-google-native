@@ -576,7 +576,7 @@ class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse(dict):
                  test_cases: Sequence[str]):
         """
         The configuration for continuous tests.
-        :param bool enable_continuous_run: Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+        :param bool enable_continuous_run: Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
         :param bool enable_predeployment_run: Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
         :param Sequence[str] test_cases: A list of test case names to run. They should be under the same agent. Format of each test case name: `projects//locations/ /agents//testCases/`
         """
@@ -588,7 +588,7 @@ class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse(dict):
     @pulumi.getter(name="enableContinuousRun")
     def enable_continuous_run(self) -> bool:
         """
-        Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+        Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
         """
         return pulumi.get(self, "enable_continuous_run")
 
@@ -2872,7 +2872,7 @@ class GoogleCloudDialogflowCxV3RolloutStateResponse(dict):
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse(dict):
     """
-    Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+    Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2894,7 +2894,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse(di
     def __init__(__self__, *,
                  enable_insights_export: bool):
         """
-        Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+        Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
         :param bool enable_insights_export: If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
         """
         pulumi.set(__self__, "enable_insights_export", enable_insights_export)

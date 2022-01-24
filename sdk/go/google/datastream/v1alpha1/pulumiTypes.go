@@ -485,8 +485,9 @@ func (o BackfillNoneStrategyResponseOutput) ToBackfillNoneStrategyResponseOutput
 // The configuration of the stream destination.
 type DestinationConfig struct {
 	// Destination connection profile identifier.
-	DestinationConnectionProfileName string                `pulumi:"destinationConnectionProfileName"`
-	GcsDestinationConfig             *GcsDestinationConfig `pulumi:"gcsDestinationConfig"`
+	DestinationConnectionProfileName string `pulumi:"destinationConnectionProfileName"`
+	// GCS destination configuration.
+	GcsDestinationConfig *GcsDestinationConfig `pulumi:"gcsDestinationConfig"`
 }
 
 // DestinationConfigInput is an input type that accepts DestinationConfigArgs and DestinationConfigOutput values.
@@ -503,8 +504,9 @@ type DestinationConfigInput interface {
 // The configuration of the stream destination.
 type DestinationConfigArgs struct {
 	// Destination connection profile identifier.
-	DestinationConnectionProfileName pulumi.StringInput           `pulumi:"destinationConnectionProfileName"`
-	GcsDestinationConfig             GcsDestinationConfigPtrInput `pulumi:"gcsDestinationConfig"`
+	DestinationConnectionProfileName pulumi.StringInput `pulumi:"destinationConnectionProfileName"`
+	// GCS destination configuration.
+	GcsDestinationConfig GcsDestinationConfigPtrInput `pulumi:"gcsDestinationConfig"`
 }
 
 func (DestinationConfigArgs) ElementType() reflect.Type {
@@ -539,6 +541,7 @@ func (o DestinationConfigOutput) DestinationConnectionProfileName() pulumi.Strin
 	return o.ApplyT(func(v DestinationConfig) string { return v.DestinationConnectionProfileName }).(pulumi.StringOutput)
 }
 
+// GCS destination configuration.
 func (o DestinationConfigOutput) GcsDestinationConfig() GcsDestinationConfigPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *GcsDestinationConfig { return v.GcsDestinationConfig }).(GcsDestinationConfigPtrOutput)
 }
@@ -546,8 +549,9 @@ func (o DestinationConfigOutput) GcsDestinationConfig() GcsDestinationConfigPtrO
 // The configuration of the stream destination.
 type DestinationConfigResponse struct {
 	// Destination connection profile identifier.
-	DestinationConnectionProfileName string                       `pulumi:"destinationConnectionProfileName"`
-	GcsDestinationConfig             GcsDestinationConfigResponse `pulumi:"gcsDestinationConfig"`
+	DestinationConnectionProfileName string `pulumi:"destinationConnectionProfileName"`
+	// GCS destination configuration.
+	GcsDestinationConfig GcsDestinationConfigResponse `pulumi:"gcsDestinationConfig"`
 }
 
 // The configuration of the stream destination.
@@ -570,6 +574,7 @@ func (o DestinationConfigResponseOutput) DestinationConnectionProfileName() pulu
 	return o.ApplyT(func(v DestinationConfigResponse) string { return v.DestinationConnectionProfileName }).(pulumi.StringOutput)
 }
 
+// GCS destination configuration.
 func (o DestinationConfigResponseOutput) GcsDestinationConfig() GcsDestinationConfigResponseOutput {
 	return o.ApplyT(func(v DestinationConfigResponse) GcsDestinationConfigResponse { return v.GcsDestinationConfig }).(GcsDestinationConfigResponseOutput)
 }

@@ -13,11 +13,11 @@ import (
 // `File` containing source content.
 type File struct {
 	// Textual Content.
-	Content *string `pulumi:"content"`
+	Content string `pulumi:"content"`
 	// Fingerprint (e.g. github sha) associated with the `File`.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// File name.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 }
 
 // FileInput is an input type that accepts FileArgs and FileOutput values.
@@ -34,11 +34,11 @@ type FileInput interface {
 // `File` containing source content.
 type FileArgs struct {
 	// Textual Content.
-	Content pulumi.StringPtrInput `pulumi:"content"`
+	Content pulumi.StringInput `pulumi:"content"`
 	// Fingerprint (e.g. github sha) associated with the `File`.
 	Fingerprint pulumi.StringPtrInput `pulumi:"fingerprint"`
 	// File name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (FileArgs) ElementType() reflect.Type {
@@ -94,8 +94,8 @@ func (o FileOutput) ToFileOutputWithContext(ctx context.Context) FileOutput {
 }
 
 // Textual Content.
-func (o FileOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v File) *string { return v.Content }).(pulumi.StringPtrOutput)
+func (o FileOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v File) string { return v.Content }).(pulumi.StringOutput)
 }
 
 // Fingerprint (e.g. github sha) associated with the `File`.
@@ -104,8 +104,8 @@ func (o FileOutput) Fingerprint() pulumi.StringPtrOutput {
 }
 
 // File name.
-func (o FileOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v File) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o FileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v File) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type FileArrayOutput struct{ *pulumi.OutputState }
@@ -249,47 +249,6 @@ func (i SourceArgs) ToSourceOutputWithContext(ctx context.Context) SourceOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SourceOutput)
 }
 
-func (i SourceArgs) ToSourcePtrOutput() SourcePtrOutput {
-	return i.ToSourcePtrOutputWithContext(context.Background())
-}
-
-func (i SourceArgs) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceOutput).ToSourcePtrOutputWithContext(ctx)
-}
-
-// SourcePtrInput is an input type that accepts SourceArgs, SourcePtr and SourcePtrOutput values.
-// You can construct a concrete instance of `SourcePtrInput` via:
-//
-//          SourceArgs{...}
-//
-//  or:
-//
-//          nil
-type SourcePtrInput interface {
-	pulumi.Input
-
-	ToSourcePtrOutput() SourcePtrOutput
-	ToSourcePtrOutputWithContext(context.Context) SourcePtrOutput
-}
-
-type sourcePtrType SourceArgs
-
-func SourcePtr(v *SourceArgs) SourcePtrInput {
-	return (*sourcePtrType)(v)
-}
-
-func (*sourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Source)(nil)).Elem()
-}
-
-func (i *sourcePtrType) ToSourcePtrOutput() SourcePtrOutput {
-	return i.ToSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *sourcePtrType) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourcePtrOutput)
-}
-
 // `Source` is one or more `File` messages comprising a logical set of rules.
 type SourceOutput struct{ *pulumi.OutputState }
 
@@ -305,53 +264,9 @@ func (o SourceOutput) ToSourceOutputWithContext(ctx context.Context) SourceOutpu
 	return o
 }
 
-func (o SourceOutput) ToSourcePtrOutput() SourcePtrOutput {
-	return o.ToSourcePtrOutputWithContext(context.Background())
-}
-
-func (o SourceOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Source) *Source {
-		return &v
-	}).(SourcePtrOutput)
-}
-
 // `File` set constituting the `Source` bundle.
 func (o SourceOutput) Files() FileArrayOutput {
 	return o.ApplyT(func(v Source) []File { return v.Files }).(FileArrayOutput)
-}
-
-type SourcePtrOutput struct{ *pulumi.OutputState }
-
-func (SourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Source)(nil)).Elem()
-}
-
-func (o SourcePtrOutput) ToSourcePtrOutput() SourcePtrOutput {
-	return o
-}
-
-func (o SourcePtrOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
-	return o
-}
-
-func (o SourcePtrOutput) Elem() SourceOutput {
-	return o.ApplyT(func(v *Source) Source {
-		if v != nil {
-			return *v
-		}
-		var ret Source
-		return ret
-	}).(SourceOutput)
-}
-
-// `File` set constituting the `Source` bundle.
-func (o SourcePtrOutput) Files() FileArrayOutput {
-	return o.ApplyT(func(v *Source) []File {
-		if v == nil {
-			return nil
-		}
-		return v.Files
-	}).(FileArrayOutput)
 }
 
 // `Source` is one or more `File` messages comprising a logical set of rules.
@@ -384,13 +299,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FileInput)(nil)).Elem(), FileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileArrayInput)(nil)).Elem(), FileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourcePtrInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterOutputType(FileOutput{})
 	pulumi.RegisterOutputType(FileArrayOutput{})
 	pulumi.RegisterOutputType(FileResponseOutput{})
 	pulumi.RegisterOutputType(FileResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetadataResponseOutput{})
 	pulumi.RegisterOutputType(SourceOutput{})
-	pulumi.RegisterOutputType(SourcePtrOutput{})
 	pulumi.RegisterOutputType(SourceResponseOutput{})
 }

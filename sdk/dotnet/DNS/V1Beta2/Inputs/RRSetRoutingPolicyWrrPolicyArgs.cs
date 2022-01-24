@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
 {
 
+    /// <summary>
+    /// Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
+    /// </summary>
     public sealed class RRSetRoutingPolicyWrrPolicyArgs : Pulumi.ResourceArgs
     {
         [Input("items")]

@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
     public sealed class HiveMetastoreConfigResponse
     {
         /// <summary>
+        /// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> AuxiliaryVersions;
+        /// <summary>
         /// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
         /// </summary>
         public readonly ImmutableDictionary<string, string> ConfigOverrides;
@@ -35,6 +39,8 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
 
         [OutputConstructor]
         private HiveMetastoreConfigResponse(
+            ImmutableDictionary<string, string> auxiliaryVersions,
+
             ImmutableDictionary<string, string> configOverrides,
 
             string endpointProtocol,
@@ -43,6 +49,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
 
             string version)
         {
+            AuxiliaryVersions = auxiliaryVersions;
             ConfigOverrides = configOverrides;
             EndpointProtocol = endpointProtocol;
             KerberosConfig = kerberosConfig;

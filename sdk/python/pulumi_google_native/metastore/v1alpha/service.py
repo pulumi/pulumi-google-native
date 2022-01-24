@@ -17,6 +17,7 @@ __all__ = ['ServiceArgs', 'Service']
 class ServiceArgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[str],
+                 database_type: Optional[pulumi.Input['ServiceDatabaseType']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  hive_metastore_config: Optional[pulumi.Input['HiveMetastoreConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -33,6 +34,7 @@ class ServiceArgs:
                  tier: Optional[pulumi.Input['ServiceTier']] = None):
         """
         The set of arguments for constructing a Service resource.
+        :param pulumi.Input['ServiceDatabaseType'] database_type: Immutable. The database type that the Metastore service stores its data.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
         :param pulumi.Input['HiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
@@ -46,6 +48,8 @@ class ServiceArgs:
         :param pulumi.Input['ServiceTier'] tier: The tier of the service.
         """
         pulumi.set(__self__, "service_id", service_id)
+        if database_type is not None:
+            pulumi.set(__self__, "database_type", database_type)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if hive_metastore_config is not None:
@@ -83,6 +87,18 @@ class ServiceArgs:
     @service_id.setter
     def service_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "service_id", value)
+
+    @property
+    @pulumi.getter(name="databaseType")
+    def database_type(self) -> Optional[pulumi.Input['ServiceDatabaseType']]:
+        """
+        Immutable. The database type that the Metastore service stores its data.
+        """
+        return pulumi.get(self, "database_type")
+
+    @database_type.setter
+    def database_type(self, value: Optional[pulumi.Input['ServiceDatabaseType']]):
+        pulumi.set(self, "database_type", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -249,6 +265,7 @@ class Service(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 database_type: Optional[pulumi.Input['ServiceDatabaseType']] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
                  hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['HiveMetastoreConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -270,6 +287,7 @@ class Service(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input['ServiceDatabaseType'] database_type: Immutable. The database type that the Metastore service stores its data.
         :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
         :param pulumi.Input[pulumi.InputType['HiveMetastoreConfigArgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
@@ -306,6 +324,7 @@ class Service(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 database_type: Optional[pulumi.Input['ServiceDatabaseType']] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
                  hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['HiveMetastoreConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -333,6 +352,7 @@ class Service(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceArgs.__new__(ServiceArgs)
 
+            __props__.__dict__["database_type"] = database_type
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["hive_metastore_config"] = hive_metastore_config
             __props__.__dict__["labels"] = labels
@@ -382,6 +402,7 @@ class Service(pulumi.CustomResource):
 
         __props__.__dict__["artifact_gcs_uri"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["database_type"] = None
         __props__.__dict__["encryption_config"] = None
         __props__.__dict__["endpoint_uri"] = None
         __props__.__dict__["hive_metastore_config"] = None
@@ -416,6 +437,14 @@ class Service(pulumi.CustomResource):
         The time when the metastore service was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="databaseType")
+    def database_type(self) -> pulumi.Output[str]:
+        """
+        Immutable. The database type that the Metastore service stores its data.
+        """
+        return pulumi.get(self, "database_type")
 
     @property
     @pulumi.getter(name="encryptionConfig")

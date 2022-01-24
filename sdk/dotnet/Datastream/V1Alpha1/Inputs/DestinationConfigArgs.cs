@@ -21,6 +21,9 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
         [Input("destinationConnectionProfileName", required: true)]
         public Input<string> DestinationConnectionProfileName { get; set; } = null!;
 
+        /// <summary>
+        /// GCS destination configuration.
+        /// </summary>
         [Input("gcsDestinationConfig")]
         public Input<Inputs.GcsDestinationConfigArgs>? GcsDestinationConfig { get; set; }
 

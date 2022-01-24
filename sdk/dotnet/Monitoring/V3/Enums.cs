@@ -814,6 +814,47 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// The type of checkers to use to execute the Uptime check.
+    /// </summary>
+    [EnumType]
+    public readonly struct UptimeCheckConfigCheckerType : IEquatable<UptimeCheckConfigCheckerType>
+    {
+        private readonly string _value;
+
+        private UptimeCheckConfigCheckerType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The default checker type. Currently converted to STATIC_IP_CHECKERS on creation, the default conversion behavior may change in the future.
+        /// </summary>
+        public static UptimeCheckConfigCheckerType CheckerTypeUnspecified { get; } = new UptimeCheckConfigCheckerType("CHECKER_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// STATIC_IP_CHECKERS are used for uptime checks that perform egress across the public internet. STATIC_IP_CHECKERS use the static IP addresses returned by ListUptimeCheckIps.
+        /// </summary>
+        public static UptimeCheckConfigCheckerType StaticIpCheckers { get; } = new UptimeCheckConfigCheckerType("STATIC_IP_CHECKERS");
+        /// <summary>
+        /// VPC_CHECKERS are used for uptime checks that perform egress using Service Directory and private network access. When using VPC_CHECKERS, the monitored resource type must be servicedirectory_service.
+        /// </summary>
+        public static UptimeCheckConfigCheckerType VpcCheckers { get; } = new UptimeCheckConfigCheckerType("VPC_CHECKERS");
+
+        public static bool operator ==(UptimeCheckConfigCheckerType left, UptimeCheckConfigCheckerType right) => left.Equals(right);
+        public static bool operator !=(UptimeCheckConfigCheckerType left, UptimeCheckConfigCheckerType right) => !left.Equals(right);
+
+        public static explicit operator string(UptimeCheckConfigCheckerType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is UptimeCheckConfigCheckerType other && Equals(other);
+        public bool Equals(UptimeCheckConfigCheckerType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct UptimeCheckConfigSelectedRegionsItem : IEquatable<UptimeCheckConfigSelectedRegionsItem>
     {

@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetUptimeCheckConfigResult:
-    def __init__(__self__, content_matchers=None, display_name=None, http_check=None, internal_checkers=None, is_internal=None, monitored_resource=None, name=None, period=None, resource_group=None, selected_regions=None, tcp_check=None, timeout=None):
+    def __init__(__self__, checker_type=None, content_matchers=None, display_name=None, http_check=None, internal_checkers=None, is_internal=None, monitored_resource=None, name=None, period=None, resource_group=None, selected_regions=None, tcp_check=None, timeout=None):
+        if checker_type and not isinstance(checker_type, str):
+            raise TypeError("Expected argument 'checker_type' to be a str")
+        pulumi.set(__self__, "checker_type", checker_type)
         if content_matchers and not isinstance(content_matchers, list):
             raise TypeError("Expected argument 'content_matchers' to be a list")
         pulumi.set(__self__, "content_matchers", content_matchers)
@@ -55,6 +58,14 @@ class GetUptimeCheckConfigResult:
         if timeout and not isinstance(timeout, str):
             raise TypeError("Expected argument 'timeout' to be a str")
         pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter(name="checkerType")
+    def checker_type(self) -> str:
+        """
+        The type of checkers to use to execute the Uptime check.
+        """
+        return pulumi.get(self, "checker_type")
 
     @property
     @pulumi.getter(name="contentMatchers")
@@ -159,6 +170,7 @@ class AwaitableGetUptimeCheckConfigResult(GetUptimeCheckConfigResult):
         if False:
             yield self
         return GetUptimeCheckConfigResult(
+            checker_type=self.checker_type,
             content_matchers=self.content_matchers,
             display_name=self.display_name,
             http_check=self.http_check,
@@ -189,6 +201,7 @@ def get_uptime_check_config(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:monitoring/v3:getUptimeCheckConfig', __args__, opts=opts, typ=GetUptimeCheckConfigResult).value
 
     return AwaitableGetUptimeCheckConfigResult(
+        checker_type=__ret__.checker_type,
         content_matchers=__ret__.content_matchers,
         display_name=__ret__.display_name,
         http_check=__ret__.http_check,

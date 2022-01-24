@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Condition defines a generic condition for a Resource
+    /// Condition defines a generic condition for a Resource.
     /// </summary>
     public sealed class GoogleCloudRunV1ConditionArgs : Pulumi.ResourceArgs
     {

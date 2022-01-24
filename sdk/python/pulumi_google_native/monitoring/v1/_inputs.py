@@ -448,7 +448,7 @@ class LogsPanelArgs:
         """
         A widget that displays a stream of log.
         :param pulumi.Input[str] filter: A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_names: The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_names: The names of logging resources to collect logs for. Currently only projects are supported. If empty, the widget will default to the host project.
         """
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
@@ -471,7 +471,7 @@ class LogsPanelArgs:
     @pulumi.getter(name="resourceNames")
     def resource_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+        The names of logging resources to collect logs for. Currently only projects are supported. If empty, the widget will default to the host project.
         """
         return pulumi.get(self, "resource_names")
 

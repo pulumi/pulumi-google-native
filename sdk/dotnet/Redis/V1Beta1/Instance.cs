@@ -166,6 +166,12 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         public Output<string> ReservedIpRange { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1 secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap with the reserved_ip_range. Not supported during instance creation.
+        /// </summary>
+        [Output("secondaryIpRange")]
+        public Output<string> SecondaryIpRange { get; private set; } = null!;
+
+        /// <summary>
         /// List of server CA certificates for the instance.
         /// </summary>
         [Output("serverCaCerts")]
@@ -353,6 +359,12 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// </summary>
         [Input("reservedIpRange")]
         public Input<string>? ReservedIpRange { get; set; }
+
+        /// <summary>
+        /// Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1 secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap with the reserved_ip_range. Not supported during instance creation.
+        /// </summary>
+        [Input("secondaryIpRange")]
+        public Input<string>? SecondaryIpRange { get; set; }
 
         /// <summary>
         /// The service tier of the instance.

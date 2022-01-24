@@ -106,6 +106,7 @@ type connectionProfileArgs struct {
 	RequestId           *string              `pulumi:"requestId"`
 	// Static Service IP connectivity.
 	StaticServiceIpConnectivity *StaticServiceIpConnectivity `pulumi:"staticServiceIpConnectivity"`
+	ValidateOnly                *string                      `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a ConnectionProfile resource.
@@ -131,6 +132,7 @@ type ConnectionProfileArgs struct {
 	RequestId           pulumi.StringPtrInput
 	// Static Service IP connectivity.
 	StaticServiceIpConnectivity StaticServiceIpConnectivityPtrInput
+	ValidateOnly                pulumi.StringPtrInput
 }
 
 func (ConnectionProfileArgs) ElementType() reflect.Type {

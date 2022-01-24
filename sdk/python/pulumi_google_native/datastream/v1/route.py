@@ -154,7 +154,7 @@ class Route(pulumi.CustomResource):
                  route_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Use this method to create a route for a private connectivity in a project and location.
+        Use this method to create a route for a private connectivity configuration in a project and location.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -171,7 +171,7 @@ class Route(pulumi.CustomResource):
                  args: RouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Use this method to create a route for a private connectivity in a project and location.
+        Use this method to create a route for a private connectivity configuration in a project and location.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
     /// <summary>
-    /// TLS configuration information for VirtualHosts and TargetServers.
+    /// TLS configuration information for virtual hosts and TargetServers.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1TlsInfoResponse
@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly string KeyAlias;
         /// <summary>
-        /// Required if `client_auth_enabled` is true. The resource ID of the keystore. References not yet supported.
+        /// Required if `client_auth_enabled` is true. The resource ID of the keystore.
         /// </summary>
         public readonly string KeyStore;
         /// <summary>
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Protocols;
         /// <summary>
-        /// The resource ID of the truststore. References not yet supported.
+        /// The resource ID of the truststore.
         /// </summary>
         public readonly string TrustStore;
 

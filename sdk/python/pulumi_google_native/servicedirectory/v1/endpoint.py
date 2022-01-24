@@ -20,6 +20,7 @@ class EndpointArgs:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -27,6 +28,7 @@ class EndpointArgs:
         :param pulumi.Input[str] address: Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations for the endpoint. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 512 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/) Annotations that fails to meet these requirements are rejected. Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory.
         :param pulumi.Input[str] name: Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
+        :param pulumi.Input[str] network: Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
         :param pulumi.Input[int] port: Optional. Service Directory rejects values outside of `[0, 65535]`.
         """
         pulumi.set(__self__, "endpoint_id", endpoint_id)
@@ -40,6 +42,8 @@ class EndpointArgs:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if project is not None:
@@ -119,6 +123,18 @@ class EndpointArgs:
 
     @property
     @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
         Optional. Service Directory rejects values outside of `[0, 65535]`.
@@ -150,6 +166,7 @@ class Endpoint(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
@@ -162,6 +179,7 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[str] address: Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations for the endpoint. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 512 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/) Annotations that fails to meet these requirements are rejected. Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory.
         :param pulumi.Input[str] name: Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
+        :param pulumi.Input[str] network: Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
         :param pulumi.Input[int] port: Optional. Service Directory rejects values outside of `[0, 65535]`.
         """
         ...
@@ -194,6 +212,7 @@ class Endpoint(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
@@ -219,6 +238,7 @@ class Endpoint(pulumi.CustomResource):
             if namespace_id is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_id'")
             __props__.__dict__["namespace_id"] = namespace_id
+            __props__.__dict__["network"] = network
             __props__.__dict__["port"] = port
             __props__.__dict__["project"] = project
             if service_id is None and not opts.urn:
@@ -249,6 +269,7 @@ class Endpoint(pulumi.CustomResource):
         __props__.__dict__["address"] = None
         __props__.__dict__["annotations"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["network"] = None
         __props__.__dict__["port"] = None
         return Endpoint(resource_name, opts=opts, __props__=__props__)
 
@@ -275,6 +296,14 @@ class Endpoint(pulumi.CustomResource):
         Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Output[str]:
+        """
+        Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
+        """
+        return pulumi.get(self, "network")
 
     @property
     @pulumi.getter

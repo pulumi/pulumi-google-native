@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     public sealed class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
         /// </summary>
         [Input("enableContinuousRun")]
         public Input<bool>? EnableContinuousRun { get; set; }

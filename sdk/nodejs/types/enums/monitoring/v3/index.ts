@@ -494,6 +494,26 @@ export const ServiceLevelObjectiveCalendarPeriod = {
  */
 export type ServiceLevelObjectiveCalendarPeriod = (typeof ServiceLevelObjectiveCalendarPeriod)[keyof typeof ServiceLevelObjectiveCalendarPeriod];
 
+export const UptimeCheckConfigCheckerType = {
+    /**
+     * The default checker type. Currently converted to STATIC_IP_CHECKERS on creation, the default conversion behavior may change in the future.
+     */
+    CheckerTypeUnspecified: "CHECKER_TYPE_UNSPECIFIED",
+    /**
+     * STATIC_IP_CHECKERS are used for uptime checks that perform egress across the public internet. STATIC_IP_CHECKERS use the static IP addresses returned by ListUptimeCheckIps.
+     */
+    StaticIpCheckers: "STATIC_IP_CHECKERS",
+    /**
+     * VPC_CHECKERS are used for uptime checks that perform egress using Service Directory and private network access. When using VPC_CHECKERS, the monitored resource type must be servicedirectory_service.
+     */
+    VpcCheckers: "VPC_CHECKERS",
+} as const;
+
+/**
+ * The type of checkers to use to execute the Uptime check.
+ */
+export type UptimeCheckConfigCheckerType = (typeof UptimeCheckConfigCheckerType)[keyof typeof UptimeCheckConfigCheckerType];
+
 export const UptimeCheckConfigSelectedRegionsItem = {
     /**
      * Default value if no region is specified. Will result in Uptime checks running from all regions.

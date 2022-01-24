@@ -15,16 +15,27 @@ __all__ = ['RulesetArgs', 'Ruleset']
 @pulumi.input_type
 class RulesetArgs:
     def __init__(__self__, *,
-                 project: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input['SourceArgs']] = None):
+                 source: pulumi.Input['SourceArgs'],
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Ruleset resource.
         :param pulumi.Input['SourceArgs'] source: `Source` for the `Ruleset`.
         """
+        pulumi.set(__self__, "source", source)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter
+    def source(self) -> pulumi.Input['SourceArgs']:
+        """
+        `Source` for the `Ruleset`.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input['SourceArgs']):
+        pulumi.set(self, "source", value)
 
     @property
     @pulumi.getter
@@ -34,18 +45,6 @@ class RulesetArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['SourceArgs']]:
-        """
-        `Source` for the `Ruleset`.
-        """
-        return pulumi.get(self, "source")
-
-    @source.setter
-    def source(self, value: Optional[pulumi.Input['SourceArgs']]):
-        pulumi.set(self, "source", value)
 
 
 class Ruleset(pulumi.CustomResource):
@@ -68,7 +67,7 @@ class Ruleset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[RulesetArgs] = None,
+                 args: RulesetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset.
@@ -104,6 +103,8 @@ class Ruleset(pulumi.CustomResource):
             __props__ = RulesetArgs.__new__(RulesetArgs)
 
             __props__.__dict__["project"] = project
+            if source is None and not opts.urn:
+                raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source
             __props__.__dict__["create_time"] = None
             __props__.__dict__["metadata"] = None

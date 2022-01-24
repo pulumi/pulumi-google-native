@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
 {
 
+    /// <summary>
+    /// A routing block which contains the routing information for one WRR item.
+    /// </summary>
     public sealed class RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs : Pulumi.ResourceArgs
     {
         [Input("kind")]
@@ -27,7 +30,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         private InputList<string>? _signatureRrdatas;
 
         /// <summary>
-        /// DNSSEC generated signatures for the above wrr_rrdata.
+        /// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
         /// </summary>
         public InputList<string> SignatureRrdatas
         {

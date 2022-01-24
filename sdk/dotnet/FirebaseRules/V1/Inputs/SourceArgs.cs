@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1.Inputs
     /// </summary>
     public sealed class SourceArgs : Pulumi.ResourceArgs
     {
-        [Input("files")]
+        [Input("files", required: true)]
         private InputList<Inputs.FileArgs>? _files;
 
         /// <summary>

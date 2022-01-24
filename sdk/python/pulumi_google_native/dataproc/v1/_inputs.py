@@ -21,6 +21,8 @@ __all__ = [
     'DiskConfigArgs',
     'EncryptionConfigArgs',
     'EndpointConfigArgs',
+    'EnvironmentConfigArgs',
+    'ExecutionConfigArgs',
     'ExprArgs',
     'GceClusterConfigArgs',
     'GkeClusterConfigArgs',
@@ -42,17 +44,24 @@ __all__ = [
     'NodeInitializationActionArgs',
     'OrderedJobArgs',
     'ParameterValidationArgs',
+    'PeripheralsConfigArgs',
     'PigJobArgs',
     'PrestoJobArgs',
+    'PySparkBatchArgs',
     'PySparkJobArgs',
     'QueryListArgs',
     'RegexValidationArgs',
     'ReservationAffinityArgs',
+    'RuntimeConfigArgs',
     'SecurityConfigArgs',
     'ShieldedInstanceConfigArgs',
     'SoftwareConfigArgs',
+    'SparkBatchArgs',
+    'SparkHistoryServerConfigArgs',
     'SparkJobArgs',
+    'SparkRBatchArgs',
     'SparkRJobArgs',
+    'SparkSqlBatchArgs',
     'SparkSqlJobArgs',
     'SparkStandaloneAutoscalingConfigArgs',
     'TemplateParameterArgs',
@@ -750,6 +759,134 @@ class EndpointConfigArgs:
     @enable_http_port_access.setter
     def enable_http_port_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_http_port_access", value)
+
+
+@pulumi.input_type
+class EnvironmentConfigArgs:
+    def __init__(__self__, *,
+                 execution_config: Optional[pulumi.Input['ExecutionConfigArgs']] = None,
+                 peripherals_config: Optional[pulumi.Input['PeripheralsConfigArgs']] = None):
+        """
+        Environment configuration for a workload.
+        :param pulumi.Input['ExecutionConfigArgs'] execution_config: Optional. Execution configuration for a workload.
+        :param pulumi.Input['PeripheralsConfigArgs'] peripherals_config: Optional. Peripherals configuration that workload has access to.
+        """
+        if execution_config is not None:
+            pulumi.set(__self__, "execution_config", execution_config)
+        if peripherals_config is not None:
+            pulumi.set(__self__, "peripherals_config", peripherals_config)
+
+    @property
+    @pulumi.getter(name="executionConfig")
+    def execution_config(self) -> Optional[pulumi.Input['ExecutionConfigArgs']]:
+        """
+        Optional. Execution configuration for a workload.
+        """
+        return pulumi.get(self, "execution_config")
+
+    @execution_config.setter
+    def execution_config(self, value: Optional[pulumi.Input['ExecutionConfigArgs']]):
+        pulumi.set(self, "execution_config", value)
+
+    @property
+    @pulumi.getter(name="peripheralsConfig")
+    def peripherals_config(self) -> Optional[pulumi.Input['PeripheralsConfigArgs']]:
+        """
+        Optional. Peripherals configuration that workload has access to.
+        """
+        return pulumi.get(self, "peripherals_config")
+
+    @peripherals_config.setter
+    def peripherals_config(self, value: Optional[pulumi.Input['PeripheralsConfigArgs']]):
+        pulumi.set(self, "peripherals_config", value)
+
+
+@pulumi.input_type
+class ExecutionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key: Optional[pulumi.Input[str]] = None,
+                 network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 network_uri: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 subnetwork_uri: Optional[pulumi.Input[str]] = None):
+        """
+        Execution configuration for a workload.
+        :param pulumi.Input[str] kms_key: Optional. The Cloud KMS key to use for encryption.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_tags: Optional. Tags used for network traffic control.
+        :param pulumi.Input[str] network_uri: Optional. Network URI to connect workload to.
+        :param pulumi.Input[str] service_account: Optional. Service account that used to execute workload.
+        :param pulumi.Input[str] subnetwork_uri: Optional. Subnetwork URI to connect workload to.
+        """
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
+        if network_uri is not None:
+            pulumi.set(__self__, "network_uri", network_uri)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if subnetwork_uri is not None:
+            pulumi.set(__self__, "subnetwork_uri", subnetwork_uri)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Cloud KMS key to use for encryption.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Tags used for network traffic control.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @network_tags.setter
+    def network_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "network_tags", value)
+
+    @property
+    @pulumi.getter(name="networkUri")
+    def network_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Network URI to connect workload to.
+        """
+        return pulumi.get(self, "network_uri")
+
+    @network_uri.setter
+    def network_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_uri", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Service account that used to execute workload.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="subnetworkUri")
+    def subnetwork_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Subnetwork URI to connect workload to.
+        """
+        return pulumi.get(self, "subnetwork_uri")
+
+    @subnetwork_uri.setter
+    def subnetwork_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork_uri", value)
 
 
 @pulumi.input_type
@@ -2368,6 +2505,46 @@ class ParameterValidationArgs:
 
 
 @pulumi.input_type
+class PeripheralsConfigArgs:
+    def __init__(__self__, *,
+                 metastore_service: Optional[pulumi.Input[str]] = None,
+                 spark_history_server_config: Optional[pulumi.Input['SparkHistoryServerConfigArgs']] = None):
+        """
+        Auxiliary services configuration for a workload.
+        :param pulumi.Input[str] metastore_service: Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
+        :param pulumi.Input['SparkHistoryServerConfigArgs'] spark_history_server_config: Optional. The Spark History Server configuration for the workload.
+        """
+        if metastore_service is not None:
+            pulumi.set(__self__, "metastore_service", metastore_service)
+        if spark_history_server_config is not None:
+            pulumi.set(__self__, "spark_history_server_config", spark_history_server_config)
+
+    @property
+    @pulumi.getter(name="metastoreService")
+    def metastore_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
+        """
+        return pulumi.get(self, "metastore_service")
+
+    @metastore_service.setter
+    def metastore_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metastore_service", value)
+
+    @property
+    @pulumi.getter(name="sparkHistoryServerConfig")
+    def spark_history_server_config(self) -> Optional[pulumi.Input['SparkHistoryServerConfigArgs']]:
+        """
+        Optional. The Spark History Server configuration for the workload.
+        """
+        return pulumi.get(self, "spark_history_server_config")
+
+    @spark_history_server_config.setter
+    def spark_history_server_config(self, value: Optional[pulumi.Input['SparkHistoryServerConfigArgs']]):
+        pulumi.set(self, "spark_history_server_config", value)
+
+
+@pulumi.input_type
 class PigJobArgs:
     def __init__(__self__, *,
                  continue_on_failure: Optional[pulumi.Input[bool]] = None,
@@ -2608,6 +2785,109 @@ class PrestoJobArgs:
 
 
 @pulumi.input_type
+class PySparkBatchArgs:
+    def __init__(__self__, *,
+                 main_python_file_uri: pulumi.Input[str],
+                 archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 python_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        A configuration for running an Apache PySpark (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload.
+        :param pulumi.Input[str] main_python_file_uri: The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] python_file_uris: Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+        """
+        pulumi.set(__self__, "main_python_file_uri", main_python_file_uri)
+        if archive_uris is not None:
+            pulumi.set(__self__, "archive_uris", archive_uris)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if file_uris is not None:
+            pulumi.set(__self__, "file_uris", file_uris)
+        if jar_file_uris is not None:
+            pulumi.set(__self__, "jar_file_uris", jar_file_uris)
+        if python_file_uris is not None:
+            pulumi.set(__self__, "python_file_uris", python_file_uris)
+
+    @property
+    @pulumi.getter(name="mainPythonFileUri")
+    def main_python_file_uri(self) -> pulumi.Input[str]:
+        """
+        The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+        """
+        return pulumi.get(self, "main_python_file_uri")
+
+    @main_python_file_uri.setter
+    def main_python_file_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "main_python_file_uri", value)
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @archive_uris.setter
+    def archive_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "archive_uris", value)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. HCFS URIs of files to be placed in the working directory of each executor.
+        """
+        return pulumi.get(self, "file_uris")
+
+    @file_uris.setter
+    def file_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "file_uris", value)
+
+    @property
+    @pulumi.getter(name="jarFileUris")
+    def jar_file_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+        """
+        return pulumi.get(self, "jar_file_uris")
+
+    @jar_file_uris.setter
+    def jar_file_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "jar_file_uris", value)
+
+    @property
+    @pulumi.getter(name="pythonFileUris")
+    def python_file_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+        """
+        return pulumi.get(self, "python_file_uris")
+
+    @python_file_uris.setter
+    def python_file_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "python_file_uris", value)
+
+
+@pulumi.input_type
 class PySparkJobArgs:
     def __init__(__self__, *,
                  main_python_file_uri: pulumi.Input[str],
@@ -2845,6 +3125,62 @@ class ReservationAffinityArgs:
 
 
 @pulumi.input_type
+class RuntimeConfigArgs:
+    def __init__(__self__, *,
+                 container_image: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        Runtime configuration for a workload.
+        :param pulumi.Input[str] container_image: Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, which are used to configure workload execution.
+        :param pulumi.Input[str] version: Optional. Version of the batch runtime.
+        """
+        if container_image is not None:
+            pulumi.set(__self__, "container_image", container_image)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="containerImage")
+    def container_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+        """
+        return pulumi.get(self, "container_image")
+
+    @container_image.setter
+    def container_image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_image", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. A mapping of property names to values, which are used to configure workload execution.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Version of the batch runtime.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
 class SecurityConfigArgs:
     def __init__(__self__, *,
                  identity_config: Optional[pulumi.Input['IdentityConfigArgs']] = None,
@@ -2997,6 +3333,134 @@ class SoftwareConfigArgs:
 
 
 @pulumi.input_type
+class SparkBatchArgs:
+    def __init__(__self__, *,
+                 archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 main_class: Optional[pulumi.Input[str]] = None,
+                 main_jar_file_uri: Optional[pulumi.Input[str]] = None):
+        """
+        A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+        :param pulumi.Input[str] main_class: Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
+        :param pulumi.Input[str] main_jar_file_uri: Optional. The HCFS URI of the jar file that contains the main class.
+        """
+        if archive_uris is not None:
+            pulumi.set(__self__, "archive_uris", archive_uris)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if file_uris is not None:
+            pulumi.set(__self__, "file_uris", file_uris)
+        if jar_file_uris is not None:
+            pulumi.set(__self__, "jar_file_uris", jar_file_uris)
+        if main_class is not None:
+            pulumi.set(__self__, "main_class", main_class)
+        if main_jar_file_uri is not None:
+            pulumi.set(__self__, "main_jar_file_uri", main_jar_file_uri)
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @archive_uris.setter
+    def archive_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "archive_uris", value)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. HCFS URIs of files to be placed in the working directory of each executor.
+        """
+        return pulumi.get(self, "file_uris")
+
+    @file_uris.setter
+    def file_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "file_uris", value)
+
+    @property
+    @pulumi.getter(name="jarFileUris")
+    def jar_file_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+        """
+        return pulumi.get(self, "jar_file_uris")
+
+    @jar_file_uris.setter
+    def jar_file_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "jar_file_uris", value)
+
+    @property
+    @pulumi.getter(name="mainClass")
+    def main_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
+        """
+        return pulumi.get(self, "main_class")
+
+    @main_class.setter
+    def main_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "main_class", value)
+
+    @property
+    @pulumi.getter(name="mainJarFileUri")
+    def main_jar_file_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The HCFS URI of the jar file that contains the main class.
+        """
+        return pulumi.get(self, "main_jar_file_uri")
+
+    @main_jar_file_uri.setter
+    def main_jar_file_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "main_jar_file_uri", value)
+
+
+@pulumi.input_type
+class SparkHistoryServerConfigArgs:
+    def __init__(__self__, *,
+                 dataproc_cluster: Optional[pulumi.Input[str]] = None):
+        """
+        Spark History Server configuration for the workload.
+        :param pulumi.Input[str] dataproc_cluster: Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.Example: projects/[project_id]/regions/[region]/clusters/[cluster_name]
+        """
+        if dataproc_cluster is not None:
+            pulumi.set(__self__, "dataproc_cluster", dataproc_cluster)
+
+    @property
+    @pulumi.getter(name="dataprocCluster")
+    def dataproc_cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.Example: projects/[project_id]/regions/[region]/clusters/[cluster_name]
+        """
+        return pulumi.get(self, "dataproc_cluster")
+
+    @dataproc_cluster.setter
+    def dataproc_cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataproc_cluster", value)
+
+
+@pulumi.input_type
 class SparkJobArgs:
     def __init__(__self__, *,
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3133,6 +3597,77 @@ class SparkJobArgs:
 
 
 @pulumi.input_type
+class SparkRBatchArgs:
+    def __init__(__self__, *,
+                 main_r_file_uri: pulumi.Input[str],
+                 archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        A configuration for running an Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) batch workload.
+        :param pulumi.Input[str] main_r_file_uri: The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional. The arguments to pass to the Spark driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor.
+        """
+        pulumi.set(__self__, "main_r_file_uri", main_r_file_uri)
+        if archive_uris is not None:
+            pulumi.set(__self__, "archive_uris", archive_uris)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if file_uris is not None:
+            pulumi.set(__self__, "file_uris", file_uris)
+
+    @property
+    @pulumi.getter(name="mainRFileUri")
+    def main_r_file_uri(self) -> pulumi.Input[str]:
+        """
+        The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
+        """
+        return pulumi.get(self, "main_r_file_uri")
+
+    @main_r_file_uri.setter
+    def main_r_file_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "main_r_file_uri", value)
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @archive_uris.setter
+    def archive_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "archive_uris", value)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The arguments to pass to the Spark driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. HCFS URIs of files to be placed in the working directory of each executor.
+        """
+        return pulumi.get(self, "file_uris")
+
+    @file_uris.setter
+    def file_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "file_uris", value)
+
+
+@pulumi.input_type
 class SparkRJobArgs:
     def __init__(__self__, *,
                  main_r_file_uri: pulumi.Input[str],
@@ -3233,6 +3768,61 @@ class SparkRJobArgs:
     @properties.setter
     def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
+
+
+@pulumi.input_type
+class SparkSqlBatchArgs:
+    def __init__(__self__, *,
+                 query_file_uri: pulumi.Input[str],
+                 jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 query_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+        :param pulumi.Input[str] query_file_uri: The HCFS URI of the script that contains Spark SQL queries to execute.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] query_variables: Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+        """
+        pulumi.set(__self__, "query_file_uri", query_file_uri)
+        if jar_file_uris is not None:
+            pulumi.set(__self__, "jar_file_uris", jar_file_uris)
+        if query_variables is not None:
+            pulumi.set(__self__, "query_variables", query_variables)
+
+    @property
+    @pulumi.getter(name="queryFileUri")
+    def query_file_uri(self) -> pulumi.Input[str]:
+        """
+        The HCFS URI of the script that contains Spark SQL queries to execute.
+        """
+        return pulumi.get(self, "query_file_uri")
+
+    @query_file_uri.setter
+    def query_file_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query_file_uri", value)
+
+    @property
+    @pulumi.getter(name="jarFileUris")
+    def jar_file_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        """
+        return pulumi.get(self, "jar_file_uris")
+
+    @jar_file_uris.setter
+    def jar_file_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "jar_file_uris", value)
+
+    @property
+    @pulumi.getter(name="queryVariables")
+    def query_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+        """
+        return pulumi.get(self, "query_variables")
+
+    @query_variables.setter
+    def query_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "query_variables", value)
 
 
 @pulumi.input_type

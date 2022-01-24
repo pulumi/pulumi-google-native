@@ -31,6 +31,8 @@ type LookupServiceResult struct {
 	ArtifactGcsUri string `pulumi:"artifactGcsUri"`
 	// The time when the metastore service was created.
 	CreateTime string `pulumi:"createTime"`
+	// Immutable. The database type that the Metastore service stores its data.
+	DatabaseType string `pulumi:"databaseType"`
 	// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
 	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
 	// The URI of the endpoint used to access the metastore service.
@@ -108,6 +110,11 @@ func (o LookupServiceResultOutput) ArtifactGcsUri() pulumi.StringOutput {
 // The time when the metastore service was created.
 func (o LookupServiceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The database type that the Metastore service stores its data.
+func (o LookupServiceResultOutput) DatabaseType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.DatabaseType }).(pulumi.StringOutput)
 }
 
 // Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.

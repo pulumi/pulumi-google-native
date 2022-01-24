@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
         /// </summary>
         public readonly Outputs.GooSettingsResponse Goo;
         /// <summary>
+        /// Allows the patch job to run on Managed instance groups (MIGs).
+        /// </summary>
+        public readonly bool MigInstancesAllowed;
+        /// <summary>
         /// The `ExecStep` to run after the patch update.
         /// </summary>
         public readonly Outputs.ExecStepResponse PostStep;
@@ -55,6 +59,8 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 
             Outputs.GooSettingsResponse goo,
 
+            bool migInstancesAllowed,
+
             Outputs.ExecStepResponse postStep,
 
             Outputs.ExecStepResponse preStep,
@@ -69,6 +75,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
         {
             Apt = apt;
             Goo = goo;
+            MigInstancesAllowed = migInstancesAllowed;
             PostStep = postStep;
             PreStep = preStep;
             RebootConfig = rebootConfig;

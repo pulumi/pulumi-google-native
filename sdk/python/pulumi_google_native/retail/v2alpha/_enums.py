@@ -5,9 +5,45 @@
 from enum import Enum
 
 __all__ = [
+    'ControlSolutionTypesItem',
+    'GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode',
     'ProductAvailability',
     'ProductType',
+    'ServingConfigSolutionTypesItem',
 ]
+
+
+class ControlSolutionTypesItem(str, Enum):
+    SOLUTION_TYPE_UNSPECIFIED = "SOLUTION_TYPE_UNSPECIFIED"
+    """
+    Default value.
+    """
+    SOLUTION_TYPE_RECOMMENDATION = "SOLUTION_TYPE_RECOMMENDATION"
+    """
+    Used for Recommendations AI.
+    """
+    SOLUTION_TYPE_SEARCH = "SOLUTION_TYPE_SEARCH"
+    """
+    Used for Retail Search.
+    """
+
+
+class GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode(str, Enum):
+    """
+    Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+    """
+    MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """
+    Default value.
+    """
+    DISABLED = "DISABLED"
+    """
+    Disable Dynamic Facet.
+    """
+    ENABLED = "ENABLED"
+    """
+    Automatic mode built by Google Retail Search.
+    """
 
 
 class ProductAvailability(str, Enum):
@@ -55,4 +91,19 @@ class ProductType(str, Enum):
     COLLECTION = "COLLECTION"
     """
     The collection type. Collection products are bundled Type.PRIMARY Products or Type.VARIANT Products that are sold together, such as a jewelry set with necklaces, earrings and rings, etc.
+    """
+
+
+class ServingConfigSolutionTypesItem(str, Enum):
+    SOLUTION_TYPE_UNSPECIFIED = "SOLUTION_TYPE_UNSPECIFIED"
+    """
+    Default value.
+    """
+    SOLUTION_TYPE_RECOMMENDATION = "SOLUTION_TYPE_RECOMMENDATION"
+    """
+    Used for Recommendations AI.
+    """
+    SOLUTION_TYPE_SEARCH = "SOLUTION_TYPE_SEARCH"
+    """
+    Used for Retail Search.
     """

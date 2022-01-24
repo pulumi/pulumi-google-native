@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
     public sealed class DestinationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        /// </summary>
+        [Input("cloudFunction")]
+        public Input<string>? CloudFunction { get; set; }
+
+        /// <summary>
         /// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
         /// </summary>
         [Input("cloudRun")]

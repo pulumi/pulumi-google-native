@@ -16,6 +16,7 @@ __all__ = ['UptimeCheckConfigArgs', 'UptimeCheckConfig']
 @pulumi.input_type
 class UptimeCheckConfigArgs:
     def __init__(__self__, *,
+                 checker_type: Optional[pulumi.Input['UptimeCheckConfigCheckerType']] = None,
                  content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['ContentMatcherArgs']]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  http_check: Optional[pulumi.Input['HttpCheckArgs']] = None,
@@ -31,6 +32,7 @@ class UptimeCheckConfigArgs:
                  timeout: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a UptimeCheckConfig resource.
+        :param pulumi.Input['UptimeCheckConfigCheckerType'] checker_type: The type of checkers to use to execute the Uptime check.
         :param pulumi.Input[Sequence[pulumi.Input['ContentMatcherArgs']]] content_matchers: The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
         :param pulumi.Input[str] display_name: A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
         :param pulumi.Input['HttpCheckArgs'] http_check: Contains information needed to make an HTTP or HTTPS check.
@@ -44,6 +46,8 @@ class UptimeCheckConfigArgs:
         :param pulumi.Input['TcpCheckArgs'] tcp_check: Contains information needed to make a TCP check.
         :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
         """
+        if checker_type is not None:
+            pulumi.set(__self__, "checker_type", checker_type)
         if content_matchers is not None:
             pulumi.set(__self__, "content_matchers", content_matchers)
         if display_name is not None:
@@ -70,6 +74,18 @@ class UptimeCheckConfigArgs:
             pulumi.set(__self__, "tcp_check", tcp_check)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter(name="checkerType")
+    def checker_type(self) -> Optional[pulumi.Input['UptimeCheckConfigCheckerType']]:
+        """
+        The type of checkers to use to execute the Uptime check.
+        """
+        return pulumi.get(self, "checker_type")
+
+    @checker_type.setter
+    def checker_type(self, value: Optional[pulumi.Input['UptimeCheckConfigCheckerType']]):
+        pulumi.set(self, "checker_type", value)
 
     @property
     @pulumi.getter(name="contentMatchers")
@@ -230,6 +246,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 checker_type: Optional[pulumi.Input['UptimeCheckConfigCheckerType']] = None,
                  content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContentMatcherArgs']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  http_check: Optional[pulumi.Input[pulumi.InputType['HttpCheckArgs']]] = None,
@@ -249,6 +266,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input['UptimeCheckConfigCheckerType'] checker_type: The type of checkers to use to execute the Uptime check.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContentMatcherArgs']]]] content_matchers: The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
         :param pulumi.Input[str] display_name: A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
         :param pulumi.Input[pulumi.InputType['HttpCheckArgs']] http_check: Contains information needed to make an HTTP or HTTPS check.
@@ -286,6 +304,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 checker_type: Optional[pulumi.Input['UptimeCheckConfigCheckerType']] = None,
                  content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContentMatcherArgs']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  http_check: Optional[pulumi.Input[pulumi.InputType['HttpCheckArgs']]] = None,
@@ -311,6 +330,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = UptimeCheckConfigArgs.__new__(UptimeCheckConfigArgs)
 
+            __props__.__dict__["checker_type"] = checker_type
             __props__.__dict__["content_matchers"] = content_matchers
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["http_check"] = http_check
@@ -346,6 +366,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
         __props__ = UptimeCheckConfigArgs.__new__(UptimeCheckConfigArgs)
 
+        __props__.__dict__["checker_type"] = None
         __props__.__dict__["content_matchers"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["http_check"] = None
@@ -359,6 +380,14 @@ class UptimeCheckConfig(pulumi.CustomResource):
         __props__.__dict__["tcp_check"] = None
         __props__.__dict__["timeout"] = None
         return UptimeCheckConfig(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="checkerType")
+    def checker_type(self) -> pulumi.Output[str]:
+        """
+        The type of checkers to use to execute the Uptime check.
+        """
+        return pulumi.get(self, "checker_type")
 
     @property
     @pulumi.getter(name="contentMatchers")

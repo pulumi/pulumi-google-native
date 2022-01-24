@@ -56,6 +56,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly host!: pulumi.Output<string>;
     /**
+     * Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
+     */
+    public readonly ipRange!: pulumi.Output<string>;
+    /**
      * Time the instance was last modified in milliseconds since epoch.
      */
     public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
@@ -101,6 +105,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKeyName"] = args ? args.diskEncryptionKeyName : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["ipRange"] = args ? args.ipRange : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
@@ -117,6 +122,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["diskEncryptionKeyName"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["ipRange"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -148,6 +154,10 @@ export interface InstanceArgs {
      * Optional. Display name for the instance.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
+     */
+    ipRange?: pulumi.Input<string>;
     /**
      * Compute Engine location where the instance resides.
      */

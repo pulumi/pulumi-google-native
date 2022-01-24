@@ -143,6 +143,8 @@ if typing.TYPE_CHECKING:
     iam = __iam
     import pulumi_google_native.iap as __iap
     iap = __iap
+    import pulumi_google_native.ids as __ids
+    ids = __ids
     import pulumi_google_native.jobs as __jobs
     jobs = __jobs
     import pulumi_google_native.logging as __logging
@@ -305,6 +307,7 @@ else:
     healthcare = _utilities.lazy_import('pulumi_google_native.healthcare')
     iam = _utilities.lazy_import('pulumi_google_native.iam')
     iap = _utilities.lazy_import('pulumi_google_native.iap')
+    ids = _utilities.lazy_import('pulumi_google_native.ids')
     jobs = _utilities.lazy_import('pulumi_google_native.jobs')
     logging = _utilities.lazy_import('pulumi_google_native.logging')
     managedidentities = _utilities.lazy_import('pulumi_google_native.managedidentities')
@@ -480,6 +483,16 @@ _utilities.register(
    "google-native:appengine/v1beta:DomainMapping": "DomainMapping",
    "google-native:appengine/v1beta:IngressRule": "IngressRule",
    "google-native:appengine/v1beta:Version": "Version"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "artifactregistry/v1",
+  "fqn": "pulumi_google_native.artifactregistry.v1",
+  "classes": {
+   "google-native:artifactregistry/v1:Repository": "Repository",
+   "google-native:artifactregistry/v1:RepositoryIamPolicy": "RepositoryIamPolicy",
+   "google-native:artifactregistry/v1:Tag": "Tag"
   }
  },
  {
@@ -1354,6 +1367,7 @@ _utilities.register(
   "classes": {
    "google-native:dataproc/v1:AutoscalingPolicy": "AutoscalingPolicy",
    "google-native:dataproc/v1:AutoscalingPolicyIamPolicy": "AutoscalingPolicyIamPolicy",
+   "google-native:dataproc/v1:Batch": "Batch",
    "google-native:dataproc/v1:Cluster": "Cluster",
    "google-native:dataproc/v1:Job": "Job",
    "google-native:dataproc/v1:RegionAutoscalingPolicyIamPolicy": "RegionAutoscalingPolicyIamPolicy",
@@ -1890,6 +1904,15 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "ids/v1",
+  "fqn": "pulumi_google_native.ids.v1",
+  "classes": {
+   "google-native:ids/v1:Endpoint": "Endpoint",
+   "google-native:ids/v1:EndpointIamPolicy": "EndpointIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "jobs/v3",
   "fqn": "pulumi_google_native.jobs.v3",
   "classes": {
@@ -2118,6 +2141,7 @@ _utilities.register(
   "classes": {
    "google-native:networkservices/v1beta1:EndpointPolicy": "EndpointPolicy",
    "google-native:networkservices/v1beta1:EndpointPolicyIamPolicy": "EndpointPolicyIamPolicy",
+   "google-native:networkservices/v1beta1:ServiceBinding": "ServiceBinding",
    "google-native:networkservices/v1beta1:ServiceBindingIamPolicy": "ServiceBindingIamPolicy"
   }
  },
@@ -2340,7 +2364,9 @@ _utilities.register(
   "mod": "retail/v2alpha",
   "fqn": "pulumi_google_native.retail.v2alpha",
   "classes": {
-   "google-native:retail/v2alpha:Product": "Product"
+   "google-native:retail/v2alpha:Control": "Control",
+   "google-native:retail/v2alpha:Product": "Product",
+   "google-native:retail/v2alpha:ServingConfig": "ServingConfig"
   }
  },
  {

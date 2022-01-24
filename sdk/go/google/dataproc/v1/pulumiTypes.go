@@ -2577,6 +2577,468 @@ func (o EndpointConfigResponseOutput) HttpPorts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EndpointConfigResponse) map[string]string { return v.HttpPorts }).(pulumi.StringMapOutput)
 }
 
+// Environment configuration for a workload.
+type EnvironmentConfig struct {
+	// Optional. Execution configuration for a workload.
+	ExecutionConfig *ExecutionConfig `pulumi:"executionConfig"`
+	// Optional. Peripherals configuration that workload has access to.
+	PeripheralsConfig *PeripheralsConfig `pulumi:"peripheralsConfig"`
+}
+
+// EnvironmentConfigInput is an input type that accepts EnvironmentConfigArgs and EnvironmentConfigOutput values.
+// You can construct a concrete instance of `EnvironmentConfigInput` via:
+//
+//          EnvironmentConfigArgs{...}
+type EnvironmentConfigInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigOutput() EnvironmentConfigOutput
+	ToEnvironmentConfigOutputWithContext(context.Context) EnvironmentConfigOutput
+}
+
+// Environment configuration for a workload.
+type EnvironmentConfigArgs struct {
+	// Optional. Execution configuration for a workload.
+	ExecutionConfig ExecutionConfigPtrInput `pulumi:"executionConfig"`
+	// Optional. Peripherals configuration that workload has access to.
+	PeripheralsConfig PeripheralsConfigPtrInput `pulumi:"peripheralsConfig"`
+}
+
+func (EnvironmentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfig)(nil)).Elem()
+}
+
+func (i EnvironmentConfigArgs) ToEnvironmentConfigOutput() EnvironmentConfigOutput {
+	return i.ToEnvironmentConfigOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigArgs) ToEnvironmentConfigOutputWithContext(ctx context.Context) EnvironmentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigOutput)
+}
+
+func (i EnvironmentConfigArgs) ToEnvironmentConfigPtrOutput() EnvironmentConfigPtrOutput {
+	return i.ToEnvironmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigArgs) ToEnvironmentConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigOutput).ToEnvironmentConfigPtrOutputWithContext(ctx)
+}
+
+// EnvironmentConfigPtrInput is an input type that accepts EnvironmentConfigArgs, EnvironmentConfigPtr and EnvironmentConfigPtrOutput values.
+// You can construct a concrete instance of `EnvironmentConfigPtrInput` via:
+//
+//          EnvironmentConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type EnvironmentConfigPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigPtrOutput() EnvironmentConfigPtrOutput
+	ToEnvironmentConfigPtrOutputWithContext(context.Context) EnvironmentConfigPtrOutput
+}
+
+type environmentConfigPtrType EnvironmentConfigArgs
+
+func EnvironmentConfigPtr(v *EnvironmentConfigArgs) EnvironmentConfigPtrInput {
+	return (*environmentConfigPtrType)(v)
+}
+
+func (*environmentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfig)(nil)).Elem()
+}
+
+func (i *environmentConfigPtrType) ToEnvironmentConfigPtrOutput() EnvironmentConfigPtrOutput {
+	return i.ToEnvironmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentConfigPtrType) ToEnvironmentConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigPtrOutput)
+}
+
+// Environment configuration for a workload.
+type EnvironmentConfigOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigOutput) ToEnvironmentConfigOutput() EnvironmentConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigOutput) ToEnvironmentConfigOutputWithContext(ctx context.Context) EnvironmentConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutput() EnvironmentConfigPtrOutput {
+	return o.ToEnvironmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfig) *EnvironmentConfig {
+		return &v
+	}).(EnvironmentConfigPtrOutput)
+}
+
+// Optional. Execution configuration for a workload.
+func (o EnvironmentConfigOutput) ExecutionConfig() ExecutionConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *ExecutionConfig { return v.ExecutionConfig }).(ExecutionConfigPtrOutput)
+}
+
+// Optional. Peripherals configuration that workload has access to.
+func (o EnvironmentConfigOutput) PeripheralsConfig() PeripheralsConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *PeripheralsConfig { return v.PeripheralsConfig }).(PeripheralsConfigPtrOutput)
+}
+
+type EnvironmentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigPtrOutput) ToEnvironmentConfigPtrOutput() EnvironmentConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigPtrOutput) ToEnvironmentConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigPtrOutput) Elem() EnvironmentConfigOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) EnvironmentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfig
+		return ret
+	}).(EnvironmentConfigOutput)
+}
+
+// Optional. Execution configuration for a workload.
+func (o EnvironmentConfigPtrOutput) ExecutionConfig() ExecutionConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *ExecutionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ExecutionConfig
+	}).(ExecutionConfigPtrOutput)
+}
+
+// Optional. Peripherals configuration that workload has access to.
+func (o EnvironmentConfigPtrOutput) PeripheralsConfig() PeripheralsConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *PeripheralsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PeripheralsConfig
+	}).(PeripheralsConfigPtrOutput)
+}
+
+// Environment configuration for a workload.
+type EnvironmentConfigResponse struct {
+	// Optional. Execution configuration for a workload.
+	ExecutionConfig ExecutionConfigResponse `pulumi:"executionConfig"`
+	// Optional. Peripherals configuration that workload has access to.
+	PeripheralsConfig PeripheralsConfigResponse `pulumi:"peripheralsConfig"`
+}
+
+// Environment configuration for a workload.
+type EnvironmentConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigResponse)(nil)).Elem()
+}
+
+func (o EnvironmentConfigResponseOutput) ToEnvironmentConfigResponseOutput() EnvironmentConfigResponseOutput {
+	return o
+}
+
+func (o EnvironmentConfigResponseOutput) ToEnvironmentConfigResponseOutputWithContext(ctx context.Context) EnvironmentConfigResponseOutput {
+	return o
+}
+
+// Optional. Execution configuration for a workload.
+func (o EnvironmentConfigResponseOutput) ExecutionConfig() ExecutionConfigResponseOutput {
+	return o.ApplyT(func(v EnvironmentConfigResponse) ExecutionConfigResponse { return v.ExecutionConfig }).(ExecutionConfigResponseOutput)
+}
+
+// Optional. Peripherals configuration that workload has access to.
+func (o EnvironmentConfigResponseOutput) PeripheralsConfig() PeripheralsConfigResponseOutput {
+	return o.ApplyT(func(v EnvironmentConfigResponse) PeripheralsConfigResponse { return v.PeripheralsConfig }).(PeripheralsConfigResponseOutput)
+}
+
+// Execution configuration for a workload.
+type ExecutionConfig struct {
+	// Optional. The Cloud KMS key to use for encryption.
+	KmsKey *string `pulumi:"kmsKey"`
+	// Optional. Tags used for network traffic control.
+	NetworkTags []string `pulumi:"networkTags"`
+	// Optional. Network URI to connect workload to.
+	NetworkUri *string `pulumi:"networkUri"`
+	// Optional. Service account that used to execute workload.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Optional. Subnetwork URI to connect workload to.
+	SubnetworkUri *string `pulumi:"subnetworkUri"`
+}
+
+// ExecutionConfigInput is an input type that accepts ExecutionConfigArgs and ExecutionConfigOutput values.
+// You can construct a concrete instance of `ExecutionConfigInput` via:
+//
+//          ExecutionConfigArgs{...}
+type ExecutionConfigInput interface {
+	pulumi.Input
+
+	ToExecutionConfigOutput() ExecutionConfigOutput
+	ToExecutionConfigOutputWithContext(context.Context) ExecutionConfigOutput
+}
+
+// Execution configuration for a workload.
+type ExecutionConfigArgs struct {
+	// Optional. The Cloud KMS key to use for encryption.
+	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
+	// Optional. Tags used for network traffic control.
+	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
+	// Optional. Network URI to connect workload to.
+	NetworkUri pulumi.StringPtrInput `pulumi:"networkUri"`
+	// Optional. Service account that used to execute workload.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Optional. Subnetwork URI to connect workload to.
+	SubnetworkUri pulumi.StringPtrInput `pulumi:"subnetworkUri"`
+}
+
+func (ExecutionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionConfig)(nil)).Elem()
+}
+
+func (i ExecutionConfigArgs) ToExecutionConfigOutput() ExecutionConfigOutput {
+	return i.ToExecutionConfigOutputWithContext(context.Background())
+}
+
+func (i ExecutionConfigArgs) ToExecutionConfigOutputWithContext(ctx context.Context) ExecutionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecutionConfigOutput)
+}
+
+func (i ExecutionConfigArgs) ToExecutionConfigPtrOutput() ExecutionConfigPtrOutput {
+	return i.ToExecutionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ExecutionConfigArgs) ToExecutionConfigPtrOutputWithContext(ctx context.Context) ExecutionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecutionConfigOutput).ToExecutionConfigPtrOutputWithContext(ctx)
+}
+
+// ExecutionConfigPtrInput is an input type that accepts ExecutionConfigArgs, ExecutionConfigPtr and ExecutionConfigPtrOutput values.
+// You can construct a concrete instance of `ExecutionConfigPtrInput` via:
+//
+//          ExecutionConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ExecutionConfigPtrInput interface {
+	pulumi.Input
+
+	ToExecutionConfigPtrOutput() ExecutionConfigPtrOutput
+	ToExecutionConfigPtrOutputWithContext(context.Context) ExecutionConfigPtrOutput
+}
+
+type executionConfigPtrType ExecutionConfigArgs
+
+func ExecutionConfigPtr(v *ExecutionConfigArgs) ExecutionConfigPtrInput {
+	return (*executionConfigPtrType)(v)
+}
+
+func (*executionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExecutionConfig)(nil)).Elem()
+}
+
+func (i *executionConfigPtrType) ToExecutionConfigPtrOutput() ExecutionConfigPtrOutput {
+	return i.ToExecutionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *executionConfigPtrType) ToExecutionConfigPtrOutputWithContext(ctx context.Context) ExecutionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecutionConfigPtrOutput)
+}
+
+// Execution configuration for a workload.
+type ExecutionConfigOutput struct{ *pulumi.OutputState }
+
+func (ExecutionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionConfig)(nil)).Elem()
+}
+
+func (o ExecutionConfigOutput) ToExecutionConfigOutput() ExecutionConfigOutput {
+	return o
+}
+
+func (o ExecutionConfigOutput) ToExecutionConfigOutputWithContext(ctx context.Context) ExecutionConfigOutput {
+	return o
+}
+
+func (o ExecutionConfigOutput) ToExecutionConfigPtrOutput() ExecutionConfigPtrOutput {
+	return o.ToExecutionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ExecutionConfigOutput) ToExecutionConfigPtrOutputWithContext(ctx context.Context) ExecutionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecutionConfig) *ExecutionConfig {
+		return &v
+	}).(ExecutionConfigPtrOutput)
+}
+
+// Optional. The Cloud KMS key to use for encryption.
+func (o ExecutionConfigOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExecutionConfig) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Tags used for network traffic control.
+func (o ExecutionConfigOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExecutionConfig) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Network URI to connect workload to.
+func (o ExecutionConfigOutput) NetworkUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExecutionConfig) *string { return v.NetworkUri }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Service account that used to execute workload.
+func (o ExecutionConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExecutionConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Subnetwork URI to connect workload to.
+func (o ExecutionConfigOutput) SubnetworkUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExecutionConfig) *string { return v.SubnetworkUri }).(pulumi.StringPtrOutput)
+}
+
+type ExecutionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ExecutionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExecutionConfig)(nil)).Elem()
+}
+
+func (o ExecutionConfigPtrOutput) ToExecutionConfigPtrOutput() ExecutionConfigPtrOutput {
+	return o
+}
+
+func (o ExecutionConfigPtrOutput) ToExecutionConfigPtrOutputWithContext(ctx context.Context) ExecutionConfigPtrOutput {
+	return o
+}
+
+func (o ExecutionConfigPtrOutput) Elem() ExecutionConfigOutput {
+	return o.ApplyT(func(v *ExecutionConfig) ExecutionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ExecutionConfig
+		return ret
+	}).(ExecutionConfigOutput)
+}
+
+// Optional. The Cloud KMS key to use for encryption.
+func (o ExecutionConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Tags used for network traffic control.
+func (o ExecutionConfigPtrOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ExecutionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Network URI to connect workload to.
+func (o ExecutionConfigPtrOutput) NetworkUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Service account that used to execute workload.
+func (o ExecutionConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Subnetwork URI to connect workload to.
+func (o ExecutionConfigPtrOutput) SubnetworkUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetworkUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Execution configuration for a workload.
+type ExecutionConfigResponse struct {
+	// Optional. The Cloud KMS key to use for encryption.
+	KmsKey string `pulumi:"kmsKey"`
+	// Optional. Tags used for network traffic control.
+	NetworkTags []string `pulumi:"networkTags"`
+	// Optional. Network URI to connect workload to.
+	NetworkUri string `pulumi:"networkUri"`
+	// Optional. Service account that used to execute workload.
+	ServiceAccount string `pulumi:"serviceAccount"`
+	// Optional. Subnetwork URI to connect workload to.
+	SubnetworkUri string `pulumi:"subnetworkUri"`
+}
+
+// Execution configuration for a workload.
+type ExecutionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ExecutionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionConfigResponse)(nil)).Elem()
+}
+
+func (o ExecutionConfigResponseOutput) ToExecutionConfigResponseOutput() ExecutionConfigResponseOutput {
+	return o
+}
+
+func (o ExecutionConfigResponseOutput) ToExecutionConfigResponseOutputWithContext(ctx context.Context) ExecutionConfigResponseOutput {
+	return o
+}
+
+// Optional. The Cloud KMS key to use for encryption.
+func (o ExecutionConfigResponseOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionConfigResponse) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
+// Optional. Tags used for network traffic control.
+func (o ExecutionConfigResponseOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExecutionConfigResponse) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Network URI to connect workload to.
+func (o ExecutionConfigResponseOutput) NetworkUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionConfigResponse) string { return v.NetworkUri }).(pulumi.StringOutput)
+}
+
+// Optional. Service account that used to execute workload.
+func (o ExecutionConfigResponseOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionConfigResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Optional. Subnetwork URI to connect workload to.
+func (o ExecutionConfigResponseOutput) SubnetworkUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionConfigResponse) string { return v.SubnetworkUri }).(pulumi.StringOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -7841,6 +8303,198 @@ func (o ParameterValidationResponseOutput) Values() ValueValidationResponseOutpu
 	return o.ApplyT(func(v ParameterValidationResponse) ValueValidationResponse { return v.Values }).(ValueValidationResponseOutput)
 }
 
+// Auxiliary services configuration for a workload.
+type PeripheralsConfig struct {
+	// Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
+	MetastoreService *string `pulumi:"metastoreService"`
+	// Optional. The Spark History Server configuration for the workload.
+	SparkHistoryServerConfig *SparkHistoryServerConfig `pulumi:"sparkHistoryServerConfig"`
+}
+
+// PeripheralsConfigInput is an input type that accepts PeripheralsConfigArgs and PeripheralsConfigOutput values.
+// You can construct a concrete instance of `PeripheralsConfigInput` via:
+//
+//          PeripheralsConfigArgs{...}
+type PeripheralsConfigInput interface {
+	pulumi.Input
+
+	ToPeripheralsConfigOutput() PeripheralsConfigOutput
+	ToPeripheralsConfigOutputWithContext(context.Context) PeripheralsConfigOutput
+}
+
+// Auxiliary services configuration for a workload.
+type PeripheralsConfigArgs struct {
+	// Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
+	MetastoreService pulumi.StringPtrInput `pulumi:"metastoreService"`
+	// Optional. The Spark History Server configuration for the workload.
+	SparkHistoryServerConfig SparkHistoryServerConfigPtrInput `pulumi:"sparkHistoryServerConfig"`
+}
+
+func (PeripheralsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeripheralsConfig)(nil)).Elem()
+}
+
+func (i PeripheralsConfigArgs) ToPeripheralsConfigOutput() PeripheralsConfigOutput {
+	return i.ToPeripheralsConfigOutputWithContext(context.Background())
+}
+
+func (i PeripheralsConfigArgs) ToPeripheralsConfigOutputWithContext(ctx context.Context) PeripheralsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeripheralsConfigOutput)
+}
+
+func (i PeripheralsConfigArgs) ToPeripheralsConfigPtrOutput() PeripheralsConfigPtrOutput {
+	return i.ToPeripheralsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PeripheralsConfigArgs) ToPeripheralsConfigPtrOutputWithContext(ctx context.Context) PeripheralsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeripheralsConfigOutput).ToPeripheralsConfigPtrOutputWithContext(ctx)
+}
+
+// PeripheralsConfigPtrInput is an input type that accepts PeripheralsConfigArgs, PeripheralsConfigPtr and PeripheralsConfigPtrOutput values.
+// You can construct a concrete instance of `PeripheralsConfigPtrInput` via:
+//
+//          PeripheralsConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type PeripheralsConfigPtrInput interface {
+	pulumi.Input
+
+	ToPeripheralsConfigPtrOutput() PeripheralsConfigPtrOutput
+	ToPeripheralsConfigPtrOutputWithContext(context.Context) PeripheralsConfigPtrOutput
+}
+
+type peripheralsConfigPtrType PeripheralsConfigArgs
+
+func PeripheralsConfigPtr(v *PeripheralsConfigArgs) PeripheralsConfigPtrInput {
+	return (*peripheralsConfigPtrType)(v)
+}
+
+func (*peripheralsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PeripheralsConfig)(nil)).Elem()
+}
+
+func (i *peripheralsConfigPtrType) ToPeripheralsConfigPtrOutput() PeripheralsConfigPtrOutput {
+	return i.ToPeripheralsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *peripheralsConfigPtrType) ToPeripheralsConfigPtrOutputWithContext(ctx context.Context) PeripheralsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeripheralsConfigPtrOutput)
+}
+
+// Auxiliary services configuration for a workload.
+type PeripheralsConfigOutput struct{ *pulumi.OutputState }
+
+func (PeripheralsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeripheralsConfig)(nil)).Elem()
+}
+
+func (o PeripheralsConfigOutput) ToPeripheralsConfigOutput() PeripheralsConfigOutput {
+	return o
+}
+
+func (o PeripheralsConfigOutput) ToPeripheralsConfigOutputWithContext(ctx context.Context) PeripheralsConfigOutput {
+	return o
+}
+
+func (o PeripheralsConfigOutput) ToPeripheralsConfigPtrOutput() PeripheralsConfigPtrOutput {
+	return o.ToPeripheralsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PeripheralsConfigOutput) ToPeripheralsConfigPtrOutputWithContext(ctx context.Context) PeripheralsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PeripheralsConfig) *PeripheralsConfig {
+		return &v
+	}).(PeripheralsConfigPtrOutput)
+}
+
+// Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
+func (o PeripheralsConfigOutput) MetastoreService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PeripheralsConfig) *string { return v.MetastoreService }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Spark History Server configuration for the workload.
+func (o PeripheralsConfigOutput) SparkHistoryServerConfig() SparkHistoryServerConfigPtrOutput {
+	return o.ApplyT(func(v PeripheralsConfig) *SparkHistoryServerConfig { return v.SparkHistoryServerConfig }).(SparkHistoryServerConfigPtrOutput)
+}
+
+type PeripheralsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PeripheralsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PeripheralsConfig)(nil)).Elem()
+}
+
+func (o PeripheralsConfigPtrOutput) ToPeripheralsConfigPtrOutput() PeripheralsConfigPtrOutput {
+	return o
+}
+
+func (o PeripheralsConfigPtrOutput) ToPeripheralsConfigPtrOutputWithContext(ctx context.Context) PeripheralsConfigPtrOutput {
+	return o
+}
+
+func (o PeripheralsConfigPtrOutput) Elem() PeripheralsConfigOutput {
+	return o.ApplyT(func(v *PeripheralsConfig) PeripheralsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PeripheralsConfig
+		return ret
+	}).(PeripheralsConfigOutput)
+}
+
+// Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
+func (o PeripheralsConfigPtrOutput) MetastoreService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PeripheralsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreService
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Spark History Server configuration for the workload.
+func (o PeripheralsConfigPtrOutput) SparkHistoryServerConfig() SparkHistoryServerConfigPtrOutput {
+	return o.ApplyT(func(v *PeripheralsConfig) *SparkHistoryServerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SparkHistoryServerConfig
+	}).(SparkHistoryServerConfigPtrOutput)
+}
+
+// Auxiliary services configuration for a workload.
+type PeripheralsConfigResponse struct {
+	// Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
+	MetastoreService string `pulumi:"metastoreService"`
+	// Optional. The Spark History Server configuration for the workload.
+	SparkHistoryServerConfig SparkHistoryServerConfigResponse `pulumi:"sparkHistoryServerConfig"`
+}
+
+// Auxiliary services configuration for a workload.
+type PeripheralsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PeripheralsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeripheralsConfigResponse)(nil)).Elem()
+}
+
+func (o PeripheralsConfigResponseOutput) ToPeripheralsConfigResponseOutput() PeripheralsConfigResponseOutput {
+	return o
+}
+
+func (o PeripheralsConfigResponseOutput) ToPeripheralsConfigResponseOutputWithContext(ctx context.Context) PeripheralsConfigResponseOutput {
+	return o
+}
+
+// Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
+func (o PeripheralsConfigResponseOutput) MetastoreService() pulumi.StringOutput {
+	return o.ApplyT(func(v PeripheralsConfigResponse) string { return v.MetastoreService }).(pulumi.StringOutput)
+}
+
+// Optional. The Spark History Server configuration for the workload.
+func (o PeripheralsConfigResponseOutput) SparkHistoryServerConfig() SparkHistoryServerConfigResponseOutput {
+	return o.ApplyT(func(v PeripheralsConfigResponse) SparkHistoryServerConfigResponse { return v.SparkHistoryServerConfig }).(SparkHistoryServerConfigResponseOutput)
+}
+
 // A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.
 type PigJob struct {
 	// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
@@ -8483,6 +9137,302 @@ func (o PrestoJobResponseOutput) QueryFileUri() pulumi.StringOutput {
 // A list of queries.
 func (o PrestoJobResponseOutput) QueryList() QueryListResponseOutput {
 	return o.ApplyT(func(v PrestoJobResponse) QueryListResponse { return v.QueryList }).(QueryListResponseOutput)
+}
+
+// A configuration for running an Apache PySpark (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload.
+type PySparkBatch struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+	FileUris []string `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+	MainPythonFileUri string `pulumi:"mainPythonFileUri"`
+	// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+	PythonFileUris []string `pulumi:"pythonFileUris"`
+}
+
+// PySparkBatchInput is an input type that accepts PySparkBatchArgs and PySparkBatchOutput values.
+// You can construct a concrete instance of `PySparkBatchInput` via:
+//
+//          PySparkBatchArgs{...}
+type PySparkBatchInput interface {
+	pulumi.Input
+
+	ToPySparkBatchOutput() PySparkBatchOutput
+	ToPySparkBatchOutputWithContext(context.Context) PySparkBatchOutput
+}
+
+// A configuration for running an Apache PySpark (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload.
+type PySparkBatchArgs struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+	MainPythonFileUri pulumi.StringInput `pulumi:"mainPythonFileUri"`
+	// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+	PythonFileUris pulumi.StringArrayInput `pulumi:"pythonFileUris"`
+}
+
+func (PySparkBatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PySparkBatch)(nil)).Elem()
+}
+
+func (i PySparkBatchArgs) ToPySparkBatchOutput() PySparkBatchOutput {
+	return i.ToPySparkBatchOutputWithContext(context.Background())
+}
+
+func (i PySparkBatchArgs) ToPySparkBatchOutputWithContext(ctx context.Context) PySparkBatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PySparkBatchOutput)
+}
+
+func (i PySparkBatchArgs) ToPySparkBatchPtrOutput() PySparkBatchPtrOutput {
+	return i.ToPySparkBatchPtrOutputWithContext(context.Background())
+}
+
+func (i PySparkBatchArgs) ToPySparkBatchPtrOutputWithContext(ctx context.Context) PySparkBatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PySparkBatchOutput).ToPySparkBatchPtrOutputWithContext(ctx)
+}
+
+// PySparkBatchPtrInput is an input type that accepts PySparkBatchArgs, PySparkBatchPtr and PySparkBatchPtrOutput values.
+// You can construct a concrete instance of `PySparkBatchPtrInput` via:
+//
+//          PySparkBatchArgs{...}
+//
+//  or:
+//
+//          nil
+type PySparkBatchPtrInput interface {
+	pulumi.Input
+
+	ToPySparkBatchPtrOutput() PySparkBatchPtrOutput
+	ToPySparkBatchPtrOutputWithContext(context.Context) PySparkBatchPtrOutput
+}
+
+type pySparkBatchPtrType PySparkBatchArgs
+
+func PySparkBatchPtr(v *PySparkBatchArgs) PySparkBatchPtrInput {
+	return (*pySparkBatchPtrType)(v)
+}
+
+func (*pySparkBatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PySparkBatch)(nil)).Elem()
+}
+
+func (i *pySparkBatchPtrType) ToPySparkBatchPtrOutput() PySparkBatchPtrOutput {
+	return i.ToPySparkBatchPtrOutputWithContext(context.Background())
+}
+
+func (i *pySparkBatchPtrType) ToPySparkBatchPtrOutputWithContext(ctx context.Context) PySparkBatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PySparkBatchPtrOutput)
+}
+
+// A configuration for running an Apache PySpark (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload.
+type PySparkBatchOutput struct{ *pulumi.OutputState }
+
+func (PySparkBatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PySparkBatch)(nil)).Elem()
+}
+
+func (o PySparkBatchOutput) ToPySparkBatchOutput() PySparkBatchOutput {
+	return o
+}
+
+func (o PySparkBatchOutput) ToPySparkBatchOutputWithContext(ctx context.Context) PySparkBatchOutput {
+	return o
+}
+
+func (o PySparkBatchOutput) ToPySparkBatchPtrOutput() PySparkBatchPtrOutput {
+	return o.ToPySparkBatchPtrOutputWithContext(context.Background())
+}
+
+func (o PySparkBatchOutput) ToPySparkBatchPtrOutputWithContext(ctx context.Context) PySparkBatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PySparkBatch) *PySparkBatch {
+		return &v
+	}).(PySparkBatchPtrOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o PySparkBatchOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkBatch) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+func (o PySparkBatchOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkBatch) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+func (o PySparkBatchOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkBatch) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+func (o PySparkBatchOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkBatch) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+func (o PySparkBatchOutput) MainPythonFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v PySparkBatch) string { return v.MainPythonFileUri }).(pulumi.StringOutput)
+}
+
+// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+func (o PySparkBatchOutput) PythonFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkBatch) []string { return v.PythonFileUris }).(pulumi.StringArrayOutput)
+}
+
+type PySparkBatchPtrOutput struct{ *pulumi.OutputState }
+
+func (PySparkBatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PySparkBatch)(nil)).Elem()
+}
+
+func (o PySparkBatchPtrOutput) ToPySparkBatchPtrOutput() PySparkBatchPtrOutput {
+	return o
+}
+
+func (o PySparkBatchPtrOutput) ToPySparkBatchPtrOutputWithContext(ctx context.Context) PySparkBatchPtrOutput {
+	return o
+}
+
+func (o PySparkBatchPtrOutput) Elem() PySparkBatchOutput {
+	return o.ApplyT(func(v *PySparkBatch) PySparkBatch {
+		if v != nil {
+			return *v
+		}
+		var ret PySparkBatch
+		return ret
+	}).(PySparkBatchOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o PySparkBatchPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PySparkBatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+func (o PySparkBatchPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PySparkBatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+func (o PySparkBatchPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PySparkBatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+func (o PySparkBatchPtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PySparkBatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+func (o PySparkBatchPtrOutput) MainPythonFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PySparkBatch) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MainPythonFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+func (o PySparkBatchPtrOutput) PythonFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PySparkBatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PythonFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// A configuration for running an Apache PySpark (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload.
+type PySparkBatchResponse struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+	FileUris []string `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+	MainPythonFileUri string `pulumi:"mainPythonFileUri"`
+	// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+	PythonFileUris []string `pulumi:"pythonFileUris"`
+}
+
+// A configuration for running an Apache PySpark (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload.
+type PySparkBatchResponseOutput struct{ *pulumi.OutputState }
+
+func (PySparkBatchResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PySparkBatchResponse)(nil)).Elem()
+}
+
+func (o PySparkBatchResponseOutput) ToPySparkBatchResponseOutput() PySparkBatchResponseOutput {
+	return o
+}
+
+func (o PySparkBatchResponseOutput) ToPySparkBatchResponseOutputWithContext(ctx context.Context) PySparkBatchResponseOutput {
+	return o
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o PySparkBatchResponseOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkBatchResponse) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+func (o PySparkBatchResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkBatchResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+func (o PySparkBatchResponseOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkBatchResponse) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+func (o PySparkBatchResponseOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkBatchResponse) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+func (o PySparkBatchResponseOutput) MainPythonFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v PySparkBatchResponse) string { return v.MainPythonFileUri }).(pulumi.StringOutput)
+}
+
+// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+func (o PySparkBatchResponseOutput) PythonFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkBatchResponse) []string { return v.PythonFileUris }).(pulumi.StringArrayOutput)
 }
 
 // A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.
@@ -9385,6 +10335,264 @@ func (o ReservationAffinityResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ReservationAffinityResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
+// Runtime configuration for a workload.
+type RuntimeConfig struct {
+	// Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+	ContainerImage *string `pulumi:"containerImage"`
+	// Optional. A mapping of property names to values, which are used to configure workload execution.
+	Properties map[string]string `pulumi:"properties"`
+	// Optional. Version of the batch runtime.
+	Version *string `pulumi:"version"`
+}
+
+// RuntimeConfigInput is an input type that accepts RuntimeConfigArgs and RuntimeConfigOutput values.
+// You can construct a concrete instance of `RuntimeConfigInput` via:
+//
+//          RuntimeConfigArgs{...}
+type RuntimeConfigInput interface {
+	pulumi.Input
+
+	ToRuntimeConfigOutput() RuntimeConfigOutput
+	ToRuntimeConfigOutputWithContext(context.Context) RuntimeConfigOutput
+}
+
+// Runtime configuration for a workload.
+type RuntimeConfigArgs struct {
+	// Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+	ContainerImage pulumi.StringPtrInput `pulumi:"containerImage"`
+	// Optional. A mapping of property names to values, which are used to configure workload execution.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Optional. Version of the batch runtime.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (RuntimeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeConfig)(nil)).Elem()
+}
+
+func (i RuntimeConfigArgs) ToRuntimeConfigOutput() RuntimeConfigOutput {
+	return i.ToRuntimeConfigOutputWithContext(context.Background())
+}
+
+func (i RuntimeConfigArgs) ToRuntimeConfigOutputWithContext(ctx context.Context) RuntimeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeConfigOutput)
+}
+
+func (i RuntimeConfigArgs) ToRuntimeConfigPtrOutput() RuntimeConfigPtrOutput {
+	return i.ToRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeConfigArgs) ToRuntimeConfigPtrOutputWithContext(ctx context.Context) RuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeConfigOutput).ToRuntimeConfigPtrOutputWithContext(ctx)
+}
+
+// RuntimeConfigPtrInput is an input type that accepts RuntimeConfigArgs, RuntimeConfigPtr and RuntimeConfigPtrOutput values.
+// You can construct a concrete instance of `RuntimeConfigPtrInput` via:
+//
+//          RuntimeConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeConfigPtrOutput() RuntimeConfigPtrOutput
+	ToRuntimeConfigPtrOutputWithContext(context.Context) RuntimeConfigPtrOutput
+}
+
+type runtimeConfigPtrType RuntimeConfigArgs
+
+func RuntimeConfigPtr(v *RuntimeConfigArgs) RuntimeConfigPtrInput {
+	return (*runtimeConfigPtrType)(v)
+}
+
+func (*runtimeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeConfig)(nil)).Elem()
+}
+
+func (i *runtimeConfigPtrType) ToRuntimeConfigPtrOutput() RuntimeConfigPtrOutput {
+	return i.ToRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeConfigPtrType) ToRuntimeConfigPtrOutputWithContext(ctx context.Context) RuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeConfigPtrOutput)
+}
+
+// Runtime configuration for a workload.
+type RuntimeConfigOutput struct{ *pulumi.OutputState }
+
+func (RuntimeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeConfig)(nil)).Elem()
+}
+
+func (o RuntimeConfigOutput) ToRuntimeConfigOutput() RuntimeConfigOutput {
+	return o
+}
+
+func (o RuntimeConfigOutput) ToRuntimeConfigOutputWithContext(ctx context.Context) RuntimeConfigOutput {
+	return o
+}
+
+func (o RuntimeConfigOutput) ToRuntimeConfigPtrOutput() RuntimeConfigPtrOutput {
+	return o.ToRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeConfigOutput) ToRuntimeConfigPtrOutputWithContext(ctx context.Context) RuntimeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeConfig) *RuntimeConfig {
+		return &v
+	}).(RuntimeConfigPtrOutput)
+}
+
+// Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+func (o RuntimeConfigOutput) ContainerImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeConfig) *string { return v.ContainerImage }).(pulumi.StringPtrOutput)
+}
+
+// Optional. A mapping of property names to values, which are used to configure workload execution.
+func (o RuntimeConfigOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RuntimeConfig) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Optional. Version of the batch runtime.
+func (o RuntimeConfigOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeConfig)(nil)).Elem()
+}
+
+func (o RuntimeConfigPtrOutput) ToRuntimeConfigPtrOutput() RuntimeConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeConfigPtrOutput) ToRuntimeConfigPtrOutputWithContext(ctx context.Context) RuntimeConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeConfigPtrOutput) Elem() RuntimeConfigOutput {
+	return o.ApplyT(func(v *RuntimeConfig) RuntimeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeConfig
+		return ret
+	}).(RuntimeConfigOutput)
+}
+
+// Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+func (o RuntimeConfigPtrOutput) ContainerImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerImage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A mapping of property names to values, which are used to configure workload execution.
+func (o RuntimeConfigPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RuntimeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. Version of the batch runtime.
+func (o RuntimeConfigPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// Runtime configuration for a workload.
+type RuntimeConfigResponse struct {
+	// Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+	ContainerImage string `pulumi:"containerImage"`
+	// Optional. A mapping of property names to values, which are used to configure workload execution.
+	Properties map[string]string `pulumi:"properties"`
+	// Optional. Version of the batch runtime.
+	Version string `pulumi:"version"`
+}
+
+// Runtime configuration for a workload.
+type RuntimeConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RuntimeConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeConfigResponse)(nil)).Elem()
+}
+
+func (o RuntimeConfigResponseOutput) ToRuntimeConfigResponseOutput() RuntimeConfigResponseOutput {
+	return o
+}
+
+func (o RuntimeConfigResponseOutput) ToRuntimeConfigResponseOutputWithContext(ctx context.Context) RuntimeConfigResponseOutput {
+	return o
+}
+
+// Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+func (o RuntimeConfigResponseOutput) ContainerImage() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeConfigResponse) string { return v.ContainerImage }).(pulumi.StringOutput)
+}
+
+// Optional. A mapping of property names to values, which are used to configure workload execution.
+func (o RuntimeConfigResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RuntimeConfigResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Optional. Version of the batch runtime.
+func (o RuntimeConfigResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeConfigResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// Runtime information about workload execution.
+type RuntimeInfoResponse struct {
+	// A URI pointing to the location of the diagnostics tarball.
+	DiagnosticOutputUri string `pulumi:"diagnosticOutputUri"`
+	// Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
+	Endpoints map[string]string `pulumi:"endpoints"`
+	// A URI pointing to the location of the stdout and stderr of the workload.
+	OutputUri string `pulumi:"outputUri"`
+}
+
+// Runtime information about workload execution.
+type RuntimeInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (RuntimeInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeInfoResponse)(nil)).Elem()
+}
+
+func (o RuntimeInfoResponseOutput) ToRuntimeInfoResponseOutput() RuntimeInfoResponseOutput {
+	return o
+}
+
+func (o RuntimeInfoResponseOutput) ToRuntimeInfoResponseOutputWithContext(ctx context.Context) RuntimeInfoResponseOutput {
+	return o
+}
+
+// A URI pointing to the location of the diagnostics tarball.
+func (o RuntimeInfoResponseOutput) DiagnosticOutputUri() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeInfoResponse) string { return v.DiagnosticOutputUri }).(pulumi.StringOutput)
+}
+
+// Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
+func (o RuntimeInfoResponseOutput) Endpoints() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RuntimeInfoResponse) map[string]string { return v.Endpoints }).(pulumi.StringMapOutput)
+}
+
+// A URI pointing to the location of the stdout and stderr of the workload.
+func (o RuntimeInfoResponseOutput) OutputUri() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeInfoResponse) string { return v.OutputUri }).(pulumi.StringOutput)
+}
+
 // Security related configuration, including encryption, Kerberos, etc.
 type SecurityConfig struct {
 	// Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
@@ -10013,6 +11221,468 @@ func (o SoftwareConfigResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+type SparkBatch struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+	FileUris []string `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
+	MainClass *string `pulumi:"mainClass"`
+	// Optional. The HCFS URI of the jar file that contains the main class.
+	MainJarFileUri *string `pulumi:"mainJarFileUri"`
+}
+
+// SparkBatchInput is an input type that accepts SparkBatchArgs and SparkBatchOutput values.
+// You can construct a concrete instance of `SparkBatchInput` via:
+//
+//          SparkBatchArgs{...}
+type SparkBatchInput interface {
+	pulumi.Input
+
+	ToSparkBatchOutput() SparkBatchOutput
+	ToSparkBatchOutputWithContext(context.Context) SparkBatchOutput
+}
+
+// A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+type SparkBatchArgs struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
+	MainClass pulumi.StringPtrInput `pulumi:"mainClass"`
+	// Optional. The HCFS URI of the jar file that contains the main class.
+	MainJarFileUri pulumi.StringPtrInput `pulumi:"mainJarFileUri"`
+}
+
+func (SparkBatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkBatch)(nil)).Elem()
+}
+
+func (i SparkBatchArgs) ToSparkBatchOutput() SparkBatchOutput {
+	return i.ToSparkBatchOutputWithContext(context.Background())
+}
+
+func (i SparkBatchArgs) ToSparkBatchOutputWithContext(ctx context.Context) SparkBatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkBatchOutput)
+}
+
+func (i SparkBatchArgs) ToSparkBatchPtrOutput() SparkBatchPtrOutput {
+	return i.ToSparkBatchPtrOutputWithContext(context.Background())
+}
+
+func (i SparkBatchArgs) ToSparkBatchPtrOutputWithContext(ctx context.Context) SparkBatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkBatchOutput).ToSparkBatchPtrOutputWithContext(ctx)
+}
+
+// SparkBatchPtrInput is an input type that accepts SparkBatchArgs, SparkBatchPtr and SparkBatchPtrOutput values.
+// You can construct a concrete instance of `SparkBatchPtrInput` via:
+//
+//          SparkBatchArgs{...}
+//
+//  or:
+//
+//          nil
+type SparkBatchPtrInput interface {
+	pulumi.Input
+
+	ToSparkBatchPtrOutput() SparkBatchPtrOutput
+	ToSparkBatchPtrOutputWithContext(context.Context) SparkBatchPtrOutput
+}
+
+type sparkBatchPtrType SparkBatchArgs
+
+func SparkBatchPtr(v *SparkBatchArgs) SparkBatchPtrInput {
+	return (*sparkBatchPtrType)(v)
+}
+
+func (*sparkBatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkBatch)(nil)).Elem()
+}
+
+func (i *sparkBatchPtrType) ToSparkBatchPtrOutput() SparkBatchPtrOutput {
+	return i.ToSparkBatchPtrOutputWithContext(context.Background())
+}
+
+func (i *sparkBatchPtrType) ToSparkBatchPtrOutputWithContext(ctx context.Context) SparkBatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkBatchPtrOutput)
+}
+
+// A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+type SparkBatchOutput struct{ *pulumi.OutputState }
+
+func (SparkBatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkBatch)(nil)).Elem()
+}
+
+func (o SparkBatchOutput) ToSparkBatchOutput() SparkBatchOutput {
+	return o
+}
+
+func (o SparkBatchOutput) ToSparkBatchOutputWithContext(ctx context.Context) SparkBatchOutput {
+	return o
+}
+
+func (o SparkBatchOutput) ToSparkBatchPtrOutput() SparkBatchPtrOutput {
+	return o.ToSparkBatchPtrOutputWithContext(context.Background())
+}
+
+func (o SparkBatchOutput) ToSparkBatchPtrOutputWithContext(ctx context.Context) SparkBatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkBatch) *SparkBatch {
+		return &v
+	}).(SparkBatchPtrOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o SparkBatchOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkBatch) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+func (o SparkBatchOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkBatch) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+func (o SparkBatchOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkBatch) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+func (o SparkBatchOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkBatch) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
+func (o SparkBatchOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkBatch) *string { return v.MainClass }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The HCFS URI of the jar file that contains the main class.
+func (o SparkBatchOutput) MainJarFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkBatch) *string { return v.MainJarFileUri }).(pulumi.StringPtrOutput)
+}
+
+type SparkBatchPtrOutput struct{ *pulumi.OutputState }
+
+func (SparkBatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkBatch)(nil)).Elem()
+}
+
+func (o SparkBatchPtrOutput) ToSparkBatchPtrOutput() SparkBatchPtrOutput {
+	return o
+}
+
+func (o SparkBatchPtrOutput) ToSparkBatchPtrOutputWithContext(ctx context.Context) SparkBatchPtrOutput {
+	return o
+}
+
+func (o SparkBatchPtrOutput) Elem() SparkBatchOutput {
+	return o.ApplyT(func(v *SparkBatch) SparkBatch {
+		if v != nil {
+			return *v
+		}
+		var ret SparkBatch
+		return ret
+	}).(SparkBatchOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o SparkBatchPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkBatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+func (o SparkBatchPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkBatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+func (o SparkBatchPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkBatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+func (o SparkBatchPtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkBatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
+func (o SparkBatchPtrOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkBatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The HCFS URI of the jar file that contains the main class.
+func (o SparkBatchPtrOutput) MainJarFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkBatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainJarFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+type SparkBatchResponse struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+	FileUris []string `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
+	MainClass string `pulumi:"mainClass"`
+	// Optional. The HCFS URI of the jar file that contains the main class.
+	MainJarFileUri string `pulumi:"mainJarFileUri"`
+}
+
+// A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+type SparkBatchResponseOutput struct{ *pulumi.OutputState }
+
+func (SparkBatchResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkBatchResponse)(nil)).Elem()
+}
+
+func (o SparkBatchResponseOutput) ToSparkBatchResponseOutput() SparkBatchResponseOutput {
+	return o
+}
+
+func (o SparkBatchResponseOutput) ToSparkBatchResponseOutputWithContext(ctx context.Context) SparkBatchResponseOutput {
+	return o
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o SparkBatchResponseOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkBatchResponse) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+func (o SparkBatchResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkBatchResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+func (o SparkBatchResponseOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkBatchResponse) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+func (o SparkBatchResponseOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkBatchResponse) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
+func (o SparkBatchResponseOutput) MainClass() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkBatchResponse) string { return v.MainClass }).(pulumi.StringOutput)
+}
+
+// Optional. The HCFS URI of the jar file that contains the main class.
+func (o SparkBatchResponseOutput) MainJarFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkBatchResponse) string { return v.MainJarFileUri }).(pulumi.StringOutput)
+}
+
+// Spark History Server configuration for the workload.
+type SparkHistoryServerConfig struct {
+	// Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.Example: projects/[project_id]/regions/[region]/clusters/[cluster_name]
+	DataprocCluster *string `pulumi:"dataprocCluster"`
+}
+
+// SparkHistoryServerConfigInput is an input type that accepts SparkHistoryServerConfigArgs and SparkHistoryServerConfigOutput values.
+// You can construct a concrete instance of `SparkHistoryServerConfigInput` via:
+//
+//          SparkHistoryServerConfigArgs{...}
+type SparkHistoryServerConfigInput interface {
+	pulumi.Input
+
+	ToSparkHistoryServerConfigOutput() SparkHistoryServerConfigOutput
+	ToSparkHistoryServerConfigOutputWithContext(context.Context) SparkHistoryServerConfigOutput
+}
+
+// Spark History Server configuration for the workload.
+type SparkHistoryServerConfigArgs struct {
+	// Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.Example: projects/[project_id]/regions/[region]/clusters/[cluster_name]
+	DataprocCluster pulumi.StringPtrInput `pulumi:"dataprocCluster"`
+}
+
+func (SparkHistoryServerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (i SparkHistoryServerConfigArgs) ToSparkHistoryServerConfigOutput() SparkHistoryServerConfigOutput {
+	return i.ToSparkHistoryServerConfigOutputWithContext(context.Background())
+}
+
+func (i SparkHistoryServerConfigArgs) ToSparkHistoryServerConfigOutputWithContext(ctx context.Context) SparkHistoryServerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkHistoryServerConfigOutput)
+}
+
+func (i SparkHistoryServerConfigArgs) ToSparkHistoryServerConfigPtrOutput() SparkHistoryServerConfigPtrOutput {
+	return i.ToSparkHistoryServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SparkHistoryServerConfigArgs) ToSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) SparkHistoryServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkHistoryServerConfigOutput).ToSparkHistoryServerConfigPtrOutputWithContext(ctx)
+}
+
+// SparkHistoryServerConfigPtrInput is an input type that accepts SparkHistoryServerConfigArgs, SparkHistoryServerConfigPtr and SparkHistoryServerConfigPtrOutput values.
+// You can construct a concrete instance of `SparkHistoryServerConfigPtrInput` via:
+//
+//          SparkHistoryServerConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type SparkHistoryServerConfigPtrInput interface {
+	pulumi.Input
+
+	ToSparkHistoryServerConfigPtrOutput() SparkHistoryServerConfigPtrOutput
+	ToSparkHistoryServerConfigPtrOutputWithContext(context.Context) SparkHistoryServerConfigPtrOutput
+}
+
+type sparkHistoryServerConfigPtrType SparkHistoryServerConfigArgs
+
+func SparkHistoryServerConfigPtr(v *SparkHistoryServerConfigArgs) SparkHistoryServerConfigPtrInput {
+	return (*sparkHistoryServerConfigPtrType)(v)
+}
+
+func (*sparkHistoryServerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (i *sparkHistoryServerConfigPtrType) ToSparkHistoryServerConfigPtrOutput() SparkHistoryServerConfigPtrOutput {
+	return i.ToSparkHistoryServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *sparkHistoryServerConfigPtrType) ToSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) SparkHistoryServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkHistoryServerConfigPtrOutput)
+}
+
+// Spark History Server configuration for the workload.
+type SparkHistoryServerConfigOutput struct{ *pulumi.OutputState }
+
+func (SparkHistoryServerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (o SparkHistoryServerConfigOutput) ToSparkHistoryServerConfigOutput() SparkHistoryServerConfigOutput {
+	return o
+}
+
+func (o SparkHistoryServerConfigOutput) ToSparkHistoryServerConfigOutputWithContext(ctx context.Context) SparkHistoryServerConfigOutput {
+	return o
+}
+
+func (o SparkHistoryServerConfigOutput) ToSparkHistoryServerConfigPtrOutput() SparkHistoryServerConfigPtrOutput {
+	return o.ToSparkHistoryServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SparkHistoryServerConfigOutput) ToSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) SparkHistoryServerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkHistoryServerConfig) *SparkHistoryServerConfig {
+		return &v
+	}).(SparkHistoryServerConfigPtrOutput)
+}
+
+// Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.Example: projects/[project_id]/regions/[region]/clusters/[cluster_name]
+func (o SparkHistoryServerConfigOutput) DataprocCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkHistoryServerConfig) *string { return v.DataprocCluster }).(pulumi.StringPtrOutput)
+}
+
+type SparkHistoryServerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SparkHistoryServerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (o SparkHistoryServerConfigPtrOutput) ToSparkHistoryServerConfigPtrOutput() SparkHistoryServerConfigPtrOutput {
+	return o
+}
+
+func (o SparkHistoryServerConfigPtrOutput) ToSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) SparkHistoryServerConfigPtrOutput {
+	return o
+}
+
+func (o SparkHistoryServerConfigPtrOutput) Elem() SparkHistoryServerConfigOutput {
+	return o.ApplyT(func(v *SparkHistoryServerConfig) SparkHistoryServerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SparkHistoryServerConfig
+		return ret
+	}).(SparkHistoryServerConfigOutput)
+}
+
+// Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.Example: projects/[project_id]/regions/[region]/clusters/[cluster_name]
+func (o SparkHistoryServerConfigPtrOutput) DataprocCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkHistoryServerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataprocCluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spark History Server configuration for the workload.
+type SparkHistoryServerConfigResponse struct {
+	// Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.Example: projects/[project_id]/regions/[region]/clusters/[cluster_name]
+	DataprocCluster string `pulumi:"dataprocCluster"`
+}
+
+// Spark History Server configuration for the workload.
+type SparkHistoryServerConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SparkHistoryServerConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkHistoryServerConfigResponse)(nil)).Elem()
+}
+
+func (o SparkHistoryServerConfigResponseOutput) ToSparkHistoryServerConfigResponseOutput() SparkHistoryServerConfigResponseOutput {
+	return o
+}
+
+func (o SparkHistoryServerConfigResponseOutput) ToSparkHistoryServerConfigResponseOutputWithContext(ctx context.Context) SparkHistoryServerConfigResponseOutput {
+	return o
+}
+
+// Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.Example: projects/[project_id]/regions/[region]/clusters/[cluster_name]
+func (o SparkHistoryServerConfigResponseOutput) DataprocCluster() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkHistoryServerConfigResponse) string { return v.DataprocCluster }).(pulumi.StringOutput)
+}
+
 // A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.
 type SparkJob struct {
 	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -10361,6 +12031,250 @@ func (o SparkJobResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// A configuration for running an Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) batch workload.
+type SparkRBatch struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the Spark driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+	FileUris []string `pulumi:"fileUris"`
+	// The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
+	MainRFileUri string `pulumi:"mainRFileUri"`
+}
+
+// SparkRBatchInput is an input type that accepts SparkRBatchArgs and SparkRBatchOutput values.
+// You can construct a concrete instance of `SparkRBatchInput` via:
+//
+//          SparkRBatchArgs{...}
+type SparkRBatchInput interface {
+	pulumi.Input
+
+	ToSparkRBatchOutput() SparkRBatchOutput
+	ToSparkRBatchOutputWithContext(context.Context) SparkRBatchOutput
+}
+
+// A configuration for running an Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) batch workload.
+type SparkRBatchArgs struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the Spark driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
+	MainRFileUri pulumi.StringInput `pulumi:"mainRFileUri"`
+}
+
+func (SparkRBatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkRBatch)(nil)).Elem()
+}
+
+func (i SparkRBatchArgs) ToSparkRBatchOutput() SparkRBatchOutput {
+	return i.ToSparkRBatchOutputWithContext(context.Background())
+}
+
+func (i SparkRBatchArgs) ToSparkRBatchOutputWithContext(ctx context.Context) SparkRBatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkRBatchOutput)
+}
+
+func (i SparkRBatchArgs) ToSparkRBatchPtrOutput() SparkRBatchPtrOutput {
+	return i.ToSparkRBatchPtrOutputWithContext(context.Background())
+}
+
+func (i SparkRBatchArgs) ToSparkRBatchPtrOutputWithContext(ctx context.Context) SparkRBatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkRBatchOutput).ToSparkRBatchPtrOutputWithContext(ctx)
+}
+
+// SparkRBatchPtrInput is an input type that accepts SparkRBatchArgs, SparkRBatchPtr and SparkRBatchPtrOutput values.
+// You can construct a concrete instance of `SparkRBatchPtrInput` via:
+//
+//          SparkRBatchArgs{...}
+//
+//  or:
+//
+//          nil
+type SparkRBatchPtrInput interface {
+	pulumi.Input
+
+	ToSparkRBatchPtrOutput() SparkRBatchPtrOutput
+	ToSparkRBatchPtrOutputWithContext(context.Context) SparkRBatchPtrOutput
+}
+
+type sparkRBatchPtrType SparkRBatchArgs
+
+func SparkRBatchPtr(v *SparkRBatchArgs) SparkRBatchPtrInput {
+	return (*sparkRBatchPtrType)(v)
+}
+
+func (*sparkRBatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkRBatch)(nil)).Elem()
+}
+
+func (i *sparkRBatchPtrType) ToSparkRBatchPtrOutput() SparkRBatchPtrOutput {
+	return i.ToSparkRBatchPtrOutputWithContext(context.Background())
+}
+
+func (i *sparkRBatchPtrType) ToSparkRBatchPtrOutputWithContext(ctx context.Context) SparkRBatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkRBatchPtrOutput)
+}
+
+// A configuration for running an Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) batch workload.
+type SparkRBatchOutput struct{ *pulumi.OutputState }
+
+func (SparkRBatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkRBatch)(nil)).Elem()
+}
+
+func (o SparkRBatchOutput) ToSparkRBatchOutput() SparkRBatchOutput {
+	return o
+}
+
+func (o SparkRBatchOutput) ToSparkRBatchOutputWithContext(ctx context.Context) SparkRBatchOutput {
+	return o
+}
+
+func (o SparkRBatchOutput) ToSparkRBatchPtrOutput() SparkRBatchPtrOutput {
+	return o.ToSparkRBatchPtrOutputWithContext(context.Background())
+}
+
+func (o SparkRBatchOutput) ToSparkRBatchPtrOutputWithContext(ctx context.Context) SparkRBatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkRBatch) *SparkRBatch {
+		return &v
+	}).(SparkRBatchPtrOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o SparkRBatchOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkRBatch) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the Spark driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+func (o SparkRBatchOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkRBatch) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+func (o SparkRBatchOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkRBatch) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
+func (o SparkRBatchOutput) MainRFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkRBatch) string { return v.MainRFileUri }).(pulumi.StringOutput)
+}
+
+type SparkRBatchPtrOutput struct{ *pulumi.OutputState }
+
+func (SparkRBatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkRBatch)(nil)).Elem()
+}
+
+func (o SparkRBatchPtrOutput) ToSparkRBatchPtrOutput() SparkRBatchPtrOutput {
+	return o
+}
+
+func (o SparkRBatchPtrOutput) ToSparkRBatchPtrOutputWithContext(ctx context.Context) SparkRBatchPtrOutput {
+	return o
+}
+
+func (o SparkRBatchPtrOutput) Elem() SparkRBatchOutput {
+	return o.ApplyT(func(v *SparkRBatch) SparkRBatch {
+		if v != nil {
+			return *v
+		}
+		var ret SparkRBatch
+		return ret
+	}).(SparkRBatchOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o SparkRBatchPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkRBatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the Spark driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+func (o SparkRBatchPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkRBatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+func (o SparkRBatchPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkRBatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
+func (o SparkRBatchPtrOutput) MainRFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkRBatch) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MainRFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A configuration for running an Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) batch workload.
+type SparkRBatchResponse struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the Spark driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+	FileUris []string `pulumi:"fileUris"`
+	// The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
+	MainRFileUri string `pulumi:"mainRFileUri"`
+}
+
+// A configuration for running an Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) batch workload.
+type SparkRBatchResponseOutput struct{ *pulumi.OutputState }
+
+func (SparkRBatchResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkRBatchResponse)(nil)).Elem()
+}
+
+func (o SparkRBatchResponseOutput) ToSparkRBatchResponseOutput() SparkRBatchResponseOutput {
+	return o
+}
+
+func (o SparkRBatchResponseOutput) ToSparkRBatchResponseOutputWithContext(ctx context.Context) SparkRBatchResponseOutput {
+	return o
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o SparkRBatchResponseOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkRBatchResponse) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the Spark driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+func (o SparkRBatchResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkRBatchResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+func (o SparkRBatchResponseOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkRBatchResponse) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
+func (o SparkRBatchResponseOutput) MainRFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkRBatchResponse) string { return v.MainRFileUri }).(pulumi.StringOutput)
+}
+
 // A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
 type SparkRJob struct {
 	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -10655,6 +12569,224 @@ func (o SparkRJobResponseOutput) MainRFileUri() pulumi.StringOutput {
 // Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 func (o SparkRJobResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkRJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+type SparkSqlBatch struct {
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// The HCFS URI of the script that contains Spark SQL queries to execute.
+	QueryFileUri string `pulumi:"queryFileUri"`
+	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+	QueryVariables map[string]string `pulumi:"queryVariables"`
+}
+
+// SparkSqlBatchInput is an input type that accepts SparkSqlBatchArgs and SparkSqlBatchOutput values.
+// You can construct a concrete instance of `SparkSqlBatchInput` via:
+//
+//          SparkSqlBatchArgs{...}
+type SparkSqlBatchInput interface {
+	pulumi.Input
+
+	ToSparkSqlBatchOutput() SparkSqlBatchOutput
+	ToSparkSqlBatchOutputWithContext(context.Context) SparkSqlBatchOutput
+}
+
+// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+type SparkSqlBatchArgs struct {
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// The HCFS URI of the script that contains Spark SQL queries to execute.
+	QueryFileUri pulumi.StringInput `pulumi:"queryFileUri"`
+	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+	QueryVariables pulumi.StringMapInput `pulumi:"queryVariables"`
+}
+
+func (SparkSqlBatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkSqlBatch)(nil)).Elem()
+}
+
+func (i SparkSqlBatchArgs) ToSparkSqlBatchOutput() SparkSqlBatchOutput {
+	return i.ToSparkSqlBatchOutputWithContext(context.Background())
+}
+
+func (i SparkSqlBatchArgs) ToSparkSqlBatchOutputWithContext(ctx context.Context) SparkSqlBatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkSqlBatchOutput)
+}
+
+func (i SparkSqlBatchArgs) ToSparkSqlBatchPtrOutput() SparkSqlBatchPtrOutput {
+	return i.ToSparkSqlBatchPtrOutputWithContext(context.Background())
+}
+
+func (i SparkSqlBatchArgs) ToSparkSqlBatchPtrOutputWithContext(ctx context.Context) SparkSqlBatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkSqlBatchOutput).ToSparkSqlBatchPtrOutputWithContext(ctx)
+}
+
+// SparkSqlBatchPtrInput is an input type that accepts SparkSqlBatchArgs, SparkSqlBatchPtr and SparkSqlBatchPtrOutput values.
+// You can construct a concrete instance of `SparkSqlBatchPtrInput` via:
+//
+//          SparkSqlBatchArgs{...}
+//
+//  or:
+//
+//          nil
+type SparkSqlBatchPtrInput interface {
+	pulumi.Input
+
+	ToSparkSqlBatchPtrOutput() SparkSqlBatchPtrOutput
+	ToSparkSqlBatchPtrOutputWithContext(context.Context) SparkSqlBatchPtrOutput
+}
+
+type sparkSqlBatchPtrType SparkSqlBatchArgs
+
+func SparkSqlBatchPtr(v *SparkSqlBatchArgs) SparkSqlBatchPtrInput {
+	return (*sparkSqlBatchPtrType)(v)
+}
+
+func (*sparkSqlBatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkSqlBatch)(nil)).Elem()
+}
+
+func (i *sparkSqlBatchPtrType) ToSparkSqlBatchPtrOutput() SparkSqlBatchPtrOutput {
+	return i.ToSparkSqlBatchPtrOutputWithContext(context.Background())
+}
+
+func (i *sparkSqlBatchPtrType) ToSparkSqlBatchPtrOutputWithContext(ctx context.Context) SparkSqlBatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkSqlBatchPtrOutput)
+}
+
+// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+type SparkSqlBatchOutput struct{ *pulumi.OutputState }
+
+func (SparkSqlBatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkSqlBatch)(nil)).Elem()
+}
+
+func (o SparkSqlBatchOutput) ToSparkSqlBatchOutput() SparkSqlBatchOutput {
+	return o
+}
+
+func (o SparkSqlBatchOutput) ToSparkSqlBatchOutputWithContext(ctx context.Context) SparkSqlBatchOutput {
+	return o
+}
+
+func (o SparkSqlBatchOutput) ToSparkSqlBatchPtrOutput() SparkSqlBatchPtrOutput {
+	return o.ToSparkSqlBatchPtrOutputWithContext(context.Background())
+}
+
+func (o SparkSqlBatchOutput) ToSparkSqlBatchPtrOutputWithContext(ctx context.Context) SparkSqlBatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkSqlBatch) *SparkSqlBatch {
+		return &v
+	}).(SparkSqlBatchPtrOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o SparkSqlBatchOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkSqlBatch) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the script that contains Spark SQL queries to execute.
+func (o SparkSqlBatchOutput) QueryFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkSqlBatch) string { return v.QueryFileUri }).(pulumi.StringOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+func (o SparkSqlBatchOutput) QueryVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkSqlBatch) map[string]string { return v.QueryVariables }).(pulumi.StringMapOutput)
+}
+
+type SparkSqlBatchPtrOutput struct{ *pulumi.OutputState }
+
+func (SparkSqlBatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkSqlBatch)(nil)).Elem()
+}
+
+func (o SparkSqlBatchPtrOutput) ToSparkSqlBatchPtrOutput() SparkSqlBatchPtrOutput {
+	return o
+}
+
+func (o SparkSqlBatchPtrOutput) ToSparkSqlBatchPtrOutputWithContext(ctx context.Context) SparkSqlBatchPtrOutput {
+	return o
+}
+
+func (o SparkSqlBatchPtrOutput) Elem() SparkSqlBatchOutput {
+	return o.ApplyT(func(v *SparkSqlBatch) SparkSqlBatch {
+		if v != nil {
+			return *v
+		}
+		var ret SparkSqlBatch
+		return ret
+	}).(SparkSqlBatchOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o SparkSqlBatchPtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkSqlBatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the script that contains Spark SQL queries to execute.
+func (o SparkSqlBatchPtrOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkSqlBatch) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+func (o SparkSqlBatchPtrOutput) QueryVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SparkSqlBatch) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryVariables
+	}).(pulumi.StringMapOutput)
+}
+
+// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+type SparkSqlBatchResponse struct {
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// The HCFS URI of the script that contains Spark SQL queries to execute.
+	QueryFileUri string `pulumi:"queryFileUri"`
+	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+	QueryVariables map[string]string `pulumi:"queryVariables"`
+}
+
+// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+type SparkSqlBatchResponseOutput struct{ *pulumi.OutputState }
+
+func (SparkSqlBatchResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkSqlBatchResponse)(nil)).Elem()
+}
+
+func (o SparkSqlBatchResponseOutput) ToSparkSqlBatchResponseOutput() SparkSqlBatchResponseOutput {
+	return o
+}
+
+func (o SparkSqlBatchResponseOutput) ToSparkSqlBatchResponseOutputWithContext(ctx context.Context) SparkSqlBatchResponseOutput {
+	return o
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o SparkSqlBatchResponseOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkSqlBatchResponse) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the script that contains Spark SQL queries to execute.
+func (o SparkSqlBatchResponseOutput) QueryFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkSqlBatchResponse) string { return v.QueryFileUri }).(pulumi.StringOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+func (o SparkSqlBatchResponseOutput) QueryVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkSqlBatchResponse) map[string]string { return v.QueryVariables }).(pulumi.StringMapOutput)
 }
 
 // A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
@@ -11223,6 +13355,66 @@ func (o SparkStandaloneAutoscalingConfigResponseOutput) ScaleUpMinWorkerFraction
 	return o.ApplyT(func(v SparkStandaloneAutoscalingConfigResponse) float64 { return v.ScaleUpMinWorkerFraction }).(pulumi.Float64Output)
 }
 
+// Historical state information.
+type StateHistoryResponse struct {
+	// The state of the batch at this point in history.
+	State string `pulumi:"state"`
+	// Details about the state at this point in history.
+	StateMessage string `pulumi:"stateMessage"`
+	// The time when the batch entered the historical state.
+	StateStartTime string `pulumi:"stateStartTime"`
+}
+
+// Historical state information.
+type StateHistoryResponseOutput struct{ *pulumi.OutputState }
+
+func (StateHistoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StateHistoryResponse)(nil)).Elem()
+}
+
+func (o StateHistoryResponseOutput) ToStateHistoryResponseOutput() StateHistoryResponseOutput {
+	return o
+}
+
+func (o StateHistoryResponseOutput) ToStateHistoryResponseOutputWithContext(ctx context.Context) StateHistoryResponseOutput {
+	return o
+}
+
+// The state of the batch at this point in history.
+func (o StateHistoryResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v StateHistoryResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Details about the state at this point in history.
+func (o StateHistoryResponseOutput) StateMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v StateHistoryResponse) string { return v.StateMessage }).(pulumi.StringOutput)
+}
+
+// The time when the batch entered the historical state.
+func (o StateHistoryResponseOutput) StateStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v StateHistoryResponse) string { return v.StateStartTime }).(pulumi.StringOutput)
+}
+
+type StateHistoryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StateHistoryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StateHistoryResponse)(nil)).Elem()
+}
+
+func (o StateHistoryResponseArrayOutput) ToStateHistoryResponseArrayOutput() StateHistoryResponseArrayOutput {
+	return o
+}
+
+func (o StateHistoryResponseArrayOutput) ToStateHistoryResponseArrayOutputWithContext(ctx context.Context) StateHistoryResponseArrayOutput {
+	return o
+}
+
+func (o StateHistoryResponseArrayOutput) Index(i pulumi.IntInput) StateHistoryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StateHistoryResponse {
+		return vs[0].([]StateHistoryResponse)[vs[1].(int)]
+	}).(StateHistoryResponseOutput)
+}
+
 // A configurable parameter that replaces one or more fields in the template. Parameterizable fields: - Labels - File uris - Job properties - Job arguments - Script variables - Main class (in HadoopJob and SparkJob) - Zone (in ClusterSelector)
 type TemplateParameter struct {
 	// Optional. Brief description of the parameter. Must not exceed 1024 characters.
@@ -11770,6 +13962,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointConfigInput)(nil)).Elem(), EndpointConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointConfigPtrInput)(nil)).Elem(), EndpointConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigInput)(nil)).Elem(), EnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigPtrInput)(nil)).Elem(), EnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigInput)(nil)).Elem(), ExecutionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigPtrInput)(nil)).Elem(), ExecutionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceClusterConfigInput)(nil)).Elem(), GceClusterConfigArgs{})
@@ -11811,10 +14007,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrderedJobArrayInput)(nil)).Elem(), OrderedJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParameterValidationInput)(nil)).Elem(), ParameterValidationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParameterValidationPtrInput)(nil)).Elem(), ParameterValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PeripheralsConfigInput)(nil)).Elem(), PeripheralsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PeripheralsConfigPtrInput)(nil)).Elem(), PeripheralsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PigJobInput)(nil)).Elem(), PigJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PigJobPtrInput)(nil)).Elem(), PigJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrestoJobInput)(nil)).Elem(), PrestoJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrestoJobPtrInput)(nil)).Elem(), PrestoJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PySparkBatchInput)(nil)).Elem(), PySparkBatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PySparkBatchPtrInput)(nil)).Elem(), PySparkBatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PySparkJobInput)(nil)).Elem(), PySparkJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PySparkJobPtrInput)(nil)).Elem(), PySparkJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryListInput)(nil)).Elem(), QueryListArgs{})
@@ -11823,16 +14023,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegexValidationPtrInput)(nil)).Elem(), RegexValidationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityInput)(nil)).Elem(), ReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityPtrInput)(nil)).Elem(), ReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeConfigInput)(nil)).Elem(), RuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeConfigPtrInput)(nil)).Elem(), RuntimeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityConfigInput)(nil)).Elem(), SecurityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityConfigPtrInput)(nil)).Elem(), SecurityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigPtrInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigInput)(nil)).Elem(), SoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigPtrInput)(nil)).Elem(), SoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkBatchInput)(nil)).Elem(), SparkBatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkBatchPtrInput)(nil)).Elem(), SparkBatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkHistoryServerConfigInput)(nil)).Elem(), SparkHistoryServerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkHistoryServerConfigPtrInput)(nil)).Elem(), SparkHistoryServerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkJobInput)(nil)).Elem(), SparkJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkJobPtrInput)(nil)).Elem(), SparkJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkRBatchInput)(nil)).Elem(), SparkRBatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkRBatchPtrInput)(nil)).Elem(), SparkRBatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkRJobInput)(nil)).Elem(), SparkRJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkRJobPtrInput)(nil)).Elem(), SparkRJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkSqlBatchInput)(nil)).Elem(), SparkSqlBatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkSqlBatchPtrInput)(nil)).Elem(), SparkSqlBatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkSqlJobInput)(nil)).Elem(), SparkSqlJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkSqlJobPtrInput)(nil)).Elem(), SparkSqlJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkStandaloneAutoscalingConfigInput)(nil)).Elem(), SparkStandaloneAutoscalingConfigArgs{})
@@ -11880,6 +14090,12 @@ func init() {
 	pulumi.RegisterOutputType(EndpointConfigOutput{})
 	pulumi.RegisterOutputType(EndpointConfigPtrOutput{})
 	pulumi.RegisterOutputType(EndpointConfigResponseOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigResponseOutput{})
+	pulumi.RegisterOutputType(ExecutionConfigOutput{})
+	pulumi.RegisterOutputType(ExecutionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ExecutionConfigResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
@@ -11949,12 +14165,18 @@ func init() {
 	pulumi.RegisterOutputType(ParameterValidationOutput{})
 	pulumi.RegisterOutputType(ParameterValidationPtrOutput{})
 	pulumi.RegisterOutputType(ParameterValidationResponseOutput{})
+	pulumi.RegisterOutputType(PeripheralsConfigOutput{})
+	pulumi.RegisterOutputType(PeripheralsConfigPtrOutput{})
+	pulumi.RegisterOutputType(PeripheralsConfigResponseOutput{})
 	pulumi.RegisterOutputType(PigJobOutput{})
 	pulumi.RegisterOutputType(PigJobPtrOutput{})
 	pulumi.RegisterOutputType(PigJobResponseOutput{})
 	pulumi.RegisterOutputType(PrestoJobOutput{})
 	pulumi.RegisterOutputType(PrestoJobPtrOutput{})
 	pulumi.RegisterOutputType(PrestoJobResponseOutput{})
+	pulumi.RegisterOutputType(PySparkBatchOutput{})
+	pulumi.RegisterOutputType(PySparkBatchPtrOutput{})
+	pulumi.RegisterOutputType(PySparkBatchResponseOutput{})
 	pulumi.RegisterOutputType(PySparkJobOutput{})
 	pulumi.RegisterOutputType(PySparkJobPtrOutput{})
 	pulumi.RegisterOutputType(PySparkJobResponseOutput{})
@@ -11967,6 +14189,10 @@ func init() {
 	pulumi.RegisterOutputType(ReservationAffinityOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityResponseOutput{})
+	pulumi.RegisterOutputType(RuntimeConfigOutput{})
+	pulumi.RegisterOutputType(RuntimeConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeConfigResponseOutput{})
+	pulumi.RegisterOutputType(RuntimeInfoResponseOutput{})
 	pulumi.RegisterOutputType(SecurityConfigOutput{})
 	pulumi.RegisterOutputType(SecurityConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityConfigResponseOutput{})
@@ -11976,18 +14202,32 @@ func init() {
 	pulumi.RegisterOutputType(SoftwareConfigOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigPtrOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigResponseOutput{})
+	pulumi.RegisterOutputType(SparkBatchOutput{})
+	pulumi.RegisterOutputType(SparkBatchPtrOutput{})
+	pulumi.RegisterOutputType(SparkBatchResponseOutput{})
+	pulumi.RegisterOutputType(SparkHistoryServerConfigOutput{})
+	pulumi.RegisterOutputType(SparkHistoryServerConfigPtrOutput{})
+	pulumi.RegisterOutputType(SparkHistoryServerConfigResponseOutput{})
 	pulumi.RegisterOutputType(SparkJobOutput{})
 	pulumi.RegisterOutputType(SparkJobPtrOutput{})
 	pulumi.RegisterOutputType(SparkJobResponseOutput{})
+	pulumi.RegisterOutputType(SparkRBatchOutput{})
+	pulumi.RegisterOutputType(SparkRBatchPtrOutput{})
+	pulumi.RegisterOutputType(SparkRBatchResponseOutput{})
 	pulumi.RegisterOutputType(SparkRJobOutput{})
 	pulumi.RegisterOutputType(SparkRJobPtrOutput{})
 	pulumi.RegisterOutputType(SparkRJobResponseOutput{})
+	pulumi.RegisterOutputType(SparkSqlBatchOutput{})
+	pulumi.RegisterOutputType(SparkSqlBatchPtrOutput{})
+	pulumi.RegisterOutputType(SparkSqlBatchResponseOutput{})
 	pulumi.RegisterOutputType(SparkSqlJobOutput{})
 	pulumi.RegisterOutputType(SparkSqlJobPtrOutput{})
 	pulumi.RegisterOutputType(SparkSqlJobResponseOutput{})
 	pulumi.RegisterOutputType(SparkStandaloneAutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(SparkStandaloneAutoscalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(SparkStandaloneAutoscalingConfigResponseOutput{})
+	pulumi.RegisterOutputType(StateHistoryResponseOutput{})
+	pulumi.RegisterOutputType(StateHistoryResponseArrayOutput{})
 	pulumi.RegisterOutputType(TemplateParameterOutput{})
 	pulumi.RegisterOutputType(TemplateParameterArrayOutput{})
 	pulumi.RegisterOutputType(TemplateParameterResponseOutput{})

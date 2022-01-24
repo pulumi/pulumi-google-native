@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Outputs
     public sealed class DestinationResponse
     {
         /// <summary>
-        /// List of host names to match. Matched against HOST header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example // *.myorg.com") or a presence(any) match "*".
+        /// List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example // *.myorg.com") or a presence(any) match "*".
         /// </summary>
         public readonly ImmutableArray<string> Hosts;
         /// <summary>
-        /// Optional. Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
+        /// Optional. Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match. Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
         /// </summary>
         public readonly Outputs.HttpHeaderMatchResponse HttpHeaderMatch;
         /// <summary>

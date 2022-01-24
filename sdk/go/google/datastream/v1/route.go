@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this method to create a route for a private connectivity in a project and location.
+// Use this method to create a route for a private connectivity configuration in a project and location.
 // Auto-naming is currently not supported for this resource.
 type Route struct {
 	pulumi.CustomResourceState

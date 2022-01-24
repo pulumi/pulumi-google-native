@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1.Outputs
 {
 
+    /// <summary>
+    /// Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
+    /// </summary>
     [OutputType]
     public sealed class RRSetRoutingPolicyWrrPolicyResponse
     {

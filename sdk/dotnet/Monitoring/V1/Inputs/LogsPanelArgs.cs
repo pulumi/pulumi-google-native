@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         private InputList<string>? _resourceNames;
 
         /// <summary>
-        /// The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+        /// The names of logging resources to collect logs for. Currently only projects are supported. If empty, the widget will default to the host project.
         /// </summary>
         public InputList<string> ResourceNames
         {

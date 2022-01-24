@@ -204,7 +204,7 @@ func (o AwsAccessKeyResponseOutput) SecretAccessKey() pulumi.StringOutput {
 
 // An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
 type AwsS3Data struct {
-	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 	AwsAccessKey *AwsAccessKey `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName string `pulumi:"bucketName"`
@@ -227,7 +227,7 @@ type AwsS3DataInput interface {
 
 // An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
 type AwsS3DataArgs struct {
-	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 	AwsAccessKey AwsAccessKeyPtrInput `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
@@ -315,7 +315,7 @@ func (o AwsS3DataOutput) ToAwsS3DataPtrOutputWithContext(ctx context.Context) Aw
 	}).(AwsS3DataPtrOutput)
 }
 
-// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 func (o AwsS3DataOutput) AwsAccessKey() AwsAccessKeyPtrOutput {
 	return o.ApplyT(func(v AwsS3Data) *AwsAccessKey { return v.AwsAccessKey }).(AwsAccessKeyPtrOutput)
 }
@@ -359,7 +359,7 @@ func (o AwsS3DataPtrOutput) Elem() AwsS3DataOutput {
 	}).(AwsS3DataOutput)
 }
 
-// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 func (o AwsS3DataPtrOutput) AwsAccessKey() AwsAccessKeyPtrOutput {
 	return o.ApplyT(func(v *AwsS3Data) *AwsAccessKey {
 		if v == nil {
@@ -401,7 +401,7 @@ func (o AwsS3DataPtrOutput) RoleArn() pulumi.StringPtrOutput {
 
 // An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
 type AwsS3DataResponse struct {
-	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 	AwsAccessKey AwsAccessKeyResponse `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName string `pulumi:"bucketName"`
@@ -426,7 +426,7 @@ func (o AwsS3DataResponseOutput) ToAwsS3DataResponseOutputWithContext(ctx contex
 	return o
 }
 
-// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 func (o AwsS3DataResponseOutput) AwsAccessKey() AwsAccessKeyResponseOutput {
 	return o.ApplyT(func(v AwsS3DataResponse) AwsAccessKeyResponse { return v.AwsAccessKey }).(AwsAccessKeyResponseOutput)
 }

@@ -196,6 +196,9 @@ namespace Pulumi.GoogleNative.Datastream.V1
         [Input("staticServiceIpConnectivity")]
         public Input<Inputs.StaticServiceIpConnectivityArgs>? StaticServiceIpConnectivity { get; set; }
 
+        [Input("validateOnly")]
+        public Input<string>? ValidateOnly { get; set; }
+
         public ConnectionProfileArgs()
         {
         }

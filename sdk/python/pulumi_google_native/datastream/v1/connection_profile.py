@@ -27,7 +27,8 @@ class ConnectionProfileArgs:
                  private_connectivity: Optional[pulumi.Input['PrivateConnectivityArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 static_service_ip_connectivity: Optional[pulumi.Input['StaticServiceIpConnectivityArgs']] = None):
+                 static_service_ip_connectivity: Optional[pulumi.Input['StaticServiceIpConnectivityArgs']] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
         :param pulumi.Input[str] display_name: Display name.
@@ -63,6 +64,8 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "request_id", request_id)
         if static_service_ip_connectivity is not None:
             pulumi.set(__self__, "static_service_ip_connectivity", static_service_ip_connectivity)
+        if validate_only is not None:
+            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="connectionProfileId")
@@ -205,6 +208,15 @@ class ConnectionProfileArgs:
     def static_service_ip_connectivity(self, value: Optional[pulumi.Input['StaticServiceIpConnectivityArgs']]):
         pulumi.set(self, "static_service_ip_connectivity", value)
 
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "validate_only")
+
+    @validate_only.setter
+    def validate_only(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validate_only", value)
+
 
 class ConnectionProfile(pulumi.CustomResource):
     @overload
@@ -224,6 +236,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  static_service_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Use this method to create a connection profile in a project and location.
@@ -278,6 +291,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  static_service_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -307,6 +321,7 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["static_service_ip_connectivity"] = static_service_ip_connectivity
+            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1
         public Output<Outputs.AppEngineHttpTargetResponse> AppEngineHttpTarget { get; private set; } = null!;
 
         /// <summary>
-        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours.
+        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours 15 seconds.
         /// </summary>
         [Output("attemptDeadline")]
         public Output<string> AttemptDeadline { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1
         public Input<Inputs.AppEngineHttpTargetArgs>? AppEngineHttpTarget { get; set; }
 
         /// <summary>
-        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours.
+        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours 15 seconds.
         /// </summary>
         [Input("attemptDeadline")]
         public Input<string>? AttemptDeadline { get; set; }

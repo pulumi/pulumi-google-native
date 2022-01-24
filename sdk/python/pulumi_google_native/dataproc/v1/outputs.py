@@ -24,6 +24,8 @@ __all__ = [
     'DiskConfigResponse',
     'EncryptionConfigResponse',
     'EndpointConfigResponse',
+    'EnvironmentConfigResponse',
+    'ExecutionConfigResponse',
     'ExprResponse',
     'GceClusterConfigResponse',
     'GkeClusterConfigResponse',
@@ -48,19 +50,28 @@ __all__ = [
     'NodeInitializationActionResponse',
     'OrderedJobResponse',
     'ParameterValidationResponse',
+    'PeripheralsConfigResponse',
     'PigJobResponse',
     'PrestoJobResponse',
+    'PySparkBatchResponse',
     'PySparkJobResponse',
     'QueryListResponse',
     'RegexValidationResponse',
     'ReservationAffinityResponse',
+    'RuntimeConfigResponse',
+    'RuntimeInfoResponse',
     'SecurityConfigResponse',
     'ShieldedInstanceConfigResponse',
     'SoftwareConfigResponse',
+    'SparkBatchResponse',
+    'SparkHistoryServerConfigResponse',
     'SparkJobResponse',
+    'SparkRBatchResponse',
     'SparkRJobResponse',
+    'SparkSqlBatchResponse',
     'SparkSqlJobResponse',
     'SparkStandaloneAutoscalingConfigResponse',
+    'StateHistoryResponse',
     'TemplateParameterResponse',
     'ValueValidationResponse',
     'WorkflowTemplatePlacementResponse',
@@ -959,6 +970,149 @@ class EndpointConfigResponse(dict):
         The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
         """
         return pulumi.get(self, "http_ports")
+
+
+@pulumi.output_type
+class EnvironmentConfigResponse(dict):
+    """
+    Environment configuration for a workload.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "executionConfig":
+            suggest = "execution_config"
+        elif key == "peripheralsConfig":
+            suggest = "peripherals_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 execution_config: 'outputs.ExecutionConfigResponse',
+                 peripherals_config: 'outputs.PeripheralsConfigResponse'):
+        """
+        Environment configuration for a workload.
+        :param 'ExecutionConfigResponse' execution_config: Optional. Execution configuration for a workload.
+        :param 'PeripheralsConfigResponse' peripherals_config: Optional. Peripherals configuration that workload has access to.
+        """
+        pulumi.set(__self__, "execution_config", execution_config)
+        pulumi.set(__self__, "peripherals_config", peripherals_config)
+
+    @property
+    @pulumi.getter(name="executionConfig")
+    def execution_config(self) -> 'outputs.ExecutionConfigResponse':
+        """
+        Optional. Execution configuration for a workload.
+        """
+        return pulumi.get(self, "execution_config")
+
+    @property
+    @pulumi.getter(name="peripheralsConfig")
+    def peripherals_config(self) -> 'outputs.PeripheralsConfigResponse':
+        """
+        Optional. Peripherals configuration that workload has access to.
+        """
+        return pulumi.get(self, "peripherals_config")
+
+
+@pulumi.output_type
+class ExecutionConfigResponse(dict):
+    """
+    Execution configuration for a workload.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKey":
+            suggest = "kms_key"
+        elif key == "networkTags":
+            suggest = "network_tags"
+        elif key == "networkUri":
+            suggest = "network_uri"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "subnetworkUri":
+            suggest = "subnetwork_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExecutionConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExecutionConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExecutionConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key: str,
+                 network_tags: Sequence[str],
+                 network_uri: str,
+                 service_account: str,
+                 subnetwork_uri: str):
+        """
+        Execution configuration for a workload.
+        :param str kms_key: Optional. The Cloud KMS key to use for encryption.
+        :param Sequence[str] network_tags: Optional. Tags used for network traffic control.
+        :param str network_uri: Optional. Network URI to connect workload to.
+        :param str service_account: Optional. Service account that used to execute workload.
+        :param str subnetwork_uri: Optional. Subnetwork URI to connect workload to.
+        """
+        pulumi.set(__self__, "kms_key", kms_key)
+        pulumi.set(__self__, "network_tags", network_tags)
+        pulumi.set(__self__, "network_uri", network_uri)
+        pulumi.set(__self__, "service_account", service_account)
+        pulumi.set(__self__, "subnetwork_uri", subnetwork_uri)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> str:
+        """
+        Optional. The Cloud KMS key to use for encryption.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Sequence[str]:
+        """
+        Optional. Tags used for network traffic control.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @property
+    @pulumi.getter(name="networkUri")
+    def network_uri(self) -> str:
+        """
+        Optional. Network URI to connect workload to.
+        """
+        return pulumi.get(self, "network_uri")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        Optional. Service account that used to execute workload.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="subnetworkUri")
+    def subnetwork_uri(self) -> str:
+        """
+        Optional. Subnetwork URI to connect workload to.
+        """
+        return pulumi.get(self, "subnetwork_uri")
 
 
 @pulumi.output_type
@@ -2901,6 +3055,58 @@ class ParameterValidationResponse(dict):
 
 
 @pulumi.output_type
+class PeripheralsConfigResponse(dict):
+    """
+    Auxiliary services configuration for a workload.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metastoreService":
+            suggest = "metastore_service"
+        elif key == "sparkHistoryServerConfig":
+            suggest = "spark_history_server_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PeripheralsConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PeripheralsConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PeripheralsConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metastore_service: str,
+                 spark_history_server_config: 'outputs.SparkHistoryServerConfigResponse'):
+        """
+        Auxiliary services configuration for a workload.
+        :param str metastore_service: Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
+        :param 'SparkHistoryServerConfigResponse' spark_history_server_config: Optional. The Spark History Server configuration for the workload.
+        """
+        pulumi.set(__self__, "metastore_service", metastore_service)
+        pulumi.set(__self__, "spark_history_server_config", spark_history_server_config)
+
+    @property
+    @pulumi.getter(name="metastoreService")
+    def metastore_service(self) -> str:
+        """
+        Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
+        """
+        return pulumi.get(self, "metastore_service")
+
+    @property
+    @pulumi.getter(name="sparkHistoryServerConfig")
+    def spark_history_server_config(self) -> 'outputs.SparkHistoryServerConfigResponse':
+        """
+        Optional. The Spark History Server configuration for the workload.
+        """
+        return pulumi.get(self, "spark_history_server_config")
+
+
+@pulumi.output_type
 class PigJobResponse(dict):
     """
     A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.
@@ -3128,6 +3334,108 @@ class PrestoJobResponse(dict):
         A list of queries.
         """
         return pulumi.get(self, "query_list")
+
+
+@pulumi.output_type
+class PySparkBatchResponse(dict):
+    """
+    A configuration for running an Apache PySpark (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveUris":
+            suggest = "archive_uris"
+        elif key == "fileUris":
+            suggest = "file_uris"
+        elif key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "mainPythonFileUri":
+            suggest = "main_python_file_uri"
+        elif key == "pythonFileUris":
+            suggest = "python_file_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PySparkBatchResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PySparkBatchResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PySparkBatchResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 archive_uris: Sequence[str],
+                 args: Sequence[str],
+                 file_uris: Sequence[str],
+                 jar_file_uris: Sequence[str],
+                 main_python_file_uri: str,
+                 python_file_uris: Sequence[str]):
+        """
+        A configuration for running an Apache PySpark (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload.
+        :param Sequence[str] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param Sequence[str] args: Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        :param Sequence[str] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor.
+        :param Sequence[str] jar_file_uris: Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+        :param str main_python_file_uri: The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+        :param Sequence[str] python_file_uris: Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+        """
+        pulumi.set(__self__, "archive_uris", archive_uris)
+        pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "file_uris", file_uris)
+        pulumi.set(__self__, "jar_file_uris", jar_file_uris)
+        pulumi.set(__self__, "main_python_file_uri", main_python_file_uri)
+        pulumi.set(__self__, "python_file_uris", python_file_uris)
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Sequence[str]:
+        """
+        Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @property
+    @pulumi.getter
+    def args(self) -> Sequence[str]:
+        """
+        Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Sequence[str]:
+        """
+        Optional. HCFS URIs of files to be placed in the working directory of each executor.
+        """
+        return pulumi.get(self, "file_uris")
+
+    @property
+    @pulumi.getter(name="jarFileUris")
+    def jar_file_uris(self) -> Sequence[str]:
+        """
+        Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+        """
+        return pulumi.get(self, "jar_file_uris")
+
+    @property
+    @pulumi.getter(name="mainPythonFileUri")
+    def main_python_file_uri(self) -> str:
+        """
+        The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+        """
+        return pulumi.get(self, "main_python_file_uri")
+
+    @property
+    @pulumi.getter(name="pythonFileUris")
+    def python_file_uris(self) -> Sequence[str]:
+        """
+        Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+        """
+        return pulumi.get(self, "python_file_uris")
 
 
 @pulumi.output_type
@@ -3362,6 +3670,130 @@ class ReservationAffinityResponse(dict):
 
 
 @pulumi.output_type
+class RuntimeConfigResponse(dict):
+    """
+    Runtime configuration for a workload.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerImage":
+            suggest = "container_image"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 container_image: str,
+                 properties: Mapping[str, str],
+                 version: str):
+        """
+        Runtime configuration for a workload.
+        :param str container_image: Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+        :param Mapping[str, str] properties: Optional. A mapping of property names to values, which are used to configure workload execution.
+        :param str version: Optional. Version of the batch runtime.
+        """
+        pulumi.set(__self__, "container_image", container_image)
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="containerImage")
+    def container_image(self) -> str:
+        """
+        Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+        """
+        return pulumi.get(self, "container_image")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Mapping[str, str]:
+        """
+        Optional. A mapping of property names to values, which are used to configure workload execution.
+        """
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Optional. Version of the batch runtime.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class RuntimeInfoResponse(dict):
+    """
+    Runtime information about workload execution.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diagnosticOutputUri":
+            suggest = "diagnostic_output_uri"
+        elif key == "outputUri":
+            suggest = "output_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 diagnostic_output_uri: str,
+                 endpoints: Mapping[str, str],
+                 output_uri: str):
+        """
+        Runtime information about workload execution.
+        :param str diagnostic_output_uri: A URI pointing to the location of the diagnostics tarball.
+        :param Mapping[str, str] endpoints: Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
+        :param str output_uri: A URI pointing to the location of the stdout and stderr of the workload.
+        """
+        pulumi.set(__self__, "diagnostic_output_uri", diagnostic_output_uri)
+        pulumi.set(__self__, "endpoints", endpoints)
+        pulumi.set(__self__, "output_uri", output_uri)
+
+    @property
+    @pulumi.getter(name="diagnosticOutputUri")
+    def diagnostic_output_uri(self) -> str:
+        """
+        A URI pointing to the location of the diagnostics tarball.
+        """
+        return pulumi.get(self, "diagnostic_output_uri")
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> Mapping[str, str]:
+        """
+        Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @property
+    @pulumi.getter(name="outputUri")
+    def output_uri(self) -> str:
+        """
+        A URI pointing to the location of the stdout and stderr of the workload.
+        """
+        return pulumi.get(self, "output_uri")
+
+
+@pulumi.output_type
 class SecurityConfigResponse(dict):
     """
     Security related configuration, including encryption, Kerberos, etc.
@@ -3542,6 +3974,147 @@ class SoftwareConfigResponse(dict):
 
 
 @pulumi.output_type
+class SparkBatchResponse(dict):
+    """
+    A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveUris":
+            suggest = "archive_uris"
+        elif key == "fileUris":
+            suggest = "file_uris"
+        elif key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "mainClass":
+            suggest = "main_class"
+        elif key == "mainJarFileUri":
+            suggest = "main_jar_file_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SparkBatchResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SparkBatchResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SparkBatchResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 archive_uris: Sequence[str],
+                 args: Sequence[str],
+                 file_uris: Sequence[str],
+                 jar_file_uris: Sequence[str],
+                 main_class: str,
+                 main_jar_file_uri: str):
+        """
+        A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+        :param Sequence[str] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param Sequence[str] args: Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        :param Sequence[str] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor.
+        :param Sequence[str] jar_file_uris: Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+        :param str main_class: Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
+        :param str main_jar_file_uri: Optional. The HCFS URI of the jar file that contains the main class.
+        """
+        pulumi.set(__self__, "archive_uris", archive_uris)
+        pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "file_uris", file_uris)
+        pulumi.set(__self__, "jar_file_uris", jar_file_uris)
+        pulumi.set(__self__, "main_class", main_class)
+        pulumi.set(__self__, "main_jar_file_uri", main_jar_file_uri)
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Sequence[str]:
+        """
+        Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @property
+    @pulumi.getter
+    def args(self) -> Sequence[str]:
+        """
+        Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Sequence[str]:
+        """
+        Optional. HCFS URIs of files to be placed in the working directory of each executor.
+        """
+        return pulumi.get(self, "file_uris")
+
+    @property
+    @pulumi.getter(name="jarFileUris")
+    def jar_file_uris(self) -> Sequence[str]:
+        """
+        Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+        """
+        return pulumi.get(self, "jar_file_uris")
+
+    @property
+    @pulumi.getter(name="mainClass")
+    def main_class(self) -> str:
+        """
+        Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
+        """
+        return pulumi.get(self, "main_class")
+
+    @property
+    @pulumi.getter(name="mainJarFileUri")
+    def main_jar_file_uri(self) -> str:
+        """
+        Optional. The HCFS URI of the jar file that contains the main class.
+        """
+        return pulumi.get(self, "main_jar_file_uri")
+
+
+@pulumi.output_type
+class SparkHistoryServerConfigResponse(dict):
+    """
+    Spark History Server configuration for the workload.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataprocCluster":
+            suggest = "dataproc_cluster"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SparkHistoryServerConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SparkHistoryServerConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SparkHistoryServerConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataproc_cluster: str):
+        """
+        Spark History Server configuration for the workload.
+        :param str dataproc_cluster: Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.Example: projects/[project_id]/regions/[region]/clusters/[cluster_name]
+        """
+        pulumi.set(__self__, "dataproc_cluster", dataproc_cluster)
+
+    @property
+    @pulumi.getter(name="dataprocCluster")
+    def dataproc_cluster(self) -> str:
+        """
+        Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.Example: projects/[project_id]/regions/[region]/clusters/[cluster_name]
+        """
+        return pulumi.get(self, "dataproc_cluster")
+
+
+@pulumi.output_type
 class SparkJobResponse(dict):
     """
     A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.
@@ -3668,6 +4241,82 @@ class SparkJobResponse(dict):
 
 
 @pulumi.output_type
+class SparkRBatchResponse(dict):
+    """
+    A configuration for running an Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) batch workload.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveUris":
+            suggest = "archive_uris"
+        elif key == "fileUris":
+            suggest = "file_uris"
+        elif key == "mainRFileUri":
+            suggest = "main_r_file_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SparkRBatchResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SparkRBatchResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SparkRBatchResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 archive_uris: Sequence[str],
+                 args: Sequence[str],
+                 file_uris: Sequence[str],
+                 main_r_file_uri: str):
+        """
+        A configuration for running an Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) batch workload.
+        :param Sequence[str] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param Sequence[str] args: Optional. The arguments to pass to the Spark driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        :param Sequence[str] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor.
+        :param str main_r_file_uri: The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
+        """
+        pulumi.set(__self__, "archive_uris", archive_uris)
+        pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "file_uris", file_uris)
+        pulumi.set(__self__, "main_r_file_uri", main_r_file_uri)
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Sequence[str]:
+        """
+        Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @property
+    @pulumi.getter
+    def args(self) -> Sequence[str]:
+        """
+        Optional. The arguments to pass to the Spark driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Sequence[str]:
+        """
+        Optional. HCFS URIs of files to be placed in the working directory of each executor.
+        """
+        return pulumi.get(self, "file_uris")
+
+    @property
+    @pulumi.getter(name="mainRFileUri")
+    def main_r_file_uri(self) -> str:
+        """
+        The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
+        """
+        return pulumi.get(self, "main_r_file_uri")
+
+
+@pulumi.output_type
 class SparkRJobResponse(dict):
     """
     A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
@@ -3765,6 +4414,71 @@ class SparkRJobResponse(dict):
         Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         return pulumi.get(self, "properties")
+
+
+@pulumi.output_type
+class SparkSqlBatchResponse(dict):
+    """
+    A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "queryFileUri":
+            suggest = "query_file_uri"
+        elif key == "queryVariables":
+            suggest = "query_variables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SparkSqlBatchResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SparkSqlBatchResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SparkSqlBatchResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 jar_file_uris: Sequence[str],
+                 query_file_uri: str,
+                 query_variables: Mapping[str, str]):
+        """
+        A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+        :param Sequence[str] jar_file_uris: Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        :param str query_file_uri: The HCFS URI of the script that contains Spark SQL queries to execute.
+        :param Mapping[str, str] query_variables: Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+        """
+        pulumi.set(__self__, "jar_file_uris", jar_file_uris)
+        pulumi.set(__self__, "query_file_uri", query_file_uri)
+        pulumi.set(__self__, "query_variables", query_variables)
+
+    @property
+    @pulumi.getter(name="jarFileUris")
+    def jar_file_uris(self) -> Sequence[str]:
+        """
+        Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        """
+        return pulumi.get(self, "jar_file_uris")
+
+    @property
+    @pulumi.getter(name="queryFileUri")
+    def query_file_uri(self) -> str:
+        """
+        The HCFS URI of the script that contains Spark SQL queries to execute.
+        """
+        return pulumi.get(self, "query_file_uri")
+
+    @property
+    @pulumi.getter(name="queryVariables")
+    def query_variables(self) -> Mapping[str, str]:
+        """
+        Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+        """
+        return pulumi.get(self, "query_variables")
 
 
 @pulumi.output_type
@@ -3958,6 +4672,69 @@ class SparkStandaloneAutoscalingConfigResponse(dict):
         Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
         """
         return pulumi.get(self, "scale_up_min_worker_fraction")
+
+
+@pulumi.output_type
+class StateHistoryResponse(dict):
+    """
+    Historical state information.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stateMessage":
+            suggest = "state_message"
+        elif key == "stateStartTime":
+            suggest = "state_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StateHistoryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StateHistoryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StateHistoryResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 state: str,
+                 state_message: str,
+                 state_start_time: str):
+        """
+        Historical state information.
+        :param str state: The state of the batch at this point in history.
+        :param str state_message: Details about the state at this point in history.
+        :param str state_start_time: The time when the batch entered the historical state.
+        """
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "state_message", state_message)
+        pulumi.set(__self__, "state_start_time", state_start_time)
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the batch at this point in history.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateMessage")
+    def state_message(self) -> str:
+        """
+        Details about the state at this point in history.
+        """
+        return pulumi.get(self, "state_message")
+
+    @property
+    @pulumi.getter(name="stateStartTime")
+    def state_start_time(self) -> str:
+        """
+        The time when the batch entered the historical state.
+        """
+        return pulumi.get(self, "state_start_time")
 
 
 @pulumi.output_type

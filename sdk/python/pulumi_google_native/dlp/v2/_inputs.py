@@ -1939,7 +1939,7 @@ class GooglePrivacyDlpV2FindingLimitsArgs:
                  max_findings_per_item: Optional[pulumi.Input[int]] = None,
                  max_findings_per_request: Optional[pulumi.Input[int]] = None):
         """
-        Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
+        Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeLimitArgs']]] max_findings_per_info_type: Configuration of findings limit given for specified infoTypes.
         :param pulumi.Input[int] max_findings_per_item: Max number of findings that will be returned for each item scanned. When set within `InspectJobConfig`, the maximum returned is 2000 regardless if this is set higher. When set within `InspectContentRequest`, this field is ignored.
         :param pulumi.Input[int] max_findings_per_request: Max number of findings that will be returned per request/job. When set within `InspectContentRequest`, the maximum returned is 2000 regardless if this is set higher.
@@ -2314,7 +2314,6 @@ class GooglePrivacyDlpV2InfoTypeArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2InspectConfigArgs:
     def __init__(__self__, *,
-                 content_options: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectConfigContentOptionsItem']]]] = None,
                  custom_info_types: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeArgs']]]] = None,
                  exclude_info_types: Optional[pulumi.Input[bool]] = None,
                  include_quote: Optional[pulumi.Input[bool]] = None,
@@ -2324,17 +2323,14 @@ class GooglePrivacyDlpV2InspectConfigArgs:
                  rule_set: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectionRuleSetArgs']]]] = None):
         """
         Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectConfigContentOptionsItem']]] content_options: List of options defining data content to scan. If empty, text, images, and other content will be included.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeArgs']]] custom_info_types: CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
-        :param pulumi.Input[bool] exclude_info_types: When true, excludes type information of the findings.
-        :param pulumi.Input[bool] include_quote: When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
+        :param pulumi.Input[bool] exclude_info_types: When true, excludes type information of the findings. This is not used for data profiling.
+        :param pulumi.Input[bool] include_quote: When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]] info_types: Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
-        :param pulumi.Input['GooglePrivacyDlpV2FindingLimitsArgs'] limits: Configuration to control the number of findings returned.
+        :param pulumi.Input['GooglePrivacyDlpV2FindingLimitsArgs'] limits: Configuration to control the number of findings returned. This is not used for data profiling.
         :param pulumi.Input['GooglePrivacyDlpV2InspectConfigMinLikelihood'] min_likelihood: Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectionRuleSetArgs']]] rule_set: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
         """
-        if content_options is not None:
-            pulumi.set(__self__, "content_options", content_options)
         if custom_info_types is not None:
             pulumi.set(__self__, "custom_info_types", custom_info_types)
         if exclude_info_types is not None:
@@ -2349,18 +2345,6 @@ class GooglePrivacyDlpV2InspectConfigArgs:
             pulumi.set(__self__, "min_likelihood", min_likelihood)
         if rule_set is not None:
             pulumi.set(__self__, "rule_set", rule_set)
-
-    @property
-    @pulumi.getter(name="contentOptions")
-    def content_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectConfigContentOptionsItem']]]]:
-        """
-        List of options defining data content to scan. If empty, text, images, and other content will be included.
-        """
-        return pulumi.get(self, "content_options")
-
-    @content_options.setter
-    def content_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectConfigContentOptionsItem']]]]):
-        pulumi.set(self, "content_options", value)
 
     @property
     @pulumi.getter(name="customInfoTypes")
@@ -2378,7 +2362,7 @@ class GooglePrivacyDlpV2InspectConfigArgs:
     @pulumi.getter(name="excludeInfoTypes")
     def exclude_info_types(self) -> Optional[pulumi.Input[bool]]:
         """
-        When true, excludes type information of the findings.
+        When true, excludes type information of the findings. This is not used for data profiling.
         """
         return pulumi.get(self, "exclude_info_types")
 
@@ -2390,7 +2374,7 @@ class GooglePrivacyDlpV2InspectConfigArgs:
     @pulumi.getter(name="includeQuote")
     def include_quote(self) -> Optional[pulumi.Input[bool]]:
         """
-        When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
+        When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
         """
         return pulumi.get(self, "include_quote")
 
@@ -2414,7 +2398,7 @@ class GooglePrivacyDlpV2InspectConfigArgs:
     @pulumi.getter
     def limits(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2FindingLimitsArgs']]:
         """
-        Configuration to control the number of findings returned.
+        Configuration to control the number of findings returned. This is not used for data profiling.
         """
         return pulumi.get(self, "limits")
 

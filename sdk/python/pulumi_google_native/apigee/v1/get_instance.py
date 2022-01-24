@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, created_at=None, description=None, disk_encryption_key_name=None, display_name=None, host=None, last_modified_at=None, location=None, name=None, peering_cidr_range=None, port=None, runtime_version=None, state=None):
+    def __init__(__self__, created_at=None, description=None, disk_encryption_key_name=None, display_name=None, host=None, ip_range=None, last_modified_at=None, location=None, name=None, peering_cidr_range=None, port=None, runtime_version=None, state=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -33,6 +33,9 @@ class GetInstanceResult:
         if host and not isinstance(host, str):
             raise TypeError("Expected argument 'host' to be a str")
         pulumi.set(__self__, "host", host)
+        if ip_range and not isinstance(ip_range, str):
+            raise TypeError("Expected argument 'ip_range' to be a str")
+        pulumi.set(__self__, "ip_range", ip_range)
         if last_modified_at and not isinstance(last_modified_at, str):
             raise TypeError("Expected argument 'last_modified_at' to be a str")
         pulumi.set(__self__, "last_modified_at", last_modified_at)
@@ -94,6 +97,14 @@ class GetInstanceResult:
         Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
         """
         return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="ipRange")
+    def ip_range(self) -> str:
+        """
+        Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
+        """
+        return pulumi.get(self, "ip_range")
 
     @property
     @pulumi.getter(name="lastModifiedAt")
@@ -163,6 +174,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             disk_encryption_key_name=self.disk_encryption_key_name,
             display_name=self.display_name,
             host=self.host,
+            ip_range=self.ip_range,
             last_modified_at=self.last_modified_at,
             location=self.location,
             name=self.name,
@@ -193,6 +205,7 @@ def get_instance(instance_id: Optional[str] = None,
         disk_encryption_key_name=__ret__.disk_encryption_key_name,
         display_name=__ret__.display_name,
         host=__ret__.host,
+        ip_range=__ret__.ip_range,
         last_modified_at=__ret__.last_modified_at,
         location=__ret__.location,
         name=__ret__.name,

@@ -4485,7 +4485,7 @@ func (o GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput) Index(i pulumi.
 	}).(GoogleCloudApigeeV1RevenueShareRangeResponseOutput)
 }
 
-// TLS configuration information for VirtualHosts and TargetServers.
+// TLS configuration information for virtual hosts and TargetServers.
 type GoogleCloudApigeeV1TlsInfo struct {
 	// The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
 	Ciphers []string `pulumi:"ciphers"`
@@ -4499,11 +4499,11 @@ type GoogleCloudApigeeV1TlsInfo struct {
 	IgnoreValidationErrors *bool `pulumi:"ignoreValidationErrors"`
 	// Required if `client_auth_enabled` is true. The resource ID for the alias containing the private key and cert.
 	KeyAlias *string `pulumi:"keyAlias"`
-	// Required if `client_auth_enabled` is true. The resource ID of the keystore. References not yet supported.
+	// Required if `client_auth_enabled` is true. The resource ID of the keystore.
 	KeyStore *string `pulumi:"keyStore"`
 	// The TLS versioins to be used.
 	Protocols []string `pulumi:"protocols"`
-	// The resource ID of the truststore. References not yet supported.
+	// The resource ID of the truststore.
 	TrustStore *string `pulumi:"trustStore"`
 }
 
@@ -4518,7 +4518,7 @@ type GoogleCloudApigeeV1TlsInfoInput interface {
 	ToGoogleCloudApigeeV1TlsInfoOutputWithContext(context.Context) GoogleCloudApigeeV1TlsInfoOutput
 }
 
-// TLS configuration information for VirtualHosts and TargetServers.
+// TLS configuration information for virtual hosts and TargetServers.
 type GoogleCloudApigeeV1TlsInfoArgs struct {
 	// The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
 	Ciphers pulumi.StringArrayInput `pulumi:"ciphers"`
@@ -4532,11 +4532,11 @@ type GoogleCloudApigeeV1TlsInfoArgs struct {
 	IgnoreValidationErrors pulumi.BoolPtrInput `pulumi:"ignoreValidationErrors"`
 	// Required if `client_auth_enabled` is true. The resource ID for the alias containing the private key and cert.
 	KeyAlias pulumi.StringPtrInput `pulumi:"keyAlias"`
-	// Required if `client_auth_enabled` is true. The resource ID of the keystore. References not yet supported.
+	// Required if `client_auth_enabled` is true. The resource ID of the keystore.
 	KeyStore pulumi.StringPtrInput `pulumi:"keyStore"`
 	// The TLS versioins to be used.
 	Protocols pulumi.StringArrayInput `pulumi:"protocols"`
-	// The resource ID of the truststore. References not yet supported.
+	// The resource ID of the truststore.
 	TrustStore pulumi.StringPtrInput `pulumi:"trustStore"`
 }
 
@@ -4593,7 +4593,7 @@ func (i *googleCloudApigeeV1TlsInfoPtrType) ToGoogleCloudApigeeV1TlsInfoPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TlsInfoPtrOutput)
 }
 
-// TLS configuration information for VirtualHosts and TargetServers.
+// TLS configuration information for virtual hosts and TargetServers.
 type GoogleCloudApigeeV1TlsInfoOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1TlsInfoOutput) ElementType() reflect.Type {
@@ -4648,7 +4648,7 @@ func (o GoogleCloudApigeeV1TlsInfoOutput) KeyAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfo) *string { return v.KeyAlias }).(pulumi.StringPtrOutput)
 }
 
-// Required if `client_auth_enabled` is true. The resource ID of the keystore. References not yet supported.
+// Required if `client_auth_enabled` is true. The resource ID of the keystore.
 func (o GoogleCloudApigeeV1TlsInfoOutput) KeyStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfo) *string { return v.KeyStore }).(pulumi.StringPtrOutput)
 }
@@ -4658,7 +4658,7 @@ func (o GoogleCloudApigeeV1TlsInfoOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfo) []string { return v.Protocols }).(pulumi.StringArrayOutput)
 }
 
-// The resource ID of the truststore. References not yet supported.
+// The resource ID of the truststore.
 func (o GoogleCloudApigeeV1TlsInfoOutput) TrustStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfo) *string { return v.TrustStore }).(pulumi.StringPtrOutput)
 }
@@ -4747,7 +4747,7 @@ func (o GoogleCloudApigeeV1TlsInfoPtrOutput) KeyAlias() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required if `client_auth_enabled` is true. The resource ID of the keystore. References not yet supported.
+// Required if `client_auth_enabled` is true. The resource ID of the keystore.
 func (o GoogleCloudApigeeV1TlsInfoPtrOutput) KeyStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfo) *string {
 		if v == nil {
@@ -4767,7 +4767,7 @@ func (o GoogleCloudApigeeV1TlsInfoPtrOutput) Protocols() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
-// The resource ID of the truststore. References not yet supported.
+// The resource ID of the truststore.
 func (o GoogleCloudApigeeV1TlsInfoPtrOutput) TrustStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfo) *string {
 		if v == nil {
@@ -4964,7 +4964,7 @@ func (o GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput) WildcardMatch() pulu
 	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoCommonNameResponse) bool { return v.WildcardMatch }).(pulumi.BoolOutput)
 }
 
-// TLS configuration information for VirtualHosts and TargetServers.
+// TLS configuration information for virtual hosts and TargetServers.
 type GoogleCloudApigeeV1TlsInfoResponse struct {
 	// The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
 	Ciphers []string `pulumi:"ciphers"`
@@ -4978,15 +4978,15 @@ type GoogleCloudApigeeV1TlsInfoResponse struct {
 	IgnoreValidationErrors bool `pulumi:"ignoreValidationErrors"`
 	// Required if `client_auth_enabled` is true. The resource ID for the alias containing the private key and cert.
 	KeyAlias string `pulumi:"keyAlias"`
-	// Required if `client_auth_enabled` is true. The resource ID of the keystore. References not yet supported.
+	// Required if `client_auth_enabled` is true. The resource ID of the keystore.
 	KeyStore string `pulumi:"keyStore"`
 	// The TLS versioins to be used.
 	Protocols []string `pulumi:"protocols"`
-	// The resource ID of the truststore. References not yet supported.
+	// The resource ID of the truststore.
 	TrustStore string `pulumi:"trustStore"`
 }
 
-// TLS configuration information for VirtualHosts and TargetServers.
+// TLS configuration information for virtual hosts and TargetServers.
 type GoogleCloudApigeeV1TlsInfoResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1TlsInfoResponseOutput) ElementType() reflect.Type {
@@ -5033,7 +5033,7 @@ func (o GoogleCloudApigeeV1TlsInfoResponseOutput) KeyAlias() pulumi.StringOutput
 	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) string { return v.KeyAlias }).(pulumi.StringOutput)
 }
 
-// Required if `client_auth_enabled` is true. The resource ID of the keystore. References not yet supported.
+// Required if `client_auth_enabled` is true. The resource ID of the keystore.
 func (o GoogleCloudApigeeV1TlsInfoResponseOutput) KeyStore() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) string { return v.KeyStore }).(pulumi.StringOutput)
 }
@@ -5043,7 +5043,7 @@ func (o GoogleCloudApigeeV1TlsInfoResponseOutput) Protocols() pulumi.StringArray
 	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) []string { return v.Protocols }).(pulumi.StringArrayOutput)
 }
 
-// The resource ID of the truststore. References not yet supported.
+// The resource ID of the truststore.
 func (o GoogleCloudApigeeV1TlsInfoResponseOutput) TrustStore() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) string { return v.TrustStore }).(pulumi.StringOutput)
 }

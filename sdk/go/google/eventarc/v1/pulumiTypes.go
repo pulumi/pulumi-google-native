@@ -732,6 +732,8 @@ func (o CloudRunResponseOutput) Service() pulumi.StringOutput {
 
 // Represents a target of an invocation over HTTP.
 type Destination struct {
+	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+	CloudFunction *string `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun *CloudRun `pulumi:"cloudRun"`
 	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
@@ -751,6 +753,8 @@ type DestinationInput interface {
 
 // Represents a target of an invocation over HTTP.
 type DestinationArgs struct {
+	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+	CloudFunction pulumi.StringPtrInput `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun CloudRunPtrInput `pulumi:"cloudRun"`
 	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
@@ -784,6 +788,11 @@ func (o DestinationOutput) ToDestinationOutputWithContext(ctx context.Context) D
 	return o
 }
 
+// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+func (o DestinationOutput) CloudFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Destination) *string { return v.CloudFunction }).(pulumi.StringPtrOutput)
+}
+
 // Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 func (o DestinationOutput) CloudRun() CloudRunPtrOutput {
 	return o.ApplyT(func(v Destination) *CloudRun { return v.CloudRun }).(CloudRunPtrOutput)
@@ -796,6 +805,8 @@ func (o DestinationOutput) Gke() GKEPtrOutput {
 
 // Represents a target of an invocation over HTTP.
 type DestinationResponse struct {
+	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+	CloudFunction string `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun CloudRunResponse `pulumi:"cloudRun"`
 	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
@@ -815,6 +826,11 @@ func (o DestinationResponseOutput) ToDestinationResponseOutput() DestinationResp
 
 func (o DestinationResponseOutput) ToDestinationResponseOutputWithContext(ctx context.Context) DestinationResponseOutput {
 	return o
+}
+
+// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+func (o DestinationResponseOutput) CloudFunction() pulumi.StringOutput {
+	return o.ApplyT(func(v DestinationResponse) string { return v.CloudFunction }).(pulumi.StringOutput)
 }
 
 // Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.

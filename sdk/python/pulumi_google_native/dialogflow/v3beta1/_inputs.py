@@ -2540,7 +2540,7 @@ class GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsArgs:
     def __init__(__self__, *,
                  enable_insights_export: Optional[pulumi.Input[bool]] = None):
         """
-        Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+        Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
         :param pulumi.Input[bool] enable_insights_export: If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
         """
         if enable_insights_export is not None:

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Use this method to create a route for a private connectivity in a project and location.
+ * Use this method to create a route for a private connectivity configuration in a project and location.
  * Auto-naming is currently not supported for this resource.
  */
 export class Route extends pulumi.CustomResource {

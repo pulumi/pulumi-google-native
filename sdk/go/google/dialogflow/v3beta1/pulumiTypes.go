@@ -9707,7 +9707,7 @@ func (o GoogleCloudDialogflowCxV3beta1RolloutStateResponseOutput) StepIndex() pu
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1RolloutStateResponse) int { return v.StepIndex }).(pulumi.IntOutput)
 }
 
-// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+// Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
 type GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings struct {
 	// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
 	EnableInsightsExport *bool `pulumi:"enableInsightsExport"`
@@ -9724,7 +9724,7 @@ type GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsInput i
 	ToGoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsOutput
 }
 
-// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+// Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
 type GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsArgs struct {
 	// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
 	EnableInsightsExport pulumi.BoolPtrInput `pulumi:"enableInsightsExport"`
@@ -9783,7 +9783,7 @@ func (i *googleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsPtr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsPtrOutput)
 }
 
-// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+// Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
 type GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsOutput) ElementType() reflect.Type {
@@ -9849,13 +9849,13 @@ func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+// Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
 type GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponse struct {
 	// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
 	EnableInsightsExport bool `pulumi:"enableInsightsExport"`
 }
 
-// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+// Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
 type GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponseOutput) ElementType() reflect.Type {

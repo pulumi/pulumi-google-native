@@ -5887,9 +5887,9 @@ func (o ProbeResponseOutput) TimeoutSeconds() pulumi.IntOutput {
 
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirements struct {
-	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
-	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests map[string]string `pulumi:"requests"`
 }
 
@@ -5906,9 +5906,9 @@ type ResourceRequirementsInput interface {
 
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirementsArgs struct {
-	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
-	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests pulumi.StringMapInput `pulumi:"requests"`
 }
 
@@ -5990,12 +5990,12 @@ func (o ResourceRequirementsOutput) ToResourceRequirementsPtrOutputWithContext(c
 	}).(ResourceRequirementsPtrOutput)
 }
 
-// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirements) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
 
-// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirements) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
 }
@@ -6024,7 +6024,7 @@ func (o ResourceRequirementsPtrOutput) Elem() ResourceRequirementsOutput {
 	}).(ResourceRequirementsOutput)
 }
 
-// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsPtrOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceRequirements) map[string]string {
 		if v == nil {
@@ -6034,7 +6034,7 @@ func (o ResourceRequirementsPtrOutput) Limits() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsPtrOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceRequirements) map[string]string {
 		if v == nil {
@@ -6046,9 +6046,9 @@ func (o ResourceRequirementsPtrOutput) Requests() pulumi.StringMapOutput {
 
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirementsResponse struct {
-	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
-	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests map[string]string `pulumi:"requests"`
 }
 
@@ -6067,12 +6067,12 @@ func (o ResourceRequirementsResponseOutput) ToResourceRequirementsResponseOutput
 	return o
 }
 
-// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsResponseOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirementsResponse) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
 
-// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsResponseOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirementsResponse) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
 }

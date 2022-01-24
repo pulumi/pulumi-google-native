@@ -2701,6 +2701,8 @@ type PatchConfig struct {
 	Apt *AptSettings `pulumi:"apt"`
 	// Goo update settings. Use this setting to override the default `goo` patch rules.
 	Goo *GooSettings `pulumi:"goo"`
+	// Allows the patch job to run on Managed instance groups (MIGs).
+	MigInstancesAllowed *bool `pulumi:"migInstancesAllowed"`
 	// The `ExecStep` to run after the patch update.
 	PostStep *ExecStep `pulumi:"postStep"`
 	// The `ExecStep` to run before the patch update.
@@ -2732,6 +2734,8 @@ type PatchConfigArgs struct {
 	Apt AptSettingsPtrInput `pulumi:"apt"`
 	// Goo update settings. Use this setting to override the default `goo` patch rules.
 	Goo GooSettingsPtrInput `pulumi:"goo"`
+	// Allows the patch job to run on Managed instance groups (MIGs).
+	MigInstancesAllowed pulumi.BoolPtrInput `pulumi:"migInstancesAllowed"`
 	// The `ExecStep` to run after the patch update.
 	PostStep ExecStepPtrInput `pulumi:"postStep"`
 	// The `ExecStep` to run before the patch update.
@@ -2834,6 +2838,11 @@ func (o PatchConfigOutput) Goo() GooSettingsPtrOutput {
 	return o.ApplyT(func(v PatchConfig) *GooSettings { return v.Goo }).(GooSettingsPtrOutput)
 }
 
+// Allows the patch job to run on Managed instance groups (MIGs).
+func (o PatchConfigOutput) MigInstancesAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PatchConfig) *bool { return v.MigInstancesAllowed }).(pulumi.BoolPtrOutput)
+}
+
 // The `ExecStep` to run after the patch update.
 func (o PatchConfigOutput) PostStep() ExecStepPtrOutput {
 	return o.ApplyT(func(v PatchConfig) *ExecStep { return v.PostStep }).(ExecStepPtrOutput)
@@ -2908,6 +2917,16 @@ func (o PatchConfigPtrOutput) Goo() GooSettingsPtrOutput {
 	}).(GooSettingsPtrOutput)
 }
 
+// Allows the patch job to run on Managed instance groups (MIGs).
+func (o PatchConfigPtrOutput) MigInstancesAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PatchConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MigInstancesAllowed
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The `ExecStep` to run after the patch update.
 func (o PatchConfigPtrOutput) PostStep() ExecStepPtrOutput {
 	return o.ApplyT(func(v *PatchConfig) *ExecStep {
@@ -2974,6 +2993,8 @@ type PatchConfigResponse struct {
 	Apt AptSettingsResponse `pulumi:"apt"`
 	// Goo update settings. Use this setting to override the default `goo` patch rules.
 	Goo GooSettingsResponse `pulumi:"goo"`
+	// Allows the patch job to run on Managed instance groups (MIGs).
+	MigInstancesAllowed bool `pulumi:"migInstancesAllowed"`
 	// The `ExecStep` to run after the patch update.
 	PostStep ExecStepResponse `pulumi:"postStep"`
 	// The `ExecStep` to run before the patch update.
@@ -3011,6 +3032,11 @@ func (o PatchConfigResponseOutput) Apt() AptSettingsResponseOutput {
 // Goo update settings. Use this setting to override the default `goo` patch rules.
 func (o PatchConfigResponseOutput) Goo() GooSettingsResponseOutput {
 	return o.ApplyT(func(v PatchConfigResponse) GooSettingsResponse { return v.Goo }).(GooSettingsResponseOutput)
+}
+
+// Allows the patch job to run on Managed instance groups (MIGs).
+func (o PatchConfigResponseOutput) MigInstancesAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v PatchConfigResponse) bool { return v.MigInstancesAllowed }).(pulumi.BoolOutput)
 }
 
 // The `ExecStep` to run after the patch update.

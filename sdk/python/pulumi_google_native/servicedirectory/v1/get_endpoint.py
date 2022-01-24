@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEndpointResult:
-    def __init__(__self__, address=None, annotations=None, name=None, port=None):
+    def __init__(__self__, address=None, annotations=None, name=None, network=None, port=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
@@ -27,6 +27,9 @@ class GetEndpointResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if network and not isinstance(network, str):
+            raise TypeError("Expected argument 'network' to be a str")
+        pulumi.set(__self__, "network", network)
         if port and not isinstance(port, int):
             raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
@@ -57,6 +60,14 @@ class GetEndpointResult:
 
     @property
     @pulumi.getter
+    def network(self) -> str:
+        """
+        Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
     def port(self) -> int:
         """
         Optional. Service Directory rejects values outside of `[0, 65535]`.
@@ -73,6 +84,7 @@ class AwaitableGetEndpointResult(GetEndpointResult):
             address=self.address,
             annotations=self.annotations,
             name=self.name,
+            network=self.network,
             port=self.port)
 
 
@@ -101,6 +113,7 @@ def get_endpoint(endpoint_id: Optional[str] = None,
         address=__ret__.address,
         annotations=__ret__.annotations,
         name=__ret__.name,
+        network=__ret__.network,
         port=__ret__.port)
 
 

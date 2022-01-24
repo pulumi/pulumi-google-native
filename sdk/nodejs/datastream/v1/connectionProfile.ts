@@ -111,6 +111,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["staticServiceIpConnectivity"] = args ? args.staticServiceIpConnectivity : undefined;
+            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -175,4 +176,5 @@ export interface ConnectionProfileArgs {
      * Static Service IP connectivity.
      */
     staticServiceIpConnectivity?: pulumi.Input<inputs.datastream.v1.StaticServiceIpConnectivityArgs>;
+    validateOnly?: pulumi.Input<string>;
 }

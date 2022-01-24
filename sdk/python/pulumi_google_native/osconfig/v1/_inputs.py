@@ -1873,6 +1873,7 @@ class PatchConfigArgs:
     def __init__(__self__, *,
                  apt: Optional[pulumi.Input['AptSettingsArgs']] = None,
                  goo: Optional[pulumi.Input['GooSettingsArgs']] = None,
+                 mig_instances_allowed: Optional[pulumi.Input[bool]] = None,
                  post_step: Optional[pulumi.Input['ExecStepArgs']] = None,
                  pre_step: Optional[pulumi.Input['ExecStepArgs']] = None,
                  reboot_config: Optional[pulumi.Input['PatchConfigRebootConfig']] = None,
@@ -1883,6 +1884,7 @@ class PatchConfigArgs:
         Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
         :param pulumi.Input['AptSettingsArgs'] apt: Apt update settings. Use this setting to override the default `apt` patch rules.
         :param pulumi.Input['GooSettingsArgs'] goo: Goo update settings. Use this setting to override the default `goo` patch rules.
+        :param pulumi.Input[bool] mig_instances_allowed: Allows the patch job to run on Managed instance groups (MIGs).
         :param pulumi.Input['ExecStepArgs'] post_step: The `ExecStep` to run after the patch update.
         :param pulumi.Input['ExecStepArgs'] pre_step: The `ExecStep` to run before the patch update.
         :param pulumi.Input['PatchConfigRebootConfig'] reboot_config: Post-patch reboot settings.
@@ -1894,6 +1896,8 @@ class PatchConfigArgs:
             pulumi.set(__self__, "apt", apt)
         if goo is not None:
             pulumi.set(__self__, "goo", goo)
+        if mig_instances_allowed is not None:
+            pulumi.set(__self__, "mig_instances_allowed", mig_instances_allowed)
         if post_step is not None:
             pulumi.set(__self__, "post_step", post_step)
         if pre_step is not None:
@@ -1930,6 +1934,18 @@ class PatchConfigArgs:
     @goo.setter
     def goo(self, value: Optional[pulumi.Input['GooSettingsArgs']]):
         pulumi.set(self, "goo", value)
+
+    @property
+    @pulumi.getter(name="migInstancesAllowed")
+    def mig_instances_allowed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows the patch job to run on Managed instance groups (MIGs).
+        """
+        return pulumi.get(self, "mig_instances_allowed")
+
+    @mig_instances_allowed.setter
+    def mig_instances_allowed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mig_instances_allowed", value)
 
     @property
     @pulumi.getter(name="postStep")

@@ -18,6 +18,7 @@ class InstanceArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 ip_range: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peering_cidr_range: Optional[pulumi.Input['InstancePeeringCidrRange']] = None):
@@ -26,6 +27,7 @@ class InstanceArgs:
         :param pulumi.Input[str] description: Optional. Description of the instance.
         :param pulumi.Input[str] disk_encryption_key_name: Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
         :param pulumi.Input[str] display_name: Optional. Display name for the instance.
+        :param pulumi.Input[str] ip_range: Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
         :param pulumi.Input[str] location: Compute Engine location where the instance resides.
         :param pulumi.Input[str] name: Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
         :param pulumi.Input['InstancePeeringCidrRange'] peering_cidr_range: Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
@@ -37,6 +39,8 @@ class InstanceArgs:
             pulumi.set(__self__, "disk_encryption_key_name", disk_encryption_key_name)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if ip_range is not None:
+            pulumi.set(__self__, "ip_range", ip_range)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -90,6 +94,18 @@ class InstanceArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="ipRange")
+    def ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
+        """
+        return pulumi.get(self, "ip_range")
+
+    @ip_range.setter
+    def ip_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_range", value)
+
+    @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
@@ -134,6 +150,7 @@ class Instance(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 ip_range: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -147,6 +164,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. Description of the instance.
         :param pulumi.Input[str] disk_encryption_key_name: Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
         :param pulumi.Input[str] display_name: Optional. Display name for the instance.
+        :param pulumi.Input[str] ip_range: Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
         :param pulumi.Input[str] location: Compute Engine location where the instance resides.
         :param pulumi.Input[str] name: Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
         :param pulumi.Input['InstancePeeringCidrRange'] peering_cidr_range: Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
@@ -178,6 +196,7 @@ class Instance(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 ip_range: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -197,6 +216,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key_name"] = disk_encryption_key_name
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["ip_range"] = ip_range
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
@@ -236,6 +256,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["disk_encryption_key_name"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["host"] = None
+        __props__.__dict__["ip_range"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -284,6 +305,14 @@ class Instance(pulumi.CustomResource):
         Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
         """
         return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="ipRange")
+    def ip_range(self) -> pulumi.Output[str]:
+        """
+        Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
+        """
+        return pulumi.get(self, "ip_range")
 
     @property
     @pulumi.getter(name="lastModifiedAt")

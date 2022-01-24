@@ -24,7 +24,7 @@ class AuthorizationPolicyAction(str, Enum):
     """
     DENY = "DENY"
     """
-    Deny access.
+    Deny access. Deny rules should be avoided unless they are used to provide a default "deny all" fallback.
     """
 
 

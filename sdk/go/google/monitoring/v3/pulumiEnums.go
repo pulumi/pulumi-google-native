@@ -2641,6 +2641,175 @@ func (in *serviceLevelObjectiveCalendarPeriodPtr) ToServiceLevelObjectiveCalenda
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceLevelObjectiveCalendarPeriodPtrOutput)
 }
 
+// The type of checkers to use to execute the Uptime check.
+type UptimeCheckConfigCheckerType string
+
+const (
+	// The default checker type. Currently converted to STATIC_IP_CHECKERS on creation, the default conversion behavior may change in the future.
+	UptimeCheckConfigCheckerTypeCheckerTypeUnspecified = UptimeCheckConfigCheckerType("CHECKER_TYPE_UNSPECIFIED")
+	// STATIC_IP_CHECKERS are used for uptime checks that perform egress across the public internet. STATIC_IP_CHECKERS use the static IP addresses returned by ListUptimeCheckIps.
+	UptimeCheckConfigCheckerTypeStaticIpCheckers = UptimeCheckConfigCheckerType("STATIC_IP_CHECKERS")
+	// VPC_CHECKERS are used for uptime checks that perform egress using Service Directory and private network access. When using VPC_CHECKERS, the monitored resource type must be servicedirectory_service.
+	UptimeCheckConfigCheckerTypeVpcCheckers = UptimeCheckConfigCheckerType("VPC_CHECKERS")
+)
+
+func (UptimeCheckConfigCheckerType) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeCheckConfigCheckerType)(nil)).Elem()
+}
+
+func (e UptimeCheckConfigCheckerType) ToUptimeCheckConfigCheckerTypeOutput() UptimeCheckConfigCheckerTypeOutput {
+	return pulumi.ToOutput(e).(UptimeCheckConfigCheckerTypeOutput)
+}
+
+func (e UptimeCheckConfigCheckerType) ToUptimeCheckConfigCheckerTypeOutputWithContext(ctx context.Context) UptimeCheckConfigCheckerTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(UptimeCheckConfigCheckerTypeOutput)
+}
+
+func (e UptimeCheckConfigCheckerType) ToUptimeCheckConfigCheckerTypePtrOutput() UptimeCheckConfigCheckerTypePtrOutput {
+	return e.ToUptimeCheckConfigCheckerTypePtrOutputWithContext(context.Background())
+}
+
+func (e UptimeCheckConfigCheckerType) ToUptimeCheckConfigCheckerTypePtrOutputWithContext(ctx context.Context) UptimeCheckConfigCheckerTypePtrOutput {
+	return UptimeCheckConfigCheckerType(e).ToUptimeCheckConfigCheckerTypeOutputWithContext(ctx).ToUptimeCheckConfigCheckerTypePtrOutputWithContext(ctx)
+}
+
+func (e UptimeCheckConfigCheckerType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UptimeCheckConfigCheckerType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UptimeCheckConfigCheckerType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e UptimeCheckConfigCheckerType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type UptimeCheckConfigCheckerTypeOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigCheckerTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeCheckConfigCheckerType)(nil)).Elem()
+}
+
+func (o UptimeCheckConfigCheckerTypeOutput) ToUptimeCheckConfigCheckerTypeOutput() UptimeCheckConfigCheckerTypeOutput {
+	return o
+}
+
+func (o UptimeCheckConfigCheckerTypeOutput) ToUptimeCheckConfigCheckerTypeOutputWithContext(ctx context.Context) UptimeCheckConfigCheckerTypeOutput {
+	return o
+}
+
+func (o UptimeCheckConfigCheckerTypeOutput) ToUptimeCheckConfigCheckerTypePtrOutput() UptimeCheckConfigCheckerTypePtrOutput {
+	return o.ToUptimeCheckConfigCheckerTypePtrOutputWithContext(context.Background())
+}
+
+func (o UptimeCheckConfigCheckerTypeOutput) ToUptimeCheckConfigCheckerTypePtrOutputWithContext(ctx context.Context) UptimeCheckConfigCheckerTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigCheckerType) *UptimeCheckConfigCheckerType {
+		return &v
+	}).(UptimeCheckConfigCheckerTypePtrOutput)
+}
+
+func (o UptimeCheckConfigCheckerTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o UptimeCheckConfigCheckerTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UptimeCheckConfigCheckerType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o UptimeCheckConfigCheckerTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UptimeCheckConfigCheckerTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UptimeCheckConfigCheckerType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type UptimeCheckConfigCheckerTypePtrOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigCheckerTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UptimeCheckConfigCheckerType)(nil)).Elem()
+}
+
+func (o UptimeCheckConfigCheckerTypePtrOutput) ToUptimeCheckConfigCheckerTypePtrOutput() UptimeCheckConfigCheckerTypePtrOutput {
+	return o
+}
+
+func (o UptimeCheckConfigCheckerTypePtrOutput) ToUptimeCheckConfigCheckerTypePtrOutputWithContext(ctx context.Context) UptimeCheckConfigCheckerTypePtrOutput {
+	return o
+}
+
+func (o UptimeCheckConfigCheckerTypePtrOutput) Elem() UptimeCheckConfigCheckerTypeOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigCheckerType) UptimeCheckConfigCheckerType {
+		if v != nil {
+			return *v
+		}
+		var ret UptimeCheckConfigCheckerType
+		return ret
+	}).(UptimeCheckConfigCheckerTypeOutput)
+}
+
+func (o UptimeCheckConfigCheckerTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UptimeCheckConfigCheckerTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *UptimeCheckConfigCheckerType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// UptimeCheckConfigCheckerTypeInput is an input type that accepts UptimeCheckConfigCheckerTypeArgs and UptimeCheckConfigCheckerTypeOutput values.
+// You can construct a concrete instance of `UptimeCheckConfigCheckerTypeInput` via:
+//
+//          UptimeCheckConfigCheckerTypeArgs{...}
+type UptimeCheckConfigCheckerTypeInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigCheckerTypeOutput() UptimeCheckConfigCheckerTypeOutput
+	ToUptimeCheckConfigCheckerTypeOutputWithContext(context.Context) UptimeCheckConfigCheckerTypeOutput
+}
+
+var uptimeCheckConfigCheckerTypePtrType = reflect.TypeOf((**UptimeCheckConfigCheckerType)(nil)).Elem()
+
+type UptimeCheckConfigCheckerTypePtrInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigCheckerTypePtrOutput() UptimeCheckConfigCheckerTypePtrOutput
+	ToUptimeCheckConfigCheckerTypePtrOutputWithContext(context.Context) UptimeCheckConfigCheckerTypePtrOutput
+}
+
+type uptimeCheckConfigCheckerTypePtr string
+
+func UptimeCheckConfigCheckerTypePtr(v string) UptimeCheckConfigCheckerTypePtrInput {
+	return (*uptimeCheckConfigCheckerTypePtr)(&v)
+}
+
+func (*uptimeCheckConfigCheckerTypePtr) ElementType() reflect.Type {
+	return uptimeCheckConfigCheckerTypePtrType
+}
+
+func (in *uptimeCheckConfigCheckerTypePtr) ToUptimeCheckConfigCheckerTypePtrOutput() UptimeCheckConfigCheckerTypePtrOutput {
+	return pulumi.ToOutput(in).(UptimeCheckConfigCheckerTypePtrOutput)
+}
+
+func (in *uptimeCheckConfigCheckerTypePtr) ToUptimeCheckConfigCheckerTypePtrOutputWithContext(ctx context.Context) UptimeCheckConfigCheckerTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(UptimeCheckConfigCheckerTypePtrOutput)
+}
+
 type UptimeCheckConfigSelectedRegionsItem string
 
 const (
@@ -2889,6 +3058,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupResourceTypePtrInput)(nil)).Elem(), ResourceGroupResourceType("RESOURCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLevelObjectiveCalendarPeriodInput)(nil)).Elem(), ServiceLevelObjectiveCalendarPeriod("CALENDAR_PERIOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLevelObjectiveCalendarPeriodPtrInput)(nil)).Elem(), ServiceLevelObjectiveCalendarPeriod("CALENDAR_PERIOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigCheckerTypeInput)(nil)).Elem(), UptimeCheckConfigCheckerType("CHECKER_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigCheckerTypePtrInput)(nil)).Elem(), UptimeCheckConfigCheckerType("CHECKER_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigSelectedRegionsItemInput)(nil)).Elem(), UptimeCheckConfigSelectedRegionsItem("REGION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigSelectedRegionsItemPtrInput)(nil)).Elem(), UptimeCheckConfigSelectedRegionsItem("REGION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigSelectedRegionsItemArrayInput)(nil)).Elem(), UptimeCheckConfigSelectedRegionsItemArray{})
@@ -2922,6 +3093,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceGroupResourceTypePtrOutput{})
 	pulumi.RegisterOutputType(ServiceLevelObjectiveCalendarPeriodOutput{})
 	pulumi.RegisterOutputType(ServiceLevelObjectiveCalendarPeriodPtrOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigCheckerTypeOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigCheckerTypePtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigSelectedRegionsItemOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigSelectedRegionsItemPtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigSelectedRegionsItemArrayOutput{})

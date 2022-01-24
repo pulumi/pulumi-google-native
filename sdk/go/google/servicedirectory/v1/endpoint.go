@@ -21,6 +21,8 @@ type Endpoint struct {
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
+	Network pulumi.StringOutput `pulumi:"network"`
 	// Optional. Service Directory rejects values outside of `[0, 65535]`.
 	Port pulumi.IntOutput `pulumi:"port"`
 }
@@ -82,6 +84,8 @@ type endpointArgs struct {
 	// Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
 	Name        *string `pulumi:"name"`
 	NamespaceId string  `pulumi:"namespaceId"`
+	// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
+	Network *string `pulumi:"network"`
 	// Optional. Service Directory rejects values outside of `[0, 65535]`.
 	Port      *int    `pulumi:"port"`
 	Project   *string `pulumi:"project"`
@@ -99,6 +103,8 @@ type EndpointArgs struct {
 	// Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
 	Name        pulumi.StringPtrInput
 	NamespaceId pulumi.StringInput
+	// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
+	Network pulumi.StringPtrInput
 	// Optional. Service Directory rejects values outside of `[0, 65535]`.
 	Port      pulumi.IntPtrInput
 	Project   pulumi.StringPtrInput

@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Immutable. The database type that the Metastore service stores its data.
+        /// </summary>
+        [Output("databaseType")]
+        public Output<string> DatabaseType { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
         /// </summary>
         [Output("encryptionConfig")]
@@ -174,6 +180,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
 
     public sealed class ServiceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Immutable. The database type that the Metastore service stores its data.
+        /// </summary>
+        [Input("databaseType")]
+        public Input<Pulumi.GoogleNative.Metastore.V1Alpha.ServiceDatabaseType>? DatabaseType { get; set; }
+
         /// <summary>
         /// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
         /// </summary>

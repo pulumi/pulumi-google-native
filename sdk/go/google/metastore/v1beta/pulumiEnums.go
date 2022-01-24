@@ -865,6 +865,175 @@ func (in *maintenanceWindowDayOfWeekPtr) ToMaintenanceWindowDayOfWeekPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceWindowDayOfWeekPtrOutput)
 }
 
+// Immutable. The database type that the Metastore service stores its data.
+type ServiceDatabaseType string
+
+const (
+	// The DATABASE_TYPE is not set.
+	ServiceDatabaseTypeDatabaseTypeUnspecified = ServiceDatabaseType("DATABASE_TYPE_UNSPECIFIED")
+	// MySQL is used to persist the metastore data.
+	ServiceDatabaseTypeMysql = ServiceDatabaseType("MYSQL")
+	// Spanner is used to persist the metastore data.
+	ServiceDatabaseTypeSpanner = ServiceDatabaseType("SPANNER")
+)
+
+func (ServiceDatabaseType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDatabaseType)(nil)).Elem()
+}
+
+func (e ServiceDatabaseType) ToServiceDatabaseTypeOutput() ServiceDatabaseTypeOutput {
+	return pulumi.ToOutput(e).(ServiceDatabaseTypeOutput)
+}
+
+func (e ServiceDatabaseType) ToServiceDatabaseTypeOutputWithContext(ctx context.Context) ServiceDatabaseTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ServiceDatabaseTypeOutput)
+}
+
+func (e ServiceDatabaseType) ToServiceDatabaseTypePtrOutput() ServiceDatabaseTypePtrOutput {
+	return e.ToServiceDatabaseTypePtrOutputWithContext(context.Background())
+}
+
+func (e ServiceDatabaseType) ToServiceDatabaseTypePtrOutputWithContext(ctx context.Context) ServiceDatabaseTypePtrOutput {
+	return ServiceDatabaseType(e).ToServiceDatabaseTypeOutputWithContext(ctx).ToServiceDatabaseTypePtrOutputWithContext(ctx)
+}
+
+func (e ServiceDatabaseType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceDatabaseType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceDatabaseType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceDatabaseType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ServiceDatabaseTypeOutput struct{ *pulumi.OutputState }
+
+func (ServiceDatabaseTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDatabaseType)(nil)).Elem()
+}
+
+func (o ServiceDatabaseTypeOutput) ToServiceDatabaseTypeOutput() ServiceDatabaseTypeOutput {
+	return o
+}
+
+func (o ServiceDatabaseTypeOutput) ToServiceDatabaseTypeOutputWithContext(ctx context.Context) ServiceDatabaseTypeOutput {
+	return o
+}
+
+func (o ServiceDatabaseTypeOutput) ToServiceDatabaseTypePtrOutput() ServiceDatabaseTypePtrOutput {
+	return o.ToServiceDatabaseTypePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceDatabaseTypeOutput) ToServiceDatabaseTypePtrOutputWithContext(ctx context.Context) ServiceDatabaseTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceDatabaseType) *ServiceDatabaseType {
+		return &v
+	}).(ServiceDatabaseTypePtrOutput)
+}
+
+func (o ServiceDatabaseTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ServiceDatabaseTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceDatabaseType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ServiceDatabaseTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceDatabaseTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceDatabaseType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceDatabaseTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceDatabaseTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceDatabaseType)(nil)).Elem()
+}
+
+func (o ServiceDatabaseTypePtrOutput) ToServiceDatabaseTypePtrOutput() ServiceDatabaseTypePtrOutput {
+	return o
+}
+
+func (o ServiceDatabaseTypePtrOutput) ToServiceDatabaseTypePtrOutputWithContext(ctx context.Context) ServiceDatabaseTypePtrOutput {
+	return o
+}
+
+func (o ServiceDatabaseTypePtrOutput) Elem() ServiceDatabaseTypeOutput {
+	return o.ApplyT(func(v *ServiceDatabaseType) ServiceDatabaseType {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceDatabaseType
+		return ret
+	}).(ServiceDatabaseTypeOutput)
+}
+
+func (o ServiceDatabaseTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceDatabaseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServiceDatabaseType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceDatabaseTypeInput is an input type that accepts ServiceDatabaseTypeArgs and ServiceDatabaseTypeOutput values.
+// You can construct a concrete instance of `ServiceDatabaseTypeInput` via:
+//
+//          ServiceDatabaseTypeArgs{...}
+type ServiceDatabaseTypeInput interface {
+	pulumi.Input
+
+	ToServiceDatabaseTypeOutput() ServiceDatabaseTypeOutput
+	ToServiceDatabaseTypeOutputWithContext(context.Context) ServiceDatabaseTypeOutput
+}
+
+var serviceDatabaseTypePtrType = reflect.TypeOf((**ServiceDatabaseType)(nil)).Elem()
+
+type ServiceDatabaseTypePtrInput interface {
+	pulumi.Input
+
+	ToServiceDatabaseTypePtrOutput() ServiceDatabaseTypePtrOutput
+	ToServiceDatabaseTypePtrOutputWithContext(context.Context) ServiceDatabaseTypePtrOutput
+}
+
+type serviceDatabaseTypePtr string
+
+func ServiceDatabaseTypePtr(v string) ServiceDatabaseTypePtrInput {
+	return (*serviceDatabaseTypePtr)(&v)
+}
+
+func (*serviceDatabaseTypePtr) ElementType() reflect.Type {
+	return serviceDatabaseTypePtrType
+}
+
+func (in *serviceDatabaseTypePtr) ToServiceDatabaseTypePtrOutput() ServiceDatabaseTypePtrOutput {
+	return pulumi.ToOutput(in).(ServiceDatabaseTypePtrOutput)
+}
+
+func (in *serviceDatabaseTypePtr) ToServiceDatabaseTypePtrOutputWithContext(ctx context.Context) ServiceDatabaseTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ServiceDatabaseTypePtrOutput)
+}
+
 // Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 type ServiceReleaseChannel string
 
@@ -1214,6 +1383,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveMetastoreConfigEndpointProtocolPtrInput)(nil)).Elem(), HiveMetastoreConfigEndpointProtocol("ENDPOINT_PROTOCOL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowDayOfWeekInput)(nil)).Elem(), MaintenanceWindowDayOfWeek("DAY_OF_WEEK_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowDayOfWeekPtrInput)(nil)).Elem(), MaintenanceWindowDayOfWeek("DAY_OF_WEEK_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceDatabaseTypeInput)(nil)).Elem(), ServiceDatabaseType("DATABASE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceDatabaseTypePtrInput)(nil)).Elem(), ServiceDatabaseType("DATABASE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceReleaseChannelInput)(nil)).Elem(), ServiceReleaseChannel("RELEASE_CHANNEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceReleaseChannelPtrInput)(nil)).Elem(), ServiceReleaseChannel("RELEASE_CHANNEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTierInput)(nil)).Elem(), ServiceTier("TIER_UNSPECIFIED"))
@@ -1228,6 +1399,8 @@ func init() {
 	pulumi.RegisterOutputType(HiveMetastoreConfigEndpointProtocolPtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowDayOfWeekOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowDayOfWeekPtrOutput{})
+	pulumi.RegisterOutputType(ServiceDatabaseTypeOutput{})
+	pulumi.RegisterOutputType(ServiceDatabaseTypePtrOutput{})
 	pulumi.RegisterOutputType(ServiceReleaseChannelOutput{})
 	pulumi.RegisterOutputType(ServiceReleaseChannelPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTierOutput{})

@@ -26,6 +26,8 @@ type LookupUptimeCheckConfigArgs struct {
 }
 
 type LookupUptimeCheckConfigResult struct {
+	// The type of checkers to use to execute the Uptime check.
+	CheckerType string `pulumi:"checkerType"`
 	// The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
 	ContentMatchers []ContentMatcherResponse `pulumi:"contentMatchers"`
 	// A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
@@ -82,6 +84,11 @@ func (o LookupUptimeCheckConfigResultOutput) ToLookupUptimeCheckConfigResultOutp
 
 func (o LookupUptimeCheckConfigResultOutput) ToLookupUptimeCheckConfigResultOutputWithContext(ctx context.Context) LookupUptimeCheckConfigResultOutput {
 	return o
+}
+
+// The type of checkers to use to execute the Uptime check.
+func (o LookupUptimeCheckConfigResultOutput) CheckerType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUptimeCheckConfigResult) string { return v.CheckerType }).(pulumi.StringOutput)
 }
 
 // The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.

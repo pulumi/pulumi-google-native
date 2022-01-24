@@ -75,6 +75,7 @@ import * as gkehub from "./gkehub";
 import * as healthcare from "./healthcare";
 import * as iam from "./iam";
 import * as iap from "./iap";
+import * as ids from "./ids";
 import * as jobs from "./jobs";
 import * as logging from "./logging";
 import * as managedidentities from "./managedidentities";
@@ -192,6 +193,7 @@ export {
     healthcare,
     iam,
     iap,
+    ids,
     jobs,
     logging,
     managedidentities,

@@ -20,6 +20,9 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Outputs
         /// Destination connection profile identifier.
         /// </summary>
         public readonly string DestinationConnectionProfileName;
+        /// <summary>
+        /// GCS destination configuration.
+        /// </summary>
         public readonly Outputs.GcsDestinationConfigResponse GcsDestinationConfig;
 
         [OutputConstructor]

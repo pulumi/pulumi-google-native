@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
     /// <summary>
-    /// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
+    /// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
     /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2FindingLimitsResponse

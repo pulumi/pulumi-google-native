@@ -1653,6 +1653,8 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfig struct {
+	// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	AuxiliaryVersions map[string]string `pulumi:"auxiliaryVersions"`
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides map[string]string `pulumi:"configOverrides"`
 	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
@@ -1676,6 +1678,8 @@ type HiveMetastoreConfigInput interface {
 
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfigArgs struct {
+	// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	AuxiliaryVersions pulumi.StringMapInput `pulumi:"auxiliaryVersions"`
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
 	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
@@ -1764,6 +1768,11 @@ func (o HiveMetastoreConfigOutput) ToHiveMetastoreConfigPtrOutputWithContext(ctx
 	}).(HiveMetastoreConfigPtrOutput)
 }
 
+// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+func (o HiveMetastoreConfigOutput) AuxiliaryVersions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HiveMetastoreConfig) map[string]string { return v.AuxiliaryVersions }).(pulumi.StringMapOutput)
+}
+
 // A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 func (o HiveMetastoreConfigOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HiveMetastoreConfig) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
@@ -1808,6 +1817,16 @@ func (o HiveMetastoreConfigPtrOutput) Elem() HiveMetastoreConfigOutput {
 	}).(HiveMetastoreConfigOutput)
 }
 
+// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+func (o HiveMetastoreConfigPtrOutput) AuxiliaryVersions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HiveMetastoreConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AuxiliaryVersions
+	}).(pulumi.StringMapOutput)
+}
+
 // A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 func (o HiveMetastoreConfigPtrOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HiveMetastoreConfig) map[string]string {
@@ -1850,6 +1869,8 @@ func (o HiveMetastoreConfigPtrOutput) Version() pulumi.StringPtrOutput {
 
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfigResponse struct {
+	// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	AuxiliaryVersions map[string]string `pulumi:"auxiliaryVersions"`
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides map[string]string `pulumi:"configOverrides"`
 	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
@@ -1873,6 +1894,11 @@ func (o HiveMetastoreConfigResponseOutput) ToHiveMetastoreConfigResponseOutput()
 
 func (o HiveMetastoreConfigResponseOutput) ToHiveMetastoreConfigResponseOutputWithContext(ctx context.Context) HiveMetastoreConfigResponseOutput {
 	return o
+}
+
+// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+func (o HiveMetastoreConfigResponseOutput) AuxiliaryVersions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HiveMetastoreConfigResponse) map[string]string { return v.AuxiliaryVersions }).(pulumi.StringMapOutput)
 }
 
 // A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
@@ -3023,6 +3049,8 @@ type ServiceResponse struct {
 	ArtifactGcsUri string `pulumi:"artifactGcsUri"`
 	// The time when the metastore service was created.
 	CreateTime string `pulumi:"createTime"`
+	// Immutable. The database type that the Metastore service stores its data.
+	DatabaseType string `pulumi:"databaseType"`
 	// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
 	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
 	// The URI of the endpoint used to access the metastore service.
@@ -3082,6 +3110,11 @@ func (o ServiceResponseOutput) ArtifactGcsUri() pulumi.StringOutput {
 // The time when the metastore service was created.
 func (o ServiceResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The database type that the Metastore service stores its data.
+func (o ServiceResponseOutput) DatabaseType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceResponse) string { return v.DatabaseType }).(pulumi.StringOutput)
 }
 
 // Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.

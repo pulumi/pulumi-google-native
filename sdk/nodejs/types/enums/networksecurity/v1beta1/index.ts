@@ -12,7 +12,7 @@ export const AuthorizationPolicyAction = {
      */
     Allow: "ALLOW",
     /**
-     * Deny access.
+     * Deny access. Deny rules should be avoided unless they are used to provide a default "deny all" fallback.
      */
     Deny: "DENY",
 } as const;

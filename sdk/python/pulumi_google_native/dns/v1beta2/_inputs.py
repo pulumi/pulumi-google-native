@@ -766,8 +766,9 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs:
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        ResourceRecordSet data for one geo location.
         :param pulumi.Input[str] location: The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: DNSSEC generated signatures for the above geo_rrdata.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
         """
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
@@ -812,7 +813,7 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs:
     @pulumi.getter(name="signatureRrdatas")
     def signature_rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        DNSSEC generated signatures for the above geo_rrdata.
+        DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
         """
         return pulumi.get(self, "signature_rrdatas")
 
@@ -827,6 +828,7 @@ class RRSetRoutingPolicyGeoPolicyArgs:
                  items: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]]] = None,
                  kind: Optional[pulumi.Input[str]] = None):
         """
+        Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
         :param pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]] items: The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
         """
         if items is not None:
@@ -864,7 +866,8 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs:
                  signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  weight: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: DNSSEC generated signatures for the above wrr_rrdata.
+        A routing block which contains the routing information for one WRR item.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
         :param pulumi.Input[float] weight: The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
         """
         if kind is not None:
@@ -898,7 +901,7 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs:
     @pulumi.getter(name="signatureRrdatas")
     def signature_rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        DNSSEC generated signatures for the above wrr_rrdata.
+        DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
         """
         return pulumi.get(self, "signature_rrdatas")
 
@@ -924,6 +927,9 @@ class RRSetRoutingPolicyWrrPolicyArgs:
     def __init__(__self__, *,
                  items: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs']]]] = None,
                  kind: Optional[pulumi.Input[str]] = None):
+        """
+        Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
+        """
         if items is not None:
             pulumi.set(__self__, "items", items)
         if kind is not None:
