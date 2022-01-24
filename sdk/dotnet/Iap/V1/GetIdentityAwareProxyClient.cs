@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Iap.V1
         /// Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned by IAP.
         /// </summary>
         public static Task<GetIdentityAwareProxyClientResult> InvokeAsync(GetIdentityAwareProxyClientArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIdentityAwareProxyClientResult>("google-native:iap/v1:getIdentityAwareProxyClient", args ?? new GetIdentityAwareProxyClientArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIdentityAwareProxyClientResult>("google-native:iap/v1:getIdentityAwareProxyClient", args ?? new GetIdentityAwareProxyClientArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned by IAP.
         /// </summary>
         public static Output<GetIdentityAwareProxyClientResult> Invoke(GetIdentityAwareProxyClientInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIdentityAwareProxyClientResult>("google-native:iap/v1:getIdentityAwareProxyClient", args ?? new GetIdentityAwareProxyClientInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIdentityAwareProxyClientResult>("google-native:iap/v1:getIdentityAwareProxyClient", args ?? new GetIdentityAwareProxyClientInvokeArgs(), options.WithDefaults());
     }
 
 

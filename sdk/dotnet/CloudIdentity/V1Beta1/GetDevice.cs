@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         /// Retrieves the specified device.
         /// </summary>
         public static Task<GetDeviceResult> InvokeAsync(GetDeviceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDeviceResult>("google-native:cloudidentity/v1beta1:getDevice", args ?? new GetDeviceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDeviceResult>("google-native:cloudidentity/v1beta1:getDevice", args ?? new GetDeviceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified device.
         /// </summary>
         public static Output<GetDeviceResult> Invoke(GetDeviceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDeviceResult>("google-native:cloudidentity/v1beta1:getDevice", args ?? new GetDeviceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDeviceResult>("google-native:cloudidentity/v1beta1:getDevice", args ?? new GetDeviceInvokeArgs(), options.WithDefaults());
     }
 
 

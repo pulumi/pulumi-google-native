@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
         /// Gets the specified Replay. Each `Replay` is available for at least 7 days.
         /// </summary>
         public static Task<GetFolderReplayResult> InvokeAsync(GetFolderReplayArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderReplayResult>("google-native:policysimulator/v1beta1:getFolderReplay", args ?? new GetFolderReplayArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderReplayResult>("google-native:policysimulator/v1beta1:getFolderReplay", args ?? new GetFolderReplayArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified Replay. Each `Replay` is available for at least 7 days.
         /// </summary>
         public static Output<GetFolderReplayResult> Invoke(GetFolderReplayInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFolderReplayResult>("google-native:policysimulator/v1beta1:getFolderReplay", args ?? new GetFolderReplayInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetFolderReplayResult>("google-native:policysimulator/v1beta1:getFolderReplay", args ?? new GetFolderReplayInvokeArgs(), options.WithDefaults());
     }
 
 

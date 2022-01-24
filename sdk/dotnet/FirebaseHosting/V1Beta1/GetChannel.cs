@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         /// Retrieves information for the specified channel of the specified site.
         /// </summary>
         public static Task<GetChannelResult> InvokeAsync(GetChannelArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetChannelResult>("google-native:firebasehosting/v1beta1:getChannel", args ?? new GetChannelArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetChannelResult>("google-native:firebasehosting/v1beta1:getChannel", args ?? new GetChannelArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information for the specified channel of the specified site.
         /// </summary>
         public static Output<GetChannelResult> Invoke(GetChannelInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetChannelResult>("google-native:firebasehosting/v1beta1:getChannel", args ?? new GetChannelInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetChannelResult>("google-native:firebasehosting/v1beta1:getChannel", args ?? new GetChannelInvokeArgs(), options.WithDefaults());
     }
 
 

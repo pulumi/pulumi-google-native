@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// Retrieves the specified SecuritySettings. The returned settings may be stale by up to 1 minute.
         /// </summary>
         public static Task<GetSecuritySettingResult> InvokeAsync(GetSecuritySettingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecuritySettingResult>("google-native:dialogflow/v3beta1:getSecuritySetting", args ?? new GetSecuritySettingArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecuritySettingResult>("google-native:dialogflow/v3beta1:getSecuritySetting", args ?? new GetSecuritySettingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified SecuritySettings. The returned settings may be stale by up to 1 minute.
         /// </summary>
         public static Output<GetSecuritySettingResult> Invoke(GetSecuritySettingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecuritySettingResult>("google-native:dialogflow/v3beta1:getSecuritySetting", args ?? new GetSecuritySettingInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSecuritySettingResult>("google-native:dialogflow/v3beta1:getSecuritySetting", args ?? new GetSecuritySettingInvokeArgs(), options.WithDefaults());
     }
 
 

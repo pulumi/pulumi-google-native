@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// Returns metadata for a given CryptoKeyVersion.
         /// </summary>
         public static Task<GetCryptoKeyVersionResult> InvokeAsync(GetCryptoKeyVersionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCryptoKeyVersionResult>("google-native:cloudkms/v1:getCryptoKeyVersion", args ?? new GetCryptoKeyVersionArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCryptoKeyVersionResult>("google-native:cloudkms/v1:getCryptoKeyVersion", args ?? new GetCryptoKeyVersionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns metadata for a given CryptoKeyVersion.
         /// </summary>
         public static Output<GetCryptoKeyVersionResult> Invoke(GetCryptoKeyVersionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCryptoKeyVersionResult>("google-native:cloudkms/v1:getCryptoKeyVersion", args ?? new GetCryptoKeyVersionInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCryptoKeyVersionResult>("google-native:cloudkms/v1:getCryptoKeyVersion", args ?? new GetCryptoKeyVersionInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetAuthorizationPolicyIamPolicyResult> InvokeAsync(GetAuthorizationPolicyIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizationPolicyIamPolicyResult>("google-native:networksecurity/v1beta1:getAuthorizationPolicyIamPolicy", args ?? new GetAuthorizationPolicyIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizationPolicyIamPolicyResult>("google-native:networksecurity/v1beta1:getAuthorizationPolicyIamPolicy", args ?? new GetAuthorizationPolicyIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetAuthorizationPolicyIamPolicyResult> Invoke(GetAuthorizationPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAuthorizationPolicyIamPolicyResult>("google-native:networksecurity/v1beta1:getAuthorizationPolicyIamPolicy", args ?? new GetAuthorizationPolicyIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAuthorizationPolicyIamPolicyResult>("google-native:networksecurity/v1beta1:getAuthorizationPolicyIamPolicy", args ?? new GetAuthorizationPolicyIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

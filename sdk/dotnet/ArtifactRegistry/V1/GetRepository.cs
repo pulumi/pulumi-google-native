@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// Gets a repository.
         /// </summary>
         public static Task<GetRepositoryResult> InvokeAsync(GetRepositoryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryResult>("google-native:artifactregistry/v1:getRepository", args ?? new GetRepositoryArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryResult>("google-native:artifactregistry/v1:getRepository", args ?? new GetRepositoryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a repository.
         /// </summary>
         public static Output<GetRepositoryResult> Invoke(GetRepositoryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("google-native:artifactregistry/v1:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("google-native:artifactregistry/v1:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithDefaults());
     }
 
 

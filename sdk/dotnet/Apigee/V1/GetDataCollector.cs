@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets a data collector.
         /// </summary>
         public static Task<GetDataCollectorResult> InvokeAsync(GetDataCollectorArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDataCollectorResult>("google-native:apigee/v1:getDataCollector", args ?? new GetDataCollectorArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDataCollectorResult>("google-native:apigee/v1:getDataCollector", args ?? new GetDataCollectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a data collector.
         /// </summary>
         public static Output<GetDataCollectorResult> Invoke(GetDataCollectorInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDataCollectorResult>("google-native:apigee/v1:getDataCollector", args ?? new GetDataCollectorInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDataCollectorResult>("google-native:apigee/v1:getDataCollector", args ?? new GetDataCollectorInvokeArgs(), options.WithDefaults());
     }
 
 

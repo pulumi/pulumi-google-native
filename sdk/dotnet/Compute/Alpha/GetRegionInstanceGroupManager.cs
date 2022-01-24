@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns all of the details about the specified managed instance group.
         /// </summary>
         public static Task<GetRegionInstanceGroupManagerResult> InvokeAsync(GetRegionInstanceGroupManagerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceGroupManagerResult>("google-native:compute/alpha:getRegionInstanceGroupManager", args ?? new GetRegionInstanceGroupManagerArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceGroupManagerResult>("google-native:compute/alpha:getRegionInstanceGroupManager", args ?? new GetRegionInstanceGroupManagerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns all of the details about the specified managed instance group.
         /// </summary>
         public static Output<GetRegionInstanceGroupManagerResult> Invoke(GetRegionInstanceGroupManagerInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionInstanceGroupManagerResult>("google-native:compute/alpha:getRegionInstanceGroupManager", args ?? new GetRegionInstanceGroupManagerInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRegionInstanceGroupManagerResult>("google-native:compute/alpha:getRegionInstanceGroupManager", args ?? new GetRegionInstanceGroupManagerInvokeArgs(), options.WithDefaults());
     }
 
 

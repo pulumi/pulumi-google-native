@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.
         /// </summary>
         public static Task<GetTableResult> InvokeAsync(GetTableArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTableResult>("google-native:bigquery/v2:getTable", args ?? new GetTableArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTableResult>("google-native:bigquery/v2:getTable", args ?? new GetTableArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.
         /// </summary>
         public static Output<GetTableResult> Invoke(GetTableInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTableResult>("google-native:bigquery/v2:getTable", args ?? new GetTableInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTableResult>("google-native:bigquery/v2:getTable", args ?? new GetTableInvokeArgs(), options.WithDefaults());
     }
 
 

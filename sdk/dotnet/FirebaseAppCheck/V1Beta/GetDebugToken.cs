@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.FirebaseAppCheck.V1Beta
         /// Gets the specified DebugToken. For security reasons, the `token` field is never populated in the response.
         /// </summary>
         public static Task<GetDebugTokenResult> InvokeAsync(GetDebugTokenArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDebugTokenResult>("google-native:firebaseappcheck/v1beta:getDebugToken", args ?? new GetDebugTokenArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDebugTokenResult>("google-native:firebaseappcheck/v1beta:getDebugToken", args ?? new GetDebugTokenArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified DebugToken. For security reasons, the `token` field is never populated in the response.
         /// </summary>
         public static Output<GetDebugTokenResult> Invoke(GetDebugTokenInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDebugTokenResult>("google-native:firebaseappcheck/v1beta:getDebugToken", args ?? new GetDebugTokenInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDebugTokenResult>("google-native:firebaseappcheck/v1beta:getDebugToken", args ?? new GetDebugTokenInvokeArgs(), options.WithDefaults());
     }
 
 

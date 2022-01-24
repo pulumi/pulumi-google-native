@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetDatasetFhirStoreIamPolicyResult> InvokeAsync(GetDatasetFhirStoreIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetFhirStoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetFhirStoreIamPolicy", args ?? new GetDatasetFhirStoreIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetFhirStoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetFhirStoreIamPolicy", args ?? new GetDatasetFhirStoreIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetDatasetFhirStoreIamPolicyResult> Invoke(GetDatasetFhirStoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatasetFhirStoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetFhirStoreIamPolicy", args ?? new GetDatasetFhirStoreIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDatasetFhirStoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetFhirStoreIamPolicy", args ?? new GetDatasetFhirStoreIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

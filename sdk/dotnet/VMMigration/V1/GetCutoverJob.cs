@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         /// Gets details of a single CutoverJob.
         /// </summary>
         public static Task<GetCutoverJobResult> InvokeAsync(GetCutoverJobArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCutoverJobResult>("google-native:vmmigration/v1:getCutoverJob", args ?? new GetCutoverJobArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCutoverJobResult>("google-native:vmmigration/v1:getCutoverJob", args ?? new GetCutoverJobArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single CutoverJob.
         /// </summary>
         public static Output<GetCutoverJobResult> Invoke(GetCutoverJobInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCutoverJobResult>("google-native:vmmigration/v1:getCutoverJob", args ?? new GetCutoverJobInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCutoverJobResult>("google-native:vmmigration/v1:getCutoverJob", args ?? new GetCutoverJobInvokeArgs(), options.WithDefaults());
     }
 
 

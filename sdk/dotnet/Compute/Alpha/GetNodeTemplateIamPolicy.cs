@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetNodeTemplateIamPolicyResult> InvokeAsync(GetNodeTemplateIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateIamPolicyResult>("google-native:compute/alpha:getNodeTemplateIamPolicy", args ?? new GetNodeTemplateIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateIamPolicyResult>("google-native:compute/alpha:getNodeTemplateIamPolicy", args ?? new GetNodeTemplateIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetNodeTemplateIamPolicyResult> Invoke(GetNodeTemplateIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodeTemplateIamPolicyResult>("google-native:compute/alpha:getNodeTemplateIamPolicy", args ?? new GetNodeTemplateIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNodeTemplateIamPolicyResult>("google-native:compute/alpha:getNodeTemplateIamPolicy", args ?? new GetNodeTemplateIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         /// Gets a specific catalog item.
         /// </summary>
         public static Task<GetCatalogItemResult> InvokeAsync(GetCatalogItemArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogItemResult>("google-native:recommendationengine/v1beta1:getCatalogItem", args ?? new GetCatalogItemArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogItemResult>("google-native:recommendationengine/v1beta1:getCatalogItem", args ?? new GetCatalogItemArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a specific catalog item.
         /// </summary>
         public static Output<GetCatalogItemResult> Invoke(GetCatalogItemInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCatalogItemResult>("google-native:recommendationengine/v1beta1:getCatalogItem", args ?? new GetCatalogItemInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCatalogItemResult>("google-native:recommendationengine/v1beta1:getCatalogItem", args ?? new GetCatalogItemInvokeArgs(), options.WithDefaults());
     }
 
 

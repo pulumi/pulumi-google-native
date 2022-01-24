@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// Gets a Step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Step does not exist
         /// </summary>
         public static Task<GetStepResult> InvokeAsync(GetStepArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStepResult>("google-native:toolresults/v1beta3:getStep", args ?? new GetStepArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetStepResult>("google-native:toolresults/v1beta3:getStep", args ?? new GetStepArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a Step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Step does not exist
         /// </summary>
         public static Output<GetStepResult> Invoke(GetStepInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStepResult>("google-native:toolresults/v1beta3:getStep", args ?? new GetStepInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetStepResult>("google-native:toolresults/v1beta3:getStep", args ?? new GetStepInvokeArgs(), options.WithDefaults());
     }
 
 

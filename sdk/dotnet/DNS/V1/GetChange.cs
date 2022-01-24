@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// Fetches the representation of an existing Change.
         /// </summary>
         public static Task<GetChangeResult> InvokeAsync(GetChangeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetChangeResult>("google-native:dns/v1:getChange", args ?? new GetChangeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetChangeResult>("google-native:dns/v1:getChange", args ?? new GetChangeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Fetches the representation of an existing Change.
         /// </summary>
         public static Output<GetChangeResult> Invoke(GetChangeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetChangeResult>("google-native:dns/v1:getChange", args ?? new GetChangeInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetChangeResult>("google-native:dns/v1:getChange", args ?? new GetChangeInvokeArgs(), options.WithDefaults());
     }
 
 

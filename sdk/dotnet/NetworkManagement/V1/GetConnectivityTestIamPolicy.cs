@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetConnectivityTestIamPolicyResult> InvokeAsync(GetConnectivityTestIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectivityTestIamPolicyResult>("google-native:networkmanagement/v1:getConnectivityTestIamPolicy", args ?? new GetConnectivityTestIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectivityTestIamPolicyResult>("google-native:networkmanagement/v1:getConnectivityTestIamPolicy", args ?? new GetConnectivityTestIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetConnectivityTestIamPolicyResult> Invoke(GetConnectivityTestIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConnectivityTestIamPolicyResult>("google-native:networkmanagement/v1:getConnectivityTestIamPolicy", args ?? new GetConnectivityTestIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConnectivityTestIamPolicyResult>("google-native:networkmanagement/v1:getConnectivityTestIamPolicy", args ?? new GetConnectivityTestIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

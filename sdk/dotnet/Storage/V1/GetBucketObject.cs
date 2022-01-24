@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// Retrieves an object or its metadata.
         /// </summary>
         public static Task<GetBucketObjectResult> InvokeAsync(GetBucketObjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectResult>("google-native:storage/v1:getBucketObject", args ?? new GetBucketObjectArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectResult>("google-native:storage/v1:getBucketObject", args ?? new GetBucketObjectArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves an object or its metadata.
         /// </summary>
         public static Output<GetBucketObjectResult> Invoke(GetBucketObjectInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBucketObjectResult>("google-native:storage/v1:getBucketObject", args ?? new GetBucketObjectInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBucketObjectResult>("google-native:storage/v1:getBucketObject", args ?? new GetBucketObjectInvokeArgs(), options.WithDefaults());
     }
 
 

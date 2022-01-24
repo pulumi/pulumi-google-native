@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetRegionDiskIamPolicyResult> InvokeAsync(GetRegionDiskIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionDiskIamPolicyResult>("google-native:compute/v1:getRegionDiskIamPolicy", args ?? new GetRegionDiskIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionDiskIamPolicyResult>("google-native:compute/v1:getRegionDiskIamPolicy", args ?? new GetRegionDiskIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetRegionDiskIamPolicyResult> Invoke(GetRegionDiskIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionDiskIamPolicyResult>("google-native:compute/v1:getRegionDiskIamPolicy", args ?? new GetRegionDiskIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRegionDiskIamPolicyResult>("google-native:compute/v1:getRegionDiskIamPolicy", args ?? new GetRegionDiskIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

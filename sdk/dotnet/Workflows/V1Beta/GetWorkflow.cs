@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Workflows.V1Beta
         /// Gets details of a single Workflow.
         /// </summary>
         public static Task<GetWorkflowResult> InvokeAsync(GetWorkflowArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowResult>("google-native:workflows/v1beta:getWorkflow", args ?? new GetWorkflowArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowResult>("google-native:workflows/v1beta:getWorkflow", args ?? new GetWorkflowArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Workflow.
         /// </summary>
         public static Output<GetWorkflowResult> Invoke(GetWorkflowInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWorkflowResult>("google-native:workflows/v1beta:getWorkflow", args ?? new GetWorkflowInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetWorkflowResult>("google-native:workflows/v1beta:getWorkflow", args ?? new GetWorkflowInvokeArgs(), options.WithDefaults());
     }
 
 

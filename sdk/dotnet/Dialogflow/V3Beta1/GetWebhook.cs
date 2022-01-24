@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// Retrieves the specified webhook.
         /// </summary>
         public static Task<GetWebhookResult> InvokeAsync(GetWebhookArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWebhookResult>("google-native:dialogflow/v3beta1:getWebhook", args ?? new GetWebhookArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetWebhookResult>("google-native:dialogflow/v3beta1:getWebhook", args ?? new GetWebhookArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified webhook.
         /// </summary>
         public static Output<GetWebhookResult> Invoke(GetWebhookInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWebhookResult>("google-native:dialogflow/v3beta1:getWebhook", args ?? new GetWebhookInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetWebhookResult>("google-native:dialogflow/v3beta1:getWebhook", args ?? new GetWebhookInvokeArgs(), options.WithDefaults());
     }
 
 

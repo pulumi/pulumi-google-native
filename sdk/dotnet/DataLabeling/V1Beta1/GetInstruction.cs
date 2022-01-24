@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// Gets an instruction by resource name.
         /// </summary>
         public static Task<GetInstructionResult> InvokeAsync(GetInstructionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstructionResult>("google-native:datalabeling/v1beta1:getInstruction", args ?? new GetInstructionArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstructionResult>("google-native:datalabeling/v1beta1:getInstruction", args ?? new GetInstructionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an instruction by resource name.
         /// </summary>
         public static Output<GetInstructionResult> Invoke(GetInstructionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstructionResult>("google-native:datalabeling/v1beta1:getInstruction", args ?? new GetInstructionInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetInstructionResult>("google-native:datalabeling/v1beta1:getInstruction", args ?? new GetInstructionInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// Returns metadata for a given ImportJob.
         /// </summary>
         public static Task<GetImportJobResult> InvokeAsync(GetImportJobArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImportJobResult>("google-native:cloudkms/v1:getImportJob", args ?? new GetImportJobArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImportJobResult>("google-native:cloudkms/v1:getImportJob", args ?? new GetImportJobArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns metadata for a given ImportJob.
         /// </summary>
         public static Output<GetImportJobResult> Invoke(GetImportJobInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImportJobResult>("google-native:cloudkms/v1:getImportJob", args ?? new GetImportJobInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetImportJobResult>("google-native:cloudkms/v1:getImportJob", args ?? new GetImportJobInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// Retrieves autoscaling policy.
         /// </summary>
         public static Task<GetAutoscalingPolicyResult> InvokeAsync(GetAutoscalingPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAutoscalingPolicyResult>("google-native:dataproc/v1beta2:getAutoscalingPolicy", args ?? new GetAutoscalingPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAutoscalingPolicyResult>("google-native:dataproc/v1beta2:getAutoscalingPolicy", args ?? new GetAutoscalingPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves autoscaling policy.
         /// </summary>
         public static Output<GetAutoscalingPolicyResult> Invoke(GetAutoscalingPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAutoscalingPolicyResult>("google-native:dataproc/v1beta2:getAutoscalingPolicy", args ?? new GetAutoscalingPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAutoscalingPolicyResult>("google-native:dataproc/v1beta2:getAutoscalingPolicy", args ?? new GetAutoscalingPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

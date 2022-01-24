@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1
         /// Gets the specified Replay. Each `Replay` is available for at least 7 days.
         /// </summary>
         public static Task<GetReplayResult> InvokeAsync(GetReplayArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReplayResult>("google-native:policysimulator/v1:getReplay", args ?? new GetReplayArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetReplayResult>("google-native:policysimulator/v1:getReplay", args ?? new GetReplayArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified Replay. Each `Replay` is available for at least 7 days.
         /// </summary>
         public static Output<GetReplayResult> Invoke(GetReplayInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReplayResult>("google-native:policysimulator/v1:getReplay", args ?? new GetReplayInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetReplayResult>("google-native:policysimulator/v1:getReplay", args ?? new GetReplayInvokeArgs(), options.WithDefaults());
     }
 
 

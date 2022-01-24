@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         /// Gets a device registry configuration.
         /// </summary>
         public static Task<GetRegistryResult> InvokeAsync(GetRegistryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryResult>("google-native:cloudiot/v1:getRegistry", args ?? new GetRegistryArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryResult>("google-native:cloudiot/v1:getRegistry", args ?? new GetRegistryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a device registry configuration.
         /// </summary>
         public static Output<GetRegistryResult> Invoke(GetRegistryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegistryResult>("google-native:cloudiot/v1:getRegistry", args ?? new GetRegistryInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRegistryResult>("google-native:cloudiot/v1:getRegistry", args ?? new GetRegistryInvokeArgs(), options.WithDefaults());
     }
 
 

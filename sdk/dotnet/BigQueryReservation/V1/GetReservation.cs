@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// Returns information about the reservation.
         /// </summary>
         public static Task<GetReservationResult> InvokeAsync(GetReservationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReservationResult>("google-native:bigqueryreservation/v1:getReservation", args ?? new GetReservationArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetReservationResult>("google-native:bigqueryreservation/v1:getReservation", args ?? new GetReservationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns information about the reservation.
         /// </summary>
         public static Output<GetReservationResult> Invoke(GetReservationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReservationResult>("google-native:bigqueryreservation/v1:getReservation", args ?? new GetReservationInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetReservationResult>("google-native:bigqueryreservation/v1:getReservation", args ?? new GetReservationInvokeArgs(), options.WithDefaults());
     }
 
 

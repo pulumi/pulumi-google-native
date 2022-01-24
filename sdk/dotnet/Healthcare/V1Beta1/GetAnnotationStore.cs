@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// Gets the specified Annotation store or returns NOT_FOUND if it does not exist.
         /// </summary>
         public static Task<GetAnnotationStoreResult> InvokeAsync(GetAnnotationStoreArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAnnotationStoreResult>("google-native:healthcare/v1beta1:getAnnotationStore", args ?? new GetAnnotationStoreArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAnnotationStoreResult>("google-native:healthcare/v1beta1:getAnnotationStore", args ?? new GetAnnotationStoreArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified Annotation store or returns NOT_FOUND if it does not exist.
         /// </summary>
         public static Output<GetAnnotationStoreResult> Invoke(GetAnnotationStoreInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAnnotationStoreResult>("google-native:healthcare/v1beta1:getAnnotationStore", args ?? new GetAnnotationStoreInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAnnotationStoreResult>("google-native:healthcare/v1beta1:getAnnotationStore", args ?? new GetAnnotationStoreInvokeArgs(), options.WithDefaults());
     }
 
 

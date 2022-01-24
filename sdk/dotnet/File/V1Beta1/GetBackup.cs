@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// Gets the details of a specific backup.
         /// </summary>
         public static Task<GetBackupResult> InvokeAsync(GetBackupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupResult>("google-native:file/v1beta1:getBackup", args ?? new GetBackupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupResult>("google-native:file/v1beta1:getBackup", args ?? new GetBackupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the details of a specific backup.
         /// </summary>
         public static Output<GetBackupResult> Invoke(GetBackupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackupResult>("google-native:file/v1beta1:getBackup", args ?? new GetBackupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBackupResult>("google-native:file/v1beta1:getBackup", args ?? new GetBackupInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetFirewallPolicyIamPolicyResult> InvokeAsync(GetFirewallPolicyIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFirewallPolicyIamPolicyResult>("google-native:compute/alpha:getFirewallPolicyIamPolicy", args ?? new GetFirewallPolicyIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFirewallPolicyIamPolicyResult>("google-native:compute/alpha:getFirewallPolicyIamPolicy", args ?? new GetFirewallPolicyIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetFirewallPolicyIamPolicyResult> Invoke(GetFirewallPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFirewallPolicyIamPolicyResult>("google-native:compute/alpha:getFirewallPolicyIamPolicy", args ?? new GetFirewallPolicyIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetFirewallPolicyIamPolicyResult>("google-native:compute/alpha:getFirewallPolicyIamPolicy", args ?? new GetFirewallPolicyIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

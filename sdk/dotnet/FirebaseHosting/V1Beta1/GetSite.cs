@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         /// Gets the specified Hosting Site.
         /// </summary>
         public static Task<GetSiteResult> InvokeAsync(GetSiteArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSiteResult>("google-native:firebasehosting/v1beta1:getSite", args ?? new GetSiteArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSiteResult>("google-native:firebasehosting/v1beta1:getSite", args ?? new GetSiteArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified Hosting Site.
         /// </summary>
         public static Output<GetSiteResult> Invoke(GetSiteInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSiteResult>("google-native:firebasehosting/v1beta1:getSite", args ?? new GetSiteInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSiteResult>("google-native:firebasehosting/v1beta1:getSite", args ?? new GetSiteInvokeArgs(), options.WithDefaults());
     }
 
 

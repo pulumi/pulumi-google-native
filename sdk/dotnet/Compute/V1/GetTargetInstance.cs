@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified TargetInstance resource. Gets a list of available target instances by making a list() request.
         /// </summary>
         public static Task<GetTargetInstanceResult> InvokeAsync(GetTargetInstanceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetInstanceResult>("google-native:compute/v1:getTargetInstance", args ?? new GetTargetInstanceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetInstanceResult>("google-native:compute/v1:getTargetInstance", args ?? new GetTargetInstanceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified TargetInstance resource. Gets a list of available target instances by making a list() request.
         /// </summary>
         public static Output<GetTargetInstanceResult> Invoke(GetTargetInstanceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTargetInstanceResult>("google-native:compute/v1:getTargetInstance", args ?? new GetTargetInstanceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTargetInstanceResult>("google-native:compute/v1:getTargetInstance", args ?? new GetTargetInstanceInvokeArgs(), options.WithDefaults());
     }
 
 

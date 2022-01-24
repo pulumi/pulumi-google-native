@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns the specified HealthCheck resource. Gets a list of available health checks by making a list() request.
         /// </summary>
         public static Task<GetRegionHealthCheckResult> InvokeAsync(GetRegionHealthCheckArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionHealthCheckResult>("google-native:compute/beta:getRegionHealthCheck", args ?? new GetRegionHealthCheckArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionHealthCheckResult>("google-native:compute/beta:getRegionHealthCheck", args ?? new GetRegionHealthCheckArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified HealthCheck resource. Gets a list of available health checks by making a list() request.
         /// </summary>
         public static Output<GetRegionHealthCheckResult> Invoke(GetRegionHealthCheckInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionHealthCheckResult>("google-native:compute/beta:getRegionHealthCheck", args ?? new GetRegionHealthCheckInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRegionHealthCheckResult>("google-native:compute/beta:getRegionHealthCheck", args ?? new GetRegionHealthCheckInvokeArgs(), options.WithDefaults());
     }
 
 

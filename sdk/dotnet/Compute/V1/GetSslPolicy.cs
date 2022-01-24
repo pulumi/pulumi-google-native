@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Lists all of the ordered rules present in a single specified policy.
         /// </summary>
         public static Task<GetSslPolicyResult> InvokeAsync(GetSslPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSslPolicyResult>("google-native:compute/v1:getSslPolicy", args ?? new GetSslPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSslPolicyResult>("google-native:compute/v1:getSslPolicy", args ?? new GetSslPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Lists all of the ordered rules present in a single specified policy.
         /// </summary>
         public static Output<GetSslPolicyResult> Invoke(GetSslPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSslPolicyResult>("google-native:compute/v1:getSslPolicy", args ?? new GetSslPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSslPolicyResult>("google-native:compute/v1:getSslPolicy", args ?? new GetSslPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

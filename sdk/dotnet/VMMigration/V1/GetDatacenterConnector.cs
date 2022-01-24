@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         /// Gets details of a single DatacenterConnector.
         /// </summary>
         public static Task<GetDatacenterConnectorResult> InvokeAsync(GetDatacenterConnectorArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatacenterConnectorResult>("google-native:vmmigration/v1:getDatacenterConnector", args ?? new GetDatacenterConnectorArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatacenterConnectorResult>("google-native:vmmigration/v1:getDatacenterConnector", args ?? new GetDatacenterConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single DatacenterConnector.
         /// </summary>
         public static Output<GetDatacenterConnectorResult> Invoke(GetDatacenterConnectorInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatacenterConnectorResult>("google-native:vmmigration/v1:getDatacenterConnector", args ?? new GetDatacenterConnectorInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDatacenterConnectorResult>("google-native:vmmigration/v1:getDatacenterConnector", args ?? new GetDatacenterConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

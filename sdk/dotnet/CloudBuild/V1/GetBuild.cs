@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// Returns information about a previously requested build. The `Build` that is returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information.
         /// </summary>
         public static Task<GetBuildResult> InvokeAsync(GetBuildArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBuildResult>("google-native:cloudbuild/v1:getBuild", args ?? new GetBuildArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBuildResult>("google-native:cloudbuild/v1:getBuild", args ?? new GetBuildArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns information about a previously requested build. The `Build` that is returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information.
         /// </summary>
         public static Output<GetBuildResult> Invoke(GetBuildInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBuildResult>("google-native:cloudbuild/v1:getBuild", args ?? new GetBuildInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBuildResult>("google-native:cloudbuild/v1:getBuild", args ?? new GetBuildInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// Gets the specified domain mapping.
         /// </summary>
         public static Task<GetDomainMappingResult> InvokeAsync(GetDomainMappingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainMappingResult>("google-native:appengine/v1:getDomainMapping", args ?? new GetDomainMappingArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainMappingResult>("google-native:appengine/v1:getDomainMapping", args ?? new GetDomainMappingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified domain mapping.
         /// </summary>
         public static Output<GetDomainMappingResult> Invoke(GetDomainMappingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainMappingResult>("google-native:appengine/v1:getDomainMapping", args ?? new GetDomainMappingInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDomainMappingResult>("google-native:appengine/v1:getDomainMapping", args ?? new GetDomainMappingInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified InstantSnapshot resource in the specified zone.
         /// </summary>
         public static Task<GetInstantSnapshotResult> InvokeAsync(GetInstantSnapshotArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstantSnapshotResult>("google-native:compute/alpha:getInstantSnapshot", args ?? new GetInstantSnapshotArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstantSnapshotResult>("google-native:compute/alpha:getInstantSnapshot", args ?? new GetInstantSnapshotArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified InstantSnapshot resource in the specified zone.
         /// </summary>
         public static Output<GetInstantSnapshotResult> Invoke(GetInstantSnapshotInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstantSnapshotResult>("google-native:compute/alpha:getInstantSnapshot", args ?? new GetInstantSnapshotInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetInstantSnapshotResult>("google-native:compute/alpha:getInstantSnapshot", args ?? new GetInstantSnapshotInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// List all of the ordered rules present in a single specified policy.
         /// </summary>
         public static Task<GetOrganizationSecurityPolicyResult> InvokeAsync(GetOrganizationSecurityPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationSecurityPolicyResult>("google-native:compute/beta:getOrganizationSecurityPolicy", args ?? new GetOrganizationSecurityPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationSecurityPolicyResult>("google-native:compute/beta:getOrganizationSecurityPolicy", args ?? new GetOrganizationSecurityPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// List all of the ordered rules present in a single specified policy.
         /// </summary>
         public static Output<GetOrganizationSecurityPolicyResult> Invoke(GetOrganizationSecurityPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationSecurityPolicyResult>("google-native:compute/beta:getOrganizationSecurityPolicy", args ?? new GetOrganizationSecurityPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationSecurityPolicyResult>("google-native:compute/beta:getOrganizationSecurityPolicy", args ?? new GetOrganizationSecurityPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

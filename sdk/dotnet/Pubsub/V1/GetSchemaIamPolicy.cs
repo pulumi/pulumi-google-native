@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetSchemaIamPolicyResult> InvokeAsync(GetSchemaIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSchemaIamPolicyResult>("google-native:pubsub/v1:getSchemaIamPolicy", args ?? new GetSchemaIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSchemaIamPolicyResult>("google-native:pubsub/v1:getSchemaIamPolicy", args ?? new GetSchemaIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetSchemaIamPolicyResult> Invoke(GetSchemaIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSchemaIamPolicyResult>("google-native:pubsub/v1:getSchemaIamPolicy", args ?? new GetSchemaIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSchemaIamPolicyResult>("google-native:pubsub/v1:getSchemaIamPolicy", args ?? new GetSchemaIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

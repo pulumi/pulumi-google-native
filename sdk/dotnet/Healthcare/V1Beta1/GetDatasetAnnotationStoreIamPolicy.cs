@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetDatasetAnnotationStoreIamPolicyResult> InvokeAsync(GetDatasetAnnotationStoreIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetAnnotationStoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetAnnotationStoreIamPolicy", args ?? new GetDatasetAnnotationStoreIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetAnnotationStoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetAnnotationStoreIamPolicy", args ?? new GetDatasetAnnotationStoreIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetDatasetAnnotationStoreIamPolicyResult> Invoke(GetDatasetAnnotationStoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatasetAnnotationStoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetAnnotationStoreIamPolicy", args ?? new GetDatasetAnnotationStoreIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDatasetAnnotationStoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetAnnotationStoreIamPolicy", args ?? new GetDatasetAnnotationStoreIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

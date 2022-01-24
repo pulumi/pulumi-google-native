@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// Retrieves a conversation participant.
         /// </summary>
         public static Task<GetParticipantResult> InvokeAsync(GetParticipantArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetParticipantResult>("google-native:dialogflow/v2:getParticipant", args ?? new GetParticipantArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetParticipantResult>("google-native:dialogflow/v2:getParticipant", args ?? new GetParticipantArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a conversation participant.
         /// </summary>
         public static Output<GetParticipantResult> Invoke(GetParticipantInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetParticipantResult>("google-native:dialogflow/v2:getParticipant", args ?? new GetParticipantInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetParticipantResult>("google-native:dialogflow/v2:getParticipant", args ?? new GetParticipantInvokeArgs(), options.WithDefaults());
     }
 
 

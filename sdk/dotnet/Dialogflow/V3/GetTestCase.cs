@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// Gets a test case.
         /// </summary>
         public static Task<GetTestCaseResult> InvokeAsync(GetTestCaseArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTestCaseResult>("google-native:dialogflow/v3:getTestCase", args ?? new GetTestCaseArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTestCaseResult>("google-native:dialogflow/v3:getTestCase", args ?? new GetTestCaseArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a test case.
         /// </summary>
         public static Output<GetTestCaseResult> Invoke(GetTestCaseInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTestCaseResult>("google-native:dialogflow/v3:getTestCase", args ?? new GetTestCaseInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTestCaseResult>("google-native:dialogflow/v3:getTestCase", args ?? new GetTestCaseInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.IDS.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetEndpointIamPolicyResult> InvokeAsync(GetEndpointIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointIamPolicyResult>("google-native:ids/v1:getEndpointIamPolicy", args ?? new GetEndpointIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointIamPolicyResult>("google-native:ids/v1:getEndpointIamPolicy", args ?? new GetEndpointIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetEndpointIamPolicyResult> Invoke(GetEndpointIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEndpointIamPolicyResult>("google-native:ids/v1:getEndpointIamPolicy", args ?? new GetEndpointIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEndpointIamPolicyResult>("google-native:ids/v1:getEndpointIamPolicy", args ?? new GetEndpointIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

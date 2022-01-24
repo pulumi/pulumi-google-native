@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetFeatureIamPolicyResult> InvokeAsync(GetFeatureIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFeatureIamPolicyResult>("google-native:gkehub/v1alpha:getFeatureIamPolicy", args ?? new GetFeatureIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFeatureIamPolicyResult>("google-native:gkehub/v1alpha:getFeatureIamPolicy", args ?? new GetFeatureIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetFeatureIamPolicyResult> Invoke(GetFeatureIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFeatureIamPolicyResult>("google-native:gkehub/v1alpha:getFeatureIamPolicy", args ?? new GetFeatureIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetFeatureIamPolicyResult>("google-native:gkehub/v1alpha:getFeatureIamPolicy", args ?? new GetFeatureIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

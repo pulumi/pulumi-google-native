@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1
         /// Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names).
         /// </summary>
         public static Task<GetProjectIamPolicyResult> InvokeAsync(GetProjectIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectIamPolicyResult>("google-native:cloudresourcemanager/v1:getProjectIamPolicy", args ?? new GetProjectIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectIamPolicyResult>("google-native:cloudresourcemanager/v1:getProjectIamPolicy", args ?? new GetProjectIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names).
         /// </summary>
         public static Output<GetProjectIamPolicyResult> Invoke(GetProjectIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectIamPolicyResult>("google-native:cloudresourcemanager/v1:getProjectIamPolicy", args ?? new GetProjectIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetProjectIamPolicyResult>("google-native:cloudresourcemanager/v1:getProjectIamPolicy", args ?? new GetProjectIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

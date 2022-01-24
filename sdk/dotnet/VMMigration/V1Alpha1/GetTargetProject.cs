@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// Gets details of a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
         /// </summary>
         public static Task<GetTargetProjectResult> InvokeAsync(GetTargetProjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetProjectResult>("google-native:vmmigration/v1alpha1:getTargetProject", args ?? new GetTargetProjectArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetProjectResult>("google-native:vmmigration/v1alpha1:getTargetProject", args ?? new GetTargetProjectArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
         /// </summary>
         public static Output<GetTargetProjectResult> Invoke(GetTargetProjectInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTargetProjectResult>("google-native:vmmigration/v1alpha1:getTargetProject", args ?? new GetTargetProjectInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTargetProjectResult>("google-native:vmmigration/v1alpha1:getTargetProject", args ?? new GetTargetProjectInvokeArgs(), options.WithDefaults());
     }
 
 

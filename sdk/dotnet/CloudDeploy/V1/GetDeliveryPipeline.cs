@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// Gets details of a single DeliveryPipeline.
         /// </summary>
         public static Task<GetDeliveryPipelineResult> InvokeAsync(GetDeliveryPipelineArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDeliveryPipelineResult>("google-native:clouddeploy/v1:getDeliveryPipeline", args ?? new GetDeliveryPipelineArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDeliveryPipelineResult>("google-native:clouddeploy/v1:getDeliveryPipeline", args ?? new GetDeliveryPipelineArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single DeliveryPipeline.
         /// </summary>
         public static Output<GetDeliveryPipelineResult> Invoke(GetDeliveryPipelineInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDeliveryPipelineResult>("google-native:clouddeploy/v1:getDeliveryPipeline", args ?? new GetDeliveryPipelineInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDeliveryPipelineResult>("google-native:clouddeploy/v1:getDeliveryPipeline", args ?? new GetDeliveryPipelineInvokeArgs(), options.WithDefaults());
     }
 
 

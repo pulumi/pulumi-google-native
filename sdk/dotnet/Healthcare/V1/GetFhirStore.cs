@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// Gets the configuration of the specified FHIR store.
         /// </summary>
         public static Task<GetFhirStoreResult> InvokeAsync(GetFhirStoreArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFhirStoreResult>("google-native:healthcare/v1:getFhirStore", args ?? new GetFhirStoreArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFhirStoreResult>("google-native:healthcare/v1:getFhirStore", args ?? new GetFhirStoreArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the configuration of the specified FHIR store.
         /// </summary>
         public static Output<GetFhirStoreResult> Invoke(GetFhirStoreInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFhirStoreResult>("google-native:healthcare/v1:getFhirStore", args ?? new GetFhirStoreInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetFhirStoreResult>("google-native:healthcare/v1:getFhirStore", args ?? new GetFhirStoreInvokeArgs(), options.WithDefaults());
     }
 
 

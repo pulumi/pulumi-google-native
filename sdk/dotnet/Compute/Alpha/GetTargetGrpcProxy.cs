@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified TargetGrpcProxy resource in the given scope.
         /// </summary>
         public static Task<GetTargetGrpcProxyResult> InvokeAsync(GetTargetGrpcProxyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetGrpcProxyResult>("google-native:compute/alpha:getTargetGrpcProxy", args ?? new GetTargetGrpcProxyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetGrpcProxyResult>("google-native:compute/alpha:getTargetGrpcProxy", args ?? new GetTargetGrpcProxyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified TargetGrpcProxy resource in the given scope.
         /// </summary>
         public static Output<GetTargetGrpcProxyResult> Invoke(GetTargetGrpcProxyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTargetGrpcProxyResult>("google-native:compute/alpha:getTargetGrpcProxy", args ?? new GetTargetGrpcProxyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTargetGrpcProxyResult>("google-native:compute/alpha:getTargetGrpcProxy", args ?? new GetTargetGrpcProxyInvokeArgs(), options.WithDefaults());
     }
 
 

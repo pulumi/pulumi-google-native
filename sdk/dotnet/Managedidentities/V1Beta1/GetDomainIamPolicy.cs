@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetDomainIamPolicyResult> InvokeAsync(GetDomainIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainIamPolicyResult>("google-native:managedidentities/v1beta1:getDomainIamPolicy", args ?? new GetDomainIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainIamPolicyResult>("google-native:managedidentities/v1beta1:getDomainIamPolicy", args ?? new GetDomainIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetDomainIamPolicyResult> Invoke(GetDomainIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainIamPolicyResult>("google-native:managedidentities/v1beta1:getDomainIamPolicy", args ?? new GetDomainIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDomainIamPolicyResult>("google-native:managedidentities/v1beta1:getDomainIamPolicy", args ?? new GetDomainIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

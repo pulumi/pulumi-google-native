@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         /// Gets information about a single variable.
         /// </summary>
         public static Task<GetVariableResult> InvokeAsync(GetVariableArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVariableResult>("google-native:runtimeconfig/v1beta1:getVariable", args ?? new GetVariableArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVariableResult>("google-native:runtimeconfig/v1beta1:getVariable", args ?? new GetVariableArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about a single variable.
         /// </summary>
         public static Output<GetVariableResult> Invoke(GetVariableInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVariableResult>("google-native:runtimeconfig/v1beta1:getVariable", args ?? new GetVariableInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVariableResult>("google-native:runtimeconfig/v1beta1:getVariable", args ?? new GetVariableInvokeArgs(), options.WithDefaults());
     }
 
 

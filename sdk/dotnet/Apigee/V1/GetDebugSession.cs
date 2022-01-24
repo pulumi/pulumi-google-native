@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Retrieves a debug session.
         /// </summary>
         public static Task<GetDebugSessionResult> InvokeAsync(GetDebugSessionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDebugSessionResult>("google-native:apigee/v1:getDebugSession", args ?? new GetDebugSessionArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDebugSessionResult>("google-native:apigee/v1:getDebugSession", args ?? new GetDebugSessionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a debug session.
         /// </summary>
         public static Output<GetDebugSessionResult> Invoke(GetDebugSessionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDebugSessionResult>("google-native:apigee/v1:getDebugSession", args ?? new GetDebugSessionInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDebugSessionResult>("google-native:apigee/v1:getDebugSession", args ?? new GetDebugSessionInvokeArgs(), options.WithDefaults());
     }
 
 

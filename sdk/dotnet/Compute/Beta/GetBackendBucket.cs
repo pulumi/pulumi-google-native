@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a list() request.
         /// </summary>
         public static Task<GetBackendBucketResult> InvokeAsync(GetBackendBucketArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendBucketResult>("google-native:compute/beta:getBackendBucket", args ?? new GetBackendBucketArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendBucketResult>("google-native:compute/beta:getBackendBucket", args ?? new GetBackendBucketArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a list() request.
         /// </summary>
         public static Output<GetBackendBucketResult> Invoke(GetBackendBucketInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackendBucketResult>("google-native:compute/beta:getBackendBucket", args ?? new GetBackendBucketInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBackendBucketResult>("google-native:compute/beta:getBackendBucket", args ?? new GetBackendBucketInvokeArgs(), options.WithDefaults());
     }
 
 

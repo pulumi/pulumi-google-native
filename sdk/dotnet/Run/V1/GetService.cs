@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Run.V1
         /// Get information about a service.
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("google-native:run/v1:getService", args ?? new GetServiceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("google-native:run/v1:getService", args ?? new GetServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a service.
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("google-native:run/v1:getService", args ?? new GetServiceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("google-native:run/v1:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Gets a specified NetworkEdgeSecurityService.
         /// </summary>
         public static Task<GetNetworkEdgeSecurityServiceResult> InvokeAsync(GetNetworkEdgeSecurityServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkEdgeSecurityServiceResult>("google-native:compute/alpha:getNetworkEdgeSecurityService", args ?? new GetNetworkEdgeSecurityServiceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkEdgeSecurityServiceResult>("google-native:compute/alpha:getNetworkEdgeSecurityService", args ?? new GetNetworkEdgeSecurityServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a specified NetworkEdgeSecurityService.
         /// </summary>
         public static Output<GetNetworkEdgeSecurityServiceResult> Invoke(GetNetworkEdgeSecurityServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworkEdgeSecurityServiceResult>("google-native:compute/alpha:getNetworkEdgeSecurityService", args ?? new GetNetworkEdgeSecurityServiceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkEdgeSecurityServiceResult>("google-native:compute/alpha:getNetworkEdgeSecurityService", args ?? new GetNetworkEdgeSecurityServiceInvokeArgs(), options.WithDefaults());
     }
 
 

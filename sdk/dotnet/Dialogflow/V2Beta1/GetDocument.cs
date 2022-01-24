@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// Retrieves the specified document. Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use `projects.knowledgeBases.documents`.
         /// </summary>
         public static Task<GetDocumentResult> InvokeAsync(GetDocumentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDocumentResult>("google-native:dialogflow/v2beta1:getDocument", args ?? new GetDocumentArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDocumentResult>("google-native:dialogflow/v2beta1:getDocument", args ?? new GetDocumentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified document. Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use `projects.knowledgeBases.documents`.
         /// </summary>
         public static Output<GetDocumentResult> Invoke(GetDocumentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDocumentResult>("google-native:dialogflow/v2beta1:getDocument", args ?? new GetDocumentInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDocumentResult>("google-native:dialogflow/v2beta1:getDocument", args ?? new GetDocumentInvokeArgs(), options.WithDefaults());
     }
 
 

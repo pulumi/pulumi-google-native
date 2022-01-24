@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by making a list() request.
         /// </summary>
         public static Task<GetTargetTcpProxyResult> InvokeAsync(GetTargetTcpProxyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetTcpProxyResult>("google-native:compute/beta:getTargetTcpProxy", args ?? new GetTargetTcpProxyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetTcpProxyResult>("google-native:compute/beta:getTargetTcpProxy", args ?? new GetTargetTcpProxyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by making a list() request.
         /// </summary>
         public static Output<GetTargetTcpProxyResult> Invoke(GetTargetTcpProxyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTargetTcpProxyResult>("google-native:compute/beta:getTargetTcpProxy", args ?? new GetTargetTcpProxyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTargetTcpProxyResult>("google-native:compute/beta:getTargetTcpProxy", args ?? new GetTargetTcpProxyInvokeArgs(), options.WithDefaults());
     }
 
 

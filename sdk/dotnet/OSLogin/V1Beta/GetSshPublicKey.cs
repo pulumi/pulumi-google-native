@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.OSLogin.V1Beta
         /// Retrieves an SSH public key.
         /// </summary>
         public static Task<GetSshPublicKeyResult> InvokeAsync(GetSshPublicKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSshPublicKeyResult>("google-native:oslogin/v1beta:getSshPublicKey", args ?? new GetSshPublicKeyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSshPublicKeyResult>("google-native:oslogin/v1beta:getSshPublicKey", args ?? new GetSshPublicKeyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves an SSH public key.
         /// </summary>
         public static Output<GetSshPublicKeyResult> Invoke(GetSshPublicKeyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSshPublicKeyResult>("google-native:oslogin/v1beta:getSshPublicKey", args ?? new GetSshPublicKeyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSshPublicKeyResult>("google-native:oslogin/v1beta:getSshPublicKey", args ?? new GetSshPublicKeyInvokeArgs(), options.WithDefaults());
     }
 
 

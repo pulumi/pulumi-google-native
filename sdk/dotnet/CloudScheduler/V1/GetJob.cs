@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1
         /// Gets a job.
         /// </summary>
         public static Task<GetJobResult> InvokeAsync(GetJobArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("google-native:cloudscheduler/v1:getJob", args ?? new GetJobArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("google-native:cloudscheduler/v1:getJob", args ?? new GetJobArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a job.
         /// </summary>
         public static Output<GetJobResult> Invoke(GetJobInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetJobResult>("google-native:cloudscheduler/v1:getJob", args ?? new GetJobInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetJobResult>("google-native:cloudscheduler/v1:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
     }
 
 

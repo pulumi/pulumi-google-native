@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetTriggerIamPolicyResult> InvokeAsync(GetTriggerIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTriggerIamPolicyResult>("google-native:eventarc/v1beta1:getTriggerIamPolicy", args ?? new GetTriggerIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTriggerIamPolicyResult>("google-native:eventarc/v1beta1:getTriggerIamPolicy", args ?? new GetTriggerIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetTriggerIamPolicyResult> Invoke(GetTriggerIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTriggerIamPolicyResult>("google-native:eventarc/v1beta1:getTriggerIamPolicy", args ?? new GetTriggerIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTriggerIamPolicyResult>("google-native:eventarc/v1beta1:getTriggerIamPolicy", args ?? new GetTriggerIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

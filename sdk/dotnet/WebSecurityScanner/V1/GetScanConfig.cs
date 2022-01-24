@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1
         /// Gets a ScanConfig.
         /// </summary>
         public static Task<GetScanConfigResult> InvokeAsync(GetScanConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetScanConfigResult>("google-native:websecurityscanner/v1:getScanConfig", args ?? new GetScanConfigArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetScanConfigResult>("google-native:websecurityscanner/v1:getScanConfig", args ?? new GetScanConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a ScanConfig.
         /// </summary>
         public static Output<GetScanConfigResult> Invoke(GetScanConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetScanConfigResult>("google-native:websecurityscanner/v1:getScanConfig", args ?? new GetScanConfigInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetScanConfigResult>("google-native:websecurityscanner/v1:getScanConfig", args ?? new GetScanConfigInvokeArgs(), options.WithDefaults());
     }
 
 

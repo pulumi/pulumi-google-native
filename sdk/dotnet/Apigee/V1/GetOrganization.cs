@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets the profile for an Apigee organization. See [Understanding organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure).
         /// </summary>
         public static Task<GetOrganizationResult> InvokeAsync(GetOrganizationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("google-native:apigee/v1:getOrganization", args ?? new GetOrganizationArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("google-native:apigee/v1:getOrganization", args ?? new GetOrganizationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the profile for an Apigee organization. See [Understanding organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure).
         /// </summary>
         public static Output<GetOrganizationResult> Invoke(GetOrganizationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationResult>("google-native:apigee/v1:getOrganization", args ?? new GetOrganizationInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationResult>("google-native:apigee/v1:getOrganization", args ?? new GetOrganizationInvokeArgs(), options.WithDefaults());
     }
 
 

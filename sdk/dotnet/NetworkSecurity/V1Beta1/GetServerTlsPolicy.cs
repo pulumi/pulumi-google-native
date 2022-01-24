@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         /// Gets details of a single ServerTlsPolicy.
         /// </summary>
         public static Task<GetServerTlsPolicyResult> InvokeAsync(GetServerTlsPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerTlsPolicyResult>("google-native:networksecurity/v1beta1:getServerTlsPolicy", args ?? new GetServerTlsPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServerTlsPolicyResult>("google-native:networksecurity/v1beta1:getServerTlsPolicy", args ?? new GetServerTlsPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single ServerTlsPolicy.
         /// </summary>
         public static Output<GetServerTlsPolicyResult> Invoke(GetServerTlsPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerTlsPolicyResult>("google-native:networksecurity/v1beta1:getServerTlsPolicy", args ?? new GetServerTlsPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServerTlsPolicyResult>("google-native:networksecurity/v1beta1:getServerTlsPolicy", args ?? new GetServerTlsPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

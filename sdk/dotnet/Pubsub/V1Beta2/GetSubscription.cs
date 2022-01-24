@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
         /// Gets the configuration details of a subscription.
         /// </summary>
         public static Task<GetSubscriptionResult> InvokeAsync(GetSubscriptionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionResult>("google-native:pubsub/v1beta2:getSubscription", args ?? new GetSubscriptionArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionResult>("google-native:pubsub/v1beta2:getSubscription", args ?? new GetSubscriptionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the configuration details of a subscription.
         /// </summary>
         public static Output<GetSubscriptionResult> Invoke(GetSubscriptionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSubscriptionResult>("google-native:pubsub/v1beta2:getSubscription", args ?? new GetSubscriptionInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSubscriptionResult>("google-native:pubsub/v1beta2:getSubscription", args ?? new GetSubscriptionInvokeArgs(), options.WithDefaults());
     }
 
 

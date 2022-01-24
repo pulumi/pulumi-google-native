@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
         /// Returns information about the capacity commitment.
         /// </summary>
         public static Task<GetCapacityCommitmentResult> InvokeAsync(GetCapacityCommitmentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCapacityCommitmentResult>("google-native:bigqueryreservation/v1beta1:getCapacityCommitment", args ?? new GetCapacityCommitmentArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCapacityCommitmentResult>("google-native:bigqueryreservation/v1beta1:getCapacityCommitment", args ?? new GetCapacityCommitmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns information about the capacity commitment.
         /// </summary>
         public static Output<GetCapacityCommitmentResult> Invoke(GetCapacityCommitmentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCapacityCommitmentResult>("google-native:bigqueryreservation/v1beta1:getCapacityCommitment", args ?? new GetCapacityCommitmentInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCapacityCommitmentResult>("google-native:bigqueryreservation/v1beta1:getCapacityCommitment", args ?? new GetCapacityCommitmentInvokeArgs(), options.WithDefaults());
     }
 
 

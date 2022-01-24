@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetRepoIamPolicyResult> InvokeAsync(GetRepoIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRepoIamPolicyResult>("google-native:sourcerepo/v1:getRepoIamPolicy", args ?? new GetRepoIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRepoIamPolicyResult>("google-native:sourcerepo/v1:getRepoIamPolicy", args ?? new GetRepoIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetRepoIamPolicyResult> Invoke(GetRepoIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRepoIamPolicyResult>("google-native:sourcerepo/v1:getRepoIamPolicy", args ?? new GetRepoIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRepoIamPolicyResult>("google-native:sourcerepo/v1:getRepoIamPolicy", args ?? new GetRepoIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         /// Gets details about an asset feed.
         /// </summary>
         public static Task<GetFeedResult> InvokeAsync(GetFeedArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFeedResult>("google-native:cloudasset/v1:getFeed", args ?? new GetFeedArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFeedResult>("google-native:cloudasset/v1:getFeed", args ?? new GetFeedArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details about an asset feed.
         /// </summary>
         public static Output<GetFeedResult> Invoke(GetFeedInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFeedResult>("google-native:cloudasset/v1:getFeed", args ?? new GetFeedInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetFeedResult>("google-native:cloudasset/v1:getFeed", args ?? new GetFeedInvokeArgs(), options.WithDefaults());
     }
 
 

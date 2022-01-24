@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// Gets information about an app profile.
         /// </summary>
         public static Task<GetAppProfileResult> InvokeAsync(GetAppProfileArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAppProfileResult>("google-native:bigtableadmin/v2:getAppProfile", args ?? new GetAppProfileArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAppProfileResult>("google-native:bigtableadmin/v2:getAppProfile", args ?? new GetAppProfileArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about an app profile.
         /// </summary>
         public static Output<GetAppProfileResult> Invoke(GetAppProfileInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAppProfileResult>("google-native:bigtableadmin/v2:getAppProfile", args ?? new GetAppProfileInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAppProfileResult>("google-native:bigtableadmin/v2:getAppProfile", args ?? new GetAppProfileInvokeArgs(), options.WithDefaults());
     }
 
 

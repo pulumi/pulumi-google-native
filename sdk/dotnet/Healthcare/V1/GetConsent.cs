@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// Gets the specified revision of a Consent, or the latest revision if `revision_id` is not specified in the resource name.
         /// </summary>
         public static Task<GetConsentResult> InvokeAsync(GetConsentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConsentResult>("google-native:healthcare/v1:getConsent", args ?? new GetConsentArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConsentResult>("google-native:healthcare/v1:getConsent", args ?? new GetConsentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified revision of a Consent, or the latest revision if `revision_id` is not specified in the resource name.
         /// </summary>
         public static Output<GetConsentResult> Invoke(GetConsentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConsentResult>("google-native:healthcare/v1:getConsent", args ?? new GetConsentInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConsentResult>("google-native:healthcare/v1:getConsent", args ?? new GetConsentInvokeArgs(), options.WithDefaults());
     }
 
 

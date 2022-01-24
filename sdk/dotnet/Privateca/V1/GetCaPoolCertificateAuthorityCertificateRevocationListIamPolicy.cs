@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult> InvokeAsync(GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult>("google-native:privateca/v1:getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy", args ?? new GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult>("google-native:privateca/v1:getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy", args ?? new GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult> Invoke(GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult>("google-native:privateca/v1:getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy", args ?? new GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult>("google-native:privateca/v1:getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy", args ?? new GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetServiceConsumerIamPolicyResult> InvokeAsync(GetServiceConsumerIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceConsumerIamPolicyResult>("google-native:servicemanagement/v1:getServiceConsumerIamPolicy", args ?? new GetServiceConsumerIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceConsumerIamPolicyResult>("google-native:servicemanagement/v1:getServiceConsumerIamPolicy", args ?? new GetServiceConsumerIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetServiceConsumerIamPolicyResult> Invoke(GetServiceConsumerIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceConsumerIamPolicyResult>("google-native:servicemanagement/v1:getServiceConsumerIamPolicy", args ?? new GetServiceConsumerIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceConsumerIamPolicyResult>("google-native:servicemanagement/v1:getServiceConsumerIamPolicy", args ?? new GetServiceConsumerIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

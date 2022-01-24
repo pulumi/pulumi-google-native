@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified machine image. Gets a list of available machine images by making a list() request.
         /// </summary>
         public static Task<GetMachineImageResult> InvokeAsync(GetMachineImageArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMachineImageResult>("google-native:compute/alpha:getMachineImage", args ?? new GetMachineImageArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMachineImageResult>("google-native:compute/alpha:getMachineImage", args ?? new GetMachineImageArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified machine image. Gets a list of available machine images by making a list() request.
         /// </summary>
         public static Output<GetMachineImageResult> Invoke(GetMachineImageInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMachineImageResult>("google-native:compute/alpha:getMachineImage", args ?? new GetMachineImageInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMachineImageResult>("google-native:compute/alpha:getMachineImage", args ?? new GetMachineImageInvokeArgs(), options.WithDefaults());
     }
 
 

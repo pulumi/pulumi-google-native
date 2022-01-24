@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// Gets details of a single Environment.
         /// </summary>
         public static Task<GetEnvironmentResult> InvokeAsync(GetEnvironmentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentResult>("google-native:notebooks/v1:getEnvironment", args ?? new GetEnvironmentArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentResult>("google-native:notebooks/v1:getEnvironment", args ?? new GetEnvironmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Environment.
         /// </summary>
         public static Output<GetEnvironmentResult> Invoke(GetEnvironmentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEnvironmentResult>("google-native:notebooks/v1:getEnvironment", args ?? new GetEnvironmentInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEnvironmentResult>("google-native:notebooks/v1:getEnvironment", args ?? new GetEnvironmentInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.IDS.V1
         /// Gets details of a single Endpoint.
         /// </summary>
         public static Task<GetEndpointResult> InvokeAsync(GetEndpointArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointResult>("google-native:ids/v1:getEndpoint", args ?? new GetEndpointArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointResult>("google-native:ids/v1:getEndpoint", args ?? new GetEndpointArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Endpoint.
         /// </summary>
         public static Output<GetEndpointResult> Invoke(GetEndpointInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEndpointResult>("google-native:ids/v1:getEndpoint", args ?? new GetEndpointInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEndpointResult>("google-native:ids/v1:getEndpoint", args ?? new GetEndpointInvokeArgs(), options.WithDefaults());
     }
 
 

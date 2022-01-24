@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// Gets details of a single ServiceBinding.
         /// </summary>
         public static Task<GetServiceBindingResult> InvokeAsync(GetServiceBindingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceBindingResult>("google-native:networkservices/v1beta1:getServiceBinding", args ?? new GetServiceBindingArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceBindingResult>("google-native:networkservices/v1beta1:getServiceBinding", args ?? new GetServiceBindingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single ServiceBinding.
         /// </summary>
         public static Output<GetServiceBindingResult> Invoke(GetServiceBindingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceBindingResult>("google-native:networkservices/v1beta1:getServiceBinding", args ?? new GetServiceBindingInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceBindingResult>("google-native:networkservices/v1beta1:getServiceBinding", args ?? new GetServiceBindingInvokeArgs(), options.WithDefaults());
     }
 
 

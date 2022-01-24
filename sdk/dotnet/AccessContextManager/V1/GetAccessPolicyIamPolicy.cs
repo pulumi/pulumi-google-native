@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         /// Gets the IAM policy for the specified Access Context Manager access policy.
         /// </summary>
         public static Task<GetAccessPolicyIamPolicyResult> InvokeAsync(GetAccessPolicyIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessPolicyIamPolicyResult>("google-native:accesscontextmanager/v1:getAccessPolicyIamPolicy", args ?? new GetAccessPolicyIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessPolicyIamPolicyResult>("google-native:accesscontextmanager/v1:getAccessPolicyIamPolicy", args ?? new GetAccessPolicyIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the IAM policy for the specified Access Context Manager access policy.
         /// </summary>
         public static Output<GetAccessPolicyIamPolicyResult> Invoke(GetAccessPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccessPolicyIamPolicyResult>("google-native:accesscontextmanager/v1:getAccessPolicyIamPolicy", args ?? new GetAccessPolicyIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAccessPolicyIamPolicyResult>("google-native:accesscontextmanager/v1:getAccessPolicyIamPolicy", args ?? new GetAccessPolicyIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

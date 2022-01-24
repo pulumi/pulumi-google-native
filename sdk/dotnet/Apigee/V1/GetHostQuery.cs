@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Get status of a query submitted at host level. If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
         /// </summary>
         public static Task<GetHostQueryResult> InvokeAsync(GetHostQueryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostQueryResult>("google-native:apigee/v1:getHostQuery", args ?? new GetHostQueryArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetHostQueryResult>("google-native:apigee/v1:getHostQuery", args ?? new GetHostQueryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get status of a query submitted at host level. If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
         /// </summary>
         public static Output<GetHostQueryResult> Invoke(GetHostQueryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHostQueryResult>("google-native:apigee/v1:getHostQuery", args ?? new GetHostQueryInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetHostQueryResult>("google-native:apigee/v1:getHostQuery", args ?? new GetHostQueryInvokeArgs(), options.WithDefaults());
     }
 
 

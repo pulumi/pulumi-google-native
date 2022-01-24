@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         /// Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
         /// </summary>
         public static Task<GetNoteIamPolicyResult> InvokeAsync(GetNoteIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNoteIamPolicyResult>("google-native:containeranalysis/v1:getNoteIamPolicy", args ?? new GetNoteIamPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNoteIamPolicyResult>("google-native:containeranalysis/v1:getNoteIamPolicy", args ?? new GetNoteIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
         /// </summary>
         public static Output<GetNoteIamPolicyResult> Invoke(GetNoteIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNoteIamPolicyResult>("google-native:containeranalysis/v1:getNoteIamPolicy", args ?? new GetNoteIamPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNoteIamPolicyResult>("google-native:containeranalysis/v1:getNoteIamPolicy", args ?? new GetNoteIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

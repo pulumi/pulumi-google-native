@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// Retrieves specified tenant.
         /// </summary>
         public static Task<GetTenantResult> InvokeAsync(GetTenantArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTenantResult>("google-native:jobs/v4:getTenant", args ?? new GetTenantArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTenantResult>("google-native:jobs/v4:getTenant", args ?? new GetTenantArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves specified tenant.
         /// </summary>
         public static Output<GetTenantResult> Invoke(GetTenantInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTenantResult>("google-native:jobs/v4:getTenant", args ?? new GetTenantInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTenantResult>("google-native:jobs/v4:getTenant", args ?? new GetTenantInvokeArgs(), options.WithDefaults());
     }
 
 

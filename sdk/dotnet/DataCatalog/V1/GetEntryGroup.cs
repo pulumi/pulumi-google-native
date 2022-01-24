@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// Gets an entry group.
         /// </summary>
         public static Task<GetEntryGroupResult> InvokeAsync(GetEntryGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEntryGroupResult>("google-native:datacatalog/v1:getEntryGroup", args ?? new GetEntryGroupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEntryGroupResult>("google-native:datacatalog/v1:getEntryGroup", args ?? new GetEntryGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an entry group.
         /// </summary>
         public static Output<GetEntryGroupResult> Invoke(GetEntryGroupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEntryGroupResult>("google-native:datacatalog/v1:getEntryGroup", args ?? new GetEntryGroupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEntryGroupResult>("google-native:datacatalog/v1:getEntryGroup", args ?? new GetEntryGroupInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified ForwardingRule resource.
         /// </summary>
         public static Task<GetForwardingRuleResult> InvokeAsync(GetForwardingRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("google-native:compute/v1:getForwardingRule", args ?? new GetForwardingRuleArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("google-native:compute/v1:getForwardingRule", args ?? new GetForwardingRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified ForwardingRule resource.
         /// </summary>
         public static Output<GetForwardingRuleResult> Invoke(GetForwardingRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetForwardingRuleResult>("google-native:compute/v1:getForwardingRule", args ?? new GetForwardingRuleInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetForwardingRuleResult>("google-native:compute/v1:getForwardingRule", args ?? new GetForwardingRuleInvokeArgs(), options.WithDefaults());
     }
 
 

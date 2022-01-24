@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         /// Get a `Ruleset` by name including the full `Source` contents.
         /// </summary>
         public static Task<GetRulesetResult> InvokeAsync(GetRulesetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRulesetResult>("google-native:firebaserules/v1:getRuleset", args ?? new GetRulesetArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRulesetResult>("google-native:firebaserules/v1:getRuleset", args ?? new GetRulesetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a `Ruleset` by name including the full `Source` contents.
         /// </summary>
         public static Output<GetRulesetResult> Invoke(GetRulesetInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRulesetResult>("google-native:firebaserules/v1:getRuleset", args ?? new GetRulesetInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRulesetResult>("google-native:firebaserules/v1:getRuleset", args ?? new GetRulesetInvokeArgs(), options.WithDefaults());
     }
 
 

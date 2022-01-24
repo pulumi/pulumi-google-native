@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// Gets a managed service. Authentication is required unless the service is public.
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("google-native:servicemanagement/v1:getService", args ?? new GetServiceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("google-native:servicemanagement/v1:getService", args ?? new GetServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a managed service. Authentication is required unless the service is public.
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("google-native:servicemanagement/v1:getService", args ?? new GetServiceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("google-native:servicemanagement/v1:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

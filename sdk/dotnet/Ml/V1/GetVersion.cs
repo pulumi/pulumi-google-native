@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// Gets information about a model version. Models can have multiple versions. You can call projects.models.versions.list to get the same information that this method returns for all of the versions of a model.
         /// </summary>
         public static Task<GetVersionResult> InvokeAsync(GetVersionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("google-native:ml/v1:getVersion", args ?? new GetVersionArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("google-native:ml/v1:getVersion", args ?? new GetVersionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about a model version. Models can have multiple versions. You can call projects.models.versions.list to get the same information that this method returns for all of the versions of a model.
         /// </summary>
         public static Output<GetVersionResult> Invoke(GetVersionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVersionResult>("google-native:ml/v1:getVersion", args ?? new GetVersionInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVersionResult>("google-native:ml/v1:getVersion", args ?? new GetVersionInvokeArgs(), options.WithDefaults());
     }
 
 
