@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly string FollowGaeApplication;
         /// <summary>
-        /// This is always **sql#locationPreference**.
+        /// This is always `sql#locationPreference`.
         /// </summary>
         public readonly string Kind;
         /// <summary>

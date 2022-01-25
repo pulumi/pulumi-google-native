@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<string>? DumpFilePath { get; set; }
 
         /// <summary>
-        /// This is always **sql#mysqlReplicaConfiguration**.
+        /// This is always `sql#mysqlReplicaConfiguration`.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

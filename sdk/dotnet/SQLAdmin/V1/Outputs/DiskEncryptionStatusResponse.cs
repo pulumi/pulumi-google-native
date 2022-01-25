@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
     public sealed class DiskEncryptionStatusResponse
     {
         /// <summary>
-        /// This is always **sql#diskEncryptionStatus**.
+        /// This is always `sql#diskEncryptionStatus`.
         /// </summary>
         public readonly string Kind;
         /// <summary>

@@ -40,11 +40,11 @@ export interface GetSslCertResult {
      */
     readonly commonName: string;
     /**
-     * The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**
+     * The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
      */
     readonly createTime: string;
     /**
-     * The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+     * The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
      */
     readonly expirationTime: string;
     /**
@@ -52,7 +52,7 @@ export interface GetSslCertResult {
      */
     readonly instance: string;
     /**
-     * This is always **sql#sslCert**.
+     * This is always `sql#sslCert`.
      */
     readonly kind: string;
     /**

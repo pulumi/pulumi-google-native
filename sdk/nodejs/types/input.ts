@@ -54039,7 +54039,7 @@ export namespace retail {
              */
             boost?: pulumi.Input<number>;
             /**
-             * The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamily: ANY("Red", "Blue")) *
+             * The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
              */
             productsFilter?: pulumi.Input<string>;
         }
@@ -54067,7 +54067,7 @@ export namespace retail {
          */
         export interface GoogleCloudRetailV2alphaRuleFilterActionArgs {
             /**
-             * A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamily: ANY("Red", "Blue")) *
+             * A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
              */
             filter?: pulumi.Input<string>;
         }
@@ -54236,6 +54236,48 @@ export namespace retail {
         }
 
         /**
+         * Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the product_filter for requests with a query matching the query terms wil get boosted.
+         */
+        export interface GoogleCloudRetailV2betaConditionArgs {
+            /**
+             * Range of time(s) specifying when Condition is active. Condition true if any time range matches.
+             */
+            activeTimeRange?: pulumi.Input<pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaConditionTimeRangeArgs>[]>;
+            /**
+             * A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
+             */
+            queryTerms?: pulumi.Input<pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaConditionQueryTermArgs>[]>;
+        }
+
+        /**
+         * Query terms that we want to match on.
+         */
+        export interface GoogleCloudRetailV2betaConditionQueryTermArgs {
+            /**
+             * Whether this is supposed to be a full or partial match.
+             */
+            fullMatch?: pulumi.Input<boolean>;
+            /**
+             * The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * Used for time-dependent conditions. Example: Want to have rule applied for week long sale.
+         */
+        export interface GoogleCloudRetailV2betaConditionTimeRangeArgs {
+            /**
+             * End of time range. Range is inclusive.
+             */
+            endTime?: pulumi.Input<string>;
+            /**
+             * Start of time range. Range is inclusive.
+             */
+            startTime?: pulumi.Input<string>;
+        }
+
+        /**
          * Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
          */
         export interface GoogleCloudRetailV2betaFulfillmentInfoArgs {
@@ -54265,6 +54307,28 @@ export namespace retail {
              * Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
              */
             width?: pulumi.Input<number>;
+        }
+
+        /**
+         * A floating point interval.
+         */
+        export interface GoogleCloudRetailV2betaIntervalArgs {
+            /**
+             * Exclusive upper bound.
+             */
+            exclusiveMaximum?: pulumi.Input<number>;
+            /**
+             * Exclusive lower bound.
+             */
+            exclusiveMinimum?: pulumi.Input<number>;
+            /**
+             * Inclusive upper bound.
+             */
+            maximum?: pulumi.Input<number>;
+            /**
+             * Inclusive lower bound.
+             */
+            minimum?: pulumi.Input<number>;
         }
 
         /**
@@ -54323,6 +54387,222 @@ export namespace retail {
              * List of rating counts per rating value (index = rating - 1). The list is empty if there is no rating. If the list is non-empty, its size is always 5. Otherwise, an INVALID_ARGUMENT error is returned. For example, [41, 14, 13, 47, 303]. It means that the Product got 41 ratings with 1 star, 14 ratings with 2 star, and so on.
              */
             ratingHistogram?: pulumi.Input<pulumi.Input<number>[]>;
+        }
+
+        /**
+         * A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+         */
+        export interface GoogleCloudRetailV2betaRuleArgs {
+            /**
+             * A boost action.
+             */
+            boostAction?: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaRuleBoostActionArgs>;
+            /**
+             * The condition that triggers the rule. If the condition is empty, the rule will always apply.
+             */
+            condition: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaConditionArgs>;
+            /**
+             * Prevents term from being associated with other terms.
+             */
+            doNotAssociateAction?: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs>;
+            /**
+             * Filters results.
+             */
+            filterAction?: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaRuleFilterActionArgs>;
+            /**
+             * Ignores specific terms from query during search.
+             */
+            ignoreAction?: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaRuleIgnoreActionArgs>;
+            /**
+             * Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
+             */
+            onewaySynonymsAction?: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs>;
+            /**
+             * Redirects a shopper to a specific page.
+             */
+            redirectAction?: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaRuleRedirectActionArgs>;
+            /**
+             * Replaces specific terms in the query.
+             */
+            replacementAction?: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaRuleReplacementActionArgs>;
+            /**
+             * Treats a set of terms as synonyms of one another.
+             */
+            twowaySynonymsAction?: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs>;
+        }
+
+        /**
+         * A boost action to apply to results matching condition specified above.
+         */
+        export interface GoogleCloudRetailV2betaRuleBoostActionArgs {
+            /**
+             * Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
+             */
+            boost?: pulumi.Input<number>;
+            /**
+             * The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+             */
+            productsFilter?: pulumi.Input<string>;
+        }
+
+        /**
+         * Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap".
+         */
+        export interface GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs {
+            /**
+             * Cannot contain duplicates or the query term. Can specify up to 100 terms.
+             */
+            doNotAssociateTerms?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
+             */
+            queryTerms?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Will be [deprecated = true] post migration;
+             */
+            terms?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * * Rule Condition: - No Condition provided is a global match. - 1 or more Condition provided is combined with OR operator. * Action Input: The request query and filter that will be applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+         */
+        export interface GoogleCloudRetailV2betaRuleFilterActionArgs {
+            /**
+             * A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+             */
+            filter?: pulumi.Input<string>;
+        }
+
+        /**
+         * Prevents a term in the query from being used in search. Example: Don't search for "shoddy".
+         */
+        export interface GoogleCloudRetailV2betaRuleIgnoreActionArgs {
+            /**
+             * Terms to ignore in the search query.
+             */
+            ignoreTerms?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Maps a set of terms to a set of synonyms. Set of synonyms will be treated as synonyms of each query term only. `query_terms` will not be treated as synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of "sneakers".
+         */
+        export interface GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs {
+            /**
+             * Will be [deprecated = true] post migration;
+             */
+            onewayTerms?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms.
+             */
+            queryTerms?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.
+             */
+            synonyms?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+         */
+        export interface GoogleCloudRetailV2betaRuleRedirectActionArgs {
+            /**
+             * URL must have length equal or less than 2000 characters.
+             */
+            redirectUri?: pulumi.Input<string>;
+        }
+
+        /**
+         * Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe".
+         */
+        export interface GoogleCloudRetailV2betaRuleReplacementActionArgs {
+            /**
+             * Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
+             */
+            queryTerms?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Term that will be used for replacement.
+             */
+            replacementTerm?: pulumi.Input<string>;
+            /**
+             * Will be [deprecated = true] post migration;
+             */
+            term?: pulumi.Input<string>;
+        }
+
+        /**
+         * Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
+         */
+        export interface GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs {
+            /**
+             * Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
+             */
+            synonyms?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * The specifications of dynamically generated facets.
+         */
+        export interface GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs {
+            /**
+             * Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+             */
+            mode?: pulumi.Input<enums.retail.v2beta.GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode>;
+        }
+
+        /**
+         * A facet specification to perform faceted search.
+         */
+        export interface GoogleCloudRetailV2betaSearchRequestFacetSpecArgs {
+            /**
+             * Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+             */
+            enableDynamicPosition?: pulumi.Input<boolean>;
+            /**
+             * List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. For example, suppose there are 100 products with color facet "Red" and 200 products with color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and have "colorFamilies" as FacetKey.key will by default return the "Red" with count 100. If this field contains "colorFamilies", then the query returns both the "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is now excluded from the filter. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
+             */
+            excludedFilterKeys?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The facet key specification.
+             */
+            facetKey: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs>;
+            /**
+             * Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+             */
+            limit?: pulumi.Input<number>;
+        }
+
+        /**
+         * Specifies how a facet is computed.
+         */
+        export interface GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs {
+            /**
+             * Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+             */
+            contains?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+             */
+            intervals?: pulumi.Input<pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaIntervalArgs>[]>;
+            /**
+             * Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
+             */
+            key: pulumi.Input<string>;
+            /**
+             * The order in which Facet.values are returned. Allowed values are: * "count desc", which means order by Facet.FacetValue.count descending. * "value desc", which means order by Facet.FacetValue.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
+             */
+            orderBy?: pulumi.Input<string>;
+            /**
+             * Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+             */
+            prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, FacetValue.value will be always "1" and FacetValue.count will be the number of results that matches the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+             */
+            query?: pulumi.Input<string>;
+            /**
+             * Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on textual fields and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
+             */
+            restrictedValues?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
     }
@@ -58124,11 +58404,11 @@ export namespace sqladmin {
          */
         export interface AclEntryArgs {
             /**
-             * The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+             * The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
              */
             expirationTime?: pulumi.Input<string>;
             /**
-             * This is always **sql#aclEntry**.
+             * This is always `sql#aclEntry`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -58158,7 +58438,7 @@ export namespace sqladmin {
              */
             enabled?: pulumi.Input<boolean>;
             /**
-             * This is always **sql#backupConfiguration**.
+             * This is always `sql#backupConfiguration`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -58174,7 +58454,7 @@ export namespace sqladmin {
              */
             replicationLogArchivingEnabled?: pulumi.Input<boolean>;
             /**
-             * Start time for the daily backup configuration in UTC timezone in the 24 hour format - **HH:MM**.
+             * Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
              */
             startTime?: pulumi.Input<string>;
             /**
@@ -58206,7 +58486,7 @@ export namespace sqladmin {
              */
             name?: pulumi.Input<string>;
             /**
-             * The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
+             * The value of the flag. Boolean flags are set to `on` for true and `off` for false. This field must be omitted if the flag doesn't take a value.
              */
             value?: pulumi.Input<string>;
         }
@@ -58234,7 +58514,7 @@ export namespace sqladmin {
          */
         export interface DiskEncryptionConfigurationArgs {
             /**
-             * This is always **sql#diskEncryptionConfiguration**.
+             * This is always `sql#diskEncryptionConfiguration`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -58248,7 +58528,7 @@ export namespace sqladmin {
          */
         export interface DiskEncryptionStatusArgs {
             /**
-             * This is always **sql#diskEncryptionStatus**.
+             * This is always `sql#diskEncryptionStatus`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -58324,7 +58604,7 @@ export namespace sqladmin {
              */
             allocatedIpRange?: pulumi.Input<string>;
             /**
-             * The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
+             * The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
              */
             authorizedNetworks?: pulumi.Input<pulumi.Input<inputs.sqladmin.v1.AclEntryArgs>[]>;
             /**
@@ -58332,7 +58612,7 @@ export namespace sqladmin {
              */
             ipv4Enabled?: pulumi.Input<boolean>;
             /**
-             * The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **&#47;projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
+             * The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
              */
             privateNetwork?: pulumi.Input<string>;
             /**
@@ -58350,11 +58630,11 @@ export namespace sqladmin {
              */
             ipAddress?: pulumi.Input<string>;
             /**
-             * The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**. This field is only available when the IP is scheduled to be retired.
+             * The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`. This field is only available when the IP is scheduled to be retired.
              */
             timeToRetire?: pulumi.Input<string>;
             /**
-             * The type of this IP address. A **PRIMARY** address is a public address that can accept incoming connections. A **PRIVATE** address is a private address that can accept incoming connections. An **OUTGOING** address is the source address of connections originating from the instance, if supported.
+             * The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A `PRIVATE` address is a private address that can accept incoming connections. An `OUTGOING` address is the source address of connections originating from the instance, if supported.
              */
             type?: pulumi.Input<enums.sqladmin.v1.IpMappingType>;
         }
@@ -58368,7 +58648,7 @@ export namespace sqladmin {
              */
             followGaeApplication?: pulumi.Input<string>;
             /**
-             * This is always **sql#locationPreference**.
+             * This is always `sql#locationPreference`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -58394,11 +58674,11 @@ export namespace sqladmin {
              */
             hour?: pulumi.Input<number>;
             /**
-             * This is always **sql#maintenanceWindow**.
+             * This is always `sql#maintenanceWindow`.
              */
             kind?: pulumi.Input<string>;
             /**
-             * Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+             * Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
              */
             updateTrack?: pulumi.Input<enums.sqladmin.v1.MaintenanceWindowUpdateTrack>;
         }
@@ -58428,7 +58708,7 @@ export namespace sqladmin {
              */
             dumpFilePath?: pulumi.Input<string>;
             /**
-             * This is always **sql#mysqlReplicaConfiguration**.
+             * This is always `sql#mysqlReplicaConfiguration`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -58478,7 +58758,7 @@ export namespace sqladmin {
              */
             hostPort?: pulumi.Input<string>;
             /**
-             * This is always **sql#onPremisesConfiguration**.
+             * This is always `sql#onPremisesConfiguration`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -58504,7 +58784,7 @@ export namespace sqladmin {
              */
             code?: pulumi.Input<string>;
             /**
-             * This is always **sql#operationError**.
+             * This is always `sql#operationError`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -58530,7 +58810,7 @@ export namespace sqladmin {
              */
             minLength?: pulumi.Input<number>;
             /**
-             * Minimum interval after which the password can be changed.
+             * Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
              */
             passwordChangeInterval?: pulumi.Input<string>;
             /**
@@ -58544,15 +58824,15 @@ export namespace sqladmin {
          */
         export interface ReplicaConfigurationArgs {
             /**
-             * Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+             * Specifies if the replica is the failover target. If the field is set to `true`, the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
              */
             failoverTarget?: pulumi.Input<boolean>;
             /**
-             * This is always **sql#replicaConfiguration**.
+             * This is always `sql#replicaConfiguration`.
              */
             kind?: pulumi.Input<string>;
             /**
-             * MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
+             * MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named `master.info` in the data directory.
              */
             mysqlReplicaConfiguration?: pulumi.Input<inputs.sqladmin.v1.MySqlReplicaConfigurationArgs>;
         }
@@ -58562,7 +58842,7 @@ export namespace sqladmin {
          */
         export interface SettingsArgs {
             /**
-             * The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+             * The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
              */
             activationPolicy?: pulumi.Input<enums.sqladmin.v1.SettingsActivationPolicy>;
             /**
@@ -58570,7 +58850,7 @@ export namespace sqladmin {
              */
             activeDirectoryConfig?: pulumi.Input<inputs.sqladmin.v1.SqlActiveDirectoryConfigArgs>;
             /**
-             * Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+             * Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
              */
             availabilityType?: pulumi.Input<enums.sqladmin.v1.SettingsAvailabilityType>;
             /**
@@ -58590,7 +58870,7 @@ export namespace sqladmin {
              */
             dataDiskSizeGb?: pulumi.Input<string>;
             /**
-             * The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
+             * The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
              */
             dataDiskType?: pulumi.Input<enums.sqladmin.v1.SettingsDataDiskType>;
             /**
@@ -58614,7 +58894,7 @@ export namespace sqladmin {
              */
             ipConfiguration?: pulumi.Input<inputs.sqladmin.v1.IpConfigurationArgs>;
             /**
-             * This is always **sql#settings**.
+             * This is always `sql#settings`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -58630,7 +58910,7 @@ export namespace sqladmin {
              */
             passwordValidationPolicy?: pulumi.Input<inputs.sqladmin.v1.PasswordValidationPolicyArgs>;
             /**
-             * The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
+             * The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
              */
             pricingPlan?: pulumi.Input<enums.sqladmin.v1.SettingsPricingPlan>;
             /**
@@ -58650,7 +58930,7 @@ export namespace sqladmin {
              */
             storageAutoResizeLimit?: pulumi.Input<string>;
             /**
-             * The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
+             * The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
              */
             tier?: pulumi.Input<string>;
             /**
@@ -58751,11 +59031,11 @@ export namespace sqladmin {
              */
             commonName?: pulumi.Input<string>;
             /**
-             * The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**
+             * The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
              */
             createTime?: pulumi.Input<string>;
             /**
-             * The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+             * The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
              */
             expirationTime?: pulumi.Input<string>;
             /**
@@ -58763,7 +59043,7 @@ export namespace sqladmin {
              */
             instance?: pulumi.Input<string>;
             /**
-             * This is always **sql#sslCert**.
+             * This is always `sql#sslCert`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -58784,11 +59064,11 @@ export namespace sqladmin {
          */
         export interface AclEntryArgs {
             /**
-             * The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+             * The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
              */
             expirationTime?: pulumi.Input<string>;
             /**
-             * This is always **sql#aclEntry**.
+             * This is always `sql#aclEntry`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -58818,7 +59098,7 @@ export namespace sqladmin {
              */
             enabled?: pulumi.Input<boolean>;
             /**
-             * This is always **sql#backupConfiguration**.
+             * This is always `sql#backupConfiguration`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -58834,7 +59114,7 @@ export namespace sqladmin {
              */
             replicationLogArchivingEnabled?: pulumi.Input<boolean>;
             /**
-             * Start time for the daily backup configuration in UTC timezone in the 24 hour format - **HH:MM**.
+             * Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
              */
             startTime?: pulumi.Input<string>;
             /**
@@ -58866,7 +59146,7 @@ export namespace sqladmin {
              */
             name?: pulumi.Input<string>;
             /**
-             * The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
+             * The value of the flag. Boolean flags are set to `on` for true and `off` for false. This field must be omitted if the flag doesn't take a value.
              */
             value?: pulumi.Input<string>;
         }
@@ -58894,7 +59174,7 @@ export namespace sqladmin {
          */
         export interface DiskEncryptionConfigurationArgs {
             /**
-             * This is always **sql#diskEncryptionConfiguration**.
+             * This is always `sql#diskEncryptionConfiguration`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -58908,7 +59188,7 @@ export namespace sqladmin {
          */
         export interface DiskEncryptionStatusArgs {
             /**
-             * This is always **sql#diskEncryptionStatus**.
+             * This is always `sql#diskEncryptionStatus`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -58984,7 +59264,7 @@ export namespace sqladmin {
              */
             allocatedIpRange?: pulumi.Input<string>;
             /**
-             * The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
+             * The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
              */
             authorizedNetworks?: pulumi.Input<pulumi.Input<inputs.sqladmin.v1beta4.AclEntryArgs>[]>;
             /**
@@ -58992,7 +59272,7 @@ export namespace sqladmin {
              */
             ipv4Enabled?: pulumi.Input<boolean>;
             /**
-             * The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **&#47;projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
+             * The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
              */
             privateNetwork?: pulumi.Input<string>;
             /**
@@ -59010,11 +59290,11 @@ export namespace sqladmin {
              */
             ipAddress?: pulumi.Input<string>;
             /**
-             * The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**. This field is only available when the IP is scheduled to be retired.
+             * The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`. This field is only available when the IP is scheduled to be retired.
              */
             timeToRetire?: pulumi.Input<string>;
             /**
-             * The type of this IP address. A **PRIMARY** address is a public address that can accept incoming connections. A **PRIVATE** address is a private address that can accept incoming connections. An **OUTGOING** address is the source address of connections originating from the instance, if supported.
+             * The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A `PRIVATE` address is a private address that can accept incoming connections. An `OUTGOING` address is the source address of connections originating from the instance, if supported.
              */
             type?: pulumi.Input<enums.sqladmin.v1beta4.IpMappingType>;
         }
@@ -59028,7 +59308,7 @@ export namespace sqladmin {
              */
             followGaeApplication?: pulumi.Input<string>;
             /**
-             * This is always **sql#locationPreference**.
+             * This is always `sql#locationPreference`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -59054,11 +59334,11 @@ export namespace sqladmin {
              */
             hour?: pulumi.Input<number>;
             /**
-             * This is always **sql#maintenanceWindow**.
+             * This is always `sql#maintenanceWindow`.
              */
             kind?: pulumi.Input<string>;
             /**
-             * Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+             * Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
              */
             updateTrack?: pulumi.Input<enums.sqladmin.v1beta4.MaintenanceWindowUpdateTrack>;
         }
@@ -59088,7 +59368,7 @@ export namespace sqladmin {
              */
             dumpFilePath?: pulumi.Input<string>;
             /**
-             * This is always **sql#mysqlReplicaConfiguration**.
+             * This is always `sql#mysqlReplicaConfiguration`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -59138,7 +59418,7 @@ export namespace sqladmin {
              */
             hostPort?: pulumi.Input<string>;
             /**
-             * This is always **sql#onPremisesConfiguration**.
+             * This is always `sql#onPremisesConfiguration`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -59164,7 +59444,7 @@ export namespace sqladmin {
              */
             code?: pulumi.Input<string>;
             /**
-             * This is always **sql#operationError**.
+             * This is always `sql#operationError`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -59190,7 +59470,7 @@ export namespace sqladmin {
              */
             minLength?: pulumi.Input<number>;
             /**
-             * Minimum interval after which the password can be changed.
+             * Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
              */
             passwordChangeInterval?: pulumi.Input<string>;
             /**
@@ -59204,15 +59484,15 @@ export namespace sqladmin {
          */
         export interface ReplicaConfigurationArgs {
             /**
-             * Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+             * Specifies if the replica is the failover target. If the field is set to `true` the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
              */
             failoverTarget?: pulumi.Input<boolean>;
             /**
-             * This is always **sql#replicaConfiguration**.
+             * This is always `sql#replicaConfiguration`.
              */
             kind?: pulumi.Input<string>;
             /**
-             * MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
+             * MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named `master.info` in the data directory.
              */
             mysqlReplicaConfiguration?: pulumi.Input<inputs.sqladmin.v1beta4.MySqlReplicaConfigurationArgs>;
         }
@@ -59222,7 +59502,7 @@ export namespace sqladmin {
          */
         export interface SettingsArgs {
             /**
-             * The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+             * The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
              */
             activationPolicy?: pulumi.Input<enums.sqladmin.v1beta4.SettingsActivationPolicy>;
             /**
@@ -59230,7 +59510,7 @@ export namespace sqladmin {
              */
             activeDirectoryConfig?: pulumi.Input<inputs.sqladmin.v1beta4.SqlActiveDirectoryConfigArgs>;
             /**
-             * Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+             * Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
              */
             availabilityType?: pulumi.Input<enums.sqladmin.v1beta4.SettingsAvailabilityType>;
             /**
@@ -59250,7 +59530,7 @@ export namespace sqladmin {
              */
             dataDiskSizeGb?: pulumi.Input<string>;
             /**
-             * The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
+             * The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
              */
             dataDiskType?: pulumi.Input<enums.sqladmin.v1beta4.SettingsDataDiskType>;
             /**
@@ -59274,7 +59554,7 @@ export namespace sqladmin {
              */
             ipConfiguration?: pulumi.Input<inputs.sqladmin.v1beta4.IpConfigurationArgs>;
             /**
-             * This is always **sql#settings**.
+             * This is always `sql#settings`.
              */
             kind?: pulumi.Input<string>;
             /**
@@ -59290,7 +59570,7 @@ export namespace sqladmin {
              */
             passwordValidationPolicy?: pulumi.Input<inputs.sqladmin.v1beta4.PasswordValidationPolicyArgs>;
             /**
-             * The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
+             * The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
              */
             pricingPlan?: pulumi.Input<enums.sqladmin.v1beta4.SettingsPricingPlan>;
             /**
@@ -59310,7 +59590,7 @@ export namespace sqladmin {
              */
             storageAutoResizeLimit?: pulumi.Input<string>;
             /**
-             * The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
+             * The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
              */
             tier?: pulumi.Input<string>;
             /**
@@ -59411,11 +59691,11 @@ export namespace sqladmin {
              */
             commonName?: pulumi.Input<string>;
             /**
-             * The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+             * The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
              */
             createTime?: pulumi.Input<string>;
             /**
-             * The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+             * The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
              */
             expirationTime?: pulumi.Input<string>;
             /**
@@ -59423,7 +59703,7 @@ export namespace sqladmin {
              */
             instance?: pulumi.Input<string>;
             /**
-             * This is always **sql#sslCert**.
+             * This is always `sql#sslCert`.
              */
             kind?: pulumi.Input<string>;
             /**

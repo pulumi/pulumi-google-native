@@ -27,7 +27,7 @@ export interface GetInstanceArgs {
 
 export interface GetInstanceResult {
     /**
-     * The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server that is not managed by Google. This property is read-only; use the **tier** property in the **settings** object to determine the database type.
+     * The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
      */
     readonly backendType: string;
     /**
@@ -35,7 +35,7 @@ export interface GetInstanceResult {
      */
     readonly connectionName: string;
     /**
-     * The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+     * The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
      */
     readonly createTime: string;
     /**
@@ -43,11 +43,11 @@ export interface GetInstanceResult {
      */
     readonly currentDiskSize: string;
     /**
-     * Stores the current database version running on the instance including minor version such as **MYSQL_8_0_18**.
+     * Stores the current database version running on the instance including minor version such as `MYSQL_8_0_18`.
      */
     readonly databaseInstalledVersion: string;
     /**
-     * The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
+     * The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
      */
     readonly databaseVersion: string;
     /**
@@ -75,7 +75,7 @@ export interface GetInstanceResult {
      */
     readonly ipAddresses: outputs.sqladmin.v1beta4.IpMappingResponse[];
     /**
-     * This is always **sql#instance**.
+     * This is always `sql#instance`.
      */
     readonly kind: string;
     /**
@@ -103,7 +103,7 @@ export interface GetInstanceResult {
      */
     readonly project: string;
     /**
-     * The geographical region. Can be: * **us-central** (**FIRST_GEN** instances only) * **us-central1** (**SECOND_GEN** instances only) * **asia-east1** or **europe-west1**. Defaults to **us-central** or **us-central1** depending on the instance type. The region cannot be changed after instance creation.
+     * The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
      */
     readonly region: string;
     /**
@@ -139,7 +139,7 @@ export interface GetInstanceResult {
      */
     readonly serverCaCert: outputs.sqladmin.v1beta4.SslCertResponse;
     /**
-     * The service account email address assigned to the instance. This property is read-only.
+     * The service account email address assigned to the instance. \This property is read-only.
      */
     readonly serviceAccountEmailAddress: string;
     /**

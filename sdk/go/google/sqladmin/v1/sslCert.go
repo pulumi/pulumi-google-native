@@ -22,13 +22,13 @@ type SslCert struct {
 	CertSerialNumber pulumi.StringOutput `pulumi:"certSerialNumber"`
 	// User supplied name. Constrained to [a-zA-Z.-_ ]+.
 	CommonName pulumi.StringOutput `pulumi:"commonName"`
-	// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**
+	// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+	// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	ExpirationTime pulumi.StringOutput `pulumi:"expirationTime"`
 	// Name of the database instance.
 	Instance pulumi.StringOutput `pulumi:"instance"`
-	// This is always **sql#sslCert**.
+	// This is always `sql#sslCert`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The URI of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`

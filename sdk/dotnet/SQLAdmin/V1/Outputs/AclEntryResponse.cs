@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
     public sealed class AclEntryResponse
     {
         /// <summary>
-        /// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         public readonly string ExpirationTime;
         /// <summary>
-        /// This is always **sql#aclEntry**.
+        /// This is always `sql#aclEntry`.
         /// </summary>
         public readonly string Kind;
         /// <summary>

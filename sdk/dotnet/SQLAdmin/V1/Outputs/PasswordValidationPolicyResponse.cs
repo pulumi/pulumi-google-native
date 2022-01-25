@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly int MinLength;
         /// <summary>
-        /// Minimum interval after which the password can be changed.
+        /// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
         /// </summary>
         public readonly string PasswordChangeInterval;
         /// <summary>

@@ -12,9 +12,9 @@ import (
 
 // An entry for an Access Control list.
 type AclEntry struct {
-	// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+	// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	ExpirationTime *string `pulumi:"expirationTime"`
-	// This is always **sql#aclEntry**.
+	// This is always `sql#aclEntry`.
 	Kind *string `pulumi:"kind"`
 	// Optional. A label to identify this entry.
 	Name *string `pulumi:"name"`
@@ -35,9 +35,9 @@ type AclEntryInput interface {
 
 // An entry for an Access Control list.
 type AclEntryArgs struct {
-	// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+	// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	ExpirationTime pulumi.StringPtrInput `pulumi:"expirationTime"`
-	// This is always **sql#aclEntry**.
+	// This is always `sql#aclEntry`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Optional. A label to identify this entry.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -97,12 +97,12 @@ func (o AclEntryOutput) ToAclEntryOutputWithContext(ctx context.Context) AclEntr
 	return o
 }
 
-// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 func (o AclEntryOutput) ExpirationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclEntry) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
 }
 
-// This is always **sql#aclEntry**.
+// This is always `sql#aclEntry`.
 func (o AclEntryOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclEntry) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -139,9 +139,9 @@ func (o AclEntryArrayOutput) Index(i pulumi.IntInput) AclEntryOutput {
 
 // An entry for an Access Control list.
 type AclEntryResponse struct {
-	// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+	// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	ExpirationTime string `pulumi:"expirationTime"`
-	// This is always **sql#aclEntry**.
+	// This is always `sql#aclEntry`.
 	Kind string `pulumi:"kind"`
 	// Optional. A label to identify this entry.
 	Name string `pulumi:"name"`
@@ -164,12 +164,12 @@ func (o AclEntryResponseOutput) ToAclEntryResponseOutputWithContext(ctx context.
 	return o
 }
 
-// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 func (o AclEntryResponseOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v AclEntryResponse) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
-// This is always **sql#aclEntry**.
+// This is always `sql#aclEntry`.
 func (o AclEntryResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v AclEntryResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -212,7 +212,7 @@ type BackupConfiguration struct {
 	BinaryLogEnabled *bool `pulumi:"binaryLogEnabled"`
 	// Whether this configuration is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// This is always **sql#backupConfiguration**.
+	// This is always `sql#backupConfiguration`.
 	Kind *string `pulumi:"kind"`
 	// Location of the backup
 	Location *string `pulumi:"location"`
@@ -220,7 +220,7 @@ type BackupConfiguration struct {
 	PointInTimeRecoveryEnabled *bool `pulumi:"pointInTimeRecoveryEnabled"`
 	// Reserved for future use.
 	ReplicationLogArchivingEnabled *bool `pulumi:"replicationLogArchivingEnabled"`
-	// Start time for the daily backup configuration in UTC timezone in the 24 hour format - **HH:MM**.
+	// Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
 	StartTime *string `pulumi:"startTime"`
 	// The number of days of transaction logs we retain for point in time restore, from 1-7.
 	TransactionLogRetentionDays *int `pulumi:"transactionLogRetentionDays"`
@@ -245,7 +245,7 @@ type BackupConfigurationArgs struct {
 	BinaryLogEnabled pulumi.BoolPtrInput `pulumi:"binaryLogEnabled"`
 	// Whether this configuration is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// This is always **sql#backupConfiguration**.
+	// This is always `sql#backupConfiguration`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Location of the backup
 	Location pulumi.StringPtrInput `pulumi:"location"`
@@ -253,7 +253,7 @@ type BackupConfigurationArgs struct {
 	PointInTimeRecoveryEnabled pulumi.BoolPtrInput `pulumi:"pointInTimeRecoveryEnabled"`
 	// Reserved for future use.
 	ReplicationLogArchivingEnabled pulumi.BoolPtrInput `pulumi:"replicationLogArchivingEnabled"`
-	// Start time for the daily backup configuration in UTC timezone in the 24 hour format - **HH:MM**.
+	// Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 	// The number of days of transaction logs we retain for point in time restore, from 1-7.
 	TransactionLogRetentionDays pulumi.IntPtrInput `pulumi:"transactionLogRetentionDays"`
@@ -352,7 +352,7 @@ func (o BackupConfigurationOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackupConfiguration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// This is always **sql#backupConfiguration**.
+// This is always `sql#backupConfiguration`.
 func (o BackupConfigurationOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackupConfiguration) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -372,7 +372,7 @@ func (o BackupConfigurationOutput) ReplicationLogArchivingEnabled() pulumi.BoolP
 	return o.ApplyT(func(v BackupConfiguration) *bool { return v.ReplicationLogArchivingEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Start time for the daily backup configuration in UTC timezone in the 24 hour format - **HH:MM**.
+// Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
 func (o BackupConfigurationOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackupConfiguration) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
@@ -436,7 +436,7 @@ func (o BackupConfigurationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// This is always **sql#backupConfiguration**.
+// This is always `sql#backupConfiguration`.
 func (o BackupConfigurationPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupConfiguration) *string {
 		if v == nil {
@@ -476,7 +476,7 @@ func (o BackupConfigurationPtrOutput) ReplicationLogArchivingEnabled() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Start time for the daily backup configuration in UTC timezone in the 24 hour format - **HH:MM**.
+// Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
 func (o BackupConfigurationPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupConfiguration) *string {
 		if v == nil {
@@ -504,7 +504,7 @@ type BackupConfigurationResponse struct {
 	BinaryLogEnabled bool `pulumi:"binaryLogEnabled"`
 	// Whether this configuration is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// This is always **sql#backupConfiguration**.
+	// This is always `sql#backupConfiguration`.
 	Kind string `pulumi:"kind"`
 	// Location of the backup
 	Location string `pulumi:"location"`
@@ -512,7 +512,7 @@ type BackupConfigurationResponse struct {
 	PointInTimeRecoveryEnabled bool `pulumi:"pointInTimeRecoveryEnabled"`
 	// Reserved for future use.
 	ReplicationLogArchivingEnabled bool `pulumi:"replicationLogArchivingEnabled"`
-	// Start time for the daily backup configuration in UTC timezone in the 24 hour format - **HH:MM**.
+	// Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
 	StartTime string `pulumi:"startTime"`
 	// The number of days of transaction logs we retain for point in time restore, from 1-7.
 	TransactionLogRetentionDays int `pulumi:"transactionLogRetentionDays"`
@@ -548,7 +548,7 @@ func (o BackupConfigurationResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BackupConfigurationResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// This is always **sql#backupConfiguration**.
+// This is always `sql#backupConfiguration`.
 func (o BackupConfigurationResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupConfigurationResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -568,7 +568,7 @@ func (o BackupConfigurationResponseOutput) ReplicationLogArchivingEnabled() pulu
 	return o.ApplyT(func(v BackupConfigurationResponse) bool { return v.ReplicationLogArchivingEnabled }).(pulumi.BoolOutput)
 }
 
-// Start time for the daily backup configuration in UTC timezone in the 24 hour format - **HH:MM**.
+// Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
 func (o BackupConfigurationResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupConfigurationResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -774,7 +774,7 @@ func (o BackupRetentionSettingsResponseOutput) RetentionUnit() pulumi.StringOutp
 type DatabaseFlags struct {
 	// The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see [Configuring Database Flags](https://cloud.google.com/sql/docs/mysql/flags) in the Cloud SQL documentation.
 	Name *string `pulumi:"name"`
-	// The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
+	// The value of the flag. Boolean flags are set to `on` for true and `off` for false. This field must be omitted if the flag doesn't take a value.
 	Value *string `pulumi:"value"`
 }
 
@@ -793,7 +793,7 @@ type DatabaseFlagsInput interface {
 type DatabaseFlagsArgs struct {
 	// The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see [Configuring Database Flags](https://cloud.google.com/sql/docs/mysql/flags) in the Cloud SQL documentation.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
+	// The value of the flag. Boolean flags are set to `on` for true and `off` for false. This field must be omitted if the flag doesn't take a value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -854,7 +854,7 @@ func (o DatabaseFlagsOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseFlags) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
+// The value of the flag. Boolean flags are set to `on` for true and `off` for false. This field must be omitted if the flag doesn't take a value.
 func (o DatabaseFlagsOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseFlags) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -883,7 +883,7 @@ func (o DatabaseFlagsArrayOutput) Index(i pulumi.IntInput) DatabaseFlagsOutput {
 type DatabaseFlagsResponse struct {
 	// The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see [Configuring Database Flags](https://cloud.google.com/sql/docs/mysql/flags) in the Cloud SQL documentation.
 	Name string `pulumi:"name"`
-	// The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
+	// The value of the flag. Boolean flags are set to `on` for true and `off` for false. This field must be omitted if the flag doesn't take a value.
 	Value string `pulumi:"value"`
 }
 
@@ -907,7 +907,7 @@ func (o DatabaseFlagsResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseFlagsResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
+// The value of the flag. Boolean flags are set to `on` for true and `off` for false. This field must be omitted if the flag doesn't take a value.
 func (o DatabaseFlagsResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseFlagsResponse) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1112,7 +1112,7 @@ func (o DenyMaintenancePeriodResponseArrayOutput) Index(i pulumi.IntInput) DenyM
 
 // Disk encryption configuration for an instance.
 type DiskEncryptionConfiguration struct {
-	// This is always **sql#diskEncryptionConfiguration**.
+	// This is always `sql#diskEncryptionConfiguration`.
 	Kind *string `pulumi:"kind"`
 	// Resource name of KMS key for disk encryption
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -1131,7 +1131,7 @@ type DiskEncryptionConfigurationInput interface {
 
 // Disk encryption configuration for an instance.
 type DiskEncryptionConfigurationArgs struct {
-	// This is always **sql#diskEncryptionConfiguration**.
+	// This is always `sql#diskEncryptionConfiguration`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Resource name of KMS key for disk encryption
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
@@ -1215,7 +1215,7 @@ func (o DiskEncryptionConfigurationOutput) ToDiskEncryptionConfigurationPtrOutpu
 	}).(DiskEncryptionConfigurationPtrOutput)
 }
 
-// This is always **sql#diskEncryptionConfiguration**.
+// This is always `sql#diskEncryptionConfiguration`.
 func (o DiskEncryptionConfigurationOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskEncryptionConfiguration) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -1249,7 +1249,7 @@ func (o DiskEncryptionConfigurationPtrOutput) Elem() DiskEncryptionConfiguration
 	}).(DiskEncryptionConfigurationOutput)
 }
 
-// This is always **sql#diskEncryptionConfiguration**.
+// This is always `sql#diskEncryptionConfiguration`.
 func (o DiskEncryptionConfigurationPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiskEncryptionConfiguration) *string {
 		if v == nil {
@@ -1271,7 +1271,7 @@ func (o DiskEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringPtrOutpu
 
 // Disk encryption configuration for an instance.
 type DiskEncryptionConfigurationResponse struct {
-	// This is always **sql#diskEncryptionConfiguration**.
+	// This is always `sql#diskEncryptionConfiguration`.
 	Kind string `pulumi:"kind"`
 	// Resource name of KMS key for disk encryption
 	KmsKeyName string `pulumi:"kmsKeyName"`
@@ -1292,7 +1292,7 @@ func (o DiskEncryptionConfigurationResponseOutput) ToDiskEncryptionConfiguration
 	return o
 }
 
-// This is always **sql#diskEncryptionConfiguration**.
+// This is always `sql#diskEncryptionConfiguration`.
 func (o DiskEncryptionConfigurationResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskEncryptionConfigurationResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -1304,7 +1304,7 @@ func (o DiskEncryptionConfigurationResponseOutput) KmsKeyName() pulumi.StringOut
 
 // Disk encryption status for an instance.
 type DiskEncryptionStatus struct {
-	// This is always **sql#diskEncryptionStatus**.
+	// This is always `sql#diskEncryptionStatus`.
 	Kind *string `pulumi:"kind"`
 	// KMS key version used to encrypt the Cloud SQL instance resource
 	KmsKeyVersionName *string `pulumi:"kmsKeyVersionName"`
@@ -1323,7 +1323,7 @@ type DiskEncryptionStatusInput interface {
 
 // Disk encryption status for an instance.
 type DiskEncryptionStatusArgs struct {
-	// This is always **sql#diskEncryptionStatus**.
+	// This is always `sql#diskEncryptionStatus`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// KMS key version used to encrypt the Cloud SQL instance resource
 	KmsKeyVersionName pulumi.StringPtrInput `pulumi:"kmsKeyVersionName"`
@@ -1407,7 +1407,7 @@ func (o DiskEncryptionStatusOutput) ToDiskEncryptionStatusPtrOutputWithContext(c
 	}).(DiskEncryptionStatusPtrOutput)
 }
 
-// This is always **sql#diskEncryptionStatus**.
+// This is always `sql#diskEncryptionStatus`.
 func (o DiskEncryptionStatusOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskEncryptionStatus) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -1441,7 +1441,7 @@ func (o DiskEncryptionStatusPtrOutput) Elem() DiskEncryptionStatusOutput {
 	}).(DiskEncryptionStatusOutput)
 }
 
-// This is always **sql#diskEncryptionStatus**.
+// This is always `sql#diskEncryptionStatus`.
 func (o DiskEncryptionStatusPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiskEncryptionStatus) *string {
 		if v == nil {
@@ -1463,7 +1463,7 @@ func (o DiskEncryptionStatusPtrOutput) KmsKeyVersionName() pulumi.StringPtrOutpu
 
 // Disk encryption status for an instance.
 type DiskEncryptionStatusResponse struct {
-	// This is always **sql#diskEncryptionStatus**.
+	// This is always `sql#diskEncryptionStatus`.
 	Kind string `pulumi:"kind"`
 	// KMS key version used to encrypt the Cloud SQL instance resource
 	KmsKeyVersionName string `pulumi:"kmsKeyVersionName"`
@@ -1484,7 +1484,7 @@ func (o DiskEncryptionStatusResponseOutput) ToDiskEncryptionStatusResponseOutput
 	return o
 }
 
-// This is always **sql#diskEncryptionStatus**.
+// This is always `sql#diskEncryptionStatus`.
 func (o DiskEncryptionStatusResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskEncryptionStatusResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -2178,11 +2178,11 @@ func (o InstanceReferenceResponseOutput) Region() pulumi.StringOutput {
 type IpConfiguration struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 	AllocatedIpRange *string `pulumi:"allocatedIpRange"`
-	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
+	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
 	AuthorizedNetworks []AclEntry `pulumi:"authorizedNetworks"`
 	// Whether the instance is assigned a public IP address or not.
 	Ipv4Enabled *bool `pulumi:"ipv4Enabled"`
-	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **/projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
+	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork *string `pulumi:"privateNetwork"`
 	// Whether SSL connections over IP are enforced or not.
 	RequireSsl *bool `pulumi:"requireSsl"`
@@ -2203,11 +2203,11 @@ type IpConfigurationInput interface {
 type IpConfigurationArgs struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 	AllocatedIpRange pulumi.StringPtrInput `pulumi:"allocatedIpRange"`
-	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
+	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
 	AuthorizedNetworks AclEntryArrayInput `pulumi:"authorizedNetworks"`
 	// Whether the instance is assigned a public IP address or not.
 	Ipv4Enabled pulumi.BoolPtrInput `pulumi:"ipv4Enabled"`
-	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **/projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
+	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork pulumi.StringPtrInput `pulumi:"privateNetwork"`
 	// Whether SSL connections over IP are enforced or not.
 	RequireSsl pulumi.BoolPtrInput `pulumi:"requireSsl"`
@@ -2296,7 +2296,7 @@ func (o IpConfigurationOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpConfiguration) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
 }
 
-// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
+// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
 func (o IpConfigurationOutput) AuthorizedNetworks() AclEntryArrayOutput {
 	return o.ApplyT(func(v IpConfiguration) []AclEntry { return v.AuthorizedNetworks }).(AclEntryArrayOutput)
 }
@@ -2306,7 +2306,7 @@ func (o IpConfigurationOutput) Ipv4Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IpConfiguration) *bool { return v.Ipv4Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **/projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
+// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 func (o IpConfigurationOutput) PrivateNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpConfiguration) *string { return v.PrivateNetwork }).(pulumi.StringPtrOutput)
 }
@@ -2350,7 +2350,7 @@ func (o IpConfigurationPtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
+// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
 func (o IpConfigurationPtrOutput) AuthorizedNetworks() AclEntryArrayOutput {
 	return o.ApplyT(func(v *IpConfiguration) []AclEntry {
 		if v == nil {
@@ -2370,7 +2370,7 @@ func (o IpConfigurationPtrOutput) Ipv4Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **/projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
+// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 func (o IpConfigurationPtrOutput) PrivateNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpConfiguration) *string {
 		if v == nil {
@@ -2394,11 +2394,11 @@ func (o IpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 type IpConfigurationResponse struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 	AllocatedIpRange string `pulumi:"allocatedIpRange"`
-	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
+	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
 	AuthorizedNetworks []AclEntryResponse `pulumi:"authorizedNetworks"`
 	// Whether the instance is assigned a public IP address or not.
 	Ipv4Enabled bool `pulumi:"ipv4Enabled"`
-	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **/projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
+	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork string `pulumi:"privateNetwork"`
 	// Whether SSL connections over IP are enforced or not.
 	RequireSsl bool `pulumi:"requireSsl"`
@@ -2424,7 +2424,7 @@ func (o IpConfigurationResponseOutput) AllocatedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
 }
 
-// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
+// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
 func (o IpConfigurationResponseOutput) AuthorizedNetworks() AclEntryResponseArrayOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) []AclEntryResponse { return v.AuthorizedNetworks }).(AclEntryResponseArrayOutput)
 }
@@ -2434,7 +2434,7 @@ func (o IpConfigurationResponseOutput) Ipv4Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) bool { return v.Ipv4Enabled }).(pulumi.BoolOutput)
 }
 
-// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **/projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
+// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 func (o IpConfigurationResponseOutput) PrivateNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) string { return v.PrivateNetwork }).(pulumi.StringOutput)
 }
@@ -2448,9 +2448,9 @@ func (o IpConfigurationResponseOutput) RequireSsl() pulumi.BoolOutput {
 type IpMapping struct {
 	// The IP address assigned.
 	IpAddress *string `pulumi:"ipAddress"`
-	// The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**. This field is only available when the IP is scheduled to be retired.
+	// The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`. This field is only available when the IP is scheduled to be retired.
 	TimeToRetire *string `pulumi:"timeToRetire"`
-	// The type of this IP address. A **PRIMARY** address is a public address that can accept incoming connections. A **PRIVATE** address is a private address that can accept incoming connections. An **OUTGOING** address is the source address of connections originating from the instance, if supported.
+	// The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A `PRIVATE` address is a private address that can accept incoming connections. An `OUTGOING` address is the source address of connections originating from the instance, if supported.
 	Type *IpMappingType `pulumi:"type"`
 }
 
@@ -2469,9 +2469,9 @@ type IpMappingInput interface {
 type IpMappingArgs struct {
 	// The IP address assigned.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	// The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**. This field is only available when the IP is scheduled to be retired.
+	// The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`. This field is only available when the IP is scheduled to be retired.
 	TimeToRetire pulumi.StringPtrInput `pulumi:"timeToRetire"`
-	// The type of this IP address. A **PRIMARY** address is a public address that can accept incoming connections. A **PRIVATE** address is a private address that can accept incoming connections. An **OUTGOING** address is the source address of connections originating from the instance, if supported.
+	// The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A `PRIVATE` address is a private address that can accept incoming connections. An `OUTGOING` address is the source address of connections originating from the instance, if supported.
 	Type IpMappingTypePtrInput `pulumi:"type"`
 }
 
@@ -2532,12 +2532,12 @@ func (o IpMappingOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpMapping) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
-// The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**. This field is only available when the IP is scheduled to be retired.
+// The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`. This field is only available when the IP is scheduled to be retired.
 func (o IpMappingOutput) TimeToRetire() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpMapping) *string { return v.TimeToRetire }).(pulumi.StringPtrOutput)
 }
 
-// The type of this IP address. A **PRIMARY** address is a public address that can accept incoming connections. A **PRIVATE** address is a private address that can accept incoming connections. An **OUTGOING** address is the source address of connections originating from the instance, if supported.
+// The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A `PRIVATE` address is a private address that can accept incoming connections. An `OUTGOING` address is the source address of connections originating from the instance, if supported.
 func (o IpMappingOutput) Type() IpMappingTypePtrOutput {
 	return o.ApplyT(func(v IpMapping) *IpMappingType { return v.Type }).(IpMappingTypePtrOutput)
 }
@@ -2566,9 +2566,9 @@ func (o IpMappingArrayOutput) Index(i pulumi.IntInput) IpMappingOutput {
 type IpMappingResponse struct {
 	// The IP address assigned.
 	IpAddress string `pulumi:"ipAddress"`
-	// The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**. This field is only available when the IP is scheduled to be retired.
+	// The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`. This field is only available when the IP is scheduled to be retired.
 	TimeToRetire string `pulumi:"timeToRetire"`
-	// The type of this IP address. A **PRIMARY** address is a public address that can accept incoming connections. A **PRIVATE** address is a private address that can accept incoming connections. An **OUTGOING** address is the source address of connections originating from the instance, if supported.
+	// The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A `PRIVATE` address is a private address that can accept incoming connections. An `OUTGOING` address is the source address of connections originating from the instance, if supported.
 	Type string `pulumi:"type"`
 }
 
@@ -2592,12 +2592,12 @@ func (o IpMappingResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v IpMappingResponse) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**. This field is only available when the IP is scheduled to be retired.
+// The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`. This field is only available when the IP is scheduled to be retired.
 func (o IpMappingResponseOutput) TimeToRetire() pulumi.StringOutput {
 	return o.ApplyT(func(v IpMappingResponse) string { return v.TimeToRetire }).(pulumi.StringOutput)
 }
 
-// The type of this IP address. A **PRIMARY** address is a public address that can accept incoming connections. A **PRIVATE** address is a private address that can accept incoming connections. An **OUTGOING** address is the source address of connections originating from the instance, if supported.
+// The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A `PRIVATE` address is a private address that can accept incoming connections. An `OUTGOING` address is the source address of connections originating from the instance, if supported.
 func (o IpMappingResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v IpMappingResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2626,7 +2626,7 @@ func (o IpMappingResponseArrayOutput) Index(i pulumi.IntInput) IpMappingResponse
 type LocationPreference struct {
 	// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
 	FollowGaeApplication *string `pulumi:"followGaeApplication"`
-	// This is always **sql#locationPreference**.
+	// This is always `sql#locationPreference`.
 	Kind *string `pulumi:"kind"`
 	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
 	SecondaryZone *string `pulumi:"secondaryZone"`
@@ -2649,7 +2649,7 @@ type LocationPreferenceInput interface {
 type LocationPreferenceArgs struct {
 	// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
 	FollowGaeApplication pulumi.StringPtrInput `pulumi:"followGaeApplication"`
-	// This is always **sql#locationPreference**.
+	// This is always `sql#locationPreference`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
 	SecondaryZone pulumi.StringPtrInput `pulumi:"secondaryZone"`
@@ -2740,7 +2740,7 @@ func (o LocationPreferenceOutput) FollowGaeApplication() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LocationPreference) *string { return v.FollowGaeApplication }).(pulumi.StringPtrOutput)
 }
 
-// This is always **sql#locationPreference**.
+// This is always `sql#locationPreference`.
 func (o LocationPreferenceOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocationPreference) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -2789,7 +2789,7 @@ func (o LocationPreferencePtrOutput) FollowGaeApplication() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is always **sql#locationPreference**.
+// This is always `sql#locationPreference`.
 func (o LocationPreferencePtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocationPreference) *string {
 		if v == nil {
@@ -2823,7 +2823,7 @@ func (o LocationPreferencePtrOutput) Zone() pulumi.StringPtrOutput {
 type LocationPreferenceResponse struct {
 	// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
 	FollowGaeApplication string `pulumi:"followGaeApplication"`
-	// This is always **sql#locationPreference**.
+	// This is always `sql#locationPreference`.
 	Kind string `pulumi:"kind"`
 	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
 	SecondaryZone string `pulumi:"secondaryZone"`
@@ -2851,7 +2851,7 @@ func (o LocationPreferenceResponseOutput) FollowGaeApplication() pulumi.StringOu
 	return o.ApplyT(func(v LocationPreferenceResponse) string { return v.FollowGaeApplication }).(pulumi.StringOutput)
 }
 
-// This is always **sql#locationPreference**.
+// This is always `sql#locationPreference`.
 func (o LocationPreferenceResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LocationPreferenceResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -2872,9 +2872,9 @@ type MaintenanceWindow struct {
 	Day *int `pulumi:"day"`
 	// hour of day - 0 to 23.
 	Hour *int `pulumi:"hour"`
-	// This is always **sql#maintenanceWindow**.
+	// This is always `sql#maintenanceWindow`.
 	Kind *string `pulumi:"kind"`
-	// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+	// Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 	UpdateTrack *MaintenanceWindowUpdateTrack `pulumi:"updateTrack"`
 }
 
@@ -2895,9 +2895,9 @@ type MaintenanceWindowArgs struct {
 	Day pulumi.IntPtrInput `pulumi:"day"`
 	// hour of day - 0 to 23.
 	Hour pulumi.IntPtrInput `pulumi:"hour"`
-	// This is always **sql#maintenanceWindow**.
+	// This is always `sql#maintenanceWindow`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+	// Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 	UpdateTrack MaintenanceWindowUpdateTrackPtrInput `pulumi:"updateTrack"`
 }
 
@@ -2989,12 +2989,12 @@ func (o MaintenanceWindowOutput) Hour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindow) *int { return v.Hour }).(pulumi.IntPtrOutput)
 }
 
-// This is always **sql#maintenanceWindow**.
+// This is always `sql#maintenanceWindow`.
 func (o MaintenanceWindowOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindow) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+// Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 func (o MaintenanceWindowOutput) UpdateTrack() MaintenanceWindowUpdateTrackPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindow) *MaintenanceWindowUpdateTrack { return v.UpdateTrack }).(MaintenanceWindowUpdateTrackPtrOutput)
 }
@@ -3043,7 +3043,7 @@ func (o MaintenanceWindowPtrOutput) Hour() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// This is always **sql#maintenanceWindow**.
+// This is always `sql#maintenanceWindow`.
 func (o MaintenanceWindowPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindow) *string {
 		if v == nil {
@@ -3053,7 +3053,7 @@ func (o MaintenanceWindowPtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+// Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 func (o MaintenanceWindowPtrOutput) UpdateTrack() MaintenanceWindowUpdateTrackPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindow) *MaintenanceWindowUpdateTrack {
 		if v == nil {
@@ -3069,9 +3069,9 @@ type MaintenanceWindowResponse struct {
 	Day int `pulumi:"day"`
 	// hour of day - 0 to 23.
 	Hour int `pulumi:"hour"`
-	// This is always **sql#maintenanceWindow**.
+	// This is always `sql#maintenanceWindow`.
 	Kind string `pulumi:"kind"`
-	// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+	// Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 	UpdateTrack string `pulumi:"updateTrack"`
 }
 
@@ -3100,12 +3100,12 @@ func (o MaintenanceWindowResponseOutput) Hour() pulumi.IntOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) int { return v.Hour }).(pulumi.IntOutput)
 }
 
-// This is always **sql#maintenanceWindow**.
+// This is always `sql#maintenanceWindow`.
 func (o MaintenanceWindowResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+// Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 func (o MaintenanceWindowResponseOutput) UpdateTrack() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.UpdateTrack }).(pulumi.StringOutput)
 }
@@ -3122,7 +3122,7 @@ type MySqlReplicaConfiguration struct {
 	ConnectRetryInterval *int `pulumi:"connectRetryInterval"`
 	// Path to a SQL dump file in Google Cloud Storage from which the replica instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps have the binlog co-ordinates from which replication begins. This can be accomplished by setting --master-data to 1 when using mysqldump.
 	DumpFilePath *string `pulumi:"dumpFilePath"`
-	// This is always **sql#mysqlReplicaConfiguration**.
+	// This is always `sql#mysqlReplicaConfiguration`.
 	Kind *string `pulumi:"kind"`
 	// Interval in milliseconds between replication heartbeats.
 	MasterHeartbeatPeriod *string `pulumi:"masterHeartbeatPeriod"`
@@ -3159,7 +3159,7 @@ type MySqlReplicaConfigurationArgs struct {
 	ConnectRetryInterval pulumi.IntPtrInput `pulumi:"connectRetryInterval"`
 	// Path to a SQL dump file in Google Cloud Storage from which the replica instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps have the binlog co-ordinates from which replication begins. This can be accomplished by setting --master-data to 1 when using mysqldump.
 	DumpFilePath pulumi.StringPtrInput `pulumi:"dumpFilePath"`
-	// This is always **sql#mysqlReplicaConfiguration**.
+	// This is always `sql#mysqlReplicaConfiguration`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Interval in milliseconds between replication heartbeats.
 	MasterHeartbeatPeriod pulumi.StringPtrInput `pulumi:"masterHeartbeatPeriod"`
@@ -3276,7 +3276,7 @@ func (o MySqlReplicaConfigurationOutput) DumpFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlReplicaConfiguration) *string { return v.DumpFilePath }).(pulumi.StringPtrOutput)
 }
 
-// This is always **sql#mysqlReplicaConfiguration**.
+// This is always `sql#mysqlReplicaConfiguration`.
 func (o MySqlReplicaConfigurationOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlReplicaConfiguration) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -3380,7 +3380,7 @@ func (o MySqlReplicaConfigurationPtrOutput) DumpFilePath() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is always **sql#mysqlReplicaConfiguration**.
+// This is always `sql#mysqlReplicaConfiguration`.
 func (o MySqlReplicaConfigurationPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlReplicaConfiguration) *string {
 		if v == nil {
@@ -3452,7 +3452,7 @@ type MySqlReplicaConfigurationResponse struct {
 	ConnectRetryInterval int `pulumi:"connectRetryInterval"`
 	// Path to a SQL dump file in Google Cloud Storage from which the replica instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps have the binlog co-ordinates from which replication begins. This can be accomplished by setting --master-data to 1 when using mysqldump.
 	DumpFilePath string `pulumi:"dumpFilePath"`
-	// This is always **sql#mysqlReplicaConfiguration**.
+	// This is always `sql#mysqlReplicaConfiguration`.
 	Kind string `pulumi:"kind"`
 	// Interval in milliseconds between replication heartbeats.
 	MasterHeartbeatPeriod string `pulumi:"masterHeartbeatPeriod"`
@@ -3506,7 +3506,7 @@ func (o MySqlReplicaConfigurationResponseOutput) DumpFilePath() pulumi.StringOut
 	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) string { return v.DumpFilePath }).(pulumi.StringOutput)
 }
 
-// This is always **sql#mysqlReplicaConfiguration**.
+// This is always `sql#mysqlReplicaConfiguration`.
 func (o MySqlReplicaConfigurationResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -3548,7 +3548,7 @@ type OnPremisesConfiguration struct {
 	DumpFilePath *string `pulumi:"dumpFilePath"`
 	// The host and port of the on-premises instance in host:port format
 	HostPort *string `pulumi:"hostPort"`
-	// This is always **sql#onPremisesConfiguration**.
+	// This is always `sql#onPremisesConfiguration`.
 	Kind *string `pulumi:"kind"`
 	// The password for connecting to on-premises instance.
 	Password *string `pulumi:"password"`
@@ -3581,7 +3581,7 @@ type OnPremisesConfigurationArgs struct {
 	DumpFilePath pulumi.StringPtrInput `pulumi:"dumpFilePath"`
 	// The host and port of the on-premises instance in host:port format
 	HostPort pulumi.StringPtrInput `pulumi:"hostPort"`
-	// This is always **sql#onPremisesConfiguration**.
+	// This is always `sql#onPremisesConfiguration`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The password for connecting to on-premises instance.
 	Password pulumi.StringPtrInput `pulumi:"password"`
@@ -3694,7 +3694,7 @@ func (o OnPremisesConfigurationOutput) HostPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OnPremisesConfiguration) *string { return v.HostPort }).(pulumi.StringPtrOutput)
 }
 
-// This is always **sql#onPremisesConfiguration**.
+// This is always `sql#onPremisesConfiguration`.
 func (o OnPremisesConfigurationOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OnPremisesConfiguration) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -3788,7 +3788,7 @@ func (o OnPremisesConfigurationPtrOutput) HostPort() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is always **sql#onPremisesConfiguration**.
+// This is always `sql#onPremisesConfiguration`.
 func (o OnPremisesConfigurationPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OnPremisesConfiguration) *string {
 		if v == nil {
@@ -3840,7 +3840,7 @@ type OnPremisesConfigurationResponse struct {
 	DumpFilePath string `pulumi:"dumpFilePath"`
 	// The host and port of the on-premises instance in host:port format
 	HostPort string `pulumi:"hostPort"`
-	// This is always **sql#onPremisesConfiguration**.
+	// This is always `sql#onPremisesConfiguration`.
 	Kind string `pulumi:"kind"`
 	// The password for connecting to on-premises instance.
 	Password string `pulumi:"password"`
@@ -3890,7 +3890,7 @@ func (o OnPremisesConfigurationResponseOutput) HostPort() pulumi.StringOutput {
 	return o.ApplyT(func(v OnPremisesConfigurationResponse) string { return v.HostPort }).(pulumi.StringOutput)
 }
 
-// This is always **sql#onPremisesConfiguration**.
+// This is always `sql#onPremisesConfiguration`.
 func (o OnPremisesConfigurationResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v OnPremisesConfigurationResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -3914,7 +3914,7 @@ func (o OnPremisesConfigurationResponseOutput) Username() pulumi.StringOutput {
 type OperationError struct {
 	// Identifies the specific error that occurred.
 	Code *string `pulumi:"code"`
-	// This is always **sql#operationError**.
+	// This is always `sql#operationError`.
 	Kind *string `pulumi:"kind"`
 	// Additional information about the error encountered.
 	Message *string `pulumi:"message"`
@@ -3935,7 +3935,7 @@ type OperationErrorInput interface {
 type OperationErrorArgs struct {
 	// Identifies the specific error that occurred.
 	Code pulumi.StringPtrInput `pulumi:"code"`
-	// This is always **sql#operationError**.
+	// This is always `sql#operationError`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Additional information about the error encountered.
 	Message pulumi.StringPtrInput `pulumi:"message"`
@@ -4024,7 +4024,7 @@ func (o OperationErrorOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OperationError) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
 
-// This is always **sql#operationError**.
+// This is always `sql#operationError`.
 func (o OperationErrorOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OperationError) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -4068,7 +4068,7 @@ func (o OperationErrorPtrOutput) Code() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is always **sql#operationError**.
+// This is always `sql#operationError`.
 func (o OperationErrorPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationError) *string {
 		if v == nil {
@@ -4092,7 +4092,7 @@ func (o OperationErrorPtrOutput) Message() pulumi.StringPtrOutput {
 type OperationErrorResponse struct {
 	// Identifies the specific error that occurred.
 	Code string `pulumi:"code"`
-	// This is always **sql#operationError**.
+	// This is always `sql#operationError`.
 	Kind string `pulumi:"kind"`
 	// Additional information about the error encountered.
 	Message string `pulumi:"message"`
@@ -4118,7 +4118,7 @@ func (o OperationErrorResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationErrorResponse) string { return v.Code }).(pulumi.StringOutput)
 }
 
-// This is always **sql#operationError**.
+// This is always `sql#operationError`.
 func (o OperationErrorResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationErrorResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -4136,7 +4136,7 @@ type PasswordValidationPolicy struct {
 	DisallowUsernameSubstring *bool `pulumi:"disallowUsernameSubstring"`
 	// Minimum number of characters allowed.
 	MinLength *int `pulumi:"minLength"`
-	// Minimum interval after which the password can be changed.
+	// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
 	PasswordChangeInterval *string `pulumi:"passwordChangeInterval"`
 	// Number of previous passwords that cannot be reused.
 	ReuseInterval *int `pulumi:"reuseInterval"`
@@ -4161,7 +4161,7 @@ type PasswordValidationPolicyArgs struct {
 	DisallowUsernameSubstring pulumi.BoolPtrInput `pulumi:"disallowUsernameSubstring"`
 	// Minimum number of characters allowed.
 	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
-	// Minimum interval after which the password can be changed.
+	// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
 	PasswordChangeInterval pulumi.StringPtrInput `pulumi:"passwordChangeInterval"`
 	// Number of previous passwords that cannot be reused.
 	ReuseInterval pulumi.IntPtrInput `pulumi:"reuseInterval"`
@@ -4260,7 +4260,7 @@ func (o PasswordValidationPolicyOutput) MinLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PasswordValidationPolicy) *int { return v.MinLength }).(pulumi.IntPtrOutput)
 }
 
-// Minimum interval after which the password can be changed.
+// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
 func (o PasswordValidationPolicyOutput) PasswordChangeInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PasswordValidationPolicy) *string { return v.PasswordChangeInterval }).(pulumi.StringPtrOutput)
 }
@@ -4324,7 +4324,7 @@ func (o PasswordValidationPolicyPtrOutput) MinLength() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Minimum interval after which the password can be changed.
+// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
 func (o PasswordValidationPolicyPtrOutput) PasswordChangeInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PasswordValidationPolicy) *string {
 		if v == nil {
@@ -4352,7 +4352,7 @@ type PasswordValidationPolicyResponse struct {
 	DisallowUsernameSubstring bool `pulumi:"disallowUsernameSubstring"`
 	// Minimum number of characters allowed.
 	MinLength int `pulumi:"minLength"`
-	// Minimum interval after which the password can be changed.
+	// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
 	PasswordChangeInterval string `pulumi:"passwordChangeInterval"`
 	// Number of previous passwords that cannot be reused.
 	ReuseInterval int `pulumi:"reuseInterval"`
@@ -4388,7 +4388,7 @@ func (o PasswordValidationPolicyResponseOutput) MinLength() pulumi.IntOutput {
 	return o.ApplyT(func(v PasswordValidationPolicyResponse) int { return v.MinLength }).(pulumi.IntOutput)
 }
 
-// Minimum interval after which the password can be changed.
+// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
 func (o PasswordValidationPolicyResponseOutput) PasswordChangeInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v PasswordValidationPolicyResponse) string { return v.PasswordChangeInterval }).(pulumi.StringOutput)
 }
@@ -4400,11 +4400,11 @@ func (o PasswordValidationPolicyResponseOutput) ReuseInterval() pulumi.IntOutput
 
 // Read-replica configuration for connecting to the primary instance.
 type ReplicaConfiguration struct {
-	// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+	// Specifies if the replica is the failover target. If the field is set to `true`, the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 	FailoverTarget *bool `pulumi:"failoverTarget"`
-	// This is always **sql#replicaConfiguration**.
+	// This is always `sql#replicaConfiguration`.
 	Kind *string `pulumi:"kind"`
-	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
+	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named `master.info` in the data directory.
 	MysqlReplicaConfiguration *MySqlReplicaConfiguration `pulumi:"mysqlReplicaConfiguration"`
 }
 
@@ -4421,11 +4421,11 @@ type ReplicaConfigurationInput interface {
 
 // Read-replica configuration for connecting to the primary instance.
 type ReplicaConfigurationArgs struct {
-	// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+	// Specifies if the replica is the failover target. If the field is set to `true`, the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 	FailoverTarget pulumi.BoolPtrInput `pulumi:"failoverTarget"`
-	// This is always **sql#replicaConfiguration**.
+	// This is always `sql#replicaConfiguration`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
+	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named `master.info` in the data directory.
 	MysqlReplicaConfiguration MySqlReplicaConfigurationPtrInput `pulumi:"mysqlReplicaConfiguration"`
 }
 
@@ -4507,17 +4507,17 @@ func (o ReplicaConfigurationOutput) ToReplicaConfigurationPtrOutputWithContext(c
 	}).(ReplicaConfigurationPtrOutput)
 }
 
-// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+// Specifies if the replica is the failover target. If the field is set to `true`, the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 func (o ReplicaConfigurationOutput) FailoverTarget() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReplicaConfiguration) *bool { return v.FailoverTarget }).(pulumi.BoolPtrOutput)
 }
 
-// This is always **sql#replicaConfiguration**.
+// This is always `sql#replicaConfiguration`.
 func (o ReplicaConfigurationOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicaConfiguration) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
+// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named `master.info` in the data directory.
 func (o ReplicaConfigurationOutput) MysqlReplicaConfiguration() MySqlReplicaConfigurationPtrOutput {
 	return o.ApplyT(func(v ReplicaConfiguration) *MySqlReplicaConfiguration { return v.MysqlReplicaConfiguration }).(MySqlReplicaConfigurationPtrOutput)
 }
@@ -4546,7 +4546,7 @@ func (o ReplicaConfigurationPtrOutput) Elem() ReplicaConfigurationOutput {
 	}).(ReplicaConfigurationOutput)
 }
 
-// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+// Specifies if the replica is the failover target. If the field is set to `true`, the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 func (o ReplicaConfigurationPtrOutput) FailoverTarget() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReplicaConfiguration) *bool {
 		if v == nil {
@@ -4556,7 +4556,7 @@ func (o ReplicaConfigurationPtrOutput) FailoverTarget() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// This is always **sql#replicaConfiguration**.
+// This is always `sql#replicaConfiguration`.
 func (o ReplicaConfigurationPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReplicaConfiguration) *string {
 		if v == nil {
@@ -4566,7 +4566,7 @@ func (o ReplicaConfigurationPtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
+// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named `master.info` in the data directory.
 func (o ReplicaConfigurationPtrOutput) MysqlReplicaConfiguration() MySqlReplicaConfigurationPtrOutput {
 	return o.ApplyT(func(v *ReplicaConfiguration) *MySqlReplicaConfiguration {
 		if v == nil {
@@ -4578,11 +4578,11 @@ func (o ReplicaConfigurationPtrOutput) MysqlReplicaConfiguration() MySqlReplicaC
 
 // Read-replica configuration for connecting to the primary instance.
 type ReplicaConfigurationResponse struct {
-	// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+	// Specifies if the replica is the failover target. If the field is set to `true`, the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 	FailoverTarget bool `pulumi:"failoverTarget"`
-	// This is always **sql#replicaConfiguration**.
+	// This is always `sql#replicaConfiguration`.
 	Kind string `pulumi:"kind"`
-	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
+	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named `master.info` in the data directory.
 	MysqlReplicaConfiguration MySqlReplicaConfigurationResponse `pulumi:"mysqlReplicaConfiguration"`
 }
 
@@ -4601,17 +4601,17 @@ func (o ReplicaConfigurationResponseOutput) ToReplicaConfigurationResponseOutput
 	return o
 }
 
-// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+// Specifies if the replica is the failover target. If the field is set to `true`, the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 func (o ReplicaConfigurationResponseOutput) FailoverTarget() pulumi.BoolOutput {
 	return o.ApplyT(func(v ReplicaConfigurationResponse) bool { return v.FailoverTarget }).(pulumi.BoolOutput)
 }
 
-// This is always **sql#replicaConfiguration**.
+// This is always `sql#replicaConfiguration`.
 func (o ReplicaConfigurationResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v ReplicaConfigurationResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
+// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named `master.info` in the data directory.
 func (o ReplicaConfigurationResponseOutput) MysqlReplicaConfiguration() MySqlReplicaConfigurationResponseOutput {
 	return o.ApplyT(func(v ReplicaConfigurationResponse) MySqlReplicaConfigurationResponse {
 		return v.MysqlReplicaConfiguration
@@ -4620,11 +4620,11 @@ func (o ReplicaConfigurationResponseOutput) MysqlReplicaConfiguration() MySqlRep
 
 // Database instance settings.
 type Settings struct {
-	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
 	ActivationPolicy *SettingsActivationPolicy `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig *SqlActiveDirectoryConfig `pulumi:"activeDirectoryConfig"`
-	// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+	// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 	AvailabilityType *SettingsAvailabilityType `pulumi:"availabilityType"`
 	// The daily backup configuration for the instance.
 	BackupConfiguration *BackupConfiguration `pulumi:"backupConfiguration"`
@@ -4634,7 +4634,7 @@ type Settings struct {
 	CrashSafeReplicationEnabled *bool `pulumi:"crashSafeReplicationEnabled"`
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
 	DataDiskSizeGb *string `pulumi:"dataDiskSizeGb"`
-	// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
+	// The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
 	DataDiskType *SettingsDataDiskType `pulumi:"dataDiskType"`
 	// The database flags passed to the instance at startup.
 	DatabaseFlags []DatabaseFlags `pulumi:"databaseFlags"`
@@ -4646,7 +4646,7 @@ type Settings struct {
 	InsightsConfig *InsightsConfig `pulumi:"insightsConfig"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
 	IpConfiguration *IpConfiguration `pulumi:"ipConfiguration"`
-	// This is always **sql#settings**.
+	// This is always `sql#settings`.
 	Kind *string `pulumi:"kind"`
 	// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
 	LocationPreference *LocationPreference `pulumi:"locationPreference"`
@@ -4654,7 +4654,7 @@ type Settings struct {
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The local user password validation policy of the instance.
 	PasswordValidationPolicy *PasswordValidationPolicy `pulumi:"passwordValidationPolicy"`
-	// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
+	// The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
 	PricingPlan *SettingsPricingPlan `pulumi:"pricingPlan"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 	SettingsVersion *string `pulumi:"settingsVersion"`
@@ -4664,7 +4664,7 @@ type Settings struct {
 	StorageAutoResize *bool `pulumi:"storageAutoResize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	StorageAutoResizeLimit *string `pulumi:"storageAutoResizeLimit"`
-	// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
+	// The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
 	Tier *string `pulumi:"tier"`
 	// User-provided labels, represented as a dictionary where each label is a single key value pair.
 	UserLabels map[string]string `pulumi:"userLabels"`
@@ -4683,11 +4683,11 @@ type SettingsInput interface {
 
 // Database instance settings.
 type SettingsArgs struct {
-	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
 	ActivationPolicy SettingsActivationPolicyPtrInput `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig SqlActiveDirectoryConfigPtrInput `pulumi:"activeDirectoryConfig"`
-	// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+	// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 	AvailabilityType SettingsAvailabilityTypePtrInput `pulumi:"availabilityType"`
 	// The daily backup configuration for the instance.
 	BackupConfiguration BackupConfigurationPtrInput `pulumi:"backupConfiguration"`
@@ -4697,7 +4697,7 @@ type SettingsArgs struct {
 	CrashSafeReplicationEnabled pulumi.BoolPtrInput `pulumi:"crashSafeReplicationEnabled"`
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
 	DataDiskSizeGb pulumi.StringPtrInput `pulumi:"dataDiskSizeGb"`
-	// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
+	// The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
 	DataDiskType SettingsDataDiskTypePtrInput `pulumi:"dataDiskType"`
 	// The database flags passed to the instance at startup.
 	DatabaseFlags DatabaseFlagsArrayInput `pulumi:"databaseFlags"`
@@ -4709,7 +4709,7 @@ type SettingsArgs struct {
 	InsightsConfig InsightsConfigPtrInput `pulumi:"insightsConfig"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
 	IpConfiguration IpConfigurationPtrInput `pulumi:"ipConfiguration"`
-	// This is always **sql#settings**.
+	// This is always `sql#settings`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
 	LocationPreference LocationPreferencePtrInput `pulumi:"locationPreference"`
@@ -4717,7 +4717,7 @@ type SettingsArgs struct {
 	MaintenanceWindow MaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
 	// The local user password validation policy of the instance.
 	PasswordValidationPolicy PasswordValidationPolicyPtrInput `pulumi:"passwordValidationPolicy"`
-	// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
+	// The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
 	PricingPlan SettingsPricingPlanPtrInput `pulumi:"pricingPlan"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 	SettingsVersion pulumi.StringPtrInput `pulumi:"settingsVersion"`
@@ -4727,7 +4727,7 @@ type SettingsArgs struct {
 	StorageAutoResize pulumi.BoolPtrInput `pulumi:"storageAutoResize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	StorageAutoResizeLimit pulumi.StringPtrInput `pulumi:"storageAutoResizeLimit"`
-	// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
+	// The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
 	Tier pulumi.StringPtrInput `pulumi:"tier"`
 	// User-provided labels, represented as a dictionary where each label is a single key value pair.
 	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
@@ -4811,7 +4811,7 @@ func (o SettingsOutput) ToSettingsPtrOutputWithContext(ctx context.Context) Sett
 	}).(SettingsPtrOutput)
 }
 
-// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
 func (o SettingsOutput) ActivationPolicy() SettingsActivationPolicyPtrOutput {
 	return o.ApplyT(func(v Settings) *SettingsActivationPolicy { return v.ActivationPolicy }).(SettingsActivationPolicyPtrOutput)
 }
@@ -4821,7 +4821,7 @@ func (o SettingsOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfigPtrOutpu
 	return o.ApplyT(func(v Settings) *SqlActiveDirectoryConfig { return v.ActiveDirectoryConfig }).(SqlActiveDirectoryConfigPtrOutput)
 }
 
-// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 func (o SettingsOutput) AvailabilityType() SettingsAvailabilityTypePtrOutput {
 	return o.ApplyT(func(v Settings) *SettingsAvailabilityType { return v.AvailabilityType }).(SettingsAvailabilityTypePtrOutput)
 }
@@ -4846,7 +4846,7 @@ func (o SettingsOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.DataDiskSizeGb }).(pulumi.StringPtrOutput)
 }
 
-// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
+// The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
 func (o SettingsOutput) DataDiskType() SettingsDataDiskTypePtrOutput {
 	return o.ApplyT(func(v Settings) *SettingsDataDiskType { return v.DataDiskType }).(SettingsDataDiskTypePtrOutput)
 }
@@ -4876,7 +4876,7 @@ func (o SettingsOutput) IpConfiguration() IpConfigurationPtrOutput {
 	return o.ApplyT(func(v Settings) *IpConfiguration { return v.IpConfiguration }).(IpConfigurationPtrOutput)
 }
 
-// This is always **sql#settings**.
+// This is always `sql#settings`.
 func (o SettingsOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -4896,7 +4896,7 @@ func (o SettingsOutput) PasswordValidationPolicy() PasswordValidationPolicyPtrOu
 	return o.ApplyT(func(v Settings) *PasswordValidationPolicy { return v.PasswordValidationPolicy }).(PasswordValidationPolicyPtrOutput)
 }
 
-// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
+// The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
 func (o SettingsOutput) PricingPlan() SettingsPricingPlanPtrOutput {
 	return o.ApplyT(func(v Settings) *SettingsPricingPlan { return v.PricingPlan }).(SettingsPricingPlanPtrOutput)
 }
@@ -4921,7 +4921,7 @@ func (o SettingsOutput) StorageAutoResizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.StorageAutoResizeLimit }).(pulumi.StringPtrOutput)
 }
 
-// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
+// The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
 func (o SettingsOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
@@ -4955,7 +4955,7 @@ func (o SettingsPtrOutput) Elem() SettingsOutput {
 	}).(SettingsOutput)
 }
 
-// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
 func (o SettingsPtrOutput) ActivationPolicy() SettingsActivationPolicyPtrOutput {
 	return o.ApplyT(func(v *Settings) *SettingsActivationPolicy {
 		if v == nil {
@@ -4975,7 +4975,7 @@ func (o SettingsPtrOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfigPtrOu
 	}).(SqlActiveDirectoryConfigPtrOutput)
 }
 
-// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 func (o SettingsPtrOutput) AvailabilityType() SettingsAvailabilityTypePtrOutput {
 	return o.ApplyT(func(v *Settings) *SettingsAvailabilityType {
 		if v == nil {
@@ -5025,7 +5025,7 @@ func (o SettingsPtrOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
+// The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
 func (o SettingsPtrOutput) DataDiskType() SettingsDataDiskTypePtrOutput {
 	return o.ApplyT(func(v *Settings) *SettingsDataDiskType {
 		if v == nil {
@@ -5085,7 +5085,7 @@ func (o SettingsPtrOutput) IpConfiguration() IpConfigurationPtrOutput {
 	}).(IpConfigurationPtrOutput)
 }
 
-// This is always **sql#settings**.
+// This is always `sql#settings`.
 func (o SettingsPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Settings) *string {
 		if v == nil {
@@ -5125,7 +5125,7 @@ func (o SettingsPtrOutput) PasswordValidationPolicy() PasswordValidationPolicyPt
 	}).(PasswordValidationPolicyPtrOutput)
 }
 
-// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
+// The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
 func (o SettingsPtrOutput) PricingPlan() SettingsPricingPlanPtrOutput {
 	return o.ApplyT(func(v *Settings) *SettingsPricingPlan {
 		if v == nil {
@@ -5175,7 +5175,7 @@ func (o SettingsPtrOutput) StorageAutoResizeLimit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
+// The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
 func (o SettingsPtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Settings) *string {
 		if v == nil {
@@ -5197,11 +5197,11 @@ func (o SettingsPtrOutput) UserLabels() pulumi.StringMapOutput {
 
 // Database instance settings.
 type SettingsResponse struct {
-	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
 	ActivationPolicy string `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig SqlActiveDirectoryConfigResponse `pulumi:"activeDirectoryConfig"`
-	// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+	// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 	AvailabilityType string `pulumi:"availabilityType"`
 	// The daily backup configuration for the instance.
 	BackupConfiguration BackupConfigurationResponse `pulumi:"backupConfiguration"`
@@ -5211,7 +5211,7 @@ type SettingsResponse struct {
 	CrashSafeReplicationEnabled bool `pulumi:"crashSafeReplicationEnabled"`
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
 	DataDiskSizeGb string `pulumi:"dataDiskSizeGb"`
-	// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
+	// The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
 	DataDiskType string `pulumi:"dataDiskType"`
 	// The database flags passed to the instance at startup.
 	DatabaseFlags []DatabaseFlagsResponse `pulumi:"databaseFlags"`
@@ -5223,7 +5223,7 @@ type SettingsResponse struct {
 	InsightsConfig InsightsConfigResponse `pulumi:"insightsConfig"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
 	IpConfiguration IpConfigurationResponse `pulumi:"ipConfiguration"`
-	// This is always **sql#settings**.
+	// This is always `sql#settings`.
 	Kind string `pulumi:"kind"`
 	// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
 	LocationPreference LocationPreferenceResponse `pulumi:"locationPreference"`
@@ -5231,7 +5231,7 @@ type SettingsResponse struct {
 	MaintenanceWindow MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
 	// The local user password validation policy of the instance.
 	PasswordValidationPolicy PasswordValidationPolicyResponse `pulumi:"passwordValidationPolicy"`
-	// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
+	// The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
 	PricingPlan string `pulumi:"pricingPlan"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 	SettingsVersion string `pulumi:"settingsVersion"`
@@ -5241,7 +5241,7 @@ type SettingsResponse struct {
 	StorageAutoResize bool `pulumi:"storageAutoResize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	StorageAutoResizeLimit string `pulumi:"storageAutoResizeLimit"`
-	// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
+	// The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
 	Tier string `pulumi:"tier"`
 	// User-provided labels, represented as a dictionary where each label is a single key value pair.
 	UserLabels map[string]string `pulumi:"userLabels"`
@@ -5262,7 +5262,7 @@ func (o SettingsResponseOutput) ToSettingsResponseOutputWithContext(ctx context.
 	return o
 }
 
-// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
 func (o SettingsResponseOutput) ActivationPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.ActivationPolicy }).(pulumi.StringOutput)
 }
@@ -5272,7 +5272,7 @@ func (o SettingsResponseOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfig
 	return o.ApplyT(func(v SettingsResponse) SqlActiveDirectoryConfigResponse { return v.ActiveDirectoryConfig }).(SqlActiveDirectoryConfigResponseOutput)
 }
 
-// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 func (o SettingsResponseOutput) AvailabilityType() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.AvailabilityType }).(pulumi.StringOutput)
 }
@@ -5297,7 +5297,7 @@ func (o SettingsResponseOutput) DataDiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.DataDiskSizeGb }).(pulumi.StringOutput)
 }
 
-// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
+// The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
 func (o SettingsResponseOutput) DataDiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.DataDiskType }).(pulumi.StringOutput)
 }
@@ -5327,7 +5327,7 @@ func (o SettingsResponseOutput) IpConfiguration() IpConfigurationResponseOutput 
 	return o.ApplyT(func(v SettingsResponse) IpConfigurationResponse { return v.IpConfiguration }).(IpConfigurationResponseOutput)
 }
 
-// This is always **sql#settings**.
+// This is always `sql#settings`.
 func (o SettingsResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -5347,7 +5347,7 @@ func (o SettingsResponseOutput) PasswordValidationPolicy() PasswordValidationPol
 	return o.ApplyT(func(v SettingsResponse) PasswordValidationPolicyResponse { return v.PasswordValidationPolicy }).(PasswordValidationPolicyResponseOutput)
 }
 
-// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
+// The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
 func (o SettingsResponseOutput) PricingPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.PricingPlan }).(pulumi.StringOutput)
 }
@@ -5372,7 +5372,7 @@ func (o SettingsResponseOutput) StorageAutoResizeLimit() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.StorageAutoResizeLimit }).(pulumi.StringOutput)
 }
 
-// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
+// The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
 func (o SettingsResponseOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.Tier }).(pulumi.StringOutput)
 }
@@ -6396,13 +6396,13 @@ type SslCertType struct {
 	CertSerialNumber *string `pulumi:"certSerialNumber"`
 	// User supplied name. Constrained to [a-zA-Z.-_ ]+.
 	CommonName *string `pulumi:"commonName"`
-	// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**
+	// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
 	CreateTime *string `pulumi:"createTime"`
-	// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+	// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	ExpirationTime *string `pulumi:"expirationTime"`
 	// Name of the database instance.
 	Instance *string `pulumi:"instance"`
-	// This is always **sql#sslCert**.
+	// This is always `sql#sslCert`.
 	Kind *string `pulumi:"kind"`
 	// The URI of this resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -6429,13 +6429,13 @@ type SslCertTypeArgs struct {
 	CertSerialNumber pulumi.StringPtrInput `pulumi:"certSerialNumber"`
 	// User supplied name. Constrained to [a-zA-Z.-_ ]+.
 	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
-	// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**
+	// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+	// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	ExpirationTime pulumi.StringPtrInput `pulumi:"expirationTime"`
 	// Name of the database instance.
 	Instance pulumi.StringPtrInput `pulumi:"instance"`
-	// This is always **sql#sslCert**.
+	// This is always `sql#sslCert`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The URI of this resource.
 	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
@@ -6536,12 +6536,12 @@ func (o SslCertTypeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SslCertType) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
 
-// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**
+// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
 func (o SslCertTypeOutput) CreateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SslCertType) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
-// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 func (o SslCertTypeOutput) ExpirationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SslCertType) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
 }
@@ -6551,7 +6551,7 @@ func (o SslCertTypeOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SslCertType) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
-// This is always **sql#sslCert**.
+// This is always `sql#sslCert`.
 func (o SslCertTypeOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SslCertType) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -6620,7 +6620,7 @@ func (o SslCertTypePtrOutput) CommonName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**
+// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
 func (o SslCertTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SslCertType) *string {
 		if v == nil {
@@ -6630,7 +6630,7 @@ func (o SslCertTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 func (o SslCertTypePtrOutput) ExpirationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SslCertType) *string {
 		if v == nil {
@@ -6650,7 +6650,7 @@ func (o SslCertTypePtrOutput) Instance() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is always **sql#sslCert**.
+// This is always `sql#sslCert`.
 func (o SslCertTypePtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SslCertType) *string {
 		if v == nil {
@@ -6688,13 +6688,13 @@ type SslCertResponse struct {
 	CertSerialNumber string `pulumi:"certSerialNumber"`
 	// User supplied name. Constrained to [a-zA-Z.-_ ]+.
 	CommonName string `pulumi:"commonName"`
-	// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**
+	// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
 	CreateTime string `pulumi:"createTime"`
-	// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+	// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	ExpirationTime string `pulumi:"expirationTime"`
 	// Name of the database instance.
 	Instance string `pulumi:"instance"`
-	// This is always **sql#sslCert**.
+	// This is always `sql#sslCert`.
 	Kind string `pulumi:"kind"`
 	// The URI of this resource.
 	SelfLink string `pulumi:"selfLink"`
@@ -6732,12 +6732,12 @@ func (o SslCertResponseOutput) CommonName() pulumi.StringOutput {
 	return o.ApplyT(func(v SslCertResponse) string { return v.CommonName }).(pulumi.StringOutput)
 }
 
-// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**
+// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
 func (o SslCertResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v SslCertResponse) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 func (o SslCertResponseOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v SslCertResponse) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
@@ -6747,7 +6747,7 @@ func (o SslCertResponseOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v SslCertResponse) string { return v.Instance }).(pulumi.StringOutput)
 }
 
-// This is always **sql#sslCert**.
+// This is always `sql#sslCert`.
 func (o SslCertResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v SslCertResponse) string { return v.Kind }).(pulumi.StringOutput)
 }

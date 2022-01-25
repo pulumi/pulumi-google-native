@@ -40,17 +40,17 @@ class BackupRunArgs:
         :param pulumi.Input[str] description: The description of this run, only applicable to on-demand backups.
         :param pulumi.Input['DiskEncryptionConfigurationArgs'] disk_encryption_configuration: Encryption configuration specific to a backup.
         :param pulumi.Input['DiskEncryptionStatusArgs'] disk_encryption_status: Encryption status specific to a backup.
-        :param pulumi.Input[str] end_time: The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
-        :param pulumi.Input[str] enqueued_time: The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        :param pulumi.Input[str] end_time: The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
+        :param pulumi.Input[str] enqueued_time: The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         :param pulumi.Input['OperationErrorArgs'] error: Information about why the backup operation failed. This is only present if the run has the FAILED status.
         :param pulumi.Input[str] id: The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-        :param pulumi.Input[str] kind: This is always **sql#backupRun**.
+        :param pulumi.Input[str] kind: This is always `sql#backupRun`.
         :param pulumi.Input[str] location: Location of the backups.
         :param pulumi.Input[str] self_link: The URI of this resource.
-        :param pulumi.Input[str] start_time: The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        :param pulumi.Input[str] start_time: The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         :param pulumi.Input['BackupRunStatus'] status: The status of this run.
         :param pulumi.Input['BackupRunType'] type: The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
-        :param pulumi.Input[str] window_start_time: The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        :param pulumi.Input[str] window_start_time: The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
         pulumi.set(__self__, "instance", instance)
         if backup_kind is not None:
@@ -150,7 +150,7 @@ class BackupRunArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
         return pulumi.get(self, "end_time")
 
@@ -162,7 +162,7 @@ class BackupRunArgs:
     @pulumi.getter(name="enqueuedTime")
     def enqueued_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
         return pulumi.get(self, "enqueued_time")
 
@@ -198,7 +198,7 @@ class BackupRunArgs:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        This is always **sql#backupRun**.
+        This is always `sql#backupRun`.
         """
         return pulumi.get(self, "kind")
 
@@ -243,7 +243,7 @@ class BackupRunArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
         return pulumi.get(self, "start_time")
 
@@ -279,7 +279,7 @@ class BackupRunArgs:
     @pulumi.getter(name="windowStartTime")
     def window_start_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
         return pulumi.get(self, "window_start_time")
 
@@ -321,18 +321,18 @@ class BackupRun(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of this run, only applicable to on-demand backups.
         :param pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']] disk_encryption_configuration: Encryption configuration specific to a backup.
         :param pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']] disk_encryption_status: Encryption status specific to a backup.
-        :param pulumi.Input[str] end_time: The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
-        :param pulumi.Input[str] enqueued_time: The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        :param pulumi.Input[str] end_time: The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
+        :param pulumi.Input[str] enqueued_time: The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         :param pulumi.Input[pulumi.InputType['OperationErrorArgs']] error: Information about why the backup operation failed. This is only present if the run has the FAILED status.
         :param pulumi.Input[str] id: The identifier for this backup run. Unique only for a specific Cloud SQL instance.
         :param pulumi.Input[str] instance: Name of the database instance.
-        :param pulumi.Input[str] kind: This is always **sql#backupRun**.
+        :param pulumi.Input[str] kind: This is always `sql#backupRun`.
         :param pulumi.Input[str] location: Location of the backups.
         :param pulumi.Input[str] self_link: The URI of this resource.
-        :param pulumi.Input[str] start_time: The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        :param pulumi.Input[str] start_time: The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         :param pulumi.Input['BackupRunStatus'] status: The status of this run.
         :param pulumi.Input['BackupRunType'] type: The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
-        :param pulumi.Input[str] window_start_time: The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        :param pulumi.Input[str] window_start_time: The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
         ...
     @overload
@@ -482,7 +482,7 @@ class BackupRun(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[str]:
         """
-        The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
         return pulumi.get(self, "end_time")
 
@@ -490,7 +490,7 @@ class BackupRun(pulumi.CustomResource):
     @pulumi.getter(name="enqueuedTime")
     def enqueued_time(self) -> pulumi.Output[str]:
         """
-        The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
         return pulumi.get(self, "enqueued_time")
 
@@ -514,7 +514,7 @@ class BackupRun(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        This is always **sql#backupRun**.
+        This is always `sql#backupRun`.
         """
         return pulumi.get(self, "kind")
 
@@ -538,7 +538,7 @@ class BackupRun(pulumi.CustomResource):
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[str]:
         """
-        The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
         return pulumi.get(self, "start_time")
 
@@ -562,7 +562,7 @@ class BackupRun(pulumi.CustomResource):
     @pulumi.getter(name="windowStartTime")
     def window_start_time(self) -> pulumi.Output[str]:
         """
-        The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
         return pulumi.get(self, "window_start_time")
 

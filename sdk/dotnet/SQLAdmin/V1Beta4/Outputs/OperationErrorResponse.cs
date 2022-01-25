@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly string Code;
         /// <summary>
-        /// This is always **sql#operationError**.
+        /// This is always `sql#operationError`.
         /// </summary>
         public readonly string Kind;
         /// <summary>

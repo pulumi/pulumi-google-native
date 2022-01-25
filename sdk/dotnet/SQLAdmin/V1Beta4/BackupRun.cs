@@ -41,13 +41,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<Outputs.DiskEncryptionStatusResponse> DiskEncryptionStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Output("endTime")]
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Output("enqueuedTime")]
         public Output<string> EnqueuedTime { get; private set; } = null!;
@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<string> Instance { get; private set; } = null!;
 
         /// <summary>
-        /// This is always **sql#backupRun**.
+        /// This is always `sql#backupRun`.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -83,7 +83,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Output("startTime")]
         public Output<string> StartTime { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Output("windowStartTime")]
         public Output<string> WindowStartTime { get; private set; } = null!;
@@ -176,13 +176,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Input<Inputs.DiskEncryptionStatusArgs>? DiskEncryptionStatus { get; set; }
 
         /// <summary>
-        /// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Input("enqueuedTime")]
         public Input<string>? EnqueuedTime { get; set; }
@@ -206,7 +206,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Input<string> Instance { get; set; } = null!;
 
         /// <summary>
-        /// This is always **sql#backupRun**.
+        /// This is always `sql#backupRun`.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
@@ -245,7 +245,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.BackupRunType>? Type { get; set; }
 
         /// <summary>
-        /// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Input("windowStartTime")]
         public Input<string>? WindowStartTime { get; set; }

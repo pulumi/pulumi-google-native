@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
     public sealed class DiskEncryptionConfigurationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This is always **sql#diskEncryptionConfiguration**.
+        /// This is always `sql#diskEncryptionConfiguration`.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

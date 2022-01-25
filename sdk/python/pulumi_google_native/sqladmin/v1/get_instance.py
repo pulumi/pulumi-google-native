@@ -120,7 +120,7 @@ class GetInstanceResult:
     @pulumi.getter(name="backendType")
     def backend_type(self) -> str:
         """
-        The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server that is not managed by Google. This property is read-only; use the **tier** property in the **settings** object to determine the database type.
+        The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
         """
         return pulumi.get(self, "backend_type")
 
@@ -136,7 +136,7 @@ class GetInstanceResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
         return pulumi.get(self, "create_time")
 
@@ -152,7 +152,7 @@ class GetInstanceResult:
     @pulumi.getter(name="databaseInstalledVersion")
     def database_installed_version(self) -> str:
         """
-        Stores the current database version running on the instance including minor version such as **MYSQL_8_0_18**.
+        Stores the current database version running on the instance including minor version such as `MYSQL_8_0_18`.
         """
         return pulumi.get(self, "database_installed_version")
 
@@ -160,7 +160,7 @@ class GetInstanceResult:
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> str:
         """
-        The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
+        The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
         """
         return pulumi.get(self, "database_version")
 
@@ -216,7 +216,7 @@ class GetInstanceResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        This is always **sql#instance**.
+        This is always `sql#instance`.
         """
         return pulumi.get(self, "kind")
 
@@ -272,7 +272,7 @@ class GetInstanceResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        The geographical region. Can be: * **us-central** (**FIRST_GEN** instances only) * **us-central1** (**SECOND_GEN** instances only) * **asia-east1** or **europe-west1**. Defaults to **us-central** or **us-central1** depending on the instance type. The region cannot be changed after instance creation.
+        The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
         """
         return pulumi.get(self, "region")
 
@@ -344,7 +344,7 @@ class GetInstanceResult:
     @pulumi.getter(name="serviceAccountEmailAddress")
     def service_account_email_address(self) -> str:
         """
-        The service account email address assigned to the instance. This property is read-only.
+        The service account email address assigned to the instance.\This property is read-only.
         """
         return pulumi.get(self, "service_account_email_address")
 

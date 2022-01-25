@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
-        /// The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server that is not managed by Google. This property is read-only; use the **tier** property in the **settings** object to determine the database type.
+        /// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
         /// </summary>
         [Output("backendType")]
         public Output<string> BackendType { get; private set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<string> ConnectionName { get; private set; } = null!;
 
         /// <summary>
-        /// The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -40,13 +40,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<string> CurrentDiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// Stores the current database version running on the instance including minor version such as **MYSQL_8_0_18**.
+        /// Stores the current database version running on the instance including minor version such as `MYSQL_8_0_18`.
         /// </summary>
         [Output("databaseInstalledVersion")]
         public Output<string> DatabaseInstalledVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
+        /// The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
         /// </summary>
         [Output("databaseVersion")]
         public Output<string> DatabaseVersion { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<ImmutableArray<Outputs.IpMappingResponse>> IpAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// This is always **sql#instance**.
+        /// This is always `sql#instance`.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The geographical region. Can be: * **us-central** (**FIRST_GEN** instances only) * **us-central1** (**SECOND_GEN** instances only) * **asia-east1** or **europe-west1**. Defaults to **us-central** or **us-central1** depending on the instance type. The region cannot be changed after instance creation.
+        /// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<Outputs.SslCertResponse> ServerCaCert { get; private set; } = null!;
 
         /// <summary>
-        /// The service account email address assigned to the instance. This property is read-only.
+        /// The service account email address assigned to the instance. \This property is read-only.
         /// </summary>
         [Output("serviceAccountEmailAddress")]
         public Output<string> ServiceAccountEmailAddress { get; private set; } = null!;
@@ -253,7 +253,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server that is not managed by Google. This property is read-only; use the **tier** property in the **settings** object to determine the database type.
+        /// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
         /// </summary>
         [Input("backendType")]
         public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.InstanceBackendType>? BackendType { get; set; }
@@ -271,7 +271,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Input<string>? CurrentDiskSize { get; set; }
 
         /// <summary>
-        /// The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
+        /// The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
         /// </summary>
         [Input("databaseVersion")]
         public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.InstanceDatabaseVersion>? DatabaseVersion { get; set; }
@@ -319,7 +319,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         }
 
         /// <summary>
-        /// This is always **sql#instance**.
+        /// This is always `sql#instance`.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -361,7 +361,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The geographical region. Can be: * **us-central** (**FIRST_GEN** instances only) * **us-central1** (**SECOND_GEN** instances only) * **asia-east1** or **europe-west1**. Defaults to **us-central** or **us-central1** depending on the instance type. The region cannot be changed after instance creation.
+        /// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -421,7 +421,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Input<Inputs.SslCertArgs>? ServerCaCert { get; set; }
 
         /// <summary>
-        /// The service account email address assigned to the instance. This property is read-only.
+        /// The service account email address assigned to the instance. \This property is read-only.
         /// </summary>
         [Input("serviceAccountEmailAddress")]
         public Input<string>? ServiceAccountEmailAddress { get; set; }

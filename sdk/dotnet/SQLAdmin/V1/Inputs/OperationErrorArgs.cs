@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public Input<string>? Code { get; set; }
 
         /// <summary>
-        /// This is always **sql#operationError**.
+        /// This is always `sql#operationError`.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

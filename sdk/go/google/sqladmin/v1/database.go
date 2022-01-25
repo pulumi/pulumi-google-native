@@ -21,7 +21,7 @@ type Database struct {
 	Collation pulumi.StringOutput `pulumi:"collation"`
 	// The name of the Cloud SQL instance. This does not include the project ID.
 	Instance pulumi.StringOutput `pulumi:"instance"`
-	// This is always **sql#database**.
+	// This is always `sql#database`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -80,7 +80,7 @@ type databaseArgs struct {
 	Collation *string `pulumi:"collation"`
 	// The name of the Cloud SQL instance. This does not include the project ID.
 	Instance string `pulumi:"instance"`
-	// This is always **sql#database**.
+	// This is always `sql#database`.
 	Kind *string `pulumi:"kind"`
 	// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
 	Name *string `pulumi:"name"`
@@ -99,7 +99,7 @@ type DatabaseArgs struct {
 	Collation pulumi.StringPtrInput
 	// The name of the Cloud SQL instance. This does not include the project ID.
 	Instance pulumi.StringInput
-	// This is always **sql#database**.
+	// This is always `sql#database`.
 	Kind pulumi.StringPtrInput
 	// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
 	Name pulumi.StringPtrInput

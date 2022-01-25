@@ -35,27 +35,27 @@ type LookupBackupRunResult struct {
 	DiskEncryptionConfiguration DiskEncryptionConfigurationResponse `pulumi:"diskEncryptionConfiguration"`
 	// Encryption status specific to a backup.
 	DiskEncryptionStatus DiskEncryptionStatusResponse `pulumi:"diskEncryptionStatus"`
-	// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+	// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	EndTime string `pulumi:"endTime"`
-	// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+	// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	EnqueuedTime string `pulumi:"enqueuedTime"`
 	// Information about why the backup operation failed. This is only present if the run has the FAILED status.
 	Error OperationErrorResponse `pulumi:"error"`
 	// Name of the database instance.
 	Instance string `pulumi:"instance"`
-	// This is always **sql#backupRun**.
+	// This is always `sql#backupRun`.
 	Kind string `pulumi:"kind"`
 	// Location of the backups.
 	Location string `pulumi:"location"`
 	// The URI of this resource.
 	SelfLink string `pulumi:"selfLink"`
-	// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+	// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	StartTime string `pulumi:"startTime"`
 	// The status of this run.
 	Status string `pulumi:"status"`
 	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
 	Type string `pulumi:"type"`
-	// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+	// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	WindowStartTime string `pulumi:"windowStartTime"`
 }
 
@@ -114,12 +114,12 @@ func (o LookupBackupRunResultOutput) DiskEncryptionStatus() DiskEncryptionStatus
 	return o.ApplyT(func(v LookupBackupRunResult) DiskEncryptionStatusResponse { return v.DiskEncryptionStatus }).(DiskEncryptionStatusResponseOutput)
 }
 
-// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 func (o LookupBackupRunResultOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupRunResult) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 func (o LookupBackupRunResultOutput) EnqueuedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupRunResult) string { return v.EnqueuedTime }).(pulumi.StringOutput)
 }
@@ -134,7 +134,7 @@ func (o LookupBackupRunResultOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupRunResult) string { return v.Instance }).(pulumi.StringOutput)
 }
 
-// This is always **sql#backupRun**.
+// This is always `sql#backupRun`.
 func (o LookupBackupRunResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupRunResult) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -149,7 +149,7 @@ func (o LookupBackupRunResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupRunResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 func (o LookupBackupRunResultOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupRunResult) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -164,7 +164,7 @@ func (o LookupBackupRunResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupRunResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 func (o LookupBackupRunResultOutput) WindowStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupRunResult) string { return v.WindowStartTime }).(pulumi.StringOutput)
 }

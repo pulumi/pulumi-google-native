@@ -7,6 +7,85 @@ using Pulumi;
 
 namespace Pulumi.GoogleNative.Retail.V2Beta
 {
+    [EnumType]
+    public readonly struct ControlSolutionTypesItem : IEquatable<ControlSolutionTypesItem>
+    {
+        private readonly string _value;
+
+        private ControlSolutionTypesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static ControlSolutionTypesItem SolutionTypeUnspecified { get; } = new ControlSolutionTypesItem("SOLUTION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Used for Recommendations AI.
+        /// </summary>
+        public static ControlSolutionTypesItem SolutionTypeRecommendation { get; } = new ControlSolutionTypesItem("SOLUTION_TYPE_RECOMMENDATION");
+        /// <summary>
+        /// Used for Retail Search.
+        /// </summary>
+        public static ControlSolutionTypesItem SolutionTypeSearch { get; } = new ControlSolutionTypesItem("SOLUTION_TYPE_SEARCH");
+
+        public static bool operator ==(ControlSolutionTypesItem left, ControlSolutionTypesItem right) => left.Equals(right);
+        public static bool operator !=(ControlSolutionTypesItem left, ControlSolutionTypesItem right) => !left.Equals(right);
+
+        public static explicit operator string(ControlSolutionTypesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ControlSolutionTypesItem other && Equals(other);
+        public bool Equals(ControlSolutionTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode : IEquatable<GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode>
+    {
+        private readonly string _value;
+
+        private GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode ModeUnspecified { get; } = new GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode("MODE_UNSPECIFIED");
+        /// <summary>
+        /// Disable Dynamic Facet.
+        /// </summary>
+        public static GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode Disabled { get; } = new GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode("DISABLED");
+        /// <summary>
+        /// Automatic mode built by Google Retail Search.
+        /// </summary>
+        public static GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode Enabled { get; } = new GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode("ENABLED");
+
+        public static bool operator ==(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode left, GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode left, GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode other && Equals(other);
+        public bool Equals(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
     /// The online availability of the Product. Default to Availability.IN_STOCK. Corresponding properties: Google Merchant Center property [availability](https://support.google.com/merchants/answer/6324448). Schema.org property [Offer.availability](https://schema.org/availability).
     /// </summary>
@@ -94,6 +173,44 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ProductType other && Equals(other);
         public bool Equals(ProductType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct ServingConfigSolutionTypesItem : IEquatable<ServingConfigSolutionTypesItem>
+    {
+        private readonly string _value;
+
+        private ServingConfigSolutionTypesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static ServingConfigSolutionTypesItem SolutionTypeUnspecified { get; } = new ServingConfigSolutionTypesItem("SOLUTION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Used for Recommendations AI.
+        /// </summary>
+        public static ServingConfigSolutionTypesItem SolutionTypeRecommendation { get; } = new ServingConfigSolutionTypesItem("SOLUTION_TYPE_RECOMMENDATION");
+        /// <summary>
+        /// Used for Retail Search.
+        /// </summary>
+        public static ServingConfigSolutionTypesItem SolutionTypeSearch { get; } = new ServingConfigSolutionTypesItem("SOLUTION_TYPE_SEARCH");
+
+        public static bool operator ==(ServingConfigSolutionTypesItem left, ServingConfigSolutionTypesItem right) => left.Equals(right);
+        public static bool operator !=(ServingConfigSolutionTypesItem left, ServingConfigSolutionTypesItem right) => !left.Equals(right);
+
+        public static explicit operator string(ServingConfigSolutionTypesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ServingConfigSolutionTypesItem other && Equals(other);
+        public bool Equals(ServingConfigSolutionTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

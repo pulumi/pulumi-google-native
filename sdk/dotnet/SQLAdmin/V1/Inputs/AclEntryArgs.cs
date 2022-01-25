@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     public sealed class AclEntryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Input("expirationTime")]
         public Input<string>? ExpirationTime { get; set; }
 
         /// <summary>
-        /// This is always **sql#aclEntry**.
+        /// This is always `sql#aclEntry`.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

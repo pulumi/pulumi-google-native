@@ -2,6 +2,43 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const ControlSolutionTypesItem = {
+    /**
+     * Default value.
+     */
+    SolutionTypeUnspecified: "SOLUTION_TYPE_UNSPECIFIED",
+    /**
+     * Used for Recommendations AI.
+     */
+    SolutionTypeRecommendation: "SOLUTION_TYPE_RECOMMENDATION",
+    /**
+     * Used for Retail Search.
+     */
+    SolutionTypeSearch: "SOLUTION_TYPE_SEARCH",
+} as const;
+
+export type ControlSolutionTypesItem = (typeof ControlSolutionTypesItem)[keyof typeof ControlSolutionTypesItem];
+
+export const GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode = {
+    /**
+     * Default value.
+     */
+    ModeUnspecified: "MODE_UNSPECIFIED",
+    /**
+     * Disable Dynamic Facet.
+     */
+    Disabled: "DISABLED",
+    /**
+     * Automatic mode built by Google Retail Search.
+     */
+    Enabled: "ENABLED",
+} as const;
+
+/**
+ * Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+ */
+export type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode = (typeof GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode)[keyof typeof GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode];
+
 export const ProductAvailability = {
     /**
      * Default product availability. Default to Availability.IN_STOCK if unset.
@@ -53,3 +90,20 @@ export const ProductType = {
  * Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
  */
 export type ProductType = (typeof ProductType)[keyof typeof ProductType];
+
+export const ServingConfigSolutionTypesItem = {
+    /**
+     * Default value.
+     */
+    SolutionTypeUnspecified: "SOLUTION_TYPE_UNSPECIFIED",
+    /**
+     * Used for Recommendations AI.
+     */
+    SolutionTypeRecommendation: "SOLUTION_TYPE_RECOMMENDATION",
+    /**
+     * Used for Retail Search.
+     */
+    SolutionTypeSearch: "SOLUTION_TYPE_SEARCH",
+} as const;
+
+export type ServingConfigSolutionTypesItem = (typeof ServingConfigSolutionTypesItem)[keyof typeof ServingConfigSolutionTypesItem];

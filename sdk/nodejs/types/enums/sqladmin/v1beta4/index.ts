@@ -126,7 +126,7 @@ export const InstanceBackendType = {
 } as const;
 
 /**
- * The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server that is not managed by Google. This property is read-only; use the **tier** property in the **settings** object to determine the database type.
+ * The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
  */
 export type InstanceBackendType = (typeof InstanceBackendType)[keyof typeof InstanceBackendType];
 
@@ -222,7 +222,7 @@ export const InstanceDatabaseVersion = {
 } as const;
 
 /**
- * The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
+ * The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
  */
 export type InstanceDatabaseVersion = (typeof InstanceDatabaseVersion)[keyof typeof InstanceDatabaseVersion];
 
@@ -339,7 +339,7 @@ export const IpMappingType = {
 } as const;
 
 /**
- * The type of this IP address. A **PRIMARY** address is a public address that can accept incoming connections. A **PRIVATE** address is a private address that can accept incoming connections. An **OUTGOING** address is the source address of connections originating from the instance, if supported.
+ * The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A `PRIVATE` address is a private address that can accept incoming connections. An `OUTGOING` address is the source address of connections originating from the instance, if supported.
  */
 export type IpMappingType = (typeof IpMappingType)[keyof typeof IpMappingType];
 
@@ -359,7 +359,7 @@ export const MaintenanceWindowUpdateTrack = {
 } as const;
 
 /**
- * Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+ * Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
  */
 export type MaintenanceWindowUpdateTrack = (typeof MaintenanceWindowUpdateTrack)[keyof typeof MaintenanceWindowUpdateTrack];
 
@@ -399,7 +399,7 @@ export const SettingsActivationPolicy = {
 } as const;
 
 /**
- * The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+ * The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
  */
 export type SettingsActivationPolicy = (typeof SettingsActivationPolicy)[keyof typeof SettingsActivationPolicy];
 
@@ -419,7 +419,7 @@ export const SettingsAvailabilityType = {
 } as const;
 
 /**
- * Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+ * Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
  */
 export type SettingsAvailabilityType = (typeof SettingsAvailabilityType)[keyof typeof SettingsAvailabilityType];
 
@@ -443,7 +443,7 @@ export const SettingsDataDiskType = {
 } as const;
 
 /**
- * The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
+ * The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
  */
 export type SettingsDataDiskType = (typeof SettingsDataDiskType)[keyof typeof SettingsDataDiskType];
 
@@ -463,7 +463,7 @@ export const SettingsPricingPlan = {
 } as const;
 
 /**
- * The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
+ * The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
  */
 export type SettingsPricingPlan = (typeof SettingsPricingPlan)[keyof typeof SettingsPricingPlan];
 

@@ -6,7 +6,11 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .control import *
+from .get_control import *
 from .get_product import *
+from .get_serving_config import *
 from .product import *
+from .serving_config import *
 from ._inputs import *
 from . import outputs

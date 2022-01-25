@@ -25,11 +25,11 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly int Hour;
         /// <summary>
-        /// This is always **sql#maintenanceWindow**.
+        /// This is always `sql#maintenanceWindow`.
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+        /// Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
         /// </summary>
         public readonly string UpdateTrack;
 

@@ -33,13 +33,13 @@ type LookupSslCertResult struct {
 	CertSerialNumber string `pulumi:"certSerialNumber"`
 	// User supplied name. Constrained to [a-zA-Z.-_ ]+.
 	CommonName string `pulumi:"commonName"`
-	// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**
+	// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
 	CreateTime string `pulumi:"createTime"`
-	// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+	// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	ExpirationTime string `pulumi:"expirationTime"`
 	// Name of the database instance.
 	Instance string `pulumi:"instance"`
-	// This is always **sql#sslCert**.
+	// This is always `sql#sslCert`.
 	Kind string `pulumi:"kind"`
 	// The URI of this resource.
 	SelfLink string `pulumi:"selfLink"`
@@ -95,12 +95,12 @@ func (o LookupSslCertResultOutput) CommonName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSslCertResult) string { return v.CommonName }).(pulumi.StringOutput)
 }
 
-// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**
+// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
 func (o LookupSslCertResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSslCertResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 func (o LookupSslCertResultOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSslCertResult) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
@@ -110,7 +110,7 @@ func (o LookupSslCertResultOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSslCertResult) string { return v.Instance }).(pulumi.StringOutput)
 }
 
-// This is always **sql#sslCert**.
+// This is always `sql#sslCert`.
 func (o LookupSslCertResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSslCertResult) string { return v.Kind }).(pulumi.StringOutput)
 }

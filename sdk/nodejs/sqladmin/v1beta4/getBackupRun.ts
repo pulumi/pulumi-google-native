@@ -45,11 +45,11 @@ export interface GetBackupRunResult {
      */
     readonly diskEncryptionStatus: outputs.sqladmin.v1beta4.DiskEncryptionStatusResponse;
     /**
-     * The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+     * The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
      */
     readonly endTime: string;
     /**
-     * The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+     * The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
      */
     readonly enqueuedTime: string;
     /**
@@ -61,7 +61,7 @@ export interface GetBackupRunResult {
      */
     readonly instance: string;
     /**
-     * This is always **sql#backupRun**.
+     * This is always `sql#backupRun`.
      */
     readonly kind: string;
     /**
@@ -73,7 +73,7 @@ export interface GetBackupRunResult {
      */
     readonly selfLink: string;
     /**
-     * The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+     * The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
      */
     readonly startTime: string;
     /**
@@ -85,7 +85,7 @@ export interface GetBackupRunResult {
      */
     readonly type: string;
     /**
-     * The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+     * The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
      */
     readonly windowStartTime: string;
 }

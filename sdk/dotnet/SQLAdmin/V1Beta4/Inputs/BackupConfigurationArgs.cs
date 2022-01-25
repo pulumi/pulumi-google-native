@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// This is always **sql#backupConfiguration**.
+        /// This is always `sql#backupConfiguration`.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<bool>? ReplicationLogArchivingEnabled { get; set; }
 
         /// <summary>
-        /// Start time for the daily backup configuration in UTC timezone in the 24 hour format - **HH:MM**.
+        /// Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }

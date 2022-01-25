@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<string> Instance { get; private set; } = null!;
 
         /// <summary>
-        /// This is always **sql#database**.
+        /// This is always `sql#database`.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Input<string> Instance { get; set; } = null!;
 
         /// <summary>
-        /// This is always **sql#database**.
+        /// This is always `sql#database`.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

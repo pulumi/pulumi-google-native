@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public Input<string>? FollowGaeApplication { get; set; }
 
         /// <summary>
-        /// This is always **sql#locationPreference**.
+        /// This is always `sql#locationPreference`.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

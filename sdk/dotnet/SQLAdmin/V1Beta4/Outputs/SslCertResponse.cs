@@ -29,11 +29,11 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly string CommonName;
         /// <summary>
-        /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         public readonly string ExpirationTime;
         /// <summary>
@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly string Instance;
         /// <summary>
-        /// This is always **sql#sslCert**.
+        /// This is always `sql#sslCert`.
         /// </summary>
         public readonly string Kind;
         /// <summary>

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
+        /// The value of the flag. Boolean flags are set to `on` for true and `off` for false. This field must be omitted if the flag doesn't take a value.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

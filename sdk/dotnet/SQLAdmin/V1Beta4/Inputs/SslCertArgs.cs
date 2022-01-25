@@ -34,13 +34,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<string>? CommonName { get; set; }
 
         /// <summary>
-        /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Input("expirationTime")]
         public Input<string>? ExpirationTime { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<string>? Instance { get; set; }
 
         /// <summary>
-        /// This is always **sql#sslCert**.
+        /// This is always `sql#sslCert`.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

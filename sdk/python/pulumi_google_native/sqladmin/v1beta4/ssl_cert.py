@@ -187,7 +187,7 @@ class SslCert(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
         return pulumi.get(self, "create_time")
 
@@ -195,7 +195,7 @@ class SslCert(pulumi.CustomResource):
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> pulumi.Output[str]:
         """
-        The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
         return pulumi.get(self, "expiration_time")
 
@@ -211,7 +211,7 @@ class SslCert(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        This is always **sql#sslCert**.
+        This is always `sql#sslCert`.
         """
         return pulumi.get(self, "kind")
 

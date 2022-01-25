@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
     public sealed class SettingsResponse
     {
         /// <summary>
-        /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+        /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
         /// </summary>
         public readonly string ActivationPolicy;
         /// <summary>
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly Outputs.SqlActiveDirectoryConfigResponse ActiveDirectoryConfig;
         /// <summary>
-        /// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+        /// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         /// </summary>
         public readonly string AvailabilityType;
         /// <summary>
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly string DataDiskSizeGb;
         /// <summary>
-        /// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
+        /// The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
         /// </summary>
         public readonly string DataDiskType;
         /// <summary>
@@ -69,7 +69,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly Outputs.IpConfigurationResponse IpConfiguration;
         /// <summary>
-        /// This is always **sql#settings**.
+        /// This is always `sql#settings`.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -85,7 +85,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly Outputs.PasswordValidationPolicyResponse PasswordValidationPolicy;
         /// <summary>
-        /// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
+        /// The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
         /// </summary>
         public readonly string PricingPlan;
         /// <summary>
@@ -105,7 +105,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly string StorageAutoResizeLimit;
         /// <summary>
-        /// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
+        /// The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
         /// </summary>
         public readonly string Tier;
         /// <summary>

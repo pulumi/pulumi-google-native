@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         private InputList<Inputs.AclEntryArgs>? _authorizedNetworks;
 
         /// <summary>
-        /// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
+        /// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
         /// </summary>
         public InputList<Inputs.AclEntryArgs> AuthorizedNetworks
         {
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public Input<bool>? Ipv4Enabled { get; set; }
 
         /// <summary>
-        /// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **/projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
+        /// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
         /// </summary>
         [Input("privateNetwork")]
         public Input<string>? PrivateNetwork { get; set; }

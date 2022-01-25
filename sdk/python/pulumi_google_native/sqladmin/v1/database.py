@@ -28,7 +28,7 @@ class DatabaseArgs:
         :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project ID.
         :param pulumi.Input[str] charset: The Cloud SQL charset value.
         :param pulumi.Input[str] collation: The Cloud SQL collation value.
-        :param pulumi.Input[str] kind: This is always **sql#database**.
+        :param pulumi.Input[str] kind: This is always `sql#database`.
         :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
         :param pulumi.Input[str] project: The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
         :param pulumi.Input[str] self_link: The URI of this resource.
@@ -89,7 +89,7 @@ class DatabaseArgs:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        This is always **sql#database**.
+        This is always `sql#database`.
         """
         return pulumi.get(self, "kind")
 
@@ -165,7 +165,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] charset: The Cloud SQL charset value.
         :param pulumi.Input[str] collation: The Cloud SQL collation value.
         :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project ID.
-        :param pulumi.Input[str] kind: This is always **sql#database**.
+        :param pulumi.Input[str] kind: This is always `sql#database`.
         :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
         :param pulumi.Input[str] project: The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
         :param pulumi.Input[str] self_link: The URI of this resource.
@@ -284,7 +284,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        This is always **sql#database**.
+        This is always `sql#database`.
         """
         return pulumi.get(self, "kind")
 

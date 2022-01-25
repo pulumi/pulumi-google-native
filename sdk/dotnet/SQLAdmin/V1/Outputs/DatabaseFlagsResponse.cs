@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
+        /// The value of the flag. Boolean flags are set to `on` for true and `off` for false. This field must be omitted if the flag doesn't take a value.
         /// </summary>
         public readonly string Value;
 

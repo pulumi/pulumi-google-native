@@ -13,6 +13,9 @@ from ._enums import *
 __all__ = [
     'GoogleCloudRetailV2betaAudienceResponse',
     'GoogleCloudRetailV2betaColorInfoResponse',
+    'GoogleCloudRetailV2betaConditionQueryTermResponse',
+    'GoogleCloudRetailV2betaConditionResponse',
+    'GoogleCloudRetailV2betaConditionTimeRangeResponse',
     'GoogleCloudRetailV2betaFulfillmentInfoResponse',
     'GoogleCloudRetailV2betaImageResponse',
     'GoogleCloudRetailV2betaIntervalResponse',
@@ -21,6 +24,18 @@ __all__ = [
     'GoogleCloudRetailV2betaProductResponse',
     'GoogleCloudRetailV2betaPromotionResponse',
     'GoogleCloudRetailV2betaRatingResponse',
+    'GoogleCloudRetailV2betaRuleBoostActionResponse',
+    'GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse',
+    'GoogleCloudRetailV2betaRuleFilterActionResponse',
+    'GoogleCloudRetailV2betaRuleIgnoreActionResponse',
+    'GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse',
+    'GoogleCloudRetailV2betaRuleRedirectActionResponse',
+    'GoogleCloudRetailV2betaRuleReplacementActionResponse',
+    'GoogleCloudRetailV2betaRuleResponse',
+    'GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse',
+    'GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponse',
+    'GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse',
+    'GoogleCloudRetailV2betaSearchRequestFacetSpecResponse',
 ]
 
 @pulumi.output_type
@@ -121,6 +136,160 @@ class GoogleCloudRetailV2betaColorInfoResponse(dict):
         The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
         """
         return pulumi.get(self, "colors")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaConditionQueryTermResponse(dict):
+    """
+    Query terms that we want to match on.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fullMatch":
+            suggest = "full_match"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaConditionQueryTermResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2betaConditionQueryTermResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2betaConditionQueryTermResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 full_match: bool,
+                 value: str):
+        """
+        Query terms that we want to match on.
+        :param bool full_match: Whether this is supposed to be a full or partial match.
+        :param str value: The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+        """
+        pulumi.set(__self__, "full_match", full_match)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="fullMatch")
+    def full_match(self) -> bool:
+        """
+        Whether this is supposed to be a full or partial match.
+        """
+        return pulumi.get(self, "full_match")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaConditionResponse(dict):
+    """
+    Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the product_filter for requests with a query matching the query terms wil get boosted.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activeTimeRange":
+            suggest = "active_time_range"
+        elif key == "queryTerms":
+            suggest = "query_terms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2betaConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2betaConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 active_time_range: Sequence['outputs.GoogleCloudRetailV2betaConditionTimeRangeResponse'],
+                 query_terms: Sequence['outputs.GoogleCloudRetailV2betaConditionQueryTermResponse']):
+        """
+        Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the product_filter for requests with a query matching the query terms wil get boosted.
+        :param Sequence['GoogleCloudRetailV2betaConditionTimeRangeResponse'] active_time_range: Range of time(s) specifying when Condition is active. Condition true if any time range matches.
+        :param Sequence['GoogleCloudRetailV2betaConditionQueryTermResponse'] query_terms: A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
+        """
+        pulumi.set(__self__, "active_time_range", active_time_range)
+        pulumi.set(__self__, "query_terms", query_terms)
+
+    @property
+    @pulumi.getter(name="activeTimeRange")
+    def active_time_range(self) -> Sequence['outputs.GoogleCloudRetailV2betaConditionTimeRangeResponse']:
+        """
+        Range of time(s) specifying when Condition is active. Condition true if any time range matches.
+        """
+        return pulumi.get(self, "active_time_range")
+
+    @property
+    @pulumi.getter(name="queryTerms")
+    def query_terms(self) -> Sequence['outputs.GoogleCloudRetailV2betaConditionQueryTermResponse']:
+        """
+        A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
+        """
+        return pulumi.get(self, "query_terms")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaConditionTimeRangeResponse(dict):
+    """
+    Used for time-dependent conditions. Example: Want to have rule applied for week long sale.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaConditionTimeRangeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2betaConditionTimeRangeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2betaConditionTimeRangeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: str,
+                 start_time: str):
+        """
+        Used for time-dependent conditions. Example: Want to have rule applied for week long sale.
+        :param str end_time: End of time range. Range is inclusive.
+        :param str start_time: Start of time range. Range is inclusive.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        End of time range. Range is inclusive.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Start of time range. Range is inclusive.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type
@@ -538,7 +707,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
         :param str available_time: The timestamp when this Product becomes available for SearchService.Search.
         :param Sequence[str] brands: The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
         :param Sequence[str] categories: Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
-        :param Sequence[str] collection_member_ids: The id of the collection members when type is Type.COLLECTION. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+        :param Sequence[str] collection_member_ids: The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise and INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
         :param 'GoogleCloudRetailV2betaColorInfoResponse' color_info: The color of the product. Corresponding properties: Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
         :param Sequence[str] conditions: The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used". A maximum of 1 value is allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://schema.org/itemCondition).
         :param str description: Product description. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [description](https://support.google.com/merchants/answer/6324468). Schema.org property [Product.description](https://schema.org/description).
@@ -657,7 +826,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
     @pulumi.getter(name="collectionMemberIds")
     def collection_member_ids(self) -> Sequence[str]:
         """
-        The id of the collection members when type is Type.COLLECTION. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+        The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise and INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
         """
         return pulumi.get(self, "collection_member_ids")
 
@@ -956,5 +1125,712 @@ class GoogleCloudRetailV2betaRatingResponse(dict):
         List of rating counts per rating value (index = rating - 1). The list is empty if there is no rating. If the list is non-empty, its size is always 5. Otherwise, an INVALID_ARGUMENT error is returned. For example, [41, 14, 13, 47, 303]. It means that the Product got 41 ratings with 1 star, 14 ratings with 2 star, and so on.
         """
         return pulumi.get(self, "rating_histogram")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaRuleBoostActionResponse(dict):
+    """
+    A boost action to apply to results matching condition specified above.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "productsFilter":
+            suggest = "products_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaRuleBoostActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2betaRuleBoostActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2betaRuleBoostActionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boost: float,
+                 products_filter: str):
+        """
+        A boost action to apply to results matching condition specified above.
+        :param float boost: Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
+        :param str products_filter: The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        """
+        pulumi.set(__self__, "boost", boost)
+        pulumi.set(__self__, "products_filter", products_filter)
+
+    @property
+    @pulumi.getter
+    def boost(self) -> float:
+        """
+        Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
+        """
+        return pulumi.get(self, "boost")
+
+    @property
+    @pulumi.getter(name="productsFilter")
+    def products_filter(self) -> str:
+        """
+        The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        """
+        return pulumi.get(self, "products_filter")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse(dict):
+    """
+    Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap".
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "doNotAssociateTerms":
+            suggest = "do_not_associate_terms"
+        elif key == "queryTerms":
+            suggest = "query_terms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 do_not_associate_terms: Sequence[str],
+                 query_terms: Sequence[str],
+                 terms: Sequence[str]):
+        """
+        Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap".
+        :param Sequence[str] do_not_associate_terms: Cannot contain duplicates or the query term. Can specify up to 100 terms.
+        :param Sequence[str] query_terms: Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
+        :param Sequence[str] terms: Will be [deprecated = true] post migration;
+        """
+        pulumi.set(__self__, "do_not_associate_terms", do_not_associate_terms)
+        pulumi.set(__self__, "query_terms", query_terms)
+        pulumi.set(__self__, "terms", terms)
+
+    @property
+    @pulumi.getter(name="doNotAssociateTerms")
+    def do_not_associate_terms(self) -> Sequence[str]:
+        """
+        Cannot contain duplicates or the query term. Can specify up to 100 terms.
+        """
+        return pulumi.get(self, "do_not_associate_terms")
+
+    @property
+    @pulumi.getter(name="queryTerms")
+    def query_terms(self) -> Sequence[str]:
+        """
+        Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
+        """
+        return pulumi.get(self, "query_terms")
+
+    @property
+    @pulumi.getter
+    def terms(self) -> Sequence[str]:
+        """
+        Will be [deprecated = true] post migration;
+        """
+        return pulumi.get(self, "terms")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaRuleFilterActionResponse(dict):
+    """
+    * Rule Condition: - No Condition provided is a global match. - 1 or more Condition provided is combined with OR operator. * Action Input: The request query and filter that will be applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+    """
+    def __init__(__self__, *,
+                 filter: str):
+        """
+        * Rule Condition: - No Condition provided is a global match. - 1 or more Condition provided is combined with OR operator. * Action Input: The request query and filter that will be applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+        :param str filter: A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        """
+        pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> str:
+        """
+        A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        """
+        return pulumi.get(self, "filter")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaRuleIgnoreActionResponse(dict):
+    """
+    Prevents a term in the query from being used in search. Example: Don't search for "shoddy".
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreTerms":
+            suggest = "ignore_terms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaRuleIgnoreActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2betaRuleIgnoreActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2betaRuleIgnoreActionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ignore_terms: Sequence[str]):
+        """
+        Prevents a term in the query from being used in search. Example: Don't search for "shoddy".
+        :param Sequence[str] ignore_terms: Terms to ignore in the search query.
+        """
+        pulumi.set(__self__, "ignore_terms", ignore_terms)
+
+    @property
+    @pulumi.getter(name="ignoreTerms")
+    def ignore_terms(self) -> Sequence[str]:
+        """
+        Terms to ignore in the search query.
+        """
+        return pulumi.get(self, "ignore_terms")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse(dict):
+    """
+    Maps a set of terms to a set of synonyms. Set of synonyms will be treated as synonyms of each query term only. `query_terms` will not be treated as synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of "sneakers".
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "onewayTerms":
+            suggest = "oneway_terms"
+        elif key == "queryTerms":
+            suggest = "query_terms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oneway_terms: Sequence[str],
+                 query_terms: Sequence[str],
+                 synonyms: Sequence[str]):
+        """
+        Maps a set of terms to a set of synonyms. Set of synonyms will be treated as synonyms of each query term only. `query_terms` will not be treated as synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of "sneakers".
+        :param Sequence[str] oneway_terms: Will be [deprecated = true] post migration;
+        :param Sequence[str] query_terms: Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms.
+        :param Sequence[str] synonyms: Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.
+        """
+        pulumi.set(__self__, "oneway_terms", oneway_terms)
+        pulumi.set(__self__, "query_terms", query_terms)
+        pulumi.set(__self__, "synonyms", synonyms)
+
+    @property
+    @pulumi.getter(name="onewayTerms")
+    def oneway_terms(self) -> Sequence[str]:
+        """
+        Will be [deprecated = true] post migration;
+        """
+        return pulumi.get(self, "oneway_terms")
+
+    @property
+    @pulumi.getter(name="queryTerms")
+    def query_terms(self) -> Sequence[str]:
+        """
+        Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms.
+        """
+        return pulumi.get(self, "query_terms")
+
+    @property
+    @pulumi.getter
+    def synonyms(self) -> Sequence[str]:
+        """
+        Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.
+        """
+        return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaRuleRedirectActionResponse(dict):
+    """
+    Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "redirectUri":
+            suggest = "redirect_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaRuleRedirectActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2betaRuleRedirectActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2betaRuleRedirectActionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 redirect_uri: str):
+        """
+        Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+        :param str redirect_uri: URL must have length equal or less than 2000 characters.
+        """
+        pulumi.set(__self__, "redirect_uri", redirect_uri)
+
+    @property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> str:
+        """
+        URL must have length equal or less than 2000 characters.
+        """
+        return pulumi.get(self, "redirect_uri")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaRuleReplacementActionResponse(dict):
+    """
+    Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe".
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryTerms":
+            suggest = "query_terms"
+        elif key == "replacementTerm":
+            suggest = "replacement_term"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaRuleReplacementActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2betaRuleReplacementActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2betaRuleReplacementActionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query_terms: Sequence[str],
+                 replacement_term: str,
+                 term: str):
+        """
+        Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe".
+        :param Sequence[str] query_terms: Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
+        :param str replacement_term: Term that will be used for replacement.
+        :param str term: Will be [deprecated = true] post migration;
+        """
+        pulumi.set(__self__, "query_terms", query_terms)
+        pulumi.set(__self__, "replacement_term", replacement_term)
+        pulumi.set(__self__, "term", term)
+
+    @property
+    @pulumi.getter(name="queryTerms")
+    def query_terms(self) -> Sequence[str]:
+        """
+        Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
+        """
+        return pulumi.get(self, "query_terms")
+
+    @property
+    @pulumi.getter(name="replacementTerm")
+    def replacement_term(self) -> str:
+        """
+        Term that will be used for replacement.
+        """
+        return pulumi.get(self, "replacement_term")
+
+    @property
+    @pulumi.getter
+    def term(self) -> str:
+        """
+        Will be [deprecated = true] post migration;
+        """
+        return pulumi.get(self, "term")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaRuleResponse(dict):
+    """
+    A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "boostAction":
+            suggest = "boost_action"
+        elif key == "doNotAssociateAction":
+            suggest = "do_not_associate_action"
+        elif key == "filterAction":
+            suggest = "filter_action"
+        elif key == "ignoreAction":
+            suggest = "ignore_action"
+        elif key == "onewaySynonymsAction":
+            suggest = "oneway_synonyms_action"
+        elif key == "redirectAction":
+            suggest = "redirect_action"
+        elif key == "replacementAction":
+            suggest = "replacement_action"
+        elif key == "twowaySynonymsAction":
+            suggest = "twoway_synonyms_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2betaRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2betaRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boost_action: 'outputs.GoogleCloudRetailV2betaRuleBoostActionResponse',
+                 condition: 'outputs.GoogleCloudRetailV2betaConditionResponse',
+                 do_not_associate_action: 'outputs.GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse',
+                 filter_action: 'outputs.GoogleCloudRetailV2betaRuleFilterActionResponse',
+                 ignore_action: 'outputs.GoogleCloudRetailV2betaRuleIgnoreActionResponse',
+                 oneway_synonyms_action: 'outputs.GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse',
+                 redirect_action: 'outputs.GoogleCloudRetailV2betaRuleRedirectActionResponse',
+                 replacement_action: 'outputs.GoogleCloudRetailV2betaRuleReplacementActionResponse',
+                 twoway_synonyms_action: 'outputs.GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse'):
+        """
+        A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+        :param 'GoogleCloudRetailV2betaRuleBoostActionResponse' boost_action: A boost action.
+        :param 'GoogleCloudRetailV2betaConditionResponse' condition: The condition that triggers the rule. If the condition is empty, the rule will always apply.
+        :param 'GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse' do_not_associate_action: Prevents term from being associated with other terms.
+        :param 'GoogleCloudRetailV2betaRuleFilterActionResponse' filter_action: Filters results.
+        :param 'GoogleCloudRetailV2betaRuleIgnoreActionResponse' ignore_action: Ignores specific terms from query during search.
+        :param 'GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse' oneway_synonyms_action: Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
+        :param 'GoogleCloudRetailV2betaRuleRedirectActionResponse' redirect_action: Redirects a shopper to a specific page.
+        :param 'GoogleCloudRetailV2betaRuleReplacementActionResponse' replacement_action: Replaces specific terms in the query.
+        :param 'GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse' twoway_synonyms_action: Treats a set of terms as synonyms of one another.
+        """
+        pulumi.set(__self__, "boost_action", boost_action)
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "do_not_associate_action", do_not_associate_action)
+        pulumi.set(__self__, "filter_action", filter_action)
+        pulumi.set(__self__, "ignore_action", ignore_action)
+        pulumi.set(__self__, "oneway_synonyms_action", oneway_synonyms_action)
+        pulumi.set(__self__, "redirect_action", redirect_action)
+        pulumi.set(__self__, "replacement_action", replacement_action)
+        pulumi.set(__self__, "twoway_synonyms_action", twoway_synonyms_action)
+
+    @property
+    @pulumi.getter(name="boostAction")
+    def boost_action(self) -> 'outputs.GoogleCloudRetailV2betaRuleBoostActionResponse':
+        """
+        A boost action.
+        """
+        return pulumi.get(self, "boost_action")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.GoogleCloudRetailV2betaConditionResponse':
+        """
+        The condition that triggers the rule. If the condition is empty, the rule will always apply.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter(name="doNotAssociateAction")
+    def do_not_associate_action(self) -> 'outputs.GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse':
+        """
+        Prevents term from being associated with other terms.
+        """
+        return pulumi.get(self, "do_not_associate_action")
+
+    @property
+    @pulumi.getter(name="filterAction")
+    def filter_action(self) -> 'outputs.GoogleCloudRetailV2betaRuleFilterActionResponse':
+        """
+        Filters results.
+        """
+        return pulumi.get(self, "filter_action")
+
+    @property
+    @pulumi.getter(name="ignoreAction")
+    def ignore_action(self) -> 'outputs.GoogleCloudRetailV2betaRuleIgnoreActionResponse':
+        """
+        Ignores specific terms from query during search.
+        """
+        return pulumi.get(self, "ignore_action")
+
+    @property
+    @pulumi.getter(name="onewaySynonymsAction")
+    def oneway_synonyms_action(self) -> 'outputs.GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse':
+        """
+        Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
+        """
+        return pulumi.get(self, "oneway_synonyms_action")
+
+    @property
+    @pulumi.getter(name="redirectAction")
+    def redirect_action(self) -> 'outputs.GoogleCloudRetailV2betaRuleRedirectActionResponse':
+        """
+        Redirects a shopper to a specific page.
+        """
+        return pulumi.get(self, "redirect_action")
+
+    @property
+    @pulumi.getter(name="replacementAction")
+    def replacement_action(self) -> 'outputs.GoogleCloudRetailV2betaRuleReplacementActionResponse':
+        """
+        Replaces specific terms in the query.
+        """
+        return pulumi.get(self, "replacement_action")
+
+    @property
+    @pulumi.getter(name="twowaySynonymsAction")
+    def twoway_synonyms_action(self) -> 'outputs.GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse':
+        """
+        Treats a set of terms as synonyms of one another.
+        """
+        return pulumi.get(self, "twoway_synonyms_action")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse(dict):
+    """
+    Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
+    """
+    def __init__(__self__, *,
+                 synonyms: Sequence[str]):
+        """
+        Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
+        :param Sequence[str] synonyms: Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
+        """
+        pulumi.set(__self__, "synonyms", synonyms)
+
+    @property
+    @pulumi.getter
+    def synonyms(self) -> Sequence[str]:
+        """
+        Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
+        """
+        return pulumi.get(self, "synonyms")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponse(dict):
+    """
+    The specifications of dynamically generated facets.
+    """
+    def __init__(__self__, *,
+                 mode: str):
+        """
+        The specifications of dynamically generated facets.
+        :param str mode: Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse(dict):
+    """
+    Specifies how a facet is computed.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "orderBy":
+            suggest = "order_by"
+        elif key == "restrictedValues":
+            suggest = "restricted_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Sequence[str],
+                 intervals: Sequence['outputs.GoogleCloudRetailV2betaIntervalResponse'],
+                 key: str,
+                 order_by: str,
+                 prefixes: Sequence[str],
+                 query: str,
+                 restricted_values: Sequence[str]):
+        """
+        Specifies how a facet is computed.
+        :param Sequence[str] contains: Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+        :param Sequence['GoogleCloudRetailV2betaIntervalResponse'] intervals: Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+        :param str key: Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
+        :param str order_by: The order in which Facet.values are returned. Allowed values are: * "count desc", which means order by Facet.FacetValue.count descending. * "value desc", which means order by Facet.FacetValue.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
+        :param Sequence[str] prefixes: Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+        :param str query: The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, FacetValue.value will be always "1" and FacetValue.count will be the number of results that matches the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+        :param Sequence[str] restricted_values: Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on textual fields and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "intervals", intervals)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "order_by", order_by)
+        pulumi.set(__self__, "prefixes", prefixes)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "restricted_values", restricted_values)
+
+    @property
+    @pulumi.getter
+    def contains(self) -> Sequence[str]:
+        """
+        Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+        """
+        return pulumi.get(self, "contains")
+
+    @property
+    @pulumi.getter
+    def intervals(self) -> Sequence['outputs.GoogleCloudRetailV2betaIntervalResponse']:
+        """
+        Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+        """
+        return pulumi.get(self, "intervals")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> str:
+        """
+        The order in which Facet.values are returned. Allowed values are: * "count desc", which means order by Facet.FacetValue.count descending. * "value desc", which means order by Facet.FacetValue.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
+        """
+        return pulumi.get(self, "order_by")
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Sequence[str]:
+        """
+        Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+        """
+        return pulumi.get(self, "prefixes")
+
+    @property
+    @pulumi.getter
+    def query(self) -> str:
+        """
+        The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, FacetValue.value will be always "1" and FacetValue.count will be the number of results that matches the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+        """
+        return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter(name="restrictedValues")
+    def restricted_values(self) -> Sequence[str]:
+        """
+        Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on textual fields and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
+        """
+        return pulumi.get(self, "restricted_values")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaSearchRequestFacetSpecResponse(dict):
+    """
+    A facet specification to perform faceted search.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableDynamicPosition":
+            suggest = "enable_dynamic_position"
+        elif key == "excludedFilterKeys":
+            suggest = "excluded_filter_keys"
+        elif key == "facetKey":
+            suggest = "facet_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaSearchRequestFacetSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2betaSearchRequestFacetSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2betaSearchRequestFacetSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_dynamic_position: bool,
+                 excluded_filter_keys: Sequence[str],
+                 facet_key: 'outputs.GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse',
+                 limit: int):
+        """
+        A facet specification to perform faceted search.
+        :param bool enable_dynamic_position: Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+        :param Sequence[str] excluded_filter_keys: List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. For example, suppose there are 100 products with color facet "Red" and 200 products with color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and have "colorFamilies" as FacetKey.key will by default return the "Red" with count 100. If this field contains "colorFamilies", then the query returns both the "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is now excluded from the filter. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
+        :param 'GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse' facet_key: The facet key specification.
+        :param int limit: Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+        """
+        pulumi.set(__self__, "enable_dynamic_position", enable_dynamic_position)
+        pulumi.set(__self__, "excluded_filter_keys", excluded_filter_keys)
+        pulumi.set(__self__, "facet_key", facet_key)
+        pulumi.set(__self__, "limit", limit)
+
+    @property
+    @pulumi.getter(name="enableDynamicPosition")
+    def enable_dynamic_position(self) -> bool:
+        """
+        Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+        """
+        return pulumi.get(self, "enable_dynamic_position")
+
+    @property
+    @pulumi.getter(name="excludedFilterKeys")
+    def excluded_filter_keys(self) -> Sequence[str]:
+        """
+        List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. For example, suppose there are 100 products with color facet "Red" and 200 products with color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and have "colorFamilies" as FacetKey.key will by default return the "Red" with count 100. If this field contains "colorFamilies", then the query returns both the "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is now excluded from the filter. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
+        """
+        return pulumi.get(self, "excluded_filter_keys")
+
+    @property
+    @pulumi.getter(name="facetKey")
+    def facet_key(self) -> 'outputs.GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse':
+        """
+        The facet key specification.
+        """
+        return pulumi.get(self, "facet_key")
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+        """
+        return pulumi.get(self, "limit")
 
 

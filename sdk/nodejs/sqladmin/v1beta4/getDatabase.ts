@@ -41,7 +41,7 @@ export interface GetDatabaseResult {
      */
     readonly instance: string;
     /**
-     * This is always **sql#database**.
+     * This is always `sql#database`.
      */
     readonly kind: string;
     /**

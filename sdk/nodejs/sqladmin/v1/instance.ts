@@ -36,7 +36,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server that is not managed by Google. This property is read-only; use the **tier** property in the **settings** object to determine the database type.
+     * The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
      */
     public readonly backendType!: pulumi.Output<string>;
     /**
@@ -44,7 +44,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly connectionName!: pulumi.Output<string>;
     /**
-     * The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+     * The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -52,11 +52,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly currentDiskSize!: pulumi.Output<string>;
     /**
-     * Stores the current database version running on the instance including minor version such as **MYSQL_8_0_18**.
+     * Stores the current database version running on the instance including minor version such as `MYSQL_8_0_18`.
      */
     public /*out*/ readonly databaseInstalledVersion!: pulumi.Output<string>;
     /**
-     * The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
+     * The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
      */
     public readonly databaseVersion!: pulumi.Output<string>;
     /**
@@ -84,7 +84,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly ipAddresses!: pulumi.Output<outputs.sqladmin.v1.IpMappingResponse[]>;
     /**
-     * This is always **sql#instance**.
+     * This is always `sql#instance`.
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -112,7 +112,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The geographical region. Can be: * **us-central** (**FIRST_GEN** instances only) * **us-central1** (**SECOND_GEN** instances only) * **asia-east1** or **europe-west1**. Defaults to **us-central** or **us-central1** depending on the instance type. The region cannot be changed after instance creation.
+     * The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -148,7 +148,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly serverCaCert!: pulumi.Output<outputs.sqladmin.v1.SslCertResponse>;
     /**
-     * The service account email address assigned to the instance. This property is read-only.
+     * The service account email address assigned to the instance.\This property is read-only.
      */
     public readonly serviceAccountEmailAddress!: pulumi.Output<string>;
     /**
@@ -251,7 +251,7 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceArgs {
     /**
-     * The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server that is not managed by Google. This property is read-only; use the **tier** property in the **settings** object to determine the database type.
+     * The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
      */
     backendType?: pulumi.Input<enums.sqladmin.v1.InstanceBackendType>;
     /**
@@ -263,7 +263,7 @@ export interface InstanceArgs {
      */
     currentDiskSize?: pulumi.Input<string>;
     /**
-     * The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
+     * The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
      */
     databaseVersion?: pulumi.Input<enums.sqladmin.v1.InstanceDatabaseVersion>;
     /**
@@ -291,7 +291,7 @@ export interface InstanceArgs {
      */
     ipAddresses?: pulumi.Input<pulumi.Input<inputs.sqladmin.v1.IpMappingArgs>[]>;
     /**
-     * This is always **sql#instance**.
+     * This is always `sql#instance`.
      */
     kind?: pulumi.Input<string>;
     /**
@@ -319,7 +319,7 @@ export interface InstanceArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The geographical region. Can be: * **us-central** (**FIRST_GEN** instances only) * **us-central1** (**SECOND_GEN** instances only) * **asia-east1** or **europe-west1**. Defaults to **us-central** or **us-central1** depending on the instance type. The region cannot be changed after instance creation.
+     * The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
      */
     region?: pulumi.Input<string>;
     /**
@@ -355,7 +355,7 @@ export interface InstanceArgs {
      */
     serverCaCert?: pulumi.Input<inputs.sqladmin.v1.SslCertArgs>;
     /**
-     * The service account email address assigned to the instance. This property is read-only.
+     * The service account email address assigned to the instance.\This property is read-only.
      */
     serviceAccountEmailAddress?: pulumi.Input<string>;
     /**

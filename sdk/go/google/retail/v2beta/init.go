@@ -21,8 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:retail/v2beta:Control":
+		r = &Control{}
 	case "google-native:retail/v2beta:Product":
 		r = &Product{}
+	case "google-native:retail/v2beta:ServingConfig":
+		r = &ServingConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

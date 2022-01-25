@@ -26,17 +26,17 @@ type LookupInstanceArgs struct {
 }
 
 type LookupInstanceResult struct {
-	// The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server that is not managed by Google. This property is read-only; use the **tier** property in the **settings** object to determine the database type.
+	// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
 	BackendType string `pulumi:"backendType"`
 	// Connection name of the Cloud SQL instance used in connection strings.
 	ConnectionName string `pulumi:"connectionName"`
-	// The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+	// The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	CreateTime string `pulumi:"createTime"`
 	// The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see [this announcement](https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ) for details.
 	CurrentDiskSize string `pulumi:"currentDiskSize"`
-	// Stores the current database version running on the instance including minor version such as **MYSQL_8_0_18**.
+	// Stores the current database version running on the instance including minor version such as `MYSQL_8_0_18`.
 	DatabaseInstalledVersion string `pulumi:"databaseInstalledVersion"`
-	// The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
+	// The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
 	DatabaseVersion string `pulumi:"databaseVersion"`
 	// Disk encryption configuration specific to an instance.
 	DiskEncryptionConfiguration DiskEncryptionConfigurationResponse `pulumi:"diskEncryptionConfiguration"`
@@ -50,7 +50,7 @@ type LookupInstanceResult struct {
 	InstanceType string `pulumi:"instanceType"`
 	// The assigned IP addresses for the instance.
 	IpAddresses []IpMappingResponse `pulumi:"ipAddresses"`
-	// This is always **sql#instance**.
+	// This is always `sql#instance`.
 	Kind string `pulumi:"kind"`
 	// The name of the instance which will act as primary in the replication setup.
 	MasterInstanceName string `pulumi:"masterInstanceName"`
@@ -64,7 +64,7 @@ type LookupInstanceResult struct {
 	OutOfDiskReport SqlOutOfDiskReportResponse `pulumi:"outOfDiskReport"`
 	// The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
 	Project string `pulumi:"project"`
-	// The geographical region. Can be: * **us-central** (**FIRST_GEN** instances only) * **us-central1** (**SECOND_GEN** instances only) * **asia-east1** or **europe-west1**. Defaults to **us-central** or **us-central1** depending on the instance type. The region cannot be changed after instance creation.
+	// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
 	Region string `pulumi:"region"`
 	// Configuration specific to failover replicas and read replicas.
 	ReplicaConfiguration ReplicaConfigurationResponse `pulumi:"replicaConfiguration"`
@@ -82,7 +82,7 @@ type LookupInstanceResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// SSL configuration.
 	ServerCaCert SslCertResponse `pulumi:"serverCaCert"`
-	// The service account email address assigned to the instance. This property is read-only.
+	// The service account email address assigned to the instance. \This property is read-only.
 	ServiceAccountEmailAddress string `pulumi:"serviceAccountEmailAddress"`
 	// The user settings.
 	Settings SettingsResponse `pulumi:"settings"`
@@ -124,7 +124,7 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx 
 	return o
 }
 
-// The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server that is not managed by Google. This property is read-only; use the **tier** property in the **settings** object to determine the database type.
+// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
 func (o LookupInstanceResultOutput) BackendType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.BackendType }).(pulumi.StringOutput)
 }
@@ -134,7 +134,7 @@ func (o LookupInstanceResultOutput) ConnectionName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.ConnectionName }).(pulumi.StringOutput)
 }
 
-// The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+// The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -144,12 +144,12 @@ func (o LookupInstanceResultOutput) CurrentDiskSize() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CurrentDiskSize }).(pulumi.StringOutput)
 }
 
-// Stores the current database version running on the instance including minor version such as **MYSQL_8_0_18**.
+// Stores the current database version running on the instance including minor version such as `MYSQL_8_0_18`.
 func (o LookupInstanceResultOutput) DatabaseInstalledVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.DatabaseInstalledVersion }).(pulumi.StringOutput)
 }
 
-// The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
+// The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
 func (o LookupInstanceResultOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.DatabaseVersion }).(pulumi.StringOutput)
 }
@@ -184,7 +184,7 @@ func (o LookupInstanceResultOutput) IpAddresses() IpMappingResponseArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []IpMappingResponse { return v.IpAddresses }).(IpMappingResponseArrayOutput)
 }
 
-// This is always **sql#instance**.
+// This is always `sql#instance`.
 func (o LookupInstanceResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -219,7 +219,7 @@ func (o LookupInstanceResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The geographical region. Can be: * **us-central** (**FIRST_GEN** instances only) * **us-central1** (**SECOND_GEN** instances only) * **asia-east1** or **europe-west1**. Defaults to **us-central** or **us-central1** depending on the instance type. The region cannot be changed after instance creation.
+// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
 func (o LookupInstanceResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -264,7 +264,7 @@ func (o LookupInstanceResultOutput) ServerCaCert() SslCertResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) SslCertResponse { return v.ServerCaCert }).(SslCertResponseOutput)
 }
 
-// The service account email address assigned to the instance. This property is read-only.
+// The service account email address assigned to the instance. \This property is read-only.
 func (o LookupInstanceResultOutput) ServiceAccountEmailAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.ServiceAccountEmailAddress }).(pulumi.StringOutput)
 }

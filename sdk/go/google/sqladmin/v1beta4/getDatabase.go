@@ -33,7 +33,7 @@ type LookupDatabaseResult struct {
 	Collation string `pulumi:"collation"`
 	// The name of the Cloud SQL instance. This does not include the project ID.
 	Instance string `pulumi:"instance"`
-	// This is always **sql#database**.
+	// This is always `sql#database`.
 	Kind string `pulumi:"kind"`
 	// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
 	Name string `pulumi:"name"`
@@ -92,7 +92,7 @@ func (o LookupDatabaseResultOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Instance }).(pulumi.StringOutput)
 }
 
-// This is always **sql#database**.
+// This is always `sql#database`.
 func (o LookupDatabaseResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Kind }).(pulumi.StringOutput)
 }

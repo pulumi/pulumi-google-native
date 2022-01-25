@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly string DumpFilePath;
         /// <summary>
-        /// This is always **sql#mysqlReplicaConfiguration**.
+        /// This is always `sql#mysqlReplicaConfiguration`.
         /// </summary>
         public readonly string Kind;
         /// <summary>

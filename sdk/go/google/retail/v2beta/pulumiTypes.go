@@ -394,6 +394,530 @@ func (o GoogleCloudRetailV2betaColorInfoResponseOutput) Colors() pulumi.StringAr
 	return o.ApplyT(func(v GoogleCloudRetailV2betaColorInfoResponse) []string { return v.Colors }).(pulumi.StringArrayOutput)
 }
 
+// Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the product_filter for requests with a query matching the query terms wil get boosted.
+type GoogleCloudRetailV2betaCondition struct {
+	// Range of time(s) specifying when Condition is active. Condition true if any time range matches.
+	ActiveTimeRange []GoogleCloudRetailV2betaConditionTimeRange `pulumi:"activeTimeRange"`
+	// A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
+	QueryTerms []GoogleCloudRetailV2betaConditionQueryTerm `pulumi:"queryTerms"`
+}
+
+// GoogleCloudRetailV2betaConditionInput is an input type that accepts GoogleCloudRetailV2betaConditionArgs and GoogleCloudRetailV2betaConditionOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaConditionInput` via:
+//
+//          GoogleCloudRetailV2betaConditionArgs{...}
+type GoogleCloudRetailV2betaConditionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaConditionOutput() GoogleCloudRetailV2betaConditionOutput
+	ToGoogleCloudRetailV2betaConditionOutputWithContext(context.Context) GoogleCloudRetailV2betaConditionOutput
+}
+
+// Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the product_filter for requests with a query matching the query terms wil get boosted.
+type GoogleCloudRetailV2betaConditionArgs struct {
+	// Range of time(s) specifying when Condition is active. Condition true if any time range matches.
+	ActiveTimeRange GoogleCloudRetailV2betaConditionTimeRangeArrayInput `pulumi:"activeTimeRange"`
+	// A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
+	QueryTerms GoogleCloudRetailV2betaConditionQueryTermArrayInput `pulumi:"queryTerms"`
+}
+
+func (GoogleCloudRetailV2betaConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaCondition)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaConditionArgs) ToGoogleCloudRetailV2betaConditionOutput() GoogleCloudRetailV2betaConditionOutput {
+	return i.ToGoogleCloudRetailV2betaConditionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaConditionArgs) ToGoogleCloudRetailV2betaConditionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaConditionOutput)
+}
+
+func (i GoogleCloudRetailV2betaConditionArgs) ToGoogleCloudRetailV2betaConditionPtrOutput() GoogleCloudRetailV2betaConditionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaConditionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaConditionArgs) ToGoogleCloudRetailV2betaConditionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaConditionOutput).ToGoogleCloudRetailV2betaConditionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaConditionPtrInput is an input type that accepts GoogleCloudRetailV2betaConditionArgs, GoogleCloudRetailV2betaConditionPtr and GoogleCloudRetailV2betaConditionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaConditionPtrInput` via:
+//
+//          GoogleCloudRetailV2betaConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRetailV2betaConditionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaConditionPtrOutput() GoogleCloudRetailV2betaConditionPtrOutput
+	ToGoogleCloudRetailV2betaConditionPtrOutputWithContext(context.Context) GoogleCloudRetailV2betaConditionPtrOutput
+}
+
+type googleCloudRetailV2betaConditionPtrType GoogleCloudRetailV2betaConditionArgs
+
+func GoogleCloudRetailV2betaConditionPtr(v *GoogleCloudRetailV2betaConditionArgs) GoogleCloudRetailV2betaConditionPtrInput {
+	return (*googleCloudRetailV2betaConditionPtrType)(v)
+}
+
+func (*googleCloudRetailV2betaConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaCondition)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaConditionPtrType) ToGoogleCloudRetailV2betaConditionPtrOutput() GoogleCloudRetailV2betaConditionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaConditionPtrType) ToGoogleCloudRetailV2betaConditionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaConditionPtrOutput)
+}
+
+// Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the product_filter for requests with a query matching the query terms wil get boosted.
+type GoogleCloudRetailV2betaConditionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaCondition)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaConditionOutput) ToGoogleCloudRetailV2betaConditionOutput() GoogleCloudRetailV2betaConditionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionOutput) ToGoogleCloudRetailV2betaConditionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionOutput) ToGoogleCloudRetailV2betaConditionPtrOutput() GoogleCloudRetailV2betaConditionPtrOutput {
+	return o.ToGoogleCloudRetailV2betaConditionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaConditionOutput) ToGoogleCloudRetailV2betaConditionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaCondition) *GoogleCloudRetailV2betaCondition {
+		return &v
+	}).(GoogleCloudRetailV2betaConditionPtrOutput)
+}
+
+// Range of time(s) specifying when Condition is active. Condition true if any time range matches.
+func (o GoogleCloudRetailV2betaConditionOutput) ActiveTimeRange() GoogleCloudRetailV2betaConditionTimeRangeArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaCondition) []GoogleCloudRetailV2betaConditionTimeRange {
+		return v.ActiveTimeRange
+	}).(GoogleCloudRetailV2betaConditionTimeRangeArrayOutput)
+}
+
+// A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
+func (o GoogleCloudRetailV2betaConditionOutput) QueryTerms() GoogleCloudRetailV2betaConditionQueryTermArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaCondition) []GoogleCloudRetailV2betaConditionQueryTerm {
+		return v.QueryTerms
+	}).(GoogleCloudRetailV2betaConditionQueryTermArrayOutput)
+}
+
+type GoogleCloudRetailV2betaConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaCondition)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaConditionPtrOutput) ToGoogleCloudRetailV2betaConditionPtrOutput() GoogleCloudRetailV2betaConditionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionPtrOutput) ToGoogleCloudRetailV2betaConditionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionPtrOutput) Elem() GoogleCloudRetailV2betaConditionOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaCondition) GoogleCloudRetailV2betaCondition {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2betaCondition
+		return ret
+	}).(GoogleCloudRetailV2betaConditionOutput)
+}
+
+// Range of time(s) specifying when Condition is active. Condition true if any time range matches.
+func (o GoogleCloudRetailV2betaConditionPtrOutput) ActiveTimeRange() GoogleCloudRetailV2betaConditionTimeRangeArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaCondition) []GoogleCloudRetailV2betaConditionTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveTimeRange
+	}).(GoogleCloudRetailV2betaConditionTimeRangeArrayOutput)
+}
+
+// A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
+func (o GoogleCloudRetailV2betaConditionPtrOutput) QueryTerms() GoogleCloudRetailV2betaConditionQueryTermArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaCondition) []GoogleCloudRetailV2betaConditionQueryTerm {
+		if v == nil {
+			return nil
+		}
+		return v.QueryTerms
+	}).(GoogleCloudRetailV2betaConditionQueryTermArrayOutput)
+}
+
+// Query terms that we want to match on.
+type GoogleCloudRetailV2betaConditionQueryTerm struct {
+	// Whether this is supposed to be a full or partial match.
+	FullMatch *bool `pulumi:"fullMatch"`
+	// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+	Value *string `pulumi:"value"`
+}
+
+// GoogleCloudRetailV2betaConditionQueryTermInput is an input type that accepts GoogleCloudRetailV2betaConditionQueryTermArgs and GoogleCloudRetailV2betaConditionQueryTermOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaConditionQueryTermInput` via:
+//
+//          GoogleCloudRetailV2betaConditionQueryTermArgs{...}
+type GoogleCloudRetailV2betaConditionQueryTermInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaConditionQueryTermOutput() GoogleCloudRetailV2betaConditionQueryTermOutput
+	ToGoogleCloudRetailV2betaConditionQueryTermOutputWithContext(context.Context) GoogleCloudRetailV2betaConditionQueryTermOutput
+}
+
+// Query terms that we want to match on.
+type GoogleCloudRetailV2betaConditionQueryTermArgs struct {
+	// Whether this is supposed to be a full or partial match.
+	FullMatch pulumi.BoolPtrInput `pulumi:"fullMatch"`
+	// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GoogleCloudRetailV2betaConditionQueryTermArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaConditionQueryTerm)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaConditionQueryTermArgs) ToGoogleCloudRetailV2betaConditionQueryTermOutput() GoogleCloudRetailV2betaConditionQueryTermOutput {
+	return i.ToGoogleCloudRetailV2betaConditionQueryTermOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaConditionQueryTermArgs) ToGoogleCloudRetailV2betaConditionQueryTermOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionQueryTermOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaConditionQueryTermOutput)
+}
+
+// GoogleCloudRetailV2betaConditionQueryTermArrayInput is an input type that accepts GoogleCloudRetailV2betaConditionQueryTermArray and GoogleCloudRetailV2betaConditionQueryTermArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaConditionQueryTermArrayInput` via:
+//
+//          GoogleCloudRetailV2betaConditionQueryTermArray{ GoogleCloudRetailV2betaConditionQueryTermArgs{...} }
+type GoogleCloudRetailV2betaConditionQueryTermArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaConditionQueryTermArrayOutput() GoogleCloudRetailV2betaConditionQueryTermArrayOutput
+	ToGoogleCloudRetailV2betaConditionQueryTermArrayOutputWithContext(context.Context) GoogleCloudRetailV2betaConditionQueryTermArrayOutput
+}
+
+type GoogleCloudRetailV2betaConditionQueryTermArray []GoogleCloudRetailV2betaConditionQueryTermInput
+
+func (GoogleCloudRetailV2betaConditionQueryTermArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2betaConditionQueryTerm)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaConditionQueryTermArray) ToGoogleCloudRetailV2betaConditionQueryTermArrayOutput() GoogleCloudRetailV2betaConditionQueryTermArrayOutput {
+	return i.ToGoogleCloudRetailV2betaConditionQueryTermArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaConditionQueryTermArray) ToGoogleCloudRetailV2betaConditionQueryTermArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionQueryTermArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaConditionQueryTermArrayOutput)
+}
+
+// Query terms that we want to match on.
+type GoogleCloudRetailV2betaConditionQueryTermOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaConditionQueryTermOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaConditionQueryTerm)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaConditionQueryTermOutput) ToGoogleCloudRetailV2betaConditionQueryTermOutput() GoogleCloudRetailV2betaConditionQueryTermOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionQueryTermOutput) ToGoogleCloudRetailV2betaConditionQueryTermOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionQueryTermOutput {
+	return o
+}
+
+// Whether this is supposed to be a full or partial match.
+func (o GoogleCloudRetailV2betaConditionQueryTermOutput) FullMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionQueryTerm) *bool { return v.FullMatch }).(pulumi.BoolPtrOutput)
+}
+
+// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+func (o GoogleCloudRetailV2betaConditionQueryTermOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionQueryTerm) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRetailV2betaConditionQueryTermArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaConditionQueryTermArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2betaConditionQueryTerm)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaConditionQueryTermArrayOutput) ToGoogleCloudRetailV2betaConditionQueryTermArrayOutput() GoogleCloudRetailV2betaConditionQueryTermArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionQueryTermArrayOutput) ToGoogleCloudRetailV2betaConditionQueryTermArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionQueryTermArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionQueryTermArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaConditionQueryTermOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaConditionQueryTerm {
+		return vs[0].([]GoogleCloudRetailV2betaConditionQueryTerm)[vs[1].(int)]
+	}).(GoogleCloudRetailV2betaConditionQueryTermOutput)
+}
+
+// Query terms that we want to match on.
+type GoogleCloudRetailV2betaConditionQueryTermResponse struct {
+	// Whether this is supposed to be a full or partial match.
+	FullMatch bool `pulumi:"fullMatch"`
+	// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+	Value string `pulumi:"value"`
+}
+
+// Query terms that we want to match on.
+type GoogleCloudRetailV2betaConditionQueryTermResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaConditionQueryTermResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaConditionQueryTermResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaConditionQueryTermResponseOutput) ToGoogleCloudRetailV2betaConditionQueryTermResponseOutput() GoogleCloudRetailV2betaConditionQueryTermResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionQueryTermResponseOutput) ToGoogleCloudRetailV2betaConditionQueryTermResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionQueryTermResponseOutput {
+	return o
+}
+
+// Whether this is supposed to be a full or partial match.
+func (o GoogleCloudRetailV2betaConditionQueryTermResponseOutput) FullMatch() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionQueryTermResponse) bool { return v.FullMatch }).(pulumi.BoolOutput)
+}
+
+// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+func (o GoogleCloudRetailV2betaConditionQueryTermResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionQueryTermResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2betaConditionQueryTermResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput) ToGoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput() GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput) ToGoogleCloudRetailV2betaConditionQueryTermResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaConditionQueryTermResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaConditionQueryTermResponse {
+		return vs[0].([]GoogleCloudRetailV2betaConditionQueryTermResponse)[vs[1].(int)]
+	}).(GoogleCloudRetailV2betaConditionQueryTermResponseOutput)
+}
+
+// Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the product_filter for requests with a query matching the query terms wil get boosted.
+type GoogleCloudRetailV2betaConditionResponse struct {
+	// Range of time(s) specifying when Condition is active. Condition true if any time range matches.
+	ActiveTimeRange []GoogleCloudRetailV2betaConditionTimeRangeResponse `pulumi:"activeTimeRange"`
+	// A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
+	QueryTerms []GoogleCloudRetailV2betaConditionQueryTermResponse `pulumi:"queryTerms"`
+}
+
+// Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the product_filter for requests with a query matching the query terms wil get boosted.
+type GoogleCloudRetailV2betaConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaConditionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaConditionResponseOutput) ToGoogleCloudRetailV2betaConditionResponseOutput() GoogleCloudRetailV2betaConditionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionResponseOutput) ToGoogleCloudRetailV2betaConditionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionResponseOutput {
+	return o
+}
+
+// Range of time(s) specifying when Condition is active. Condition true if any time range matches.
+func (o GoogleCloudRetailV2betaConditionResponseOutput) ActiveTimeRange() GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionResponse) []GoogleCloudRetailV2betaConditionTimeRangeResponse {
+		return v.ActiveTimeRange
+	}).(GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput)
+}
+
+// A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
+func (o GoogleCloudRetailV2betaConditionResponseOutput) QueryTerms() GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionResponse) []GoogleCloudRetailV2betaConditionQueryTermResponse {
+		return v.QueryTerms
+	}).(GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput)
+}
+
+// Used for time-dependent conditions. Example: Want to have rule applied for week long sale.
+type GoogleCloudRetailV2betaConditionTimeRange struct {
+	// End of time range. Range is inclusive.
+	EndTime *string `pulumi:"endTime"`
+	// Start of time range. Range is inclusive.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// GoogleCloudRetailV2betaConditionTimeRangeInput is an input type that accepts GoogleCloudRetailV2betaConditionTimeRangeArgs and GoogleCloudRetailV2betaConditionTimeRangeOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaConditionTimeRangeInput` via:
+//
+//          GoogleCloudRetailV2betaConditionTimeRangeArgs{...}
+type GoogleCloudRetailV2betaConditionTimeRangeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaConditionTimeRangeOutput() GoogleCloudRetailV2betaConditionTimeRangeOutput
+	ToGoogleCloudRetailV2betaConditionTimeRangeOutputWithContext(context.Context) GoogleCloudRetailV2betaConditionTimeRangeOutput
+}
+
+// Used for time-dependent conditions. Example: Want to have rule applied for week long sale.
+type GoogleCloudRetailV2betaConditionTimeRangeArgs struct {
+	// End of time range. Range is inclusive.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Start of time range. Range is inclusive.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (GoogleCloudRetailV2betaConditionTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaConditionTimeRange)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaConditionTimeRangeArgs) ToGoogleCloudRetailV2betaConditionTimeRangeOutput() GoogleCloudRetailV2betaConditionTimeRangeOutput {
+	return i.ToGoogleCloudRetailV2betaConditionTimeRangeOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaConditionTimeRangeArgs) ToGoogleCloudRetailV2betaConditionTimeRangeOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaConditionTimeRangeOutput)
+}
+
+// GoogleCloudRetailV2betaConditionTimeRangeArrayInput is an input type that accepts GoogleCloudRetailV2betaConditionTimeRangeArray and GoogleCloudRetailV2betaConditionTimeRangeArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaConditionTimeRangeArrayInput` via:
+//
+//          GoogleCloudRetailV2betaConditionTimeRangeArray{ GoogleCloudRetailV2betaConditionTimeRangeArgs{...} }
+type GoogleCloudRetailV2betaConditionTimeRangeArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaConditionTimeRangeArrayOutput() GoogleCloudRetailV2betaConditionTimeRangeArrayOutput
+	ToGoogleCloudRetailV2betaConditionTimeRangeArrayOutputWithContext(context.Context) GoogleCloudRetailV2betaConditionTimeRangeArrayOutput
+}
+
+type GoogleCloudRetailV2betaConditionTimeRangeArray []GoogleCloudRetailV2betaConditionTimeRangeInput
+
+func (GoogleCloudRetailV2betaConditionTimeRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2betaConditionTimeRange)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaConditionTimeRangeArray) ToGoogleCloudRetailV2betaConditionTimeRangeArrayOutput() GoogleCloudRetailV2betaConditionTimeRangeArrayOutput {
+	return i.ToGoogleCloudRetailV2betaConditionTimeRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaConditionTimeRangeArray) ToGoogleCloudRetailV2betaConditionTimeRangeArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionTimeRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaConditionTimeRangeArrayOutput)
+}
+
+// Used for time-dependent conditions. Example: Want to have rule applied for week long sale.
+type GoogleCloudRetailV2betaConditionTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaConditionTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaConditionTimeRange)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaConditionTimeRangeOutput) ToGoogleCloudRetailV2betaConditionTimeRangeOutput() GoogleCloudRetailV2betaConditionTimeRangeOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionTimeRangeOutput) ToGoogleCloudRetailV2betaConditionTimeRangeOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionTimeRangeOutput {
+	return o
+}
+
+// End of time range. Range is inclusive.
+func (o GoogleCloudRetailV2betaConditionTimeRangeOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionTimeRange) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Start of time range. Range is inclusive.
+func (o GoogleCloudRetailV2betaConditionTimeRangeOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionTimeRange) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRetailV2betaConditionTimeRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaConditionTimeRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2betaConditionTimeRange)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaConditionTimeRangeArrayOutput) ToGoogleCloudRetailV2betaConditionTimeRangeArrayOutput() GoogleCloudRetailV2betaConditionTimeRangeArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionTimeRangeArrayOutput) ToGoogleCloudRetailV2betaConditionTimeRangeArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionTimeRangeArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionTimeRangeArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaConditionTimeRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaConditionTimeRange {
+		return vs[0].([]GoogleCloudRetailV2betaConditionTimeRange)[vs[1].(int)]
+	}).(GoogleCloudRetailV2betaConditionTimeRangeOutput)
+}
+
+// Used for time-dependent conditions. Example: Want to have rule applied for week long sale.
+type GoogleCloudRetailV2betaConditionTimeRangeResponse struct {
+	// End of time range. Range is inclusive.
+	EndTime string `pulumi:"endTime"`
+	// Start of time range. Range is inclusive.
+	StartTime string `pulumi:"startTime"`
+}
+
+// Used for time-dependent conditions. Example: Want to have rule applied for week long sale.
+type GoogleCloudRetailV2betaConditionTimeRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaConditionTimeRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaConditionTimeRangeResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaConditionTimeRangeResponseOutput) ToGoogleCloudRetailV2betaConditionTimeRangeResponseOutput() GoogleCloudRetailV2betaConditionTimeRangeResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionTimeRangeResponseOutput) ToGoogleCloudRetailV2betaConditionTimeRangeResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionTimeRangeResponseOutput {
+	return o
+}
+
+// End of time range. Range is inclusive.
+func (o GoogleCloudRetailV2betaConditionTimeRangeResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionTimeRangeResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Start of time range. Range is inclusive.
+func (o GoogleCloudRetailV2betaConditionTimeRangeResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionTimeRangeResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2betaConditionTimeRangeResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput) ToGoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput() GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput) ToGoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaConditionTimeRangeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaConditionTimeRangeResponse {
+		return vs[0].([]GoogleCloudRetailV2betaConditionTimeRangeResponse)[vs[1].(int)]
+	}).(GoogleCloudRetailV2betaConditionTimeRangeResponseOutput)
+}
+
 // Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
 type GoogleCloudRetailV2betaFulfillmentInfo struct {
 	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
@@ -735,6 +1259,133 @@ func (o GoogleCloudRetailV2betaImageResponseArrayOutput) Index(i pulumi.IntInput
 }
 
 // A floating point interval.
+type GoogleCloudRetailV2betaInterval struct {
+	// Exclusive upper bound.
+	ExclusiveMaximum *float64 `pulumi:"exclusiveMaximum"`
+	// Exclusive lower bound.
+	ExclusiveMinimum *float64 `pulumi:"exclusiveMinimum"`
+	// Inclusive upper bound.
+	Maximum *float64 `pulumi:"maximum"`
+	// Inclusive lower bound.
+	Minimum *float64 `pulumi:"minimum"`
+}
+
+// GoogleCloudRetailV2betaIntervalInput is an input type that accepts GoogleCloudRetailV2betaIntervalArgs and GoogleCloudRetailV2betaIntervalOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaIntervalInput` via:
+//
+//          GoogleCloudRetailV2betaIntervalArgs{...}
+type GoogleCloudRetailV2betaIntervalInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaIntervalOutput() GoogleCloudRetailV2betaIntervalOutput
+	ToGoogleCloudRetailV2betaIntervalOutputWithContext(context.Context) GoogleCloudRetailV2betaIntervalOutput
+}
+
+// A floating point interval.
+type GoogleCloudRetailV2betaIntervalArgs struct {
+	// Exclusive upper bound.
+	ExclusiveMaximum pulumi.Float64PtrInput `pulumi:"exclusiveMaximum"`
+	// Exclusive lower bound.
+	ExclusiveMinimum pulumi.Float64PtrInput `pulumi:"exclusiveMinimum"`
+	// Inclusive upper bound.
+	Maximum pulumi.Float64PtrInput `pulumi:"maximum"`
+	// Inclusive lower bound.
+	Minimum pulumi.Float64PtrInput `pulumi:"minimum"`
+}
+
+func (GoogleCloudRetailV2betaIntervalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaInterval)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaIntervalArgs) ToGoogleCloudRetailV2betaIntervalOutput() GoogleCloudRetailV2betaIntervalOutput {
+	return i.ToGoogleCloudRetailV2betaIntervalOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaIntervalArgs) ToGoogleCloudRetailV2betaIntervalOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaIntervalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaIntervalOutput)
+}
+
+// GoogleCloudRetailV2betaIntervalArrayInput is an input type that accepts GoogleCloudRetailV2betaIntervalArray and GoogleCloudRetailV2betaIntervalArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaIntervalArrayInput` via:
+//
+//          GoogleCloudRetailV2betaIntervalArray{ GoogleCloudRetailV2betaIntervalArgs{...} }
+type GoogleCloudRetailV2betaIntervalArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaIntervalArrayOutput() GoogleCloudRetailV2betaIntervalArrayOutput
+	ToGoogleCloudRetailV2betaIntervalArrayOutputWithContext(context.Context) GoogleCloudRetailV2betaIntervalArrayOutput
+}
+
+type GoogleCloudRetailV2betaIntervalArray []GoogleCloudRetailV2betaIntervalInput
+
+func (GoogleCloudRetailV2betaIntervalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2betaInterval)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaIntervalArray) ToGoogleCloudRetailV2betaIntervalArrayOutput() GoogleCloudRetailV2betaIntervalArrayOutput {
+	return i.ToGoogleCloudRetailV2betaIntervalArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaIntervalArray) ToGoogleCloudRetailV2betaIntervalArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaIntervalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaIntervalArrayOutput)
+}
+
+// A floating point interval.
+type GoogleCloudRetailV2betaIntervalOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaIntervalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaInterval)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaIntervalOutput) ToGoogleCloudRetailV2betaIntervalOutput() GoogleCloudRetailV2betaIntervalOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaIntervalOutput) ToGoogleCloudRetailV2betaIntervalOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaIntervalOutput {
+	return o
+}
+
+// Exclusive upper bound.
+func (o GoogleCloudRetailV2betaIntervalOutput) ExclusiveMaximum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaInterval) *float64 { return v.ExclusiveMaximum }).(pulumi.Float64PtrOutput)
+}
+
+// Exclusive lower bound.
+func (o GoogleCloudRetailV2betaIntervalOutput) ExclusiveMinimum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaInterval) *float64 { return v.ExclusiveMinimum }).(pulumi.Float64PtrOutput)
+}
+
+// Inclusive upper bound.
+func (o GoogleCloudRetailV2betaIntervalOutput) Maximum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaInterval) *float64 { return v.Maximum }).(pulumi.Float64PtrOutput)
+}
+
+// Inclusive lower bound.
+func (o GoogleCloudRetailV2betaIntervalOutput) Minimum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaInterval) *float64 { return v.Minimum }).(pulumi.Float64PtrOutput)
+}
+
+type GoogleCloudRetailV2betaIntervalArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaIntervalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2betaInterval)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaIntervalArrayOutput) ToGoogleCloudRetailV2betaIntervalArrayOutput() GoogleCloudRetailV2betaIntervalArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaIntervalArrayOutput) ToGoogleCloudRetailV2betaIntervalArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaIntervalArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaIntervalArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaIntervalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaInterval {
+		return vs[0].([]GoogleCloudRetailV2betaInterval)[vs[1].(int)]
+	}).(GoogleCloudRetailV2betaIntervalOutput)
+}
+
+// A floating point interval.
 type GoogleCloudRetailV2betaIntervalResponse struct {
 	// Exclusive upper bound.
 	ExclusiveMaximum float64 `pulumi:"exclusiveMaximum"`
@@ -779,6 +1430,26 @@ func (o GoogleCloudRetailV2betaIntervalResponseOutput) Maximum() pulumi.Float64O
 // Inclusive lower bound.
 func (o GoogleCloudRetailV2betaIntervalResponseOutput) Minimum() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaIntervalResponse) float64 { return v.Minimum }).(pulumi.Float64Output)
+}
+
+type GoogleCloudRetailV2betaIntervalResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaIntervalResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2betaIntervalResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaIntervalResponseArrayOutput) ToGoogleCloudRetailV2betaIntervalResponseArrayOutput() GoogleCloudRetailV2betaIntervalResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaIntervalResponseArrayOutput) ToGoogleCloudRetailV2betaIntervalResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaIntervalResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaIntervalResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaIntervalResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaIntervalResponse {
+		return vs[0].([]GoogleCloudRetailV2betaIntervalResponse)[vs[1].(int)]
+	}).(GoogleCloudRetailV2betaIntervalResponseOutput)
 }
 
 // The price information of a Product.
@@ -1139,7 +1810,7 @@ type GoogleCloudRetailV2betaProductResponse struct {
 	Brands []string `pulumi:"brands"`
 	// Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
 	Categories []string `pulumi:"categories"`
-	// The id of the collection members when type is Type.COLLECTION. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+	// The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise and INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
 	CollectionMemberIds []string `pulumi:"collectionMemberIds"`
 	// The color of the product. Corresponding properties: Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 	ColorInfo GoogleCloudRetailV2betaColorInfoResponse `pulumi:"colorInfo"`
@@ -1243,7 +1914,7 @@ func (o GoogleCloudRetailV2betaProductResponseOutput) Categories() pulumi.String
 	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) []string { return v.Categories }).(pulumi.StringArrayOutput)
 }
 
-// The id of the collection members when type is Type.COLLECTION. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+// The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise and INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
 func (o GoogleCloudRetailV2betaProductResponseOutput) CollectionMemberIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) []string { return v.CollectionMemberIds }).(pulumi.StringArrayOutput)
 }
@@ -1762,27 +2433,2726 @@ func (o GoogleCloudRetailV2betaRatingResponseOutput) RatingHistogram() pulumi.In
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRatingResponse) []int { return v.RatingHistogram }).(pulumi.IntArrayOutput)
 }
 
+// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+type GoogleCloudRetailV2betaRule struct {
+	// A boost action.
+	BoostAction *GoogleCloudRetailV2betaRuleBoostAction `pulumi:"boostAction"`
+	// The condition that triggers the rule. If the condition is empty, the rule will always apply.
+	Condition GoogleCloudRetailV2betaCondition `pulumi:"condition"`
+	// Prevents term from being associated with other terms.
+	DoNotAssociateAction *GoogleCloudRetailV2betaRuleDoNotAssociateAction `pulumi:"doNotAssociateAction"`
+	// Filters results.
+	FilterAction *GoogleCloudRetailV2betaRuleFilterAction `pulumi:"filterAction"`
+	// Ignores specific terms from query during search.
+	IgnoreAction *GoogleCloudRetailV2betaRuleIgnoreAction `pulumi:"ignoreAction"`
+	// Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
+	OnewaySynonymsAction *GoogleCloudRetailV2betaRuleOnewaySynonymsAction `pulumi:"onewaySynonymsAction"`
+	// Redirects a shopper to a specific page.
+	RedirectAction *GoogleCloudRetailV2betaRuleRedirectAction `pulumi:"redirectAction"`
+	// Replaces specific terms in the query.
+	ReplacementAction *GoogleCloudRetailV2betaRuleReplacementAction `pulumi:"replacementAction"`
+	// Treats a set of terms as synonyms of one another.
+	TwowaySynonymsAction *GoogleCloudRetailV2betaRuleTwowaySynonymsAction `pulumi:"twowaySynonymsAction"`
+}
+
+// GoogleCloudRetailV2betaRuleInput is an input type that accepts GoogleCloudRetailV2betaRuleArgs and GoogleCloudRetailV2betaRuleOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleInput` via:
+//
+//          GoogleCloudRetailV2betaRuleArgs{...}
+type GoogleCloudRetailV2betaRuleInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleOutput() GoogleCloudRetailV2betaRuleOutput
+	ToGoogleCloudRetailV2betaRuleOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleOutput
+}
+
+// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+type GoogleCloudRetailV2betaRuleArgs struct {
+	// A boost action.
+	BoostAction GoogleCloudRetailV2betaRuleBoostActionPtrInput `pulumi:"boostAction"`
+	// The condition that triggers the rule. If the condition is empty, the rule will always apply.
+	Condition GoogleCloudRetailV2betaConditionInput `pulumi:"condition"`
+	// Prevents term from being associated with other terms.
+	DoNotAssociateAction GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrInput `pulumi:"doNotAssociateAction"`
+	// Filters results.
+	FilterAction GoogleCloudRetailV2betaRuleFilterActionPtrInput `pulumi:"filterAction"`
+	// Ignores specific terms from query during search.
+	IgnoreAction GoogleCloudRetailV2betaRuleIgnoreActionPtrInput `pulumi:"ignoreAction"`
+	// Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
+	OnewaySynonymsAction GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrInput `pulumi:"onewaySynonymsAction"`
+	// Redirects a shopper to a specific page.
+	RedirectAction GoogleCloudRetailV2betaRuleRedirectActionPtrInput `pulumi:"redirectAction"`
+	// Replaces specific terms in the query.
+	ReplacementAction GoogleCloudRetailV2betaRuleReplacementActionPtrInput `pulumi:"replacementAction"`
+	// Treats a set of terms as synonyms of one another.
+	TwowaySynonymsAction GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrInput `pulumi:"twowaySynonymsAction"`
+}
+
+func (GoogleCloudRetailV2betaRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRule)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaRuleArgs) ToGoogleCloudRetailV2betaRuleOutput() GoogleCloudRetailV2betaRuleOutput {
+	return i.ToGoogleCloudRetailV2betaRuleOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleArgs) ToGoogleCloudRetailV2betaRuleOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleOutput)
+}
+
+func (i GoogleCloudRetailV2betaRuleArgs) ToGoogleCloudRetailV2betaRulePtrOutput() GoogleCloudRetailV2betaRulePtrOutput {
+	return i.ToGoogleCloudRetailV2betaRulePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleArgs) ToGoogleCloudRetailV2betaRulePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleOutput).ToGoogleCloudRetailV2betaRulePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaRulePtrInput is an input type that accepts GoogleCloudRetailV2betaRuleArgs, GoogleCloudRetailV2betaRulePtr and GoogleCloudRetailV2betaRulePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRulePtrInput` via:
+//
+//          GoogleCloudRetailV2betaRuleArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRetailV2betaRulePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRulePtrOutput() GoogleCloudRetailV2betaRulePtrOutput
+	ToGoogleCloudRetailV2betaRulePtrOutputWithContext(context.Context) GoogleCloudRetailV2betaRulePtrOutput
+}
+
+type googleCloudRetailV2betaRulePtrType GoogleCloudRetailV2betaRuleArgs
+
+func GoogleCloudRetailV2betaRulePtr(v *GoogleCloudRetailV2betaRuleArgs) GoogleCloudRetailV2betaRulePtrInput {
+	return (*googleCloudRetailV2betaRulePtrType)(v)
+}
+
+func (*googleCloudRetailV2betaRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRule)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaRulePtrType) ToGoogleCloudRetailV2betaRulePtrOutput() GoogleCloudRetailV2betaRulePtrOutput {
+	return i.ToGoogleCloudRetailV2betaRulePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaRulePtrType) ToGoogleCloudRetailV2betaRulePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRulePtrOutput)
+}
+
+// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+type GoogleCloudRetailV2betaRuleOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRule)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleOutput) ToGoogleCloudRetailV2betaRuleOutput() GoogleCloudRetailV2betaRuleOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleOutput) ToGoogleCloudRetailV2betaRuleOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleOutput) ToGoogleCloudRetailV2betaRulePtrOutput() GoogleCloudRetailV2betaRulePtrOutput {
+	return o.ToGoogleCloudRetailV2betaRulePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaRuleOutput) ToGoogleCloudRetailV2betaRulePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRule {
+		return &v
+	}).(GoogleCloudRetailV2betaRulePtrOutput)
+}
+
+// A boost action.
+func (o GoogleCloudRetailV2betaRuleOutput) BoostAction() GoogleCloudRetailV2betaRuleBoostActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleBoostAction { return v.BoostAction }).(GoogleCloudRetailV2betaRuleBoostActionPtrOutput)
+}
+
+// The condition that triggers the rule. If the condition is empty, the rule will always apply.
+func (o GoogleCloudRetailV2betaRuleOutput) Condition() GoogleCloudRetailV2betaConditionOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRule) GoogleCloudRetailV2betaCondition { return v.Condition }).(GoogleCloudRetailV2betaConditionOutput)
+}
+
+// Prevents term from being associated with other terms.
+func (o GoogleCloudRetailV2betaRuleOutput) DoNotAssociateAction() GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleDoNotAssociateAction {
+		return v.DoNotAssociateAction
+	}).(GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput)
+}
+
+// Filters results.
+func (o GoogleCloudRetailV2betaRuleOutput) FilterAction() GoogleCloudRetailV2betaRuleFilterActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleFilterAction { return v.FilterAction }).(GoogleCloudRetailV2betaRuleFilterActionPtrOutput)
+}
+
+// Ignores specific terms from query during search.
+func (o GoogleCloudRetailV2betaRuleOutput) IgnoreAction() GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleIgnoreAction { return v.IgnoreAction }).(GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput)
+}
+
+// Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
+func (o GoogleCloudRetailV2betaRuleOutput) OnewaySynonymsAction() GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleOnewaySynonymsAction {
+		return v.OnewaySynonymsAction
+	}).(GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput)
+}
+
+// Redirects a shopper to a specific page.
+func (o GoogleCloudRetailV2betaRuleOutput) RedirectAction() GoogleCloudRetailV2betaRuleRedirectActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleRedirectAction {
+		return v.RedirectAction
+	}).(GoogleCloudRetailV2betaRuleRedirectActionPtrOutput)
+}
+
+// Replaces specific terms in the query.
+func (o GoogleCloudRetailV2betaRuleOutput) ReplacementAction() GoogleCloudRetailV2betaRuleReplacementActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleReplacementAction {
+		return v.ReplacementAction
+	}).(GoogleCloudRetailV2betaRuleReplacementActionPtrOutput)
+}
+
+// Treats a set of terms as synonyms of one another.
+func (o GoogleCloudRetailV2betaRuleOutput) TwowaySynonymsAction() GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleTwowaySynonymsAction {
+		return v.TwowaySynonymsAction
+	}).(GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput)
+}
+
+type GoogleCloudRetailV2betaRulePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRule)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRulePtrOutput) ToGoogleCloudRetailV2betaRulePtrOutput() GoogleCloudRetailV2betaRulePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRulePtrOutput) ToGoogleCloudRetailV2betaRulePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRulePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRulePtrOutput) Elem() GoogleCloudRetailV2betaRuleOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRule) GoogleCloudRetailV2betaRule {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2betaRule
+		return ret
+	}).(GoogleCloudRetailV2betaRuleOutput)
+}
+
+// A boost action.
+func (o GoogleCloudRetailV2betaRulePtrOutput) BoostAction() GoogleCloudRetailV2betaRuleBoostActionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleBoostAction {
+		if v == nil {
+			return nil
+		}
+		return v.BoostAction
+	}).(GoogleCloudRetailV2betaRuleBoostActionPtrOutput)
+}
+
+// The condition that triggers the rule. If the condition is empty, the rule will always apply.
+func (o GoogleCloudRetailV2betaRulePtrOutput) Condition() GoogleCloudRetailV2betaConditionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaCondition {
+		if v == nil {
+			return nil
+		}
+		return &v.Condition
+	}).(GoogleCloudRetailV2betaConditionPtrOutput)
+}
+
+// Prevents term from being associated with other terms.
+func (o GoogleCloudRetailV2betaRulePtrOutput) DoNotAssociateAction() GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleDoNotAssociateAction {
+		if v == nil {
+			return nil
+		}
+		return v.DoNotAssociateAction
+	}).(GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput)
+}
+
+// Filters results.
+func (o GoogleCloudRetailV2betaRulePtrOutput) FilterAction() GoogleCloudRetailV2betaRuleFilterActionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleFilterAction {
+		if v == nil {
+			return nil
+		}
+		return v.FilterAction
+	}).(GoogleCloudRetailV2betaRuleFilterActionPtrOutput)
+}
+
+// Ignores specific terms from query during search.
+func (o GoogleCloudRetailV2betaRulePtrOutput) IgnoreAction() GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleIgnoreAction {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreAction
+	}).(GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput)
+}
+
+// Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
+func (o GoogleCloudRetailV2betaRulePtrOutput) OnewaySynonymsAction() GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleOnewaySynonymsAction {
+		if v == nil {
+			return nil
+		}
+		return v.OnewaySynonymsAction
+	}).(GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput)
+}
+
+// Redirects a shopper to a specific page.
+func (o GoogleCloudRetailV2betaRulePtrOutput) RedirectAction() GoogleCloudRetailV2betaRuleRedirectActionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleRedirectAction {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectAction
+	}).(GoogleCloudRetailV2betaRuleRedirectActionPtrOutput)
+}
+
+// Replaces specific terms in the query.
+func (o GoogleCloudRetailV2betaRulePtrOutput) ReplacementAction() GoogleCloudRetailV2betaRuleReplacementActionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleReplacementAction {
+		if v == nil {
+			return nil
+		}
+		return v.ReplacementAction
+	}).(GoogleCloudRetailV2betaRuleReplacementActionPtrOutput)
+}
+
+// Treats a set of terms as synonyms of one another.
+func (o GoogleCloudRetailV2betaRulePtrOutput) TwowaySynonymsAction() GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRuleTwowaySynonymsAction {
+		if v == nil {
+			return nil
+		}
+		return v.TwowaySynonymsAction
+	}).(GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput)
+}
+
+// A boost action to apply to results matching condition specified above.
+type GoogleCloudRetailV2betaRuleBoostAction struct {
+	// Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
+	Boost *float64 `pulumi:"boost"`
+	// The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+	ProductsFilter *string `pulumi:"productsFilter"`
+}
+
+// GoogleCloudRetailV2betaRuleBoostActionInput is an input type that accepts GoogleCloudRetailV2betaRuleBoostActionArgs and GoogleCloudRetailV2betaRuleBoostActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleBoostActionInput` via:
+//
+//          GoogleCloudRetailV2betaRuleBoostActionArgs{...}
+type GoogleCloudRetailV2betaRuleBoostActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleBoostActionOutput() GoogleCloudRetailV2betaRuleBoostActionOutput
+	ToGoogleCloudRetailV2betaRuleBoostActionOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleBoostActionOutput
+}
+
+// A boost action to apply to results matching condition specified above.
+type GoogleCloudRetailV2betaRuleBoostActionArgs struct {
+	// Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
+	Boost pulumi.Float64PtrInput `pulumi:"boost"`
+	// The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+	ProductsFilter pulumi.StringPtrInput `pulumi:"productsFilter"`
+}
+
+func (GoogleCloudRetailV2betaRuleBoostActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleBoostAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaRuleBoostActionArgs) ToGoogleCloudRetailV2betaRuleBoostActionOutput() GoogleCloudRetailV2betaRuleBoostActionOutput {
+	return i.ToGoogleCloudRetailV2betaRuleBoostActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleBoostActionArgs) ToGoogleCloudRetailV2betaRuleBoostActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleBoostActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleBoostActionOutput)
+}
+
+func (i GoogleCloudRetailV2betaRuleBoostActionArgs) ToGoogleCloudRetailV2betaRuleBoostActionPtrOutput() GoogleCloudRetailV2betaRuleBoostActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleBoostActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleBoostActionArgs) ToGoogleCloudRetailV2betaRuleBoostActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleBoostActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleBoostActionOutput).ToGoogleCloudRetailV2betaRuleBoostActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaRuleBoostActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleBoostActionArgs, GoogleCloudRetailV2betaRuleBoostActionPtr and GoogleCloudRetailV2betaRuleBoostActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleBoostActionPtrInput` via:
+//
+//          GoogleCloudRetailV2betaRuleBoostActionArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRetailV2betaRuleBoostActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleBoostActionPtrOutput() GoogleCloudRetailV2betaRuleBoostActionPtrOutput
+	ToGoogleCloudRetailV2betaRuleBoostActionPtrOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleBoostActionPtrOutput
+}
+
+type googleCloudRetailV2betaRuleBoostActionPtrType GoogleCloudRetailV2betaRuleBoostActionArgs
+
+func GoogleCloudRetailV2betaRuleBoostActionPtr(v *GoogleCloudRetailV2betaRuleBoostActionArgs) GoogleCloudRetailV2betaRuleBoostActionPtrInput {
+	return (*googleCloudRetailV2betaRuleBoostActionPtrType)(v)
+}
+
+func (*googleCloudRetailV2betaRuleBoostActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleBoostAction)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaRuleBoostActionPtrType) ToGoogleCloudRetailV2betaRuleBoostActionPtrOutput() GoogleCloudRetailV2betaRuleBoostActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleBoostActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaRuleBoostActionPtrType) ToGoogleCloudRetailV2betaRuleBoostActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleBoostActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleBoostActionPtrOutput)
+}
+
+// A boost action to apply to results matching condition specified above.
+type GoogleCloudRetailV2betaRuleBoostActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleBoostActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleBoostAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleBoostActionOutput) ToGoogleCloudRetailV2betaRuleBoostActionOutput() GoogleCloudRetailV2betaRuleBoostActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleBoostActionOutput) ToGoogleCloudRetailV2betaRuleBoostActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleBoostActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleBoostActionOutput) ToGoogleCloudRetailV2betaRuleBoostActionPtrOutput() GoogleCloudRetailV2betaRuleBoostActionPtrOutput {
+	return o.ToGoogleCloudRetailV2betaRuleBoostActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaRuleBoostActionOutput) ToGoogleCloudRetailV2betaRuleBoostActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleBoostActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRuleBoostAction) *GoogleCloudRetailV2betaRuleBoostAction {
+		return &v
+	}).(GoogleCloudRetailV2betaRuleBoostActionPtrOutput)
+}
+
+// Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
+func (o GoogleCloudRetailV2betaRuleBoostActionOutput) Boost() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleBoostAction) *float64 { return v.Boost }).(pulumi.Float64PtrOutput)
+}
+
+// The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+func (o GoogleCloudRetailV2betaRuleBoostActionOutput) ProductsFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleBoostAction) *string { return v.ProductsFilter }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRetailV2betaRuleBoostActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleBoostActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleBoostAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleBoostActionPtrOutput) ToGoogleCloudRetailV2betaRuleBoostActionPtrOutput() GoogleCloudRetailV2betaRuleBoostActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleBoostActionPtrOutput) ToGoogleCloudRetailV2betaRuleBoostActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleBoostActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleBoostActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleBoostActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleBoostAction) GoogleCloudRetailV2betaRuleBoostAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2betaRuleBoostAction
+		return ret
+	}).(GoogleCloudRetailV2betaRuleBoostActionOutput)
+}
+
+// Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
+func (o GoogleCloudRetailV2betaRuleBoostActionPtrOutput) Boost() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleBoostAction) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Boost
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+func (o GoogleCloudRetailV2betaRuleBoostActionPtrOutput) ProductsFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleBoostAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductsFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// A boost action to apply to results matching condition specified above.
+type GoogleCloudRetailV2betaRuleBoostActionResponse struct {
+	// Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
+	Boost float64 `pulumi:"boost"`
+	// The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+	ProductsFilter string `pulumi:"productsFilter"`
+}
+
+// A boost action to apply to results matching condition specified above.
+type GoogleCloudRetailV2betaRuleBoostActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleBoostActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleBoostActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleBoostActionResponseOutput) ToGoogleCloudRetailV2betaRuleBoostActionResponseOutput() GoogleCloudRetailV2betaRuleBoostActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleBoostActionResponseOutput) ToGoogleCloudRetailV2betaRuleBoostActionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleBoostActionResponseOutput {
+	return o
+}
+
+// Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
+func (o GoogleCloudRetailV2betaRuleBoostActionResponseOutput) Boost() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleBoostActionResponse) float64 { return v.Boost }).(pulumi.Float64Output)
+}
+
+// The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+func (o GoogleCloudRetailV2betaRuleBoostActionResponseOutput) ProductsFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleBoostActionResponse) string { return v.ProductsFilter }).(pulumi.StringOutput)
+}
+
+// Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap".
+type GoogleCloudRetailV2betaRuleDoNotAssociateAction struct {
+	// Cannot contain duplicates or the query term. Can specify up to 100 terms.
+	DoNotAssociateTerms []string `pulumi:"doNotAssociateTerms"`
+	// Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
+	QueryTerms []string `pulumi:"queryTerms"`
+	// Will be [deprecated = true] post migration;
+	Terms []string `pulumi:"terms"`
+}
+
+// GoogleCloudRetailV2betaRuleDoNotAssociateActionInput is an input type that accepts GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs and GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleDoNotAssociateActionInput` via:
+//
+//          GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs{...}
+type GoogleCloudRetailV2betaRuleDoNotAssociateActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleDoNotAssociateActionOutput() GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput
+	ToGoogleCloudRetailV2betaRuleDoNotAssociateActionOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput
+}
+
+// Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap".
+type GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs struct {
+	// Cannot contain duplicates or the query term. Can specify up to 100 terms.
+	DoNotAssociateTerms pulumi.StringArrayInput `pulumi:"doNotAssociateTerms"`
+	// Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
+	QueryTerms pulumi.StringArrayInput `pulumi:"queryTerms"`
+	// Will be [deprecated = true] post migration;
+	Terms pulumi.StringArrayInput `pulumi:"terms"`
+}
+
+func (GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleDoNotAssociateAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionOutput() GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput {
+	return i.ToGoogleCloudRetailV2betaRuleDoNotAssociateActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput)
+}
+
+func (i GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput() GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput).ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs, GoogleCloudRetailV2betaRuleDoNotAssociateActionPtr and GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrInput` via:
+//
+//          GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput() GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput
+	ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput
+}
+
+type googleCloudRetailV2betaRuleDoNotAssociateActionPtrType GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs
+
+func GoogleCloudRetailV2betaRuleDoNotAssociateActionPtr(v *GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs) GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrInput {
+	return (*googleCloudRetailV2betaRuleDoNotAssociateActionPtrType)(v)
+}
+
+func (*googleCloudRetailV2betaRuleDoNotAssociateActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleDoNotAssociateAction)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaRuleDoNotAssociateActionPtrType) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput() GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaRuleDoNotAssociateActionPtrType) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput)
+}
+
+// Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap".
+type GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleDoNotAssociateAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionOutput() GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput() GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput {
+	return o.ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRuleDoNotAssociateAction) *GoogleCloudRetailV2betaRuleDoNotAssociateAction {
+		return &v
+	}).(GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput)
+}
+
+// Cannot contain duplicates or the query term. Can specify up to 100 terms.
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput) DoNotAssociateTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleDoNotAssociateAction) []string { return v.DoNotAssociateTerms }).(pulumi.StringArrayOutput)
+}
+
+// Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput) QueryTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleDoNotAssociateAction) []string { return v.QueryTerms }).(pulumi.StringArrayOutput)
+}
+
+// Will be [deprecated = true] post migration;
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput) Terms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleDoNotAssociateAction) []string { return v.Terms }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleDoNotAssociateAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput() GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleDoNotAssociateAction) GoogleCloudRetailV2betaRuleDoNotAssociateAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2betaRuleDoNotAssociateAction
+		return ret
+	}).(GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput)
+}
+
+// Cannot contain duplicates or the query term. Can specify up to 100 terms.
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput) DoNotAssociateTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleDoNotAssociateAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DoNotAssociateTerms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput) QueryTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleDoNotAssociateAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryTerms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Will be [deprecated = true] post migration;
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput) Terms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleDoNotAssociateAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Terms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap".
+type GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse struct {
+	// Cannot contain duplicates or the query term. Can specify up to 100 terms.
+	DoNotAssociateTerms []string `pulumi:"doNotAssociateTerms"`
+	// Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
+	QueryTerms []string `pulumi:"queryTerms"`
+	// Will be [deprecated = true] post migration;
+	Terms []string `pulumi:"terms"`
+}
+
+// Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap".
+type GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput() GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput {
+	return o
+}
+
+// Cannot contain duplicates or the query term. Can specify up to 100 terms.
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput) DoNotAssociateTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse) []string { return v.DoNotAssociateTerms }).(pulumi.StringArrayOutput)
+}
+
+// Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput) QueryTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse) []string { return v.QueryTerms }).(pulumi.StringArrayOutput)
+}
+
+// Will be [deprecated = true] post migration;
+func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput) Terms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse) []string { return v.Terms }).(pulumi.StringArrayOutput)
+}
+
+// * Rule Condition: - No Condition provided is a global match. - 1 or more Condition provided is combined with OR operator. * Action Input: The request query and filter that will be applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+type GoogleCloudRetailV2betaRuleFilterAction struct {
+	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+	Filter *string `pulumi:"filter"`
+}
+
+// GoogleCloudRetailV2betaRuleFilterActionInput is an input type that accepts GoogleCloudRetailV2betaRuleFilterActionArgs and GoogleCloudRetailV2betaRuleFilterActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleFilterActionInput` via:
+//
+//          GoogleCloudRetailV2betaRuleFilterActionArgs{...}
+type GoogleCloudRetailV2betaRuleFilterActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleFilterActionOutput() GoogleCloudRetailV2betaRuleFilterActionOutput
+	ToGoogleCloudRetailV2betaRuleFilterActionOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleFilterActionOutput
+}
+
+// * Rule Condition: - No Condition provided is a global match. - 1 or more Condition provided is combined with OR operator. * Action Input: The request query and filter that will be applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+type GoogleCloudRetailV2betaRuleFilterActionArgs struct {
+	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+}
+
+func (GoogleCloudRetailV2betaRuleFilterActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleFilterAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaRuleFilterActionArgs) ToGoogleCloudRetailV2betaRuleFilterActionOutput() GoogleCloudRetailV2betaRuleFilterActionOutput {
+	return i.ToGoogleCloudRetailV2betaRuleFilterActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleFilterActionArgs) ToGoogleCloudRetailV2betaRuleFilterActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleFilterActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleFilterActionOutput)
+}
+
+func (i GoogleCloudRetailV2betaRuleFilterActionArgs) ToGoogleCloudRetailV2betaRuleFilterActionPtrOutput() GoogleCloudRetailV2betaRuleFilterActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleFilterActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleFilterActionArgs) ToGoogleCloudRetailV2betaRuleFilterActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleFilterActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleFilterActionOutput).ToGoogleCloudRetailV2betaRuleFilterActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaRuleFilterActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleFilterActionArgs, GoogleCloudRetailV2betaRuleFilterActionPtr and GoogleCloudRetailV2betaRuleFilterActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleFilterActionPtrInput` via:
+//
+//          GoogleCloudRetailV2betaRuleFilterActionArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRetailV2betaRuleFilterActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleFilterActionPtrOutput() GoogleCloudRetailV2betaRuleFilterActionPtrOutput
+	ToGoogleCloudRetailV2betaRuleFilterActionPtrOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleFilterActionPtrOutput
+}
+
+type googleCloudRetailV2betaRuleFilterActionPtrType GoogleCloudRetailV2betaRuleFilterActionArgs
+
+func GoogleCloudRetailV2betaRuleFilterActionPtr(v *GoogleCloudRetailV2betaRuleFilterActionArgs) GoogleCloudRetailV2betaRuleFilterActionPtrInput {
+	return (*googleCloudRetailV2betaRuleFilterActionPtrType)(v)
+}
+
+func (*googleCloudRetailV2betaRuleFilterActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleFilterAction)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaRuleFilterActionPtrType) ToGoogleCloudRetailV2betaRuleFilterActionPtrOutput() GoogleCloudRetailV2betaRuleFilterActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleFilterActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaRuleFilterActionPtrType) ToGoogleCloudRetailV2betaRuleFilterActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleFilterActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleFilterActionPtrOutput)
+}
+
+// * Rule Condition: - No Condition provided is a global match. - 1 or more Condition provided is combined with OR operator. * Action Input: The request query and filter that will be applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+type GoogleCloudRetailV2betaRuleFilterActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleFilterActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleFilterAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleFilterActionOutput) ToGoogleCloudRetailV2betaRuleFilterActionOutput() GoogleCloudRetailV2betaRuleFilterActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleFilterActionOutput) ToGoogleCloudRetailV2betaRuleFilterActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleFilterActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleFilterActionOutput) ToGoogleCloudRetailV2betaRuleFilterActionPtrOutput() GoogleCloudRetailV2betaRuleFilterActionPtrOutput {
+	return o.ToGoogleCloudRetailV2betaRuleFilterActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaRuleFilterActionOutput) ToGoogleCloudRetailV2betaRuleFilterActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleFilterActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRuleFilterAction) *GoogleCloudRetailV2betaRuleFilterAction {
+		return &v
+	}).(GoogleCloudRetailV2betaRuleFilterActionPtrOutput)
+}
+
+// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+func (o GoogleCloudRetailV2betaRuleFilterActionOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleFilterAction) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRetailV2betaRuleFilterActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleFilterActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleFilterAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleFilterActionPtrOutput) ToGoogleCloudRetailV2betaRuleFilterActionPtrOutput() GoogleCloudRetailV2betaRuleFilterActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleFilterActionPtrOutput) ToGoogleCloudRetailV2betaRuleFilterActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleFilterActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleFilterActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleFilterActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleFilterAction) GoogleCloudRetailV2betaRuleFilterAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2betaRuleFilterAction
+		return ret
+	}).(GoogleCloudRetailV2betaRuleFilterActionOutput)
+}
+
+// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+func (o GoogleCloudRetailV2betaRuleFilterActionPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleFilterAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+// * Rule Condition: - No Condition provided is a global match. - 1 or more Condition provided is combined with OR operator. * Action Input: The request query and filter that will be applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+type GoogleCloudRetailV2betaRuleFilterActionResponse struct {
+	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+	Filter string `pulumi:"filter"`
+}
+
+// * Rule Condition: - No Condition provided is a global match. - 1 or more Condition provided is combined with OR operator. * Action Input: The request query and filter that will be applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+type GoogleCloudRetailV2betaRuleFilterActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleFilterActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleFilterActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleFilterActionResponseOutput) ToGoogleCloudRetailV2betaRuleFilterActionResponseOutput() GoogleCloudRetailV2betaRuleFilterActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleFilterActionResponseOutput) ToGoogleCloudRetailV2betaRuleFilterActionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleFilterActionResponseOutput {
+	return o
+}
+
+// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+func (o GoogleCloudRetailV2betaRuleFilterActionResponseOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleFilterActionResponse) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// Prevents a term in the query from being used in search. Example: Don't search for "shoddy".
+type GoogleCloudRetailV2betaRuleIgnoreAction struct {
+	// Terms to ignore in the search query.
+	IgnoreTerms []string `pulumi:"ignoreTerms"`
+}
+
+// GoogleCloudRetailV2betaRuleIgnoreActionInput is an input type that accepts GoogleCloudRetailV2betaRuleIgnoreActionArgs and GoogleCloudRetailV2betaRuleIgnoreActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleIgnoreActionInput` via:
+//
+//          GoogleCloudRetailV2betaRuleIgnoreActionArgs{...}
+type GoogleCloudRetailV2betaRuleIgnoreActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleIgnoreActionOutput() GoogleCloudRetailV2betaRuleIgnoreActionOutput
+	ToGoogleCloudRetailV2betaRuleIgnoreActionOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleIgnoreActionOutput
+}
+
+// Prevents a term in the query from being used in search. Example: Don't search for "shoddy".
+type GoogleCloudRetailV2betaRuleIgnoreActionArgs struct {
+	// Terms to ignore in the search query.
+	IgnoreTerms pulumi.StringArrayInput `pulumi:"ignoreTerms"`
+}
+
+func (GoogleCloudRetailV2betaRuleIgnoreActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleIgnoreAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaRuleIgnoreActionArgs) ToGoogleCloudRetailV2betaRuleIgnoreActionOutput() GoogleCloudRetailV2betaRuleIgnoreActionOutput {
+	return i.ToGoogleCloudRetailV2betaRuleIgnoreActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleIgnoreActionArgs) ToGoogleCloudRetailV2betaRuleIgnoreActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleIgnoreActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleIgnoreActionOutput)
+}
+
+func (i GoogleCloudRetailV2betaRuleIgnoreActionArgs) ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutput() GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleIgnoreActionArgs) ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleIgnoreActionOutput).ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaRuleIgnoreActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleIgnoreActionArgs, GoogleCloudRetailV2betaRuleIgnoreActionPtr and GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleIgnoreActionPtrInput` via:
+//
+//          GoogleCloudRetailV2betaRuleIgnoreActionArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRetailV2betaRuleIgnoreActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutput() GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput
+	ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput
+}
+
+type googleCloudRetailV2betaRuleIgnoreActionPtrType GoogleCloudRetailV2betaRuleIgnoreActionArgs
+
+func GoogleCloudRetailV2betaRuleIgnoreActionPtr(v *GoogleCloudRetailV2betaRuleIgnoreActionArgs) GoogleCloudRetailV2betaRuleIgnoreActionPtrInput {
+	return (*googleCloudRetailV2betaRuleIgnoreActionPtrType)(v)
+}
+
+func (*googleCloudRetailV2betaRuleIgnoreActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleIgnoreAction)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaRuleIgnoreActionPtrType) ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutput() GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaRuleIgnoreActionPtrType) ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput)
+}
+
+// Prevents a term in the query from being used in search. Example: Don't search for "shoddy".
+type GoogleCloudRetailV2betaRuleIgnoreActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleIgnoreActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleIgnoreAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleIgnoreActionOutput) ToGoogleCloudRetailV2betaRuleIgnoreActionOutput() GoogleCloudRetailV2betaRuleIgnoreActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleIgnoreActionOutput) ToGoogleCloudRetailV2betaRuleIgnoreActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleIgnoreActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleIgnoreActionOutput) ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutput() GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput {
+	return o.ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaRuleIgnoreActionOutput) ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRuleIgnoreAction) *GoogleCloudRetailV2betaRuleIgnoreAction {
+		return &v
+	}).(GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput)
+}
+
+// Terms to ignore in the search query.
+func (o GoogleCloudRetailV2betaRuleIgnoreActionOutput) IgnoreTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleIgnoreAction) []string { return v.IgnoreTerms }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleIgnoreAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput) ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutput() GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput) ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleIgnoreActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleIgnoreAction) GoogleCloudRetailV2betaRuleIgnoreAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2betaRuleIgnoreAction
+		return ret
+	}).(GoogleCloudRetailV2betaRuleIgnoreActionOutput)
+}
+
+// Terms to ignore in the search query.
+func (o GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput) IgnoreTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleIgnoreAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreTerms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Prevents a term in the query from being used in search. Example: Don't search for "shoddy".
+type GoogleCloudRetailV2betaRuleIgnoreActionResponse struct {
+	// Terms to ignore in the search query.
+	IgnoreTerms []string `pulumi:"ignoreTerms"`
+}
+
+// Prevents a term in the query from being used in search. Example: Don't search for "shoddy".
+type GoogleCloudRetailV2betaRuleIgnoreActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleIgnoreActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleIgnoreActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleIgnoreActionResponseOutput) ToGoogleCloudRetailV2betaRuleIgnoreActionResponseOutput() GoogleCloudRetailV2betaRuleIgnoreActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleIgnoreActionResponseOutput) ToGoogleCloudRetailV2betaRuleIgnoreActionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleIgnoreActionResponseOutput {
+	return o
+}
+
+// Terms to ignore in the search query.
+func (o GoogleCloudRetailV2betaRuleIgnoreActionResponseOutput) IgnoreTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleIgnoreActionResponse) []string { return v.IgnoreTerms }).(pulumi.StringArrayOutput)
+}
+
+// Maps a set of terms to a set of synonyms. Set of synonyms will be treated as synonyms of each query term only. `query_terms` will not be treated as synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of "sneakers".
+type GoogleCloudRetailV2betaRuleOnewaySynonymsAction struct {
+	// Will be [deprecated = true] post migration;
+	OnewayTerms []string `pulumi:"onewayTerms"`
+	// Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms.
+	QueryTerms []string `pulumi:"queryTerms"`
+	// Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.
+	Synonyms []string `pulumi:"synonyms"`
+}
+
+// GoogleCloudRetailV2betaRuleOnewaySynonymsActionInput is an input type that accepts GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs and GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleOnewaySynonymsActionInput` via:
+//
+//          GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs{...}
+type GoogleCloudRetailV2betaRuleOnewaySynonymsActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput() GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput
+	ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput
+}
+
+// Maps a set of terms to a set of synonyms. Set of synonyms will be treated as synonyms of each query term only. `query_terms` will not be treated as synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of "sneakers".
+type GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs struct {
+	// Will be [deprecated = true] post migration;
+	OnewayTerms pulumi.StringArrayInput `pulumi:"onewayTerms"`
+	// Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms.
+	QueryTerms pulumi.StringArrayInput `pulumi:"queryTerms"`
+	// Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.
+	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
+}
+
+func (GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleOnewaySynonymsAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput() GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput {
+	return i.ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput)
+}
+
+func (i GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput() GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput).ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs, GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtr and GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrInput` via:
+//
+//          GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput() GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput
+	ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput
+}
+
+type googleCloudRetailV2betaRuleOnewaySynonymsActionPtrType GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs
+
+func GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtr(v *GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs) GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrInput {
+	return (*googleCloudRetailV2betaRuleOnewaySynonymsActionPtrType)(v)
+}
+
+func (*googleCloudRetailV2betaRuleOnewaySynonymsActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleOnewaySynonymsAction)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaRuleOnewaySynonymsActionPtrType) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput() GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaRuleOnewaySynonymsActionPtrType) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput)
+}
+
+// Maps a set of terms to a set of synonyms. Set of synonyms will be treated as synonyms of each query term only. `query_terms` will not be treated as synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of "sneakers".
+type GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleOnewaySynonymsAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput() GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput() GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput {
+	return o.ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRuleOnewaySynonymsAction) *GoogleCloudRetailV2betaRuleOnewaySynonymsAction {
+		return &v
+	}).(GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput)
+}
+
+// Will be [deprecated = true] post migration;
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput) OnewayTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleOnewaySynonymsAction) []string { return v.OnewayTerms }).(pulumi.StringArrayOutput)
+}
+
+// Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms.
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput) QueryTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleOnewaySynonymsAction) []string { return v.QueryTerms }).(pulumi.StringArrayOutput)
+}
+
+// Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput) Synonyms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleOnewaySynonymsAction) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleOnewaySynonymsAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput() GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleOnewaySynonymsAction) GoogleCloudRetailV2betaRuleOnewaySynonymsAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2betaRuleOnewaySynonymsAction
+		return ret
+	}).(GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput)
+}
+
+// Will be [deprecated = true] post migration;
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput) OnewayTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleOnewaySynonymsAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OnewayTerms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms.
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput) QueryTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleOnewaySynonymsAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryTerms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput) Synonyms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleOnewaySynonymsAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Synonyms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Maps a set of terms to a set of synonyms. Set of synonyms will be treated as synonyms of each query term only. `query_terms` will not be treated as synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of "sneakers".
+type GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse struct {
+	// Will be [deprecated = true] post migration;
+	OnewayTerms []string `pulumi:"onewayTerms"`
+	// Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms.
+	QueryTerms []string `pulumi:"queryTerms"`
+	// Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.
+	Synonyms []string `pulumi:"synonyms"`
+}
+
+// Maps a set of terms to a set of synonyms. Set of synonyms will be treated as synonyms of each query term only. `query_terms` will not be treated as synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of "sneakers".
+type GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput() GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput {
+	return o
+}
+
+// Will be [deprecated = true] post migration;
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput) OnewayTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse) []string { return v.OnewayTerms }).(pulumi.StringArrayOutput)
+}
+
+// Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms.
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput) QueryTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse) []string { return v.QueryTerms }).(pulumi.StringArrayOutput)
+}
+
+// Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.
+func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput) Synonyms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
+}
+
+// Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+type GoogleCloudRetailV2betaRuleRedirectAction struct {
+	// URL must have length equal or less than 2000 characters.
+	RedirectUri *string `pulumi:"redirectUri"`
+}
+
+// GoogleCloudRetailV2betaRuleRedirectActionInput is an input type that accepts GoogleCloudRetailV2betaRuleRedirectActionArgs and GoogleCloudRetailV2betaRuleRedirectActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleRedirectActionInput` via:
+//
+//          GoogleCloudRetailV2betaRuleRedirectActionArgs{...}
+type GoogleCloudRetailV2betaRuleRedirectActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleRedirectActionOutput() GoogleCloudRetailV2betaRuleRedirectActionOutput
+	ToGoogleCloudRetailV2betaRuleRedirectActionOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleRedirectActionOutput
+}
+
+// Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+type GoogleCloudRetailV2betaRuleRedirectActionArgs struct {
+	// URL must have length equal or less than 2000 characters.
+	RedirectUri pulumi.StringPtrInput `pulumi:"redirectUri"`
+}
+
+func (GoogleCloudRetailV2betaRuleRedirectActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleRedirectAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaRuleRedirectActionArgs) ToGoogleCloudRetailV2betaRuleRedirectActionOutput() GoogleCloudRetailV2betaRuleRedirectActionOutput {
+	return i.ToGoogleCloudRetailV2betaRuleRedirectActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleRedirectActionArgs) ToGoogleCloudRetailV2betaRuleRedirectActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleRedirectActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleRedirectActionOutput)
+}
+
+func (i GoogleCloudRetailV2betaRuleRedirectActionArgs) ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutput() GoogleCloudRetailV2betaRuleRedirectActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleRedirectActionArgs) ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleRedirectActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleRedirectActionOutput).ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaRuleRedirectActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleRedirectActionArgs, GoogleCloudRetailV2betaRuleRedirectActionPtr and GoogleCloudRetailV2betaRuleRedirectActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleRedirectActionPtrInput` via:
+//
+//          GoogleCloudRetailV2betaRuleRedirectActionArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRetailV2betaRuleRedirectActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutput() GoogleCloudRetailV2betaRuleRedirectActionPtrOutput
+	ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleRedirectActionPtrOutput
+}
+
+type googleCloudRetailV2betaRuleRedirectActionPtrType GoogleCloudRetailV2betaRuleRedirectActionArgs
+
+func GoogleCloudRetailV2betaRuleRedirectActionPtr(v *GoogleCloudRetailV2betaRuleRedirectActionArgs) GoogleCloudRetailV2betaRuleRedirectActionPtrInput {
+	return (*googleCloudRetailV2betaRuleRedirectActionPtrType)(v)
+}
+
+func (*googleCloudRetailV2betaRuleRedirectActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleRedirectAction)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaRuleRedirectActionPtrType) ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutput() GoogleCloudRetailV2betaRuleRedirectActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaRuleRedirectActionPtrType) ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleRedirectActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleRedirectActionPtrOutput)
+}
+
+// Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+type GoogleCloudRetailV2betaRuleRedirectActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleRedirectActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleRedirectAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleRedirectActionOutput) ToGoogleCloudRetailV2betaRuleRedirectActionOutput() GoogleCloudRetailV2betaRuleRedirectActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleRedirectActionOutput) ToGoogleCloudRetailV2betaRuleRedirectActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleRedirectActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleRedirectActionOutput) ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutput() GoogleCloudRetailV2betaRuleRedirectActionPtrOutput {
+	return o.ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaRuleRedirectActionOutput) ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleRedirectActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRuleRedirectAction) *GoogleCloudRetailV2betaRuleRedirectAction {
+		return &v
+	}).(GoogleCloudRetailV2betaRuleRedirectActionPtrOutput)
+}
+
+// URL must have length equal or less than 2000 characters.
+func (o GoogleCloudRetailV2betaRuleRedirectActionOutput) RedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleRedirectAction) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRetailV2betaRuleRedirectActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleRedirectActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleRedirectAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleRedirectActionPtrOutput) ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutput() GoogleCloudRetailV2betaRuleRedirectActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleRedirectActionPtrOutput) ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleRedirectActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleRedirectActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleRedirectActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleRedirectAction) GoogleCloudRetailV2betaRuleRedirectAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2betaRuleRedirectAction
+		return ret
+	}).(GoogleCloudRetailV2betaRuleRedirectActionOutput)
+}
+
+// URL must have length equal or less than 2000 characters.
+func (o GoogleCloudRetailV2betaRuleRedirectActionPtrOutput) RedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleRedirectAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+type GoogleCloudRetailV2betaRuleRedirectActionResponse struct {
+	// URL must have length equal or less than 2000 characters.
+	RedirectUri string `pulumi:"redirectUri"`
+}
+
+// Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+type GoogleCloudRetailV2betaRuleRedirectActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleRedirectActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleRedirectActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleRedirectActionResponseOutput) ToGoogleCloudRetailV2betaRuleRedirectActionResponseOutput() GoogleCloudRetailV2betaRuleRedirectActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleRedirectActionResponseOutput) ToGoogleCloudRetailV2betaRuleRedirectActionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleRedirectActionResponseOutput {
+	return o
+}
+
+// URL must have length equal or less than 2000 characters.
+func (o GoogleCloudRetailV2betaRuleRedirectActionResponseOutput) RedirectUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleRedirectActionResponse) string { return v.RedirectUri }).(pulumi.StringOutput)
+}
+
+// Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe".
+type GoogleCloudRetailV2betaRuleReplacementAction struct {
+	// Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
+	QueryTerms []string `pulumi:"queryTerms"`
+	// Term that will be used for replacement.
+	ReplacementTerm *string `pulumi:"replacementTerm"`
+	// Will be [deprecated = true] post migration;
+	Term *string `pulumi:"term"`
+}
+
+// GoogleCloudRetailV2betaRuleReplacementActionInput is an input type that accepts GoogleCloudRetailV2betaRuleReplacementActionArgs and GoogleCloudRetailV2betaRuleReplacementActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleReplacementActionInput` via:
+//
+//          GoogleCloudRetailV2betaRuleReplacementActionArgs{...}
+type GoogleCloudRetailV2betaRuleReplacementActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleReplacementActionOutput() GoogleCloudRetailV2betaRuleReplacementActionOutput
+	ToGoogleCloudRetailV2betaRuleReplacementActionOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleReplacementActionOutput
+}
+
+// Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe".
+type GoogleCloudRetailV2betaRuleReplacementActionArgs struct {
+	// Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
+	QueryTerms pulumi.StringArrayInput `pulumi:"queryTerms"`
+	// Term that will be used for replacement.
+	ReplacementTerm pulumi.StringPtrInput `pulumi:"replacementTerm"`
+	// Will be [deprecated = true] post migration;
+	Term pulumi.StringPtrInput `pulumi:"term"`
+}
+
+func (GoogleCloudRetailV2betaRuleReplacementActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleReplacementAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaRuleReplacementActionArgs) ToGoogleCloudRetailV2betaRuleReplacementActionOutput() GoogleCloudRetailV2betaRuleReplacementActionOutput {
+	return i.ToGoogleCloudRetailV2betaRuleReplacementActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleReplacementActionArgs) ToGoogleCloudRetailV2betaRuleReplacementActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleReplacementActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleReplacementActionOutput)
+}
+
+func (i GoogleCloudRetailV2betaRuleReplacementActionArgs) ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutput() GoogleCloudRetailV2betaRuleReplacementActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleReplacementActionArgs) ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleReplacementActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleReplacementActionOutput).ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaRuleReplacementActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleReplacementActionArgs, GoogleCloudRetailV2betaRuleReplacementActionPtr and GoogleCloudRetailV2betaRuleReplacementActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleReplacementActionPtrInput` via:
+//
+//          GoogleCloudRetailV2betaRuleReplacementActionArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRetailV2betaRuleReplacementActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutput() GoogleCloudRetailV2betaRuleReplacementActionPtrOutput
+	ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleReplacementActionPtrOutput
+}
+
+type googleCloudRetailV2betaRuleReplacementActionPtrType GoogleCloudRetailV2betaRuleReplacementActionArgs
+
+func GoogleCloudRetailV2betaRuleReplacementActionPtr(v *GoogleCloudRetailV2betaRuleReplacementActionArgs) GoogleCloudRetailV2betaRuleReplacementActionPtrInput {
+	return (*googleCloudRetailV2betaRuleReplacementActionPtrType)(v)
+}
+
+func (*googleCloudRetailV2betaRuleReplacementActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleReplacementAction)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaRuleReplacementActionPtrType) ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutput() GoogleCloudRetailV2betaRuleReplacementActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaRuleReplacementActionPtrType) ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleReplacementActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleReplacementActionPtrOutput)
+}
+
+// Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe".
+type GoogleCloudRetailV2betaRuleReplacementActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleReplacementActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleReplacementAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleReplacementActionOutput) ToGoogleCloudRetailV2betaRuleReplacementActionOutput() GoogleCloudRetailV2betaRuleReplacementActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleReplacementActionOutput) ToGoogleCloudRetailV2betaRuleReplacementActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleReplacementActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleReplacementActionOutput) ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutput() GoogleCloudRetailV2betaRuleReplacementActionPtrOutput {
+	return o.ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaRuleReplacementActionOutput) ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleReplacementActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRuleReplacementAction) *GoogleCloudRetailV2betaRuleReplacementAction {
+		return &v
+	}).(GoogleCloudRetailV2betaRuleReplacementActionPtrOutput)
+}
+
+// Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
+func (o GoogleCloudRetailV2betaRuleReplacementActionOutput) QueryTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleReplacementAction) []string { return v.QueryTerms }).(pulumi.StringArrayOutput)
+}
+
+// Term that will be used for replacement.
+func (o GoogleCloudRetailV2betaRuleReplacementActionOutput) ReplacementTerm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleReplacementAction) *string { return v.ReplacementTerm }).(pulumi.StringPtrOutput)
+}
+
+// Will be [deprecated = true] post migration;
+func (o GoogleCloudRetailV2betaRuleReplacementActionOutput) Term() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleReplacementAction) *string { return v.Term }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRetailV2betaRuleReplacementActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleReplacementActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleReplacementAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleReplacementActionPtrOutput) ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutput() GoogleCloudRetailV2betaRuleReplacementActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleReplacementActionPtrOutput) ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleReplacementActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleReplacementActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleReplacementActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleReplacementAction) GoogleCloudRetailV2betaRuleReplacementAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2betaRuleReplacementAction
+		return ret
+	}).(GoogleCloudRetailV2betaRuleReplacementActionOutput)
+}
+
+// Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
+func (o GoogleCloudRetailV2betaRuleReplacementActionPtrOutput) QueryTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleReplacementAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryTerms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Term that will be used for replacement.
+func (o GoogleCloudRetailV2betaRuleReplacementActionPtrOutput) ReplacementTerm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleReplacementAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplacementTerm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Will be [deprecated = true] post migration;
+func (o GoogleCloudRetailV2betaRuleReplacementActionPtrOutput) Term() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleReplacementAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Term
+	}).(pulumi.StringPtrOutput)
+}
+
+// Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe".
+type GoogleCloudRetailV2betaRuleReplacementActionResponse struct {
+	// Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
+	QueryTerms []string `pulumi:"queryTerms"`
+	// Term that will be used for replacement.
+	ReplacementTerm string `pulumi:"replacementTerm"`
+	// Will be [deprecated = true] post migration;
+	Term string `pulumi:"term"`
+}
+
+// Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe".
+type GoogleCloudRetailV2betaRuleReplacementActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleReplacementActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleReplacementActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleReplacementActionResponseOutput) ToGoogleCloudRetailV2betaRuleReplacementActionResponseOutput() GoogleCloudRetailV2betaRuleReplacementActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleReplacementActionResponseOutput) ToGoogleCloudRetailV2betaRuleReplacementActionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleReplacementActionResponseOutput {
+	return o
+}
+
+// Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
+func (o GoogleCloudRetailV2betaRuleReplacementActionResponseOutput) QueryTerms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleReplacementActionResponse) []string { return v.QueryTerms }).(pulumi.StringArrayOutput)
+}
+
+// Term that will be used for replacement.
+func (o GoogleCloudRetailV2betaRuleReplacementActionResponseOutput) ReplacementTerm() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleReplacementActionResponse) string { return v.ReplacementTerm }).(pulumi.StringOutput)
+}
+
+// Will be [deprecated = true] post migration;
+func (o GoogleCloudRetailV2betaRuleReplacementActionResponseOutput) Term() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleReplacementActionResponse) string { return v.Term }).(pulumi.StringOutput)
+}
+
+// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+type GoogleCloudRetailV2betaRuleResponse struct {
+	// A boost action.
+	BoostAction GoogleCloudRetailV2betaRuleBoostActionResponse `pulumi:"boostAction"`
+	// The condition that triggers the rule. If the condition is empty, the rule will always apply.
+	Condition GoogleCloudRetailV2betaConditionResponse `pulumi:"condition"`
+	// Prevents term from being associated with other terms.
+	DoNotAssociateAction GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse `pulumi:"doNotAssociateAction"`
+	// Filters results.
+	FilterAction GoogleCloudRetailV2betaRuleFilterActionResponse `pulumi:"filterAction"`
+	// Ignores specific terms from query during search.
+	IgnoreAction GoogleCloudRetailV2betaRuleIgnoreActionResponse `pulumi:"ignoreAction"`
+	// Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
+	OnewaySynonymsAction GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse `pulumi:"onewaySynonymsAction"`
+	// Redirects a shopper to a specific page.
+	RedirectAction GoogleCloudRetailV2betaRuleRedirectActionResponse `pulumi:"redirectAction"`
+	// Replaces specific terms in the query.
+	ReplacementAction GoogleCloudRetailV2betaRuleReplacementActionResponse `pulumi:"replacementAction"`
+	// Treats a set of terms as synonyms of one another.
+	TwowaySynonymsAction GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse `pulumi:"twowaySynonymsAction"`
+}
+
+// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+type GoogleCloudRetailV2betaRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleResponseOutput) ToGoogleCloudRetailV2betaRuleResponseOutput() GoogleCloudRetailV2betaRuleResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleResponseOutput) ToGoogleCloudRetailV2betaRuleResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleResponseOutput {
+	return o
+}
+
+// A boost action.
+func (o GoogleCloudRetailV2betaRuleResponseOutput) BoostAction() GoogleCloudRetailV2betaRuleBoostActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleResponse) GoogleCloudRetailV2betaRuleBoostActionResponse {
+		return v.BoostAction
+	}).(GoogleCloudRetailV2betaRuleBoostActionResponseOutput)
+}
+
+// The condition that triggers the rule. If the condition is empty, the rule will always apply.
+func (o GoogleCloudRetailV2betaRuleResponseOutput) Condition() GoogleCloudRetailV2betaConditionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleResponse) GoogleCloudRetailV2betaConditionResponse {
+		return v.Condition
+	}).(GoogleCloudRetailV2betaConditionResponseOutput)
+}
+
+// Prevents term from being associated with other terms.
+func (o GoogleCloudRetailV2betaRuleResponseOutput) DoNotAssociateAction() GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleResponse) GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse {
+		return v.DoNotAssociateAction
+	}).(GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput)
+}
+
+// Filters results.
+func (o GoogleCloudRetailV2betaRuleResponseOutput) FilterAction() GoogleCloudRetailV2betaRuleFilterActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleResponse) GoogleCloudRetailV2betaRuleFilterActionResponse {
+		return v.FilterAction
+	}).(GoogleCloudRetailV2betaRuleFilterActionResponseOutput)
+}
+
+// Ignores specific terms from query during search.
+func (o GoogleCloudRetailV2betaRuleResponseOutput) IgnoreAction() GoogleCloudRetailV2betaRuleIgnoreActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleResponse) GoogleCloudRetailV2betaRuleIgnoreActionResponse {
+		return v.IgnoreAction
+	}).(GoogleCloudRetailV2betaRuleIgnoreActionResponseOutput)
+}
+
+// Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
+func (o GoogleCloudRetailV2betaRuleResponseOutput) OnewaySynonymsAction() GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleResponse) GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse {
+		return v.OnewaySynonymsAction
+	}).(GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput)
+}
+
+// Redirects a shopper to a specific page.
+func (o GoogleCloudRetailV2betaRuleResponseOutput) RedirectAction() GoogleCloudRetailV2betaRuleRedirectActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleResponse) GoogleCloudRetailV2betaRuleRedirectActionResponse {
+		return v.RedirectAction
+	}).(GoogleCloudRetailV2betaRuleRedirectActionResponseOutput)
+}
+
+// Replaces specific terms in the query.
+func (o GoogleCloudRetailV2betaRuleResponseOutput) ReplacementAction() GoogleCloudRetailV2betaRuleReplacementActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleResponse) GoogleCloudRetailV2betaRuleReplacementActionResponse {
+		return v.ReplacementAction
+	}).(GoogleCloudRetailV2betaRuleReplacementActionResponseOutput)
+}
+
+// Treats a set of terms as synonyms of one another.
+func (o GoogleCloudRetailV2betaRuleResponseOutput) TwowaySynonymsAction() GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleResponse) GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse {
+		return v.TwowaySynonymsAction
+	}).(GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutput)
+}
+
+// Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
+type GoogleCloudRetailV2betaRuleTwowaySynonymsAction struct {
+	// Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
+	Synonyms []string `pulumi:"synonyms"`
+}
+
+// GoogleCloudRetailV2betaRuleTwowaySynonymsActionInput is an input type that accepts GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs and GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleTwowaySynonymsActionInput` via:
+//
+//          GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs{...}
+type GoogleCloudRetailV2betaRuleTwowaySynonymsActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput() GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput
+	ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput
+}
+
+// Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
+type GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs struct {
+	// Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
+	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
+}
+
+func (GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleTwowaySynonymsAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput() GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput {
+	return i.ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput)
+}
+
+func (i GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput() GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput).ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs, GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtr and GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrInput` via:
+//
+//          GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput() GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput
+	ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput
+}
+
+type googleCloudRetailV2betaRuleTwowaySynonymsActionPtrType GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs
+
+func GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtr(v *GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs) GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrInput {
+	return (*googleCloudRetailV2betaRuleTwowaySynonymsActionPtrType)(v)
+}
+
+func (*googleCloudRetailV2betaRuleTwowaySynonymsActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleTwowaySynonymsAction)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaRuleTwowaySynonymsActionPtrType) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput() GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput {
+	return i.ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaRuleTwowaySynonymsActionPtrType) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput)
+}
+
+// Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
+type GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleTwowaySynonymsAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput() GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput() GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput {
+	return o.ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRuleTwowaySynonymsAction) *GoogleCloudRetailV2betaRuleTwowaySynonymsAction {
+		return &v
+	}).(GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput)
+}
+
+// Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
+func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput) Synonyms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleTwowaySynonymsAction) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaRuleTwowaySynonymsAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput() GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleTwowaySynonymsAction) GoogleCloudRetailV2betaRuleTwowaySynonymsAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2betaRuleTwowaySynonymsAction
+		return ret
+	}).(GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput)
+}
+
+// Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
+func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput) Synonyms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaRuleTwowaySynonymsAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Synonyms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
+type GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse struct {
+	// Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
+	Synonyms []string `pulumi:"synonyms"`
+}
+
+// Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
+type GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutput) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutput() GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutput) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutput {
+	return o
+}
+
+// Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
+func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutput) Synonyms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
+}
+
+// The specifications of dynamically generated facets.
+type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec struct {
+	// Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+	Mode *GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode `pulumi:"mode"`
+}
+
+// GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs and GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecInput` via:
+//
+//          GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs{...}
+type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput
+	ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutputWithContext(context.Context) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput
+}
+
+// The specifications of dynamically generated facets.
+type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs struct {
+	// Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+	Mode GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModePtrInput `pulumi:"mode"`
+}
+
+func (GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput {
+	return i.ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput)
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput {
+	return i.ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput).ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs, GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtr and GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrInput` via:
+//
+//          GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput
+	ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutputWithContext(context.Context) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput
+}
+
+type googleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrType GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs
+
+func GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtr(v *GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrInput {
+	return (*googleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrType)(v)
+}
+
+func (*googleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrType) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput {
+	return i.ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrType) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput)
+}
+
+// The specifications of dynamically generated facets.
+type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput {
+	return o.ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec) *GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec {
+		return &v
+	}).(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput)
+}
+
+// Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput) Mode() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec) *GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode {
+		return v.Mode
+	}).(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModePtrOutput)
+}
+
+type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput) Elem() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec
+		return ret
+	}).(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput)
+}
+
+// Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput) Mode() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec) *GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModePtrOutput)
+}
+
+// The specifications of dynamically generated facets.
+type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponse struct {
+	// Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+	Mode string `pulumi:"mode"`
+}
+
+// The specifications of dynamically generated facets.
+type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutput) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutput() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutput) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutput {
+	return o
+}
+
+// Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// A facet specification to perform faceted search.
+type GoogleCloudRetailV2betaSearchRequestFacetSpec struct {
+	// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+	EnableDynamicPosition *bool `pulumi:"enableDynamicPosition"`
+	// List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. For example, suppose there are 100 products with color facet "Red" and 200 products with color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and have "colorFamilies" as FacetKey.key will by default return the "Red" with count 100. If this field contains "colorFamilies", then the query returns both the "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is now excluded from the filter. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
+	ExcludedFilterKeys []string `pulumi:"excludedFilterKeys"`
+	// The facet key specification.
+	FacetKey GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey `pulumi:"facetKey"`
+	// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+	Limit *int `pulumi:"limit"`
+}
+
+// GoogleCloudRetailV2betaSearchRequestFacetSpecInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestFacetSpecArgs and GoogleCloudRetailV2betaSearchRequestFacetSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestFacetSpecInput` via:
+//
+//          GoogleCloudRetailV2betaSearchRequestFacetSpecArgs{...}
+type GoogleCloudRetailV2betaSearchRequestFacetSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaSearchRequestFacetSpecOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecOutput
+	ToGoogleCloudRetailV2betaSearchRequestFacetSpecOutputWithContext(context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecOutput
+}
+
+// A facet specification to perform faceted search.
+type GoogleCloudRetailV2betaSearchRequestFacetSpecArgs struct {
+	// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+	EnableDynamicPosition pulumi.BoolPtrInput `pulumi:"enableDynamicPosition"`
+	// List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. For example, suppose there are 100 products with color facet "Red" and 200 products with color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and have "colorFamilies" as FacetKey.key will by default return the "Red" with count 100. If this field contains "colorFamilies", then the query returns both the "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is now excluded from the filter. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
+	ExcludedFilterKeys pulumi.StringArrayInput `pulumi:"excludedFilterKeys"`
+	// The facet key specification.
+	FacetKey GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyInput `pulumi:"facetKey"`
+	// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
+}
+
+func (GoogleCloudRetailV2betaSearchRequestFacetSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestFacetSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestFacetSpecArgs) ToGoogleCloudRetailV2betaSearchRequestFacetSpecOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecOutput {
+	return i.ToGoogleCloudRetailV2betaSearchRequestFacetSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestFacetSpecArgs) ToGoogleCloudRetailV2betaSearchRequestFacetSpecOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestFacetSpecOutput)
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestFacetSpecArgs) ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput {
+	return i.ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestFacetSpecArgs) ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestFacetSpecOutput).ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaSearchRequestFacetSpecPtrInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestFacetSpecArgs, GoogleCloudRetailV2betaSearchRequestFacetSpecPtr and GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestFacetSpecPtrInput` via:
+//
+//          GoogleCloudRetailV2betaSearchRequestFacetSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRetailV2betaSearchRequestFacetSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput
+	ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutputWithContext(context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput
+}
+
+type googleCloudRetailV2betaSearchRequestFacetSpecPtrType GoogleCloudRetailV2betaSearchRequestFacetSpecArgs
+
+func GoogleCloudRetailV2betaSearchRequestFacetSpecPtr(v *GoogleCloudRetailV2betaSearchRequestFacetSpecArgs) GoogleCloudRetailV2betaSearchRequestFacetSpecPtrInput {
+	return (*googleCloudRetailV2betaSearchRequestFacetSpecPtrType)(v)
+}
+
+func (*googleCloudRetailV2betaSearchRequestFacetSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaSearchRequestFacetSpec)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaSearchRequestFacetSpecPtrType) ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput {
+	return i.ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaSearchRequestFacetSpecPtrType) ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput)
+}
+
+// A facet specification to perform faceted search.
+type GoogleCloudRetailV2betaSearchRequestFacetSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaSearchRequestFacetSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestFacetSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput {
+	return o.ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaSearchRequestFacetSpec) *GoogleCloudRetailV2betaSearchRequestFacetSpec {
+		return &v
+	}).(GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput)
+}
+
+// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecOutput) EnableDynamicPosition() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpec) *bool { return v.EnableDynamicPosition }).(pulumi.BoolPtrOutput)
+}
+
+// List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. For example, suppose there are 100 products with color facet "Red" and 200 products with color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and have "colorFamilies" as FacetKey.key will by default return the "Red" with count 100. If this field contains "colorFamilies", then the query returns both the "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is now excluded from the filter. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecOutput) ExcludedFilterKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpec) []string { return v.ExcludedFilterKeys }).(pulumi.StringArrayOutput)
+}
+
+// The facet key specification.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecOutput) FacetKey() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpec) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey {
+		return v.FacetKey
+	}).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput)
+}
+
+// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpec) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+type GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaSearchRequestFacetSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) Elem() GoogleCloudRetailV2betaSearchRequestFacetSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpec) GoogleCloudRetailV2betaSearchRequestFacetSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2betaSearchRequestFacetSpec
+		return ret
+	}).(GoogleCloudRetailV2betaSearchRequestFacetSpecOutput)
+}
+
+// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) EnableDynamicPosition() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDynamicPosition
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. For example, suppose there are 100 products with color facet "Red" and 200 products with color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and have "colorFamilies" as FacetKey.key will by default return the "Red" with count 100. If this field contains "colorFamilies", then the query returns both the "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is now excluded from the filter. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) ExcludedFilterKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedFilterKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// The facet key specification.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) FacetKey() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpec) *GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey {
+		if v == nil {
+			return nil
+		}
+		return &v.FacetKey
+	}).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput)
+}
+
+// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies how a facet is computed.
+type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey struct {
+	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+	Contains []string `pulumi:"contains"`
+	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+	Intervals []GoogleCloudRetailV2betaInterval `pulumi:"intervals"`
+	// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
+	Key string `pulumi:"key"`
+	// The order in which Facet.values are returned. Allowed values are: * "count desc", which means order by Facet.FacetValue.count descending. * "value desc", which means order by Facet.FacetValue.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
+	OrderBy *string `pulumi:"orderBy"`
+	// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+	Prefixes []string `pulumi:"prefixes"`
+	// The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, FacetValue.value will be always "1" and FacetValue.count will be the number of results that matches the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+	Query *string `pulumi:"query"`
+	// Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on textual fields and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
+	RestrictedValues []string `pulumi:"restrictedValues"`
+}
+
+// GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs and GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyInput` via:
+//
+//          GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs{...}
+type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput
+	ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutputWithContext(context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput
+}
+
+// Specifies how a facet is computed.
+type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs struct {
+	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+	Intervals GoogleCloudRetailV2betaIntervalArrayInput `pulumi:"intervals"`
+	// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
+	Key pulumi.StringInput `pulumi:"key"`
+	// The order in which Facet.values are returned. Allowed values are: * "count desc", which means order by Facet.FacetValue.count descending. * "value desc", which means order by Facet.FacetValue.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
+	// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+	Prefixes pulumi.StringArrayInput `pulumi:"prefixes"`
+	// The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, FacetValue.value will be always "1" and FacetValue.count will be the number of results that matches the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+	Query pulumi.StringPtrInput `pulumi:"query"`
+	// Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on textual fields and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
+	RestrictedValues pulumi.StringArrayInput `pulumi:"restrictedValues"`
+}
+
+func (GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput {
+	return i.ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput)
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput {
+	return i.ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput).ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs, GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtr and GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrInput` via:
+//
+//          GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput
+	ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutputWithContext(context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput
+}
+
+type googleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrType GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs
+
+func GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtr(v *GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrInput {
+	return (*googleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrType)(v)
+}
+
+func (*googleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrType) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput {
+	return i.ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrType) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput)
+}
+
+// Specifies how a facet is computed.
+type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput {
+	return o.ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) *GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey {
+		return &v
+	}).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput)
+}
+
+// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) Intervals() GoogleCloudRetailV2betaIntervalArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) []GoogleCloudRetailV2betaInterval {
+		return v.Intervals
+	}).(GoogleCloudRetailV2betaIntervalArrayOutput)
+}
+
+// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The order in which Facet.values are returned. Allowed values are: * "count desc", which means order by Facet.FacetValue.count descending. * "value desc", which means order by Facet.FacetValue.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
+}
+
+// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+// The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, FacetValue.value will be always "1" and FacetValue.count will be the number of results that matches the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) *string { return v.Query }).(pulumi.StringPtrOutput)
+}
+
+// Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on textual fields and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) RestrictedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) []string { return v.RestrictedValues }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) Elem() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey
+		return ret
+	}).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput)
+}
+
+// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Contains
+	}).(pulumi.StringArrayOutput)
+}
+
+// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) Intervals() GoogleCloudRetailV2betaIntervalArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) []GoogleCloudRetailV2betaInterval {
+		if v == nil {
+			return nil
+		}
+		return v.Intervals
+	}).(GoogleCloudRetailV2betaIntervalArrayOutput)
+}
+
+// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The order in which Facet.values are returned. Allowed values are: * "count desc", which means order by Facet.FacetValue.count descending. * "value desc", which means order by Facet.FacetValue.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrderBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, FacetValue.value will be always "1" and FacetValue.count will be the number of results that matches the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on textual fields and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) RestrictedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RestrictedValues
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies how a facet is computed.
+type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse struct {
+	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+	Contains []string `pulumi:"contains"`
+	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+	Intervals []GoogleCloudRetailV2betaIntervalResponse `pulumi:"intervals"`
+	// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
+	Key string `pulumi:"key"`
+	// The order in which Facet.values are returned. Allowed values are: * "count desc", which means order by Facet.FacetValue.count descending. * "value desc", which means order by Facet.FacetValue.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
+	OrderBy string `pulumi:"orderBy"`
+	// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+	Prefixes []string `pulumi:"prefixes"`
+	// The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, FacetValue.value will be always "1" and FacetValue.count will be the number of results that matches the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+	Query string `pulumi:"query"`
+	// Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on textual fields and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
+	RestrictedValues []string `pulumi:"restrictedValues"`
+}
+
+// Specifies how a facet is computed.
+type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput {
+	return o
+}
+
+// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) Intervals() GoogleCloudRetailV2betaIntervalResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse) []GoogleCloudRetailV2betaIntervalResponse {
+		return v.Intervals
+	}).(GoogleCloudRetailV2betaIntervalResponseArrayOutput)
+}
+
+// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The order in which Facet.values are returned. Allowed values are: * "count desc", which means order by Facet.FacetValue.count descending. * "value desc", which means order by Facet.FacetValue.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) OrderBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse) string { return v.OrderBy }).(pulumi.StringOutput)
+}
+
+// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+// The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, FacetValue.value will be always "1" and FacetValue.count will be the number of results that matches the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on textual fields and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) RestrictedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse) []string {
+		return v.RestrictedValues
+	}).(pulumi.StringArrayOutput)
+}
+
+// A facet specification to perform faceted search.
+type GoogleCloudRetailV2betaSearchRequestFacetSpecResponse struct {
+	// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+	EnableDynamicPosition bool `pulumi:"enableDynamicPosition"`
+	// List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. For example, suppose there are 100 products with color facet "Red" and 200 products with color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and have "colorFamilies" as FacetKey.key will by default return the "Red" with count 100. If this field contains "colorFamilies", then the query returns both the "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is now excluded from the filter. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
+	ExcludedFilterKeys []string `pulumi:"excludedFilterKeys"`
+	// The facet key specification.
+	FacetKey GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse `pulumi:"facetKey"`
+	// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+	Limit int `pulumi:"limit"`
+}
+
+// A facet specification to perform faceted search.
+type GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestFacetSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput {
+	return o
+}
+
+// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput) EnableDynamicPosition() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecResponse) bool { return v.EnableDynamicPosition }).(pulumi.BoolOutput)
+}
+
+// List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. For example, suppose there are 100 products with color facet "Red" and 200 products with color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and have "colorFamilies" as FacetKey.key will by default return the "Red" with count 100. If this field contains "colorFamilies", then the query returns both the "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is now excluded from the filter. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput) ExcludedFilterKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecResponse) []string { return v.ExcludedFilterKeys }).(pulumi.StringArrayOutput)
+}
+
+// The facet key specification.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput) FacetKey() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecResponse) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse {
+		return v.FacetKey
+	}).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput)
+}
+
+// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecResponse) int { return v.Limit }).(pulumi.IntOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaAudienceInput)(nil)).Elem(), GoogleCloudRetailV2betaAudienceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaAudiencePtrInput)(nil)).Elem(), GoogleCloudRetailV2betaAudienceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaColorInfoInput)(nil)).Elem(), GoogleCloudRetailV2betaColorInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaColorInfoPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaColorInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaConditionInput)(nil)).Elem(), GoogleCloudRetailV2betaConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaConditionPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaConditionQueryTermInput)(nil)).Elem(), GoogleCloudRetailV2betaConditionQueryTermArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaConditionQueryTermArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaConditionQueryTermArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaConditionTimeRangeInput)(nil)).Elem(), GoogleCloudRetailV2betaConditionTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaConditionTimeRangeArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaConditionTimeRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaFulfillmentInfoInput)(nil)).Elem(), GoogleCloudRetailV2betaFulfillmentInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaFulfillmentInfoArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaFulfillmentInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaImageInput)(nil)).Elem(), GoogleCloudRetailV2betaImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaImageArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaIntervalInput)(nil)).Elem(), GoogleCloudRetailV2betaIntervalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaIntervalArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaIntervalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaPriceInfoInput)(nil)).Elem(), GoogleCloudRetailV2betaPriceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaPriceInfoPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaPriceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaPromotionInput)(nil)).Elem(), GoogleCloudRetailV2betaPromotionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaPromotionArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaPromotionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRatingInput)(nil)).Elem(), GoogleCloudRetailV2betaRatingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRatingPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaRatingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRulePtrInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleBoostActionInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleBoostActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleBoostActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleBoostActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleDoNotAssociateActionInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleFilterActionInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleFilterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleFilterActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleFilterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleIgnoreActionInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleIgnoreActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleIgnoreActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleIgnoreActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleOnewaySynonymsActionInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleRedirectActionInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleRedirectActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleRedirectActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleRedirectActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleReplacementActionInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleReplacementActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleReplacementActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleReplacementActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleTwowaySynonymsActionInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecInput)(nil)).Elem(), GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestFacetSpecInput)(nil)).Elem(), GoogleCloudRetailV2betaSearchRequestFacetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestFacetSpecPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaSearchRequestFacetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyInput)(nil)).Elem(), GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaAudienceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaAudiencePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaAudienceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaColorInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaColorInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaColorInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaConditionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaConditionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaConditionQueryTermOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaConditionQueryTermArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaConditionQueryTermResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaConditionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaConditionTimeRangeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaConditionTimeRangeArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaConditionTimeRangeResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaFulfillmentInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaFulfillmentInfoArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaFulfillmentInfoResponseOutput{})
@@ -1791,7 +5161,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaImageArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaImageResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaImageResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaIntervalOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaIntervalArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaIntervalResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaIntervalResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput{})
@@ -1805,4 +5178,40 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRatingOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRatingPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRatingResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRulePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleBoostActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleBoostActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleBoostActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleFilterActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleFilterActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleFilterActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleIgnoreActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleIgnoreActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleRedirectActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleRedirectActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleRedirectActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleReplacementActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleReplacementActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleReplacementActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestFacetSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput{})
 }
