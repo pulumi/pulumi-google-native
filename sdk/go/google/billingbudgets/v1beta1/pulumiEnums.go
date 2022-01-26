@@ -14,6 +14,7 @@ import (
 type GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod string
 
 const (
+	// Calendar period is unset. This is the default if the budget is for a custom time period (CustomPeriod).
 	GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodCalendarPeriodUnspecified = GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod("CALENDAR_PERIOD_UNSPECIFIED")
 	// A month. Month starts on the first day of each month, such as January 1, February 1, March 1, and so on.
 	GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodMonth = GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod("MONTH")

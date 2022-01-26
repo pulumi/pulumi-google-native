@@ -16,6 +16,9 @@ class GoogleCloudBillingBudgetsV1FilterCalendarPeriod(str, Enum):
     Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget tracks usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it tracks usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
     """
     CALENDAR_PERIOD_UNSPECIFIED = "CALENDAR_PERIOD_UNSPECIFIED"
+    """
+    Calendar period is unset. This is the default if the budget is for a custom time period (CustomPeriod).
+    """
     MONTH = "MONTH"
     """
     A month. Month starts on the first day of each month, such as January 1, February 1, March 1, and so on.

@@ -20,6 +20,9 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Calendar period is unset. This is the default if the budget is for a custom time period (CustomPeriod).
+        /// </summary>
         public static GoogleCloudBillingBudgetsV1FilterCalendarPeriod CalendarPeriodUnspecified { get; } = new GoogleCloudBillingBudgetsV1FilterCalendarPeriod("CALENDAR_PERIOD_UNSPECIFIED");
         /// <summary>
         /// A month. Month starts on the first day of each month, such as January 1, February 1, March 1, and so on.
