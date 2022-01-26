@@ -2,12 +2,15 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 0.12.0 (2022-01-26)
 
 Improvements:
 
-- Update dependencies to pulumi/pulumi 3.21.1
-
----
+- Update to support the latest resource definitions and the latest Pulumi SDK
 
 ## 0.11.0 (2022-01-10)
 
@@ -68,7 +71,7 @@ Bug fixes:
 
 - Fix a panic when an array property is updated to a larger number of elements
   [#160](https://github.com/pulumi/pulumi-google-native/issues/160)
-  
+
 - Support initialization failures by checkpointing partially created resources into the state
   [#149](https://github.com/pulumi/pulumi-google-native/issues/149)
 
