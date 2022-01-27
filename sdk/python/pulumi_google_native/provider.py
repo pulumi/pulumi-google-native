@@ -216,3 +216,27 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[Optional[str]]:
+        """
+        The default project to manage resources in. If another project is specified on a resource, it will take precedence.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[Optional[str]]:
+        """
+        The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[Optional[str]]:
+        """
+        The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
+        """
+        return pulumi.get(self, "zone")
+

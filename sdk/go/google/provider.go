@@ -13,6 +13,13 @@ import (
 // The provider type for the Google Cloud package.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	// The default project to manage resources in. If another project is specified on a resource, it will take precedence.
+	Project pulumi.StringPtrOutput `pulumi:"project"`
+	// The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
+	Zone pulumi.StringPtrOutput `pulumi:"zone"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.

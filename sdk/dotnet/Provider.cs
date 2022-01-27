@@ -16,6 +16,25 @@ namespace Pulumi.GoogleNative
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// The default project to manage resources in. If another project is specified on a resource, it will take precedence.
+        /// </summary>
+        [Output("project")]
+        public Output<string?> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+        /// </summary>
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
+        /// </summary>
+        [Output("zone")]
+        public Output<string?> Zone { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///
