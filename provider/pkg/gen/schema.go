@@ -68,6 +68,20 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 			ObjectTypeSpec: schema.ObjectTypeSpec{
 				Description: "The provider type for the Google Cloud package.",
 				Type:        "object",
+				Properties: map[string]schema.PropertySpec{
+					"project": {
+						TypeSpec: schema.TypeSpec{Type: "string"},
+						Description: "The default project to manage resources in. If another project is specified on a resource, it will take precedence.",
+					},
+					"region": {
+						TypeSpec: schema.TypeSpec{Type: "string"},
+						Description: "The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.",
+					},
+					"zone": {
+						TypeSpec: schema.TypeSpec{Type: "string"},
+						Description: "The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.",
+					},
+				},
 			},
 			InputProperties: map[string]schema.PropertySpec{
 				"project": {

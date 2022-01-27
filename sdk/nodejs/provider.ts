@@ -22,6 +22,18 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * The default project to manage resources in. If another project is specified on a resource, it will take precedence.
+     */
+    public readonly project!: pulumi.Output<string | undefined>;
+    /**
+     * The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+     */
+    public readonly region!: pulumi.Output<string | undefined>;
+    /**
+     * The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
+     */
+    public readonly zone!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
