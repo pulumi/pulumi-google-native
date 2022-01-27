@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetCryptoKeyResult:
-    def __init__(__self__, create_time=None, destroy_scheduled_duration=None, import_only=None, labels=None, name=None, next_rotation_time=None, primary=None, purpose=None, rotation_period=None, version_template=None):
+    def __init__(__self__, create_time=None, crypto_key_backend=None, destroy_scheduled_duration=None, import_only=None, labels=None, name=None, next_rotation_time=None, primary=None, purpose=None, rotation_period=None, version_template=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if crypto_key_backend and not isinstance(crypto_key_backend, str):
+            raise TypeError("Expected argument 'crypto_key_backend' to be a str")
+        pulumi.set(__self__, "crypto_key_backend", crypto_key_backend)
         if destroy_scheduled_duration and not isinstance(destroy_scheduled_duration, str):
             raise TypeError("Expected argument 'destroy_scheduled_duration' to be a str")
         pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
@@ -57,6 +60,14 @@ class GetCryptoKeyResult:
         The time at which this CryptoKey was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="cryptoKeyBackend")
+    def crypto_key_backend(self) -> str:
+        """
+        Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
+        """
+        return pulumi.get(self, "crypto_key_backend")
 
     @property
     @pulumi.getter(name="destroyScheduledDuration")
@@ -138,6 +149,7 @@ class AwaitableGetCryptoKeyResult(GetCryptoKeyResult):
             yield self
         return GetCryptoKeyResult(
             create_time=self.create_time,
+            crypto_key_backend=self.crypto_key_backend,
             destroy_scheduled_duration=self.destroy_scheduled_duration,
             import_only=self.import_only,
             labels=self.labels,
@@ -170,6 +182,7 @@ def get_crypto_key(crypto_key_id: Optional[str] = None,
 
     return AwaitableGetCryptoKeyResult(
         create_time=__ret__.create_time,
+        crypto_key_backend=__ret__.crypto_key_backend,
         destroy_scheduled_duration=__ret__.destroy_scheduled_duration,
         import_only=__ret__.import_only,
         labels=__ret__.labels,

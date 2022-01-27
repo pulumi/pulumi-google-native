@@ -15,11 +15,13 @@ __all__ = [
     'AuditLogConfigResponse',
     'BindingResponse',
     'CertificateChainsResponse',
+    'CertificateResponse',
     'CryptoKeyVersionResponse',
     'CryptoKeyVersionTemplateResponse',
     'ExprResponse',
     'ExternalProtectionLevelOptionsResponse',
     'KeyOperationAttestationResponse',
+    'ServiceResolverResponse',
     'WrappingPublicKeyResponse',
 ]
 
@@ -235,6 +237,143 @@ class CertificateChainsResponse(dict):
 
 
 @pulumi.output_type
+class CertificateResponse(dict):
+    """
+    A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notAfterTime":
+            suggest = "not_after_time"
+        elif key == "notBeforeTime":
+            suggest = "not_before_time"
+        elif key == "rawDer":
+            suggest = "raw_der"
+        elif key == "serialNumber":
+            suggest = "serial_number"
+        elif key == "sha256Fingerprint":
+            suggest = "sha256_fingerprint"
+        elif key == "subjectAlternativeDnsNames":
+            suggest = "subject_alternative_dns_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 issuer: str,
+                 not_after_time: str,
+                 not_before_time: str,
+                 parsed: bool,
+                 raw_der: str,
+                 serial_number: str,
+                 sha256_fingerprint: str,
+                 subject: str,
+                 subject_alternative_dns_names: Sequence[str]):
+        """
+        A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas.
+        :param str issuer: The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
+        :param str not_after_time: The certificate is not valid after this time. Only present if parsed is true.
+        :param str not_before_time: The certificate is not valid before this time. Only present if parsed is true.
+        :param bool parsed: True if the certificate was parsed successfully.
+        :param str raw_der: The raw certificate bytes in DER format.
+        :param str serial_number: The certificate serial number as a hex string. Only present if parsed is true.
+        :param str sha256_fingerprint: The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
+        :param str subject: The subject distinguished name in RFC 2253 format. Only present if parsed is true.
+        :param Sequence[str] subject_alternative_dns_names: The subject Alternative DNS names. Only present if parsed is true.
+        """
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "not_after_time", not_after_time)
+        pulumi.set(__self__, "not_before_time", not_before_time)
+        pulumi.set(__self__, "parsed", parsed)
+        pulumi.set(__self__, "raw_der", raw_der)
+        pulumi.set(__self__, "serial_number", serial_number)
+        pulumi.set(__self__, "sha256_fingerprint", sha256_fingerprint)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "subject_alternative_dns_names", subject_alternative_dns_names)
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> str:
+        """
+        The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
+        """
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="notAfterTime")
+    def not_after_time(self) -> str:
+        """
+        The certificate is not valid after this time. Only present if parsed is true.
+        """
+        return pulumi.get(self, "not_after_time")
+
+    @property
+    @pulumi.getter(name="notBeforeTime")
+    def not_before_time(self) -> str:
+        """
+        The certificate is not valid before this time. Only present if parsed is true.
+        """
+        return pulumi.get(self, "not_before_time")
+
+    @property
+    @pulumi.getter
+    def parsed(self) -> bool:
+        """
+        True if the certificate was parsed successfully.
+        """
+        return pulumi.get(self, "parsed")
+
+    @property
+    @pulumi.getter(name="rawDer")
+    def raw_der(self) -> str:
+        """
+        The raw certificate bytes in DER format.
+        """
+        return pulumi.get(self, "raw_der")
+
+    @property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> str:
+        """
+        The certificate serial number as a hex string. Only present if parsed is true.
+        """
+        return pulumi.get(self, "serial_number")
+
+    @property
+    @pulumi.getter(name="sha256Fingerprint")
+    def sha256_fingerprint(self) -> str:
+        """
+        The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
+        """
+        return pulumi.get(self, "sha256_fingerprint")
+
+    @property
+    @pulumi.getter
+    def subject(self) -> str:
+        """
+        The subject distinguished name in RFC 2253 format. Only present if parsed is true.
+        """
+        return pulumi.get(self, "subject")
+
+    @property
+    @pulumi.getter(name="subjectAlternativeDnsNames")
+    def subject_alternative_dns_names(self) -> Sequence[str]:
+        """
+        The subject Alternative DNS names. Only present if parsed is true.
+        """
+        return pulumi.get(self, "subject_alternative_dns_names")
+
+
+@pulumi.output_type
 class CryptoKeyVersionResponse(dict):
     """
     A CryptoKeyVersion represents an individual cryptographic key, and the associated key material. An ENABLED version can be used for cryptographic operations. For security reasons, the raw cryptographic key material represented by a CryptoKeyVersion can never be viewed or exported. It can only be used to encrypt, decrypt, or sign data when an authorized user or application invokes Cloud KMS.
@@ -296,7 +435,7 @@ class CryptoKeyVersionResponse(dict):
         :param str create_time: The time at which this CryptoKeyVersion was created.
         :param str destroy_event_time: The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
         :param str destroy_time: The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
-        :param 'ExternalProtectionLevelOptionsResponse' external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+        :param 'ExternalProtectionLevelOptionsResponse' external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         :param str generate_time: The time this CryptoKeyVersion's key material was generated.
         :param str import_failure_reason: The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
         :param str import_job: The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
@@ -365,7 +504,7 @@ class CryptoKeyVersionResponse(dict):
     @pulumi.getter(name="externalProtectionLevelOptions")
     def external_protection_level_options(self) -> 'outputs.ExternalProtectionLevelOptionsResponse':
         """
-        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         """
         return pulumi.get(self, "external_protection_level_options")
 
@@ -542,12 +681,14 @@ class ExprResponse(dict):
 @pulumi.output_type
 class ExternalProtectionLevelOptionsResponse(dict):
     """
-    ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+    ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
     """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "externalKeyUri":
+        if key == "ekmConnectionKeyPath":
+            suggest = "ekm_connection_key_path"
+        elif key == "externalKeyUri":
             suggest = "external_key_uri"
 
         if suggest:
@@ -562,12 +703,23 @@ class ExternalProtectionLevelOptionsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 ekm_connection_key_path: str,
                  external_key_uri: str):
         """
-        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        :param str ekm_connection_key_path: The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
         :param str external_key_uri: The URI for an external resource that this CryptoKeyVersion represents.
         """
+        pulumi.set(__self__, "ekm_connection_key_path", ekm_connection_key_path)
         pulumi.set(__self__, "external_key_uri", external_key_uri)
+
+    @property
+    @pulumi.getter(name="ekmConnectionKeyPath")
+    def ekm_connection_key_path(self) -> str:
+        """
+        The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
+        """
+        return pulumi.get(self, "ekm_connection_key_path")
 
     @property
     @pulumi.getter(name="externalKeyUri")
@@ -637,6 +789,82 @@ class KeyOperationAttestationResponse(dict):
         The format of the attestation data.
         """
         return pulumi.get(self, "format")
+
+
+@pulumi.output_type
+class ServiceResolverResponse(dict):
+    """
+    A ServiceResolver represents an EKM replica that can be reached within an EkmConnection.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointFilter":
+            suggest = "endpoint_filter"
+        elif key == "serverCertificates":
+            suggest = "server_certificates"
+        elif key == "serviceDirectoryService":
+            suggest = "service_directory_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceResolverResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceResolverResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceResolverResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint_filter: str,
+                 hostname: str,
+                 server_certificates: Sequence['outputs.CertificateResponse'],
+                 service_directory_service: str):
+        """
+        A ServiceResolver represents an EKM replica that can be reached within an EkmConnection.
+        :param str endpoint_filter: Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+        :param str hostname: The hostname of the EKM replica used at TLS and HTTP layers.
+        :param Sequence['CertificateResponse'] server_certificates: A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+        :param str service_directory_service: The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/*/locations/*/namespaces/*/services/*`.
+        """
+        pulumi.set(__self__, "endpoint_filter", endpoint_filter)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "server_certificates", server_certificates)
+        pulumi.set(__self__, "service_directory_service", service_directory_service)
+
+    @property
+    @pulumi.getter(name="endpointFilter")
+    def endpoint_filter(self) -> str:
+        """
+        Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+        """
+        return pulumi.get(self, "endpoint_filter")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        The hostname of the EKM replica used at TLS and HTTP layers.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="serverCertificates")
+    def server_certificates(self) -> Sequence['outputs.CertificateResponse']:
+        """
+        A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+        """
+        return pulumi.get(self, "server_certificates")
+
+    @property
+    @pulumi.getter(name="serviceDirectoryService")
+    def service_directory_service(self) -> str:
+        """
+        The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/*/locations/*/namespaces/*/services/*`.
+        """
+        return pulumi.get(self, "service_directory_service")
 
 
 @pulumi.output_type

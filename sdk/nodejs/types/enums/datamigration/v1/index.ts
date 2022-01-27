@@ -123,6 +123,10 @@ export const ConnectionProfileProvider = {
      * RDS runs the database.
      */
     Rds: "RDS",
+    /**
+     * Amazon Aurora.
+     */
+    Aurora: "AURORA",
 } as const;
 
 /**
@@ -203,6 +207,10 @@ export const DatabaseTypeProvider = {
      * RDS runs the database.
      */
     Rds: "RDS",
+    /**
+     * Amazon Aurora.
+     */
+    Aurora: "AURORA",
 } as const;
 
 /**

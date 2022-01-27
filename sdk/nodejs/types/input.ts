@@ -5048,11 +5048,11 @@ export namespace cloudasset {
              */
             analyzeServiceAccountImpersonation?: pulumi.Input<boolean>;
             /**
-             * Optional. If true, the identities section of the result will expand any Google groups appearing in an IAM policy binding. If IamPolicyAnalysisQuery.identity_selector is specified, the identity in the result will be determined by the selector, and this flag is not allowed to set. Default is false.
+             * Optional. If true, the identities section of the result will expand any Google groups appearing in an IAM policy binding. If IamPolicyAnalysisQuery.identity_selector is specified, the identity in the result will be determined by the selector, and this flag is not allowed to set. If true, the default max expansion per group is 1000 for AssetService.AnalyzeIamPolicy][]. Default is false.
              */
             expandGroups?: pulumi.Input<boolean>;
             /**
-             * Optional. If true and IamPolicyAnalysisQuery.resource_selector is not specified, the resource section of the result will expand any resource attached to an IAM policy to include resources lower in the resource hierarchy. For example, if the request analyzes for which resources user A has permission P, and the results include an IAM policy with P on a GCP folder, the results will also include resources in that folder with permission P. If true and IamPolicyAnalysisQuery.resource_selector is specified, the resource section of the result will expand the specified resource to include resources lower in the resource hierarchy. Only project or lower resources are supported. Folder and organization resource cannot be used together with this option. For example, if the request analyzes for which users have permission P on a GCP project with this option enabled, the results will include all users who have permission P on that project or any lower resource. Default is false.
+             * Optional. If true and IamPolicyAnalysisQuery.resource_selector is not specified, the resource section of the result will expand any resource attached to an IAM policy to include resources lower in the resource hierarchy. For example, if the request analyzes for which resources user A has permission P, and the results include an IAM policy with P on a GCP folder, the results will also include resources in that folder with permission P. If true and IamPolicyAnalysisQuery.resource_selector is specified, the resource section of the result will expand the specified resource to include resources lower in the resource hierarchy. Only project or lower resources are supported. Folder and organization resource cannot be used together with this option. For example, if the request analyzes for which users have permission P on a GCP project with this option enabled, the results will include all users who have permission P on that project or any lower resource. If true, the default max expansion per resource is 1000 for AssetService.AnalyzeIamPolicy][] and 100000 for AssetService.AnalyzeIamPolicyLongrunning][]. Default is false.
              */
             expandResources?: pulumi.Input<boolean>;
             /**
@@ -6857,6 +6857,16 @@ export namespace cloudkms {
         }
 
         /**
+         * A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas.
+         */
+        export interface CertificateArgs {
+            /**
+             * The raw certificate bytes in DER format.
+             */
+            rawDer: pulumi.Input<string>;
+        }
+
+        /**
          * A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
          */
         export interface CryptoKeyVersionTemplateArgs {
@@ -6893,13 +6903,39 @@ export namespace cloudkms {
         }
 
         /**
-         * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+         * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
          */
         export interface ExternalProtectionLevelOptionsArgs {
+            /**
+             * The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
+             */
+            ekmConnectionKeyPath?: pulumi.Input<string>;
             /**
              * The URI for an external resource that this CryptoKeyVersion represents.
              */
             externalKeyUri?: pulumi.Input<string>;
+        }
+
+        /**
+         * A ServiceResolver represents an EKM replica that can be reached within an EkmConnection.
+         */
+        export interface ServiceResolverArgs {
+            /**
+             * Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+             */
+            endpointFilter?: pulumi.Input<string>;
+            /**
+             * The hostname of the EKM replica used at TLS and HTTP layers.
+             */
+            hostname: pulumi.Input<string>;
+            /**
+             * A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+             */
+            serverCertificates: pulumi.Input<pulumi.Input<inputs.cloudkms.v1.CertificateArgs>[]>;
+            /**
+             * The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*`.
+             */
+            serviceDirectoryService: pulumi.Input<string>;
         }
 
     }
@@ -30783,7 +30819,7 @@ export namespace dataproc {
              */
             bootDiskType?: pulumi.Input<string>;
             /**
-             * Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+             * Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
              */
             localSsdInterface?: pulumi.Input<string>;
             /**
@@ -31599,7 +31635,7 @@ export namespace dataproc {
         }
 
         /**
-         * A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+         * A configuration for running an Apache Spark (https://spark.apache.org/) batch workload.
          */
         export interface SparkBatchArgs {
             /**
@@ -31639,7 +31675,7 @@ export namespace dataproc {
         }
 
         /**
-         * A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.
+         * A Dataproc job for running Apache Spark (https://spark.apache.org/) applications on YARN.
          */
         export interface SparkJobArgs {
             /**
@@ -31729,7 +31765,7 @@ export namespace dataproc {
         }
 
         /**
-         * A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+         * A configuration for running Apache Spark SQL (https://spark.apache.org/sql/) queries as a batch workload.
          */
         export interface SparkSqlBatchArgs {
             /**
@@ -31747,7 +31783,7 @@ export namespace dataproc {
         }
 
         /**
-         * A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
+         * A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/) queries.
          */
         export interface SparkSqlJobArgs {
             /**

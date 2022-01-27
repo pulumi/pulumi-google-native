@@ -41,8 +41,8 @@ type LookupCaseResult struct {
 	Escalated bool `pulumi:"escalated"`
 	// The resource name for the case.
 	Name string `pulumi:"name"`
-	// The severity of this case.
-	Severity string `pulumi:"severity"`
+	// The priority of this case. If this is set, do not set severity.
+	Priority string `pulumi:"priority"`
 	// The current status of the support case.
 	State string `pulumi:"state"`
 	// The email addresses to receive updates on this case.
@@ -123,9 +123,9 @@ func (o LookupCaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The severity of this case.
-func (o LookupCaseResultOutput) Severity() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCaseResult) string { return v.Severity }).(pulumi.StringOutput)
+// The priority of this case. If this is set, do not set severity.
+func (o LookupCaseResultOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCaseResult) string { return v.Priority }).(pulumi.StringOutput)
 }
 
 // The current status of the support case.

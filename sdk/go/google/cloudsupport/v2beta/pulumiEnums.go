@@ -10,135 +10,135 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The severity of this case.
-type CaseSeverity string
+// The priority of this case. If this is set, do not set severity.
+type CasePriority string
 
 const (
 	// Severity is undefined or has not been set yet.
-	CaseSeveritySeverityUnspecified = CaseSeverity("SEVERITY_UNSPECIFIED")
+	CasePriorityPriorityUnspecified = CasePriority("PRIORITY_UNSPECIFIED")
 	// Extreme impact on a production service. Service is hard down.
-	CaseSeverityS0 = CaseSeverity("S0")
+	CasePriorityP0 = CasePriority("P0")
 	// Critical impact on a production service. Service is currently unusable.
-	CaseSeverityS1 = CaseSeverity("S1")
+	CasePriorityP1 = CasePriority("P1")
 	// Severe impact on a production service. Service is usable but greatly impaired.
-	CaseSeverityS2 = CaseSeverity("S2")
+	CasePriorityP2 = CasePriority("P2")
 	// Medium impact on a production service. Service is available, but moderately impaired.
-	CaseSeverityS3 = CaseSeverity("S3")
+	CasePriorityP3 = CasePriority("P3")
 	// General questions or minor issues. Production service is fully available.
-	CaseSeverityS4 = CaseSeverity("S4")
+	CasePriorityP4 = CasePriority("P4")
 )
 
-func (CaseSeverity) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaseSeverity)(nil)).Elem()
+func (CasePriority) ElementType() reflect.Type {
+	return reflect.TypeOf((*CasePriority)(nil)).Elem()
 }
 
-func (e CaseSeverity) ToCaseSeverityOutput() CaseSeverityOutput {
-	return pulumi.ToOutput(e).(CaseSeverityOutput)
+func (e CasePriority) ToCasePriorityOutput() CasePriorityOutput {
+	return pulumi.ToOutput(e).(CasePriorityOutput)
 }
 
-func (e CaseSeverity) ToCaseSeverityOutputWithContext(ctx context.Context) CaseSeverityOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(CaseSeverityOutput)
+func (e CasePriority) ToCasePriorityOutputWithContext(ctx context.Context) CasePriorityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CasePriorityOutput)
 }
 
-func (e CaseSeverity) ToCaseSeverityPtrOutput() CaseSeverityPtrOutput {
-	return e.ToCaseSeverityPtrOutputWithContext(context.Background())
+func (e CasePriority) ToCasePriorityPtrOutput() CasePriorityPtrOutput {
+	return e.ToCasePriorityPtrOutputWithContext(context.Background())
 }
 
-func (e CaseSeverity) ToCaseSeverityPtrOutputWithContext(ctx context.Context) CaseSeverityPtrOutput {
-	return CaseSeverity(e).ToCaseSeverityOutputWithContext(ctx).ToCaseSeverityPtrOutputWithContext(ctx)
+func (e CasePriority) ToCasePriorityPtrOutputWithContext(ctx context.Context) CasePriorityPtrOutput {
+	return CasePriority(e).ToCasePriorityOutputWithContext(ctx).ToCasePriorityPtrOutputWithContext(ctx)
 }
 
-func (e CaseSeverity) ToStringOutput() pulumi.StringOutput {
+func (e CasePriority) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e CaseSeverity) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e CasePriority) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e CaseSeverity) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e CasePriority) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e CaseSeverity) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e CasePriority) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type CaseSeverityOutput struct{ *pulumi.OutputState }
+type CasePriorityOutput struct{ *pulumi.OutputState }
 
-func (CaseSeverityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaseSeverity)(nil)).Elem()
+func (CasePriorityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CasePriority)(nil)).Elem()
 }
 
-func (o CaseSeverityOutput) ToCaseSeverityOutput() CaseSeverityOutput {
+func (o CasePriorityOutput) ToCasePriorityOutput() CasePriorityOutput {
 	return o
 }
 
-func (o CaseSeverityOutput) ToCaseSeverityOutputWithContext(ctx context.Context) CaseSeverityOutput {
+func (o CasePriorityOutput) ToCasePriorityOutputWithContext(ctx context.Context) CasePriorityOutput {
 	return o
 }
 
-func (o CaseSeverityOutput) ToCaseSeverityPtrOutput() CaseSeverityPtrOutput {
-	return o.ToCaseSeverityPtrOutputWithContext(context.Background())
+func (o CasePriorityOutput) ToCasePriorityPtrOutput() CasePriorityPtrOutput {
+	return o.ToCasePriorityPtrOutputWithContext(context.Background())
 }
 
-func (o CaseSeverityOutput) ToCaseSeverityPtrOutputWithContext(ctx context.Context) CaseSeverityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaseSeverity) *CaseSeverity {
+func (o CasePriorityOutput) ToCasePriorityPtrOutputWithContext(ctx context.Context) CasePriorityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CasePriority) *CasePriority {
 		return &v
-	}).(CaseSeverityPtrOutput)
+	}).(CasePriorityPtrOutput)
 }
 
-func (o CaseSeverityOutput) ToStringOutput() pulumi.StringOutput {
+func (o CasePriorityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o CaseSeverityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e CaseSeverity) string {
+func (o CasePriorityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CasePriority) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o CaseSeverityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o CasePriorityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o CaseSeverityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e CaseSeverity) *string {
+func (o CasePriorityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CasePriority) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type CaseSeverityPtrOutput struct{ *pulumi.OutputState }
+type CasePriorityPtrOutput struct{ *pulumi.OutputState }
 
-func (CaseSeverityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CaseSeverity)(nil)).Elem()
+func (CasePriorityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CasePriority)(nil)).Elem()
 }
 
-func (o CaseSeverityPtrOutput) ToCaseSeverityPtrOutput() CaseSeverityPtrOutput {
+func (o CasePriorityPtrOutput) ToCasePriorityPtrOutput() CasePriorityPtrOutput {
 	return o
 }
 
-func (o CaseSeverityPtrOutput) ToCaseSeverityPtrOutputWithContext(ctx context.Context) CaseSeverityPtrOutput {
+func (o CasePriorityPtrOutput) ToCasePriorityPtrOutputWithContext(ctx context.Context) CasePriorityPtrOutput {
 	return o
 }
 
-func (o CaseSeverityPtrOutput) Elem() CaseSeverityOutput {
-	return o.ApplyT(func(v *CaseSeverity) CaseSeverity {
+func (o CasePriorityPtrOutput) Elem() CasePriorityOutput {
+	return o.ApplyT(func(v *CasePriority) CasePriority {
 		if v != nil {
 			return *v
 		}
-		var ret CaseSeverity
+		var ret CasePriority
 		return ret
-	}).(CaseSeverityOutput)
+	}).(CasePriorityOutput)
 }
 
-func (o CaseSeverityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o CasePriorityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o CaseSeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CaseSeverity) *string {
+func (o CasePriorityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CasePriority) *string {
 		if e == nil {
 			return nil
 		}
@@ -147,47 +147,47 @@ func (o CaseSeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// CaseSeverityInput is an input type that accepts CaseSeverityArgs and CaseSeverityOutput values.
-// You can construct a concrete instance of `CaseSeverityInput` via:
+// CasePriorityInput is an input type that accepts CasePriorityArgs and CasePriorityOutput values.
+// You can construct a concrete instance of `CasePriorityInput` via:
 //
-//          CaseSeverityArgs{...}
-type CaseSeverityInput interface {
+//          CasePriorityArgs{...}
+type CasePriorityInput interface {
 	pulumi.Input
 
-	ToCaseSeverityOutput() CaseSeverityOutput
-	ToCaseSeverityOutputWithContext(context.Context) CaseSeverityOutput
+	ToCasePriorityOutput() CasePriorityOutput
+	ToCasePriorityOutputWithContext(context.Context) CasePriorityOutput
 }
 
-var caseSeverityPtrType = reflect.TypeOf((**CaseSeverity)(nil)).Elem()
+var casePriorityPtrType = reflect.TypeOf((**CasePriority)(nil)).Elem()
 
-type CaseSeverityPtrInput interface {
+type CasePriorityPtrInput interface {
 	pulumi.Input
 
-	ToCaseSeverityPtrOutput() CaseSeverityPtrOutput
-	ToCaseSeverityPtrOutputWithContext(context.Context) CaseSeverityPtrOutput
+	ToCasePriorityPtrOutput() CasePriorityPtrOutput
+	ToCasePriorityPtrOutputWithContext(context.Context) CasePriorityPtrOutput
 }
 
-type caseSeverityPtr string
+type casePriorityPtr string
 
-func CaseSeverityPtr(v string) CaseSeverityPtrInput {
-	return (*caseSeverityPtr)(&v)
+func CasePriorityPtr(v string) CasePriorityPtrInput {
+	return (*casePriorityPtr)(&v)
 }
 
-func (*caseSeverityPtr) ElementType() reflect.Type {
-	return caseSeverityPtrType
+func (*casePriorityPtr) ElementType() reflect.Type {
+	return casePriorityPtrType
 }
 
-func (in *caseSeverityPtr) ToCaseSeverityPtrOutput() CaseSeverityPtrOutput {
-	return pulumi.ToOutput(in).(CaseSeverityPtrOutput)
+func (in *casePriorityPtr) ToCasePriorityPtrOutput() CasePriorityPtrOutput {
+	return pulumi.ToOutput(in).(CasePriorityPtrOutput)
 }
 
-func (in *caseSeverityPtr) ToCaseSeverityPtrOutputWithContext(ctx context.Context) CaseSeverityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(CaseSeverityPtrOutput)
+func (in *casePriorityPtr) ToCasePriorityPtrOutputWithContext(ctx context.Context) CasePriorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CasePriorityPtrOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*CaseSeverityInput)(nil)).Elem(), CaseSeverity("SEVERITY_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*CaseSeverityPtrInput)(nil)).Elem(), CaseSeverity("SEVERITY_UNSPECIFIED"))
-	pulumi.RegisterOutputType(CaseSeverityOutput{})
-	pulumi.RegisterOutputType(CaseSeverityPtrOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CasePriorityInput)(nil)).Elem(), CasePriority("PRIORITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CasePriorityPtrInput)(nil)).Elem(), CasePriority("PRIORITY_UNSPECIFIED"))
+	pulumi.RegisterOutputType(CasePriorityOutput{})
+	pulumi.RegisterOutputType(CasePriorityPtrOutput{})
 }

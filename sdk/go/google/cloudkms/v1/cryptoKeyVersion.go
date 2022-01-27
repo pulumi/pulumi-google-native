@@ -28,7 +28,7 @@ type CryptoKeyVersion struct {
 	DestroyEventTime pulumi.StringOutput `pulumi:"destroyEventTime"`
 	// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
 	DestroyTime pulumi.StringOutput `pulumi:"destroyTime"`
-	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsResponseOutput `pulumi:"externalProtectionLevelOptions"`
 	// The time this CryptoKeyVersion's key material was generated.
 	GenerateTime pulumi.StringOutput `pulumi:"generateTime"`
@@ -94,7 +94,7 @@ func (CryptoKeyVersionState) ElementType() reflect.Type {
 
 type cryptoKeyVersionArgs struct {
 	CryptoKeyId string `pulumi:"cryptoKeyId"`
-	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	ExternalProtectionLevelOptions *ExternalProtectionLevelOptions `pulumi:"externalProtectionLevelOptions"`
 	KeyRingId                      string                          `pulumi:"keyRingId"`
 	Location                       *string                         `pulumi:"location"`
@@ -106,7 +106,7 @@ type cryptoKeyVersionArgs struct {
 // The set of arguments for constructing a CryptoKeyVersion resource.
 type CryptoKeyVersionArgs struct {
 	CryptoKeyId pulumi.StringInput
-	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsPtrInput
 	KeyRingId                      pulumi.StringInput
 	Location                       pulumi.StringPtrInput

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
     /// <summary>
-    /// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+    /// A configuration for running Apache Spark SQL (https://spark.apache.org/sql/) queries as a batch workload.
     /// </summary>
     [OutputType]
     public sealed class SparkSqlBatchResponse

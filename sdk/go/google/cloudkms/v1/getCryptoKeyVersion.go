@@ -39,7 +39,7 @@ type LookupCryptoKeyVersionResult struct {
 	DestroyEventTime string `pulumi:"destroyEventTime"`
 	// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
 	DestroyTime string `pulumi:"destroyTime"`
-	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsResponse `pulumi:"externalProtectionLevelOptions"`
 	// The time this CryptoKeyVersion's key material was generated.
 	GenerateTime string `pulumi:"generateTime"`
@@ -119,7 +119,7 @@ func (o LookupCryptoKeyVersionResultOutput) DestroyTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.DestroyTime }).(pulumi.StringOutput)
 }
 
-// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 func (o LookupCryptoKeyVersionResultOutput) ExternalProtectionLevelOptions() ExternalProtectionLevelOptionsResponseOutput {
 	return o.ApplyT(func(v LookupCryptoKeyVersionResult) ExternalProtectionLevelOptionsResponse {
 		return v.ExternalProtectionLevelOptions

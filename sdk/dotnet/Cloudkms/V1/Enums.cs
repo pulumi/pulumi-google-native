@@ -320,6 +320,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// Crypto operations are performed by an external key manager.
         /// </summary>
         public static CryptoKeyVersionTemplateProtectionLevel External { get; } = new CryptoKeyVersionTemplateProtectionLevel("EXTERNAL");
+        /// <summary>
+        /// Crypto operations are performed in an EKM-over-VPC backend.
+        /// </summary>
+        public static CryptoKeyVersionTemplateProtectionLevel ExternalVpc { get; } = new CryptoKeyVersionTemplateProtectionLevel("EXTERNAL_VPC");
 
         public static bool operator ==(CryptoKeyVersionTemplateProtectionLevel left, CryptoKeyVersionTemplateProtectionLevel right) => left.Equals(right);
         public static bool operator !=(CryptoKeyVersionTemplateProtectionLevel left, CryptoKeyVersionTemplateProtectionLevel right) => !left.Equals(right);
@@ -406,6 +410,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// Crypto operations are performed by an external key manager.
         /// </summary>
         public static ImportJobProtectionLevel External { get; } = new ImportJobProtectionLevel("EXTERNAL");
+        /// <summary>
+        /// Crypto operations are performed in an EKM-over-VPC backend.
+        /// </summary>
+        public static ImportJobProtectionLevel ExternalVpc { get; } = new ImportJobProtectionLevel("EXTERNAL_VPC");
 
         public static bool operator ==(ImportJobProtectionLevel left, ImportJobProtectionLevel right) => left.Equals(right);
         public static bool operator !=(ImportJobProtectionLevel left, ImportJobProtectionLevel right) => !left.Equals(right);

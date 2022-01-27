@@ -652,7 +652,7 @@ class DiskConfigArgs:
         Specifies the config of disk options for a group of VM instances.
         :param pulumi.Input[int] boot_disk_size_gb: Optional. Size in GB of the boot disk (default is 500GB).
         :param pulumi.Input[str] boot_disk_type: Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
-        :param pulumi.Input[str] local_ssd_interface: Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+        :param pulumi.Input[str] local_ssd_interface: Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
         :param pulumi.Input[int] num_local_ssds: Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         if boot_disk_size_gb is not None:
@@ -692,7 +692,7 @@ class DiskConfigArgs:
     @pulumi.getter(name="localSsdInterface")
     def local_ssd_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+        Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
         """
         return pulumi.get(self, "local_ssd_interface")
 
@@ -3342,7 +3342,7 @@ class SparkBatchArgs:
                  main_class: Optional[pulumi.Input[str]] = None,
                  main_jar_file_uri: Optional[pulumi.Input[str]] = None):
         """
-        A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+        A configuration for running an Apache Spark (https://spark.apache.org/) batch workload.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor.
@@ -3472,7 +3472,7 @@ class SparkJobArgs:
                  main_jar_file_uri: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.
+        A Dataproc job for running Apache Spark (https://spark.apache.org/) applications on YARN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
@@ -3777,7 +3777,7 @@ class SparkSqlBatchArgs:
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  query_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+        A configuration for running Apache Spark SQL (https://spark.apache.org/sql/) queries as a batch workload.
         :param pulumi.Input[str] query_file_uri: The HCFS URI of the script that contains Spark SQL queries to execute.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] query_variables: Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
@@ -3835,7 +3835,7 @@ class SparkSqlJobArgs:
                  query_list: Optional[pulumi.Input['QueryListArgs']] = None,
                  script_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
+        A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/) queries.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.

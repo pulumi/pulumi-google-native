@@ -5,35 +5,35 @@
 from enum import Enum
 
 __all__ = [
-    'CaseSeverity',
+    'CasePriority',
 ]
 
 
-class CaseSeverity(str, Enum):
+class CasePriority(str, Enum):
     """
-    The severity of this case.
+    The priority of this case. If this is set, do not set severity.
     """
-    SEVERITY_UNSPECIFIED = "SEVERITY_UNSPECIFIED"
+    PRIORITY_UNSPECIFIED = "PRIORITY_UNSPECIFIED"
     """
     Severity is undefined or has not been set yet.
     """
-    S0 = "S0"
+    P0 = "P0"
     """
     Extreme impact on a production service. Service is hard down.
     """
-    S1 = "S1"
+    P1 = "P1"
     """
     Critical impact on a production service. Service is currently unusable.
     """
-    S2 = "S2"
+    P2 = "P2"
     """
     Severe impact on a production service. Service is usable but greatly impaired.
     """
-    S3 = "S3"
+    P3 = "P3"
     """
     Medium impact on a production service. Service is available, but moderately impaired.
     """
-    S4 = "S4"
+    P4 = "P4"
     """
     General questions or minor issues. Production service is fully available.
     """

@@ -224,6 +224,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// RDS runs the database.
         /// </summary>
         public static ConnectionProfileProvider Rds { get; } = new ConnectionProfileProvider("RDS");
+        /// <summary>
+        /// Amazon Aurora.
+        /// </summary>
+        public static ConnectionProfileProvider Aurora { get; } = new ConnectionProfileProvider("AURORA");
 
         public static bool operator ==(ConnectionProfileProvider left, ConnectionProfileProvider right) => left.Equals(right);
         public static bool operator !=(ConnectionProfileProvider left, ConnectionProfileProvider right) => !left.Equals(right);
@@ -367,6 +371,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// RDS runs the database.
         /// </summary>
         public static DatabaseTypeProvider Rds { get; } = new DatabaseTypeProvider("RDS");
+        /// <summary>
+        /// Amazon Aurora.
+        /// </summary>
+        public static DatabaseTypeProvider Aurora { get; } = new DatabaseTypeProvider("AURORA");
 
         public static bool operator ==(DatabaseTypeProvider left, DatabaseTypeProvider right) => left.Equals(right);
         public static bool operator !=(DatabaseTypeProvider left, DatabaseTypeProvider right) => !left.Equals(right);

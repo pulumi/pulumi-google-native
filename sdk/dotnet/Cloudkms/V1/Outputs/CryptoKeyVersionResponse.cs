@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1.Outputs
         /// </summary>
         public readonly string DestroyTime;
         /// <summary>
-        /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+        /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         /// </summary>
         public readonly Outputs.ExternalProtectionLevelOptionsResponse ExternalProtectionLevelOptions;
         /// <summary>

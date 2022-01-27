@@ -227,6 +227,10 @@ class CryptoKeyVersionTemplateProtectionLevel(str, Enum):
     """
     Crypto operations are performed by an external key manager.
     """
+    EXTERNAL_VPC = "EXTERNAL_VPC"
+    """
+    Crypto operations are performed in an EKM-over-VPC backend.
+    """
 
 
 class ImportJobImportMethod(str, Enum):
@@ -266,4 +270,8 @@ class ImportJobProtectionLevel(str, Enum):
     EXTERNAL = "EXTERNAL"
     """
     Crypto operations are performed by an external key manager.
+    """
+    EXTERNAL_VPC = "EXTERNAL_VPC"
+    """
+    Crypto operations are performed in an EKM-over-VPC backend.
     """

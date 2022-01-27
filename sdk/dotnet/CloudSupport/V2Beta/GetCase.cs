@@ -90,9 +90,9 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The severity of this case.
+        /// The priority of this case. If this is set, do not set severity.
         /// </summary>
-        public readonly string Severity;
+        public readonly string Priority;
         /// <summary>
         /// The current status of the support case.
         /// </summary>
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
 
             string name,
 
-            string severity,
+            string priority,
 
             string state,
 
@@ -149,7 +149,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
             DisplayName = displayName;
             Escalated = escalated;
             Name = name;
-            Severity = severity;
+            Priority = priority;
             State = state;
             SubscriberEmailAddresses = subscriberEmailAddresses;
             TestCase = testCase;

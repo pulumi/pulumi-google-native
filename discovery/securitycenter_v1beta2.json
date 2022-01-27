@@ -1592,7 +1592,7 @@
       }
     }
   },
-  "revision": "20220122",
+  "revision": "20220118",
   "rootUrl": "https://securitycenter.googleapis.com/",
   "schemas": {
     "Access": {

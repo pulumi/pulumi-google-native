@@ -66,9 +66,9 @@ export class Case extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The severity of this case.
+     * The priority of this case. If this is set, do not set severity.
      */
-    public readonly severity!: pulumi.Output<string>;
+    public readonly priority!: pulumi.Output<string>;
     /**
      * The current status of the support case.
      */
@@ -113,7 +113,7 @@ export class Case extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["escalated"] = args ? args.escalated : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["severity"] = args ? args.severity : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["subscriberEmailAddresses"] = args ? args.subscriberEmailAddresses : undefined;
             resourceInputs["testCase"] = args ? args.testCase : undefined;
             resourceInputs["timeZone"] = args ? args.timeZone : undefined;
@@ -130,7 +130,7 @@ export class Case extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["escalated"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["severity"] = undefined /*out*/;
+            resourceInputs["priority"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["subscriberEmailAddresses"] = undefined /*out*/;
             resourceInputs["testCase"] = undefined /*out*/;
@@ -171,9 +171,9 @@ export interface CaseArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The severity of this case.
+     * The priority of this case. If this is set, do not set severity.
      */
-    severity?: pulumi.Input<enums.cloudsupport.v2beta.CaseSeverity>;
+    priority?: pulumi.Input<enums.cloudsupport.v2beta.CasePriority>;
     /**
      * The email addresses to receive updates on this case.
      */

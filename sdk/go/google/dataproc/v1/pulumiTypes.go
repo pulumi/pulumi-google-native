@@ -2000,7 +2000,7 @@ type DiskConfig struct {
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
 	BootDiskType *string `pulumi:"bootDiskType"`
-	// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+	// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
 	LocalSsdInterface *string `pulumi:"localSsdInterface"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
@@ -2023,7 +2023,7 @@ type DiskConfigArgs struct {
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
 	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
-	// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+	// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
 	LocalSsdInterface pulumi.StringPtrInput `pulumi:"localSsdInterface"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
@@ -2117,7 +2117,7 @@ func (o DiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskConfig) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
 func (o DiskConfigOutput) LocalSsdInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskConfig) *string { return v.LocalSsdInterface }).(pulumi.StringPtrOutput)
 }
@@ -2171,7 +2171,7 @@ func (o DiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
 func (o DiskConfigPtrOutput) LocalSsdInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiskConfig) *string {
 		if v == nil {
@@ -2197,7 +2197,7 @@ type DiskConfigResponse struct {
 	BootDiskSizeGb int `pulumi:"bootDiskSizeGb"`
 	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
 	BootDiskType string `pulumi:"bootDiskType"`
-	// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+	// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
 	LocalSsdInterface string `pulumi:"localSsdInterface"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds int `pulumi:"numLocalSsds"`
@@ -2228,7 +2228,7 @@ func (o DiskConfigResponseOutput) BootDiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskConfigResponse) string { return v.BootDiskType }).(pulumi.StringOutput)
 }
 
-// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
 func (o DiskConfigResponseOutput) LocalSsdInterface() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskConfigResponse) string { return v.LocalSsdInterface }).(pulumi.StringOutput)
 }
@@ -11221,7 +11221,7 @@ func (o SoftwareConfigResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
-// A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+// A configuration for running an Apache Spark (https://spark.apache.org/) batch workload.
 type SparkBatch struct {
 	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris []string `pulumi:"archiveUris"`
@@ -11248,7 +11248,7 @@ type SparkBatchInput interface {
 	ToSparkBatchOutputWithContext(context.Context) SparkBatchOutput
 }
 
-// A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+// A configuration for running an Apache Spark (https://spark.apache.org/) batch workload.
 type SparkBatchArgs struct {
 	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
@@ -11317,7 +11317,7 @@ func (i *sparkBatchPtrType) ToSparkBatchPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SparkBatchPtrOutput)
 }
 
-// A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+// A configuration for running an Apache Spark (https://spark.apache.org/) batch workload.
 type SparkBatchOutput struct{ *pulumi.OutputState }
 
 func (SparkBatchOutput) ElementType() reflect.Type {
@@ -11456,7 +11456,7 @@ func (o SparkBatchPtrOutput) MainJarFileUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+// A configuration for running an Apache Spark (https://spark.apache.org/) batch workload.
 type SparkBatchResponse struct {
 	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris []string `pulumi:"archiveUris"`
@@ -11472,7 +11472,7 @@ type SparkBatchResponse struct {
 	MainJarFileUri string `pulumi:"mainJarFileUri"`
 }
 
-// A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+// A configuration for running an Apache Spark (https://spark.apache.org/) batch workload.
 type SparkBatchResponseOutput struct{ *pulumi.OutputState }
 
 func (SparkBatchResponseOutput) ElementType() reflect.Type {
@@ -11683,7 +11683,7 @@ func (o SparkHistoryServerConfigResponseOutput) DataprocCluster() pulumi.StringO
 	return o.ApplyT(func(v SparkHistoryServerConfigResponse) string { return v.DataprocCluster }).(pulumi.StringOutput)
 }
 
-// A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.
+// A Dataproc job for running Apache Spark (https://spark.apache.org/) applications on YARN.
 type SparkJob struct {
 	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris []string `pulumi:"archiveUris"`
@@ -11714,7 +11714,7 @@ type SparkJobInput interface {
 	ToSparkJobOutputWithContext(context.Context) SparkJobOutput
 }
 
-// A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.
+// A Dataproc job for running Apache Spark (https://spark.apache.org/) applications on YARN.
 type SparkJobArgs struct {
 	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
@@ -11787,7 +11787,7 @@ func (i *sparkJobPtrType) ToSparkJobPtrOutputWithContext(ctx context.Context) Sp
 	return pulumi.ToOutputWithContext(ctx, i).(SparkJobPtrOutput)
 }
 
-// A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.
+// A Dataproc job for running Apache Spark (https://spark.apache.org/) applications on YARN.
 type SparkJobOutput struct{ *pulumi.OutputState }
 
 func (SparkJobOutput) ElementType() reflect.Type {
@@ -11956,7 +11956,7 @@ func (o SparkJobPtrOutput) Properties() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.
+// A Dataproc job for running Apache Spark (https://spark.apache.org/) applications on YARN.
 type SparkJobResponse struct {
 	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris []string `pulumi:"archiveUris"`
@@ -11976,7 +11976,7 @@ type SparkJobResponse struct {
 	Properties map[string]string `pulumi:"properties"`
 }
 
-// A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.
+// A Dataproc job for running Apache Spark (https://spark.apache.org/) applications on YARN.
 type SparkJobResponseOutput struct{ *pulumi.OutputState }
 
 func (SparkJobResponseOutput) ElementType() reflect.Type {
@@ -12571,7 +12571,7 @@ func (o SparkRJobResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkRJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
-// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+// A configuration for running Apache Spark SQL (https://spark.apache.org/sql/) queries as a batch workload.
 type SparkSqlBatch struct {
 	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
 	JarFileUris []string `pulumi:"jarFileUris"`
@@ -12592,7 +12592,7 @@ type SparkSqlBatchInput interface {
 	ToSparkSqlBatchOutputWithContext(context.Context) SparkSqlBatchOutput
 }
 
-// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+// A configuration for running Apache Spark SQL (https://spark.apache.org/sql/) queries as a batch workload.
 type SparkSqlBatchArgs struct {
 	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
 	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
@@ -12655,7 +12655,7 @@ func (i *sparkSqlBatchPtrType) ToSparkSqlBatchPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SparkSqlBatchPtrOutput)
 }
 
-// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+// A configuration for running Apache Spark SQL (https://spark.apache.org/sql/) queries as a batch workload.
 type SparkSqlBatchOutput struct{ *pulumi.OutputState }
 
 func (SparkSqlBatchOutput) ElementType() reflect.Type {
@@ -12749,7 +12749,7 @@ func (o SparkSqlBatchPtrOutput) QueryVariables() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+// A configuration for running Apache Spark SQL (https://spark.apache.org/sql/) queries as a batch workload.
 type SparkSqlBatchResponse struct {
 	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
 	JarFileUris []string `pulumi:"jarFileUris"`
@@ -12759,7 +12759,7 @@ type SparkSqlBatchResponse struct {
 	QueryVariables map[string]string `pulumi:"queryVariables"`
 }
 
-// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+// A configuration for running Apache Spark SQL (https://spark.apache.org/sql/) queries as a batch workload.
 type SparkSqlBatchResponseOutput struct{ *pulumi.OutputState }
 
 func (SparkSqlBatchResponseOutput) ElementType() reflect.Type {
@@ -12789,7 +12789,7 @@ func (o SparkSqlBatchResponseOutput) QueryVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkSqlBatchResponse) map[string]string { return v.QueryVariables }).(pulumi.StringMapOutput)
 }
 
-// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
+// A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/) queries.
 type SparkSqlJob struct {
 	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
 	JarFileUris []string `pulumi:"jarFileUris"`
@@ -12816,7 +12816,7 @@ type SparkSqlJobInput interface {
 	ToSparkSqlJobOutputWithContext(context.Context) SparkSqlJobOutput
 }
 
-// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
+// A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/) queries.
 type SparkSqlJobArgs struct {
 	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
 	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
@@ -12885,7 +12885,7 @@ func (i *sparkSqlJobPtrType) ToSparkSqlJobPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SparkSqlJobPtrOutput)
 }
 
-// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
+// A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/) queries.
 type SparkSqlJobOutput struct{ *pulumi.OutputState }
 
 func (SparkSqlJobOutput) ElementType() reflect.Type {
@@ -13024,7 +13024,7 @@ func (o SparkSqlJobPtrOutput) ScriptVariables() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
+// A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/) queries.
 type SparkSqlJobResponse struct {
 	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
 	JarFileUris []string `pulumi:"jarFileUris"`
@@ -13040,7 +13040,7 @@ type SparkSqlJobResponse struct {
 	ScriptVariables map[string]string `pulumi:"scriptVariables"`
 }
 
-// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
+// A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/) queries.
 type SparkSqlJobResponseOutput struct{ *pulumi.OutputState }
 
 func (SparkSqlJobResponseOutput) ElementType() reflect.Type {

@@ -219,6 +219,10 @@ export const CryptoKeyVersionTemplateProtectionLevel = {
      * Crypto operations are performed by an external key manager.
      */
     External: "EXTERNAL",
+    /**
+     * Crypto operations are performed in an EKM-over-VPC backend.
+     */
+    ExternalVpc: "EXTERNAL_VPC",
 } as const;
 
 /**
@@ -263,6 +267,10 @@ export const ImportJobProtectionLevel = {
      * Crypto operations are performed by an external key manager.
      */
     External: "EXTERNAL",
+    /**
+     * Crypto operations are performed in an EKM-over-VPC backend.
+     */
+    ExternalVpc: "EXTERNAL_VPC",
 } as const;
 
 /**

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
 {
 
     /// <summary>
-    /// A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.
+    /// A Dataproc job for running Apache Spark (https://spark.apache.org/) applications on YARN.
     /// </summary>
     public sealed class SparkJobArgs : Pulumi.ResourceArgs
     {

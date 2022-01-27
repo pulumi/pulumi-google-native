@@ -2,34 +2,34 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
-export const CaseSeverity = {
+export const CasePriority = {
     /**
      * Severity is undefined or has not been set yet.
      */
-    SeverityUnspecified: "SEVERITY_UNSPECIFIED",
+    PriorityUnspecified: "PRIORITY_UNSPECIFIED",
     /**
      * Extreme impact on a production service. Service is hard down.
      */
-    S0: "S0",
+    P0: "P0",
     /**
      * Critical impact on a production service. Service is currently unusable.
      */
-    S1: "S1",
+    P1: "P1",
     /**
      * Severe impact on a production service. Service is usable but greatly impaired.
      */
-    S2: "S2",
+    P2: "P2",
     /**
      * Medium impact on a production service. Service is available, but moderately impaired.
      */
-    S3: "S3",
+    P3: "P3",
     /**
      * General questions or minor issues. Production service is fully available.
      */
-    S4: "S4",
+    P4: "P4",
 } as const;
 
 /**
- * The severity of this case.
+ * The priority of this case. If this is set, do not set severity.
  */
-export type CaseSeverity = (typeof CaseSeverity)[keyof typeof CaseSeverity];
+export type CasePriority = (typeof CasePriority)[keyof typeof CasePriority];

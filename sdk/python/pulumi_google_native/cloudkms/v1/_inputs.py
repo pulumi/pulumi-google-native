@@ -13,9 +13,11 @@ __all__ = [
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
+    'CertificateArgs',
     'CryptoKeyVersionTemplateArgs',
     'ExprArgs',
     'ExternalProtectionLevelOptionsArgs',
+    'ServiceResolverArgs',
 ]
 
 @pulumi.input_type
@@ -155,6 +157,29 @@ class BindingArgs:
 
 
 @pulumi.input_type
+class CertificateArgs:
+    def __init__(__self__, *,
+                 raw_der: pulumi.Input[str]):
+        """
+        A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas.
+        :param pulumi.Input[str] raw_der: The raw certificate bytes in DER format.
+        """
+        pulumi.set(__self__, "raw_der", raw_der)
+
+    @property
+    @pulumi.getter(name="rawDer")
+    def raw_der(self) -> pulumi.Input[str]:
+        """
+        The raw certificate bytes in DER format.
+        """
+        return pulumi.get(self, "raw_der")
+
+    @raw_der.setter
+    def raw_der(self, value: pulumi.Input[str]):
+        pulumi.set(self, "raw_der", value)
+
+
+@pulumi.input_type
 class CryptoKeyVersionTemplateArgs:
     def __init__(__self__, *,
                  algorithm: pulumi.Input['CryptoKeyVersionTemplateAlgorithm'],
@@ -268,13 +293,29 @@ class ExprArgs:
 @pulumi.input_type
 class ExternalProtectionLevelOptionsArgs:
     def __init__(__self__, *,
+                 ekm_connection_key_path: Optional[pulumi.Input[str]] = None,
                  external_key_uri: Optional[pulumi.Input[str]] = None):
         """
-        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        :param pulumi.Input[str] ekm_connection_key_path: The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
         :param pulumi.Input[str] external_key_uri: The URI for an external resource that this CryptoKeyVersion represents.
         """
+        if ekm_connection_key_path is not None:
+            pulumi.set(__self__, "ekm_connection_key_path", ekm_connection_key_path)
         if external_key_uri is not None:
             pulumi.set(__self__, "external_key_uri", external_key_uri)
+
+    @property
+    @pulumi.getter(name="ekmConnectionKeyPath")
+    def ekm_connection_key_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
+        """
+        return pulumi.get(self, "ekm_connection_key_path")
+
+    @ekm_connection_key_path.setter
+    def ekm_connection_key_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ekm_connection_key_path", value)
 
     @property
     @pulumi.getter(name="externalKeyUri")
@@ -287,5 +328,74 @@ class ExternalProtectionLevelOptionsArgs:
     @external_key_uri.setter
     def external_key_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_key_uri", value)
+
+
+@pulumi.input_type
+class ServiceResolverArgs:
+    def __init__(__self__, *,
+                 hostname: pulumi.Input[str],
+                 server_certificates: pulumi.Input[Sequence[pulumi.Input['CertificateArgs']]],
+                 service_directory_service: pulumi.Input[str],
+                 endpoint_filter: Optional[pulumi.Input[str]] = None):
+        """
+        A ServiceResolver represents an EKM replica that can be reached within an EkmConnection.
+        :param pulumi.Input[str] hostname: The hostname of the EKM replica used at TLS and HTTP layers.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateArgs']]] server_certificates: A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+        :param pulumi.Input[str] service_directory_service: The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/*/locations/*/namespaces/*/services/*`.
+        :param pulumi.Input[str] endpoint_filter: Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "server_certificates", server_certificates)
+        pulumi.set(__self__, "service_directory_service", service_directory_service)
+        if endpoint_filter is not None:
+            pulumi.set(__self__, "endpoint_filter", endpoint_filter)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[str]:
+        """
+        The hostname of the EKM replica used at TLS and HTTP layers.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="serverCertificates")
+    def server_certificates(self) -> pulumi.Input[Sequence[pulumi.Input['CertificateArgs']]]:
+        """
+        A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+        """
+        return pulumi.get(self, "server_certificates")
+
+    @server_certificates.setter
+    def server_certificates(self, value: pulumi.Input[Sequence[pulumi.Input['CertificateArgs']]]):
+        pulumi.set(self, "server_certificates", value)
+
+    @property
+    @pulumi.getter(name="serviceDirectoryService")
+    def service_directory_service(self) -> pulumi.Input[str]:
+        """
+        The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/*/locations/*/namespaces/*/services/*`.
+        """
+        return pulumi.get(self, "service_directory_service")
+
+    @service_directory_service.setter
+    def service_directory_service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_directory_service", value)
+
+    @property
+    @pulumi.getter(name="endpointFilter")
+    def endpoint_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+        """
+        return pulumi.get(self, "endpoint_filter")
+
+    @endpoint_filter.setter
+    def endpoint_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_filter", value)
 
 

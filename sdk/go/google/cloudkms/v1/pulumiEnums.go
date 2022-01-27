@@ -758,6 +758,8 @@ const (
 	CryptoKeyVersionTemplateProtectionLevelHsm = CryptoKeyVersionTemplateProtectionLevel("HSM")
 	// Crypto operations are performed by an external key manager.
 	CryptoKeyVersionTemplateProtectionLevelExternal = CryptoKeyVersionTemplateProtectionLevel("EXTERNAL")
+	// Crypto operations are performed in an EKM-over-VPC backend.
+	CryptoKeyVersionTemplateProtectionLevelExternalVpc = CryptoKeyVersionTemplateProtectionLevel("EXTERNAL_VPC")
 )
 
 func (CryptoKeyVersionTemplateProtectionLevel) ElementType() reflect.Type {
@@ -1098,6 +1100,8 @@ const (
 	ImportJobProtectionLevelHsm = ImportJobProtectionLevel("HSM")
 	// Crypto operations are performed by an external key manager.
 	ImportJobProtectionLevelExternal = ImportJobProtectionLevel("EXTERNAL")
+	// Crypto operations are performed in an EKM-over-VPC backend.
+	ImportJobProtectionLevelExternalVpc = ImportJobProtectionLevel("EXTERNAL_VPC")
 )
 
 func (ImportJobProtectionLevel) ElementType() reflect.Type {

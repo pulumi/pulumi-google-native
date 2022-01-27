@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
 {
 
     /// <summary>
-    /// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
+    /// A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/) queries.
     /// </summary>
     public sealed class SparkSqlJobArgs : Pulumi.ResourceArgs
     {

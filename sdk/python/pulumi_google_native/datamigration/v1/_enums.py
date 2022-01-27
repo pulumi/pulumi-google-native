@@ -134,6 +134,10 @@ class ConnectionProfileProvider(str, Enum):
     """
     RDS runs the database.
     """
+    AURORA = "AURORA"
+    """
+    Amazon Aurora.
+    """
 
 
 class ConnectionProfileState(str, Enum):
@@ -207,6 +211,10 @@ class DatabaseTypeProvider(str, Enum):
     RDS = "RDS"
     """
     RDS runs the database.
+    """
+    AURORA = "AURORA"
+    """
+    Amazon Aurora.
     """
 
 

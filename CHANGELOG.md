@@ -2,7 +2,10 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+
+Improvements:
+
+- Update to support the latest resource definitions and the latest Pulumi SDK
 
 ---
 

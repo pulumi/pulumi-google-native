@@ -24,7 +24,7 @@ class CryptoKeyVersionArgs:
                  state: Optional[pulumi.Input['CryptoKeyVersionState']] = None):
         """
         The set of arguments for constructing a CryptoKeyVersion resource.
-        :param pulumi.Input['ExternalProtectionLevelOptionsArgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+        :param pulumi.Input['ExternalProtectionLevelOptionsArgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         :param pulumi.Input['CryptoKeyVersionState'] state: The current state of the CryptoKeyVersion.
         """
         pulumi.set(__self__, "crypto_key_id", crypto_key_id)
@@ -60,7 +60,7 @@ class CryptoKeyVersionArgs:
     @pulumi.getter(name="externalProtectionLevelOptions")
     def external_protection_level_options(self) -> Optional[pulumi.Input['ExternalProtectionLevelOptionsArgs']]:
         """
-        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         """
         return pulumi.get(self, "external_protection_level_options")
 
@@ -119,7 +119,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ExternalProtectionLevelOptionsArgs']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+        :param pulumi.Input[pulumi.InputType['ExternalProtectionLevelOptionsArgs']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         :param pulumi.Input['CryptoKeyVersionState'] state: The current state of the CryptoKeyVersion.
         """
         ...
@@ -271,7 +271,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
     @pulumi.getter(name="externalProtectionLevelOptions")
     def external_protection_level_options(self) -> pulumi.Output['outputs.ExternalProtectionLevelOptionsResponse']:
         """
-        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         """
         return pulumi.get(self, "external_protection_level_options")
 

@@ -746,6 +746,7 @@ _utilities.register(
   "classes": {
    "google-native:cloudkms/v1:CryptoKey": "CryptoKey",
    "google-native:cloudkms/v1:CryptoKeyVersion": "CryptoKeyVersion",
+   "google-native:cloudkms/v1:EkmConnection": "EkmConnection",
    "google-native:cloudkms/v1:EkmConnectionIamPolicy": "EkmConnectionIamPolicy",
    "google-native:cloudkms/v1:ImportJob": "ImportJob",
    "google-native:cloudkms/v1:KeyRing": "KeyRing",

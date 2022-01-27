@@ -512,6 +512,106 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
+// A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas.
+type Certificate struct {
+	// The raw certificate bytes in DER format.
+	RawDer string `pulumi:"rawDer"`
+}
+
+// CertificateInput is an input type that accepts CertificateArgs and CertificateOutput values.
+// You can construct a concrete instance of `CertificateInput` via:
+//
+//          CertificateArgs{...}
+type CertificateInput interface {
+	pulumi.Input
+
+	ToCertificateOutput() CertificateOutput
+	ToCertificateOutputWithContext(context.Context) CertificateOutput
+}
+
+// A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas.
+type CertificateArgs struct {
+	// The raw certificate bytes in DER format.
+	RawDer pulumi.StringInput `pulumi:"rawDer"`
+}
+
+func (CertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Certificate)(nil)).Elem()
+}
+
+func (i CertificateArgs) ToCertificateOutput() CertificateOutput {
+	return i.ToCertificateOutputWithContext(context.Background())
+}
+
+func (i CertificateArgs) ToCertificateOutputWithContext(ctx context.Context) CertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateOutput)
+}
+
+// CertificateArrayInput is an input type that accepts CertificateArray and CertificateArrayOutput values.
+// You can construct a concrete instance of `CertificateArrayInput` via:
+//
+//          CertificateArray{ CertificateArgs{...} }
+type CertificateArrayInput interface {
+	pulumi.Input
+
+	ToCertificateArrayOutput() CertificateArrayOutput
+	ToCertificateArrayOutputWithContext(context.Context) CertificateArrayOutput
+}
+
+type CertificateArray []CertificateInput
+
+func (CertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Certificate)(nil)).Elem()
+}
+
+func (i CertificateArray) ToCertificateArrayOutput() CertificateArrayOutput {
+	return i.ToCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateArray) ToCertificateArrayOutputWithContext(ctx context.Context) CertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateArrayOutput)
+}
+
+// A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas.
+type CertificateOutput struct{ *pulumi.OutputState }
+
+func (CertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Certificate)(nil)).Elem()
+}
+
+func (o CertificateOutput) ToCertificateOutput() CertificateOutput {
+	return o
+}
+
+func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) CertificateOutput {
+	return o
+}
+
+// The raw certificate bytes in DER format.
+func (o CertificateOutput) RawDer() pulumi.StringOutput {
+	return o.ApplyT(func(v Certificate) string { return v.RawDer }).(pulumi.StringOutput)
+}
+
+type CertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Certificate)(nil)).Elem()
+}
+
+func (o CertificateArrayOutput) ToCertificateArrayOutput() CertificateArrayOutput {
+	return o
+}
+
+func (o CertificateArrayOutput) ToCertificateArrayOutputWithContext(ctx context.Context) CertificateArrayOutput {
+	return o
+}
+
+func (o CertificateArrayOutput) Index(i pulumi.IntInput) CertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Certificate {
+		return vs[0].([]Certificate)[vs[1].(int)]
+	}).(CertificateOutput)
+}
+
 // Certificate chains needed to verify the attestation. Certificates in chains are PEM-encoded and are ordered based on https://tools.ietf.org/html/rfc5246#section-7.4.2.
 type CertificateChainsResponse struct {
 	// Cavium certificate chain corresponding to the attestation.
@@ -552,6 +652,108 @@ func (o CertificateChainsResponseOutput) GooglePartitionCerts() pulumi.StringArr
 	return o.ApplyT(func(v CertificateChainsResponse) []string { return v.GooglePartitionCerts }).(pulumi.StringArrayOutput)
 }
 
+// A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas.
+type CertificateResponse struct {
+	// The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
+	Issuer string `pulumi:"issuer"`
+	// The certificate is not valid after this time. Only present if parsed is true.
+	NotAfterTime string `pulumi:"notAfterTime"`
+	// The certificate is not valid before this time. Only present if parsed is true.
+	NotBeforeTime string `pulumi:"notBeforeTime"`
+	// True if the certificate was parsed successfully.
+	Parsed bool `pulumi:"parsed"`
+	// The raw certificate bytes in DER format.
+	RawDer string `pulumi:"rawDer"`
+	// The certificate serial number as a hex string. Only present if parsed is true.
+	SerialNumber string `pulumi:"serialNumber"`
+	// The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
+	Sha256Fingerprint string `pulumi:"sha256Fingerprint"`
+	// The subject distinguished name in RFC 2253 format. Only present if parsed is true.
+	Subject string `pulumi:"subject"`
+	// The subject Alternative DNS names. Only present if parsed is true.
+	SubjectAlternativeDnsNames []string `pulumi:"subjectAlternativeDnsNames"`
+}
+
+// A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas.
+type CertificateResponseOutput struct{ *pulumi.OutputState }
+
+func (CertificateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateResponse)(nil)).Elem()
+}
+
+func (o CertificateResponseOutput) ToCertificateResponseOutput() CertificateResponseOutput {
+	return o
+}
+
+func (o CertificateResponseOutput) ToCertificateResponseOutputWithContext(ctx context.Context) CertificateResponseOutput {
+	return o
+}
+
+// The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
+func (o CertificateResponseOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateResponse) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// The certificate is not valid after this time. Only present if parsed is true.
+func (o CertificateResponseOutput) NotAfterTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateResponse) string { return v.NotAfterTime }).(pulumi.StringOutput)
+}
+
+// The certificate is not valid before this time. Only present if parsed is true.
+func (o CertificateResponseOutput) NotBeforeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateResponse) string { return v.NotBeforeTime }).(pulumi.StringOutput)
+}
+
+// True if the certificate was parsed successfully.
+func (o CertificateResponseOutput) Parsed() pulumi.BoolOutput {
+	return o.ApplyT(func(v CertificateResponse) bool { return v.Parsed }).(pulumi.BoolOutput)
+}
+
+// The raw certificate bytes in DER format.
+func (o CertificateResponseOutput) RawDer() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateResponse) string { return v.RawDer }).(pulumi.StringOutput)
+}
+
+// The certificate serial number as a hex string. Only present if parsed is true.
+func (o CertificateResponseOutput) SerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateResponse) string { return v.SerialNumber }).(pulumi.StringOutput)
+}
+
+// The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
+func (o CertificateResponseOutput) Sha256Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateResponse) string { return v.Sha256Fingerprint }).(pulumi.StringOutput)
+}
+
+// The subject distinguished name in RFC 2253 format. Only present if parsed is true.
+func (o CertificateResponseOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateResponse) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+// The subject Alternative DNS names. Only present if parsed is true.
+func (o CertificateResponseOutput) SubjectAlternativeDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateResponse) []string { return v.SubjectAlternativeDnsNames }).(pulumi.StringArrayOutput)
+}
+
+type CertificateResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateResponse)(nil)).Elem()
+}
+
+func (o CertificateResponseArrayOutput) ToCertificateResponseArrayOutput() CertificateResponseArrayOutput {
+	return o
+}
+
+func (o CertificateResponseArrayOutput) ToCertificateResponseArrayOutputWithContext(ctx context.Context) CertificateResponseArrayOutput {
+	return o
+}
+
+func (o CertificateResponseArrayOutput) Index(i pulumi.IntInput) CertificateResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateResponse {
+		return vs[0].([]CertificateResponse)[vs[1].(int)]
+	}).(CertificateResponseOutput)
+}
+
 // A CryptoKeyVersion represents an individual cryptographic key, and the associated key material. An ENABLED version can be used for cryptographic operations. For security reasons, the raw cryptographic key material represented by a CryptoKeyVersion can never be viewed or exported. It can only be used to encrypt, decrypt, or sign data when an authorized user or application invokes Cloud KMS.
 type CryptoKeyVersionResponse struct {
 	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
@@ -564,7 +766,7 @@ type CryptoKeyVersionResponse struct {
 	DestroyEventTime string `pulumi:"destroyEventTime"`
 	// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
 	DestroyTime string `pulumi:"destroyTime"`
-	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsResponse `pulumi:"externalProtectionLevelOptions"`
 	// The time this CryptoKeyVersion's key material was generated.
 	GenerateTime string `pulumi:"generateTime"`
@@ -624,7 +826,7 @@ func (o CryptoKeyVersionResponseOutput) DestroyTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyVersionResponse) string { return v.DestroyTime }).(pulumi.StringOutput)
 }
 
-// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 func (o CryptoKeyVersionResponseOutput) ExternalProtectionLevelOptions() ExternalProtectionLevelOptionsResponseOutput {
 	return o.ApplyT(func(v CryptoKeyVersionResponse) ExternalProtectionLevelOptionsResponse {
 		return v.ExternalProtectionLevelOptions
@@ -1107,8 +1309,10 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
-// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 type ExternalProtectionLevelOptions struct {
+	// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
+	EkmConnectionKeyPath *string `pulumi:"ekmConnectionKeyPath"`
 	// The URI for an external resource that this CryptoKeyVersion represents.
 	ExternalKeyUri *string `pulumi:"externalKeyUri"`
 }
@@ -1124,8 +1328,10 @@ type ExternalProtectionLevelOptionsInput interface {
 	ToExternalProtectionLevelOptionsOutputWithContext(context.Context) ExternalProtectionLevelOptionsOutput
 }
 
-// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 type ExternalProtectionLevelOptionsArgs struct {
+	// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
+	EkmConnectionKeyPath pulumi.StringPtrInput `pulumi:"ekmConnectionKeyPath"`
 	// The URI for an external resource that this CryptoKeyVersion represents.
 	ExternalKeyUri pulumi.StringPtrInput `pulumi:"externalKeyUri"`
 }
@@ -1183,7 +1389,7 @@ func (i *externalProtectionLevelOptionsPtrType) ToExternalProtectionLevelOptions
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalProtectionLevelOptionsPtrOutput)
 }
 
-// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 type ExternalProtectionLevelOptionsOutput struct{ *pulumi.OutputState }
 
 func (ExternalProtectionLevelOptionsOutput) ElementType() reflect.Type {
@@ -1206,6 +1412,11 @@ func (o ExternalProtectionLevelOptionsOutput) ToExternalProtectionLevelOptionsPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalProtectionLevelOptions) *ExternalProtectionLevelOptions {
 		return &v
 	}).(ExternalProtectionLevelOptionsPtrOutput)
+}
+
+// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
+func (o ExternalProtectionLevelOptionsOutput) EkmConnectionKeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalProtectionLevelOptions) *string { return v.EkmConnectionKeyPath }).(pulumi.StringPtrOutput)
 }
 
 // The URI for an external resource that this CryptoKeyVersion represents.
@@ -1237,6 +1448,16 @@ func (o ExternalProtectionLevelOptionsPtrOutput) Elem() ExternalProtectionLevelO
 	}).(ExternalProtectionLevelOptionsOutput)
 }
 
+// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
+func (o ExternalProtectionLevelOptionsPtrOutput) EkmConnectionKeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalProtectionLevelOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EkmConnectionKeyPath
+	}).(pulumi.StringPtrOutput)
+}
+
 // The URI for an external resource that this CryptoKeyVersion represents.
 func (o ExternalProtectionLevelOptionsPtrOutput) ExternalKeyUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalProtectionLevelOptions) *string {
@@ -1247,13 +1468,15 @@ func (o ExternalProtectionLevelOptionsPtrOutput) ExternalKeyUri() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 type ExternalProtectionLevelOptionsResponse struct {
+	// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
+	EkmConnectionKeyPath string `pulumi:"ekmConnectionKeyPath"`
 	// The URI for an external resource that this CryptoKeyVersion represents.
 	ExternalKeyUri string `pulumi:"externalKeyUri"`
 }
 
-// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 type ExternalProtectionLevelOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (ExternalProtectionLevelOptionsResponseOutput) ElementType() reflect.Type {
@@ -1266,6 +1489,11 @@ func (o ExternalProtectionLevelOptionsResponseOutput) ToExternalProtectionLevelO
 
 func (o ExternalProtectionLevelOptionsResponseOutput) ToExternalProtectionLevelOptionsResponseOutputWithContext(ctx context.Context) ExternalProtectionLevelOptionsResponseOutput {
 	return o
+}
+
+// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
+func (o ExternalProtectionLevelOptionsResponseOutput) EkmConnectionKeyPath() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalProtectionLevelOptionsResponse) string { return v.EkmConnectionKeyPath }).(pulumi.StringOutput)
 }
 
 // The URI for an external resource that this CryptoKeyVersion represents.
@@ -1313,6 +1541,200 @@ func (o KeyOperationAttestationResponseOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyOperationAttestationResponse) string { return v.Format }).(pulumi.StringOutput)
 }
 
+// A ServiceResolver represents an EKM replica that can be reached within an EkmConnection.
+type ServiceResolver struct {
+	// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+	EndpointFilter *string `pulumi:"endpointFilter"`
+	// The hostname of the EKM replica used at TLS and HTTP layers.
+	Hostname string `pulumi:"hostname"`
+	// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+	ServerCertificates []Certificate `pulumi:"serverCertificates"`
+	// The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/*/locations/*/namespaces/*/services/*`.
+	ServiceDirectoryService string `pulumi:"serviceDirectoryService"`
+}
+
+// ServiceResolverInput is an input type that accepts ServiceResolverArgs and ServiceResolverOutput values.
+// You can construct a concrete instance of `ServiceResolverInput` via:
+//
+//          ServiceResolverArgs{...}
+type ServiceResolverInput interface {
+	pulumi.Input
+
+	ToServiceResolverOutput() ServiceResolverOutput
+	ToServiceResolverOutputWithContext(context.Context) ServiceResolverOutput
+}
+
+// A ServiceResolver represents an EKM replica that can be reached within an EkmConnection.
+type ServiceResolverArgs struct {
+	// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+	EndpointFilter pulumi.StringPtrInput `pulumi:"endpointFilter"`
+	// The hostname of the EKM replica used at TLS and HTTP layers.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+	ServerCertificates CertificateArrayInput `pulumi:"serverCertificates"`
+	// The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/*/locations/*/namespaces/*/services/*`.
+	ServiceDirectoryService pulumi.StringInput `pulumi:"serviceDirectoryService"`
+}
+
+func (ServiceResolverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceResolver)(nil)).Elem()
+}
+
+func (i ServiceResolverArgs) ToServiceResolverOutput() ServiceResolverOutput {
+	return i.ToServiceResolverOutputWithContext(context.Background())
+}
+
+func (i ServiceResolverArgs) ToServiceResolverOutputWithContext(ctx context.Context) ServiceResolverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceResolverOutput)
+}
+
+// ServiceResolverArrayInput is an input type that accepts ServiceResolverArray and ServiceResolverArrayOutput values.
+// You can construct a concrete instance of `ServiceResolverArrayInput` via:
+//
+//          ServiceResolverArray{ ServiceResolverArgs{...} }
+type ServiceResolverArrayInput interface {
+	pulumi.Input
+
+	ToServiceResolverArrayOutput() ServiceResolverArrayOutput
+	ToServiceResolverArrayOutputWithContext(context.Context) ServiceResolverArrayOutput
+}
+
+type ServiceResolverArray []ServiceResolverInput
+
+func (ServiceResolverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceResolver)(nil)).Elem()
+}
+
+func (i ServiceResolverArray) ToServiceResolverArrayOutput() ServiceResolverArrayOutput {
+	return i.ToServiceResolverArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceResolverArray) ToServiceResolverArrayOutputWithContext(ctx context.Context) ServiceResolverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceResolverArrayOutput)
+}
+
+// A ServiceResolver represents an EKM replica that can be reached within an EkmConnection.
+type ServiceResolverOutput struct{ *pulumi.OutputState }
+
+func (ServiceResolverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceResolver)(nil)).Elem()
+}
+
+func (o ServiceResolverOutput) ToServiceResolverOutput() ServiceResolverOutput {
+	return o
+}
+
+func (o ServiceResolverOutput) ToServiceResolverOutputWithContext(ctx context.Context) ServiceResolverOutput {
+	return o
+}
+
+// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+func (o ServiceResolverOutput) EndpointFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceResolver) *string { return v.EndpointFilter }).(pulumi.StringPtrOutput)
+}
+
+// The hostname of the EKM replica used at TLS and HTTP layers.
+func (o ServiceResolverOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceResolver) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+func (o ServiceResolverOutput) ServerCertificates() CertificateArrayOutput {
+	return o.ApplyT(func(v ServiceResolver) []Certificate { return v.ServerCertificates }).(CertificateArrayOutput)
+}
+
+// The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/*/locations/*/namespaces/*/services/*`.
+func (o ServiceResolverOutput) ServiceDirectoryService() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceResolver) string { return v.ServiceDirectoryService }).(pulumi.StringOutput)
+}
+
+type ServiceResolverArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceResolverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceResolver)(nil)).Elem()
+}
+
+func (o ServiceResolverArrayOutput) ToServiceResolverArrayOutput() ServiceResolverArrayOutput {
+	return o
+}
+
+func (o ServiceResolverArrayOutput) ToServiceResolverArrayOutputWithContext(ctx context.Context) ServiceResolverArrayOutput {
+	return o
+}
+
+func (o ServiceResolverArrayOutput) Index(i pulumi.IntInput) ServiceResolverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceResolver {
+		return vs[0].([]ServiceResolver)[vs[1].(int)]
+	}).(ServiceResolverOutput)
+}
+
+// A ServiceResolver represents an EKM replica that can be reached within an EkmConnection.
+type ServiceResolverResponse struct {
+	// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+	EndpointFilter string `pulumi:"endpointFilter"`
+	// The hostname of the EKM replica used at TLS and HTTP layers.
+	Hostname string `pulumi:"hostname"`
+	// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+	ServerCertificates []CertificateResponse `pulumi:"serverCertificates"`
+	// The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/*/locations/*/namespaces/*/services/*`.
+	ServiceDirectoryService string `pulumi:"serviceDirectoryService"`
+}
+
+// A ServiceResolver represents an EKM replica that can be reached within an EkmConnection.
+type ServiceResolverResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceResolverResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceResolverResponse)(nil)).Elem()
+}
+
+func (o ServiceResolverResponseOutput) ToServiceResolverResponseOutput() ServiceResolverResponseOutput {
+	return o
+}
+
+func (o ServiceResolverResponseOutput) ToServiceResolverResponseOutputWithContext(ctx context.Context) ServiceResolverResponseOutput {
+	return o
+}
+
+// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+func (o ServiceResolverResponseOutput) EndpointFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceResolverResponse) string { return v.EndpointFilter }).(pulumi.StringOutput)
+}
+
+// The hostname of the EKM replica used at TLS and HTTP layers.
+func (o ServiceResolverResponseOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceResolverResponse) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+func (o ServiceResolverResponseOutput) ServerCertificates() CertificateResponseArrayOutput {
+	return o.ApplyT(func(v ServiceResolverResponse) []CertificateResponse { return v.ServerCertificates }).(CertificateResponseArrayOutput)
+}
+
+// The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/*/locations/*/namespaces/*/services/*`.
+func (o ServiceResolverResponseOutput) ServiceDirectoryService() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceResolverResponse) string { return v.ServiceDirectoryService }).(pulumi.StringOutput)
+}
+
+type ServiceResolverResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceResolverResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceResolverResponse)(nil)).Elem()
+}
+
+func (o ServiceResolverResponseArrayOutput) ToServiceResolverResponseArrayOutput() ServiceResolverResponseArrayOutput {
+	return o
+}
+
+func (o ServiceResolverResponseArrayOutput) ToServiceResolverResponseArrayOutputWithContext(ctx context.Context) ServiceResolverResponseArrayOutput {
+	return o
+}
+
+func (o ServiceResolverResponseArrayOutput) Index(i pulumi.IntInput) ServiceResolverResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceResolverResponse {
+		return vs[0].([]ServiceResolverResponse)[vs[1].(int)]
+	}).(ServiceResolverResponseOutput)
+}
+
 // The public key component of the wrapping key. For details of the type of key this public key corresponds to, see the ImportMethod.
 type WrappingPublicKeyResponse struct {
 	// The public key, encoded in PEM format. For more information, see the [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13).
@@ -1346,12 +1768,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateInput)(nil)).Elem(), CertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateArrayInput)(nil)).Elem(), CertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplatePtrInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalProtectionLevelOptionsInput)(nil)).Elem(), ExternalProtectionLevelOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalProtectionLevelOptionsPtrInput)(nil)).Elem(), ExternalProtectionLevelOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceResolverInput)(nil)).Elem(), ServiceResolverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceResolverArrayInput)(nil)).Elem(), ServiceResolverArray{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -1364,7 +1790,11 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(CertificateOutput{})
+	pulumi.RegisterOutputType(CertificateArrayOutput{})
 	pulumi.RegisterOutputType(CertificateChainsResponseOutput{})
+	pulumi.RegisterOutputType(CertificateResponseOutput{})
+	pulumi.RegisterOutputType(CertificateResponseArrayOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionResponseOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplateOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplatePtrOutput{})
@@ -1376,5 +1806,9 @@ func init() {
 	pulumi.RegisterOutputType(ExternalProtectionLevelOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ExternalProtectionLevelOptionsResponseOutput{})
 	pulumi.RegisterOutputType(KeyOperationAttestationResponseOutput{})
+	pulumi.RegisterOutputType(ServiceResolverOutput{})
+	pulumi.RegisterOutputType(ServiceResolverArrayOutput{})
+	pulumi.RegisterOutputType(ServiceResolverResponseOutput{})
+	pulumi.RegisterOutputType(ServiceResolverResponseArrayOutput{})
 	pulumi.RegisterOutputType(WrappingPublicKeyResponseOutput{})
 }

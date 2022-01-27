@@ -106,7 +106,7 @@ class GetCryptoKeyVersionResult:
     @pulumi.getter(name="externalProtectionLevelOptions")
     def external_protection_level_options(self) -> 'outputs.ExternalProtectionLevelOptionsResponse':
         """
-        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         """
         return pulumi.get(self, "external_protection_level_options")
 

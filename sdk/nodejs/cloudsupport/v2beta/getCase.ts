@@ -57,9 +57,9 @@ export interface GetCaseResult {
      */
     readonly name: string;
     /**
-     * The severity of this case.
+     * The priority of this case. If this is set, do not set severity.
      */
-    readonly severity: string;
+    readonly priority: string;
     /**
      * The current status of the support case.
      */

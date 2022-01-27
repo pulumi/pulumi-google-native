@@ -8,9 +8,11 @@ import typing
 from ._enums import *
 from .crypto_key import *
 from .crypto_key_version import *
+from .ekm_connection import *
 from .ekm_connection_iam_policy import *
 from .get_crypto_key import *
 from .get_crypto_key_version import *
+from .get_ekm_connection import *
 from .get_ekm_connection_iam_policy import *
 from .get_import_job import *
 from .get_key_ring import *

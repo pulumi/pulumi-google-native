@@ -8,14 +8,14 @@ using Pulumi;
 namespace Pulumi.GoogleNative.CloudSupport.V2Beta
 {
     /// <summary>
-    /// The severity of this case.
+    /// The priority of this case. If this is set, do not set severity.
     /// </summary>
     [EnumType]
-    public readonly struct CaseSeverity : IEquatable<CaseSeverity>
+    public readonly struct CasePriority : IEquatable<CasePriority>
     {
         private readonly string _value;
 
-        private CaseSeverity(string value)
+        private CasePriority(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
@@ -23,36 +23,36 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         /// <summary>
         /// Severity is undefined or has not been set yet.
         /// </summary>
-        public static CaseSeverity SeverityUnspecified { get; } = new CaseSeverity("SEVERITY_UNSPECIFIED");
+        public static CasePriority PriorityUnspecified { get; } = new CasePriority("PRIORITY_UNSPECIFIED");
         /// <summary>
         /// Extreme impact on a production service. Service is hard down.
         /// </summary>
-        public static CaseSeverity S0 { get; } = new CaseSeverity("S0");
+        public static CasePriority P0 { get; } = new CasePriority("P0");
         /// <summary>
         /// Critical impact on a production service. Service is currently unusable.
         /// </summary>
-        public static CaseSeverity S1 { get; } = new CaseSeverity("S1");
+        public static CasePriority P1 { get; } = new CasePriority("P1");
         /// <summary>
         /// Severe impact on a production service. Service is usable but greatly impaired.
         /// </summary>
-        public static CaseSeverity S2 { get; } = new CaseSeverity("S2");
+        public static CasePriority P2 { get; } = new CasePriority("P2");
         /// <summary>
         /// Medium impact on a production service. Service is available, but moderately impaired.
         /// </summary>
-        public static CaseSeverity S3 { get; } = new CaseSeverity("S3");
+        public static CasePriority P3 { get; } = new CasePriority("P3");
         /// <summary>
         /// General questions or minor issues. Production service is fully available.
         /// </summary>
-        public static CaseSeverity S4 { get; } = new CaseSeverity("S4");
+        public static CasePriority P4 { get; } = new CasePriority("P4");
 
-        public static bool operator ==(CaseSeverity left, CaseSeverity right) => left.Equals(right);
-        public static bool operator !=(CaseSeverity left, CaseSeverity right) => !left.Equals(right);
+        public static bool operator ==(CasePriority left, CasePriority right) => left.Equals(right);
+        public static bool operator !=(CasePriority left, CasePriority right) => !left.Equals(right);
 
-        public static explicit operator string(CaseSeverity value) => value._value;
+        public static explicit operator string(CasePriority value) => value._value;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is CaseSeverity other && Equals(other);
-        public bool Equals(CaseSeverity other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+        public override bool Equals(object? obj) => obj is CasePriority other && Equals(other);
+        public bool Equals(CasePriority other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

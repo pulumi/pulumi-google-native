@@ -710,6 +710,8 @@ const (
 	ConnectionProfileProviderCloudsql = ConnectionProfileProvider("CLOUDSQL")
 	// RDS runs the database.
 	ConnectionProfileProviderRds = ConnectionProfileProvider("RDS")
+	// Amazon Aurora.
+	ConnectionProfileProviderAurora = ConnectionProfileProvider("AURORA")
 )
 
 func (ConnectionProfileProvider) ElementType() reflect.Type {
@@ -1227,6 +1229,8 @@ const (
 	DatabaseTypeProviderCloudsql = DatabaseTypeProvider("CLOUDSQL")
 	// RDS runs the database.
 	DatabaseTypeProviderRds = DatabaseTypeProvider("RDS")
+	// Amazon Aurora.
+	DatabaseTypeProviderAurora = DatabaseTypeProvider("AURORA")
 )
 
 func (DatabaseTypeProvider) ElementType() reflect.Type {

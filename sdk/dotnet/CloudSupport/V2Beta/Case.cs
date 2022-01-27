@@ -60,10 +60,10 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The severity of this case.
+        /// The priority of this case. If this is set, do not set severity.
         /// </summary>
-        [Output("severity")]
-        public Output<string> Severity { get; private set; } = null!;
+        [Output("priority")]
+        public Output<string> Priority { get; private set; } = null!;
 
         /// <summary>
         /// The current status of the support case.
@@ -177,10 +177,10 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The severity of this case.
+        /// The priority of this case. If this is set, do not set severity.
         /// </summary>
-        [Input("severity")]
-        public Input<Pulumi.GoogleNative.CloudSupport.V2Beta.CaseSeverity>? Severity { get; set; }
+        [Input("priority")]
+        public Input<Pulumi.GoogleNative.CloudSupport.V2Beta.CasePriority>? Priority { get; set; }
 
         [Input("subscriberEmailAddresses")]
         private InputList<string>? _subscriberEmailAddresses;

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
 {
 
     /// <summary>
-    /// A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.
+    /// A configuration for running an Apache Spark (https://spark.apache.org/) batch workload.
     /// </summary>
     public sealed class SparkBatchArgs : Pulumi.ResourceArgs
     {

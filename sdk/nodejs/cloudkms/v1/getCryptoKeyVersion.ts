@@ -53,7 +53,7 @@ export interface GetCryptoKeyVersionResult {
      */
     readonly destroyTime: string;
     /**
-     * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+     * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
      */
     readonly externalProtectionLevelOptions: outputs.cloudkms.v1.ExternalProtectionLevelOptionsResponse;
     /**

@@ -59,7 +59,7 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
      */
     public /*out*/ readonly destroyTime!: pulumi.Output<string>;
     /**
-     * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+     * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
      */
     public readonly externalProtectionLevelOptions!: pulumi.Output<outputs.cloudkms.v1.ExternalProtectionLevelOptionsResponse>;
     /**
@@ -157,7 +157,7 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
 export interface CryptoKeyVersionArgs {
     cryptoKeyId: pulumi.Input<string>;
     /**
-     * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+     * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
      */
     externalProtectionLevelOptions?: pulumi.Input<inputs.cloudkms.v1.ExternalProtectionLevelOptionsArgs>;
     keyRingId: pulumi.Input<string>;

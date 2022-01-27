@@ -20,6 +20,8 @@ type CryptoKey struct {
 
 	// The time at which this CryptoKey was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
+	CryptoKeyBackend pulumi.StringOutput `pulumi:"cryptoKeyBackend"`
 	// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringOutput `pulumi:"destroyScheduledDuration"`
 	// Immutable. Whether this key may contain imported versions only.
@@ -85,7 +87,9 @@ func (CryptoKeyState) ElementType() reflect.Type {
 }
 
 type cryptoKeyArgs struct {
-	CryptoKeyId string `pulumi:"cryptoKeyId"`
+	// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
+	CryptoKeyBackend *string `pulumi:"cryptoKeyBackend"`
+	CryptoKeyId      string  `pulumi:"cryptoKeyId"`
 	// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
 	// Immutable. Whether this key may contain imported versions only.
@@ -108,7 +112,9 @@ type cryptoKeyArgs struct {
 
 // The set of arguments for constructing a CryptoKey resource.
 type CryptoKeyArgs struct {
-	CryptoKeyId pulumi.StringInput
+	// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
+	CryptoKeyBackend pulumi.StringPtrInput
+	CryptoKeyId      pulumi.StringInput
 	// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringPtrInput
 	// Immutable. Whether this key may contain imported versions only.

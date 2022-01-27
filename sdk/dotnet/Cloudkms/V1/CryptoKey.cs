@@ -25,6 +25,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
+        /// </summary>
+        [Output("cryptoKeyBackend")]
+        public Output<string> CryptoKeyBackend { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
         /// </summary>
         [Output("destroyScheduledDuration")]
@@ -123,6 +129,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 
     public sealed class CryptoKeyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
+        /// </summary>
+        [Input("cryptoKeyBackend")]
+        public Input<string>? CryptoKeyBackend { get; set; }
+
         [Input("cryptoKeyId", required: true)]
         public Input<string> CryptoKeyId { get; set; } = null!;
 
