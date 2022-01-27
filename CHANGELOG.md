@@ -2,13 +2,16 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 0.13.0 (2022-01-27)
 
 Improvements:
 
 - Update to support the latest resource definitions and the latest Pulumi SDK
 - Expose project, region, and zone properties on Provider [#310](https://github.com/pulumi/pulumi-google-native/pull/310)
-
----
 
 ## 0.12.0 (2022-01-26)
 
