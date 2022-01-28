@@ -2297,7 +2297,7 @@
         },
         "groupKey": {
           "$ref": "EntityKey",
-          "description": "Required. Immutable. The `EntityKey` of the `Group`."
+          "description": "Required. The `EntityKey` of the `Group`."
         },
         "labels": {
           "additionalProperties": {

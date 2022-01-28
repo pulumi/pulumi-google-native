@@ -1049,7 +1049,7 @@
       }
     }
   },
-  "revision": "20220119",
+  "revision": "20220103",
   "rootUrl": "https://datamigration.googleapis.com/",
   "schemas": {
     "AuditConfig": {
@@ -1323,14 +1323,12 @@
           "enum": [
             "DATABASE_PROVIDER_UNSPECIFIED",
             "CLOUDSQL",
-            "RDS",
-            "AURORA"
+            "RDS"
           ],
           "enumDescriptions": [
             "The database provider is unknown.",
             "CloudSQL runs the database.",
-            "RDS runs the database.",
-            "Amazon Aurora."
+            "RDS runs the database."
           ],
           "type": "string"
         },
@@ -1390,14 +1388,12 @@
           "enum": [
             "DATABASE_PROVIDER_UNSPECIFIED",
             "CLOUDSQL",
-            "RDS",
-            "AURORA"
+            "RDS"
           ],
           "enumDescriptions": [
             "The database provider is unknown.",
             "CloudSQL runs the database.",
-            "RDS runs the database.",
-            "Amazon Aurora."
+            "RDS runs the database."
           ],
           "type": "string"
         }
