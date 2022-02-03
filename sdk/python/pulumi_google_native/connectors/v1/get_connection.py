@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectionResult:
-    def __init__(__self__, auth_config=None, config_variables=None, connector_version=None, create_time=None, description=None, egress_backends=None, envoy_image_location=None, image_location=None, inactive=None, labels=None, lock_config=None, name=None, service_account=None, service_directory=None, status=None, update_time=None):
+    def __init__(__self__, auth_config=None, config_variables=None, connector_version=None, create_time=None, description=None, egress_backends=None, envoy_image_location=None, image_location=None, labels=None, lock_config=None, name=None, service_account=None, service_directory=None, status=None, suspended=None, update_time=None):
         if auth_config and not isinstance(auth_config, dict):
             raise TypeError("Expected argument 'auth_config' to be a dict")
         pulumi.set(__self__, "auth_config", auth_config)
@@ -43,9 +43,6 @@ class GetConnectionResult:
         if image_location and not isinstance(image_location, str):
             raise TypeError("Expected argument 'image_location' to be a str")
         pulumi.set(__self__, "image_location", image_location)
-        if inactive and not isinstance(inactive, bool):
-            raise TypeError("Expected argument 'inactive' to be a bool")
-        pulumi.set(__self__, "inactive", inactive)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -64,6 +61,9 @@ class GetConnectionResult:
         if status and not isinstance(status, dict):
             raise TypeError("Expected argument 'status' to be a dict")
         pulumi.set(__self__, "status", status)
+        if suspended and not isinstance(suspended, bool):
+            raise TypeError("Expected argument 'suspended' to be a bool")
+        pulumi.set(__self__, "suspended", suspended)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -134,14 +134,6 @@ class GetConnectionResult:
 
     @property
     @pulumi.getter
-    def inactive(self) -> bool:
-        """
-        Optional. Inactive indicates the connection is active to use or not.
-        """
-        return pulumi.get(self, "inactive")
-
-    @property
-    @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
         Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
@@ -189,6 +181,14 @@ class GetConnectionResult:
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter
+    def suspended(self) -> bool:
+        """
+        Optional. Suspended indicates if a user has suspended a connection or not.
+        """
+        return pulumi.get(self, "suspended")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -211,13 +211,13 @@ class AwaitableGetConnectionResult(GetConnectionResult):
             egress_backends=self.egress_backends,
             envoy_image_location=self.envoy_image_location,
             image_location=self.image_location,
-            inactive=self.inactive,
             labels=self.labels,
             lock_config=self.lock_config,
             name=self.name,
             service_account=self.service_account,
             service_directory=self.service_directory,
             status=self.status,
+            suspended=self.suspended,
             update_time=self.update_time)
 
 
@@ -249,13 +249,13 @@ def get_connection(connection_id: Optional[str] = None,
         egress_backends=__ret__.egress_backends,
         envoy_image_location=__ret__.envoy_image_location,
         image_location=__ret__.image_location,
-        inactive=__ret__.inactive,
         labels=__ret__.labels,
         lock_config=__ret__.lock_config,
         name=__ret__.name,
         service_account=__ret__.service_account,
         service_directory=__ret__.service_directory,
         status=__ret__.status,
+        suspended=__ret__.suspended,
         update_time=__ret__.update_time)
 
 

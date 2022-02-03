@@ -64,6 +64,19 @@ export const AuditLogConfigLogType = {
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
 
+export const DatasetAccessEntryTargetTypesItem = {
+    /**
+     * Do not use. You must set a target type explicitly.
+     */
+    TargetTypeUnspecified: "TARGET_TYPE_UNSPECIFIED",
+    /**
+     * This entry applies to views in the dataset.
+     */
+    Views: "VIEWS",
+} as const;
+
+export type DatasetAccessEntryTargetTypesItem = (typeof DatasetAccessEntryTargetTypesItem)[keyof typeof DatasetAccessEntryTargetTypesItem];
+
 export const RoutineDeterminismLevel = {
     /**
      * The determinism of the UDF is unspecified.

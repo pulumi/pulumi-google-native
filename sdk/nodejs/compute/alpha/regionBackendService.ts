@@ -150,7 +150,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public /*out*/ readonly securityPolicy!: pulumi.Output<string>;
     /**
-     * This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
+     * This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      */
     public readonly securitySettings!: pulumi.Output<outputs.compute.alpha.SecuritySettingsResponse>;
     /**
@@ -376,7 +376,7 @@ export interface RegionBackendServiceArgs {
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
-     * This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
+     * This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      */
     securitySettings?: pulumi.Input<inputs.compute.alpha.SecuritySettingsArgs>;
     /**

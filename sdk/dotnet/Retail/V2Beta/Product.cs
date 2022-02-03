@@ -142,7 +142,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         public Output<string> PrimaryProductId { get; private set; } = null!;
 
         /// <summary>
-        /// The promotions applied to the product. A maximum of 10 values are allowed per Product.
+        /// The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
         /// </summary>
         [Output("promotions")]
         public Output<ImmutableArray<Outputs.GoogleCloudRetailV2betaPromotionResponse>> Promotions { get; private set; } = null!;
@@ -457,7 +457,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         private InputList<Inputs.GoogleCloudRetailV2betaPromotionArgs>? _promotions;
 
         /// <summary>
-        /// The promotions applied to the product. A maximum of 10 values are allowed per Product.
+        /// The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
         /// </summary>
         public InputList<Inputs.GoogleCloudRetailV2betaPromotionArgs> Promotions
         {

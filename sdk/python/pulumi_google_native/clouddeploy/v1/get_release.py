@@ -206,7 +206,7 @@ class GetReleaseResult:
     @pulumi.getter(name="targetSnapshots")
     def target_snapshots(self) -> Sequence['outputs.TargetResponse']:
         """
-        Snapshot of the parent pipeline's targets taken at release creation time.
+        Snapshot of the targets taken at release creation time.
         """
         return pulumi.get(self, "target_snapshots")
 

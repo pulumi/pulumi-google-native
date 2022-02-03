@@ -97,7 +97,7 @@ class GetGroupResult:
     @pulumi.getter(name="groupKey")
     def group_key(self) -> 'outputs.EntityKeyResponse':
         """
-        Immutable. The `EntityKey` of the `Group`.
+        The `EntityKey` of the `Group`.
         """
         return pulumi.get(self, "group_key")
 

@@ -918,6 +918,22 @@ export const FirewallPolicyRuleDirection = {
  */
 export type FirewallPolicyRuleDirection = (typeof FirewallPolicyRuleDirection)[keyof typeof FirewallPolicyRuleDirection];
 
+export const FirewallPolicyVpcNetworkScope = {
+    /**
+     * The firewall policy is allowed to be attached only to global networks.
+     */
+    GlobalVpcNetwork: "GLOBAL_VPC_NETWORK",
+    /**
+     * The firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. This option is applicable only to regional firewall policies.
+     */
+    RegionalVpcNetwork: "REGIONAL_VPC_NETWORK",
+} as const;
+
+/**
+ * The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+ */
+export type FirewallPolicyVpcNetworkScope = (typeof FirewallPolicyVpcNetworkScope)[keyof typeof FirewallPolicyVpcNetworkScope];
+
 export const ForwardingRuleIpProtocol = {
     Ah: "AH",
     All: "ALL",
@@ -2035,6 +2051,22 @@ export const NetworkEndpointGroupType = {
  */
 export type NetworkEndpointGroupType = (typeof NetworkEndpointGroupType)[keyof typeof NetworkEndpointGroupType];
 
+export const NetworkFirewallPolicyVpcNetworkScope = {
+    /**
+     * The firewall policy is allowed to be attached only to global networks.
+     */
+    GlobalVpcNetwork: "GLOBAL_VPC_NETWORK",
+    /**
+     * The firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. This option is applicable only to regional firewall policies.
+     */
+    RegionalVpcNetwork: "REGIONAL_VPC_NETWORK",
+} as const;
+
+/**
+ * The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+ */
+export type NetworkFirewallPolicyVpcNetworkScope = (typeof NetworkFirewallPolicyVpcNetworkScope)[keyof typeof NetworkFirewallPolicyVpcNetworkScope];
+
 export const NetworkInterfaceNicType = {
     /**
      * GVNIC
@@ -2570,6 +2602,29 @@ export const RegionNetworkEndpointGroupType = {
  * Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
  */
 export type RegionNetworkEndpointGroupType = (typeof RegionNetworkEndpointGroupType)[keyof typeof RegionNetworkEndpointGroupType];
+
+export const RegionNetworkFirewallPolicyVpcNetworkScope = {
+    /**
+     * The firewall policy is allowed to be attached only to global networks.
+     */
+    GlobalVpcNetwork: "GLOBAL_VPC_NETWORK",
+    /**
+     * The firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. This option is applicable only to regional firewall policies.
+     */
+    RegionalVpcNetwork: "REGIONAL_VPC_NETWORK",
+} as const;
+
+/**
+ * The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+ */
+export type RegionNetworkFirewallPolicyVpcNetworkScope = (typeof RegionNetworkFirewallPolicyVpcNetworkScope)[keyof typeof RegionNetworkFirewallPolicyVpcNetworkScope];
+
+export const RegionNetworkNetworkFirewallPolicyEnforcementOrder = {
+    AfterClassicFirewall: "AFTER_CLASSIC_FIREWALL",
+    BeforeClassicFirewall: "BEFORE_CLASSIC_FIREWALL",
+} as const;
+
+export type RegionNetworkNetworkFirewallPolicyEnforcementOrder = (typeof RegionNetworkNetworkFirewallPolicyEnforcementOrder)[keyof typeof RegionNetworkNetworkFirewallPolicyEnforcementOrder];
 
 export const RegionSecurityPolicyType = {
     CloudArmor: "CLOUD_ARMOR",
@@ -3119,7 +3174,7 @@ export const SchedulingOnHostMaintenance = {
 } as const;
 
 /**
- * Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+ * Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
  */
 export type SchedulingOnHostMaintenance = (typeof SchedulingOnHostMaintenance)[keyof typeof SchedulingOnHostMaintenance];
 

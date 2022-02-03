@@ -7,9 +7,13 @@ from enum import Enum
 __all__ = [
     'LoggingConfigLogActionStatesItem',
     'LoggingConfigLogActionsItem',
+    'MetadataOptionsAcl',
     'MetadataOptionsGid',
+    'MetadataOptionsKmsKey',
     'MetadataOptionsMode',
+    'MetadataOptionsStorageClass',
     'MetadataOptionsSymlink',
+    'MetadataOptionsTemporaryHold',
     'MetadataOptionsUid',
     'NotificationConfigEventTypesItem',
     'NotificationConfigPayloadFormat',
@@ -51,6 +55,24 @@ class LoggingConfigLogActionsItem(str, Enum):
     """
 
 
+class MetadataOptionsAcl(str, Enum):
+    """
+    Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
+    """
+    ACL_UNSPECIFIED = "ACL_UNSPECIFIED"
+    """
+    ACL behavior is unspecified.
+    """
+    ACL_DESTINATION_BUCKET_DEFAULT = "ACL_DESTINATION_BUCKET_DEFAULT"
+    """
+    Use the destination bucket's default object ACLS, if applicable.
+    """
+    ACL_PRESERVE = "ACL_PRESERVE"
+    """
+    Preserve the object's original ACLs. This requires the service account to have `storage.objects.getIamPolicy` permission for the source object. [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) must not be enabled on either the source or destination buckets.
+    """
+
+
 class MetadataOptionsGid(str, Enum):
     """
     Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
@@ -66,6 +88,24 @@ class MetadataOptionsGid(str, Enum):
     GID_NUMBER = "GID_NUMBER"
     """
     Preserve GID during a transfer job.
+    """
+
+
+class MetadataOptionsKmsKey(str, Enum):
+    """
+    Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+    """
+    KMS_KEY_UNSPECIFIED = "KMS_KEY_UNSPECIFIED"
+    """
+    KmsKey behavior is unspecified.
+    """
+    KMS_KEY_DESTINATION_BUCKET_DEFAULT = "KMS_KEY_DESTINATION_BUCKET_DEFAULT"
+    """
+    Use the destination bucket's default encryption settings.
+    """
+    KMS_KEY_PRESERVE = "KMS_KEY_PRESERVE"
+    """
+    Preserve the object's original Cloud KMS customer-managed encryption key (CMEK) if present. Objects that do not use a Cloud KMS encryption key will be encrypted using the destination bucket's encryption settings.
     """
 
 
@@ -87,6 +127,40 @@ class MetadataOptionsMode(str, Enum):
     """
 
 
+class MetadataOptionsStorageClass(str, Enum):
+    """
+    Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+    """
+    STORAGE_CLASS_UNSPECIFIED = "STORAGE_CLASS_UNSPECIFIED"
+    """
+    Storage class behavior is unspecified.
+    """
+    STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT = "STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT"
+    """
+    Use the destination bucket's default storage class.
+    """
+    STORAGE_CLASS_PRESERVE = "STORAGE_CLASS_PRESERVE"
+    """
+    Preserve the object's original storage class. This is only supported for transfers from Google Cloud Storage buckets.
+    """
+    STORAGE_CLASS_STANDARD = "STORAGE_CLASS_STANDARD"
+    """
+    Set the storage class to STANDARD.
+    """
+    STORAGE_CLASS_NEARLINE = "STORAGE_CLASS_NEARLINE"
+    """
+    Set the storage class to NEARLINE.
+    """
+    STORAGE_CLASS_COLDLINE = "STORAGE_CLASS_COLDLINE"
+    """
+    Set the storage class to COLDLINE.
+    """
+    STORAGE_CLASS_ARCHIVE = "STORAGE_CLASS_ARCHIVE"
+    """
+    Set the storage class to ARCHIVE.
+    """
+
+
 class MetadataOptionsSymlink(str, Enum):
     """
     Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
@@ -102,6 +176,24 @@ class MetadataOptionsSymlink(str, Enum):
     SYMLINK_PRESERVE = "SYMLINK_PRESERVE"
     """
     Preserve symlinks during a transfer job.
+    """
+
+
+class MetadataOptionsTemporaryHold(str, Enum):
+    """
+    Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+    """
+    TEMPORARY_HOLD_UNSPECIFIED = "TEMPORARY_HOLD_UNSPECIFIED"
+    """
+    Temporary hold behavior is unspecified.
+    """
+    TEMPORARY_HOLD_SKIP = "TEMPORARY_HOLD_SKIP"
+    """
+    Do not set a temporary hold on the destination object.
+    """
+    TEMPORARY_HOLD_PRESERVE = "TEMPORARY_HOLD_PRESERVE"
+    """
+    Preserve the object's original temporary hold status.
     """
 
 

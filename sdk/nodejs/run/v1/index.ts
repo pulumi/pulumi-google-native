@@ -7,8 +7,10 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./domainMapping";
 export * from "./getDomainMapping";
+export * from "./getJobIamPolicy";
 export * from "./getService";
 export * from "./getServiceIamPolicy";
+export * from "./jobIamPolicy";
 export * from "./service";
 export * from "./serviceIamPolicy";
 
@@ -17,6 +19,7 @@ export * from "../../types/enums/run/v1";
 
 // Import resources to register:
 import { DomainMapping } from "./domainMapping";
+import { JobIamPolicy } from "./jobIamPolicy";
 import { Service } from "./service";
 import { ServiceIamPolicy } from "./serviceIamPolicy";
 
@@ -26,6 +29,8 @@ const _module = {
         switch (type) {
             case "google-native:run/v1:DomainMapping":
                 return new DomainMapping(name, <any>undefined, { urn })
+            case "google-native:run/v1:JobIamPolicy":
+                return new JobIamPolicy(name, <any>undefined, { urn })
             case "google-native:run/v1:Service":
                 return new Service(name, <any>undefined, { urn })
             case "google-native:run/v1:ServiceIamPolicy":

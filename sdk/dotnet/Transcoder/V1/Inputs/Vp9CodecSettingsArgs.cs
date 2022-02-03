@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public Input<int> BitrateBps { get; set; } = null!;
 
         /// <summary>
-        /// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
+        /// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported. 
         /// </summary>
         [Input("crfLevel")]
         public Input<int>? CrfLevel { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public Input<string>? Profile { get; set; }
 
         /// <summary>
-        /// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+        /// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
         /// </summary>
         [Input("rateControlMode")]
         public Input<string>? RateControlMode { get; set; }

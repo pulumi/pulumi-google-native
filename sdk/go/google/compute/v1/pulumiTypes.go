@@ -33241,7 +33241,7 @@ type Scheduling struct {
 	MinNodeCpus *int `pulumi:"minNodeCpus"`
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities []SchedulingNodeAffinity `pulumi:"nodeAffinities"`
-	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
 	OnHostMaintenance *SchedulingOnHostMaintenance `pulumi:"onHostMaintenance"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible *bool `pulumi:"preemptible"`
@@ -33272,7 +33272,7 @@ type SchedulingArgs struct {
 	MinNodeCpus pulumi.IntPtrInput `pulumi:"minNodeCpus"`
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities SchedulingNodeAffinityArrayInput `pulumi:"nodeAffinities"`
-	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
 	OnHostMaintenance SchedulingOnHostMaintenancePtrInput `pulumi:"onHostMaintenance"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
@@ -33383,7 +33383,7 @@ func (o SchedulingOutput) NodeAffinities() SchedulingNodeAffinityArrayOutput {
 	return o.ApplyT(func(v Scheduling) []SchedulingNodeAffinity { return v.NodeAffinities }).(SchedulingNodeAffinityArrayOutput)
 }
 
-// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
 func (o SchedulingOutput) OnHostMaintenance() SchedulingOnHostMaintenancePtrOutput {
 	return o.ApplyT(func(v Scheduling) *SchedulingOnHostMaintenance { return v.OnHostMaintenance }).(SchedulingOnHostMaintenancePtrOutput)
 }
@@ -33472,7 +33472,7 @@ func (o SchedulingPtrOutput) NodeAffinities() SchedulingNodeAffinityArrayOutput 
 	}).(SchedulingNodeAffinityArrayOutput)
 }
 
-// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
 func (o SchedulingPtrOutput) OnHostMaintenance() SchedulingOnHostMaintenancePtrOutput {
 	return o.ApplyT(func(v *Scheduling) *SchedulingOnHostMaintenance {
 		if v == nil {
@@ -33692,7 +33692,7 @@ type SchedulingResponse struct {
 	MinNodeCpus int `pulumi:"minNodeCpus"`
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities []SchedulingNodeAffinityResponse `pulumi:"nodeAffinities"`
-	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
 	OnHostMaintenance string `pulumi:"onHostMaintenance"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible bool `pulumi:"preemptible"`
@@ -33740,7 +33740,7 @@ func (o SchedulingResponseOutput) NodeAffinities() SchedulingNodeAffinityRespons
 	return o.ApplyT(func(v SchedulingResponse) []SchedulingNodeAffinityResponse { return v.NodeAffinities }).(SchedulingNodeAffinityResponseArrayOutput)
 }
 
-// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
 func (o SchedulingResponseOutput) OnHostMaintenance() pulumi.StringOutput {
 	return o.ApplyT(func(v SchedulingResponse) string { return v.OnHostMaintenance }).(pulumi.StringOutput)
 }

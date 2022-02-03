@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 {
     /// <summary>
     /// Creates a new Target in a given project and location.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:clouddeploy/v1:Target")]
     public partial class Target : Pulumi.CustomResource
@@ -21,6 +20,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
+
+        /// <summary>
+        /// Information specifying an Anthos Cluster.
+        /// </summary>
+        [Output("anthosCluster")]
+        public Output<Outputs.AnthosClusterResponse> AnthosCluster { get; private set; } = null!;
 
         /// <summary>
         /// Time at which the `Target` was created.
@@ -59,7 +64,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+        /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -146,6 +151,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         }
 
         /// <summary>
+        /// Information specifying an Anthos Cluster.
+        /// </summary>
+        [Input("anthosCluster")]
+        public Input<Inputs.AnthosClusterArgs>? AnthosCluster { get; set; }
+
+        /// <summary>
         /// Optional. Description of the `Target`. Max length is 255 characters.
         /// </summary>
         [Input("description")]
@@ -191,7 +202,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+        /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

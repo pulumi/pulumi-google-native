@@ -23,6 +23,8 @@ if typing.TYPE_CHECKING:
     artifactregistry = __artifactregistry
     import pulumi_google_native.assuredworkloads as __assuredworkloads
     assuredworkloads = __assuredworkloads
+    import pulumi_google_native.baremetalsolution as __baremetalsolution
+    baremetalsolution = __baremetalsolution
     import pulumi_google_native.bigquery as __bigquery
     bigquery = __bigquery
     import pulumi_google_native.bigqueryconnection as __bigqueryconnection
@@ -247,6 +249,7 @@ else:
     appengine = _utilities.lazy_import('pulumi_google_native.appengine')
     artifactregistry = _utilities.lazy_import('pulumi_google_native.artifactregistry')
     assuredworkloads = _utilities.lazy_import('pulumi_google_native.assuredworkloads')
+    baremetalsolution = _utilities.lazy_import('pulumi_google_native.baremetalsolution')
     bigquery = _utilities.lazy_import('pulumi_google_native.bigquery')
     bigqueryconnection = _utilities.lazy_import('pulumi_google_native.bigqueryconnection')
     bigquerydatatransfer = _utilities.lazy_import('pulumi_google_native.bigquerydatatransfer')
@@ -521,6 +524,15 @@ _utilities.register(
   "fqn": "pulumi_google_native.assuredworkloads.v1",
   "classes": {
    "google-native:assuredworkloads/v1:Workload": "Workload"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "baremetalsolution/v2",
+  "fqn": "pulumi_google_native.baremetalsolution.v2",
+  "classes": {
+   "google-native:baremetalsolution/v2:Snapshot": "Snapshot",
+   "google-native:baremetalsolution/v2:SnapshotSchedulePolicy": "SnapshotSchedulePolicy"
   }
  },
  {
@@ -967,9 +979,11 @@ _utilities.register(
    "google-native:compute/alpha:RegionInstanceGroupManager": "RegionInstanceGroupManager",
    "google-native:compute/alpha:RegionInstantSnapshot": "RegionInstantSnapshot",
    "google-native:compute/alpha:RegionInstantSnapshotIamPolicy": "RegionInstantSnapshotIamPolicy",
+   "google-native:compute/alpha:RegionNetwork": "RegionNetwork",
    "google-native:compute/alpha:RegionNetworkEndpointGroup": "RegionNetworkEndpointGroup",
    "google-native:compute/alpha:RegionNetworkFirewallPolicy": "RegionNetworkFirewallPolicy",
    "google-native:compute/alpha:RegionNetworkFirewallPolicyIamPolicy": "RegionNetworkFirewallPolicyIamPolicy",
+   "google-native:compute/alpha:RegionNetworkIamPolicy": "RegionNetworkIamPolicy",
    "google-native:compute/alpha:RegionNotificationEndpoint": "RegionNotificationEndpoint",
    "google-native:compute/alpha:RegionSecurityPolicy": "RegionSecurityPolicy",
    "google-native:compute/alpha:RegionSslCertificate": "RegionSslCertificate",
@@ -2386,6 +2400,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.run.v1",
   "classes": {
    "google-native:run/v1:DomainMapping": "DomainMapping",
+   "google-native:run/v1:JobIamPolicy": "JobIamPolicy",
    "google-native:run/v1:Service": "Service",
    "google-native:run/v1:ServiceIamPolicy": "ServiceIamPolicy"
   }
@@ -2622,15 +2637,6 @@ _utilities.register(
   "classes": {
    "google-native:transcoder/v1:Job": "Job",
    "google-native:transcoder/v1:JobTemplate": "JobTemplate"
-  }
- },
- {
-  "pkg": "google-native",
-  "mod": "transcoder/v1beta1",
-  "fqn": "pulumi_google_native.transcoder.v1beta1",
-  "classes": {
-   "google-native:transcoder/v1beta1:Job": "Job",
-   "google-native:transcoder/v1beta1:JobTemplate": "JobTemplate"
   }
  },
  {

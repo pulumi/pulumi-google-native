@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         public Output<Outputs.DynamicGroupMetadataResponse> DynamicGroupMetadata { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The `EntityKey` of the `Group`.
+        /// The `EntityKey` of the `Group`.
         /// </summary>
         [Output("groupKey")]
         public Output<Outputs.EntityKeyResponse> GroupKey { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         public Input<Inputs.DynamicGroupMetadataArgs>? DynamicGroupMetadata { get; set; }
 
         /// <summary>
-        /// Immutable. The `EntityKey` of the `Group`.
+        /// The `EntityKey` of the `Group`.
         /// </summary>
         [Input("groupKey", required: true)]
         public Input<Inputs.EntityKeyArgs> GroupKey { get; set; } = null!;

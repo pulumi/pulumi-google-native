@@ -1119,7 +1119,7 @@ func (o GoogleCloudChannelV1PeriodResponseOutput) PeriodType() pulumi.StringOutp
 type GoogleCloudChannelV1ProvisionedServiceResponse struct {
 	// The product pertaining to the provisioning resource as specified in the Offer.
 	ProductId string `pulumi:"productId"`
-	// Provisioning ID of the entitlement. For Google Workspace, this would be the underlying Subscription ID.
+	// Provisioning ID of the entitlement. For Google Workspace, this would be the underlying Subscription ID. For Google Cloud Platform, this would be the Billing Account ID of the billing subaccount."
 	ProvisioningId string `pulumi:"provisioningId"`
 	// The SKU pertaining to the provisioning resource as specified in the Offer.
 	SkuId string `pulumi:"skuId"`
@@ -1145,7 +1145,7 @@ func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) ProductId() pulumi
 	return o.ApplyT(func(v GoogleCloudChannelV1ProvisionedServiceResponse) string { return v.ProductId }).(pulumi.StringOutput)
 }
 
-// Provisioning ID of the entitlement. For Google Workspace, this would be the underlying Subscription ID.
+// Provisioning ID of the entitlement. For Google Workspace, this would be the underlying Subscription ID. For Google Cloud Platform, this would be the Billing Account ID of the billing subaccount."
 func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) ProvisioningId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ProvisionedServiceResponse) string { return v.ProvisioningId }).(pulumi.StringOutput)
 }

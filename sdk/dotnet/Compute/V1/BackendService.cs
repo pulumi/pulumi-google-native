@@ -184,7 +184,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> SecurityPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
+        /// This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         /// </summary>
         [Output("securitySettings")]
         public Output<Outputs.SecuritySettingsResponse> SecuritySettings { get; private set; } = null!;
@@ -418,7 +418,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
+        /// This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         /// </summary>
         [Input("securitySettings")]
         public Input<Inputs.SecuritySettingsArgs>? SecuritySettings { get; set; }

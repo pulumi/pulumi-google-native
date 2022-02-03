@@ -1818,12 +1818,20 @@ func (o LoggingConfigResponseOutput) LogActions() pulumi.StringArrayOutput {
 
 // Specifies the metadata options for running a transfer.
 type MetadataOptions struct {
+	// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
+	Acl *MetadataOptionsAcl `pulumi:"acl"`
 	// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
 	Gid *MetadataOptionsGid `pulumi:"gid"`
+	// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+	KmsKey *MetadataOptionsKmsKey `pulumi:"kmsKey"`
 	// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
 	Mode *MetadataOptionsMode `pulumi:"mode"`
+	// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+	StorageClass *MetadataOptionsStorageClass `pulumi:"storageClass"`
 	// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
 	Symlink *MetadataOptionsSymlink `pulumi:"symlink"`
+	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+	TemporaryHold *MetadataOptionsTemporaryHold `pulumi:"temporaryHold"`
 	// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
 	Uid *MetadataOptionsUid `pulumi:"uid"`
 }
@@ -1841,12 +1849,20 @@ type MetadataOptionsInput interface {
 
 // Specifies the metadata options for running a transfer.
 type MetadataOptionsArgs struct {
+	// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
+	Acl MetadataOptionsAclPtrInput `pulumi:"acl"`
 	// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
 	Gid MetadataOptionsGidPtrInput `pulumi:"gid"`
+	// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+	KmsKey MetadataOptionsKmsKeyPtrInput `pulumi:"kmsKey"`
 	// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
 	Mode MetadataOptionsModePtrInput `pulumi:"mode"`
+	// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+	StorageClass MetadataOptionsStorageClassPtrInput `pulumi:"storageClass"`
 	// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
 	Symlink MetadataOptionsSymlinkPtrInput `pulumi:"symlink"`
+	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+	TemporaryHold MetadataOptionsTemporaryHoldPtrInput `pulumi:"temporaryHold"`
 	// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
 	Uid MetadataOptionsUidPtrInput `pulumi:"uid"`
 }
@@ -1929,9 +1945,19 @@ func (o MetadataOptionsOutput) ToMetadataOptionsPtrOutputWithContext(ctx context
 	}).(MetadataOptionsPtrOutput)
 }
 
+// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
+func (o MetadataOptionsOutput) Acl() MetadataOptionsAclPtrOutput {
+	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsAcl { return v.Acl }).(MetadataOptionsAclPtrOutput)
+}
+
 // Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
 func (o MetadataOptionsOutput) Gid() MetadataOptionsGidPtrOutput {
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsGid { return v.Gid }).(MetadataOptionsGidPtrOutput)
+}
+
+// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+func (o MetadataOptionsOutput) KmsKey() MetadataOptionsKmsKeyPtrOutput {
+	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsKmsKey { return v.KmsKey }).(MetadataOptionsKmsKeyPtrOutput)
 }
 
 // Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
@@ -1939,9 +1965,19 @@ func (o MetadataOptionsOutput) Mode() MetadataOptionsModePtrOutput {
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsMode { return v.Mode }).(MetadataOptionsModePtrOutput)
 }
 
+// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+func (o MetadataOptionsOutput) StorageClass() MetadataOptionsStorageClassPtrOutput {
+	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsStorageClass { return v.StorageClass }).(MetadataOptionsStorageClassPtrOutput)
+}
+
 // Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
 func (o MetadataOptionsOutput) Symlink() MetadataOptionsSymlinkPtrOutput {
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsSymlink { return v.Symlink }).(MetadataOptionsSymlinkPtrOutput)
+}
+
+// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+func (o MetadataOptionsOutput) TemporaryHold() MetadataOptionsTemporaryHoldPtrOutput {
+	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsTemporaryHold { return v.TemporaryHold }).(MetadataOptionsTemporaryHoldPtrOutput)
 }
 
 // Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
@@ -1973,6 +2009,16 @@ func (o MetadataOptionsPtrOutput) Elem() MetadataOptionsOutput {
 	}).(MetadataOptionsOutput)
 }
 
+// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
+func (o MetadataOptionsPtrOutput) Acl() MetadataOptionsAclPtrOutput {
+	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsAcl {
+		if v == nil {
+			return nil
+		}
+		return v.Acl
+	}).(MetadataOptionsAclPtrOutput)
+}
+
 // Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
 func (o MetadataOptionsPtrOutput) Gid() MetadataOptionsGidPtrOutput {
 	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsGid {
@@ -1981,6 +2027,16 @@ func (o MetadataOptionsPtrOutput) Gid() MetadataOptionsGidPtrOutput {
 		}
 		return v.Gid
 	}).(MetadataOptionsGidPtrOutput)
+}
+
+// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+func (o MetadataOptionsPtrOutput) KmsKey() MetadataOptionsKmsKeyPtrOutput {
+	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsKmsKey {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKey
+	}).(MetadataOptionsKmsKeyPtrOutput)
 }
 
 // Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
@@ -1993,6 +2049,16 @@ func (o MetadataOptionsPtrOutput) Mode() MetadataOptionsModePtrOutput {
 	}).(MetadataOptionsModePtrOutput)
 }
 
+// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+func (o MetadataOptionsPtrOutput) StorageClass() MetadataOptionsStorageClassPtrOutput {
+	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsStorageClass {
+		if v == nil {
+			return nil
+		}
+		return v.StorageClass
+	}).(MetadataOptionsStorageClassPtrOutput)
+}
+
 // Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
 func (o MetadataOptionsPtrOutput) Symlink() MetadataOptionsSymlinkPtrOutput {
 	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsSymlink {
@@ -2001,6 +2067,16 @@ func (o MetadataOptionsPtrOutput) Symlink() MetadataOptionsSymlinkPtrOutput {
 		}
 		return v.Symlink
 	}).(MetadataOptionsSymlinkPtrOutput)
+}
+
+// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+func (o MetadataOptionsPtrOutput) TemporaryHold() MetadataOptionsTemporaryHoldPtrOutput {
+	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsTemporaryHold {
+		if v == nil {
+			return nil
+		}
+		return v.TemporaryHold
+	}).(MetadataOptionsTemporaryHoldPtrOutput)
 }
 
 // Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
@@ -2015,12 +2091,20 @@ func (o MetadataOptionsPtrOutput) Uid() MetadataOptionsUidPtrOutput {
 
 // Specifies the metadata options for running a transfer.
 type MetadataOptionsResponse struct {
+	// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
+	Acl string `pulumi:"acl"`
 	// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
 	Gid string `pulumi:"gid"`
+	// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+	KmsKey string `pulumi:"kmsKey"`
 	// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
 	Mode string `pulumi:"mode"`
+	// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+	StorageClass string `pulumi:"storageClass"`
 	// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
 	Symlink string `pulumi:"symlink"`
+	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+	TemporaryHold string `pulumi:"temporaryHold"`
 	// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
 	Uid string `pulumi:"uid"`
 }
@@ -2040,9 +2124,19 @@ func (o MetadataOptionsResponseOutput) ToMetadataOptionsResponseOutputWithContex
 	return o
 }
 
+// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
+func (o MetadataOptionsResponseOutput) Acl() pulumi.StringOutput {
+	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.Acl }).(pulumi.StringOutput)
+}
+
 // Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
 func (o MetadataOptionsResponseOutput) Gid() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.Gid }).(pulumi.StringOutput)
+}
+
+// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+func (o MetadataOptionsResponseOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
 // Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
@@ -2050,9 +2144,19 @@ func (o MetadataOptionsResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
 
+// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+func (o MetadataOptionsResponseOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
 // Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
 func (o MetadataOptionsResponseOutput) Symlink() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.Symlink }).(pulumi.StringOutput)
+}
+
+// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+func (o MetadataOptionsResponseOutput) TemporaryHold() pulumi.StringOutput {
+	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.TemporaryHold }).(pulumi.StringOutput)
 }
 
 // Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.

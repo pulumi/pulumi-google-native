@@ -69,10 +69,6 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly imageLocation!: pulumi.Output<string>;
     /**
-     * Optional. Inactive indicates the connection is active to use or not.
-     */
-    public readonly inactive!: pulumi.Output<boolean>;
-    /**
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -96,6 +92,10 @@ export class Connection extends pulumi.CustomResource {
      * Current status of the connection.
      */
     public /*out*/ readonly status!: pulumi.Output<outputs.connectors.v1.ConnectionStatusResponse>;
+    /**
+     * Optional. Suspended indicates if a user has suspended a connection or not.
+     */
+    public readonly suspended!: pulumi.Output<boolean>;
     /**
      * Updated time.
      */
@@ -123,12 +123,12 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["connectionId"] = args ? args.connectionId : undefined;
             resourceInputs["connectorVersion"] = args ? args.connectorVersion : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["inactive"] = args ? args.inactive : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["lockConfig"] = args ? args.lockConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["suspended"] = args ? args.suspended : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["egressBackends"] = undefined /*out*/;
             resourceInputs["envoyImageLocation"] = undefined /*out*/;
@@ -146,13 +146,13 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["egressBackends"] = undefined /*out*/;
             resourceInputs["envoyImageLocation"] = undefined /*out*/;
             resourceInputs["imageLocation"] = undefined /*out*/;
-            resourceInputs["inactive"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["lockConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["serviceDirectory"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["suspended"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -182,10 +182,6 @@ export interface ConnectionArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Optional. Inactive indicates the connection is active to use or not.
-     */
-    inactive?: pulumi.Input<boolean>;
-    /**
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -199,4 +195,8 @@ export interface ConnectionArgs {
      * Optional. Service account needed for runtime plane to access GCP resources.
      */
     serviceAccount?: pulumi.Input<string>;
+    /**
+     * Optional. Suspended indicates if a user has suspended a connection or not.
+     */
+    suspended?: pulumi.Input<boolean>;
 }

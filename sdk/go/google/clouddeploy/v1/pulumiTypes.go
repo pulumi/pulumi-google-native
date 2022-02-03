@@ -10,6 +10,172 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Information specifying an Anthos Cluster.
+type AnthosCluster struct {
+	// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+	Membership *string `pulumi:"membership"`
+}
+
+// AnthosClusterInput is an input type that accepts AnthosClusterArgs and AnthosClusterOutput values.
+// You can construct a concrete instance of `AnthosClusterInput` via:
+//
+//          AnthosClusterArgs{...}
+type AnthosClusterInput interface {
+	pulumi.Input
+
+	ToAnthosClusterOutput() AnthosClusterOutput
+	ToAnthosClusterOutputWithContext(context.Context) AnthosClusterOutput
+}
+
+// Information specifying an Anthos Cluster.
+type AnthosClusterArgs struct {
+	// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+	Membership pulumi.StringPtrInput `pulumi:"membership"`
+}
+
+func (AnthosClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnthosCluster)(nil)).Elem()
+}
+
+func (i AnthosClusterArgs) ToAnthosClusterOutput() AnthosClusterOutput {
+	return i.ToAnthosClusterOutputWithContext(context.Background())
+}
+
+func (i AnthosClusterArgs) ToAnthosClusterOutputWithContext(ctx context.Context) AnthosClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnthosClusterOutput)
+}
+
+func (i AnthosClusterArgs) ToAnthosClusterPtrOutput() AnthosClusterPtrOutput {
+	return i.ToAnthosClusterPtrOutputWithContext(context.Background())
+}
+
+func (i AnthosClusterArgs) ToAnthosClusterPtrOutputWithContext(ctx context.Context) AnthosClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnthosClusterOutput).ToAnthosClusterPtrOutputWithContext(ctx)
+}
+
+// AnthosClusterPtrInput is an input type that accepts AnthosClusterArgs, AnthosClusterPtr and AnthosClusterPtrOutput values.
+// You can construct a concrete instance of `AnthosClusterPtrInput` via:
+//
+//          AnthosClusterArgs{...}
+//
+//  or:
+//
+//          nil
+type AnthosClusterPtrInput interface {
+	pulumi.Input
+
+	ToAnthosClusterPtrOutput() AnthosClusterPtrOutput
+	ToAnthosClusterPtrOutputWithContext(context.Context) AnthosClusterPtrOutput
+}
+
+type anthosClusterPtrType AnthosClusterArgs
+
+func AnthosClusterPtr(v *AnthosClusterArgs) AnthosClusterPtrInput {
+	return (*anthosClusterPtrType)(v)
+}
+
+func (*anthosClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnthosCluster)(nil)).Elem()
+}
+
+func (i *anthosClusterPtrType) ToAnthosClusterPtrOutput() AnthosClusterPtrOutput {
+	return i.ToAnthosClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *anthosClusterPtrType) ToAnthosClusterPtrOutputWithContext(ctx context.Context) AnthosClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnthosClusterPtrOutput)
+}
+
+// Information specifying an Anthos Cluster.
+type AnthosClusterOutput struct{ *pulumi.OutputState }
+
+func (AnthosClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnthosCluster)(nil)).Elem()
+}
+
+func (o AnthosClusterOutput) ToAnthosClusterOutput() AnthosClusterOutput {
+	return o
+}
+
+func (o AnthosClusterOutput) ToAnthosClusterOutputWithContext(ctx context.Context) AnthosClusterOutput {
+	return o
+}
+
+func (o AnthosClusterOutput) ToAnthosClusterPtrOutput() AnthosClusterPtrOutput {
+	return o.ToAnthosClusterPtrOutputWithContext(context.Background())
+}
+
+func (o AnthosClusterOutput) ToAnthosClusterPtrOutputWithContext(ctx context.Context) AnthosClusterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnthosCluster) *AnthosCluster {
+		return &v
+	}).(AnthosClusterPtrOutput)
+}
+
+// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+func (o AnthosClusterOutput) Membership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnthosCluster) *string { return v.Membership }).(pulumi.StringPtrOutput)
+}
+
+type AnthosClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (AnthosClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnthosCluster)(nil)).Elem()
+}
+
+func (o AnthosClusterPtrOutput) ToAnthosClusterPtrOutput() AnthosClusterPtrOutput {
+	return o
+}
+
+func (o AnthosClusterPtrOutput) ToAnthosClusterPtrOutputWithContext(ctx context.Context) AnthosClusterPtrOutput {
+	return o
+}
+
+func (o AnthosClusterPtrOutput) Elem() AnthosClusterOutput {
+	return o.ApplyT(func(v *AnthosCluster) AnthosCluster {
+		if v != nil {
+			return *v
+		}
+		var ret AnthosCluster
+		return ret
+	}).(AnthosClusterOutput)
+}
+
+// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+func (o AnthosClusterPtrOutput) Membership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AnthosCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Membership
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information specifying an Anthos Cluster.
+type AnthosClusterResponse struct {
+	// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+	Membership string `pulumi:"membership"`
+}
+
+// Information specifying an Anthos Cluster.
+type AnthosClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (AnthosClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnthosClusterResponse)(nil)).Elem()
+}
+
+func (o AnthosClusterResponseOutput) ToAnthosClusterResponseOutput() AnthosClusterResponseOutput {
+	return o
+}
+
+func (o AnthosClusterResponseOutput) ToAnthosClusterResponseOutputWithContext(ctx context.Context) AnthosClusterResponseOutput {
+	return o
+}
+
+// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+func (o AnthosClusterResponseOutput) Membership() pulumi.StringOutput {
+	return o.ApplyT(func(v AnthosClusterResponse) string { return v.Membership }).(pulumi.StringOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -957,12 +1123,18 @@ func (o DeliveryPipelineResponseOutput) UpdateTime() pulumi.StringOutput {
 
 // Configuration of the environment to use when calling Skaffold.
 type ExecutionConfig struct {
+	// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+	ArtifactStorage *string `pulumi:"artifactStorage"`
 	// Optional. Use default Cloud Build pool.
 	DefaultPool *DefaultPool `pulumi:"defaultPool"`
 	// Optional. Use private Cloud Build pool.
 	PrivatePool *PrivatePool `pulumi:"privatePool"`
+	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Usages when this configuration should be applied.
 	Usages []ExecutionConfigUsagesItem `pulumi:"usages"`
+	// Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
+	WorkerPool *string `pulumi:"workerPool"`
 }
 
 // ExecutionConfigInput is an input type that accepts ExecutionConfigArgs and ExecutionConfigOutput values.
@@ -978,12 +1150,18 @@ type ExecutionConfigInput interface {
 
 // Configuration of the environment to use when calling Skaffold.
 type ExecutionConfigArgs struct {
+	// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+	ArtifactStorage pulumi.StringPtrInput `pulumi:"artifactStorage"`
 	// Optional. Use default Cloud Build pool.
 	DefaultPool DefaultPoolPtrInput `pulumi:"defaultPool"`
 	// Optional. Use private Cloud Build pool.
 	PrivatePool PrivatePoolPtrInput `pulumi:"privatePool"`
+	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Usages when this configuration should be applied.
 	Usages ExecutionConfigUsagesItemArrayInput `pulumi:"usages"`
+	// Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
+	WorkerPool pulumi.StringPtrInput `pulumi:"workerPool"`
 }
 
 func (ExecutionConfigArgs) ElementType() reflect.Type {
@@ -1038,6 +1216,11 @@ func (o ExecutionConfigOutput) ToExecutionConfigOutputWithContext(ctx context.Co
 	return o
 }
 
+// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+func (o ExecutionConfigOutput) ArtifactStorage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExecutionConfig) *string { return v.ArtifactStorage }).(pulumi.StringPtrOutput)
+}
+
 // Optional. Use default Cloud Build pool.
 func (o ExecutionConfigOutput) DefaultPool() DefaultPoolPtrOutput {
 	return o.ApplyT(func(v ExecutionConfig) *DefaultPool { return v.DefaultPool }).(DefaultPoolPtrOutput)
@@ -1048,9 +1231,19 @@ func (o ExecutionConfigOutput) PrivatePool() PrivatePoolPtrOutput {
 	return o.ApplyT(func(v ExecutionConfig) *PrivatePool { return v.PrivatePool }).(PrivatePoolPtrOutput)
 }
 
+// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+func (o ExecutionConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExecutionConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
 // Usages when this configuration should be applied.
 func (o ExecutionConfigOutput) Usages() ExecutionConfigUsagesItemArrayOutput {
 	return o.ApplyT(func(v ExecutionConfig) []ExecutionConfigUsagesItem { return v.Usages }).(ExecutionConfigUsagesItemArrayOutput)
+}
+
+// Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
+func (o ExecutionConfigOutput) WorkerPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExecutionConfig) *string { return v.WorkerPool }).(pulumi.StringPtrOutput)
 }
 
 type ExecutionConfigArrayOutput struct{ *pulumi.OutputState }
@@ -1075,12 +1268,18 @@ func (o ExecutionConfigArrayOutput) Index(i pulumi.IntInput) ExecutionConfigOutp
 
 // Configuration of the environment to use when calling Skaffold.
 type ExecutionConfigResponse struct {
+	// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+	ArtifactStorage string `pulumi:"artifactStorage"`
 	// Optional. Use default Cloud Build pool.
 	DefaultPool DefaultPoolResponse `pulumi:"defaultPool"`
 	// Optional. Use private Cloud Build pool.
 	PrivatePool PrivatePoolResponse `pulumi:"privatePool"`
+	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+	ServiceAccount string `pulumi:"serviceAccount"`
 	// Usages when this configuration should be applied.
 	Usages []string `pulumi:"usages"`
+	// Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
+	WorkerPool string `pulumi:"workerPool"`
 }
 
 // Configuration of the environment to use when calling Skaffold.
@@ -1098,6 +1297,11 @@ func (o ExecutionConfigResponseOutput) ToExecutionConfigResponseOutputWithContex
 	return o
 }
 
+// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+func (o ExecutionConfigResponseOutput) ArtifactStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionConfigResponse) string { return v.ArtifactStorage }).(pulumi.StringOutput)
+}
+
 // Optional. Use default Cloud Build pool.
 func (o ExecutionConfigResponseOutput) DefaultPool() DefaultPoolResponseOutput {
 	return o.ApplyT(func(v ExecutionConfigResponse) DefaultPoolResponse { return v.DefaultPool }).(DefaultPoolResponseOutput)
@@ -1108,9 +1312,19 @@ func (o ExecutionConfigResponseOutput) PrivatePool() PrivatePoolResponseOutput {
 	return o.ApplyT(func(v ExecutionConfigResponse) PrivatePoolResponse { return v.PrivatePool }).(PrivatePoolResponseOutput)
 }
 
+// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+func (o ExecutionConfigResponseOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionConfigResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
 // Usages when this configuration should be applied.
 func (o ExecutionConfigResponseOutput) Usages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExecutionConfigResponse) []string { return v.Usages }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
+func (o ExecutionConfigResponseOutput) WorkerPool() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionConfigResponse) string { return v.WorkerPool }).(pulumi.StringOutput)
 }
 
 type ExecutionConfigResponseArrayOutput struct{ *pulumi.OutputState }
@@ -1997,7 +2211,7 @@ func (o SerialPipelineResponseOutput) Stages() StageResponseArrayOutput {
 type Stage struct {
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles []string `pulumi:"profiles"`
-	// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/deliveryPipelines/pipeline/targets/my-target`). The parent `DeliveryPipeline` of the `Target` is inferred to be the parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.
+	// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
 	TargetId *string `pulumi:"targetId"`
 }
 
@@ -2016,7 +2230,7 @@ type StageInput interface {
 type StageArgs struct {
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
-	// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/deliveryPipelines/pipeline/targets/my-target`). The parent `DeliveryPipeline` of the `Target` is inferred to be the parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.
+	// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
 	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
 }
 
@@ -2077,7 +2291,7 @@ func (o StageOutput) Profiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Stage) []string { return v.Profiles }).(pulumi.StringArrayOutput)
 }
 
-// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/deliveryPipelines/pipeline/targets/my-target`). The parent `DeliveryPipeline` of the `Target` is inferred to be the parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.
+// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
 func (o StageOutput) TargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Stage) *string { return v.TargetId }).(pulumi.StringPtrOutput)
 }
@@ -2106,7 +2320,7 @@ func (o StageArrayOutput) Index(i pulumi.IntInput) StageOutput {
 type StageResponse struct {
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles []string `pulumi:"profiles"`
-	// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/deliveryPipelines/pipeline/targets/my-target`). The parent `DeliveryPipeline` of the `Target` is inferred to be the parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.
+	// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
 	TargetId string `pulumi:"targetId"`
 }
 
@@ -2130,7 +2344,7 @@ func (o StageResponseOutput) Profiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v StageResponse) []string { return v.Profiles }).(pulumi.StringArrayOutput)
 }
 
-// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/deliveryPipelines/pipeline/targets/my-target`). The parent `DeliveryPipeline` of the `Target` is inferred to be the parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.
+// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
 func (o StageResponseOutput) TargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v StageResponse) string { return v.TargetId }).(pulumi.StringOutput)
 }
@@ -2159,6 +2373,8 @@ func (o StageResponseArrayOutput) Index(i pulumi.IntInput) StageResponseOutput {
 type TargetResponse struct {
 	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Information specifying an Anthos Cluster.
+	AnthosCluster AnthosClusterResponse `pulumi:"anthosCluster"`
 	// Time at which the `Target` was created.
 	CreateTime string `pulumi:"createTime"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -2171,7 +2387,7 @@ type TargetResponse struct {
 	Gke GkeClusterResponse `pulumi:"gke"`
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
-	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
 	Name string `pulumi:"name"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval bool `pulumi:"requireApproval"`
@@ -2201,6 +2417,11 @@ func (o TargetResponseOutput) ToTargetResponseOutputWithContext(ctx context.Cont
 // Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 func (o TargetResponseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TargetResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Information specifying an Anthos Cluster.
+func (o TargetResponseOutput) AnthosCluster() AnthosClusterResponseOutput {
+	return o.ApplyT(func(v TargetResponse) AnthosClusterResponse { return v.AnthosCluster }).(AnthosClusterResponseOutput)
 }
 
 // Time at which the `Target` was created.
@@ -2233,7 +2454,7 @@ func (o TargetResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TargetResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
 func (o TargetResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2319,6 +2540,8 @@ func (o TargetsPresentConditionResponseOutput) UpdateTime() pulumi.StringOutput 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AnthosClusterInput)(nil)).Elem(), AnthosClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnthosClusterPtrInput)(nil)).Elem(), AnthosClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
@@ -2341,6 +2564,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SerialPipelinePtrInput)(nil)).Elem(), SerialPipelineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StageInput)(nil)).Elem(), StageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StageArrayInput)(nil)).Elem(), StageArray{})
+	pulumi.RegisterOutputType(AnthosClusterOutput{})
+	pulumi.RegisterOutputType(AnthosClusterPtrOutput{})
+	pulumi.RegisterOutputType(AnthosClusterResponseOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})

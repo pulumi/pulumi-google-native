@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     public sealed class GoogleCloudRunOpV2TrafficTargetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single TrafficTarget entry.
+        /// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
         /// </summary>
         [Input("percent")]
         public Input<int>? Percent { get; set; }

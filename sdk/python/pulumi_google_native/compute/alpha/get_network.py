@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNetworkResult:
-    def __init__(__self__, auto_create_subnetworks=None, creation_timestamp=None, description=None, enable_ula_internal_ipv6=None, firewall_policy=None, gateway_i_pv4=None, internal_ipv6_range=None, kind=None, mtu=None, name=None, network_firewall_policy_enforcement_order=None, peerings=None, routing_config=None, self_link=None, self_link_with_id=None, subnetworks=None):
+    def __init__(__self__, auto_create_subnetworks=None, creation_timestamp=None, description=None, enable_ula_internal_ipv6=None, firewall_policy=None, gateway_i_pv4=None, internal_ipv6_range=None, kind=None, mtu=None, name=None, network_firewall_policy_enforcement_order=None, peerings=None, region=None, routing_config=None, self_link=None, self_link_with_id=None, subnetworks=None):
         if auto_create_subnetworks and not isinstance(auto_create_subnetworks, bool):
             raise TypeError("Expected argument 'auto_create_subnetworks' to be a bool")
         pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
@@ -55,6 +55,9 @@ class GetNetworkResult:
         if peerings and not isinstance(peerings, list):
             raise TypeError("Expected argument 'peerings' to be a list")
         pulumi.set(__self__, "peerings", peerings)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if routing_config and not isinstance(routing_config, dict):
             raise TypeError("Expected argument 'routing_config' to be a dict")
         pulumi.set(__self__, "routing_config", routing_config)
@@ -162,6 +165,14 @@ class GetNetworkResult:
         return pulumi.get(self, "peerings")
 
     @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        URL of the region where the regional network resides. This field is not applicable to global network. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        """
+        return pulumi.get(self, "region")
+
+    @property
     @pulumi.getter(name="routingConfig")
     def routing_config(self) -> 'outputs.NetworkRoutingConfigResponse':
         """
@@ -212,6 +223,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             name=self.name,
             network_firewall_policy_enforcement_order=self.network_firewall_policy_enforcement_order,
             peerings=self.peerings,
+            region=self.region,
             routing_config=self.routing_config,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
@@ -246,6 +258,7 @@ def get_network(network: Optional[str] = None,
         name=__ret__.name,
         network_firewall_policy_enforcement_order=__ret__.network_firewall_policy_enforcement_order,
         peerings=__ret__.peerings,
+        region=__ret__.region,
         routing_config=__ret__.routing_config,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,

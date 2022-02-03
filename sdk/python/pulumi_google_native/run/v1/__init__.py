@@ -8,8 +8,10 @@ import typing
 from ._enums import *
 from .domain_mapping import *
 from .get_domain_mapping import *
+from .get_job_iam_policy import *
 from .get_service import *
 from .get_service_iam_policy import *
+from .job_iam_policy import *
 from .service import *
 from .service_iam_policy import *
 from ._inputs import *

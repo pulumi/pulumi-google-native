@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Inputs
 {
 
     /// <summary>
-    /// RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
+    /// RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
     /// </summary>
     public sealed class RoutingVPCArgs : Pulumi.ResourceArgs
     {

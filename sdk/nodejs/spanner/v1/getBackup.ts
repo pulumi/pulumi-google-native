@@ -37,6 +37,10 @@ export interface GetBackupResult {
      */
     readonly database: string;
     /**
+     * The database dialect information for the backup.
+     */
+    readonly databaseDialect: string;
+    /**
      * The encryption information for the backup.
      */
     readonly encryptionInfo: outputs.spanner.v1.EncryptionInfoResponse;

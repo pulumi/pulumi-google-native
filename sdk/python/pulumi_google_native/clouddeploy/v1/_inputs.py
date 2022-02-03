@@ -10,6 +10,7 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AnthosClusterArgs',
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
@@ -22,6 +23,30 @@ __all__ = [
     'SerialPipelineArgs',
     'StageArgs',
 ]
+
+@pulumi.input_type
+class AnthosClusterArgs:
+    def __init__(__self__, *,
+                 membership: Optional[pulumi.Input[str]] = None):
+        """
+        Information specifying an Anthos Cluster.
+        :param pulumi.Input[str] membership: Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+        """
+        if membership is not None:
+            pulumi.set(__self__, "membership", membership)
+
+    @property
+    @pulumi.getter
+    def membership(self) -> Optional[pulumi.Input[str]]:
+        """
+        Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+        """
+        return pulumi.get(self, "membership")
+
+    @membership.setter
+    def membership(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "membership", value)
+
 
 @pulumi.input_type
 class AuditConfigArgs:
@@ -243,19 +268,31 @@ class DefaultPoolArgs:
 class ExecutionConfigArgs:
     def __init__(__self__, *,
                  usages: pulumi.Input[Sequence[pulumi.Input['ExecutionConfigUsagesItem']]],
+                 artifact_storage: Optional[pulumi.Input[str]] = None,
                  default_pool: Optional[pulumi.Input['DefaultPoolArgs']] = None,
-                 private_pool: Optional[pulumi.Input['PrivatePoolArgs']] = None):
+                 private_pool: Optional[pulumi.Input['PrivatePoolArgs']] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 worker_pool: Optional[pulumi.Input[str]] = None):
         """
         Configuration of the environment to use when calling Skaffold.
         :param pulumi.Input[Sequence[pulumi.Input['ExecutionConfigUsagesItem']]] usages: Usages when this configuration should be applied.
+        :param pulumi.Input[str] artifact_storage: Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
         :param pulumi.Input['DefaultPoolArgs'] default_pool: Optional. Use default Cloud Build pool.
         :param pulumi.Input['PrivatePoolArgs'] private_pool: Optional. Use private Cloud Build pool.
+        :param pulumi.Input[str] service_account: Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+        :param pulumi.Input[str] worker_pool: Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
         """
         pulumi.set(__self__, "usages", usages)
+        if artifact_storage is not None:
+            pulumi.set(__self__, "artifact_storage", artifact_storage)
         if default_pool is not None:
             pulumi.set(__self__, "default_pool", default_pool)
         if private_pool is not None:
             pulumi.set(__self__, "private_pool", private_pool)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if worker_pool is not None:
+            pulumi.set(__self__, "worker_pool", worker_pool)
 
     @property
     @pulumi.getter
@@ -268,6 +305,18 @@ class ExecutionConfigArgs:
     @usages.setter
     def usages(self, value: pulumi.Input[Sequence[pulumi.Input['ExecutionConfigUsagesItem']]]):
         pulumi.set(self, "usages", value)
+
+    @property
+    @pulumi.getter(name="artifactStorage")
+    def artifact_storage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+        """
+        return pulumi.get(self, "artifact_storage")
+
+    @artifact_storage.setter
+    def artifact_storage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "artifact_storage", value)
 
     @property
     @pulumi.getter(name="defaultPool")
@@ -292,6 +341,30 @@ class ExecutionConfigArgs:
     @private_pool.setter
     def private_pool(self, value: Optional[pulumi.Input['PrivatePoolArgs']]):
         pulumi.set(self, "private_pool", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="workerPool")
+    def worker_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
+        """
+        return pulumi.get(self, "worker_pool")
+
+    @worker_pool.setter
+    def worker_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "worker_pool", value)
 
 
 @pulumi.input_type
@@ -477,7 +550,7 @@ class StageArgs:
         """
         Stage specifies a location to which to deploy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] profiles: Skaffold profiles to use when rendering the manifest for this stage's `Target`.
-        :param pulumi.Input[str] target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/deliveryPipelines/pipeline/targets/my-target`). The parent `DeliveryPipeline` of the `Target` is inferred to be the parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.
+        :param pulumi.Input[str] target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
         if profiles is not None:
             pulumi.set(__self__, "profiles", profiles)
@@ -500,7 +573,7 @@ class StageArgs:
     @pulumi.getter(name="targetId")
     def target_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/deliveryPipelines/pipeline/targets/my-target`). The parent `DeliveryPipeline` of the `Target` is inferred to be the parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.
+        The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
         return pulumi.get(self, "target_id")
 

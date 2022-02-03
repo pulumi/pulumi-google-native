@@ -113,6 +113,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         public readonly string ShortName;
+        /// <summary>
+        /// The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+        /// </summary>
+        public readonly string VpcNetworkScope;
 
         [OutputConstructor]
         private GetRegionNetworkFirewallPolicyResult(
@@ -140,7 +144,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string selfLinkWithId,
 
-            string shortName)
+            string shortName,
+
+            string vpcNetworkScope)
         {
             Associations = associations;
             CreationTimestamp = creationTimestamp;
@@ -155,6 +161,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
             ShortName = shortName;
+            VpcNetworkScope = vpcNetworkScope;
         }
     }
 }

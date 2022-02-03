@@ -132,6 +132,40 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public override string ToString() => _value;
     }
 
+    [EnumType]
+    public readonly struct DatasetAccessEntryTargetTypesItem : IEquatable<DatasetAccessEntryTargetTypesItem>
+    {
+        private readonly string _value;
+
+        private DatasetAccessEntryTargetTypesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Do not use. You must set a target type explicitly.
+        /// </summary>
+        public static DatasetAccessEntryTargetTypesItem TargetTypeUnspecified { get; } = new DatasetAccessEntryTargetTypesItem("TARGET_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// This entry applies to views in the dataset.
+        /// </summary>
+        public static DatasetAccessEntryTargetTypesItem Views { get; } = new DatasetAccessEntryTargetTypesItem("VIEWS");
+
+        public static bool operator ==(DatasetAccessEntryTargetTypesItem left, DatasetAccessEntryTargetTypesItem right) => left.Equals(right);
+        public static bool operator !=(DatasetAccessEntryTargetTypesItem left, DatasetAccessEntryTargetTypesItem right) => !left.Equals(right);
+
+        public static explicit operator string(DatasetAccessEntryTargetTypesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DatasetAccessEntryTargetTypesItem other && Equals(other);
+        public bool Equals(DatasetAccessEntryTargetTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
     /// Optional. The determinism level of the JavaScript UDF, if defined.
     /// </summary>

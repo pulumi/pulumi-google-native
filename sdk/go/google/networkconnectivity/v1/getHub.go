@@ -34,7 +34,7 @@ type LookupHubResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
 	Name string `pulumi:"name"`
-	// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+	// The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
 	RoutingVpcs []RoutingVPCResponse `pulumi:"routingVpcs"`
 	// The current lifecycle state of this hub.
 	State string `pulumi:"state"`
@@ -96,7 +96,7 @@ func (o LookupHubResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+// The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
 func (o LookupHubResultOutput) RoutingVpcs() RoutingVPCResponseArrayOutput {
 	return o.ApplyT(func(v LookupHubResult) []RoutingVPCResponse { return v.RoutingVpcs }).(RoutingVPCResponseArrayOutput)
 }

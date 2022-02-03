@@ -103,7 +103,7 @@ export class Release extends pulumi.CustomResource {
      */
     public /*out*/ readonly targetRenders!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Snapshot of the parent pipeline's targets taken at release creation time.
+     * Snapshot of the targets taken at release creation time.
      */
     public /*out*/ readonly targetSnapshots!: pulumi.Output<outputs.clouddeploy.v1.TargetResponse[]>;
     /**

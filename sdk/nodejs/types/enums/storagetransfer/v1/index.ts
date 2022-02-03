@@ -40,6 +40,26 @@ export const LoggingConfigLogActionsItem = {
 
 export type LoggingConfigLogActionsItem = (typeof LoggingConfigLogActionsItem)[keyof typeof LoggingConfigLogActionsItem];
 
+export const MetadataOptionsAcl = {
+    /**
+     * ACL behavior is unspecified.
+     */
+    AclUnspecified: "ACL_UNSPECIFIED",
+    /**
+     * Use the destination bucket's default object ACLS, if applicable.
+     */
+    AclDestinationBucketDefault: "ACL_DESTINATION_BUCKET_DEFAULT",
+    /**
+     * Preserve the object's original ACLs. This requires the service account to have `storage.objects.getIamPolicy` permission for the source object. [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) must not be enabled on either the source or destination buckets.
+     */
+    AclPreserve: "ACL_PRESERVE",
+} as const;
+
+/**
+ * Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
+ */
+export type MetadataOptionsAcl = (typeof MetadataOptionsAcl)[keyof typeof MetadataOptionsAcl];
+
 export const MetadataOptionsGid = {
     /**
      * GID behavior is unspecified.
@@ -59,6 +79,26 @@ export const MetadataOptionsGid = {
  * Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
  */
 export type MetadataOptionsGid = (typeof MetadataOptionsGid)[keyof typeof MetadataOptionsGid];
+
+export const MetadataOptionsKmsKey = {
+    /**
+     * KmsKey behavior is unspecified.
+     */
+    KmsKeyUnspecified: "KMS_KEY_UNSPECIFIED",
+    /**
+     * Use the destination bucket's default encryption settings.
+     */
+    KmsKeyDestinationBucketDefault: "KMS_KEY_DESTINATION_BUCKET_DEFAULT",
+    /**
+     * Preserve the object's original Cloud KMS customer-managed encryption key (CMEK) if present. Objects that do not use a Cloud KMS encryption key will be encrypted using the destination bucket's encryption settings.
+     */
+    KmsKeyPreserve: "KMS_KEY_PRESERVE",
+} as const;
+
+/**
+ * Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+ */
+export type MetadataOptionsKmsKey = (typeof MetadataOptionsKmsKey)[keyof typeof MetadataOptionsKmsKey];
 
 export const MetadataOptionsMode = {
     /**
@@ -80,6 +120,42 @@ export const MetadataOptionsMode = {
  */
 export type MetadataOptionsMode = (typeof MetadataOptionsMode)[keyof typeof MetadataOptionsMode];
 
+export const MetadataOptionsStorageClass = {
+    /**
+     * Storage class behavior is unspecified.
+     */
+    StorageClassUnspecified: "STORAGE_CLASS_UNSPECIFIED",
+    /**
+     * Use the destination bucket's default storage class.
+     */
+    StorageClassDestinationBucketDefault: "STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT",
+    /**
+     * Preserve the object's original storage class. This is only supported for transfers from Google Cloud Storage buckets.
+     */
+    StorageClassPreserve: "STORAGE_CLASS_PRESERVE",
+    /**
+     * Set the storage class to STANDARD.
+     */
+    StorageClassStandard: "STORAGE_CLASS_STANDARD",
+    /**
+     * Set the storage class to NEARLINE.
+     */
+    StorageClassNearline: "STORAGE_CLASS_NEARLINE",
+    /**
+     * Set the storage class to COLDLINE.
+     */
+    StorageClassColdline: "STORAGE_CLASS_COLDLINE",
+    /**
+     * Set the storage class to ARCHIVE.
+     */
+    StorageClassArchive: "STORAGE_CLASS_ARCHIVE",
+} as const;
+
+/**
+ * Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+ */
+export type MetadataOptionsStorageClass = (typeof MetadataOptionsStorageClass)[keyof typeof MetadataOptionsStorageClass];
+
 export const MetadataOptionsSymlink = {
     /**
      * Symlink behavior is unspecified. The default behavior is to skip symlinks during a transfer job.
@@ -99,6 +175,26 @@ export const MetadataOptionsSymlink = {
  * Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
  */
 export type MetadataOptionsSymlink = (typeof MetadataOptionsSymlink)[keyof typeof MetadataOptionsSymlink];
+
+export const MetadataOptionsTemporaryHold = {
+    /**
+     * Temporary hold behavior is unspecified.
+     */
+    TemporaryHoldUnspecified: "TEMPORARY_HOLD_UNSPECIFIED",
+    /**
+     * Do not set a temporary hold on the destination object.
+     */
+    TemporaryHoldSkip: "TEMPORARY_HOLD_SKIP",
+    /**
+     * Preserve the object's original temporary hold status.
+     */
+    TemporaryHoldPreserve: "TEMPORARY_HOLD_PRESERVE",
+} as const;
+
+/**
+ * Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+ */
+export type MetadataOptionsTemporaryHold = (typeof MetadataOptionsTemporaryHold)[keyof typeof MetadataOptionsTemporaryHold];
 
 export const MetadataOptionsUid = {
     /**

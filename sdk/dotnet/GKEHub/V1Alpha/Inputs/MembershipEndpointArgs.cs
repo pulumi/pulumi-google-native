@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
     public sealed class MembershipEndpointArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Specific information for a Google Edge cluster.
+        /// </summary>
+        [Input("edgeCluster")]
+        public Input<Inputs.EdgeClusterArgs>? EdgeCluster { get; set; }
+
+        /// <summary>
         /// Optional. Specific information for a GKE-on-GCP cluster.
         /// </summary>
         [Input("gkeCluster")]

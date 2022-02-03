@@ -28,13 +28,13 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<bool>? LatestRevision { get; set; }
 
         /// <summary>
-        /// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
+        /// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
         /// </summary>
         [Input("percent")]
         public Input<int>? Percent { get; set; }
 
         /// <summary>
-        /// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
+        /// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
         /// </summary>
         [Input("revisionName")]
         public Input<string>? RevisionName { get; set; }

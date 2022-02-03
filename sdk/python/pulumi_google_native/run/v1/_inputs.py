@@ -2602,8 +2602,8 @@ class TrafficTargetArgs:
         TrafficTarget holds a single entry of the routing table for a Route.
         :param pulumi.Input[str] configuration_name: ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
         :param pulumi.Input[bool] latest_revision: Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
-        :param pulumi.Input[int] percent: Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
-        :param pulumi.Input[str] revision_name: RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
+        :param pulumi.Input[int] percent: Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
+        :param pulumi.Input[str] revision_name: RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
         :param pulumi.Input[str] tag: Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
         """
         if configuration_name is not None:
@@ -2645,7 +2645,7 @@ class TrafficTargetArgs:
     @pulumi.getter
     def percent(self) -> Optional[pulumi.Input[int]]:
         """
-        Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
+        Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
         """
         return pulumi.get(self, "percent")
 
@@ -2657,7 +2657,7 @@ class TrafficTargetArgs:
     @pulumi.getter(name="revisionName")
     def revision_name(self) -> Optional[pulumi.Input[str]]:
         """
-        RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
+        RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
         """
         return pulumi.get(self, "revision_name")
 

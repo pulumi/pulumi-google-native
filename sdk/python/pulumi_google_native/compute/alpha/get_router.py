@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRouterResult:
-    def __init__(__self__, bgp=None, bgp_peers=None, creation_timestamp=None, description=None, encrypted_interconnect_router=None, interfaces=None, kind=None, name=None, nats=None, network=None, region=None, self_link=None, self_link_with_id=None):
+    def __init__(__self__, bgp=None, bgp_peers=None, creation_timestamp=None, description=None, encrypted_interconnect_router=None, interfaces=None, kind=None, md5_authentication_keys=None, name=None, nats=None, network=None, region=None, self_link=None, self_link_with_id=None):
         if bgp and not isinstance(bgp, dict):
             raise TypeError("Expected argument 'bgp' to be a dict")
         pulumi.set(__self__, "bgp", bgp)
@@ -40,6 +40,9 @@ class GetRouterResult:
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
+        if md5_authentication_keys and not isinstance(md5_authentication_keys, list):
+            raise TypeError("Expected argument 'md5_authentication_keys' to be a list")
+        pulumi.set(__self__, "md5_authentication_keys", md5_authentication_keys)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -116,6 +119,14 @@ class GetRouterResult:
         return pulumi.get(self, "kind")
 
     @property
+    @pulumi.getter(name="md5AuthenticationKeys")
+    def md5_authentication_keys(self) -> Sequence['outputs.RouterMd5AuthenticationKeyResponse']:
+        """
+        Keys used for MD5 authentication.
+        """
+        return pulumi.get(self, "md5_authentication_keys")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -177,6 +188,7 @@ class AwaitableGetRouterResult(GetRouterResult):
             encrypted_interconnect_router=self.encrypted_interconnect_router,
             interfaces=self.interfaces,
             kind=self.kind,
+            md5_authentication_keys=self.md5_authentication_keys,
             name=self.name,
             nats=self.nats,
             network=self.network,
@@ -210,6 +222,7 @@ def get_router(project: Optional[str] = None,
         encrypted_interconnect_router=__ret__.encrypted_interconnect_router,
         interfaces=__ret__.interfaces,
         kind=__ret__.kind,
+        md5_authentication_keys=__ret__.md5_authentication_keys,
         name=__ret__.name,
         nats=__ret__.nats,
         network=__ret__.network,

@@ -115,7 +115,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<ImmutableDictionary<string, string>> TargetRenders { get; private set; } = null!;
 
         /// <summary>
-        /// Snapshot of the parent pipeline's targets taken at release creation time.
+        /// Snapshot of the targets taken at release creation time.
         /// </summary>
         [Output("targetSnapshots")]
         public Output<ImmutableArray<Outputs.TargetResponse>> TargetSnapshots { get; private set; } = null!;

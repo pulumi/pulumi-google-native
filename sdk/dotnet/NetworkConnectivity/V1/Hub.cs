@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        /// The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         /// </summary>
         [Output("routingVpcs")]
         public Output<ImmutableArray<Outputs.RoutingVPCResponse>> RoutingVpcs { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         private InputList<Inputs.RoutingVPCArgs>? _routingVpcs;
 
         /// <summary>
-        /// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        /// The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         /// </summary>
         public InputList<Inputs.RoutingVPCArgs> RoutingVpcs
         {

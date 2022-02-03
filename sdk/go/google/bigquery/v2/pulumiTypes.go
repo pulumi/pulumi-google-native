@@ -3117,8 +3117,8 @@ func (o DatasetAccessEntryPtrOutput) TargetTypes() DatasetAccessEntryTargetTypes
 
 type DatasetAccessEntryResponse struct {
 	// [Required] The dataset this entry applies to.
-	Dataset     DatasetReferenceResponse                    `pulumi:"dataset"`
-	TargetTypes []DatasetAccessEntryTargetTypesItemResponse `pulumi:"targetTypes"`
+	Dataset     DatasetReferenceResponse `pulumi:"dataset"`
+	TargetTypes []string                 `pulumi:"targetTypes"`
 }
 
 type DatasetAccessEntryResponseOutput struct{ *pulumi.OutputState }
@@ -3140,149 +3140,8 @@ func (o DatasetAccessEntryResponseOutput) Dataset() DatasetReferenceResponseOutp
 	return o.ApplyT(func(v DatasetAccessEntryResponse) DatasetReferenceResponse { return v.Dataset }).(DatasetReferenceResponseOutput)
 }
 
-func (o DatasetAccessEntryResponseOutput) TargetTypes() DatasetAccessEntryTargetTypesItemResponseArrayOutput {
-	return o.ApplyT(func(v DatasetAccessEntryResponse) []DatasetAccessEntryTargetTypesItemResponse { return v.TargetTypes }).(DatasetAccessEntryTargetTypesItemResponseArrayOutput)
-}
-
-type DatasetAccessEntryTargetTypesItem struct {
-	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-	TargetType *string `pulumi:"targetType"`
-}
-
-// DatasetAccessEntryTargetTypesItemInput is an input type that accepts DatasetAccessEntryTargetTypesItemArgs and DatasetAccessEntryTargetTypesItemOutput values.
-// You can construct a concrete instance of `DatasetAccessEntryTargetTypesItemInput` via:
-//
-//          DatasetAccessEntryTargetTypesItemArgs{...}
-type DatasetAccessEntryTargetTypesItemInput interface {
-	pulumi.Input
-
-	ToDatasetAccessEntryTargetTypesItemOutput() DatasetAccessEntryTargetTypesItemOutput
-	ToDatasetAccessEntryTargetTypesItemOutputWithContext(context.Context) DatasetAccessEntryTargetTypesItemOutput
-}
-
-type DatasetAccessEntryTargetTypesItemArgs struct {
-	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
-}
-
-func (DatasetAccessEntryTargetTypesItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccessEntryTargetTypesItem)(nil)).Elem()
-}
-
-func (i DatasetAccessEntryTargetTypesItemArgs) ToDatasetAccessEntryTargetTypesItemOutput() DatasetAccessEntryTargetTypesItemOutput {
-	return i.ToDatasetAccessEntryTargetTypesItemOutputWithContext(context.Background())
-}
-
-func (i DatasetAccessEntryTargetTypesItemArgs) ToDatasetAccessEntryTargetTypesItemOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTargetTypesItemOutput)
-}
-
-// DatasetAccessEntryTargetTypesItemArrayInput is an input type that accepts DatasetAccessEntryTargetTypesItemArray and DatasetAccessEntryTargetTypesItemArrayOutput values.
-// You can construct a concrete instance of `DatasetAccessEntryTargetTypesItemArrayInput` via:
-//
-//          DatasetAccessEntryTargetTypesItemArray{ DatasetAccessEntryTargetTypesItemArgs{...} }
-type DatasetAccessEntryTargetTypesItemArrayInput interface {
-	pulumi.Input
-
-	ToDatasetAccessEntryTargetTypesItemArrayOutput() DatasetAccessEntryTargetTypesItemArrayOutput
-	ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(context.Context) DatasetAccessEntryTargetTypesItemArrayOutput
-}
-
-type DatasetAccessEntryTargetTypesItemArray []DatasetAccessEntryTargetTypesItemInput
-
-func (DatasetAccessEntryTargetTypesItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetAccessEntryTargetTypesItem)(nil)).Elem()
-}
-
-func (i DatasetAccessEntryTargetTypesItemArray) ToDatasetAccessEntryTargetTypesItemArrayOutput() DatasetAccessEntryTargetTypesItemArrayOutput {
-	return i.ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(context.Background())
-}
-
-func (i DatasetAccessEntryTargetTypesItemArray) ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTargetTypesItemArrayOutput)
-}
-
-type DatasetAccessEntryTargetTypesItemOutput struct{ *pulumi.OutputState }
-
-func (DatasetAccessEntryTargetTypesItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccessEntryTargetTypesItem)(nil)).Elem()
-}
-
-func (o DatasetAccessEntryTargetTypesItemOutput) ToDatasetAccessEntryTargetTypesItemOutput() DatasetAccessEntryTargetTypesItemOutput {
-	return o
-}
-
-func (o DatasetAccessEntryTargetTypesItemOutput) ToDatasetAccessEntryTargetTypesItemOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemOutput {
-	return o
-}
-
-// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-func (o DatasetAccessEntryTargetTypesItemOutput) TargetType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatasetAccessEntryTargetTypesItem) *string { return v.TargetType }).(pulumi.StringPtrOutput)
-}
-
-type DatasetAccessEntryTargetTypesItemArrayOutput struct{ *pulumi.OutputState }
-
-func (DatasetAccessEntryTargetTypesItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetAccessEntryTargetTypesItem)(nil)).Elem()
-}
-
-func (o DatasetAccessEntryTargetTypesItemArrayOutput) ToDatasetAccessEntryTargetTypesItemArrayOutput() DatasetAccessEntryTargetTypesItemArrayOutput {
-	return o
-}
-
-func (o DatasetAccessEntryTargetTypesItemArrayOutput) ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemArrayOutput {
-	return o
-}
-
-func (o DatasetAccessEntryTargetTypesItemArrayOutput) Index(i pulumi.IntInput) DatasetAccessEntryTargetTypesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccessEntryTargetTypesItem {
-		return vs[0].([]DatasetAccessEntryTargetTypesItem)[vs[1].(int)]
-	}).(DatasetAccessEntryTargetTypesItemOutput)
-}
-
-type DatasetAccessEntryTargetTypesItemResponse struct {
-	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-	TargetType string `pulumi:"targetType"`
-}
-
-type DatasetAccessEntryTargetTypesItemResponseOutput struct{ *pulumi.OutputState }
-
-func (DatasetAccessEntryTargetTypesItemResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccessEntryTargetTypesItemResponse)(nil)).Elem()
-}
-
-func (o DatasetAccessEntryTargetTypesItemResponseOutput) ToDatasetAccessEntryTargetTypesItemResponseOutput() DatasetAccessEntryTargetTypesItemResponseOutput {
-	return o
-}
-
-func (o DatasetAccessEntryTargetTypesItemResponseOutput) ToDatasetAccessEntryTargetTypesItemResponseOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemResponseOutput {
-	return o
-}
-
-// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-func (o DatasetAccessEntryTargetTypesItemResponseOutput) TargetType() pulumi.StringOutput {
-	return o.ApplyT(func(v DatasetAccessEntryTargetTypesItemResponse) string { return v.TargetType }).(pulumi.StringOutput)
-}
-
-type DatasetAccessEntryTargetTypesItemResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (DatasetAccessEntryTargetTypesItemResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetAccessEntryTargetTypesItemResponse)(nil)).Elem()
-}
-
-func (o DatasetAccessEntryTargetTypesItemResponseArrayOutput) ToDatasetAccessEntryTargetTypesItemResponseArrayOutput() DatasetAccessEntryTargetTypesItemResponseArrayOutput {
-	return o
-}
-
-func (o DatasetAccessEntryTargetTypesItemResponseArrayOutput) ToDatasetAccessEntryTargetTypesItemResponseArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemResponseArrayOutput {
-	return o
-}
-
-func (o DatasetAccessEntryTargetTypesItemResponseArrayOutput) Index(i pulumi.IntInput) DatasetAccessEntryTargetTypesItemResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccessEntryTargetTypesItemResponse {
-		return vs[0].([]DatasetAccessEntryTargetTypesItemResponse)[vs[1].(int)]
-	}).(DatasetAccessEntryTargetTypesItemResponseOutput)
+func (o DatasetAccessEntryResponseOutput) TargetTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatasetAccessEntryResponse) []string { return v.TargetTypes }).(pulumi.StringArrayOutput)
 }
 
 type DatasetAccessItem struct {
@@ -3739,6 +3598,163 @@ func (o DatasetReferenceResponseOutput) DatasetId() pulumi.StringOutput {
 // [Optional] The ID of the project containing this dataset.
 func (o DatasetReferenceResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v DatasetReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type DatasetTagsItem struct {
+	// [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
+	TagKey *string `pulumi:"tagKey"`
+	// [Required] Friendly short name of the tag value, e.g. "production".
+	TagValue *string `pulumi:"tagValue"`
+}
+
+// DatasetTagsItemInput is an input type that accepts DatasetTagsItemArgs and DatasetTagsItemOutput values.
+// You can construct a concrete instance of `DatasetTagsItemInput` via:
+//
+//          DatasetTagsItemArgs{...}
+type DatasetTagsItemInput interface {
+	pulumi.Input
+
+	ToDatasetTagsItemOutput() DatasetTagsItemOutput
+	ToDatasetTagsItemOutputWithContext(context.Context) DatasetTagsItemOutput
+}
+
+type DatasetTagsItemArgs struct {
+	// [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
+	TagKey pulumi.StringPtrInput `pulumi:"tagKey"`
+	// [Required] Friendly short name of the tag value, e.g. "production".
+	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
+}
+
+func (DatasetTagsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetTagsItem)(nil)).Elem()
+}
+
+func (i DatasetTagsItemArgs) ToDatasetTagsItemOutput() DatasetTagsItemOutput {
+	return i.ToDatasetTagsItemOutputWithContext(context.Background())
+}
+
+func (i DatasetTagsItemArgs) ToDatasetTagsItemOutputWithContext(ctx context.Context) DatasetTagsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetTagsItemOutput)
+}
+
+// DatasetTagsItemArrayInput is an input type that accepts DatasetTagsItemArray and DatasetTagsItemArrayOutput values.
+// You can construct a concrete instance of `DatasetTagsItemArrayInput` via:
+//
+//          DatasetTagsItemArray{ DatasetTagsItemArgs{...} }
+type DatasetTagsItemArrayInput interface {
+	pulumi.Input
+
+	ToDatasetTagsItemArrayOutput() DatasetTagsItemArrayOutput
+	ToDatasetTagsItemArrayOutputWithContext(context.Context) DatasetTagsItemArrayOutput
+}
+
+type DatasetTagsItemArray []DatasetTagsItemInput
+
+func (DatasetTagsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetTagsItem)(nil)).Elem()
+}
+
+func (i DatasetTagsItemArray) ToDatasetTagsItemArrayOutput() DatasetTagsItemArrayOutput {
+	return i.ToDatasetTagsItemArrayOutputWithContext(context.Background())
+}
+
+func (i DatasetTagsItemArray) ToDatasetTagsItemArrayOutputWithContext(ctx context.Context) DatasetTagsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetTagsItemArrayOutput)
+}
+
+type DatasetTagsItemOutput struct{ *pulumi.OutputState }
+
+func (DatasetTagsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetTagsItem)(nil)).Elem()
+}
+
+func (o DatasetTagsItemOutput) ToDatasetTagsItemOutput() DatasetTagsItemOutput {
+	return o
+}
+
+func (o DatasetTagsItemOutput) ToDatasetTagsItemOutputWithContext(ctx context.Context) DatasetTagsItemOutput {
+	return o
+}
+
+// [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
+func (o DatasetTagsItemOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetTagsItem) *string { return v.TagKey }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Friendly short name of the tag value, e.g. "production".
+func (o DatasetTagsItemOutput) TagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetTagsItem) *string { return v.TagValue }).(pulumi.StringPtrOutput)
+}
+
+type DatasetTagsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DatasetTagsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetTagsItem)(nil)).Elem()
+}
+
+func (o DatasetTagsItemArrayOutput) ToDatasetTagsItemArrayOutput() DatasetTagsItemArrayOutput {
+	return o
+}
+
+func (o DatasetTagsItemArrayOutput) ToDatasetTagsItemArrayOutputWithContext(ctx context.Context) DatasetTagsItemArrayOutput {
+	return o
+}
+
+func (o DatasetTagsItemArrayOutput) Index(i pulumi.IntInput) DatasetTagsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetTagsItem {
+		return vs[0].([]DatasetTagsItem)[vs[1].(int)]
+	}).(DatasetTagsItemOutput)
+}
+
+type DatasetTagsItemResponse struct {
+	// [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
+	TagKey string `pulumi:"tagKey"`
+	// [Required] Friendly short name of the tag value, e.g. "production".
+	TagValue string `pulumi:"tagValue"`
+}
+
+type DatasetTagsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (DatasetTagsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetTagsItemResponse)(nil)).Elem()
+}
+
+func (o DatasetTagsItemResponseOutput) ToDatasetTagsItemResponseOutput() DatasetTagsItemResponseOutput {
+	return o
+}
+
+func (o DatasetTagsItemResponseOutput) ToDatasetTagsItemResponseOutputWithContext(ctx context.Context) DatasetTagsItemResponseOutput {
+	return o
+}
+
+// [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
+func (o DatasetTagsItemResponseOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetTagsItemResponse) string { return v.TagKey }).(pulumi.StringOutput)
+}
+
+// [Required] Friendly short name of the tag value, e.g. "production".
+func (o DatasetTagsItemResponseOutput) TagValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetTagsItemResponse) string { return v.TagValue }).(pulumi.StringOutput)
+}
+
+type DatasetTagsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DatasetTagsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetTagsItemResponse)(nil)).Elem()
+}
+
+func (o DatasetTagsItemResponseArrayOutput) ToDatasetTagsItemResponseArrayOutput() DatasetTagsItemResponseArrayOutput {
+	return o
+}
+
+func (o DatasetTagsItemResponseArrayOutput) ToDatasetTagsItemResponseArrayOutputWithContext(ctx context.Context) DatasetTagsItemResponseArrayOutput {
+	return o
+}
+
+func (o DatasetTagsItemResponseArrayOutput) Index(i pulumi.IntInput) DatasetTagsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetTagsItemResponse {
+		return vs[0].([]DatasetTagsItemResponse)[vs[1].(int)]
+	}).(DatasetTagsItemResponseOutput)
 }
 
 type DestinationTableProperties struct {
@@ -12080,7 +12096,7 @@ func (o SnapshotDefinitionResponseOutput) SnapshotTime() pulumi.StringOutput {
 	return o.ApplyT(func(v SnapshotDefinitionResponse) string { return v.SnapshotTime }).(pulumi.StringOutput)
 }
 
-// The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
+// The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
 type StandardSqlDataType struct {
 	// The type of the array's elements, if type_kind = "ARRAY".
 	ArrayElementType *StandardSqlDataType `pulumi:"arrayElementType"`
@@ -12101,7 +12117,7 @@ type StandardSqlDataTypeInput interface {
 	ToStandardSqlDataTypeOutputWithContext(context.Context) StandardSqlDataTypeOutput
 }
 
-// The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
+// The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
 type StandardSqlDataTypeArgs struct {
 	// The type of the array's elements, if type_kind = "ARRAY".
 	ArrayElementType StandardSqlDataTypePtrInput `pulumi:"arrayElementType"`
@@ -12164,7 +12180,7 @@ func (i *standardSqlDataTypePtrType) ToStandardSqlDataTypePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(StandardSqlDataTypePtrOutput)
 }
 
-// The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
+// The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
 type StandardSqlDataTypeOutput struct{ *pulumi.OutputState }
 
 func (StandardSqlDataTypeOutput) ElementType() reflect.Type {
@@ -12258,7 +12274,7 @@ func (o StandardSqlDataTypePtrOutput) TypeKind() StandardSqlDataTypeTypeKindPtrO
 	}).(StandardSqlDataTypeTypeKindPtrOutput)
 }
 
-// The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
+// The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
 type StandardSqlDataTypeResponse struct {
 	// The type of the array's elements, if type_kind = "ARRAY".
 	ArrayElementType *StandardSqlDataTypeResponse `pulumi:"arrayElementType"`
@@ -12268,7 +12284,7 @@ type StandardSqlDataTypeResponse struct {
 	TypeKind string `pulumi:"typeKind"`
 }
 
-// The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
+// The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
 type StandardSqlDataTypeResponseOutput struct{ *pulumi.OutputState }
 
 func (StandardSqlDataTypeResponseOutput) ElementType() reflect.Type {
@@ -14659,12 +14675,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CsvOptionsPtrInput)(nil)).Elem(), CsvOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryInput)(nil)).Elem(), DatasetAccessEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryPtrInput)(nil)).Elem(), DatasetAccessEntryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItemArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemArrayInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessItemInput)(nil)).Elem(), DatasetAccessItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessItemArrayInput)(nil)).Elem(), DatasetAccessItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetReferenceInput)(nil)).Elem(), DatasetReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetReferencePtrInput)(nil)).Elem(), DatasetReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetTagsItemInput)(nil)).Elem(), DatasetTagsItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetTagsItemArrayInput)(nil)).Elem(), DatasetTagsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationTablePropertiesInput)(nil)).Elem(), DestinationTablePropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationTablePropertiesPtrInput)(nil)).Elem(), DestinationTablePropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigurationInput)(nil)).Elem(), EncryptionConfigurationArgs{})
@@ -14797,10 +14813,6 @@ func init() {
 	pulumi.RegisterOutputType(DatasetAccessEntryOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryResponseOutput{})
-	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemOutput{})
-	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemArrayOutput{})
-	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemResponseOutput{})
-	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(DatasetAccessItemOutput{})
 	pulumi.RegisterOutputType(DatasetAccessItemArrayOutput{})
 	pulumi.RegisterOutputType(DatasetAccessItemResponseOutput{})
@@ -14808,6 +14820,10 @@ func init() {
 	pulumi.RegisterOutputType(DatasetReferenceOutput{})
 	pulumi.RegisterOutputType(DatasetReferencePtrOutput{})
 	pulumi.RegisterOutputType(DatasetReferenceResponseOutput{})
+	pulumi.RegisterOutputType(DatasetTagsItemOutput{})
+	pulumi.RegisterOutputType(DatasetTagsItemArrayOutput{})
+	pulumi.RegisterOutputType(DatasetTagsItemResponseOutput{})
+	pulumi.RegisterOutputType(DatasetTagsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(DestinationTablePropertiesOutput{})
 	pulumi.RegisterOutputType(DestinationTablePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DestinationTablePropertiesResponseOutput{})

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
     public sealed class GoogleCloudRunOpV2TrafficTargetResponse
     {
         /// <summary>
-        /// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single TrafficTarget entry.
+        /// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
         /// </summary>
         public readonly int Percent;
         /// <summary>

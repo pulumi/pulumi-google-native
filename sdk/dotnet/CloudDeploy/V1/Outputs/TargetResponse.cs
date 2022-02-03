@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
+        /// Information specifying an Anthos Cluster.
+        /// </summary>
+        public readonly Outputs.AnthosClusterResponse AnthosCluster;
+        /// <summary>
         /// Time at which the `Target` was created.
         /// </summary>
         public readonly string CreateTime;
@@ -45,7 +49,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+        /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -68,6 +72,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         [OutputConstructor]
         private TargetResponse(
             ImmutableDictionary<string, string> annotations,
+
+            Outputs.AnthosClusterResponse anthosCluster,
 
             string createTime,
 
@@ -92,6 +98,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
             string updateTime)
         {
             Annotations = annotations;
+            AnthosCluster = anthosCluster;
             CreateTime = createTime;
             Description = description;
             Etag = etag;

@@ -1848,6 +1848,43 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+    /// </summary>
+    [EnumType]
+    public readonly struct FirewallPolicyVpcNetworkScope : IEquatable<FirewallPolicyVpcNetworkScope>
+    {
+        private readonly string _value;
+
+        private FirewallPolicyVpcNetworkScope(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The firewall policy is allowed to be attached only to global networks.
+        /// </summary>
+        public static FirewallPolicyVpcNetworkScope GlobalVpcNetwork { get; } = new FirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK");
+        /// <summary>
+        /// The firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. This option is applicable only to regional firewall policies.
+        /// </summary>
+        public static FirewallPolicyVpcNetworkScope RegionalVpcNetwork { get; } = new FirewallPolicyVpcNetworkScope("REGIONAL_VPC_NETWORK");
+
+        public static bool operator ==(FirewallPolicyVpcNetworkScope left, FirewallPolicyVpcNetworkScope right) => left.Equals(right);
+        public static bool operator !=(FirewallPolicyVpcNetworkScope left, FirewallPolicyVpcNetworkScope right) => !left.Equals(right);
+
+        public static explicit operator string(FirewallPolicyVpcNetworkScope value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FirewallPolicyVpcNetworkScope other && Equals(other);
+        public bool Equals(FirewallPolicyVpcNetworkScope other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
     /// </summary>
     [EnumType]
@@ -4183,6 +4220,43 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+    /// </summary>
+    [EnumType]
+    public readonly struct NetworkFirewallPolicyVpcNetworkScope : IEquatable<NetworkFirewallPolicyVpcNetworkScope>
+    {
+        private readonly string _value;
+
+        private NetworkFirewallPolicyVpcNetworkScope(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The firewall policy is allowed to be attached only to global networks.
+        /// </summary>
+        public static NetworkFirewallPolicyVpcNetworkScope GlobalVpcNetwork { get; } = new NetworkFirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK");
+        /// <summary>
+        /// The firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. This option is applicable only to regional firewall policies.
+        /// </summary>
+        public static NetworkFirewallPolicyVpcNetworkScope RegionalVpcNetwork { get; } = new NetworkFirewallPolicyVpcNetworkScope("REGIONAL_VPC_NETWORK");
+
+        public static bool operator ==(NetworkFirewallPolicyVpcNetworkScope left, NetworkFirewallPolicyVpcNetworkScope right) => left.Equals(right);
+        public static bool operator !=(NetworkFirewallPolicyVpcNetworkScope left, NetworkFirewallPolicyVpcNetworkScope right) => !left.Equals(right);
+
+        public static explicit operator string(NetworkFirewallPolicyVpcNetworkScope value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NetworkFirewallPolicyVpcNetworkScope other && Equals(other);
+        public bool Equals(NetworkFirewallPolicyVpcNetworkScope other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
     /// </summary>
     [EnumType]
@@ -5320,6 +5394,71 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RegionNetworkEndpointGroupType other && Equals(other);
         public bool Equals(RegionNetworkEndpointGroupType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionNetworkFirewallPolicyVpcNetworkScope : IEquatable<RegionNetworkFirewallPolicyVpcNetworkScope>
+    {
+        private readonly string _value;
+
+        private RegionNetworkFirewallPolicyVpcNetworkScope(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The firewall policy is allowed to be attached only to global networks.
+        /// </summary>
+        public static RegionNetworkFirewallPolicyVpcNetworkScope GlobalVpcNetwork { get; } = new RegionNetworkFirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK");
+        /// <summary>
+        /// The firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. This option is applicable only to regional firewall policies.
+        /// </summary>
+        public static RegionNetworkFirewallPolicyVpcNetworkScope RegionalVpcNetwork { get; } = new RegionNetworkFirewallPolicyVpcNetworkScope("REGIONAL_VPC_NETWORK");
+
+        public static bool operator ==(RegionNetworkFirewallPolicyVpcNetworkScope left, RegionNetworkFirewallPolicyVpcNetworkScope right) => left.Equals(right);
+        public static bool operator !=(RegionNetworkFirewallPolicyVpcNetworkScope left, RegionNetworkFirewallPolicyVpcNetworkScope right) => !left.Equals(right);
+
+        public static explicit operator string(RegionNetworkFirewallPolicyVpcNetworkScope value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionNetworkFirewallPolicyVpcNetworkScope other && Equals(other);
+        public bool Equals(RegionNetworkFirewallPolicyVpcNetworkScope other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct RegionNetworkNetworkFirewallPolicyEnforcementOrder : IEquatable<RegionNetworkNetworkFirewallPolicyEnforcementOrder>
+    {
+        private readonly string _value;
+
+        private RegionNetworkNetworkFirewallPolicyEnforcementOrder(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static RegionNetworkNetworkFirewallPolicyEnforcementOrder AfterClassicFirewall { get; } = new RegionNetworkNetworkFirewallPolicyEnforcementOrder("AFTER_CLASSIC_FIREWALL");
+        public static RegionNetworkNetworkFirewallPolicyEnforcementOrder BeforeClassicFirewall { get; } = new RegionNetworkNetworkFirewallPolicyEnforcementOrder("BEFORE_CLASSIC_FIREWALL");
+
+        public static bool operator ==(RegionNetworkNetworkFirewallPolicyEnforcementOrder left, RegionNetworkNetworkFirewallPolicyEnforcementOrder right) => left.Equals(right);
+        public static bool operator !=(RegionNetworkNetworkFirewallPolicyEnforcementOrder left, RegionNetworkNetworkFirewallPolicyEnforcementOrder right) => !left.Equals(right);
+
+        public static explicit operator string(RegionNetworkNetworkFirewallPolicyEnforcementOrder value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionNetworkNetworkFirewallPolicyEnforcementOrder other && Equals(other);
+        public bool Equals(RegionNetworkNetworkFirewallPolicyEnforcementOrder other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -6578,7 +6717,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+    /// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
     /// </summary>
     [EnumType]
     public readonly struct SchedulingOnHostMaintenance : IEquatable<SchedulingOnHostMaintenance>

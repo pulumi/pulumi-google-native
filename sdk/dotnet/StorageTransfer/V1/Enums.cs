@@ -88,6 +88,47 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
     /// <summary>
+    /// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
+    /// </summary>
+    [EnumType]
+    public readonly struct MetadataOptionsAcl : IEquatable<MetadataOptionsAcl>
+    {
+        private readonly string _value;
+
+        private MetadataOptionsAcl(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// ACL behavior is unspecified.
+        /// </summary>
+        public static MetadataOptionsAcl AclUnspecified { get; } = new MetadataOptionsAcl("ACL_UNSPECIFIED");
+        /// <summary>
+        /// Use the destination bucket's default object ACLS, if applicable.
+        /// </summary>
+        public static MetadataOptionsAcl AclDestinationBucketDefault { get; } = new MetadataOptionsAcl("ACL_DESTINATION_BUCKET_DEFAULT");
+        /// <summary>
+        /// Preserve the object's original ACLs. This requires the service account to have `storage.objects.getIamPolicy` permission for the source object. [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) must not be enabled on either the source or destination buckets.
+        /// </summary>
+        public static MetadataOptionsAcl AclPreserve { get; } = new MetadataOptionsAcl("ACL_PRESERVE");
+
+        public static bool operator ==(MetadataOptionsAcl left, MetadataOptionsAcl right) => left.Equals(right);
+        public static bool operator !=(MetadataOptionsAcl left, MetadataOptionsAcl right) => !left.Equals(right);
+
+        public static explicit operator string(MetadataOptionsAcl value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MetadataOptionsAcl other && Equals(other);
+        public bool Equals(MetadataOptionsAcl other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
     /// </summary>
     [EnumType]
@@ -121,6 +162,47 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is MetadataOptionsGid other && Equals(other);
         public bool Equals(MetadataOptionsGid other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+    /// </summary>
+    [EnumType]
+    public readonly struct MetadataOptionsKmsKey : IEquatable<MetadataOptionsKmsKey>
+    {
+        private readonly string _value;
+
+        private MetadataOptionsKmsKey(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// KmsKey behavior is unspecified.
+        /// </summary>
+        public static MetadataOptionsKmsKey KmsKeyUnspecified { get; } = new MetadataOptionsKmsKey("KMS_KEY_UNSPECIFIED");
+        /// <summary>
+        /// Use the destination bucket's default encryption settings.
+        /// </summary>
+        public static MetadataOptionsKmsKey KmsKeyDestinationBucketDefault { get; } = new MetadataOptionsKmsKey("KMS_KEY_DESTINATION_BUCKET_DEFAULT");
+        /// <summary>
+        /// Preserve the object's original Cloud KMS customer-managed encryption key (CMEK) if present. Objects that do not use a Cloud KMS encryption key will be encrypted using the destination bucket's encryption settings.
+        /// </summary>
+        public static MetadataOptionsKmsKey KmsKeyPreserve { get; } = new MetadataOptionsKmsKey("KMS_KEY_PRESERVE");
+
+        public static bool operator ==(MetadataOptionsKmsKey left, MetadataOptionsKmsKey right) => left.Equals(right);
+        public static bool operator !=(MetadataOptionsKmsKey left, MetadataOptionsKmsKey right) => !left.Equals(right);
+
+        public static explicit operator string(MetadataOptionsKmsKey value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MetadataOptionsKmsKey other && Equals(other);
+        public bool Equals(MetadataOptionsKmsKey other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -170,6 +252,63 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
     /// <summary>
+    /// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+    /// </summary>
+    [EnumType]
+    public readonly struct MetadataOptionsStorageClass : IEquatable<MetadataOptionsStorageClass>
+    {
+        private readonly string _value;
+
+        private MetadataOptionsStorageClass(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Storage class behavior is unspecified.
+        /// </summary>
+        public static MetadataOptionsStorageClass StorageClassUnspecified { get; } = new MetadataOptionsStorageClass("STORAGE_CLASS_UNSPECIFIED");
+        /// <summary>
+        /// Use the destination bucket's default storage class.
+        /// </summary>
+        public static MetadataOptionsStorageClass StorageClassDestinationBucketDefault { get; } = new MetadataOptionsStorageClass("STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT");
+        /// <summary>
+        /// Preserve the object's original storage class. This is only supported for transfers from Google Cloud Storage buckets.
+        /// </summary>
+        public static MetadataOptionsStorageClass StorageClassPreserve { get; } = new MetadataOptionsStorageClass("STORAGE_CLASS_PRESERVE");
+        /// <summary>
+        /// Set the storage class to STANDARD.
+        /// </summary>
+        public static MetadataOptionsStorageClass StorageClassStandard { get; } = new MetadataOptionsStorageClass("STORAGE_CLASS_STANDARD");
+        /// <summary>
+        /// Set the storage class to NEARLINE.
+        /// </summary>
+        public static MetadataOptionsStorageClass StorageClassNearline { get; } = new MetadataOptionsStorageClass("STORAGE_CLASS_NEARLINE");
+        /// <summary>
+        /// Set the storage class to COLDLINE.
+        /// </summary>
+        public static MetadataOptionsStorageClass StorageClassColdline { get; } = new MetadataOptionsStorageClass("STORAGE_CLASS_COLDLINE");
+        /// <summary>
+        /// Set the storage class to ARCHIVE.
+        /// </summary>
+        public static MetadataOptionsStorageClass StorageClassArchive { get; } = new MetadataOptionsStorageClass("STORAGE_CLASS_ARCHIVE");
+
+        public static bool operator ==(MetadataOptionsStorageClass left, MetadataOptionsStorageClass right) => left.Equals(right);
+        public static bool operator !=(MetadataOptionsStorageClass left, MetadataOptionsStorageClass right) => !left.Equals(right);
+
+        public static explicit operator string(MetadataOptionsStorageClass value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MetadataOptionsStorageClass other && Equals(other);
+        public bool Equals(MetadataOptionsStorageClass other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
     /// </summary>
     [EnumType]
@@ -203,6 +342,47 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is MetadataOptionsSymlink other && Equals(other);
         public bool Equals(MetadataOptionsSymlink other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+    /// </summary>
+    [EnumType]
+    public readonly struct MetadataOptionsTemporaryHold : IEquatable<MetadataOptionsTemporaryHold>
+    {
+        private readonly string _value;
+
+        private MetadataOptionsTemporaryHold(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Temporary hold behavior is unspecified.
+        /// </summary>
+        public static MetadataOptionsTemporaryHold TemporaryHoldUnspecified { get; } = new MetadataOptionsTemporaryHold("TEMPORARY_HOLD_UNSPECIFIED");
+        /// <summary>
+        /// Do not set a temporary hold on the destination object.
+        /// </summary>
+        public static MetadataOptionsTemporaryHold TemporaryHoldSkip { get; } = new MetadataOptionsTemporaryHold("TEMPORARY_HOLD_SKIP");
+        /// <summary>
+        /// Preserve the object's original temporary hold status.
+        /// </summary>
+        public static MetadataOptionsTemporaryHold TemporaryHoldPreserve { get; } = new MetadataOptionsTemporaryHold("TEMPORARY_HOLD_PRESERVE");
+
+        public static bool operator ==(MetadataOptionsTemporaryHold left, MetadataOptionsTemporaryHold right) => left.Equals(right);
+        public static bool operator !=(MetadataOptionsTemporaryHold left, MetadataOptionsTemporaryHold right) => !left.Equals(right);
+
+        public static explicit operator string(MetadataOptionsTemporaryHold value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MetadataOptionsTemporaryHold other && Equals(other);
+        public bool Equals(MetadataOptionsTemporaryHold other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

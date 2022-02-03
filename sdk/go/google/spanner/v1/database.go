@@ -18,6 +18,8 @@ type Database struct {
 
 	// If exists, the time at which the database creation started.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The dialect of the Cloud Spanner Database.
+	DatabaseDialect pulumi.StringOutput `pulumi:"databaseDialect"`
 	// The read-write region which contains the database's leader replicas. This is the same as the value of default_leader database option set using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty.
 	DefaultLeader pulumi.StringOutput `pulumi:"defaultLeader"`
 	// Earliest timestamp at which older versions of the data can be read. This value is continuously updated by Cloud Spanner and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
@@ -83,6 +85,8 @@ func (DatabaseState) ElementType() reflect.Type {
 type databaseArgs struct {
 	// A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
 	CreateStatement string `pulumi:"createStatement"`
+	// Optional. The dialect of the Cloud Spanner Database.
+	DatabaseDialect *DatabaseDatabaseDialect `pulumi:"databaseDialect"`
 	// Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.
@@ -95,6 +99,8 @@ type databaseArgs struct {
 type DatabaseArgs struct {
 	// A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
 	CreateStatement pulumi.StringInput
+	// Optional. The dialect of the Cloud Spanner Database.
+	DatabaseDialect DatabaseDatabaseDialectPtrInput
 	// Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
 	EncryptionConfig EncryptionConfigPtrInput
 	// Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.

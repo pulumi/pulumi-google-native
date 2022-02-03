@@ -514,22 +514,63 @@ class MetadataOptionsResponse(dict):
     """
     Specifies the metadata options for running a transfer.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKey":
+            suggest = "kms_key"
+        elif key == "storageClass":
+            suggest = "storage_class"
+        elif key == "temporaryHold":
+            suggest = "temporary_hold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetadataOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetadataOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetadataOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 acl: str,
                  gid: str,
+                 kms_key: str,
                  mode: str,
+                 storage_class: str,
                  symlink: str,
+                 temporary_hold: str,
                  uid: str):
         """
         Specifies the metadata options for running a transfer.
+        :param str acl: Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
         :param str gid: Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+        :param str kms_key: Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
         :param str mode: Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+        :param str storage_class: Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
         :param str symlink: Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+        :param str temporary_hold: Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
         :param str uid: Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
         """
+        pulumi.set(__self__, "acl", acl)
         pulumi.set(__self__, "gid", gid)
+        pulumi.set(__self__, "kms_key", kms_key)
         pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "storage_class", storage_class)
         pulumi.set(__self__, "symlink", symlink)
+        pulumi.set(__self__, "temporary_hold", temporary_hold)
         pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> str:
+        """
+        Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
+        """
+        return pulumi.get(self, "acl")
 
     @property
     @pulumi.getter
@@ -540,6 +581,14 @@ class MetadataOptionsResponse(dict):
         return pulumi.get(self, "gid")
 
     @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> str:
+        """
+        Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @property
     @pulumi.getter
     def mode(self) -> str:
         """
@@ -548,12 +597,28 @@ class MetadataOptionsResponse(dict):
         return pulumi.get(self, "mode")
 
     @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        """
+        Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+        """
+        return pulumi.get(self, "storage_class")
+
+    @property
     @pulumi.getter
     def symlink(self) -> str:
         """
         Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
         """
         return pulumi.get(self, "symlink")
+
+    @property
+    @pulumi.getter(name="temporaryHold")
+    def temporary_hold(self) -> str:
+        """
+        Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+        """
+        return pulumi.get(self, "temporary_hold")
 
     @property
     @pulumi.getter

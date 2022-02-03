@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         public readonly string Database;
         /// <summary>
+        /// The database dialect information for the backup.
+        /// </summary>
+        public readonly string DatabaseDialect;
+        /// <summary>
         /// The encryption information for the backup.
         /// </summary>
         public readonly Outputs.EncryptionInfoResponse EncryptionInfo;
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
             string database,
 
+            string databaseDialect,
+
             Outputs.EncryptionInfoResponse encryptionInfo,
 
             string expireTime,
@@ -120,6 +126,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
         {
             CreateTime = createTime;
             Database = database;
+            DatabaseDialect = databaseDialect;
             EncryptionInfo = encryptionInfo;
             ExpireTime = expireTime;
             Name = name;

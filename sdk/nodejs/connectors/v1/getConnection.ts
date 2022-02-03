@@ -63,10 +63,6 @@ export interface GetConnectionResult {
      */
     readonly imageLocation: string;
     /**
-     * Optional. Inactive indicates the connection is active to use or not.
-     */
-    readonly inactive: boolean;
-    /**
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
     readonly labels: {[key: string]: string};
@@ -90,6 +86,10 @@ export interface GetConnectionResult {
      * Current status of the connection.
      */
     readonly status: outputs.connectors.v1.ConnectionStatusResponse;
+    /**
+     * Optional. Suspended indicates if a user has suspended a connection or not.
+     */
+    readonly suspended: boolean;
     /**
      * Updated time.
      */

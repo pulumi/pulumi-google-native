@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Inputs
     public sealed class AutoscalingTargetsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
+        /// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.
         /// </summary>
         [Input("cpuUtilizationPercent")]
         public Input<int>? CpuUtilizationPercent { get; set; }

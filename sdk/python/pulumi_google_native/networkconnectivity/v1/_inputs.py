@@ -236,7 +236,7 @@ class LinkedInterconnectAttachmentsArgs:
                  uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
-        :param pulumi.Input[bool] site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+        :param pulumi.Input[bool] site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: The URIs of linked interconnect attachment resources
         """
         if site_to_site_data_transfer is not None:
@@ -248,7 +248,7 @@ class LinkedInterconnectAttachmentsArgs:
     @pulumi.getter(name="siteToSiteDataTransfer")
     def site_to_site_data_transfer(self) -> Optional[pulumi.Input[bool]]:
         """
-        A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+        A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         """
         return pulumi.get(self, "site_to_site_data_transfer")
 
@@ -277,7 +277,7 @@ class LinkedRouterApplianceInstancesArgs:
         """
         A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
         :param pulumi.Input[Sequence[pulumi.Input['RouterApplianceInstanceArgs']]] instances: The list of router appliance instances.
-        :param pulumi.Input[bool] site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+        :param pulumi.Input[bool] site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         """
         if instances is not None:
             pulumi.set(__self__, "instances", instances)
@@ -300,7 +300,7 @@ class LinkedRouterApplianceInstancesArgs:
     @pulumi.getter(name="siteToSiteDataTransfer")
     def site_to_site_data_transfer(self) -> Optional[pulumi.Input[bool]]:
         """
-        A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+        A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         """
         return pulumi.get(self, "site_to_site_data_transfer")
 
@@ -316,7 +316,7 @@ class LinkedVpnTunnelsArgs:
                  uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
-        :param pulumi.Input[bool] site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+        :param pulumi.Input[bool] site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: The URIs of linked VPN tunnel resources.
         """
         if site_to_site_data_transfer is not None:
@@ -328,7 +328,7 @@ class LinkedVpnTunnelsArgs:
     @pulumi.getter(name="siteToSiteDataTransfer")
     def site_to_site_data_transfer(self) -> Optional[pulumi.Input[bool]]:
         """
-        A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+        A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         """
         return pulumi.get(self, "site_to_site_data_transfer")
 
@@ -394,7 +394,7 @@ class RoutingVPCArgs:
     def __init__(__self__, *,
                  uri: Optional[pulumi.Input[str]] = None):
         """
-        RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
+        RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
         :param pulumi.Input[str] uri: The URI of the VPC network.
         """
         if uri is not None:

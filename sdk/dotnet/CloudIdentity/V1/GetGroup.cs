@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         /// </summary>
         public readonly Outputs.DynamicGroupMetadataResponse DynamicGroupMetadata;
         /// <summary>
-        /// Immutable. The `EntityKey` of the `Group`.
+        /// The `EntityKey` of the `Group`.
         /// </summary>
         public readonly Outputs.EntityKeyResponse GroupKey;
         /// <summary>

@@ -29,6 +29,8 @@ type LookupDatabaseArgs struct {
 type LookupDatabaseResult struct {
 	// If exists, the time at which the database creation started.
 	CreateTime string `pulumi:"createTime"`
+	// The dialect of the Cloud Spanner Database.
+	DatabaseDialect string `pulumi:"databaseDialect"`
 	// The read-write region which contains the database's leader replicas. This is the same as the value of default_leader database option set using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty.
 	DefaultLeader string `pulumi:"defaultLeader"`
 	// Earliest timestamp at which older versions of the data can be read. This value is continuously updated by Cloud Spanner and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
@@ -83,6 +85,11 @@ func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutputWithContext(ctx 
 // If exists, the time at which the database creation started.
 func (o LookupDatabaseResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The dialect of the Cloud Spanner Database.
+func (o LookupDatabaseResultOutput) DatabaseDialect() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.DatabaseDialect }).(pulumi.StringOutput)
 }
 
 // The read-write region which contains the database's leader replicas. This is the same as the value of default_leader database option set using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty.

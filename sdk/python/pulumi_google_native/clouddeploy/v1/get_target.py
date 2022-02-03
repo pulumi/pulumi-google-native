@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetResult:
-    def __init__(__self__, annotations=None, create_time=None, description=None, etag=None, execution_configs=None, gke=None, labels=None, name=None, require_approval=None, target_id=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, anthos_cluster=None, create_time=None, description=None, etag=None, execution_configs=None, gke=None, labels=None, name=None, require_approval=None, target_id=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
+        if anthos_cluster and not isinstance(anthos_cluster, dict):
+            raise TypeError("Expected argument 'anthos_cluster' to be a dict")
+        pulumi.set(__self__, "anthos_cluster", anthos_cluster)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -63,6 +66,14 @@ class GetTargetResult:
         Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         """
         return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="anthosCluster")
+    def anthos_cluster(self) -> 'outputs.AnthosClusterResponse':
+        """
+        Information specifying an Anthos Cluster.
+        """
+        return pulumi.get(self, "anthos_cluster")
 
     @property
     @pulumi.getter(name="createTime")
@@ -116,7 +127,7 @@ class GetTargetResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+        Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         """
         return pulumi.get(self, "name")
 
@@ -160,6 +171,7 @@ class AwaitableGetTargetResult(GetTargetResult):
             yield self
         return GetTargetResult(
             annotations=self.annotations,
+            anthos_cluster=self.anthos_cluster,
             create_time=self.create_time,
             description=self.description,
             etag=self.etag,
@@ -192,6 +204,7 @@ def get_target(location: Optional[str] = None,
 
     return AwaitableGetTargetResult(
         annotations=__ret__.annotations,
+        anthos_cluster=__ret__.anthos_cluster,
         create_time=__ret__.create_time,
         description=__ret__.description,
         etag=__ret__.etag,

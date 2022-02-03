@@ -3019,6 +3019,29 @@ export namespace assuredworkloads {
     }
 }
 
+export namespace baremetalsolution {
+    export namespace v2 {
+        /**
+         * A snapshot schedule.
+         */
+        export interface ScheduleArgs {
+            /**
+             * A crontab-like specification that the schedule uses to take snapshots.
+             */
+            crontabSpec?: pulumi.Input<string>;
+            /**
+             * A list of snapshot names created in this schedule.
+             */
+            prefix?: pulumi.Input<string>;
+            /**
+             * The maximum number of snapshots to retain in this schedule.
+             */
+            retentionCount?: pulumi.Input<number>;
+        }
+
+    }
+}
+
 export namespace bigquery {
     export namespace v2 {
         /**
@@ -3269,14 +3292,7 @@ export namespace bigquery {
              * [Required] The dataset this entry applies to.
              */
             dataset?: pulumi.Input<inputs.bigquery.v2.DatasetReferenceArgs>;
-            targetTypes?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.DatasetAccessEntryTargetTypesItemArgs>[]>;
-        }
-
-        export interface DatasetAccessEntryTargetTypesItemArgs {
-            /**
-             * [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-             */
-            targetType?: pulumi.Input<string>;
+            targetTypes?: pulumi.Input<pulumi.Input<enums.bigquery.v2.DatasetAccessEntryTargetTypesItem>[]>;
         }
 
         export interface DatasetAccessItemArgs {
@@ -3327,6 +3343,17 @@ export namespace bigquery {
              * [Optional] The ID of the project containing this dataset.
              */
             project?: pulumi.Input<string>;
+        }
+
+        export interface DatasetTagsItemArgs {
+            /**
+             * [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
+             */
+            tagKey?: pulumi.Input<string>;
+            /**
+             * [Required] Friendly short name of the tag value, e.g. "production".
+             */
+            tagValue?: pulumi.Input<string>;
         }
 
         export interface DestinationTablePropertiesArgs {
@@ -3962,7 +3989,7 @@ export namespace bigquery {
         }
 
         /**
-         * The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
+         * The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
          */
         export interface StandardSqlDataTypeArgs {
             /**
@@ -4341,7 +4368,7 @@ export namespace bigtableadmin {
          */
         export interface AutoscalingTargetsArgs {
             /**
-             * The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
+             * The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.
              */
             cpuUtilizationPercent?: pulumi.Input<number>;
         }
@@ -6099,6 +6126,16 @@ export namespace cloudchannel {
 export namespace clouddeploy {
     export namespace v1 {
         /**
+         * Information specifying an Anthos Cluster.
+         */
+        export interface AnthosClusterArgs {
+            /**
+             * Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+             */
+            membership?: pulumi.Input<string>;
+        }
+
+        /**
          * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
          */
         export interface AuditConfigArgs {
@@ -6177,6 +6214,10 @@ export namespace clouddeploy {
          */
         export interface ExecutionConfigArgs {
             /**
+             * Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+             */
+            artifactStorage?: pulumi.Input<string>;
+            /**
              * Optional. Use default Cloud Build pool.
              */
             defaultPool?: pulumi.Input<inputs.clouddeploy.v1.DefaultPoolArgs>;
@@ -6185,9 +6226,17 @@ export namespace clouddeploy {
              */
             privatePool?: pulumi.Input<inputs.clouddeploy.v1.PrivatePoolArgs>;
             /**
+             * Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+             */
+            serviceAccount?: pulumi.Input<string>;
+            /**
              * Usages when this configuration should be applied.
              */
             usages: pulumi.Input<pulumi.Input<enums.clouddeploy.v1.ExecutionConfigUsagesItem>[]>;
+            /**
+             * Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
+             */
+            workerPool?: pulumi.Input<string>;
         }
 
         /**
@@ -6259,7 +6308,7 @@ export namespace clouddeploy {
              */
             profiles?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/deliveryPipelines/pipeline/targets/my-target`). The parent `DeliveryPipeline` of the `Target` is inferred to be the parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.
+             * The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
              */
             targetId?: pulumi.Input<string>;
         }
@@ -12399,6 +12448,10 @@ export namespace compute {
              */
             ipv6NexthopAddress?: pulumi.Input<string>;
             /**
+             * Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
+             */
+            md5AuthenticationKeyName?: pulumi.Input<string>;
+            /**
              * Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
              */
             name?: pulumi.Input<string>;
@@ -12480,6 +12533,17 @@ export namespace compute {
              * The URI of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here.
              */
             subnetwork?: pulumi.Input<string>;
+        }
+
+        export interface RouterMd5AuthenticationKeyArgs {
+            /**
+             * [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+             */
+            name?: pulumi.Input<string>;
         }
 
         /**
@@ -12755,7 +12819,7 @@ export namespace compute {
              */
             nodeAffinities?: pulumi.Input<pulumi.Input<inputs.compute.alpha.SchedulingNodeAffinityArgs>[]>;
             /**
-             * Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+             * Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
              */
             onHostMaintenance?: pulumi.Input<enums.compute.alpha.SchedulingOnHostMaintenance>;
             /**
@@ -16683,7 +16747,7 @@ export namespace compute {
              */
             nodeAffinities?: pulumi.Input<pulumi.Input<inputs.compute.beta.SchedulingNodeAffinityArgs>[]>;
             /**
-             * Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+             * Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
              */
             onHostMaintenance?: pulumi.Input<enums.compute.beta.SchedulingOnHostMaintenance>;
             /**
@@ -20308,7 +20372,7 @@ export namespace compute {
              */
             nodeAffinities?: pulumi.Input<pulumi.Input<inputs.compute.v1.SchedulingNodeAffinityArgs>[]>;
             /**
-             * Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+             * Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
              */
             onHostMaintenance?: pulumi.Input<enums.compute.v1.SchedulingOnHostMaintenance>;
             /**
@@ -22620,7 +22684,7 @@ export namespace container {
          */
         export interface ConfidentialNodesArgs {
             /**
-             * Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+             * Whether Confidential Nodes feature is enabled.
              */
             enabled?: pulumi.Input<boolean>;
         }
@@ -43106,6 +43170,16 @@ export namespace gkehub {
         }
 
         /**
+         * EdgeCluster contains information specific to Google Edge Clusters.
+         */
+        export interface EdgeClusterArgs {
+            /**
+             * Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+             */
+            resourceLink?: pulumi.Input<string>;
+        }
+
+        /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
          */
         export interface ExprArgs {
@@ -43155,6 +43229,10 @@ export namespace gkehub {
          * MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
          */
         export interface MembershipEndpointArgs {
+            /**
+             * Optional. Specific information for a Google Edge cluster.
+             */
+            edgeCluster?: pulumi.Input<inputs.gkehub.v1.EdgeClusterArgs>;
             /**
              * Optional. Specific information for a GKE-on-GCP cluster.
              */
@@ -43323,6 +43401,16 @@ export namespace gkehub {
         }
 
         /**
+         * EdgeCluster contains information specific to Google Edge Clusters.
+         */
+        export interface EdgeClusterArgs {
+            /**
+             * Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+             */
+            resourceLink?: pulumi.Input<string>;
+        }
+
+        /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
          */
         export interface ExprArgs {
@@ -43372,6 +43460,10 @@ export namespace gkehub {
          * MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
          */
         export interface MembershipEndpointArgs {
+            /**
+             * Optional. Specific information for a Google Edge cluster.
+             */
+            edgeCluster?: pulumi.Input<inputs.gkehub.v1alpha.EdgeClusterArgs>;
             /**
              * Optional. Specific information for a GKE-on-GCP cluster.
              */
@@ -43506,6 +43598,16 @@ export namespace gkehub {
         }
 
         /**
+         * EdgeCluster contains information specific to Google Edge Clusters.
+         */
+        export interface EdgeClusterArgs {
+            /**
+             * Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+             */
+            resourceLink?: pulumi.Input<string>;
+        }
+
+        /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
          */
         export interface ExprArgs {
@@ -43555,6 +43657,10 @@ export namespace gkehub {
          * MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
          */
         export interface MembershipEndpointArgs {
+            /**
+             * Optional. Specific information for a Google Edge cluster.
+             */
+            edgeCluster?: pulumi.Input<inputs.gkehub.v1alpha2.EdgeClusterArgs>;
             /**
              * Optional. Specific information for a GKE-on-GCP cluster.
              */
@@ -43780,6 +43886,16 @@ export namespace gkehub {
         }
 
         /**
+         * EdgeCluster contains information specific to Google Edge Clusters.
+         */
+        export interface EdgeClusterArgs {
+            /**
+             * Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+             */
+            resourceLink?: pulumi.Input<string>;
+        }
+
+        /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
          */
         export interface ExprArgs {
@@ -43829,6 +43945,10 @@ export namespace gkehub {
          * MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
          */
         export interface MembershipEndpointArgs {
+            /**
+             * Optional. Specific information for a Google Edge cluster.
+             */
+            edgeCluster?: pulumi.Input<inputs.gkehub.v1beta1.EdgeClusterArgs>;
             /**
              * Optional. Specific information for a GKE-on-GCP cluster.
              */
@@ -48166,7 +48286,7 @@ export namespace networkconnectivity {
          */
         export interface LinkedInterconnectAttachmentsArgs {
             /**
-             * A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+             * A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
              */
             siteToSiteDataTransfer?: pulumi.Input<boolean>;
             /**
@@ -48184,7 +48304,7 @@ export namespace networkconnectivity {
              */
             instances?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.v1.RouterApplianceInstanceArgs>[]>;
             /**
-             * A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+             * A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
              */
             siteToSiteDataTransfer?: pulumi.Input<boolean>;
         }
@@ -48194,7 +48314,7 @@ export namespace networkconnectivity {
          */
         export interface LinkedVpnTunnelsArgs {
             /**
-             * A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+             * A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
              */
             siteToSiteDataTransfer?: pulumi.Input<boolean>;
             /**
@@ -48218,7 +48338,7 @@ export namespace networkconnectivity {
         }
 
         /**
-         * RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
+         * RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
          */
         export interface RoutingVPCArgs {
             /**
@@ -49443,7 +49563,7 @@ export namespace notebooks {
         }
 
         /**
-         * Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
+         * Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
          */
         export interface RuntimeSoftwareConfigArgs {
             /**
@@ -49466,6 +49586,10 @@ export namespace notebooks {
              * Install Nvidia Driver automatically.
              */
             installGpuDriver?: pulumi.Input<boolean>;
+            /**
+             * Optional. Use a list of container images to use as Kernels in the notebook instance.
+             */
+            kernels?: pulumi.Input<pulumi.Input<inputs.notebooks.v1.ContainerImageArgs>[]>;
             /**
              * Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
              */
@@ -49587,7 +49711,7 @@ export namespace notebooks {
              */
             acceleratorConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeAcceleratorConfigArgs>;
             /**
-             * Optional. Use a list of container images to start the notebook instance.
+             * Optional. Use a list of container images to use as Kernels in the notebook instance.
              */
             containerImages?: pulumi.Input<pulumi.Input<inputs.notebooks.v1.ContainerImageArgs>[]>;
             /**
@@ -53816,7 +53940,7 @@ export namespace retail {
          */
         export interface GoogleCloudRetailV2PromotionArgs {
             /**
-             * ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+             * ID of the promotion. For example, "free gift". The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
              */
             promotionId?: pulumi.Input<string>;
         }
@@ -54001,7 +54125,7 @@ export namespace retail {
          */
         export interface GoogleCloudRetailV2alphaPromotionArgs {
             /**
-             * ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+             * ID of the promotion. For example, "free gift". The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
              */
             promotionId?: pulumi.Input<string>;
         }
@@ -54402,7 +54526,7 @@ export namespace retail {
          */
         export interface GoogleCloudRetailV2betaPromotionArgs {
             /**
-             * ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+             * ID of the promotion. For example, "free gift". The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
              */
             promotionId?: pulumi.Input<string>;
         }
@@ -55428,11 +55552,11 @@ export namespace run {
              */
             latestRevision?: pulumi.Input<boolean>;
             /**
-             * Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
+             * Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
              */
             percent?: pulumi.Input<number>;
             /**
-             * RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
+             * RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
              */
             revisionName?: pulumi.Input<string>;
             /**
@@ -56463,7 +56587,7 @@ export namespace run {
          */
         export interface GoogleCloudRunOpV2TrafficTargetArgs {
             /**
-             * Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single TrafficTarget entry.
+             * Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
              */
             percent?: pulumi.Input<number>;
             /**
@@ -60455,17 +60579,33 @@ export namespace storagetransfer {
          */
         export interface MetadataOptionsArgs {
             /**
+             * Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
+             */
+            acl?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsAcl>;
+            /**
              * Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
              */
             gid?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsGid>;
+            /**
+             * Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+             */
+            kmsKey?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsKmsKey>;
             /**
              * Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
              */
             mode?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsMode>;
             /**
+             * Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+             */
+            storageClass?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsStorageClass>;
+            /**
              * Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
              */
             symlink?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsSymlink>;
+            /**
+             * Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+             */
+            temporaryHold?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsTemporaryHold>;
             /**
              * Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
              */
@@ -62796,7 +62936,7 @@ export namespace transcoder {
              */
             bitrateBps: pulumi.Input<number>;
             /**
-             * Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
+             * Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported. 
              */
             crfLevel?: pulumi.Input<number>;
             /**
@@ -62824,782 +62964,9 @@ export namespace transcoder {
              */
             profile?: pulumi.Input<string>;
             /**
-             * Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+             * Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
              */
             rateControlMode?: pulumi.Input<string>;
-            /**
-             * The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
-             */
-            widthPixels?: pulumi.Input<number>;
-        }
-
-    }
-
-    export namespace v1beta1 {
-        /**
-         * Ad break.
-         */
-        export interface AdBreakArgs {
-            /**
-             * Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`.
-             */
-            startTimeOffset?: pulumi.Input<string>;
-        }
-
-        /**
-         * Configuration for AES-128 encryption.
-         */
-        export interface Aes128EncryptionArgs {
-            /**
-             * URI of the key delivery service. This URI is inserted into the M3U8 header.
-             */
-            keyUri: pulumi.Input<string>;
-        }
-
-        /**
-         * Animation types.
-         */
-        export interface AnimationArgs {
-            /**
-             * End previous animation.
-             */
-            animationEnd?: pulumi.Input<inputs.transcoder.v1beta1.AnimationEndArgs>;
-            /**
-             * Display overlay object with fade animation.
-             */
-            animationFade?: pulumi.Input<inputs.transcoder.v1beta1.AnimationFadeArgs>;
-            /**
-             * Display static overlay object.
-             */
-            animationStatic?: pulumi.Input<inputs.transcoder.v1beta1.AnimationStaticArgs>;
-        }
-
-        /**
-         * End previous overlay animation from the video. Without AnimationEnd, the overlay object will keep the state of previous animation until the end of the video.
-         */
-        export interface AnimationEndArgs {
-            /**
-             * The time to end overlay object, in seconds. Default: 0
-             */
-            startTimeOffset?: pulumi.Input<string>;
-        }
-
-        /**
-         * Display overlay object with fade animation.
-         */
-        export interface AnimationFadeArgs {
-            /**
-             * The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
-             */
-            endTimeOffset?: pulumi.Input<string>;
-            /**
-             * Type of fade animation: `FADE_IN` or `FADE_OUT`.
-             */
-            fadeType: pulumi.Input<enums.transcoder.v1beta1.AnimationFadeFadeType>;
-            /**
-             * The time to start the fade animation, in seconds. Default: 0
-             */
-            startTimeOffset?: pulumi.Input<string>;
-            /**
-             * Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
-             */
-            xy?: pulumi.Input<inputs.transcoder.v1beta1.NormalizedCoordinateArgs>;
-        }
-
-        /**
-         * Display static overlay object.
-         */
-        export interface AnimationStaticArgs {
-            /**
-             * The time to start displaying the overlay object, in seconds. Default: 0
-             */
-            startTimeOffset?: pulumi.Input<string>;
-            /**
-             * Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
-             */
-            xy?: pulumi.Input<inputs.transcoder.v1beta1.NormalizedCoordinateArgs>;
-        }
-
-        /**
-         * Audio preprocessing configuration.
-         */
-        export interface AudioArgs {
-            /**
-             * Enable boosting high frequency components. The default is `false`.
-             */
-            highBoost?: pulumi.Input<boolean>;
-            /**
-             * Enable boosting low frequency components. The default is `false`.
-             */
-            lowBoost?: pulumi.Input<boolean>;
-            /**
-             * Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
-             */
-            lufs?: pulumi.Input<number>;
-        }
-
-        /**
-         * The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
-         */
-        export interface AudioAtomArgs {
-            /**
-             * List of `Channel`s for this audio stream. for in-depth explanation.
-             */
-            channels?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.AudioChannelArgs>[]>;
-            /**
-             * The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
-             */
-            key: pulumi.Input<string>;
-        }
-
-        /**
-         * The audio channel.
-         */
-        export interface AudioChannelArgs {
-            /**
-             * List of `Job.inputs` for this audio channel.
-             */
-            inputs?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.AudioChannelInputArgs>[]>;
-        }
-
-        /**
-         * Identifies which input file, track, and channel should be used.
-         */
-        export interface AudioChannelInputArgs {
-            /**
-             * The zero-based index of the channel in the input file.
-             */
-            channel: pulumi.Input<number>;
-            /**
-             * Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
-             */
-            gainDb?: pulumi.Input<number>;
-            /**
-             * The `Input.key` that identifies the input file.
-             */
-            key: pulumi.Input<string>;
-            /**
-             * The zero-based index of the track in the input file.
-             */
-            track: pulumi.Input<number>;
-        }
-
-        /**
-         * Audio stream resource.
-         */
-        export interface AudioStreamArgs {
-            /**
-             * Audio bitrate in bits per second. Must be between 1 and 10,000,000.
-             */
-            bitrateBps: pulumi.Input<number>;
-            /**
-             * Number of audio channels. Must be between 1 and 6. The default is 2.
-             */
-            channelCount?: pulumi.Input<number>;
-            /**
-             * A list of channel names specifying layout of the audio channels. This only affects the metadata embedded in the container headers, if supported by the specified format. The default is `["fl", "fr"]`. Supported channel names: - 'fl' - Front left channel - 'fr' - Front right channel - 'sl' - Side left channel - 'sr' - Side right channel - 'fc' - Front center channel - 'lfe' - Low frequency
-             */
-            channelLayout?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * The codec for this audio stream. The default is `"aac"`. Supported audio codecs: - 'aac' - 'aac-he' - 'aac-he-v2' - 'mp3' - 'ac3' - 'eac3'
-             */
-            codec?: pulumi.Input<string>;
-            /**
-             * The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
-             */
-            mapping?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.AudioAtomArgs>[]>;
-            /**
-             * The audio sample rate in Hertz. The default is 48000 Hertz.
-             */
-            sampleRateHertz?: pulumi.Input<number>;
-        }
-
-        /**
-         * Color preprocessing configuration.
-         */
-        export interface ColorArgs {
-            /**
-             * Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.
-             */
-            brightness?: pulumi.Input<number>;
-            /**
-             * Control black and white contrast of the video. Enter a value between -1 and 1, where -1 is minimum contrast and 1 is maximum contrast. 0 is no change. The default is 0.
-             */
-            contrast?: pulumi.Input<number>;
-            /**
-             * Control color saturation of the video. Enter a value between -1 and 1, where -1 is fully desaturated and 1 is maximum saturation. 0 is no change. The default is 0.
-             */
-            saturation?: pulumi.Input<number>;
-        }
-
-        /**
-         * Video cropping configuration for the input video. The cropped input video is scaled to match the output resolution.
-         */
-        export interface CropArgs {
-            /**
-             * The number of pixels to crop from the bottom. The default is 0.
-             */
-            bottomPixels?: pulumi.Input<number>;
-            /**
-             * The number of pixels to crop from the left. The default is 0.
-             */
-            leftPixels?: pulumi.Input<number>;
-            /**
-             * The number of pixels to crop from the right. The default is 0.
-             */
-            rightPixels?: pulumi.Input<number>;
-            /**
-             * The number of pixels to crop from the top. The default is 0.
-             */
-            topPixels?: pulumi.Input<number>;
-        }
-
-        /**
-         * Deblock preprocessing configuration.
-         */
-        export interface DeblockArgs {
-            /**
-             * Enable deblocker. The default is `false`.
-             */
-            enabled?: pulumi.Input<boolean>;
-            /**
-             * Set strength of the deblocker. Enter a value between 0 and 1. The higher the value, the stronger the block removal. 0 is no deblocking. The default is 0.
-             */
-            strength?: pulumi.Input<number>;
-        }
-
-        /**
-         * Denoise preprocessing configuration.
-         */
-        export interface DenoiseArgs {
-            /**
-             * Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.
-             */
-            strength?: pulumi.Input<number>;
-            /**
-             * Set the denoiser mode. The default is `"standard"`. Supported denoiser modes: - 'standard' - 'grain'
-             */
-            tune?: pulumi.Input<string>;
-        }
-
-        /**
-         * Edit atom.
-         */
-        export interface EditAtomArgs {
-            /**
-             * End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.
-             */
-            endTimeOffset?: pulumi.Input<string>;
-            /**
-             * List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
-             */
-            inputs?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * A unique key for this atom. Must be specified when using advanced mapping.
-             */
-            key?: pulumi.Input<string>;
-            /**
-             * Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
-             */
-            startTimeOffset?: pulumi.Input<string>;
-        }
-
-        /**
-         * Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats.
-         */
-        export interface ElementaryStreamArgs {
-            /**
-             * Encoding of an audio stream.
-             */
-            audioStream?: pulumi.Input<inputs.transcoder.v1beta1.AudioStreamArgs>;
-            /**
-             * A unique key for this elementary stream.
-             */
-            key?: pulumi.Input<string>;
-            /**
-             * Encoding of a text stream. For example, closed captions or subtitles.
-             */
-            textStream?: pulumi.Input<inputs.transcoder.v1beta1.TextStreamArgs>;
-            /**
-             * Encoding of a video stream.
-             */
-            videoStream?: pulumi.Input<inputs.transcoder.v1beta1.VideoStreamArgs>;
-        }
-
-        /**
-         * Encryption settings.
-         */
-        export interface EncryptionArgs {
-            /**
-             * Configuration for AES-128 encryption.
-             */
-            aes128?: pulumi.Input<inputs.transcoder.v1beta1.Aes128EncryptionArgs>;
-            /**
-             * 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
-             */
-            iv: pulumi.Input<string>;
-            /**
-             * 128 bit encryption key represented as lowercase hexadecimal digits.
-             */
-            key: pulumi.Input<string>;
-            /**
-             * Configuration for MPEG Common Encryption (MPEG-CENC).
-             */
-            mpegCenc?: pulumi.Input<inputs.transcoder.v1beta1.MpegCommonEncryptionArgs>;
-            /**
-             * Configuration for SAMPLE-AES encryption.
-             */
-            sampleAes?: pulumi.Input<inputs.transcoder.v1beta1.SampleAesEncryptionArgs>;
-        }
-
-        /**
-         * Overlaid jpeg image.
-         */
-        export interface ImageArgs {
-            /**
-             * Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
-             */
-            alpha?: pulumi.Input<number>;
-            /**
-             * Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
-             */
-            resolution?: pulumi.Input<inputs.transcoder.v1beta1.NormalizedCoordinateArgs>;
-            /**
-             * URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-        /**
-         * Input asset.
-         */
-        export interface InputArgs {
-            /**
-             * A unique key for this input. Must be specified when using advanced mapping and edit lists.
-             */
-            key?: pulumi.Input<string>;
-            /**
-             * Preprocessing configurations.
-             */
-            preprocessingConfig?: pulumi.Input<inputs.transcoder.v1beta1.PreprocessingConfigArgs>;
-            /**
-             * URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
-             */
-            uri?: pulumi.Input<string>;
-        }
-
-        /**
-         * Job configuration
-         */
-        export interface JobConfigArgs {
-            /**
-             * List of ad breaks. Specifies where to insert ad break tags in the output manifests.
-             */
-            adBreaks?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.AdBreakArgs>[]>;
-            /**
-             * List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.
-             */
-            editList?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.EditAtomArgs>[]>;
-            /**
-             * List of elementary streams.
-             */
-            elementaryStreams?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.ElementaryStreamArgs>[]>;
-            /**
-             * List of input assets stored in Cloud Storage.
-             */
-            inputs?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.InputArgs>[]>;
-            /**
-             * List of output manifests.
-             */
-            manifests?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.ManifestArgs>[]>;
-            /**
-             * List of multiplexing settings for output streams.
-             */
-            muxStreams?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.MuxStreamArgs>[]>;
-            /**
-             * Output configuration.
-             */
-            output?: pulumi.Input<inputs.transcoder.v1beta1.OutputArgs>;
-            /**
-             * List of overlays on the output video, in descending Z-order.
-             */
-            overlays?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.OverlayArgs>[]>;
-            /**
-             * Destination on Pub/Sub.
-             */
-            pubsubDestination?: pulumi.Input<inputs.transcoder.v1beta1.PubsubDestinationArgs>;
-            /**
-             * List of output sprite sheets.
-             */
-            spriteSheets?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.SpriteSheetArgs>[]>;
-        }
-
-        /**
-         * Manifest configuration.
-         */
-        export interface ManifestArgs {
-            /**
-             * The name of the generated file. The default is `"manifest"` with the extension suffix corresponding to the `Manifest.type`.
-             */
-            fileName?: pulumi.Input<string>;
-            /**
-             * List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
-             */
-            muxStreams: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Type of the manifest, can be "HLS" or "DASH".
-             */
-            type: pulumi.Input<enums.transcoder.v1beta1.ManifestType>;
-        }
-
-        /**
-         * Configuration for MPEG Common Encryption (MPEG-CENC).
-         */
-        export interface MpegCommonEncryptionArgs {
-            /**
-             * 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
-             */
-            keyId: pulumi.Input<string>;
-            /**
-             * Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
-             */
-            scheme: pulumi.Input<string>;
-        }
-
-        /**
-         * Multiplexing settings for output stream.
-         */
-        export interface MuxStreamArgs {
-            /**
-             * The container format. The default is `"mp4"` Supported container formats: - 'ts' - 'fmp4'- the corresponding file extension is `".m4s"` - 'mp4' - 'vtt'
-             */
-            container?: pulumi.Input<string>;
-            /**
-             * List of `ElementaryStream.key`s multiplexed in this stream.
-             */
-            elementaryStreams?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Encryption settings.
-             */
-            encryption?: pulumi.Input<inputs.transcoder.v1beta1.EncryptionArgs>;
-            /**
-             * The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"mux_stream0000000123.ts"`.
-             */
-            fileName?: pulumi.Input<string>;
-            /**
-             * A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `".m3u8"` extension suffix.
-             */
-            key?: pulumi.Input<string>;
-            /**
-             * Segment settings for `"ts"`, `"fmp4"` and `"vtt"`.
-             */
-            segmentSettings?: pulumi.Input<inputs.transcoder.v1beta1.SegmentSettingsArgs>;
-        }
-
-        /**
-         * 2D normalized coordinates. Default: `{0.0, 0.0}`
-         */
-        export interface NormalizedCoordinateArgs {
-            /**
-             * Normalized x coordinate.
-             */
-            x?: pulumi.Input<number>;
-            /**
-             * Normalized y coordinate.
-             */
-            y?: pulumi.Input<number>;
-        }
-
-        /**
-         * Location of output file(s) in a Cloud Storage bucket.
-         */
-        export interface OutputArgs {
-            /**
-             * URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
-             */
-            uri?: pulumi.Input<string>;
-        }
-
-        /**
-         * Overlay configuration.
-         */
-        export interface OverlayArgs {
-            /**
-             * List of Animations. The list should be chronological, without any time overlap.
-             */
-            animations?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.AnimationArgs>[]>;
-            /**
-             * Image overlay.
-             */
-            image?: pulumi.Input<inputs.transcoder.v1beta1.ImageArgs>;
-        }
-
-        /**
-         * Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution.
-         */
-        export interface PadArgs {
-            /**
-             * The number of pixels to add to the bottom. The default is 0.
-             */
-            bottomPixels?: pulumi.Input<number>;
-            /**
-             * The number of pixels to add to the left. The default is 0.
-             */
-            leftPixels?: pulumi.Input<number>;
-            /**
-             * The number of pixels to add to the right. The default is 0.
-             */
-            rightPixels?: pulumi.Input<number>;
-            /**
-             * The number of pixels to add to the top. The default is 0.
-             */
-            topPixels?: pulumi.Input<number>;
-        }
-
-        /**
-         * Preprocessing configurations.
-         */
-        export interface PreprocessingConfigArgs {
-            /**
-             * Audio preprocessing configuration.
-             */
-            audio?: pulumi.Input<inputs.transcoder.v1beta1.AudioArgs>;
-            /**
-             * Color preprocessing configuration.
-             */
-            color?: pulumi.Input<inputs.transcoder.v1beta1.ColorArgs>;
-            /**
-             * Specify the video cropping configuration.
-             */
-            crop?: pulumi.Input<inputs.transcoder.v1beta1.CropArgs>;
-            /**
-             * Deblock preprocessing configuration.
-             */
-            deblock?: pulumi.Input<inputs.transcoder.v1beta1.DeblockArgs>;
-            /**
-             * Denoise preprocessing configuration.
-             */
-            denoise?: pulumi.Input<inputs.transcoder.v1beta1.DenoiseArgs>;
-            /**
-             * Specify the video pad filter configuration.
-             */
-            pad?: pulumi.Input<inputs.transcoder.v1beta1.PadArgs>;
-        }
-
-        /**
-         * A Pub/Sub destination.
-         */
-        export interface PubsubDestinationArgs {
-            /**
-             * The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
-             */
-            topic?: pulumi.Input<string>;
-        }
-
-        /**
-         * Configuration for SAMPLE-AES encryption.
-         */
-        export interface SampleAesEncryptionArgs {
-            /**
-             * URI of the key delivery service. This URI is inserted into the M3U8 header.
-             */
-            keyUri: pulumi.Input<string>;
-        }
-
-        /**
-         * Segment settings for `"ts"`, `"fmp4"` and `"vtt"`.
-         */
-        export interface SegmentSettingsArgs {
-            /**
-             * Create an individual segment file. The default is `false`.
-             */
-            individualSegments: pulumi.Input<boolean>;
-            /**
-             * Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
-             */
-            segmentDuration?: pulumi.Input<string>;
-        }
-
-        /**
-         * Sprite sheet configuration.
-         */
-        export interface SpriteSheetArgs {
-            /**
-             * The maximum number of sprites per row in a sprite sheet. The default is 0, which indicates no maximum limit.
-             */
-            columnCount?: pulumi.Input<number>;
-            /**
-             * End time in seconds, relative to the output file timeline. When `end_time_offset` is not specified, the sprites are generated until the end of the output file.
-             */
-            endTimeOffset?: pulumi.Input<string>;
-            /**
-             * File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
-             */
-            filePrefix: pulumi.Input<string>;
-            /**
-             * Format type. The default is `"jpeg"`. Supported formats: - 'jpeg'
-             */
-            format?: pulumi.Input<string>;
-            /**
-             * Starting from `0s`, create sprites at regular intervals. Specify the interval value in seconds.
-             */
-            interval?: pulumi.Input<string>;
-            /**
-             * The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data compression ratio.
-             */
-            quality?: pulumi.Input<number>;
-            /**
-             * The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
-             */
-            rowCount?: pulumi.Input<number>;
-            /**
-             * The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
-             */
-            spriteHeightPixels: pulumi.Input<number>;
-            /**
-             * The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
-             */
-            spriteWidthPixels: pulumi.Input<number>;
-            /**
-             * Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
-             */
-            startTimeOffset?: pulumi.Input<string>;
-            /**
-             * Total number of sprites. Create the specified number of sprites distributed evenly across the timeline of the output media. The default is 100.
-             */
-            totalCount?: pulumi.Input<number>;
-        }
-
-        /**
-         * The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
-         */
-        export interface TextAtomArgs {
-            /**
-             * List of `Job.inputs` that should be embedded in this atom. Only one input is supported.
-             */
-            inputs?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.TextInputArgs>[]>;
-            /**
-             * The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
-             */
-            key: pulumi.Input<string>;
-        }
-
-        /**
-         * Identifies which input file and track should be used.
-         */
-        export interface TextInputArgs {
-            /**
-             * The `Input.key` that identifies the input file.
-             */
-            key: pulumi.Input<string>;
-            /**
-             * The zero-based index of the track in the input file.
-             */
-            track: pulumi.Input<number>;
-        }
-
-        /**
-         * Encoding of a text stream. For example, closed captions or subtitles.
-         */
-        export interface TextStreamArgs {
-            /**
-             * The codec for this text stream. The default is `"webvtt"`. Supported text codecs: - 'srt' - 'ttml' - 'cea608' - 'cea708' - 'webvtt'
-             */
-            codec?: pulumi.Input<string>;
-            /**
-             * The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-             */
-            languageCode: pulumi.Input<string>;
-            /**
-             * The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
-             */
-            mapping?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.TextAtomArgs>[]>;
-        }
-
-        /**
-         * Video stream resource.
-         */
-        export interface VideoStreamArgs {
-            /**
-             * Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
-             */
-            allowOpenGop?: pulumi.Input<boolean>;
-            /**
-             * Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
-             */
-            aqStrength?: pulumi.Input<number>;
-            /**
-             * The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
-             */
-            bFrameCount?: pulumi.Input<number>;
-            /**
-             * Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
-             */
-            bPyramid?: pulumi.Input<boolean>;
-            /**
-             * The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265 is 800,000,000. The maximum value for VP9 is 480,000,000.
-             */
-            bitrateBps: pulumi.Input<number>;
-            /**
-             * Codec type. The following codecs are supported: * `h264` (default) * `h265` * `vp9`
-             */
-            codec?: pulumi.Input<string>;
-            /**
-             * Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
-             */
-            crfLevel?: pulumi.Input<number>;
-            /**
-             * Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `"vbr"`. The default is `false`.
-             */
-            enableTwoPass?: pulumi.Input<boolean>;
-            /**
-             * The entropy coder to use. The default is `"cabac"`. Supported entropy coders: - 'cavlc' - 'cabac'
-             */
-            entropyCoder?: pulumi.Input<string>;
-            /**
-             * The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
-             */
-            frameRate: pulumi.Input<number>;
-            /**
-             * Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
-             */
-            gopDuration?: pulumi.Input<string>;
-            /**
-             * Select the GOP size based on the specified frame count. Must be greater than zero.
-             */
-            gopFrameCount?: pulumi.Input<number>;
-            /**
-             * The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
-             */
-            heightPixels?: pulumi.Input<number>;
-            /**
-             * Pixel format to use. The default is `"yuv420p"`. Supported pixel formats: - 'yuv420p' pixel format. - 'yuv422p' pixel format. - 'yuv444p' pixel format. - 'yuv420p10' 10-bit HDR pixel format. - 'yuv422p10' 10-bit HDR pixel format. - 'yuv444p10' 10-bit HDR pixel format. - 'yuv420p12' 12-bit HDR pixel format. - 'yuv422p12' 12-bit HDR pixel format. - 'yuv444p12' 12-bit HDR pixel format.
-             */
-            pixelFormat?: pulumi.Input<string>;
-            /**
-             * Enforces the specified codec preset. The default is `veryfast`. The available options are FFmpeg-compatible. Note that certain values for this field may cause the transcoder to override other fields you set in the `VideoStream` message.
-             */
-            preset?: pulumi.Input<string>;
-            /**
-             * Enforces the specified codec profile. The following profiles are supported: * `baseline` * `main` * `high` (default) The available options are FFmpeg-compatible. Note that certain values for this field may cause the transcoder to override other fields you set in the `VideoStream` message.
-             */
-            profile?: pulumi.Input<string>;
-            /**
-             * Specify the `rate_control_mode`. The default is `"vbr"`. Supported rate control modes: - 'vbr' - variable bitrate - 'crf' - constant rate factor
-             */
-            rateControlMode?: pulumi.Input<string>;
-            /**
-             * Enforces the specified codec tune. The available options are FFmpeg-compatible. Note that certain values for this field may cause the transcoder to override other fields you set in the `VideoStream` message.
-             */
-            tune?: pulumi.Input<string>;
-            /**
-             * Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
-             */
-            vbvFullnessBits?: pulumi.Input<number>;
-            /**
-             * Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
-             */
-            vbvSizeBits?: pulumi.Input<number>;
             /**
              * The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
              */

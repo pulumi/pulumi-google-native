@@ -250,7 +250,7 @@ class LinkedInterconnectAttachmentsResponse(dict):
                  uris: Sequence[str]):
         """
         A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
-        :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+        :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         :param Sequence[str] uris: The URIs of linked interconnect attachment resources
         """
         pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
@@ -260,7 +260,7 @@ class LinkedInterconnectAttachmentsResponse(dict):
     @pulumi.getter(name="siteToSiteDataTransfer")
     def site_to_site_data_transfer(self) -> bool:
         """
-        A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+        A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         """
         return pulumi.get(self, "site_to_site_data_transfer")
 
@@ -301,7 +301,7 @@ class LinkedRouterApplianceInstancesResponse(dict):
         """
         A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
         :param Sequence['RouterApplianceInstanceResponse'] instances: The list of router appliance instances.
-        :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+        :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         """
         pulumi.set(__self__, "instances", instances)
         pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
@@ -318,7 +318,7 @@ class LinkedRouterApplianceInstancesResponse(dict):
     @pulumi.getter(name="siteToSiteDataTransfer")
     def site_to_site_data_transfer(self) -> bool:
         """
-        A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+        A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         """
         return pulumi.get(self, "site_to_site_data_transfer")
 
@@ -350,7 +350,7 @@ class LinkedVpnTunnelsResponse(dict):
                  uris: Sequence[str]):
         """
         A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
-        :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+        :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         :param Sequence[str] uris: The URIs of linked VPN tunnel resources.
         """
         pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
@@ -360,7 +360,7 @@ class LinkedVpnTunnelsResponse(dict):
     @pulumi.getter(name="siteToSiteDataTransfer")
     def site_to_site_data_transfer(self) -> bool:
         """
-        A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+        A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         """
         return pulumi.get(self, "site_to_site_data_transfer")
 
@@ -428,7 +428,7 @@ class RouterApplianceInstanceResponse(dict):
 @pulumi.output_type
 class RoutingVPCResponse(dict):
     """
-    RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
+    RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -451,8 +451,8 @@ class RoutingVPCResponse(dict):
                  required_for_new_site_to_site_data_transfer_spokes: bool,
                  uri: str):
         """
-        RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
-        :param bool required_for_new_site_to_site_data_transfer_spokes: If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network.
+        RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
+        :param bool required_for_new_site_to_site_data_transfer_spokes: If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network. At most, one VPC network will have this field set to true.
         :param str uri: The URI of the VPC network.
         """
         pulumi.set(__self__, "required_for_new_site_to_site_data_transfer_spokes", required_for_new_site_to_site_data_transfer_spokes)
@@ -462,7 +462,7 @@ class RoutingVPCResponse(dict):
     @pulumi.getter(name="requiredForNewSiteToSiteDataTransferSpokes")
     def required_for_new_site_to_site_data_transfer_spokes(self) -> bool:
         """
-        If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network.
+        If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network. At most, one VPC network will have this field set to true.
         """
         return pulumi.get(self, "required_for_new_site_to_site_data_transfer_spokes")
 

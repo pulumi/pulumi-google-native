@@ -17,13 +17,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// [Required] The dataset this entry applies to.
         /// </summary>
         public readonly Outputs.DatasetReferenceResponse Dataset;
-        public readonly ImmutableArray<Outputs.DatasetAccessEntryTargetTypesItemResponse> TargetTypes;
+        public readonly ImmutableArray<string> TargetTypes;
 
         [OutputConstructor]
         private DatasetAccessEntryResponse(
             Outputs.DatasetReferenceResponse dataset,
 
-            ImmutableArray<Outputs.DatasetAccessEntryTargetTypesItemResponse> targetTypes)
+            ImmutableArray<string> targetTypes)
         {
             Dataset = dataset;
             TargetTypes = targetTypes;

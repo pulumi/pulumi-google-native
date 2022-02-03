@@ -33,6 +33,10 @@ export interface GetDatabaseResult {
      */
     readonly createTime: string;
     /**
+     * The dialect of the Cloud Spanner Database.
+     */
+    readonly databaseDialect: string;
+    /**
      * The read-write region which contains the database's leader replicas. This is the same as the value of default_leader database option set using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty.
      */
     readonly defaultLeader: string;

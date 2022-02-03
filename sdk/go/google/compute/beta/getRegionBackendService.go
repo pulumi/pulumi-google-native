@@ -85,7 +85,7 @@ type LookupRegionBackendServiceResult struct {
 	Region string `pulumi:"region"`
 	// The resource URL for the security policy associated with this backend service.
 	SecurityPolicy string `pulumi:"securityPolicy"`
-	// This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+	// This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 	SecuritySettings SecuritySettingsResponse `pulumi:"securitySettings"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
@@ -283,7 +283,7 @@ func (o LookupRegionBackendServiceResultOutput) SecurityPolicy() pulumi.StringOu
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) string { return v.SecurityPolicy }).(pulumi.StringOutput)
 }
 
-// This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+// This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 func (o LookupRegionBackendServiceResultOutput) SecuritySettings() SecuritySettingsResponseOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) SecuritySettingsResponse { return v.SecuritySettings }).(SecuritySettingsResponseOutput)
 }

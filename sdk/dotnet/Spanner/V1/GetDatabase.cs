@@ -66,6 +66,10 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// The dialect of the Cloud Spanner Database.
+        /// </summary>
+        public readonly string DatabaseDialect;
+        /// <summary>
         /// The read-write region which contains the database's leader replicas. This is the same as the value of default_leader database option set using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty.
         /// </summary>
         public readonly string DefaultLeader;
@@ -102,6 +106,8 @@ namespace Pulumi.GoogleNative.Spanner.V1
         private GetDatabaseResult(
             string createTime,
 
+            string databaseDialect,
+
             string defaultLeader,
 
             string earliestVersionTime,
@@ -119,6 +125,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
             string versionRetentionPeriod)
         {
             CreateTime = createTime;
+            DatabaseDialect = databaseDialect;
             DefaultLeader = defaultLeader;
             EarliestVersionTime = earliestVersionTime;
             EncryptionConfig = encryptionConfig;

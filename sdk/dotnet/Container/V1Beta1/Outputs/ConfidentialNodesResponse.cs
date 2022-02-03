@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
     public sealed class ConfidentialNodesResponse
     {
         /// <summary>
-        /// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+        /// Whether Confidential Nodes feature is enabled.
         /// </summary>
         public readonly bool Enabled;
 

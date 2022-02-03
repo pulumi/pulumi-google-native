@@ -22,6 +22,7 @@ class RouterArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['RouterInterfaceArgs']]]] = None,
+                 md5_authentication_keys: Optional[pulumi.Input[Sequence[pulumi.Input['RouterMd5AuthenticationKeyArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nats: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatArgs']]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -34,6 +35,7 @@ class RouterArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[bool] encrypted_interconnect_router: Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly. 
         :param pulumi.Input[Sequence[pulumi.Input['RouterInterfaceArgs']]] interfaces: Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
+        :param pulumi.Input[Sequence[pulumi.Input['RouterMd5AuthenticationKeyArgs']]] md5_authentication_keys: Keys used for MD5 authentication.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input['RouterNatArgs']]] nats: A list of NAT services created in this router.
         :param pulumi.Input[str] network: URI of the network to which this router belongs.
@@ -49,6 +51,8 @@ class RouterArgs:
             pulumi.set(__self__, "encrypted_interconnect_router", encrypted_interconnect_router)
         if interfaces is not None:
             pulumi.set(__self__, "interfaces", interfaces)
+        if md5_authentication_keys is not None:
+            pulumi.set(__self__, "md5_authentication_keys", md5_authentication_keys)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nats is not None:
@@ -130,6 +134,18 @@ class RouterArgs:
         pulumi.set(self, "interfaces", value)
 
     @property
+    @pulumi.getter(name="md5AuthenticationKeys")
+    def md5_authentication_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterMd5AuthenticationKeyArgs']]]]:
+        """
+        Keys used for MD5 authentication.
+        """
+        return pulumi.get(self, "md5_authentication_keys")
+
+    @md5_authentication_keys.setter
+    def md5_authentication_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterMd5AuthenticationKeyArgs']]]]):
+        pulumi.set(self, "md5_authentication_keys", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -194,6 +210,7 @@ class Router(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterInterfaceArgs']]]]] = None,
+                 md5_authentication_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterMd5AuthenticationKeyArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatArgs']]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -211,6 +228,7 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[bool] encrypted_interconnect_router: Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly. 
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterInterfaceArgs']]]] interfaces: Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterMd5AuthenticationKeyArgs']]]] md5_authentication_keys: Keys used for MD5 authentication.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatArgs']]]] nats: A list of NAT services created in this router.
         :param pulumi.Input[str] network: URI of the network to which this router belongs.
@@ -244,6 +262,7 @@ class Router(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterInterfaceArgs']]]]] = None,
+                 md5_authentication_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterMd5AuthenticationKeyArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatArgs']]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -267,6 +286,7 @@ class Router(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["encrypted_interconnect_router"] = encrypted_interconnect_router
             __props__.__dict__["interfaces"] = interfaces
+            __props__.__dict__["md5_authentication_keys"] = md5_authentication_keys
             __props__.__dict__["name"] = name
             __props__.__dict__["nats"] = nats
             __props__.__dict__["network"] = network
@@ -308,6 +328,7 @@ class Router(pulumi.CustomResource):
         __props__.__dict__["encrypted_interconnect_router"] = None
         __props__.__dict__["interfaces"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["md5_authentication_keys"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["nats"] = None
         __props__.__dict__["network"] = None
@@ -371,6 +392,14 @@ class Router(pulumi.CustomResource):
         Type of resource. Always compute#router for routers.
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="md5AuthenticationKeys")
+    def md5_authentication_keys(self) -> pulumi.Output[Sequence['outputs.RouterMd5AuthenticationKeyResponse']]:
+        """
+        Keys used for MD5 authentication.
+        """
+        return pulumi.get(self, "md5_authentication_keys")
 
     @property
     @pulumi.getter

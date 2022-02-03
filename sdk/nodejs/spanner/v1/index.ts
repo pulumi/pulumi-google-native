@@ -20,6 +20,9 @@ export * from "./instanceDatabaseIamPolicy";
 export * from "./instanceIamPolicy";
 export * from "./session";
 
+// Export enums:
+export * from "../../types/enums/spanner/v1";
+
 // Import resources to register:
 import { Backup } from "./backup";
 import { Database } from "./database";

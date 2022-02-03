@@ -519,6 +519,217 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
+type DatasetAccessEntryTargetTypesItem string
+
+const (
+	// Do not use. You must set a target type explicitly.
+	DatasetAccessEntryTargetTypesItemTargetTypeUnspecified = DatasetAccessEntryTargetTypesItem("TARGET_TYPE_UNSPECIFIED")
+	// This entry applies to views in the dataset.
+	DatasetAccessEntryTargetTypesItemViews = DatasetAccessEntryTargetTypesItem("VIEWS")
+)
+
+func (DatasetAccessEntryTargetTypesItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessEntryTargetTypesItem)(nil)).Elem()
+}
+
+func (e DatasetAccessEntryTargetTypesItem) ToDatasetAccessEntryTargetTypesItemOutput() DatasetAccessEntryTargetTypesItemOutput {
+	return pulumi.ToOutput(e).(DatasetAccessEntryTargetTypesItemOutput)
+}
+
+func (e DatasetAccessEntryTargetTypesItem) ToDatasetAccessEntryTargetTypesItemOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DatasetAccessEntryTargetTypesItemOutput)
+}
+
+func (e DatasetAccessEntryTargetTypesItem) ToDatasetAccessEntryTargetTypesItemPtrOutput() DatasetAccessEntryTargetTypesItemPtrOutput {
+	return e.ToDatasetAccessEntryTargetTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e DatasetAccessEntryTargetTypesItem) ToDatasetAccessEntryTargetTypesItemPtrOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemPtrOutput {
+	return DatasetAccessEntryTargetTypesItem(e).ToDatasetAccessEntryTargetTypesItemOutputWithContext(ctx).ToDatasetAccessEntryTargetTypesItemPtrOutputWithContext(ctx)
+}
+
+func (e DatasetAccessEntryTargetTypesItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatasetAccessEntryTargetTypesItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatasetAccessEntryTargetTypesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DatasetAccessEntryTargetTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DatasetAccessEntryTargetTypesItemOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessEntryTargetTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessEntryTargetTypesItem)(nil)).Elem()
+}
+
+func (o DatasetAccessEntryTargetTypesItemOutput) ToDatasetAccessEntryTargetTypesItemOutput() DatasetAccessEntryTargetTypesItemOutput {
+	return o
+}
+
+func (o DatasetAccessEntryTargetTypesItemOutput) ToDatasetAccessEntryTargetTypesItemOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemOutput {
+	return o
+}
+
+func (o DatasetAccessEntryTargetTypesItemOutput) ToDatasetAccessEntryTargetTypesItemPtrOutput() DatasetAccessEntryTargetTypesItemPtrOutput {
+	return o.ToDatasetAccessEntryTargetTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetAccessEntryTargetTypesItemOutput) ToDatasetAccessEntryTargetTypesItemPtrOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetAccessEntryTargetTypesItem) *DatasetAccessEntryTargetTypesItem {
+		return &v
+	}).(DatasetAccessEntryTargetTypesItemPtrOutput)
+}
+
+func (o DatasetAccessEntryTargetTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DatasetAccessEntryTargetTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatasetAccessEntryTargetTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DatasetAccessEntryTargetTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetAccessEntryTargetTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatasetAccessEntryTargetTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatasetAccessEntryTargetTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessEntryTargetTypesItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccessEntryTargetTypesItem)(nil)).Elem()
+}
+
+func (o DatasetAccessEntryTargetTypesItemPtrOutput) ToDatasetAccessEntryTargetTypesItemPtrOutput() DatasetAccessEntryTargetTypesItemPtrOutput {
+	return o
+}
+
+func (o DatasetAccessEntryTargetTypesItemPtrOutput) ToDatasetAccessEntryTargetTypesItemPtrOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemPtrOutput {
+	return o
+}
+
+func (o DatasetAccessEntryTargetTypesItemPtrOutput) Elem() DatasetAccessEntryTargetTypesItemOutput {
+	return o.ApplyT(func(v *DatasetAccessEntryTargetTypesItem) DatasetAccessEntryTargetTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetAccessEntryTargetTypesItem
+		return ret
+	}).(DatasetAccessEntryTargetTypesItemOutput)
+}
+
+func (o DatasetAccessEntryTargetTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetAccessEntryTargetTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DatasetAccessEntryTargetTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DatasetAccessEntryTargetTypesItemInput is an input type that accepts DatasetAccessEntryTargetTypesItemArgs and DatasetAccessEntryTargetTypesItemOutput values.
+// You can construct a concrete instance of `DatasetAccessEntryTargetTypesItemInput` via:
+//
+//          DatasetAccessEntryTargetTypesItemArgs{...}
+type DatasetAccessEntryTargetTypesItemInput interface {
+	pulumi.Input
+
+	ToDatasetAccessEntryTargetTypesItemOutput() DatasetAccessEntryTargetTypesItemOutput
+	ToDatasetAccessEntryTargetTypesItemOutputWithContext(context.Context) DatasetAccessEntryTargetTypesItemOutput
+}
+
+var datasetAccessEntryTargetTypesItemPtrType = reflect.TypeOf((**DatasetAccessEntryTargetTypesItem)(nil)).Elem()
+
+type DatasetAccessEntryTargetTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToDatasetAccessEntryTargetTypesItemPtrOutput() DatasetAccessEntryTargetTypesItemPtrOutput
+	ToDatasetAccessEntryTargetTypesItemPtrOutputWithContext(context.Context) DatasetAccessEntryTargetTypesItemPtrOutput
+}
+
+type datasetAccessEntryTargetTypesItemPtr string
+
+func DatasetAccessEntryTargetTypesItemPtr(v string) DatasetAccessEntryTargetTypesItemPtrInput {
+	return (*datasetAccessEntryTargetTypesItemPtr)(&v)
+}
+
+func (*datasetAccessEntryTargetTypesItemPtr) ElementType() reflect.Type {
+	return datasetAccessEntryTargetTypesItemPtrType
+}
+
+func (in *datasetAccessEntryTargetTypesItemPtr) ToDatasetAccessEntryTargetTypesItemPtrOutput() DatasetAccessEntryTargetTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(DatasetAccessEntryTargetTypesItemPtrOutput)
+}
+
+func (in *datasetAccessEntryTargetTypesItemPtr) ToDatasetAccessEntryTargetTypesItemPtrOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DatasetAccessEntryTargetTypesItemPtrOutput)
+}
+
+// DatasetAccessEntryTargetTypesItemArrayInput is an input type that accepts DatasetAccessEntryTargetTypesItemArray and DatasetAccessEntryTargetTypesItemArrayOutput values.
+// You can construct a concrete instance of `DatasetAccessEntryTargetTypesItemArrayInput` via:
+//
+//          DatasetAccessEntryTargetTypesItemArray{ DatasetAccessEntryTargetTypesItemArgs{...} }
+type DatasetAccessEntryTargetTypesItemArrayInput interface {
+	pulumi.Input
+
+	ToDatasetAccessEntryTargetTypesItemArrayOutput() DatasetAccessEntryTargetTypesItemArrayOutput
+	ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(context.Context) DatasetAccessEntryTargetTypesItemArrayOutput
+}
+
+type DatasetAccessEntryTargetTypesItemArray []DatasetAccessEntryTargetTypesItem
+
+func (DatasetAccessEntryTargetTypesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetAccessEntryTargetTypesItem)(nil)).Elem()
+}
+
+func (i DatasetAccessEntryTargetTypesItemArray) ToDatasetAccessEntryTargetTypesItemArrayOutput() DatasetAccessEntryTargetTypesItemArrayOutput {
+	return i.ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessEntryTargetTypesItemArray) ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTargetTypesItemArrayOutput)
+}
+
+type DatasetAccessEntryTargetTypesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessEntryTargetTypesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetAccessEntryTargetTypesItem)(nil)).Elem()
+}
+
+func (o DatasetAccessEntryTargetTypesItemArrayOutput) ToDatasetAccessEntryTargetTypesItemArrayOutput() DatasetAccessEntryTargetTypesItemArrayOutput {
+	return o
+}
+
+func (o DatasetAccessEntryTargetTypesItemArrayOutput) ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemArrayOutput {
+	return o
+}
+
+func (o DatasetAccessEntryTargetTypesItemArrayOutput) Index(i pulumi.IntInput) DatasetAccessEntryTargetTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccessEntryTargetTypesItem {
+		return vs[0].([]DatasetAccessEntryTargetTypesItem)[vs[1].(int)]
+	}).(DatasetAccessEntryTargetTypesItemOutput)
+}
+
 // Optional. The determinism level of the JavaScript UDF, if defined.
 type RoutineDeterminismLevel string
 
@@ -1230,6 +1441,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentModePtrInput)(nil)).Elem(), ArgumentMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItem("TARGET_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemPtrInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItem("TARGET_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemArrayInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineDeterminismLevelInput)(nil)).Elem(), RoutineDeterminismLevel("DETERMINISM_LEVEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineDeterminismLevelPtrInput)(nil)).Elem(), RoutineDeterminismLevel("DETERMINISM_LEVEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineLanguageInput)(nil)).Elem(), RoutineLanguage("LANGUAGE_UNSPECIFIED"))
@@ -1244,6 +1458,9 @@ func init() {
 	pulumi.RegisterOutputType(ArgumentModePtrOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemOutput{})
+	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemArrayOutput{})
 	pulumi.RegisterOutputType(RoutineDeterminismLevelOutput{})
 	pulumi.RegisterOutputType(RoutineDeterminismLevelPtrOutput{})
 	pulumi.RegisterOutputType(RoutineLanguageOutput{})

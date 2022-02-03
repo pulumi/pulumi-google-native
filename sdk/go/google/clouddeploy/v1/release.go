@@ -50,7 +50,7 @@ type Release struct {
 	TargetArtifacts pulumi.StringMapOutput `pulumi:"targetArtifacts"`
 	// Map from target ID to details of the render operation for that target.
 	TargetRenders pulumi.StringMapOutput `pulumi:"targetRenders"`
-	// Snapshot of the parent pipeline's targets taken at release creation time.
+	// Snapshot of the targets taken at release creation time.
 	TargetSnapshots TargetResponseArrayOutput `pulumi:"targetSnapshots"`
 	// Unique identifier of the `Release`.
 	Uid pulumi.StringOutput `pulumi:"uid"`

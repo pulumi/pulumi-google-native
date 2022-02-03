@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
+        /// The database dialect information for the backup.
+        /// </summary>
+        [Output("databaseDialect")]
+        public Output<string> DatabaseDialect { get; private set; } = null!;
+
+        /// <summary>
         /// The encryption information for the backup.
         /// </summary>
         [Output("encryptionInfo")]

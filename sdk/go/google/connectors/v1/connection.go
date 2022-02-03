@@ -32,8 +32,6 @@ type Connection struct {
 	EnvoyImageLocation pulumi.StringOutput `pulumi:"envoyImageLocation"`
 	// GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
 	ImageLocation pulumi.StringOutput `pulumi:"imageLocation"`
-	// Optional. Inactive indicates the connection is active to use or not.
-	Inactive pulumi.BoolOutput `pulumi:"inactive"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Optional. Configuration that indicates whether or not the Connection can be edited.
@@ -46,6 +44,8 @@ type Connection struct {
 	ServiceDirectory pulumi.StringOutput `pulumi:"serviceDirectory"`
 	// Current status of the connection.
 	Status ConnectionStatusResponseOutput `pulumi:"status"`
+	// Optional. Suspended indicates if a user has suspended a connection or not.
+	Suspended pulumi.BoolOutput `pulumi:"suspended"`
 	// Updated time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -104,8 +104,6 @@ type connectionArgs struct {
 	ConnectorVersion string `pulumi:"connectorVersion"`
 	// Optional. Description of the resource.
 	Description *string `pulumi:"description"`
-	// Optional. Inactive indicates the connection is active to use or not.
-	Inactive *bool `pulumi:"inactive"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -114,6 +112,8 @@ type connectionArgs struct {
 	Project    *string     `pulumi:"project"`
 	// Optional. Service account needed for runtime plane to access GCP resources.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Optional. Suspended indicates if a user has suspended a connection or not.
+	Suspended *bool `pulumi:"suspended"`
 }
 
 // The set of arguments for constructing a Connection resource.
@@ -127,8 +127,6 @@ type ConnectionArgs struct {
 	ConnectorVersion pulumi.StringInput
 	// Optional. Description of the resource.
 	Description pulumi.StringPtrInput
-	// Optional. Inactive indicates the connection is active to use or not.
-	Inactive pulumi.BoolPtrInput
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -137,6 +135,8 @@ type ConnectionArgs struct {
 	Project    pulumi.StringPtrInput
 	// Optional. Service account needed for runtime plane to access GCP resources.
 	ServiceAccount pulumi.StringPtrInput
+	// Optional. Suspended indicates if a user has suspended a connection or not.
+	Suspended pulumi.BoolPtrInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {

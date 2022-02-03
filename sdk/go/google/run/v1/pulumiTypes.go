@@ -8006,9 +8006,9 @@ type TrafficTarget struct {
 	ConfigurationName *string `pulumi:"configurationName"`
 	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
 	LatestRevision *bool `pulumi:"latestRevision"`
-	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
+	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
 	Percent *int `pulumi:"percent"`
-	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
+	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
 	RevisionName *string `pulumi:"revisionName"`
 	// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
 	Tag *string `pulumi:"tag"`
@@ -8031,9 +8031,9 @@ type TrafficTargetArgs struct {
 	ConfigurationName pulumi.StringPtrInput `pulumi:"configurationName"`
 	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
 	LatestRevision pulumi.BoolPtrInput `pulumi:"latestRevision"`
-	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
+	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
-	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
+	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
 	RevisionName pulumi.StringPtrInput `pulumi:"revisionName"`
 	// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
@@ -8101,12 +8101,12 @@ func (o TrafficTargetOutput) LatestRevision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *bool { return v.LatestRevision }).(pulumi.BoolPtrOutput)
 }
 
-// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
+// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
 func (o TrafficTargetOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *int { return v.Percent }).(pulumi.IntPtrOutput)
 }
 
-// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
+// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
 func (o TrafficTargetOutput) RevisionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *string { return v.RevisionName }).(pulumi.StringPtrOutput)
 }
@@ -8142,9 +8142,9 @@ type TrafficTargetResponse struct {
 	ConfigurationName string `pulumi:"configurationName"`
 	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
 	LatestRevision bool `pulumi:"latestRevision"`
-	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
+	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
 	Percent int `pulumi:"percent"`
-	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
+	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
 	RevisionName string `pulumi:"revisionName"`
 	// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
 	Tag string `pulumi:"tag"`
@@ -8177,12 +8177,12 @@ func (o TrafficTargetResponseOutput) LatestRevision() pulumi.BoolOutput {
 	return o.ApplyT(func(v TrafficTargetResponse) bool { return v.LatestRevision }).(pulumi.BoolOutput)
 }
 
-// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
+// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
 func (o TrafficTargetResponseOutput) Percent() pulumi.IntOutput {
 	return o.ApplyT(func(v TrafficTargetResponse) int { return v.Percent }).(pulumi.IntOutput)
 }
 
-// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
+// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
 func (o TrafficTargetResponseOutput) RevisionName() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficTargetResponse) string { return v.RevisionName }).(pulumi.StringOutput)
 }

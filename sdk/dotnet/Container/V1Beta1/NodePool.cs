@@ -229,7 +229,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<Inputs.NodeNetworkConfigArgs>? NetworkConfig { get; set; }
 
         /// <summary>
-        /// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
+        /// The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

@@ -19,6 +19,7 @@ __all__ = [
     'BindingResponse',
     'CommonFeatureSpecResponse',
     'CommonFeatureStateResponse',
+    'EdgeClusterResponse',
     'ExprResponse',
     'FeatureResourceStateResponse',
     'FeatureStateResponse',
@@ -372,6 +373,45 @@ class CommonFeatureStateResponse(dict):
         The "running state" of the Feature in this Hub.
         """
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class EdgeClusterResponse(dict):
+    """
+    EdgeCluster contains information specific to Google Edge Clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceLink":
+            suggest = "resource_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdgeClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdgeClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdgeClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_link: str):
+        """
+        EdgeCluster contains information specific to Google Edge Clusters.
+        :param str resource_link: Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        """
+        pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> str:
+        """
+        Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        """
+        return pulumi.get(self, "resource_link")
 
 
 @pulumi.output_type
@@ -754,7 +794,9 @@ class MembershipEndpointResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "gkeCluster":
+        if key == "edgeCluster":
+            suggest = "edge_cluster"
+        elif key == "gkeCluster":
             suggest = "gke_cluster"
         elif key == "kubernetesMetadata":
             suggest = "kubernetes_metadata"
@@ -777,6 +819,7 @@ class MembershipEndpointResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 edge_cluster: 'outputs.EdgeClusterResponse',
                  gke_cluster: 'outputs.GkeClusterResponse',
                  kubernetes_metadata: 'outputs.KubernetesMetadataResponse',
                  kubernetes_resource: 'outputs.KubernetesResourceResponse',
@@ -784,17 +827,27 @@ class MembershipEndpointResponse(dict):
                  on_prem_cluster: 'outputs.OnPremClusterResponse'):
         """
         MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
+        :param 'EdgeClusterResponse' edge_cluster: Optional. Specific information for a Google Edge cluster.
         :param 'GkeClusterResponse' gke_cluster: Optional. Specific information for a GKE-on-GCP cluster.
         :param 'KubernetesMetadataResponse' kubernetes_metadata: Useful Kubernetes-specific metadata.
         :param 'KubernetesResourceResponse' kubernetes_resource: Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
         :param 'MultiCloudClusterResponse' multi_cloud_cluster: Optional. Specific information for a GKE Multi-Cloud cluster.
         :param 'OnPremClusterResponse' on_prem_cluster: Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
         """
+        pulumi.set(__self__, "edge_cluster", edge_cluster)
         pulumi.set(__self__, "gke_cluster", gke_cluster)
         pulumi.set(__self__, "kubernetes_metadata", kubernetes_metadata)
         pulumi.set(__self__, "kubernetes_resource", kubernetes_resource)
         pulumi.set(__self__, "multi_cloud_cluster", multi_cloud_cluster)
         pulumi.set(__self__, "on_prem_cluster", on_prem_cluster)
+
+    @property
+    @pulumi.getter(name="edgeCluster")
+    def edge_cluster(self) -> 'outputs.EdgeClusterResponse':
+        """
+        Optional. Specific information for a Google Edge cluster.
+        """
+        return pulumi.get(self, "edge_cluster")
 
     @property
     @pulumi.getter(name="gkeCluster")

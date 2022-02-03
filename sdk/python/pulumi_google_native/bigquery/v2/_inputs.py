@@ -24,10 +24,10 @@ __all__ = [
     'ClusteringArgs',
     'ConnectionPropertyArgs',
     'CsvOptionsArgs',
-    'DatasetAccessEntryTargetTypesItemArgs',
     'DatasetAccessEntryArgs',
     'DatasetAccessItemArgs',
     'DatasetReferenceArgs',
+    'DatasetTagsItemArgs',
     'DestinationTablePropertiesArgs',
     'EncryptionConfigurationArgs',
     'ExprArgs',
@@ -994,33 +994,10 @@ class CsvOptionsArgs:
 
 
 @pulumi.input_type
-class DatasetAccessEntryTargetTypesItemArgs:
-    def __init__(__self__, *,
-                 target_type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] target_type: [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-        """
-        if target_type is not None:
-            pulumi.set(__self__, "target_type", target_type)
-
-    @property
-    @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-        """
-        return pulumi.get(self, "target_type")
-
-    @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "target_type", value)
-
-
-@pulumi.input_type
 class DatasetAccessEntryArgs:
     def __init__(__self__, *,
                  dataset: Optional[pulumi.Input['DatasetReferenceArgs']] = None,
-                 target_types: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTargetTypesItemArgs']]]] = None):
+                 target_types: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTargetTypesItem']]]] = None):
         """
         :param pulumi.Input['DatasetReferenceArgs'] dataset: [Required] The dataset this entry applies to.
         """
@@ -1043,11 +1020,11 @@ class DatasetAccessEntryArgs:
 
     @property
     @pulumi.getter(name="targetTypes")
-    def target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTargetTypesItemArgs']]]]:
+    def target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTargetTypesItem']]]]:
         return pulumi.get(self, "target_types")
 
     @target_types.setter
-    def target_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTargetTypesItemArgs']]]]):
+    def target_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTargetTypesItem']]]]):
         pulumi.set(self, "target_types", value)
 
 
@@ -1239,6 +1216,45 @@ class DatasetReferenceArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
+class DatasetTagsItemArgs:
+    def __init__(__self__, *,
+                 tag_key: Optional[pulumi.Input[str]] = None,
+                 tag_value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] tag_key: [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
+        :param pulumi.Input[str] tag_value: [Required] Friendly short name of the tag value, e.g. "production".
+        """
+        if tag_key is not None:
+            pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
+        """
+        return pulumi.get(self, "tag_key")
+
+    @tag_key.setter
+    def tag_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_key", value)
+
+    @property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Required] Friendly short name of the tag value, e.g. "production".
+        """
+        return pulumi.get(self, "tag_value")
+
+    @tag_value.setter
+    def tag_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_value", value)
 
 
 @pulumi.input_type
@@ -3647,7 +3663,7 @@ class StandardSqlDataTypeArgs:
                  array_element_type: Optional[pulumi.Input['StandardSqlDataTypeArgs']] = None,
                  struct_type: Optional[pulumi.Input['StandardSqlStructTypeArgs']] = None):
         """
-        The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
+        The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
         :param pulumi.Input['StandardSqlDataTypeTypeKind'] type_kind: The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
         :param pulumi.Input['StandardSqlDataTypeArgs'] array_element_type: The type of the array's elements, if type_kind = "ARRAY".
         :param pulumi.Input['StandardSqlStructTypeArgs'] struct_type: The fields of this struct, in order, if type_kind = "STRUCT".

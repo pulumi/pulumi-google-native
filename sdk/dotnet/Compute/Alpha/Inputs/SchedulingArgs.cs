@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         }
 
         /// <summary>
-        /// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+        /// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
         /// </summary>
         [Input("onHostMaintenance")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.SchedulingOnHostMaintenance>? OnHostMaintenance { get; set; }

@@ -85,6 +85,7 @@ import * as secretmanager from "./secretmanager";
 import * as securitycenter from "./securitycenter";
 import * as servicemanagement from "./servicemanagement";
 import * as sourcerepo from "./sourcerepo";
+import * as spanner from "./spanner";
 import * as sqladmin from "./sqladmin";
 import * as storagetransfer from "./storagetransfer";
 import * as testing from "./testing";
@@ -179,6 +180,7 @@ export {
     securitycenter,
     servicemanagement,
     sourcerepo,
+    spanner,
     sqladmin,
     storagetransfer,
     testing,

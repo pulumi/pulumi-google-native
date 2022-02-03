@@ -19,6 +19,8 @@ type Backup struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
 	Database pulumi.StringOutput `pulumi:"database"`
+	// The database dialect information for the backup.
+	DatabaseDialect pulumi.StringOutput `pulumi:"databaseDialect"`
 	// The encryption information for the backup.
 	EncryptionInfo EncryptionInfoResponseOutput `pulumi:"encryptionInfo"`
 	// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.

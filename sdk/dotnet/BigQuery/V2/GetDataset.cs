@@ -120,6 +120,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
         /// </summary>
         public readonly string SelfLink;
+        /// <summary>
+        /// [Optional]The tags associated with this dataset. Tag keys are globally unique.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DatasetTagsItemResponse> Tags;
 
         [OutputConstructor]
         private GetDatasetResult(
@@ -155,7 +159,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             bool satisfiesPZS,
 
-            string selfLink)
+            string selfLink,
+
+            ImmutableArray<Outputs.DatasetTagsItemResponse> tags)
         {
             Access = access;
             CreationTime = creationTime;
@@ -174,6 +180,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             Location = location;
             SatisfiesPZS = satisfiesPZS;
             SelfLink = selfLink;
+            Tags = tags;
         }
     }
 }

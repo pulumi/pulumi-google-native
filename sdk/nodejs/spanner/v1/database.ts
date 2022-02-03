@@ -41,6 +41,10 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The dialect of the Cloud Spanner Database.
+     */
+    public readonly databaseDialect!: pulumi.Output<string>;
+    /**
      * The read-write region which contains the database's leader replicas. This is the same as the value of default_leader database option set using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty.
      */
     public /*out*/ readonly defaultLeader!: pulumi.Output<string>;
@@ -91,6 +95,7 @@ export class Database extends pulumi.CustomResource {
                 throw new Error("Missing required property 'instanceId'");
             }
             resourceInputs["createStatement"] = args ? args.createStatement : undefined;
+            resourceInputs["databaseDialect"] = args ? args.databaseDialect : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["extraStatements"] = args ? args.extraStatements : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
@@ -105,6 +110,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["versionRetentionPeriod"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["databaseDialect"] = undefined /*out*/;
             resourceInputs["defaultLeader"] = undefined /*out*/;
             resourceInputs["earliestVersionTime"] = undefined /*out*/;
             resourceInputs["encryptionConfig"] = undefined /*out*/;
@@ -127,6 +133,10 @@ export interface DatabaseArgs {
      * A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
      */
     createStatement: pulumi.Input<string>;
+    /**
+     * Optional. The dialect of the Cloud Spanner Database.
+     */
+    databaseDialect?: pulumi.Input<enums.spanner.v1.DatabaseDatabaseDialect>;
     /**
      * Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
      */

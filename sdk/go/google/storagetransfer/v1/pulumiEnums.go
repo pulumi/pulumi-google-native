@@ -438,6 +438,175 @@ func (o LoggingConfigLogActionsItemArrayOutput) Index(i pulumi.IntInput) Logging
 	}).(LoggingConfigLogActionsItemOutput)
 }
 
+// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
+type MetadataOptionsAcl string
+
+const (
+	// ACL behavior is unspecified.
+	MetadataOptionsAclAclUnspecified = MetadataOptionsAcl("ACL_UNSPECIFIED")
+	// Use the destination bucket's default object ACLS, if applicable.
+	MetadataOptionsAclAclDestinationBucketDefault = MetadataOptionsAcl("ACL_DESTINATION_BUCKET_DEFAULT")
+	// Preserve the object's original ACLs. This requires the service account to have `storage.objects.getIamPolicy` permission for the source object. [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) must not be enabled on either the source or destination buckets.
+	MetadataOptionsAclAclPreserve = MetadataOptionsAcl("ACL_PRESERVE")
+)
+
+func (MetadataOptionsAcl) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataOptionsAcl)(nil)).Elem()
+}
+
+func (e MetadataOptionsAcl) ToMetadataOptionsAclOutput() MetadataOptionsAclOutput {
+	return pulumi.ToOutput(e).(MetadataOptionsAclOutput)
+}
+
+func (e MetadataOptionsAcl) ToMetadataOptionsAclOutputWithContext(ctx context.Context) MetadataOptionsAclOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MetadataOptionsAclOutput)
+}
+
+func (e MetadataOptionsAcl) ToMetadataOptionsAclPtrOutput() MetadataOptionsAclPtrOutput {
+	return e.ToMetadataOptionsAclPtrOutputWithContext(context.Background())
+}
+
+func (e MetadataOptionsAcl) ToMetadataOptionsAclPtrOutputWithContext(ctx context.Context) MetadataOptionsAclPtrOutput {
+	return MetadataOptionsAcl(e).ToMetadataOptionsAclOutputWithContext(ctx).ToMetadataOptionsAclPtrOutputWithContext(ctx)
+}
+
+func (e MetadataOptionsAcl) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetadataOptionsAcl) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetadataOptionsAcl) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MetadataOptionsAcl) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MetadataOptionsAclOutput struct{ *pulumi.OutputState }
+
+func (MetadataOptionsAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataOptionsAcl)(nil)).Elem()
+}
+
+func (o MetadataOptionsAclOutput) ToMetadataOptionsAclOutput() MetadataOptionsAclOutput {
+	return o
+}
+
+func (o MetadataOptionsAclOutput) ToMetadataOptionsAclOutputWithContext(ctx context.Context) MetadataOptionsAclOutput {
+	return o
+}
+
+func (o MetadataOptionsAclOutput) ToMetadataOptionsAclPtrOutput() MetadataOptionsAclPtrOutput {
+	return o.ToMetadataOptionsAclPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsAclOutput) ToMetadataOptionsAclPtrOutputWithContext(ctx context.Context) MetadataOptionsAclPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataOptionsAcl) *MetadataOptionsAcl {
+		return &v
+	}).(MetadataOptionsAclPtrOutput)
+}
+
+func (o MetadataOptionsAclOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsAclOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetadataOptionsAcl) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MetadataOptionsAclOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsAclOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetadataOptionsAcl) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetadataOptionsAclPtrOutput struct{ *pulumi.OutputState }
+
+func (MetadataOptionsAclPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataOptionsAcl)(nil)).Elem()
+}
+
+func (o MetadataOptionsAclPtrOutput) ToMetadataOptionsAclPtrOutput() MetadataOptionsAclPtrOutput {
+	return o
+}
+
+func (o MetadataOptionsAclPtrOutput) ToMetadataOptionsAclPtrOutputWithContext(ctx context.Context) MetadataOptionsAclPtrOutput {
+	return o
+}
+
+func (o MetadataOptionsAclPtrOutput) Elem() MetadataOptionsAclOutput {
+	return o.ApplyT(func(v *MetadataOptionsAcl) MetadataOptionsAcl {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataOptionsAcl
+		return ret
+	}).(MetadataOptionsAclOutput)
+}
+
+func (o MetadataOptionsAclPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsAclPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MetadataOptionsAcl) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MetadataOptionsAclInput is an input type that accepts MetadataOptionsAclArgs and MetadataOptionsAclOutput values.
+// You can construct a concrete instance of `MetadataOptionsAclInput` via:
+//
+//          MetadataOptionsAclArgs{...}
+type MetadataOptionsAclInput interface {
+	pulumi.Input
+
+	ToMetadataOptionsAclOutput() MetadataOptionsAclOutput
+	ToMetadataOptionsAclOutputWithContext(context.Context) MetadataOptionsAclOutput
+}
+
+var metadataOptionsAclPtrType = reflect.TypeOf((**MetadataOptionsAcl)(nil)).Elem()
+
+type MetadataOptionsAclPtrInput interface {
+	pulumi.Input
+
+	ToMetadataOptionsAclPtrOutput() MetadataOptionsAclPtrOutput
+	ToMetadataOptionsAclPtrOutputWithContext(context.Context) MetadataOptionsAclPtrOutput
+}
+
+type metadataOptionsAclPtr string
+
+func MetadataOptionsAclPtr(v string) MetadataOptionsAclPtrInput {
+	return (*metadataOptionsAclPtr)(&v)
+}
+
+func (*metadataOptionsAclPtr) ElementType() reflect.Type {
+	return metadataOptionsAclPtrType
+}
+
+func (in *metadataOptionsAclPtr) ToMetadataOptionsAclPtrOutput() MetadataOptionsAclPtrOutput {
+	return pulumi.ToOutput(in).(MetadataOptionsAclPtrOutput)
+}
+
+func (in *metadataOptionsAclPtr) ToMetadataOptionsAclPtrOutputWithContext(ctx context.Context) MetadataOptionsAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsAclPtrOutput)
+}
+
 // Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
 type MetadataOptionsGid string
 
@@ -605,6 +774,175 @@ func (in *metadataOptionsGidPtr) ToMetadataOptionsGidPtrOutput() MetadataOptions
 
 func (in *metadataOptionsGidPtr) ToMetadataOptionsGidPtrOutputWithContext(ctx context.Context) MetadataOptionsGidPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsGidPtrOutput)
+}
+
+// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+type MetadataOptionsKmsKey string
+
+const (
+	// KmsKey behavior is unspecified.
+	MetadataOptionsKmsKeyKmsKeyUnspecified = MetadataOptionsKmsKey("KMS_KEY_UNSPECIFIED")
+	// Use the destination bucket's default encryption settings.
+	MetadataOptionsKmsKeyKmsKeyDestinationBucketDefault = MetadataOptionsKmsKey("KMS_KEY_DESTINATION_BUCKET_DEFAULT")
+	// Preserve the object's original Cloud KMS customer-managed encryption key (CMEK) if present. Objects that do not use a Cloud KMS encryption key will be encrypted using the destination bucket's encryption settings.
+	MetadataOptionsKmsKeyKmsKeyPreserve = MetadataOptionsKmsKey("KMS_KEY_PRESERVE")
+)
+
+func (MetadataOptionsKmsKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataOptionsKmsKey)(nil)).Elem()
+}
+
+func (e MetadataOptionsKmsKey) ToMetadataOptionsKmsKeyOutput() MetadataOptionsKmsKeyOutput {
+	return pulumi.ToOutput(e).(MetadataOptionsKmsKeyOutput)
+}
+
+func (e MetadataOptionsKmsKey) ToMetadataOptionsKmsKeyOutputWithContext(ctx context.Context) MetadataOptionsKmsKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MetadataOptionsKmsKeyOutput)
+}
+
+func (e MetadataOptionsKmsKey) ToMetadataOptionsKmsKeyPtrOutput() MetadataOptionsKmsKeyPtrOutput {
+	return e.ToMetadataOptionsKmsKeyPtrOutputWithContext(context.Background())
+}
+
+func (e MetadataOptionsKmsKey) ToMetadataOptionsKmsKeyPtrOutputWithContext(ctx context.Context) MetadataOptionsKmsKeyPtrOutput {
+	return MetadataOptionsKmsKey(e).ToMetadataOptionsKmsKeyOutputWithContext(ctx).ToMetadataOptionsKmsKeyPtrOutputWithContext(ctx)
+}
+
+func (e MetadataOptionsKmsKey) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetadataOptionsKmsKey) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetadataOptionsKmsKey) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MetadataOptionsKmsKey) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MetadataOptionsKmsKeyOutput struct{ *pulumi.OutputState }
+
+func (MetadataOptionsKmsKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataOptionsKmsKey)(nil)).Elem()
+}
+
+func (o MetadataOptionsKmsKeyOutput) ToMetadataOptionsKmsKeyOutput() MetadataOptionsKmsKeyOutput {
+	return o
+}
+
+func (o MetadataOptionsKmsKeyOutput) ToMetadataOptionsKmsKeyOutputWithContext(ctx context.Context) MetadataOptionsKmsKeyOutput {
+	return o
+}
+
+func (o MetadataOptionsKmsKeyOutput) ToMetadataOptionsKmsKeyPtrOutput() MetadataOptionsKmsKeyPtrOutput {
+	return o.ToMetadataOptionsKmsKeyPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsKmsKeyOutput) ToMetadataOptionsKmsKeyPtrOutputWithContext(ctx context.Context) MetadataOptionsKmsKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataOptionsKmsKey) *MetadataOptionsKmsKey {
+		return &v
+	}).(MetadataOptionsKmsKeyPtrOutput)
+}
+
+func (o MetadataOptionsKmsKeyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsKmsKeyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetadataOptionsKmsKey) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MetadataOptionsKmsKeyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsKmsKeyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetadataOptionsKmsKey) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetadataOptionsKmsKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (MetadataOptionsKmsKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataOptionsKmsKey)(nil)).Elem()
+}
+
+func (o MetadataOptionsKmsKeyPtrOutput) ToMetadataOptionsKmsKeyPtrOutput() MetadataOptionsKmsKeyPtrOutput {
+	return o
+}
+
+func (o MetadataOptionsKmsKeyPtrOutput) ToMetadataOptionsKmsKeyPtrOutputWithContext(ctx context.Context) MetadataOptionsKmsKeyPtrOutput {
+	return o
+}
+
+func (o MetadataOptionsKmsKeyPtrOutput) Elem() MetadataOptionsKmsKeyOutput {
+	return o.ApplyT(func(v *MetadataOptionsKmsKey) MetadataOptionsKmsKey {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataOptionsKmsKey
+		return ret
+	}).(MetadataOptionsKmsKeyOutput)
+}
+
+func (o MetadataOptionsKmsKeyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsKmsKeyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MetadataOptionsKmsKey) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MetadataOptionsKmsKeyInput is an input type that accepts MetadataOptionsKmsKeyArgs and MetadataOptionsKmsKeyOutput values.
+// You can construct a concrete instance of `MetadataOptionsKmsKeyInput` via:
+//
+//          MetadataOptionsKmsKeyArgs{...}
+type MetadataOptionsKmsKeyInput interface {
+	pulumi.Input
+
+	ToMetadataOptionsKmsKeyOutput() MetadataOptionsKmsKeyOutput
+	ToMetadataOptionsKmsKeyOutputWithContext(context.Context) MetadataOptionsKmsKeyOutput
+}
+
+var metadataOptionsKmsKeyPtrType = reflect.TypeOf((**MetadataOptionsKmsKey)(nil)).Elem()
+
+type MetadataOptionsKmsKeyPtrInput interface {
+	pulumi.Input
+
+	ToMetadataOptionsKmsKeyPtrOutput() MetadataOptionsKmsKeyPtrOutput
+	ToMetadataOptionsKmsKeyPtrOutputWithContext(context.Context) MetadataOptionsKmsKeyPtrOutput
+}
+
+type metadataOptionsKmsKeyPtr string
+
+func MetadataOptionsKmsKeyPtr(v string) MetadataOptionsKmsKeyPtrInput {
+	return (*metadataOptionsKmsKeyPtr)(&v)
+}
+
+func (*metadataOptionsKmsKeyPtr) ElementType() reflect.Type {
+	return metadataOptionsKmsKeyPtrType
+}
+
+func (in *metadataOptionsKmsKeyPtr) ToMetadataOptionsKmsKeyPtrOutput() MetadataOptionsKmsKeyPtrOutput {
+	return pulumi.ToOutput(in).(MetadataOptionsKmsKeyPtrOutput)
+}
+
+func (in *metadataOptionsKmsKeyPtr) ToMetadataOptionsKmsKeyPtrOutputWithContext(ctx context.Context) MetadataOptionsKmsKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsKmsKeyPtrOutput)
 }
 
 // Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
@@ -776,6 +1114,183 @@ func (in *metadataOptionsModePtr) ToMetadataOptionsModePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsModePtrOutput)
 }
 
+// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+type MetadataOptionsStorageClass string
+
+const (
+	// Storage class behavior is unspecified.
+	MetadataOptionsStorageClassStorageClassUnspecified = MetadataOptionsStorageClass("STORAGE_CLASS_UNSPECIFIED")
+	// Use the destination bucket's default storage class.
+	MetadataOptionsStorageClassStorageClassDestinationBucketDefault = MetadataOptionsStorageClass("STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT")
+	// Preserve the object's original storage class. This is only supported for transfers from Google Cloud Storage buckets.
+	MetadataOptionsStorageClassStorageClassPreserve = MetadataOptionsStorageClass("STORAGE_CLASS_PRESERVE")
+	// Set the storage class to STANDARD.
+	MetadataOptionsStorageClassStorageClassStandard = MetadataOptionsStorageClass("STORAGE_CLASS_STANDARD")
+	// Set the storage class to NEARLINE.
+	MetadataOptionsStorageClassStorageClassNearline = MetadataOptionsStorageClass("STORAGE_CLASS_NEARLINE")
+	// Set the storage class to COLDLINE.
+	MetadataOptionsStorageClassStorageClassColdline = MetadataOptionsStorageClass("STORAGE_CLASS_COLDLINE")
+	// Set the storage class to ARCHIVE.
+	MetadataOptionsStorageClassStorageClassArchive = MetadataOptionsStorageClass("STORAGE_CLASS_ARCHIVE")
+)
+
+func (MetadataOptionsStorageClass) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataOptionsStorageClass)(nil)).Elem()
+}
+
+func (e MetadataOptionsStorageClass) ToMetadataOptionsStorageClassOutput() MetadataOptionsStorageClassOutput {
+	return pulumi.ToOutput(e).(MetadataOptionsStorageClassOutput)
+}
+
+func (e MetadataOptionsStorageClass) ToMetadataOptionsStorageClassOutputWithContext(ctx context.Context) MetadataOptionsStorageClassOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MetadataOptionsStorageClassOutput)
+}
+
+func (e MetadataOptionsStorageClass) ToMetadataOptionsStorageClassPtrOutput() MetadataOptionsStorageClassPtrOutput {
+	return e.ToMetadataOptionsStorageClassPtrOutputWithContext(context.Background())
+}
+
+func (e MetadataOptionsStorageClass) ToMetadataOptionsStorageClassPtrOutputWithContext(ctx context.Context) MetadataOptionsStorageClassPtrOutput {
+	return MetadataOptionsStorageClass(e).ToMetadataOptionsStorageClassOutputWithContext(ctx).ToMetadataOptionsStorageClassPtrOutputWithContext(ctx)
+}
+
+func (e MetadataOptionsStorageClass) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetadataOptionsStorageClass) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetadataOptionsStorageClass) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MetadataOptionsStorageClass) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MetadataOptionsStorageClassOutput struct{ *pulumi.OutputState }
+
+func (MetadataOptionsStorageClassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataOptionsStorageClass)(nil)).Elem()
+}
+
+func (o MetadataOptionsStorageClassOutput) ToMetadataOptionsStorageClassOutput() MetadataOptionsStorageClassOutput {
+	return o
+}
+
+func (o MetadataOptionsStorageClassOutput) ToMetadataOptionsStorageClassOutputWithContext(ctx context.Context) MetadataOptionsStorageClassOutput {
+	return o
+}
+
+func (o MetadataOptionsStorageClassOutput) ToMetadataOptionsStorageClassPtrOutput() MetadataOptionsStorageClassPtrOutput {
+	return o.ToMetadataOptionsStorageClassPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsStorageClassOutput) ToMetadataOptionsStorageClassPtrOutputWithContext(ctx context.Context) MetadataOptionsStorageClassPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataOptionsStorageClass) *MetadataOptionsStorageClass {
+		return &v
+	}).(MetadataOptionsStorageClassPtrOutput)
+}
+
+func (o MetadataOptionsStorageClassOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsStorageClassOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetadataOptionsStorageClass) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MetadataOptionsStorageClassOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsStorageClassOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetadataOptionsStorageClass) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetadataOptionsStorageClassPtrOutput struct{ *pulumi.OutputState }
+
+func (MetadataOptionsStorageClassPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataOptionsStorageClass)(nil)).Elem()
+}
+
+func (o MetadataOptionsStorageClassPtrOutput) ToMetadataOptionsStorageClassPtrOutput() MetadataOptionsStorageClassPtrOutput {
+	return o
+}
+
+func (o MetadataOptionsStorageClassPtrOutput) ToMetadataOptionsStorageClassPtrOutputWithContext(ctx context.Context) MetadataOptionsStorageClassPtrOutput {
+	return o
+}
+
+func (o MetadataOptionsStorageClassPtrOutput) Elem() MetadataOptionsStorageClassOutput {
+	return o.ApplyT(func(v *MetadataOptionsStorageClass) MetadataOptionsStorageClass {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataOptionsStorageClass
+		return ret
+	}).(MetadataOptionsStorageClassOutput)
+}
+
+func (o MetadataOptionsStorageClassPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsStorageClassPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MetadataOptionsStorageClass) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MetadataOptionsStorageClassInput is an input type that accepts MetadataOptionsStorageClassArgs and MetadataOptionsStorageClassOutput values.
+// You can construct a concrete instance of `MetadataOptionsStorageClassInput` via:
+//
+//          MetadataOptionsStorageClassArgs{...}
+type MetadataOptionsStorageClassInput interface {
+	pulumi.Input
+
+	ToMetadataOptionsStorageClassOutput() MetadataOptionsStorageClassOutput
+	ToMetadataOptionsStorageClassOutputWithContext(context.Context) MetadataOptionsStorageClassOutput
+}
+
+var metadataOptionsStorageClassPtrType = reflect.TypeOf((**MetadataOptionsStorageClass)(nil)).Elem()
+
+type MetadataOptionsStorageClassPtrInput interface {
+	pulumi.Input
+
+	ToMetadataOptionsStorageClassPtrOutput() MetadataOptionsStorageClassPtrOutput
+	ToMetadataOptionsStorageClassPtrOutputWithContext(context.Context) MetadataOptionsStorageClassPtrOutput
+}
+
+type metadataOptionsStorageClassPtr string
+
+func MetadataOptionsStorageClassPtr(v string) MetadataOptionsStorageClassPtrInput {
+	return (*metadataOptionsStorageClassPtr)(&v)
+}
+
+func (*metadataOptionsStorageClassPtr) ElementType() reflect.Type {
+	return metadataOptionsStorageClassPtrType
+}
+
+func (in *metadataOptionsStorageClassPtr) ToMetadataOptionsStorageClassPtrOutput() MetadataOptionsStorageClassPtrOutput {
+	return pulumi.ToOutput(in).(MetadataOptionsStorageClassPtrOutput)
+}
+
+func (in *metadataOptionsStorageClassPtr) ToMetadataOptionsStorageClassPtrOutputWithContext(ctx context.Context) MetadataOptionsStorageClassPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsStorageClassPtrOutput)
+}
+
 // Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
 type MetadataOptionsSymlink string
 
@@ -943,6 +1458,175 @@ func (in *metadataOptionsSymlinkPtr) ToMetadataOptionsSymlinkPtrOutput() Metadat
 
 func (in *metadataOptionsSymlinkPtr) ToMetadataOptionsSymlinkPtrOutputWithContext(ctx context.Context) MetadataOptionsSymlinkPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsSymlinkPtrOutput)
+}
+
+// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+type MetadataOptionsTemporaryHold string
+
+const (
+	// Temporary hold behavior is unspecified.
+	MetadataOptionsTemporaryHoldTemporaryHoldUnspecified = MetadataOptionsTemporaryHold("TEMPORARY_HOLD_UNSPECIFIED")
+	// Do not set a temporary hold on the destination object.
+	MetadataOptionsTemporaryHoldTemporaryHoldSkip = MetadataOptionsTemporaryHold("TEMPORARY_HOLD_SKIP")
+	// Preserve the object's original temporary hold status.
+	MetadataOptionsTemporaryHoldTemporaryHoldPreserve = MetadataOptionsTemporaryHold("TEMPORARY_HOLD_PRESERVE")
+)
+
+func (MetadataOptionsTemporaryHold) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataOptionsTemporaryHold)(nil)).Elem()
+}
+
+func (e MetadataOptionsTemporaryHold) ToMetadataOptionsTemporaryHoldOutput() MetadataOptionsTemporaryHoldOutput {
+	return pulumi.ToOutput(e).(MetadataOptionsTemporaryHoldOutput)
+}
+
+func (e MetadataOptionsTemporaryHold) ToMetadataOptionsTemporaryHoldOutputWithContext(ctx context.Context) MetadataOptionsTemporaryHoldOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MetadataOptionsTemporaryHoldOutput)
+}
+
+func (e MetadataOptionsTemporaryHold) ToMetadataOptionsTemporaryHoldPtrOutput() MetadataOptionsTemporaryHoldPtrOutput {
+	return e.ToMetadataOptionsTemporaryHoldPtrOutputWithContext(context.Background())
+}
+
+func (e MetadataOptionsTemporaryHold) ToMetadataOptionsTemporaryHoldPtrOutputWithContext(ctx context.Context) MetadataOptionsTemporaryHoldPtrOutput {
+	return MetadataOptionsTemporaryHold(e).ToMetadataOptionsTemporaryHoldOutputWithContext(ctx).ToMetadataOptionsTemporaryHoldPtrOutputWithContext(ctx)
+}
+
+func (e MetadataOptionsTemporaryHold) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetadataOptionsTemporaryHold) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetadataOptionsTemporaryHold) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MetadataOptionsTemporaryHold) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MetadataOptionsTemporaryHoldOutput struct{ *pulumi.OutputState }
+
+func (MetadataOptionsTemporaryHoldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataOptionsTemporaryHold)(nil)).Elem()
+}
+
+func (o MetadataOptionsTemporaryHoldOutput) ToMetadataOptionsTemporaryHoldOutput() MetadataOptionsTemporaryHoldOutput {
+	return o
+}
+
+func (o MetadataOptionsTemporaryHoldOutput) ToMetadataOptionsTemporaryHoldOutputWithContext(ctx context.Context) MetadataOptionsTemporaryHoldOutput {
+	return o
+}
+
+func (o MetadataOptionsTemporaryHoldOutput) ToMetadataOptionsTemporaryHoldPtrOutput() MetadataOptionsTemporaryHoldPtrOutput {
+	return o.ToMetadataOptionsTemporaryHoldPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsTemporaryHoldOutput) ToMetadataOptionsTemporaryHoldPtrOutputWithContext(ctx context.Context) MetadataOptionsTemporaryHoldPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataOptionsTemporaryHold) *MetadataOptionsTemporaryHold {
+		return &v
+	}).(MetadataOptionsTemporaryHoldPtrOutput)
+}
+
+func (o MetadataOptionsTemporaryHoldOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsTemporaryHoldOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetadataOptionsTemporaryHold) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MetadataOptionsTemporaryHoldOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsTemporaryHoldOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetadataOptionsTemporaryHold) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetadataOptionsTemporaryHoldPtrOutput struct{ *pulumi.OutputState }
+
+func (MetadataOptionsTemporaryHoldPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataOptionsTemporaryHold)(nil)).Elem()
+}
+
+func (o MetadataOptionsTemporaryHoldPtrOutput) ToMetadataOptionsTemporaryHoldPtrOutput() MetadataOptionsTemporaryHoldPtrOutput {
+	return o
+}
+
+func (o MetadataOptionsTemporaryHoldPtrOutput) ToMetadataOptionsTemporaryHoldPtrOutputWithContext(ctx context.Context) MetadataOptionsTemporaryHoldPtrOutput {
+	return o
+}
+
+func (o MetadataOptionsTemporaryHoldPtrOutput) Elem() MetadataOptionsTemporaryHoldOutput {
+	return o.ApplyT(func(v *MetadataOptionsTemporaryHold) MetadataOptionsTemporaryHold {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataOptionsTemporaryHold
+		return ret
+	}).(MetadataOptionsTemporaryHoldOutput)
+}
+
+func (o MetadataOptionsTemporaryHoldPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsTemporaryHoldPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MetadataOptionsTemporaryHold) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MetadataOptionsTemporaryHoldInput is an input type that accepts MetadataOptionsTemporaryHoldArgs and MetadataOptionsTemporaryHoldOutput values.
+// You can construct a concrete instance of `MetadataOptionsTemporaryHoldInput` via:
+//
+//          MetadataOptionsTemporaryHoldArgs{...}
+type MetadataOptionsTemporaryHoldInput interface {
+	pulumi.Input
+
+	ToMetadataOptionsTemporaryHoldOutput() MetadataOptionsTemporaryHoldOutput
+	ToMetadataOptionsTemporaryHoldOutputWithContext(context.Context) MetadataOptionsTemporaryHoldOutput
+}
+
+var metadataOptionsTemporaryHoldPtrType = reflect.TypeOf((**MetadataOptionsTemporaryHold)(nil)).Elem()
+
+type MetadataOptionsTemporaryHoldPtrInput interface {
+	pulumi.Input
+
+	ToMetadataOptionsTemporaryHoldPtrOutput() MetadataOptionsTemporaryHoldPtrOutput
+	ToMetadataOptionsTemporaryHoldPtrOutputWithContext(context.Context) MetadataOptionsTemporaryHoldPtrOutput
+}
+
+type metadataOptionsTemporaryHoldPtr string
+
+func MetadataOptionsTemporaryHoldPtr(v string) MetadataOptionsTemporaryHoldPtrInput {
+	return (*metadataOptionsTemporaryHoldPtr)(&v)
+}
+
+func (*metadataOptionsTemporaryHoldPtr) ElementType() reflect.Type {
+	return metadataOptionsTemporaryHoldPtrType
+}
+
+func (in *metadataOptionsTemporaryHoldPtr) ToMetadataOptionsTemporaryHoldPtrOutput() MetadataOptionsTemporaryHoldPtrOutput {
+	return pulumi.ToOutput(in).(MetadataOptionsTemporaryHoldPtrOutput)
+}
+
+func (in *metadataOptionsTemporaryHoldPtr) ToMetadataOptionsTemporaryHoldPtrOutputWithContext(ctx context.Context) MetadataOptionsTemporaryHoldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsTemporaryHoldPtrOutput)
 }
 
 // Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
@@ -1676,12 +2360,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigLogActionsItemInput)(nil)).Elem(), LoggingConfigLogActionsItem("LOGGABLE_ACTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigLogActionsItemPtrInput)(nil)).Elem(), LoggingConfigLogActionsItem("LOGGABLE_ACTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigLogActionsItemArrayInput)(nil)).Elem(), LoggingConfigLogActionsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsAclInput)(nil)).Elem(), MetadataOptionsAcl("ACL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsAclPtrInput)(nil)).Elem(), MetadataOptionsAcl("ACL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsGidInput)(nil)).Elem(), MetadataOptionsGid("GID_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsGidPtrInput)(nil)).Elem(), MetadataOptionsGid("GID_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsKmsKeyInput)(nil)).Elem(), MetadataOptionsKmsKey("KMS_KEY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsKmsKeyPtrInput)(nil)).Elem(), MetadataOptionsKmsKey("KMS_KEY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsModeInput)(nil)).Elem(), MetadataOptionsMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsModePtrInput)(nil)).Elem(), MetadataOptionsMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsStorageClassInput)(nil)).Elem(), MetadataOptionsStorageClass("STORAGE_CLASS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsStorageClassPtrInput)(nil)).Elem(), MetadataOptionsStorageClass("STORAGE_CLASS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsSymlinkInput)(nil)).Elem(), MetadataOptionsSymlink("SYMLINK_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsSymlinkPtrInput)(nil)).Elem(), MetadataOptionsSymlink("SYMLINK_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsTemporaryHoldInput)(nil)).Elem(), MetadataOptionsTemporaryHold("TEMPORARY_HOLD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsTemporaryHoldPtrInput)(nil)).Elem(), MetadataOptionsTemporaryHold("TEMPORARY_HOLD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsUidInput)(nil)).Elem(), MetadataOptionsUid("UID_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsUidPtrInput)(nil)).Elem(), MetadataOptionsUid("UID_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigEventTypesItemInput)(nil)).Elem(), NotificationConfigEventTypesItem("EVENT_TYPE_UNSPECIFIED"))
@@ -1697,12 +2389,20 @@ func init() {
 	pulumi.RegisterOutputType(LoggingConfigLogActionsItemOutput{})
 	pulumi.RegisterOutputType(LoggingConfigLogActionsItemPtrOutput{})
 	pulumi.RegisterOutputType(LoggingConfigLogActionsItemArrayOutput{})
+	pulumi.RegisterOutputType(MetadataOptionsAclOutput{})
+	pulumi.RegisterOutputType(MetadataOptionsAclPtrOutput{})
 	pulumi.RegisterOutputType(MetadataOptionsGidOutput{})
 	pulumi.RegisterOutputType(MetadataOptionsGidPtrOutput{})
+	pulumi.RegisterOutputType(MetadataOptionsKmsKeyOutput{})
+	pulumi.RegisterOutputType(MetadataOptionsKmsKeyPtrOutput{})
 	pulumi.RegisterOutputType(MetadataOptionsModeOutput{})
 	pulumi.RegisterOutputType(MetadataOptionsModePtrOutput{})
+	pulumi.RegisterOutputType(MetadataOptionsStorageClassOutput{})
+	pulumi.RegisterOutputType(MetadataOptionsStorageClassPtrOutput{})
 	pulumi.RegisterOutputType(MetadataOptionsSymlinkOutput{})
 	pulumi.RegisterOutputType(MetadataOptionsSymlinkPtrOutput{})
+	pulumi.RegisterOutputType(MetadataOptionsTemporaryHoldOutput{})
+	pulumi.RegisterOutputType(MetadataOptionsTemporaryHoldPtrOutput{})
 	pulumi.RegisterOutputType(MetadataOptionsUidOutput{})
 	pulumi.RegisterOutputType(MetadataOptionsUidPtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigEventTypesItemOutput{})

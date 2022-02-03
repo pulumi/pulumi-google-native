@@ -59,6 +59,8 @@ type LookupDatasetResult struct {
 	SatisfiesPZS bool `pulumi:"satisfiesPZS"`
 	// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
 	SelfLink string `pulumi:"selfLink"`
+	// [Optional]The tags associated with this dataset. Tag keys are globally unique.
+	Tags []DatasetTagsItemResponse `pulumi:"tags"`
 }
 
 func LookupDatasetOutput(ctx *pulumi.Context, args LookupDatasetOutputArgs, opts ...pulumi.InvokeOption) LookupDatasetResultOutput {
@@ -175,6 +177,11 @@ func (o LookupDatasetResultOutput) SatisfiesPZS() pulumi.BoolOutput {
 // A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
 func (o LookupDatasetResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// [Optional]The tags associated with this dataset. Tag keys are globally unique.
+func (o LookupDatasetResultOutput) Tags() DatasetTagsItemResponseArrayOutput {
+	return o.ApplyT(func(v LookupDatasetResult) []DatasetTagsItemResponse { return v.Tags }).(DatasetTagsItemResponseArrayOutput)
 }
 
 func init() {

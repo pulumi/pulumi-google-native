@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<ImmutableArray<Outputs.StatusConditionResponse>> Conditions { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration of Confidential Nodes
+        /// Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
         /// </summary>
         [Output("confidentialNodes")]
         public Output<Outputs.ConfidentialNodesResponse> ConfidentialNodes { get; private set; } = null!;
@@ -457,7 +457,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         }
 
         /// <summary>
-        /// Configuration of Confidential Nodes
+        /// Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
         /// </summary>
         [Input("confidentialNodes")]
         public Input<Inputs.ConfidentialNodesArgs>? ConfidentialNodes { get; set; }

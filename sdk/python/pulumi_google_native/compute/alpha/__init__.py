@@ -84,9 +84,11 @@ from .get_region_health_check_service import *
 from .get_region_instance_group_manager import *
 from .get_region_instant_snapshot import *
 from .get_region_instant_snapshot_iam_policy import *
+from .get_region_network import *
 from .get_region_network_endpoint_group import *
 from .get_region_network_firewall_policy import *
 from .get_region_network_firewall_policy_iam_policy import *
+from .get_region_network_iam_policy import *
 from .get_region_notification_endpoint import *
 from .get_region_security_policy import *
 from .get_region_ssl_certificate import *
@@ -170,9 +172,11 @@ from .region_health_check_service import *
 from .region_instance_group_manager import *
 from .region_instant_snapshot import *
 from .region_instant_snapshot_iam_policy import *
+from .region_network import *
 from .region_network_endpoint_group import *
 from .region_network_firewall_policy import *
 from .region_network_firewall_policy_iam_policy import *
+from .region_network_iam_policy import *
 from .region_notification_endpoint import *
 from .region_security_policy import *
 from .region_ssl_certificate import *

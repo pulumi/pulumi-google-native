@@ -57,7 +57,7 @@ type Product struct {
 	PriceInfo GoogleCloudRetailV2PriceInfoResponseOutput `pulumi:"priceInfo"`
 	// Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID).
 	PrimaryProductId pulumi.StringOutput `pulumi:"primaryProductId"`
-	// The promotions applied to the product. A maximum of 10 values are allowed per Product.
+	// The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
 	Promotions GoogleCloudRetailV2PromotionResponseArrayOutput `pulumi:"promotions"`
 	// The timestamp when the product is published by the retailer for the first time, which indicates the freshness of the products. Note that this field is different from available_time, given it purely describes product freshness regardless of when it is available on search and recommendation.
 	PublishTime pulumi.StringOutput `pulumi:"publishTime"`
@@ -181,7 +181,7 @@ type productArgs struct {
 	PrimaryProductId *string `pulumi:"primaryProductId"`
 	ProductId        string  `pulumi:"productId"`
 	Project          *string `pulumi:"project"`
-	// The promotions applied to the product. A maximum of 10 values are allowed per Product.
+	// The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
 	Promotions []GoogleCloudRetailV2Promotion `pulumi:"promotions"`
 	// The timestamp when the product is published by the retailer for the first time, which indicates the freshness of the products. Note that this field is different from available_time, given it purely describes product freshness regardless of when it is available on search and recommendation.
 	PublishTime *string `pulumi:"publishTime"`
@@ -254,7 +254,7 @@ type ProductArgs struct {
 	PrimaryProductId pulumi.StringPtrInput
 	ProductId        pulumi.StringInput
 	Project          pulumi.StringPtrInput
-	// The promotions applied to the product. A maximum of 10 values are allowed per Product.
+	// The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
 	Promotions GoogleCloudRetailV2PromotionArrayInput
 	// The timestamp when the product is published by the retailer for the first time, which indicates the freshness of the products. Note that this field is different from available_time, given it purely describes product freshness regardless of when it is available on search and recommendation.
 	PublishTime pulumi.StringPtrInput

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatasetResult:
-    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_collation=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, description=None, etag=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, location=None, satisfies_pzs=None, self_link=None):
+    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_collation=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, description=None, etag=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, location=None, satisfies_pzs=None, self_link=None, tags=None):
         if access and not isinstance(access, list):
             raise TypeError("Expected argument 'access' to be a list")
         pulumi.set(__self__, "access", access)
@@ -70,6 +70,9 @@ class GetDatasetResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -204,6 +207,14 @@ class GetDatasetResult:
         """
         return pulumi.get(self, "self_link")
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence['outputs.DatasetTagsItemResponse']:
+        """
+        [Optional]The tags associated with this dataset. Tag keys are globally unique.
+        """
+        return pulumi.get(self, "tags")
+
 
 class AwaitableGetDatasetResult(GetDatasetResult):
     # pylint: disable=using-constant-test
@@ -227,7 +238,8 @@ class AwaitableGetDatasetResult(GetDatasetResult):
             last_modified_time=self.last_modified_time,
             location=self.location,
             satisfies_pzs=self.satisfies_pzs,
-            self_link=self.self_link)
+            self_link=self.self_link,
+            tags=self.tags)
 
 
 def get_dataset(dataset_id: Optional[str] = None,
@@ -262,7 +274,8 @@ def get_dataset(dataset_id: Optional[str] = None,
         last_modified_time=__ret__.last_modified_time,
         location=__ret__.location,
         satisfies_pzs=__ret__.satisfies_pzs,
-        self_link=__ret__.self_link)
+        self_link=__ret__.self_link,
+        tags=__ret__.tags)
 
 
 @_utilities.lift_output_func(get_dataset)

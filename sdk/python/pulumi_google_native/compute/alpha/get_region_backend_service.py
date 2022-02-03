@@ -372,7 +372,7 @@ class GetRegionBackendServiceResult:
     @pulumi.getter(name="securitySettings")
     def security_settings(self) -> 'outputs.SecuritySettingsResponse':
         """
-        This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
+        This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         """
         return pulumi.get(self, "security_settings")
 

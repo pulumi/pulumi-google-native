@@ -8,6 +8,7 @@ __all__ = [
     'ArgumentArgumentKind',
     'ArgumentMode',
     'AuditLogConfigLogType',
+    'DatasetAccessEntryTargetTypesItem',
     'RoutineDeterminismLevel',
     'RoutineLanguage',
     'RoutineRoutineType',
@@ -68,6 +69,17 @@ class AuditLogConfigLogType(str, Enum):
     DATA_READ = "DATA_READ"
     """
     Data reads. Example: CloudSQL Users list
+    """
+
+
+class DatasetAccessEntryTargetTypesItem(str, Enum):
+    TARGET_TYPE_UNSPECIFIED = "TARGET_TYPE_UNSPECIFIED"
+    """
+    Do not use. You must set a target type explicitly.
+    """
+    VIEWS = "VIEWS"
+    """
+    This entry applies to views in the dataset.
     """
 
 

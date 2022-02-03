@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly Outputs.RuntimeAcceleratorConfigResponse AcceleratorConfig;
         /// <summary>
-        /// Optional. Use a list of container images to start the notebook instance.
+        /// Optional. Use a list of container images to use as Kernels in the notebook instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerImageResponse> ContainerImages;
         /// <summary>

@@ -23,6 +23,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The dialect of the Cloud Spanner Database.
+        /// </summary>
+        [Output("databaseDialect")]
+        public Output<string> DatabaseDialect { get; private set; } = null!;
+
+        /// <summary>
         /// The read-write region which contains the database's leader replicas. This is the same as the value of default_leader database option set using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty.
         /// </summary>
         [Output("defaultLeader")]
@@ -120,6 +126,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         [Input("createStatement", required: true)]
         public Input<string> CreateStatement { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. The dialect of the Cloud Spanner Database.
+        /// </summary>
+        [Input("databaseDialect")]
+        public Input<Pulumi.GoogleNative.Spanner.V1.DatabaseDatabaseDialect>? DatabaseDialect { get; set; }
 
         /// <summary>
         /// Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.

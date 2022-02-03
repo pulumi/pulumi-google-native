@@ -101,6 +101,10 @@ export class Dataset extends pulumi.CustomResource {
      * A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Optional]The tags associated with this dataset. Tag keys are globally unique.
+     */
+    public readonly tags!: pulumi.Output<outputs.bigquery.v2.DatasetTagsItemResponse[]>;
 
     /**
      * Create a Dataset resource with the given unique name, arguments, and options.
@@ -124,6 +128,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["defaultCollation"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -149,6 +154,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["satisfiesPZS"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Dataset.__pulumiType, name, resourceInputs, opts);
@@ -197,4 +203,8 @@ export interface DatasetArgs {
      */
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * [Optional]The tags associated with this dataset. Tag keys are globally unique.
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.DatasetTagsItemArgs>[]>;
 }

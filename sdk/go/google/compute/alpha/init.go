@@ -149,12 +149,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionInstantSnapshot{}
 	case "google-native:compute/alpha:RegionInstantSnapshotIamPolicy":
 		r = &RegionInstantSnapshotIamPolicy{}
+	case "google-native:compute/alpha:RegionNetwork":
+		r = &RegionNetwork{}
 	case "google-native:compute/alpha:RegionNetworkEndpointGroup":
 		r = &RegionNetworkEndpointGroup{}
 	case "google-native:compute/alpha:RegionNetworkFirewallPolicy":
 		r = &RegionNetworkFirewallPolicy{}
 	case "google-native:compute/alpha:RegionNetworkFirewallPolicyIamPolicy":
 		r = &RegionNetworkFirewallPolicyIamPolicy{}
+	case "google-native:compute/alpha:RegionNetworkIamPolicy":
+		r = &RegionNetworkIamPolicy{}
 	case "google-native:compute/alpha:RegionNotificationEndpoint":
 		r = &RegionNotificationEndpoint{}
 	case "google-native:compute/alpha:RegionSecurityPolicy":

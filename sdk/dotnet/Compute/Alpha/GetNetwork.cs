@@ -101,6 +101,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkPeeringResponse> Peerings;
         /// <summary>
+        /// URL of the region where the regional network resides. This field is not applicable to global network. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
         /// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
         /// </summary>
         public readonly Outputs.NetworkRoutingConfigResponse RoutingConfig;
@@ -143,6 +147,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             ImmutableArray<Outputs.NetworkPeeringResponse> peerings,
 
+            string region,
+
             Outputs.NetworkRoutingConfigResponse routingConfig,
 
             string selfLink,
@@ -163,6 +169,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Name = name;
             NetworkFirewallPolicyEnforcementOrder = networkFirewallPolicyEnforcementOrder;
             Peerings = peerings;
+            Region = region;
             RoutingConfig = routingConfig;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;

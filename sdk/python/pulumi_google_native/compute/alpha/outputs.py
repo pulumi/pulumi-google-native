@@ -197,6 +197,7 @@ __all__ = [
     'RouterBgpPeerResponse',
     'RouterBgpResponse',
     'RouterInterfaceResponse',
+    'RouterMd5AuthenticationKeyResponse',
     'RouterNatLogConfigResponse',
     'RouterNatResponse',
     'RouterNatRuleActionResponse',
@@ -13071,6 +13072,8 @@ class RouterBgpPeerResponse(dict):
             suggest = "ipv6_nexthop_address"
         elif key == "managementType":
             suggest = "management_type"
+        elif key == "md5AuthenticationKeyName":
+            suggest = "md5_authentication_key_name"
         elif key == "peerAsn":
             suggest = "peer_asn"
         elif key == "peerIpAddress":
@@ -13103,6 +13106,7 @@ class RouterBgpPeerResponse(dict):
                  ip_address: str,
                  ipv6_nexthop_address: str,
                  management_type: str,
+                 md5_authentication_key_name: str,
                  name: str,
                  peer_asn: int,
                  peer_ip_address: str,
@@ -13120,6 +13124,7 @@ class RouterBgpPeerResponse(dict):
         :param str ip_address: IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
         :param str ipv6_nexthop_address: IPv6 address of the interface inside Google Cloud Platform.
         :param str management_type: The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted. 
+        :param str md5_authentication_key_name: Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
         :param str name: Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param int peer_asn: Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
         :param str peer_ip_address: IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
@@ -13137,6 +13142,7 @@ class RouterBgpPeerResponse(dict):
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "ipv6_nexthop_address", ipv6_nexthop_address)
         pulumi.set(__self__, "management_type", management_type)
+        pulumi.set(__self__, "md5_authentication_key_name", md5_authentication_key_name)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "peer_asn", peer_asn)
         pulumi.set(__self__, "peer_ip_address", peer_ip_address)
@@ -13230,6 +13236,14 @@ class RouterBgpPeerResponse(dict):
         The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted. 
         """
         return pulumi.get(self, "management_type")
+
+    @property
+    @pulumi.getter(name="md5AuthenticationKeyName")
+    def md5_authentication_key_name(self) -> str:
+        """
+        Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
+        """
+        return pulumi.get(self, "md5_authentication_key_name")
 
     @property
     @pulumi.getter
@@ -13477,6 +13491,35 @@ class RouterInterfaceResponse(dict):
         The URI of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here.
         """
         return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
+class RouterMd5AuthenticationKeyResponse(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 name: str):
+        """
+        :param str key: [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+        :param str name: Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -14589,7 +14632,7 @@ class SchedulingResponse(dict):
         :param 'DurationResponse' max_run_duration: Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
         :param int min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param Sequence['SchedulingNodeAffinityResponse'] node_affinities: A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
-        :param str on_host_maintenance: Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+        :param str on_host_maintenance: Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
         :param bool preemptible: Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
         :param str provisioning_model: Specifies the provisioning model of the instance.
         :param str termination_time: Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
@@ -14720,7 +14763,7 @@ class SchedulingResponse(dict):
     @pulumi.getter(name="onHostMaintenance")
     def on_host_maintenance(self) -> str:
         """
-        Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+        Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
         """
         return pulumi.get(self, "on_host_maintenance")
 

@@ -24,7 +24,7 @@ type Group struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. Dynamic group metadata like queries and status.
 	DynamicGroupMetadata DynamicGroupMetadataResponseOutput `pulumi:"dynamicGroupMetadata"`
-	// Immutable. The `EntityKey` of the `Group`.
+	// The `EntityKey` of the `Group`.
 	GroupKey EntityKeyResponseOutput `pulumi:"groupKey"`
 	// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -90,7 +90,7 @@ type groupArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. Dynamic group metadata like queries and status.
 	DynamicGroupMetadata *DynamicGroupMetadata `pulumi:"dynamicGroupMetadata"`
-	// Immutable. The `EntityKey` of the `Group`.
+	// The `EntityKey` of the `Group`.
 	GroupKey           EntityKey `pulumi:"groupKey"`
 	InitialGroupConfig *string   `pulumi:"initialGroupConfig"`
 	// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value.
@@ -107,7 +107,7 @@ type GroupArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Optional. Dynamic group metadata like queries and status.
 	DynamicGroupMetadata DynamicGroupMetadataPtrInput
-	// Immutable. The `EntityKey` of the `Group`.
+	// The `EntityKey` of the `Group`.
 	GroupKey           EntityKeyInput
 	InitialGroupConfig pulumi.StringPtrInput
 	// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value.

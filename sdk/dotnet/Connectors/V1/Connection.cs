@@ -65,12 +65,6 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<string> ImageLocation { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Inactive indicates the connection is active to use or not.
-        /// </summary>
-        [Output("inactive")]
-        public Output<bool> Inactive { get; private set; } = null!;
-
-        /// <summary>
         /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         /// </summary>
         [Output("labels")]
@@ -105,6 +99,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         [Output("status")]
         public Output<Outputs.ConnectionStatusResponse> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Suspended indicates if a user has suspended a connection or not.
+        /// </summary>
+        [Output("suspended")]
+        public Output<bool> Suspended { get; private set; } = null!;
 
         /// <summary>
         /// Updated time.
@@ -190,12 +190,6 @@ namespace Pulumi.GoogleNative.Connectors.V1
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Optional. Inactive indicates the connection is active to use or not.
-        /// </summary>
-        [Input("inactive")]
-        public Input<bool>? Inactive { get; set; }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -225,6 +219,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Optional. Suspended indicates if a user has suspended a connection or not.
+        /// </summary>
+        [Input("suspended")]
+        public Input<bool>? Suspended { get; set; }
 
         public ConnectionArgs()
         {

@@ -27,7 +27,7 @@ class HubArgs:
         :param pulumi.Input[str] description: An optional description of the hub.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input[str] name: Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-        :param pulumi.Input[Sequence[pulumi.Input['RoutingVPCArgs']]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        :param pulumi.Input[Sequence[pulumi.Input['RoutingVPCArgs']]] routing_vpcs: The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         """
         pulumi.set(__self__, "hub_id", hub_id)
         if description is not None:
@@ -110,7 +110,7 @@ class HubArgs:
     @pulumi.getter(name="routingVpcs")
     def routing_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoutingVPCArgs']]]]:
         """
-        The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         """
         return pulumi.get(self, "routing_vpcs")
 
@@ -141,7 +141,7 @@ class Hub(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of the hub.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input[str] name: Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingVPCArgs']]]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingVPCArgs']]]] routing_vpcs: The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         """
         ...
     @overload
@@ -268,7 +268,7 @@ class Hub(pulumi.CustomResource):
     @pulumi.getter(name="routingVpcs")
     def routing_vpcs(self) -> pulumi.Output[Sequence['outputs.RoutingVPCResponse']]:
         """
-        The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         """
         return pulumi.get(self, "routing_vpcs")
 

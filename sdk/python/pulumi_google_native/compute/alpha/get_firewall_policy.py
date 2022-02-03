@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFirewallPolicyResult:
-    def __init__(__self__, associations=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, name=None, parent=None, region=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, short_name=None):
+    def __init__(__self__, associations=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, name=None, parent=None, region=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, short_name=None, vpc_network_scope=None):
         if associations and not isinstance(associations, list):
             raise TypeError("Expected argument 'associations' to be a list")
         pulumi.set(__self__, "associations", associations)
@@ -58,6 +58,9 @@ class GetFirewallPolicyResult:
         if short_name and not isinstance(short_name, str):
             raise TypeError("Expected argument 'short_name' to be a str")
         pulumi.set(__self__, "short_name", short_name)
+        if vpc_network_scope and not isinstance(vpc_network_scope, str):
+            raise TypeError("Expected argument 'vpc_network_scope' to be a str")
+        pulumi.set(__self__, "vpc_network_scope", vpc_network_scope)
 
     @property
     @pulumi.getter
@@ -163,6 +166,14 @@ class GetFirewallPolicyResult:
         """
         return pulumi.get(self, "short_name")
 
+    @property
+    @pulumi.getter(name="vpcNetworkScope")
+    def vpc_network_scope(self) -> str:
+        """
+        The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+        """
+        return pulumi.get(self, "vpc_network_scope")
+
 
 class AwaitableGetFirewallPolicyResult(GetFirewallPolicyResult):
     # pylint: disable=using-constant-test
@@ -182,7 +193,8 @@ class AwaitableGetFirewallPolicyResult(GetFirewallPolicyResult):
             rules=self.rules,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
-            short_name=self.short_name)
+            short_name=self.short_name,
+            vpc_network_scope=self.vpc_network_scope)
 
 
 def get_firewall_policy(firewall_policy: Optional[str] = None,
@@ -211,7 +223,8 @@ def get_firewall_policy(firewall_policy: Optional[str] = None,
         rules=__ret__.rules,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
-        short_name=__ret__.short_name)
+        short_name=__ret__.short_name,
+        vpc_network_scope=__ret__.vpc_network_scope)
 
 
 @_utilities.lift_output_func(get_firewall_policy)

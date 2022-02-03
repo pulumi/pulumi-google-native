@@ -48,6 +48,8 @@ type Dataset struct {
 	SatisfiesPZS pulumi.BoolOutput `pulumi:"satisfiesPZS"`
 	// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// [Optional]The tags associated with this dataset. Tag keys are globally unique.
+	Tags DatasetTagsItemResponseArrayOutput `pulumi:"tags"`
 }
 
 // NewDataset registers a new resource with the given unique name, arguments, and options.
@@ -109,6 +111,8 @@ type datasetArgs struct {
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 	Location *string `pulumi:"location"`
 	Project  *string `pulumi:"project"`
+	// [Optional]The tags associated with this dataset. Tag keys are globally unique.
+	Tags []DatasetTagsItem `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Dataset resource.
@@ -133,6 +137,8 @@ type DatasetArgs struct {
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
+	// [Optional]The tags associated with this dataset. Tag keys are globally unique.
+	Tags DatasetTagsItemArrayInput
 }
 
 func (DatasetArgs) ElementType() reflect.Type {

@@ -94,6 +94,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("shortName")]
         public Output<string> ShortName { get; private set; } = null!;
 
+        /// <summary>
+        /// The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+        /// </summary>
+        [Output("vpcNetworkScope")]
+        public Output<string> VpcNetworkScope { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a FirewallPolicy resource with the given unique name, arguments, and options.
@@ -180,6 +186,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("shortName")]
         public Input<string>? ShortName { get; set; }
+
+        /// <summary>
+        /// The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+        /// </summary>
+        [Input("vpcNetworkScope")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.FirewallPolicyVpcNetworkScope>? VpcNetworkScope { get; set; }
 
         public FirewallPolicyArgs()
         {

@@ -44,6 +44,10 @@ export class Backup extends pulumi.CustomResource {
      */
     public readonly database!: pulumi.Output<string>;
     /**
+     * The database dialect information for the backup.
+     */
+    public /*out*/ readonly databaseDialect!: pulumi.Output<string>;
+    /**
      * The encryption information for the backup.
      */
     public /*out*/ readonly encryptionInfo!: pulumi.Output<outputs.spanner.v1.EncryptionInfoResponse>;
@@ -102,6 +106,7 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["versionTime"] = args ? args.versionTime : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["databaseDialect"] = undefined /*out*/;
             resourceInputs["encryptionInfo"] = undefined /*out*/;
             resourceInputs["referencingDatabases"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;
@@ -109,6 +114,7 @@ export class Backup extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["database"] = undefined /*out*/;
+            resourceInputs["databaseDialect"] = undefined /*out*/;
             resourceInputs["encryptionInfo"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

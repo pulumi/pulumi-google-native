@@ -749,7 +749,7 @@ class GoogleCloudRunOpV2TrafficTargetArgs:
                  type: Optional[pulumi.Input['GoogleCloudRunOpV2TrafficTargetType']] = None):
         """
         Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision.
-        :param pulumi.Input[int] percent: Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single TrafficTarget entry.
+        :param pulumi.Input[int] percent: Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
         :param pulumi.Input[str] revision: Revision to which to send this portion of traffic, if traffic allocation is by revision.
         :param pulumi.Input[str] tag: Indicates a string to be part of the URI to exclusively reference this target.
         :param pulumi.Input['GoogleCloudRunOpV2TrafficTargetType'] type: The allocation type for this traffic target.
@@ -767,7 +767,7 @@ class GoogleCloudRunOpV2TrafficTargetArgs:
     @pulumi.getter
     def percent(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single TrafficTarget entry.
+        Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
         """
         return pulumi.get(self, "percent")
 

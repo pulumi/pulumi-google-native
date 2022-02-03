@@ -33,6 +33,10 @@ export interface GetTargetResult {
      */
     readonly annotations: {[key: string]: string};
     /**
+     * Information specifying an Anthos Cluster.
+     */
+    readonly anthosCluster: outputs.clouddeploy.v1.AnthosClusterResponse;
+    /**
      * Time at which the `Target` was created.
      */
     readonly createTime: string;
@@ -57,7 +61,7 @@ export interface GetTargetResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+     * Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
      */
     readonly name: string;
     /**

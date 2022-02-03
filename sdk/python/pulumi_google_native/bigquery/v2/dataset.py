@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['DatasetArgs', 'Dataset']
@@ -25,7 +26,8 @@ class DatasetArgs:
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetTagsItemArgs']]]] = None):
         """
         The set of arguments for constructing a Dataset resource.
         :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessItemArgs']]] access: [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
@@ -37,6 +39,7 @@ class DatasetArgs:
         :param pulumi.Input[bool] is_case_insensitive: [Optional] Indicates if table names are case insensitive in the dataset.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+        :param pulumi.Input[Sequence[pulumi.Input['DatasetTagsItemArgs']]] tags: [Optional]The tags associated with this dataset. Tag keys are globally unique.
         """
         if access is not None:
             pulumi.set(__self__, "access", access)
@@ -60,6 +63,8 @@ class DatasetArgs:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -187,6 +192,18 @@ class DatasetArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetTagsItemArgs']]]]:
+        """
+        [Optional]The tags associated with this dataset. Tag keys are globally unique.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetTagsItemArgs']]]]):
+        pulumi.set(self, "tags", value)
+
 
 class Dataset(pulumi.CustomResource):
     @overload
@@ -204,6 +221,7 @@ class Dataset(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]]] = None,
                  __props__=None):
         """
         Creates a new empty dataset.
@@ -220,6 +238,7 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[bool] is_case_insensitive: [Optional] Indicates if table names are case insensitive in the dataset.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]] tags: [Optional]The tags associated with this dataset. Tag keys are globally unique.
         """
         ...
     @overload
@@ -257,6 +276,7 @@ class Dataset(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -280,6 +300,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["default_collation"] = None
             __props__.__dict__["etag"] = None
@@ -326,6 +347,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["tags"] = None
         return Dataset(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -460,4 +482,12 @@ class Dataset(pulumi.CustomResource):
         A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Sequence['outputs.DatasetTagsItemResponse']]:
+        """
+        [Optional]The tags associated with this dataset. Tag keys are globally unique.
+        """
+        return pulumi.get(self, "tags")
 

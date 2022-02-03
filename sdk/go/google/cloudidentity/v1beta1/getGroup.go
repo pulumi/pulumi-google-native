@@ -35,7 +35,7 @@ type LookupGroupResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Optional. Dynamic group metadata like queries and status.
 	DynamicGroupMetadata DynamicGroupMetadataResponse `pulumi:"dynamicGroupMetadata"`
-	// Immutable. The `EntityKey` of the `Group`.
+	// The `EntityKey` of the `Group`.
 	GroupKey EntityKeyResponse `pulumi:"groupKey"`
 	// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value.
 	Labels map[string]string `pulumi:"labels"`
@@ -105,7 +105,7 @@ func (o LookupGroupResultOutput) DynamicGroupMetadata() DynamicGroupMetadataResp
 	return o.ApplyT(func(v LookupGroupResult) DynamicGroupMetadataResponse { return v.DynamicGroupMetadata }).(DynamicGroupMetadataResponseOutput)
 }
 
-// Immutable. The `EntityKey` of the `Group`.
+// The `EntityKey` of the `Group`.
 func (o LookupGroupResultOutput) GroupKey() EntityKeyResponseOutput {
 	return o.ApplyT(func(v LookupGroupResult) EntityKeyResponse { return v.GroupKey }).(EntityKeyResponseOutput)
 }

@@ -95,7 +95,7 @@ export interface GetReleaseResult {
      */
     readonly targetRenders: {[key: string]: string};
     /**
-     * Snapshot of the parent pipeline's targets taken at release creation time.
+     * Snapshot of the targets taken at release creation time.
      */
     readonly targetSnapshots: outputs.clouddeploy.v1.TargetResponse[];
     /**

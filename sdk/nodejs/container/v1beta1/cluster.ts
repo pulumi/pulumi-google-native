@@ -68,7 +68,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly conditions!: pulumi.Output<outputs.container.v1beta1.StatusConditionResponse[]>;
     /**
-     * Configuration of Confidential Nodes
+     * Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
      */
     public readonly confidentialNodes!: pulumi.Output<outputs.container.v1beta1.ConfidentialNodesResponse>;
     /**
@@ -435,7 +435,7 @@ export interface ClusterArgs {
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.container.v1beta1.StatusConditionArgs>[]>;
     /**
-     * Configuration of Confidential Nodes
+     * Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
      */
     confidentialNodes?: pulumi.Input<inputs.container.v1beta1.ConfidentialNodesArgs>;
     /**

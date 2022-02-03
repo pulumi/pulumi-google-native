@@ -1838,7 +1838,7 @@ type GoogleCloudRetailV2betaProductResponse struct {
 	PriceInfo GoogleCloudRetailV2betaPriceInfoResponse `pulumi:"priceInfo"`
 	// Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID).
 	PrimaryProductId string `pulumi:"primaryProductId"`
-	// The promotions applied to the product. A maximum of 10 values are allowed per Product.
+	// The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
 	Promotions []GoogleCloudRetailV2betaPromotionResponse `pulumi:"promotions"`
 	// The timestamp when the product is published by the retailer for the first time, which indicates the freshness of the products. Note that this field is different from available_time, given it purely describes product freshness regardless of when it is available on search and recommendation.
 	PublishTime string `pulumi:"publishTime"`
@@ -1990,7 +1990,7 @@ func (o GoogleCloudRetailV2betaProductResponseOutput) PrimaryProductId() pulumi.
 	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) string { return v.PrimaryProductId }).(pulumi.StringOutput)
 }
 
-// The promotions applied to the product. A maximum of 10 values are allowed per Product.
+// The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
 func (o GoogleCloudRetailV2betaProductResponseOutput) Promotions() GoogleCloudRetailV2betaPromotionResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) []GoogleCloudRetailV2betaPromotionResponse {
 		return v.Promotions
@@ -2071,7 +2071,7 @@ func (o GoogleCloudRetailV2betaProductResponseArrayOutput) Index(i pulumi.IntInp
 
 // Promotion information.
 type GoogleCloudRetailV2betaPromotion struct {
-	// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+	// ID of the promotion. For example, "free gift". The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
 	PromotionId *string `pulumi:"promotionId"`
 }
 
@@ -2088,7 +2088,7 @@ type GoogleCloudRetailV2betaPromotionInput interface {
 
 // Promotion information.
 type GoogleCloudRetailV2betaPromotionArgs struct {
-	// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+	// ID of the promotion. For example, "free gift". The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
 	PromotionId pulumi.StringPtrInput `pulumi:"promotionId"`
 }
 
@@ -2144,7 +2144,7 @@ func (o GoogleCloudRetailV2betaPromotionOutput) ToGoogleCloudRetailV2betaPromoti
 	return o
 }
 
-// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+// ID of the promotion. For example, "free gift". The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
 func (o GoogleCloudRetailV2betaPromotionOutput) PromotionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaPromotion) *string { return v.PromotionId }).(pulumi.StringPtrOutput)
 }
@@ -2171,7 +2171,7 @@ func (o GoogleCloudRetailV2betaPromotionArrayOutput) Index(i pulumi.IntInput) Go
 
 // Promotion information.
 type GoogleCloudRetailV2betaPromotionResponse struct {
-	// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+	// ID of the promotion. For example, "free gift". The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
 	PromotionId string `pulumi:"promotionId"`
 }
 
@@ -2190,7 +2190,7 @@ func (o GoogleCloudRetailV2betaPromotionResponseOutput) ToGoogleCloudRetailV2bet
 	return o
 }
 
-// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+// ID of the promotion. For example, "free gift". The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
 func (o GoogleCloudRetailV2betaPromotionResponseOutput) PromotionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaPromotionResponse) string { return v.PromotionId }).(pulumi.StringOutput)
 }

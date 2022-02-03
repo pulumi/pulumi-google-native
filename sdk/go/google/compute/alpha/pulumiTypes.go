@@ -36387,6 +36387,8 @@ type RouterBgpPeer struct {
 	IpAddress *string `pulumi:"ipAddress"`
 	// IPv6 address of the interface inside Google Cloud Platform.
 	Ipv6NexthopAddress *string `pulumi:"ipv6NexthopAddress"`
+	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
+	Md5AuthenticationKeyName *string `pulumi:"md5AuthenticationKeyName"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
@@ -36431,6 +36433,8 @@ type RouterBgpPeerArgs struct {
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// IPv6 address of the interface inside Google Cloud Platform.
 	Ipv6NexthopAddress pulumi.StringPtrInput `pulumi:"ipv6NexthopAddress"`
+	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
+	Md5AuthenticationKeyName pulumi.StringPtrInput `pulumi:"md5AuthenticationKeyName"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
@@ -36542,6 +36546,11 @@ func (o RouterBgpPeerOutput) IpAddress() pulumi.StringPtrOutput {
 // IPv6 address of the interface inside Google Cloud Platform.
 func (o RouterBgpPeerOutput) Ipv6NexthopAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *string { return v.Ipv6NexthopAddress }).(pulumi.StringPtrOutput)
+}
+
+// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
+func (o RouterBgpPeerOutput) Md5AuthenticationKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeer) *string { return v.Md5AuthenticationKeyName }).(pulumi.StringPtrOutput)
 }
 
 // Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -36931,6 +36940,8 @@ type RouterBgpPeerResponse struct {
 	Ipv6NexthopAddress string `pulumi:"ipv6NexthopAddress"`
 	// The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 	ManagementType string `pulumi:"managementType"`
+	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
+	Md5AuthenticationKeyName string `pulumi:"md5AuthenticationKeyName"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
@@ -37010,6 +37021,11 @@ func (o RouterBgpPeerResponseOutput) Ipv6NexthopAddress() pulumi.StringOutput {
 // The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 func (o RouterBgpPeerResponseOutput) ManagementType() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.ManagementType }).(pulumi.StringOutput)
+}
+
+// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
+func (o RouterBgpPeerResponseOutput) Md5AuthenticationKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.Md5AuthenticationKeyName }).(pulumi.StringOutput)
 }
 
 // Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -37351,6 +37367,163 @@ func (o RouterInterfaceResponseArrayOutput) Index(i pulumi.IntInput) RouterInter
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterInterfaceResponse {
 		return vs[0].([]RouterInterfaceResponse)[vs[1].(int)]
 	}).(RouterInterfaceResponseOutput)
+}
+
+type RouterMd5AuthenticationKey struct {
+	// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+	Key *string `pulumi:"key"`
+	// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+	Name *string `pulumi:"name"`
+}
+
+// RouterMd5AuthenticationKeyInput is an input type that accepts RouterMd5AuthenticationKeyArgs and RouterMd5AuthenticationKeyOutput values.
+// You can construct a concrete instance of `RouterMd5AuthenticationKeyInput` via:
+//
+//          RouterMd5AuthenticationKeyArgs{...}
+type RouterMd5AuthenticationKeyInput interface {
+	pulumi.Input
+
+	ToRouterMd5AuthenticationKeyOutput() RouterMd5AuthenticationKeyOutput
+	ToRouterMd5AuthenticationKeyOutputWithContext(context.Context) RouterMd5AuthenticationKeyOutput
+}
+
+type RouterMd5AuthenticationKeyArgs struct {
+	// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (RouterMd5AuthenticationKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (i RouterMd5AuthenticationKeyArgs) ToRouterMd5AuthenticationKeyOutput() RouterMd5AuthenticationKeyOutput {
+	return i.ToRouterMd5AuthenticationKeyOutputWithContext(context.Background())
+}
+
+func (i RouterMd5AuthenticationKeyArgs) ToRouterMd5AuthenticationKeyOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterMd5AuthenticationKeyOutput)
+}
+
+// RouterMd5AuthenticationKeyArrayInput is an input type that accepts RouterMd5AuthenticationKeyArray and RouterMd5AuthenticationKeyArrayOutput values.
+// You can construct a concrete instance of `RouterMd5AuthenticationKeyArrayInput` via:
+//
+//          RouterMd5AuthenticationKeyArray{ RouterMd5AuthenticationKeyArgs{...} }
+type RouterMd5AuthenticationKeyArrayInput interface {
+	pulumi.Input
+
+	ToRouterMd5AuthenticationKeyArrayOutput() RouterMd5AuthenticationKeyArrayOutput
+	ToRouterMd5AuthenticationKeyArrayOutputWithContext(context.Context) RouterMd5AuthenticationKeyArrayOutput
+}
+
+type RouterMd5AuthenticationKeyArray []RouterMd5AuthenticationKeyInput
+
+func (RouterMd5AuthenticationKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (i RouterMd5AuthenticationKeyArray) ToRouterMd5AuthenticationKeyArrayOutput() RouterMd5AuthenticationKeyArrayOutput {
+	return i.ToRouterMd5AuthenticationKeyArrayOutputWithContext(context.Background())
+}
+
+func (i RouterMd5AuthenticationKeyArray) ToRouterMd5AuthenticationKeyArrayOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterMd5AuthenticationKeyArrayOutput)
+}
+
+type RouterMd5AuthenticationKeyOutput struct{ *pulumi.OutputState }
+
+func (RouterMd5AuthenticationKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (o RouterMd5AuthenticationKeyOutput) ToRouterMd5AuthenticationKeyOutput() RouterMd5AuthenticationKeyOutput {
+	return o
+}
+
+func (o RouterMd5AuthenticationKeyOutput) ToRouterMd5AuthenticationKeyOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyOutput {
+	return o
+}
+
+// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+func (o RouterMd5AuthenticationKeyOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterMd5AuthenticationKey) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+func (o RouterMd5AuthenticationKeyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterMd5AuthenticationKey) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type RouterMd5AuthenticationKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterMd5AuthenticationKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (o RouterMd5AuthenticationKeyArrayOutput) ToRouterMd5AuthenticationKeyArrayOutput() RouterMd5AuthenticationKeyArrayOutput {
+	return o
+}
+
+func (o RouterMd5AuthenticationKeyArrayOutput) ToRouterMd5AuthenticationKeyArrayOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyArrayOutput {
+	return o
+}
+
+func (o RouterMd5AuthenticationKeyArrayOutput) Index(i pulumi.IntInput) RouterMd5AuthenticationKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterMd5AuthenticationKey {
+		return vs[0].([]RouterMd5AuthenticationKey)[vs[1].(int)]
+	}).(RouterMd5AuthenticationKeyOutput)
+}
+
+type RouterMd5AuthenticationKeyResponse struct {
+	// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+	Key string `pulumi:"key"`
+	// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+	Name string `pulumi:"name"`
+}
+
+type RouterMd5AuthenticationKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (RouterMd5AuthenticationKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterMd5AuthenticationKeyResponse)(nil)).Elem()
+}
+
+func (o RouterMd5AuthenticationKeyResponseOutput) ToRouterMd5AuthenticationKeyResponseOutput() RouterMd5AuthenticationKeyResponseOutput {
+	return o
+}
+
+func (o RouterMd5AuthenticationKeyResponseOutput) ToRouterMd5AuthenticationKeyResponseOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyResponseOutput {
+	return o
+}
+
+// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+func (o RouterMd5AuthenticationKeyResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterMd5AuthenticationKeyResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+func (o RouterMd5AuthenticationKeyResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterMd5AuthenticationKeyResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type RouterMd5AuthenticationKeyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterMd5AuthenticationKeyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterMd5AuthenticationKeyResponse)(nil)).Elem()
+}
+
+func (o RouterMd5AuthenticationKeyResponseArrayOutput) ToRouterMd5AuthenticationKeyResponseArrayOutput() RouterMd5AuthenticationKeyResponseArrayOutput {
+	return o
+}
+
+func (o RouterMd5AuthenticationKeyResponseArrayOutput) ToRouterMd5AuthenticationKeyResponseArrayOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyResponseArrayOutput {
+	return o
+}
+
+func (o RouterMd5AuthenticationKeyResponseArrayOutput) Index(i pulumi.IntInput) RouterMd5AuthenticationKeyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterMd5AuthenticationKeyResponse {
+		return vs[0].([]RouterMd5AuthenticationKeyResponse)[vs[1].(int)]
+	}).(RouterMd5AuthenticationKeyResponseOutput)
 }
 
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
@@ -39445,7 +39618,7 @@ type Scheduling struct {
 	MinNodeCpus *int `pulumi:"minNodeCpus"`
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities []SchedulingNodeAffinity `pulumi:"nodeAffinities"`
-	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
 	OnHostMaintenance *SchedulingOnHostMaintenance `pulumi:"onHostMaintenance"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible *bool `pulumi:"preemptible"`
@@ -39494,7 +39667,7 @@ type SchedulingArgs struct {
 	MinNodeCpus pulumi.IntPtrInput `pulumi:"minNodeCpus"`
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities SchedulingNodeAffinityArrayInput `pulumi:"nodeAffinities"`
-	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
 	OnHostMaintenance SchedulingOnHostMaintenancePtrInput `pulumi:"onHostMaintenance"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
@@ -39647,7 +39820,7 @@ func (o SchedulingOutput) NodeAffinities() SchedulingNodeAffinityArrayOutput {
 	return o.ApplyT(func(v Scheduling) []SchedulingNodeAffinity { return v.NodeAffinities }).(SchedulingNodeAffinityArrayOutput)
 }
 
-// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
 func (o SchedulingOutput) OnHostMaintenance() SchedulingOnHostMaintenancePtrOutput {
 	return o.ApplyT(func(v Scheduling) *SchedulingOnHostMaintenance { return v.OnHostMaintenance }).(SchedulingOnHostMaintenancePtrOutput)
 }
@@ -39821,7 +39994,7 @@ func (o SchedulingPtrOutput) NodeAffinities() SchedulingNodeAffinityArrayOutput 
 	}).(SchedulingNodeAffinityArrayOutput)
 }
 
-// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
 func (o SchedulingPtrOutput) OnHostMaintenance() SchedulingOnHostMaintenancePtrOutput {
 	return o.ApplyT(func(v *Scheduling) *SchedulingOnHostMaintenance {
 		if v == nil {
@@ -40067,7 +40240,7 @@ type SchedulingResponse struct {
 	MinNodeCpus int `pulumi:"minNodeCpus"`
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities []SchedulingNodeAffinityResponse `pulumi:"nodeAffinities"`
-	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
 	OnHostMaintenance string `pulumi:"onHostMaintenance"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible bool `pulumi:"preemptible"`
@@ -40157,7 +40330,7 @@ func (o SchedulingResponseOutput) NodeAffinities() SchedulingNodeAffinityRespons
 	return o.ApplyT(func(v SchedulingResponse) []SchedulingNodeAffinityResponse { return v.NodeAffinities }).(SchedulingNodeAffinityResponseArrayOutput)
 }
 
-// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
 func (o SchedulingResponseOutput) OnHostMaintenance() pulumi.StringOutput {
 	return o.ApplyT(func(v SchedulingResponse) string { return v.OnHostMaintenance }).(pulumi.StringOutput)
 }
@@ -50550,6 +50723,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerBfdPtrInput)(nil)).Elem(), RouterBgpPeerBfdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceInput)(nil)).Elem(), RouterInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceArrayInput)(nil)).Elem(), RouterInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterMd5AuthenticationKeyInput)(nil)).Elem(), RouterMd5AuthenticationKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterMd5AuthenticationKeyArrayInput)(nil)).Elem(), RouterMd5AuthenticationKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatInput)(nil)).Elem(), RouterNatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatArrayInput)(nil)).Elem(), RouterNatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatLogConfigInput)(nil)).Elem(), RouterNatLogConfigArgs{})
@@ -51246,6 +51421,10 @@ func init() {
 	pulumi.RegisterOutputType(RouterInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(RouterInterfaceResponseOutput{})
 	pulumi.RegisterOutputType(RouterInterfaceResponseArrayOutput{})
+	pulumi.RegisterOutputType(RouterMd5AuthenticationKeyOutput{})
+	pulumi.RegisterOutputType(RouterMd5AuthenticationKeyArrayOutput{})
+	pulumi.RegisterOutputType(RouterMd5AuthenticationKeyResponseOutput{})
+	pulumi.RegisterOutputType(RouterMd5AuthenticationKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouterNatOutput{})
 	pulumi.RegisterOutputType(RouterNatArrayOutput{})
 	pulumi.RegisterOutputType(RouterNatLogConfigOutput{})

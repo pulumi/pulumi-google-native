@@ -91,6 +91,10 @@ export interface GetDatasetResult {
      * A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
      */
     readonly selfLink: string;
+    /**
+     * [Optional]The tags associated with this dataset. Tag keys are globally unique.
+     */
+    readonly tags: outputs.bigquery.v2.DatasetTagsItemResponse[];
 }
 
 export function getDatasetOutput(args: GetDatasetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetResult> {

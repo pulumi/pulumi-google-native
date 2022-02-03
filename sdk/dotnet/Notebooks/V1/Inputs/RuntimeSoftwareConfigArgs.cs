@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
 {
 
     /// <summary>
-    /// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
+    /// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
     /// </summary>
     public sealed class RuntimeSoftwareConfigArgs : Pulumi.ResourceArgs
     {
@@ -44,6 +44,18 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         /// </summary>
         [Input("installGpuDriver")]
         public Input<bool>? InstallGpuDriver { get; set; }
+
+        [Input("kernels")]
+        private InputList<Inputs.ContainerImageArgs>? _kernels;
+
+        /// <summary>
+        /// Optional. Use a list of container images to use as Kernels in the notebook instance.
+        /// </summary>
+        public InputList<Inputs.ContainerImageArgs> Kernels
+        {
+            get => _kernels ?? (_kernels = new InputList<Inputs.ContainerImageArgs>());
+            set => _kernels = value;
+        }
 
         /// <summary>
         /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).

@@ -120,7 +120,7 @@ export class Product extends pulumi.CustomResource {
      */
     public readonly primaryProductId!: pulumi.Output<string>;
     /**
-     * The promotions applied to the product. A maximum of 10 values are allowed per Product.
+     * The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
      */
     public readonly promotions!: pulumi.Output<outputs.retail.v2.GoogleCloudRetailV2PromotionResponse[]>;
     /**
@@ -362,7 +362,7 @@ export interface ProductArgs {
     productId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * The promotions applied to the product. A maximum of 10 values are allowed per Product.
+     * The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
      */
     promotions?: pulumi.Input<pulumi.Input<inputs.retail.v2.GoogleCloudRetailV2PromotionArgs>[]>;
     /**

@@ -73,7 +73,7 @@ type RegionBackendService struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The resource URL for the security policy associated with this backend service.
 	SecurityPolicy pulumi.StringOutput `pulumi:"securityPolicy"`
-	// This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+	// This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 	SecuritySettings SecuritySettingsResponseOutput `pulumi:"securitySettings"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -181,7 +181,7 @@ type regionBackendServiceArgs struct {
 	Protocol  *RegionBackendServiceProtocol `pulumi:"protocol"`
 	Region    string                        `pulumi:"region"`
 	RequestId *string                       `pulumi:"requestId"`
-	// This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+	// This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 	SecuritySettings *SecuritySettings `pulumi:"securitySettings"`
 	// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
 	ServiceBindings []string `pulumi:"serviceBindings"`
@@ -245,7 +245,7 @@ type RegionBackendServiceArgs struct {
 	Protocol  RegionBackendServiceProtocolPtrInput
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
-	// This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+	// This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 	SecuritySettings SecuritySettingsPtrInput
 	// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
 	ServiceBindings pulumi.StringArrayInput

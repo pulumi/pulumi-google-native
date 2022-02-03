@@ -7484,6 +7484,173 @@ func (in *firewallPolicyRuleDirectionPtr) ToFirewallPolicyRuleDirectionPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyRuleDirectionPtrOutput)
 }
 
+// The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+type FirewallPolicyVpcNetworkScope string
+
+const (
+	// The firewall policy is allowed to be attached only to global networks.
+	FirewallPolicyVpcNetworkScopeGlobalVpcNetwork = FirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK")
+	// The firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. This option is applicable only to regional firewall policies.
+	FirewallPolicyVpcNetworkScopeRegionalVpcNetwork = FirewallPolicyVpcNetworkScope("REGIONAL_VPC_NETWORK")
+)
+
+func (FirewallPolicyVpcNetworkScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyVpcNetworkScope)(nil)).Elem()
+}
+
+func (e FirewallPolicyVpcNetworkScope) ToFirewallPolicyVpcNetworkScopeOutput() FirewallPolicyVpcNetworkScopeOutput {
+	return pulumi.ToOutput(e).(FirewallPolicyVpcNetworkScopeOutput)
+}
+
+func (e FirewallPolicyVpcNetworkScope) ToFirewallPolicyVpcNetworkScopeOutputWithContext(ctx context.Context) FirewallPolicyVpcNetworkScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FirewallPolicyVpcNetworkScopeOutput)
+}
+
+func (e FirewallPolicyVpcNetworkScope) ToFirewallPolicyVpcNetworkScopePtrOutput() FirewallPolicyVpcNetworkScopePtrOutput {
+	return e.ToFirewallPolicyVpcNetworkScopePtrOutputWithContext(context.Background())
+}
+
+func (e FirewallPolicyVpcNetworkScope) ToFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) FirewallPolicyVpcNetworkScopePtrOutput {
+	return FirewallPolicyVpcNetworkScope(e).ToFirewallPolicyVpcNetworkScopeOutputWithContext(ctx).ToFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx)
+}
+
+func (e FirewallPolicyVpcNetworkScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FirewallPolicyVpcNetworkScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FirewallPolicyVpcNetworkScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FirewallPolicyVpcNetworkScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FirewallPolicyVpcNetworkScopeOutput struct{ *pulumi.OutputState }
+
+func (FirewallPolicyVpcNetworkScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyVpcNetworkScope)(nil)).Elem()
+}
+
+func (o FirewallPolicyVpcNetworkScopeOutput) ToFirewallPolicyVpcNetworkScopeOutput() FirewallPolicyVpcNetworkScopeOutput {
+	return o
+}
+
+func (o FirewallPolicyVpcNetworkScopeOutput) ToFirewallPolicyVpcNetworkScopeOutputWithContext(ctx context.Context) FirewallPolicyVpcNetworkScopeOutput {
+	return o
+}
+
+func (o FirewallPolicyVpcNetworkScopeOutput) ToFirewallPolicyVpcNetworkScopePtrOutput() FirewallPolicyVpcNetworkScopePtrOutput {
+	return o.ToFirewallPolicyVpcNetworkScopePtrOutputWithContext(context.Background())
+}
+
+func (o FirewallPolicyVpcNetworkScopeOutput) ToFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) FirewallPolicyVpcNetworkScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallPolicyVpcNetworkScope) *FirewallPolicyVpcNetworkScope {
+		return &v
+	}).(FirewallPolicyVpcNetworkScopePtrOutput)
+}
+
+func (o FirewallPolicyVpcNetworkScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FirewallPolicyVpcNetworkScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FirewallPolicyVpcNetworkScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FirewallPolicyVpcNetworkScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallPolicyVpcNetworkScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FirewallPolicyVpcNetworkScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FirewallPolicyVpcNetworkScopePtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallPolicyVpcNetworkScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallPolicyVpcNetworkScope)(nil)).Elem()
+}
+
+func (o FirewallPolicyVpcNetworkScopePtrOutput) ToFirewallPolicyVpcNetworkScopePtrOutput() FirewallPolicyVpcNetworkScopePtrOutput {
+	return o
+}
+
+func (o FirewallPolicyVpcNetworkScopePtrOutput) ToFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) FirewallPolicyVpcNetworkScopePtrOutput {
+	return o
+}
+
+func (o FirewallPolicyVpcNetworkScopePtrOutput) Elem() FirewallPolicyVpcNetworkScopeOutput {
+	return o.ApplyT(func(v *FirewallPolicyVpcNetworkScope) FirewallPolicyVpcNetworkScope {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallPolicyVpcNetworkScope
+		return ret
+	}).(FirewallPolicyVpcNetworkScopeOutput)
+}
+
+func (o FirewallPolicyVpcNetworkScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallPolicyVpcNetworkScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FirewallPolicyVpcNetworkScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FirewallPolicyVpcNetworkScopeInput is an input type that accepts FirewallPolicyVpcNetworkScopeArgs and FirewallPolicyVpcNetworkScopeOutput values.
+// You can construct a concrete instance of `FirewallPolicyVpcNetworkScopeInput` via:
+//
+//          FirewallPolicyVpcNetworkScopeArgs{...}
+type FirewallPolicyVpcNetworkScopeInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyVpcNetworkScopeOutput() FirewallPolicyVpcNetworkScopeOutput
+	ToFirewallPolicyVpcNetworkScopeOutputWithContext(context.Context) FirewallPolicyVpcNetworkScopeOutput
+}
+
+var firewallPolicyVpcNetworkScopePtrType = reflect.TypeOf((**FirewallPolicyVpcNetworkScope)(nil)).Elem()
+
+type FirewallPolicyVpcNetworkScopePtrInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyVpcNetworkScopePtrOutput() FirewallPolicyVpcNetworkScopePtrOutput
+	ToFirewallPolicyVpcNetworkScopePtrOutputWithContext(context.Context) FirewallPolicyVpcNetworkScopePtrOutput
+}
+
+type firewallPolicyVpcNetworkScopePtr string
+
+func FirewallPolicyVpcNetworkScopePtr(v string) FirewallPolicyVpcNetworkScopePtrInput {
+	return (*firewallPolicyVpcNetworkScopePtr)(&v)
+}
+
+func (*firewallPolicyVpcNetworkScopePtr) ElementType() reflect.Type {
+	return firewallPolicyVpcNetworkScopePtrType
+}
+
+func (in *firewallPolicyVpcNetworkScopePtr) ToFirewallPolicyVpcNetworkScopePtrOutput() FirewallPolicyVpcNetworkScopePtrOutput {
+	return pulumi.ToOutput(in).(FirewallPolicyVpcNetworkScopePtrOutput)
+}
+
+func (in *firewallPolicyVpcNetworkScopePtr) ToFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) FirewallPolicyVpcNetworkScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyVpcNetworkScopePtrOutput)
+}
+
 // The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 type ForwardingRuleIpProtocol string
 
@@ -17301,6 +17468,173 @@ func (in *networkEndpointGroupTypePtr) ToNetworkEndpointGroupTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkEndpointGroupTypePtrOutput)
 }
 
+// The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+type NetworkFirewallPolicyVpcNetworkScope string
+
+const (
+	// The firewall policy is allowed to be attached only to global networks.
+	NetworkFirewallPolicyVpcNetworkScopeGlobalVpcNetwork = NetworkFirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK")
+	// The firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. This option is applicable only to regional firewall policies.
+	NetworkFirewallPolicyVpcNetworkScopeRegionalVpcNetwork = NetworkFirewallPolicyVpcNetworkScope("REGIONAL_VPC_NETWORK")
+)
+
+func (NetworkFirewallPolicyVpcNetworkScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkFirewallPolicyVpcNetworkScope)(nil)).Elem()
+}
+
+func (e NetworkFirewallPolicyVpcNetworkScope) ToNetworkFirewallPolicyVpcNetworkScopeOutput() NetworkFirewallPolicyVpcNetworkScopeOutput {
+	return pulumi.ToOutput(e).(NetworkFirewallPolicyVpcNetworkScopeOutput)
+}
+
+func (e NetworkFirewallPolicyVpcNetworkScope) ToNetworkFirewallPolicyVpcNetworkScopeOutputWithContext(ctx context.Context) NetworkFirewallPolicyVpcNetworkScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkFirewallPolicyVpcNetworkScopeOutput)
+}
+
+func (e NetworkFirewallPolicyVpcNetworkScope) ToNetworkFirewallPolicyVpcNetworkScopePtrOutput() NetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return e.ToNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(context.Background())
+}
+
+func (e NetworkFirewallPolicyVpcNetworkScope) ToNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) NetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return NetworkFirewallPolicyVpcNetworkScope(e).ToNetworkFirewallPolicyVpcNetworkScopeOutputWithContext(ctx).ToNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx)
+}
+
+func (e NetworkFirewallPolicyVpcNetworkScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkFirewallPolicyVpcNetworkScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkFirewallPolicyVpcNetworkScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkFirewallPolicyVpcNetworkScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkFirewallPolicyVpcNetworkScopeOutput struct{ *pulumi.OutputState }
+
+func (NetworkFirewallPolicyVpcNetworkScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkFirewallPolicyVpcNetworkScope)(nil)).Elem()
+}
+
+func (o NetworkFirewallPolicyVpcNetworkScopeOutput) ToNetworkFirewallPolicyVpcNetworkScopeOutput() NetworkFirewallPolicyVpcNetworkScopeOutput {
+	return o
+}
+
+func (o NetworkFirewallPolicyVpcNetworkScopeOutput) ToNetworkFirewallPolicyVpcNetworkScopeOutputWithContext(ctx context.Context) NetworkFirewallPolicyVpcNetworkScopeOutput {
+	return o
+}
+
+func (o NetworkFirewallPolicyVpcNetworkScopeOutput) ToNetworkFirewallPolicyVpcNetworkScopePtrOutput() NetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return o.ToNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkFirewallPolicyVpcNetworkScopeOutput) ToNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) NetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkFirewallPolicyVpcNetworkScope) *NetworkFirewallPolicyVpcNetworkScope {
+		return &v
+	}).(NetworkFirewallPolicyVpcNetworkScopePtrOutput)
+}
+
+func (o NetworkFirewallPolicyVpcNetworkScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkFirewallPolicyVpcNetworkScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkFirewallPolicyVpcNetworkScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkFirewallPolicyVpcNetworkScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkFirewallPolicyVpcNetworkScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkFirewallPolicyVpcNetworkScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkFirewallPolicyVpcNetworkScopePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkFirewallPolicyVpcNetworkScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkFirewallPolicyVpcNetworkScope)(nil)).Elem()
+}
+
+func (o NetworkFirewallPolicyVpcNetworkScopePtrOutput) ToNetworkFirewallPolicyVpcNetworkScopePtrOutput() NetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return o
+}
+
+func (o NetworkFirewallPolicyVpcNetworkScopePtrOutput) ToNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) NetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return o
+}
+
+func (o NetworkFirewallPolicyVpcNetworkScopePtrOutput) Elem() NetworkFirewallPolicyVpcNetworkScopeOutput {
+	return o.ApplyT(func(v *NetworkFirewallPolicyVpcNetworkScope) NetworkFirewallPolicyVpcNetworkScope {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkFirewallPolicyVpcNetworkScope
+		return ret
+	}).(NetworkFirewallPolicyVpcNetworkScopeOutput)
+}
+
+func (o NetworkFirewallPolicyVpcNetworkScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkFirewallPolicyVpcNetworkScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkFirewallPolicyVpcNetworkScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkFirewallPolicyVpcNetworkScopeInput is an input type that accepts NetworkFirewallPolicyVpcNetworkScopeArgs and NetworkFirewallPolicyVpcNetworkScopeOutput values.
+// You can construct a concrete instance of `NetworkFirewallPolicyVpcNetworkScopeInput` via:
+//
+//          NetworkFirewallPolicyVpcNetworkScopeArgs{...}
+type NetworkFirewallPolicyVpcNetworkScopeInput interface {
+	pulumi.Input
+
+	ToNetworkFirewallPolicyVpcNetworkScopeOutput() NetworkFirewallPolicyVpcNetworkScopeOutput
+	ToNetworkFirewallPolicyVpcNetworkScopeOutputWithContext(context.Context) NetworkFirewallPolicyVpcNetworkScopeOutput
+}
+
+var networkFirewallPolicyVpcNetworkScopePtrType = reflect.TypeOf((**NetworkFirewallPolicyVpcNetworkScope)(nil)).Elem()
+
+type NetworkFirewallPolicyVpcNetworkScopePtrInput interface {
+	pulumi.Input
+
+	ToNetworkFirewallPolicyVpcNetworkScopePtrOutput() NetworkFirewallPolicyVpcNetworkScopePtrOutput
+	ToNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(context.Context) NetworkFirewallPolicyVpcNetworkScopePtrOutput
+}
+
+type networkFirewallPolicyVpcNetworkScopePtr string
+
+func NetworkFirewallPolicyVpcNetworkScopePtr(v string) NetworkFirewallPolicyVpcNetworkScopePtrInput {
+	return (*networkFirewallPolicyVpcNetworkScopePtr)(&v)
+}
+
+func (*networkFirewallPolicyVpcNetworkScopePtr) ElementType() reflect.Type {
+	return networkFirewallPolicyVpcNetworkScopePtrType
+}
+
+func (in *networkFirewallPolicyVpcNetworkScopePtr) ToNetworkFirewallPolicyVpcNetworkScopePtrOutput() NetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return pulumi.ToOutput(in).(NetworkFirewallPolicyVpcNetworkScopePtrOutput)
+}
+
+func (in *networkFirewallPolicyVpcNetworkScopePtr) ToNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) NetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkFirewallPolicyVpcNetworkScopePtrOutput)
+}
+
 // The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 type NetworkInterfaceNicType string
 
@@ -22208,6 +22542,337 @@ func (in *regionNetworkEndpointGroupTypePtr) ToRegionNetworkEndpointGroupTypePtr
 
 func (in *regionNetworkEndpointGroupTypePtr) ToRegionNetworkEndpointGroupTypePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionNetworkEndpointGroupTypePtrOutput)
+}
+
+// The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+type RegionNetworkFirewallPolicyVpcNetworkScope string
+
+const (
+	// The firewall policy is allowed to be attached only to global networks.
+	RegionNetworkFirewallPolicyVpcNetworkScopeGlobalVpcNetwork = RegionNetworkFirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK")
+	// The firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. This option is applicable only to regional firewall policies.
+	RegionNetworkFirewallPolicyVpcNetworkScopeRegionalVpcNetwork = RegionNetworkFirewallPolicyVpcNetworkScope("REGIONAL_VPC_NETWORK")
+)
+
+func (RegionNetworkFirewallPolicyVpcNetworkScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkFirewallPolicyVpcNetworkScope)(nil)).Elem()
+}
+
+func (e RegionNetworkFirewallPolicyVpcNetworkScope) ToRegionNetworkFirewallPolicyVpcNetworkScopeOutput() RegionNetworkFirewallPolicyVpcNetworkScopeOutput {
+	return pulumi.ToOutput(e).(RegionNetworkFirewallPolicyVpcNetworkScopeOutput)
+}
+
+func (e RegionNetworkFirewallPolicyVpcNetworkScope) ToRegionNetworkFirewallPolicyVpcNetworkScopeOutputWithContext(ctx context.Context) RegionNetworkFirewallPolicyVpcNetworkScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionNetworkFirewallPolicyVpcNetworkScopeOutput)
+}
+
+func (e RegionNetworkFirewallPolicyVpcNetworkScope) ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutput() RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return e.ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(context.Background())
+}
+
+func (e RegionNetworkFirewallPolicyVpcNetworkScope) ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return RegionNetworkFirewallPolicyVpcNetworkScope(e).ToRegionNetworkFirewallPolicyVpcNetworkScopeOutputWithContext(ctx).ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx)
+}
+
+func (e RegionNetworkFirewallPolicyVpcNetworkScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionNetworkFirewallPolicyVpcNetworkScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionNetworkFirewallPolicyVpcNetworkScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionNetworkFirewallPolicyVpcNetworkScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionNetworkFirewallPolicyVpcNetworkScopeOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkFirewallPolicyVpcNetworkScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkFirewallPolicyVpcNetworkScope)(nil)).Elem()
+}
+
+func (o RegionNetworkFirewallPolicyVpcNetworkScopeOutput) ToRegionNetworkFirewallPolicyVpcNetworkScopeOutput() RegionNetworkFirewallPolicyVpcNetworkScopeOutput {
+	return o
+}
+
+func (o RegionNetworkFirewallPolicyVpcNetworkScopeOutput) ToRegionNetworkFirewallPolicyVpcNetworkScopeOutputWithContext(ctx context.Context) RegionNetworkFirewallPolicyVpcNetworkScopeOutput {
+	return o
+}
+
+func (o RegionNetworkFirewallPolicyVpcNetworkScopeOutput) ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutput() RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return o.ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkFirewallPolicyVpcNetworkScopeOutput) ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionNetworkFirewallPolicyVpcNetworkScope) *RegionNetworkFirewallPolicyVpcNetworkScope {
+		return &v
+	}).(RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput)
+}
+
+func (o RegionNetworkFirewallPolicyVpcNetworkScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkFirewallPolicyVpcNetworkScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionNetworkFirewallPolicyVpcNetworkScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionNetworkFirewallPolicyVpcNetworkScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkFirewallPolicyVpcNetworkScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionNetworkFirewallPolicyVpcNetworkScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkFirewallPolicyVpcNetworkScope)(nil)).Elem()
+}
+
+func (o RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput) ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutput() RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return o
+}
+
+func (o RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput) ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return o
+}
+
+func (o RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput) Elem() RegionNetworkFirewallPolicyVpcNetworkScopeOutput {
+	return o.ApplyT(func(v *RegionNetworkFirewallPolicyVpcNetworkScope) RegionNetworkFirewallPolicyVpcNetworkScope {
+		if v != nil {
+			return *v
+		}
+		var ret RegionNetworkFirewallPolicyVpcNetworkScope
+		return ret
+	}).(RegionNetworkFirewallPolicyVpcNetworkScopeOutput)
+}
+
+func (o RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionNetworkFirewallPolicyVpcNetworkScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionNetworkFirewallPolicyVpcNetworkScopeInput is an input type that accepts RegionNetworkFirewallPolicyVpcNetworkScopeArgs and RegionNetworkFirewallPolicyVpcNetworkScopeOutput values.
+// You can construct a concrete instance of `RegionNetworkFirewallPolicyVpcNetworkScopeInput` via:
+//
+//          RegionNetworkFirewallPolicyVpcNetworkScopeArgs{...}
+type RegionNetworkFirewallPolicyVpcNetworkScopeInput interface {
+	pulumi.Input
+
+	ToRegionNetworkFirewallPolicyVpcNetworkScopeOutput() RegionNetworkFirewallPolicyVpcNetworkScopeOutput
+	ToRegionNetworkFirewallPolicyVpcNetworkScopeOutputWithContext(context.Context) RegionNetworkFirewallPolicyVpcNetworkScopeOutput
+}
+
+var regionNetworkFirewallPolicyVpcNetworkScopePtrType = reflect.TypeOf((**RegionNetworkFirewallPolicyVpcNetworkScope)(nil)).Elem()
+
+type RegionNetworkFirewallPolicyVpcNetworkScopePtrInput interface {
+	pulumi.Input
+
+	ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutput() RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput
+	ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(context.Context) RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput
+}
+
+type regionNetworkFirewallPolicyVpcNetworkScopePtr string
+
+func RegionNetworkFirewallPolicyVpcNetworkScopePtr(v string) RegionNetworkFirewallPolicyVpcNetworkScopePtrInput {
+	return (*regionNetworkFirewallPolicyVpcNetworkScopePtr)(&v)
+}
+
+func (*regionNetworkFirewallPolicyVpcNetworkScopePtr) ElementType() reflect.Type {
+	return regionNetworkFirewallPolicyVpcNetworkScopePtrType
+}
+
+func (in *regionNetworkFirewallPolicyVpcNetworkScopePtr) ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutput() RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return pulumi.ToOutput(in).(RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput)
+}
+
+func (in *regionNetworkFirewallPolicyVpcNetworkScopePtr) ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput)
+}
+
+type RegionNetworkNetworkFirewallPolicyEnforcementOrder string
+
+const (
+	RegionNetworkNetworkFirewallPolicyEnforcementOrderAfterClassicFirewall  = RegionNetworkNetworkFirewallPolicyEnforcementOrder("AFTER_CLASSIC_FIREWALL")
+	RegionNetworkNetworkFirewallPolicyEnforcementOrderBeforeClassicFirewall = RegionNetworkNetworkFirewallPolicyEnforcementOrder("BEFORE_CLASSIC_FIREWALL")
+)
+
+func (RegionNetworkNetworkFirewallPolicyEnforcementOrder) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkNetworkFirewallPolicyEnforcementOrder)(nil)).Elem()
+}
+
+func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput {
+	return pulumi.ToOutput(e).(RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput)
+}
+
+func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderOutputWithContext(ctx context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput)
+}
+
+func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return e.ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(context.Background())
+}
+
+func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return RegionNetworkNetworkFirewallPolicyEnforcementOrder(e).ToRegionNetworkNetworkFirewallPolicyEnforcementOrderOutputWithContext(ctx).ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx)
+}
+
+func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkNetworkFirewallPolicyEnforcementOrder)(nil)).Elem()
+}
+
+func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput {
+	return o
+}
+
+func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderOutputWithContext(ctx context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput {
+	return o
+}
+
+func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return o.ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionNetworkNetworkFirewallPolicyEnforcementOrder) *RegionNetworkNetworkFirewallPolicyEnforcementOrder {
+		return &v
+	}).(RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput)
+}
+
+func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionNetworkNetworkFirewallPolicyEnforcementOrder) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionNetworkNetworkFirewallPolicyEnforcementOrder) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkNetworkFirewallPolicyEnforcementOrder)(nil)).Elem()
+}
+
+func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return o
+}
+
+func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return o
+}
+
+func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) Elem() RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput {
+	return o.ApplyT(func(v *RegionNetworkNetworkFirewallPolicyEnforcementOrder) RegionNetworkNetworkFirewallPolicyEnforcementOrder {
+		if v != nil {
+			return *v
+		}
+		var ret RegionNetworkNetworkFirewallPolicyEnforcementOrder
+		return ret
+	}).(RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput)
+}
+
+func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionNetworkNetworkFirewallPolicyEnforcementOrder) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionNetworkNetworkFirewallPolicyEnforcementOrderInput is an input type that accepts RegionNetworkNetworkFirewallPolicyEnforcementOrderArgs and RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput values.
+// You can construct a concrete instance of `RegionNetworkNetworkFirewallPolicyEnforcementOrderInput` via:
+//
+//          RegionNetworkNetworkFirewallPolicyEnforcementOrderArgs{...}
+type RegionNetworkNetworkFirewallPolicyEnforcementOrderInput interface {
+	pulumi.Input
+
+	ToRegionNetworkNetworkFirewallPolicyEnforcementOrderOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput
+	ToRegionNetworkNetworkFirewallPolicyEnforcementOrderOutputWithContext(context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput
+}
+
+var regionNetworkNetworkFirewallPolicyEnforcementOrderPtrType = reflect.TypeOf((**RegionNetworkNetworkFirewallPolicyEnforcementOrder)(nil)).Elem()
+
+type RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrInput interface {
+	pulumi.Input
+
+	ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput
+	ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput
+}
+
+type regionNetworkNetworkFirewallPolicyEnforcementOrderPtr string
+
+func RegionNetworkNetworkFirewallPolicyEnforcementOrderPtr(v string) RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrInput {
+	return (*regionNetworkNetworkFirewallPolicyEnforcementOrderPtr)(&v)
+}
+
+func (*regionNetworkNetworkFirewallPolicyEnforcementOrderPtr) ElementType() reflect.Type {
+	return regionNetworkNetworkFirewallPolicyEnforcementOrderPtrType
+}
+
+func (in *regionNetworkNetworkFirewallPolicyEnforcementOrderPtr) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return pulumi.ToOutput(in).(RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput)
+}
+
+func (in *regionNetworkNetworkFirewallPolicyEnforcementOrderPtr) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput)
 }
 
 // The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
@@ -28045,7 +28710,7 @@ func (in *schedulingNodeAffinityOperatorPtr) ToSchedulingNodeAffinityOperatorPtr
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingNodeAffinityOperatorPtrOutput)
 }
 
-// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
 type SchedulingOnHostMaintenance string
 
 const (
@@ -34675,6 +35340,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallLogConfigMetadataPtrInput)(nil)).Elem(), FirewallLogConfigMetadata("EXCLUDE_ALL_METADATA"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyRuleDirectionInput)(nil)).Elem(), FirewallPolicyRuleDirection("EGRESS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyRuleDirectionPtrInput)(nil)).Elem(), FirewallPolicyRuleDirection("EGRESS"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyVpcNetworkScopeInput)(nil)).Elem(), FirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyVpcNetworkScopePtrInput)(nil)).Elem(), FirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleIpProtocolInput)(nil)).Elem(), ForwardingRuleIpProtocol("AH"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleIpProtocolPtrInput)(nil)).Elem(), ForwardingRuleIpProtocol("AH"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleIpVersionInput)(nil)).Elem(), ForwardingRuleIpVersion("IPV4"))
@@ -34791,6 +35458,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupNetworkEndpointTypePtrInput)(nil)).Elem(), NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupTypeInput)(nil)).Elem(), NetworkEndpointGroupType("LOAD_BALANCING"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupTypePtrInput)(nil)).Elem(), NetworkEndpointGroupType("LOAD_BALANCING"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkFirewallPolicyVpcNetworkScopeInput)(nil)).Elem(), NetworkFirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkFirewallPolicyVpcNetworkScopePtrInput)(nil)).Elem(), NetworkFirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceNicTypeInput)(nil)).Elem(), NetworkInterfaceNicType("GVNIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceNicTypePtrInput)(nil)).Elem(), NetworkInterfaceNicType("GVNIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceStackTypeInput)(nil)).Elem(), NetworkInterfaceStackType("IPV4_IPV6"))
@@ -34849,6 +35518,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupNetworkEndpointTypePtrInput)(nil)).Elem(), RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupTypeInput)(nil)).Elem(), RegionNetworkEndpointGroupType("LOAD_BALANCING"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupTypePtrInput)(nil)).Elem(), RegionNetworkEndpointGroupType("LOAD_BALANCING"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkFirewallPolicyVpcNetworkScopeInput)(nil)).Elem(), RegionNetworkFirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkFirewallPolicyVpcNetworkScopePtrInput)(nil)).Elem(), RegionNetworkFirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkNetworkFirewallPolicyEnforcementOrderInput)(nil)).Elem(), RegionNetworkNetworkFirewallPolicyEnforcementOrder("AFTER_CLASSIC_FIREWALL"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrInput)(nil)).Elem(), RegionNetworkNetworkFirewallPolicyEnforcementOrder("AFTER_CLASSIC_FIREWALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyTypeInput)(nil)).Elem(), RegionSecurityPolicyType("CLOUD_ARMOR"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyTypePtrInput)(nil)).Elem(), RegionSecurityPolicyType("CLOUD_ARMOR"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslCertificateTypeInput)(nil)).Elem(), RegionSslCertificateType("MANAGED"))
@@ -35086,6 +35759,8 @@ func init() {
 	pulumi.RegisterOutputType(FirewallLogConfigMetadataPtrOutput{})
 	pulumi.RegisterOutputType(FirewallPolicyRuleDirectionOutput{})
 	pulumi.RegisterOutputType(FirewallPolicyRuleDirectionPtrOutput{})
+	pulumi.RegisterOutputType(FirewallPolicyVpcNetworkScopeOutput{})
+	pulumi.RegisterOutputType(FirewallPolicyVpcNetworkScopePtrOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleIpProtocolOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleIpProtocolPtrOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleIpVersionOutput{})
@@ -35202,6 +35877,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkEndpointGroupNetworkEndpointTypePtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupTypeOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupTypePtrOutput{})
+	pulumi.RegisterOutputType(NetworkFirewallPolicyVpcNetworkScopeOutput{})
+	pulumi.RegisterOutputType(NetworkFirewallPolicyVpcNetworkScopePtrOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceNicTypeOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceNicTypePtrOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceStackTypeOutput{})
@@ -35260,6 +35937,10 @@ func init() {
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupTypeOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupTypePtrOutput{})
+	pulumi.RegisterOutputType(RegionNetworkFirewallPolicyVpcNetworkScopeOutput{})
+	pulumi.RegisterOutputType(RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput{})
+	pulumi.RegisterOutputType(RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput{})
+	pulumi.RegisterOutputType(RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput{})
 	pulumi.RegisterOutputType(RegionSecurityPolicyTypeOutput{})
 	pulumi.RegisterOutputType(RegionSecurityPolicyTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionSslCertificateTypeOutput{})

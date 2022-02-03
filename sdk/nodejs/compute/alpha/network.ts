@@ -81,6 +81,10 @@ export class Network extends pulumi.CustomResource {
      */
     public /*out*/ readonly peerings!: pulumi.Output<outputs.compute.alpha.NetworkPeeringResponse[]>;
     /**
+     * URL of the region where the regional network resides. This field is not applicable to global network. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     */
+    public /*out*/ readonly region!: pulumi.Output<string>;
+    /**
      * The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
      */
     public readonly routingConfig!: pulumi.Output<outputs.compute.alpha.NetworkRoutingConfigResponse>;
@@ -123,6 +127,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["gatewayIPv4"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["peerings"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["subnetworks"] = undefined /*out*/;
@@ -139,6 +144,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkFirewallPolicyEnforcementOrder"] = undefined /*out*/;
             resourceInputs["peerings"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
             resourceInputs["routingConfig"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;

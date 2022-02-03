@@ -288,7 +288,7 @@ class GetProductResult:
     @pulumi.getter
     def promotions(self) -> Sequence['outputs.GoogleCloudRetailV2PromotionResponse']:
         """
-        The promotions applied to the product. A maximum of 10 values are allowed per Product.
+        The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
         """
         return pulumi.get(self, "promotions")
 

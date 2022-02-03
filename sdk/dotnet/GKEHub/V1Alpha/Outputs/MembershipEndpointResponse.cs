@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
     public sealed class MembershipEndpointResponse
     {
         /// <summary>
+        /// Optional. Specific information for a Google Edge cluster.
+        /// </summary>
+        public readonly Outputs.EdgeClusterResponse EdgeCluster;
+        /// <summary>
         /// Optional. Specific information for a GKE-on-GCP cluster.
         /// </summary>
         public readonly Outputs.GkeClusterResponse GkeCluster;
@@ -39,6 +43,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 
         [OutputConstructor]
         private MembershipEndpointResponse(
+            Outputs.EdgeClusterResponse edgeCluster,
+
             Outputs.GkeClusterResponse gkeCluster,
 
             Outputs.KubernetesMetadataResponse kubernetesMetadata,
@@ -49,6 +55,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 
             Outputs.OnPremClusterResponse onPremCluster)
         {
+            EdgeCluster = edgeCluster;
             GkeCluster = gkeCluster;
             KubernetesMetadata = kubernetesMetadata;
             KubernetesResource = kubernetesResource;

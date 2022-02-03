@@ -100,10 +100,6 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly string ImageLocation;
         /// <summary>
-        /// Optional. Inactive indicates the connection is active to use or not.
-        /// </summary>
-        public readonly bool Inactive;
-        /// <summary>
         /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -128,6 +124,10 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly Outputs.ConnectionStatusResponse Status;
         /// <summary>
+        /// Optional. Suspended indicates if a user has suspended a connection or not.
+        /// </summary>
+        public readonly bool Suspended;
+        /// <summary>
         /// Updated time.
         /// </summary>
         public readonly string UpdateTime;
@@ -150,8 +150,6 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
             string imageLocation,
 
-            bool inactive,
-
             ImmutableDictionary<string, string> labels,
 
             Outputs.LockConfigResponse lockConfig,
@@ -164,6 +162,8 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
             Outputs.ConnectionStatusResponse status,
 
+            bool suspended,
+
             string updateTime)
         {
             AuthConfig = authConfig;
@@ -174,13 +174,13 @@ namespace Pulumi.GoogleNative.Connectors.V1
             EgressBackends = egressBackends;
             EnvoyImageLocation = envoyImageLocation;
             ImageLocation = imageLocation;
-            Inactive = inactive;
             Labels = labels;
             LockConfig = lockConfig;
             Name = name;
             ServiceAccount = serviceAccount;
             ServiceDirectory = serviceDirectory;
             Status = status;
+            Suspended = suspended;
             UpdateTime = updateTime;
         }
     }

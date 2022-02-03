@@ -49,6 +49,7 @@ __all__ = [
     'FirewallDirection',
     'FirewallLogConfigMetadata',
     'FirewallPolicyRuleDirection',
+    'FirewallPolicyVpcNetworkScope',
     'ForwardingRuleIpProtocol',
     'ForwardingRuleIpVersion',
     'ForwardingRuleLoadBalancingScheme',
@@ -107,6 +108,7 @@ __all__ = [
     'MetadataFilterFilterMatchCriteria',
     'NetworkEndpointGroupNetworkEndpointType',
     'NetworkEndpointGroupType',
+    'NetworkFirewallPolicyVpcNetworkScope',
     'NetworkInterfaceNicType',
     'NetworkInterfaceStackType',
     'NetworkInterfaceSubInterfaceIpAllocationMode',
@@ -136,6 +138,8 @@ __all__ = [
     'RegionInstanceGroupManagerFailoverAction',
     'RegionNetworkEndpointGroupNetworkEndpointType',
     'RegionNetworkEndpointGroupType',
+    'RegionNetworkFirewallPolicyVpcNetworkScope',
+    'RegionNetworkNetworkFirewallPolicyEnforcementOrder',
     'RegionSecurityPolicyType',
     'RegionSslCertificateType',
     'RegionSslPolicyMinTlsVersion',
@@ -1038,6 +1042,20 @@ class FirewallPolicyRuleDirection(str, Enum):
     """
     EGRESS = "EGRESS"
     INGRESS = "INGRESS"
+
+
+class FirewallPolicyVpcNetworkScope(str, Enum):
+    """
+    The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+    """
+    GLOBAL_VPC_NETWORK = "GLOBAL_VPC_NETWORK"
+    """
+    The firewall policy is allowed to be attached only to global networks.
+    """
+    REGIONAL_VPC_NETWORK = "REGIONAL_VPC_NETWORK"
+    """
+    The firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. This option is applicable only to regional firewall policies.
+    """
 
 
 class ForwardingRuleIpProtocol(str, Enum):
@@ -2041,6 +2059,20 @@ class NetworkEndpointGroupType(str, Enum):
     """
 
 
+class NetworkFirewallPolicyVpcNetworkScope(str, Enum):
+    """
+    The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+    """
+    GLOBAL_VPC_NETWORK = "GLOBAL_VPC_NETWORK"
+    """
+    The firewall policy is allowed to be attached only to global networks.
+    """
+    REGIONAL_VPC_NETWORK = "REGIONAL_VPC_NETWORK"
+    """
+    The firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. This option is applicable only to regional firewall policies.
+    """
+
+
 class NetworkInterfaceNicType(str, Enum):
     """
     The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -2519,6 +2551,25 @@ class RegionNetworkEndpointGroupType(str, Enum):
     """
 
 
+class RegionNetworkFirewallPolicyVpcNetworkScope(str, Enum):
+    """
+    The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+    """
+    GLOBAL_VPC_NETWORK = "GLOBAL_VPC_NETWORK"
+    """
+    The firewall policy is allowed to be attached only to global networks.
+    """
+    REGIONAL_VPC_NETWORK = "REGIONAL_VPC_NETWORK"
+    """
+    The firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. This option is applicable only to regional firewall policies.
+    """
+
+
+class RegionNetworkNetworkFirewallPolicyEnforcementOrder(str, Enum):
+    AFTER_CLASSIC_FIREWALL = "AFTER_CLASSIC_FIREWALL"
+    BEFORE_CLASSIC_FIREWALL = "BEFORE_CLASSIC_FIREWALL"
+
+
 class RegionSecurityPolicyType(str, Enum):
     """
     The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
@@ -2989,7 +3040,7 @@ class SchedulingNodeAffinityOperator(str, Enum):
 
 class SchedulingOnHostMaintenance(str, Enum):
     """
-    Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
+    Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
     """
     MIGRATE = "MIGRATE"
     """

@@ -7,7 +7,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new Target in a given project and location.
- * Auto-naming is currently not supported for this resource.
  */
 export class Target extends pulumi.CustomResource {
     /**
@@ -41,6 +40,10 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Information specifying an Anthos Cluster.
+     */
+    public readonly anthosCluster!: pulumi.Output<outputs.clouddeploy.v1.AnthosClusterResponse>;
+    /**
      * Time at which the `Target` was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -65,7 +68,7 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+     * Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -100,6 +103,7 @@ export class Target extends pulumi.CustomResource {
                 throw new Error("Missing required property 'targetId'");
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["anthosCluster"] = args ? args.anthosCluster : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["executionConfigs"] = args ? args.executionConfigs : undefined;
@@ -117,6 +121,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["annotations"] = undefined /*out*/;
+            resourceInputs["anthosCluster"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -143,6 +148,10 @@ export interface TargetArgs {
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Information specifying an Anthos Cluster.
+     */
+    anthosCluster?: pulumi.Input<inputs.clouddeploy.v1.AnthosClusterArgs>;
+    /**
      * Optional. Description of the `Target`. Max length is 255 characters.
      */
     description?: pulumi.Input<string>;
@@ -164,7 +173,7 @@ export interface TargetArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+     * Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

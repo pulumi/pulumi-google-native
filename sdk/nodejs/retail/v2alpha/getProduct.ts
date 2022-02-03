@@ -117,7 +117,7 @@ export interface GetProductResult {
      */
     readonly primaryProductId: string;
     /**
-     * The promotions applied to the product. A maximum of 10 values are allowed per Product.
+     * The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
      */
     readonly promotions: outputs.retail.v2alpha.GoogleCloudRetailV2alphaPromotionResponse[];
     /**

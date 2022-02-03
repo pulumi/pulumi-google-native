@@ -22,13 +22,15 @@ class RegionNetworkFirewallPolicyArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleArgs']]]] = None,
-                 short_name: Optional[pulumi.Input[str]] = None):
+                 short_name: Optional[pulumi.Input[str]] = None,
+                 vpc_network_scope: Optional[pulumi.Input['RegionNetworkFirewallPolicyVpcNetworkScope']] = None):
         """
         The set of arguments for constructing a RegionNetworkFirewallPolicy resource.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyAssociationArgs']]] associations: A list of associations that belong to this firewall policy.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleArgs']]] rules: A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
         :param pulumi.Input[str] short_name: User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input['RegionNetworkFirewallPolicyVpcNetworkScope'] vpc_network_scope: The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
         """
         pulumi.set(__self__, "region", region)
         if associations is not None:
@@ -43,6 +45,8 @@ class RegionNetworkFirewallPolicyArgs:
             pulumi.set(__self__, "rules", rules)
         if short_name is not None:
             pulumi.set(__self__, "short_name", short_name)
+        if vpc_network_scope is not None:
+            pulumi.set(__self__, "vpc_network_scope", vpc_network_scope)
 
     @property
     @pulumi.getter
@@ -119,6 +123,18 @@ class RegionNetworkFirewallPolicyArgs:
     def short_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "short_name", value)
 
+    @property
+    @pulumi.getter(name="vpcNetworkScope")
+    def vpc_network_scope(self) -> Optional[pulumi.Input['RegionNetworkFirewallPolicyVpcNetworkScope']]:
+        """
+        The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+        """
+        return pulumi.get(self, "vpc_network_scope")
+
+    @vpc_network_scope.setter
+    def vpc_network_scope(self, value: Optional[pulumi.Input['RegionNetworkFirewallPolicyVpcNetworkScope']]):
+        pulumi.set(self, "vpc_network_scope", value)
+
 
 class RegionNetworkFirewallPolicy(pulumi.CustomResource):
     @overload
@@ -132,6 +148,7 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallPolicyRuleArgs']]]]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
+                 vpc_network_scope: Optional[pulumi.Input['RegionNetworkFirewallPolicyVpcNetworkScope']] = None,
                  __props__=None):
         """
         Creates a new network firewall policy in the specified project and region.
@@ -143,6 +160,7 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallPolicyRuleArgs']]]] rules: A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
         :param pulumi.Input[str] short_name: User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input['RegionNetworkFirewallPolicyVpcNetworkScope'] vpc_network_scope: The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
         """
         ...
     @overload
@@ -176,6 +194,7 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallPolicyRuleArgs']]]]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
+                 vpc_network_scope: Optional[pulumi.Input['RegionNetworkFirewallPolicyVpcNetworkScope']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -197,6 +216,7 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["rules"] = rules
             __props__.__dict__["short_name"] = short_name
+            __props__.__dict__["vpc_network_scope"] = vpc_network_scope
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
@@ -240,6 +260,7 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["short_name"] = None
+        __props__.__dict__["vpc_network_scope"] = None
         return RegionNetworkFirewallPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -345,4 +366,12 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "short_name")
+
+    @property
+    @pulumi.getter(name="vpcNetworkScope")
+    def vpc_network_scope(self) -> pulumi.Output[str]:
+        """
+        The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+        """
+        return pulumi.get(self, "vpc_network_scope")
 

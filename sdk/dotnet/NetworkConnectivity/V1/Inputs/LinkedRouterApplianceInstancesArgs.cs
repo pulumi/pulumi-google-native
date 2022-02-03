@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Inputs
         }
 
         /// <summary>
-        /// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+        /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         /// </summary>
         [Input("siteToSiteDataTransfer")]
         public Input<bool>? SiteToSiteDataTransfer { get; set; }

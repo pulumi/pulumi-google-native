@@ -2328,7 +2328,7 @@ func (o GoogleCloudRunOpV2SecretVolumeSourceResponseOutput) Secret() pulumi.Stri
 
 // Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision.
 type GoogleCloudRunOpV2TrafficTarget struct {
-	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single TrafficTarget entry.
+	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
 	Percent *int `pulumi:"percent"`
 	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 	Revision *string `pulumi:"revision"`
@@ -2351,7 +2351,7 @@ type GoogleCloudRunOpV2TrafficTargetInput interface {
 
 // Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision.
 type GoogleCloudRunOpV2TrafficTargetArgs struct {
-	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single TrafficTarget entry.
+	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
 	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
@@ -2413,7 +2413,7 @@ func (o GoogleCloudRunOpV2TrafficTargetOutput) ToGoogleCloudRunOpV2TrafficTarget
 	return o
 }
 
-// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single TrafficTarget entry.
+// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
 func (o GoogleCloudRunOpV2TrafficTargetOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunOpV2TrafficTarget) *int { return v.Percent }).(pulumi.IntPtrOutput)
 }
@@ -2455,7 +2455,7 @@ func (o GoogleCloudRunOpV2TrafficTargetArrayOutput) Index(i pulumi.IntInput) Goo
 
 // Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision.
 type GoogleCloudRunOpV2TrafficTargetResponse struct {
-	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single TrafficTarget entry.
+	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
 	Percent int `pulumi:"percent"`
 	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 	Revision string `pulumi:"revision"`
@@ -2480,7 +2480,7 @@ func (o GoogleCloudRunOpV2TrafficTargetResponseOutput) ToGoogleCloudRunOpV2Traff
 	return o
 }
 
-// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single TrafficTarget entry.
+// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
 func (o GoogleCloudRunOpV2TrafficTargetResponseOutput) Percent() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunOpV2TrafficTargetResponse) int { return v.Percent }).(pulumi.IntOutput)
 }

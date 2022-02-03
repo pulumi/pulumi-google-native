@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatabaseResult:
-    def __init__(__self__, create_time=None, default_leader=None, earliest_version_time=None, encryption_config=None, encryption_info=None, name=None, restore_info=None, state=None, version_retention_period=None):
+    def __init__(__self__, create_time=None, database_dialect=None, default_leader=None, earliest_version_time=None, encryption_config=None, encryption_info=None, name=None, restore_info=None, state=None, version_retention_period=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if database_dialect and not isinstance(database_dialect, str):
+            raise TypeError("Expected argument 'database_dialect' to be a str")
+        pulumi.set(__self__, "database_dialect", database_dialect)
         if default_leader and not isinstance(default_leader, str):
             raise TypeError("Expected argument 'default_leader' to be a str")
         pulumi.set(__self__, "default_leader", default_leader)
@@ -54,6 +57,14 @@ class GetDatabaseResult:
         If exists, the time at which the database creation started.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="databaseDialect")
+    def database_dialect(self) -> str:
+        """
+        The dialect of the Cloud Spanner Database.
+        """
+        return pulumi.get(self, "database_dialect")
 
     @property
     @pulumi.getter(name="defaultLeader")
@@ -127,6 +138,7 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             yield self
         return GetDatabaseResult(
             create_time=self.create_time,
+            database_dialect=self.database_dialect,
             default_leader=self.default_leader,
             earliest_version_time=self.earliest_version_time,
             encryption_config=self.encryption_config,
@@ -156,6 +168,7 @@ def get_database(database_id: Optional[str] = None,
 
     return AwaitableGetDatabaseResult(
         create_time=__ret__.create_time,
+        database_dialect=__ret__.database_dialect,
         default_leader=__ret__.default_leader,
         earliest_version_time=__ret__.earliest_version_time,
         encryption_config=__ret__.encryption_config,

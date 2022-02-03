@@ -41,7 +41,7 @@ export interface GetGroupResult {
      */
     readonly dynamicGroupMetadata: outputs.cloudidentity.v1.DynamicGroupMetadataResponse;
     /**
-     * Immutable. The `EntityKey` of the `Group`.
+     * The `EntityKey` of the `Group`.
      */
     readonly groupKey: outputs.cloudidentity.v1.EntityKeyResponse;
     /**

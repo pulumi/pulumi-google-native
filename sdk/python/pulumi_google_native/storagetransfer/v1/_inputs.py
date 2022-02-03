@@ -432,25 +432,53 @@ class LoggingConfigArgs:
 @pulumi.input_type
 class MetadataOptionsArgs:
     def __init__(__self__, *,
+                 acl: Optional[pulumi.Input['MetadataOptionsAcl']] = None,
                  gid: Optional[pulumi.Input['MetadataOptionsGid']] = None,
+                 kms_key: Optional[pulumi.Input['MetadataOptionsKmsKey']] = None,
                  mode: Optional[pulumi.Input['MetadataOptionsMode']] = None,
+                 storage_class: Optional[pulumi.Input['MetadataOptionsStorageClass']] = None,
                  symlink: Optional[pulumi.Input['MetadataOptionsSymlink']] = None,
+                 temporary_hold: Optional[pulumi.Input['MetadataOptionsTemporaryHold']] = None,
                  uid: Optional[pulumi.Input['MetadataOptionsUid']] = None):
         """
         Specifies the metadata options for running a transfer.
+        :param pulumi.Input['MetadataOptionsAcl'] acl: Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
         :param pulumi.Input['MetadataOptionsGid'] gid: Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+        :param pulumi.Input['MetadataOptionsKmsKey'] kms_key: Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
         :param pulumi.Input['MetadataOptionsMode'] mode: Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+        :param pulumi.Input['MetadataOptionsStorageClass'] storage_class: Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
         :param pulumi.Input['MetadataOptionsSymlink'] symlink: Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+        :param pulumi.Input['MetadataOptionsTemporaryHold'] temporary_hold: Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
         :param pulumi.Input['MetadataOptionsUid'] uid: Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
         """
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
         if gid is not None:
             pulumi.set(__self__, "gid", gid)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if storage_class is not None:
+            pulumi.set(__self__, "storage_class", storage_class)
         if symlink is not None:
             pulumi.set(__self__, "symlink", symlink)
+        if temporary_hold is not None:
+            pulumi.set(__self__, "temporary_hold", temporary_hold)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[pulumi.Input['MetadataOptionsAcl']]:
+        """
+        Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
+        """
+        return pulumi.get(self, "acl")
+
+    @acl.setter
+    def acl(self, value: Optional[pulumi.Input['MetadataOptionsAcl']]):
+        pulumi.set(self, "acl", value)
 
     @property
     @pulumi.getter
@@ -465,6 +493,18 @@ class MetadataOptionsArgs:
         pulumi.set(self, "gid", value)
 
     @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input['MetadataOptionsKmsKey']]:
+        """
+        Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input['MetadataOptionsKmsKey']]):
+        pulumi.set(self, "kms_key", value)
+
+    @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input['MetadataOptionsMode']]:
         """
@@ -477,6 +517,18 @@ class MetadataOptionsArgs:
         pulumi.set(self, "mode", value)
 
     @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> Optional[pulumi.Input['MetadataOptionsStorageClass']]:
+        """
+        Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+        """
+        return pulumi.get(self, "storage_class")
+
+    @storage_class.setter
+    def storage_class(self, value: Optional[pulumi.Input['MetadataOptionsStorageClass']]):
+        pulumi.set(self, "storage_class", value)
+
+    @property
     @pulumi.getter
     def symlink(self) -> Optional[pulumi.Input['MetadataOptionsSymlink']]:
         """
@@ -487,6 +539,18 @@ class MetadataOptionsArgs:
     @symlink.setter
     def symlink(self, value: Optional[pulumi.Input['MetadataOptionsSymlink']]):
         pulumi.set(self, "symlink", value)
+
+    @property
+    @pulumi.getter(name="temporaryHold")
+    def temporary_hold(self) -> Optional[pulumi.Input['MetadataOptionsTemporaryHold']]:
+        """
+        Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+        """
+        return pulumi.get(self, "temporary_hold")
+
+    @temporary_hold.setter
+    def temporary_hold(self, value: Optional[pulumi.Input['MetadataOptionsTemporaryHold']]):
+        pulumi.set(self, "temporary_hold", value)
 
     @property
     @pulumi.getter

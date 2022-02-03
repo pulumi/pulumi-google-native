@@ -14,6 +14,7 @@ __all__ = [
     'AuditLogConfigArgs',
     'AuthorityArgs',
     'BindingArgs',
+    'EdgeClusterArgs',
     'ExprArgs',
     'GkeClusterArgs',
     'KubernetesResourceArgs',
@@ -200,6 +201,30 @@ class BindingArgs:
 
 
 @pulumi.input_type
+class EdgeClusterArgs:
+    def __init__(__self__, *,
+                 resource_link: Optional[pulumi.Input[str]] = None):
+        """
+        EdgeCluster contains information specific to Google Edge Clusters.
+        :param pulumi.Input[str] resource_link: Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        """
+        if resource_link is not None:
+            pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        """
+        return pulumi.get(self, "resource_link")
+
+    @resource_link.setter
+    def resource_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_link", value)
+
+
+@pulumi.input_type
 class ExprArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
@@ -338,17 +363,21 @@ class KubernetesResourceArgs:
 @pulumi.input_type
 class MembershipEndpointArgs:
     def __init__(__self__, *,
+                 edge_cluster: Optional[pulumi.Input['EdgeClusterArgs']] = None,
                  gke_cluster: Optional[pulumi.Input['GkeClusterArgs']] = None,
                  kubernetes_resource: Optional[pulumi.Input['KubernetesResourceArgs']] = None,
                  multi_cloud_cluster: Optional[pulumi.Input['MultiCloudClusterArgs']] = None,
                  on_prem_cluster: Optional[pulumi.Input['OnPremClusterArgs']] = None):
         """
         MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
+        :param pulumi.Input['EdgeClusterArgs'] edge_cluster: Optional. Specific information for a Google Edge cluster.
         :param pulumi.Input['GkeClusterArgs'] gke_cluster: Optional. Specific information for a GKE-on-GCP cluster.
         :param pulumi.Input['KubernetesResourceArgs'] kubernetes_resource: Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
         :param pulumi.Input['MultiCloudClusterArgs'] multi_cloud_cluster: Optional. Specific information for a GKE Multi-Cloud cluster.
         :param pulumi.Input['OnPremClusterArgs'] on_prem_cluster: Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
         """
+        if edge_cluster is not None:
+            pulumi.set(__self__, "edge_cluster", edge_cluster)
         if gke_cluster is not None:
             pulumi.set(__self__, "gke_cluster", gke_cluster)
         if kubernetes_resource is not None:
@@ -357,6 +386,18 @@ class MembershipEndpointArgs:
             pulumi.set(__self__, "multi_cloud_cluster", multi_cloud_cluster)
         if on_prem_cluster is not None:
             pulumi.set(__self__, "on_prem_cluster", on_prem_cluster)
+
+    @property
+    @pulumi.getter(name="edgeCluster")
+    def edge_cluster(self) -> Optional[pulumi.Input['EdgeClusterArgs']]:
+        """
+        Optional. Specific information for a Google Edge cluster.
+        """
+        return pulumi.get(self, "edge_cluster")
+
+    @edge_cluster.setter
+    def edge_cluster(self, value: Optional[pulumi.Input['EdgeClusterArgs']]):
+        pulumi.set(self, "edge_cluster", value)
 
     @property
     @pulumi.getter(name="gkeCluster")

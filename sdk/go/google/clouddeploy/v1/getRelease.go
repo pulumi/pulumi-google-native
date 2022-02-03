@@ -60,7 +60,7 @@ type LookupReleaseResult struct {
 	TargetArtifacts map[string]string `pulumi:"targetArtifacts"`
 	// Map from target ID to details of the render operation for that target.
 	TargetRenders map[string]string `pulumi:"targetRenders"`
-	// Snapshot of the parent pipeline's targets taken at release creation time.
+	// Snapshot of the targets taken at release creation time.
 	TargetSnapshots []TargetResponse `pulumi:"targetSnapshots"`
 	// Unique identifier of the `Release`.
 	Uid string `pulumi:"uid"`
@@ -180,7 +180,7 @@ func (o LookupReleaseResultOutput) TargetRenders() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupReleaseResult) map[string]string { return v.TargetRenders }).(pulumi.StringMapOutput)
 }
 
-// Snapshot of the parent pipeline's targets taken at release creation time.
+// Snapshot of the targets taken at release creation time.
 func (o LookupReleaseResultOutput) TargetSnapshots() TargetResponseArrayOutput {
 	return o.ApplyT(func(v LookupReleaseResult) []TargetResponse { return v.TargetSnapshots }).(TargetResponseArrayOutput)
 }

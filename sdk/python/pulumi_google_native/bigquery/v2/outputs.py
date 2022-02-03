@@ -29,9 +29,9 @@ __all__ = [
     'ConnectionPropertyResponse',
     'CsvOptionsResponse',
     'DatasetAccessEntryResponse',
-    'DatasetAccessEntryTargetTypesItemResponse',
     'DatasetAccessItemResponse',
     'DatasetReferenceResponse',
+    'DatasetTagsItemResponse',
     'DestinationTablePropertiesResponse',
     'DmlStatisticsResponse',
     'EncryptionConfigurationResponse',
@@ -1147,7 +1147,7 @@ class DatasetAccessEntryResponse(dict):
 
     def __init__(__self__, *,
                  dataset: 'outputs.DatasetReferenceResponse',
-                 target_types: Sequence['outputs.DatasetAccessEntryTargetTypesItemResponse']):
+                 target_types: Sequence[str]):
         """
         :param 'DatasetReferenceResponse' dataset: [Required] The dataset this entry applies to.
         """
@@ -1164,43 +1164,8 @@ class DatasetAccessEntryResponse(dict):
 
     @property
     @pulumi.getter(name="targetTypes")
-    def target_types(self) -> Sequence['outputs.DatasetAccessEntryTargetTypesItemResponse']:
+    def target_types(self) -> Sequence[str]:
         return pulumi.get(self, "target_types")
-
-
-@pulumi.output_type
-class DatasetAccessEntryTargetTypesItemResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "targetType":
-            suggest = "target_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatasetAccessEntryTargetTypesItemResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatasetAccessEntryTargetTypesItemResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatasetAccessEntryTargetTypesItemResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 target_type: str):
-        """
-        :param str target_type: [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-        """
-        pulumi.set(__self__, "target_type", target_type)
-
-    @property
-    @pulumi.getter(name="targetType")
-    def target_type(self) -> str:
-        """
-        [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-        """
-        return pulumi.get(self, "target_type")
 
 
 @pulumi.output_type
@@ -1376,6 +1341,54 @@ class DatasetReferenceResponse(dict):
         [Optional] The ID of the project containing this dataset.
         """
         return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class DatasetTagsItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagKey":
+            suggest = "tag_key"
+        elif key == "tagValue":
+            suggest = "tag_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatasetTagsItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatasetTagsItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatasetTagsItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_key: str,
+                 tag_value: str):
+        """
+        :param str tag_key: [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
+        :param str tag_value: [Required] Friendly short name of the tag value, e.g. "production".
+        """
+        pulumi.set(__self__, "tag_key", tag_key)
+        pulumi.set(__self__, "tag_value", tag_value)
+
+    @property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> str:
+        """
+        [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
+        """
+        return pulumi.get(self, "tag_key")
+
+    @property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> str:
+        """
+        [Required] Friendly short name of the tag value, e.g. "production".
+        """
+        return pulumi.get(self, "tag_value")
 
 
 @pulumi.output_type
@@ -5621,7 +5634,7 @@ class SnapshotDefinitionResponse(dict):
 @pulumi.output_type
 class StandardSqlDataTypeResponse(dict):
     """
-    The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
+    The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
     """
     @staticmethod
     def __key_warning(key: str):
@@ -5649,7 +5662,7 @@ class StandardSqlDataTypeResponse(dict):
                  struct_type: 'outputs.StandardSqlStructTypeResponse',
                  type_kind: str):
         """
-        The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
+        The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
         :param 'StandardSqlDataTypeResponse' array_element_type: The type of the array's elements, if type_kind = "ARRAY".
         :param 'StandardSqlStructTypeResponse' struct_type: The fields of this struct, in order, if type_kind = "STRUCT".
         :param str type_kind: The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").

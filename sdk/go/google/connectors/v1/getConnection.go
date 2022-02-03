@@ -44,8 +44,6 @@ type LookupConnectionResult struct {
 	EnvoyImageLocation string `pulumi:"envoyImageLocation"`
 	// GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
 	ImageLocation string `pulumi:"imageLocation"`
-	// Optional. Inactive indicates the connection is active to use or not.
-	Inactive bool `pulumi:"inactive"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Configuration that indicates whether or not the Connection can be edited.
@@ -58,6 +56,8 @@ type LookupConnectionResult struct {
 	ServiceDirectory string `pulumi:"serviceDirectory"`
 	// Current status of the connection.
 	Status ConnectionStatusResponse `pulumi:"status"`
+	// Optional. Suspended indicates if a user has suspended a connection or not.
+	Suspended bool `pulumi:"suspended"`
 	// Updated time.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -136,11 +136,6 @@ func (o LookupConnectionResultOutput) ImageLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.ImageLocation }).(pulumi.StringOutput)
 }
 
-// Optional. Inactive indicates the connection is active to use or not.
-func (o LookupConnectionResultOutput) Inactive() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupConnectionResult) bool { return v.Inactive }).(pulumi.BoolOutput)
-}
-
 // Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 func (o LookupConnectionResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupConnectionResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -169,6 +164,11 @@ func (o LookupConnectionResultOutput) ServiceDirectory() pulumi.StringOutput {
 // Current status of the connection.
 func (o LookupConnectionResultOutput) Status() ConnectionStatusResponseOutput {
 	return o.ApplyT(func(v LookupConnectionResult) ConnectionStatusResponse { return v.Status }).(ConnectionStatusResponseOutput)
+}
+
+// Optional. Suspended indicates if a user has suspended a connection or not.
+func (o LookupConnectionResultOutput) Suspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupConnectionResult) bool { return v.Suspended }).(pulumi.BoolOutput)
 }
 
 // Updated time.

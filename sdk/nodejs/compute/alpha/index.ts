@@ -83,9 +83,11 @@ export * from "./getRegionHealthCheckService";
 export * from "./getRegionInstanceGroupManager";
 export * from "./getRegionInstantSnapshot";
 export * from "./getRegionInstantSnapshotIamPolicy";
+export * from "./getRegionNetwork";
 export * from "./getRegionNetworkEndpointGroup";
 export * from "./getRegionNetworkFirewallPolicy";
 export * from "./getRegionNetworkFirewallPolicyIamPolicy";
+export * from "./getRegionNetworkIamPolicy";
 export * from "./getRegionNotificationEndpoint";
 export * from "./getRegionSecurityPolicy";
 export * from "./getRegionSslCertificate";
@@ -169,9 +171,11 @@ export * from "./regionHealthCheckService";
 export * from "./regionInstanceGroupManager";
 export * from "./regionInstantSnapshot";
 export * from "./regionInstantSnapshotIamPolicy";
+export * from "./regionNetwork";
 export * from "./regionNetworkEndpointGroup";
 export * from "./regionNetworkFirewallPolicy";
 export * from "./regionNetworkFirewallPolicyIamPolicy";
+export * from "./regionNetworkIamPolicy";
 export * from "./regionNotificationEndpoint";
 export * from "./regionSecurityPolicy";
 export * from "./regionSslCertificate";
@@ -274,9 +278,11 @@ import { RegionHealthCheckService } from "./regionHealthCheckService";
 import { RegionInstanceGroupManager } from "./regionInstanceGroupManager";
 import { RegionInstantSnapshot } from "./regionInstantSnapshot";
 import { RegionInstantSnapshotIamPolicy } from "./regionInstantSnapshotIamPolicy";
+import { RegionNetwork } from "./regionNetwork";
 import { RegionNetworkEndpointGroup } from "./regionNetworkEndpointGroup";
 import { RegionNetworkFirewallPolicy } from "./regionNetworkFirewallPolicy";
 import { RegionNetworkFirewallPolicyIamPolicy } from "./regionNetworkFirewallPolicyIamPolicy";
+import { RegionNetworkIamPolicy } from "./regionNetworkIamPolicy";
 import { RegionNotificationEndpoint } from "./regionNotificationEndpoint";
 import { RegionSecurityPolicy } from "./regionSecurityPolicy";
 import { RegionSslCertificate } from "./regionSslCertificate";
@@ -443,12 +449,16 @@ const _module = {
                 return new RegionInstantSnapshot(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionInstantSnapshotIamPolicy":
                 return new RegionInstantSnapshotIamPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:RegionNetwork":
+                return new RegionNetwork(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionNetworkEndpointGroup":
                 return new RegionNetworkEndpointGroup(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionNetworkFirewallPolicy":
                 return new RegionNetworkFirewallPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionNetworkFirewallPolicyIamPolicy":
                 return new RegionNetworkFirewallPolicyIamPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:RegionNetworkIamPolicy":
+                return new RegionNetworkIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionNotificationEndpoint":
                 return new RegionNotificationEndpoint(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionSecurityPolicy":

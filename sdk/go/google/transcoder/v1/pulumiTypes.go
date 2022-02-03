@@ -7744,7 +7744,7 @@ func (o VideoStreamResponseOutput) Vp9() Vp9CodecSettingsResponseOutput {
 type Vp9CodecSettings struct {
 	// The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.
 	BitrateBps int `pulumi:"bitrateBps"`
-	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
+	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported.
 	CrfLevel *int `pulumi:"crfLevel"`
 	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
 	FrameRate float64 `pulumi:"frameRate"`
@@ -7758,7 +7758,7 @@ type Vp9CodecSettings struct {
 	PixelFormat *string `pulumi:"pixelFormat"`
 	// Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message.
 	Profile *string `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 	RateControlMode *string `pulumi:"rateControlMode"`
 	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
 	WidthPixels *int `pulumi:"widthPixels"`
@@ -7779,7 +7779,7 @@ type Vp9CodecSettingsInput interface {
 type Vp9CodecSettingsArgs struct {
 	// The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.
 	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
-	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
+	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported.
 	CrfLevel pulumi.IntPtrInput `pulumi:"crfLevel"`
 	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
 	FrameRate pulumi.Float64Input `pulumi:"frameRate"`
@@ -7793,7 +7793,7 @@ type Vp9CodecSettingsArgs struct {
 	PixelFormat pulumi.StringPtrInput `pulumi:"pixelFormat"`
 	// Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message.
 	Profile pulumi.StringPtrInput `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 	RateControlMode pulumi.StringPtrInput `pulumi:"rateControlMode"`
 	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
 	WidthPixels pulumi.IntPtrInput `pulumi:"widthPixels"`
@@ -7882,7 +7882,7 @@ func (o Vp9CodecSettingsOutput) BitrateBps() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) int { return v.BitrateBps }).(pulumi.IntOutput)
 }
 
-// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
+// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported.
 func (o Vp9CodecSettingsOutput) CrfLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) *int { return v.CrfLevel }).(pulumi.IntPtrOutput)
 }
@@ -7917,7 +7917,7 @@ func (o Vp9CodecSettingsOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) *string { return v.Profile }).(pulumi.StringPtrOutput)
 }
 
-// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 func (o Vp9CodecSettingsOutput) RateControlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) *string { return v.RateControlMode }).(pulumi.StringPtrOutput)
 }
@@ -7961,7 +7961,7 @@ func (o Vp9CodecSettingsPtrOutput) BitrateBps() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
+// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported.
 func (o Vp9CodecSettingsPtrOutput) CrfLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Vp9CodecSettings) *int {
 		if v == nil {
@@ -8031,7 +8031,7 @@ func (o Vp9CodecSettingsPtrOutput) Profile() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 func (o Vp9CodecSettingsPtrOutput) RateControlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vp9CodecSettings) *string {
 		if v == nil {
@@ -8055,7 +8055,7 @@ func (o Vp9CodecSettingsPtrOutput) WidthPixels() pulumi.IntPtrOutput {
 type Vp9CodecSettingsResponse struct {
 	// The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.
 	BitrateBps int `pulumi:"bitrateBps"`
-	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
+	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported.
 	CrfLevel int `pulumi:"crfLevel"`
 	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
 	FrameRate float64 `pulumi:"frameRate"`
@@ -8069,7 +8069,7 @@ type Vp9CodecSettingsResponse struct {
 	PixelFormat string `pulumi:"pixelFormat"`
 	// Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message.
 	Profile string `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 	RateControlMode string `pulumi:"rateControlMode"`
 	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
 	WidthPixels int `pulumi:"widthPixels"`
@@ -8095,7 +8095,7 @@ func (o Vp9CodecSettingsResponseOutput) BitrateBps() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) int { return v.BitrateBps }).(pulumi.IntOutput)
 }
 
-// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
+// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported.
 func (o Vp9CodecSettingsResponseOutput) CrfLevel() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) int { return v.CrfLevel }).(pulumi.IntOutput)
 }
@@ -8130,7 +8130,7 @@ func (o Vp9CodecSettingsResponseOutput) Profile() pulumi.StringOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) string { return v.Profile }).(pulumi.StringOutput)
 }
 
-// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 func (o Vp9CodecSettingsResponseOutput) RateControlMode() pulumi.StringOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) string { return v.RateControlMode }).(pulumi.StringOutput)
 }

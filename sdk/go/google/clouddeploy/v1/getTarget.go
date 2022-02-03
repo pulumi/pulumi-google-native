@@ -29,6 +29,8 @@ type LookupTargetArgs struct {
 type LookupTargetResult struct {
 	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Information specifying an Anthos Cluster.
+	AnthosCluster AnthosClusterResponse `pulumi:"anthosCluster"`
 	// Time at which the `Target` was created.
 	CreateTime string `pulumi:"createTime"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -41,7 +43,7 @@ type LookupTargetResult struct {
 	Gke GkeClusterResponse `pulumi:"gke"`
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
-	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
 	Name string `pulumi:"name"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval bool `pulumi:"requireApproval"`
@@ -91,6 +93,11 @@ func (o LookupTargetResultOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTargetResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// Information specifying an Anthos Cluster.
+func (o LookupTargetResultOutput) AnthosCluster() AnthosClusterResponseOutput {
+	return o.ApplyT(func(v LookupTargetResult) AnthosClusterResponse { return v.AnthosCluster }).(AnthosClusterResponseOutput)
+}
+
 // Time at which the `Target` was created.
 func (o LookupTargetResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetResult) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -121,7 +128,7 @@ func (o LookupTargetResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTargetResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
 func (o LookupTargetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetResult) string { return v.Name }).(pulumi.StringOutput)
 }

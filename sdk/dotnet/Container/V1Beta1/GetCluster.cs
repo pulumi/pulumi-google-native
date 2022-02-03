@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly ImmutableArray<Outputs.StatusConditionResponse> Conditions;
         /// <summary>
-        /// Configuration of Confidential Nodes
+        /// Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
         /// </summary>
         public readonly Outputs.ConfidentialNodesResponse ConfidentialNodes;
         /// <summary>

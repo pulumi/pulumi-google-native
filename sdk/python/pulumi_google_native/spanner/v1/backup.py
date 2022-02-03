@@ -226,6 +226,7 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["version_time"] = version_time
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["database_dialect"] = None
             __props__.__dict__["encryption_info"] = None
             __props__.__dict__["referencing_databases"] = None
             __props__.__dict__["size_bytes"] = None
@@ -254,6 +255,7 @@ class Backup(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["database"] = None
+        __props__.__dict__["database_dialect"] = None
         __props__.__dict__["encryption_info"] = None
         __props__.__dict__["expire_time"] = None
         __props__.__dict__["name"] = None
@@ -278,6 +280,14 @@ class Backup(pulumi.CustomResource):
         Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
         """
         return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="databaseDialect")
+    def database_dialect(self) -> pulumi.Output[str]:
+        """
+        The database dialect information for the backup.
+        """
+        return pulumi.get(self, "database_dialect")
 
     @property
     @pulumi.getter(name="encryptionInfo")

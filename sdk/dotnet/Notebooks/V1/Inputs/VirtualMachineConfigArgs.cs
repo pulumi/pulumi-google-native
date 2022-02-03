@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         private InputList<Inputs.ContainerImageArgs>? _containerImages;
 
         /// <summary>
-        /// Optional. Use a list of container images to start the notebook instance.
+        /// Optional. Use a list of container images to use as Kernels in the notebook instance.
         /// </summary>
         public InputList<Inputs.ContainerImageArgs> ContainerImages
         {

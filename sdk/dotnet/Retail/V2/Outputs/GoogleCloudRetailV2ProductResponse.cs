@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.Retail.V2.Outputs
         /// </summary>
         public readonly string PrimaryProductId;
         /// <summary>
-        /// The promotions applied to the product. A maximum of 10 values are allowed per Product.
+        /// The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRetailV2PromotionResponse> Promotions;
         /// <summary>

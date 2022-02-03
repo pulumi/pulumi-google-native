@@ -132,7 +132,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> TargetRenders;
         /// <summary>
-        /// Snapshot of the parent pipeline's targets taken at release creation time.
+        /// Snapshot of the targets taken at release creation time.
         /// </summary>
         public readonly ImmutableArray<Outputs.TargetResponse> TargetSnapshots;
         /// <summary>

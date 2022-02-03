@@ -12,12 +12,13 @@ import (
 )
 
 // Creates a new Target in a given project and location.
-// Auto-naming is currently not supported for this resource.
 type Target struct {
 	pulumi.CustomResourceState
 
 	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	// Information specifying an Anthos Cluster.
+	AnthosCluster AnthosClusterResponseOutput `pulumi:"anthosCluster"`
 	// Time at which the `Target` was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -30,7 +31,7 @@ type Target struct {
 	Gke GkeClusterResponseOutput `pulumi:"gke"`
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolOutput `pulumi:"requireApproval"`
@@ -86,6 +87,8 @@ func (TargetState) ElementType() reflect.Type {
 type targetArgs struct {
 	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Information specifying an Anthos Cluster.
+	AnthosCluster *AnthosCluster `pulumi:"anthosCluster"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description *string `pulumi:"description"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -97,7 +100,7 @@ type targetArgs struct {
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
 	Name      *string `pulumi:"name"`
 	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
@@ -111,6 +114,8 @@ type targetArgs struct {
 type TargetArgs struct {
 	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations pulumi.StringMapInput
+	// Information specifying an Anthos Cluster.
+	AnthosCluster AnthosClusterPtrInput
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description pulumi.StringPtrInput
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -122,7 +127,7 @@ type TargetArgs struct {
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
 	Name      pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput

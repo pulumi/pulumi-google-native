@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     public sealed class ExecutionConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+        /// </summary>
+        [Input("artifactStorage")]
+        public Input<string>? ArtifactStorage { get; set; }
+
+        /// <summary>
         /// Optional. Use default Cloud Build pool.
         /// </summary>
         [Input("defaultPool")]
@@ -26,6 +32,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
         /// </summary>
         [Input("privatePool")]
         public Input<Inputs.PrivatePoolArgs>? PrivatePool { get; set; }
+
+        /// <summary>
+        /// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
 
         [Input("usages", required: true)]
         private InputList<Pulumi.GoogleNative.CloudDeploy.V1.ExecutionConfigUsagesItem>? _usages;
@@ -38,6 +50,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
             get => _usages ?? (_usages = new InputList<Pulumi.GoogleNative.CloudDeploy.V1.ExecutionConfigUsagesItem>());
             set => _usages = value;
         }
+
+        /// <summary>
+        /// Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
+        /// </summary>
+        [Input("workerPool")]
+        public Input<string>? WorkerPool { get; set; }
 
         public ExecutionConfigArgs()
         {

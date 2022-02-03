@@ -80,7 +80,7 @@ class GetHubResult:
     @pulumi.getter(name="routingVpcs")
     def routing_vpcs(self) -> Sequence['outputs.RoutingVPCResponse']:
         """
-        The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         """
         return pulumi.get(self, "routing_vpcs")
 

@@ -1109,6 +1109,172 @@ func (o CommonFeatureStateResponseOutput) State() FeatureStateResponseOutput {
 	return o.ApplyT(func(v CommonFeatureStateResponse) FeatureStateResponse { return v.State }).(FeatureStateResponseOutput)
 }
 
+// EdgeCluster contains information specific to Google Edge Clusters.
+type EdgeCluster struct {
+	// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+	ResourceLink *string `pulumi:"resourceLink"`
+}
+
+// EdgeClusterInput is an input type that accepts EdgeClusterArgs and EdgeClusterOutput values.
+// You can construct a concrete instance of `EdgeClusterInput` via:
+//
+//          EdgeClusterArgs{...}
+type EdgeClusterInput interface {
+	pulumi.Input
+
+	ToEdgeClusterOutput() EdgeClusterOutput
+	ToEdgeClusterOutputWithContext(context.Context) EdgeClusterOutput
+}
+
+// EdgeCluster contains information specific to Google Edge Clusters.
+type EdgeClusterArgs struct {
+	// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+	ResourceLink pulumi.StringPtrInput `pulumi:"resourceLink"`
+}
+
+func (EdgeClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCluster)(nil)).Elem()
+}
+
+func (i EdgeClusterArgs) ToEdgeClusterOutput() EdgeClusterOutput {
+	return i.ToEdgeClusterOutputWithContext(context.Background())
+}
+
+func (i EdgeClusterArgs) ToEdgeClusterOutputWithContext(ctx context.Context) EdgeClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeClusterOutput)
+}
+
+func (i EdgeClusterArgs) ToEdgeClusterPtrOutput() EdgeClusterPtrOutput {
+	return i.ToEdgeClusterPtrOutputWithContext(context.Background())
+}
+
+func (i EdgeClusterArgs) ToEdgeClusterPtrOutputWithContext(ctx context.Context) EdgeClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeClusterOutput).ToEdgeClusterPtrOutputWithContext(ctx)
+}
+
+// EdgeClusterPtrInput is an input type that accepts EdgeClusterArgs, EdgeClusterPtr and EdgeClusterPtrOutput values.
+// You can construct a concrete instance of `EdgeClusterPtrInput` via:
+//
+//          EdgeClusterArgs{...}
+//
+//  or:
+//
+//          nil
+type EdgeClusterPtrInput interface {
+	pulumi.Input
+
+	ToEdgeClusterPtrOutput() EdgeClusterPtrOutput
+	ToEdgeClusterPtrOutputWithContext(context.Context) EdgeClusterPtrOutput
+}
+
+type edgeClusterPtrType EdgeClusterArgs
+
+func EdgeClusterPtr(v *EdgeClusterArgs) EdgeClusterPtrInput {
+	return (*edgeClusterPtrType)(v)
+}
+
+func (*edgeClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCluster)(nil)).Elem()
+}
+
+func (i *edgeClusterPtrType) ToEdgeClusterPtrOutput() EdgeClusterPtrOutput {
+	return i.ToEdgeClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *edgeClusterPtrType) ToEdgeClusterPtrOutputWithContext(ctx context.Context) EdgeClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeClusterPtrOutput)
+}
+
+// EdgeCluster contains information specific to Google Edge Clusters.
+type EdgeClusterOutput struct{ *pulumi.OutputState }
+
+func (EdgeClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCluster)(nil)).Elem()
+}
+
+func (o EdgeClusterOutput) ToEdgeClusterOutput() EdgeClusterOutput {
+	return o
+}
+
+func (o EdgeClusterOutput) ToEdgeClusterOutputWithContext(ctx context.Context) EdgeClusterOutput {
+	return o
+}
+
+func (o EdgeClusterOutput) ToEdgeClusterPtrOutput() EdgeClusterPtrOutput {
+	return o.ToEdgeClusterPtrOutputWithContext(context.Background())
+}
+
+func (o EdgeClusterOutput) ToEdgeClusterPtrOutputWithContext(ctx context.Context) EdgeClusterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCluster) *EdgeCluster {
+		return &v
+	}).(EdgeClusterPtrOutput)
+}
+
+// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+func (o EdgeClusterOutput) ResourceLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
+}
+
+type EdgeClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (EdgeClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCluster)(nil)).Elem()
+}
+
+func (o EdgeClusterPtrOutput) ToEdgeClusterPtrOutput() EdgeClusterPtrOutput {
+	return o
+}
+
+func (o EdgeClusterPtrOutput) ToEdgeClusterPtrOutputWithContext(ctx context.Context) EdgeClusterPtrOutput {
+	return o
+}
+
+func (o EdgeClusterPtrOutput) Elem() EdgeClusterOutput {
+	return o.ApplyT(func(v *EdgeCluster) EdgeCluster {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCluster
+		return ret
+	}).(EdgeClusterOutput)
+}
+
+// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+func (o EdgeClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// EdgeCluster contains information specific to Google Edge Clusters.
+type EdgeClusterResponse struct {
+	// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+	ResourceLink string `pulumi:"resourceLink"`
+}
+
+// EdgeCluster contains information specific to Google Edge Clusters.
+type EdgeClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (EdgeClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeClusterResponse)(nil)).Elem()
+}
+
+func (o EdgeClusterResponseOutput) ToEdgeClusterResponseOutput() EdgeClusterResponseOutput {
+	return o
+}
+
+func (o EdgeClusterResponseOutput) ToEdgeClusterResponseOutputWithContext(ctx context.Context) EdgeClusterResponseOutput {
+	return o
+}
+
+// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+func (o EdgeClusterResponseOutput) ResourceLink() pulumi.StringOutput {
+	return o.ApplyT(func(v EdgeClusterResponse) string { return v.ResourceLink }).(pulumi.StringOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1861,6 +2027,8 @@ func (o KubernetesResourceResponseOutput) ResourceOptions() ResourceOptionsRespo
 
 // MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 type MembershipEndpoint struct {
+	// Optional. Specific information for a Google Edge cluster.
+	EdgeCluster *EdgeCluster `pulumi:"edgeCluster"`
 	// Optional. Specific information for a GKE-on-GCP cluster.
 	GkeCluster *GkeCluster `pulumi:"gkeCluster"`
 	// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
@@ -1884,6 +2052,8 @@ type MembershipEndpointInput interface {
 
 // MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 type MembershipEndpointArgs struct {
+	// Optional. Specific information for a Google Edge cluster.
+	EdgeCluster EdgeClusterPtrInput `pulumi:"edgeCluster"`
 	// Optional. Specific information for a GKE-on-GCP cluster.
 	GkeCluster GkeClusterPtrInput `pulumi:"gkeCluster"`
 	// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
@@ -1972,6 +2142,11 @@ func (o MembershipEndpointOutput) ToMembershipEndpointPtrOutputWithContext(ctx c
 	}).(MembershipEndpointPtrOutput)
 }
 
+// Optional. Specific information for a Google Edge cluster.
+func (o MembershipEndpointOutput) EdgeCluster() EdgeClusterPtrOutput {
+	return o.ApplyT(func(v MembershipEndpoint) *EdgeCluster { return v.EdgeCluster }).(EdgeClusterPtrOutput)
+}
+
 // Optional. Specific information for a GKE-on-GCP cluster.
 func (o MembershipEndpointOutput) GkeCluster() GkeClusterPtrOutput {
 	return o.ApplyT(func(v MembershipEndpoint) *GkeCluster { return v.GkeCluster }).(GkeClusterPtrOutput)
@@ -2016,6 +2191,16 @@ func (o MembershipEndpointPtrOutput) Elem() MembershipEndpointOutput {
 	}).(MembershipEndpointOutput)
 }
 
+// Optional. Specific information for a Google Edge cluster.
+func (o MembershipEndpointPtrOutput) EdgeCluster() EdgeClusterPtrOutput {
+	return o.ApplyT(func(v *MembershipEndpoint) *EdgeCluster {
+		if v == nil {
+			return nil
+		}
+		return v.EdgeCluster
+	}).(EdgeClusterPtrOutput)
+}
+
 // Optional. Specific information for a GKE-on-GCP cluster.
 func (o MembershipEndpointPtrOutput) GkeCluster() GkeClusterPtrOutput {
 	return o.ApplyT(func(v *MembershipEndpoint) *GkeCluster {
@@ -2058,6 +2243,8 @@ func (o MembershipEndpointPtrOutput) OnPremCluster() OnPremClusterPtrOutput {
 
 // MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 type MembershipEndpointResponse struct {
+	// Optional. Specific information for a Google Edge cluster.
+	EdgeCluster EdgeClusterResponse `pulumi:"edgeCluster"`
 	// Optional. Specific information for a GKE-on-GCP cluster.
 	GkeCluster GkeClusterResponse `pulumi:"gkeCluster"`
 	// Useful Kubernetes-specific metadata.
@@ -2083,6 +2270,11 @@ func (o MembershipEndpointResponseOutput) ToMembershipEndpointResponseOutput() M
 
 func (o MembershipEndpointResponseOutput) ToMembershipEndpointResponseOutputWithContext(ctx context.Context) MembershipEndpointResponseOutput {
 	return o
+}
+
+// Optional. Specific information for a Google Edge cluster.
+func (o MembershipEndpointResponseOutput) EdgeCluster() EdgeClusterResponseOutput {
+	return o.ApplyT(func(v MembershipEndpointResponse) EdgeClusterResponse { return v.EdgeCluster }).(EdgeClusterResponseOutput)
 }
 
 // Optional. Specific information for a GKE-on-GCP cluster.
@@ -2991,6 +3183,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommonFeatureSpecInput)(nil)).Elem(), CommonFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommonFeatureSpecPtrInput)(nil)).Elem(), CommonFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeClusterInput)(nil)).Elem(), EdgeClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeClusterPtrInput)(nil)).Elem(), EdgeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterInput)(nil)).Elem(), GkeClusterArgs{})
@@ -3030,6 +3224,9 @@ func init() {
 	pulumi.RegisterOutputType(CommonFeatureSpecPtrOutput{})
 	pulumi.RegisterOutputType(CommonFeatureSpecResponseOutput{})
 	pulumi.RegisterOutputType(CommonFeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(EdgeClusterOutput{})
+	pulumi.RegisterOutputType(EdgeClusterPtrOutput{})
+	pulumi.RegisterOutputType(EdgeClusterResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})

@@ -53,7 +53,7 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly dynamicGroupMetadata!: pulumi.Output<outputs.cloudidentity.v1.DynamicGroupMetadataResponse>;
     /**
-     * Immutable. The `EntityKey` of the `Group`.
+     * The `EntityKey` of the `Group`.
      */
     public readonly groupKey!: pulumi.Output<outputs.cloudidentity.v1.EntityKeyResponse>;
     /**
@@ -136,7 +136,7 @@ export interface GroupArgs {
      */
     dynamicGroupMetadata?: pulumi.Input<inputs.cloudidentity.v1.DynamicGroupMetadataArgs>;
     /**
-     * Immutable. The `EntityKey` of the `Group`.
+     * The `EntityKey` of the `Group`.
      */
     groupKey: pulumi.Input<inputs.cloudidentity.v1.EntityKeyArgs>;
     initialGroupConfig?: pulumi.Input<string>;

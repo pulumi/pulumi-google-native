@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackupResult:
-    def __init__(__self__, create_time=None, database=None, encryption_info=None, expire_time=None, name=None, referencing_databases=None, size_bytes=None, state=None, version_time=None):
+    def __init__(__self__, create_time=None, database=None, database_dialect=None, encryption_info=None, expire_time=None, name=None, referencing_databases=None, size_bytes=None, state=None, version_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
         pulumi.set(__self__, "database", database)
+        if database_dialect and not isinstance(database_dialect, str):
+            raise TypeError("Expected argument 'database_dialect' to be a str")
+        pulumi.set(__self__, "database_dialect", database_dialect)
         if encryption_info and not isinstance(encryption_info, dict):
             raise TypeError("Expected argument 'encryption_info' to be a dict")
         pulumi.set(__self__, "encryption_info", encryption_info)
@@ -62,6 +65,14 @@ class GetBackupResult:
         Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
         """
         return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="databaseDialect")
+    def database_dialect(self) -> str:
+        """
+        The database dialect information for the backup.
+        """
+        return pulumi.get(self, "database_dialect")
 
     @property
     @pulumi.getter(name="encryptionInfo")
@@ -128,6 +139,7 @@ class AwaitableGetBackupResult(GetBackupResult):
         return GetBackupResult(
             create_time=self.create_time,
             database=self.database,
+            database_dialect=self.database_dialect,
             encryption_info=self.encryption_info,
             expire_time=self.expire_time,
             name=self.name,
@@ -157,6 +169,7 @@ def get_backup(backup_id: Optional[str] = None,
     return AwaitableGetBackupResult(
         create_time=__ret__.create_time,
         database=__ret__.database,
+        database_dialect=__ret__.database_dialect,
         encryption_info=__ret__.encryption_info,
         expire_time=__ret__.expire_time,
         name=__ret__.name,

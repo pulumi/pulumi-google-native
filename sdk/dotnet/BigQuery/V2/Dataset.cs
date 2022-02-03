@@ -115,6 +115,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// [Optional]The tags associated with this dataset. Tag keys are globally unique.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.DatasetTagsItemResponse>> Tags { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Dataset resource with the given unique name, arguments, and options.
@@ -231,6 +237,18 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("tags")]
+        private InputList<Inputs.DatasetTagsItemArgs>? _tags;
+
+        /// <summary>
+        /// [Optional]The tags associated with this dataset. Tag keys are globally unique.
+        /// </summary>
+        public InputList<Inputs.DatasetTagsItemArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.DatasetTagsItemArgs>());
+            set => _tags = value;
+        }
 
         public DatasetArgs()
         {

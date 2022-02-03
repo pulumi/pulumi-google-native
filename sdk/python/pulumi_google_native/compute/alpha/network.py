@@ -259,6 +259,7 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["gateway_i_pv4"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["peerings"] = None
+            __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
             __props__.__dict__["subnetworks"] = None
@@ -296,6 +297,7 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["network_firewall_policy_enforcement_order"] = None
         __props__.__dict__["peerings"] = None
+        __props__.__dict__["region"] = None
         __props__.__dict__["routing_config"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
@@ -394,6 +396,14 @@ class Network(pulumi.CustomResource):
         A list of network peerings for the resource.
         """
         return pulumi.get(self, "peerings")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        URL of the region where the regional network resides. This field is not applicable to global network. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="routingConfig")

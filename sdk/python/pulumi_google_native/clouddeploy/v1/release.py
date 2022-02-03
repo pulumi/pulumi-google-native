@@ -529,7 +529,7 @@ class Release(pulumi.CustomResource):
     @pulumi.getter(name="targetSnapshots")
     def target_snapshots(self) -> pulumi.Output[Sequence['outputs.TargetResponse']]:
         """
-        Snapshot of the parent pipeline's targets taken at release creation time.
+        Snapshot of the targets taken at release creation time.
         """
         return pulumi.get(self, "target_snapshots")
 

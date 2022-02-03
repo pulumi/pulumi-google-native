@@ -1356,7 +1356,7 @@ class RuntimeShieldedInstanceConfigResponse(dict):
 @pulumi.output_type
 class RuntimeSoftwareConfigResponse(dict):
     """
-    Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
+    Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1393,15 +1393,17 @@ class RuntimeSoftwareConfigResponse(dict):
                  idle_shutdown: bool,
                  idle_shutdown_timeout: int,
                  install_gpu_driver: bool,
+                 kernels: Sequence['outputs.ContainerImageResponse'],
                  notebook_upgrade_schedule: str,
                  post_startup_script: str):
         """
-        Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
+        Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
         :param str custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
         :param bool enable_health_monitoring: Verifies core internal services are running. Default: True
         :param bool idle_shutdown: Runtime will automatically shutdown after idle_shutdown_time. Default: True
         :param int idle_shutdown_timeout: Time in minutes to wait before shutting down runtime. Default: 180 minutes
         :param bool install_gpu_driver: Install Nvidia Driver automatically.
+        :param Sequence['ContainerImageResponse'] kernels: Optional. Use a list of container images to use as Kernels in the notebook instance.
         :param str notebook_upgrade_schedule: Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         :param str post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         """
@@ -1410,6 +1412,7 @@ class RuntimeSoftwareConfigResponse(dict):
         pulumi.set(__self__, "idle_shutdown", idle_shutdown)
         pulumi.set(__self__, "idle_shutdown_timeout", idle_shutdown_timeout)
         pulumi.set(__self__, "install_gpu_driver", install_gpu_driver)
+        pulumi.set(__self__, "kernels", kernels)
         pulumi.set(__self__, "notebook_upgrade_schedule", notebook_upgrade_schedule)
         pulumi.set(__self__, "post_startup_script", post_startup_script)
 
@@ -1452,6 +1455,14 @@ class RuntimeSoftwareConfigResponse(dict):
         Install Nvidia Driver automatically.
         """
         return pulumi.get(self, "install_gpu_driver")
+
+    @property
+    @pulumi.getter
+    def kernels(self) -> Sequence['outputs.ContainerImageResponse']:
+        """
+        Optional. Use a list of container images to use as Kernels in the notebook instance.
+        """
+        return pulumi.get(self, "kernels")
 
     @property
     @pulumi.getter(name="notebookUpgradeSchedule")
@@ -1821,7 +1832,7 @@ class VirtualMachineConfigResponse(dict):
         """
         The config settings for virtual machine.
         :param 'RuntimeAcceleratorConfigResponse' accelerator_config: Optional. The Compute Engine accelerator configuration for this runtime.
-        :param Sequence['ContainerImageResponse'] container_images: Optional. Use a list of container images to start the notebook instance.
+        :param Sequence['ContainerImageResponse'] container_images: Optional. Use a list of container images to use as Kernels in the notebook instance.
         :param 'LocalDiskResponse' data_disk: Data disk option configuration settings.
         :param 'EncryptionConfigResponse' encryption_config: Optional. Encryption settings for virtual machine data disk.
         :param Mapping[str, str] guest_attributes: The Compute Engine guest attributes. (see [Project and instance guest attributes](https://cloud.google.com/compute/docs/storing-retrieving-metadata#guest_attributes)).
@@ -1864,7 +1875,7 @@ class VirtualMachineConfigResponse(dict):
     @pulumi.getter(name="containerImages")
     def container_images(self) -> Sequence['outputs.ContainerImageResponse']:
         """
-        Optional. Use a list of container images to start the notebook instance.
+        Optional. Use a list of container images to use as Kernels in the notebook instance.
         """
         return pulumi.get(self, "container_images")
 

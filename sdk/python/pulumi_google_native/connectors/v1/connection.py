@@ -21,22 +21,22 @@ class ConnectionArgs:
                  auth_config: Optional[pulumi.Input['AuthConfigArgs']] = None,
                  config_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 inactive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  lock_config: Optional[pulumi.Input['LockConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_account: Optional[pulumi.Input[str]] = None):
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 suspended: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] connector_version: Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
         :param pulumi.Input['AuthConfigArgs'] auth_config: Optional. Configuration for establishing the connection's authentication with an external system.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]] config_variables: Optional. Configuration for configuring the connection with an external system.
         :param pulumi.Input[str] description: Optional. Description of the resource.
-        :param pulumi.Input[bool] inactive: Optional. Inactive indicates the connection is active to use or not.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input['LockConfigArgs'] lock_config: Optional. Configuration that indicates whether or not the Connection can be edited.
         :param pulumi.Input[str] service_account: Optional. Service account needed for runtime plane to access GCP resources.
+        :param pulumi.Input[bool] suspended: Optional. Suspended indicates if a user has suspended a connection or not.
         """
         pulumi.set(__self__, "connection_id", connection_id)
         pulumi.set(__self__, "connector_version", connector_version)
@@ -46,8 +46,6 @@ class ConnectionArgs:
             pulumi.set(__self__, "config_variables", config_variables)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if inactive is not None:
-            pulumi.set(__self__, "inactive", inactive)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -58,6 +56,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "project", project)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if suspended is not None:
+            pulumi.set(__self__, "suspended", suspended)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -118,18 +118,6 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter
-    def inactive(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Inactive indicates the connection is active to use or not.
-        """
-        return pulumi.get(self, "inactive")
-
-    @inactive.setter
-    def inactive(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "inactive", value)
-
-    @property
-    @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
@@ -182,6 +170,18 @@ class ConnectionArgs:
     def service_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account", value)
 
+    @property
+    @pulumi.getter
+    def suspended(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Suspended indicates if a user has suspended a connection or not.
+        """
+        return pulumi.get(self, "suspended")
+
+    @suspended.setter
+    def suspended(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "suspended", value)
+
 
 class Connection(pulumi.CustomResource):
     @overload
@@ -193,12 +193,12 @@ class Connection(pulumi.CustomResource):
                  connection_id: Optional[pulumi.Input[str]] = None,
                  connector_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 inactive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  lock_config: Optional[pulumi.Input[pulumi.InputType['LockConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a new Connection in a given project and location.
@@ -210,10 +210,10 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigVariableArgs']]]] config_variables: Optional. Configuration for configuring the connection with an external system.
         :param pulumi.Input[str] connector_version: Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
         :param pulumi.Input[str] description: Optional. Description of the resource.
-        :param pulumi.Input[bool] inactive: Optional. Inactive indicates the connection is active to use or not.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input[pulumi.InputType['LockConfigArgs']] lock_config: Optional. Configuration that indicates whether or not the Connection can be edited.
         :param pulumi.Input[str] service_account: Optional. Service account needed for runtime plane to access GCP resources.
+        :param pulumi.Input[bool] suspended: Optional. Suspended indicates if a user has suspended a connection or not.
         """
         ...
     @overload
@@ -245,12 +245,12 @@ class Connection(pulumi.CustomResource):
                  connection_id: Optional[pulumi.Input[str]] = None,
                  connector_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 inactive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  lock_config: Optional[pulumi.Input[pulumi.InputType['LockConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -272,12 +272,12 @@ class Connection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'connector_version'")
             __props__.__dict__["connector_version"] = connector_version
             __props__.__dict__["description"] = description
-            __props__.__dict__["inactive"] = inactive
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["lock_config"] = lock_config
             __props__.__dict__["project"] = project
             __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["suspended"] = suspended
             __props__.__dict__["create_time"] = None
             __props__.__dict__["egress_backends"] = None
             __props__.__dict__["envoy_image_location"] = None
@@ -316,13 +316,13 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["egress_backends"] = None
         __props__.__dict__["envoy_image_location"] = None
         __props__.__dict__["image_location"] = None
-        __props__.__dict__["inactive"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["lock_config"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["service_directory"] = None
         __props__.__dict__["status"] = None
+        __props__.__dict__["suspended"] = None
         __props__.__dict__["update_time"] = None
         return Connection(resource_name, opts=opts, __props__=__props__)
 
@@ -392,14 +392,6 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def inactive(self) -> pulumi.Output[bool]:
-        """
-        Optional. Inactive indicates the connection is active to use or not.
-        """
-        return pulumi.get(self, "inactive")
-
-    @property
-    @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
@@ -445,6 +437,14 @@ class Connection(pulumi.CustomResource):
         Current status of the connection.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def suspended(self) -> pulumi.Output[bool]:
+        """
+        Optional. Suspended indicates if a user has suspended a connection or not.
+        """
+        return pulumi.get(self, "suspended")
 
     @property
     @pulumi.getter(name="updateTime")

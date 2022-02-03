@@ -74,7 +74,7 @@ class ClusterArgs:
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
         :param pulumi.Input['ClusterTelemetryArgs'] cluster_telemetry: Telemetry integration for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]] conditions: Which conditions caused the current cluster state.
-        :param pulumi.Input['ConfidentialNodesArgs'] confidential_nodes: Configuration of Confidential Nodes
+        :param pulumi.Input['ConfidentialNodesArgs'] confidential_nodes: Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
         :param pulumi.Input['DatabaseEncryptionArgs'] database_encryption: Configuration of etcd encryption.
         :param pulumi.Input['MaxPodsConstraintArgs'] default_max_pods_constraint: The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
         :param pulumi.Input[str] description: An optional description of this cluster.
@@ -310,7 +310,7 @@ class ClusterArgs:
     @pulumi.getter(name="confidentialNodes")
     def confidential_nodes(self) -> Optional[pulumi.Input['ConfidentialNodesArgs']]:
         """
-        Configuration of Confidential Nodes
+        Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
         """
         return pulumi.get(self, "confidential_nodes")
 
@@ -848,7 +848,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
         :param pulumi.Input[pulumi.InputType['ClusterTelemetryArgs']] cluster_telemetry: Telemetry integration for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]] conditions: Which conditions caused the current cluster state.
-        :param pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']] confidential_nodes: Configuration of Confidential Nodes
+        :param pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']] confidential_nodes: Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
         :param pulumi.Input[pulumi.InputType['DatabaseEncryptionArgs']] database_encryption: Configuration of etcd encryption.
         :param pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']] default_max_pods_constraint: The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
         :param pulumi.Input[str] description: An optional description of this cluster.
@@ -1179,7 +1179,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="confidentialNodes")
     def confidential_nodes(self) -> pulumi.Output['outputs.ConfidentialNodesResponse']:
         """
-        Configuration of Confidential Nodes
+        Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
         """
         return pulumi.get(self, "confidential_nodes")
 

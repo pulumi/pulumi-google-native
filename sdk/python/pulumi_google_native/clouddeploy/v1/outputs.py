@@ -11,6 +11,7 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AnthosClusterResponse',
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
@@ -28,6 +29,28 @@ __all__ = [
     'TargetResponse',
     'TargetsPresentConditionResponse',
 ]
+
+@pulumi.output_type
+class AnthosClusterResponse(dict):
+    """
+    Information specifying an Anthos Cluster.
+    """
+    def __init__(__self__, *,
+                 membership: str):
+        """
+        Information specifying an Anthos Cluster.
+        :param str membership: Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+        """
+        pulumi.set(__self__, "membership", membership)
+
+    @property
+    @pulumi.getter
+    def membership(self) -> str:
+        """
+        Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+        """
+        return pulumi.get(self, "membership")
+
 
 @pulumi.output_type
 class AuditConfigResponse(dict):
@@ -410,10 +433,16 @@ class ExecutionConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "defaultPool":
+        if key == "artifactStorage":
+            suggest = "artifact_storage"
+        elif key == "defaultPool":
             suggest = "default_pool"
         elif key == "privatePool":
             suggest = "private_pool"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "workerPool":
+            suggest = "worker_pool"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ExecutionConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -427,18 +456,35 @@ class ExecutionConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 artifact_storage: str,
                  default_pool: 'outputs.DefaultPoolResponse',
                  private_pool: 'outputs.PrivatePoolResponse',
-                 usages: Sequence[str]):
+                 service_account: str,
+                 usages: Sequence[str],
+                 worker_pool: str):
         """
         Configuration of the environment to use when calling Skaffold.
+        :param str artifact_storage: Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
         :param 'DefaultPoolResponse' default_pool: Optional. Use default Cloud Build pool.
         :param 'PrivatePoolResponse' private_pool: Optional. Use private Cloud Build pool.
+        :param str service_account: Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
         :param Sequence[str] usages: Usages when this configuration should be applied.
+        :param str worker_pool: Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
         """
+        pulumi.set(__self__, "artifact_storage", artifact_storage)
         pulumi.set(__self__, "default_pool", default_pool)
         pulumi.set(__self__, "private_pool", private_pool)
+        pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "usages", usages)
+        pulumi.set(__self__, "worker_pool", worker_pool)
+
+    @property
+    @pulumi.getter(name="artifactStorage")
+    def artifact_storage(self) -> str:
+        """
+        Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+        """
+        return pulumi.get(self, "artifact_storage")
 
     @property
     @pulumi.getter(name="defaultPool")
@@ -457,12 +503,28 @@ class ExecutionConfigResponse(dict):
         return pulumi.get(self, "private_pool")
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
     @pulumi.getter
     def usages(self) -> Sequence[str]:
         """
         Usages when this configuration should be applied.
         """
         return pulumi.get(self, "usages")
+
+    @property
+    @pulumi.getter(name="workerPool")
+    def worker_pool(self) -> str:
+        """
+        Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
+        """
+        return pulumi.get(self, "worker_pool")
 
 
 @pulumi.output_type
@@ -759,7 +821,7 @@ class StageResponse(dict):
         """
         Stage specifies a location to which to deploy.
         :param Sequence[str] profiles: Skaffold profiles to use when rendering the manifest for this stage's `Target`.
-        :param str target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/deliveryPipelines/pipeline/targets/my-target`). The parent `DeliveryPipeline` of the `Target` is inferred to be the parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.
+        :param str target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
         pulumi.set(__self__, "profiles", profiles)
         pulumi.set(__self__, "target_id", target_id)
@@ -776,7 +838,7 @@ class StageResponse(dict):
     @pulumi.getter(name="targetId")
     def target_id(self) -> str:
         """
-        The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/deliveryPipelines/pipeline/targets/my-target`). The parent `DeliveryPipeline` of the `Target` is inferred to be the parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.
+        The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
         return pulumi.get(self, "target_id")
 
@@ -789,7 +851,9 @@ class TargetResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "createTime":
+        if key == "anthosCluster":
+            suggest = "anthos_cluster"
+        elif key == "createTime":
             suggest = "create_time"
         elif key == "executionConfigs":
             suggest = "execution_configs"
@@ -813,6 +877,7 @@ class TargetResponse(dict):
 
     def __init__(__self__, *,
                  annotations: Mapping[str, str],
+                 anthos_cluster: 'outputs.AnthosClusterResponse',
                  create_time: str,
                  description: str,
                  etag: str,
@@ -827,19 +892,21 @@ class TargetResponse(dict):
         """
         A `Target` resource in the Google Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.
         :param Mapping[str, str] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param 'AnthosClusterResponse' anthos_cluster: Information specifying an Anthos Cluster.
         :param str create_time: Time at which the `Target` was created.
         :param str description: Optional. Description of the `Target`. Max length is 255 characters.
         :param str etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param Sequence['ExecutionConfigResponse'] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         :param 'GkeClusterResponse' gke: Information specifying a GKE Cluster.
         :param Mapping[str, str] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-        :param str name: Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+        :param str name: Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         :param bool require_approval: Optional. Whether or not the `Target` requires approval.
         :param str target_id: Resource id of the `Target`.
         :param str uid: Unique identifier of the `Target`.
         :param str update_time: Most recent time at which the `Target` was updated.
         """
         pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "anthos_cluster", anthos_cluster)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "etag", etag)
@@ -859,6 +926,14 @@ class TargetResponse(dict):
         Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         """
         return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="anthosCluster")
+    def anthos_cluster(self) -> 'outputs.AnthosClusterResponse':
+        """
+        Information specifying an Anthos Cluster.
+        """
+        return pulumi.get(self, "anthos_cluster")
 
     @property
     @pulumi.getter(name="createTime")
@@ -912,7 +987,7 @@ class TargetResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+        Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         """
         return pulumi.get(self, "name")
 

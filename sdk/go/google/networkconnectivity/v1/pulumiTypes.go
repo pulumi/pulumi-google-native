@@ -758,7 +758,7 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 type LinkedInterconnectAttachments struct {
-	// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 	SiteToSiteDataTransfer *bool `pulumi:"siteToSiteDataTransfer"`
 	// The URIs of linked interconnect attachment resources
 	Uris []string `pulumi:"uris"`
@@ -777,7 +777,7 @@ type LinkedInterconnectAttachmentsInput interface {
 
 // A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 type LinkedInterconnectAttachmentsArgs struct {
-	// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 	SiteToSiteDataTransfer pulumi.BoolPtrInput `pulumi:"siteToSiteDataTransfer"`
 	// The URIs of linked interconnect attachment resources
 	Uris pulumi.StringArrayInput `pulumi:"uris"`
@@ -861,7 +861,7 @@ func (o LinkedInterconnectAttachmentsOutput) ToLinkedInterconnectAttachmentsPtrO
 	}).(LinkedInterconnectAttachmentsPtrOutput)
 }
 
-// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 func (o LinkedInterconnectAttachmentsOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LinkedInterconnectAttachments) *bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolPtrOutput)
 }
@@ -895,7 +895,7 @@ func (o LinkedInterconnectAttachmentsPtrOutput) Elem() LinkedInterconnectAttachm
 	}).(LinkedInterconnectAttachmentsOutput)
 }
 
-// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 func (o LinkedInterconnectAttachmentsPtrOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LinkedInterconnectAttachments) *bool {
 		if v == nil {
@@ -917,7 +917,7 @@ func (o LinkedInterconnectAttachmentsPtrOutput) Uris() pulumi.StringArrayOutput 
 
 // A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 type LinkedInterconnectAttachmentsResponse struct {
-	// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
 	// The URIs of linked interconnect attachment resources
 	Uris []string `pulumi:"uris"`
@@ -938,7 +938,7 @@ func (o LinkedInterconnectAttachmentsResponseOutput) ToLinkedInterconnectAttachm
 	return o
 }
 
-// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 func (o LinkedInterconnectAttachmentsResponseOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v LinkedInterconnectAttachmentsResponse) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
 }
@@ -952,7 +952,7 @@ func (o LinkedInterconnectAttachmentsResponseOutput) Uris() pulumi.StringArrayOu
 type LinkedRouterApplianceInstances struct {
 	// The list of router appliance instances.
 	Instances []RouterApplianceInstance `pulumi:"instances"`
-	// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 	SiteToSiteDataTransfer *bool `pulumi:"siteToSiteDataTransfer"`
 }
 
@@ -971,7 +971,7 @@ type LinkedRouterApplianceInstancesInput interface {
 type LinkedRouterApplianceInstancesArgs struct {
 	// The list of router appliance instances.
 	Instances RouterApplianceInstanceArrayInput `pulumi:"instances"`
-	// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 	SiteToSiteDataTransfer pulumi.BoolPtrInput `pulumi:"siteToSiteDataTransfer"`
 }
 
@@ -1058,7 +1058,7 @@ func (o LinkedRouterApplianceInstancesOutput) Instances() RouterApplianceInstanc
 	return o.ApplyT(func(v LinkedRouterApplianceInstances) []RouterApplianceInstance { return v.Instances }).(RouterApplianceInstanceArrayOutput)
 }
 
-// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 func (o LinkedRouterApplianceInstancesOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LinkedRouterApplianceInstances) *bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolPtrOutput)
 }
@@ -1097,7 +1097,7 @@ func (o LinkedRouterApplianceInstancesPtrOutput) Instances() RouterApplianceInst
 	}).(RouterApplianceInstanceArrayOutput)
 }
 
-// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 func (o LinkedRouterApplianceInstancesPtrOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LinkedRouterApplianceInstances) *bool {
 		if v == nil {
@@ -1111,7 +1111,7 @@ func (o LinkedRouterApplianceInstancesPtrOutput) SiteToSiteDataTransfer() pulumi
 type LinkedRouterApplianceInstancesResponse struct {
 	// The list of router appliance instances.
 	Instances []RouterApplianceInstanceResponse `pulumi:"instances"`
-	// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
 }
 
@@ -1135,14 +1135,14 @@ func (o LinkedRouterApplianceInstancesResponseOutput) Instances() RouterApplianc
 	return o.ApplyT(func(v LinkedRouterApplianceInstancesResponse) []RouterApplianceInstanceResponse { return v.Instances }).(RouterApplianceInstanceResponseArrayOutput)
 }
 
-// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 func (o LinkedRouterApplianceInstancesResponseOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v LinkedRouterApplianceInstancesResponse) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
 }
 
 // A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
 type LinkedVpnTunnels struct {
-	// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 	SiteToSiteDataTransfer *bool `pulumi:"siteToSiteDataTransfer"`
 	// The URIs of linked VPN tunnel resources.
 	Uris []string `pulumi:"uris"`
@@ -1161,7 +1161,7 @@ type LinkedVpnTunnelsInput interface {
 
 // A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
 type LinkedVpnTunnelsArgs struct {
-	// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 	SiteToSiteDataTransfer pulumi.BoolPtrInput `pulumi:"siteToSiteDataTransfer"`
 	// The URIs of linked VPN tunnel resources.
 	Uris pulumi.StringArrayInput `pulumi:"uris"`
@@ -1245,7 +1245,7 @@ func (o LinkedVpnTunnelsOutput) ToLinkedVpnTunnelsPtrOutputWithContext(ctx conte
 	}).(LinkedVpnTunnelsPtrOutput)
 }
 
-// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 func (o LinkedVpnTunnelsOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LinkedVpnTunnels) *bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolPtrOutput)
 }
@@ -1279,7 +1279,7 @@ func (o LinkedVpnTunnelsPtrOutput) Elem() LinkedVpnTunnelsOutput {
 	}).(LinkedVpnTunnelsOutput)
 }
 
-// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 func (o LinkedVpnTunnelsPtrOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LinkedVpnTunnels) *bool {
 		if v == nil {
@@ -1301,7 +1301,7 @@ func (o LinkedVpnTunnelsPtrOutput) Uris() pulumi.StringArrayOutput {
 
 // A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
 type LinkedVpnTunnelsResponse struct {
-	// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
 	// The URIs of linked VPN tunnel resources.
 	Uris []string `pulumi:"uris"`
@@ -1322,7 +1322,7 @@ func (o LinkedVpnTunnelsResponseOutput) ToLinkedVpnTunnelsResponseOutputWithCont
 	return o
 }
 
-// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set to false by default, but you must set it to true. Note that data transfer is available only in supported locations.
+// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 func (o LinkedVpnTunnelsResponseOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v LinkedVpnTunnelsResponse) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
 }
@@ -1494,7 +1494,7 @@ func (o RouterApplianceInstanceResponseArrayOutput) Index(i pulumi.IntInput) Rou
 	}).(RouterApplianceInstanceResponseOutput)
 }
 
-// RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
+// RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
 type RoutingVPC struct {
 	// The URI of the VPC network.
 	Uri *string `pulumi:"uri"`
@@ -1511,7 +1511,7 @@ type RoutingVPCInput interface {
 	ToRoutingVPCOutputWithContext(context.Context) RoutingVPCOutput
 }
 
-// RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
+// RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
 type RoutingVPCArgs struct {
 	// The URI of the VPC network.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
@@ -1554,7 +1554,7 @@ func (i RoutingVPCArray) ToRoutingVPCArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingVPCArrayOutput)
 }
 
-// RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
+// RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
 type RoutingVPCOutput struct{ *pulumi.OutputState }
 
 func (RoutingVPCOutput) ElementType() reflect.Type {
@@ -1594,15 +1594,15 @@ func (o RoutingVPCArrayOutput) Index(i pulumi.IntInput) RoutingVPCOutput {
 	}).(RoutingVPCOutput)
 }
 
-// RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
+// RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
 type RoutingVPCResponse struct {
-	// If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network.
+	// If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network. At most, one VPC network will have this field set to true.
 	RequiredForNewSiteToSiteDataTransferSpokes bool `pulumi:"requiredForNewSiteToSiteDataTransferSpokes"`
 	// The URI of the VPC network.
 	Uri string `pulumi:"uri"`
 }
 
-// RoutingVPC contains information about the VPC network that is associated with a hub's spokes.
+// RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
 type RoutingVPCResponseOutput struct{ *pulumi.OutputState }
 
 func (RoutingVPCResponseOutput) ElementType() reflect.Type {
@@ -1617,7 +1617,7 @@ func (o RoutingVPCResponseOutput) ToRoutingVPCResponseOutputWithContext(ctx cont
 	return o
 }
 
-// If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network.
+// If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network. At most, one VPC network will have this field set to true.
 func (o RoutingVPCResponseOutput) RequiredForNewSiteToSiteDataTransferSpokes() pulumi.BoolOutput {
 	return o.ApplyT(func(v RoutingVPCResponse) bool { return v.RequiredForNewSiteToSiteDataTransferSpokes }).(pulumi.BoolOutput)
 }

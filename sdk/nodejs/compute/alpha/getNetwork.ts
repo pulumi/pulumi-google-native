@@ -72,6 +72,10 @@ export interface GetNetworkResult {
      */
     readonly peerings: outputs.compute.alpha.NetworkPeeringResponse[];
     /**
+     * URL of the region where the regional network resides. This field is not applicable to global network. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     */
+    readonly region: string;
+    /**
      * The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
      */
     readonly routingConfig: outputs.compute.alpha.NetworkRoutingConfigResponse;
