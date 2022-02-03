@@ -13,13 +13,15 @@ require (
 	github.com/pulumi/pulumi/pkg/v3 v3.23.0
 	github.com/pulumi/pulumi/sdk/v3 v3.23.0
 	github.com/stretchr/testify v1.7.0
-	golang.org/x/oauth2 v0.0.0-20210427180440-81ed05c6b58c
-	google.golang.org/api v0.46.0
-	google.golang.org/grpc v1.37.0
+	golang.org/x/oauth2 v0.0.0-20211104180415-d3ed0bb246c8
+	google.golang.org/api v0.66.0
+	google.golang.org/grpc v1.40.1
 )
 
 require (
-	cloud.google.com/go v0.81.0 // indirect
+	cloud.google.com/go/compute v0.1.0 // indirect
+	cloud.google.com/go/iam v0.1.1 // indirect
+	cloud.google.com/go/kms v1.1.0 // indirect
 	github.com/agext/levenshtein v1.2.2 // indirect
 	github.com/apparentlymart/go-textseg v1.0.0 // indirect
 	github.com/apparentlymart/go-textseg/v12 v12.0.0 // indirect
@@ -32,8 +34,8 @@ require (
 	github.com/gofrs/uuid v3.3.0+incompatible // indirect
 	github.com/gogo/protobuf v1.3.1 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
-	github.com/google/go-cmp v0.5.5 // indirect
-	github.com/googleapis/gax-go/v2 v2.0.5 // indirect
+	github.com/google/go-cmp v0.5.6 // indirect
+	github.com/googleapis/gax-go/v2 v2.1.1 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
@@ -74,12 +76,12 @@ require (
 	go.uber.org/atomic v1.7.0 // indirect
 	golang.org/x/crypto v0.0.0-20210506145944-38f3c27a63bf // indirect
 	golang.org/x/net v0.0.0-20210505214959-0714010a04ed // indirect
-	golang.org/x/sys v0.0.0-20210817190340-bfb29a6856f2 // indirect
+	golang.org/x/sys v0.0.0-20220114195835-da31bd327af9 // indirect
 	golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1 // indirect
 	golang.org/x/text v0.3.6 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	google.golang.org/genproto v0.0.0-20210506142907-4a47615972c2 // indirect
-	google.golang.org/protobuf v1.26.0 // indirect
+	google.golang.org/genproto v0.0.0-20220114231437-d2e6a121cae0 // indirect
+	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/src-d/go-billy.v4 v4.3.2 // indirect
 	gopkg.in/src-d/go-git.v4 v4.13.1 // indirect

@@ -8,6 +8,7 @@ CHANGELOG
 Improvements:
 
 - Update to support the latest resource definitions and the latest Pulumi SDK
+- Upgrade Google API client to v0.66.0
 
 ---
 
