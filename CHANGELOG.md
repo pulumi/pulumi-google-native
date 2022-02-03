@@ -3,6 +3,8 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+## 0.14.0 (2022-02-02)
+
 - Update minimum supported Go version to 1.16
 
 Improvements:
