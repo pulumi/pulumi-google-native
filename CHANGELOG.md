@@ -5,6 +5,10 @@ CHANGELOG
 
 - Update minimum supported Go version to 1.16
 
+Improvements:
+
+- Update to support the latest resource definitions and the latest Pulumi SDK
+
 ---
 
 ## 0.13.0 (2022-01-27)
