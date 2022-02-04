@@ -26,6 +26,8 @@ type LookupInstanceArgs struct {
 }
 
 type LookupInstanceResult struct {
+	// List all maintenance versions applicable on the instance
+	AvailableMaintenanceVersions []string `pulumi:"availableMaintenanceVersions"`
 	// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
 	BackendType string `pulumi:"backendType"`
 	// Connection name of the Cloud SQL instance used in connection strings.
@@ -52,6 +54,8 @@ type LookupInstanceResult struct {
 	IpAddresses []IpMappingResponse `pulumi:"ipAddresses"`
 	// This is always `sql#instance`.
 	Kind string `pulumi:"kind"`
+	// The current software version on the instance.
+	MaintenanceVersion string `pulumi:"maintenanceVersion"`
 	// The name of the instance which will act as primary in the replication setup.
 	MasterInstanceName string `pulumi:"masterInstanceName"`
 	// The maximum disk size of the instance in bytes.
@@ -124,6 +128,11 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx 
 	return o
 }
 
+// List all maintenance versions applicable on the instance
+func (o LookupInstanceResultOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []string { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
+}
+
 // The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
 func (o LookupInstanceResultOutput) BackendType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.BackendType }).(pulumi.StringOutput)
@@ -187,6 +196,11 @@ func (o LookupInstanceResultOutput) IpAddresses() IpMappingResponseArrayOutput {
 // This is always `sql#instance`.
 func (o LookupInstanceResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The current software version on the instance.
+func (o LookupInstanceResultOutput) MaintenanceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.MaintenanceVersion }).(pulumi.StringOutput)
 }
 
 // The name of the instance which will act as primary in the replication setup.

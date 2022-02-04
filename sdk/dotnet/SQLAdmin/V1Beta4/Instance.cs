@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// List all maintenance versions applicable on the instance
+        /// </summary>
+        [Output("availableMaintenanceVersions")]
+        public Output<ImmutableArray<string>> AvailableMaintenanceVersions { get; private set; } = null!;
+
+        /// <summary>
         /// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
         /// </summary>
         [Output("backendType")]
@@ -92,6 +98,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The current software version on the instance.
+        /// </summary>
+        [Output("maintenanceVersion")]
+        public Output<string> MaintenanceVersion { get; private set; } = null!;
 
         /// <summary>
         /// The name of the instance which will act as primary in the replication setup.
@@ -252,6 +264,18 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
+        [Input("availableMaintenanceVersions")]
+        private InputList<string>? _availableMaintenanceVersions;
+
+        /// <summary>
+        /// List all maintenance versions applicable on the instance
+        /// </summary>
+        public InputList<string> AvailableMaintenanceVersions
+        {
+            get => _availableMaintenanceVersions ?? (_availableMaintenanceVersions = new InputList<string>());
+            set => _availableMaintenanceVersions = value;
+        }
+
         /// <summary>
         /// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
         /// </summary>
@@ -323,6 +347,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
+
+        /// <summary>
+        /// The current software version on the instance.
+        /// </summary>
+        [Input("maintenanceVersion")]
+        public Input<string>? MaintenanceVersion { get; set; }
 
         /// <summary>
         /// The name of the instance which will act as primary in the replication setup.

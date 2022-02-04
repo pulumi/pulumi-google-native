@@ -24,6 +24,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<int> Count { get; private set; } = null!;
 
         /// <summary>
+        /// The first transaction creation timestamp, recorded by UAP.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
         /// </summary>
         [Output("filter")]

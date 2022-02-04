@@ -16,6 +16,7 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
+                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backend_type: Optional[pulumi.Input['InstanceBackendType']] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
                  current_disk_size: Optional[pulumi.Input[str]] = None,
@@ -27,6 +28,7 @@ class InstanceArgs:
                  instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['IpMappingArgs']]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  max_disk_size: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -48,6 +50,7 @@ class InstanceArgs:
                  suspension_reason: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]]] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] available_maintenance_versions: List all maintenance versions applicable on the instance
         :param pulumi.Input['InstanceBackendType'] backend_type: The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
         :param pulumi.Input[str] connection_name: Connection name of the Cloud SQL instance used in connection strings.
         :param pulumi.Input[str] current_disk_size: The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see [this announcement](https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ) for details.
@@ -59,6 +62,7 @@ class InstanceArgs:
         :param pulumi.Input['InstanceInstanceType'] instance_type: The instance type.
         :param pulumi.Input[Sequence[pulumi.Input['IpMappingArgs']]] ip_addresses: The assigned IP addresses for the instance.
         :param pulumi.Input[str] kind: This is always `sql#instance`.
+        :param pulumi.Input[str] maintenance_version: The current software version on the instance.
         :param pulumi.Input[str] master_instance_name: The name of the instance which will act as primary in the replication setup.
         :param pulumi.Input[str] max_disk_size: The maximum disk size of the instance in bytes.
         :param pulumi.Input[str] name: Name of the Cloud SQL instance. This does not include the project ID.
@@ -79,6 +83,8 @@ class InstanceArgs:
         :param pulumi.Input['InstanceState'] state: The current serving state of the Cloud SQL instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]] suspension_reason: If the instance state is SUSPENDED, the reason for the suspension.
         """
+        if available_maintenance_versions is not None:
+            pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
         if backend_type is not None:
             pulumi.set(__self__, "backend_type", backend_type)
         if connection_name is not None:
@@ -101,6 +107,8 @@ class InstanceArgs:
             pulumi.set(__self__, "ip_addresses", ip_addresses)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if maintenance_version is not None:
+            pulumi.set(__self__, "maintenance_version", maintenance_version)
         if master_instance_name is not None:
             pulumi.set(__self__, "master_instance_name", master_instance_name)
         if max_disk_size is not None:
@@ -139,6 +147,18 @@ class InstanceArgs:
             pulumi.set(__self__, "state", state)
         if suspension_reason is not None:
             pulumi.set(__self__, "suspension_reason", suspension_reason)
+
+    @property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List all maintenance versions applicable on the instance
+        """
+        return pulumi.get(self, "available_maintenance_versions")
+
+    @available_maintenance_versions.setter
+    def available_maintenance_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "available_maintenance_versions", value)
 
     @property
     @pulumi.getter(name="backendType")
@@ -271,6 +291,18 @@ class InstanceArgs:
     @kind.setter
     def kind(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current software version on the instance.
+        """
+        return pulumi.get(self, "maintenance_version")
+
+    @maintenance_version.setter
+    def maintenance_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_version", value)
 
     @property
     @pulumi.getter(name="masterInstanceName")
@@ -506,6 +538,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backend_type: Optional[pulumi.Input['InstanceBackendType']] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
                  current_disk_size: Optional[pulumi.Input[str]] = None,
@@ -517,6 +550,7 @@ class Instance(pulumi.CustomResource):
                  instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  max_disk_size: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -542,6 +576,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] available_maintenance_versions: List all maintenance versions applicable on the instance
         :param pulumi.Input['InstanceBackendType'] backend_type: The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
         :param pulumi.Input[str] connection_name: Connection name of the Cloud SQL instance used in connection strings.
         :param pulumi.Input[str] current_disk_size: The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see [this announcement](https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ) for details.
@@ -553,6 +588,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input['InstanceInstanceType'] instance_type: The instance type.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]] ip_addresses: The assigned IP addresses for the instance.
         :param pulumi.Input[str] kind: This is always `sql#instance`.
+        :param pulumi.Input[str] maintenance_version: The current software version on the instance.
         :param pulumi.Input[str] master_instance_name: The name of the instance which will act as primary in the replication setup.
         :param pulumi.Input[str] max_disk_size: The maximum disk size of the instance in bytes.
         :param pulumi.Input[str] name: Name of the Cloud SQL instance. This does not include the project ID.
@@ -597,6 +633,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backend_type: Optional[pulumi.Input['InstanceBackendType']] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
                  current_disk_size: Optional[pulumi.Input[str]] = None,
@@ -608,6 +645,7 @@ class Instance(pulumi.CustomResource):
                  instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  max_disk_size: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -639,6 +677,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["available_maintenance_versions"] = available_maintenance_versions
             __props__.__dict__["backend_type"] = backend_type
             __props__.__dict__["connection_name"] = connection_name
             __props__.__dict__["current_disk_size"] = current_disk_size
@@ -650,6 +689,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["ip_addresses"] = ip_addresses
             __props__.__dict__["kind"] = kind
+            __props__.__dict__["maintenance_version"] = maintenance_version
             __props__.__dict__["master_instance_name"] = master_instance_name
             __props__.__dict__["max_disk_size"] = max_disk_size
             __props__.__dict__["name"] = name
@@ -693,6 +733,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = InstanceArgs.__new__(InstanceArgs)
 
+        __props__.__dict__["available_maintenance_versions"] = None
         __props__.__dict__["backend_type"] = None
         __props__.__dict__["connection_name"] = None
         __props__.__dict__["create_time"] = None
@@ -706,6 +747,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["instance_type"] = None
         __props__.__dict__["ip_addresses"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["maintenance_version"] = None
         __props__.__dict__["master_instance_name"] = None
         __props__.__dict__["max_disk_size"] = None
         __props__.__dict__["name"] = None
@@ -726,6 +768,14 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["suspension_reason"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List all maintenance versions applicable on the instance
+        """
+        return pulumi.get(self, "available_maintenance_versions")
 
     @property
     @pulumi.getter(name="backendType")
@@ -830,6 +880,14 @@ class Instance(pulumi.CustomResource):
         This is always `sql#instance`.
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> pulumi.Output[str]:
+        """
+        The current software version on the instance.
+        """
+        return pulumi.get(self, "maintenance_version")
 
     @property
     @pulumi.getter(name="masterInstanceName")

@@ -36,6 +36,10 @@ export interface GetDebugSessionResult {
      */
     readonly count: number;
     /**
+     * The first transaction creation timestamp, recorded by UAP.
+     */
+    readonly createTime: string;
+    /**
      * Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
      */
     readonly filter: string;

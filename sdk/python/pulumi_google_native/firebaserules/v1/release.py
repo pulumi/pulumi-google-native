@@ -13,20 +13,31 @@ __all__ = ['ReleaseArgs', 'Release']
 @pulumi.input_type
 class ReleaseArgs:
     def __init__(__self__, *,
+                 ruleset_name: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 ruleset_name: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Release resource.
-        :param pulumi.Input[str] name: Format: `projects/{project_id}/releases/{release_id}`
         :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        :param pulumi.Input[str] name: Format: `projects/{project_id}/releases/{release_id}`
         """
+        pulumi.set(__self__, "ruleset_name", ruleset_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if ruleset_name is not None:
-            pulumi.set(__self__, "ruleset_name", ruleset_name)
+
+    @property
+    @pulumi.getter(name="rulesetName")
+    def ruleset_name(self) -> pulumi.Input[str]:
+        """
+        Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        """
+        return pulumi.get(self, "ruleset_name")
+
+    @ruleset_name.setter
+    def ruleset_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ruleset_name", value)
 
     @property
     @pulumi.getter
@@ -48,18 +59,6 @@ class ReleaseArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="rulesetName")
-    def ruleset_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
-        """
-        return pulumi.get(self, "ruleset_name")
-
-    @ruleset_name.setter
-    def ruleset_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ruleset_name", value)
 
 
 class Release(pulumi.CustomResource):
@@ -83,7 +82,7 @@ class Release(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ReleaseArgs] = None,
+                 args: ReleaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a `Release`. Release names should reflect the developer's deployment practices. For example, the release name may include the environment name, application name, application version, or any other name meaningful to the developer. Once a `Release` refers to a `Ruleset`, the rules can be enforced by Firebase Rules-enabled services. More than one `Release` may be 'live' concurrently. Consider the following three `Release` names for `projects/foo` and the `Ruleset` to which they refer. Release Name -> Ruleset Name * projects/foo/releases/prod -> projects/foo/rulesets/uuid123 * projects/foo/releases/prod/beta -> projects/foo/rulesets/uuid123 * projects/foo/releases/prod/v23 -> projects/foo/rulesets/uuid456 The relationships reflect a `Ruleset` rollout in progress. The `prod` and `prod/beta` releases refer to the same `Ruleset`. However, `prod/v23` refers to a new `Ruleset`. The `Ruleset` reference for a `Release` may be updated using the UpdateRelease method.
@@ -120,6 +119,8 @@ class Release(pulumi.CustomResource):
 
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if ruleset_name is None and not opts.urn:
+                raise TypeError("Missing required property 'ruleset_name'")
             __props__.__dict__["ruleset_name"] = ruleset_name
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None

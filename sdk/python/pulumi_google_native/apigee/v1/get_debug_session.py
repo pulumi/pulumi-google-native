@@ -17,10 +17,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetDebugSessionResult:
-    def __init__(__self__, count=None, filter=None, name=None, timeout=None, tracesize=None, validity=None):
+    def __init__(__self__, count=None, create_time=None, filter=None, name=None, timeout=None, tracesize=None, validity=None):
         if count and not isinstance(count, int):
             raise TypeError("Expected argument 'count' to be a int")
         pulumi.set(__self__, "count", count)
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if filter and not isinstance(filter, str):
             raise TypeError("Expected argument 'filter' to be a str")
         pulumi.set(__self__, "filter", filter)
@@ -44,6 +47,14 @@ class GetDebugSessionResult:
         Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
         """
         return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The first transaction creation timestamp, recorded by UAP.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -93,6 +104,7 @@ class AwaitableGetDebugSessionResult(GetDebugSessionResult):
             yield self
         return GetDebugSessionResult(
             count=self.count,
+            create_time=self.create_time,
             filter=self.filter,
             name=self.name,
             timeout=self.timeout,
@@ -123,6 +135,7 @@ def get_debug_session(api_id: Optional[str] = None,
 
     return AwaitableGetDebugSessionResult(
         count=__ret__.count,
+        create_time=__ret__.create_time,
         filter=__ret__.filter,
         name=__ret__.name,
         timeout=__ret__.timeout,

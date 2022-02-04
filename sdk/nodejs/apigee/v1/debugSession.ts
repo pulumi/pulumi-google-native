@@ -41,6 +41,10 @@ export class DebugSession extends pulumi.CustomResource {
      */
     public readonly count!: pulumi.Output<number>;
     /**
+     * The first transaction creation timestamp, recorded by UAP.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
      */
     public readonly filter!: pulumi.Output<string>;
@@ -94,8 +98,10 @@ export class DebugSession extends pulumi.CustomResource {
             resourceInputs["timeout"] = args ? args.timeout : undefined;
             resourceInputs["tracesize"] = args ? args.tracesize : undefined;
             resourceInputs["validity"] = args ? args.validity : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         } else {
             resourceInputs["count"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["filter"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["timeout"] = undefined /*out*/;

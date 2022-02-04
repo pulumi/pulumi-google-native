@@ -109,7 +109,7 @@ type nodePoolArgs struct {
 	Name *string `pulumi:"name"`
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig *NodeNetworkConfig `pulumi:"networkConfig"`
-	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
+	// The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent  *string `pulumi:"parent"`
 	Project *string `pulumi:"project"`
 	// Upgrade settings control disruption and speed of the upgrade.
@@ -140,7 +140,7 @@ type NodePoolArgs struct {
 	Name pulumi.StringPtrInput
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig NodeNetworkConfigPtrInput
-	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
+	// The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent  pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Upgrade settings control disruption and speed of the upgrade.

@@ -350,6 +350,183 @@ func (in *instanceGroupConfigPreemptibilityPtr) ToInstanceGroupConfigPreemptibil
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupConfigPreemptibilityPtrOutput)
 }
 
+// Required. MetricSource that should be enabled
+type MetricMetricSource string
+
+const (
+	// Required unspecified metric source
+	MetricMetricSourceMetricSourceUnspecified = MetricMetricSource("METRIC_SOURCE_UNSPECIFIED")
+	// all default monitoring agent metrics that are published with prefix "agent.googleapis.com" when we enable a monitoring agent in Compute Engine
+	MetricMetricSourceMonitoringAgentDefaults = MetricMetricSource("MONITORING_AGENT_DEFAULTS")
+	// Hdfs metric source
+	MetricMetricSourceHdfs = MetricMetricSource("HDFS")
+	// Spark metric source
+	MetricMetricSourceSpark = MetricMetricSource("SPARK")
+	// Yarn metric source
+	MetricMetricSourceYarn = MetricMetricSource("YARN")
+	// Spark history server metric source
+	MetricMetricSourceSparkHistoryServer = MetricMetricSource("SPARK_HISTORY_SERVER")
+	// hiveserver2 metric source
+	MetricMetricSourceHiveserver2 = MetricMetricSource("HIVESERVER2")
+)
+
+func (MetricMetricSource) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricMetricSource)(nil)).Elem()
+}
+
+func (e MetricMetricSource) ToMetricMetricSourceOutput() MetricMetricSourceOutput {
+	return pulumi.ToOutput(e).(MetricMetricSourceOutput)
+}
+
+func (e MetricMetricSource) ToMetricMetricSourceOutputWithContext(ctx context.Context) MetricMetricSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MetricMetricSourceOutput)
+}
+
+func (e MetricMetricSource) ToMetricMetricSourcePtrOutput() MetricMetricSourcePtrOutput {
+	return e.ToMetricMetricSourcePtrOutputWithContext(context.Background())
+}
+
+func (e MetricMetricSource) ToMetricMetricSourcePtrOutputWithContext(ctx context.Context) MetricMetricSourcePtrOutput {
+	return MetricMetricSource(e).ToMetricMetricSourceOutputWithContext(ctx).ToMetricMetricSourcePtrOutputWithContext(ctx)
+}
+
+func (e MetricMetricSource) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetricMetricSource) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetricMetricSource) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MetricMetricSource) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MetricMetricSourceOutput struct{ *pulumi.OutputState }
+
+func (MetricMetricSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricMetricSource)(nil)).Elem()
+}
+
+func (o MetricMetricSourceOutput) ToMetricMetricSourceOutput() MetricMetricSourceOutput {
+	return o
+}
+
+func (o MetricMetricSourceOutput) ToMetricMetricSourceOutputWithContext(ctx context.Context) MetricMetricSourceOutput {
+	return o
+}
+
+func (o MetricMetricSourceOutput) ToMetricMetricSourcePtrOutput() MetricMetricSourcePtrOutput {
+	return o.ToMetricMetricSourcePtrOutputWithContext(context.Background())
+}
+
+func (o MetricMetricSourceOutput) ToMetricMetricSourcePtrOutputWithContext(ctx context.Context) MetricMetricSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricMetricSource) *MetricMetricSource {
+		return &v
+	}).(MetricMetricSourcePtrOutput)
+}
+
+func (o MetricMetricSourceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MetricMetricSourceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetricMetricSource) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MetricMetricSourceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetricMetricSourceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetricMetricSource) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricMetricSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricMetricSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricMetricSource)(nil)).Elem()
+}
+
+func (o MetricMetricSourcePtrOutput) ToMetricMetricSourcePtrOutput() MetricMetricSourcePtrOutput {
+	return o
+}
+
+func (o MetricMetricSourcePtrOutput) ToMetricMetricSourcePtrOutputWithContext(ctx context.Context) MetricMetricSourcePtrOutput {
+	return o
+}
+
+func (o MetricMetricSourcePtrOutput) Elem() MetricMetricSourceOutput {
+	return o.ApplyT(func(v *MetricMetricSource) MetricMetricSource {
+		if v != nil {
+			return *v
+		}
+		var ret MetricMetricSource
+		return ret
+	}).(MetricMetricSourceOutput)
+}
+
+func (o MetricMetricSourcePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetricMetricSourcePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MetricMetricSource) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MetricMetricSourceInput is an input type that accepts MetricMetricSourceArgs and MetricMetricSourceOutput values.
+// You can construct a concrete instance of `MetricMetricSourceInput` via:
+//
+//          MetricMetricSourceArgs{...}
+type MetricMetricSourceInput interface {
+	pulumi.Input
+
+	ToMetricMetricSourceOutput() MetricMetricSourceOutput
+	ToMetricMetricSourceOutputWithContext(context.Context) MetricMetricSourceOutput
+}
+
+var metricMetricSourcePtrType = reflect.TypeOf((**MetricMetricSource)(nil)).Elem()
+
+type MetricMetricSourcePtrInput interface {
+	pulumi.Input
+
+	ToMetricMetricSourcePtrOutput() MetricMetricSourcePtrOutput
+	ToMetricMetricSourcePtrOutputWithContext(context.Context) MetricMetricSourcePtrOutput
+}
+
+type metricMetricSourcePtr string
+
+func MetricMetricSourcePtr(v string) MetricMetricSourcePtrInput {
+	return (*metricMetricSourcePtr)(&v)
+}
+
+func (*metricMetricSourcePtr) ElementType() reflect.Type {
+	return metricMetricSourcePtrType
+}
+
+func (in *metricMetricSourcePtr) ToMetricMetricSourcePtrOutput() MetricMetricSourcePtrOutput {
+	return pulumi.ToOutput(in).(MetricMetricSourcePtrOutput)
+}
+
+func (in *metricMetricSourcePtr) ToMetricMetricSourcePtrOutputWithContext(ctx context.Context) MetricMetricSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MetricMetricSourcePtrOutput)
+}
+
 // Optional. Type of reservation to consume
 type ReservationAffinityConsumeReservationType string
 
@@ -758,6 +935,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GceClusterConfigPrivateIpv6GoogleAccessPtrInput)(nil)).Elem(), GceClusterConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupConfigPreemptibilityInput)(nil)).Elem(), InstanceGroupConfigPreemptibility("PREEMPTIBILITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupConfigPreemptibilityPtrInput)(nil)).Elem(), InstanceGroupConfigPreemptibility("PREEMPTIBILITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricMetricSourceInput)(nil)).Elem(), MetricMetricSource("METRIC_SOURCE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricMetricSourcePtrInput)(nil)).Elem(), MetricMetricSource("METRIC_SOURCE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypeInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypePtrInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigOptionalComponentsItemInput)(nil)).Elem(), SoftwareConfigOptionalComponentsItem("COMPONENT_UNSPECIFIED"))
@@ -767,6 +946,8 @@ func init() {
 	pulumi.RegisterOutputType(GceClusterConfigPrivateIpv6GoogleAccessPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupConfigPreemptibilityOutput{})
 	pulumi.RegisterOutputType(InstanceGroupConfigPreemptibilityPtrOutput{})
+	pulumi.RegisterOutputType(MetricMetricSourceOutput{})
+	pulumi.RegisterOutputType(MetricMetricSourcePtrOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypeOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypePtrOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigOptionalComponentsItemOutput{})

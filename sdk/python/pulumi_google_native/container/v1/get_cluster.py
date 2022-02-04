@@ -236,7 +236,7 @@ class GetClusterResult:
     @pulumi.getter(name="confidentialNodes")
     def confidential_nodes(self) -> 'outputs.ConfidentialNodesResponse':
         """
-        Configuration of Confidential Nodes
+        Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
         """
         return pulumi.get(self, "confidential_nodes")
 

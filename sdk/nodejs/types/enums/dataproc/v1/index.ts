@@ -46,6 +46,42 @@ export const InstanceGroupConfigPreemptibility = {
  */
 export type InstanceGroupConfigPreemptibility = (typeof InstanceGroupConfigPreemptibility)[keyof typeof InstanceGroupConfigPreemptibility];
 
+export const MetricMetricSource = {
+    /**
+     * Required unspecified metric source
+     */
+    MetricSourceUnspecified: "METRIC_SOURCE_UNSPECIFIED",
+    /**
+     * all default monitoring agent metrics that are published with prefix "agent.googleapis.com" when we enable a monitoring agent in Compute Engine
+     */
+    MonitoringAgentDefaults: "MONITORING_AGENT_DEFAULTS",
+    /**
+     * Hdfs metric source
+     */
+    Hdfs: "HDFS",
+    /**
+     * Spark metric source
+     */
+    Spark: "SPARK",
+    /**
+     * Yarn metric source
+     */
+    Yarn: "YARN",
+    /**
+     * Spark history server metric source
+     */
+    SparkHistoryServer: "SPARK_HISTORY_SERVER",
+    /**
+     * hiveserver2 metric source
+     */
+    Hiveserver2: "HIVESERVER2",
+} as const;
+
+/**
+ * Required. MetricSource that should be enabled
+ */
+export type MetricMetricSource = (typeof MetricMetricSource)[keyof typeof MetricMetricSource];
+
 export const ReservationAffinityConsumeReservationType = {
     TypeUnspecified: "TYPE_UNSPECIFIED",
     /**

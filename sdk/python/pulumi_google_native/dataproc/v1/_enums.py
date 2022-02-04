@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'GceClusterConfigPrivateIpv6GoogleAccess',
     'InstanceGroupConfigPreemptibility',
+    'MetricMetricSource',
     'ReservationAffinityConsumeReservationType',
     'SoftwareConfigOptionalComponentsItem',
 ]
@@ -49,6 +50,40 @@ class InstanceGroupConfigPreemptibility(str, Enum):
     PREEMPTIBLE = "PREEMPTIBLE"
     """
     Instances are preemptible.This option is allowed only for secondary worker groups.
+    """
+
+
+class MetricMetricSource(str, Enum):
+    """
+    Required. MetricSource that should be enabled
+    """
+    METRIC_SOURCE_UNSPECIFIED = "METRIC_SOURCE_UNSPECIFIED"
+    """
+    Required unspecified metric source
+    """
+    MONITORING_AGENT_DEFAULTS = "MONITORING_AGENT_DEFAULTS"
+    """
+    all default monitoring agent metrics that are published with prefix "agent.googleapis.com" when we enable a monitoring agent in Compute Engine
+    """
+    HDFS = "HDFS"
+    """
+    Hdfs metric source
+    """
+    SPARK = "SPARK"
+    """
+    Spark metric source
+    """
+    YARN = "YARN"
+    """
+    Yarn metric source
+    """
+    SPARK_HISTORY_SERVER = "SPARK_HISTORY_SERVER"
+    """
+    Spark history server metric source
+    """
+    HIVESERVER2 = "HIVESERVER2"
+    """
+    hiveserver2 metric source
     """
 
 

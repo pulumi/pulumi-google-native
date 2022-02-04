@@ -78,6 +78,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly int Count;
         /// <summary>
+        /// The first transaction creation timestamp, recorded by UAP.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
         /// </summary>
         public readonly string Filter;
@@ -102,6 +106,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         private GetDebugSessionResult(
             int count,
 
+            string createTime,
+
             string filter,
 
             string name,
@@ -113,6 +119,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
             int validity)
         {
             Count = count;
+            CreateTime = createTime;
             Filter = filter;
             Name = name;
             Timeout = timeout;

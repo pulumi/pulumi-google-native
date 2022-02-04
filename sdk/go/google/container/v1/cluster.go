@@ -28,7 +28,7 @@ type Cluster struct {
 	ClusterIpv4Cidr pulumi.StringOutput `pulumi:"clusterIpv4Cidr"`
 	// Which conditions caused the current cluster state.
 	Conditions StatusConditionResponseArrayOutput `pulumi:"conditions"`
-	// Configuration of Confidential Nodes
+	// Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
 	ConfidentialNodes ConfidentialNodesResponseOutput `pulumi:"confidentialNodes"`
 	// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -173,7 +173,7 @@ type clusterArgs struct {
 	ClusterIpv4Cidr *string `pulumi:"clusterIpv4Cidr"`
 	// Which conditions caused the current cluster state.
 	Conditions []StatusCondition `pulumi:"conditions"`
-	// Configuration of Confidential Nodes
+	// Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
 	ConfidentialNodes *ConfidentialNodes `pulumi:"confidentialNodes"`
 	// Configuration of etcd encryption.
 	DatabaseEncryption *DatabaseEncryption `pulumi:"databaseEncryption"`
@@ -261,7 +261,7 @@ type ClusterArgs struct {
 	ClusterIpv4Cidr pulumi.StringPtrInput
 	// Which conditions caused the current cluster state.
 	Conditions StatusConditionArrayInput
-	// Configuration of Confidential Nodes
+	// Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
 	ConfidentialNodes ConfidentialNodesPtrInput
 	// Configuration of etcd encryption.
 	DatabaseEncryption DatabaseEncryptionPtrInput

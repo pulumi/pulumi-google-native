@@ -208,7 +208,7 @@ class AutoscalingTargetsResponse(dict):
                  cpu_utilization_percent: int):
         """
         The Autoscaling targets for a Cluster. These determine the recommended nodes.
-        :param int cpu_utilization_percent: The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.
+        :param int cpu_utilization_percent: The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
         """
         pulumi.set(__self__, "cpu_utilization_percent", cpu_utilization_percent)
 
@@ -216,7 +216,7 @@ class AutoscalingTargetsResponse(dict):
     @pulumi.getter(name="cpuUtilizationPercent")
     def cpu_utilization_percent(self) -> int:
         """
-        The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.
+        The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
         """
         return pulumi.get(self, "cpu_utilization_percent")
 

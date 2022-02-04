@@ -39,6 +39,8 @@ if typing.TYPE_CHECKING:
     billingbudgets = __billingbudgets
     import pulumi_google_native.binaryauthorization as __binaryauthorization
     binaryauthorization = __binaryauthorization
+    import pulumi_google_native.certificatemanager as __certificatemanager
+    certificatemanager = __certificatemanager
     import pulumi_google_native.cloudasset as __cloudasset
     cloudasset = __cloudasset
     import pulumi_google_native.cloudbilling as __cloudbilling
@@ -257,6 +259,7 @@ else:
     bigtableadmin = _utilities.lazy_import('pulumi_google_native.bigtableadmin')
     billingbudgets = _utilities.lazy_import('pulumi_google_native.billingbudgets')
     binaryauthorization = _utilities.lazy_import('pulumi_google_native.binaryauthorization')
+    certificatemanager = _utilities.lazy_import('pulumi_google_native.certificatemanager')
     cloudasset = _utilities.lazy_import('pulumi_google_native.cloudasset')
     cloudbilling = _utilities.lazy_import('pulumi_google_native.cloudbilling')
     cloudbuild = _utilities.lazy_import('pulumi_google_native.cloudbuild')
@@ -632,6 +635,17 @@ _utilities.register(
    "google-native:binaryauthorization/v1beta1:Attestor": "Attestor",
    "google-native:binaryauthorization/v1beta1:AttestorIamPolicy": "AttestorIamPolicy",
    "google-native:binaryauthorization/v1beta1:PolicyIamPolicy": "PolicyIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "certificatemanager/v1",
+  "fqn": "pulumi_google_native.certificatemanager.v1",
+  "classes": {
+   "google-native:certificatemanager/v1:Certificate": "Certificate",
+   "google-native:certificatemanager/v1:CertificateMap": "CertificateMap",
+   "google-native:certificatemanager/v1:CertificateMapEntry": "CertificateMapEntry",
+   "google-native:certificatemanager/v1:DnsAuthorization": "DnsAuthorization"
   }
  },
  {

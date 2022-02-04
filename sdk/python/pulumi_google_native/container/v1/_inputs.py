@@ -805,7 +805,7 @@ class ConfidentialNodesArgs:
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
         ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
-        :param pulumi.Input[bool] enabled: Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+        :param pulumi.Input[bool] enabled: Whether Confidential Nodes feature is enabled.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -814,7 +814,7 @@ class ConfidentialNodesArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+        Whether Confidential Nodes feature is enabled.
         """
         return pulumi.get(self, "enabled")
 

@@ -57,7 +57,7 @@ export interface GetClusterResult {
      */
     readonly conditions: outputs.container.v1.StatusConditionResponse[];
     /**
-     * Configuration of Confidential Nodes
+     * Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
      */
     readonly confidentialNodes: outputs.container.v1.ConfidentialNodesResponse;
     /**

@@ -22,6 +22,9 @@ __all__ = [
     'GitHubEnterpriseSecretsArgs',
     'GitHubEventsConfigArgs',
     'GitRepoSourceArgs',
+    'GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigArgs',
+    'HybridPoolConfigArgs',
+    'HybridWorkerConfigArgs',
     'InlineSecretArgs',
     'NetworkConfigArgs',
     'PoolOptionArgs',
@@ -1266,6 +1269,157 @@ class GitRepoSourceArgs:
 
 
 @pulumi.input_type
+class GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigArgs:
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[pulumi.Input[str]] = None,
+                 memory_gb: Optional[pulumi.Input[float]] = None,
+                 vcpu_count: Optional[pulumi.Input[float]] = None):
+        """
+        Configuration per workload for both Private Pools and Hybrid Pools.
+        :param pulumi.Input[str] disk_size_gb: The disk size (in GB) which is requested for the build container. If unset, a value of 10 GB will be used.
+        :param pulumi.Input[float] memory_gb: The memory (in GB) which is requested for the build container. If unset, a value of 4 GB will be used.
+        :param pulumi.Input[float] vcpu_count: The number of vCPUs which are requested for the build container. If unset, a value of 1 will be used.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if memory_gb is not None:
+            pulumi.set(__self__, "memory_gb", memory_gb)
+        if vcpu_count is not None:
+            pulumi.set(__self__, "vcpu_count", vcpu_count)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk size (in GB) which is requested for the build container. If unset, a value of 10 GB will be used.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> Optional[pulumi.Input[float]]:
+        """
+        The memory (in GB) which is requested for the build container. If unset, a value of 4 GB will be used.
+        """
+        return pulumi.get(self, "memory_gb")
+
+    @memory_gb.setter
+    def memory_gb(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "memory_gb", value)
+
+    @property
+    @pulumi.getter(name="vcpuCount")
+    def vcpu_count(self) -> Optional[pulumi.Input[float]]:
+        """
+        The number of vCPUs which are requested for the build container. If unset, a value of 1 will be used.
+        """
+        return pulumi.get(self, "vcpu_count")
+
+    @vcpu_count.setter
+    def vcpu_count(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "vcpu_count", value)
+
+
+@pulumi.input_type
+class HybridPoolConfigArgs:
+    def __init__(__self__, *,
+                 membership: pulumi.Input[str],
+                 default_worker_config: Optional[pulumi.Input['HybridWorkerConfigArgs']] = None):
+        """
+        Configuration for a Hybrid Worker Pool Next ID: 6
+        :param pulumi.Input[str] membership: Immutable. The Anthos/GKE Hub membership of the cluster which will run the actual build operations. Example: projects/{project}/locations/{location}/memberships/{cluster_name}
+        :param pulumi.Input['HybridWorkerConfigArgs'] default_worker_config: Default settings which will be applied to builds on this worker pool if they are not specified in the build request.
+        """
+        pulumi.set(__self__, "membership", membership)
+        if default_worker_config is not None:
+            pulumi.set(__self__, "default_worker_config", default_worker_config)
+
+    @property
+    @pulumi.getter
+    def membership(self) -> pulumi.Input[str]:
+        """
+        Immutable. The Anthos/GKE Hub membership of the cluster which will run the actual build operations. Example: projects/{project}/locations/{location}/memberships/{cluster_name}
+        """
+        return pulumi.get(self, "membership")
+
+    @membership.setter
+    def membership(self, value: pulumi.Input[str]):
+        pulumi.set(self, "membership", value)
+
+    @property
+    @pulumi.getter(name="defaultWorkerConfig")
+    def default_worker_config(self) -> Optional[pulumi.Input['HybridWorkerConfigArgs']]:
+        """
+        Default settings which will be applied to builds on this worker pool if they are not specified in the build request.
+        """
+        return pulumi.get(self, "default_worker_config")
+
+    @default_worker_config.setter
+    def default_worker_config(self, value: Optional[pulumi.Input['HybridWorkerConfigArgs']]):
+        pulumi.set(self, "default_worker_config", value)
+
+
+@pulumi.input_type
+class HybridWorkerConfigArgs:
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[pulumi.Input[str]] = None,
+                 memory_gb: Optional[pulumi.Input[float]] = None,
+                 vcpu_count: Optional[pulumi.Input[float]] = None):
+        """
+        These settings can be applied to a user's build operations. Next ID: 4
+        :param pulumi.Input[str] disk_size_gb: The disk size (in GB) which is requested for the build container. Defaults to 10 GB.
+        :param pulumi.Input[float] memory_gb: The memory (in GB) which is requested for the build container. Defaults to 4 GB.
+        :param pulumi.Input[float] vcpu_count: The number of vCPUs which are requested for the build container. Defaults to 1.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if memory_gb is not None:
+            pulumi.set(__self__, "memory_gb", memory_gb)
+        if vcpu_count is not None:
+            pulumi.set(__self__, "vcpu_count", vcpu_count)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk size (in GB) which is requested for the build container. Defaults to 10 GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> Optional[pulumi.Input[float]]:
+        """
+        The memory (in GB) which is requested for the build container. Defaults to 4 GB.
+        """
+        return pulumi.get(self, "memory_gb")
+
+    @memory_gb.setter
+    def memory_gb(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "memory_gb", value)
+
+    @property
+    @pulumi.getter(name="vcpuCount")
+    def vcpu_count(self) -> Optional[pulumi.Input[float]]:
+        """
+        The number of vCPUs which are requested for the build container. Defaults to 1.
+        """
+        return pulumi.get(self, "vcpu_count")
+
+    @vcpu_count.setter
+    def vcpu_count(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "vcpu_count", value)
+
+
+@pulumi.input_type
 class InlineSecretArgs:
     def __init__(__self__, *,
                  env_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1347,13 +1501,17 @@ class NetworkConfigArgs:
 @pulumi.input_type
 class PoolOptionArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 worker_config: Optional[pulumi.Input['GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigArgs']] = None):
         """
         Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
         :param pulumi.Input[str] name: The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
+        :param pulumi.Input['GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigArgs'] worker_config: Configuration per workload.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if worker_config is not None:
+            pulumi.set(__self__, "worker_config", worker_config)
 
     @property
     @pulumi.getter
@@ -1366,6 +1524,18 @@ class PoolOptionArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="workerConfig")
+    def worker_config(self) -> Optional[pulumi.Input['GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigArgs']]:
+        """
+        Configuration per workload.
+        """
+        return pulumi.get(self, "worker_config")
+
+    @worker_config.setter
+    def worker_config(self, value: Optional[pulumi.Input['GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigArgs']]):
+        pulumi.set(self, "worker_config", value)
 
 
 @pulumi.input_type

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     public sealed class ConfidentialNodesArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+        /// Whether Confidential Nodes feature is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

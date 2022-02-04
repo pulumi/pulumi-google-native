@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Configuration per workload.
+        /// </summary>
+        public readonly Outputs.GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigResponse WorkerConfig;
 
         [OutputConstructor]
-        private PoolOptionResponse(string name)
+        private PoolOptionResponse(
+            string name,
+
+            Outputs.GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigResponse workerConfig)
         {
             Name = name;
+            WorkerConfig = workerConfig;
         }
     }
 }

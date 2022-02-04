@@ -57,6 +57,10 @@ export class WorkerPool extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
+     * Hybrid pool configuration
+     */
+    public readonly hybridPoolConfig!: pulumi.Output<outputs.cloudbuild.v1.HybridPoolConfigResponse>;
+    /**
      * The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -93,6 +97,7 @@ export class WorkerPool extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["hybridPoolConfig"] = args ? args.hybridPoolConfig : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["privatePoolV1Config"] = args ? args.privatePoolV1Config : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -111,6 +116,7 @@ export class WorkerPool extends pulumi.CustomResource {
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["hybridPoolConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privatePoolV1Config"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -134,6 +140,10 @@ export interface WorkerPoolArgs {
      * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Hybrid pool configuration
+     */
+    hybridPoolConfig?: pulumi.Input<inputs.cloudbuild.v1.HybridPoolConfigArgs>;
     location?: pulumi.Input<string>;
     /**
      * Legacy Private Pool configuration.

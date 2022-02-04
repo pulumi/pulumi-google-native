@@ -1012,6 +1012,8 @@ type ClusterConfig struct {
 	AutoscalingConfig *AutoscalingConfig `pulumi:"autoscalingConfig"`
 	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 	ConfigBucket *string `pulumi:"configBucket"`
+	// Optional. The configuration(s) for a dataproc metric(s).
+	DataprocMetricConfig *DataprocMetricConfig `pulumi:"dataprocMetricConfig"`
 	// Optional. Encryption settings for the cluster.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Optional. Port/endpoint configuration for this cluster
@@ -1057,6 +1059,8 @@ type ClusterConfigArgs struct {
 	AutoscalingConfig AutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
 	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 	ConfigBucket pulumi.StringPtrInput `pulumi:"configBucket"`
+	// Optional. The configuration(s) for a dataproc metric(s).
+	DataprocMetricConfig DataprocMetricConfigPtrInput `pulumi:"dataprocMetricConfig"`
 	// Optional. Encryption settings for the cluster.
 	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// Optional. Port/endpoint configuration for this cluster
@@ -1173,6 +1177,11 @@ func (o ClusterConfigOutput) ConfigBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *string { return v.ConfigBucket }).(pulumi.StringPtrOutput)
 }
 
+// Optional. The configuration(s) for a dataproc metric(s).
+func (o ClusterConfigOutput) DataprocMetricConfig() DataprocMetricConfigPtrOutput {
+	return o.ApplyT(func(v ClusterConfig) *DataprocMetricConfig { return v.DataprocMetricConfig }).(DataprocMetricConfigPtrOutput)
+}
+
 // Optional. Encryption settings for the cluster.
 func (o ClusterConfigOutput) EncryptionConfig() EncryptionConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *EncryptionConfig { return v.EncryptionConfig }).(EncryptionConfigPtrOutput)
@@ -1280,6 +1289,16 @@ func (o ClusterConfigPtrOutput) ConfigBucket() pulumi.StringPtrOutput {
 		}
 		return v.ConfigBucket
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The configuration(s) for a dataproc metric(s).
+func (o ClusterConfigPtrOutput) DataprocMetricConfig() DataprocMetricConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterConfig) *DataprocMetricConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DataprocMetricConfig
+	}).(DataprocMetricConfigPtrOutput)
 }
 
 // Optional. Encryption settings for the cluster.
@@ -1418,6 +1437,8 @@ type ClusterConfigResponse struct {
 	AutoscalingConfig AutoscalingConfigResponse `pulumi:"autoscalingConfig"`
 	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 	ConfigBucket string `pulumi:"configBucket"`
+	// Optional. The configuration(s) for a dataproc metric(s).
+	DataprocMetricConfig DataprocMetricConfigResponse `pulumi:"dataprocMetricConfig"`
 	// Optional. Encryption settings for the cluster.
 	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
 	// Optional. Port/endpoint configuration for this cluster
@@ -1469,6 +1490,11 @@ func (o ClusterConfigResponseOutput) AutoscalingConfig() AutoscalingConfigRespon
 // Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 func (o ClusterConfigResponseOutput) ConfigBucket() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterConfigResponse) string { return v.ConfigBucket }).(pulumi.StringOutput)
+}
+
+// Optional. The configuration(s) for a dataproc metric(s).
+func (o ClusterConfigResponseOutput) DataprocMetricConfig() DataprocMetricConfigResponseOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) DataprocMetricConfigResponse { return v.DataprocMetricConfig }).(DataprocMetricConfigResponseOutput)
 }
 
 // Optional. Encryption settings for the cluster.
@@ -1992,6 +2018,172 @@ func (o ConfidentialInstanceConfigResponseOutput) ToConfidentialInstanceConfigRe
 // Optional. Defines whether the instance should have confidential compute enabled.
 func (o ConfidentialInstanceConfigResponseOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConfidentialInstanceConfigResponse) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
+// Contains dataproc metric config.
+type DataprocMetricConfig struct {
+	// Metrics to be enabled.
+	Metrics []Metric `pulumi:"metrics"`
+}
+
+// DataprocMetricConfigInput is an input type that accepts DataprocMetricConfigArgs and DataprocMetricConfigOutput values.
+// You can construct a concrete instance of `DataprocMetricConfigInput` via:
+//
+//          DataprocMetricConfigArgs{...}
+type DataprocMetricConfigInput interface {
+	pulumi.Input
+
+	ToDataprocMetricConfigOutput() DataprocMetricConfigOutput
+	ToDataprocMetricConfigOutputWithContext(context.Context) DataprocMetricConfigOutput
+}
+
+// Contains dataproc metric config.
+type DataprocMetricConfigArgs struct {
+	// Metrics to be enabled.
+	Metrics MetricArrayInput `pulumi:"metrics"`
+}
+
+func (DataprocMetricConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataprocMetricConfig)(nil)).Elem()
+}
+
+func (i DataprocMetricConfigArgs) ToDataprocMetricConfigOutput() DataprocMetricConfigOutput {
+	return i.ToDataprocMetricConfigOutputWithContext(context.Background())
+}
+
+func (i DataprocMetricConfigArgs) ToDataprocMetricConfigOutputWithContext(ctx context.Context) DataprocMetricConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataprocMetricConfigOutput)
+}
+
+func (i DataprocMetricConfigArgs) ToDataprocMetricConfigPtrOutput() DataprocMetricConfigPtrOutput {
+	return i.ToDataprocMetricConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataprocMetricConfigArgs) ToDataprocMetricConfigPtrOutputWithContext(ctx context.Context) DataprocMetricConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataprocMetricConfigOutput).ToDataprocMetricConfigPtrOutputWithContext(ctx)
+}
+
+// DataprocMetricConfigPtrInput is an input type that accepts DataprocMetricConfigArgs, DataprocMetricConfigPtr and DataprocMetricConfigPtrOutput values.
+// You can construct a concrete instance of `DataprocMetricConfigPtrInput` via:
+//
+//          DataprocMetricConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type DataprocMetricConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataprocMetricConfigPtrOutput() DataprocMetricConfigPtrOutput
+	ToDataprocMetricConfigPtrOutputWithContext(context.Context) DataprocMetricConfigPtrOutput
+}
+
+type dataprocMetricConfigPtrType DataprocMetricConfigArgs
+
+func DataprocMetricConfigPtr(v *DataprocMetricConfigArgs) DataprocMetricConfigPtrInput {
+	return (*dataprocMetricConfigPtrType)(v)
+}
+
+func (*dataprocMetricConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataprocMetricConfig)(nil)).Elem()
+}
+
+func (i *dataprocMetricConfigPtrType) ToDataprocMetricConfigPtrOutput() DataprocMetricConfigPtrOutput {
+	return i.ToDataprocMetricConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataprocMetricConfigPtrType) ToDataprocMetricConfigPtrOutputWithContext(ctx context.Context) DataprocMetricConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataprocMetricConfigPtrOutput)
+}
+
+// Contains dataproc metric config.
+type DataprocMetricConfigOutput struct{ *pulumi.OutputState }
+
+func (DataprocMetricConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataprocMetricConfig)(nil)).Elem()
+}
+
+func (o DataprocMetricConfigOutput) ToDataprocMetricConfigOutput() DataprocMetricConfigOutput {
+	return o
+}
+
+func (o DataprocMetricConfigOutput) ToDataprocMetricConfigOutputWithContext(ctx context.Context) DataprocMetricConfigOutput {
+	return o
+}
+
+func (o DataprocMetricConfigOutput) ToDataprocMetricConfigPtrOutput() DataprocMetricConfigPtrOutput {
+	return o.ToDataprocMetricConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataprocMetricConfigOutput) ToDataprocMetricConfigPtrOutputWithContext(ctx context.Context) DataprocMetricConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataprocMetricConfig) *DataprocMetricConfig {
+		return &v
+	}).(DataprocMetricConfigPtrOutput)
+}
+
+// Metrics to be enabled.
+func (o DataprocMetricConfigOutput) Metrics() MetricArrayOutput {
+	return o.ApplyT(func(v DataprocMetricConfig) []Metric { return v.Metrics }).(MetricArrayOutput)
+}
+
+type DataprocMetricConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataprocMetricConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataprocMetricConfig)(nil)).Elem()
+}
+
+func (o DataprocMetricConfigPtrOutput) ToDataprocMetricConfigPtrOutput() DataprocMetricConfigPtrOutput {
+	return o
+}
+
+func (o DataprocMetricConfigPtrOutput) ToDataprocMetricConfigPtrOutputWithContext(ctx context.Context) DataprocMetricConfigPtrOutput {
+	return o
+}
+
+func (o DataprocMetricConfigPtrOutput) Elem() DataprocMetricConfigOutput {
+	return o.ApplyT(func(v *DataprocMetricConfig) DataprocMetricConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataprocMetricConfig
+		return ret
+	}).(DataprocMetricConfigOutput)
+}
+
+// Metrics to be enabled.
+func (o DataprocMetricConfigPtrOutput) Metrics() MetricArrayOutput {
+	return o.ApplyT(func(v *DataprocMetricConfig) []Metric {
+		if v == nil {
+			return nil
+		}
+		return v.Metrics
+	}).(MetricArrayOutput)
+}
+
+// Contains dataproc metric config.
+type DataprocMetricConfigResponse struct {
+	// Metrics to be enabled.
+	Metrics []MetricResponse `pulumi:"metrics"`
+}
+
+// Contains dataproc metric config.
+type DataprocMetricConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DataprocMetricConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataprocMetricConfigResponse)(nil)).Elem()
+}
+
+func (o DataprocMetricConfigResponseOutput) ToDataprocMetricConfigResponseOutput() DataprocMetricConfigResponseOutput {
+	return o
+}
+
+func (o DataprocMetricConfigResponseOutput) ToDataprocMetricConfigResponseOutputWithContext(ctx context.Context) DataprocMetricConfigResponseOutput {
+	return o
+}
+
+// Metrics to be enabled.
+func (o DataprocMetricConfigResponseOutput) Metrics() MetricResponseArrayOutput {
+	return o.ApplyT(func(v DataprocMetricConfigResponse) []MetricResponse { return v.Metrics }).(MetricResponseArrayOutput)
 }
 
 // Specifies the config of disk options for a group of VM instances.
@@ -7267,6 +7459,168 @@ func (o MetastoreConfigResponseOutput) ToMetastoreConfigResponseOutputWithContex
 // Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
 func (o MetastoreConfigResponseOutput) DataprocMetastoreService() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreConfigResponse) string { return v.DataprocMetastoreService }).(pulumi.StringOutput)
+}
+
+// Metric source to enable along with any optional metrics for this source that override the dataproc defaults
+type Metric struct {
+	// Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+	MetricOverrides []string `pulumi:"metricOverrides"`
+	// MetricSource that should be enabled
+	MetricSource MetricMetricSource `pulumi:"metricSource"`
+}
+
+// MetricInput is an input type that accepts MetricArgs and MetricOutput values.
+// You can construct a concrete instance of `MetricInput` via:
+//
+//          MetricArgs{...}
+type MetricInput interface {
+	pulumi.Input
+
+	ToMetricOutput() MetricOutput
+	ToMetricOutputWithContext(context.Context) MetricOutput
+}
+
+// Metric source to enable along with any optional metrics for this source that override the dataproc defaults
+type MetricArgs struct {
+	// Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+	MetricOverrides pulumi.StringArrayInput `pulumi:"metricOverrides"`
+	// MetricSource that should be enabled
+	MetricSource MetricMetricSourceInput `pulumi:"metricSource"`
+}
+
+func (MetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Metric)(nil)).Elem()
+}
+
+func (i MetricArgs) ToMetricOutput() MetricOutput {
+	return i.ToMetricOutputWithContext(context.Background())
+}
+
+func (i MetricArgs) ToMetricOutputWithContext(ctx context.Context) MetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricOutput)
+}
+
+// MetricArrayInput is an input type that accepts MetricArray and MetricArrayOutput values.
+// You can construct a concrete instance of `MetricArrayInput` via:
+//
+//          MetricArray{ MetricArgs{...} }
+type MetricArrayInput interface {
+	pulumi.Input
+
+	ToMetricArrayOutput() MetricArrayOutput
+	ToMetricArrayOutputWithContext(context.Context) MetricArrayOutput
+}
+
+type MetricArray []MetricInput
+
+func (MetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Metric)(nil)).Elem()
+}
+
+func (i MetricArray) ToMetricArrayOutput() MetricArrayOutput {
+	return i.ToMetricArrayOutputWithContext(context.Background())
+}
+
+func (i MetricArray) ToMetricArrayOutputWithContext(ctx context.Context) MetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricArrayOutput)
+}
+
+// Metric source to enable along with any optional metrics for this source that override the dataproc defaults
+type MetricOutput struct{ *pulumi.OutputState }
+
+func (MetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Metric)(nil)).Elem()
+}
+
+func (o MetricOutput) ToMetricOutput() MetricOutput {
+	return o
+}
+
+func (o MetricOutput) ToMetricOutputWithContext(ctx context.Context) MetricOutput {
+	return o
+}
+
+// Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+func (o MetricOutput) MetricOverrides() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Metric) []string { return v.MetricOverrides }).(pulumi.StringArrayOutput)
+}
+
+// MetricSource that should be enabled
+func (o MetricOutput) MetricSource() MetricMetricSourceOutput {
+	return o.ApplyT(func(v Metric) MetricMetricSource { return v.MetricSource }).(MetricMetricSourceOutput)
+}
+
+type MetricArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Metric)(nil)).Elem()
+}
+
+func (o MetricArrayOutput) ToMetricArrayOutput() MetricArrayOutput {
+	return o
+}
+
+func (o MetricArrayOutput) ToMetricArrayOutputWithContext(ctx context.Context) MetricArrayOutput {
+	return o
+}
+
+func (o MetricArrayOutput) Index(i pulumi.IntInput) MetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Metric {
+		return vs[0].([]Metric)[vs[1].(int)]
+	}).(MetricOutput)
+}
+
+// Metric source to enable along with any optional metrics for this source that override the dataproc defaults
+type MetricResponse struct {
+	// Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+	MetricOverrides []string `pulumi:"metricOverrides"`
+	// MetricSource that should be enabled
+	MetricSource string `pulumi:"metricSource"`
+}
+
+// Metric source to enable along with any optional metrics for this source that override the dataproc defaults
+type MetricResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricResponse)(nil)).Elem()
+}
+
+func (o MetricResponseOutput) ToMetricResponseOutput() MetricResponseOutput {
+	return o
+}
+
+func (o MetricResponseOutput) ToMetricResponseOutputWithContext(ctx context.Context) MetricResponseOutput {
+	return o
+}
+
+// Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+func (o MetricResponseOutput) MetricOverrides() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MetricResponse) []string { return v.MetricOverrides }).(pulumi.StringArrayOutput)
+}
+
+// MetricSource that should be enabled
+func (o MetricResponseOutput) MetricSource() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricResponse) string { return v.MetricSource }).(pulumi.StringOutput)
+}
+
+type MetricResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricResponse)(nil)).Elem()
+}
+
+func (o MetricResponseArrayOutput) ToMetricResponseArrayOutput() MetricResponseArrayOutput {
+	return o
+}
+
+func (o MetricResponseArrayOutput) ToMetricResponseArrayOutputWithContext(ctx context.Context) MetricResponseArrayOutput {
+	return o
+}
+
+func (o MetricResponseArrayOutput) Index(i pulumi.IntInput) MetricResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricResponse {
+		return vs[0].([]MetricResponse)[vs[1].(int)]
+	}).(MetricResponseOutput)
 }
 
 // A full, namespace-isolated deployment target for an existing GKE cluster.
@@ -13956,6 +14310,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSelectorPtrInput)(nil)).Elem(), ClusterSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialInstanceConfigInput)(nil)).Elem(), ConfidentialInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialInstanceConfigPtrInput)(nil)).Elem(), ConfidentialInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocMetricConfigInput)(nil)).Elem(), DataprocMetricConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocMetricConfigPtrInput)(nil)).Elem(), DataprocMetricConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskConfigInput)(nil)).Elem(), DiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskConfigPtrInput)(nil)).Elem(), DiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
@@ -13997,6 +14353,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedClusterPtrInput)(nil)).Elem(), ManagedClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreConfigInput)(nil)).Elem(), MetastoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreConfigPtrInput)(nil)).Elem(), MetastoreConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricInput)(nil)).Elem(), MetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricArrayInput)(nil)).Elem(), MetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespacedGkeDeploymentTargetInput)(nil)).Elem(), NamespacedGkeDeploymentTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespacedGkeDeploymentTargetPtrInput)(nil)).Elem(), NamespacedGkeDeploymentTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupAffinityInput)(nil)).Elem(), NodeGroupAffinityArgs{})
@@ -14081,6 +14439,9 @@ func init() {
 	pulumi.RegisterOutputType(ConfidentialInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ConfidentialInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConfidentialInstanceConfigResponseOutput{})
+	pulumi.RegisterOutputType(DataprocMetricConfigOutput{})
+	pulumi.RegisterOutputType(DataprocMetricConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataprocMetricConfigResponseOutput{})
 	pulumi.RegisterOutputType(DiskConfigOutput{})
 	pulumi.RegisterOutputType(DiskConfigPtrOutput{})
 	pulumi.RegisterOutputType(DiskConfigResponseOutput{})
@@ -14148,6 +14509,10 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreConfigOutput{})
 	pulumi.RegisterOutputType(MetastoreConfigPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreConfigResponseOutput{})
+	pulumi.RegisterOutputType(MetricOutput{})
+	pulumi.RegisterOutputType(MetricArrayOutput{})
+	pulumi.RegisterOutputType(MetricResponseOutput{})
+	pulumi.RegisterOutputType(MetricResponseArrayOutput{})
 	pulumi.RegisterOutputType(NamespacedGkeDeploymentTargetOutput{})
 	pulumi.RegisterOutputType(NamespacedGkeDeploymentTargetPtrOutput{})
 	pulumi.RegisterOutputType(NamespacedGkeDeploymentTargetResponseOutput{})

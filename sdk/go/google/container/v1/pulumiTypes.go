@@ -2840,7 +2840,7 @@ type ClusterUpdate struct {
 
 // ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 type ConfidentialNodes struct {
-	// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+	// Whether Confidential Nodes feature is enabled.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -2857,7 +2857,7 @@ type ConfidentialNodesInput interface {
 
 // ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 type ConfidentialNodesArgs struct {
-	// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+	// Whether Confidential Nodes feature is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -2939,7 +2939,7 @@ func (o ConfidentialNodesOutput) ToConfidentialNodesPtrOutputWithContext(ctx con
 	}).(ConfidentialNodesPtrOutput)
 }
 
-// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+// Whether Confidential Nodes feature is enabled.
 func (o ConfidentialNodesOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConfidentialNodes) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -2968,7 +2968,7 @@ func (o ConfidentialNodesPtrOutput) Elem() ConfidentialNodesOutput {
 	}).(ConfidentialNodesOutput)
 }
 
-// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+// Whether Confidential Nodes feature is enabled.
 func (o ConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfidentialNodes) *bool {
 		if v == nil {
@@ -2980,7 +2980,7 @@ func (o ConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
 
 // ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 type ConfidentialNodesResponse struct {
-	// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+	// Whether Confidential Nodes feature is enabled.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -2999,7 +2999,7 @@ func (o ConfidentialNodesResponseOutput) ToConfidentialNodesResponseOutputWithCo
 	return o
 }
 
-// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+// Whether Confidential Nodes feature is enabled.
 func (o ConfidentialNodesResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConfidentialNodesResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }

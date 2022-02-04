@@ -194,7 +194,7 @@ export interface NodePoolArgs {
      */
     networkConfig?: pulumi.Input<inputs.container.v1.NodeNetworkConfigArgs>;
     /**
-     * The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*&#47;locations/*&#47;clusters/*`.
+     * The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*&#47;locations/*&#47;clusters/*`.
      */
     parent?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

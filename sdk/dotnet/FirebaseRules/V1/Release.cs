@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Release(string name, ReleaseArgs? args = null, CustomResourceOptions? options = null)
+        public Release(string name, ReleaseArgs args, CustomResourceOptions? options = null)
             : base("google-native:firebaserules/v1:Release", name, args ?? new ReleaseArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         /// <summary>
         /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
         /// </summary>
-        [Input("rulesetName")]
-        public Input<string>? RulesetName { get; set; }
+        [Input("rulesetName", required: true)]
+        public Input<string> RulesetName { get; set; } = null!;
 
         public ReleaseArgs()
         {

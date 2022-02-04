@@ -21,6 +21,7 @@ __all__ = [
     'ClusterSelectorResponse',
     'ClusterStatusResponse',
     'ConfidentialInstanceConfigResponse',
+    'DataprocMetricConfigResponse',
     'DiskConfigResponse',
     'EncryptionConfigResponse',
     'EndpointConfigResponse',
@@ -45,6 +46,7 @@ __all__ = [
     'ManagedClusterResponse',
     'ManagedGroupConfigResponse',
     'MetastoreConfigResponse',
+    'MetricResponse',
     'NamespacedGkeDeploymentTargetResponse',
     'NodeGroupAffinityResponse',
     'NodeInitializationActionResponse',
@@ -381,6 +383,8 @@ class ClusterConfigResponse(dict):
             suggest = "autoscaling_config"
         elif key == "configBucket":
             suggest = "config_bucket"
+        elif key == "dataprocMetricConfig":
+            suggest = "dataproc_metric_config"
         elif key == "encryptionConfig":
             suggest = "encryption_config"
         elif key == "endpointConfig":
@@ -422,6 +426,7 @@ class ClusterConfigResponse(dict):
     def __init__(__self__, *,
                  autoscaling_config: 'outputs.AutoscalingConfigResponse',
                  config_bucket: str,
+                 dataproc_metric_config: 'outputs.DataprocMetricConfigResponse',
                  encryption_config: 'outputs.EncryptionConfigResponse',
                  endpoint_config: 'outputs.EndpointConfigResponse',
                  gce_cluster_config: 'outputs.GceClusterConfigResponse',
@@ -439,6 +444,7 @@ class ClusterConfigResponse(dict):
         The cluster config.
         :param 'AutoscalingConfigResponse' autoscaling_config: Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
         :param str config_bucket: Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        :param 'DataprocMetricConfigResponse' dataproc_metric_config: Optional. The configuration(s) for a dataproc metric(s).
         :param 'EncryptionConfigResponse' encryption_config: Optional. Encryption settings for the cluster.
         :param 'EndpointConfigResponse' endpoint_config: Optional. Port/endpoint configuration for this cluster
         :param 'GceClusterConfigResponse' gce_cluster_config: Optional. The shared Compute Engine config settings for all instances in a cluster.
@@ -455,6 +461,7 @@ class ClusterConfigResponse(dict):
         """
         pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         pulumi.set(__self__, "config_bucket", config_bucket)
+        pulumi.set(__self__, "dataproc_metric_config", dataproc_metric_config)
         pulumi.set(__self__, "encryption_config", encryption_config)
         pulumi.set(__self__, "endpoint_config", endpoint_config)
         pulumi.set(__self__, "gce_cluster_config", gce_cluster_config)
@@ -484,6 +491,14 @@ class ClusterConfigResponse(dict):
         Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         """
         return pulumi.get(self, "config_bucket")
+
+    @property
+    @pulumi.getter(name="dataprocMetricConfig")
+    def dataproc_metric_config(self) -> 'outputs.DataprocMetricConfigResponse':
+        """
+        Optional. The configuration(s) for a dataproc metric(s).
+        """
+        return pulumi.get(self, "dataproc_metric_config")
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -801,6 +816,28 @@ class ConfidentialInstanceConfigResponse(dict):
         Optional. Defines whether the instance should have confidential compute enabled.
         """
         return pulumi.get(self, "enable_confidential_compute")
+
+
+@pulumi.output_type
+class DataprocMetricConfigResponse(dict):
+    """
+    Contains dataproc metric config.
+    """
+    def __init__(__self__, *,
+                 metrics: Sequence['outputs.MetricResponse']):
+        """
+        Contains dataproc metric config.
+        :param Sequence['MetricResponse'] metrics: Metrics to be enabled.
+        """
+        pulumi.set(__self__, "metrics", metrics)
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> Sequence['outputs.MetricResponse']:
+        """
+        Metrics to be enabled.
+        """
+        return pulumi.get(self, "metrics")
 
 
 @pulumi.output_type
@@ -2698,6 +2735,58 @@ class MetastoreConfigResponse(dict):
         Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
         """
         return pulumi.get(self, "dataproc_metastore_service")
+
+
+@pulumi.output_type
+class MetricResponse(dict):
+    """
+    Metric source to enable along with any optional metrics for this source that override the dataproc defaults
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metricOverrides":
+            suggest = "metric_overrides"
+        elif key == "metricSource":
+            suggest = "metric_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metric_overrides: Sequence[str],
+                 metric_source: str):
+        """
+        Metric source to enable along with any optional metrics for this source that override the dataproc defaults
+        :param Sequence[str] metric_overrides: Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+        :param str metric_source: MetricSource that should be enabled
+        """
+        pulumi.set(__self__, "metric_overrides", metric_overrides)
+        pulumi.set(__self__, "metric_source", metric_source)
+
+    @property
+    @pulumi.getter(name="metricOverrides")
+    def metric_overrides(self) -> Sequence[str]:
+        """
+        Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+        """
+        return pulumi.get(self, "metric_overrides")
+
+    @property
+    @pulumi.getter(name="metricSource")
+    def metric_source(self) -> str:
+        """
+        MetricSource that should be enabled
+        """
+        return pulumi.get(self, "metric_source")
 
 
 @pulumi.output_type

@@ -19,6 +19,8 @@ type DebugSession struct {
 
 	// Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
 	Count pulumi.IntOutput `pulumi:"count"`
+	// The first transaction creation timestamp, recorded by UAP.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
 	Filter pulumi.StringOutput `pulumi:"filter"`
 	// A unique ID for this DebugSession.

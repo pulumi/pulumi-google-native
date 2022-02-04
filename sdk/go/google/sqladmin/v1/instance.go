@@ -14,6 +14,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// List all maintenance versions applicable on the instance
+	AvailableMaintenanceVersions pulumi.StringArrayOutput `pulumi:"availableMaintenanceVersions"`
 	// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
 	BackendType pulumi.StringOutput `pulumi:"backendType"`
 	// Connection name of the Cloud SQL instance used in connection strings.
@@ -40,6 +42,8 @@ type Instance struct {
 	IpAddresses IpMappingResponseArrayOutput `pulumi:"ipAddresses"`
 	// This is always `sql#instance`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
+	// The current software version on the instance.
+	MaintenanceVersion pulumi.StringOutput `pulumi:"maintenanceVersion"`
 	// The name of the instance which will act as primary in the replication setup.
 	MasterInstanceName pulumi.StringOutput `pulumi:"masterInstanceName"`
 	// The maximum disk size of the instance in bytes.
@@ -119,6 +123,8 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// List all maintenance versions applicable on the instance
+	AvailableMaintenanceVersions []string `pulumi:"availableMaintenanceVersions"`
 	// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
 	BackendType *InstanceBackendType `pulumi:"backendType"`
 	// Connection name of the Cloud SQL instance used in connection strings.
@@ -141,6 +147,8 @@ type instanceArgs struct {
 	IpAddresses []IpMapping `pulumi:"ipAddresses"`
 	// This is always `sql#instance`.
 	Kind *string `pulumi:"kind"`
+	// The current software version on the instance.
+	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// The name of the instance which will act as primary in the replication setup.
 	MasterInstanceName *string `pulumi:"masterInstanceName"`
 	// The maximum disk size of the instance in bytes.
@@ -183,6 +191,8 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// List all maintenance versions applicable on the instance
+	AvailableMaintenanceVersions pulumi.StringArrayInput
 	// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
 	BackendType InstanceBackendTypePtrInput
 	// Connection name of the Cloud SQL instance used in connection strings.
@@ -205,6 +215,8 @@ type InstanceArgs struct {
 	IpAddresses IpMappingArrayInput
 	// This is always `sql#instance`.
 	Kind pulumi.StringPtrInput
+	// The current software version on the instance.
+	MaintenanceVersion pulumi.StringPtrInput
 	// The name of the instance which will act as primary in the replication setup.
 	MasterInstanceName pulumi.StringPtrInput
 	// The maximum disk size of the instance in bytes.

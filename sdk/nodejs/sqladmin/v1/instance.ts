@@ -36,6 +36,10 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * List all maintenance versions applicable on the instance
+     */
+    public readonly availableMaintenanceVersions!: pulumi.Output<string[]>;
+    /**
      * The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
      */
     public readonly backendType!: pulumi.Output<string>;
@@ -87,6 +91,10 @@ export class Instance extends pulumi.CustomResource {
      * This is always `sql#instance`.
      */
     public readonly kind!: pulumi.Output<string>;
+    /**
+     * The current software version on the instance.
+     */
+    public readonly maintenanceVersion!: pulumi.Output<string>;
     /**
      * The name of the instance which will act as primary in the replication setup.
      */
@@ -175,6 +183,7 @@ export class Instance extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["availableMaintenanceVersions"] = args ? args.availableMaintenanceVersions : undefined;
             resourceInputs["backendType"] = args ? args.backendType : undefined;
             resourceInputs["connectionName"] = args ? args.connectionName : undefined;
             resourceInputs["currentDiskSize"] = args ? args.currentDiskSize : undefined;
@@ -186,6 +195,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["ipAddresses"] = args ? args.ipAddresses : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["maintenanceVersion"] = args ? args.maintenanceVersion : undefined;
             resourceInputs["masterInstanceName"] = args ? args.masterInstanceName : undefined;
             resourceInputs["maxDiskSize"] = args ? args.maxDiskSize : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -208,6 +218,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["databaseInstalledVersion"] = undefined /*out*/;
         } else {
+            resourceInputs["availableMaintenanceVersions"] = undefined /*out*/;
             resourceInputs["backendType"] = undefined /*out*/;
             resourceInputs["connectionName"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -221,6 +232,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceType"] = undefined /*out*/;
             resourceInputs["ipAddresses"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["maintenanceVersion"] = undefined /*out*/;
             resourceInputs["masterInstanceName"] = undefined /*out*/;
             resourceInputs["maxDiskSize"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -250,6 +262,10 @@ export class Instance extends pulumi.CustomResource {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * List all maintenance versions applicable on the instance
+     */
+    availableMaintenanceVersions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
      */
@@ -294,6 +310,10 @@ export interface InstanceArgs {
      * This is always `sql#instance`.
      */
     kind?: pulumi.Input<string>;
+    /**
+     * The current software version on the instance.
+     */
+    maintenanceVersion?: pulumi.Input<string>;
     /**
      * The name of the instance which will act as primary in the replication setup.
      */

@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public Input<string>? ConfigBucket { get; set; }
 
         /// <summary>
+        /// Optional. The configuration(s) for a dataproc metric(s).
+        /// </summary>
+        [Input("dataprocMetricConfig")]
+        public Input<Inputs.DataprocMetricConfigArgs>? DataprocMetricConfig { get; set; }
+
+        /// <summary>
         /// Optional. Encryption settings for the cluster.
         /// </summary>
         [Input("encryptionConfig")]

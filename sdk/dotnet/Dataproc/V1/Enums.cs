@@ -94,6 +94,63 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     }
 
     /// <summary>
+    /// Required. MetricSource that should be enabled
+    /// </summary>
+    [EnumType]
+    public readonly struct MetricMetricSource : IEquatable<MetricMetricSource>
+    {
+        private readonly string _value;
+
+        private MetricMetricSource(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Required unspecified metric source
+        /// </summary>
+        public static MetricMetricSource MetricSourceUnspecified { get; } = new MetricMetricSource("METRIC_SOURCE_UNSPECIFIED");
+        /// <summary>
+        /// all default monitoring agent metrics that are published with prefix "agent.googleapis.com" when we enable a monitoring agent in Compute Engine
+        /// </summary>
+        public static MetricMetricSource MonitoringAgentDefaults { get; } = new MetricMetricSource("MONITORING_AGENT_DEFAULTS");
+        /// <summary>
+        /// Hdfs metric source
+        /// </summary>
+        public static MetricMetricSource Hdfs { get; } = new MetricMetricSource("HDFS");
+        /// <summary>
+        /// Spark metric source
+        /// </summary>
+        public static MetricMetricSource Spark { get; } = new MetricMetricSource("SPARK");
+        /// <summary>
+        /// Yarn metric source
+        /// </summary>
+        public static MetricMetricSource Yarn { get; } = new MetricMetricSource("YARN");
+        /// <summary>
+        /// Spark history server metric source
+        /// </summary>
+        public static MetricMetricSource SparkHistoryServer { get; } = new MetricMetricSource("SPARK_HISTORY_SERVER");
+        /// <summary>
+        /// hiveserver2 metric source
+        /// </summary>
+        public static MetricMetricSource Hiveserver2 { get; } = new MetricMetricSource("HIVESERVER2");
+
+        public static bool operator ==(MetricMetricSource left, MetricMetricSource right) => left.Equals(right);
+        public static bool operator !=(MetricMetricSource left, MetricMetricSource right) => !left.Equals(right);
+
+        public static explicit operator string(MetricMetricSource value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MetricMetricSource other && Equals(other);
+        public bool Equals(MetricMetricSource other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. Type of reservation to consume
     /// </summary>
     [EnumType]

@@ -4368,7 +4368,7 @@ export namespace bigtableadmin {
          */
         export interface AutoscalingTargetsArgs {
             /**
-             * The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.
+             * The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
              */
             cpuUtilizationPercent?: pulumi.Input<number>;
         }
@@ -4594,9 +4594,6 @@ export namespace billingbudgets {
             thresholdPercent: pulumi.Input<number>;
         }
 
-        /**
-         * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-         */
         export interface GoogleTypeDateArgs {
             /**
              * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -4741,9 +4738,6 @@ export namespace billingbudgets {
             thresholdPercent: pulumi.Input<number>;
         }
 
-        /**
-         * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-         */
         export interface GoogleTypeDateArgs {
             /**
              * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -4963,6 +4957,57 @@ export namespace binaryauthorization {
              * Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
              */
             publicKeys?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.v1beta1.AttestorPublicKeyArgs>[]>;
+        }
+
+    }
+}
+
+export namespace certificatemanager {
+    export namespace v1 {
+        /**
+         * Configuration and state of a Managed Certificate. Certificate Manager provisions and renews Managed Certificates automatically, for as long as it's authorized to do so.
+         */
+        export interface ManagedCertificateArgs {
+            /**
+             * Immutable. Authorizations that will be used for performing domain authorization.
+             */
+            dnsAuthorizations?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution.
+             */
+            domains?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Information about issues with provisioning a Managed Certificate.
+             */
+            provisioningIssue?: pulumi.Input<inputs.certificatemanager.v1.ProvisioningIssueArgs>;
+        }
+
+        /**
+         * Information about issues with provisioning a Managed Certificate.
+         */
+        export interface ProvisioningIssueArgs {
+            /**
+             * Human readable explanation about the issue. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use Reason enum.
+             */
+            details?: pulumi.Input<string>;
+            /**
+             * Reason for provisioning failures.
+             */
+            reason?: pulumi.Input<enums.certificatemanager.v1.ProvisioningIssueReason>;
+        }
+
+        /**
+         * Certificate data for a SelfManaged Certificate. SelfManaged Certificates are uploaded by the user. Updating such certificates before they expire remains the user's responsibility.
+         */
+        export interface SelfManagedCertificateArgs {
+            /**
+             * Input only. The PEM-encoded certificate chain. Leaf certificate comes first, followed by intermediate ones if any.
+             */
+            pemCertificate?: pulumi.Input<string>;
+            /**
+             * Input only. The PEM-encoded private key of the leaf certificate.
+             */
+            pemPrivateKey?: pulumi.Input<string>;
         }
 
     }
@@ -5561,6 +5606,56 @@ export namespace cloudbuild {
         }
 
         /**
+         * Configuration per workload for both Private Pools and Hybrid Pools.
+         */
+        export interface GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigArgs {
+            /**
+             * The disk size (in GB) which is requested for the build container. If unset, a value of 10 GB will be used.
+             */
+            diskSizeGb?: pulumi.Input<string>;
+            /**
+             * The memory (in GB) which is requested for the build container. If unset, a value of 4 GB will be used.
+             */
+            memoryGb?: pulumi.Input<number>;
+            /**
+             * The number of vCPUs which are requested for the build container. If unset, a value of 1 will be used.
+             */
+            vcpuCount?: pulumi.Input<number>;
+        }
+
+        /**
+         * Configuration for a Hybrid Worker Pool Next ID: 6
+         */
+        export interface HybridPoolConfigArgs {
+            /**
+             * Default settings which will be applied to builds on this worker pool if they are not specified in the build request.
+             */
+            defaultWorkerConfig?: pulumi.Input<inputs.cloudbuild.v1.HybridWorkerConfigArgs>;
+            /**
+             * Immutable. The Anthos/GKE Hub membership of the cluster which will run the actual build operations. Example: projects/{project}/locations/{location}/memberships/{cluster_name}
+             */
+            membership: pulumi.Input<string>;
+        }
+
+        /**
+         * These settings can be applied to a user's build operations. Next ID: 4
+         */
+        export interface HybridWorkerConfigArgs {
+            /**
+             * The disk size (in GB) which is requested for the build container. Defaults to 10 GB.
+             */
+            diskSizeGb?: pulumi.Input<string>;
+            /**
+             * The memory (in GB) which is requested for the build container. Defaults to 4 GB.
+             */
+            memoryGb?: pulumi.Input<number>;
+            /**
+             * The number of vCPUs which are requested for the build container. Defaults to 1.
+             */
+            vcpuCount?: pulumi.Input<number>;
+        }
+
+        /**
          * Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
          */
         export interface InlineSecretArgs {
@@ -5596,6 +5691,10 @@ export namespace cloudbuild {
              * The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
              */
             name?: pulumi.Input<string>;
+            /**
+             * Configuration per workload.
+             */
+            workerConfig?: pulumi.Input<inputs.cloudbuild.v1.GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigArgs>;
         }
 
         /**
@@ -21471,7 +21570,7 @@ export namespace container {
          */
         export interface ConfidentialNodesArgs {
             /**
-             * Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+             * Whether Confidential Nodes feature is enabled.
              */
             enabled?: pulumi.Input<boolean>;
         }
@@ -30793,6 +30892,10 @@ export namespace dataproc {
              */
             configBucket?: pulumi.Input<string>;
             /**
+             * Optional. The configuration(s) for a dataproc metric(s).
+             */
+            dataprocMetricConfig?: pulumi.Input<inputs.dataproc.v1.DataprocMetricConfigArgs>;
+            /**
              * Optional. Encryption settings for the cluster.
              */
             encryptionConfig?: pulumi.Input<inputs.dataproc.v1.EncryptionConfigArgs>;
@@ -30868,6 +30971,16 @@ export namespace dataproc {
              * Optional. Defines whether the instance should have confidential compute enabled.
              */
             enableConfidentialCompute?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Contains dataproc metric config.
+         */
+        export interface DataprocMetricConfigArgs {
+            /**
+             * Metrics to be enabled.
+             */
+            metrics: pulumi.Input<pulumi.Input<inputs.dataproc.v1.MetricArgs>[]>;
         }
 
         /**
@@ -31334,6 +31447,20 @@ export namespace dataproc {
              * Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
              */
             dataprocMetastoreService: pulumi.Input<string>;
+        }
+
+        /**
+         * Metric source to enable along with any optional metrics for this source that override the dataproc defaults
+         */
+        export interface MetricArgs {
+            /**
+             * Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+             */
+            metricOverrides?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * MetricSource that should be enabled
+             */
+            metricSource: pulumi.Input<enums.dataproc.v1.MetricMetricSource>;
         }
 
         /**
@@ -40353,9 +40480,6 @@ export namespace dlp {
         export interface GoogleProtobufEmptyArgs {
         }
 
-        /**
-         * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-         */
         export interface GoogleTypeDateArgs {
             /**
              * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.

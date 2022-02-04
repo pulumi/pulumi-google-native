@@ -31,6 +31,8 @@ type LookupDebugSessionArgs struct {
 type LookupDebugSessionResult struct {
 	// Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
 	Count int `pulumi:"count"`
+	// The first transaction creation timestamp, recorded by UAP.
+	CreateTime string `pulumi:"createTime"`
 	// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
 	Filter string `pulumi:"filter"`
 	// A unique ID for this DebugSession.
@@ -81,6 +83,11 @@ func (o LookupDebugSessionResultOutput) ToLookupDebugSessionResultOutputWithCont
 // Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
 func (o LookupDebugSessionResultOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDebugSessionResult) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The first transaction creation timestamp, recorded by UAP.
+func (o LookupDebugSessionResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDebugSessionResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.

@@ -27,6 +27,10 @@ export interface GetInstanceArgs {
 
 export interface GetInstanceResult {
     /**
+     * List all maintenance versions applicable on the instance
+     */
+    readonly availableMaintenanceVersions: string[];
+    /**
      * The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
      */
     readonly backendType: string;
@@ -78,6 +82,10 @@ export interface GetInstanceResult {
      * This is always `sql#instance`.
      */
     readonly kind: string;
+    /**
+     * The current software version on the instance.
+     */
+    readonly maintenanceVersion: string;
     /**
      * The name of the instance which will act as primary in the replication setup.
      */

@@ -528,7 +528,7 @@ func (o AutoscalingLimitsResponseOutput) MinServeNodes() pulumi.IntOutput {
 
 // The Autoscaling targets for a Cluster. These determine the recommended nodes.
 type AutoscalingTargets struct {
-	// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.
+	// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
 	CpuUtilizationPercent *int `pulumi:"cpuUtilizationPercent"`
 }
 
@@ -545,7 +545,7 @@ type AutoscalingTargetsInput interface {
 
 // The Autoscaling targets for a Cluster. These determine the recommended nodes.
 type AutoscalingTargetsArgs struct {
-	// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.
+	// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
 	CpuUtilizationPercent pulumi.IntPtrInput `pulumi:"cpuUtilizationPercent"`
 }
 
@@ -627,7 +627,7 @@ func (o AutoscalingTargetsOutput) ToAutoscalingTargetsPtrOutputWithContext(ctx c
 	}).(AutoscalingTargetsPtrOutput)
 }
 
-// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.
+// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
 func (o AutoscalingTargetsOutput) CpuUtilizationPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AutoscalingTargets) *int { return v.CpuUtilizationPercent }).(pulumi.IntPtrOutput)
 }
@@ -656,7 +656,7 @@ func (o AutoscalingTargetsPtrOutput) Elem() AutoscalingTargetsOutput {
 	}).(AutoscalingTargetsOutput)
 }
 
-// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.
+// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
 func (o AutoscalingTargetsPtrOutput) CpuUtilizationPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AutoscalingTargets) *int {
 		if v == nil {
@@ -668,7 +668,7 @@ func (o AutoscalingTargetsPtrOutput) CpuUtilizationPercent() pulumi.IntPtrOutput
 
 // The Autoscaling targets for a Cluster. These determine the recommended nodes.
 type AutoscalingTargetsResponse struct {
-	// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.
+	// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
 	CpuUtilizationPercent int `pulumi:"cpuUtilizationPercent"`
 }
 
@@ -687,7 +687,7 @@ func (o AutoscalingTargetsResponseOutput) ToAutoscalingTargetsResponseOutputWith
 	return o
 }
 
-// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.
+// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
 func (o AutoscalingTargetsResponseOutput) CpuUtilizationPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v AutoscalingTargetsResponse) int { return v.CpuUtilizationPercent }).(pulumi.IntOutput)
 }

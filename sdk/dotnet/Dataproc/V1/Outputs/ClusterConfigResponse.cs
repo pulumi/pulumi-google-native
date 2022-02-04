@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly string ConfigBucket;
         /// <summary>
+        /// Optional. The configuration(s) for a dataproc metric(s).
+        /// </summary>
+        public readonly Outputs.DataprocMetricConfigResponse DataprocMetricConfig;
+        /// <summary>
         /// Optional. Encryption settings for the cluster.
         /// </summary>
         public readonly Outputs.EncryptionConfigResponse EncryptionConfig;
@@ -83,6 +87,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 
             string configBucket,
 
+            Outputs.DataprocMetricConfigResponse dataprocMetricConfig,
+
             Outputs.EncryptionConfigResponse encryptionConfig,
 
             Outputs.EndpointConfigResponse endpointConfig,
@@ -111,6 +117,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         {
             AutoscalingConfig = autoscalingConfig;
             ConfigBucket = configBucket;
+            DataprocMetricConfig = dataprocMetricConfig;
             EncryptionConfig = encryptionConfig;
             EndpointConfig = endpointConfig;
             GceClusterConfig = gceClusterConfig;

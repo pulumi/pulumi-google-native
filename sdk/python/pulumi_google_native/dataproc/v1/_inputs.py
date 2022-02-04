@@ -18,6 +18,7 @@ __all__ = [
     'ClusterConfigArgs',
     'ClusterSelectorArgs',
     'ConfidentialInstanceConfigArgs',
+    'DataprocMetricConfigArgs',
     'DiskConfigArgs',
     'EncryptionConfigArgs',
     'EndpointConfigArgs',
@@ -39,6 +40,7 @@ __all__ = [
     'LoggingConfigArgs',
     'ManagedClusterArgs',
     'MetastoreConfigArgs',
+    'MetricArgs',
     'NamespacedGkeDeploymentTargetArgs',
     'NodeGroupAffinityArgs',
     'NodeInitializationActionArgs',
@@ -335,6 +337,7 @@ class ClusterConfigArgs:
     def __init__(__self__, *,
                  autoscaling_config: Optional[pulumi.Input['AutoscalingConfigArgs']] = None,
                  config_bucket: Optional[pulumi.Input[str]] = None,
+                 dataproc_metric_config: Optional[pulumi.Input['DataprocMetricConfigArgs']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  endpoint_config: Optional[pulumi.Input['EndpointConfigArgs']] = None,
                  gce_cluster_config: Optional[pulumi.Input['GceClusterConfigArgs']] = None,
@@ -352,6 +355,7 @@ class ClusterConfigArgs:
         The cluster config.
         :param pulumi.Input['AutoscalingConfigArgs'] autoscaling_config: Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
         :param pulumi.Input[str] config_bucket: Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        :param pulumi.Input['DataprocMetricConfigArgs'] dataproc_metric_config: Optional. The configuration(s) for a dataproc metric(s).
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. Encryption settings for the cluster.
         :param pulumi.Input['EndpointConfigArgs'] endpoint_config: Optional. Port/endpoint configuration for this cluster
         :param pulumi.Input['GceClusterConfigArgs'] gce_cluster_config: Optional. The shared Compute Engine config settings for all instances in a cluster.
@@ -370,6 +374,8 @@ class ClusterConfigArgs:
             pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if config_bucket is not None:
             pulumi.set(__self__, "config_bucket", config_bucket)
+        if dataproc_metric_config is not None:
+            pulumi.set(__self__, "dataproc_metric_config", dataproc_metric_config)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if endpoint_config is not None:
@@ -420,6 +426,18 @@ class ClusterConfigArgs:
     @config_bucket.setter
     def config_bucket(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "config_bucket", value)
+
+    @property
+    @pulumi.getter(name="dataprocMetricConfig")
+    def dataproc_metric_config(self) -> Optional[pulumi.Input['DataprocMetricConfigArgs']]:
+        """
+        Optional. The configuration(s) for a dataproc metric(s).
+        """
+        return pulumi.get(self, "dataproc_metric_config")
+
+    @dataproc_metric_config.setter
+    def dataproc_metric_config(self, value: Optional[pulumi.Input['DataprocMetricConfigArgs']]):
+        pulumi.set(self, "dataproc_metric_config", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -639,6 +657,29 @@ class ConfidentialInstanceConfigArgs:
     @enable_confidential_compute.setter
     def enable_confidential_compute(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_confidential_compute", value)
+
+
+@pulumi.input_type
+class DataprocMetricConfigArgs:
+    def __init__(__self__, *,
+                 metrics: pulumi.Input[Sequence[pulumi.Input['MetricArgs']]]):
+        """
+        Contains dataproc metric config.
+        :param pulumi.Input[Sequence[pulumi.Input['MetricArgs']]] metrics: Metrics to be enabled.
+        """
+        pulumi.set(__self__, "metrics", metrics)
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> pulumi.Input[Sequence[pulumi.Input['MetricArgs']]]:
+        """
+        Metrics to be enabled.
+        """
+        return pulumi.get(self, "metrics")
+
+    @metrics.setter
+    def metrics(self, value: pulumi.Input[Sequence[pulumi.Input['MetricArgs']]]):
+        pulumi.set(self, "metrics", value)
 
 
 @pulumi.input_type
@@ -2161,6 +2202,45 @@ class MetastoreConfigArgs:
     @dataproc_metastore_service.setter
     def dataproc_metastore_service(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataproc_metastore_service", value)
+
+
+@pulumi.input_type
+class MetricArgs:
+    def __init__(__self__, *,
+                 metric_source: pulumi.Input['MetricMetricSource'],
+                 metric_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Metric source to enable along with any optional metrics for this source that override the dataproc defaults
+        :param pulumi.Input['MetricMetricSource'] metric_source: MetricSource that should be enabled
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] metric_overrides: Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+        """
+        pulumi.set(__self__, "metric_source", metric_source)
+        if metric_overrides is not None:
+            pulumi.set(__self__, "metric_overrides", metric_overrides)
+
+    @property
+    @pulumi.getter(name="metricSource")
+    def metric_source(self) -> pulumi.Input['MetricMetricSource']:
+        """
+        MetricSource that should be enabled
+        """
+        return pulumi.get(self, "metric_source")
+
+    @metric_source.setter
+    def metric_source(self, value: pulumi.Input['MetricMetricSource']):
+        pulumi.set(self, "metric_source", value)
+
+    @property
+    @pulumi.getter(name="metricOverrides")
+    def metric_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+        """
+        return pulumi.get(self, "metric_overrides")
+
+    @metric_overrides.setter
+    def metric_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "metric_overrides", value)
 
 
 @pulumi.input_type

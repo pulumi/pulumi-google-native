@@ -254,6 +254,7 @@ class DebugSession(pulumi.CustomResource):
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["tracesize"] = tracesize
             __props__.__dict__["validity"] = validity
+            __props__.__dict__["create_time"] = None
         super(DebugSession, __self__).__init__(
             'google-native:apigee/v1:DebugSession',
             resource_name,
@@ -277,6 +278,7 @@ class DebugSession(pulumi.CustomResource):
         __props__ = DebugSessionArgs.__new__(DebugSessionArgs)
 
         __props__.__dict__["count"] = None
+        __props__.__dict__["create_time"] = None
         __props__.__dict__["filter"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["timeout"] = None
@@ -291,6 +293,14 @@ class DebugSession(pulumi.CustomResource):
         Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
         """
         return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The first transaction creation timestamp, recorded by UAP.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter

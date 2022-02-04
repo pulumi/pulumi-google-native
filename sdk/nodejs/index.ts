@@ -23,6 +23,7 @@ import * as bigqueryreservation from "./bigqueryreservation";
 import * as bigtableadmin from "./bigtableadmin";
 import * as billingbudgets from "./billingbudgets";
 import * as binaryauthorization from "./binaryauthorization";
+import * as certificatemanager from "./certificatemanager";
 import * as cloudasset from "./cloudasset";
 import * as cloudbilling from "./cloudbilling";
 import * as cloudbuild from "./cloudbuild";
@@ -142,6 +143,7 @@ export {
     bigtableadmin,
     billingbudgets,
     binaryauthorization,
+    certificatemanager,
     cloudasset,
     cloudbilling,
     cloudbuild,

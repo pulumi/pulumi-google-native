@@ -56,6 +56,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
     public sealed class GetInstanceResult
     {
         /// <summary>
+        /// List all maintenance versions applicable on the instance
+        /// </summary>
+        public readonly ImmutableArray<string> AvailableMaintenanceVersions;
+        /// <summary>
         /// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
         /// </summary>
         public readonly string BackendType;
@@ -107,6 +111,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// This is always `sql#instance`.
         /// </summary>
         public readonly string Kind;
+        /// <summary>
+        /// The current software version on the instance.
+        /// </summary>
+        public readonly string MaintenanceVersion;
         /// <summary>
         /// The name of the instance which will act as primary in the replication setup.
         /// </summary>
@@ -186,6 +194,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
 
         [OutputConstructor]
         private GetInstanceResult(
+            ImmutableArray<string> availableMaintenanceVersions,
+
             string backendType,
 
             string connectionName,
@@ -211,6 +221,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
             ImmutableArray<Outputs.IpMappingResponse> ipAddresses,
 
             string kind,
+
+            string maintenanceVersion,
 
             string masterInstanceName,
 
@@ -250,6 +262,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
 
             ImmutableArray<string> suspensionReason)
         {
+            AvailableMaintenanceVersions = availableMaintenanceVersions;
             BackendType = backendType;
             ConnectionName = connectionName;
             CreateTime = createTime;
@@ -263,6 +276,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
             InstanceType = instanceType;
             IpAddresses = ipAddresses;
             Kind = kind;
+            MaintenanceVersion = maintenanceVersion;
             MasterInstanceName = masterInstanceName;
             MaxDiskSize = maxDiskSize;
             Name = name;

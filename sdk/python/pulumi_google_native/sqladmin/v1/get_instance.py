@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, backend_type=None, connection_name=None, create_time=None, current_disk_size=None, database_installed_version=None, database_version=None, disk_encryption_configuration=None, disk_encryption_status=None, failover_replica=None, gce_zone=None, instance_type=None, ip_addresses=None, kind=None, master_instance_name=None, max_disk_size=None, name=None, on_premises_configuration=None, out_of_disk_report=None, project=None, region=None, replica_configuration=None, replica_names=None, root_password=None, satisfies_pzs=None, scheduled_maintenance=None, secondary_gce_zone=None, self_link=None, server_ca_cert=None, service_account_email_address=None, settings=None, state=None, suspension_reason=None):
+    def __init__(__self__, available_maintenance_versions=None, backend_type=None, connection_name=None, create_time=None, current_disk_size=None, database_installed_version=None, database_version=None, disk_encryption_configuration=None, disk_encryption_status=None, failover_replica=None, gce_zone=None, instance_type=None, ip_addresses=None, kind=None, maintenance_version=None, master_instance_name=None, max_disk_size=None, name=None, on_premises_configuration=None, out_of_disk_report=None, project=None, region=None, replica_configuration=None, replica_names=None, root_password=None, satisfies_pzs=None, scheduled_maintenance=None, secondary_gce_zone=None, self_link=None, server_ca_cert=None, service_account_email_address=None, settings=None, state=None, suspension_reason=None):
+        if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
+            raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
+        pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
         if backend_type and not isinstance(backend_type, str):
             raise TypeError("Expected argument 'backend_type' to be a str")
         pulumi.set(__self__, "backend_type", backend_type)
@@ -58,6 +61,9 @@ class GetInstanceResult:
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
+        if maintenance_version and not isinstance(maintenance_version, str):
+            raise TypeError("Expected argument 'maintenance_version' to be a str")
+        pulumi.set(__self__, "maintenance_version", maintenance_version)
         if master_instance_name and not isinstance(master_instance_name, str):
             raise TypeError("Expected argument 'master_instance_name' to be a str")
         pulumi.set(__self__, "master_instance_name", master_instance_name)
@@ -115,6 +121,14 @@ class GetInstanceResult:
         if suspension_reason and not isinstance(suspension_reason, list):
             raise TypeError("Expected argument 'suspension_reason' to be a list")
         pulumi.set(__self__, "suspension_reason", suspension_reason)
+
+    @property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> Sequence[str]:
+        """
+        List all maintenance versions applicable on the instance
+        """
+        return pulumi.get(self, "available_maintenance_versions")
 
     @property
     @pulumi.getter(name="backendType")
@@ -219,6 +233,14 @@ class GetInstanceResult:
         This is always `sql#instance`.
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> str:
+        """
+        The current software version on the instance.
+        """
+        return pulumi.get(self, "maintenance_version")
 
     @property
     @pulumi.getter(name="masterInstanceName")
@@ -379,6 +401,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         if False:
             yield self
         return GetInstanceResult(
+            available_maintenance_versions=self.available_maintenance_versions,
             backend_type=self.backend_type,
             connection_name=self.connection_name,
             create_time=self.create_time,
@@ -392,6 +415,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             instance_type=self.instance_type,
             ip_addresses=self.ip_addresses,
             kind=self.kind,
+            maintenance_version=self.maintenance_version,
             master_instance_name=self.master_instance_name,
             max_disk_size=self.max_disk_size,
             name=self.name,
@@ -429,6 +453,7 @@ def get_instance(instance: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:sqladmin/v1:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
+        available_maintenance_versions=__ret__.available_maintenance_versions,
         backend_type=__ret__.backend_type,
         connection_name=__ret__.connection_name,
         create_time=__ret__.create_time,
@@ -442,6 +467,7 @@ def get_instance(instance: Optional[str] = None,
         instance_type=__ret__.instance_type,
         ip_addresses=__ret__.ip_addresses,
         kind=__ret__.kind,
+        maintenance_version=__ret__.maintenance_version,
         master_instance_name=__ret__.master_instance_name,
         max_disk_size=__ret__.max_disk_size,
         name=__ret__.name,

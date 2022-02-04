@@ -41,7 +41,7 @@ type LookupClusterResult struct {
 	ClusterIpv4Cidr string `pulumi:"clusterIpv4Cidr"`
 	// Which conditions caused the current cluster state.
 	Conditions []StatusConditionResponse `pulumi:"conditions"`
-	// Configuration of Confidential Nodes
+	// Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
 	ConfidentialNodes ConfidentialNodesResponse `pulumi:"confidentialNodes"`
 	// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	CreateTime string `pulumi:"createTime"`
@@ -201,7 +201,7 @@ func (o LookupClusterResultOutput) Conditions() StatusConditionResponseArrayOutp
 	return o.ApplyT(func(v LookupClusterResult) []StatusConditionResponse { return v.Conditions }).(StatusConditionResponseArrayOutput)
 }
 
-// Configuration of Confidential Nodes
+// Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
 func (o LookupClusterResultOutput) ConfidentialNodes() ConfidentialNodesResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) ConfidentialNodesResponse { return v.ConfidentialNodes }).(ConfidentialNodesResponseOutput)
 }

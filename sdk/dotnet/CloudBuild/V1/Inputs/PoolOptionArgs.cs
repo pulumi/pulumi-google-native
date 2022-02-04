@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Configuration per workload.
+        /// </summary>
+        [Input("workerConfig")]
+        public Input<Inputs.GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigArgs>? WorkerConfig { get; set; }
+
         public PoolOptionArgs()
         {
         }

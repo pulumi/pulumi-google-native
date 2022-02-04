@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkerPoolResult:
-    def __init__(__self__, annotations=None, create_time=None, delete_time=None, display_name=None, etag=None, name=None, private_pool_v1_config=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, create_time=None, delete_time=None, display_name=None, etag=None, hybrid_pool_config=None, name=None, private_pool_v1_config=None, state=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -34,6 +34,9 @@ class GetWorkerPoolResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if hybrid_pool_config and not isinstance(hybrid_pool_config, dict):
+            raise TypeError("Expected argument 'hybrid_pool_config' to be a dict")
+        pulumi.set(__self__, "hybrid_pool_config", hybrid_pool_config)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -91,6 +94,14 @@ class GetWorkerPoolResult:
         return pulumi.get(self, "etag")
 
     @property
+    @pulumi.getter(name="hybridPoolConfig")
+    def hybrid_pool_config(self) -> 'outputs.HybridPoolConfigResponse':
+        """
+        Hybrid pool configuration
+        """
+        return pulumi.get(self, "hybrid_pool_config")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -142,6 +153,7 @@ class AwaitableGetWorkerPoolResult(GetWorkerPoolResult):
             delete_time=self.delete_time,
             display_name=self.display_name,
             etag=self.etag,
+            hybrid_pool_config=self.hybrid_pool_config,
             name=self.name,
             private_pool_v1_config=self.private_pool_v1_config,
             state=self.state,
@@ -172,6 +184,7 @@ def get_worker_pool(location: Optional[str] = None,
         delete_time=__ret__.delete_time,
         display_name=__ret__.display_name,
         etag=__ret__.etag,
+        hybrid_pool_config=__ret__.hybrid_pool_config,
         name=__ret__.name,
         private_pool_v1_config=__ret__.private_pool_v1_config,
         state=__ret__.state,
