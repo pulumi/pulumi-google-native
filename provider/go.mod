@@ -10,8 +10,8 @@ require (
 	github.com/jpillora/backoff v1.0.0
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/pkg/errors v0.9.1
-	github.com/pulumi/pulumi/pkg/v3 v3.23.0
-	github.com/pulumi/pulumi/sdk/v3 v3.23.0
+	github.com/pulumi/pulumi/pkg/v3 v3.23.2
+	github.com/pulumi/pulumi/sdk/v3 v3.23.2
 	github.com/stretchr/testify v1.7.0
 	golang.org/x/oauth2 v0.0.0-20211104180415-d3ed0bb246c8
 	google.golang.org/api v0.66.0
