@@ -45,7 +45,7 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly bigqueryTableSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1BigQueryTableSpecResponse>;
     /**
-     * Business Context of the entry.
+     * Business Context of the entry. Not supported for BigQuery datasets
      */
     public readonly businessContext!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1BusinessContextResponse>;
     /**
@@ -210,7 +210,7 @@ export interface EntryArgs {
      */
     bigqueryTableSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1BigQueryTableSpecArgs>;
     /**
-     * Business Context of the entry.
+     * Business Context of the entry. Not supported for BigQuery datasets
      */
     businessContext?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1BusinessContextArgs>;
     /**

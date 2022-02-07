@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         [Input("multiclusteringress")]
         public Input<Inputs.MultiClusterIngressFeatureSpecArgs>? Multiclusteringress { get; set; }
 
+        /// <summary>
+        /// Workload Certificate spec.
+        /// </summary>
+        [Input("workloadcertificate")]
+        public Input<Inputs.FeatureSpecArgs>? Workloadcertificate { get; set; }
+
         public CommonFeatureSpecArgs()
         {
         }

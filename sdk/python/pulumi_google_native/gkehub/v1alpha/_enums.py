@@ -6,6 +6,8 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
+    'FeatureSpecProvisionGoogleCa',
+    'MembershipSpecCertificateManagement',
 ]
 
 
@@ -28,4 +30,40 @@ class AuditLogConfigLogType(str, Enum):
     DATA_READ = "DATA_READ"
     """
     Data reads. Example: CloudSQL Users list
+    """
+
+
+class FeatureSpecProvisionGoogleCa(str, Enum):
+    """
+    Immutable. Specifies CA configuration.
+    """
+    GOOGLE_CA_PROVISIONING_UNSPECIFIED = "GOOGLE_CA_PROVISIONING_UNSPECIFIED"
+    """
+    Disable default Google managed CA.
+    """
+    DISABLED = "DISABLED"
+    """
+    Disable default Google managed CA.
+    """
+    ENABLED = "ENABLED"
+    """
+    Use default Google managed CA.
+    """
+
+
+class MembershipSpecCertificateManagement(str, Enum):
+    """
+    Specifies workload certificate management.
+    """
+    CERTIFICATE_MANAGEMENT_UNSPECIFIED = "CERTIFICATE_MANAGEMENT_UNSPECIFIED"
+    """
+    Disable workload certificate feature.
+    """
+    DISABLED = "DISABLED"
+    """
+    Disable workload certificate feature.
+    """
+    ENABLED = "ENABLED"
+    """
+    Enable workload certificate feature.
     """

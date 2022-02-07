@@ -23,11 +23,13 @@ __all__ = [
     'EdgeClusterResponse',
     'ExprResponse',
     'FeatureResourceStateResponse',
+    'FeatureSpecResponse',
     'FeatureStateResponse',
     'GkeClusterResponse',
     'KubernetesMetadataResponse',
     'KubernetesResourceResponse',
     'MembershipEndpointResponse',
+    'MembershipSpecResponse',
     'MembershipStateResponse',
     'MultiCloudClusterResponse',
     'MultiClusterIngressFeatureSpecResponse',
@@ -361,16 +363,19 @@ class CommonFeatureSpecResponse(dict):
     def __init__(__self__, *,
                  appdevexperience: 'outputs.AppDevExperienceFeatureSpecResponse',
                  cloudauditlogging: 'outputs.CloudAuditLoggingFeatureSpecResponse',
-                 multiclusteringress: 'outputs.MultiClusterIngressFeatureSpecResponse'):
+                 multiclusteringress: 'outputs.MultiClusterIngressFeatureSpecResponse',
+                 workloadcertificate: 'outputs.FeatureSpecResponse'):
         """
         CommonFeatureSpec contains Hub-wide configuration information
         :param 'AppDevExperienceFeatureSpecResponse' appdevexperience: Appdevexperience specific spec.
         :param 'CloudAuditLoggingFeatureSpecResponse' cloudauditlogging: Cloud Audit Logging-specific spec.
         :param 'MultiClusterIngressFeatureSpecResponse' multiclusteringress: Multicluster Ingress-specific spec.
+        :param 'FeatureSpecResponse' workloadcertificate: Workload Certificate spec.
         """
         pulumi.set(__self__, "appdevexperience", appdevexperience)
         pulumi.set(__self__, "cloudauditlogging", cloudauditlogging)
         pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+        pulumi.set(__self__, "workloadcertificate", workloadcertificate)
 
     @property
     @pulumi.getter
@@ -395,6 +400,14 @@ class CommonFeatureSpecResponse(dict):
         Multicluster Ingress-specific spec.
         """
         return pulumi.get(self, "multiclusteringress")
+
+    @property
+    @pulumi.getter
+    def workloadcertificate(self) -> 'outputs.FeatureSpecResponse':
+        """
+        Workload Certificate spec.
+        """
+        return pulumi.get(self, "workloadcertificate")
 
 
 @pulumi.output_type
@@ -555,6 +568,58 @@ class FeatureResourceStateResponse(dict):
         The current state of the Feature resource in the Hub API.
         """
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class FeatureSpecResponse(dict):
+    """
+    **Workload Certificate**: The Hub-wide input for the WorkloadCertificate feature.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultConfig":
+            suggest = "default_config"
+        elif key == "provisionGoogleCa":
+            suggest = "provision_google_ca"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_config: 'outputs.MembershipSpecResponse',
+                 provision_google_ca: str):
+        """
+        **Workload Certificate**: The Hub-wide input for the WorkloadCertificate feature.
+        :param 'MembershipSpecResponse' default_config: Specifies default membership spec. Users can override the default in the member_configs for each member.
+        :param str provision_google_ca: Immutable. Specifies CA configuration.
+        """
+        pulumi.set(__self__, "default_config", default_config)
+        pulumi.set(__self__, "provision_google_ca", provision_google_ca)
+
+    @property
+    @pulumi.getter(name="defaultConfig")
+    def default_config(self) -> 'outputs.MembershipSpecResponse':
+        """
+        Specifies default membership spec. Users can override the default in the member_configs for each member.
+        """
+        return pulumi.get(self, "default_config")
+
+    @property
+    @pulumi.getter(name="provisionGoogleCa")
+    def provision_google_ca(self) -> str:
+        """
+        Immutable. Specifies CA configuration.
+        """
+        return pulumi.get(self, "provision_google_ca")
 
 
 @pulumi.output_type
@@ -954,6 +1019,45 @@ class MembershipEndpointResponse(dict):
         Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
         """
         return pulumi.get(self, "on_prem_cluster")
+
+
+@pulumi.output_type
+class MembershipSpecResponse(dict):
+    """
+    **Workload Certificate**: The membership-specific input for WorkloadCertificate feature.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateManagement":
+            suggest = "certificate_management"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MembershipSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MembershipSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MembershipSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_management: str):
+        """
+        **Workload Certificate**: The membership-specific input for WorkloadCertificate feature.
+        :param str certificate_management: Specifies workload certificate management.
+        """
+        pulumi.set(__self__, "certificate_management", certificate_management)
+
+    @property
+    @pulumi.getter(name="certificateManagement")
+    def certificate_management(self) -> str:
+        """
+        Specifies workload certificate management.
+        """
+        return pulumi.get(self, "certificate_management")
 
 
 @pulumi.output_type

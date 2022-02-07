@@ -1058,6 +1058,8 @@ type CommonFeatureSpec struct {
 	Cloudauditlogging *CloudAuditLoggingFeatureSpec `pulumi:"cloudauditlogging"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringress *MultiClusterIngressFeatureSpec `pulumi:"multiclusteringress"`
+	// Workload Certificate spec.
+	Workloadcertificate *FeatureSpec `pulumi:"workloadcertificate"`
 }
 
 // CommonFeatureSpecInput is an input type that accepts CommonFeatureSpecArgs and CommonFeatureSpecOutput values.
@@ -1079,6 +1081,8 @@ type CommonFeatureSpecArgs struct {
 	Cloudauditlogging CloudAuditLoggingFeatureSpecPtrInput `pulumi:"cloudauditlogging"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringress MultiClusterIngressFeatureSpecPtrInput `pulumi:"multiclusteringress"`
+	// Workload Certificate spec.
+	Workloadcertificate FeatureSpecPtrInput `pulumi:"workloadcertificate"`
 }
 
 func (CommonFeatureSpecArgs) ElementType() reflect.Type {
@@ -1174,6 +1178,11 @@ func (o CommonFeatureSpecOutput) Multiclusteringress() MultiClusterIngressFeatur
 	return o.ApplyT(func(v CommonFeatureSpec) *MultiClusterIngressFeatureSpec { return v.Multiclusteringress }).(MultiClusterIngressFeatureSpecPtrOutput)
 }
 
+// Workload Certificate spec.
+func (o CommonFeatureSpecOutput) Workloadcertificate() FeatureSpecPtrOutput {
+	return o.ApplyT(func(v CommonFeatureSpec) *FeatureSpec { return v.Workloadcertificate }).(FeatureSpecPtrOutput)
+}
+
 type CommonFeatureSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (CommonFeatureSpecPtrOutput) ElementType() reflect.Type {
@@ -1228,6 +1237,16 @@ func (o CommonFeatureSpecPtrOutput) Multiclusteringress() MultiClusterIngressFea
 	}).(MultiClusterIngressFeatureSpecPtrOutput)
 }
 
+// Workload Certificate spec.
+func (o CommonFeatureSpecPtrOutput) Workloadcertificate() FeatureSpecPtrOutput {
+	return o.ApplyT(func(v *CommonFeatureSpec) *FeatureSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Workloadcertificate
+	}).(FeatureSpecPtrOutput)
+}
+
 // CommonFeatureSpec contains Hub-wide configuration information
 type CommonFeatureSpecResponse struct {
 	// Appdevexperience specific spec.
@@ -1236,6 +1255,8 @@ type CommonFeatureSpecResponse struct {
 	Cloudauditlogging CloudAuditLoggingFeatureSpecResponse `pulumi:"cloudauditlogging"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringress MultiClusterIngressFeatureSpecResponse `pulumi:"multiclusteringress"`
+	// Workload Certificate spec.
+	Workloadcertificate FeatureSpecResponse `pulumi:"workloadcertificate"`
 }
 
 // CommonFeatureSpec contains Hub-wide configuration information
@@ -1266,6 +1287,11 @@ func (o CommonFeatureSpecResponseOutput) Cloudauditlogging() CloudAuditLoggingFe
 // Multicluster Ingress-specific spec.
 func (o CommonFeatureSpecResponseOutput) Multiclusteringress() MultiClusterIngressFeatureSpecResponseOutput {
 	return o.ApplyT(func(v CommonFeatureSpecResponse) MultiClusterIngressFeatureSpecResponse { return v.Multiclusteringress }).(MultiClusterIngressFeatureSpecResponseOutput)
+}
+
+// Workload Certificate spec.
+func (o CommonFeatureSpecResponseOutput) Workloadcertificate() FeatureSpecResponseOutput {
+	return o.ApplyT(func(v CommonFeatureSpecResponse) FeatureSpecResponse { return v.Workloadcertificate }).(FeatureSpecResponseOutput)
 }
 
 // CommonFeatureState contains Hub-wide Feature status information.
@@ -1742,6 +1768,198 @@ func (o FeatureResourceStateResponseOutput) ToFeatureResourceStateResponseOutput
 // The current state of the Feature resource in the Hub API.
 func (o FeatureResourceStateResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v FeatureResourceStateResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// **Workload Certificate**: The Hub-wide input for the WorkloadCertificate feature.
+type FeatureSpec struct {
+	// Specifies default membership spec. Users can override the default in the member_configs for each member.
+	DefaultConfig *MembershipSpec `pulumi:"defaultConfig"`
+	// Immutable. Specifies CA configuration.
+	ProvisionGoogleCa *FeatureSpecProvisionGoogleCa `pulumi:"provisionGoogleCa"`
+}
+
+// FeatureSpecInput is an input type that accepts FeatureSpecArgs and FeatureSpecOutput values.
+// You can construct a concrete instance of `FeatureSpecInput` via:
+//
+//          FeatureSpecArgs{...}
+type FeatureSpecInput interface {
+	pulumi.Input
+
+	ToFeatureSpecOutput() FeatureSpecOutput
+	ToFeatureSpecOutputWithContext(context.Context) FeatureSpecOutput
+}
+
+// **Workload Certificate**: The Hub-wide input for the WorkloadCertificate feature.
+type FeatureSpecArgs struct {
+	// Specifies default membership spec. Users can override the default in the member_configs for each member.
+	DefaultConfig MembershipSpecPtrInput `pulumi:"defaultConfig"`
+	// Immutable. Specifies CA configuration.
+	ProvisionGoogleCa FeatureSpecProvisionGoogleCaPtrInput `pulumi:"provisionGoogleCa"`
+}
+
+func (FeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpec)(nil)).Elem()
+}
+
+func (i FeatureSpecArgs) ToFeatureSpecOutput() FeatureSpecOutput {
+	return i.ToFeatureSpecOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecArgs) ToFeatureSpecOutputWithContext(ctx context.Context) FeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecOutput)
+}
+
+func (i FeatureSpecArgs) ToFeatureSpecPtrOutput() FeatureSpecPtrOutput {
+	return i.ToFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecArgs) ToFeatureSpecPtrOutputWithContext(ctx context.Context) FeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecOutput).ToFeatureSpecPtrOutputWithContext(ctx)
+}
+
+// FeatureSpecPtrInput is an input type that accepts FeatureSpecArgs, FeatureSpecPtr and FeatureSpecPtrOutput values.
+// You can construct a concrete instance of `FeatureSpecPtrInput` via:
+//
+//          FeatureSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureSpecPtrInput interface {
+	pulumi.Input
+
+	ToFeatureSpecPtrOutput() FeatureSpecPtrOutput
+	ToFeatureSpecPtrOutputWithContext(context.Context) FeatureSpecPtrOutput
+}
+
+type featureSpecPtrType FeatureSpecArgs
+
+func FeatureSpecPtr(v *FeatureSpecArgs) FeatureSpecPtrInput {
+	return (*featureSpecPtrType)(v)
+}
+
+func (*featureSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpec)(nil)).Elem()
+}
+
+func (i *featureSpecPtrType) ToFeatureSpecPtrOutput() FeatureSpecPtrOutput {
+	return i.ToFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *featureSpecPtrType) ToFeatureSpecPtrOutputWithContext(ctx context.Context) FeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecPtrOutput)
+}
+
+// **Workload Certificate**: The Hub-wide input for the WorkloadCertificate feature.
+type FeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpec)(nil)).Elem()
+}
+
+func (o FeatureSpecOutput) ToFeatureSpecOutput() FeatureSpecOutput {
+	return o
+}
+
+func (o FeatureSpecOutput) ToFeatureSpecOutputWithContext(ctx context.Context) FeatureSpecOutput {
+	return o
+}
+
+func (o FeatureSpecOutput) ToFeatureSpecPtrOutput() FeatureSpecPtrOutput {
+	return o.ToFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecOutput) ToFeatureSpecPtrOutputWithContext(ctx context.Context) FeatureSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpec) *FeatureSpec {
+		return &v
+	}).(FeatureSpecPtrOutput)
+}
+
+// Specifies default membership spec. Users can override the default in the member_configs for each member.
+func (o FeatureSpecOutput) DefaultConfig() MembershipSpecPtrOutput {
+	return o.ApplyT(func(v FeatureSpec) *MembershipSpec { return v.DefaultConfig }).(MembershipSpecPtrOutput)
+}
+
+// Immutable. Specifies CA configuration.
+func (o FeatureSpecOutput) ProvisionGoogleCa() FeatureSpecProvisionGoogleCaPtrOutput {
+	return o.ApplyT(func(v FeatureSpec) *FeatureSpecProvisionGoogleCa { return v.ProvisionGoogleCa }).(FeatureSpecProvisionGoogleCaPtrOutput)
+}
+
+type FeatureSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpec)(nil)).Elem()
+}
+
+func (o FeatureSpecPtrOutput) ToFeatureSpecPtrOutput() FeatureSpecPtrOutput {
+	return o
+}
+
+func (o FeatureSpecPtrOutput) ToFeatureSpecPtrOutputWithContext(ctx context.Context) FeatureSpecPtrOutput {
+	return o
+}
+
+func (o FeatureSpecPtrOutput) Elem() FeatureSpecOutput {
+	return o.ApplyT(func(v *FeatureSpec) FeatureSpec {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureSpec
+		return ret
+	}).(FeatureSpecOutput)
+}
+
+// Specifies default membership spec. Users can override the default in the member_configs for each member.
+func (o FeatureSpecPtrOutput) DefaultConfig() MembershipSpecPtrOutput {
+	return o.ApplyT(func(v *FeatureSpec) *MembershipSpec {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultConfig
+	}).(MembershipSpecPtrOutput)
+}
+
+// Immutable. Specifies CA configuration.
+func (o FeatureSpecPtrOutput) ProvisionGoogleCa() FeatureSpecProvisionGoogleCaPtrOutput {
+	return o.ApplyT(func(v *FeatureSpec) *FeatureSpecProvisionGoogleCa {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionGoogleCa
+	}).(FeatureSpecProvisionGoogleCaPtrOutput)
+}
+
+// **Workload Certificate**: The Hub-wide input for the WorkloadCertificate feature.
+type FeatureSpecResponse struct {
+	// Specifies default membership spec. Users can override the default in the member_configs for each member.
+	DefaultConfig MembershipSpecResponse `pulumi:"defaultConfig"`
+	// Immutable. Specifies CA configuration.
+	ProvisionGoogleCa string `pulumi:"provisionGoogleCa"`
+}
+
+// **Workload Certificate**: The Hub-wide input for the WorkloadCertificate feature.
+type FeatureSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecResponse)(nil)).Elem()
+}
+
+func (o FeatureSpecResponseOutput) ToFeatureSpecResponseOutput() FeatureSpecResponseOutput {
+	return o
+}
+
+func (o FeatureSpecResponseOutput) ToFeatureSpecResponseOutputWithContext(ctx context.Context) FeatureSpecResponseOutput {
+	return o
+}
+
+// Specifies default membership spec. Users can override the default in the member_configs for each member.
+func (o FeatureSpecResponseOutput) DefaultConfig() MembershipSpecResponseOutput {
+	return o.ApplyT(func(v FeatureSpecResponse) MembershipSpecResponse { return v.DefaultConfig }).(MembershipSpecResponseOutput)
+}
+
+// Immutable. Specifies CA configuration.
+func (o FeatureSpecResponseOutput) ProvisionGoogleCa() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureSpecResponse) string { return v.ProvisionGoogleCa }).(pulumi.StringOutput)
 }
 
 // FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
@@ -2499,6 +2717,172 @@ func (o MembershipEndpointResponseOutput) MultiCloudCluster() MultiCloudClusterR
 // Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
 func (o MembershipEndpointResponseOutput) OnPremCluster() OnPremClusterResponseOutput {
 	return o.ApplyT(func(v MembershipEndpointResponse) OnPremClusterResponse { return v.OnPremCluster }).(OnPremClusterResponseOutput)
+}
+
+// **Workload Certificate**: The membership-specific input for WorkloadCertificate feature.
+type MembershipSpec struct {
+	// Specifies workload certificate management.
+	CertificateManagement *MembershipSpecCertificateManagement `pulumi:"certificateManagement"`
+}
+
+// MembershipSpecInput is an input type that accepts MembershipSpecArgs and MembershipSpecOutput values.
+// You can construct a concrete instance of `MembershipSpecInput` via:
+//
+//          MembershipSpecArgs{...}
+type MembershipSpecInput interface {
+	pulumi.Input
+
+	ToMembershipSpecOutput() MembershipSpecOutput
+	ToMembershipSpecOutputWithContext(context.Context) MembershipSpecOutput
+}
+
+// **Workload Certificate**: The membership-specific input for WorkloadCertificate feature.
+type MembershipSpecArgs struct {
+	// Specifies workload certificate management.
+	CertificateManagement MembershipSpecCertificateManagementPtrInput `pulumi:"certificateManagement"`
+}
+
+func (MembershipSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipSpec)(nil)).Elem()
+}
+
+func (i MembershipSpecArgs) ToMembershipSpecOutput() MembershipSpecOutput {
+	return i.ToMembershipSpecOutputWithContext(context.Background())
+}
+
+func (i MembershipSpecArgs) ToMembershipSpecOutputWithContext(ctx context.Context) MembershipSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipSpecOutput)
+}
+
+func (i MembershipSpecArgs) ToMembershipSpecPtrOutput() MembershipSpecPtrOutput {
+	return i.ToMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (i MembershipSpecArgs) ToMembershipSpecPtrOutputWithContext(ctx context.Context) MembershipSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipSpecOutput).ToMembershipSpecPtrOutputWithContext(ctx)
+}
+
+// MembershipSpecPtrInput is an input type that accepts MembershipSpecArgs, MembershipSpecPtr and MembershipSpecPtrOutput values.
+// You can construct a concrete instance of `MembershipSpecPtrInput` via:
+//
+//          MembershipSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type MembershipSpecPtrInput interface {
+	pulumi.Input
+
+	ToMembershipSpecPtrOutput() MembershipSpecPtrOutput
+	ToMembershipSpecPtrOutputWithContext(context.Context) MembershipSpecPtrOutput
+}
+
+type membershipSpecPtrType MembershipSpecArgs
+
+func MembershipSpecPtr(v *MembershipSpecArgs) MembershipSpecPtrInput {
+	return (*membershipSpecPtrType)(v)
+}
+
+func (*membershipSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MembershipSpec)(nil)).Elem()
+}
+
+func (i *membershipSpecPtrType) ToMembershipSpecPtrOutput() MembershipSpecPtrOutput {
+	return i.ToMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *membershipSpecPtrType) ToMembershipSpecPtrOutputWithContext(ctx context.Context) MembershipSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipSpecPtrOutput)
+}
+
+// **Workload Certificate**: The membership-specific input for WorkloadCertificate feature.
+type MembershipSpecOutput struct{ *pulumi.OutputState }
+
+func (MembershipSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipSpec)(nil)).Elem()
+}
+
+func (o MembershipSpecOutput) ToMembershipSpecOutput() MembershipSpecOutput {
+	return o
+}
+
+func (o MembershipSpecOutput) ToMembershipSpecOutputWithContext(ctx context.Context) MembershipSpecOutput {
+	return o
+}
+
+func (o MembershipSpecOutput) ToMembershipSpecPtrOutput() MembershipSpecPtrOutput {
+	return o.ToMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (o MembershipSpecOutput) ToMembershipSpecPtrOutputWithContext(ctx context.Context) MembershipSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipSpec) *MembershipSpec {
+		return &v
+	}).(MembershipSpecPtrOutput)
+}
+
+// Specifies workload certificate management.
+func (o MembershipSpecOutput) CertificateManagement() MembershipSpecCertificateManagementPtrOutput {
+	return o.ApplyT(func(v MembershipSpec) *MembershipSpecCertificateManagement { return v.CertificateManagement }).(MembershipSpecCertificateManagementPtrOutput)
+}
+
+type MembershipSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (MembershipSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MembershipSpec)(nil)).Elem()
+}
+
+func (o MembershipSpecPtrOutput) ToMembershipSpecPtrOutput() MembershipSpecPtrOutput {
+	return o
+}
+
+func (o MembershipSpecPtrOutput) ToMembershipSpecPtrOutputWithContext(ctx context.Context) MembershipSpecPtrOutput {
+	return o
+}
+
+func (o MembershipSpecPtrOutput) Elem() MembershipSpecOutput {
+	return o.ApplyT(func(v *MembershipSpec) MembershipSpec {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipSpec
+		return ret
+	}).(MembershipSpecOutput)
+}
+
+// Specifies workload certificate management.
+func (o MembershipSpecPtrOutput) CertificateManagement() MembershipSpecCertificateManagementPtrOutput {
+	return o.ApplyT(func(v *MembershipSpec) *MembershipSpecCertificateManagement {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateManagement
+	}).(MembershipSpecCertificateManagementPtrOutput)
+}
+
+// **Workload Certificate**: The membership-specific input for WorkloadCertificate feature.
+type MembershipSpecResponse struct {
+	// Specifies workload certificate management.
+	CertificateManagement string `pulumi:"certificateManagement"`
+}
+
+// **Workload Certificate**: The membership-specific input for WorkloadCertificate feature.
+type MembershipSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (MembershipSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipSpecResponse)(nil)).Elem()
+}
+
+func (o MembershipSpecResponseOutput) ToMembershipSpecResponseOutput() MembershipSpecResponseOutput {
+	return o
+}
+
+func (o MembershipSpecResponseOutput) ToMembershipSpecResponseOutputWithContext(ctx context.Context) MembershipSpecResponseOutput {
+	return o
+}
+
+// Specifies workload certificate management.
+func (o MembershipSpecResponseOutput) CertificateManagement() pulumi.StringOutput {
+	return o.ApplyT(func(v MembershipSpecResponse) string { return v.CertificateManagement }).(pulumi.StringOutput)
 }
 
 // MembershipState describes the state of a Membership resource.
@@ -3558,12 +3942,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeClusterPtrInput)(nil)).Elem(), EdgeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecInput)(nil)).Elem(), FeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecPtrInput)(nil)).Elem(), FeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterInput)(nil)).Elem(), GkeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterPtrInput)(nil)).Elem(), GkeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourceInput)(nil)).Elem(), KubernetesResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourcePtrInput)(nil)).Elem(), KubernetesResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointInput)(nil)).Elem(), MembershipEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointPtrInput)(nil)).Elem(), MembershipEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipSpecInput)(nil)).Elem(), MembershipSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipSpecPtrInput)(nil)).Elem(), MembershipSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiCloudClusterInput)(nil)).Elem(), MultiCloudClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiCloudClusterPtrInput)(nil)).Elem(), MultiCloudClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecInput)(nil)).Elem(), MultiClusterIngressFeatureSpecArgs{})
@@ -3605,6 +3993,9 @@ func init() {
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(FeatureResourceStateResponseOutput{})
+	pulumi.RegisterOutputType(FeatureSpecOutput{})
+	pulumi.RegisterOutputType(FeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(FeatureSpecResponseOutput{})
 	pulumi.RegisterOutputType(FeatureStateResponseOutput{})
 	pulumi.RegisterOutputType(GkeClusterOutput{})
 	pulumi.RegisterOutputType(GkeClusterPtrOutput{})
@@ -3616,6 +4007,9 @@ func init() {
 	pulumi.RegisterOutputType(MembershipEndpointOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointPtrOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointResponseOutput{})
+	pulumi.RegisterOutputType(MembershipSpecOutput{})
+	pulumi.RegisterOutputType(MembershipSpecPtrOutput{})
+	pulumi.RegisterOutputType(MembershipSpecResponseOutput{})
 	pulumi.RegisterOutputType(MembershipStateResponseOutput{})
 	pulumi.RegisterOutputType(MultiCloudClusterOutput{})
 	pulumi.RegisterOutputType(MultiCloudClusterPtrOutput{})

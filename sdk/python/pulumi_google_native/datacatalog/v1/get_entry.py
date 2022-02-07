@@ -106,7 +106,7 @@ class GetEntryResult:
     @pulumi.getter(name="businessContext")
     def business_context(self) -> 'outputs.GoogleCloudDatacatalogV1BusinessContextResponse':
         """
-        Business Context of the entry.
+        Business Context of the entry. Not supported for BigQuery datasets
         """
         return pulumi.get(self, "business_context")
 

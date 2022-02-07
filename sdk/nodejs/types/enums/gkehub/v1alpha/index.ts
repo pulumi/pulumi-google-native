@@ -25,3 +25,43 @@ export const AuditLogConfigLogType = {
  * The log type that this config enables.
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
+
+export const FeatureSpecProvisionGoogleCa = {
+    /**
+     * Disable default Google managed CA.
+     */
+    GoogleCaProvisioningUnspecified: "GOOGLE_CA_PROVISIONING_UNSPECIFIED",
+    /**
+     * Disable default Google managed CA.
+     */
+    Disabled: "DISABLED",
+    /**
+     * Use default Google managed CA.
+     */
+    Enabled: "ENABLED",
+} as const;
+
+/**
+ * Immutable. Specifies CA configuration.
+ */
+export type FeatureSpecProvisionGoogleCa = (typeof FeatureSpecProvisionGoogleCa)[keyof typeof FeatureSpecProvisionGoogleCa];
+
+export const MembershipSpecCertificateManagement = {
+    /**
+     * Disable workload certificate feature.
+     */
+    CertificateManagementUnspecified: "CERTIFICATE_MANAGEMENT_UNSPECIFIED",
+    /**
+     * Disable workload certificate feature.
+     */
+    Disabled: "DISABLED",
+    /**
+     * Enable workload certificate feature.
+     */
+    Enabled: "ENABLED",
+} as const;
+
+/**
+ * Specifies workload certificate management.
+ */
+export type MembershipSpecCertificateManagement = (typeof MembershipSpecCertificateManagement)[keyof typeof MembershipSpecCertificateManagement];

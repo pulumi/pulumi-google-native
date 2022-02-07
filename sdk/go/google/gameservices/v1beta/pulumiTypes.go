@@ -14,7 +14,6 @@ import (
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs []AuditLogConfig `pulumi:"auditLogConfigs"`
-	ExemptedMembers []string         `pulumi:"exemptedMembers"`
 	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
 	Service *string `pulumi:"service"`
 }
@@ -34,7 +33,6 @@ type AuditConfigInput interface {
 type AuditConfigArgs struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs AuditLogConfigArrayInput `pulumi:"auditLogConfigs"`
-	ExemptedMembers pulumi.StringArrayInput  `pulumi:"exemptedMembers"`
 	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
@@ -96,10 +94,6 @@ func (o AuditConfigOutput) AuditLogConfigs() AuditLogConfigArrayOutput {
 	return o.ApplyT(func(v AuditConfig) []AuditLogConfig { return v.AuditLogConfigs }).(AuditLogConfigArrayOutput)
 }
 
-func (o AuditConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AuditConfig) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
-}
-
 // Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
 func (o AuditConfigOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuditConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
@@ -129,7 +123,6 @@ func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
 type AuditConfigResponse struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs []AuditLogConfigResponse `pulumi:"auditLogConfigs"`
-	ExemptedMembers []string                 `pulumi:"exemptedMembers"`
 	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
 	Service string `pulumi:"service"`
 }
@@ -152,10 +145,6 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
-}
-
-func (o AuditConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AuditConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
 }
 
 // Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.

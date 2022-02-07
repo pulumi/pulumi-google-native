@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1BigQueryTableSpecResponse BigqueryTableSpec;
         /// <summary>
-        /// Business Context of the entry.
+        /// Business Context of the entry. Not supported for BigQuery datasets
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1BusinessContextResponse BusinessContext;
         /// <summary>

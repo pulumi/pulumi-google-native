@@ -19,9 +19,11 @@ __all__ = [
     'CommonFeatureSpecArgs',
     'EdgeClusterArgs',
     'ExprArgs',
+    'FeatureSpecArgs',
     'GkeClusterArgs',
     'KubernetesResourceArgs',
     'MembershipEndpointArgs',
+    'MembershipSpecArgs',
     'MultiCloudClusterArgs',
     'MultiClusterIngressFeatureSpecArgs',
     'OnPremClusterArgs',
@@ -242,12 +244,14 @@ class CommonFeatureSpecArgs:
     def __init__(__self__, *,
                  appdevexperience: Optional[pulumi.Input['AppDevExperienceFeatureSpecArgs']] = None,
                  cloudauditlogging: Optional[pulumi.Input['CloudAuditLoggingFeatureSpecArgs']] = None,
-                 multiclusteringress: Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']] = None):
+                 multiclusteringress: Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']] = None,
+                 workloadcertificate: Optional[pulumi.Input['FeatureSpecArgs']] = None):
         """
         CommonFeatureSpec contains Hub-wide configuration information
         :param pulumi.Input['AppDevExperienceFeatureSpecArgs'] appdevexperience: Appdevexperience specific spec.
         :param pulumi.Input['CloudAuditLoggingFeatureSpecArgs'] cloudauditlogging: Cloud Audit Logging-specific spec.
         :param pulumi.Input['MultiClusterIngressFeatureSpecArgs'] multiclusteringress: Multicluster Ingress-specific spec.
+        :param pulumi.Input['FeatureSpecArgs'] workloadcertificate: Workload Certificate spec.
         """
         if appdevexperience is not None:
             pulumi.set(__self__, "appdevexperience", appdevexperience)
@@ -255,6 +259,8 @@ class CommonFeatureSpecArgs:
             pulumi.set(__self__, "cloudauditlogging", cloudauditlogging)
         if multiclusteringress is not None:
             pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+        if workloadcertificate is not None:
+            pulumi.set(__self__, "workloadcertificate", workloadcertificate)
 
     @property
     @pulumi.getter
@@ -291,6 +297,18 @@ class CommonFeatureSpecArgs:
     @multiclusteringress.setter
     def multiclusteringress(self, value: Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']]):
         pulumi.set(self, "multiclusteringress", value)
+
+    @property
+    @pulumi.getter
+    def workloadcertificate(self) -> Optional[pulumi.Input['FeatureSpecArgs']]:
+        """
+        Workload Certificate spec.
+        """
+        return pulumi.get(self, "workloadcertificate")
+
+    @workloadcertificate.setter
+    def workloadcertificate(self, value: Optional[pulumi.Input['FeatureSpecArgs']]):
+        pulumi.set(self, "workloadcertificate", value)
 
 
 @pulumi.input_type
@@ -387,6 +405,46 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class FeatureSpecArgs:
+    def __init__(__self__, *,
+                 default_config: Optional[pulumi.Input['MembershipSpecArgs']] = None,
+                 provision_google_ca: Optional[pulumi.Input['FeatureSpecProvisionGoogleCa']] = None):
+        """
+        **Workload Certificate**: The Hub-wide input for the WorkloadCertificate feature.
+        :param pulumi.Input['MembershipSpecArgs'] default_config: Specifies default membership spec. Users can override the default in the member_configs for each member.
+        :param pulumi.Input['FeatureSpecProvisionGoogleCa'] provision_google_ca: Immutable. Specifies CA configuration.
+        """
+        if default_config is not None:
+            pulumi.set(__self__, "default_config", default_config)
+        if provision_google_ca is not None:
+            pulumi.set(__self__, "provision_google_ca", provision_google_ca)
+
+    @property
+    @pulumi.getter(name="defaultConfig")
+    def default_config(self) -> Optional[pulumi.Input['MembershipSpecArgs']]:
+        """
+        Specifies default membership spec. Users can override the default in the member_configs for each member.
+        """
+        return pulumi.get(self, "default_config")
+
+    @default_config.setter
+    def default_config(self, value: Optional[pulumi.Input['MembershipSpecArgs']]):
+        pulumi.set(self, "default_config", value)
+
+    @property
+    @pulumi.getter(name="provisionGoogleCa")
+    def provision_google_ca(self) -> Optional[pulumi.Input['FeatureSpecProvisionGoogleCa']]:
+        """
+        Immutable. Specifies CA configuration.
+        """
+        return pulumi.get(self, "provision_google_ca")
+
+    @provision_google_ca.setter
+    def provision_google_ca(self, value: Optional[pulumi.Input['FeatureSpecProvisionGoogleCa']]):
+        pulumi.set(self, "provision_google_ca", value)
 
 
 @pulumi.input_type
@@ -539,6 +597,30 @@ class MembershipEndpointArgs:
     @on_prem_cluster.setter
     def on_prem_cluster(self, value: Optional[pulumi.Input['OnPremClusterArgs']]):
         pulumi.set(self, "on_prem_cluster", value)
+
+
+@pulumi.input_type
+class MembershipSpecArgs:
+    def __init__(__self__, *,
+                 certificate_management: Optional[pulumi.Input['MembershipSpecCertificateManagement']] = None):
+        """
+        **Workload Certificate**: The membership-specific input for WorkloadCertificate feature.
+        :param pulumi.Input['MembershipSpecCertificateManagement'] certificate_management: Specifies workload certificate management.
+        """
+        if certificate_management is not None:
+            pulumi.set(__self__, "certificate_management", certificate_management)
+
+    @property
+    @pulumi.getter(name="certificateManagement")
+    def certificate_management(self) -> Optional[pulumi.Input['MembershipSpecCertificateManagement']]:
+        """
+        Specifies workload certificate management.
+        """
+        return pulumi.get(self, "certificate_management")
+
+    @certificate_management.setter
+    def certificate_management(self, value: Optional[pulumi.Input['MembershipSpecCertificateManagement']]):
+        pulumi.set(self, "certificate_management", value)
 
 
 @pulumi.input_type

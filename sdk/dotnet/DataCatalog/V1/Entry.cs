@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<Outputs.GoogleCloudDatacatalogV1BigQueryTableSpecResponse> BigqueryTableSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Business Context of the entry.
+        /// Business Context of the entry. Not supported for BigQuery datasets
         /// </summary>
         [Output("businessContext")]
         public Output<Outputs.GoogleCloudDatacatalogV1BusinessContextResponse> BusinessContext { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Input<Inputs.GoogleCloudDatacatalogV1BigQueryTableSpecArgs>? BigqueryTableSpec { get; set; }
 
         /// <summary>
-        /// Business Context of the entry.
+        /// Business Context of the entry. Not supported for BigQuery datasets
         /// </summary>
         [Input("businessContext")]
         public Input<Inputs.GoogleCloudDatacatalogV1BusinessContextArgs>? BusinessContext { get; set; }

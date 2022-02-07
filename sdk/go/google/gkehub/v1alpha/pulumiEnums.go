@@ -181,9 +181,355 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
+// Immutable. Specifies CA configuration.
+type FeatureSpecProvisionGoogleCa string
+
+const (
+	// Disable default Google managed CA.
+	FeatureSpecProvisionGoogleCaGoogleCaProvisioningUnspecified = FeatureSpecProvisionGoogleCa("GOOGLE_CA_PROVISIONING_UNSPECIFIED")
+	// Disable default Google managed CA.
+	FeatureSpecProvisionGoogleCaDisabled = FeatureSpecProvisionGoogleCa("DISABLED")
+	// Use default Google managed CA.
+	FeatureSpecProvisionGoogleCaEnabled = FeatureSpecProvisionGoogleCa("ENABLED")
+)
+
+func (FeatureSpecProvisionGoogleCa) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecProvisionGoogleCa)(nil)).Elem()
+}
+
+func (e FeatureSpecProvisionGoogleCa) ToFeatureSpecProvisionGoogleCaOutput() FeatureSpecProvisionGoogleCaOutput {
+	return pulumi.ToOutput(e).(FeatureSpecProvisionGoogleCaOutput)
+}
+
+func (e FeatureSpecProvisionGoogleCa) ToFeatureSpecProvisionGoogleCaOutputWithContext(ctx context.Context) FeatureSpecProvisionGoogleCaOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FeatureSpecProvisionGoogleCaOutput)
+}
+
+func (e FeatureSpecProvisionGoogleCa) ToFeatureSpecProvisionGoogleCaPtrOutput() FeatureSpecProvisionGoogleCaPtrOutput {
+	return e.ToFeatureSpecProvisionGoogleCaPtrOutputWithContext(context.Background())
+}
+
+func (e FeatureSpecProvisionGoogleCa) ToFeatureSpecProvisionGoogleCaPtrOutputWithContext(ctx context.Context) FeatureSpecProvisionGoogleCaPtrOutput {
+	return FeatureSpecProvisionGoogleCa(e).ToFeatureSpecProvisionGoogleCaOutputWithContext(ctx).ToFeatureSpecProvisionGoogleCaPtrOutputWithContext(ctx)
+}
+
+func (e FeatureSpecProvisionGoogleCa) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FeatureSpecProvisionGoogleCa) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FeatureSpecProvisionGoogleCa) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FeatureSpecProvisionGoogleCa) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FeatureSpecProvisionGoogleCaOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecProvisionGoogleCaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecProvisionGoogleCa)(nil)).Elem()
+}
+
+func (o FeatureSpecProvisionGoogleCaOutput) ToFeatureSpecProvisionGoogleCaOutput() FeatureSpecProvisionGoogleCaOutput {
+	return o
+}
+
+func (o FeatureSpecProvisionGoogleCaOutput) ToFeatureSpecProvisionGoogleCaOutputWithContext(ctx context.Context) FeatureSpecProvisionGoogleCaOutput {
+	return o
+}
+
+func (o FeatureSpecProvisionGoogleCaOutput) ToFeatureSpecProvisionGoogleCaPtrOutput() FeatureSpecProvisionGoogleCaPtrOutput {
+	return o.ToFeatureSpecProvisionGoogleCaPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecProvisionGoogleCaOutput) ToFeatureSpecProvisionGoogleCaPtrOutputWithContext(ctx context.Context) FeatureSpecProvisionGoogleCaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpecProvisionGoogleCa) *FeatureSpecProvisionGoogleCa {
+		return &v
+	}).(FeatureSpecProvisionGoogleCaPtrOutput)
+}
+
+func (o FeatureSpecProvisionGoogleCaOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecProvisionGoogleCaOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FeatureSpecProvisionGoogleCa) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FeatureSpecProvisionGoogleCaOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecProvisionGoogleCaOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FeatureSpecProvisionGoogleCa) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureSpecProvisionGoogleCaPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecProvisionGoogleCaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecProvisionGoogleCa)(nil)).Elem()
+}
+
+func (o FeatureSpecProvisionGoogleCaPtrOutput) ToFeatureSpecProvisionGoogleCaPtrOutput() FeatureSpecProvisionGoogleCaPtrOutput {
+	return o
+}
+
+func (o FeatureSpecProvisionGoogleCaPtrOutput) ToFeatureSpecProvisionGoogleCaPtrOutputWithContext(ctx context.Context) FeatureSpecProvisionGoogleCaPtrOutput {
+	return o
+}
+
+func (o FeatureSpecProvisionGoogleCaPtrOutput) Elem() FeatureSpecProvisionGoogleCaOutput {
+	return o.ApplyT(func(v *FeatureSpecProvisionGoogleCa) FeatureSpecProvisionGoogleCa {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureSpecProvisionGoogleCa
+		return ret
+	}).(FeatureSpecProvisionGoogleCaOutput)
+}
+
+func (o FeatureSpecProvisionGoogleCaPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecProvisionGoogleCaPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FeatureSpecProvisionGoogleCa) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FeatureSpecProvisionGoogleCaInput is an input type that accepts FeatureSpecProvisionGoogleCaArgs and FeatureSpecProvisionGoogleCaOutput values.
+// You can construct a concrete instance of `FeatureSpecProvisionGoogleCaInput` via:
+//
+//          FeatureSpecProvisionGoogleCaArgs{...}
+type FeatureSpecProvisionGoogleCaInput interface {
+	pulumi.Input
+
+	ToFeatureSpecProvisionGoogleCaOutput() FeatureSpecProvisionGoogleCaOutput
+	ToFeatureSpecProvisionGoogleCaOutputWithContext(context.Context) FeatureSpecProvisionGoogleCaOutput
+}
+
+var featureSpecProvisionGoogleCaPtrType = reflect.TypeOf((**FeatureSpecProvisionGoogleCa)(nil)).Elem()
+
+type FeatureSpecProvisionGoogleCaPtrInput interface {
+	pulumi.Input
+
+	ToFeatureSpecProvisionGoogleCaPtrOutput() FeatureSpecProvisionGoogleCaPtrOutput
+	ToFeatureSpecProvisionGoogleCaPtrOutputWithContext(context.Context) FeatureSpecProvisionGoogleCaPtrOutput
+}
+
+type featureSpecProvisionGoogleCaPtr string
+
+func FeatureSpecProvisionGoogleCaPtr(v string) FeatureSpecProvisionGoogleCaPtrInput {
+	return (*featureSpecProvisionGoogleCaPtr)(&v)
+}
+
+func (*featureSpecProvisionGoogleCaPtr) ElementType() reflect.Type {
+	return featureSpecProvisionGoogleCaPtrType
+}
+
+func (in *featureSpecProvisionGoogleCaPtr) ToFeatureSpecProvisionGoogleCaPtrOutput() FeatureSpecProvisionGoogleCaPtrOutput {
+	return pulumi.ToOutput(in).(FeatureSpecProvisionGoogleCaPtrOutput)
+}
+
+func (in *featureSpecProvisionGoogleCaPtr) ToFeatureSpecProvisionGoogleCaPtrOutputWithContext(ctx context.Context) FeatureSpecProvisionGoogleCaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FeatureSpecProvisionGoogleCaPtrOutput)
+}
+
+// Specifies workload certificate management.
+type MembershipSpecCertificateManagement string
+
+const (
+	// Disable workload certificate feature.
+	MembershipSpecCertificateManagementCertificateManagementUnspecified = MembershipSpecCertificateManagement("CERTIFICATE_MANAGEMENT_UNSPECIFIED")
+	// Disable workload certificate feature.
+	MembershipSpecCertificateManagementDisabled = MembershipSpecCertificateManagement("DISABLED")
+	// Enable workload certificate feature.
+	MembershipSpecCertificateManagementEnabled = MembershipSpecCertificateManagement("ENABLED")
+)
+
+func (MembershipSpecCertificateManagement) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipSpecCertificateManagement)(nil)).Elem()
+}
+
+func (e MembershipSpecCertificateManagement) ToMembershipSpecCertificateManagementOutput() MembershipSpecCertificateManagementOutput {
+	return pulumi.ToOutput(e).(MembershipSpecCertificateManagementOutput)
+}
+
+func (e MembershipSpecCertificateManagement) ToMembershipSpecCertificateManagementOutputWithContext(ctx context.Context) MembershipSpecCertificateManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MembershipSpecCertificateManagementOutput)
+}
+
+func (e MembershipSpecCertificateManagement) ToMembershipSpecCertificateManagementPtrOutput() MembershipSpecCertificateManagementPtrOutput {
+	return e.ToMembershipSpecCertificateManagementPtrOutputWithContext(context.Background())
+}
+
+func (e MembershipSpecCertificateManagement) ToMembershipSpecCertificateManagementPtrOutputWithContext(ctx context.Context) MembershipSpecCertificateManagementPtrOutput {
+	return MembershipSpecCertificateManagement(e).ToMembershipSpecCertificateManagementOutputWithContext(ctx).ToMembershipSpecCertificateManagementPtrOutputWithContext(ctx)
+}
+
+func (e MembershipSpecCertificateManagement) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MembershipSpecCertificateManagement) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MembershipSpecCertificateManagement) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MembershipSpecCertificateManagement) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MembershipSpecCertificateManagementOutput struct{ *pulumi.OutputState }
+
+func (MembershipSpecCertificateManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipSpecCertificateManagement)(nil)).Elem()
+}
+
+func (o MembershipSpecCertificateManagementOutput) ToMembershipSpecCertificateManagementOutput() MembershipSpecCertificateManagementOutput {
+	return o
+}
+
+func (o MembershipSpecCertificateManagementOutput) ToMembershipSpecCertificateManagementOutputWithContext(ctx context.Context) MembershipSpecCertificateManagementOutput {
+	return o
+}
+
+func (o MembershipSpecCertificateManagementOutput) ToMembershipSpecCertificateManagementPtrOutput() MembershipSpecCertificateManagementPtrOutput {
+	return o.ToMembershipSpecCertificateManagementPtrOutputWithContext(context.Background())
+}
+
+func (o MembershipSpecCertificateManagementOutput) ToMembershipSpecCertificateManagementPtrOutputWithContext(ctx context.Context) MembershipSpecCertificateManagementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipSpecCertificateManagement) *MembershipSpecCertificateManagement {
+		return &v
+	}).(MembershipSpecCertificateManagementPtrOutput)
+}
+
+func (o MembershipSpecCertificateManagementOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MembershipSpecCertificateManagementOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MembershipSpecCertificateManagement) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MembershipSpecCertificateManagementOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MembershipSpecCertificateManagementOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MembershipSpecCertificateManagement) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MembershipSpecCertificateManagementPtrOutput struct{ *pulumi.OutputState }
+
+func (MembershipSpecCertificateManagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MembershipSpecCertificateManagement)(nil)).Elem()
+}
+
+func (o MembershipSpecCertificateManagementPtrOutput) ToMembershipSpecCertificateManagementPtrOutput() MembershipSpecCertificateManagementPtrOutput {
+	return o
+}
+
+func (o MembershipSpecCertificateManagementPtrOutput) ToMembershipSpecCertificateManagementPtrOutputWithContext(ctx context.Context) MembershipSpecCertificateManagementPtrOutput {
+	return o
+}
+
+func (o MembershipSpecCertificateManagementPtrOutput) Elem() MembershipSpecCertificateManagementOutput {
+	return o.ApplyT(func(v *MembershipSpecCertificateManagement) MembershipSpecCertificateManagement {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipSpecCertificateManagement
+		return ret
+	}).(MembershipSpecCertificateManagementOutput)
+}
+
+func (o MembershipSpecCertificateManagementPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MembershipSpecCertificateManagementPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MembershipSpecCertificateManagement) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MembershipSpecCertificateManagementInput is an input type that accepts MembershipSpecCertificateManagementArgs and MembershipSpecCertificateManagementOutput values.
+// You can construct a concrete instance of `MembershipSpecCertificateManagementInput` via:
+//
+//          MembershipSpecCertificateManagementArgs{...}
+type MembershipSpecCertificateManagementInput interface {
+	pulumi.Input
+
+	ToMembershipSpecCertificateManagementOutput() MembershipSpecCertificateManagementOutput
+	ToMembershipSpecCertificateManagementOutputWithContext(context.Context) MembershipSpecCertificateManagementOutput
+}
+
+var membershipSpecCertificateManagementPtrType = reflect.TypeOf((**MembershipSpecCertificateManagement)(nil)).Elem()
+
+type MembershipSpecCertificateManagementPtrInput interface {
+	pulumi.Input
+
+	ToMembershipSpecCertificateManagementPtrOutput() MembershipSpecCertificateManagementPtrOutput
+	ToMembershipSpecCertificateManagementPtrOutputWithContext(context.Context) MembershipSpecCertificateManagementPtrOutput
+}
+
+type membershipSpecCertificateManagementPtr string
+
+func MembershipSpecCertificateManagementPtr(v string) MembershipSpecCertificateManagementPtrInput {
+	return (*membershipSpecCertificateManagementPtr)(&v)
+}
+
+func (*membershipSpecCertificateManagementPtr) ElementType() reflect.Type {
+	return membershipSpecCertificateManagementPtrType
+}
+
+func (in *membershipSpecCertificateManagementPtr) ToMembershipSpecCertificateManagementPtrOutput() MembershipSpecCertificateManagementPtrOutput {
+	return pulumi.ToOutput(in).(MembershipSpecCertificateManagementPtrOutput)
+}
+
+func (in *membershipSpecCertificateManagementPtr) ToMembershipSpecCertificateManagementPtrOutputWithContext(ctx context.Context) MembershipSpecCertificateManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MembershipSpecCertificateManagementPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecProvisionGoogleCaInput)(nil)).Elem(), FeatureSpecProvisionGoogleCa("GOOGLE_CA_PROVISIONING_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecProvisionGoogleCaPtrInput)(nil)).Elem(), FeatureSpecProvisionGoogleCa("GOOGLE_CA_PROVISIONING_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipSpecCertificateManagementInput)(nil)).Elem(), MembershipSpecCertificateManagement("CERTIFICATE_MANAGEMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipSpecCertificateManagementPtrInput)(nil)).Elem(), MembershipSpecCertificateManagement("CERTIFICATE_MANAGEMENT_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(FeatureSpecProvisionGoogleCaOutput{})
+	pulumi.RegisterOutputType(FeatureSpecProvisionGoogleCaPtrOutput{})
+	pulumi.RegisterOutputType(MembershipSpecCertificateManagementOutput{})
+	pulumi.RegisterOutputType(MembershipSpecCertificateManagementPtrOutput{})
 }

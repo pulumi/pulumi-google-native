@@ -27,14 +27,6 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
             set => _auditLogConfigs = value;
         }
 
-        [Input("exemptedMembers")]
-        private InputList<string>? _exemptedMembers;
-        public InputList<string> ExemptedMembers
-        {
-            get => _exemptedMembers ?? (_exemptedMembers = new InputList<string>());
-            set => _exemptedMembers = value;
-        }
-
         /// <summary>
         /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         /// </summary>

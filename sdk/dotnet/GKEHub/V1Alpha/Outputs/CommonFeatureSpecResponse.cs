@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
         /// Multicluster Ingress-specific spec.
         /// </summary>
         public readonly Outputs.MultiClusterIngressFeatureSpecResponse Multiclusteringress;
+        /// <summary>
+        /// Workload Certificate spec.
+        /// </summary>
+        public readonly Outputs.FeatureSpecResponse Workloadcertificate;
 
         [OutputConstructor]
         private CommonFeatureSpecResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 
             Outputs.CloudAuditLoggingFeatureSpecResponse cloudauditlogging,
 
-            Outputs.MultiClusterIngressFeatureSpecResponse multiclusteringress)
+            Outputs.MultiClusterIngressFeatureSpecResponse multiclusteringress,
+
+            Outputs.FeatureSpecResponse workloadcertificate)
         {
             Appdevexperience = appdevexperience;
             Cloudauditlogging = cloudauditlogging;
             Multiclusteringress = multiclusteringress;
+            Workloadcertificate = workloadcertificate;
         }
     }
 }

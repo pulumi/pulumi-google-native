@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 {
 
     /// <summary>
-    /// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
+    /// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
     /// </summary>
     [OutputType]
     public sealed class RuntimeSoftwareConfigResponse
@@ -37,10 +37,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly bool InstallGpuDriver;
         /// <summary>
-        /// Optional. Use a list of container images to use as Kernels in the notebook instance.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.ContainerImageResponse> Kernels;
-        /// <summary>
         /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         /// </summary>
         public readonly string NotebookUpgradeSchedule;
@@ -61,8 +57,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 
             bool installGpuDriver,
 
-            ImmutableArray<Outputs.ContainerImageResponse> kernels,
-
             string notebookUpgradeSchedule,
 
             string postStartupScript)
@@ -72,7 +66,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
             IdleShutdown = idleShutdown;
             IdleShutdownTimeout = idleShutdownTimeout;
             InstallGpuDriver = installGpuDriver;
-            Kernels = kernels;
             NotebookUpgradeSchedule = notebookUpgradeSchedule;
             PostStartupScript = postStartupScript;
         }

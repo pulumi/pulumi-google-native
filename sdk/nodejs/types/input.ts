@@ -4368,7 +4368,7 @@ export namespace bigtableadmin {
          */
         export interface AutoscalingTargetsArgs {
             /**
-             * The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
+             * The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.
              */
             cpuUtilizationPercent?: pulumi.Input<number>;
         }
@@ -42478,7 +42478,6 @@ export namespace gameservices {
              * The configuration for logging of each type of permission.
              */
             auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.v1.AuditLogConfigArgs>[]>;
-            exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
              */
@@ -42785,7 +42784,6 @@ export namespace gameservices {
              * The configuration for logging of each type of permission.
              */
             auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.v1beta.AuditLogConfigArgs>[]>;
-            exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
              */
@@ -43522,6 +43520,10 @@ export namespace gkehub {
              * Multicluster Ingress-specific spec.
              */
             multiclusteringress?: pulumi.Input<inputs.gkehub.v1alpha.MultiClusterIngressFeatureSpecArgs>;
+            /**
+             * Workload Certificate spec.
+             */
+            workloadcertificate?: pulumi.Input<inputs.gkehub.v1alpha.FeatureSpecArgs>;
         }
 
         /**
@@ -43554,6 +43556,20 @@ export namespace gkehub {
              * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
              */
             title?: pulumi.Input<string>;
+        }
+
+        /**
+         * **Workload Certificate**: The Hub-wide input for the WorkloadCertificate feature.
+         */
+        export interface FeatureSpecArgs {
+            /**
+             * Specifies default membership spec. Users can override the default in the member_configs for each member.
+             */
+            defaultConfig?: pulumi.Input<inputs.gkehub.v1alpha.MembershipSpecArgs>;
+            /**
+             * Immutable. Specifies CA configuration.
+             */
+            provisionGoogleCa?: pulumi.Input<enums.gkehub.v1alpha.FeatureSpecProvisionGoogleCa>;
         }
 
         /**
@@ -43604,6 +43620,16 @@ export namespace gkehub {
              * Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
              */
             onPremCluster?: pulumi.Input<inputs.gkehub.v1alpha.OnPremClusterArgs>;
+        }
+
+        /**
+         * **Workload Certificate**: The membership-specific input for WorkloadCertificate feature.
+         */
+        export interface MembershipSpecArgs {
+            /**
+             * Specifies workload certificate management.
+             */
+            certificateManagement?: pulumi.Input<enums.gkehub.v1alpha.MembershipSpecCertificateManagement>;
         }
 
         /**
@@ -49687,7 +49713,7 @@ export namespace notebooks {
         }
 
         /**
-         * Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
+         * Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
          */
         export interface RuntimeSoftwareConfigArgs {
             /**
@@ -49710,10 +49736,6 @@ export namespace notebooks {
              * Install Nvidia Driver automatically.
              */
             installGpuDriver?: pulumi.Input<boolean>;
-            /**
-             * Optional. Use a list of container images to use as Kernels in the notebook instance.
-             */
-            kernels?: pulumi.Input<pulumi.Input<inputs.notebooks.v1.ContainerImageArgs>[]>;
             /**
              * Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
              */
@@ -49835,7 +49857,7 @@ export namespace notebooks {
              */
             acceleratorConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeAcceleratorConfigArgs>;
             /**
-             * Optional. Use a list of container images to use as Kernels in the notebook instance.
+             * Optional. Use a list of container images to start the notebook instance.
              */
             containerImages?: pulumi.Input<pulumi.Input<inputs.notebooks.v1.ContainerImageArgs>[]>;
             /**

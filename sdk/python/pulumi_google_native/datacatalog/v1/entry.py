@@ -41,7 +41,7 @@ class EntryArgs:
         The set of arguments for constructing a Entry resource.
         :param pulumi.Input['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs'] bigquery_date_sharded_spec: Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
         :param pulumi.Input['GoogleCloudDatacatalogV1BigQueryTableSpecArgs'] bigquery_table_spec: Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
-        :param pulumi.Input['GoogleCloudDatacatalogV1BusinessContextArgs'] business_context: Business Context of the entry.
+        :param pulumi.Input['GoogleCloudDatacatalogV1BusinessContextArgs'] business_context: Business Context of the entry. Not supported for BigQuery datasets
         :param pulumi.Input['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs'] data_source_connection_spec: Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
         :param pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecArgs'] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
         :param pulumi.Input[str] description: Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
@@ -144,7 +144,7 @@ class EntryArgs:
     @pulumi.getter(name="businessContext")
     def business_context(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1BusinessContextArgs']]:
         """
-        Business Context of the entry.
+        Business Context of the entry. Not supported for BigQuery datasets
         """
         return pulumi.get(self, "business_context")
 
@@ -374,7 +374,7 @@ class Entry(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs']] bigquery_date_sharded_spec: Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BigQueryTableSpecArgs']] bigquery_table_spec: Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BusinessContextArgs']] business_context: Business Context of the entry.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BusinessContextArgs']] business_context: Business Context of the entry. Not supported for BigQuery datasets
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']] data_source_connection_spec: Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
         :param pulumi.Input[str] description: Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
@@ -544,7 +544,7 @@ class Entry(pulumi.CustomResource):
     @pulumi.getter(name="businessContext")
     def business_context(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1BusinessContextResponse']:
         """
-        Business Context of the entry.
+        Business Context of the entry. Not supported for BigQuery datasets
         """
         return pulumi.get(self, "business_context")
 

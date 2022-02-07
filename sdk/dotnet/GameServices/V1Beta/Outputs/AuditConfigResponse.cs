@@ -20,7 +20,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Outputs
         /// The configuration for logging of each type of permission.
         /// </summary>
         public readonly ImmutableArray<Outputs.AuditLogConfigResponse> AuditLogConfigs;
-        public readonly ImmutableArray<string> ExemptedMembers;
         /// <summary>
         /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         /// </summary>
@@ -30,12 +29,9 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Outputs
         private AuditConfigResponse(
             ImmutableArray<Outputs.AuditLogConfigResponse> auditLogConfigs,
 
-            ImmutableArray<string> exemptedMembers,
-
             string service)
         {
             AuditLogConfigs = auditLogConfigs;
-            ExemptedMembers = exemptedMembers;
             Service = service;
         }
     }

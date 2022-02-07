@@ -39,7 +39,7 @@ export interface GetEntryResult {
      */
     readonly bigqueryTableSpec: outputs.datacatalog.v1.GoogleCloudDatacatalogV1BigQueryTableSpecResponse;
     /**
-     * Business Context of the entry.
+     * Business Context of the entry. Not supported for BigQuery datasets
      */
     readonly businessContext: outputs.datacatalog.v1.GoogleCloudDatacatalogV1BusinessContextResponse;
     /**

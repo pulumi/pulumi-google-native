@@ -38,7 +38,7 @@ type LookupUptimeCheckConfigResult struct {
 	InternalCheckers []InternalCheckerResponse `pulumi:"internalCheckers"`
 	// If this is true, then checks are made only from the 'internal_checkers'. If it is false, then checks are made only from the 'selected_regions'. It is an error to provide 'selected_regions' when is_internal is true, or to provide 'internal_checkers' when is_internal is false.
 	IsInternal bool `pulumi:"isInternal"`
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service
+	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service servicedirectory_service
 	MonitoredResource MonitoredResourceResponse `pulumi:"monitoredResource"`
 	// A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
 	Name string `pulumi:"name"`
@@ -116,7 +116,7 @@ func (o LookupUptimeCheckConfigResultOutput) IsInternal() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupUptimeCheckConfigResult) bool { return v.IsInternal }).(pulumi.BoolOutput)
 }
 
-// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service
+// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service servicedirectory_service
 func (o LookupUptimeCheckConfigResultOutput) MonitoredResource() MonitoredResourceResponseOutput {
 	return o.ApplyT(func(v LookupUptimeCheckConfigResult) MonitoredResourceResponse { return v.MonitoredResource }).(MonitoredResourceResponseOutput)
 }
