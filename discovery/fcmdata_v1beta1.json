@@ -154,7 +154,7 @@
       }
     }
   },
-  "revision": "20220203",
+  "revision": "20220205",
   "rootUrl": "https://fcmdata.googleapis.com/",
   "schemas": {
     "GoogleFirebaseFcmDataV1beta1AndroidDeliveryData": {

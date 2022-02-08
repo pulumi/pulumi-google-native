@@ -20,7 +20,7 @@ type Repository struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The format of packages that are stored in the repository.
 	Format pulumi.StringOutput `pulumi:"format"`
-	// The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
+	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -75,7 +75,7 @@ type repositoryArgs struct {
 	Description *string `pulumi:"description"`
 	// The format of packages that are stored in the repository.
 	Format *RepositoryFormat `pulumi:"format"`
-	// The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
+	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
 	Labels   map[string]string `pulumi:"labels"`
@@ -96,7 +96,7 @@ type RepositoryArgs struct {
 	Description pulumi.StringPtrInput
 	// The format of packages that are stored in the repository.
 	Format RepositoryFormatPtrInput
-	// The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
+	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 	KmsKeyName pulumi.StringPtrInput
 	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
 	Labels   pulumi.StringMapInput

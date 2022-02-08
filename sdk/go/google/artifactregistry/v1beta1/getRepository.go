@@ -33,7 +33,7 @@ type LookupRepositoryResult struct {
 	Description string `pulumi:"description"`
 	// The format of packages that are stored in the repository.
 	Format string `pulumi:"format"`
-	// The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
+	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 	KmsKeyName string `pulumi:"kmsKeyName"`
 	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
 	Labels map[string]string `pulumi:"labels"`
@@ -91,7 +91,7 @@ func (o LookupRepositoryResultOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Format }).(pulumi.StringOutput)
 }
 
-// The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
+// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 func (o LookupRepositoryResultOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }

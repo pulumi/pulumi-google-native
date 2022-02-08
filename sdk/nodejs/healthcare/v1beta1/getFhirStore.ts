@@ -59,7 +59,7 @@ export interface GetFhirStoreResult {
      */
     readonly notificationConfig: outputs.healthcare.v1beta1.NotificationConfigResponse;
     /**
-     * Configuration for how FHIR resource can be searched.
+     * Configuration for how FHIR resources can be searched.
      */
     readonly searchConfig: outputs.healthcare.v1beta1.SearchConfigResponse;
     /**

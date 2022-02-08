@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public readonly Outputs.NotificationConfigResponse NotificationConfig;
         /// <summary>
-        /// Configuration for how FHIR resource can be searched.
+        /// Configuration for how FHIR resources can be searched.
         /// </summary>
         public readonly Outputs.SearchConfigResponse SearchConfig;
         /// <summary>

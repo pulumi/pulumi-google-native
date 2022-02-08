@@ -65,7 +65,7 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.v1beta1.NotificationConfigResponse>;
     /**
-     * Configuration for how FHIR resource can be searched.
+     * Configuration for how FHIR resources can be searched.
      */
     public readonly searchConfig!: pulumi.Output<outputs.healthcare.v1beta1.SearchConfigResponse>;
     /**
@@ -161,7 +161,7 @@ export interface FhirStoreArgs {
     notificationConfig?: pulumi.Input<inputs.healthcare.v1beta1.NotificationConfigArgs>;
     project?: pulumi.Input<string>;
     /**
-     * Configuration for how FHIR resource can be searched.
+     * Configuration for how FHIR resources can be searched.
      */
     searchConfig?: pulumi.Input<inputs.healthcare.v1beta1.SearchConfigArgs>;
     /**

@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         public Output<string> Format { get; private set; } = null!;
 
         /// <summary>
-        /// The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
+        /// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
         /// </summary>
         [Output("kmsKeyName")]
         public Output<string> KmsKeyName { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         public Input<Pulumi.GoogleNative.ArtifactRegistry.V1Beta2.RepositoryFormat>? Format { get; set; }
 
         /// <summary>
-        /// The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
+        /// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }

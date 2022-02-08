@@ -59,7 +59,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Output<Outputs.NotificationConfigResponse> NotificationConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for how FHIR resource can be searched.
+        /// Configuration for how FHIR resources can be searched.
         /// </summary>
         [Output("searchConfig")]
         public Output<Outputs.SearchConfigResponse> SearchConfig { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Configuration for how FHIR resource can be searched.
+        /// Configuration for how FHIR resources can be searched.
         /// </summary>
         [Input("searchConfig")]
         public Input<Inputs.SearchConfigArgs>? SearchConfig { get; set; }

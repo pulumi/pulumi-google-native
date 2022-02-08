@@ -113,7 +113,7 @@ class GetFhirStoreResult:
     @pulumi.getter(name="searchConfig")
     def search_config(self) -> 'outputs.SearchConfigResponse':
         """
-        Configuration for how FHIR resource can be searched.
+        Configuration for how FHIR resources can be searched.
         """
         return pulumi.get(self, "search_config")
 

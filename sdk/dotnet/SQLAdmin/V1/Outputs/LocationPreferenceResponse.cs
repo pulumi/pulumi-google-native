@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
+        /// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
         /// </summary>
         public readonly string SecondaryZone;
         /// <summary>
