@@ -1797,6 +1797,8 @@ class DiscoveryOccurrenceResponse(dict):
             suggest = "analysis_status"
         elif key == "analysisStatusError":
             suggest = "analysis_status_error"
+        elif key == "archiveTime":
+            suggest = "archive_time"
         elif key == "continuousAnalysis":
             suggest = "continuous_analysis"
         elif key == "lastScanTime":
@@ -1816,6 +1818,7 @@ class DiscoveryOccurrenceResponse(dict):
     def __init__(__self__, *,
                  analysis_status: str,
                  analysis_status_error: 'outputs.StatusResponse',
+                 archive_time: str,
                  continuous_analysis: str,
                  cpe: str,
                  last_scan_time: str):
@@ -1823,12 +1826,14 @@ class DiscoveryOccurrenceResponse(dict):
         Provides information about the analysis status of a discovered resource.
         :param str analysis_status: The status of discovery for the resource.
         :param 'StatusResponse' analysis_status_error: When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
+        :param str archive_time: The time occurrences related to this discovery occurrence were archived.
         :param str continuous_analysis: Whether the resource is continuously analyzed.
         :param str cpe: The CPE of the resource being scanned.
         :param str last_scan_time: The last time this resource was scanned.
         """
         pulumi.set(__self__, "analysis_status", analysis_status)
         pulumi.set(__self__, "analysis_status_error", analysis_status_error)
+        pulumi.set(__self__, "archive_time", archive_time)
         pulumi.set(__self__, "continuous_analysis", continuous_analysis)
         pulumi.set(__self__, "cpe", cpe)
         pulumi.set(__self__, "last_scan_time", last_scan_time)
@@ -1848,6 +1853,14 @@ class DiscoveryOccurrenceResponse(dict):
         When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
         """
         return pulumi.get(self, "analysis_status_error")
+
+    @property
+    @pulumi.getter(name="archiveTime")
+    def archive_time(self) -> str:
+        """
+        The time occurrences related to this discovery occurrence were archived.
+        """
+        return pulumi.get(self, "archive_time")
 
     @property
     @pulumi.getter(name="continuousAnalysis")
@@ -2595,8 +2608,8 @@ class InTotoStatementResponse(dict):
                  type: str):
         """
         Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
-        :param str predicate_type: "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
-        :param str type: Always "https://in-toto.io/Statement/v0.1".
+        :param str predicate_type: `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
+        :param str type: Always `https://in-toto.io/Statement/v0.1`.
         """
         pulumi.set(__self__, "predicate_type", predicate_type)
         pulumi.set(__self__, "provenance", provenance)
@@ -2608,7 +2621,7 @@ class InTotoStatementResponse(dict):
     @pulumi.getter(name="predicateType")
     def predicate_type(self) -> str:
         """
-        "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+        `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
         """
         return pulumi.get(self, "predicate_type")
 
@@ -2631,7 +2644,7 @@ class InTotoStatementResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Always "https://in-toto.io/Statement/v0.1".
+        Always `https://in-toto.io/Statement/v0.1`.
         """
         return pulumi.get(self, "type")
 
@@ -2903,7 +2916,7 @@ class MetadataResponse(dict):
 @pulumi.output_type
 class NonCompliantFileResponse(dict):
     """
-    Details about files that caused a compliance check to fail.
+    Details about files that caused a compliance check to fail. display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2927,9 +2940,9 @@ class NonCompliantFileResponse(dict):
                  path: str,
                  reason: str):
         """
-        Details about files that caused a compliance check to fail.
+        Details about files that caused a compliance check to fail. display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'.
         :param str display_command: Command to display the non-compliant files.
-        :param str path: display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+        :param str path: Empty if `display_command` is set.
         :param str reason: Explains why a file is non compliant for a CIS check.
         """
         pulumi.set(__self__, "display_command", display_command)
@@ -2948,7 +2961,7 @@ class NonCompliantFileResponse(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+        Empty if `display_command` is set.
         """
         return pulumi.get(self, "path")
 
@@ -3905,7 +3918,7 @@ class SubjectResponse(dict):
                  digest: Mapping[str, str],
                  name: str):
         """
-        :param Mapping[str, str] digest: "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+        :param Mapping[str, str] digest: `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
         """
         pulumi.set(__self__, "digest", digest)
         pulumi.set(__self__, "name", name)
@@ -3914,7 +3927,7 @@ class SubjectResponse(dict):
     @pulumi.getter
     def digest(self) -> Mapping[str, str]:
         """
-        "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+        `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
         """
         return pulumi.get(self, "digest")
 

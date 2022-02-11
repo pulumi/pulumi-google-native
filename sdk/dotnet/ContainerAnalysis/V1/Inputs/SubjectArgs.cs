@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         private InputMap<string>? _digest;
 
         /// <summary>
-        /// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+        /// `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
         /// </summary>
         public InputMap<string> Digest
         {

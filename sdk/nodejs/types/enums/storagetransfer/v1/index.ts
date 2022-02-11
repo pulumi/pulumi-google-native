@@ -66,7 +66,7 @@ export const MetadataOptionsGid = {
      */
     GidUnspecified: "GID_UNSPECIFIED",
     /**
-     * Skip GID during a transfer job.
+     * Do not preserve GID during a transfer job.
      */
     GidSkip: "GID_SKIP",
     /**
@@ -76,7 +76,7 @@ export const MetadataOptionsGid = {
 } as const;
 
 /**
- * Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+ * Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
  */
 export type MetadataOptionsGid = (typeof MetadataOptionsGid)[keyof typeof MetadataOptionsGid];
 
@@ -106,7 +106,7 @@ export const MetadataOptionsMode = {
      */
     ModeUnspecified: "MODE_UNSPECIFIED",
     /**
-     * Skip mode during a transfer job.
+     * Do not preserve mode during a transfer job.
      */
     ModeSkip: "MODE_SKIP",
     /**
@@ -116,7 +116,7 @@ export const MetadataOptionsMode = {
 } as const;
 
 /**
- * Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+ * Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
  */
 export type MetadataOptionsMode = (typeof MetadataOptionsMode)[keyof typeof MetadataOptionsMode];
 
@@ -158,11 +158,11 @@ export type MetadataOptionsStorageClass = (typeof MetadataOptionsStorageClass)[k
 
 export const MetadataOptionsSymlink = {
     /**
-     * Symlink behavior is unspecified. The default behavior is to skip symlinks during a transfer job.
+     * Symlink behavior is unspecified.
      */
     SymlinkUnspecified: "SYMLINK_UNSPECIFIED",
     /**
-     * Skip symlinks during a transfer job.
+     * Do not preserve symlinks during a transfer job.
      */
     SymlinkSkip: "SYMLINK_SKIP",
     /**
@@ -172,7 +172,7 @@ export const MetadataOptionsSymlink = {
 } as const;
 
 /**
- * Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+ * Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
  */
 export type MetadataOptionsSymlink = (typeof MetadataOptionsSymlink)[keyof typeof MetadataOptionsSymlink];
 
@@ -202,7 +202,7 @@ export const MetadataOptionsUid = {
      */
     UidUnspecified: "UID_UNSPECIFIED",
     /**
-     * Skip UID during a transfer job.
+     * Do not preserve UID during a transfer job.
      */
     UidSkip: "UID_SKIP",
     /**
@@ -212,7 +212,7 @@ export const MetadataOptionsUid = {
 } as const;
 
 /**
- * Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+ * Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
  */
 export type MetadataOptionsUid = (typeof MetadataOptionsUid)[keyof typeof MetadataOptionsUid];
 

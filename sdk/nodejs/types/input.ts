@@ -4594,9 +4594,6 @@ export namespace billingbudgets {
             thresholdPercent: pulumi.Input<number>;
         }
 
-        /**
-         * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
-         */
         export interface GoogleTypeDateArgs {
             /**
              * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -4741,9 +4738,6 @@ export namespace billingbudgets {
             thresholdPercent: pulumi.Input<number>;
         }
 
-        /**
-         * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
-         */
         export interface GoogleTypeDateArgs {
             /**
              * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -8828,6 +8822,10 @@ export namespace composer {
          * The configuration information for configuring a Private IP Cloud Composer environment.
          */
         export interface PrivateEnvironmentConfigArgs {
+            /**
+             * Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+             */
+            cloudComposerConnectionSubnetwork?: pulumi.Input<string>;
             /**
              * Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
              */
@@ -24603,14 +24601,14 @@ export namespace containeranalysis {
          */
         export interface InTotoStatementArgs {
             /**
-             * "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+             * `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
              */
             predicateType?: pulumi.Input<string>;
             provenance?: pulumi.Input<inputs.containeranalysis.v1.InTotoProvenanceArgs>;
             slsaProvenance?: pulumi.Input<inputs.containeranalysis.v1.SlsaProvenanceArgs>;
             subject?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.SubjectArgs>[]>;
             /**
-             * Always "https://in-toto.io/Statement/v0.1".
+             * Always `https://in-toto.io/Statement/v0.1`.
              */
             type?: pulumi.Input<string>;
         }
@@ -24697,7 +24695,7 @@ export namespace containeranalysis {
         }
 
         /**
-         * Details about files that caused a compliance check to fail.
+         * Details about files that caused a compliance check to fail. display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'.
          */
         export interface NonCompliantFileArgs {
             /**
@@ -24705,7 +24703,7 @@ export namespace containeranalysis {
              */
             displayCommand?: pulumi.Input<string>;
             /**
-             * display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+             * Empty if `display_command` is set.
              */
             path?: pulumi.Input<string>;
             /**
@@ -25008,7 +25006,7 @@ export namespace containeranalysis {
 
         export interface SubjectArgs {
             /**
-             * "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+             * `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
              */
             digest?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             name?: pulumi.Input<string>;
@@ -25409,6 +25407,30 @@ export namespace containeranalysis {
         }
 
         /**
+         * Common Vulnerability Scoring System.
+         */
+        export interface CVSSArgs {
+            attackComplexity?: pulumi.Input<enums.containeranalysis.v1alpha1.CVSSAttackComplexity>;
+            /**
+             * Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+             */
+            attackVector?: pulumi.Input<enums.containeranalysis.v1alpha1.CVSSAttackVector>;
+            authentication?: pulumi.Input<enums.containeranalysis.v1alpha1.CVSSAuthentication>;
+            availabilityImpact?: pulumi.Input<enums.containeranalysis.v1alpha1.CVSSAvailabilityImpact>;
+            /**
+             * The base score is a function of the base metric scores.
+             */
+            baseScore?: pulumi.Input<number>;
+            confidentialityImpact?: pulumi.Input<enums.containeranalysis.v1alpha1.CVSSConfidentialityImpact>;
+            exploitabilityScore?: pulumi.Input<number>;
+            impactScore?: pulumi.Input<number>;
+            integrityImpact?: pulumi.Input<enums.containeranalysis.v1alpha1.CVSSIntegrityImpact>;
+            privilegesRequired?: pulumi.Input<enums.containeranalysis.v1alpha1.CVSSPrivilegesRequired>;
+            scope?: pulumi.Input<enums.containeranalysis.v1alpha1.CVSSScope>;
+            userInteraction?: pulumi.Input<enums.containeranalysis.v1alpha1.CVSSUserInteraction>;
+        }
+
+        /**
          * A compliance check that is a CIS benchmark.
          */
         export interface CisBenchmarkArgs {
@@ -25680,6 +25702,10 @@ export namespace containeranalysis {
              */
             analysisStatusError?: pulumi.Input<inputs.containeranalysis.v1alpha1.StatusArgs>;
             /**
+             * The time occurrences related to this discovery occurrence were archived.
+             */
+            archiveTime?: pulumi.Input<string>;
+            /**
              * Whether the resource is continuously analyzed.
              */
             continuousAnalysis?: pulumi.Input<enums.containeranalysis.v1alpha1.DiscoveredContinuousAnalysis>;
@@ -25687,6 +25713,10 @@ export namespace containeranalysis {
              * The CPE of the resource being scanned.
              */
             cpe?: pulumi.Input<string>;
+            /**
+             * The last time this resource was scanned.
+             */
+            lastScanTime?: pulumi.Input<string>;
         }
 
         /**
@@ -26752,6 +26782,10 @@ export namespace containeranalysis {
          * Used by Occurrence to point to where the vulnerability exists and how to fix it.
          */
         export interface VulnerabilityDetailsArgs {
+            /**
+             * The CVSS v3 score of this vulnerability.
+             */
+            cvssV3?: pulumi.Input<inputs.containeranalysis.v1alpha1.CVSSArgs>;
             /**
              * The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
              */
@@ -58964,7 +58998,7 @@ export namespace sqladmin {
              */
             kind?: pulumi.Input<string>;
             /**
-             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
              */
             secondaryZone?: pulumi.Input<string>;
             /**
@@ -59624,7 +59658,7 @@ export namespace sqladmin {
              */
             kind?: pulumi.Input<string>;
             /**
-             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
              */
             secondaryZone?: pulumi.Input<string>;
             /**
@@ -60667,7 +60701,7 @@ export namespace storagetransfer {
         }
 
         /**
-         * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+         * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
          */
         export interface DateArgs {
             /**
@@ -60727,7 +60761,7 @@ export namespace storagetransfer {
         }
 
         /**
-         * Specifies the metadata options for running a transfer.
+         * Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX filesystem and are ignored for other transfers.
          */
         export interface MetadataOptionsArgs {
             /**
@@ -60735,7 +60769,7 @@ export namespace storagetransfer {
              */
             acl?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsAcl>;
             /**
-             * Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+             * Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
              */
             gid?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsGid>;
             /**
@@ -60743,7 +60777,7 @@ export namespace storagetransfer {
              */
             kmsKey?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsKmsKey>;
             /**
-             * Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+             * Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
              */
             mode?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsMode>;
             /**
@@ -60751,7 +60785,7 @@ export namespace storagetransfer {
              */
             storageClass?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsStorageClass>;
             /**
-             * Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+             * Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
              */
             symlink?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsSymlink>;
             /**
@@ -60759,7 +60793,7 @@ export namespace storagetransfer {
              */
             temporaryHold?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsTemporaryHold>;
             /**
-             * Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+             * Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
              */
             uid?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsUid>;
         }
@@ -60893,7 +60927,7 @@ export namespace storagetransfer {
              */
             deleteObjectsUniqueInSink?: pulumi.Input<boolean>;
             /**
-             * Represents the selected metadata options for a transfer job.
+             * Represents the selected metadata options for a transfer job. This feature is in Preview.
              */
             metadataOptions?: pulumi.Input<inputs.storagetransfer.v1.MetadataOptionsArgs>;
             /**

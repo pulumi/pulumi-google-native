@@ -6,6 +6,15 @@ from enum import Enum
 
 __all__ = [
     'BuildSignatureKeyType',
+    'CVSSAttackComplexity',
+    'CVSSAttackVector',
+    'CVSSAuthentication',
+    'CVSSAvailabilityImpact',
+    'CVSSConfidentialityImpact',
+    'CVSSIntegrityImpact',
+    'CVSSPrivilegesRequired',
+    'CVSSScope',
+    'CVSSUserInteraction',
     'CisBenchmarkSeverity',
     'DeploymentPlatform',
     'DiscoveredAnalysisStatus',
@@ -41,6 +50,70 @@ class BuildSignatureKeyType(str, Enum):
     """
     `PKIX PEM` public key.
     """
+
+
+class CVSSAttackComplexity(str, Enum):
+    ATTACK_COMPLEXITY_UNSPECIFIED = "ATTACK_COMPLEXITY_UNSPECIFIED"
+    ATTACK_COMPLEXITY_LOW = "ATTACK_COMPLEXITY_LOW"
+    ATTACK_COMPLEXITY_HIGH = "ATTACK_COMPLEXITY_HIGH"
+
+
+class CVSSAttackVector(str, Enum):
+    """
+    Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+    """
+    ATTACK_VECTOR_UNSPECIFIED = "ATTACK_VECTOR_UNSPECIFIED"
+    ATTACK_VECTOR_NETWORK = "ATTACK_VECTOR_NETWORK"
+    ATTACK_VECTOR_ADJACENT = "ATTACK_VECTOR_ADJACENT"
+    ATTACK_VECTOR_LOCAL = "ATTACK_VECTOR_LOCAL"
+    ATTACK_VECTOR_PHYSICAL = "ATTACK_VECTOR_PHYSICAL"
+
+
+class CVSSAuthentication(str, Enum):
+    AUTHENTICATION_UNSPECIFIED = "AUTHENTICATION_UNSPECIFIED"
+    AUTHENTICATION_MULTIPLE = "AUTHENTICATION_MULTIPLE"
+    AUTHENTICATION_SINGLE = "AUTHENTICATION_SINGLE"
+    AUTHENTICATION_NONE = "AUTHENTICATION_NONE"
+
+
+class CVSSAvailabilityImpact(str, Enum):
+    IMPACT_UNSPECIFIED = "IMPACT_UNSPECIFIED"
+    IMPACT_HIGH = "IMPACT_HIGH"
+    IMPACT_LOW = "IMPACT_LOW"
+    IMPACT_NONE = "IMPACT_NONE"
+
+
+class CVSSConfidentialityImpact(str, Enum):
+    IMPACT_UNSPECIFIED = "IMPACT_UNSPECIFIED"
+    IMPACT_HIGH = "IMPACT_HIGH"
+    IMPACT_LOW = "IMPACT_LOW"
+    IMPACT_NONE = "IMPACT_NONE"
+
+
+class CVSSIntegrityImpact(str, Enum):
+    IMPACT_UNSPECIFIED = "IMPACT_UNSPECIFIED"
+    IMPACT_HIGH = "IMPACT_HIGH"
+    IMPACT_LOW = "IMPACT_LOW"
+    IMPACT_NONE = "IMPACT_NONE"
+
+
+class CVSSPrivilegesRequired(str, Enum):
+    PRIVILEGES_REQUIRED_UNSPECIFIED = "PRIVILEGES_REQUIRED_UNSPECIFIED"
+    PRIVILEGES_REQUIRED_NONE = "PRIVILEGES_REQUIRED_NONE"
+    PRIVILEGES_REQUIRED_LOW = "PRIVILEGES_REQUIRED_LOW"
+    PRIVILEGES_REQUIRED_HIGH = "PRIVILEGES_REQUIRED_HIGH"
+
+
+class CVSSScope(str, Enum):
+    SCOPE_UNSPECIFIED = "SCOPE_UNSPECIFIED"
+    SCOPE_UNCHANGED = "SCOPE_UNCHANGED"
+    SCOPE_CHANGED = "SCOPE_CHANGED"
+
+
+class CVSSUserInteraction(str, Enum):
+    USER_INTERACTION_UNSPECIFIED = "USER_INTERACTION_UNSPECIFIED"
+    USER_INTERACTION_NONE = "USER_INTERACTION_NONE"
+    USER_INTERACTION_REQUIRED = "USER_INTERACTION_REQUIRED"
 
 
 class CisBenchmarkSeverity(str, Enum):

@@ -2572,8 +2572,8 @@ class InTotoStatementArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
-        :param pulumi.Input[str] predicate_type: "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
-        :param pulumi.Input[str] type: Always "https://in-toto.io/Statement/v0.1".
+        :param pulumi.Input[str] predicate_type: `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
+        :param pulumi.Input[str] type: Always `https://in-toto.io/Statement/v0.1`.
         """
         if predicate_type is not None:
             pulumi.set(__self__, "predicate_type", predicate_type)
@@ -2590,7 +2590,7 @@ class InTotoStatementArgs:
     @pulumi.getter(name="predicateType")
     def predicate_type(self) -> Optional[pulumi.Input[str]]:
         """
-        "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+        `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
         """
         return pulumi.get(self, "predicate_type")
 
@@ -2629,7 +2629,7 @@ class InTotoStatementArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Always "https://in-toto.io/Statement/v0.1".
+        Always `https://in-toto.io/Statement/v0.1`.
         """
         return pulumi.get(self, "type")
 
@@ -2918,9 +2918,9 @@ class NonCompliantFileArgs:
                  path: Optional[pulumi.Input[str]] = None,
                  reason: Optional[pulumi.Input[str]] = None):
         """
-        Details about files that caused a compliance check to fail.
+        Details about files that caused a compliance check to fail. display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'.
         :param pulumi.Input[str] display_command: Command to display the non-compliant files.
-        :param pulumi.Input[str] path: display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+        :param pulumi.Input[str] path: Empty if `display_command` is set.
         :param pulumi.Input[str] reason: Explains why a file is non compliant for a CIS check.
         """
         if display_command is not None:
@@ -2946,7 +2946,7 @@ class NonCompliantFileArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+        Empty if `display_command` is set.
         """
         return pulumi.get(self, "path")
 
@@ -3915,7 +3915,7 @@ class SubjectArgs:
                  digest: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] digest: "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] digest: `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
         """
         if digest is not None:
             pulumi.set(__self__, "digest", digest)
@@ -3926,7 +3926,7 @@ class SubjectArgs:
     @pulumi.getter
     def digest(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+        `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
         """
         return pulumi.get(self, "digest")
 

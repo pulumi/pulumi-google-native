@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public Input<Inputs.StatusArgs>? AnalysisStatusError { get; set; }
 
         /// <summary>
+        /// The time occurrences related to this discovery occurrence were archived.
+        /// </summary>
+        [Input("archiveTime")]
+        public Input<string>? ArchiveTime { get; set; }
+
+        /// <summary>
         /// Whether the resource is continuously analyzed.
         /// </summary>
         [Input("continuousAnalysis")]
@@ -38,6 +44,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         /// </summary>
         [Input("cpe")]
         public Input<string>? Cpe { get; set; }
+
+        /// <summary>
+        /// The last time this resource was scanned.
+        /// </summary>
+        [Input("lastScanTime")]
+        public Input<string>? LastScanTime { get; set; }
 
         public DiscoveredArgs()
         {

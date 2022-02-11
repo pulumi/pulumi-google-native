@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
 {
 
     /// <summary>
-    /// Details about files that caused a compliance check to fail.
+    /// Details about files that caused a compliance check to fail. display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'.
     /// </summary>
     [OutputType]
     public sealed class NonCompliantFileResponse
@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
         /// </summary>
         public readonly string DisplayCommand;
         /// <summary>
-        /// display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+        /// Empty if `display_command` is set.
         /// </summary>
         public readonly string Path;
         /// <summary>

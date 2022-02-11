@@ -22,6 +22,7 @@ __all__ = [
     'BuildSignatureResponse',
     'BuildTypeResponse',
     'BuilderConfigResponse',
+    'CVSSResponse',
     'CisBenchmarkResponse',
     'CommandResponse',
     'CompletenessResponse',
@@ -681,6 +682,144 @@ class BuildTypeResponse(dict):
 class BuilderConfigResponse(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class CVSSResponse(dict):
+    """
+    Common Vulnerability Scoring System.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attackComplexity":
+            suggest = "attack_complexity"
+        elif key == "attackVector":
+            suggest = "attack_vector"
+        elif key == "availabilityImpact":
+            suggest = "availability_impact"
+        elif key == "baseScore":
+            suggest = "base_score"
+        elif key == "confidentialityImpact":
+            suggest = "confidentiality_impact"
+        elif key == "exploitabilityScore":
+            suggest = "exploitability_score"
+        elif key == "impactScore":
+            suggest = "impact_score"
+        elif key == "integrityImpact":
+            suggest = "integrity_impact"
+        elif key == "privilegesRequired":
+            suggest = "privileges_required"
+        elif key == "userInteraction":
+            suggest = "user_interaction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CVSSResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CVSSResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CVSSResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attack_complexity: str,
+                 attack_vector: str,
+                 authentication: str,
+                 availability_impact: str,
+                 base_score: float,
+                 confidentiality_impact: str,
+                 exploitability_score: float,
+                 impact_score: float,
+                 integrity_impact: str,
+                 privileges_required: str,
+                 scope: str,
+                 user_interaction: str):
+        """
+        Common Vulnerability Scoring System.
+        :param str attack_vector: Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+        :param float base_score: The base score is a function of the base metric scores.
+        """
+        pulumi.set(__self__, "attack_complexity", attack_complexity)
+        pulumi.set(__self__, "attack_vector", attack_vector)
+        pulumi.set(__self__, "authentication", authentication)
+        pulumi.set(__self__, "availability_impact", availability_impact)
+        pulumi.set(__self__, "base_score", base_score)
+        pulumi.set(__self__, "confidentiality_impact", confidentiality_impact)
+        pulumi.set(__self__, "exploitability_score", exploitability_score)
+        pulumi.set(__self__, "impact_score", impact_score)
+        pulumi.set(__self__, "integrity_impact", integrity_impact)
+        pulumi.set(__self__, "privileges_required", privileges_required)
+        pulumi.set(__self__, "scope", scope)
+        pulumi.set(__self__, "user_interaction", user_interaction)
+
+    @property
+    @pulumi.getter(name="attackComplexity")
+    def attack_complexity(self) -> str:
+        return pulumi.get(self, "attack_complexity")
+
+    @property
+    @pulumi.getter(name="attackVector")
+    def attack_vector(self) -> str:
+        """
+        Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+        """
+        return pulumi.get(self, "attack_vector")
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> str:
+        return pulumi.get(self, "authentication")
+
+    @property
+    @pulumi.getter(name="availabilityImpact")
+    def availability_impact(self) -> str:
+        return pulumi.get(self, "availability_impact")
+
+    @property
+    @pulumi.getter(name="baseScore")
+    def base_score(self) -> float:
+        """
+        The base score is a function of the base metric scores.
+        """
+        return pulumi.get(self, "base_score")
+
+    @property
+    @pulumi.getter(name="confidentialityImpact")
+    def confidentiality_impact(self) -> str:
+        return pulumi.get(self, "confidentiality_impact")
+
+    @property
+    @pulumi.getter(name="exploitabilityScore")
+    def exploitability_score(self) -> float:
+        return pulumi.get(self, "exploitability_score")
+
+    @property
+    @pulumi.getter(name="impactScore")
+    def impact_score(self) -> float:
+        return pulumi.get(self, "impact_score")
+
+    @property
+    @pulumi.getter(name="integrityImpact")
+    def integrity_impact(self) -> str:
+        return pulumi.get(self, "integrity_impact")
+
+    @property
+    @pulumi.getter(name="privilegesRequired")
+    def privileges_required(self) -> str:
+        return pulumi.get(self, "privileges_required")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter(name="userInteraction")
+    def user_interaction(self) -> str:
+        return pulumi.get(self, "user_interaction")
 
 
 @pulumi.output_type
@@ -1556,8 +1695,12 @@ class DiscoveredResponse(dict):
             suggest = "analysis_status"
         elif key == "analysisStatusError":
             suggest = "analysis_status_error"
+        elif key == "archiveTime":
+            suggest = "archive_time"
         elif key == "continuousAnalysis":
             suggest = "continuous_analysis"
+        elif key == "lastScanTime":
+            suggest = "last_scan_time"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DiscoveredResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1573,19 +1716,25 @@ class DiscoveredResponse(dict):
     def __init__(__self__, *,
                  analysis_status: str,
                  analysis_status_error: 'outputs.StatusResponse',
+                 archive_time: str,
                  continuous_analysis: str,
-                 cpe: str):
+                 cpe: str,
+                 last_scan_time: str):
         """
         Provides information about the scan status of a discovered resource.
         :param str analysis_status: The status of discovery for the resource.
         :param 'StatusResponse' analysis_status_error: When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
+        :param str archive_time: The time occurrences related to this discovery occurrence were archived.
         :param str continuous_analysis: Whether the resource is continuously analyzed.
         :param str cpe: The CPE of the resource being scanned.
+        :param str last_scan_time: The last time this resource was scanned.
         """
         pulumi.set(__self__, "analysis_status", analysis_status)
         pulumi.set(__self__, "analysis_status_error", analysis_status_error)
+        pulumi.set(__self__, "archive_time", archive_time)
         pulumi.set(__self__, "continuous_analysis", continuous_analysis)
         pulumi.set(__self__, "cpe", cpe)
+        pulumi.set(__self__, "last_scan_time", last_scan_time)
 
     @property
     @pulumi.getter(name="analysisStatus")
@@ -1604,6 +1753,14 @@ class DiscoveredResponse(dict):
         return pulumi.get(self, "analysis_status_error")
 
     @property
+    @pulumi.getter(name="archiveTime")
+    def archive_time(self) -> str:
+        """
+        The time occurrences related to this discovery occurrence were archived.
+        """
+        return pulumi.get(self, "archive_time")
+
+    @property
     @pulumi.getter(name="continuousAnalysis")
     def continuous_analysis(self) -> str:
         """
@@ -1618,6 +1775,14 @@ class DiscoveredResponse(dict):
         The CPE of the resource being scanned.
         """
         return pulumi.get(self, "cpe")
+
+    @property
+    @pulumi.getter(name="lastScanTime")
+    def last_scan_time(self) -> str:
+        """
+        The last time this resource was scanned.
+        """
+        return pulumi.get(self, "last_scan_time")
 
 
 @pulumi.output_type
@@ -4942,6 +5107,8 @@ class VulnerabilityDetailsResponse(dict):
         suggest = None
         if key == "cvssScore":
             suggest = "cvss_score"
+        elif key == "cvssV3":
+            suggest = "cvss_v3"
         elif key == "effectiveSeverity":
             suggest = "effective_severity"
         elif key == "packageIssue":
@@ -4960,6 +5127,7 @@ class VulnerabilityDetailsResponse(dict):
 
     def __init__(__self__, *,
                  cvss_score: float,
+                 cvss_v3: 'outputs.CVSSResponse',
                  effective_severity: str,
                  package_issue: Sequence['outputs.PackageIssueResponse'],
                  severity: str,
@@ -4967,12 +5135,14 @@ class VulnerabilityDetailsResponse(dict):
         """
         Used by Occurrence to point to where the vulnerability exists and how to fix it.
         :param float cvss_score: The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
+        :param 'CVSSResponse' cvss_v3: The CVSS v3 score of this vulnerability.
         :param str effective_severity: The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
         :param Sequence['PackageIssueResponse'] package_issue: The set of affected locations and their fixes (if available) within the associated resource.
         :param str severity: The note provider assigned Severity of the vulnerability.
         :param str type: The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
         """
         pulumi.set(__self__, "cvss_score", cvss_score)
+        pulumi.set(__self__, "cvss_v3", cvss_v3)
         pulumi.set(__self__, "effective_severity", effective_severity)
         pulumi.set(__self__, "package_issue", package_issue)
         pulumi.set(__self__, "severity", severity)
@@ -4985,6 +5155,14 @@ class VulnerabilityDetailsResponse(dict):
         The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
         """
         return pulumi.get(self, "cvss_score")
+
+    @property
+    @pulumi.getter(name="cvssV3")
+    def cvss_v3(self) -> 'outputs.CVSSResponse':
+        """
+        The CVSS v3 score of this vulnerability.
+        """
+        return pulumi.get(self, "cvss_v3")
 
     @property
     @pulumi.getter(name="effectiveSeverity")

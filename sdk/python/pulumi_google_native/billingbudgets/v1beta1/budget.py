@@ -141,7 +141,7 @@ class Budget(pulumi.CustomResource):
                  threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]]]] = None,
                  __props__=None):
         """
-        Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more information on the limits of the number of budgets you can create.
+        Creates a new budget. See Quotas and limits for more information on the limits of the number of budgets you can create.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -160,7 +160,7 @@ class Budget(pulumi.CustomResource):
                  args: BudgetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more information on the limits of the number of budgets you can create.
+        Creates a new budget. See Quotas and limits for more information on the limits of the number of budgets you can create.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.

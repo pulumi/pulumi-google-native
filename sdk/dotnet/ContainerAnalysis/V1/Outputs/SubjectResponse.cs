@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
     public sealed class SubjectResponse
     {
         /// <summary>
-        /// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+        /// `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
         /// </summary>
         public readonly ImmutableDictionary<string, string> Digest;
         public readonly string Name;

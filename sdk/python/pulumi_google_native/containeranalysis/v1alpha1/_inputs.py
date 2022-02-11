@@ -21,6 +21,7 @@ __all__ = [
     'BuildSignatureArgs',
     'BuildTypeArgs',
     'BuilderConfigArgs',
+    'CVSSArgs',
     'CisBenchmarkArgs',
     'CommandArgs',
     'CompletenessArgs',
@@ -707,6 +708,166 @@ class BuilderConfigArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class CVSSArgs:
+    def __init__(__self__, *,
+                 attack_complexity: Optional[pulumi.Input['CVSSAttackComplexity']] = None,
+                 attack_vector: Optional[pulumi.Input['CVSSAttackVector']] = None,
+                 authentication: Optional[pulumi.Input['CVSSAuthentication']] = None,
+                 availability_impact: Optional[pulumi.Input['CVSSAvailabilityImpact']] = None,
+                 base_score: Optional[pulumi.Input[float]] = None,
+                 confidentiality_impact: Optional[pulumi.Input['CVSSConfidentialityImpact']] = None,
+                 exploitability_score: Optional[pulumi.Input[float]] = None,
+                 impact_score: Optional[pulumi.Input[float]] = None,
+                 integrity_impact: Optional[pulumi.Input['CVSSIntegrityImpact']] = None,
+                 privileges_required: Optional[pulumi.Input['CVSSPrivilegesRequired']] = None,
+                 scope: Optional[pulumi.Input['CVSSScope']] = None,
+                 user_interaction: Optional[pulumi.Input['CVSSUserInteraction']] = None):
+        """
+        Common Vulnerability Scoring System.
+        :param pulumi.Input['CVSSAttackVector'] attack_vector: Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+        :param pulumi.Input[float] base_score: The base score is a function of the base metric scores.
+        """
+        if attack_complexity is not None:
+            pulumi.set(__self__, "attack_complexity", attack_complexity)
+        if attack_vector is not None:
+            pulumi.set(__self__, "attack_vector", attack_vector)
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
+        if availability_impact is not None:
+            pulumi.set(__self__, "availability_impact", availability_impact)
+        if base_score is not None:
+            pulumi.set(__self__, "base_score", base_score)
+        if confidentiality_impact is not None:
+            pulumi.set(__self__, "confidentiality_impact", confidentiality_impact)
+        if exploitability_score is not None:
+            pulumi.set(__self__, "exploitability_score", exploitability_score)
+        if impact_score is not None:
+            pulumi.set(__self__, "impact_score", impact_score)
+        if integrity_impact is not None:
+            pulumi.set(__self__, "integrity_impact", integrity_impact)
+        if privileges_required is not None:
+            pulumi.set(__self__, "privileges_required", privileges_required)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if user_interaction is not None:
+            pulumi.set(__self__, "user_interaction", user_interaction)
+
+    @property
+    @pulumi.getter(name="attackComplexity")
+    def attack_complexity(self) -> Optional[pulumi.Input['CVSSAttackComplexity']]:
+        return pulumi.get(self, "attack_complexity")
+
+    @attack_complexity.setter
+    def attack_complexity(self, value: Optional[pulumi.Input['CVSSAttackComplexity']]):
+        pulumi.set(self, "attack_complexity", value)
+
+    @property
+    @pulumi.getter(name="attackVector")
+    def attack_vector(self) -> Optional[pulumi.Input['CVSSAttackVector']]:
+        """
+        Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+        """
+        return pulumi.get(self, "attack_vector")
+
+    @attack_vector.setter
+    def attack_vector(self, value: Optional[pulumi.Input['CVSSAttackVector']]):
+        pulumi.set(self, "attack_vector", value)
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> Optional[pulumi.Input['CVSSAuthentication']]:
+        return pulumi.get(self, "authentication")
+
+    @authentication.setter
+    def authentication(self, value: Optional[pulumi.Input['CVSSAuthentication']]):
+        pulumi.set(self, "authentication", value)
+
+    @property
+    @pulumi.getter(name="availabilityImpact")
+    def availability_impact(self) -> Optional[pulumi.Input['CVSSAvailabilityImpact']]:
+        return pulumi.get(self, "availability_impact")
+
+    @availability_impact.setter
+    def availability_impact(self, value: Optional[pulumi.Input['CVSSAvailabilityImpact']]):
+        pulumi.set(self, "availability_impact", value)
+
+    @property
+    @pulumi.getter(name="baseScore")
+    def base_score(self) -> Optional[pulumi.Input[float]]:
+        """
+        The base score is a function of the base metric scores.
+        """
+        return pulumi.get(self, "base_score")
+
+    @base_score.setter
+    def base_score(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "base_score", value)
+
+    @property
+    @pulumi.getter(name="confidentialityImpact")
+    def confidentiality_impact(self) -> Optional[pulumi.Input['CVSSConfidentialityImpact']]:
+        return pulumi.get(self, "confidentiality_impact")
+
+    @confidentiality_impact.setter
+    def confidentiality_impact(self, value: Optional[pulumi.Input['CVSSConfidentialityImpact']]):
+        pulumi.set(self, "confidentiality_impact", value)
+
+    @property
+    @pulumi.getter(name="exploitabilityScore")
+    def exploitability_score(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "exploitability_score")
+
+    @exploitability_score.setter
+    def exploitability_score(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "exploitability_score", value)
+
+    @property
+    @pulumi.getter(name="impactScore")
+    def impact_score(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "impact_score")
+
+    @impact_score.setter
+    def impact_score(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "impact_score", value)
+
+    @property
+    @pulumi.getter(name="integrityImpact")
+    def integrity_impact(self) -> Optional[pulumi.Input['CVSSIntegrityImpact']]:
+        return pulumi.get(self, "integrity_impact")
+
+    @integrity_impact.setter
+    def integrity_impact(self, value: Optional[pulumi.Input['CVSSIntegrityImpact']]):
+        pulumi.set(self, "integrity_impact", value)
+
+    @property
+    @pulumi.getter(name="privilegesRequired")
+    def privileges_required(self) -> Optional[pulumi.Input['CVSSPrivilegesRequired']]:
+        return pulumi.get(self, "privileges_required")
+
+    @privileges_required.setter
+    def privileges_required(self, value: Optional[pulumi.Input['CVSSPrivilegesRequired']]):
+        pulumi.set(self, "privileges_required", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input['CVSSScope']]:
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input['CVSSScope']]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="userInteraction")
+    def user_interaction(self) -> Optional[pulumi.Input['CVSSUserInteraction']]:
+        return pulumi.get(self, "user_interaction")
+
+    @user_interaction.setter
+    def user_interaction(self, value: Optional[pulumi.Input['CVSSUserInteraction']]):
+        pulumi.set(self, "user_interaction", value)
 
 
 @pulumi.input_type
@@ -1549,23 +1710,31 @@ class DiscoveredArgs:
     def __init__(__self__, *,
                  analysis_status: Optional[pulumi.Input['DiscoveredAnalysisStatus']] = None,
                  analysis_status_error: Optional[pulumi.Input['StatusArgs']] = None,
+                 archive_time: Optional[pulumi.Input[str]] = None,
                  continuous_analysis: Optional[pulumi.Input['DiscoveredContinuousAnalysis']] = None,
-                 cpe: Optional[pulumi.Input[str]] = None):
+                 cpe: Optional[pulumi.Input[str]] = None,
+                 last_scan_time: Optional[pulumi.Input[str]] = None):
         """
         Provides information about the scan status of a discovered resource.
         :param pulumi.Input['DiscoveredAnalysisStatus'] analysis_status: The status of discovery for the resource.
         :param pulumi.Input['StatusArgs'] analysis_status_error: When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
+        :param pulumi.Input[str] archive_time: The time occurrences related to this discovery occurrence were archived.
         :param pulumi.Input['DiscoveredContinuousAnalysis'] continuous_analysis: Whether the resource is continuously analyzed.
         :param pulumi.Input[str] cpe: The CPE of the resource being scanned.
+        :param pulumi.Input[str] last_scan_time: The last time this resource was scanned.
         """
         if analysis_status is not None:
             pulumi.set(__self__, "analysis_status", analysis_status)
         if analysis_status_error is not None:
             pulumi.set(__self__, "analysis_status_error", analysis_status_error)
+        if archive_time is not None:
+            pulumi.set(__self__, "archive_time", archive_time)
         if continuous_analysis is not None:
             pulumi.set(__self__, "continuous_analysis", continuous_analysis)
         if cpe is not None:
             pulumi.set(__self__, "cpe", cpe)
+        if last_scan_time is not None:
+            pulumi.set(__self__, "last_scan_time", last_scan_time)
 
     @property
     @pulumi.getter(name="analysisStatus")
@@ -1592,6 +1761,18 @@ class DiscoveredArgs:
         pulumi.set(self, "analysis_status_error", value)
 
     @property
+    @pulumi.getter(name="archiveTime")
+    def archive_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time occurrences related to this discovery occurrence were archived.
+        """
+        return pulumi.get(self, "archive_time")
+
+    @archive_time.setter
+    def archive_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "archive_time", value)
+
+    @property
     @pulumi.getter(name="continuousAnalysis")
     def continuous_analysis(self) -> Optional[pulumi.Input['DiscoveredContinuousAnalysis']]:
         """
@@ -1614,6 +1795,18 @@ class DiscoveredArgs:
     @cpe.setter
     def cpe(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpe", value)
+
+    @property
+    @pulumi.getter(name="lastScanTime")
+    def last_scan_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The last time this resource was scanned.
+        """
+        return pulumi.get(self, "last_scan_time")
+
+    @last_scan_time.setter
+    def last_scan_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_scan_time", value)
 
 
 @pulumi.input_type
@@ -5049,21 +5242,37 @@ class VersionArgs:
 @pulumi.input_type
 class VulnerabilityDetailsArgs:
     def __init__(__self__, *,
+                 cvss_v3: Optional[pulumi.Input['CVSSArgs']] = None,
                  effective_severity: Optional[pulumi.Input['VulnerabilityDetailsEffectiveSeverity']] = None,
                  package_issue: Optional[pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Used by Occurrence to point to where the vulnerability exists and how to fix it.
+        :param pulumi.Input['CVSSArgs'] cvss_v3: The CVSS v3 score of this vulnerability.
         :param pulumi.Input['VulnerabilityDetailsEffectiveSeverity'] effective_severity: The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
         :param pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]] package_issue: The set of affected locations and their fixes (if available) within the associated resource.
         :param pulumi.Input[str] type: The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
         """
+        if cvss_v3 is not None:
+            pulumi.set(__self__, "cvss_v3", cvss_v3)
         if effective_severity is not None:
             pulumi.set(__self__, "effective_severity", effective_severity)
         if package_issue is not None:
             pulumi.set(__self__, "package_issue", package_issue)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="cvssV3")
+    def cvss_v3(self) -> Optional[pulumi.Input['CVSSArgs']]:
+        """
+        The CVSS v3 score of this vulnerability.
+        """
+        return pulumi.get(self, "cvss_v3")
+
+    @cvss_v3.setter
+    def cvss_v3(self, value: Optional[pulumi.Input['CVSSArgs']]):
+        pulumi.set(self, "cvss_v3", value)
 
     @property
     @pulumi.getter(name="effectiveSeverity")

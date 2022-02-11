@@ -710,7 +710,9 @@ class PrivateEnvironmentConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "cloudComposerNetworkIpv4CidrBlock":
+        if key == "cloudComposerConnectionSubnetwork":
+            suggest = "cloud_composer_connection_subnetwork"
+        elif key == "cloudComposerNetworkIpv4CidrBlock":
             suggest = "cloud_composer_network_ipv4_cidr_block"
         elif key == "cloudComposerNetworkIpv4ReservedRange":
             suggest = "cloud_composer_network_ipv4_reserved_range"
@@ -737,6 +739,7 @@ class PrivateEnvironmentConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cloud_composer_connection_subnetwork: str,
                  cloud_composer_network_ipv4_cidr_block: str,
                  cloud_composer_network_ipv4_reserved_range: str,
                  cloud_sql_ipv4_cidr_block: str,
@@ -746,6 +749,7 @@ class PrivateEnvironmentConfigResponse(dict):
                  web_server_ipv4_reserved_range: str):
         """
         The configuration information for configuring a Private IP Cloud Composer environment.
+        :param str cloud_composer_connection_subnetwork: Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
         :param str cloud_composer_network_ipv4_cidr_block: Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param str cloud_composer_network_ipv4_reserved_range: The IP range reserved for the tenant project's Cloud Composer network. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param str cloud_sql_ipv4_cidr_block: Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
@@ -754,6 +758,7 @@ class PrivateEnvironmentConfigResponse(dict):
         :param str web_server_ipv4_cidr_block: Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param str web_server_ipv4_reserved_range: The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
+        pulumi.set(__self__, "cloud_composer_connection_subnetwork", cloud_composer_connection_subnetwork)
         pulumi.set(__self__, "cloud_composer_network_ipv4_cidr_block", cloud_composer_network_ipv4_cidr_block)
         pulumi.set(__self__, "cloud_composer_network_ipv4_reserved_range", cloud_composer_network_ipv4_reserved_range)
         pulumi.set(__self__, "cloud_sql_ipv4_cidr_block", cloud_sql_ipv4_cidr_block)
@@ -761,6 +766,14 @@ class PrivateEnvironmentConfigResponse(dict):
         pulumi.set(__self__, "private_cluster_config", private_cluster_config)
         pulumi.set(__self__, "web_server_ipv4_cidr_block", web_server_ipv4_cidr_block)
         pulumi.set(__self__, "web_server_ipv4_reserved_range", web_server_ipv4_reserved_range)
+
+    @property
+    @pulumi.getter(name="cloudComposerConnectionSubnetwork")
+    def cloud_composer_connection_subnetwork(self) -> str:
+        """
+        Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+        """
+        return pulumi.get(self, "cloud_composer_connection_subnetwork")
 
     @property
     @pulumi.getter(name="cloudComposerNetworkIpv4CidrBlock")

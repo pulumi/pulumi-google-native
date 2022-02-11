@@ -607,13 +607,13 @@ func (in *metadataOptionsAclPtr) ToMetadataOptionsAclPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsAclPtrOutput)
 }
 
-// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
 type MetadataOptionsGid string
 
 const (
 	// GID behavior is unspecified.
 	MetadataOptionsGidGidUnspecified = MetadataOptionsGid("GID_UNSPECIFIED")
-	// Skip GID during a transfer job.
+	// Do not preserve GID during a transfer job.
 	MetadataOptionsGidGidSkip = MetadataOptionsGid("GID_SKIP")
 	// Preserve GID during a transfer job.
 	MetadataOptionsGidGidNumber = MetadataOptionsGid("GID_NUMBER")
@@ -945,13 +945,13 @@ func (in *metadataOptionsKmsKeyPtr) ToMetadataOptionsKmsKeyPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsKmsKeyPtrOutput)
 }
 
-// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
 type MetadataOptionsMode string
 
 const (
 	// Mode behavior is unspecified.
 	MetadataOptionsModeModeUnspecified = MetadataOptionsMode("MODE_UNSPECIFIED")
-	// Skip mode during a transfer job.
+	// Do not preserve mode during a transfer job.
 	MetadataOptionsModeModeSkip = MetadataOptionsMode("MODE_SKIP")
 	// Preserve mode during a transfer job.
 	MetadataOptionsModeModePreserve = MetadataOptionsMode("MODE_PRESERVE")
@@ -1291,13 +1291,13 @@ func (in *metadataOptionsStorageClassPtr) ToMetadataOptionsStorageClassPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsStorageClassPtrOutput)
 }
 
-// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
 type MetadataOptionsSymlink string
 
 const (
-	// Symlink behavior is unspecified. The default behavior is to skip symlinks during a transfer job.
+	// Symlink behavior is unspecified.
 	MetadataOptionsSymlinkSymlinkUnspecified = MetadataOptionsSymlink("SYMLINK_UNSPECIFIED")
-	// Skip symlinks during a transfer job.
+	// Do not preserve symlinks during a transfer job.
 	MetadataOptionsSymlinkSymlinkSkip = MetadataOptionsSymlink("SYMLINK_SKIP")
 	// Preserve symlinks during a transfer job.
 	MetadataOptionsSymlinkSymlinkPreserve = MetadataOptionsSymlink("SYMLINK_PRESERVE")
@@ -1629,13 +1629,13 @@ func (in *metadataOptionsTemporaryHoldPtr) ToMetadataOptionsTemporaryHoldPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsTemporaryHoldPtrOutput)
 }
 
-// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
 type MetadataOptionsUid string
 
 const (
 	// UID behavior is unspecified.
 	MetadataOptionsUidUidUnspecified = MetadataOptionsUid("UID_UNSPECIFIED")
-	// Skip UID during a transfer job.
+	// Do not preserve UID during a transfer job.
 	MetadataOptionsUidUidSkip = MetadataOptionsUid("UID_SKIP")
 	// Preserve UID during a transfer job.
 	MetadataOptionsUidUidNumber = MetadataOptionsUid("UID_NUMBER")

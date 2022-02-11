@@ -2016,6 +2016,8 @@ func (o PrivateClusterConfigResponseOutput) MasterIpv4ReservedRange() pulumi.Str
 
 // The configuration information for configuring a Private IP Cloud Composer environment.
 type PrivateEnvironmentConfig struct {
+	// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+	CloudComposerConnectionSubnetwork *string `pulumi:"cloudComposerConnectionSubnetwork"`
 	// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerNetworkIpv4CidrBlock *string `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
@@ -2041,6 +2043,8 @@ type PrivateEnvironmentConfigInput interface {
 
 // The configuration information for configuring a Private IP Cloud Composer environment.
 type PrivateEnvironmentConfigArgs struct {
+	// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+	CloudComposerConnectionSubnetwork pulumi.StringPtrInput `pulumi:"cloudComposerConnectionSubnetwork"`
 	// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerNetworkIpv4CidrBlock pulumi.StringPtrInput `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
@@ -2131,6 +2135,11 @@ func (o PrivateEnvironmentConfigOutput) ToPrivateEnvironmentConfigPtrOutputWithC
 	}).(PrivateEnvironmentConfigPtrOutput)
 }
 
+// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+func (o PrivateEnvironmentConfigOutput) CloudComposerConnectionSubnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEnvironmentConfig) *string { return v.CloudComposerConnectionSubnetwork }).(pulumi.StringPtrOutput)
+}
+
 // Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o PrivateEnvironmentConfigOutput) CloudComposerNetworkIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfig) *string { return v.CloudComposerNetworkIpv4CidrBlock }).(pulumi.StringPtrOutput)
@@ -2178,6 +2187,16 @@ func (o PrivateEnvironmentConfigPtrOutput) Elem() PrivateEnvironmentConfigOutput
 		var ret PrivateEnvironmentConfig
 		return ret
 	}).(PrivateEnvironmentConfigOutput)
+}
+
+// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+func (o PrivateEnvironmentConfigPtrOutput) CloudComposerConnectionSubnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEnvironmentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudComposerConnectionSubnetwork
+	}).(pulumi.StringPtrOutput)
 }
 
 // Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
@@ -2232,6 +2251,8 @@ func (o PrivateEnvironmentConfigPtrOutput) WebServerIpv4CidrBlock() pulumi.Strin
 
 // The configuration information for configuring a Private IP Cloud Composer environment.
 type PrivateEnvironmentConfigResponse struct {
+	// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+	CloudComposerConnectionSubnetwork string `pulumi:"cloudComposerConnectionSubnetwork"`
 	// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerNetworkIpv4CidrBlock string `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	// The IP range reserved for the tenant project's Cloud Composer network. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
@@ -2261,6 +2282,11 @@ func (o PrivateEnvironmentConfigResponseOutput) ToPrivateEnvironmentConfigRespon
 
 func (o PrivateEnvironmentConfigResponseOutput) ToPrivateEnvironmentConfigResponseOutputWithContext(ctx context.Context) PrivateEnvironmentConfigResponseOutput {
 	return o
+}
+
+// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+func (o PrivateEnvironmentConfigResponseOutput) CloudComposerConnectionSubnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) string { return v.CloudComposerConnectionSubnetwork }).(pulumi.StringOutput)
 }
 
 // Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.

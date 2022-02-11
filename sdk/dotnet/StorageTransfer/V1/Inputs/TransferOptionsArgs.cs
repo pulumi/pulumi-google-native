@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public Input<bool>? DeleteObjectsUniqueInSink { get; set; }
 
         /// <summary>
-        /// Represents the selected metadata options for a transfer job.
+        /// Represents the selected metadata options for a transfer job. This feature is in Preview.
         /// </summary>
         [Input("metadataOptions")]
         public Input<Inputs.MetadataOptionsArgs>? MetadataOptions { get; set; }

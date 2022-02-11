@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     public sealed class InTotoStatementArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+        /// `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
         /// </summary>
         [Input("predicateType")]
         public Input<string>? PredicateType { get; set; }
@@ -36,7 +36,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         }
 
         /// <summary>
-        /// Always "https://in-toto.io/Statement/v0.1".
+        /// Always `https://in-toto.io/Statement/v0.1`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

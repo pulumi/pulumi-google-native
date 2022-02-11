@@ -636,6 +636,7 @@ class PrivateClusterConfigArgs:
 @pulumi.input_type
 class PrivateEnvironmentConfigArgs:
     def __init__(__self__, *,
+                 cloud_composer_connection_subnetwork: Optional[pulumi.Input[str]] = None,
                  cloud_composer_network_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  cloud_sql_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  enable_private_environment: Optional[pulumi.Input[bool]] = None,
@@ -643,12 +644,15 @@ class PrivateEnvironmentConfigArgs:
                  web_server_ipv4_cidr_block: Optional[pulumi.Input[str]] = None):
         """
         The configuration information for configuring a Private IP Cloud Composer environment.
+        :param pulumi.Input[str] cloud_composer_connection_subnetwork: Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
         :param pulumi.Input[str] cloud_composer_network_ipv4_cidr_block: Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param pulumi.Input[str] cloud_sql_ipv4_cidr_block: Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
         :param pulumi.Input[bool] enable_private_environment: Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input['PrivateClusterConfigArgs'] private_cluster_config: Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
         :param pulumi.Input[str] web_server_ipv4_cidr_block: Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
+        if cloud_composer_connection_subnetwork is not None:
+            pulumi.set(__self__, "cloud_composer_connection_subnetwork", cloud_composer_connection_subnetwork)
         if cloud_composer_network_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cloud_composer_network_ipv4_cidr_block", cloud_composer_network_ipv4_cidr_block)
         if cloud_sql_ipv4_cidr_block is not None:
@@ -659,6 +663,18 @@ class PrivateEnvironmentConfigArgs:
             pulumi.set(__self__, "private_cluster_config", private_cluster_config)
         if web_server_ipv4_cidr_block is not None:
             pulumi.set(__self__, "web_server_ipv4_cidr_block", web_server_ipv4_cidr_block)
+
+    @property
+    @pulumi.getter(name="cloudComposerConnectionSubnetwork")
+    def cloud_composer_connection_subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+        """
+        return pulumi.get(self, "cloud_composer_connection_subnetwork")
+
+    @cloud_composer_connection_subnetwork.setter
+    def cloud_composer_connection_subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_composer_connection_subnetwork", value)
 
     @property
     @pulumi.getter(name="cloudComposerNetworkIpv4CidrBlock")

@@ -6078,6 +6078,8 @@ type DiscoveryOccurrenceResponse struct {
 	AnalysisStatus string `pulumi:"analysisStatus"`
 	// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
 	AnalysisStatusError StatusResponse `pulumi:"analysisStatusError"`
+	// The time occurrences related to this discovery occurrence were archived.
+	ArchiveTime string `pulumi:"archiveTime"`
 	// Whether the resource is continuously analyzed.
 	ContinuousAnalysis string `pulumi:"continuousAnalysis"`
 	// The CPE of the resource being scanned.
@@ -6109,6 +6111,11 @@ func (o DiscoveryOccurrenceResponseOutput) AnalysisStatus() pulumi.StringOutput 
 // When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
 func (o DiscoveryOccurrenceResponseOutput) AnalysisStatusError() StatusResponseOutput {
 	return o.ApplyT(func(v DiscoveryOccurrenceResponse) StatusResponse { return v.AnalysisStatusError }).(StatusResponseOutput)
+}
+
+// The time occurrences related to this discovery occurrence were archived.
+func (o DiscoveryOccurrenceResponseOutput) ArchiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveryOccurrenceResponse) string { return v.ArchiveTime }).(pulumi.StringOutput)
 }
 
 // Whether the resource is continuously analyzed.
@@ -8569,12 +8576,12 @@ func (o InTotoProvenanceResponseOutput) Recipe() RecipeResponseOutput {
 
 // Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
 type InTotoStatement struct {
-	// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+	// `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
 	PredicateType  *string           `pulumi:"predicateType"`
 	Provenance     *InTotoProvenance `pulumi:"provenance"`
 	SlsaProvenance *SlsaProvenance   `pulumi:"slsaProvenance"`
 	Subject        []Subject         `pulumi:"subject"`
-	// Always "https://in-toto.io/Statement/v0.1".
+	// Always `https://in-toto.io/Statement/v0.1`.
 	Type *string `pulumi:"type"`
 }
 
@@ -8591,12 +8598,12 @@ type InTotoStatementInput interface {
 
 // Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
 type InTotoStatementArgs struct {
-	// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+	// `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
 	PredicateType  pulumi.StringPtrInput    `pulumi:"predicateType"`
 	Provenance     InTotoProvenancePtrInput `pulumi:"provenance"`
 	SlsaProvenance SlsaProvenancePtrInput   `pulumi:"slsaProvenance"`
 	Subject        SubjectArrayInput        `pulumi:"subject"`
-	// Always "https://in-toto.io/Statement/v0.1".
+	// Always `https://in-toto.io/Statement/v0.1`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -8678,7 +8685,7 @@ func (o InTotoStatementOutput) ToInTotoStatementPtrOutputWithContext(ctx context
 	}).(InTotoStatementPtrOutput)
 }
 
-// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+// `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
 func (o InTotoStatementOutput) PredicateType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InTotoStatement) *string { return v.PredicateType }).(pulumi.StringPtrOutput)
 }
@@ -8695,7 +8702,7 @@ func (o InTotoStatementOutput) Subject() SubjectArrayOutput {
 	return o.ApplyT(func(v InTotoStatement) []Subject { return v.Subject }).(SubjectArrayOutput)
 }
 
-// Always "https://in-toto.io/Statement/v0.1".
+// Always `https://in-toto.io/Statement/v0.1`.
 func (o InTotoStatementOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InTotoStatement) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -8724,7 +8731,7 @@ func (o InTotoStatementPtrOutput) Elem() InTotoStatementOutput {
 	}).(InTotoStatementOutput)
 }
 
-// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+// `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
 func (o InTotoStatementPtrOutput) PredicateType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InTotoStatement) *string {
 		if v == nil {
@@ -8761,7 +8768,7 @@ func (o InTotoStatementPtrOutput) Subject() SubjectArrayOutput {
 	}).(SubjectArrayOutput)
 }
 
-// Always "https://in-toto.io/Statement/v0.1".
+// Always `https://in-toto.io/Statement/v0.1`.
 func (o InTotoStatementPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InTotoStatement) *string {
 		if v == nil {
@@ -8773,12 +8780,12 @@ func (o InTotoStatementPtrOutput) Type() pulumi.StringPtrOutput {
 
 // Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
 type InTotoStatementResponse struct {
-	// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+	// `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
 	PredicateType  string                   `pulumi:"predicateType"`
 	Provenance     InTotoProvenanceResponse `pulumi:"provenance"`
 	SlsaProvenance SlsaProvenanceResponse   `pulumi:"slsaProvenance"`
 	Subject        []SubjectResponse        `pulumi:"subject"`
-	// Always "https://in-toto.io/Statement/v0.1".
+	// Always `https://in-toto.io/Statement/v0.1`.
 	Type string `pulumi:"type"`
 }
 
@@ -8797,7 +8804,7 @@ func (o InTotoStatementResponseOutput) ToInTotoStatementResponseOutputWithContex
 	return o
 }
 
-// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+// `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
 func (o InTotoStatementResponseOutput) PredicateType() pulumi.StringOutput {
 	return o.ApplyT(func(v InTotoStatementResponse) string { return v.PredicateType }).(pulumi.StringOutput)
 }
@@ -8814,7 +8821,7 @@ func (o InTotoStatementResponseOutput) Subject() SubjectResponseArrayOutput {
 	return o.ApplyT(func(v InTotoStatementResponse) []SubjectResponse { return v.Subject }).(SubjectResponseArrayOutput)
 }
 
-// Always "https://in-toto.io/Statement/v0.1".
+// Always `https://in-toto.io/Statement/v0.1`.
 func (o InTotoStatementResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InTotoStatementResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -9874,11 +9881,11 @@ func (o MetadataResponseOutput) Reproducible() pulumi.BoolOutput {
 	return o.ApplyT(func(v MetadataResponse) bool { return v.Reproducible }).(pulumi.BoolOutput)
 }
 
-// Details about files that caused a compliance check to fail.
+// Details about files that caused a compliance check to fail. display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'.
 type NonCompliantFile struct {
 	// Command to display the non-compliant files.
 	DisplayCommand *string `pulumi:"displayCommand"`
-	// display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+	// Empty if `display_command` is set.
 	Path *string `pulumi:"path"`
 	// Explains why a file is non compliant for a CIS check.
 	Reason *string `pulumi:"reason"`
@@ -9895,11 +9902,11 @@ type NonCompliantFileInput interface {
 	ToNonCompliantFileOutputWithContext(context.Context) NonCompliantFileOutput
 }
 
-// Details about files that caused a compliance check to fail.
+// Details about files that caused a compliance check to fail. display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'.
 type NonCompliantFileArgs struct {
 	// Command to display the non-compliant files.
 	DisplayCommand pulumi.StringPtrInput `pulumi:"displayCommand"`
-	// display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+	// Empty if `display_command` is set.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Explains why a file is non compliant for a CIS check.
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
@@ -9942,7 +9949,7 @@ func (i NonCompliantFileArray) ToNonCompliantFileArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(NonCompliantFileArrayOutput)
 }
 
-// Details about files that caused a compliance check to fail.
+// Details about files that caused a compliance check to fail. display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'.
 type NonCompliantFileOutput struct{ *pulumi.OutputState }
 
 func (NonCompliantFileOutput) ElementType() reflect.Type {
@@ -9962,7 +9969,7 @@ func (o NonCompliantFileOutput) DisplayCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NonCompliantFile) *string { return v.DisplayCommand }).(pulumi.StringPtrOutput)
 }
 
-// display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+// Empty if `display_command` is set.
 func (o NonCompliantFileOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NonCompliantFile) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -9992,17 +9999,17 @@ func (o NonCompliantFileArrayOutput) Index(i pulumi.IntInput) NonCompliantFileOu
 	}).(NonCompliantFileOutput)
 }
 
-// Details about files that caused a compliance check to fail.
+// Details about files that caused a compliance check to fail. display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'.
 type NonCompliantFileResponse struct {
 	// Command to display the non-compliant files.
 	DisplayCommand string `pulumi:"displayCommand"`
-	// display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+	// Empty if `display_command` is set.
 	Path string `pulumi:"path"`
 	// Explains why a file is non compliant for a CIS check.
 	Reason string `pulumi:"reason"`
 }
 
-// Details about files that caused a compliance check to fail.
+// Details about files that caused a compliance check to fail. display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'.
 type NonCompliantFileResponseOutput struct{ *pulumi.OutputState }
 
 func (NonCompliantFileResponseOutput) ElementType() reflect.Type {
@@ -10022,7 +10029,7 @@ func (o NonCompliantFileResponseOutput) DisplayCommand() pulumi.StringOutput {
 	return o.ApplyT(func(v NonCompliantFileResponse) string { return v.DisplayCommand }).(pulumi.StringOutput)
 }
 
-// display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+// Empty if `display_command` is set.
 func (o NonCompliantFileResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v NonCompliantFileResponse) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -13564,7 +13571,7 @@ func (o StatusResponseOutput) Message() pulumi.StringOutput {
 }
 
 type Subject struct {
-	// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+	// `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
 	Digest map[string]string `pulumi:"digest"`
 	Name   *string           `pulumi:"name"`
 }
@@ -13581,7 +13588,7 @@ type SubjectInput interface {
 }
 
 type SubjectArgs struct {
-	// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+	// `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
 	Digest pulumi.StringMapInput `pulumi:"digest"`
 	Name   pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -13637,7 +13644,7 @@ func (o SubjectOutput) ToSubjectOutputWithContext(ctx context.Context) SubjectOu
 	return o
 }
 
-// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+// `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
 func (o SubjectOutput) Digest() pulumi.StringMapOutput {
 	return o.ApplyT(func(v Subject) map[string]string { return v.Digest }).(pulumi.StringMapOutput)
 }
@@ -13667,7 +13674,7 @@ func (o SubjectArrayOutput) Index(i pulumi.IntInput) SubjectOutput {
 }
 
 type SubjectResponse struct {
-	// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+	// `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
 	Digest map[string]string `pulumi:"digest"`
 	Name   string            `pulumi:"name"`
 }
@@ -13686,7 +13693,7 @@ func (o SubjectResponseOutput) ToSubjectResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+// `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
 func (o SubjectResponseOutput) Digest() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SubjectResponse) map[string]string { return v.Digest }).(pulumi.StringMapOutput)
 }

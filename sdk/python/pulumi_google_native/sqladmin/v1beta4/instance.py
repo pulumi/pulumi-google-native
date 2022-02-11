@@ -75,7 +75,7 @@ class InstanceArgs:
         :param pulumi.Input[str] root_password: Initial root password. Use only on creation.
         :param pulumi.Input[bool] satisfies_pzs: The status indicating if instance satisfiesPzs. Reserved for future use.
         :param pulumi.Input['SqlScheduledMaintenanceArgs'] scheduled_maintenance: The start time of any upcoming scheduled maintenance for this instance.
-        :param pulumi.Input[str] secondary_gce_zone: The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
+        :param pulumi.Input[str] secondary_gce_zone: The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
         :param pulumi.Input[str] self_link: The URI of this resource.
         :param pulumi.Input['SslCertArgs'] server_ca_cert: SSL configuration.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the instance. \This property is read-only.
@@ -452,7 +452,7 @@ class InstanceArgs:
     @pulumi.getter(name="secondaryGceZone")
     def secondary_gce_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
+        The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
         """
         return pulumi.get(self, "secondary_gce_zone")
 
@@ -601,7 +601,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] root_password: Initial root password. Use only on creation.
         :param pulumi.Input[bool] satisfies_pzs: The status indicating if instance satisfiesPzs. Reserved for future use.
         :param pulumi.Input[pulumi.InputType['SqlScheduledMaintenanceArgs']] scheduled_maintenance: The start time of any upcoming scheduled maintenance for this instance.
-        :param pulumi.Input[str] secondary_gce_zone: The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
+        :param pulumi.Input[str] secondary_gce_zone: The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
         :param pulumi.Input[str] self_link: The URI of this resource.
         :param pulumi.Input[pulumi.InputType['SslCertArgs']] server_ca_cert: SSL configuration.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the instance. \This property is read-only.
@@ -989,7 +989,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="secondaryGceZone")
     def secondary_gce_zone(self) -> pulumi.Output[str]:
         """
-        The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
+        The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
         """
         return pulumi.get(self, "secondary_gce_zone")
 

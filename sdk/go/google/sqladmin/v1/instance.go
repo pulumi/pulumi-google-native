@@ -68,7 +68,7 @@ type Instance struct {
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// The start time of any upcoming scheduled maintenance for this instance.
 	ScheduledMaintenance SqlScheduledMaintenanceResponseOutput `pulumi:"scheduledMaintenance"`
-	// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
+	// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
 	SecondaryGceZone pulumi.StringOutput `pulumi:"secondaryGceZone"`
 	// The URI of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -173,7 +173,7 @@ type instanceArgs struct {
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// The start time of any upcoming scheduled maintenance for this instance.
 	ScheduledMaintenance *SqlScheduledMaintenance `pulumi:"scheduledMaintenance"`
-	// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
+	// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
 	SecondaryGceZone *string `pulumi:"secondaryGceZone"`
 	// The URI of this resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -241,7 +241,7 @@ type InstanceArgs struct {
 	SatisfiesPzs pulumi.BoolPtrInput
 	// The start time of any upcoming scheduled maintenance for this instance.
 	ScheduledMaintenance SqlScheduledMaintenancePtrInput
-	// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
+	// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
 	SecondaryGceZone pulumi.StringPtrInput
 	// The URI of this resource.
 	SelfLink pulumi.StringPtrInput

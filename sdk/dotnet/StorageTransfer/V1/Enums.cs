@@ -129,7 +129,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
     /// <summary>
-    /// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+    /// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
     /// </summary>
     [EnumType]
     public readonly struct MetadataOptionsGid : IEquatable<MetadataOptionsGid>
@@ -146,7 +146,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         public static MetadataOptionsGid GidUnspecified { get; } = new MetadataOptionsGid("GID_UNSPECIFIED");
         /// <summary>
-        /// Skip GID during a transfer job.
+        /// Do not preserve GID during a transfer job.
         /// </summary>
         public static MetadataOptionsGid GidSkip { get; } = new MetadataOptionsGid("GID_SKIP");
         /// <summary>
@@ -211,7 +211,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
     /// <summary>
-    /// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+    /// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
     /// </summary>
     [EnumType]
     public readonly struct MetadataOptionsMode : IEquatable<MetadataOptionsMode>
@@ -228,7 +228,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         public static MetadataOptionsMode ModeUnspecified { get; } = new MetadataOptionsMode("MODE_UNSPECIFIED");
         /// <summary>
-        /// Skip mode during a transfer job.
+        /// Do not preserve mode during a transfer job.
         /// </summary>
         public static MetadataOptionsMode ModeSkip { get; } = new MetadataOptionsMode("MODE_SKIP");
         /// <summary>
@@ -309,7 +309,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
     /// <summary>
-    /// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+    /// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
     /// </summary>
     [EnumType]
     public readonly struct MetadataOptionsSymlink : IEquatable<MetadataOptionsSymlink>
@@ -322,11 +322,11 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         }
 
         /// <summary>
-        /// Symlink behavior is unspecified. The default behavior is to skip symlinks during a transfer job.
+        /// Symlink behavior is unspecified.
         /// </summary>
         public static MetadataOptionsSymlink SymlinkUnspecified { get; } = new MetadataOptionsSymlink("SYMLINK_UNSPECIFIED");
         /// <summary>
-        /// Skip symlinks during a transfer job.
+        /// Do not preserve symlinks during a transfer job.
         /// </summary>
         public static MetadataOptionsSymlink SymlinkSkip { get; } = new MetadataOptionsSymlink("SYMLINK_SKIP");
         /// <summary>
@@ -391,7 +391,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
     /// <summary>
-    /// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+    /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
     /// </summary>
     [EnumType]
     public readonly struct MetadataOptionsUid : IEquatable<MetadataOptionsUid>
@@ -408,7 +408,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         public static MetadataOptionsUid UidUnspecified { get; } = new MetadataOptionsUid("UID_UNSPECIFIED");
         /// <summary>
-        /// Skip UID during a transfer job.
+        /// Do not preserve UID during a transfer job.
         /// </summary>
         public static MetadataOptionsUid UidSkip { get; } = new MetadataOptionsUid("UID_SKIP");
         /// <summary>

@@ -75,7 +75,7 @@ class MetadataOptionsAcl(str, Enum):
 
 class MetadataOptionsGid(str, Enum):
     """
-    Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+    Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
     """
     GID_UNSPECIFIED = "GID_UNSPECIFIED"
     """
@@ -83,7 +83,7 @@ class MetadataOptionsGid(str, Enum):
     """
     GID_SKIP = "GID_SKIP"
     """
-    Skip GID during a transfer job.
+    Do not preserve GID during a transfer job.
     """
     GID_NUMBER = "GID_NUMBER"
     """
@@ -111,7 +111,7 @@ class MetadataOptionsKmsKey(str, Enum):
 
 class MetadataOptionsMode(str, Enum):
     """
-    Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+    Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
     """
     MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
     """
@@ -119,7 +119,7 @@ class MetadataOptionsMode(str, Enum):
     """
     MODE_SKIP = "MODE_SKIP"
     """
-    Skip mode during a transfer job.
+    Do not preserve mode during a transfer job.
     """
     MODE_PRESERVE = "MODE_PRESERVE"
     """
@@ -163,15 +163,15 @@ class MetadataOptionsStorageClass(str, Enum):
 
 class MetadataOptionsSymlink(str, Enum):
     """
-    Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+    Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
     """
     SYMLINK_UNSPECIFIED = "SYMLINK_UNSPECIFIED"
     """
-    Symlink behavior is unspecified. The default behavior is to skip symlinks during a transfer job.
+    Symlink behavior is unspecified.
     """
     SYMLINK_SKIP = "SYMLINK_SKIP"
     """
-    Skip symlinks during a transfer job.
+    Do not preserve symlinks during a transfer job.
     """
     SYMLINK_PRESERVE = "SYMLINK_PRESERVE"
     """
@@ -199,7 +199,7 @@ class MetadataOptionsTemporaryHold(str, Enum):
 
 class MetadataOptionsUid(str, Enum):
     """
-    Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+    Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
     """
     UID_UNSPECIFIED = "UID_UNSPECIFIED"
     """
@@ -207,7 +207,7 @@ class MetadataOptionsUid(str, Enum):
     """
     UID_SKIP = "UID_SKIP"
     """
-    Skip UID during a transfer job.
+    Do not preserve UID during a transfer job.
     """
     UID_NUMBER = "UID_NUMBER"
     """

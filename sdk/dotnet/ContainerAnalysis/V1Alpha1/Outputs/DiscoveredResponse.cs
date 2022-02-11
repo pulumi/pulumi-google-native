@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// </summary>
         public readonly Outputs.StatusResponse AnalysisStatusError;
         /// <summary>
+        /// The time occurrences related to this discovery occurrence were archived.
+        /// </summary>
+        public readonly string ArchiveTime;
+        /// <summary>
         /// Whether the resource is continuously analyzed.
         /// </summary>
         public readonly string ContinuousAnalysis;
@@ -32,6 +36,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// The CPE of the resource being scanned.
         /// </summary>
         public readonly string Cpe;
+        /// <summary>
+        /// The last time this resource was scanned.
+        /// </summary>
+        public readonly string LastScanTime;
 
         [OutputConstructor]
         private DiscoveredResponse(
@@ -39,14 +47,20 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             Outputs.StatusResponse analysisStatusError,
 
+            string archiveTime,
+
             string continuousAnalysis,
 
-            string cpe)
+            string cpe,
+
+            string lastScanTime)
         {
             AnalysisStatus = analysisStatus;
             AnalysisStatusError = analysisStatusError;
+            ArchiveTime = archiveTime;
             ContinuousAnalysis = continuousAnalysis;
             Cpe = cpe;
+            LastScanTime = lastScanTime;
         }
     }
 }

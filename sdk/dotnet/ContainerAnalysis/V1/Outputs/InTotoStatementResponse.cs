@@ -17,14 +17,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
     public sealed class InTotoStatementResponse
     {
         /// <summary>
-        /// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+        /// `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
         /// </summary>
         public readonly string PredicateType;
         public readonly Outputs.InTotoProvenanceResponse Provenance;
         public readonly Outputs.SlsaProvenanceResponse SlsaProvenance;
         public readonly ImmutableArray<Outputs.SubjectResponse> Subject;
         /// <summary>
-        /// Always "https://in-toto.io/Statement/v0.1".
+        /// Always `https://in-toto.io/Statement/v0.1`.
         /// </summary>
         public readonly string Type;
 

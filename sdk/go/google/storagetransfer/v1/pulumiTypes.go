@@ -1022,7 +1022,7 @@ func (o BandwidthLimitResponseOutput) LimitMbps() pulumi.StringOutput {
 	return o.ApplyT(func(v BandwidthLimitResponse) string { return v.LimitMbps }).(pulumi.StringOutput)
 }
 
-// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 type Date struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
 	Day *int `pulumi:"day"`
@@ -1043,7 +1043,7 @@ type DateInput interface {
 	ToDateOutputWithContext(context.Context) DateOutput
 }
 
-// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 type DateArgs struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
 	Day pulumi.IntPtrInput `pulumi:"day"`
@@ -1106,7 +1106,7 @@ func (i *datePtrType) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(DatePtrOutput)
 }
 
-// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 type DateOutput struct{ *pulumi.OutputState }
 
 func (DateOutput) ElementType() reflect.Type {
@@ -1200,7 +1200,7 @@ func (o DatePtrOutput) Year() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 type DateResponse struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
 	Day int `pulumi:"day"`
@@ -1210,7 +1210,7 @@ type DateResponse struct {
 	Year int `pulumi:"year"`
 }
 
-// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 type DateResponseOutput struct{ *pulumi.OutputState }
 
 func (DateResponseOutput) ElementType() reflect.Type {
@@ -1816,23 +1816,23 @@ func (o LoggingConfigResponseOutput) LogActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoggingConfigResponse) []string { return v.LogActions }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the metadata options for running a transfer.
+// Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX filesystem and are ignored for other transfers.
 type MetadataOptions struct {
 	// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
 	Acl *MetadataOptionsAcl `pulumi:"acl"`
-	// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+	// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
 	Gid *MetadataOptionsGid `pulumi:"gid"`
 	// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
 	KmsKey *MetadataOptionsKmsKey `pulumi:"kmsKey"`
-	// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+	// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
 	Mode *MetadataOptionsMode `pulumi:"mode"`
 	// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
 	StorageClass *MetadataOptionsStorageClass `pulumi:"storageClass"`
-	// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+	// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
 	Symlink *MetadataOptionsSymlink `pulumi:"symlink"`
 	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
 	TemporaryHold *MetadataOptionsTemporaryHold `pulumi:"temporaryHold"`
-	// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+	// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
 	Uid *MetadataOptionsUid `pulumi:"uid"`
 }
 
@@ -1847,23 +1847,23 @@ type MetadataOptionsInput interface {
 	ToMetadataOptionsOutputWithContext(context.Context) MetadataOptionsOutput
 }
 
-// Specifies the metadata options for running a transfer.
+// Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX filesystem and are ignored for other transfers.
 type MetadataOptionsArgs struct {
 	// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
 	Acl MetadataOptionsAclPtrInput `pulumi:"acl"`
-	// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+	// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
 	Gid MetadataOptionsGidPtrInput `pulumi:"gid"`
 	// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
 	KmsKey MetadataOptionsKmsKeyPtrInput `pulumi:"kmsKey"`
-	// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+	// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
 	Mode MetadataOptionsModePtrInput `pulumi:"mode"`
 	// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
 	StorageClass MetadataOptionsStorageClassPtrInput `pulumi:"storageClass"`
-	// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+	// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
 	Symlink MetadataOptionsSymlinkPtrInput `pulumi:"symlink"`
 	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
 	TemporaryHold MetadataOptionsTemporaryHoldPtrInput `pulumi:"temporaryHold"`
-	// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+	// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
 	Uid MetadataOptionsUidPtrInput `pulumi:"uid"`
 }
 
@@ -1920,7 +1920,7 @@ func (i *metadataOptionsPtrType) ToMetadataOptionsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataOptionsPtrOutput)
 }
 
-// Specifies the metadata options for running a transfer.
+// Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX filesystem and are ignored for other transfers.
 type MetadataOptionsOutput struct{ *pulumi.OutputState }
 
 func (MetadataOptionsOutput) ElementType() reflect.Type {
@@ -1950,7 +1950,7 @@ func (o MetadataOptionsOutput) Acl() MetadataOptionsAclPtrOutput {
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsAcl { return v.Acl }).(MetadataOptionsAclPtrOutput)
 }
 
-// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
 func (o MetadataOptionsOutput) Gid() MetadataOptionsGidPtrOutput {
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsGid { return v.Gid }).(MetadataOptionsGidPtrOutput)
 }
@@ -1960,7 +1960,7 @@ func (o MetadataOptionsOutput) KmsKey() MetadataOptionsKmsKeyPtrOutput {
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsKmsKey { return v.KmsKey }).(MetadataOptionsKmsKeyPtrOutput)
 }
 
-// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
 func (o MetadataOptionsOutput) Mode() MetadataOptionsModePtrOutput {
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsMode { return v.Mode }).(MetadataOptionsModePtrOutput)
 }
@@ -1970,7 +1970,7 @@ func (o MetadataOptionsOutput) StorageClass() MetadataOptionsStorageClassPtrOutp
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsStorageClass { return v.StorageClass }).(MetadataOptionsStorageClassPtrOutput)
 }
 
-// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
 func (o MetadataOptionsOutput) Symlink() MetadataOptionsSymlinkPtrOutput {
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsSymlink { return v.Symlink }).(MetadataOptionsSymlinkPtrOutput)
 }
@@ -1980,7 +1980,7 @@ func (o MetadataOptionsOutput) TemporaryHold() MetadataOptionsTemporaryHoldPtrOu
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsTemporaryHold { return v.TemporaryHold }).(MetadataOptionsTemporaryHoldPtrOutput)
 }
 
-// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
 func (o MetadataOptionsOutput) Uid() MetadataOptionsUidPtrOutput {
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsUid { return v.Uid }).(MetadataOptionsUidPtrOutput)
 }
@@ -2019,7 +2019,7 @@ func (o MetadataOptionsPtrOutput) Acl() MetadataOptionsAclPtrOutput {
 	}).(MetadataOptionsAclPtrOutput)
 }
 
-// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
 func (o MetadataOptionsPtrOutput) Gid() MetadataOptionsGidPtrOutput {
 	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsGid {
 		if v == nil {
@@ -2039,7 +2039,7 @@ func (o MetadataOptionsPtrOutput) KmsKey() MetadataOptionsKmsKeyPtrOutput {
 	}).(MetadataOptionsKmsKeyPtrOutput)
 }
 
-// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
 func (o MetadataOptionsPtrOutput) Mode() MetadataOptionsModePtrOutput {
 	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsMode {
 		if v == nil {
@@ -2059,7 +2059,7 @@ func (o MetadataOptionsPtrOutput) StorageClass() MetadataOptionsStorageClassPtrO
 	}).(MetadataOptionsStorageClassPtrOutput)
 }
 
-// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
 func (o MetadataOptionsPtrOutput) Symlink() MetadataOptionsSymlinkPtrOutput {
 	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsSymlink {
 		if v == nil {
@@ -2079,7 +2079,7 @@ func (o MetadataOptionsPtrOutput) TemporaryHold() MetadataOptionsTemporaryHoldPt
 	}).(MetadataOptionsTemporaryHoldPtrOutput)
 }
 
-// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
 func (o MetadataOptionsPtrOutput) Uid() MetadataOptionsUidPtrOutput {
 	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsUid {
 		if v == nil {
@@ -2089,27 +2089,27 @@ func (o MetadataOptionsPtrOutput) Uid() MetadataOptionsUidPtrOutput {
 	}).(MetadataOptionsUidPtrOutput)
 }
 
-// Specifies the metadata options for running a transfer.
+// Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX filesystem and are ignored for other transfers.
 type MetadataOptionsResponse struct {
 	// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
 	Acl string `pulumi:"acl"`
-	// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+	// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
 	Gid string `pulumi:"gid"`
 	// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
 	KmsKey string `pulumi:"kmsKey"`
-	// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+	// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
 	Mode string `pulumi:"mode"`
 	// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
 	StorageClass string `pulumi:"storageClass"`
-	// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+	// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
 	Symlink string `pulumi:"symlink"`
 	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
 	TemporaryHold string `pulumi:"temporaryHold"`
-	// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+	// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
 	Uid string `pulumi:"uid"`
 }
 
-// Specifies the metadata options for running a transfer.
+// Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX filesystem and are ignored for other transfers.
 type MetadataOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (MetadataOptionsResponseOutput) ElementType() reflect.Type {
@@ -2129,7 +2129,7 @@ func (o MetadataOptionsResponseOutput) Acl() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.Acl }).(pulumi.StringOutput)
 }
 
-// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
 func (o MetadataOptionsResponseOutput) Gid() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.Gid }).(pulumi.StringOutput)
 }
@@ -2139,7 +2139,7 @@ func (o MetadataOptionsResponseOutput) KmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
-// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
 func (o MetadataOptionsResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
@@ -2149,7 +2149,7 @@ func (o MetadataOptionsResponseOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.StorageClass }).(pulumi.StringOutput)
 }
 
-// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
 func (o MetadataOptionsResponseOutput) Symlink() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.Symlink }).(pulumi.StringOutput)
 }
@@ -2159,7 +2159,7 @@ func (o MetadataOptionsResponseOutput) TemporaryHold() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.TemporaryHold }).(pulumi.StringOutput)
 }
 
-// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
 func (o MetadataOptionsResponseOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.Uid }).(pulumi.StringOutput)
 }
@@ -3530,7 +3530,7 @@ type TransferOptions struct {
 	DeleteObjectsFromSourceAfterTransfer *bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
 	DeleteObjectsUniqueInSink *bool `pulumi:"deleteObjectsUniqueInSink"`
-	// Represents the selected metadata options for a transfer job.
+	// Represents the selected metadata options for a transfer job. This feature is in Preview.
 	MetadataOptions *MetadataOptions `pulumi:"metadataOptions"`
 	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink *bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
@@ -3553,7 +3553,7 @@ type TransferOptionsArgs struct {
 	DeleteObjectsFromSourceAfterTransfer pulumi.BoolPtrInput `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
 	DeleteObjectsUniqueInSink pulumi.BoolPtrInput `pulumi:"deleteObjectsUniqueInSink"`
-	// Represents the selected metadata options for a transfer job.
+	// Represents the selected metadata options for a transfer job. This feature is in Preview.
 	MetadataOptions MetadataOptionsPtrInput `pulumi:"metadataOptions"`
 	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink pulumi.BoolPtrInput `pulumi:"overwriteObjectsAlreadyExistingInSink"`
@@ -3647,7 +3647,7 @@ func (o TransferOptionsOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v TransferOptions) *bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolPtrOutput)
 }
 
-// Represents the selected metadata options for a transfer job.
+// Represents the selected metadata options for a transfer job. This feature is in Preview.
 func (o TransferOptionsOutput) MetadataOptions() MetadataOptionsPtrOutput {
 	return o.ApplyT(func(v TransferOptions) *MetadataOptions { return v.MetadataOptions }).(MetadataOptionsPtrOutput)
 }
@@ -3701,7 +3701,7 @@ func (o TransferOptionsPtrOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Represents the selected metadata options for a transfer job.
+// Represents the selected metadata options for a transfer job. This feature is in Preview.
 func (o TransferOptionsPtrOutput) MetadataOptions() MetadataOptionsPtrOutput {
 	return o.ApplyT(func(v *TransferOptions) *MetadataOptions {
 		if v == nil {
@@ -3727,7 +3727,7 @@ type TransferOptionsResponse struct {
 	DeleteObjectsFromSourceAfterTransfer bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
 	DeleteObjectsUniqueInSink bool `pulumi:"deleteObjectsUniqueInSink"`
-	// Represents the selected metadata options for a transfer job.
+	// Represents the selected metadata options for a transfer job. This feature is in Preview.
 	MetadataOptions MetadataOptionsResponse `pulumi:"metadataOptions"`
 	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
@@ -3758,7 +3758,7 @@ func (o TransferOptionsResponseOutput) DeleteObjectsUniqueInSink() pulumi.BoolOu
 	return o.ApplyT(func(v TransferOptionsResponse) bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolOutput)
 }
 
-// Represents the selected metadata options for a transfer job.
+// Represents the selected metadata options for a transfer job. This feature is in Preview.
 func (o TransferOptionsResponseOutput) MetadataOptions() MetadataOptionsResponseOutput {
 	return o.ApplyT(func(v TransferOptionsResponse) MetadataOptionsResponse { return v.MetadataOptions }).(MetadataOptionsResponseOutput)
 }
