@@ -69,6 +69,10 @@ export interface GetSubnetworkResult {
      */
     readonly gatewayAddress: string;
     /**
+     * The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
+     */
+    readonly internalIpv6Prefix: string;
+    /**
      * The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
      */
     readonly ipCidrRange: string;

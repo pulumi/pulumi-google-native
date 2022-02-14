@@ -35,6 +35,8 @@ type LookupSnapshotSchedulePolicyResult struct {
 	Name string `pulumi:"name"`
 	// The snapshot schedules contained in this policy. You can specify a maximum of 5 schedules.
 	Schedules []ScheduleResponse `pulumi:"schedules"`
+	// The state of the snapshot schedule policy.
+	State string `pulumi:"state"`
 }
 
 func LookupSnapshotSchedulePolicyOutput(ctx *pulumi.Context, args LookupSnapshotSchedulePolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSnapshotSchedulePolicyResultOutput {
@@ -88,6 +90,11 @@ func (o LookupSnapshotSchedulePolicyResultOutput) Name() pulumi.StringOutput {
 // The snapshot schedules contained in this policy. You can specify a maximum of 5 schedules.
 func (o LookupSnapshotSchedulePolicyResultOutput) Schedules() ScheduleResponseArrayOutput {
 	return o.ApplyT(func(v LookupSnapshotSchedulePolicyResult) []ScheduleResponse { return v.Schedules }).(ScheduleResponseArrayOutput)
+}
+
+// The state of the snapshot schedule policy.
+func (o LookupSnapshotSchedulePolicyResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotSchedulePolicyResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 func init() {

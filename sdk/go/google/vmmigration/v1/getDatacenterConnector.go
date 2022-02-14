@@ -28,6 +28,12 @@ type LookupDatacenterConnectorArgs struct {
 }
 
 type LookupDatacenterConnectorResult struct {
+	// Appliance OVA version. This is the OVA which is manually installed by the user and contains the infrastructure for the automatically updatable components on the appliance.
+	ApplianceInfrastructureVersion string `pulumi:"applianceInfrastructureVersion"`
+	// Appliance last installed update bundle version. This is the version of the automatically updatable components on the appliance.
+	ApplianceSoftwareVersion string `pulumi:"applianceSoftwareVersion"`
+	// The available versions for updating this appliance.
+	AvailableVersions AvailableUpdatesResponse `pulumi:"availableVersions"`
 	// The communication channel between the datacenter connector and GCP.
 	Bucket string `pulumi:"bucket"`
 	// The time the connector was created (as an API call, not when it was actually installed).
@@ -46,6 +52,8 @@ type LookupDatacenterConnectorResult struct {
 	StateTime string `pulumi:"stateTime"`
 	// The last time the connector was updated with an API call.
 	UpdateTime string `pulumi:"updateTime"`
+	// The status of the current / last upgradeAppliance operation.
+	UpgradeStatus UpgradeStatusResponse `pulumi:"upgradeStatus"`
 	// The version running in the DatacenterConnector. This is supplied by the OVA connector during the registration process and can not be modified.
 	Version string `pulumi:"version"`
 }
@@ -82,6 +90,21 @@ func (o LookupDatacenterConnectorResultOutput) ToLookupDatacenterConnectorResult
 
 func (o LookupDatacenterConnectorResultOutput) ToLookupDatacenterConnectorResultOutputWithContext(ctx context.Context) LookupDatacenterConnectorResultOutput {
 	return o
+}
+
+// Appliance OVA version. This is the OVA which is manually installed by the user and contains the infrastructure for the automatically updatable components on the appliance.
+func (o LookupDatacenterConnectorResultOutput) ApplianceInfrastructureVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatacenterConnectorResult) string { return v.ApplianceInfrastructureVersion }).(pulumi.StringOutput)
+}
+
+// Appliance last installed update bundle version. This is the version of the automatically updatable components on the appliance.
+func (o LookupDatacenterConnectorResultOutput) ApplianceSoftwareVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatacenterConnectorResult) string { return v.ApplianceSoftwareVersion }).(pulumi.StringOutput)
+}
+
+// The available versions for updating this appliance.
+func (o LookupDatacenterConnectorResultOutput) AvailableVersions() AvailableUpdatesResponseOutput {
+	return o.ApplyT(func(v LookupDatacenterConnectorResult) AvailableUpdatesResponse { return v.AvailableVersions }).(AvailableUpdatesResponseOutput)
 }
 
 // The communication channel between the datacenter connector and GCP.
@@ -127,6 +150,11 @@ func (o LookupDatacenterConnectorResultOutput) StateTime() pulumi.StringOutput {
 // The last time the connector was updated with an API call.
 func (o LookupDatacenterConnectorResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatacenterConnectorResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The status of the current / last upgradeAppliance operation.
+func (o LookupDatacenterConnectorResultOutput) UpgradeStatus() UpgradeStatusResponseOutput {
+	return o.ApplyT(func(v LookupDatacenterConnectorResult) UpgradeStatusResponse { return v.UpgradeStatus }).(UpgradeStatusResponseOutput)
 }
 
 // The version running in the DatacenterConnector. This is supplied by the OVA connector during the registration process and can not be modified.

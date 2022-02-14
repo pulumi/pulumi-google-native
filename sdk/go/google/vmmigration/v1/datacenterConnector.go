@@ -16,6 +16,12 @@ import (
 type DatacenterConnector struct {
 	pulumi.CustomResourceState
 
+	// Appliance OVA version. This is the OVA which is manually installed by the user and contains the infrastructure for the automatically updatable components on the appliance.
+	ApplianceInfrastructureVersion pulumi.StringOutput `pulumi:"applianceInfrastructureVersion"`
+	// Appliance last installed update bundle version. This is the version of the automatically updatable components on the appliance.
+	ApplianceSoftwareVersion pulumi.StringOutput `pulumi:"applianceSoftwareVersion"`
+	// The available versions for updating this appliance.
+	AvailableVersions AvailableUpdatesResponseOutput `pulumi:"availableVersions"`
 	// The communication channel between the datacenter connector and GCP.
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// The time the connector was created (as an API call, not when it was actually installed).
@@ -34,6 +40,8 @@ type DatacenterConnector struct {
 	StateTime pulumi.StringOutput `pulumi:"stateTime"`
 	// The last time the connector was updated with an API call.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// The status of the current / last upgradeAppliance operation.
+	UpgradeStatus UpgradeStatusResponseOutput `pulumi:"upgradeStatus"`
 	// The version running in the DatacenterConnector. This is supplied by the OVA connector during the registration process and can not be modified.
 	Version pulumi.StringOutput `pulumi:"version"`
 }

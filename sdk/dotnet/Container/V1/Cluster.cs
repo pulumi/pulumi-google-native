@@ -124,6 +124,12 @@ namespace Pulumi.GoogleNative.Container.V1
         public Output<string> ExpireTime { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for Identity Service component.
+        /// </summary>
+        [Output("identityServiceConfig")]
+        public Output<Outputs.IdentityServiceConfigResponse> IdentityServiceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
         /// </summary>
         [Output("initialClusterVersion")]
@@ -455,6 +461,12 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         [Input("enableTpu")]
         public Input<bool>? EnableTpu { get; set; }
+
+        /// <summary>
+        /// Configuration for Identity Service component.
+        /// </summary>
+        [Input("identityServiceConfig")]
+        public Input<Inputs.IdentityServiceConfigArgs>? IdentityServiceConfig { get; set; }
 
         /// <summary>
         /// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version

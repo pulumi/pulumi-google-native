@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 {
 
     /// <summary>
-    /// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
+    /// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
     /// </summary>
     [OutputType]
     public sealed class RuntimeSoftwareConfigResponse
@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly bool InstallGpuDriver;
         /// <summary>
+        /// Optional. Use a list of container images to use as Kernels in the notebook instance.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ContainerImageResponse> Kernels;
+        /// <summary>
         /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         /// </summary>
         public readonly string NotebookUpgradeSchedule;
@@ -44,6 +48,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         /// </summary>
         public readonly string PostStartupScript;
+        /// <summary>
+        /// Bool indicating whether an newer image is available in an image family.
+        /// </summary>
+        public readonly bool Upgradeable;
 
         [OutputConstructor]
         private RuntimeSoftwareConfigResponse(
@@ -57,17 +65,23 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 
             bool installGpuDriver,
 
+            ImmutableArray<Outputs.ContainerImageResponse> kernels,
+
             string notebookUpgradeSchedule,
 
-            string postStartupScript)
+            string postStartupScript,
+
+            bool upgradeable)
         {
             CustomGpuDriverPath = customGpuDriverPath;
             EnableHealthMonitoring = enableHealthMonitoring;
             IdleShutdown = idleShutdown;
             IdleShutdownTimeout = idleShutdownTimeout;
             InstallGpuDriver = installGpuDriver;
+            Kernels = kernels;
             NotebookUpgradeSchedule = notebookUpgradeSchedule;
             PostStartupScript = postStartupScript;
+            Upgradeable = upgradeable;
         }
     }
 }

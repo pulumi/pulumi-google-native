@@ -108,6 +108,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
+     * Configuration for Identity Service component.
+     */
+    public readonly identityServiceConfig!: pulumi.Output<outputs.container.v1.IdentityServiceConfigResponse>;
+    /**
      * The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
      */
     public readonly initialClusterVersion!: pulumi.Output<string>;
@@ -268,6 +272,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableKubernetesAlpha"] = args ? args.enableKubernetesAlpha : undefined;
             resourceInputs["enableTpu"] = args ? args.enableTpu : undefined;
+            resourceInputs["identityServiceConfig"] = args ? args.identityServiceConfig : undefined;
             resourceInputs["initialClusterVersion"] = args ? args.initialClusterVersion : undefined;
             resourceInputs["ipAllocationPolicy"] = args ? args.ipAllocationPolicy : undefined;
             resourceInputs["legacyAbac"] = args ? args.legacyAbac : undefined;
@@ -328,6 +333,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableTpu"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["identityServiceConfig"] = undefined /*out*/;
             resourceInputs["initialClusterVersion"] = undefined /*out*/;
             resourceInputs["ipAllocationPolicy"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
@@ -424,6 +430,10 @@ export interface ClusterArgs {
      * Enable the ability to use Cloud TPUs in this cluster.
      */
     enableTpu?: pulumi.Input<boolean>;
+    /**
+     * Configuration for Identity Service component.
+     */
+    identityServiceConfig?: pulumi.Input<inputs.container.v1.IdentityServiceConfigArgs>;
     /**
      * The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
      */

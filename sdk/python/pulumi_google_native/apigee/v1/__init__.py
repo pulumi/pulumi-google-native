@@ -16,6 +16,7 @@ from .data_collector import *
 from .datastore import *
 from .debug_session import *
 from .developer import *
+from .endpoint_attachment import *
 from .envgroup import *
 from .envgroup_attachment import *
 from .environment import *
@@ -31,6 +32,7 @@ from .get_data_collector import *
 from .get_datastore import *
 from .get_debug_session import *
 from .get_developer import *
+from .get_endpoint_attachment import *
 from .get_envgroup import *
 from .get_envgroup_attachment import *
 from .get_environment import *

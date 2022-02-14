@@ -25,13 +25,26 @@ __all__ = [
     'GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse',
     'GoogleCloudDatacatalogV1DataSourceResponse',
     'GoogleCloudDatacatalogV1DatabaseTableSpecResponse',
+    'GoogleCloudDatacatalogV1DataplexExternalTableResponse',
+    'GoogleCloudDatacatalogV1DataplexFilesetSpecResponse',
+    'GoogleCloudDatacatalogV1DataplexSpecResponse',
+    'GoogleCloudDatacatalogV1DataplexTableSpecResponse',
     'GoogleCloudDatacatalogV1EntryOverviewResponse',
+    'GoogleCloudDatacatalogV1FilesetSpecResponse',
     'GoogleCloudDatacatalogV1GcsFileSpecResponse',
     'GoogleCloudDatacatalogV1GcsFilesetSpecResponse',
     'GoogleCloudDatacatalogV1PersonalDetailsResponse',
+    'GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse',
+    'GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponse',
+    'GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponse',
+    'GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponse',
+    'GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse',
+    'GoogleCloudDatacatalogV1PhysicalSchemaResponse',
+    'GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse',
     'GoogleCloudDatacatalogV1RoutineSpecArgumentResponse',
     'GoogleCloudDatacatalogV1RoutineSpecResponse',
     'GoogleCloudDatacatalogV1SchemaResponse',
+    'GoogleCloudDatacatalogV1StoragePropertiesResponse',
     'GoogleCloudDatacatalogV1SystemTimestampsResponse',
     'GoogleCloudDatacatalogV1TableSpecResponse',
     'GoogleCloudDatacatalogV1UsageSignalResponse',
@@ -658,16 +671,41 @@ class GoogleCloudDatacatalogV1DataSourceResponse(dict):
     """
     Physical location of an entry.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceEntry":
+            suggest = "source_entry"
+        elif key == "storageProperties":
+            suggest = "storage_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1DataSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1DataSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1DataSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resource: str,
-                 service: str):
+                 service: str,
+                 source_entry: str,
+                 storage_properties: 'outputs.GoogleCloudDatacatalogV1StoragePropertiesResponse'):
         """
         Physical location of an entry.
         :param str resource: Full name of a resource as defined by the service. For example: `//bigquery.googleapis.com/projects/{PROJECT_ID}/locations/{LOCATION}/datasets/{DATASET_ID}/tables/{TABLE_ID}`
         :param str service: Service that physically stores the data.
+        :param str source_entry: Data Catalog entry name, if applicable.
+        :param 'GoogleCloudDatacatalogV1StoragePropertiesResponse' storage_properties: Detailed properties of the underlying storage.
         """
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "source_entry", source_entry)
+        pulumi.set(__self__, "storage_properties", storage_properties)
 
     @property
     @pulumi.getter
@@ -685,19 +723,63 @@ class GoogleCloudDatacatalogV1DataSourceResponse(dict):
         """
         return pulumi.get(self, "service")
 
+    @property
+    @pulumi.getter(name="sourceEntry")
+    def source_entry(self) -> str:
+        """
+        Data Catalog entry name, if applicable.
+        """
+        return pulumi.get(self, "source_entry")
+
+    @property
+    @pulumi.getter(name="storageProperties")
+    def storage_properties(self) -> 'outputs.GoogleCloudDatacatalogV1StoragePropertiesResponse':
+        """
+        Detailed properties of the underlying storage.
+        """
+        return pulumi.get(self, "storage_properties")
+
 
 @pulumi.output_type
 class GoogleCloudDatacatalogV1DatabaseTableSpecResponse(dict):
     """
     Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataplexTable":
+            suggest = "dataplex_table"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1DatabaseTableSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1DatabaseTableSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1DatabaseTableSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 dataplex_table: 'outputs.GoogleCloudDatacatalogV1DataplexTableSpecResponse',
                  type: str):
         """
         Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+        :param 'GoogleCloudDatacatalogV1DataplexTableSpecResponse' dataplex_table: Fields specific to a Dataplex table and present only in the Dataplex table entries.
         :param str type: Type of this table.
         """
+        pulumi.set(__self__, "dataplex_table", dataplex_table)
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="dataplexTable")
+    def dataplex_table(self) -> 'outputs.GoogleCloudDatacatalogV1DataplexTableSpecResponse':
+        """
+        Fields specific to a Dataplex table and present only in the Dataplex table entries.
+        """
+        return pulumi.get(self, "dataplex_table")
 
     @property
     @pulumi.getter
@@ -706,6 +788,260 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecResponse(dict):
         Type of this table.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1DataplexExternalTableResponse(dict):
+    """
+    External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataCatalogEntry":
+            suggest = "data_catalog_entry"
+        elif key == "fullyQualifiedName":
+            suggest = "fully_qualified_name"
+        elif key == "googleCloudResource":
+            suggest = "google_cloud_resource"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1DataplexExternalTableResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1DataplexExternalTableResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1DataplexExternalTableResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_catalog_entry: str,
+                 fully_qualified_name: str,
+                 google_cloud_resource: str,
+                 system: str):
+        """
+        External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog.
+        :param str data_catalog_entry: Name of the Data Catalog entry representing the external table.
+        :param str fully_qualified_name: Fully qualified name (FQN) of the external table.
+        :param str google_cloud_resource: Google Cloud resource name of the external table.
+        :param str system: Service in which the external table is registered.
+        """
+        pulumi.set(__self__, "data_catalog_entry", data_catalog_entry)
+        pulumi.set(__self__, "fully_qualified_name", fully_qualified_name)
+        pulumi.set(__self__, "google_cloud_resource", google_cloud_resource)
+        pulumi.set(__self__, "system", system)
+
+    @property
+    @pulumi.getter(name="dataCatalogEntry")
+    def data_catalog_entry(self) -> str:
+        """
+        Name of the Data Catalog entry representing the external table.
+        """
+        return pulumi.get(self, "data_catalog_entry")
+
+    @property
+    @pulumi.getter(name="fullyQualifiedName")
+    def fully_qualified_name(self) -> str:
+        """
+        Fully qualified name (FQN) of the external table.
+        """
+        return pulumi.get(self, "fully_qualified_name")
+
+    @property
+    @pulumi.getter(name="googleCloudResource")
+    def google_cloud_resource(self) -> str:
+        """
+        Google Cloud resource name of the external table.
+        """
+        return pulumi.get(self, "google_cloud_resource")
+
+    @property
+    @pulumi.getter
+    def system(self) -> str:
+        """
+        Service in which the external table is registered.
+        """
+        return pulumi.get(self, "system")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1DataplexFilesetSpecResponse(dict):
+    """
+    Entry specyfication for a Dataplex fileset.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataplexSpec":
+            suggest = "dataplex_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1DataplexFilesetSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1DataplexFilesetSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1DataplexFilesetSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataplex_spec: 'outputs.GoogleCloudDatacatalogV1DataplexSpecResponse'):
+        """
+        Entry specyfication for a Dataplex fileset.
+        :param 'GoogleCloudDatacatalogV1DataplexSpecResponse' dataplex_spec: Common Dataplex fields.
+        """
+        pulumi.set(__self__, "dataplex_spec", dataplex_spec)
+
+    @property
+    @pulumi.getter(name="dataplexSpec")
+    def dataplex_spec(self) -> 'outputs.GoogleCloudDatacatalogV1DataplexSpecResponse':
+        """
+        Common Dataplex fields.
+        """
+        return pulumi.get(self, "dataplex_spec")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1DataplexSpecResponse(dict):
+    """
+    Common Dataplex fields.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "compressionFormat":
+            suggest = "compression_format"
+        elif key == "dataFormat":
+            suggest = "data_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1DataplexSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1DataplexSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1DataplexSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 asset: str,
+                 compression_format: str,
+                 data_format: 'outputs.GoogleCloudDatacatalogV1PhysicalSchemaResponse',
+                 project: str):
+        """
+        Common Dataplex fields.
+        :param str asset: Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
+        :param str compression_format: Compression format of the data, e.g., zip, gzip etc.
+        :param 'GoogleCloudDatacatalogV1PhysicalSchemaResponse' data_format: Format of the data.
+        :param str project: Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
+        """
+        pulumi.set(__self__, "asset", asset)
+        pulumi.set(__self__, "compression_format", compression_format)
+        pulumi.set(__self__, "data_format", data_format)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def asset(self) -> str:
+        """
+        Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter(name="compressionFormat")
+    def compression_format(self) -> str:
+        """
+        Compression format of the data, e.g., zip, gzip etc.
+        """
+        return pulumi.get(self, "compression_format")
+
+    @property
+    @pulumi.getter(name="dataFormat")
+    def data_format(self) -> 'outputs.GoogleCloudDatacatalogV1PhysicalSchemaResponse':
+        """
+        Format of the data.
+        """
+        return pulumi.get(self, "data_format")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
+        """
+        return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1DataplexTableSpecResponse(dict):
+    """
+    Entry specification for a Dataplex table.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataplexSpec":
+            suggest = "dataplex_spec"
+        elif key == "externalTables":
+            suggest = "external_tables"
+        elif key == "userManaged":
+            suggest = "user_managed"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1DataplexTableSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1DataplexTableSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1DataplexTableSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataplex_spec: 'outputs.GoogleCloudDatacatalogV1DataplexSpecResponse',
+                 external_tables: Sequence['outputs.GoogleCloudDatacatalogV1DataplexExternalTableResponse'],
+                 user_managed: bool):
+        """
+        Entry specification for a Dataplex table.
+        :param 'GoogleCloudDatacatalogV1DataplexSpecResponse' dataplex_spec: Common Dataplex fields.
+        :param Sequence['GoogleCloudDatacatalogV1DataplexExternalTableResponse'] external_tables: List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
+        :param bool user_managed: Indicates if the table schema is managed by the user or not.
+        """
+        pulumi.set(__self__, "dataplex_spec", dataplex_spec)
+        pulumi.set(__self__, "external_tables", external_tables)
+        pulumi.set(__self__, "user_managed", user_managed)
+
+    @property
+    @pulumi.getter(name="dataplexSpec")
+    def dataplex_spec(self) -> 'outputs.GoogleCloudDatacatalogV1DataplexSpecResponse':
+        """
+        Common Dataplex fields.
+        """
+        return pulumi.get(self, "dataplex_spec")
+
+    @property
+    @pulumi.getter(name="externalTables")
+    def external_tables(self) -> Sequence['outputs.GoogleCloudDatacatalogV1DataplexExternalTableResponse']:
+        """
+        List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
+        """
+        return pulumi.get(self, "external_tables")
+
+    @property
+    @pulumi.getter(name="userManaged")
+    def user_managed(self) -> bool:
+        """
+        Indicates if the table schema is managed by the user or not.
+        """
+        return pulumi.get(self, "user_managed")
 
 
 @pulumi.output_type
@@ -728,6 +1064,45 @@ class GoogleCloudDatacatalogV1EntryOverviewResponse(dict):
         Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
         """
         return pulumi.get(self, "overview")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1FilesetSpecResponse(dict):
+    """
+    Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataplexFileset":
+            suggest = "dataplex_fileset"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1FilesetSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1FilesetSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1FilesetSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataplex_fileset: 'outputs.GoogleCloudDatacatalogV1DataplexFilesetSpecResponse'):
+        """
+        Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.
+        :param 'GoogleCloudDatacatalogV1DataplexFilesetSpecResponse' dataplex_fileset: Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
+        """
+        pulumi.set(__self__, "dataplex_fileset", dataplex_fileset)
+
+    @property
+    @pulumi.getter(name="dataplexFileset")
+    def dataplex_fileset(self) -> 'outputs.GoogleCloudDatacatalogV1DataplexFilesetSpecResponse':
+        """
+        Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
+        """
+        return pulumi.get(self, "dataplex_fileset")
 
 
 @pulumi.output_type
@@ -898,6 +1273,185 @@ class GoogleCloudDatacatalogV1PersonalDetailsResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse(dict):
+    """
+    Schema in Avro JSON format.
+    """
+    def __init__(__self__, *,
+                 text: str):
+        """
+        Schema in Avro JSON format.
+        :param str text: JSON source of the Avro schema.
+        """
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> str:
+        """
+        JSON source of the Avro schema.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponse(dict):
+    """
+    Marks a CSV-encoded data source.
+    """
+    def __init__(__self__):
+        """
+        Marks a CSV-encoded data source.
+        """
+        pass
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponse(dict):
+    """
+    Marks an ORC-encoded data source.
+    """
+    def __init__(__self__):
+        """
+        Marks an ORC-encoded data source.
+        """
+        pass
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponse(dict):
+    """
+    Marks a Parquet-encoded data source.
+    """
+    def __init__(__self__):
+        """
+        Marks a Parquet-encoded data source.
+        """
+        pass
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse(dict):
+    """
+    Schema in protocol buffer format.
+    """
+    def __init__(__self__, *,
+                 text: str):
+        """
+        Schema in protocol buffer format.
+        :param str text: Protocol buffer source of the schema.
+        """
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> str:
+        """
+        Protocol buffer source of the schema.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1PhysicalSchemaResponse(dict):
+    """
+    Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing source data.
+    """
+    def __init__(__self__, *,
+                 avro: 'outputs.GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse',
+                 csv: 'outputs.GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponse',
+                 orc: 'outputs.GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponse',
+                 parquet: 'outputs.GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponse',
+                 protobuf: 'outputs.GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse',
+                 thrift: 'outputs.GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse'):
+        """
+        Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing source data.
+        :param 'GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse' avro: Schema in Avro JSON format.
+        :param 'GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponse' csv: Marks a CSV-encoded data source.
+        :param 'GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponse' orc: Marks an ORC-encoded data source.
+        :param 'GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponse' parquet: Marks a Parquet-encoded data source.
+        :param 'GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse' protobuf: Schema in protocol buffer format.
+        :param 'GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse' thrift: Schema in Thrift format.
+        """
+        pulumi.set(__self__, "avro", avro)
+        pulumi.set(__self__, "csv", csv)
+        pulumi.set(__self__, "orc", orc)
+        pulumi.set(__self__, "parquet", parquet)
+        pulumi.set(__self__, "protobuf", protobuf)
+        pulumi.set(__self__, "thrift", thrift)
+
+    @property
+    @pulumi.getter
+    def avro(self) -> 'outputs.GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse':
+        """
+        Schema in Avro JSON format.
+        """
+        return pulumi.get(self, "avro")
+
+    @property
+    @pulumi.getter
+    def csv(self) -> 'outputs.GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponse':
+        """
+        Marks a CSV-encoded data source.
+        """
+        return pulumi.get(self, "csv")
+
+    @property
+    @pulumi.getter
+    def orc(self) -> 'outputs.GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponse':
+        """
+        Marks an ORC-encoded data source.
+        """
+        return pulumi.get(self, "orc")
+
+    @property
+    @pulumi.getter
+    def parquet(self) -> 'outputs.GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponse':
+        """
+        Marks a Parquet-encoded data source.
+        """
+        return pulumi.get(self, "parquet")
+
+    @property
+    @pulumi.getter
+    def protobuf(self) -> 'outputs.GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse':
+        """
+        Schema in protocol buffer format.
+        """
+        return pulumi.get(self, "protobuf")
+
+    @property
+    @pulumi.getter
+    def thrift(self) -> 'outputs.GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse':
+        """
+        Schema in Thrift format.
+        """
+        return pulumi.get(self, "thrift")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse(dict):
+    """
+    Schema in Thrift format.
+    """
+    def __init__(__self__, *,
+                 text: str):
+        """
+        Schema in Thrift format.
+        :param str text: Thrift IDL source of the schema.
+        """
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> str:
+        """
+        Thrift IDL source of the schema.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
 class GoogleCloudDatacatalogV1RoutineSpecArgumentResponse(dict):
     """
     Input or output argument of a function or stored procedure.
@@ -1063,6 +1617,58 @@ class GoogleCloudDatacatalogV1SchemaResponse(dict):
         The unified GoogleSQL-like schema of columns. The overall maximum number of columns and nested columns is 10,000. The maximum nested depth is 15 levels.
         """
         return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1StoragePropertiesResponse(dict):
+    """
+    Details the properties of the underlying storage.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filePattern":
+            suggest = "file_pattern"
+        elif key == "fileType":
+            suggest = "file_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1StoragePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1StoragePropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1StoragePropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_pattern: Sequence[str],
+                 file_type: str):
+        """
+        Details the properties of the underlying storage.
+        :param Sequence[str] file_pattern: Patterns to identify a set of files for this fileset. Examples of a valid `file_pattern`: * `gs://bucket_name/dir/*`: matches all files in the `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in the `bucket_name/dir` and all subdirectories recursively * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
+        :param str file_type: File type in MIME format, for example, `text/plain`.
+        """
+        pulumi.set(__self__, "file_pattern", file_pattern)
+        pulumi.set(__self__, "file_type", file_type)
+
+    @property
+    @pulumi.getter(name="filePattern")
+    def file_pattern(self) -> Sequence[str]:
+        """
+        Patterns to identify a set of files for this fileset. Examples of a valid `file_pattern`: * `gs://bucket_name/dir/*`: matches all files in the `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in the `bucket_name/dir` and all subdirectories recursively * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
+        """
+        return pulumi.get(self, "file_pattern")
+
+    @property
+    @pulumi.getter(name="fileType")
+    def file_type(self) -> str:
+        """
+        File type in MIME format, for example, `text/plain`.
+        """
+        return pulumi.get(self, "file_type")
 
 
 @pulumi.output_type

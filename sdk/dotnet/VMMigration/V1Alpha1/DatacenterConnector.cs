@@ -17,6 +17,24 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
     public partial class DatacenterConnector : Pulumi.CustomResource
     {
         /// <summary>
+        /// Appliance OVA version. This is the OVA which is manually installed by the user and contains the infrastructure for the automatically updatable components on the appliance.
+        /// </summary>
+        [Output("applianceInfrastructureVersion")]
+        public Output<string> ApplianceInfrastructureVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Appliance last installed update bundle version. This is the version of the automatically updatable components on the appliance.
+        /// </summary>
+        [Output("applianceSoftwareVersion")]
+        public Output<string> ApplianceSoftwareVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The available versions for updating this appliance.
+        /// </summary>
+        [Output("availableVersions")]
+        public Output<Outputs.AvailableUpdatesResponse> AvailableVersions { get; private set; } = null!;
+
+        /// <summary>
         /// The communication channel between the datacenter connector and GCP.
         /// </summary>
         [Output("bucket")]
@@ -69,6 +87,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the current / last upgradeAppliance operation.
+        /// </summary>
+        [Output("upgradeStatus")]
+        public Output<Outputs.UpgradeStatusResponse> UpgradeStatus { get; private set; } = null!;
 
         /// <summary>
         /// The version running in the DatacenterConnector. This is supplied by the OVA connector during the registration process and can not be modified.

@@ -285,6 +285,10 @@ class RuntimeAccessConfigAccessType(str, Enum):
     """
     Single user login.
     """
+    SERVICE_ACCOUNT = "SERVICE_ACCOUNT"
+    """
+    Service Account mode. In Service Account mode, Runtime creator will specify a SA that exists in the consumer project. Using Runtime Service Account field. Users accessing the Runtime need ActAs (Service Account User) permission.
+    """
 
 
 class ScheduleState(str, Enum):

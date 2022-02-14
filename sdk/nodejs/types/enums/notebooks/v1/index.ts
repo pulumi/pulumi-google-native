@@ -279,6 +279,10 @@ export const RuntimeAccessConfigAccessType = {
      * Single user login.
      */
     SingleUser: "SINGLE_USER",
+    /**
+     * Service Account mode. In Service Account mode, Runtime creator will specify a SA that exists in the consumer project. Using Runtime Service Account field. Users accessing the Runtime need ActAs (Service Account User) permission.
+     */
+    ServiceAccount: "SERVICE_ACCOUNT",
 } as const;
 
 /**

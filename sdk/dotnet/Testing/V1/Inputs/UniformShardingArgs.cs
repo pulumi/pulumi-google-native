@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
 {
 
     /// <summary>
-    /// Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
+    /// Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
     /// </summary>
     public sealed class UniformShardingArgs : Pulumi.ResourceArgs
     {

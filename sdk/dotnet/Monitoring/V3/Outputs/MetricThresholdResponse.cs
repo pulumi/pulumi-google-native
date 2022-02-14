@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         /// </summary>
         public readonly string Duration;
         /// <summary>
+        /// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+        /// </summary>
+        public readonly string EvaluationMissingData;
+        /// <summary>
         /// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
         /// </summary>
         public readonly string Filter;
@@ -61,6 +65,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 
             string duration,
 
+            string evaluationMissingData,
+
             string filter,
 
             double thresholdValue,
@@ -72,6 +78,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
             DenominatorAggregations = denominatorAggregations;
             DenominatorFilter = denominatorFilter;
             Duration = duration;
+            EvaluationMissingData = evaluationMissingData;
             Filter = filter;
             ThresholdValue = thresholdValue;
             Trigger = trigger;

@@ -44,6 +44,8 @@ type LookupEntryResult struct {
 	Description string `pulumi:"description"`
 	// Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
 	DisplayName string `pulumi:"displayName"`
+	// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
+	FilesetSpec GoogleCloudDatacatalogV1FilesetSpecResponse `pulumi:"filesetSpec"`
 	// Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
 	FullyQualifiedName string `pulumi:"fullyQualifiedName"`
 	// Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type.
@@ -154,6 +156,11 @@ func (o LookupEntryResultOutput) Description() pulumi.StringOutput {
 // Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
 func (o LookupEntryResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntryResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
+func (o LookupEntryResultOutput) FilesetSpec() GoogleCloudDatacatalogV1FilesetSpecResponseOutput {
+	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1FilesetSpecResponse { return v.FilesetSpec }).(GoogleCloudDatacatalogV1FilesetSpecResponseOutput)
 }
 
 // Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`

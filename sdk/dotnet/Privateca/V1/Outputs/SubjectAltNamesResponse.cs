@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Outputs
     public sealed class SubjectAltNamesResponse
     {
         /// <summary>
-        /// Contains additional subject alternative name values.
+        /// Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
         /// </summary>
         public readonly ImmutableArray<Outputs.X509ExtensionResponse> CustomSans;
         /// <summary>

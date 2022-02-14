@@ -29,9 +29,6 @@ __all__ = [
     'GitHubEnterpriseSecretsResponse',
     'GitHubEventsConfigResponse',
     'GitRepoSourceResponse',
-    'GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigResponse',
-    'HybridPoolConfigResponse',
-    'HybridWorkerConfigResponse',
     'InlineSecretResponse',
     'NetworkConfigResponse',
     'PoolOptionResponse',
@@ -1858,186 +1855,6 @@ class GitRepoSourceResponse(dict):
 
 
 @pulumi.output_type
-class GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigResponse(dict):
-    """
-    Configuration per workload for both Private Pools and Hybrid Pools.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskSizeGb":
-            suggest = "disk_size_gb"
-        elif key == "memoryGb":
-            suggest = "memory_gb"
-        elif key == "vcpuCount":
-            suggest = "vcpu_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 disk_size_gb: str,
-                 memory_gb: float,
-                 vcpu_count: float):
-        """
-        Configuration per workload for both Private Pools and Hybrid Pools.
-        :param str disk_size_gb: The disk size (in GB) which is requested for the build container. If unset, a value of 10 GB will be used.
-        :param float memory_gb: The memory (in GB) which is requested for the build container. If unset, a value of 4 GB will be used.
-        :param float vcpu_count: The number of vCPUs which are requested for the build container. If unset, a value of 1 will be used.
-        """
-        pulumi.set(__self__, "disk_size_gb", disk_size_gb)
-        pulumi.set(__self__, "memory_gb", memory_gb)
-        pulumi.set(__self__, "vcpu_count", vcpu_count)
-
-    @property
-    @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> str:
-        """
-        The disk size (in GB) which is requested for the build container. If unset, a value of 10 GB will be used.
-        """
-        return pulumi.get(self, "disk_size_gb")
-
-    @property
-    @pulumi.getter(name="memoryGb")
-    def memory_gb(self) -> float:
-        """
-        The memory (in GB) which is requested for the build container. If unset, a value of 4 GB will be used.
-        """
-        return pulumi.get(self, "memory_gb")
-
-    @property
-    @pulumi.getter(name="vcpuCount")
-    def vcpu_count(self) -> float:
-        """
-        The number of vCPUs which are requested for the build container. If unset, a value of 1 will be used.
-        """
-        return pulumi.get(self, "vcpu_count")
-
-
-@pulumi.output_type
-class HybridPoolConfigResponse(dict):
-    """
-    Configuration for a Hybrid Worker Pool Next ID: 6
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultWorkerConfig":
-            suggest = "default_worker_config"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HybridPoolConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HybridPoolConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HybridPoolConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 default_worker_config: 'outputs.HybridWorkerConfigResponse',
-                 membership: str):
-        """
-        Configuration for a Hybrid Worker Pool Next ID: 6
-        :param 'HybridWorkerConfigResponse' default_worker_config: Default settings which will be applied to builds on this worker pool if they are not specified in the build request.
-        :param str membership: Immutable. The Anthos/GKE Hub membership of the cluster which will run the actual build operations. Example: projects/{project}/locations/{location}/memberships/{cluster_name}
-        """
-        pulumi.set(__self__, "default_worker_config", default_worker_config)
-        pulumi.set(__self__, "membership", membership)
-
-    @property
-    @pulumi.getter(name="defaultWorkerConfig")
-    def default_worker_config(self) -> 'outputs.HybridWorkerConfigResponse':
-        """
-        Default settings which will be applied to builds on this worker pool if they are not specified in the build request.
-        """
-        return pulumi.get(self, "default_worker_config")
-
-    @property
-    @pulumi.getter
-    def membership(self) -> str:
-        """
-        Immutable. The Anthos/GKE Hub membership of the cluster which will run the actual build operations. Example: projects/{project}/locations/{location}/memberships/{cluster_name}
-        """
-        return pulumi.get(self, "membership")
-
-
-@pulumi.output_type
-class HybridWorkerConfigResponse(dict):
-    """
-    These settings can be applied to a user's build operations. Next ID: 4
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskSizeGb":
-            suggest = "disk_size_gb"
-        elif key == "memoryGb":
-            suggest = "memory_gb"
-        elif key == "vcpuCount":
-            suggest = "vcpu_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HybridWorkerConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HybridWorkerConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HybridWorkerConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 disk_size_gb: str,
-                 memory_gb: float,
-                 vcpu_count: float):
-        """
-        These settings can be applied to a user's build operations. Next ID: 4
-        :param str disk_size_gb: The disk size (in GB) which is requested for the build container. Defaults to 10 GB.
-        :param float memory_gb: The memory (in GB) which is requested for the build container. Defaults to 4 GB.
-        :param float vcpu_count: The number of vCPUs which are requested for the build container. Defaults to 1.
-        """
-        pulumi.set(__self__, "disk_size_gb", disk_size_gb)
-        pulumi.set(__self__, "memory_gb", memory_gb)
-        pulumi.set(__self__, "vcpu_count", vcpu_count)
-
-    @property
-    @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> str:
-        """
-        The disk size (in GB) which is requested for the build container. Defaults to 10 GB.
-        """
-        return pulumi.get(self, "disk_size_gb")
-
-    @property
-    @pulumi.getter(name="memoryGb")
-    def memory_gb(self) -> float:
-        """
-        The memory (in GB) which is requested for the build container. Defaults to 4 GB.
-        """
-        return pulumi.get(self, "memory_gb")
-
-    @property
-    @pulumi.getter(name="vcpuCount")
-    def vcpu_count(self) -> float:
-        """
-        The number of vCPUs which are requested for the build container. Defaults to 1.
-        """
-        return pulumi.get(self, "vcpu_count")
-
-
-@pulumi.output_type
 class InlineSecretResponse(dict):
     """
     Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
@@ -2146,33 +1963,13 @@ class PoolOptionResponse(dict):
     """
     Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "workerConfig":
-            suggest = "worker_config"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PoolOptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PoolOptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PoolOptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
-                 name: str,
-                 worker_config: 'outputs.GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigResponse'):
+                 name: str):
         """
         Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
         :param str name: The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
-        :param 'GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigResponse' worker_config: Configuration per workload.
         """
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "worker_config", worker_config)
 
     @property
     @pulumi.getter
@@ -2181,14 +1978,6 @@ class PoolOptionResponse(dict):
         The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="workerConfig")
-    def worker_config(self) -> 'outputs.GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigResponse':
-        """
-        Configuration per workload.
-        """
-        return pulumi.get(self, "worker_config")
 
 
 @pulumi.output_type

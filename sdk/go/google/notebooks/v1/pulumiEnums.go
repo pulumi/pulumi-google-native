@@ -1583,6 +1583,8 @@ const (
 	RuntimeAccessConfigAccessTypeRuntimeAccessTypeUnspecified = RuntimeAccessConfigAccessType("RUNTIME_ACCESS_TYPE_UNSPECIFIED")
 	// Single user login.
 	RuntimeAccessConfigAccessTypeSingleUser = RuntimeAccessConfigAccessType("SINGLE_USER")
+	// Service Account mode. In Service Account mode, Runtime creator will specify a SA that exists in the consumer project. Using Runtime Service Account field. Users accessing the Runtime need ActAs (Service Account User) permission.
+	RuntimeAccessConfigAccessTypeServiceAccount = RuntimeAccessConfigAccessType("SERVICE_ACCOUNT")
 )
 
 func (RuntimeAccessConfigAccessType) ElementType() reflect.Type {

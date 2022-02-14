@@ -3452,7 +3452,7 @@ func (o RuntimeShieldedInstanceConfigResponseOutput) EnableVtpm() pulumi.BoolOut
 	return o.ApplyT(func(v RuntimeShieldedInstanceConfigResponse) bool { return v.EnableVtpm }).(pulumi.BoolOutput)
 }
 
-// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
+// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
 type RuntimeSoftwareConfig struct {
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 	CustomGpuDriverPath *string `pulumi:"customGpuDriverPath"`
@@ -3464,6 +3464,8 @@ type RuntimeSoftwareConfig struct {
 	IdleShutdownTimeout *int `pulumi:"idleShutdownTimeout"`
 	// Install Nvidia Driver automatically.
 	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
+	// Optional. Use a list of container images to use as Kernels in the notebook instance.
+	Kernels []ContainerImage `pulumi:"kernels"`
 	// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 	NotebookUpgradeSchedule *string `pulumi:"notebookUpgradeSchedule"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
@@ -3481,7 +3483,7 @@ type RuntimeSoftwareConfigInput interface {
 	ToRuntimeSoftwareConfigOutputWithContext(context.Context) RuntimeSoftwareConfigOutput
 }
 
-// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
+// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
 type RuntimeSoftwareConfigArgs struct {
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 	CustomGpuDriverPath pulumi.StringPtrInput `pulumi:"customGpuDriverPath"`
@@ -3493,6 +3495,8 @@ type RuntimeSoftwareConfigArgs struct {
 	IdleShutdownTimeout pulumi.IntPtrInput `pulumi:"idleShutdownTimeout"`
 	// Install Nvidia Driver automatically.
 	InstallGpuDriver pulumi.BoolPtrInput `pulumi:"installGpuDriver"`
+	// Optional. Use a list of container images to use as Kernels in the notebook instance.
+	Kernels ContainerImageArrayInput `pulumi:"kernels"`
 	// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 	NotebookUpgradeSchedule pulumi.StringPtrInput `pulumi:"notebookUpgradeSchedule"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
@@ -3552,7 +3556,7 @@ func (i *runtimeSoftwareConfigPtrType) ToRuntimeSoftwareConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeSoftwareConfigPtrOutput)
 }
 
-// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
+// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
 type RuntimeSoftwareConfigOutput struct{ *pulumi.OutputState }
 
 func (RuntimeSoftwareConfigOutput) ElementType() reflect.Type {
@@ -3600,6 +3604,11 @@ func (o RuntimeSoftwareConfigOutput) IdleShutdownTimeout() pulumi.IntPtrOutput {
 // Install Nvidia Driver automatically.
 func (o RuntimeSoftwareConfigOutput) InstallGpuDriver() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *bool { return v.InstallGpuDriver }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Use a list of container images to use as Kernels in the notebook instance.
+func (o RuntimeSoftwareConfigOutput) Kernels() ContainerImageArrayOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) []ContainerImage { return v.Kernels }).(ContainerImageArrayOutput)
 }
 
 // Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
@@ -3686,6 +3695,16 @@ func (o RuntimeSoftwareConfigPtrOutput) InstallGpuDriver() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Use a list of container images to use as Kernels in the notebook instance.
+func (o RuntimeSoftwareConfigPtrOutput) Kernels() ContainerImageArrayOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) []ContainerImage {
+		if v == nil {
+			return nil
+		}
+		return v.Kernels
+	}).(ContainerImageArrayOutput)
+}
+
 // Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 func (o RuntimeSoftwareConfigPtrOutput) NotebookUpgradeSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeSoftwareConfig) *string {
@@ -3706,7 +3725,7 @@ func (o RuntimeSoftwareConfigPtrOutput) PostStartupScript() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
+// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
 type RuntimeSoftwareConfigResponse struct {
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 	CustomGpuDriverPath string `pulumi:"customGpuDriverPath"`
@@ -3718,13 +3737,17 @@ type RuntimeSoftwareConfigResponse struct {
 	IdleShutdownTimeout int `pulumi:"idleShutdownTimeout"`
 	// Install Nvidia Driver automatically.
 	InstallGpuDriver bool `pulumi:"installGpuDriver"`
+	// Optional. Use a list of container images to use as Kernels in the notebook instance.
+	Kernels []ContainerImageResponse `pulumi:"kernels"`
 	// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 	NotebookUpgradeSchedule string `pulumi:"notebookUpgradeSchedule"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
 	PostStartupScript string `pulumi:"postStartupScript"`
+	// Bool indicating whether an newer image is available in an image family.
+	Upgradeable bool `pulumi:"upgradeable"`
 }
 
-// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
+// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
 type RuntimeSoftwareConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (RuntimeSoftwareConfigResponseOutput) ElementType() reflect.Type {
@@ -3764,6 +3787,11 @@ func (o RuntimeSoftwareConfigResponseOutput) InstallGpuDriver() pulumi.BoolOutpu
 	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) bool { return v.InstallGpuDriver }).(pulumi.BoolOutput)
 }
 
+// Optional. Use a list of container images to use as Kernels in the notebook instance.
+func (o RuntimeSoftwareConfigResponseOutput) Kernels() ContainerImageResponseArrayOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) []ContainerImageResponse { return v.Kernels }).(ContainerImageResponseArrayOutput)
+}
+
 // Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 func (o RuntimeSoftwareConfigResponseOutput) NotebookUpgradeSchedule() pulumi.StringOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) string { return v.NotebookUpgradeSchedule }).(pulumi.StringOutput)
@@ -3772,6 +3800,11 @@ func (o RuntimeSoftwareConfigResponseOutput) NotebookUpgradeSchedule() pulumi.St
 // Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
 func (o RuntimeSoftwareConfigResponseOutput) PostStartupScript() pulumi.StringOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) string { return v.PostStartupScript }).(pulumi.StringOutput)
+}
+
+// Bool indicating whether an newer image is available in an image family.
+func (o RuntimeSoftwareConfigResponseOutput) Upgradeable() pulumi.BoolOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) bool { return v.Upgradeable }).(pulumi.BoolOutput)
 }
 
 // Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
@@ -4810,7 +4843,7 @@ func (o VirtualMachinePtrOutput) VirtualMachineConfig() VirtualMachineConfigPtrO
 type VirtualMachineConfig struct {
 	// Optional. The Compute Engine accelerator configuration for this runtime.
 	AcceleratorConfig *RuntimeAcceleratorConfig `pulumi:"acceleratorConfig"`
-	// Optional. Use a list of container images to start the notebook instance.
+	// Optional. Use a list of container images to use as Kernels in the notebook instance.
 	ContainerImages []ContainerImage `pulumi:"containerImages"`
 	// Data disk option configuration settings.
 	DataDisk LocalDisk `pulumi:"dataDisk"`
@@ -4828,6 +4861,8 @@ type VirtualMachineConfig struct {
 	Network *string `pulumi:"network"`
 	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 	NicType *VirtualMachineConfigNicType `pulumi:"nicType"`
+	// Optional. Reserved IP Range name is used for VPC Peering. The subnetwork allocation will use the range *name* if it's assigned. Example: managed-notebooks-range-c PEERING_RANGE_NAME_3=managed-notebooks-range-c gcloud compute addresses create $PEERING_RANGE_NAME_3 \ --global \ --prefix-length=24 \ --description="Google Cloud Managed Notebooks Range 24 c" \ --network=$NETWORK \ --addresses=192.168.0.0 \ --purpose=VPC_PEERING Field value will be: `managed-notebooks-range-c`
+	ReservedIpRange *string `pulumi:"reservedIpRange"`
 	// Optional. Shielded VM Instance configuration settings.
 	ShieldedInstanceConfig *RuntimeShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
@@ -4851,7 +4886,7 @@ type VirtualMachineConfigInput interface {
 type VirtualMachineConfigArgs struct {
 	// Optional. The Compute Engine accelerator configuration for this runtime.
 	AcceleratorConfig RuntimeAcceleratorConfigPtrInput `pulumi:"acceleratorConfig"`
-	// Optional. Use a list of container images to start the notebook instance.
+	// Optional. Use a list of container images to use as Kernels in the notebook instance.
 	ContainerImages ContainerImageArrayInput `pulumi:"containerImages"`
 	// Data disk option configuration settings.
 	DataDisk LocalDiskInput `pulumi:"dataDisk"`
@@ -4869,6 +4904,8 @@ type VirtualMachineConfigArgs struct {
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 	NicType VirtualMachineConfigNicTypePtrInput `pulumi:"nicType"`
+	// Optional. Reserved IP Range name is used for VPC Peering. The subnetwork allocation will use the range *name* if it's assigned. Example: managed-notebooks-range-c PEERING_RANGE_NAME_3=managed-notebooks-range-c gcloud compute addresses create $PEERING_RANGE_NAME_3 \ --global \ --prefix-length=24 \ --description="Google Cloud Managed Notebooks Range 24 c" \ --network=$NETWORK \ --addresses=192.168.0.0 \ --purpose=VPC_PEERING Field value will be: `managed-notebooks-range-c`
+	ReservedIpRange pulumi.StringPtrInput `pulumi:"reservedIpRange"`
 	// Optional. Shielded VM Instance configuration settings.
 	ShieldedInstanceConfig RuntimeShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
@@ -4960,7 +4997,7 @@ func (o VirtualMachineConfigOutput) AcceleratorConfig() RuntimeAcceleratorConfig
 	return o.ApplyT(func(v VirtualMachineConfig) *RuntimeAcceleratorConfig { return v.AcceleratorConfig }).(RuntimeAcceleratorConfigPtrOutput)
 }
 
-// Optional. Use a list of container images to start the notebook instance.
+// Optional. Use a list of container images to use as Kernels in the notebook instance.
 func (o VirtualMachineConfigOutput) ContainerImages() ContainerImageArrayOutput {
 	return o.ApplyT(func(v VirtualMachineConfig) []ContainerImage { return v.ContainerImages }).(ContainerImageArrayOutput)
 }
@@ -5003,6 +5040,11 @@ func (o VirtualMachineConfigOutput) Network() pulumi.StringPtrOutput {
 // Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 func (o VirtualMachineConfigOutput) NicType() VirtualMachineConfigNicTypePtrOutput {
 	return o.ApplyT(func(v VirtualMachineConfig) *VirtualMachineConfigNicType { return v.NicType }).(VirtualMachineConfigNicTypePtrOutput)
+}
+
+// Optional. Reserved IP Range name is used for VPC Peering. The subnetwork allocation will use the range *name* if it's assigned. Example: managed-notebooks-range-c PEERING_RANGE_NAME_3=managed-notebooks-range-c gcloud compute addresses create $PEERING_RANGE_NAME_3 \ --global \ --prefix-length=24 \ --description="Google Cloud Managed Notebooks Range 24 c" \ --network=$NETWORK \ --addresses=192.168.0.0 \ --purpose=VPC_PEERING Field value will be: `managed-notebooks-range-c`
+func (o VirtualMachineConfigOutput) ReservedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineConfig) *string { return v.ReservedIpRange }).(pulumi.StringPtrOutput)
 }
 
 // Optional. Shielded VM Instance configuration settings.
@@ -5054,7 +5096,7 @@ func (o VirtualMachineConfigPtrOutput) AcceleratorConfig() RuntimeAcceleratorCon
 	}).(RuntimeAcceleratorConfigPtrOutput)
 }
 
-// Optional. Use a list of container images to start the notebook instance.
+// Optional. Use a list of container images to use as Kernels in the notebook instance.
 func (o VirtualMachineConfigPtrOutput) ContainerImages() ContainerImageArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineConfig) []ContainerImage {
 		if v == nil {
@@ -5144,6 +5186,16 @@ func (o VirtualMachineConfigPtrOutput) NicType() VirtualMachineConfigNicTypePtrO
 	}).(VirtualMachineConfigNicTypePtrOutput)
 }
 
+// Optional. Reserved IP Range name is used for VPC Peering. The subnetwork allocation will use the range *name* if it's assigned. Example: managed-notebooks-range-c PEERING_RANGE_NAME_3=managed-notebooks-range-c gcloud compute addresses create $PEERING_RANGE_NAME_3 \ --global \ --prefix-length=24 \ --description="Google Cloud Managed Notebooks Range 24 c" \ --network=$NETWORK \ --addresses=192.168.0.0 \ --purpose=VPC_PEERING Field value will be: `managed-notebooks-range-c`
+func (o VirtualMachineConfigPtrOutput) ReservedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReservedIpRange
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. Shielded VM Instance configuration settings.
 func (o VirtualMachineConfigPtrOutput) ShieldedInstanceConfig() RuntimeShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineConfig) *RuntimeShieldedInstanceConfig {
@@ -5178,7 +5230,7 @@ func (o VirtualMachineConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 type VirtualMachineConfigResponse struct {
 	// Optional. The Compute Engine accelerator configuration for this runtime.
 	AcceleratorConfig RuntimeAcceleratorConfigResponse `pulumi:"acceleratorConfig"`
-	// Optional. Use a list of container images to start the notebook instance.
+	// Optional. Use a list of container images to use as Kernels in the notebook instance.
 	ContainerImages []ContainerImageResponse `pulumi:"containerImages"`
 	// Data disk option configuration settings.
 	DataDisk LocalDiskResponse `pulumi:"dataDisk"`
@@ -5198,6 +5250,8 @@ type VirtualMachineConfigResponse struct {
 	Network string `pulumi:"network"`
 	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 	NicType string `pulumi:"nicType"`
+	// Optional. Reserved IP Range name is used for VPC Peering. The subnetwork allocation will use the range *name* if it's assigned. Example: managed-notebooks-range-c PEERING_RANGE_NAME_3=managed-notebooks-range-c gcloud compute addresses create $PEERING_RANGE_NAME_3 \ --global \ --prefix-length=24 \ --description="Google Cloud Managed Notebooks Range 24 c" \ --network=$NETWORK \ --addresses=192.168.0.0 \ --purpose=VPC_PEERING Field value will be: `managed-notebooks-range-c`
+	ReservedIpRange string `pulumi:"reservedIpRange"`
 	// Optional. Shielded VM Instance configuration settings.
 	ShieldedInstanceConfig RuntimeShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
@@ -5228,7 +5282,7 @@ func (o VirtualMachineConfigResponseOutput) AcceleratorConfig() RuntimeAccelerat
 	return o.ApplyT(func(v VirtualMachineConfigResponse) RuntimeAcceleratorConfigResponse { return v.AcceleratorConfig }).(RuntimeAcceleratorConfigResponseOutput)
 }
 
-// Optional. Use a list of container images to start the notebook instance.
+// Optional. Use a list of container images to use as Kernels in the notebook instance.
 func (o VirtualMachineConfigResponseOutput) ContainerImages() ContainerImageResponseArrayOutput {
 	return o.ApplyT(func(v VirtualMachineConfigResponse) []ContainerImageResponse { return v.ContainerImages }).(ContainerImageResponseArrayOutput)
 }
@@ -5276,6 +5330,11 @@ func (o VirtualMachineConfigResponseOutput) Network() pulumi.StringOutput {
 // Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 func (o VirtualMachineConfigResponseOutput) NicType() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineConfigResponse) string { return v.NicType }).(pulumi.StringOutput)
+}
+
+// Optional. Reserved IP Range name is used for VPC Peering. The subnetwork allocation will use the range *name* if it's assigned. Example: managed-notebooks-range-c PEERING_RANGE_NAME_3=managed-notebooks-range-c gcloud compute addresses create $PEERING_RANGE_NAME_3 \ --global \ --prefix-length=24 \ --description="Google Cloud Managed Notebooks Range 24 c" \ --network=$NETWORK \ --addresses=192.168.0.0 \ --purpose=VPC_PEERING Field value will be: `managed-notebooks-range-c`
+func (o VirtualMachineConfigResponseOutput) ReservedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineConfigResponse) string { return v.ReservedIpRange }).(pulumi.StringOutput)
 }
 
 // Optional. Shielded VM Instance configuration settings.

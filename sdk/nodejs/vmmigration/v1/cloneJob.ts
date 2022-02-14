@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Initiates a Clone of a specific migrating VM.
+ * Auto-naming is currently not supported for this resource.
  * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
  * on Google Cloud even though it will be deleted from Pulumi state.
  */
@@ -52,7 +53,7 @@ export class CloneJob extends pulumi.CustomResource {
     /**
      * The name of the clone.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * State of the clone job.
      */
@@ -85,13 +86,13 @@ export class CloneJob extends pulumi.CustomResource {
             resourceInputs["cloneJobId"] = args ? args.cloneJobId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["migratingVmId"] = args ? args.migratingVmId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["sourceId"] = args ? args.sourceId : undefined;
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
         } else {
@@ -114,10 +115,6 @@ export interface CloneJobArgs {
     cloneJobId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     migratingVmId: pulumi.Input<string>;
-    /**
-     * The name of the clone.
-     */
-    name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     sourceId: pulumi.Input<string>;

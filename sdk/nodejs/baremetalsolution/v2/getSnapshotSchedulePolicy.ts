@@ -44,6 +44,10 @@ export interface GetSnapshotSchedulePolicyResult {
      * The snapshot schedules contained in this policy. You can specify a maximum of 5 schedules.
      */
     readonly schedules: outputs.baremetalsolution.v2.ScheduleResponse[];
+    /**
+     * The state of the snapshot schedule policy.
+     */
+    readonly state: string;
 }
 
 export function getSnapshotSchedulePolicyOutput(args: GetSnapshotSchedulePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotSchedulePolicyResult> {

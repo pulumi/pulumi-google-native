@@ -40,6 +40,14 @@ export const EntryType = {
      */
     Routine: "ROUTINE",
     /**
+     * A Dataproc Metastore lake.
+     */
+    Lake: "LAKE",
+    /**
+     * A Dataproc Metastore zone.
+     */
+    Zone: "ZONE",
+    /**
      * A service, for example, a Dataproc Metastore service.
      */
     Service: "SERVICE",
@@ -105,6 +113,34 @@ export const GoogleCloudDatacatalogV1DatabaseTableSpecType = {
  * Type of this table.
  */
 export type GoogleCloudDatacatalogV1DatabaseTableSpecType = (typeof GoogleCloudDatacatalogV1DatabaseTableSpecType)[keyof typeof GoogleCloudDatacatalogV1DatabaseTableSpecType];
+
+export const GoogleCloudDatacatalogV1DataplexExternalTableSystem = {
+    /**
+     * Default unknown system.
+     */
+    IntegratedSystemUnspecified: "INTEGRATED_SYSTEM_UNSPECIFIED",
+    /**
+     * BigQuery.
+     */
+    Bigquery: "BIGQUERY",
+    /**
+     * Cloud Pub/Sub.
+     */
+    CloudPubsub: "CLOUD_PUBSUB",
+    /**
+     * Dataproc Metastore.
+     */
+    DataprocMetastore: "DATAPROC_METASTORE",
+    /**
+     * Dataplex.
+     */
+    Dataplex: "DATAPLEX",
+} as const;
+
+/**
+ * Service in which the external table is registered.
+ */
+export type GoogleCloudDatacatalogV1DataplexExternalTableSystem = (typeof GoogleCloudDatacatalogV1DataplexExternalTableSystem)[keyof typeof GoogleCloudDatacatalogV1DataplexExternalTableSystem];
 
 export const GoogleCloudDatacatalogV1RoutineSpecArgumentMode = {
     /**

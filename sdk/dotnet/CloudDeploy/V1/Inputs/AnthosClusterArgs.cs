@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     public sealed class AnthosClusterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+        /// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
         /// </summary>
         [Input("membership")]
         public Input<string>? Membership { get; set; }

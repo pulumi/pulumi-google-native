@@ -880,15 +880,17 @@ class RuntimeSoftwareConfigArgs:
                  idle_shutdown: Optional[pulumi.Input[bool]] = None,
                  idle_shutdown_timeout: Optional[pulumi.Input[int]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
+                 kernels: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]]] = None,
                  notebook_upgrade_schedule: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None):
         """
-        Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
+        Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
         :param pulumi.Input[bool] enable_health_monitoring: Verifies core internal services are running. Default: True
         :param pulumi.Input[bool] idle_shutdown: Runtime will automatically shutdown after idle_shutdown_time. Default: True
         :param pulumi.Input[int] idle_shutdown_timeout: Time in minutes to wait before shutting down runtime. Default: 180 minutes
         :param pulumi.Input[bool] install_gpu_driver: Install Nvidia Driver automatically.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]] kernels: Optional. Use a list of container images to use as Kernels in the notebook instance.
         :param pulumi.Input[str] notebook_upgrade_schedule: Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         """
@@ -902,6 +904,8 @@ class RuntimeSoftwareConfigArgs:
             pulumi.set(__self__, "idle_shutdown_timeout", idle_shutdown_timeout)
         if install_gpu_driver is not None:
             pulumi.set(__self__, "install_gpu_driver", install_gpu_driver)
+        if kernels is not None:
+            pulumi.set(__self__, "kernels", kernels)
         if notebook_upgrade_schedule is not None:
             pulumi.set(__self__, "notebook_upgrade_schedule", notebook_upgrade_schedule)
         if post_startup_script is not None:
@@ -966,6 +970,18 @@ class RuntimeSoftwareConfigArgs:
     @install_gpu_driver.setter
     def install_gpu_driver(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "install_gpu_driver", value)
+
+    @property
+    @pulumi.getter
+    def kernels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]]]:
+        """
+        Optional. Use a list of container images to use as Kernels in the notebook instance.
+        """
+        return pulumi.get(self, "kernels")
+
+    @kernels.setter
+    def kernels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]]]):
+        pulumi.set(self, "kernels", value)
 
     @property
     @pulumi.getter(name="notebookUpgradeSchedule")
@@ -1309,6 +1325,7 @@ class VirtualMachineConfigArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input['VirtualMachineConfigNicType']] = None,
+                 reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input['RuntimeShieldedInstanceConfigArgs']] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -1317,13 +1334,14 @@ class VirtualMachineConfigArgs:
         :param pulumi.Input['LocalDiskArgs'] data_disk: Data disk option configuration settings.
         :param pulumi.Input[str] machine_type: The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
         :param pulumi.Input['RuntimeAcceleratorConfigArgs'] accelerator_config: Optional. The Compute Engine accelerator configuration for this runtime.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]] container_images: Optional. Use a list of container images to start the notebook instance.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]] container_images: Optional. Use a list of container images to use as Kernels in the notebook instance.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. Encryption settings for virtual machine data disk.
         :param pulumi.Input[bool] internal_ip_only: Optional. If true, runtime will only have internal IP addresses. By default, runtimes are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each vm. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all dependencies must be configured to be accessible without external IP addresses.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param pulumi.Input[str] network: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
         :param pulumi.Input['VirtualMachineConfigNicType'] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        :param pulumi.Input[str] reserved_ip_range: Optional. Reserved IP Range name is used for VPC Peering. The subnetwork allocation will use the range *name* if it's assigned. Example: managed-notebooks-range-c PEERING_RANGE_NAME_3=managed-notebooks-range-c gcloud compute addresses create $PEERING_RANGE_NAME_3 \ --global \ --prefix-length=24 \ --description="Google Cloud Managed Notebooks Range 24 c" \ --network=$NETWORK \ --addresses=192.168.0.0 \ --purpose=VPC_PEERING Field value will be: `managed-notebooks-range-c`
         :param pulumi.Input['RuntimeShieldedInstanceConfigArgs'] shielded_instance_config: Optional. Shielded VM Instance configuration settings.
         :param pulumi.Input[str] subnet: Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
@@ -1346,6 +1364,8 @@ class VirtualMachineConfigArgs:
             pulumi.set(__self__, "network", network)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if reserved_ip_range is not None:
+            pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if subnet is not None:
@@ -1393,7 +1413,7 @@ class VirtualMachineConfigArgs:
     @pulumi.getter(name="containerImages")
     def container_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]]]:
         """
-        Optional. Use a list of container images to start the notebook instance.
+        Optional. Use a list of container images to use as Kernels in the notebook instance.
         """
         return pulumi.get(self, "container_images")
 
@@ -1472,6 +1492,18 @@ class VirtualMachineConfigArgs:
     @nic_type.setter
     def nic_type(self, value: Optional[pulumi.Input['VirtualMachineConfigNicType']]):
         pulumi.set(self, "nic_type", value)
+
+    @property
+    @pulumi.getter(name="reservedIpRange")
+    def reserved_ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Reserved IP Range name is used for VPC Peering. The subnetwork allocation will use the range *name* if it's assigned. Example: managed-notebooks-range-c PEERING_RANGE_NAME_3=managed-notebooks-range-c gcloud compute addresses create $PEERING_RANGE_NAME_3 \ --global \ --prefix-length=24 \ --description="Google Cloud Managed Notebooks Range 24 c" \ --network=$NETWORK \ --addresses=192.168.0.0 \ --purpose=VPC_PEERING Field value will be: `managed-notebooks-range-c`
+        """
+        return pulumi.get(self, "reserved_ip_range")
+
+    @reserved_ip_range.setter
+    def reserved_ip_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reserved_ip_range", value)
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")

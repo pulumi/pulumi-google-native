@@ -30,7 +30,7 @@ class AnthosClusterArgs:
                  membership: Optional[pulumi.Input[str]] = None):
         """
         Information specifying an Anthos Cluster.
-        :param pulumi.Input[str] membership: Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+        :param pulumi.Input[str] membership: Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
         """
         if membership is not None:
             pulumi.set(__self__, "membership", membership)
@@ -39,7 +39,7 @@ class AnthosClusterArgs:
     @pulumi.getter
     def membership(self) -> Optional[pulumi.Input[str]]:
         """
-        Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+        Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
         """
         return pulumi.get(self, "membership")
 
@@ -276,10 +276,10 @@ class ExecutionConfigArgs:
         """
         Configuration of the environment to use when calling Skaffold.
         :param pulumi.Input[Sequence[pulumi.Input['ExecutionConfigUsagesItem']]] usages: Usages when this configuration should be applied.
-        :param pulumi.Input[str] artifact_storage: Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+        :param pulumi.Input[str] artifact_storage: Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
         :param pulumi.Input['DefaultPoolArgs'] default_pool: Optional. Use default Cloud Build pool.
         :param pulumi.Input['PrivatePoolArgs'] private_pool: Optional. Use private Cloud Build pool.
-        :param pulumi.Input[str] service_account: Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+        :param pulumi.Input[str] service_account: Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
         :param pulumi.Input[str] worker_pool: Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
         """
         pulumi.set(__self__, "usages", usages)
@@ -310,7 +310,7 @@ class ExecutionConfigArgs:
     @pulumi.getter(name="artifactStorage")
     def artifact_storage(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+        Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
         """
         return pulumi.get(self, "artifact_storage")
 
@@ -346,7 +346,7 @@ class ExecutionConfigArgs:
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+        Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
         """
         return pulumi.get(self, "service_account")
 
@@ -442,13 +442,17 @@ class ExprArgs:
 @pulumi.input_type
 class GkeClusterArgs:
     def __init__(__self__, *,
-                 cluster: Optional[pulumi.Input[str]] = None):
+                 cluster: Optional[pulumi.Input[str]] = None,
+                 internal_ip: Optional[pulumi.Input[bool]] = None):
         """
         Information specifying a GKE Cluster.
         :param pulumi.Input[str] cluster: Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+        :param pulumi.Input[bool] internal_ip: Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
+        if internal_ip is not None:
+            pulumi.set(__self__, "internal_ip", internal_ip)
 
     @property
     @pulumi.getter
@@ -461,6 +465,18 @@ class GkeClusterArgs:
     @cluster.setter
     def cluster(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter(name="internalIp")
+    def internal_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+        """
+        return pulumi.get(self, "internal_ip")
+
+    @internal_ip.setter
+    def internal_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "internal_ip", value)
 
 
 @pulumi.input_type

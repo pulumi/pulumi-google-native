@@ -24,6 +24,8 @@ type SnapshotSchedulePolicy struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The snapshot schedules contained in this policy. You can specify a maximum of 5 schedules.
 	Schedules ScheduleResponseArrayOutput `pulumi:"schedules"`
+	// The state of the snapshot schedule policy.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewSnapshotSchedulePolicy registers a new resource with the given unique name, arguments, and options.
@@ -79,6 +81,8 @@ type snapshotSchedulePolicyArgs struct {
 	// The snapshot schedules contained in this policy. You can specify a maximum of 5 schedules.
 	Schedules                []Schedule `pulumi:"schedules"`
 	SnapshotSchedulePolicyId string     `pulumi:"snapshotSchedulePolicyId"`
+	// The state of the snapshot schedule policy.
+	State *SnapshotSchedulePolicyStateEnum `pulumi:"state"`
 }
 
 // The set of arguments for constructing a SnapshotSchedulePolicy resource.
@@ -94,6 +98,8 @@ type SnapshotSchedulePolicyArgs struct {
 	// The snapshot schedules contained in this policy. You can specify a maximum of 5 schedules.
 	Schedules                ScheduleArrayInput
 	SnapshotSchedulePolicyId pulumi.StringInput
+	// The state of the snapshot schedule policy.
+	State SnapshotSchedulePolicyStateEnumPtrInput
 }
 
 func (SnapshotSchedulePolicyArgs) ElementType() reflect.Type {

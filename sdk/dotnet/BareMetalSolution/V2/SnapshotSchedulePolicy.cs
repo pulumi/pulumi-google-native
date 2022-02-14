@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         [Output("schedules")]
         public Output<ImmutableArray<Outputs.ScheduleResponse>> Schedules { get; private set; } = null!;
 
+        /// <summary>
+        /// The state of the snapshot schedule policy.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a SnapshotSchedulePolicy resource with the given unique name, arguments, and options.
@@ -129,6 +135,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
 
         [Input("snapshotSchedulePolicyId", required: true)]
         public Input<string> SnapshotSchedulePolicyId { get; set; } = null!;
+
+        /// <summary>
+        /// The state of the snapshot schedule policy.
+        /// </summary>
+        [Input("state")]
+        public Input<Pulumi.GoogleNative.BareMetalSolution.V2.SnapshotSchedulePolicyState>? State { get; set; }
 
         public SnapshotSchedulePolicyArgs()
         {

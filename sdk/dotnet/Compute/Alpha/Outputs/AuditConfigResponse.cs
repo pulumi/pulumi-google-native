@@ -21,10 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AuditLogConfigResponse> AuditLogConfigs;
         /// <summary>
-        /// This is deprecated and has no effect. Do not use.
-        /// </summary>
-        public readonly ImmutableArray<string> ExemptedMembers;
-        /// <summary>
         /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         /// </summary>
         public readonly string Service;
@@ -33,12 +29,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         private AuditConfigResponse(
             ImmutableArray<Outputs.AuditLogConfigResponse> auditLogConfigs,
 
-            ImmutableArray<string> exemptedMembers,
-
             string service)
         {
             AuditLogConfigs = auditLogConfigs;
-            ExemptedMembers = exemptedMembers;
             Service = service;
         }
     }

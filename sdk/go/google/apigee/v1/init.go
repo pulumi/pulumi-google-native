@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DebugSession{}
 	case "google-native:apigee/v1:Developer":
 		r = &Developer{}
+	case "google-native:apigee/v1:EndpointAttachment":
+		r = &EndpointAttachment{}
 	case "google-native:apigee/v1:Envgroup":
 		r = &Envgroup{}
 	case "google-native:apigee/v1:EnvgroupAttachment":

@@ -100,6 +100,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1FilesetSpecResponse FilesetSpec;
+        /// <summary>
         /// Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
         /// </summary>
         public readonly string FullyQualifiedName;
@@ -174,6 +178,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 
             string displayName,
 
+            Outputs.GoogleCloudDatacatalogV1FilesetSpecResponse filesetSpec,
+
             string fullyQualifiedName,
 
             Outputs.GoogleCloudDatacatalogV1GcsFilesetSpecResponse gcsFilesetSpec,
@@ -210,6 +216,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
             DatabaseTableSpec = databaseTableSpec;
             Description = description;
             DisplayName = displayName;
+            FilesetSpec = filesetSpec;
             FullyQualifiedName = fullyQualifiedName;
             GcsFilesetSpec = gcsFilesetSpec;
             IntegratedSystem = integratedSystem;

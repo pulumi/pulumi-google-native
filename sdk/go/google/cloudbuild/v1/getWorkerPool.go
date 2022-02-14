@@ -37,8 +37,6 @@ type LookupWorkerPoolResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
-	// Hybrid pool configuration
-	HybridPoolConfig HybridPoolConfigResponse `pulumi:"hybridPoolConfig"`
 	// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
 	Name string `pulumi:"name"`
 	// Legacy Private Pool configuration.
@@ -107,11 +105,6 @@ func (o LookupWorkerPoolResultOutput) DisplayName() pulumi.StringOutput {
 // Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
 func (o LookupWorkerPoolResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.Etag }).(pulumi.StringOutput)
-}
-
-// Hybrid pool configuration
-func (o LookupWorkerPoolResultOutput) HybridPoolConfig() HybridPoolConfigResponseOutput {
-	return o.ApplyT(func(v LookupWorkerPoolResult) HybridPoolConfigResponse { return v.HybridPoolConfig }).(HybridPoolConfigResponseOutput)
 }
 
 // The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.

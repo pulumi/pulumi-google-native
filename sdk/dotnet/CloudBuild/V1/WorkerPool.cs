@@ -47,12 +47,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Hybrid pool configuration
-        /// </summary>
-        [Output("hybridPoolConfig")]
-        public Output<Outputs.HybridPoolConfigResponse> HybridPoolConfig { get; private set; } = null!;
-
-        /// <summary>
         /// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
         /// </summary>
         [Output("name")]
@@ -144,12 +138,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Hybrid pool configuration
-        /// </summary>
-        [Input("hybridPoolConfig")]
-        public Input<Inputs.HybridPoolConfigArgs>? HybridPoolConfig { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

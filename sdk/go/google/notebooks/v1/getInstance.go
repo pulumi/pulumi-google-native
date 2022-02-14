@@ -37,6 +37,8 @@ type LookupInstanceResult struct {
 	ContainerImage ContainerImageResponse `pulumi:"containerImage"`
 	// Instance creation time.
 	CreateTime string `pulumi:"createTime"`
+	// Email address of entity that sent original CreateInstance request.
+	Creator string `pulumi:"creator"`
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 	CustomGpuDriverPath string `pulumi:"customGpuDriverPath"`
 	// Input only. The size of the data disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). You can choose the size of the data disk based on how big your notebooks and data are. If not specified, this defaults to 100.
@@ -153,6 +155,11 @@ func (o LookupInstanceResultOutput) ContainerImage() ContainerImageResponseOutpu
 // Instance creation time.
 func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Email address of entity that sent original CreateInstance request.
+func (o LookupInstanceResultOutput) Creator() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Creator }).(pulumi.StringOutput)
 }
 
 // Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.

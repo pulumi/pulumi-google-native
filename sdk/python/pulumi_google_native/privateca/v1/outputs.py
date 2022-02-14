@@ -1612,7 +1612,7 @@ class SubjectAltNamesResponse(dict):
                  uris: Sequence[str]):
         """
         SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name).
-        :param Sequence['X509ExtensionResponse'] custom_sans: Contains additional subject alternative name values.
+        :param Sequence['X509ExtensionResponse'] custom_sans: Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
         :param Sequence[str] dns_names: Contains only valid, fully-qualified host names.
         :param Sequence[str] email_addresses: Contains only valid RFC 2822 E-mail addresses.
         :param Sequence[str] ip_addresses: Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
@@ -1628,7 +1628,7 @@ class SubjectAltNamesResponse(dict):
     @pulumi.getter(name="customSans")
     def custom_sans(self) -> Sequence['outputs.X509ExtensionResponse']:
         """
-        Contains additional subject alternative name values.
+        Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
         """
         return pulumi.get(self, "custom_sans")
 

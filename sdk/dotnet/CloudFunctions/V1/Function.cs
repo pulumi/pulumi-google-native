@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        /// </summary>
+        [Output("dockerRegistry")]
+        public Output<string> DockerRegistry { get; private set; } = null!;
+
+        /// <summary>
         /// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         /// </summary>
         [Output("dockerRepository")]
@@ -281,6 +287,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        /// </summary>
+        [Input("dockerRegistry")]
+        public Input<Pulumi.GoogleNative.CloudFunctions.V1.FunctionDockerRegistry>? DockerRegistry { get; set; }
 
         /// <summary>
         /// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.

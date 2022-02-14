@@ -679,6 +679,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["upgrade_history"] = upgrade_history
             __props__.__dict__["vm_image"] = vm_image
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["creator"] = None
             __props__.__dict__["disks"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["proxy_uri"] = None
@@ -711,6 +712,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["boot_disk_type"] = None
         __props__.__dict__["container_image"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["creator"] = None
         __props__.__dict__["custom_gpu_driver_path"] = None
         __props__.__dict__["data_disk_size_gb"] = None
         __props__.__dict__["data_disk_type"] = None
@@ -781,6 +783,14 @@ class Instance(pulumi.CustomResource):
         Instance creation time.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> pulumi.Output[str]:
+        """
+        Email address of entity that sent original CreateInstance request.
+        """
+        return pulumi.get(self, "creator")
 
     @property
     @pulumi.getter(name="customGpuDriverPath")

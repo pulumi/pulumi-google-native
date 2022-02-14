@@ -937,7 +937,7 @@ class VmwareVmDetailsArgs:
         :param pulumi.Input[str] datacenter_id: The id of the vCenter's datacenter this VM is contained in.
         :param pulumi.Input[int] disk_count: The number of disks the VM has.
         :param pulumi.Input[str] display_name: The display name of the VM. Note that this is not necessarily unique.
-        :param pulumi.Input[str] guest_description: The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+        :param pulumi.Input[str] guest_description: The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
         :param pulumi.Input[int] memory_mb: The size of the memory of the VM in MB.
         :param pulumi.Input['VmwareVmDetailsPowerState'] power_state: The power state of the VM at the moment list was taken.
         :param pulumi.Input[str] uuid: The unique identifier of the VM in vCenter.
@@ -1056,7 +1056,7 @@ class VmwareVmDetailsArgs:
     @pulumi.getter(name="guestDescription")
     def guest_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+        The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
         """
         return pulumi.get(self, "guest_description")
 

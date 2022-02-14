@@ -40,13 +40,13 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names
+        /// Name of the referent. More info: https://kubernetes.io/docs/user-guide/identifiers#names
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+        /// UID of the referent. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

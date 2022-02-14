@@ -50,6 +50,8 @@ type Cluster struct {
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
+	// Configuration for Identity Service component.
+	IdentityServiceConfig IdentityServiceConfigResponseOutput `pulumi:"identityServiceConfig"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion pulumi.StringOutput `pulumi:"initialClusterVersion"`
 	// Configuration for cluster IP allocation.
@@ -185,6 +187,8 @@ type clusterArgs struct {
 	EnableKubernetesAlpha *bool `pulumi:"enableKubernetesAlpha"`
 	// Enable the ability to use Cloud TPUs in this cluster.
 	EnableTpu *bool `pulumi:"enableTpu"`
+	// Configuration for Identity Service component.
+	IdentityServiceConfig *IdentityServiceConfig `pulumi:"identityServiceConfig"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion *string `pulumi:"initialClusterVersion"`
 	// Configuration for cluster IP allocation.
@@ -273,6 +277,8 @@ type ClusterArgs struct {
 	EnableKubernetesAlpha pulumi.BoolPtrInput
 	// Enable the ability to use Cloud TPUs in this cluster.
 	EnableTpu pulumi.BoolPtrInput
+	// Configuration for Identity Service component.
+	IdentityServiceConfig IdentityServiceConfigPtrInput
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion pulumi.StringPtrInput
 	// Configuration for cluster IP allocation.

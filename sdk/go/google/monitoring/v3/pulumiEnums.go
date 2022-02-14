@@ -2124,6 +2124,348 @@ func (in *metricThresholdComparisonPtr) ToMetricThresholdComparisonPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(MetricThresholdComparisonPtrOutput)
 }
 
+// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+type MetricThresholdEvaluationMissingData string
+
+const (
+	// An unspecified evaluation missing data option, if used, it will default to EVALUATION_MISSING_DATA_ACTIVE.
+	MetricThresholdEvaluationMissingDataEvaluationMissingDataUnspecified = MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_UNSPECIFIED")
+	// If there is no data to evaluate the condition, then evaluate the condition as false.
+	MetricThresholdEvaluationMissingDataEvaluationMissingDataInactive = MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_INACTIVE")
+	// If there is no data to evaluate the condition, then evaluate the condition as true. The default for conditions with a duration value.
+	MetricThresholdEvaluationMissingDataEvaluationMissingDataActive = MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_ACTIVE")
+	// Do not evaluate the condition to any value if there is no data.
+	MetricThresholdEvaluationMissingDataEvaluationMissingDataNoOp = MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_NO_OP")
+)
+
+func (MetricThresholdEvaluationMissingData) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricThresholdEvaluationMissingData)(nil)).Elem()
+}
+
+func (e MetricThresholdEvaluationMissingData) ToMetricThresholdEvaluationMissingDataOutput() MetricThresholdEvaluationMissingDataOutput {
+	return pulumi.ToOutput(e).(MetricThresholdEvaluationMissingDataOutput)
+}
+
+func (e MetricThresholdEvaluationMissingData) ToMetricThresholdEvaluationMissingDataOutputWithContext(ctx context.Context) MetricThresholdEvaluationMissingDataOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MetricThresholdEvaluationMissingDataOutput)
+}
+
+func (e MetricThresholdEvaluationMissingData) ToMetricThresholdEvaluationMissingDataPtrOutput() MetricThresholdEvaluationMissingDataPtrOutput {
+	return e.ToMetricThresholdEvaluationMissingDataPtrOutputWithContext(context.Background())
+}
+
+func (e MetricThresholdEvaluationMissingData) ToMetricThresholdEvaluationMissingDataPtrOutputWithContext(ctx context.Context) MetricThresholdEvaluationMissingDataPtrOutput {
+	return MetricThresholdEvaluationMissingData(e).ToMetricThresholdEvaluationMissingDataOutputWithContext(ctx).ToMetricThresholdEvaluationMissingDataPtrOutputWithContext(ctx)
+}
+
+func (e MetricThresholdEvaluationMissingData) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetricThresholdEvaluationMissingData) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetricThresholdEvaluationMissingData) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MetricThresholdEvaluationMissingData) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MetricThresholdEvaluationMissingDataOutput struct{ *pulumi.OutputState }
+
+func (MetricThresholdEvaluationMissingDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricThresholdEvaluationMissingData)(nil)).Elem()
+}
+
+func (o MetricThresholdEvaluationMissingDataOutput) ToMetricThresholdEvaluationMissingDataOutput() MetricThresholdEvaluationMissingDataOutput {
+	return o
+}
+
+func (o MetricThresholdEvaluationMissingDataOutput) ToMetricThresholdEvaluationMissingDataOutputWithContext(ctx context.Context) MetricThresholdEvaluationMissingDataOutput {
+	return o
+}
+
+func (o MetricThresholdEvaluationMissingDataOutput) ToMetricThresholdEvaluationMissingDataPtrOutput() MetricThresholdEvaluationMissingDataPtrOutput {
+	return o.ToMetricThresholdEvaluationMissingDataPtrOutputWithContext(context.Background())
+}
+
+func (o MetricThresholdEvaluationMissingDataOutput) ToMetricThresholdEvaluationMissingDataPtrOutputWithContext(ctx context.Context) MetricThresholdEvaluationMissingDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricThresholdEvaluationMissingData) *MetricThresholdEvaluationMissingData {
+		return &v
+	}).(MetricThresholdEvaluationMissingDataPtrOutput)
+}
+
+func (o MetricThresholdEvaluationMissingDataOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MetricThresholdEvaluationMissingDataOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetricThresholdEvaluationMissingData) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MetricThresholdEvaluationMissingDataOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetricThresholdEvaluationMissingDataOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetricThresholdEvaluationMissingData) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricThresholdEvaluationMissingDataPtrOutput struct{ *pulumi.OutputState }
+
+func (MetricThresholdEvaluationMissingDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricThresholdEvaluationMissingData)(nil)).Elem()
+}
+
+func (o MetricThresholdEvaluationMissingDataPtrOutput) ToMetricThresholdEvaluationMissingDataPtrOutput() MetricThresholdEvaluationMissingDataPtrOutput {
+	return o
+}
+
+func (o MetricThresholdEvaluationMissingDataPtrOutput) ToMetricThresholdEvaluationMissingDataPtrOutputWithContext(ctx context.Context) MetricThresholdEvaluationMissingDataPtrOutput {
+	return o
+}
+
+func (o MetricThresholdEvaluationMissingDataPtrOutput) Elem() MetricThresholdEvaluationMissingDataOutput {
+	return o.ApplyT(func(v *MetricThresholdEvaluationMissingData) MetricThresholdEvaluationMissingData {
+		if v != nil {
+			return *v
+		}
+		var ret MetricThresholdEvaluationMissingData
+		return ret
+	}).(MetricThresholdEvaluationMissingDataOutput)
+}
+
+func (o MetricThresholdEvaluationMissingDataPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetricThresholdEvaluationMissingDataPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MetricThresholdEvaluationMissingData) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MetricThresholdEvaluationMissingDataInput is an input type that accepts MetricThresholdEvaluationMissingDataArgs and MetricThresholdEvaluationMissingDataOutput values.
+// You can construct a concrete instance of `MetricThresholdEvaluationMissingDataInput` via:
+//
+//          MetricThresholdEvaluationMissingDataArgs{...}
+type MetricThresholdEvaluationMissingDataInput interface {
+	pulumi.Input
+
+	ToMetricThresholdEvaluationMissingDataOutput() MetricThresholdEvaluationMissingDataOutput
+	ToMetricThresholdEvaluationMissingDataOutputWithContext(context.Context) MetricThresholdEvaluationMissingDataOutput
+}
+
+var metricThresholdEvaluationMissingDataPtrType = reflect.TypeOf((**MetricThresholdEvaluationMissingData)(nil)).Elem()
+
+type MetricThresholdEvaluationMissingDataPtrInput interface {
+	pulumi.Input
+
+	ToMetricThresholdEvaluationMissingDataPtrOutput() MetricThresholdEvaluationMissingDataPtrOutput
+	ToMetricThresholdEvaluationMissingDataPtrOutputWithContext(context.Context) MetricThresholdEvaluationMissingDataPtrOutput
+}
+
+type metricThresholdEvaluationMissingDataPtr string
+
+func MetricThresholdEvaluationMissingDataPtr(v string) MetricThresholdEvaluationMissingDataPtrInput {
+	return (*metricThresholdEvaluationMissingDataPtr)(&v)
+}
+
+func (*metricThresholdEvaluationMissingDataPtr) ElementType() reflect.Type {
+	return metricThresholdEvaluationMissingDataPtrType
+}
+
+func (in *metricThresholdEvaluationMissingDataPtr) ToMetricThresholdEvaluationMissingDataPtrOutput() MetricThresholdEvaluationMissingDataPtrOutput {
+	return pulumi.ToOutput(in).(MetricThresholdEvaluationMissingDataPtrOutput)
+}
+
+func (in *metricThresholdEvaluationMissingDataPtr) ToMetricThresholdEvaluationMissingDataPtrOutputWithContext(ctx context.Context) MetricThresholdEvaluationMissingDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MetricThresholdEvaluationMissingDataPtrOutput)
+}
+
+// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+type MonitoringQueryLanguageConditionEvaluationMissingData string
+
+const (
+	// An unspecified evaluation missing data option, if used, it will default to EVALUATION_MISSING_DATA_ACTIVE.
+	MonitoringQueryLanguageConditionEvaluationMissingDataEvaluationMissingDataUnspecified = MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_UNSPECIFIED")
+	// If there is no data to evaluate the condition, then evaluate the condition as false.
+	MonitoringQueryLanguageConditionEvaluationMissingDataEvaluationMissingDataInactive = MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_INACTIVE")
+	// If there is no data to evaluate the condition, then evaluate the condition as true. The default for conditions with a duration value.
+	MonitoringQueryLanguageConditionEvaluationMissingDataEvaluationMissingDataActive = MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_ACTIVE")
+	// Do not evaluate the condition to any value if there is no data.
+	MonitoringQueryLanguageConditionEvaluationMissingDataEvaluationMissingDataNoOp = MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_NO_OP")
+)
+
+func (MonitoringQueryLanguageConditionEvaluationMissingData) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringQueryLanguageConditionEvaluationMissingData)(nil)).Elem()
+}
+
+func (e MonitoringQueryLanguageConditionEvaluationMissingData) ToMonitoringQueryLanguageConditionEvaluationMissingDataOutput() MonitoringQueryLanguageConditionEvaluationMissingDataOutput {
+	return pulumi.ToOutput(e).(MonitoringQueryLanguageConditionEvaluationMissingDataOutput)
+}
+
+func (e MonitoringQueryLanguageConditionEvaluationMissingData) ToMonitoringQueryLanguageConditionEvaluationMissingDataOutputWithContext(ctx context.Context) MonitoringQueryLanguageConditionEvaluationMissingDataOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MonitoringQueryLanguageConditionEvaluationMissingDataOutput)
+}
+
+func (e MonitoringQueryLanguageConditionEvaluationMissingData) ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput() MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput {
+	return e.ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutputWithContext(context.Background())
+}
+
+func (e MonitoringQueryLanguageConditionEvaluationMissingData) ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutputWithContext(ctx context.Context) MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput {
+	return MonitoringQueryLanguageConditionEvaluationMissingData(e).ToMonitoringQueryLanguageConditionEvaluationMissingDataOutputWithContext(ctx).ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutputWithContext(ctx)
+}
+
+func (e MonitoringQueryLanguageConditionEvaluationMissingData) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MonitoringQueryLanguageConditionEvaluationMissingData) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MonitoringQueryLanguageConditionEvaluationMissingData) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MonitoringQueryLanguageConditionEvaluationMissingData) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MonitoringQueryLanguageConditionEvaluationMissingDataOutput struct{ *pulumi.OutputState }
+
+func (MonitoringQueryLanguageConditionEvaluationMissingDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringQueryLanguageConditionEvaluationMissingData)(nil)).Elem()
+}
+
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataOutput) ToMonitoringQueryLanguageConditionEvaluationMissingDataOutput() MonitoringQueryLanguageConditionEvaluationMissingDataOutput {
+	return o
+}
+
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataOutput) ToMonitoringQueryLanguageConditionEvaluationMissingDataOutputWithContext(ctx context.Context) MonitoringQueryLanguageConditionEvaluationMissingDataOutput {
+	return o
+}
+
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataOutput) ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput() MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput {
+	return o.ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataOutput) ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutputWithContext(ctx context.Context) MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringQueryLanguageConditionEvaluationMissingData) *MonitoringQueryLanguageConditionEvaluationMissingData {
+		return &v
+	}).(MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput)
+}
+
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MonitoringQueryLanguageConditionEvaluationMissingData) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MonitoringQueryLanguageConditionEvaluationMissingData) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringQueryLanguageConditionEvaluationMissingData)(nil)).Elem()
+}
+
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput) ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput() MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput {
+	return o
+}
+
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput) ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutputWithContext(ctx context.Context) MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput {
+	return o
+}
+
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput) Elem() MonitoringQueryLanguageConditionEvaluationMissingDataOutput {
+	return o.ApplyT(func(v *MonitoringQueryLanguageConditionEvaluationMissingData) MonitoringQueryLanguageConditionEvaluationMissingData {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoringQueryLanguageConditionEvaluationMissingData
+		return ret
+	}).(MonitoringQueryLanguageConditionEvaluationMissingDataOutput)
+}
+
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MonitoringQueryLanguageConditionEvaluationMissingData) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MonitoringQueryLanguageConditionEvaluationMissingDataInput is an input type that accepts MonitoringQueryLanguageConditionEvaluationMissingDataArgs and MonitoringQueryLanguageConditionEvaluationMissingDataOutput values.
+// You can construct a concrete instance of `MonitoringQueryLanguageConditionEvaluationMissingDataInput` via:
+//
+//          MonitoringQueryLanguageConditionEvaluationMissingDataArgs{...}
+type MonitoringQueryLanguageConditionEvaluationMissingDataInput interface {
+	pulumi.Input
+
+	ToMonitoringQueryLanguageConditionEvaluationMissingDataOutput() MonitoringQueryLanguageConditionEvaluationMissingDataOutput
+	ToMonitoringQueryLanguageConditionEvaluationMissingDataOutputWithContext(context.Context) MonitoringQueryLanguageConditionEvaluationMissingDataOutput
+}
+
+var monitoringQueryLanguageConditionEvaluationMissingDataPtrType = reflect.TypeOf((**MonitoringQueryLanguageConditionEvaluationMissingData)(nil)).Elem()
+
+type MonitoringQueryLanguageConditionEvaluationMissingDataPtrInput interface {
+	pulumi.Input
+
+	ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput() MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput
+	ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutputWithContext(context.Context) MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput
+}
+
+type monitoringQueryLanguageConditionEvaluationMissingDataPtr string
+
+func MonitoringQueryLanguageConditionEvaluationMissingDataPtr(v string) MonitoringQueryLanguageConditionEvaluationMissingDataPtrInput {
+	return (*monitoringQueryLanguageConditionEvaluationMissingDataPtr)(&v)
+}
+
+func (*monitoringQueryLanguageConditionEvaluationMissingDataPtr) ElementType() reflect.Type {
+	return monitoringQueryLanguageConditionEvaluationMissingDataPtrType
+}
+
+func (in *monitoringQueryLanguageConditionEvaluationMissingDataPtr) ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput() MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput {
+	return pulumi.ToOutput(in).(MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput)
+}
+
+func (in *monitoringQueryLanguageConditionEvaluationMissingDataPtr) ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutputWithContext(ctx context.Context) MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput)
+}
+
 // Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
 type NotificationChannelVerificationStatus string
 
@@ -3052,6 +3394,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorValueTypePtrInput)(nil)).Elem(), MetricDescriptorValueType("VALUE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricThresholdComparisonInput)(nil)).Elem(), MetricThresholdComparison("COMPARISON_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricThresholdComparisonPtrInput)(nil)).Elem(), MetricThresholdComparison("COMPARISON_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricThresholdEvaluationMissingDataInput)(nil)).Elem(), MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricThresholdEvaluationMissingDataPtrInput)(nil)).Elem(), MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringQueryLanguageConditionEvaluationMissingDataInput)(nil)).Elem(), MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringQueryLanguageConditionEvaluationMissingDataPtrInput)(nil)).Elem(), MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationChannelVerificationStatusInput)(nil)).Elem(), NotificationChannelVerificationStatus("VERIFICATION_STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationChannelVerificationStatusPtrInput)(nil)).Elem(), NotificationChannelVerificationStatus("VERIFICATION_STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupResourceTypeInput)(nil)).Elem(), ResourceGroupResourceType("RESOURCE_TYPE_UNSPECIFIED"))
@@ -3087,6 +3433,10 @@ func init() {
 	pulumi.RegisterOutputType(MetricDescriptorValueTypePtrOutput{})
 	pulumi.RegisterOutputType(MetricThresholdComparisonOutput{})
 	pulumi.RegisterOutputType(MetricThresholdComparisonPtrOutput{})
+	pulumi.RegisterOutputType(MetricThresholdEvaluationMissingDataOutput{})
+	pulumi.RegisterOutputType(MetricThresholdEvaluationMissingDataPtrOutput{})
+	pulumi.RegisterOutputType(MonitoringQueryLanguageConditionEvaluationMissingDataOutput{})
+	pulumi.RegisterOutputType(MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput{})
 	pulumi.RegisterOutputType(NotificationChannelVerificationStatusOutput{})
 	pulumi.RegisterOutputType(NotificationChannelVerificationStatusPtrOutput{})
 	pulumi.RegisterOutputType(ResourceGroupResourceTypeOutput{})

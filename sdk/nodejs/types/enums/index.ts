@@ -8,6 +8,7 @@ import * as apigee from "./apigee";
 import * as appengine from "./appengine";
 import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
+import * as baremetalsolution from "./baremetalsolution";
 import * as bigquery from "./bigquery";
 import * as bigqueryconnection from "./bigqueryconnection";
 import * as bigqueryreservation from "./bigqueryreservation";
@@ -104,6 +105,7 @@ export {
     appengine,
     artifactregistry,
     assuredworkloads,
+    baremetalsolution,
     bigquery,
     bigqueryconnection,
     bigqueryreservation,

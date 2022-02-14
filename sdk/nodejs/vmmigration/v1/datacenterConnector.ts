@@ -37,6 +37,18 @@ export class DatacenterConnector extends pulumi.CustomResource {
     }
 
     /**
+     * Appliance OVA version. This is the OVA which is manually installed by the user and contains the infrastructure for the automatically updatable components on the appliance.
+     */
+    public /*out*/ readonly applianceInfrastructureVersion!: pulumi.Output<string>;
+    /**
+     * Appliance last installed update bundle version. This is the version of the automatically updatable components on the appliance.
+     */
+    public /*out*/ readonly applianceSoftwareVersion!: pulumi.Output<string>;
+    /**
+     * The available versions for updating this appliance.
+     */
+    public /*out*/ readonly availableVersions!: pulumi.Output<outputs.vmmigration.v1.AvailableUpdatesResponse>;
+    /**
      * The communication channel between the datacenter connector and GCP.
      */
     public /*out*/ readonly bucket!: pulumi.Output<string>;
@@ -73,6 +85,10 @@ export class DatacenterConnector extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
+     * The status of the current / last upgradeAppliance operation.
+     */
+    public /*out*/ readonly upgradeStatus!: pulumi.Output<outputs.vmmigration.v1.UpgradeStatusResponse>;
+    /**
      * The version running in the DatacenterConnector. This is supplied by the OVA connector during the registration process and can not be modified.
      */
     public readonly version!: pulumi.Output<string>;
@@ -102,6 +118,9 @@ export class DatacenterConnector extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["sourceId"] = args ? args.sourceId : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["applianceInfrastructureVersion"] = undefined /*out*/;
+            resourceInputs["applianceSoftwareVersion"] = undefined /*out*/;
+            resourceInputs["availableVersions"] = undefined /*out*/;
             resourceInputs["bucket"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
@@ -109,7 +128,11 @@ export class DatacenterConnector extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["upgradeStatus"] = undefined /*out*/;
         } else {
+            resourceInputs["applianceInfrastructureVersion"] = undefined /*out*/;
+            resourceInputs["applianceSoftwareVersion"] = undefined /*out*/;
+            resourceInputs["availableVersions"] = undefined /*out*/;
             resourceInputs["bucket"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
@@ -119,6 +142,7 @@ export class DatacenterConnector extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["upgradeStatus"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

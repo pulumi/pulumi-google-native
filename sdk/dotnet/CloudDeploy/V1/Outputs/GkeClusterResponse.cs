@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
         /// </summary>
         public readonly string Cluster;
+        /// <summary>
+        /// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+        /// </summary>
+        public readonly bool InternalIp;
 
         [OutputConstructor]
-        private GkeClusterResponse(string cluster)
+        private GkeClusterResponse(
+            string cluster,
+
+            bool internalIp)
         {
             Cluster = cluster;
+            InternalIp = internalIp;
         }
     }
 }

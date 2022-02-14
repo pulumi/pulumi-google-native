@@ -11,7 +11,9 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'ApplianceVersionResponse',
     'AppliedLicenseResponse',
+    'AvailableUpdatesResponse',
     'CloneJobResponse',
     'ComputeEngineTargetDefaultsResponse',
     'ComputeEngineTargetDetailsResponse',
@@ -23,11 +25,84 @@ __all__ = [
     'SchedulePolicyResponse',
     'SchedulingNodeAffinityResponse',
     'StatusResponse',
+    'UpgradeStatusResponse',
     'VmUtilizationInfoResponse',
     'VmUtilizationMetricsResponse',
     'VmwareSourceDetailsResponse',
     'VmwareVmDetailsResponse',
 ]
+
+@pulumi.output_type
+class ApplianceVersionResponse(dict):
+    """
+    Describes an appliance version.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "releaseNotesUri":
+            suggest = "release_notes_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplianceVersionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplianceVersionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplianceVersionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 critical: bool,
+                 release_notes_uri: str,
+                 uri: str,
+                 version: str):
+        """
+        Describes an appliance version.
+        :param bool critical: Determine whether it's critical to upgrade the appliance to this version.
+        :param str release_notes_uri: Link to a page that contains the version release notes.
+        :param str uri: A link for downloading the version.
+        :param str version: The appliance version.
+        """
+        pulumi.set(__self__, "critical", critical)
+        pulumi.set(__self__, "release_notes_uri", release_notes_uri)
+        pulumi.set(__self__, "uri", uri)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> bool:
+        """
+        Determine whether it's critical to upgrade the appliance to this version.
+        """
+        return pulumi.get(self, "critical")
+
+    @property
+    @pulumi.getter(name="releaseNotesUri")
+    def release_notes_uri(self) -> str:
+        """
+        Link to a page that contains the version release notes.
+        """
+        return pulumi.get(self, "release_notes_uri")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        A link for downloading the version.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The appliance version.
+        """
+        return pulumi.get(self, "version")
+
 
 @pulumi.output_type
 class AppliedLicenseResponse(dict):
@@ -77,6 +152,58 @@ class AppliedLicenseResponse(dict):
         The license type that was used in OS adaptation.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class AvailableUpdatesResponse(dict):
+    """
+    Holds informatiom about the available versions for upgrade.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inPlaceUpdate":
+            suggest = "in_place_update"
+        elif key == "newDeployableAppliance":
+            suggest = "new_deployable_appliance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AvailableUpdatesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AvailableUpdatesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AvailableUpdatesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 in_place_update: 'outputs.ApplianceVersionResponse',
+                 new_deployable_appliance: 'outputs.ApplianceVersionResponse'):
+        """
+        Holds informatiom about the available versions for upgrade.
+        :param 'ApplianceVersionResponse' in_place_update: The latest version for in place update. The current appliance can be updated to this version using the API or m4c CLI.
+        :param 'ApplianceVersionResponse' new_deployable_appliance: The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance.
+        """
+        pulumi.set(__self__, "in_place_update", in_place_update)
+        pulumi.set(__self__, "new_deployable_appliance", new_deployable_appliance)
+
+    @property
+    @pulumi.getter(name="inPlaceUpdate")
+    def in_place_update(self) -> 'outputs.ApplianceVersionResponse':
+        """
+        The latest version for in place update. The current appliance can be updated to this version using the API or m4c CLI.
+        """
+        return pulumi.get(self, "in_place_update")
+
+    @property
+    @pulumi.getter(name="newDeployableAppliance")
+    def new_deployable_appliance(self) -> 'outputs.ApplianceVersionResponse':
+        """
+        The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance.
+        """
+        return pulumi.get(self, "new_deployable_appliance")
 
 
 @pulumi.output_type
@@ -1165,6 +1292,91 @@ class StatusResponse(dict):
 
 
 @pulumi.output_type
+class UpgradeStatusResponse(dict):
+    """
+    UpgradeStatus contains information about upgradeAppliance operation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "previousVersion":
+            suggest = "previous_version"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UpgradeStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UpgradeStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UpgradeStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error: 'outputs.StatusResponse',
+                 previous_version: str,
+                 start_time: str,
+                 state: str,
+                 version: str):
+        """
+        UpgradeStatus contains information about upgradeAppliance operation.
+        :param 'StatusResponse' error: Provides details on the state of the upgrade operation in case of an error.
+        :param str previous_version: The version from which we upgraded.
+        :param str start_time: The time the operation was started.
+        :param str state: The state of the upgradeAppliance operation.
+        :param str version: The version to upgrade to.
+        """
+        pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "previous_version", previous_version)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.StatusResponse':
+        """
+        Provides details on the state of the upgrade operation in case of an error.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="previousVersion")
+    def previous_version(self) -> str:
+        """
+        The version from which we upgraded.
+        """
+        return pulumi.get(self, "previous_version")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The time the operation was started.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the upgradeAppliance operation.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The version to upgrade to.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
 class VmUtilizationInfoResponse(dict):
     """
     Utilization information of a single VM.
@@ -1493,7 +1705,7 @@ class VmwareVmDetailsResponse(dict):
         :param str datacenter_id: The id of the vCenter's datacenter this VM is contained in.
         :param int disk_count: The number of disks the VM has.
         :param str display_name: The display name of the VM. Note that this is not necessarily unique.
-        :param str guest_description: The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+        :param str guest_description: The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
         :param int memory_mb: The size of the memory of the VM in MB.
         :param str power_state: The power state of the VM at the moment list was taken.
         :param str uuid: The unique identifier of the VM in vCenter.
@@ -1572,7 +1784,7 @@ class VmwareVmDetailsResponse(dict):
     @pulumi.getter(name="guestDescription")
     def guest_description(self) -> str:
         """
-        The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+        The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
         """
         return pulumi.get(self, "guest_description")
 

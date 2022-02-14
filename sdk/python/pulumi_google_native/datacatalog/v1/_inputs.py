@@ -23,8 +23,20 @@ __all__ = [
     'GoogleCloudDatacatalogV1ContactsArgs',
     'GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs',
     'GoogleCloudDatacatalogV1DatabaseTableSpecArgs',
+    'GoogleCloudDatacatalogV1DataplexExternalTableArgs',
+    'GoogleCloudDatacatalogV1DataplexFilesetSpecArgs',
+    'GoogleCloudDatacatalogV1DataplexSpecArgs',
+    'GoogleCloudDatacatalogV1DataplexTableSpecArgs',
     'GoogleCloudDatacatalogV1EntryOverviewArgs',
+    'GoogleCloudDatacatalogV1FilesetSpecArgs',
     'GoogleCloudDatacatalogV1GcsFilesetSpecArgs',
+    'GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs',
+    'GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs',
+    'GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs',
+    'GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs',
+    'GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs',
+    'GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs',
+    'GoogleCloudDatacatalogV1PhysicalSchemaArgs',
     'GoogleCloudDatacatalogV1RoutineSpecArgumentArgs',
     'GoogleCloudDatacatalogV1RoutineSpecArgs',
     'GoogleCloudDatacatalogV1SchemaArgs',
@@ -563,13 +575,29 @@ class GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs:
 @pulumi.input_type
 class GoogleCloudDatacatalogV1DatabaseTableSpecArgs:
     def __init__(__self__, *,
+                 dataplex_table: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexTableSpecArgs']] = None,
                  type: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecType']] = None):
         """
         Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+        :param pulumi.Input['GoogleCloudDatacatalogV1DataplexTableSpecArgs'] dataplex_table: Fields specific to a Dataplex table and present only in the Dataplex table entries.
         :param pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecType'] type: Type of this table.
         """
+        if dataplex_table is not None:
+            pulumi.set(__self__, "dataplex_table", dataplex_table)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="dataplexTable")
+    def dataplex_table(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexTableSpecArgs']]:
+        """
+        Fields specific to a Dataplex table and present only in the Dataplex table entries.
+        """
+        return pulumi.get(self, "dataplex_table")
+
+    @dataplex_table.setter
+    def dataplex_table(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexTableSpecArgs']]):
+        pulumi.set(self, "dataplex_table", value)
 
     @property
     @pulumi.getter
@@ -582,6 +610,230 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecType']]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1DataplexExternalTableArgs:
+    def __init__(__self__, *,
+                 data_catalog_entry: Optional[pulumi.Input[str]] = None,
+                 fully_qualified_name: Optional[pulumi.Input[str]] = None,
+                 google_cloud_resource: Optional[pulumi.Input[str]] = None,
+                 system: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableSystem']] = None):
+        """
+        External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog.
+        :param pulumi.Input[str] data_catalog_entry: Name of the Data Catalog entry representing the external table.
+        :param pulumi.Input[str] fully_qualified_name: Fully qualified name (FQN) of the external table.
+        :param pulumi.Input[str] google_cloud_resource: Google Cloud resource name of the external table.
+        :param pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableSystem'] system: Service in which the external table is registered.
+        """
+        if data_catalog_entry is not None:
+            pulumi.set(__self__, "data_catalog_entry", data_catalog_entry)
+        if fully_qualified_name is not None:
+            pulumi.set(__self__, "fully_qualified_name", fully_qualified_name)
+        if google_cloud_resource is not None:
+            pulumi.set(__self__, "google_cloud_resource", google_cloud_resource)
+        if system is not None:
+            pulumi.set(__self__, "system", system)
+
+    @property
+    @pulumi.getter(name="dataCatalogEntry")
+    def data_catalog_entry(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Data Catalog entry representing the external table.
+        """
+        return pulumi.get(self, "data_catalog_entry")
+
+    @data_catalog_entry.setter
+    def data_catalog_entry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_catalog_entry", value)
+
+    @property
+    @pulumi.getter(name="fullyQualifiedName")
+    def fully_qualified_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fully qualified name (FQN) of the external table.
+        """
+        return pulumi.get(self, "fully_qualified_name")
+
+    @fully_qualified_name.setter
+    def fully_qualified_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fully_qualified_name", value)
+
+    @property
+    @pulumi.getter(name="googleCloudResource")
+    def google_cloud_resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        Google Cloud resource name of the external table.
+        """
+        return pulumi.get(self, "google_cloud_resource")
+
+    @google_cloud_resource.setter
+    def google_cloud_resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "google_cloud_resource", value)
+
+    @property
+    @pulumi.getter
+    def system(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableSystem']]:
+        """
+        Service in which the external table is registered.
+        """
+        return pulumi.get(self, "system")
+
+    @system.setter
+    def system(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableSystem']]):
+        pulumi.set(self, "system", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1DataplexFilesetSpecArgs:
+    def __init__(__self__, *,
+                 dataplex_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexSpecArgs']] = None):
+        """
+        Entry specyfication for a Dataplex fileset.
+        :param pulumi.Input['GoogleCloudDatacatalogV1DataplexSpecArgs'] dataplex_spec: Common Dataplex fields.
+        """
+        if dataplex_spec is not None:
+            pulumi.set(__self__, "dataplex_spec", dataplex_spec)
+
+    @property
+    @pulumi.getter(name="dataplexSpec")
+    def dataplex_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexSpecArgs']]:
+        """
+        Common Dataplex fields.
+        """
+        return pulumi.get(self, "dataplex_spec")
+
+    @dataplex_spec.setter
+    def dataplex_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexSpecArgs']]):
+        pulumi.set(self, "dataplex_spec", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1DataplexSpecArgs:
+    def __init__(__self__, *,
+                 asset: Optional[pulumi.Input[str]] = None,
+                 compression_format: Optional[pulumi.Input[str]] = None,
+                 data_format: Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Common Dataplex fields.
+        :param pulumi.Input[str] asset: Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
+        :param pulumi.Input[str] compression_format: Compression format of the data, e.g., zip, gzip etc.
+        :param pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaArgs'] data_format: Format of the data.
+        :param pulumi.Input[str] project: Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
+        """
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if compression_format is not None:
+            pulumi.set(__self__, "compression_format", compression_format)
+        if data_format is not None:
+            pulumi.set(__self__, "data_format", data_format)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
+        """
+        return pulumi.get(self, "asset")
+
+    @asset.setter
+    def asset(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "asset", value)
+
+    @property
+    @pulumi.getter(name="compressionFormat")
+    def compression_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        Compression format of the data, e.g., zip, gzip etc.
+        """
+        return pulumi.get(self, "compression_format")
+
+    @compression_format.setter
+    def compression_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compression_format", value)
+
+    @property
+    @pulumi.getter(name="dataFormat")
+    def data_format(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaArgs']]:
+        """
+        Format of the data.
+        """
+        return pulumi.get(self, "data_format")
+
+    @data_format.setter
+    def data_format(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaArgs']]):
+        pulumi.set(self, "data_format", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1DataplexTableSpecArgs:
+    def __init__(__self__, *,
+                 dataplex_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexSpecArgs']] = None,
+                 external_tables: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableArgs']]]] = None,
+                 user_managed: Optional[pulumi.Input[bool]] = None):
+        """
+        Entry specification for a Dataplex table.
+        :param pulumi.Input['GoogleCloudDatacatalogV1DataplexSpecArgs'] dataplex_spec: Common Dataplex fields.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableArgs']]] external_tables: List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
+        :param pulumi.Input[bool] user_managed: Indicates if the table schema is managed by the user or not.
+        """
+        if dataplex_spec is not None:
+            pulumi.set(__self__, "dataplex_spec", dataplex_spec)
+        if external_tables is not None:
+            pulumi.set(__self__, "external_tables", external_tables)
+        if user_managed is not None:
+            pulumi.set(__self__, "user_managed", user_managed)
+
+    @property
+    @pulumi.getter(name="dataplexSpec")
+    def dataplex_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexSpecArgs']]:
+        """
+        Common Dataplex fields.
+        """
+        return pulumi.get(self, "dataplex_spec")
+
+    @dataplex_spec.setter
+    def dataplex_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexSpecArgs']]):
+        pulumi.set(self, "dataplex_spec", value)
+
+    @property
+    @pulumi.getter(name="externalTables")
+    def external_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableArgs']]]]:
+        """
+        List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
+        """
+        return pulumi.get(self, "external_tables")
+
+    @external_tables.setter
+    def external_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableArgs']]]]):
+        pulumi.set(self, "external_tables", value)
+
+    @property
+    @pulumi.getter(name="userManaged")
+    def user_managed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if the table schema is managed by the user or not.
+        """
+        return pulumi.get(self, "user_managed")
+
+    @user_managed.setter
+    def user_managed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "user_managed", value)
 
 
 @pulumi.input_type
@@ -609,6 +861,30 @@ class GoogleCloudDatacatalogV1EntryOverviewArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDatacatalogV1FilesetSpecArgs:
+    def __init__(__self__, *,
+                 dataplex_fileset: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexFilesetSpecArgs']] = None):
+        """
+        Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.
+        :param pulumi.Input['GoogleCloudDatacatalogV1DataplexFilesetSpecArgs'] dataplex_fileset: Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
+        """
+        if dataplex_fileset is not None:
+            pulumi.set(__self__, "dataplex_fileset", dataplex_fileset)
+
+    @property
+    @pulumi.getter(name="dataplexFileset")
+    def dataplex_fileset(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexFilesetSpecArgs']]:
+        """
+        Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
+        """
+        return pulumi.get(self, "dataplex_fileset")
+
+    @dataplex_fileset.setter
+    def dataplex_fileset(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexFilesetSpecArgs']]):
+        pulumi.set(self, "dataplex_fileset", value)
+
+
+@pulumi.input_type
 class GoogleCloudDatacatalogV1GcsFilesetSpecArgs:
     def __init__(__self__, *,
                  file_patterns: pulumi.Input[Sequence[pulumi.Input[str]]]):
@@ -629,6 +905,209 @@ class GoogleCloudDatacatalogV1GcsFilesetSpecArgs:
     @file_patterns.setter
     def file_patterns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "file_patterns", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs:
+    def __init__(__self__, *,
+                 text: Optional[pulumi.Input[str]] = None):
+        """
+        Schema in Avro JSON format.
+        :param pulumi.Input[str] text: JSON source of the Avro schema.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        JSON source of the Avro schema.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs:
+    def __init__(__self__):
+        """
+        Marks a CSV-encoded data source.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs:
+    def __init__(__self__):
+        """
+        Marks an ORC-encoded data source.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs:
+    def __init__(__self__):
+        """
+        Marks a Parquet-encoded data source.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs:
+    def __init__(__self__, *,
+                 text: Optional[pulumi.Input[str]] = None):
+        """
+        Schema in protocol buffer format.
+        :param pulumi.Input[str] text: Protocol buffer source of the schema.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Protocol buffer source of the schema.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs:
+    def __init__(__self__, *,
+                 text: Optional[pulumi.Input[str]] = None):
+        """
+        Schema in Thrift format.
+        :param pulumi.Input[str] text: Thrift IDL source of the schema.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Thrift IDL source of the schema.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1PhysicalSchemaArgs:
+    def __init__(__self__, *,
+                 avro: Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs']] = None,
+                 csv: Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs']] = None,
+                 orc: Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs']] = None,
+                 parquet: Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs']] = None,
+                 protobuf: Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs']] = None,
+                 thrift: Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs']] = None):
+        """
+        Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing source data.
+        :param pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs'] avro: Schema in Avro JSON format.
+        :param pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs'] csv: Marks a CSV-encoded data source.
+        :param pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs'] orc: Marks an ORC-encoded data source.
+        :param pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs'] parquet: Marks a Parquet-encoded data source.
+        :param pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs'] protobuf: Schema in protocol buffer format.
+        :param pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs'] thrift: Schema in Thrift format.
+        """
+        if avro is not None:
+            pulumi.set(__self__, "avro", avro)
+        if csv is not None:
+            pulumi.set(__self__, "csv", csv)
+        if orc is not None:
+            pulumi.set(__self__, "orc", orc)
+        if parquet is not None:
+            pulumi.set(__self__, "parquet", parquet)
+        if protobuf is not None:
+            pulumi.set(__self__, "protobuf", protobuf)
+        if thrift is not None:
+            pulumi.set(__self__, "thrift", thrift)
+
+    @property
+    @pulumi.getter
+    def avro(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs']]:
+        """
+        Schema in Avro JSON format.
+        """
+        return pulumi.get(self, "avro")
+
+    @avro.setter
+    def avro(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs']]):
+        pulumi.set(self, "avro", value)
+
+    @property
+    @pulumi.getter
+    def csv(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs']]:
+        """
+        Marks a CSV-encoded data source.
+        """
+        return pulumi.get(self, "csv")
+
+    @csv.setter
+    def csv(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs']]):
+        pulumi.set(self, "csv", value)
+
+    @property
+    @pulumi.getter
+    def orc(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs']]:
+        """
+        Marks an ORC-encoded data source.
+        """
+        return pulumi.get(self, "orc")
+
+    @orc.setter
+    def orc(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs']]):
+        pulumi.set(self, "orc", value)
+
+    @property
+    @pulumi.getter
+    def parquet(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs']]:
+        """
+        Marks a Parquet-encoded data source.
+        """
+        return pulumi.get(self, "parquet")
+
+    @parquet.setter
+    def parquet(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs']]):
+        pulumi.set(self, "parquet", value)
+
+    @property
+    @pulumi.getter
+    def protobuf(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs']]:
+        """
+        Schema in protocol buffer format.
+        """
+        return pulumi.get(self, "protobuf")
+
+    @protobuf.setter
+    def protobuf(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs']]):
+        pulumi.set(self, "protobuf", value)
+
+    @property
+    @pulumi.getter
+    def thrift(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs']]:
+        """
+        Schema in Thrift format.
+        """
+        return pulumi.get(self, "thrift")
+
+    @thrift.setter
+    def thrift(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs']]):
+        pulumi.set(self, "thrift", value)
 
 
 @pulumi.input_type

@@ -181,6 +181,175 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
+// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+type FunctionDockerRegistry string
+
+const (
+	// Unspecified.
+	FunctionDockerRegistryDockerRegistryUnspecified = FunctionDockerRegistry("DOCKER_REGISTRY_UNSPECIFIED")
+	// Docker images will be stored in multi-regional Container Registry repositories named `gcf`.
+	FunctionDockerRegistryContainerRegistry = FunctionDockerRegistry("CONTAINER_REGISTRY")
+	// Docker images will be stored in regional Artifact Registry repositories. By default, GCF will create and use repositories named `gcf-artifacts` in every region in which a function is deployed. But the repository to use can also be specified by the user using the `docker_repository` field.
+	FunctionDockerRegistryArtifactRegistry = FunctionDockerRegistry("ARTIFACT_REGISTRY")
+)
+
+func (FunctionDockerRegistry) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionDockerRegistry)(nil)).Elem()
+}
+
+func (e FunctionDockerRegistry) ToFunctionDockerRegistryOutput() FunctionDockerRegistryOutput {
+	return pulumi.ToOutput(e).(FunctionDockerRegistryOutput)
+}
+
+func (e FunctionDockerRegistry) ToFunctionDockerRegistryOutputWithContext(ctx context.Context) FunctionDockerRegistryOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FunctionDockerRegistryOutput)
+}
+
+func (e FunctionDockerRegistry) ToFunctionDockerRegistryPtrOutput() FunctionDockerRegistryPtrOutput {
+	return e.ToFunctionDockerRegistryPtrOutputWithContext(context.Background())
+}
+
+func (e FunctionDockerRegistry) ToFunctionDockerRegistryPtrOutputWithContext(ctx context.Context) FunctionDockerRegistryPtrOutput {
+	return FunctionDockerRegistry(e).ToFunctionDockerRegistryOutputWithContext(ctx).ToFunctionDockerRegistryPtrOutputWithContext(ctx)
+}
+
+func (e FunctionDockerRegistry) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FunctionDockerRegistry) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FunctionDockerRegistry) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FunctionDockerRegistry) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FunctionDockerRegistryOutput struct{ *pulumi.OutputState }
+
+func (FunctionDockerRegistryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionDockerRegistry)(nil)).Elem()
+}
+
+func (o FunctionDockerRegistryOutput) ToFunctionDockerRegistryOutput() FunctionDockerRegistryOutput {
+	return o
+}
+
+func (o FunctionDockerRegistryOutput) ToFunctionDockerRegistryOutputWithContext(ctx context.Context) FunctionDockerRegistryOutput {
+	return o
+}
+
+func (o FunctionDockerRegistryOutput) ToFunctionDockerRegistryPtrOutput() FunctionDockerRegistryPtrOutput {
+	return o.ToFunctionDockerRegistryPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionDockerRegistryOutput) ToFunctionDockerRegistryPtrOutputWithContext(ctx context.Context) FunctionDockerRegistryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionDockerRegistry) *FunctionDockerRegistry {
+		return &v
+	}).(FunctionDockerRegistryPtrOutput)
+}
+
+func (o FunctionDockerRegistryOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FunctionDockerRegistryOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FunctionDockerRegistry) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FunctionDockerRegistryOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionDockerRegistryOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FunctionDockerRegistry) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FunctionDockerRegistryPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionDockerRegistryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionDockerRegistry)(nil)).Elem()
+}
+
+func (o FunctionDockerRegistryPtrOutput) ToFunctionDockerRegistryPtrOutput() FunctionDockerRegistryPtrOutput {
+	return o
+}
+
+func (o FunctionDockerRegistryPtrOutput) ToFunctionDockerRegistryPtrOutputWithContext(ctx context.Context) FunctionDockerRegistryPtrOutput {
+	return o
+}
+
+func (o FunctionDockerRegistryPtrOutput) Elem() FunctionDockerRegistryOutput {
+	return o.ApplyT(func(v *FunctionDockerRegistry) FunctionDockerRegistry {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionDockerRegistry
+		return ret
+	}).(FunctionDockerRegistryOutput)
+}
+
+func (o FunctionDockerRegistryPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionDockerRegistryPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FunctionDockerRegistry) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FunctionDockerRegistryInput is an input type that accepts FunctionDockerRegistryArgs and FunctionDockerRegistryOutput values.
+// You can construct a concrete instance of `FunctionDockerRegistryInput` via:
+//
+//          FunctionDockerRegistryArgs{...}
+type FunctionDockerRegistryInput interface {
+	pulumi.Input
+
+	ToFunctionDockerRegistryOutput() FunctionDockerRegistryOutput
+	ToFunctionDockerRegistryOutputWithContext(context.Context) FunctionDockerRegistryOutput
+}
+
+var functionDockerRegistryPtrType = reflect.TypeOf((**FunctionDockerRegistry)(nil)).Elem()
+
+type FunctionDockerRegistryPtrInput interface {
+	pulumi.Input
+
+	ToFunctionDockerRegistryPtrOutput() FunctionDockerRegistryPtrOutput
+	ToFunctionDockerRegistryPtrOutputWithContext(context.Context) FunctionDockerRegistryPtrOutput
+}
+
+type functionDockerRegistryPtr string
+
+func FunctionDockerRegistryPtr(v string) FunctionDockerRegistryPtrInput {
+	return (*functionDockerRegistryPtr)(&v)
+}
+
+func (*functionDockerRegistryPtr) ElementType() reflect.Type {
+	return functionDockerRegistryPtrType
+}
+
+func (in *functionDockerRegistryPtr) ToFunctionDockerRegistryPtrOutput() FunctionDockerRegistryPtrOutput {
+	return pulumi.ToOutput(in).(FunctionDockerRegistryPtrOutput)
+}
+
+func (in *functionDockerRegistryPtr) ToFunctionDockerRegistryPtrOutputWithContext(ctx context.Context) FunctionDockerRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FunctionDockerRegistryPtrOutput)
+}
+
 // The ingress settings for the function, controlling what traffic can reach it.
 type FunctionIngressSettings string
 
@@ -693,6 +862,8 @@ func (in *httpsTriggerSecurityLevelPtr) ToHttpsTriggerSecurityLevelPtrOutputWith
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionDockerRegistryInput)(nil)).Elem(), FunctionDockerRegistry("DOCKER_REGISTRY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionDockerRegistryPtrInput)(nil)).Elem(), FunctionDockerRegistry("DOCKER_REGISTRY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIngressSettingsInput)(nil)).Elem(), FunctionIngressSettings("INGRESS_SETTINGS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIngressSettingsPtrInput)(nil)).Elem(), FunctionIngressSettings("INGRESS_SETTINGS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionVpcConnectorEgressSettingsInput)(nil)).Elem(), FunctionVpcConnectorEgressSettings("VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"))
@@ -701,6 +872,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpsTriggerSecurityLevelPtrInput)(nil)).Elem(), HttpsTriggerSecurityLevel("SECURITY_LEVEL_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(FunctionDockerRegistryOutput{})
+	pulumi.RegisterOutputType(FunctionDockerRegistryPtrOutput{})
 	pulumi.RegisterOutputType(FunctionIngressSettingsOutput{})
 	pulumi.RegisterOutputType(FunctionIngressSettingsPtrOutput{})
 	pulumi.RegisterOutputType(FunctionVpcConnectorEgressSettingsOutput{})

@@ -102,6 +102,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string GatewayAddress;
         /// <summary>
+        /// The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
+        /// </summary>
+        public readonly string InternalIpv6Prefix;
+        /// <summary>
         /// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
         /// </summary>
         public readonly string IpCidrRange;
@@ -204,6 +208,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string gatewayAddress,
 
+            string internalIpv6Prefix,
+
             string ipCidrRange,
 
             string ipv6AccessType,
@@ -254,6 +260,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Fingerprint = fingerprint;
             FlowSampling = flowSampling;
             GatewayAddress = gatewayAddress;
+            InternalIpv6Prefix = internalIpv6Prefix;
             IpCidrRange = ipCidrRange;
             Ipv6AccessType = ipv6AccessType;
             Ipv6CidrRange = ipv6CidrRange;

@@ -16,13 +16,11 @@ class TargetProjectArgs:
                  target_project_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TargetProject resource.
         :param pulumi.Input[str] description: The target project's description.
-        :param pulumi.Input[str] name: The name of the target project.
         :param pulumi.Input[str] project: The target project ID (number) or project name.
         """
         pulumi.set(__self__, "target_project_id", target_project_id)
@@ -30,8 +28,6 @@ class TargetProjectArgs:
             pulumi.set(__self__, "description", description)
         if location is not None:
             pulumi.set(__self__, "location", location)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
@@ -69,18 +65,6 @@ class TargetProjectArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the target project.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The target project ID (number) or project name.
@@ -108,18 +92,17 @@ class TargetProject(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  target_project_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new TargetProject in a given project. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The target project's description.
-        :param pulumi.Input[str] name: The name of the target project.
         :param pulumi.Input[str] project: The target project ID (number) or project name.
         """
         ...
@@ -130,6 +113,7 @@ class TargetProject(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new TargetProject in a given project. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param TargetProjectArgs args: The arguments to use to populate this resource's properties.
@@ -148,7 +132,6 @@ class TargetProject(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  target_project_id: Optional[pulumi.Input[str]] = None,
@@ -166,13 +149,13 @@ class TargetProject(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["location"] = location
-            __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             if target_project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_project_id'")
             __props__.__dict__["target_project_id"] = target_project_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
         super(TargetProject, __self__).__init__(
             'google-native:vmmigration/v1:TargetProject',

@@ -24,15 +24,29 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
         /// Service that physically stores the data.
         /// </summary>
         public readonly string Service;
+        /// <summary>
+        /// Data Catalog entry name, if applicable.
+        /// </summary>
+        public readonly string SourceEntry;
+        /// <summary>
+        /// Detailed properties of the underlying storage.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1StoragePropertiesResponse StorageProperties;
 
         [OutputConstructor]
         private GoogleCloudDatacatalogV1DataSourceResponse(
             string resource,
 
-            string service)
+            string service,
+
+            string sourceEntry,
+
+            Outputs.GoogleCloudDatacatalogV1StoragePropertiesResponse storageProperties)
         {
             Resource = resource;
             Service = service;
+            SourceEntry = sourceEntry;
+            StorageProperties = storageProperties;
         }
     }
 }

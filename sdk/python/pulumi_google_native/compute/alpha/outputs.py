@@ -56,7 +56,10 @@ __all__ = [
     'CorsPolicyResponse',
     'CustomerEncryptionKeyResponse',
     'DeprecationStatusResponse',
+    'DiskAsyncReplicationResponse',
     'DiskInstantiationConfigResponse',
+    'DiskResourceStatusAsyncReplicationStatusResponse',
+    'DiskResourceStatusResponse',
     'DisplayDeviceResponse',
     'DistributionPolicyResponse',
     'DistributionPolicyZoneConfigurationResponse',
@@ -1394,8 +1397,6 @@ class AuditConfigResponse(dict):
         suggest = None
         if key == "auditLogConfigs":
             suggest = "audit_log_configs"
-        elif key == "exemptedMembers":
-            suggest = "exempted_members"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1410,16 +1411,13 @@ class AuditConfigResponse(dict):
 
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
-                 exempted_members: Sequence[str],
                  service: str):
         """
         Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
         :param Sequence['AuditLogConfigResponse'] audit_log_configs: The configuration for logging of each type of permission.
-        :param Sequence[str] exempted_members: This is deprecated and has no effect. Do not use.
         :param str service: Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         """
         pulumi.set(__self__, "audit_log_configs", audit_log_configs)
-        pulumi.set(__self__, "exempted_members", exempted_members)
         pulumi.set(__self__, "service", service)
 
     @property
@@ -1429,14 +1427,6 @@ class AuditConfigResponse(dict):
         The configuration for logging of each type of permission.
         """
         return pulumi.get(self, "audit_log_configs")
-
-    @property
-    @pulumi.getter(name="exemptedMembers")
-    def exempted_members(self) -> Sequence[str]:
-        """
-        This is deprecated and has no effect. Do not use.
-        """
-        return pulumi.get(self, "exempted_members")
 
     @property
     @pulumi.getter
@@ -3420,11 +3410,11 @@ class CircuitBreakersResponse(dict):
         """
         Settings controlling the volume of requests, connections and retries to this backend service.
         :param 'DurationResponse' connect_timeout: The timeout for new network connections to hosts.
-        :param int max_connections: Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param int max_pending_requests: Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param int max_connections: The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param int max_pending_requests: The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param int max_requests: The maximum number of parallel requests that allowed to the backend service. If not specified, there is no limit.
-        :param int max_requests_per_connection: Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param int max_retries: Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param int max_requests_per_connection: Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param int max_retries: The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         pulumi.set(__self__, "connect_timeout", connect_timeout)
         pulumi.set(__self__, "max_connections", max_connections)
@@ -3445,7 +3435,7 @@ class CircuitBreakersResponse(dict):
     @pulumi.getter(name="maxConnections")
     def max_connections(self) -> int:
         """
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "max_connections")
 
@@ -3453,7 +3443,7 @@ class CircuitBreakersResponse(dict):
     @pulumi.getter(name="maxPendingRequests")
     def max_pending_requests(self) -> int:
         """
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "max_pending_requests")
 
@@ -3469,7 +3459,7 @@ class CircuitBreakersResponse(dict):
     @pulumi.getter(name="maxRequestsPerConnection")
     def max_requests_per_connection(self) -> int:
         """
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "max_requests_per_connection")
 
@@ -3477,7 +3467,7 @@ class CircuitBreakersResponse(dict):
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> int:
         """
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "max_retries")
 
@@ -4043,6 +4033,52 @@ class DeprecationStatusResponse(dict):
 
 
 @pulumi.output_type
+class DiskAsyncReplicationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskId":
+            suggest = "disk_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskAsyncReplicationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskAsyncReplicationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskAsyncReplicationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk: str,
+                 disk_id: str):
+        """
+        :param str disk: The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
+        :param str disk_id: The unique ID of the other disk asynchronously replicated to or from the current disk. This value identifies the exact disk that was used to create this replication. For example, if you started replicating the persistent disk from a disk that was later deleted and recreated under the same name, the disk ID would identify the exact version of the disk that was used.
+        """
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "disk_id", disk_id)
+
+    @property
+    @pulumi.getter
+    def disk(self) -> str:
+        """
+        The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
+        """
+        return pulumi.get(self, "disk")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> str:
+        """
+        The unique ID of the other disk asynchronously replicated to or from the current disk. This value identifies the exact disk that was used to create this replication. For example, if you started replicating the persistent disk from a disk that was later deleted and recreated under the same name, the disk ID would identify the exact version of the disk that was used.
+        """
+        return pulumi.get(self, "disk_id")
+
+
+@pulumi.output_type
 class DiskInstantiationConfigResponse(dict):
     """
     A specification of the desired way to instantiate a disk in the instance template when its created from a source instance.
@@ -4118,6 +4154,62 @@ class DiskInstantiationConfigResponse(dict):
         Specifies whether to include the disk and what image to use. Possible values are: - source-image: to use the same image that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - source-image-family: to use the same image family that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - custom-image: to use a user-provided image url for disk creation. Applicable to the boot disk and additional read-write disks. - attach-read-only: to attach a read-only disk. Applicable to read-only disks. - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local SSDs, and read-only disks. 
         """
         return pulumi.get(self, "instantiate_from")
+
+
+@pulumi.output_type
+class DiskResourceStatusAsyncReplicationStatusResponse(dict):
+    def __init__(__self__, *,
+                 state: str):
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class DiskResourceStatusResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "asyncPrimaryDisk":
+            suggest = "async_primary_disk"
+        elif key == "asyncSecondaryDisks":
+            suggest = "async_secondary_disks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskResourceStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskResourceStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskResourceStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 async_primary_disk: 'outputs.DiskResourceStatusAsyncReplicationStatusResponse',
+                 async_secondary_disks: Mapping[str, str]):
+        """
+        :param Mapping[str, str] async_secondary_disks: Key: disk, value: AsyncReplicationStatus message
+        """
+        pulumi.set(__self__, "async_primary_disk", async_primary_disk)
+        pulumi.set(__self__, "async_secondary_disks", async_secondary_disks)
+
+    @property
+    @pulumi.getter(name="asyncPrimaryDisk")
+    def async_primary_disk(self) -> 'outputs.DiskResourceStatusAsyncReplicationStatusResponse':
+        return pulumi.get(self, "async_primary_disk")
+
+    @property
+    @pulumi.getter(name="asyncSecondaryDisks")
+    def async_secondary_disks(self) -> Mapping[str, str]:
+        """
+        Key: disk, value: AsyncReplicationStatus message
+        """
+        return pulumi.get(self, "async_secondary_disks")
 
 
 @pulumi.output_type
@@ -4818,6 +4910,8 @@ class FirewallPolicyRuleResponse(dict):
         suggest = None
         if key == "enableLogging":
             suggest = "enable_logging"
+        elif key == "ruleName":
+            suggest = "rule_name"
         elif key == "ruleTupleCount":
             suggest = "rule_tuple_count"
         elif key == "targetResources":
@@ -4847,6 +4941,7 @@ class FirewallPolicyRuleResponse(dict):
                  kind: str,
                  match: 'outputs.FirewallPolicyRuleMatcherResponse',
                  priority: int,
+                 rule_name: str,
                  rule_tuple_count: int,
                  target_resources: Sequence[str],
                  target_secure_tags: Sequence['outputs.FirewallPolicyRuleSecureTagResponse'],
@@ -4861,6 +4956,7 @@ class FirewallPolicyRuleResponse(dict):
         :param str kind: [Output only] Type of the resource. Always compute#firewallPolicyRule for firewall policy rules
         :param 'FirewallPolicyRuleMatcherResponse' match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param int priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+        :param str rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
         :param int rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
         :param Sequence[str] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param Sequence['FirewallPolicyRuleSecureTagResponse'] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -4874,6 +4970,7 @@ class FirewallPolicyRuleResponse(dict):
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "match", match)
         pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "rule_name", rule_name)
         pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
         pulumi.set(__self__, "target_resources", target_resources)
         pulumi.set(__self__, "target_secure_tags", target_secure_tags)
@@ -4942,6 +5039,14 @@ class FirewallPolicyRuleResponse(dict):
         An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         """
         return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> str:
+        """
+        An optional name for the rule. This field is not a unique identifier and can be updated.
+        """
+        return pulumi.get(self, "rule_name")
 
     @property
     @pulumi.getter(name="ruleTupleCount")
@@ -5433,7 +5538,7 @@ class GuestOsFeatureResponse(dict):
                  type: str):
         """
         Guest OS features.
-        :param str type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
+        :param str type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
         """
         pulumi.set(__self__, "type", type)
 
@@ -5441,7 +5546,7 @@ class GuestOsFeatureResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
+        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
         """
         return pulumi.get(self, "type")
 
@@ -9590,7 +9695,7 @@ class NetworkEndpointGroupCloudRunResponse(dict):
         Configuration for a Cloud Run network endpoint group (NEG). The service must be provided explicitly or in the URL mask. The tag is optional, may be provided explicitly or in the URL mask. Note: Cloud Run service must be in the same project and located in the same region as the Serverless NEG.
         :param str service: Cloud Run service is the main resource of Cloud Run. The service must be 1-63 characters long, and comply with RFC1035. Example value: "run-service".
         :param str tag: Optional Cloud Run tag represents the "named-revision" to provide additional fine-grained traffic routing information. The tag must be 1-63 characters long, and comply with RFC1035. Example value: "revision-0010".
-        :param str url_mask: A template to parse service and tag fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+        :param str url_mask: A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
         """
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "tag", tag)
@@ -9616,7 +9721,7 @@ class NetworkEndpointGroupCloudRunResponse(dict):
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> str:
         """
-        A template to parse service and tag fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+        A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
         """
         return pulumi.get(self, "url_mask")
 
@@ -11771,7 +11876,7 @@ class ResourcePolicyDailyCycleResponse(dict):
                  start_time: str):
         """
         Time window specified for daily operations.
-        :param int days_in_cycle: Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
+        :param int days_in_cycle: Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
         :param str duration: [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
         :param str start_time: Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
         """
@@ -11783,7 +11888,7 @@ class ResourcePolicyDailyCycleResponse(dict):
     @pulumi.getter(name="daysInCycle")
     def days_in_cycle(self) -> int:
         """
-        Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
+        Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
         """
         return pulumi.get(self, "days_in_cycle")
 
@@ -15489,9 +15594,9 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
         :param int ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
         :param str conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
         :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-        :param str exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
+        :param str exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
         :param 'SecurityPolicyRuleRedirectOptionsResponse' exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' rate_limit_threshold: Threshold at which to begin ratelimiting.
         """
@@ -15532,7 +15637,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> str:
         """
-        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -15548,7 +15653,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="exceedAction")
     def exceed_action(self) -> str:
         """
-        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
+        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
         """
         return pulumi.get(self, "exceed_action")
 
@@ -17026,7 +17131,7 @@ class SubnetworkLogConfigResponse(dict):
         The available logging options for this subnetwork.
         :param str aggregation_interval: Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
         :param bool enable: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
-        :param str filter_expr: Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
+        :param str filter_expr: Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
         :param float flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
         :param str metadata: Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
         :param Sequence[str] metadata_fields: Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
@@ -17058,7 +17163,7 @@ class SubnetworkLogConfigResponse(dict):
     @pulumi.getter(name="filterExpr")
     def filter_expr(self) -> str:
         """
-        Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
+        Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
         """
         return pulumi.get(self, "filter_expr")
 

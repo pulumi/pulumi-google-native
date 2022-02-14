@@ -49,10 +49,6 @@ export interface GetWorkerPoolResult {
      */
     readonly etag: string;
     /**
-     * Hybrid pool configuration
-     */
-    readonly hybridPoolConfig: outputs.cloudbuild.v1.HybridPoolConfigResponse;
-    /**
      * The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
      */
     readonly name: string;

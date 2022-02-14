@@ -1146,7 +1146,7 @@ class SubjectAltNamesArgs:
                  uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name).
-        :param pulumi.Input[Sequence[pulumi.Input['X509ExtensionArgs']]] custom_sans: Contains additional subject alternative name values.
+        :param pulumi.Input[Sequence[pulumi.Input['X509ExtensionArgs']]] custom_sans: Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_names: Contains only valid, fully-qualified host names.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] email_addresses: Contains only valid RFC 2822 E-mail addresses.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
@@ -1167,7 +1167,7 @@ class SubjectAltNamesArgs:
     @pulumi.getter(name="customSans")
     def custom_sans(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['X509ExtensionArgs']]]]:
         """
-        Contains additional subject alternative name values.
+        Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
         """
         return pulumi.get(self, "custom_sans")
 

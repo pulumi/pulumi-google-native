@@ -19,7 +19,6 @@ class WorkerPoolArgs:
                  worker_pool_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 hybrid_pool_config: Optional[pulumi.Input['HybridPoolConfigArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  private_pool_v1_config: Optional[pulumi.Input['PrivatePoolV1ConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -28,7 +27,6 @@ class WorkerPoolArgs:
         The set of arguments for constructing a WorkerPool resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-        :param pulumi.Input['HybridPoolConfigArgs'] hybrid_pool_config: Hybrid pool configuration
         :param pulumi.Input['PrivatePoolV1ConfigArgs'] private_pool_v1_config: Legacy Private Pool configuration.
         """
         pulumi.set(__self__, "worker_pool_id", worker_pool_id)
@@ -36,8 +34,6 @@ class WorkerPoolArgs:
             pulumi.set(__self__, "annotations", annotations)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if hybrid_pool_config is not None:
-            pulumi.set(__self__, "hybrid_pool_config", hybrid_pool_config)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if private_pool_v1_config is not None:
@@ -79,18 +75,6 @@ class WorkerPoolArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter(name="hybridPoolConfig")
-    def hybrid_pool_config(self) -> Optional[pulumi.Input['HybridPoolConfigArgs']]:
-        """
-        Hybrid pool configuration
-        """
-        return pulumi.get(self, "hybrid_pool_config")
-
-    @hybrid_pool_config.setter
-    def hybrid_pool_config(self, value: Optional[pulumi.Input['HybridPoolConfigArgs']]):
-        pulumi.set(self, "hybrid_pool_config", value)
 
     @property
     @pulumi.getter
@@ -139,7 +123,6 @@ class WorkerPool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 hybrid_pool_config: Optional[pulumi.Input[pulumi.InputType['HybridPoolConfigArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  private_pool_v1_config: Optional[pulumi.Input[pulumi.InputType['PrivatePoolV1ConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -154,7 +137,6 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-        :param pulumi.Input[pulumi.InputType['HybridPoolConfigArgs']] hybrid_pool_config: Hybrid pool configuration
         :param pulumi.Input[pulumi.InputType['PrivatePoolV1ConfigArgs']] private_pool_v1_config: Legacy Private Pool configuration.
         """
         ...
@@ -184,7 +166,6 @@ class WorkerPool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 hybrid_pool_config: Optional[pulumi.Input[pulumi.InputType['HybridPoolConfigArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  private_pool_v1_config: Optional[pulumi.Input[pulumi.InputType['PrivatePoolV1ConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -204,7 +185,6 @@ class WorkerPool(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["display_name"] = display_name
-            __props__.__dict__["hybrid_pool_config"] = hybrid_pool_config
             __props__.__dict__["location"] = location
             __props__.__dict__["private_pool_v1_config"] = private_pool_v1_config
             __props__.__dict__["project"] = project
@@ -246,7 +226,6 @@ class WorkerPool(pulumi.CustomResource):
         __props__.__dict__["delete_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["etag"] = None
-        __props__.__dict__["hybrid_pool_config"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["private_pool_v1_config"] = None
         __props__.__dict__["state"] = None
@@ -293,14 +272,6 @@ class WorkerPool(pulumi.CustomResource):
         Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
-
-    @property
-    @pulumi.getter(name="hybridPoolConfig")
-    def hybrid_pool_config(self) -> pulumi.Output['outputs.HybridPoolConfigResponse']:
-        """
-        Hybrid pool configuration
-        """
-        return pulumi.get(self, "hybrid_pool_config")
 
     @property
     @pulumi.getter

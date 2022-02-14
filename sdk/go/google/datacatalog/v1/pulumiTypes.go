@@ -2333,6 +2333,10 @@ type GoogleCloudDatacatalogV1DataSourceResponse struct {
 	Resource string `pulumi:"resource"`
 	// Service that physically stores the data.
 	Service string `pulumi:"service"`
+	// Data Catalog entry name, if applicable.
+	SourceEntry string `pulumi:"sourceEntry"`
+	// Detailed properties of the underlying storage.
+	StorageProperties GoogleCloudDatacatalogV1StoragePropertiesResponse `pulumi:"storageProperties"`
 }
 
 // Physical location of an entry.
@@ -2360,8 +2364,22 @@ func (o GoogleCloudDatacatalogV1DataSourceResponseOutput) Service() pulumi.Strin
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataSourceResponse) string { return v.Service }).(pulumi.StringOutput)
 }
 
+// Data Catalog entry name, if applicable.
+func (o GoogleCloudDatacatalogV1DataSourceResponseOutput) SourceEntry() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataSourceResponse) string { return v.SourceEntry }).(pulumi.StringOutput)
+}
+
+// Detailed properties of the underlying storage.
+func (o GoogleCloudDatacatalogV1DataSourceResponseOutput) StorageProperties() GoogleCloudDatacatalogV1StoragePropertiesResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataSourceResponse) GoogleCloudDatacatalogV1StoragePropertiesResponse {
+		return v.StorageProperties
+	}).(GoogleCloudDatacatalogV1StoragePropertiesResponseOutput)
+}
+
 // Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
 type GoogleCloudDatacatalogV1DatabaseTableSpec struct {
+	// Fields specific to a Dataplex table and present only in the Dataplex table entries.
+	DataplexTable *GoogleCloudDatacatalogV1DataplexTableSpec `pulumi:"dataplexTable"`
 	// Type of this table.
 	Type *GoogleCloudDatacatalogV1DatabaseTableSpecType `pulumi:"type"`
 }
@@ -2379,6 +2397,8 @@ type GoogleCloudDatacatalogV1DatabaseTableSpecInput interface {
 
 // Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
 type GoogleCloudDatacatalogV1DatabaseTableSpecArgs struct {
+	// Fields specific to a Dataplex table and present only in the Dataplex table entries.
+	DataplexTable GoogleCloudDatacatalogV1DataplexTableSpecPtrInput `pulumi:"dataplexTable"`
 	// Type of this table.
 	Type GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrInput `pulumi:"type"`
 }
@@ -2461,6 +2481,13 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecOutput) ToGoogleCloudDatacatalo
 	}).(GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput)
 }
 
+// Fields specific to a Dataplex table and present only in the Dataplex table entries.
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecOutput) DataplexTable() GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DatabaseTableSpec) *GoogleCloudDatacatalogV1DataplexTableSpec {
+		return v.DataplexTable
+	}).(GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput)
+}
+
 // Type of this table.
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecOutput) Type() GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1DatabaseTableSpec) *GoogleCloudDatacatalogV1DatabaseTableSpecType {
@@ -2492,6 +2519,16 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput) Elem() GoogleCloudDa
 	}).(GoogleCloudDatacatalogV1DatabaseTableSpecOutput)
 }
 
+// Fields specific to a Dataplex table and present only in the Dataplex table entries.
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput) DataplexTable() GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DatabaseTableSpec) *GoogleCloudDatacatalogV1DataplexTableSpec {
+		if v == nil {
+			return nil
+		}
+		return v.DataplexTable
+	}).(GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput)
+}
+
 // Type of this table.
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput) Type() GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DatabaseTableSpec) *GoogleCloudDatacatalogV1DatabaseTableSpecType {
@@ -2504,6 +2541,8 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput) Type() GoogleCloudDa
 
 // Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
 type GoogleCloudDatacatalogV1DatabaseTableSpecResponse struct {
+	// Fields specific to a Dataplex table and present only in the Dataplex table entries.
+	DataplexTable GoogleCloudDatacatalogV1DataplexTableSpecResponse `pulumi:"dataplexTable"`
 	// Type of this table.
 	Type string `pulumi:"type"`
 }
@@ -2523,9 +2562,856 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput) ToGoogleCloudDa
 	return o
 }
 
+// Fields specific to a Dataplex table and present only in the Dataplex table entries.
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput) DataplexTable() GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DatabaseTableSpecResponse) GoogleCloudDatacatalogV1DataplexTableSpecResponse {
+		return v.DataplexTable
+	}).(GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput)
+}
+
 // Type of this table.
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1DatabaseTableSpecResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog.
+type GoogleCloudDatacatalogV1DataplexExternalTable struct {
+	// Name of the Data Catalog entry representing the external table.
+	DataCatalogEntry *string `pulumi:"dataCatalogEntry"`
+	// Fully qualified name (FQN) of the external table.
+	FullyQualifiedName *string `pulumi:"fullyQualifiedName"`
+	// Google Cloud resource name of the external table.
+	GoogleCloudResource *string `pulumi:"googleCloudResource"`
+	// Service in which the external table is registered.
+	System *GoogleCloudDatacatalogV1DataplexExternalTableSystem `pulumi:"system"`
+}
+
+// GoogleCloudDatacatalogV1DataplexExternalTableInput is an input type that accepts GoogleCloudDatacatalogV1DataplexExternalTableArgs and GoogleCloudDatacatalogV1DataplexExternalTableOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexExternalTableInput` via:
+//
+//          GoogleCloudDatacatalogV1DataplexExternalTableArgs{...}
+type GoogleCloudDatacatalogV1DataplexExternalTableInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1DataplexExternalTableOutput() GoogleCloudDatacatalogV1DataplexExternalTableOutput
+	ToGoogleCloudDatacatalogV1DataplexExternalTableOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataplexExternalTableOutput
+}
+
+// External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog.
+type GoogleCloudDatacatalogV1DataplexExternalTableArgs struct {
+	// Name of the Data Catalog entry representing the external table.
+	DataCatalogEntry pulumi.StringPtrInput `pulumi:"dataCatalogEntry"`
+	// Fully qualified name (FQN) of the external table.
+	FullyQualifiedName pulumi.StringPtrInput `pulumi:"fullyQualifiedName"`
+	// Google Cloud resource name of the external table.
+	GoogleCloudResource pulumi.StringPtrInput `pulumi:"googleCloudResource"`
+	// Service in which the external table is registered.
+	System GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrInput `pulumi:"system"`
+}
+
+func (GoogleCloudDatacatalogV1DataplexExternalTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexExternalTable)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1DataplexExternalTableArgs) ToGoogleCloudDatacatalogV1DataplexExternalTableOutput() GoogleCloudDatacatalogV1DataplexExternalTableOutput {
+	return i.ToGoogleCloudDatacatalogV1DataplexExternalTableOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1DataplexExternalTableArgs) ToGoogleCloudDatacatalogV1DataplexExternalTableOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexExternalTableOutput)
+}
+
+// GoogleCloudDatacatalogV1DataplexExternalTableArrayInput is an input type that accepts GoogleCloudDatacatalogV1DataplexExternalTableArray and GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexExternalTableArrayInput` via:
+//
+//          GoogleCloudDatacatalogV1DataplexExternalTableArray{ GoogleCloudDatacatalogV1DataplexExternalTableArgs{...} }
+type GoogleCloudDatacatalogV1DataplexExternalTableArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1DataplexExternalTableArrayOutput() GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput
+	ToGoogleCloudDatacatalogV1DataplexExternalTableArrayOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput
+}
+
+type GoogleCloudDatacatalogV1DataplexExternalTableArray []GoogleCloudDatacatalogV1DataplexExternalTableInput
+
+func (GoogleCloudDatacatalogV1DataplexExternalTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1DataplexExternalTable)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1DataplexExternalTableArray) ToGoogleCloudDatacatalogV1DataplexExternalTableArrayOutput() GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput {
+	return i.ToGoogleCloudDatacatalogV1DataplexExternalTableArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1DataplexExternalTableArray) ToGoogleCloudDatacatalogV1DataplexExternalTableArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput)
+}
+
+// External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog.
+type GoogleCloudDatacatalogV1DataplexExternalTableOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexExternalTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexExternalTable)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableOutput() GoogleCloudDatacatalogV1DataplexExternalTableOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableOutput {
+	return o
+}
+
+// Name of the Data Catalog entry representing the external table.
+func (o GoogleCloudDatacatalogV1DataplexExternalTableOutput) DataCatalogEntry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexExternalTable) *string { return v.DataCatalogEntry }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified name (FQN) of the external table.
+func (o GoogleCloudDatacatalogV1DataplexExternalTableOutput) FullyQualifiedName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexExternalTable) *string { return v.FullyQualifiedName }).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud resource name of the external table.
+func (o GoogleCloudDatacatalogV1DataplexExternalTableOutput) GoogleCloudResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexExternalTable) *string { return v.GoogleCloudResource }).(pulumi.StringPtrOutput)
+}
+
+// Service in which the external table is registered.
+func (o GoogleCloudDatacatalogV1DataplexExternalTableOutput) System() GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexExternalTable) *GoogleCloudDatacatalogV1DataplexExternalTableSystem {
+		return v.System
+	}).(GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1DataplexExternalTable)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableArrayOutput() GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1DataplexExternalTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1DataplexExternalTable {
+		return vs[0].([]GoogleCloudDatacatalogV1DataplexExternalTable)[vs[1].(int)]
+	}).(GoogleCloudDatacatalogV1DataplexExternalTableOutput)
+}
+
+// External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog.
+type GoogleCloudDatacatalogV1DataplexExternalTableResponse struct {
+	// Name of the Data Catalog entry representing the external table.
+	DataCatalogEntry string `pulumi:"dataCatalogEntry"`
+	// Fully qualified name (FQN) of the external table.
+	FullyQualifiedName string `pulumi:"fullyQualifiedName"`
+	// Google Cloud resource name of the external table.
+	GoogleCloudResource string `pulumi:"googleCloudResource"`
+	// Service in which the external table is registered.
+	System string `pulumi:"system"`
+}
+
+// External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog.
+type GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexExternalTableResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableResponseOutput() GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput {
+	return o
+}
+
+// Name of the Data Catalog entry representing the external table.
+func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput) DataCatalogEntry() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexExternalTableResponse) string { return v.DataCatalogEntry }).(pulumi.StringOutput)
+}
+
+// Fully qualified name (FQN) of the external table.
+func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput) FullyQualifiedName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexExternalTableResponse) string { return v.FullyQualifiedName }).(pulumi.StringOutput)
+}
+
+// Google Cloud resource name of the external table.
+func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput) GoogleCloudResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexExternalTableResponse) string { return v.GoogleCloudResource }).(pulumi.StringOutput)
+}
+
+// Service in which the external table is registered.
+func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput) System() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexExternalTableResponse) string { return v.System }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1DataplexExternalTableResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput() GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1DataplexExternalTableResponse {
+		return vs[0].([]GoogleCloudDatacatalogV1DataplexExternalTableResponse)[vs[1].(int)]
+	}).(GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput)
+}
+
+// Entry specyfication for a Dataplex fileset.
+type GoogleCloudDatacatalogV1DataplexFilesetSpec struct {
+	// Common Dataplex fields.
+	DataplexSpec *GoogleCloudDatacatalogV1DataplexSpec `pulumi:"dataplexSpec"`
+}
+
+// GoogleCloudDatacatalogV1DataplexFilesetSpecInput is an input type that accepts GoogleCloudDatacatalogV1DataplexFilesetSpecArgs and GoogleCloudDatacatalogV1DataplexFilesetSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexFilesetSpecInput` via:
+//
+//          GoogleCloudDatacatalogV1DataplexFilesetSpecArgs{...}
+type GoogleCloudDatacatalogV1DataplexFilesetSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1DataplexFilesetSpecOutput() GoogleCloudDatacatalogV1DataplexFilesetSpecOutput
+	ToGoogleCloudDatacatalogV1DataplexFilesetSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataplexFilesetSpecOutput
+}
+
+// Entry specyfication for a Dataplex fileset.
+type GoogleCloudDatacatalogV1DataplexFilesetSpecArgs struct {
+	// Common Dataplex fields.
+	DataplexSpec GoogleCloudDatacatalogV1DataplexSpecPtrInput `pulumi:"dataplexSpec"`
+}
+
+func (GoogleCloudDatacatalogV1DataplexFilesetSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexFilesetSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1DataplexFilesetSpecArgs) ToGoogleCloudDatacatalogV1DataplexFilesetSpecOutput() GoogleCloudDatacatalogV1DataplexFilesetSpecOutput {
+	return i.ToGoogleCloudDatacatalogV1DataplexFilesetSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1DataplexFilesetSpecArgs) ToGoogleCloudDatacatalogV1DataplexFilesetSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexFilesetSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexFilesetSpecOutput)
+}
+
+func (i GoogleCloudDatacatalogV1DataplexFilesetSpecArgs) ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput() GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1DataplexFilesetSpecArgs) ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexFilesetSpecOutput).ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1DataplexFilesetSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1DataplexFilesetSpecArgs, GoogleCloudDatacatalogV1DataplexFilesetSpecPtr and GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexFilesetSpecPtrInput` via:
+//
+//          GoogleCloudDatacatalogV1DataplexFilesetSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1DataplexFilesetSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput() GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput
+	ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput
+}
+
+type googleCloudDatacatalogV1DataplexFilesetSpecPtrType GoogleCloudDatacatalogV1DataplexFilesetSpecArgs
+
+func GoogleCloudDatacatalogV1DataplexFilesetSpecPtr(v *GoogleCloudDatacatalogV1DataplexFilesetSpecArgs) GoogleCloudDatacatalogV1DataplexFilesetSpecPtrInput {
+	return (*googleCloudDatacatalogV1DataplexFilesetSpecPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1DataplexFilesetSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1DataplexFilesetSpec)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1DataplexFilesetSpecPtrType) ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput() GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1DataplexFilesetSpecPtrType) ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput)
+}
+
+// Entry specyfication for a Dataplex fileset.
+type GoogleCloudDatacatalogV1DataplexFilesetSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexFilesetSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexFilesetSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecOutput) ToGoogleCloudDatacatalogV1DataplexFilesetSpecOutput() GoogleCloudDatacatalogV1DataplexFilesetSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecOutput) ToGoogleCloudDatacatalogV1DataplexFilesetSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexFilesetSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecOutput) ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput() GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecOutput) ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1DataplexFilesetSpec) *GoogleCloudDatacatalogV1DataplexFilesetSpec {
+		return &v
+	}).(GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput)
+}
+
+// Common Dataplex fields.
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecOutput) DataplexSpec() GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexFilesetSpec) *GoogleCloudDatacatalogV1DataplexSpec {
+		return v.DataplexSpec
+	}).(GoogleCloudDatacatalogV1DataplexSpecPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1DataplexFilesetSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput) ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput() GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput) ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput) Elem() GoogleCloudDatacatalogV1DataplexFilesetSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexFilesetSpec) GoogleCloudDatacatalogV1DataplexFilesetSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1DataplexFilesetSpec
+		return ret
+	}).(GoogleCloudDatacatalogV1DataplexFilesetSpecOutput)
+}
+
+// Common Dataplex fields.
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput) DataplexSpec() GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexFilesetSpec) *GoogleCloudDatacatalogV1DataplexSpec {
+		if v == nil {
+			return nil
+		}
+		return v.DataplexSpec
+	}).(GoogleCloudDatacatalogV1DataplexSpecPtrOutput)
+}
+
+// Entry specyfication for a Dataplex fileset.
+type GoogleCloudDatacatalogV1DataplexFilesetSpecResponse struct {
+	// Common Dataplex fields.
+	DataplexSpec GoogleCloudDatacatalogV1DataplexSpecResponse `pulumi:"dataplexSpec"`
+}
+
+// Entry specyfication for a Dataplex fileset.
+type GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexFilesetSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput) ToGoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput() GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput) ToGoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput {
+	return o
+}
+
+// Common Dataplex fields.
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput) DataplexSpec() GoogleCloudDatacatalogV1DataplexSpecResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexFilesetSpecResponse) GoogleCloudDatacatalogV1DataplexSpecResponse {
+		return v.DataplexSpec
+	}).(GoogleCloudDatacatalogV1DataplexSpecResponseOutput)
+}
+
+// Common Dataplex fields.
+type GoogleCloudDatacatalogV1DataplexSpec struct {
+	// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
+	Asset *string `pulumi:"asset"`
+	// Compression format of the data, e.g., zip, gzip etc.
+	CompressionFormat *string `pulumi:"compressionFormat"`
+	// Format of the data.
+	DataFormat *GoogleCloudDatacatalogV1PhysicalSchema `pulumi:"dataFormat"`
+	// Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
+	Project *string `pulumi:"project"`
+}
+
+// GoogleCloudDatacatalogV1DataplexSpecInput is an input type that accepts GoogleCloudDatacatalogV1DataplexSpecArgs and GoogleCloudDatacatalogV1DataplexSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexSpecInput` via:
+//
+//          GoogleCloudDatacatalogV1DataplexSpecArgs{...}
+type GoogleCloudDatacatalogV1DataplexSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1DataplexSpecOutput() GoogleCloudDatacatalogV1DataplexSpecOutput
+	ToGoogleCloudDatacatalogV1DataplexSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataplexSpecOutput
+}
+
+// Common Dataplex fields.
+type GoogleCloudDatacatalogV1DataplexSpecArgs struct {
+	// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// Compression format of the data, e.g., zip, gzip etc.
+	CompressionFormat pulumi.StringPtrInput `pulumi:"compressionFormat"`
+	// Format of the data.
+	DataFormat GoogleCloudDatacatalogV1PhysicalSchemaPtrInput `pulumi:"dataFormat"`
+	// Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (GoogleCloudDatacatalogV1DataplexSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1DataplexSpecArgs) ToGoogleCloudDatacatalogV1DataplexSpecOutput() GoogleCloudDatacatalogV1DataplexSpecOutput {
+	return i.ToGoogleCloudDatacatalogV1DataplexSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1DataplexSpecArgs) ToGoogleCloudDatacatalogV1DataplexSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexSpecOutput)
+}
+
+func (i GoogleCloudDatacatalogV1DataplexSpecArgs) ToGoogleCloudDatacatalogV1DataplexSpecPtrOutput() GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1DataplexSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1DataplexSpecArgs) ToGoogleCloudDatacatalogV1DataplexSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexSpecOutput).ToGoogleCloudDatacatalogV1DataplexSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1DataplexSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1DataplexSpecArgs, GoogleCloudDatacatalogV1DataplexSpecPtr and GoogleCloudDatacatalogV1DataplexSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexSpecPtrInput` via:
+//
+//          GoogleCloudDatacatalogV1DataplexSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1DataplexSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1DataplexSpecPtrOutput() GoogleCloudDatacatalogV1DataplexSpecPtrOutput
+	ToGoogleCloudDatacatalogV1DataplexSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataplexSpecPtrOutput
+}
+
+type googleCloudDatacatalogV1DataplexSpecPtrType GoogleCloudDatacatalogV1DataplexSpecArgs
+
+func GoogleCloudDatacatalogV1DataplexSpecPtr(v *GoogleCloudDatacatalogV1DataplexSpecArgs) GoogleCloudDatacatalogV1DataplexSpecPtrInput {
+	return (*googleCloudDatacatalogV1DataplexSpecPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1DataplexSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1DataplexSpec)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1DataplexSpecPtrType) ToGoogleCloudDatacatalogV1DataplexSpecPtrOutput() GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1DataplexSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1DataplexSpecPtrType) ToGoogleCloudDatacatalogV1DataplexSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexSpecPtrOutput)
+}
+
+// Common Dataplex fields.
+type GoogleCloudDatacatalogV1DataplexSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexSpecOutput) ToGoogleCloudDatacatalogV1DataplexSpecOutput() GoogleCloudDatacatalogV1DataplexSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexSpecOutput) ToGoogleCloudDatacatalogV1DataplexSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexSpecOutput) ToGoogleCloudDatacatalogV1DataplexSpecPtrOutput() GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1DataplexSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DataplexSpecOutput) ToGoogleCloudDatacatalogV1DataplexSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1DataplexSpec) *GoogleCloudDatacatalogV1DataplexSpec {
+		return &v
+	}).(GoogleCloudDatacatalogV1DataplexSpecPtrOutput)
+}
+
+// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
+func (o GoogleCloudDatacatalogV1DataplexSpecOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexSpec) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// Compression format of the data, e.g., zip, gzip etc.
+func (o GoogleCloudDatacatalogV1DataplexSpecOutput) CompressionFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexSpec) *string { return v.CompressionFormat }).(pulumi.StringPtrOutput)
+}
+
+// Format of the data.
+func (o GoogleCloudDatacatalogV1DataplexSpecOutput) DataFormat() GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexSpec) *GoogleCloudDatacatalogV1PhysicalSchema {
+		return v.DataFormat
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput)
+}
+
+// Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
+func (o GoogleCloudDatacatalogV1DataplexSpecOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexSpec) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1DataplexSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1DataplexSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexSpecPtrOutput) ToGoogleCloudDatacatalogV1DataplexSpecPtrOutput() GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexSpecPtrOutput) ToGoogleCloudDatacatalogV1DataplexSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexSpecPtrOutput) Elem() GoogleCloudDatacatalogV1DataplexSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexSpec) GoogleCloudDatacatalogV1DataplexSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1DataplexSpec
+		return ret
+	}).(GoogleCloudDatacatalogV1DataplexSpecOutput)
+}
+
+// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
+func (o GoogleCloudDatacatalogV1DataplexSpecPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// Compression format of the data, e.g., zip, gzip etc.
+func (o GoogleCloudDatacatalogV1DataplexSpecPtrOutput) CompressionFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompressionFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Format of the data.
+func (o GoogleCloudDatacatalogV1DataplexSpecPtrOutput) DataFormat() GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexSpec) *GoogleCloudDatacatalogV1PhysicalSchema {
+		if v == nil {
+			return nil
+		}
+		return v.DataFormat
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput)
+}
+
+// Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
+func (o GoogleCloudDatacatalogV1DataplexSpecPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// Common Dataplex fields.
+type GoogleCloudDatacatalogV1DataplexSpecResponse struct {
+	// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
+	Asset string `pulumi:"asset"`
+	// Compression format of the data, e.g., zip, gzip etc.
+	CompressionFormat string `pulumi:"compressionFormat"`
+	// Format of the data.
+	DataFormat GoogleCloudDatacatalogV1PhysicalSchemaResponse `pulumi:"dataFormat"`
+	// Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
+	Project string `pulumi:"project"`
+}
+
+// Common Dataplex fields.
+type GoogleCloudDatacatalogV1DataplexSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexSpecResponseOutput) ToGoogleCloudDatacatalogV1DataplexSpecResponseOutput() GoogleCloudDatacatalogV1DataplexSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexSpecResponseOutput) ToGoogleCloudDatacatalogV1DataplexSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexSpecResponseOutput {
+	return o
+}
+
+// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
+func (o GoogleCloudDatacatalogV1DataplexSpecResponseOutput) Asset() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexSpecResponse) string { return v.Asset }).(pulumi.StringOutput)
+}
+
+// Compression format of the data, e.g., zip, gzip etc.
+func (o GoogleCloudDatacatalogV1DataplexSpecResponseOutput) CompressionFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexSpecResponse) string { return v.CompressionFormat }).(pulumi.StringOutput)
+}
+
+// Format of the data.
+func (o GoogleCloudDatacatalogV1DataplexSpecResponseOutput) DataFormat() GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexSpecResponse) GoogleCloudDatacatalogV1PhysicalSchemaResponse {
+		return v.DataFormat
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput)
+}
+
+// Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
+func (o GoogleCloudDatacatalogV1DataplexSpecResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexSpecResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Entry specification for a Dataplex table.
+type GoogleCloudDatacatalogV1DataplexTableSpec struct {
+	// Common Dataplex fields.
+	DataplexSpec *GoogleCloudDatacatalogV1DataplexSpec `pulumi:"dataplexSpec"`
+	// List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
+	ExternalTables []GoogleCloudDatacatalogV1DataplexExternalTable `pulumi:"externalTables"`
+	// Indicates if the table schema is managed by the user or not.
+	UserManaged *bool `pulumi:"userManaged"`
+}
+
+// GoogleCloudDatacatalogV1DataplexTableSpecInput is an input type that accepts GoogleCloudDatacatalogV1DataplexTableSpecArgs and GoogleCloudDatacatalogV1DataplexTableSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexTableSpecInput` via:
+//
+//          GoogleCloudDatacatalogV1DataplexTableSpecArgs{...}
+type GoogleCloudDatacatalogV1DataplexTableSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1DataplexTableSpecOutput() GoogleCloudDatacatalogV1DataplexTableSpecOutput
+	ToGoogleCloudDatacatalogV1DataplexTableSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataplexTableSpecOutput
+}
+
+// Entry specification for a Dataplex table.
+type GoogleCloudDatacatalogV1DataplexTableSpecArgs struct {
+	// Common Dataplex fields.
+	DataplexSpec GoogleCloudDatacatalogV1DataplexSpecPtrInput `pulumi:"dataplexSpec"`
+	// List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
+	ExternalTables GoogleCloudDatacatalogV1DataplexExternalTableArrayInput `pulumi:"externalTables"`
+	// Indicates if the table schema is managed by the user or not.
+	UserManaged pulumi.BoolPtrInput `pulumi:"userManaged"`
+}
+
+func (GoogleCloudDatacatalogV1DataplexTableSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexTableSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1DataplexTableSpecArgs) ToGoogleCloudDatacatalogV1DataplexTableSpecOutput() GoogleCloudDatacatalogV1DataplexTableSpecOutput {
+	return i.ToGoogleCloudDatacatalogV1DataplexTableSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1DataplexTableSpecArgs) ToGoogleCloudDatacatalogV1DataplexTableSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexTableSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexTableSpecOutput)
+}
+
+func (i GoogleCloudDatacatalogV1DataplexTableSpecArgs) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutput() GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1DataplexTableSpecArgs) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexTableSpecOutput).ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1DataplexTableSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1DataplexTableSpecArgs, GoogleCloudDatacatalogV1DataplexTableSpecPtr and GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexTableSpecPtrInput` via:
+//
+//          GoogleCloudDatacatalogV1DataplexTableSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1DataplexTableSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutput() GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput
+	ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput
+}
+
+type googleCloudDatacatalogV1DataplexTableSpecPtrType GoogleCloudDatacatalogV1DataplexTableSpecArgs
+
+func GoogleCloudDatacatalogV1DataplexTableSpecPtr(v *GoogleCloudDatacatalogV1DataplexTableSpecArgs) GoogleCloudDatacatalogV1DataplexTableSpecPtrInput {
+	return (*googleCloudDatacatalogV1DataplexTableSpecPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1DataplexTableSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1DataplexTableSpec)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1DataplexTableSpecPtrType) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutput() GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1DataplexTableSpecPtrType) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput)
+}
+
+// Entry specification for a Dataplex table.
+type GoogleCloudDatacatalogV1DataplexTableSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexTableSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexTableSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexTableSpecOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecOutput() GoogleCloudDatacatalogV1DataplexTableSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexTableSpecOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexTableSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexTableSpecOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutput() GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DataplexTableSpecOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1DataplexTableSpec) *GoogleCloudDatacatalogV1DataplexTableSpec {
+		return &v
+	}).(GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput)
+}
+
+// Common Dataplex fields.
+func (o GoogleCloudDatacatalogV1DataplexTableSpecOutput) DataplexSpec() GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexTableSpec) *GoogleCloudDatacatalogV1DataplexSpec {
+		return v.DataplexSpec
+	}).(GoogleCloudDatacatalogV1DataplexSpecPtrOutput)
+}
+
+// List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
+func (o GoogleCloudDatacatalogV1DataplexTableSpecOutput) ExternalTables() GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexTableSpec) []GoogleCloudDatacatalogV1DataplexExternalTable {
+		return v.ExternalTables
+	}).(GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput)
+}
+
+// Indicates if the table schema is managed by the user or not.
+func (o GoogleCloudDatacatalogV1DataplexTableSpecOutput) UserManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexTableSpec) *bool { return v.UserManaged }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1DataplexTableSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutput() GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput) Elem() GoogleCloudDatacatalogV1DataplexTableSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexTableSpec) GoogleCloudDatacatalogV1DataplexTableSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1DataplexTableSpec
+		return ret
+	}).(GoogleCloudDatacatalogV1DataplexTableSpecOutput)
+}
+
+// Common Dataplex fields.
+func (o GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput) DataplexSpec() GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexTableSpec) *GoogleCloudDatacatalogV1DataplexSpec {
+		if v == nil {
+			return nil
+		}
+		return v.DataplexSpec
+	}).(GoogleCloudDatacatalogV1DataplexSpecPtrOutput)
+}
+
+// List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
+func (o GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput) ExternalTables() GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexTableSpec) []GoogleCloudDatacatalogV1DataplexExternalTable {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalTables
+	}).(GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput)
+}
+
+// Indicates if the table schema is managed by the user or not.
+func (o GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput) UserManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexTableSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UserManaged
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Entry specification for a Dataplex table.
+type GoogleCloudDatacatalogV1DataplexTableSpecResponse struct {
+	// Common Dataplex fields.
+	DataplexSpec GoogleCloudDatacatalogV1DataplexSpecResponse `pulumi:"dataplexSpec"`
+	// List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
+	ExternalTables []GoogleCloudDatacatalogV1DataplexExternalTableResponse `pulumi:"externalTables"`
+	// Indicates if the table schema is managed by the user or not.
+	UserManaged bool `pulumi:"userManaged"`
+}
+
+// Entry specification for a Dataplex table.
+type GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexTableSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecResponseOutput() GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput {
+	return o
+}
+
+// Common Dataplex fields.
+func (o GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput) DataplexSpec() GoogleCloudDatacatalogV1DataplexSpecResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexTableSpecResponse) GoogleCloudDatacatalogV1DataplexSpecResponse {
+		return v.DataplexSpec
+	}).(GoogleCloudDatacatalogV1DataplexSpecResponseOutput)
+}
+
+// List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
+func (o GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput) ExternalTables() GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexTableSpecResponse) []GoogleCloudDatacatalogV1DataplexExternalTableResponse {
+		return v.ExternalTables
+	}).(GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput)
+}
+
+// Indicates if the table schema is managed by the user or not.
+func (o GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput) UserManaged() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexTableSpecResponse) bool { return v.UserManaged }).(pulumi.BoolOutput)
 }
 
 // Entry overview fields for rich text descriptions of entries.
@@ -2692,6 +3578,176 @@ func (o GoogleCloudDatacatalogV1EntryOverviewResponseOutput) ToGoogleCloudDataca
 // Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
 func (o GoogleCloudDatacatalogV1EntryOverviewResponseOutput) Overview() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1EntryOverviewResponse) string { return v.Overview }).(pulumi.StringOutput)
+}
+
+// Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.
+type GoogleCloudDatacatalogV1FilesetSpec struct {
+	// Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
+	DataplexFileset *GoogleCloudDatacatalogV1DataplexFilesetSpec `pulumi:"dataplexFileset"`
+}
+
+// GoogleCloudDatacatalogV1FilesetSpecInput is an input type that accepts GoogleCloudDatacatalogV1FilesetSpecArgs and GoogleCloudDatacatalogV1FilesetSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1FilesetSpecInput` via:
+//
+//          GoogleCloudDatacatalogV1FilesetSpecArgs{...}
+type GoogleCloudDatacatalogV1FilesetSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1FilesetSpecOutput() GoogleCloudDatacatalogV1FilesetSpecOutput
+	ToGoogleCloudDatacatalogV1FilesetSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1FilesetSpecOutput
+}
+
+// Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.
+type GoogleCloudDatacatalogV1FilesetSpecArgs struct {
+	// Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
+	DataplexFileset GoogleCloudDatacatalogV1DataplexFilesetSpecPtrInput `pulumi:"dataplexFileset"`
+}
+
+func (GoogleCloudDatacatalogV1FilesetSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1FilesetSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1FilesetSpecArgs) ToGoogleCloudDatacatalogV1FilesetSpecOutput() GoogleCloudDatacatalogV1FilesetSpecOutput {
+	return i.ToGoogleCloudDatacatalogV1FilesetSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1FilesetSpecArgs) ToGoogleCloudDatacatalogV1FilesetSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1FilesetSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1FilesetSpecOutput)
+}
+
+func (i GoogleCloudDatacatalogV1FilesetSpecArgs) ToGoogleCloudDatacatalogV1FilesetSpecPtrOutput() GoogleCloudDatacatalogV1FilesetSpecPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1FilesetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1FilesetSpecArgs) ToGoogleCloudDatacatalogV1FilesetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1FilesetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1FilesetSpecOutput).ToGoogleCloudDatacatalogV1FilesetSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1FilesetSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1FilesetSpecArgs, GoogleCloudDatacatalogV1FilesetSpecPtr and GoogleCloudDatacatalogV1FilesetSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1FilesetSpecPtrInput` via:
+//
+//          GoogleCloudDatacatalogV1FilesetSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1FilesetSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1FilesetSpecPtrOutput() GoogleCloudDatacatalogV1FilesetSpecPtrOutput
+	ToGoogleCloudDatacatalogV1FilesetSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1FilesetSpecPtrOutput
+}
+
+type googleCloudDatacatalogV1FilesetSpecPtrType GoogleCloudDatacatalogV1FilesetSpecArgs
+
+func GoogleCloudDatacatalogV1FilesetSpecPtr(v *GoogleCloudDatacatalogV1FilesetSpecArgs) GoogleCloudDatacatalogV1FilesetSpecPtrInput {
+	return (*googleCloudDatacatalogV1FilesetSpecPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1FilesetSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1FilesetSpec)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1FilesetSpecPtrType) ToGoogleCloudDatacatalogV1FilesetSpecPtrOutput() GoogleCloudDatacatalogV1FilesetSpecPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1FilesetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1FilesetSpecPtrType) ToGoogleCloudDatacatalogV1FilesetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1FilesetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1FilesetSpecPtrOutput)
+}
+
+// Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.
+type GoogleCloudDatacatalogV1FilesetSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1FilesetSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1FilesetSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1FilesetSpecOutput) ToGoogleCloudDatacatalogV1FilesetSpecOutput() GoogleCloudDatacatalogV1FilesetSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1FilesetSpecOutput) ToGoogleCloudDatacatalogV1FilesetSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1FilesetSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1FilesetSpecOutput) ToGoogleCloudDatacatalogV1FilesetSpecPtrOutput() GoogleCloudDatacatalogV1FilesetSpecPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1FilesetSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1FilesetSpecOutput) ToGoogleCloudDatacatalogV1FilesetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1FilesetSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1FilesetSpec) *GoogleCloudDatacatalogV1FilesetSpec {
+		return &v
+	}).(GoogleCloudDatacatalogV1FilesetSpecPtrOutput)
+}
+
+// Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
+func (o GoogleCloudDatacatalogV1FilesetSpecOutput) DataplexFileset() GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1FilesetSpec) *GoogleCloudDatacatalogV1DataplexFilesetSpec {
+		return v.DataplexFileset
+	}).(GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1FilesetSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1FilesetSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1FilesetSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1FilesetSpecPtrOutput) ToGoogleCloudDatacatalogV1FilesetSpecPtrOutput() GoogleCloudDatacatalogV1FilesetSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1FilesetSpecPtrOutput) ToGoogleCloudDatacatalogV1FilesetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1FilesetSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1FilesetSpecPtrOutput) Elem() GoogleCloudDatacatalogV1FilesetSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1FilesetSpec) GoogleCloudDatacatalogV1FilesetSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1FilesetSpec
+		return ret
+	}).(GoogleCloudDatacatalogV1FilesetSpecOutput)
+}
+
+// Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
+func (o GoogleCloudDatacatalogV1FilesetSpecPtrOutput) DataplexFileset() GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1FilesetSpec) *GoogleCloudDatacatalogV1DataplexFilesetSpec {
+		if v == nil {
+			return nil
+		}
+		return v.DataplexFileset
+	}).(GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput)
+}
+
+// Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.
+type GoogleCloudDatacatalogV1FilesetSpecResponse struct {
+	// Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
+	DataplexFileset GoogleCloudDatacatalogV1DataplexFilesetSpecResponse `pulumi:"dataplexFileset"`
+}
+
+// Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.
+type GoogleCloudDatacatalogV1FilesetSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1FilesetSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1FilesetSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1FilesetSpecResponseOutput) ToGoogleCloudDatacatalogV1FilesetSpecResponseOutput() GoogleCloudDatacatalogV1FilesetSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1FilesetSpecResponseOutput) ToGoogleCloudDatacatalogV1FilesetSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1FilesetSpecResponseOutput {
+	return o
+}
+
+// Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
+func (o GoogleCloudDatacatalogV1FilesetSpecResponseOutput) DataplexFileset() GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1FilesetSpecResponse) GoogleCloudDatacatalogV1DataplexFilesetSpecResponse {
+		return v.DataplexFileset
+	}).(GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput)
 }
 
 // Specification of a single file in Cloud Storage.
@@ -2962,6 +4018,1244 @@ func (o GoogleCloudDatacatalogV1PersonalDetailsResponseOutput) StarTime() pulumi
 // True if the entry is starred by the user; false otherwise.
 func (o GoogleCloudDatacatalogV1PersonalDetailsResponseOutput) Starred() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1PersonalDetailsResponse) bool { return v.Starred }).(pulumi.BoolOutput)
+}
+
+// Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing source data.
+type GoogleCloudDatacatalogV1PhysicalSchema struct {
+	// Schema in Avro JSON format.
+	Avro *GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema `pulumi:"avro"`
+	// Marks a CSV-encoded data source.
+	Csv *GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema `pulumi:"csv"`
+	// Marks an ORC-encoded data source.
+	Orc *GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema `pulumi:"orc"`
+	// Marks a Parquet-encoded data source.
+	Parquet *GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema `pulumi:"parquet"`
+	// Schema in protocol buffer format.
+	Protobuf *GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema `pulumi:"protobuf"`
+	// Schema in Thrift format.
+	Thrift *GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema `pulumi:"thrift"`
+}
+
+// GoogleCloudDatacatalogV1PhysicalSchemaInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaArgs and GoogleCloudDatacatalogV1PhysicalSchemaOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaInput` via:
+//
+//          GoogleCloudDatacatalogV1PhysicalSchemaArgs{...}
+type GoogleCloudDatacatalogV1PhysicalSchemaInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PhysicalSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaOutput
+	ToGoogleCloudDatacatalogV1PhysicalSchemaOutputWithContext(context.Context) GoogleCloudDatacatalogV1PhysicalSchemaOutput
+}
+
+// Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing source data.
+type GoogleCloudDatacatalogV1PhysicalSchemaArgs struct {
+	// Schema in Avro JSON format.
+	Avro GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrInput `pulumi:"avro"`
+	// Marks a CSV-encoded data source.
+	Csv GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrInput `pulumi:"csv"`
+	// Marks an ORC-encoded data source.
+	Orc GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrInput `pulumi:"orc"`
+	// Marks a Parquet-encoded data source.
+	Parquet GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrInput `pulumi:"parquet"`
+	// Schema in protocol buffer format.
+	Protobuf GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrInput `pulumi:"protobuf"`
+	// Schema in Thrift format.
+	Thrift GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrInput `pulumi:"thrift"`
+}
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchema)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaOutput)
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaOutput).ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1PhysicalSchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaArgs, GoogleCloudDatacatalogV1PhysicalSchemaPtr and GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaPtrInput` via:
+//
+//          GoogleCloudDatacatalogV1PhysicalSchemaArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1PhysicalSchemaPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput
+	ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput
+}
+
+type googleCloudDatacatalogV1PhysicalSchemaPtrType GoogleCloudDatacatalogV1PhysicalSchemaArgs
+
+func GoogleCloudDatacatalogV1PhysicalSchemaPtr(v *GoogleCloudDatacatalogV1PhysicalSchemaArgs) GoogleCloudDatacatalogV1PhysicalSchemaPtrInput {
+	return (*googleCloudDatacatalogV1PhysicalSchemaPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1PhysicalSchemaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PhysicalSchema)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1PhysicalSchemaPtrType) ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1PhysicalSchemaPtrType) ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput)
+}
+
+// Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing source data.
+type GoogleCloudDatacatalogV1PhysicalSchemaOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1PhysicalSchema) *GoogleCloudDatacatalogV1PhysicalSchema {
+		return &v
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput)
+}
+
+// Schema in Avro JSON format.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOutput) Avro() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchema) *GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema {
+		return v.Avro
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput)
+}
+
+// Marks a CSV-encoded data source.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOutput) Csv() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchema) *GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema {
+		return v.Csv
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput)
+}
+
+// Marks an ORC-encoded data source.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOutput) Orc() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchema) *GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema {
+		return v.Orc
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput)
+}
+
+// Marks a Parquet-encoded data source.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOutput) Parquet() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchema) *GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema {
+		return v.Parquet
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput)
+}
+
+// Schema in protocol buffer format.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOutput) Protobuf() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchema) *GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema {
+		return v.Protobuf
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput)
+}
+
+// Schema in Thrift format.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOutput) Thrift() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchema) *GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema {
+		return v.Thrift
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PhysicalSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput) Elem() GoogleCloudDatacatalogV1PhysicalSchemaOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchema) GoogleCloudDatacatalogV1PhysicalSchema {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1PhysicalSchema
+		return ret
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaOutput)
+}
+
+// Schema in Avro JSON format.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput) Avro() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchema) *GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema {
+		if v == nil {
+			return nil
+		}
+		return v.Avro
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput)
+}
+
+// Marks a CSV-encoded data source.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput) Csv() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchema) *GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema {
+		if v == nil {
+			return nil
+		}
+		return v.Csv
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput)
+}
+
+// Marks an ORC-encoded data source.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput) Orc() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchema) *GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema {
+		if v == nil {
+			return nil
+		}
+		return v.Orc
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput)
+}
+
+// Marks a Parquet-encoded data source.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput) Parquet() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchema) *GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema {
+		if v == nil {
+			return nil
+		}
+		return v.Parquet
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput)
+}
+
+// Schema in protocol buffer format.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput) Protobuf() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchema) *GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema {
+		if v == nil {
+			return nil
+		}
+		return v.Protobuf
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput)
+}
+
+// Schema in Thrift format.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput) Thrift() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchema) *GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema {
+		if v == nil {
+			return nil
+		}
+		return v.Thrift
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput)
+}
+
+// Schema in Avro JSON format.
+type GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema struct {
+	// JSON source of the Avro schema.
+	Text *string `pulumi:"text"`
+}
+
+// GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs and GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaInput` via:
+//
+//          GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs{...}
+type GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput
+	ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutputWithContext(context.Context) GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput
+}
+
+// Schema in Avro JSON format.
+type GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs struct {
+	// JSON source of the Avro schema.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput)
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput).ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs, GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtr and GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrInput` via:
+//
+//          GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput
+	ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput
+}
+
+type googleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrType GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs
+
+func GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtr(v *GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs) GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrInput {
+	return (*googleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrType) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrType) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput)
+}
+
+// Schema in Avro JSON format.
+type GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema) *GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema {
+		return &v
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput)
+}
+
+// JSON source of the Avro schema.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput) Elem() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema) GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema
+		return ret
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput)
+}
+
+// JSON source of the Avro schema.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schema in Avro JSON format.
+type GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse struct {
+	// JSON source of the Avro schema.
+	Text string `pulumi:"text"`
+}
+
+// Schema in Avro JSON format.
+type GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutput() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutput {
+	return o
+}
+
+// JSON source of the Avro schema.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse) string { return v.Text }).(pulumi.StringOutput)
+}
+
+// Marks a CSV-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema struct {
+}
+
+// GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs and GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaInput` via:
+//
+//          GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs{...}
+type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput
+	ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutputWithContext(context.Context) GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput
+}
+
+// Marks a CSV-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs struct {
+}
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput)
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput).ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs, GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtr and GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrInput` via:
+//
+//          GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput
+	ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput
+}
+
+type googleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrType GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs
+
+func GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtr(v *GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs) GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrInput {
+	return (*googleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrType) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrType) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput)
+}
+
+// Marks a CSV-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema) *GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema {
+		return &v
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput) Elem() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema) GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema
+		return ret
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput)
+}
+
+// Marks a CSV-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponse struct {
+}
+
+// Marks a CSV-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponseOutput() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponseOutput {
+	return o
+}
+
+// Marks an ORC-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema struct {
+}
+
+// GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs and GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaInput` via:
+//
+//          GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs{...}
+type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput
+	ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutputWithContext(context.Context) GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput
+}
+
+// Marks an ORC-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs struct {
+}
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput)
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput).ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs, GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtr and GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrInput` via:
+//
+//          GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput
+	ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput
+}
+
+type googleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrType GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs
+
+func GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtr(v *GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs) GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrInput {
+	return (*googleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrType) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrType) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput)
+}
+
+// Marks an ORC-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema) *GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema {
+		return &v
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput) Elem() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema) GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema
+		return ret
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput)
+}
+
+// Marks an ORC-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponse struct {
+}
+
+// Marks an ORC-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponseOutput() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponseOutput {
+	return o
+}
+
+// Marks a Parquet-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema struct {
+}
+
+// GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs and GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaInput` via:
+//
+//          GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs{...}
+type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput
+	ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutputWithContext(context.Context) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput
+}
+
+// Marks a Parquet-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs struct {
+}
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput)
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput).ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs, GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtr and GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrInput` via:
+//
+//          GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput
+	ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput
+}
+
+type googleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrType GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs
+
+func GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtr(v *GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrInput {
+	return (*googleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrType) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrType) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput)
+}
+
+// Marks a Parquet-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema) *GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema {
+		return &v
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput) Elem() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema
+		return ret
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput)
+}
+
+// Marks a Parquet-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponse struct {
+}
+
+// Marks a Parquet-encoded data source.
+type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutput() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutput {
+	return o
+}
+
+// Schema in protocol buffer format.
+type GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema struct {
+	// Protocol buffer source of the schema.
+	Text *string `pulumi:"text"`
+}
+
+// GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs and GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaInput` via:
+//
+//          GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs{...}
+type GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput
+	ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutputWithContext(context.Context) GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput
+}
+
+// Schema in protocol buffer format.
+type GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs struct {
+	// Protocol buffer source of the schema.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput)
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput).ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs, GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtr and GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrInput` via:
+//
+//          GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput
+	ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput
+}
+
+type googleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrType GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs
+
+func GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtr(v *GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs) GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrInput {
+	return (*googleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrType) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrType) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput)
+}
+
+// Schema in protocol buffer format.
+type GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema) *GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema {
+		return &v
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput)
+}
+
+// Protocol buffer source of the schema.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput) Elem() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema) GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema
+		return ret
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput)
+}
+
+// Protocol buffer source of the schema.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schema in protocol buffer format.
+type GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse struct {
+	// Protocol buffer source of the schema.
+	Text string `pulumi:"text"`
+}
+
+// Schema in protocol buffer format.
+type GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutput() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutput {
+	return o
+}
+
+// Protocol buffer source of the schema.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse) string { return v.Text }).(pulumi.StringOutput)
+}
+
+// Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing source data.
+type GoogleCloudDatacatalogV1PhysicalSchemaResponse struct {
+	// Schema in Avro JSON format.
+	Avro GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse `pulumi:"avro"`
+	// Marks a CSV-encoded data source.
+	Csv GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponse `pulumi:"csv"`
+	// Marks an ORC-encoded data source.
+	Orc GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponse `pulumi:"orc"`
+	// Marks a Parquet-encoded data source.
+	Parquet GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponse `pulumi:"parquet"`
+	// Schema in protocol buffer format.
+	Protobuf GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse `pulumi:"protobuf"`
+	// Schema in Thrift format.
+	Thrift GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse `pulumi:"thrift"`
+}
+
+// Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing source data.
+type GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaResponseOutput() GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput {
+	return o
+}
+
+// Schema in Avro JSON format.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput) Avro() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaResponse) GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse {
+		return v.Avro
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutput)
+}
+
+// Marks a CSV-encoded data source.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput) Csv() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaResponse) GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponse {
+		return v.Csv
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponseOutput)
+}
+
+// Marks an ORC-encoded data source.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput) Orc() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaResponse) GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponse {
+		return v.Orc
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponseOutput)
+}
+
+// Marks a Parquet-encoded data source.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput) Parquet() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaResponse) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponse {
+		return v.Parquet
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutput)
+}
+
+// Schema in protocol buffer format.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput) Protobuf() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaResponse) GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse {
+		return v.Protobuf
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutput)
+}
+
+// Schema in Thrift format.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput) Thrift() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaResponse) GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse {
+		return v.Thrift
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput)
+}
+
+// Schema in Thrift format.
+type GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema struct {
+	// Thrift IDL source of the schema.
+	Text *string `pulumi:"text"`
+}
+
+// GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs and GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaInput` via:
+//
+//          GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs{...}
+type GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput
+	ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutputWithContext(context.Context) GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput
+}
+
+// Schema in Thrift format.
+type GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs struct {
+	// Thrift IDL source of the schema.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput)
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput).ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs, GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtr and GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrInput` via:
+//
+//          GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput
+	ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput
+}
+
+type googleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrType GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs
+
+func GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtr(v *GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs) GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrInput {
+	return (*googleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrType) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrType) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput)
+}
+
+// Schema in Thrift format.
+type GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema) *GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema {
+		return &v
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput)
+}
+
+// Thrift IDL source of the schema.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput) Elem() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema) GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema
+		return ret
+	}).(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput)
+}
+
+// Thrift IDL source of the schema.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schema in Thrift format.
+type GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse struct {
+	// Thrift IDL source of the schema.
+	Text string `pulumi:"text"`
+}
+
+// Schema in Thrift format.
+type GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput {
+	return o
+}
+
+// Thrift IDL source of the schema.
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse) string { return v.Text }).(pulumi.StringOutput)
 }
 
 // Specification that applies to a routine. Valid only for entries with the `ROUTINE` type.
@@ -3618,6 +5912,39 @@ func (o GoogleCloudDatacatalogV1SchemaResponseOutput) Columns() GoogleCloudDatac
 	}).(GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput)
 }
 
+// Details the properties of the underlying storage.
+type GoogleCloudDatacatalogV1StoragePropertiesResponse struct {
+	// Patterns to identify a set of files for this fileset. Examples of a valid `file_pattern`: * `gs://bucket_name/dir/*`: matches all files in the `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in the `bucket_name/dir` and all subdirectories recursively * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
+	FilePattern []string `pulumi:"filePattern"`
+	// File type in MIME format, for example, `text/plain`.
+	FileType string `pulumi:"fileType"`
+}
+
+// Details the properties of the underlying storage.
+type GoogleCloudDatacatalogV1StoragePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1StoragePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1StoragePropertiesResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1StoragePropertiesResponseOutput) ToGoogleCloudDatacatalogV1StoragePropertiesResponseOutput() GoogleCloudDatacatalogV1StoragePropertiesResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1StoragePropertiesResponseOutput) ToGoogleCloudDatacatalogV1StoragePropertiesResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1StoragePropertiesResponseOutput {
+	return o
+}
+
+// Patterns to identify a set of files for this fileset. Examples of a valid `file_pattern`: * `gs://bucket_name/dir/*`: matches all files in the `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in the `bucket_name/dir` and all subdirectories recursively * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
+func (o GoogleCloudDatacatalogV1StoragePropertiesResponseOutput) FilePattern() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1StoragePropertiesResponse) []string { return v.FilePattern }).(pulumi.StringArrayOutput)
+}
+
+// File type in MIME format, for example, `text/plain`.
+func (o GoogleCloudDatacatalogV1StoragePropertiesResponseOutput) FileType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1StoragePropertiesResponse) string { return v.FileType }).(pulumi.StringOutput)
+}
+
 // Timestamps associated with this resource in a particular system.
 type GoogleCloudDatacatalogV1SystemTimestamps struct {
 	// Creation timestamp of the resource within the given system.
@@ -4171,10 +6498,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexExternalTableInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexExternalTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexExternalTableArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexExternalTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexFilesetSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexFilesetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexFilesetSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexFilesetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexTableSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexTableSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexTableSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexTableSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1EntryOverviewInput)(nil)).Elem(), GoogleCloudDatacatalogV1EntryOverviewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1EntryOverviewPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1EntryOverviewArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1FilesetSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1FilesetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1FilesetSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1FilesetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFilesetSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1GcsFilesetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFilesetSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1GcsFilesetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1PhysicalSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1PhysicalSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgumentArgs{})
@@ -4230,15 +6581,52 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexExternalTableOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexFilesetSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexTableSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1EntryOverviewOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1EntryOverviewPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1EntryOverviewResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1FilesetSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1FilesetSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1FilesetSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFileSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFilesetSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFilesetSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PersonalDetailsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecArgumentOutput{})
@@ -4249,6 +6637,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SchemaOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SchemaPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SchemaResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1StoragePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SystemTimestampsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SystemTimestampsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SystemTimestampsResponseOutput{})

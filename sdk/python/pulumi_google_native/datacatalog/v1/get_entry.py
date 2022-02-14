@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEntryResult:
-    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, business_context=None, data_source=None, data_source_connection_spec=None, database_table_spec=None, description=None, display_name=None, fully_qualified_name=None, gcs_fileset_spec=None, integrated_system=None, labels=None, linked_resource=None, name=None, personal_details=None, routine_spec=None, schema=None, source_system_timestamps=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
+    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, business_context=None, data_source=None, data_source_connection_spec=None, database_table_spec=None, description=None, display_name=None, fileset_spec=None, fully_qualified_name=None, gcs_fileset_spec=None, integrated_system=None, labels=None, linked_resource=None, name=None, personal_details=None, routine_spec=None, schema=None, source_system_timestamps=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
         if bigquery_date_sharded_spec and not isinstance(bigquery_date_sharded_spec, dict):
             raise TypeError("Expected argument 'bigquery_date_sharded_spec' to be a dict")
         pulumi.set(__self__, "bigquery_date_sharded_spec", bigquery_date_sharded_spec)
@@ -43,6 +43,9 @@ class GetEntryResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if fileset_spec and not isinstance(fileset_spec, dict):
+            raise TypeError("Expected argument 'fileset_spec' to be a dict")
+        pulumi.set(__self__, "fileset_spec", fileset_spec)
         if fully_qualified_name and not isinstance(fully_qualified_name, str):
             raise TypeError("Expected argument 'fully_qualified_name' to be a str")
         pulumi.set(__self__, "fully_qualified_name", fully_qualified_name)
@@ -149,6 +152,14 @@ class GetEntryResult:
         Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="filesetSpec")
+    def fileset_spec(self) -> 'outputs.GoogleCloudDatacatalogV1FilesetSpecResponse':
+        """
+        Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
+        """
+        return pulumi.get(self, "fileset_spec")
 
     @property
     @pulumi.getter(name="fullyQualifiedName")
@@ -277,6 +288,7 @@ class AwaitableGetEntryResult(GetEntryResult):
             database_table_spec=self.database_table_spec,
             description=self.description,
             display_name=self.display_name,
+            fileset_spec=self.fileset_spec,
             fully_qualified_name=self.fully_qualified_name,
             gcs_fileset_spec=self.gcs_fileset_spec,
             integrated_system=self.integrated_system,
@@ -321,6 +333,7 @@ def get_entry(entry_group_id: Optional[str] = None,
         database_table_spec=__ret__.database_table_spec,
         description=__ret__.description,
         display_name=__ret__.display_name,
+        fileset_spec=__ret__.fileset_spec,
         fully_qualified_name=__ret__.fully_qualified_name,
         gcs_fileset_spec=__ret__.gcs_fileset_spec,
         integrated_system=__ret__.integrated_system,

@@ -49,6 +49,10 @@ export interface GetInstanceResult {
      */
     readonly createTime: string;
     /**
+     * Email address of entity that sent original CreateInstance request.
+     */
+    readonly creator: string;
+    /**
      * Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
      */
     readonly customGpuDriverPath: string;

@@ -26,6 +26,26 @@ export const AuditLogConfigLogType = {
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
 
+export const FunctionDockerRegistry = {
+    /**
+     * Unspecified.
+     */
+    DockerRegistryUnspecified: "DOCKER_REGISTRY_UNSPECIFIED",
+    /**
+     * Docker images will be stored in multi-regional Container Registry repositories named `gcf`.
+     */
+    ContainerRegistry: "CONTAINER_REGISTRY",
+    /**
+     * Docker images will be stored in regional Artifact Registry repositories. By default, GCF will create and use repositories named `gcf-artifacts` in every region in which a function is deployed. But the repository to use can also be specified by the user using the `docker_repository` field.
+     */
+    ArtifactRegistry: "ARTIFACT_REGISTRY",
+} as const;
+
+/**
+ * Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+ */
+export type FunctionDockerRegistry = (typeof FunctionDockerRegistry)[keyof typeof FunctionDockerRegistry];
+
 export const FunctionIngressSettings = {
     /**
      * Unspecified.

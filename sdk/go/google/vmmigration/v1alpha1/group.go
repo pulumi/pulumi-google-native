@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new Group in a given project and location.
+// Auto-naming is currently not supported for this resource.
 type Group struct {
 	pulumi.CustomResourceState
 
@@ -75,10 +76,8 @@ type groupArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	GroupId     string  `pulumi:"groupId"`
 	Location    *string `pulumi:"location"`
-	// The Group name.
-	Name      *string `pulumi:"name"`
-	Project   *string `pulumi:"project"`
-	RequestId *string `pulumi:"requestId"`
+	Project     *string `pulumi:"project"`
+	RequestId   *string `pulumi:"requestId"`
 }
 
 // The set of arguments for constructing a Group resource.
@@ -89,10 +88,8 @@ type GroupArgs struct {
 	DisplayName pulumi.StringPtrInput
 	GroupId     pulumi.StringInput
 	Location    pulumi.StringPtrInput
-	// The Group name.
-	Name      pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
-	RequestId pulumi.StringPtrInput
+	Project     pulumi.StringPtrInput
+	RequestId   pulumi.StringPtrInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {

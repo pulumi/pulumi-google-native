@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 {
     /// <summary>
     /// Initiates a Clone of a specific migrating VM.
+    /// Auto-naming is currently not supported for this resource.
     /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
@@ -106,12 +107,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 
         [Input("migratingVmId", required: true)]
         public Input<string> MigratingVmId { get; set; } = null!;
-
-        /// <summary>
-        /// The name of the clone.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

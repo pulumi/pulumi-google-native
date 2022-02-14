@@ -672,6 +672,96 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     }
 
     /// <summary>
+    /// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+    /// </summary>
+    [EnumType]
+    public readonly struct MetricThresholdEvaluationMissingData : IEquatable<MetricThresholdEvaluationMissingData>
+    {
+        private readonly string _value;
+
+        private MetricThresholdEvaluationMissingData(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// An unspecified evaluation missing data option, if used, it will default to EVALUATION_MISSING_DATA_ACTIVE.
+        /// </summary>
+        public static MetricThresholdEvaluationMissingData EvaluationMissingDataUnspecified { get; } = new MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_UNSPECIFIED");
+        /// <summary>
+        /// If there is no data to evaluate the condition, then evaluate the condition as false.
+        /// </summary>
+        public static MetricThresholdEvaluationMissingData EvaluationMissingDataInactive { get; } = new MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_INACTIVE");
+        /// <summary>
+        /// If there is no data to evaluate the condition, then evaluate the condition as true. The default for conditions with a duration value.
+        /// </summary>
+        public static MetricThresholdEvaluationMissingData EvaluationMissingDataActive { get; } = new MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_ACTIVE");
+        /// <summary>
+        /// Do not evaluate the condition to any value if there is no data.
+        /// </summary>
+        public static MetricThresholdEvaluationMissingData EvaluationMissingDataNoOp { get; } = new MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_NO_OP");
+
+        public static bool operator ==(MetricThresholdEvaluationMissingData left, MetricThresholdEvaluationMissingData right) => left.Equals(right);
+        public static bool operator !=(MetricThresholdEvaluationMissingData left, MetricThresholdEvaluationMissingData right) => !left.Equals(right);
+
+        public static explicit operator string(MetricThresholdEvaluationMissingData value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MetricThresholdEvaluationMissingData other && Equals(other);
+        public bool Equals(MetricThresholdEvaluationMissingData other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+    /// </summary>
+    [EnumType]
+    public readonly struct MonitoringQueryLanguageConditionEvaluationMissingData : IEquatable<MonitoringQueryLanguageConditionEvaluationMissingData>
+    {
+        private readonly string _value;
+
+        private MonitoringQueryLanguageConditionEvaluationMissingData(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// An unspecified evaluation missing data option, if used, it will default to EVALUATION_MISSING_DATA_ACTIVE.
+        /// </summary>
+        public static MonitoringQueryLanguageConditionEvaluationMissingData EvaluationMissingDataUnspecified { get; } = new MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_UNSPECIFIED");
+        /// <summary>
+        /// If there is no data to evaluate the condition, then evaluate the condition as false.
+        /// </summary>
+        public static MonitoringQueryLanguageConditionEvaluationMissingData EvaluationMissingDataInactive { get; } = new MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_INACTIVE");
+        /// <summary>
+        /// If there is no data to evaluate the condition, then evaluate the condition as true. The default for conditions with a duration value.
+        /// </summary>
+        public static MonitoringQueryLanguageConditionEvaluationMissingData EvaluationMissingDataActive { get; } = new MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_ACTIVE");
+        /// <summary>
+        /// Do not evaluate the condition to any value if there is no data.
+        /// </summary>
+        public static MonitoringQueryLanguageConditionEvaluationMissingData EvaluationMissingDataNoOp { get; } = new MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_NO_OP");
+
+        public static bool operator ==(MonitoringQueryLanguageConditionEvaluationMissingData left, MonitoringQueryLanguageConditionEvaluationMissingData right) => left.Equals(right);
+        public static bool operator !=(MonitoringQueryLanguageConditionEvaluationMissingData left, MonitoringQueryLanguageConditionEvaluationMissingData right) => !left.Equals(right);
+
+        public static explicit operator string(MonitoringQueryLanguageConditionEvaluationMissingData value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MonitoringQueryLanguageConditionEvaluationMissingData other && Equals(other);
+        public bool Equals(MonitoringQueryLanguageConditionEvaluationMissingData other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
     /// </summary>
     [EnumType]

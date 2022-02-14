@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSnapshotSchedulePolicyResult:
-    def __init__(__self__, description=None, labels=None, name=None, schedules=None):
+    def __init__(__self__, description=None, labels=None, name=None, schedules=None, state=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -31,6 +31,9 @@ class GetSnapshotSchedulePolicyResult:
         if schedules and not isinstance(schedules, list):
             raise TypeError("Expected argument 'schedules' to be a list")
         pulumi.set(__self__, "schedules", schedules)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -64,6 +67,14 @@ class GetSnapshotSchedulePolicyResult:
         """
         return pulumi.get(self, "schedules")
 
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the snapshot schedule policy.
+        """
+        return pulumi.get(self, "state")
+
 
 class AwaitableGetSnapshotSchedulePolicyResult(GetSnapshotSchedulePolicyResult):
     # pylint: disable=using-constant-test
@@ -74,7 +85,8 @@ class AwaitableGetSnapshotSchedulePolicyResult(GetSnapshotSchedulePolicyResult):
             description=self.description,
             labels=self.labels,
             name=self.name,
-            schedules=self.schedules)
+            schedules=self.schedules,
+            state=self.state)
 
 
 def get_snapshot_schedule_policy(location: Optional[str] = None,
@@ -98,7 +110,8 @@ def get_snapshot_schedule_policy(location: Optional[str] = None,
         description=__ret__.description,
         labels=__ret__.labels,
         name=__ret__.name,
-        schedules=__ret__.schedules)
+        schedules=__ret__.schedules,
+        state=__ret__.state)
 
 
 @_utilities.lift_output_func(get_snapshot_schedule_policy)

@@ -26,6 +26,8 @@ type Instance struct {
 	ContainerImage ContainerImageResponseOutput `pulumi:"containerImage"`
 	// Instance creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Email address of entity that sent original CreateInstance request.
+	Creator pulumi.StringOutput `pulumi:"creator"`
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 	CustomGpuDriverPath pulumi.StringOutput `pulumi:"customGpuDriverPath"`
 	// Input only. The size of the data disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). You can choose the size of the data disk based on how big your notebooks and data are. If not specified, this defaults to 100.

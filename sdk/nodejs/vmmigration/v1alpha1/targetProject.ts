@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new TargetProject in a given project. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
+ * Auto-naming is currently not supported for this resource.
  */
 export class TargetProject extends pulumi.CustomResource {
     /**
@@ -45,7 +46,7 @@ export class TargetProject extends pulumi.CustomResource {
     /**
      * The name of the target project.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The target project ID (number) or project name.
      */
@@ -71,11 +72,11 @@ export class TargetProject extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["targetProjectId"] = args ? args.targetProjectId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
@@ -98,10 +99,6 @@ export interface TargetProjectArgs {
      */
     description?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
-    /**
-     * The name of the target project.
-     */
-    name?: pulumi.Input<string>;
     /**
      * The target project ID (number) or project name.
      */

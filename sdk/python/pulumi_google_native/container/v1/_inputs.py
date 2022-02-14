@@ -38,6 +38,7 @@ __all__ = [
     'HorizontalPodAutoscalingArgs',
     'HttpLoadBalancingArgs',
     'IPAllocationPolicyArgs',
+    'IdentityServiceConfigArgs',
     'KubernetesDashboardArgs',
     'LegacyAbacArgs',
     'LinuxNodeConfigArgs',
@@ -1349,6 +1350,30 @@ class IPAllocationPolicyArgs:
     @use_routes.setter
     def use_routes(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_routes", value)
+
+
+@pulumi.input_type
+class IdentityServiceConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+        :param pulumi.Input[bool] enabled: Whether to enable the Identity Service component
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the Identity Service component
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type

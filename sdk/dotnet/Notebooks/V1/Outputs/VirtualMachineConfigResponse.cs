@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly Outputs.RuntimeAcceleratorConfigResponse AcceleratorConfig;
         /// <summary>
-        /// Optional. Use a list of container images to start the notebook instance.
+        /// Optional. Use a list of container images to use as Kernels in the notebook instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerImageResponse> ContainerImages;
         /// <summary>
@@ -60,6 +60,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         /// </summary>
         public readonly string NicType;
+        /// <summary>
+        /// Optional. Reserved IP Range name is used for VPC Peering. The subnetwork allocation will use the range *name* if it's assigned. Example: managed-notebooks-range-c PEERING_RANGE_NAME_3=managed-notebooks-range-c gcloud compute addresses create $PEERING_RANGE_NAME_3 \ --global \ --prefix-length=24 \ --description="Google Cloud Managed Notebooks Range 24 c" \ --network=$NETWORK \ --addresses=192.168.0.0 \ --purpose=VPC_PEERING Field value will be: `managed-notebooks-range-c`
+        /// </summary>
+        public readonly string ReservedIpRange;
         /// <summary>
         /// Optional. Shielded VM Instance configuration settings.
         /// </summary>
@@ -101,6 +105,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 
             string nicType,
 
+            string reservedIpRange,
+
             Outputs.RuntimeShieldedInstanceConfigResponse shieldedInstanceConfig,
 
             string subnet,
@@ -120,6 +126,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
             Metadata = metadata;
             Network = network;
             NicType = nicType;
+            ReservedIpRange = reservedIpRange;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             Subnet = subnet;
             Tags = tags;

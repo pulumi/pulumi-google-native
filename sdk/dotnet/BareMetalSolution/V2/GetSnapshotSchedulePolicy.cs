@@ -77,6 +77,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// The snapshot schedules contained in this policy. You can specify a maximum of 5 schedules.
         /// </summary>
         public readonly ImmutableArray<Outputs.ScheduleResponse> Schedules;
+        /// <summary>
+        /// The state of the snapshot schedule policy.
+        /// </summary>
+        public readonly string State;
 
         [OutputConstructor]
         private GetSnapshotSchedulePolicyResult(
@@ -86,12 +90,15 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
 
             string name,
 
-            ImmutableArray<Outputs.ScheduleResponse> schedules)
+            ImmutableArray<Outputs.ScheduleResponse> schedules,
+
+            string state)
         {
             Description = description;
             Labels = labels;
             Name = name;
             Schedules = schedules;
+            State = state;
         }
     }
 }

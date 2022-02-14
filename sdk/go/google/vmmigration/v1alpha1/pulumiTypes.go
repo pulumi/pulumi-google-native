@@ -10,6 +10,53 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Describes an appliance version.
+type ApplianceVersionResponse struct {
+	// Determine whether it's critical to upgrade the appliance to this version.
+	Critical bool `pulumi:"critical"`
+	// Link to a page that contains the version release notes.
+	ReleaseNotesUri string `pulumi:"releaseNotesUri"`
+	// A link for downloading the version.
+	Uri string `pulumi:"uri"`
+	// The appliance version.
+	Version string `pulumi:"version"`
+}
+
+// Describes an appliance version.
+type ApplianceVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (ApplianceVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplianceVersionResponse)(nil)).Elem()
+}
+
+func (o ApplianceVersionResponseOutput) ToApplianceVersionResponseOutput() ApplianceVersionResponseOutput {
+	return o
+}
+
+func (o ApplianceVersionResponseOutput) ToApplianceVersionResponseOutputWithContext(ctx context.Context) ApplianceVersionResponseOutput {
+	return o
+}
+
+// Determine whether it's critical to upgrade the appliance to this version.
+func (o ApplianceVersionResponseOutput) Critical() pulumi.BoolOutput {
+	return o.ApplyT(func(v ApplianceVersionResponse) bool { return v.Critical }).(pulumi.BoolOutput)
+}
+
+// Link to a page that contains the version release notes.
+func (o ApplianceVersionResponseOutput) ReleaseNotesUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplianceVersionResponse) string { return v.ReleaseNotesUri }).(pulumi.StringOutput)
+}
+
+// A link for downloading the version.
+func (o ApplianceVersionResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplianceVersionResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// The appliance version.
+func (o ApplianceVersionResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplianceVersionResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
 // AppliedLicense holds the license data returned by adaptation module report.
 type AppliedLicenseResponse struct {
 	// The OS license returned from the adaptation module's report.
@@ -41,6 +88,39 @@ func (o AppliedLicenseResponseOutput) OsLicense() pulumi.StringOutput {
 // The license type that was used in OS adaptation.
 func (o AppliedLicenseResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AppliedLicenseResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Holds informatiom about the available versions for upgrade.
+type AvailableUpdatesResponse struct {
+	// The latest version for in place update. The current appliance can be updated to this version using the API or m4c CLI.
+	InPlaceUpdate ApplianceVersionResponse `pulumi:"inPlaceUpdate"`
+	// The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance.
+	NewDeployableAppliance ApplianceVersionResponse `pulumi:"newDeployableAppliance"`
+}
+
+// Holds informatiom about the available versions for upgrade.
+type AvailableUpdatesResponseOutput struct{ *pulumi.OutputState }
+
+func (AvailableUpdatesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailableUpdatesResponse)(nil)).Elem()
+}
+
+func (o AvailableUpdatesResponseOutput) ToAvailableUpdatesResponseOutput() AvailableUpdatesResponseOutput {
+	return o
+}
+
+func (o AvailableUpdatesResponseOutput) ToAvailableUpdatesResponseOutputWithContext(ctx context.Context) AvailableUpdatesResponseOutput {
+	return o
+}
+
+// The latest version for in place update. The current appliance can be updated to this version using the API or m4c CLI.
+func (o AvailableUpdatesResponseOutput) InPlaceUpdate() ApplianceVersionResponseOutput {
+	return o.ApplyT(func(v AvailableUpdatesResponse) ApplianceVersionResponse { return v.InPlaceUpdate }).(ApplianceVersionResponseOutput)
+}
+
+// The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance.
+func (o AvailableUpdatesResponseOutput) NewDeployableAppliance() ApplianceVersionResponseOutput {
+	return o.ApplyT(func(v AvailableUpdatesResponse) ApplianceVersionResponse { return v.NewDeployableAppliance }).(ApplianceVersionResponseOutput)
 }
 
 // CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
@@ -1172,99 +1252,6 @@ func (o CutoverJobResponseArrayOutput) Index(i pulumi.IntInput) CutoverJobRespon
 	}).(CutoverJobResponseOutput)
 }
 
-// CycleStep hold information about a step progress.
-type CycleStepResponse struct {
-	// The time the cycle step has ended.
-	EndTime string `pulumi:"endTime"`
-	// Initializing replication step.
-	InitializingReplication InitializingReplicationStepResponse `pulumi:"initializingReplication"`
-	// Post processing step.
-	PostProcessing PostProcessingStepResponse `pulumi:"postProcessing"`
-	// Replicating step.
-	Replicating ReplicatingStepResponse `pulumi:"replicating"`
-	// The time the cycle step has started.
-	StartTime string `pulumi:"startTime"`
-}
-
-// CycleStep hold information about a step progress.
-type CycleStepResponseOutput struct{ *pulumi.OutputState }
-
-func (CycleStepResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CycleStepResponse)(nil)).Elem()
-}
-
-func (o CycleStepResponseOutput) ToCycleStepResponseOutput() CycleStepResponseOutput {
-	return o
-}
-
-func (o CycleStepResponseOutput) ToCycleStepResponseOutputWithContext(ctx context.Context) CycleStepResponseOutput {
-	return o
-}
-
-// The time the cycle step has ended.
-func (o CycleStepResponseOutput) EndTime() pulumi.StringOutput {
-	return o.ApplyT(func(v CycleStepResponse) string { return v.EndTime }).(pulumi.StringOutput)
-}
-
-// Initializing replication step.
-func (o CycleStepResponseOutput) InitializingReplication() InitializingReplicationStepResponseOutput {
-	return o.ApplyT(func(v CycleStepResponse) InitializingReplicationStepResponse { return v.InitializingReplication }).(InitializingReplicationStepResponseOutput)
-}
-
-// Post processing step.
-func (o CycleStepResponseOutput) PostProcessing() PostProcessingStepResponseOutput {
-	return o.ApplyT(func(v CycleStepResponse) PostProcessingStepResponse { return v.PostProcessing }).(PostProcessingStepResponseOutput)
-}
-
-// Replicating step.
-func (o CycleStepResponseOutput) Replicating() ReplicatingStepResponseOutput {
-	return o.ApplyT(func(v CycleStepResponse) ReplicatingStepResponse { return v.Replicating }).(ReplicatingStepResponseOutput)
-}
-
-// The time the cycle step has started.
-func (o CycleStepResponseOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func(v CycleStepResponse) string { return v.StartTime }).(pulumi.StringOutput)
-}
-
-type CycleStepResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (CycleStepResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CycleStepResponse)(nil)).Elem()
-}
-
-func (o CycleStepResponseArrayOutput) ToCycleStepResponseArrayOutput() CycleStepResponseArrayOutput {
-	return o
-}
-
-func (o CycleStepResponseArrayOutput) ToCycleStepResponseArrayOutputWithContext(ctx context.Context) CycleStepResponseArrayOutput {
-	return o
-}
-
-func (o CycleStepResponseArrayOutput) Index(i pulumi.IntInput) CycleStepResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CycleStepResponse {
-		return vs[0].([]CycleStepResponse)[vs[1].(int)]
-	}).(CycleStepResponseOutput)
-}
-
-// InitializingReplicationStep contains specific step details.
-type InitializingReplicationStepResponse struct {
-}
-
-// InitializingReplicationStep contains specific step details.
-type InitializingReplicationStepResponseOutput struct{ *pulumi.OutputState }
-
-func (InitializingReplicationStepResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InitializingReplicationStepResponse)(nil)).Elem()
-}
-
-func (o InitializingReplicationStepResponseOutput) ToInitializingReplicationStepResponseOutput() InitializingReplicationStepResponseOutput {
-	return o
-}
-
-func (o InitializingReplicationStepResponseOutput) ToInitializingReplicationStepResponseOutputWithContext(ctx context.Context) InitializingReplicationStepResponseOutput {
-	return o
-}
-
 // NetworkInterface represents a NIC of a VM.
 type NetworkInterface struct {
 	// The external IP to define in the NIC.
@@ -1459,84 +1446,14 @@ func (o NetworkInterfaceResponseArrayOutput) Index(i pulumi.IntInput) NetworkInt
 	}).(NetworkInterfaceResponseOutput)
 }
 
-// PostProcessingStep contains specific step details.
-type PostProcessingStepResponse struct {
-}
-
-// PostProcessingStep contains specific step details.
-type PostProcessingStepResponseOutput struct{ *pulumi.OutputState }
-
-func (PostProcessingStepResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PostProcessingStepResponse)(nil)).Elem()
-}
-
-func (o PostProcessingStepResponseOutput) ToPostProcessingStepResponseOutput() PostProcessingStepResponseOutput {
-	return o
-}
-
-func (o PostProcessingStepResponseOutput) ToPostProcessingStepResponseOutputWithContext(ctx context.Context) PostProcessingStepResponseOutput {
-	return o
-}
-
-// ReplicatingStep contains specific step details.
-type ReplicatingStepResponse struct {
-	// The source disks replication rate for the last 30 minutes in bytes per second.
-	LastThirtyMinutesAverageBytesPerSecond string `pulumi:"lastThirtyMinutesAverageBytesPerSecond"`
-	// The source disks replication rate for the last 2 minutes in bytes per second.
-	LastTwoMinutesAverageBytesPerSecond string `pulumi:"lastTwoMinutesAverageBytesPerSecond"`
-	// Replicated bytes in the step.
-	ReplicatedBytes string `pulumi:"replicatedBytes"`
-	// Total bytes to be handled in the step.
-	TotalBytes string `pulumi:"totalBytes"`
-}
-
-// ReplicatingStep contains specific step details.
-type ReplicatingStepResponseOutput struct{ *pulumi.OutputState }
-
-func (ReplicatingStepResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicatingStepResponse)(nil)).Elem()
-}
-
-func (o ReplicatingStepResponseOutput) ToReplicatingStepResponseOutput() ReplicatingStepResponseOutput {
-	return o
-}
-
-func (o ReplicatingStepResponseOutput) ToReplicatingStepResponseOutputWithContext(ctx context.Context) ReplicatingStepResponseOutput {
-	return o
-}
-
-// The source disks replication rate for the last 30 minutes in bytes per second.
-func (o ReplicatingStepResponseOutput) LastThirtyMinutesAverageBytesPerSecond() pulumi.StringOutput {
-	return o.ApplyT(func(v ReplicatingStepResponse) string { return v.LastThirtyMinutesAverageBytesPerSecond }).(pulumi.StringOutput)
-}
-
-// The source disks replication rate for the last 2 minutes in bytes per second.
-func (o ReplicatingStepResponseOutput) LastTwoMinutesAverageBytesPerSecond() pulumi.StringOutput {
-	return o.ApplyT(func(v ReplicatingStepResponse) string { return v.LastTwoMinutesAverageBytesPerSecond }).(pulumi.StringOutput)
-}
-
-// Replicated bytes in the step.
-func (o ReplicatingStepResponseOutput) ReplicatedBytes() pulumi.StringOutput {
-	return o.ApplyT(func(v ReplicatingStepResponse) string { return v.ReplicatedBytes }).(pulumi.StringOutput)
-}
-
-// Total bytes to be handled in the step.
-func (o ReplicatingStepResponseOutput) TotalBytes() pulumi.StringOutput {
-	return o.ApplyT(func(v ReplicatingStepResponse) string { return v.TotalBytes }).(pulumi.StringOutput)
-}
-
 // ReplicationCycle contains information about the current replication cycle status.
 type ReplicationCycleResponse struct {
-	// The time the replication cycle has ended.
-	EndTime string `pulumi:"endTime"`
 	// The current progress in percentage of this cycle.
 	Progress int `pulumi:"progress"`
 	// The current progress in percentage of this cycle.
 	ProgressPercent int `pulumi:"progressPercent"`
 	// The time the replication cycle has started.
 	StartTime string `pulumi:"startTime"`
-	// The cycle's steps list reflecting its progress.
-	Steps []CycleStepResponse `pulumi:"steps"`
 	// The accumulated duration the replication cycle was paused.
 	TotalPauseDuration string `pulumi:"totalPauseDuration"`
 }
@@ -1556,11 +1473,6 @@ func (o ReplicationCycleResponseOutput) ToReplicationCycleResponseOutputWithCont
 	return o
 }
 
-// The time the replication cycle has ended.
-func (o ReplicationCycleResponseOutput) EndTime() pulumi.StringOutput {
-	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.EndTime }).(pulumi.StringOutput)
-}
-
 // The current progress in percentage of this cycle.
 func (o ReplicationCycleResponseOutput) Progress() pulumi.IntOutput {
 	return o.ApplyT(func(v ReplicationCycleResponse) int { return v.Progress }).(pulumi.IntOutput)
@@ -1574,11 +1486,6 @@ func (o ReplicationCycleResponseOutput) ProgressPercent() pulumi.IntOutput {
 // The time the replication cycle has started.
 func (o ReplicationCycleResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.StartTime }).(pulumi.StringOutput)
-}
-
-// The cycle's steps list reflecting its progress.
-func (o ReplicationCycleResponseOutput) Steps() CycleStepResponseArrayOutput {
-	return o.ApplyT(func(v ReplicationCycleResponse) []CycleStepResponse { return v.Steps }).(CycleStepResponseArrayOutput)
 }
 
 // The accumulated duration the replication cycle was paused.
@@ -2020,6 +1927,60 @@ func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// UpgradeStatus contains information about upgradeAppliance operation.
+type UpgradeStatusResponse struct {
+	// Provides details on the state of the upgrade operation in case of an error.
+	Error StatusResponse `pulumi:"error"`
+	// The version from which we upgraded.
+	PreviousVersion string `pulumi:"previousVersion"`
+	// The time the operation was started.
+	StartTime string `pulumi:"startTime"`
+	// The state of the upgradeAppliance operation.
+	State string `pulumi:"state"`
+	// The version to upgrade to.
+	Version string `pulumi:"version"`
+}
+
+// UpgradeStatus contains information about upgradeAppliance operation.
+type UpgradeStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (UpgradeStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeStatusResponse)(nil)).Elem()
+}
+
+func (o UpgradeStatusResponseOutput) ToUpgradeStatusResponseOutput() UpgradeStatusResponseOutput {
+	return o
+}
+
+func (o UpgradeStatusResponseOutput) ToUpgradeStatusResponseOutputWithContext(ctx context.Context) UpgradeStatusResponseOutput {
+	return o
+}
+
+// Provides details on the state of the upgrade operation in case of an error.
+func (o UpgradeStatusResponseOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v UpgradeStatusResponse) StatusResponse { return v.Error }).(StatusResponseOutput)
+}
+
+// The version from which we upgraded.
+func (o UpgradeStatusResponseOutput) PreviousVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeStatusResponse) string { return v.PreviousVersion }).(pulumi.StringOutput)
+}
+
+// The time the operation was started.
+func (o UpgradeStatusResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeStatusResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The state of the upgradeAppliance operation.
+func (o UpgradeStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeStatusResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The version to upgrade to.
+func (o UpgradeStatusResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeStatusResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
 // Utilization information of a single VM.
@@ -3016,7 +2977,7 @@ type VmwareVmDetails struct {
 	DiskCount *int `pulumi:"diskCount"`
 	// The display name of the VM. Note that this is not necessarily unique.
 	DisplayName *string `pulumi:"displayName"`
-	// The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+	// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
 	GuestDescription *string `pulumi:"guestDescription"`
 	// The size of the memory of the VM in MB.
 	MemoryMb *int `pulumi:"memoryMb"`
@@ -3055,7 +3016,7 @@ type VmwareVmDetailsArgs struct {
 	DiskCount pulumi.IntPtrInput `pulumi:"diskCount"`
 	// The display name of the VM. Note that this is not necessarily unique.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+	// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
 	GuestDescription pulumi.StringPtrInput `pulumi:"guestDescription"`
 	// The size of the memory of the VM in MB.
 	MemoryMb pulumi.IntPtrInput `pulumi:"memoryMb"`
@@ -3180,7 +3141,7 @@ func (o VmwareVmDetailsOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmwareVmDetails) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
 func (o VmwareVmDetailsOutput) GuestDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmwareVmDetails) *string { return v.GuestDescription }).(pulumi.StringPtrOutput)
 }
@@ -3299,7 +3260,7 @@ func (o VmwareVmDetailsPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
 func (o VmwareVmDetailsPtrOutput) GuestDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmwareVmDetails) *string {
 		if v == nil {
@@ -3367,7 +3328,7 @@ type VmwareVmDetailsResponse struct {
 	DiskCount int `pulumi:"diskCount"`
 	// The display name of the VM. Note that this is not necessarily unique.
 	DisplayName string `pulumi:"displayName"`
-	// The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+	// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
 	GuestDescription string `pulumi:"guestDescription"`
 	// The size of the memory of the VM in MB.
 	MemoryMb int `pulumi:"memoryMb"`
@@ -3434,7 +3395,7 @@ func (o VmwareVmDetailsResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareVmDetailsResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
 func (o VmwareVmDetailsResponseOutput) GuestDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareVmDetailsResponse) string { return v.GuestDescription }).(pulumi.StringOutput)
 }
@@ -3478,7 +3439,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareSourceDetailsPtrInput)(nil)).Elem(), VmwareSourceDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVmDetailsInput)(nil)).Elem(), VmwareVmDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVmDetailsPtrInput)(nil)).Elem(), VmwareVmDetailsArgs{})
+	pulumi.RegisterOutputType(ApplianceVersionResponseOutput{})
 	pulumi.RegisterOutputType(AppliedLicenseResponseOutput{})
+	pulumi.RegisterOutputType(AvailableUpdatesResponseOutput{})
 	pulumi.RegisterOutputType(CloneJobResponseOutput{})
 	pulumi.RegisterOutputType(CloneJobResponseArrayOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsOutput{})
@@ -3490,15 +3453,10 @@ func init() {
 	pulumi.RegisterOutputType(ComputeSchedulingResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseArrayOutput{})
-	pulumi.RegisterOutputType(CycleStepResponseOutput{})
-	pulumi.RegisterOutputType(CycleStepResponseArrayOutput{})
-	pulumi.RegisterOutputType(InitializingReplicationStepResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseArrayOutput{})
-	pulumi.RegisterOutputType(PostProcessingStepResponseOutput{})
-	pulumi.RegisterOutputType(ReplicatingStepResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationCycleResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationSyncResponseOutput{})
 	pulumi.RegisterOutputType(SchedulePolicyOutput{})
@@ -3509,6 +3467,7 @@ func init() {
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseArrayOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(UpgradeStatusResponseOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoArrayOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoResponseOutput{})

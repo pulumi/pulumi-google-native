@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
     public sealed class ExecutionConfigResponse
     {
         /// <summary>
-        /// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+        /// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
         /// </summary>
         public readonly string ArtifactStorage;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly Outputs.PrivatePoolResponse PrivatePool;
         /// <summary>
-        /// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+        /// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
         /// </summary>
         public readonly string ServiceAccount;
         /// <summary>

@@ -32,6 +32,10 @@ const (
 	EntryTypeDataSourceConnection = EntryType("DATA_SOURCE_CONNECTION")
 	// Output only. Routine, for example, a BigQuery routine.
 	EntryTypeRoutine = EntryType("ROUTINE")
+	// A Dataproc Metastore lake.
+	EntryTypeLake = EntryType("LAKE")
+	// A Dataproc Metastore zone.
+	EntryTypeZone = EntryType("ZONE")
 	// A service, for example, a Dataproc Metastore service.
 	EntryTypeService = EntryType("SERVICE")
 )
@@ -698,6 +702,179 @@ func (in *googleCloudDatacatalogV1DatabaseTableSpecTypePtr) ToGoogleCloudDatacat
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput)
 }
 
+// Service in which the external table is registered.
+type GoogleCloudDatacatalogV1DataplexExternalTableSystem string
+
+const (
+	// Default unknown system.
+	GoogleCloudDatacatalogV1DataplexExternalTableSystemIntegratedSystemUnspecified = GoogleCloudDatacatalogV1DataplexExternalTableSystem("INTEGRATED_SYSTEM_UNSPECIFIED")
+	// BigQuery.
+	GoogleCloudDatacatalogV1DataplexExternalTableSystemBigquery = GoogleCloudDatacatalogV1DataplexExternalTableSystem("BIGQUERY")
+	// Cloud Pub/Sub.
+	GoogleCloudDatacatalogV1DataplexExternalTableSystemCloudPubsub = GoogleCloudDatacatalogV1DataplexExternalTableSystem("CLOUD_PUBSUB")
+	// Dataproc Metastore.
+	GoogleCloudDatacatalogV1DataplexExternalTableSystemDataprocMetastore = GoogleCloudDatacatalogV1DataplexExternalTableSystem("DATAPROC_METASTORE")
+	// Dataplex.
+	GoogleCloudDatacatalogV1DataplexExternalTableSystemDataplex = GoogleCloudDatacatalogV1DataplexExternalTableSystem("DATAPLEX")
+)
+
+func (GoogleCloudDatacatalogV1DataplexExternalTableSystem) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexExternalTableSystem)(nil)).Elem()
+}
+
+func (e GoogleCloudDatacatalogV1DataplexExternalTableSystem) ToGoogleCloudDatacatalogV1DataplexExternalTableSystemOutput() GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput)
+}
+
+func (e GoogleCloudDatacatalogV1DataplexExternalTableSystem) ToGoogleCloudDatacatalogV1DataplexExternalTableSystemOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput)
+}
+
+func (e GoogleCloudDatacatalogV1DataplexExternalTableSystem) ToGoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput() GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput {
+	return e.ToGoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1DataplexExternalTableSystem) ToGoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput {
+	return GoogleCloudDatacatalogV1DataplexExternalTableSystem(e).ToGoogleCloudDatacatalogV1DataplexExternalTableSystemOutputWithContext(ctx).ToGoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDatacatalogV1DataplexExternalTableSystem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDatacatalogV1DataplexExternalTableSystem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDatacatalogV1DataplexExternalTableSystem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1DataplexExternalTableSystem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexExternalTableSystem)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableSystemOutput() GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableSystemOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput() GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1DataplexExternalTableSystem) *GoogleCloudDatacatalogV1DataplexExternalTableSystem {
+		return &v
+	}).(GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1DataplexExternalTableSystem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1DataplexExternalTableSystem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1DataplexExternalTableSystem)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput() GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput) Elem() GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexExternalTableSystem) GoogleCloudDatacatalogV1DataplexExternalTableSystem {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1DataplexExternalTableSystem
+		return ret
+	}).(GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput)
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDatacatalogV1DataplexExternalTableSystem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDatacatalogV1DataplexExternalTableSystemInput is an input type that accepts GoogleCloudDatacatalogV1DataplexExternalTableSystemArgs and GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexExternalTableSystemInput` via:
+//
+//          GoogleCloudDatacatalogV1DataplexExternalTableSystemArgs{...}
+type GoogleCloudDatacatalogV1DataplexExternalTableSystemInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1DataplexExternalTableSystemOutput() GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput
+	ToGoogleCloudDatacatalogV1DataplexExternalTableSystemOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput
+}
+
+var googleCloudDatacatalogV1DataplexExternalTableSystemPtrType = reflect.TypeOf((**GoogleCloudDatacatalogV1DataplexExternalTableSystem)(nil)).Elem()
+
+type GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput() GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput
+	ToGoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput
+}
+
+type googleCloudDatacatalogV1DataplexExternalTableSystemPtr string
+
+func GoogleCloudDatacatalogV1DataplexExternalTableSystemPtr(v string) GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrInput {
+	return (*googleCloudDatacatalogV1DataplexExternalTableSystemPtr)(&v)
+}
+
+func (*googleCloudDatacatalogV1DataplexExternalTableSystemPtr) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1DataplexExternalTableSystemPtrType
+}
+
+func (in *googleCloudDatacatalogV1DataplexExternalTableSystemPtr) ToGoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput() GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1DataplexExternalTableSystemPtr) ToGoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput)
+}
+
 // Specifies whether the argument is input or output.
 type GoogleCloudDatacatalogV1RoutineSpecArgumentMode string
 
@@ -1258,6 +1435,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType("DATABASE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecType("TABLE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecType("TABLE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexExternalTableSystemInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexExternalTableSystem("INTEGRATED_SYSTEM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexExternalTableSystem("INTEGRATED_SYSTEM_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgumentMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgumentMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecRoutineType("ROUTINE_TYPE_UNSPECIFIED"))
@@ -1273,6 +1452,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexExternalTableSystemOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput{})

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         private InputList<Inputs.ContainerImageArgs>? _containerImages;
 
         /// <summary>
-        /// Optional. Use a list of container images to start the notebook instance.
+        /// Optional. Use a list of container images to use as Kernels in the notebook instance.
         /// </summary>
         public InputList<Inputs.ContainerImageArgs> ContainerImages
         {
@@ -92,6 +92,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         /// </summary>
         [Input("nicType")]
         public Input<Pulumi.GoogleNative.Notebooks.V1.VirtualMachineConfigNicType>? NicType { get; set; }
+
+        /// <summary>
+        /// Optional. Reserved IP Range name is used for VPC Peering. The subnetwork allocation will use the range *name* if it's assigned. Example: managed-notebooks-range-c PEERING_RANGE_NAME_3=managed-notebooks-range-c gcloud compute addresses create $PEERING_RANGE_NAME_3 \ --global \ --prefix-length=24 \ --description="Google Cloud Managed Notebooks Range 24 c" \ --network=$NETWORK \ --addresses=192.168.0.0 \ --purpose=VPC_PEERING Field value will be: `managed-notebooks-range-c`
+        /// </summary>
+        [Input("reservedIpRange")]
+        public Input<string>? ReservedIpRange { get; set; }
 
         /// <summary>
         /// Optional. Shielded VM Instance configuration settings.

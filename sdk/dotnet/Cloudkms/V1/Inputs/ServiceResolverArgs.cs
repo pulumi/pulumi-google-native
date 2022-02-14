@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1.Inputs
         private InputList<Inputs.CertificateArgs>? _serverCertificates;
 
         /// <summary>
-        /// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+        /// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
         /// </summary>
         public InputList<Inputs.CertificateArgs> ServerCertificates
         {

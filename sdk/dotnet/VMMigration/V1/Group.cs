@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
 {
     /// <summary>
     /// Creates a new Group in a given project and location.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:vmmigration/v1:Group")]
     public partial class Group : Pulumi.CustomResource
@@ -107,12 +108,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
-
-        /// <summary>
-        /// The Group name.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

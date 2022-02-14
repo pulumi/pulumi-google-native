@@ -12,6 +12,7 @@ import (
 )
 
 // Initiates a Clone of a specific migrating VM.
+// Auto-naming is currently not supported for this resource.
 // Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 // on Google Cloud even though it will be deleted from Pulumi state.
 type CloneJob struct {
@@ -82,11 +83,9 @@ type cloneJobArgs struct {
 	CloneJobId    string  `pulumi:"cloneJobId"`
 	Location      *string `pulumi:"location"`
 	MigratingVmId string  `pulumi:"migratingVmId"`
-	// The name of the clone.
-	Name      *string `pulumi:"name"`
-	Project   *string `pulumi:"project"`
-	RequestId *string `pulumi:"requestId"`
-	SourceId  string  `pulumi:"sourceId"`
+	Project       *string `pulumi:"project"`
+	RequestId     *string `pulumi:"requestId"`
+	SourceId      string  `pulumi:"sourceId"`
 }
 
 // The set of arguments for constructing a CloneJob resource.
@@ -94,11 +93,9 @@ type CloneJobArgs struct {
 	CloneJobId    pulumi.StringInput
 	Location      pulumi.StringPtrInput
 	MigratingVmId pulumi.StringInput
-	// The name of the clone.
-	Name      pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
-	RequestId pulumi.StringPtrInput
-	SourceId  pulumi.StringInput
+	Project       pulumi.StringPtrInput
+	RequestId     pulumi.StringPtrInput
+	SourceId      pulumi.StringInput
 }
 
 func (CloneJobArgs) ElementType() reflect.Type {

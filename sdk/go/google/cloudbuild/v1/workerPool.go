@@ -26,8 +26,6 @@ type WorkerPool struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Hybrid pool configuration
-	HybridPoolConfig HybridPoolConfigResponseOutput `pulumi:"hybridPoolConfig"`
 	// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Legacy Private Pool configuration.
@@ -86,9 +84,7 @@ type workerPoolArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
 	DisplayName *string `pulumi:"displayName"`
-	// Hybrid pool configuration
-	HybridPoolConfig *HybridPoolConfig `pulumi:"hybridPoolConfig"`
-	Location         *string           `pulumi:"location"`
+	Location    *string `pulumi:"location"`
 	// Legacy Private Pool configuration.
 	PrivatePoolV1Config *PrivatePoolV1Config `pulumi:"privatePoolV1Config"`
 	Project             *string              `pulumi:"project"`
@@ -102,9 +98,7 @@ type WorkerPoolArgs struct {
 	Annotations pulumi.StringMapInput
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
 	DisplayName pulumi.StringPtrInput
-	// Hybrid pool configuration
-	HybridPoolConfig HybridPoolConfigPtrInput
-	Location         pulumi.StringPtrInput
+	Location    pulumi.StringPtrInput
 	// Legacy Private Pool configuration.
 	PrivatePoolV1Config PrivatePoolV1ConfigPtrInput
 	Project             pulumi.StringPtrInput

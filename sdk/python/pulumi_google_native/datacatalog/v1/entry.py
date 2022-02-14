@@ -25,6 +25,7 @@ class EntryArgs:
                  database_table_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 fileset_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1FilesetSpecArgs']] = None,
                  fully_qualified_name: Optional[pulumi.Input[str]] = None,
                  gcs_fileset_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1GcsFilesetSpecArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -46,6 +47,7 @@ class EntryArgs:
         :param pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecArgs'] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
         :param pulumi.Input[str] description: Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
         :param pulumi.Input[str] display_name: Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
+        :param pulumi.Input['GoogleCloudDatacatalogV1FilesetSpecArgs'] fileset_spec: Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
         :param pulumi.Input[str] fully_qualified_name: Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
         :param pulumi.Input['GoogleCloudDatacatalogV1GcsFilesetSpecArgs'] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Cloud labels attached to the entry. In Data Catalog, you can create and modify labels attached only to custom entries. Synced entries have unmodifiable labels that come from the source system.
@@ -73,6 +75,8 @@ class EntryArgs:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if fileset_spec is not None:
+            pulumi.set(__self__, "fileset_spec", fileset_spec)
         if fully_qualified_name is not None:
             pulumi.set(__self__, "fully_qualified_name", fully_qualified_name)
         if gcs_fileset_spec is not None:
@@ -199,6 +203,18 @@ class EntryArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="filesetSpec")
+    def fileset_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1FilesetSpecArgs']]:
+        """
+        Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
+        """
+        return pulumi.get(self, "fileset_spec")
+
+    @fileset_spec.setter
+    def fileset_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1FilesetSpecArgs']]):
+        pulumi.set(self, "fileset_spec", value)
 
     @property
     @pulumi.getter(name="fullyQualifiedName")
@@ -353,6 +369,7 @@ class Entry(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_group_id: Optional[pulumi.Input[str]] = None,
                  entry_id: Optional[pulumi.Input[str]] = None,
+                 fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1FilesetSpecArgs']]] = None,
                  fully_qualified_name: Optional[pulumi.Input[str]] = None,
                  gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1GcsFilesetSpecArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -379,6 +396,7 @@ class Entry(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
         :param pulumi.Input[str] description: Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
         :param pulumi.Input[str] display_name: Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1FilesetSpecArgs']] fileset_spec: Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
         :param pulumi.Input[str] fully_qualified_name: Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1GcsFilesetSpecArgs']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Cloud labels attached to the entry. In Data Catalog, you can create and modify labels attached only to custom entries. Synced entries have unmodifiable labels that come from the source system.
@@ -424,6 +442,7 @@ class Entry(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_group_id: Optional[pulumi.Input[str]] = None,
                  entry_id: Optional[pulumi.Input[str]] = None,
+                 fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1FilesetSpecArgs']]] = None,
                  fully_qualified_name: Optional[pulumi.Input[str]] = None,
                  gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1GcsFilesetSpecArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -461,6 +480,7 @@ class Entry(pulumi.CustomResource):
             if entry_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_id'")
             __props__.__dict__["entry_id"] = entry_id
+            __props__.__dict__["fileset_spec"] = fileset_spec
             __props__.__dict__["fully_qualified_name"] = fully_qualified_name
             __props__.__dict__["gcs_fileset_spec"] = gcs_fileset_spec
             __props__.__dict__["labels"] = labels
@@ -508,6 +528,7 @@ class Entry(pulumi.CustomResource):
         __props__.__dict__["database_table_spec"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["fileset_spec"] = None
         __props__.__dict__["fully_qualified_name"] = None
         __props__.__dict__["gcs_fileset_spec"] = None
         __props__.__dict__["integrated_system"] = None
@@ -587,6 +608,14 @@ class Entry(pulumi.CustomResource):
         Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="filesetSpec")
+    def fileset_spec(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1FilesetSpecResponse']:
+        """
+        Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
+        """
+        return pulumi.get(self, "fileset_spec")
 
     @property
     @pulumi.getter(name="fullyQualifiedName")

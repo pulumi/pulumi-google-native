@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1.Outputs
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+        /// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateResponse> ServerCertificates;
         /// <summary>

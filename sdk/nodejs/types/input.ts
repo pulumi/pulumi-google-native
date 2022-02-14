@@ -4594,6 +4594,9 @@ export namespace billingbudgets {
             thresholdPercent: pulumi.Input<number>;
         }
 
+        /**
+         * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+         */
         export interface GoogleTypeDateArgs {
             /**
              * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -4738,6 +4741,9 @@ export namespace billingbudgets {
             thresholdPercent: pulumi.Input<number>;
         }
 
+        /**
+         * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+         */
         export interface GoogleTypeDateArgs {
             /**
              * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -5606,56 +5612,6 @@ export namespace cloudbuild {
         }
 
         /**
-         * Configuration per workload for both Private Pools and Hybrid Pools.
-         */
-        export interface GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigArgs {
-            /**
-             * The disk size (in GB) which is requested for the build container. If unset, a value of 10 GB will be used.
-             */
-            diskSizeGb?: pulumi.Input<string>;
-            /**
-             * The memory (in GB) which is requested for the build container. If unset, a value of 4 GB will be used.
-             */
-            memoryGb?: pulumi.Input<number>;
-            /**
-             * The number of vCPUs which are requested for the build container. If unset, a value of 1 will be used.
-             */
-            vcpuCount?: pulumi.Input<number>;
-        }
-
-        /**
-         * Configuration for a Hybrid Worker Pool Next ID: 6
-         */
-        export interface HybridPoolConfigArgs {
-            /**
-             * Default settings which will be applied to builds on this worker pool if they are not specified in the build request.
-             */
-            defaultWorkerConfig?: pulumi.Input<inputs.cloudbuild.v1.HybridWorkerConfigArgs>;
-            /**
-             * Immutable. The Anthos/GKE Hub membership of the cluster which will run the actual build operations. Example: projects/{project}/locations/{location}/memberships/{cluster_name}
-             */
-            membership: pulumi.Input<string>;
-        }
-
-        /**
-         * These settings can be applied to a user's build operations. Next ID: 4
-         */
-        export interface HybridWorkerConfigArgs {
-            /**
-             * The disk size (in GB) which is requested for the build container. Defaults to 10 GB.
-             */
-            diskSizeGb?: pulumi.Input<string>;
-            /**
-             * The memory (in GB) which is requested for the build container. Defaults to 4 GB.
-             */
-            memoryGb?: pulumi.Input<number>;
-            /**
-             * The number of vCPUs which are requested for the build container. Defaults to 1.
-             */
-            vcpuCount?: pulumi.Input<number>;
-        }
-
-        /**
          * Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
          */
         export interface InlineSecretArgs {
@@ -5691,10 +5647,6 @@ export namespace cloudbuild {
              * The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
              */
             name?: pulumi.Input<string>;
-            /**
-             * Configuration per workload.
-             */
-            workerConfig?: pulumi.Input<inputs.cloudbuild.v1.GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfigArgs>;
         }
 
         /**
@@ -6229,7 +6181,7 @@ export namespace clouddeploy {
          */
         export interface AnthosClusterArgs {
             /**
-             * Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+             * Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
              */
             membership?: pulumi.Input<string>;
         }
@@ -6313,7 +6265,7 @@ export namespace clouddeploy {
          */
         export interface ExecutionConfigArgs {
             /**
-             * Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+             * Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
              */
             artifactStorage?: pulumi.Input<string>;
             /**
@@ -6325,7 +6277,7 @@ export namespace clouddeploy {
              */
             privatePool?: pulumi.Input<inputs.clouddeploy.v1.PrivatePoolArgs>;
             /**
-             * Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+             * Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
              */
             serviceAccount?: pulumi.Input<string>;
             /**
@@ -6368,6 +6320,10 @@ export namespace clouddeploy {
              * Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
              */
             cluster?: pulumi.Input<string>;
+            /**
+             * Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+             */
+            internalIp?: pulumi.Input<boolean>;
         }
 
         /**
@@ -7077,7 +7033,7 @@ export namespace cloudkms {
              */
             hostname: pulumi.Input<string>;
             /**
-             * A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+             * A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
              */
             serverCertificates: pulumi.Input<pulumi.Input<inputs.cloudkms.v1.CertificateArgs>[]>;
             /**
@@ -9686,10 +9642,6 @@ export namespace compute {
              */
             auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.compute.alpha.AuditLogConfigArgs>[]>;
             /**
-             * This is deprecated and has no effect. Do not use.
-             */
-            exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
              * Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
              */
             service?: pulumi.Input<string>;
@@ -10241,11 +10193,11 @@ export namespace compute {
              */
             connectTimeout?: pulumi.Input<inputs.compute.alpha.DurationArgs>;
             /**
-             * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
              */
             maxConnections?: pulumi.Input<number>;
             /**
-             * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
              */
             maxPendingRequests?: pulumi.Input<number>;
             /**
@@ -10253,11 +10205,11 @@ export namespace compute {
              */
             maxRequests?: pulumi.Input<number>;
             /**
-             * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
              */
             maxRequestsPerConnection?: pulumi.Input<number>;
             /**
-             * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
              */
             maxRetries?: pulumi.Input<number>;
         }
@@ -10429,6 +10381,13 @@ export namespace compute {
              * The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
              */
             stateOverride?: pulumi.Input<inputs.compute.alpha.RolloutPolicyArgs>;
+        }
+
+        export interface DiskAsyncReplicationArgs {
+            /**
+             * The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
+             */
+            disk?: pulumi.Input<string>;
         }
 
         /**
@@ -10622,6 +10581,10 @@ export namespace compute {
              */
             priority?: pulumi.Input<number>;
             /**
+             * An optional name for the rule. This field is not a unique identifier and can be updated.
+             */
+            ruleName?: pulumi.Input<string>;
+            /**
              * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
              */
             targetResources?: pulumi.Input<pulumi.Input<string>[]>;
@@ -10793,7 +10756,7 @@ export namespace compute {
          */
         export interface GuestOsFeatureArgs {
             /**
-             * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
+             * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
              */
             type?: pulumi.Input<enums.compute.alpha.GuestOsFeatureType>;
         }
@@ -11818,7 +11781,7 @@ export namespace compute {
              */
             tag?: pulumi.Input<string>;
             /**
-             * A template to parse service and tag fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+             * A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
              */
             urlMask?: pulumi.Input<string>;
         }
@@ -12262,7 +12225,7 @@ export namespace compute {
          */
         export interface ResourcePolicyDailyCycleArgs {
             /**
-             * Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
+             * Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
              */
             daysInCycle?: pulumi.Input<number>;
             /**
@@ -13181,7 +13144,7 @@ export namespace compute {
              */
             conformAction?: pulumi.Input<string>;
             /**
-             * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+             * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
              */
             enforceOnKey?: pulumi.Input<enums.compute.alpha.SecurityPolicyRuleRateLimitOptionsEnforceOnKey>;
             /**
@@ -13189,7 +13152,7 @@ export namespace compute {
              */
             enforceOnKeyName?: pulumi.Input<string>;
             /**
-             * Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
+             * Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
              */
             exceedAction?: pulumi.Input<string>;
             /**
@@ -13443,7 +13406,7 @@ export namespace compute {
              */
             enable?: pulumi.Input<boolean>;
             /**
-             * Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
+             * Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
              */
             filterExpr?: pulumi.Input<string>;
             /**
@@ -21768,6 +21731,16 @@ export namespace container {
         }
 
         /**
+         * IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+         */
+        export interface IdentityServiceConfigArgs {
+            /**
+             * Whether to enable the Identity Service component
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
          * Configuration for the Kubernetes Dashboard.
          */
         export interface KubernetesDashboardArgs {
@@ -28351,9 +28324,85 @@ export namespace datacatalog {
          */
         export interface GoogleCloudDatacatalogV1DatabaseTableSpecArgs {
             /**
+             * Fields specific to a Dataplex table and present only in the Dataplex table entries.
+             */
+            dataplexTable?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1DataplexTableSpecArgs>;
+            /**
              * Type of this table.
              */
             type?: pulumi.Input<enums.datacatalog.v1.GoogleCloudDatacatalogV1DatabaseTableSpecType>;
+        }
+
+        /**
+         * External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog.
+         */
+        export interface GoogleCloudDatacatalogV1DataplexExternalTableArgs {
+            /**
+             * Name of the Data Catalog entry representing the external table.
+             */
+            dataCatalogEntry?: pulumi.Input<string>;
+            /**
+             * Fully qualified name (FQN) of the external table.
+             */
+            fullyQualifiedName?: pulumi.Input<string>;
+            /**
+             * Google Cloud resource name of the external table.
+             */
+            googleCloudResource?: pulumi.Input<string>;
+            /**
+             * Service in which the external table is registered.
+             */
+            system?: pulumi.Input<enums.datacatalog.v1.GoogleCloudDatacatalogV1DataplexExternalTableSystem>;
+        }
+
+        /**
+         * Entry specyfication for a Dataplex fileset.
+         */
+        export interface GoogleCloudDatacatalogV1DataplexFilesetSpecArgs {
+            /**
+             * Common Dataplex fields.
+             */
+            dataplexSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1DataplexSpecArgs>;
+        }
+
+        /**
+         * Common Dataplex fields.
+         */
+        export interface GoogleCloudDatacatalogV1DataplexSpecArgs {
+            /**
+             * Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
+             */
+            asset?: pulumi.Input<string>;
+            /**
+             * Compression format of the data, e.g., zip, gzip etc.
+             */
+            compressionFormat?: pulumi.Input<string>;
+            /**
+             * Format of the data.
+             */
+            dataFormat?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1PhysicalSchemaArgs>;
+            /**
+             * Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
+             */
+            project?: pulumi.Input<string>;
+        }
+
+        /**
+         * Entry specification for a Dataplex table.
+         */
+        export interface GoogleCloudDatacatalogV1DataplexTableSpecArgs {
+            /**
+             * Common Dataplex fields.
+             */
+            dataplexSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1DataplexSpecArgs>;
+            /**
+             * List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
+             */
+            externalTables?: pulumi.Input<pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1DataplexExternalTableArgs>[]>;
+            /**
+             * Indicates if the table schema is managed by the user or not.
+             */
+            userManaged?: pulumi.Input<boolean>;
         }
 
         /**
@@ -28367,6 +28416,16 @@ export namespace datacatalog {
         }
 
         /**
+         * Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.
+         */
+        export interface GoogleCloudDatacatalogV1FilesetSpecArgs {
+            /**
+             * Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
+             */
+            dataplexFileset?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1DataplexFilesetSpecArgs>;
+        }
+
+        /**
          * Describes a Cloud Storage fileset entry.
          */
         export interface GoogleCloudDatacatalogV1GcsFilesetSpecArgs {
@@ -28374,6 +28433,84 @@ export namespace datacatalog {
              * Patterns to identify a set of files in Google Cloud Storage. For more information, see [Wildcard Names] (https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames). Note: Currently, bucket wildcards are not supported. Examples of valid `file_patterns`: * `gs://bucket_name/dir/*`: matches all files in `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` and all subdirectories * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*&#47;b`: matches all files in `bucket_name` that match the `a/*&#47;b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to match complex sets of files, for example: `gs://bucket_name/[a-m]??.j*g`
              */
             filePatterns: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing source data.
+         */
+        export interface GoogleCloudDatacatalogV1PhysicalSchemaArgs {
+            /**
+             * Schema in Avro JSON format.
+             */
+            avro?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs>;
+            /**
+             * Marks a CSV-encoded data source.
+             */
+            csv?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs>;
+            /**
+             * Marks an ORC-encoded data source.
+             */
+            orc?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs>;
+            /**
+             * Marks a Parquet-encoded data source.
+             */
+            parquet?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs>;
+            /**
+             * Schema in protocol buffer format.
+             */
+            protobuf?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs>;
+            /**
+             * Schema in Thrift format.
+             */
+            thrift?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs>;
+        }
+
+        /**
+         * Schema in Avro JSON format.
+         */
+        export interface GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs {
+            /**
+             * JSON source of the Avro schema.
+             */
+            text?: pulumi.Input<string>;
+        }
+
+        /**
+         * Marks a CSV-encoded data source.
+         */
+        export interface GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs {
+        }
+
+        /**
+         * Marks an ORC-encoded data source.
+         */
+        export interface GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs {
+        }
+
+        /**
+         * Marks a Parquet-encoded data source.
+         */
+        export interface GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs {
+        }
+
+        /**
+         * Schema in protocol buffer format.
+         */
+        export interface GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs {
+            /**
+             * Protocol buffer source of the schema.
+             */
+            text?: pulumi.Input<string>;
+        }
+
+        /**
+         * Schema in Thrift format.
+         */
+        export interface GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs {
+            /**
+             * Thrift IDL source of the schema.
+             */
+            text?: pulumi.Input<string>;
         }
 
         /**
@@ -40520,6 +40657,9 @@ export namespace dlp {
         export interface GoogleProtobufEmptyArgs {
         }
 
+        /**
+         * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+         */
         export interface GoogleTypeDateArgs {
             /**
              * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -42007,7 +42147,7 @@ export namespace eventarc {
          */
         export interface DestinationArgs {
             /**
-             * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+             * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
              */
             cloudFunction?: pulumi.Input<string>;
             /**
@@ -42028,6 +42168,10 @@ export namespace eventarc {
              * The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
              */
             attribute: pulumi.Input<string>;
+            /**
+             * Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+             */
+            operator?: pulumi.Input<string>;
             /**
              * The value for the attribute.
              */
@@ -44197,6 +44341,37 @@ export namespace gkehub {
              * Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
              */
             v1beta1Crd?: pulumi.Input<boolean>;
+        }
+
+    }
+
+    export namespace v2alpha {
+        /**
+         * Information of the FeatureConfig applied on the MembershipFeature.
+         */
+        export interface FeatureConfigRefArgs {
+            /**
+             * Input only. Resource name of FeatureConfig, in the format: `projects/{project}/locations/global/featureConfigs/{feature_config}`.
+             */
+            config?: pulumi.Input<string>;
+        }
+
+        /**
+         * FeatureConfigState describes the state of a FeatureConfig resource.
+         */
+        export interface FeatureConfigStateArgs {
+        }
+
+        /**
+         * FeatureSpec contains user input per-feature spec information.
+         */
+        export interface FeatureSpecArgs {
+        }
+
+        /**
+         * ResourceState describes the state of a MembershipFeature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the MembershipFeature.
+         */
+        export interface ResourceStateArgs {
         }
 
     }
@@ -48169,6 +48344,10 @@ export namespace monitoring {
              */
             duration?: pulumi.Input<string>;
             /**
+             * A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+             */
+            evaluationMissingData?: pulumi.Input<enums.monitoring.v3.MetricThresholdEvaluationMissingData>;
+            /**
              * A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
              */
             filter: pulumi.Input<string>;
@@ -48204,6 +48383,10 @@ export namespace monitoring {
              * The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
              */
             duration?: pulumi.Input<string>;
+            /**
+             * A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+             */
+            evaluationMissingData?: pulumi.Input<enums.monitoring.v3.MonitoringQueryLanguageConditionEvaluationMissingData>;
             /**
              * Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.
              */
@@ -49753,7 +49936,7 @@ export namespace notebooks {
         }
 
         /**
-         * Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
+         * Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
          */
         export interface RuntimeSoftwareConfigArgs {
             /**
@@ -49776,6 +49959,10 @@ export namespace notebooks {
              * Install Nvidia Driver automatically.
              */
             installGpuDriver?: pulumi.Input<boolean>;
+            /**
+             * Optional. Use a list of container images to use as Kernels in the notebook instance.
+             */
+            kernels?: pulumi.Input<pulumi.Input<inputs.notebooks.v1.ContainerImageArgs>[]>;
             /**
              * Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
              */
@@ -49897,7 +50084,7 @@ export namespace notebooks {
              */
             acceleratorConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeAcceleratorConfigArgs>;
             /**
-             * Optional. Use a list of container images to start the notebook instance.
+             * Optional. Use a list of container images to use as Kernels in the notebook instance.
              */
             containerImages?: pulumi.Input<pulumi.Input<inputs.notebooks.v1.ContainerImageArgs>[]>;
             /**
@@ -49932,6 +50119,10 @@ export namespace notebooks {
              * Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
              */
             nicType?: pulumi.Input<enums.notebooks.v1.VirtualMachineConfigNicType>;
+            /**
+             * Optional. Reserved IP Range name is used for VPC Peering. The subnetwork allocation will use the range *name* if it's assigned. Example: managed-notebooks-range-c PEERING_RANGE_NAME_3=managed-notebooks-range-c gcloud compute addresses create $PEERING_RANGE_NAME_3 \ --global \ --prefix-length=24 \ --description="Google Cloud Managed Notebooks Range 24 c" \ --network=$NETWORK \ --addresses=192.168.0.0 \ --purpose=VPC_PEERING Field value will be: `managed-notebooks-range-c`
+             */
+            reservedIpRange?: pulumi.Input<string>;
             /**
              * Optional. Shielded VM Instance configuration settings.
              */
@@ -52656,7 +52847,7 @@ export namespace privateca {
          */
         export interface SubjectAltNamesArgs {
             /**
-             * Contains additional subject alternative name values.
+             * Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
              */
             customSans?: pulumi.Input<pulumi.Input<inputs.privateca.v1.X509ExtensionArgs>[]>;
             /**
@@ -55385,7 +55576,7 @@ export namespace run {
          */
         export interface ObjectMetaArgs {
             /**
-             * (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+             * (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations
              */
             annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
@@ -55417,11 +55608,11 @@ export namespace run {
              */
             generation?: pulumi.Input<number>;
             /**
-             * (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
+             * (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
              */
             labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
+             * Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names +optional
              */
             name?: pulumi.Input<string>;
             /**
@@ -55441,7 +55632,7 @@ export namespace run {
              */
             selfLink?: pulumi.Input<string>;
             /**
-             * (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+             * (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
              */
             uid?: pulumi.Input<string>;
         }
@@ -55467,11 +55658,11 @@ export namespace run {
              */
             kind?: pulumi.Input<string>;
             /**
-             * Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names
+             * Name of the referent. More info: https://kubernetes.io/docs/user-guide/identifiers#names
              */
             name?: pulumi.Input<string>;
             /**
-             * UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+             * UID of the referent. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
              */
             uid?: pulumi.Input<string>;
         }
@@ -56280,7 +56471,7 @@ export namespace run {
          */
         export interface ObjectMetaArgs {
             /**
-             * (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+             * (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations
              */
             annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
@@ -56312,11 +56503,11 @@ export namespace run {
              */
             generation?: pulumi.Input<number>;
             /**
-             * (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
+             * (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
              */
             labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
+             * Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names +optional
              */
             name?: pulumi.Input<string>;
             /**
@@ -56336,7 +56527,7 @@ export namespace run {
              */
             selfLink?: pulumi.Input<string>;
             /**
-             * (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+             * (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
              */
             uid?: pulumi.Input<string>;
         }
@@ -56362,11 +56553,11 @@ export namespace run {
              */
             kind?: pulumi.Input<string>;
             /**
-             * Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names
+             * Name of the referent. More info: https://kubernetes.io/docs/user-guide/identifiers#names
              */
             name?: pulumi.Input<string>;
             /**
-             * UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+             * UID of the referent. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
              */
             uid?: pulumi.Input<string>;
         }
@@ -61632,7 +61823,7 @@ export namespace testing {
         }
 
         /**
-         * Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
+         * Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
          */
         export interface UniformShardingArgs {
             /**
@@ -63570,7 +63761,7 @@ export namespace vmmigration {
              */
             displayName?: pulumi.Input<string>;
             /**
-             * The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+             * The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
              */
             guestDescription?: pulumi.Input<string>;
             /**
@@ -63880,7 +64071,7 @@ export namespace vmmigration {
              */
             displayName?: pulumi.Input<string>;
             /**
-             * The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+             * The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
              */
             guestDescription?: pulumi.Input<string>;
             /**

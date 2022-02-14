@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
     public sealed class GoogleCloudDatacatalogV1DatabaseTableSpecResponse
     {
         /// <summary>
+        /// Fields specific to a Dataplex table and present only in the Dataplex table entries.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1DataplexTableSpecResponse DataplexTable;
+        /// <summary>
         /// Type of this table.
         /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
-        private GoogleCloudDatacatalogV1DatabaseTableSpecResponse(string type)
+        private GoogleCloudDatacatalogV1DatabaseTableSpecResponse(
+            Outputs.GoogleCloudDatacatalogV1DataplexTableSpecResponse dataplexTable,
+
+            string type)
         {
+            DataplexTable = dataplexTable;
             Type = type;
         }
     }

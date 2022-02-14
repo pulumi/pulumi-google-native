@@ -33,11 +33,11 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names
+        /// Name of the referent. More info: https://kubernetes.io/docs/user-guide/identifiers#names
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+        /// UID of the referent. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
         /// </summary>
         public readonly string Uid;
 

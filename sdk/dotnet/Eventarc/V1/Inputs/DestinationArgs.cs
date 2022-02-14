@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
     public sealed class DestinationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
         /// </summary>
         [Input("cloudFunction")]
         public Input<string>? CloudFunction { get; set; }

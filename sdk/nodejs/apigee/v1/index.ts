@@ -15,6 +15,7 @@ export * from "./dataCollector";
 export * from "./datastore";
 export * from "./debugSession";
 export * from "./developer";
+export * from "./endpointAttachment";
 export * from "./envgroup";
 export * from "./envgroupAttachment";
 export * from "./environment";
@@ -30,6 +31,7 @@ export * from "./getDataCollector";
 export * from "./getDatastore";
 export * from "./getDebugSession";
 export * from "./getDeveloper";
+export * from "./getEndpointAttachment";
 export * from "./getEnvgroup";
 export * from "./getEnvgroupAttachment";
 export * from "./getEnvironment";
@@ -82,6 +84,7 @@ import { DataCollector } from "./dataCollector";
 import { Datastore } from "./datastore";
 import { DebugSession } from "./debugSession";
 import { Developer } from "./developer";
+import { EndpointAttachment } from "./endpointAttachment";
 import { Envgroup } from "./envgroup";
 import { EnvgroupAttachment } from "./envgroupAttachment";
 import { Environment } from "./environment";
@@ -127,6 +130,8 @@ const _module = {
                 return new DebugSession(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Developer":
                 return new Developer(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:EndpointAttachment":
+                return new EndpointAttachment(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Envgroup":
                 return new Envgroup(name, <any>undefined, { urn })
             case "google-native:apigee/v1:EnvgroupAttachment":

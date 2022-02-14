@@ -4589,7 +4589,7 @@ func (o SubjectPtrOutput) StreetAddress() pulumi.StringPtrOutput {
 
 // SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name).
 type SubjectAltNames struct {
-	// Contains additional subject alternative name values.
+	// Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
 	CustomSans []X509Extension `pulumi:"customSans"`
 	// Contains only valid, fully-qualified host names.
 	DnsNames []string `pulumi:"dnsNames"`
@@ -4614,7 +4614,7 @@ type SubjectAltNamesInput interface {
 
 // SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name).
 type SubjectAltNamesArgs struct {
-	// Contains additional subject alternative name values.
+	// Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
 	CustomSans X509ExtensionArrayInput `pulumi:"customSans"`
 	// Contains only valid, fully-qualified host names.
 	DnsNames pulumi.StringArrayInput `pulumi:"dnsNames"`
@@ -4704,7 +4704,7 @@ func (o SubjectAltNamesOutput) ToSubjectAltNamesPtrOutputWithContext(ctx context
 	}).(SubjectAltNamesPtrOutput)
 }
 
-// Contains additional subject alternative name values.
+// Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
 func (o SubjectAltNamesOutput) CustomSans() X509ExtensionArrayOutput {
 	return o.ApplyT(func(v SubjectAltNames) []X509Extension { return v.CustomSans }).(X509ExtensionArrayOutput)
 }
@@ -4753,7 +4753,7 @@ func (o SubjectAltNamesPtrOutput) Elem() SubjectAltNamesOutput {
 	}).(SubjectAltNamesOutput)
 }
 
-// Contains additional subject alternative name values.
+// Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
 func (o SubjectAltNamesPtrOutput) CustomSans() X509ExtensionArrayOutput {
 	return o.ApplyT(func(v *SubjectAltNames) []X509Extension {
 		if v == nil {
@@ -4805,7 +4805,7 @@ func (o SubjectAltNamesPtrOutput) Uris() pulumi.StringArrayOutput {
 
 // SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name).
 type SubjectAltNamesResponse struct {
-	// Contains additional subject alternative name values.
+	// Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
 	CustomSans []X509ExtensionResponse `pulumi:"customSans"`
 	// Contains only valid, fully-qualified host names.
 	DnsNames []string `pulumi:"dnsNames"`
@@ -4832,7 +4832,7 @@ func (o SubjectAltNamesResponseOutput) ToSubjectAltNamesResponseOutputWithContex
 	return o
 }
 
-// Contains additional subject alternative name values.
+// Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
 func (o SubjectAltNamesResponseOutput) CustomSans() X509ExtensionResponseArrayOutput {
 	return o.ApplyT(func(v SubjectAltNamesResponse) []X509ExtensionResponse { return v.CustomSans }).(X509ExtensionResponseArrayOutput)
 }

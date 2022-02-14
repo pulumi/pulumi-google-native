@@ -64,6 +64,10 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
+     */
+    public readonly pdpScope!: pulumi.Output<string>;
+    /**
      * The list of public delegated prefixes that exist for this public advertised prefix.
      */
     public /*out*/ readonly publicDelegatedPrefixs!: pulumi.Output<outputs.compute.alpha.PublicAdvertisedPrefixPublicDelegatedPrefixResponse[]>;
@@ -99,6 +103,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["dnsVerificationIp"] = args ? args.dnsVerificationIp : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pdpScope"] = args ? args.pdpScope : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
@@ -117,6 +122,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["ipCidrRange"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pdpScope"] = undefined /*out*/;
             resourceInputs["publicDelegatedPrefixs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -148,6 +154,10 @@ export interface PublicAdvertisedPrefixArgs {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
+     */
+    pdpScope?: pulumi.Input<enums.compute.alpha.PublicAdvertisedPrefixPdpScope>;
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**

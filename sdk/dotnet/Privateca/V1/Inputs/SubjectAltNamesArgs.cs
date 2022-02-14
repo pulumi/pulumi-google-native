@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         private InputList<Inputs.X509ExtensionArgs>? _customSans;
 
         /// <summary>
-        /// Contains additional subject alternative name values.
+        /// Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
         /// </summary>
         public InputList<Inputs.X509ExtensionArgs> CustomSans
         {

@@ -57,6 +57,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Email address of entity that sent original CreateInstance request.
+     */
+    public /*out*/ readonly creator!: pulumi.Output<string>;
+    /**
      * Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
      */
     public readonly customGpuDriverPath!: pulumi.Output<string>;
@@ -222,6 +226,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["upgradeHistory"] = args ? args.upgradeHistory : undefined;
             resourceInputs["vmImage"] = args ? args.vmImage : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["disks"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["proxyUri"] = undefined /*out*/;
@@ -233,6 +238,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["bootDiskType"] = undefined /*out*/;
             resourceInputs["containerImage"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["customGpuDriverPath"] = undefined /*out*/;
             resourceInputs["dataDiskSizeGb"] = undefined /*out*/;
             resourceInputs["dataDiskType"] = undefined /*out*/;

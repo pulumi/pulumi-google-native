@@ -47,6 +47,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Email address of entity that sent original CreateInstance request.
+        /// </summary>
+        [Output("creator")]
+        public Output<string> Creator { get; private set; } = null!;
+
+        /// <summary>
         /// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
         /// </summary>
         [Output("customGpuDriverPath")]

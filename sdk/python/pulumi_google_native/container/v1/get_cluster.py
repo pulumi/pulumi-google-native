@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, conditions=None, confidential_nodes=None, create_time=None, current_master_version=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, expire_time=None, initial_cluster_version=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_ipv4_cidr_size=None, node_pool_defaults=None, node_pools=None, notification_config=None, private_cluster_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None):
+    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, conditions=None, confidential_nodes=None, create_time=None, current_master_version=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, expire_time=None, identity_service_config=None, initial_cluster_version=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_ipv4_cidr_size=None, node_pool_defaults=None, node_pools=None, notification_config=None, private_cluster_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
@@ -73,6 +73,9 @@ class GetClusterResult:
         if expire_time and not isinstance(expire_time, str):
             raise TypeError("Expected argument 'expire_time' to be a str")
         pulumi.set(__self__, "expire_time", expire_time)
+        if identity_service_config and not isinstance(identity_service_config, dict):
+            raise TypeError("Expected argument 'identity_service_config' to be a dict")
+        pulumi.set(__self__, "identity_service_config", identity_service_config)
         if initial_cluster_version and not isinstance(initial_cluster_version, str):
             raise TypeError("Expected argument 'initial_cluster_version' to be a str")
         pulumi.set(__self__, "initial_cluster_version", initial_cluster_version)
@@ -319,6 +322,14 @@ class GetClusterResult:
         [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         """
         return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter(name="identityServiceConfig")
+    def identity_service_config(self) -> 'outputs.IdentityServiceConfigResponse':
+        """
+        Configuration for Identity Service component.
+        """
+        return pulumi.get(self, "identity_service_config")
 
     @property
     @pulumi.getter(name="initialClusterVersion")
@@ -617,6 +628,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             enable_tpu=self.enable_tpu,
             endpoint=self.endpoint,
             expire_time=self.expire_time,
+            identity_service_config=self.identity_service_config,
             initial_cluster_version=self.initial_cluster_version,
             ip_allocation_policy=self.ip_allocation_policy,
             label_fingerprint=self.label_fingerprint,
@@ -689,6 +701,7 @@ def get_cluster(cluster_id: Optional[str] = None,
         enable_tpu=__ret__.enable_tpu,
         endpoint=__ret__.endpoint,
         expire_time=__ret__.expire_time,
+        identity_service_config=__ret__.identity_service_config,
         initial_cluster_version=__ret__.initial_cluster_version,
         ip_allocation_policy=__ret__.ip_allocation_policy,
         label_fingerprint=__ret__.label_fingerprint,

@@ -69,6 +69,10 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
+     */
+    public readonly filesetSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1FilesetSpecResponse>;
+    /**
      * Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
      */
     public readonly fullyQualifiedName!: pulumi.Output<string>;
@@ -151,6 +155,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["entryGroupId"] = args ? args.entryGroupId : undefined;
             resourceInputs["entryId"] = args ? args.entryId : undefined;
+            resourceInputs["filesetSpec"] = args ? args.filesetSpec : undefined;
             resourceInputs["fullyQualifiedName"] = args ? args.fullyQualifiedName : undefined;
             resourceInputs["gcsFilesetSpec"] = args ? args.gcsFilesetSpec : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -177,6 +182,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["databaseTableSpec"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["filesetSpec"] = undefined /*out*/;
             resourceInputs["fullyQualifiedName"] = undefined /*out*/;
             resourceInputs["gcsFilesetSpec"] = undefined /*out*/;
             resourceInputs["integratedSystem"] = undefined /*out*/;
@@ -231,6 +237,10 @@ export interface EntryArgs {
     displayName?: pulumi.Input<string>;
     entryGroupId: pulumi.Input<string>;
     entryId: pulumi.Input<string>;
+    /**
+     * Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
+     */
+    filesetSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1FilesetSpecArgs>;
     /**
      * Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
      */

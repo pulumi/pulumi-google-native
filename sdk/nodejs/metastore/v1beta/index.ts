@@ -10,10 +10,14 @@ export * from "./getBackup";
 export * from "./getMetadataImport";
 export * from "./getService";
 export * from "./getServiceBackupIamPolicy";
+export * from "./getServiceDatabaseIamPolicy";
+export * from "./getServiceDatabaseTableIamPolicy";
 export * from "./getServiceIamPolicy";
 export * from "./metadataImport";
 export * from "./service";
 export * from "./serviceBackupIamPolicy";
+export * from "./serviceDatabaseIamPolicy";
+export * from "./serviceDatabaseTableIamPolicy";
 export * from "./serviceIamPolicy";
 
 // Export enums:
@@ -24,6 +28,8 @@ import { Backup } from "./backup";
 import { MetadataImport } from "./metadataImport";
 import { Service } from "./service";
 import { ServiceBackupIamPolicy } from "./serviceBackupIamPolicy";
+import { ServiceDatabaseIamPolicy } from "./serviceDatabaseIamPolicy";
+import { ServiceDatabaseTableIamPolicy } from "./serviceDatabaseTableIamPolicy";
 import { ServiceIamPolicy } from "./serviceIamPolicy";
 
 const _module = {
@@ -38,6 +44,10 @@ const _module = {
                 return new Service(name, <any>undefined, { urn })
             case "google-native:metastore/v1beta:ServiceBackupIamPolicy":
                 return new ServiceBackupIamPolicy(name, <any>undefined, { urn })
+            case "google-native:metastore/v1beta:ServiceDatabaseIamPolicy":
+                return new ServiceDatabaseIamPolicy(name, <any>undefined, { urn })
+            case "google-native:metastore/v1beta:ServiceDatabaseTableIamPolicy":
+                return new ServiceDatabaseTableIamPolicy(name, <any>undefined, { urn })
             case "google-native:metastore/v1beta:ServiceIamPolicy":
                 return new ServiceIamPolicy(name, <any>undefined, { urn })
             default:

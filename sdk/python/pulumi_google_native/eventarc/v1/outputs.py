@@ -243,7 +243,7 @@ class DestinationResponse(dict):
                  gke: 'outputs.GKEResponse'):
         """
         Represents a target of an invocation over HTTP.
-        :param str cloud_function: The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        :param str cloud_function: The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
         :param 'CloudRunResponse' cloud_run: Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
         :param 'GKEResponse' gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         """
@@ -255,7 +255,7 @@ class DestinationResponse(dict):
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> str:
         """
-        The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
         """
         return pulumi.get(self, "cloud_function")
 
@@ -283,13 +283,16 @@ class EventFilterResponse(dict):
     """
     def __init__(__self__, *,
                  attribute: str,
+                 operator: str,
                  value: str):
         """
         Filters events based on exact matches on the CloudEvents attributes.
         :param str attribute: The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+        :param str operator: Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
         :param str value: The value for the attribute.
         """
         pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "value", value)
 
     @property
@@ -299,6 +302,14 @@ class EventFilterResponse(dict):
         The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
         """
         return pulumi.get(self, "attribute")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+        """
+        return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter

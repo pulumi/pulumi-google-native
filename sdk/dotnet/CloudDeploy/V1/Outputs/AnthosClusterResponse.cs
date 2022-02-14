@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
     public sealed class AnthosClusterResponse
     {
         /// <summary>
-        /// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+        /// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
         /// </summary>
         public readonly string Membership;
 

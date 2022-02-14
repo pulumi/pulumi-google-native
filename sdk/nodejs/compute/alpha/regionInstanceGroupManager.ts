@@ -88,6 +88,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
+     * Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+     */
+    public readonly listManagedInstancesResults!: pulumi.Output<string>;
+    /**
      * The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
      */
     public readonly name!: pulumi.Output<string>;
@@ -174,6 +178,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["failoverAction"] = args ? args.failoverAction : undefined;
             resourceInputs["instanceLifecyclePolicy"] = args ? args.instanceLifecyclePolicy : undefined;
             resourceInputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
+            resourceInputs["listManagedInstancesResults"] = args ? args.listManagedInstancesResults : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -211,6 +216,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["instanceLifecyclePolicy"] = undefined /*out*/;
             resourceInputs["instanceTemplate"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["listManagedInstancesResults"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["namedPorts"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
@@ -269,6 +275,10 @@ export interface RegionInstanceGroupManagerArgs {
      * The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
      */
     instanceTemplate?: pulumi.Input<string>;
+    /**
+     * Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+     */
+    listManagedInstancesResults?: pulumi.Input<enums.compute.alpha.RegionInstanceGroupManagerListManagedInstancesResults>;
     /**
      * The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
      */

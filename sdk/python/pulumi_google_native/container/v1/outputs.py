@@ -39,6 +39,7 @@ __all__ = [
     'HorizontalPodAutoscalingResponse',
     'HttpLoadBalancingResponse',
     'IPAllocationPolicyResponse',
+    'IdentityServiceConfigResponse',
     'KubernetesDashboardResponse',
     'LegacyAbacResponse',
     'LinuxNodeConfigResponse',
@@ -1481,6 +1482,28 @@ class IPAllocationPolicyResponse(dict):
         Whether routes will be used for pod IPs in the cluster. This is used in conjunction with use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
         """
         return pulumi.get(self, "use_routes")
+
+
+@pulumi.output_type
+class IdentityServiceConfigResponse(dict):
+    """
+    IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+        :param bool enabled: Whether to enable the Identity Service component
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether to enable the Identity Service component
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

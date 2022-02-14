@@ -10,6 +10,53 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Describes an appliance version.
+type ApplianceVersionResponse struct {
+	// Determine whether it's critical to upgrade the appliance to this version.
+	Critical bool `pulumi:"critical"`
+	// Link to a page that contains the version release notes.
+	ReleaseNotesUri string `pulumi:"releaseNotesUri"`
+	// A link for downloading the version.
+	Uri string `pulumi:"uri"`
+	// The appliance version.
+	Version string `pulumi:"version"`
+}
+
+// Describes an appliance version.
+type ApplianceVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (ApplianceVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplianceVersionResponse)(nil)).Elem()
+}
+
+func (o ApplianceVersionResponseOutput) ToApplianceVersionResponseOutput() ApplianceVersionResponseOutput {
+	return o
+}
+
+func (o ApplianceVersionResponseOutput) ToApplianceVersionResponseOutputWithContext(ctx context.Context) ApplianceVersionResponseOutput {
+	return o
+}
+
+// Determine whether it's critical to upgrade the appliance to this version.
+func (o ApplianceVersionResponseOutput) Critical() pulumi.BoolOutput {
+	return o.ApplyT(func(v ApplianceVersionResponse) bool { return v.Critical }).(pulumi.BoolOutput)
+}
+
+// Link to a page that contains the version release notes.
+func (o ApplianceVersionResponseOutput) ReleaseNotesUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplianceVersionResponse) string { return v.ReleaseNotesUri }).(pulumi.StringOutput)
+}
+
+// A link for downloading the version.
+func (o ApplianceVersionResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplianceVersionResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// The appliance version.
+func (o ApplianceVersionResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplianceVersionResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
 // AppliedLicense holds the license data returned by adaptation module report.
 type AppliedLicenseResponse struct {
 	// The OS license returned from the adaptation module's report.
@@ -41,6 +88,39 @@ func (o AppliedLicenseResponseOutput) OsLicense() pulumi.StringOutput {
 // The license type that was used in OS adaptation.
 func (o AppliedLicenseResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AppliedLicenseResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Holds informatiom about the available versions for upgrade.
+type AvailableUpdatesResponse struct {
+	// The latest version for in place update. The current appliance can be updated to this version using the API or m4c CLI.
+	InPlaceUpdate ApplianceVersionResponse `pulumi:"inPlaceUpdate"`
+	// The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance.
+	NewDeployableAppliance ApplianceVersionResponse `pulumi:"newDeployableAppliance"`
+}
+
+// Holds informatiom about the available versions for upgrade.
+type AvailableUpdatesResponseOutput struct{ *pulumi.OutputState }
+
+func (AvailableUpdatesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailableUpdatesResponse)(nil)).Elem()
+}
+
+func (o AvailableUpdatesResponseOutput) ToAvailableUpdatesResponseOutput() AvailableUpdatesResponseOutput {
+	return o
+}
+
+func (o AvailableUpdatesResponseOutput) ToAvailableUpdatesResponseOutputWithContext(ctx context.Context) AvailableUpdatesResponseOutput {
+	return o
+}
+
+// The latest version for in place update. The current appliance can be updated to this version using the API or m4c CLI.
+func (o AvailableUpdatesResponseOutput) InPlaceUpdate() ApplianceVersionResponseOutput {
+	return o.ApplyT(func(v AvailableUpdatesResponse) ApplianceVersionResponse { return v.InPlaceUpdate }).(ApplianceVersionResponseOutput)
+}
+
+// The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance.
+func (o AvailableUpdatesResponseOutput) NewDeployableAppliance() ApplianceVersionResponseOutput {
+	return o.ApplyT(func(v AvailableUpdatesResponse) ApplianceVersionResponse { return v.NewDeployableAppliance }).(ApplianceVersionResponseOutput)
 }
 
 // CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
@@ -1808,6 +1888,60 @@ func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// UpgradeStatus contains information about upgradeAppliance operation.
+type UpgradeStatusResponse struct {
+	// Provides details on the state of the upgrade operation in case of an error.
+	Error StatusResponse `pulumi:"error"`
+	// The version from which we upgraded.
+	PreviousVersion string `pulumi:"previousVersion"`
+	// The time the operation was started.
+	StartTime string `pulumi:"startTime"`
+	// The state of the upgradeAppliance operation.
+	State string `pulumi:"state"`
+	// The version to upgrade to.
+	Version string `pulumi:"version"`
+}
+
+// UpgradeStatus contains information about upgradeAppliance operation.
+type UpgradeStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (UpgradeStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeStatusResponse)(nil)).Elem()
+}
+
+func (o UpgradeStatusResponseOutput) ToUpgradeStatusResponseOutput() UpgradeStatusResponseOutput {
+	return o
+}
+
+func (o UpgradeStatusResponseOutput) ToUpgradeStatusResponseOutputWithContext(ctx context.Context) UpgradeStatusResponseOutput {
+	return o
+}
+
+// Provides details on the state of the upgrade operation in case of an error.
+func (o UpgradeStatusResponseOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v UpgradeStatusResponse) StatusResponse { return v.Error }).(StatusResponseOutput)
+}
+
+// The version from which we upgraded.
+func (o UpgradeStatusResponseOutput) PreviousVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeStatusResponse) string { return v.PreviousVersion }).(pulumi.StringOutput)
+}
+
+// The time the operation was started.
+func (o UpgradeStatusResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeStatusResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The state of the upgradeAppliance operation.
+func (o UpgradeStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeStatusResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The version to upgrade to.
+func (o UpgradeStatusResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeStatusResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
 // Utilization information of a single VM.
 type VmUtilizationInfo struct {
 	// Utilization metrics for this VM.
@@ -2592,7 +2726,7 @@ type VmwareVmDetails struct {
 	DiskCount *int `pulumi:"diskCount"`
 	// The display name of the VM. Note that this is not necessarily unique.
 	DisplayName *string `pulumi:"displayName"`
-	// The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+	// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
 	GuestDescription *string `pulumi:"guestDescription"`
 	// The size of the memory of the VM in MB.
 	MemoryMb *int `pulumi:"memoryMb"`
@@ -2629,7 +2763,7 @@ type VmwareVmDetailsArgs struct {
 	DiskCount pulumi.IntPtrInput `pulumi:"diskCount"`
 	// The display name of the VM. Note that this is not necessarily unique.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+	// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
 	GuestDescription pulumi.StringPtrInput `pulumi:"guestDescription"`
 	// The size of the memory of the VM in MB.
 	MemoryMb pulumi.IntPtrInput `pulumi:"memoryMb"`
@@ -2749,7 +2883,7 @@ func (o VmwareVmDetailsOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmwareVmDetails) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
 func (o VmwareVmDetailsOutput) GuestDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmwareVmDetails) *string { return v.GuestDescription }).(pulumi.StringPtrOutput)
 }
@@ -2858,7 +2992,7 @@ func (o VmwareVmDetailsPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
 func (o VmwareVmDetailsPtrOutput) GuestDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmwareVmDetails) *string {
 		if v == nil {
@@ -2924,7 +3058,7 @@ type VmwareVmDetailsResponse struct {
 	DiskCount int `pulumi:"diskCount"`
 	// The display name of the VM. Note that this is not necessarily unique.
 	DisplayName string `pulumi:"displayName"`
-	// The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+	// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
 	GuestDescription string `pulumi:"guestDescription"`
 	// The size of the memory of the VM in MB.
 	MemoryMb int `pulumi:"memoryMb"`
@@ -2986,7 +3120,7 @@ func (o VmwareVmDetailsResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareVmDetailsResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
 func (o VmwareVmDetailsResponseOutput) GuestDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareVmDetailsResponse) string { return v.GuestDescription }).(pulumi.StringOutput)
 }
@@ -3030,7 +3164,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareSourceDetailsPtrInput)(nil)).Elem(), VmwareSourceDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVmDetailsInput)(nil)).Elem(), VmwareVmDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVmDetailsPtrInput)(nil)).Elem(), VmwareVmDetailsArgs{})
+	pulumi.RegisterOutputType(ApplianceVersionResponseOutput{})
 	pulumi.RegisterOutputType(AppliedLicenseResponseOutput{})
+	pulumi.RegisterOutputType(AvailableUpdatesResponseOutput{})
 	pulumi.RegisterOutputType(CloneJobResponseOutput{})
 	pulumi.RegisterOutputType(CloneJobResponseArrayOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsOutput{})
@@ -3056,6 +3192,7 @@ func init() {
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseArrayOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(UpgradeStatusResponseOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoArrayOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoResponseOutput{})

@@ -20,6 +20,7 @@ class FunctionArgs:
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_registry: Optional[pulumi.Input['FunctionDockerRegistry']] = None,
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -51,6 +52,7 @@ class FunctionArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_environment_variables: Build environment variables that shall be available during build time.
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         :param pulumi.Input[str] description: User-provided description of a function.
+        :param pulumi.Input['FunctionDockerRegistry'] docker_registry: Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
@@ -83,6 +85,8 @@ class FunctionArgs:
             pulumi.set(__self__, "build_worker_pool", build_worker_pool)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if docker_registry is not None:
+            pulumi.set(__self__, "docker_registry", docker_registry)
         if docker_repository is not None:
             pulumi.set(__self__, "docker_repository", docker_repository)
         if entry_point is not None:
@@ -181,6 +185,18 @@ class FunctionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dockerRegistry")
+    def docker_registry(self) -> Optional[pulumi.Input['FunctionDockerRegistry']]:
+        """
+        Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        """
+        return pulumi.get(self, "docker_registry")
+
+    @docker_registry.setter
+    def docker_registry(self, value: Optional[pulumi.Input['FunctionDockerRegistry']]):
+        pulumi.set(self, "docker_registry", value)
 
     @property
     @pulumi.getter(name="dockerRepository")
@@ -486,6 +502,7 @@ class Function(pulumi.CustomResource):
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_registry: Optional[pulumi.Input['FunctionDockerRegistry']] = None,
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -521,6 +538,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_environment_variables: Build environment variables that shall be available during build time.
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         :param pulumi.Input[str] description: User-provided description of a function.
+        :param pulumi.Input['FunctionDockerRegistry'] docker_registry: Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
@@ -573,6 +591,7 @@ class Function(pulumi.CustomResource):
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_registry: Optional[pulumi.Input['FunctionDockerRegistry']] = None,
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -614,6 +633,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["build_environment_variables"] = build_environment_variables
             __props__.__dict__["build_worker_pool"] = build_worker_pool
             __props__.__dict__["description"] = description
+            __props__.__dict__["docker_registry"] = docker_registry
             __props__.__dict__["docker_repository"] = docker_repository
             __props__.__dict__["entry_point"] = entry_point
             __props__.__dict__["environment_variables"] = environment_variables
@@ -672,6 +692,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["build_name"] = None
         __props__.__dict__["build_worker_pool"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["docker_registry"] = None
         __props__.__dict__["docker_repository"] = None
         __props__.__dict__["entry_point"] = None
         __props__.__dict__["environment_variables"] = None
@@ -747,6 +768,14 @@ class Function(pulumi.CustomResource):
         User-provided description of a function.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dockerRegistry")
+    def docker_registry(self) -> pulumi.Output[str]:
+        """
+        Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        """
+        return pulumi.get(self, "docker_registry")
 
     @property
     @pulumi.getter(name="dockerRepository")

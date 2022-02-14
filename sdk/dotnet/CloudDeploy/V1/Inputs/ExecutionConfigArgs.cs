@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     public sealed class ExecutionConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+        /// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
         /// </summary>
         [Input("artifactStorage")]
         public Input<string>? ArtifactStorage { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
         public Input<Inputs.PrivatePoolArgs>? PrivatePool { get; set; }
 
         /// <summary>
-        /// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+        /// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }

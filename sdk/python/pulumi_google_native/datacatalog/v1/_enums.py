@@ -9,6 +9,7 @@ __all__ = [
     'GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType',
     'GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType',
     'GoogleCloudDatacatalogV1DatabaseTableSpecType',
+    'GoogleCloudDatacatalogV1DataplexExternalTableSystem',
     'GoogleCloudDatacatalogV1RoutineSpecArgumentMode',
     'GoogleCloudDatacatalogV1RoutineSpecRoutineType',
     'TaxonomyActivatedPolicyTypesItem',
@@ -54,6 +55,14 @@ class EntryType(str, Enum):
     ROUTINE = "ROUTINE"
     """
     Output only. Routine, for example, a BigQuery routine.
+    """
+    LAKE = "LAKE"
+    """
+    A Dataproc Metastore lake.
+    """
+    ZONE = "ZONE"
+    """
+    A Dataproc Metastore zone.
     """
     SERVICE = "SERVICE"
     """
@@ -108,6 +117,32 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecType(str, Enum):
     EXTERNAL = "EXTERNAL"
     """
     External table.
+    """
+
+
+class GoogleCloudDatacatalogV1DataplexExternalTableSystem(str, Enum):
+    """
+    Service in which the external table is registered.
+    """
+    INTEGRATED_SYSTEM_UNSPECIFIED = "INTEGRATED_SYSTEM_UNSPECIFIED"
+    """
+    Default unknown system.
+    """
+    BIGQUERY = "BIGQUERY"
+    """
+    BigQuery.
+    """
+    CLOUD_PUBSUB = "CLOUD_PUBSUB"
+    """
+    Cloud Pub/Sub.
+    """
+    DATAPROC_METASTORE = "DATAPROC_METASTORE"
+    """
+    Dataproc Metastore.
+    """
+    DATAPLEX = "DATAPLEX"
+    """
+    Dataplex.
     """
 
 

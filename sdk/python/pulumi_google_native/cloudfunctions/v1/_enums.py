@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
+    'FunctionDockerRegistry',
     'FunctionIngressSettings',
     'FunctionVpcConnectorEgressSettings',
     'HttpsTriggerSecurityLevel',
@@ -31,6 +32,24 @@ class AuditLogConfigLogType(str, Enum):
     DATA_READ = "DATA_READ"
     """
     Data reads. Example: CloudSQL Users list
+    """
+
+
+class FunctionDockerRegistry(str, Enum):
+    """
+    Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+    """
+    DOCKER_REGISTRY_UNSPECIFIED = "DOCKER_REGISTRY_UNSPECIFIED"
+    """
+    Unspecified.
+    """
+    CONTAINER_REGISTRY = "CONTAINER_REGISTRY"
+    """
+    Docker images will be stored in multi-regional Container Registry repositories named `gcf`.
+    """
+    ARTIFACT_REGISTRY = "ARTIFACT_REGISTRY"
+    """
+    Docker images will be stored in regional Artifact Registry repositories. By default, GCF will create and use repositories named `gcf-artifacts` in every region in which a function is deployed. But the repository to use can also be specified by the user using the `docker_repository` field.
     """
 
 

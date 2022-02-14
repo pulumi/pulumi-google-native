@@ -4918,6 +4918,8 @@ type MetricThreshold struct {
 	DenominatorFilter *string `pulumi:"denominatorFilter"`
 	// The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
 	Duration *string `pulumi:"duration"`
+	// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+	EvaluationMissingData *MetricThresholdEvaluationMissingData `pulumi:"evaluationMissingData"`
 	// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 	Filter string `pulumi:"filter"`
 	// A value against which to compare the time series.
@@ -4949,6 +4951,8 @@ type MetricThresholdArgs struct {
 	DenominatorFilter pulumi.StringPtrInput `pulumi:"denominatorFilter"`
 	// The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+	EvaluationMissingData MetricThresholdEvaluationMissingDataPtrInput `pulumi:"evaluationMissingData"`
 	// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 	Filter pulumi.StringInput `pulumi:"filter"`
 	// A value against which to compare the time series.
@@ -5060,6 +5064,11 @@ func (o MetricThresholdOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricThreshold) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
+// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+func (o MetricThresholdOutput) EvaluationMissingData() MetricThresholdEvaluationMissingDataPtrOutput {
+	return o.ApplyT(func(v MetricThreshold) *MetricThresholdEvaluationMissingData { return v.EvaluationMissingData }).(MetricThresholdEvaluationMissingDataPtrOutput)
+}
+
 // A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 func (o MetricThresholdOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricThreshold) string { return v.Filter }).(pulumi.StringOutput)
@@ -5149,6 +5158,16 @@ func (o MetricThresholdPtrOutput) Duration() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+func (o MetricThresholdPtrOutput) EvaluationMissingData() MetricThresholdEvaluationMissingDataPtrOutput {
+	return o.ApplyT(func(v *MetricThreshold) *MetricThresholdEvaluationMissingData {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationMissingData
+	}).(MetricThresholdEvaluationMissingDataPtrOutput)
+}
+
 // A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 func (o MetricThresholdPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricThreshold) *string {
@@ -5191,6 +5210,8 @@ type MetricThresholdResponse struct {
 	DenominatorFilter string `pulumi:"denominatorFilter"`
 	// The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
 	Duration string `pulumi:"duration"`
+	// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+	EvaluationMissingData string `pulumi:"evaluationMissingData"`
 	// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 	Filter string `pulumi:"filter"`
 	// A value against which to compare the time series.
@@ -5237,6 +5258,11 @@ func (o MetricThresholdResponseOutput) DenominatorFilter() pulumi.StringOutput {
 // The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
 func (o MetricThresholdResponseOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricThresholdResponse) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+func (o MetricThresholdResponseOutput) EvaluationMissingData() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricThresholdResponse) string { return v.EvaluationMissingData }).(pulumi.StringOutput)
 }
 
 // A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
@@ -5450,6 +5476,8 @@ func (o MonitoredResourceResponseOutput) Type() pulumi.StringOutput {
 type MonitoringQueryLanguageCondition struct {
 	// The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
 	Duration *string `pulumi:"duration"`
+	// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+	EvaluationMissingData *MonitoringQueryLanguageConditionEvaluationMissingData `pulumi:"evaluationMissingData"`
 	// Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.
 	Query *string `pulumi:"query"`
 	// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
@@ -5471,6 +5499,8 @@ type MonitoringQueryLanguageConditionInput interface {
 type MonitoringQueryLanguageConditionArgs struct {
 	// The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+	EvaluationMissingData MonitoringQueryLanguageConditionEvaluationMissingDataPtrInput `pulumi:"evaluationMissingData"`
 	// Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.
 	Query pulumi.StringPtrInput `pulumi:"query"`
 	// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
@@ -5560,6 +5590,13 @@ func (o MonitoringQueryLanguageConditionOutput) Duration() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v MonitoringQueryLanguageCondition) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
+// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+func (o MonitoringQueryLanguageConditionOutput) EvaluationMissingData() MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput {
+	return o.ApplyT(func(v MonitoringQueryLanguageCondition) *MonitoringQueryLanguageConditionEvaluationMissingData {
+		return v.EvaluationMissingData
+	}).(MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput)
+}
+
 // Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.
 func (o MonitoringQueryLanguageConditionOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitoringQueryLanguageCondition) *string { return v.Query }).(pulumi.StringPtrOutput)
@@ -5604,6 +5641,16 @@ func (o MonitoringQueryLanguageConditionPtrOutput) Duration() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+func (o MonitoringQueryLanguageConditionPtrOutput) EvaluationMissingData() MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput {
+	return o.ApplyT(func(v *MonitoringQueryLanguageCondition) *MonitoringQueryLanguageConditionEvaluationMissingData {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationMissingData
+	}).(MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput)
+}
+
 // Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.
 func (o MonitoringQueryLanguageConditionPtrOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MonitoringQueryLanguageCondition) *string {
@@ -5628,6 +5675,8 @@ func (o MonitoringQueryLanguageConditionPtrOutput) Trigger() TriggerPtrOutput {
 type MonitoringQueryLanguageConditionResponse struct {
 	// The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
 	Duration string `pulumi:"duration"`
+	// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+	EvaluationMissingData string `pulumi:"evaluationMissingData"`
 	// Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.
 	Query string `pulumi:"query"`
 	// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
@@ -5652,6 +5701,11 @@ func (o MonitoringQueryLanguageConditionResponseOutput) ToMonitoringQueryLanguag
 // The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
 func (o MonitoringQueryLanguageConditionResponseOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoringQueryLanguageConditionResponse) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+func (o MonitoringQueryLanguageConditionResponseOutput) EvaluationMissingData() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoringQueryLanguageConditionResponse) string { return v.EvaluationMissingData }).(pulumi.StringOutput)
 }
 
 // Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.

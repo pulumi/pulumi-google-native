@@ -1388,6 +1388,8 @@ class MetricThresholdResponse(dict):
             suggest = "denominator_aggregations"
         elif key == "denominatorFilter":
             suggest = "denominator_filter"
+        elif key == "evaluationMissingData":
+            suggest = "evaluation_missing_data"
         elif key == "thresholdValue":
             suggest = "threshold_value"
 
@@ -1408,6 +1410,7 @@ class MetricThresholdResponse(dict):
                  denominator_aggregations: Sequence['outputs.AggregationResponse'],
                  denominator_filter: str,
                  duration: str,
+                 evaluation_missing_data: str,
                  filter: str,
                  threshold_value: float,
                  trigger: 'outputs.TriggerResponse'):
@@ -1418,6 +1421,7 @@ class MetricThresholdResponse(dict):
         :param Sequence['AggregationResponse'] denominator_aggregations: Specifies the alignment of data points in individual time series selected by denominatorFilter as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same alignment period and produce time series that have the same periodicity and labels.
         :param str denominator_filter: A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies a time series that should be used as the denominator of a ratio that will be compared with the threshold. If a denominator_filter is specified, the time series specified by the filter field will be used as the numerator.The filter must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length.
         :param str duration: The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
+        :param str evaluation_missing_data: A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
         :param str filter: A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
         :param float threshold_value: A value against which to compare the time series.
         :param 'TriggerResponse' trigger: The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
@@ -1427,6 +1431,7 @@ class MetricThresholdResponse(dict):
         pulumi.set(__self__, "denominator_aggregations", denominator_aggregations)
         pulumi.set(__self__, "denominator_filter", denominator_filter)
         pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "evaluation_missing_data", evaluation_missing_data)
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "threshold_value", threshold_value)
         pulumi.set(__self__, "trigger", trigger)
@@ -1470,6 +1475,14 @@ class MetricThresholdResponse(dict):
         The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
         """
         return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="evaluationMissingData")
+    def evaluation_missing_data(self) -> str:
+        """
+        A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+        """
+        return pulumi.get(self, "evaluation_missing_data")
 
     @property
     @pulumi.getter
@@ -1534,17 +1547,37 @@ class MonitoringQueryLanguageConditionResponse(dict):
     """
     A condition type that allows alert policies to be defined using Monitoring Query Language (https://cloud.google.com/monitoring/mql).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationMissingData":
+            suggest = "evaluation_missing_data"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitoringQueryLanguageConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitoringQueryLanguageConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitoringQueryLanguageConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  duration: str,
+                 evaluation_missing_data: str,
                  query: str,
                  trigger: 'outputs.TriggerResponse'):
         """
         A condition type that allows alert policies to be defined using Monitoring Query Language (https://cloud.google.com/monitoring/mql).
         :param str duration: The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
+        :param str evaluation_missing_data: A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
         :param str query: Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.
         :param 'TriggerResponse' trigger: The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
         """
         pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "evaluation_missing_data", evaluation_missing_data)
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "trigger", trigger)
 
@@ -1555,6 +1588,14 @@ class MonitoringQueryLanguageConditionResponse(dict):
         The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
         """
         return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="evaluationMissingData")
+    def evaluation_missing_data(self) -> str:
+        """
+        A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+        """
+        return pulumi.get(self, "evaluation_missing_data")
 
     @property
     @pulumi.getter

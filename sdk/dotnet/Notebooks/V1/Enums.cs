@@ -485,6 +485,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// Single user login.
         /// </summary>
         public static RuntimeAccessConfigAccessType SingleUser { get; } = new RuntimeAccessConfigAccessType("SINGLE_USER");
+        /// <summary>
+        /// Service Account mode. In Service Account mode, Runtime creator will specify a SA that exists in the consumer project. Using Runtime Service Account field. Users accessing the Runtime need ActAs (Service Account User) permission.
+        /// </summary>
+        public static RuntimeAccessConfigAccessType ServiceAccount { get; } = new RuntimeAccessConfigAccessType("SERVICE_ACCOUNT");
 
         public static bool operator ==(RuntimeAccessConfigAccessType left, RuntimeAccessConfigAccessType right) => left.Equals(right);
         public static bool operator !=(RuntimeAccessConfigAccessType left, RuntimeAccessConfigAccessType right) => !left.Equals(right);

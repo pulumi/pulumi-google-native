@@ -12,7 +12,7 @@ import (
 
 // Information specifying an Anthos Cluster.
 type AnthosCluster struct {
-	// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+	// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
 	Membership *string `pulumi:"membership"`
 }
 
@@ -29,7 +29,7 @@ type AnthosClusterInput interface {
 
 // Information specifying an Anthos Cluster.
 type AnthosClusterArgs struct {
-	// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+	// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
 	Membership pulumi.StringPtrInput `pulumi:"membership"`
 }
 
@@ -111,7 +111,7 @@ func (o AnthosClusterOutput) ToAnthosClusterPtrOutputWithContext(ctx context.Con
 	}).(AnthosClusterPtrOutput)
 }
 
-// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
 func (o AnthosClusterOutput) Membership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AnthosCluster) *string { return v.Membership }).(pulumi.StringPtrOutput)
 }
@@ -140,7 +140,7 @@ func (o AnthosClusterPtrOutput) Elem() AnthosClusterOutput {
 	}).(AnthosClusterOutput)
 }
 
-// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
 func (o AnthosClusterPtrOutput) Membership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AnthosCluster) *string {
 		if v == nil {
@@ -152,7 +152,7 @@ func (o AnthosClusterPtrOutput) Membership() pulumi.StringPtrOutput {
 
 // Information specifying an Anthos Cluster.
 type AnthosClusterResponse struct {
-	// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+	// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
 	Membership string `pulumi:"membership"`
 }
 
@@ -171,7 +171,7 @@ func (o AnthosClusterResponseOutput) ToAnthosClusterResponseOutputWithContext(ct
 	return o
 }
 
-// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
 func (o AnthosClusterResponseOutput) Membership() pulumi.StringOutput {
 	return o.ApplyT(func(v AnthosClusterResponse) string { return v.Membership }).(pulumi.StringOutput)
 }
@@ -1123,13 +1123,13 @@ func (o DeliveryPipelineResponseOutput) UpdateTime() pulumi.StringOutput {
 
 // Configuration of the environment to use when calling Skaffold.
 type ExecutionConfig struct {
-	// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+	// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
 	ArtifactStorage *string `pulumi:"artifactStorage"`
 	// Optional. Use default Cloud Build pool.
 	DefaultPool *DefaultPool `pulumi:"defaultPool"`
 	// Optional. Use private Cloud Build pool.
 	PrivatePool *PrivatePool `pulumi:"privatePool"`
-	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Usages when this configuration should be applied.
 	Usages []ExecutionConfigUsagesItem `pulumi:"usages"`
@@ -1150,13 +1150,13 @@ type ExecutionConfigInput interface {
 
 // Configuration of the environment to use when calling Skaffold.
 type ExecutionConfigArgs struct {
-	// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+	// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
 	ArtifactStorage pulumi.StringPtrInput `pulumi:"artifactStorage"`
 	// Optional. Use default Cloud Build pool.
 	DefaultPool DefaultPoolPtrInput `pulumi:"defaultPool"`
 	// Optional. Use private Cloud Build pool.
 	PrivatePool PrivatePoolPtrInput `pulumi:"privatePool"`
-	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Usages when this configuration should be applied.
 	Usages ExecutionConfigUsagesItemArrayInput `pulumi:"usages"`
@@ -1216,7 +1216,7 @@ func (o ExecutionConfigOutput) ToExecutionConfigOutputWithContext(ctx context.Co
 	return o
 }
 
-// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
 func (o ExecutionConfigOutput) ArtifactStorage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionConfig) *string { return v.ArtifactStorage }).(pulumi.StringPtrOutput)
 }
@@ -1231,7 +1231,7 @@ func (o ExecutionConfigOutput) PrivatePool() PrivatePoolPtrOutput {
 	return o.ApplyT(func(v ExecutionConfig) *PrivatePool { return v.PrivatePool }).(PrivatePoolPtrOutput)
 }
 
-// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
 func (o ExecutionConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
@@ -1268,13 +1268,13 @@ func (o ExecutionConfigArrayOutput) Index(i pulumi.IntInput) ExecutionConfigOutp
 
 // Configuration of the environment to use when calling Skaffold.
 type ExecutionConfigResponse struct {
-	// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+	// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
 	ArtifactStorage string `pulumi:"artifactStorage"`
 	// Optional. Use default Cloud Build pool.
 	DefaultPool DefaultPoolResponse `pulumi:"defaultPool"`
 	// Optional. Use private Cloud Build pool.
 	PrivatePool PrivatePoolResponse `pulumi:"privatePool"`
-	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Usages when this configuration should be applied.
 	Usages []string `pulumi:"usages"`
@@ -1297,7 +1297,7 @@ func (o ExecutionConfigResponseOutput) ToExecutionConfigResponseOutputWithContex
 	return o
 }
 
-// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
 func (o ExecutionConfigResponseOutput) ArtifactStorage() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionConfigResponse) string { return v.ArtifactStorage }).(pulumi.StringOutput)
 }
@@ -1312,7 +1312,7 @@ func (o ExecutionConfigResponseOutput) PrivatePool() PrivatePoolResponseOutput {
 	return o.ApplyT(func(v ExecutionConfigResponse) PrivatePoolResponse { return v.PrivatePool }).(PrivatePoolResponseOutput)
 }
 
-// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
 func (o ExecutionConfigResponseOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionConfigResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
@@ -1595,6 +1595,8 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 type GkeCluster struct {
 	// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
 	Cluster *string `pulumi:"cluster"`
+	// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+	InternalIp *bool `pulumi:"internalIp"`
 }
 
 // GkeClusterInput is an input type that accepts GkeClusterArgs and GkeClusterOutput values.
@@ -1612,6 +1614,8 @@ type GkeClusterInput interface {
 type GkeClusterArgs struct {
 	// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
 	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
+	// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+	InternalIp pulumi.BoolPtrInput `pulumi:"internalIp"`
 }
 
 func (GkeClusterArgs) ElementType() reflect.Type {
@@ -1697,6 +1701,11 @@ func (o GkeClusterOutput) Cluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GkeCluster) *string { return v.Cluster }).(pulumi.StringPtrOutput)
 }
 
+// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+func (o GkeClusterOutput) InternalIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GkeCluster) *bool { return v.InternalIp }).(pulumi.BoolPtrOutput)
+}
+
 type GkeClusterPtrOutput struct{ *pulumi.OutputState }
 
 func (GkeClusterPtrOutput) ElementType() reflect.Type {
@@ -1731,10 +1740,22 @@ func (o GkeClusterPtrOutput) Cluster() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+func (o GkeClusterPtrOutput) InternalIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GkeCluster) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InternalIp
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Information specifying a GKE Cluster.
 type GkeClusterResponse struct {
 	// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
 	Cluster string `pulumi:"cluster"`
+	// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+	InternalIp bool `pulumi:"internalIp"`
 }
 
 // Information specifying a GKE Cluster.
@@ -1755,6 +1776,11 @@ func (o GkeClusterResponseOutput) ToGkeClusterResponseOutputWithContext(ctx cont
 // Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
 func (o GkeClusterResponseOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeClusterResponse) string { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+func (o GkeClusterResponseOutput) InternalIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GkeClusterResponse) bool { return v.InternalIp }).(pulumi.BoolOutput)
 }
 
 // PipelineCondition contains all conditions relevant to a Delivery Pipeline.

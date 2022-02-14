@@ -2790,6 +2790,8 @@ type ClusterUpdate struct {
 	DesiredDnsConfig *DNSConfig `pulumi:"desiredDnsConfig"`
 	// The desired GCFS config for the cluster
 	DesiredGcfsConfig *GcfsConfig `pulumi:"desiredGcfsConfig"`
+	// The desired Identity Service component configuration.
+	DesiredIdentityServiceConfig *IdentityServiceConfig `pulumi:"desiredIdentityServiceConfig"`
 	// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
 	DesiredImageType *string `pulumi:"desiredImageType"`
 	// The desired config of Intra-node visibility.
@@ -5651,6 +5653,172 @@ func (o IPAllocationPolicyResponseOutput) UseIpAliases() pulumi.BoolOutput {
 // Whether routes will be used for pod IPs in the cluster. This is used in conjunction with use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
 func (o IPAllocationPolicyResponseOutput) UseRoutes() pulumi.BoolOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) bool { return v.UseRoutes }).(pulumi.BoolOutput)
+}
+
+// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+type IdentityServiceConfig struct {
+	// Whether to enable the Identity Service component
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// IdentityServiceConfigInput is an input type that accepts IdentityServiceConfigArgs and IdentityServiceConfigOutput values.
+// You can construct a concrete instance of `IdentityServiceConfigInput` via:
+//
+//          IdentityServiceConfigArgs{...}
+type IdentityServiceConfigInput interface {
+	pulumi.Input
+
+	ToIdentityServiceConfigOutput() IdentityServiceConfigOutput
+	ToIdentityServiceConfigOutputWithContext(context.Context) IdentityServiceConfigOutput
+}
+
+// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+type IdentityServiceConfigArgs struct {
+	// Whether to enable the Identity Service component
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (IdentityServiceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceConfig)(nil)).Elem()
+}
+
+func (i IdentityServiceConfigArgs) ToIdentityServiceConfigOutput() IdentityServiceConfigOutput {
+	return i.ToIdentityServiceConfigOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceConfigArgs) ToIdentityServiceConfigOutputWithContext(ctx context.Context) IdentityServiceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceConfigOutput)
+}
+
+func (i IdentityServiceConfigArgs) ToIdentityServiceConfigPtrOutput() IdentityServiceConfigPtrOutput {
+	return i.ToIdentityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceConfigArgs) ToIdentityServiceConfigPtrOutputWithContext(ctx context.Context) IdentityServiceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceConfigOutput).ToIdentityServiceConfigPtrOutputWithContext(ctx)
+}
+
+// IdentityServiceConfigPtrInput is an input type that accepts IdentityServiceConfigArgs, IdentityServiceConfigPtr and IdentityServiceConfigPtrOutput values.
+// You can construct a concrete instance of `IdentityServiceConfigPtrInput` via:
+//
+//          IdentityServiceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type IdentityServiceConfigPtrInput interface {
+	pulumi.Input
+
+	ToIdentityServiceConfigPtrOutput() IdentityServiceConfigPtrOutput
+	ToIdentityServiceConfigPtrOutputWithContext(context.Context) IdentityServiceConfigPtrOutput
+}
+
+type identityServiceConfigPtrType IdentityServiceConfigArgs
+
+func IdentityServiceConfigPtr(v *IdentityServiceConfigArgs) IdentityServiceConfigPtrInput {
+	return (*identityServiceConfigPtrType)(v)
+}
+
+func (*identityServiceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceConfig)(nil)).Elem()
+}
+
+func (i *identityServiceConfigPtrType) ToIdentityServiceConfigPtrOutput() IdentityServiceConfigPtrOutput {
+	return i.ToIdentityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *identityServiceConfigPtrType) ToIdentityServiceConfigPtrOutputWithContext(ctx context.Context) IdentityServiceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceConfigPtrOutput)
+}
+
+// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+type IdentityServiceConfigOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceConfigOutput) ToIdentityServiceConfigOutput() IdentityServiceConfigOutput {
+	return o
+}
+
+func (o IdentityServiceConfigOutput) ToIdentityServiceConfigOutputWithContext(ctx context.Context) IdentityServiceConfigOutput {
+	return o
+}
+
+func (o IdentityServiceConfigOutput) ToIdentityServiceConfigPtrOutput() IdentityServiceConfigPtrOutput {
+	return o.ToIdentityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityServiceConfigOutput) ToIdentityServiceConfigPtrOutputWithContext(ctx context.Context) IdentityServiceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityServiceConfig) *IdentityServiceConfig {
+		return &v
+	}).(IdentityServiceConfigPtrOutput)
+}
+
+// Whether to enable the Identity Service component
+func (o IdentityServiceConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IdentityServiceConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type IdentityServiceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceConfigPtrOutput) ToIdentityServiceConfigPtrOutput() IdentityServiceConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceConfigPtrOutput) ToIdentityServiceConfigPtrOutputWithContext(ctx context.Context) IdentityServiceConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceConfigPtrOutput) Elem() IdentityServiceConfigOutput {
+	return o.ApplyT(func(v *IdentityServiceConfig) IdentityServiceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityServiceConfig
+		return ret
+	}).(IdentityServiceConfigOutput)
+}
+
+// Whether to enable the Identity Service component
+func (o IdentityServiceConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+type IdentityServiceConfigResponse struct {
+	// Whether to enable the Identity Service component
+	Enabled bool `pulumi:"enabled"`
+}
+
+// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+type IdentityServiceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceConfigResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceConfigResponseOutput) ToIdentityServiceConfigResponseOutput() IdentityServiceConfigResponseOutput {
+	return o
+}
+
+func (o IdentityServiceConfigResponseOutput) ToIdentityServiceConfigResponseOutputWithContext(ctx context.Context) IdentityServiceConfigResponseOutput {
+	return o
+}
+
+// Whether to enable the Identity Service component
+func (o IdentityServiceConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v IdentityServiceConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // IntraNodeVisibilityConfig contains the desired config of the intra-node visibility on this cluster.
@@ -15166,6 +15334,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpLoadBalancingPtrInput)(nil)).Elem(), HttpLoadBalancingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyInput)(nil)).Elem(), IPAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyPtrInput)(nil)).Elem(), IPAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceConfigInput)(nil)).Elem(), IdentityServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceConfigPtrInput)(nil)).Elem(), IdentityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesDashboardInput)(nil)).Elem(), KubernetesDashboardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesDashboardPtrInput)(nil)).Elem(), KubernetesDashboardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LegacyAbacInput)(nil)).Elem(), LegacyAbacArgs{})
@@ -15344,6 +15514,9 @@ func init() {
 	pulumi.RegisterOutputType(IPAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceConfigOutput{})
+	pulumi.RegisterOutputType(IdentityServiceConfigPtrOutput{})
+	pulumi.RegisterOutputType(IdentityServiceConfigResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesDashboardOutput{})
 	pulumi.RegisterOutputType(KubernetesDashboardPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesDashboardResponseOutput{})

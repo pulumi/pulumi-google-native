@@ -60,6 +60,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+     */
+    public readonly dockerRegistry!: pulumi.Output<string>;
+    /**
      * User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
      */
     public readonly dockerRepository!: pulumi.Output<string>;
@@ -179,6 +183,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["buildEnvironmentVariables"] = args ? args.buildEnvironmentVariables : undefined;
             resourceInputs["buildWorkerPool"] = args ? args.buildWorkerPool : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dockerRegistry"] = args ? args.dockerRegistry : undefined;
             resourceInputs["dockerRepository"] = args ? args.dockerRepository : undefined;
             resourceInputs["entryPoint"] = args ? args.entryPoint : undefined;
             resourceInputs["environmentVariables"] = args ? args.environmentVariables : undefined;
@@ -216,6 +221,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["buildName"] = undefined /*out*/;
             resourceInputs["buildWorkerPool"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["dockerRegistry"] = undefined /*out*/;
             resourceInputs["dockerRepository"] = undefined /*out*/;
             resourceInputs["entryPoint"] = undefined /*out*/;
             resourceInputs["environmentVariables"] = undefined /*out*/;
@@ -268,6 +274,10 @@ export interface FunctionArgs {
      * User-provided description of a function.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+     */
+    dockerRegistry?: pulumi.Input<enums.cloudfunctions.v1.FunctionDockerRegistry>;
     /**
      * User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
      */

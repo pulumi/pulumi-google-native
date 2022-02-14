@@ -1547,7 +1547,7 @@ type ServiceResolver struct {
 	EndpointFilter *string `pulumi:"endpointFilter"`
 	// The hostname of the EKM replica used at TLS and HTTP layers.
 	Hostname string `pulumi:"hostname"`
-	// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+	// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
 	ServerCertificates []Certificate `pulumi:"serverCertificates"`
 	// The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/*/locations/*/namespaces/*/services/*`.
 	ServiceDirectoryService string `pulumi:"serviceDirectoryService"`
@@ -1570,7 +1570,7 @@ type ServiceResolverArgs struct {
 	EndpointFilter pulumi.StringPtrInput `pulumi:"endpointFilter"`
 	// The hostname of the EKM replica used at TLS and HTTP layers.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
-	// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+	// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
 	ServerCertificates CertificateArrayInput `pulumi:"serverCertificates"`
 	// The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/*/locations/*/namespaces/*/services/*`.
 	ServiceDirectoryService pulumi.StringInput `pulumi:"serviceDirectoryService"`
@@ -1638,7 +1638,7 @@ func (o ServiceResolverOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceResolver) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
 func (o ServiceResolverOutput) ServerCertificates() CertificateArrayOutput {
 	return o.ApplyT(func(v ServiceResolver) []Certificate { return v.ServerCertificates }).(CertificateArrayOutput)
 }
@@ -1674,7 +1674,7 @@ type ServiceResolverResponse struct {
 	EndpointFilter string `pulumi:"endpointFilter"`
 	// The hostname of the EKM replica used at TLS and HTTP layers.
 	Hostname string `pulumi:"hostname"`
-	// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+	// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
 	ServerCertificates []CertificateResponse `pulumi:"serverCertificates"`
 	// The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/*/locations/*/namespaces/*/services/*`.
 	ServiceDirectoryService string `pulumi:"serviceDirectoryService"`
@@ -1705,7 +1705,7 @@ func (o ServiceResolverResponseOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceResolverResponse) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+// A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
 func (o ServiceResolverResponseOutput) ServerCertificates() CertificateResponseArrayOutput {
 	return o.ApplyT(func(v ServiceResolverResponse) []CertificateResponse { return v.ServerCertificates }).(CertificateResponseArrayOutput)
 }

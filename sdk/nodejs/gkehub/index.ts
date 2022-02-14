@@ -7,6 +7,7 @@ import * as v1alpha from "./v1alpha";
 import * as v1alpha2 from "./v1alpha2";
 import * as v1beta from "./v1beta";
 import * as v1beta1 from "./v1beta1";
+import * as v2alpha from "./v2alpha";
 
 export {
     v1,
@@ -14,4 +15,5 @@ export {
     v1alpha2,
     v1beta,
     v1beta1,
+    v2alpha,
 };

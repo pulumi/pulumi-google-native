@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
 {
     /// <summary>
     /// Creates a new TargetProject in a given project. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:vmmigration/v1:TargetProject")]
     public partial class TargetProject : Pulumi.CustomResource
@@ -98,12 +99,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
-
-        /// <summary>
-        /// The name of the target project.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The target project ID (number) or project name.

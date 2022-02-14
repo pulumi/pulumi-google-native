@@ -31,6 +31,18 @@ export interface GetDatacenterConnectorArgs {
 
 export interface GetDatacenterConnectorResult {
     /**
+     * Appliance OVA version. This is the OVA which is manually installed by the user and contains the infrastructure for the automatically updatable components on the appliance.
+     */
+    readonly applianceInfrastructureVersion: string;
+    /**
+     * Appliance last installed update bundle version. This is the version of the automatically updatable components on the appliance.
+     */
+    readonly applianceSoftwareVersion: string;
+    /**
+     * The available versions for updating this appliance.
+     */
+    readonly availableVersions: outputs.vmmigration.v1.AvailableUpdatesResponse;
+    /**
      * The communication channel between the datacenter connector and GCP.
      */
     readonly bucket: string;
@@ -66,6 +78,10 @@ export interface GetDatacenterConnectorResult {
      * The last time the connector was updated with an API call.
      */
     readonly updateTime: string;
+    /**
+     * The status of the current / last upgradeAppliance operation.
+     */
+    readonly upgradeStatus: outputs.vmmigration.v1.UpgradeStatusResponse;
     /**
      * The version running in the DatacenterConnector. This is supplied by the OVA connector during the registration process and can not be modified.
      */

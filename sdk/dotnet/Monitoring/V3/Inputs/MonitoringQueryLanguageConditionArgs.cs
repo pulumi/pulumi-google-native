@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public Input<string>? Duration { get; set; }
 
         /// <summary>
+        /// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+        /// </summary>
+        [Input("evaluationMissingData")]
+        public Input<Pulumi.GoogleNative.Monitoring.V3.MonitoringQueryLanguageConditionEvaluationMissingData>? EvaluationMissingData { get; set; }
+
+        /// <summary>
         /// Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.
         /// </summary>
         [Input("query")]

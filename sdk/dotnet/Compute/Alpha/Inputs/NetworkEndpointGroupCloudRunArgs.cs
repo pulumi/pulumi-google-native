@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// A template to parse service and tag fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+        /// A template to parse &lt;service&gt; and &lt;tag&gt; fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "&lt;tag&gt;.domain.com/&lt;service&gt;". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
         /// </summary>
         [Input("urlMask")]
         public Input<string>? UrlMask { get; set; }

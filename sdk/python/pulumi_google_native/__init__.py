@@ -428,6 +428,7 @@ _utilities.register(
    "google-native:apigee/v1:Datastore": "Datastore",
    "google-native:apigee/v1:DebugSession": "DebugSession",
    "google-native:apigee/v1:Developer": "Developer",
+   "google-native:apigee/v1:EndpointAttachment": "EndpointAttachment",
    "google-native:apigee/v1:Envgroup": "Envgroup",
    "google-native:apigee/v1:EnvgroupAttachment": "EnvgroupAttachment",
    "google-native:apigee/v1:Environment": "Environment",
@@ -1854,6 +1855,15 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "gkehub/v2alpha",
+  "fqn": "pulumi_google_native.gkehub.v2alpha",
+  "classes": {
+   "google-native:gkehub/v2alpha:Feature": "Feature",
+   "google-native:gkehub/v2alpha:FeatureConfig": "FeatureConfig"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "healthcare/v1",
   "fqn": "pulumi_google_native.healthcare.v1",
   "classes": {
@@ -2044,6 +2054,8 @@ _utilities.register(
    "google-native:metastore/v1beta:MetadataImport": "MetadataImport",
    "google-native:metastore/v1beta:Service": "Service",
    "google-native:metastore/v1beta:ServiceBackupIamPolicy": "ServiceBackupIamPolicy",
+   "google-native:metastore/v1beta:ServiceDatabaseIamPolicy": "ServiceDatabaseIamPolicy",
+   "google-native:metastore/v1beta:ServiceDatabaseTableIamPolicy": "ServiceDatabaseTableIamPolicy",
    "google-native:metastore/v1beta:ServiceIamPolicy": "ServiceIamPolicy"
   }
  },

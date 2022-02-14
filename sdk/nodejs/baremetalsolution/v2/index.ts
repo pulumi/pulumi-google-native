@@ -10,6 +10,9 @@ export * from "./getSnapshotSchedulePolicy";
 export * from "./snapshot";
 export * from "./snapshotSchedulePolicy";
 
+// Export enums:
+export * from "../../types/enums/baremetalsolution/v2";
+
 // Import resources to register:
 import { Snapshot } from "./snapshot";
 import { SnapshotSchedulePolicy } from "./snapshotSchedulePolicy";

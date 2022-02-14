@@ -52,6 +52,10 @@ export class SnapshotSchedulePolicy extends pulumi.CustomResource {
      * The snapshot schedules contained in this policy. You can specify a maximum of 5 schedules.
      */
     public readonly schedules!: pulumi.Output<outputs.baremetalsolution.v2.ScheduleResponse[]>;
+    /**
+     * The state of the snapshot schedule policy.
+     */
+    public readonly state!: pulumi.Output<string>;
 
     /**
      * Create a SnapshotSchedulePolicy resource with the given unique name, arguments, and options.
@@ -74,12 +78,14 @@ export class SnapshotSchedulePolicy extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["schedules"] = args ? args.schedules : undefined;
             resourceInputs["snapshotSchedulePolicyId"] = args ? args.snapshotSchedulePolicyId : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["schedules"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SnapshotSchedulePolicy.__pulumiType, name, resourceInputs, opts);
@@ -109,4 +115,8 @@ export interface SnapshotSchedulePolicyArgs {
      */
     schedules?: pulumi.Input<pulumi.Input<inputs.baremetalsolution.v2.ScheduleArgs>[]>;
     snapshotSchedulePolicyId: pulumi.Input<string>;
+    /**
+     * The state of the snapshot schedule policy.
+     */
+    state?: pulumi.Input<enums.baremetalsolution.v2.SnapshotSchedulePolicyState>;
 }

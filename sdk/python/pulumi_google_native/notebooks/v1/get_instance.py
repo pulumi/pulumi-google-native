@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, accelerator_config=None, boot_disk_size_gb=None, boot_disk_type=None, container_image=None, create_time=None, custom_gpu_driver_path=None, data_disk_size_gb=None, data_disk_type=None, disk_encryption=None, disks=None, install_gpu_driver=None, instance_owners=None, kms_key=None, labels=None, machine_type=None, metadata=None, name=None, network=None, nic_type=None, no_proxy_access=None, no_public_ip=None, no_remove_data_disk=None, post_startup_script=None, proxy_uri=None, reservation_affinity=None, service_account=None, service_account_scopes=None, shielded_instance_config=None, state=None, subnet=None, tags=None, update_time=None, upgrade_history=None, vm_image=None):
+    def __init__(__self__, accelerator_config=None, boot_disk_size_gb=None, boot_disk_type=None, container_image=None, create_time=None, creator=None, custom_gpu_driver_path=None, data_disk_size_gb=None, data_disk_type=None, disk_encryption=None, disks=None, install_gpu_driver=None, instance_owners=None, kms_key=None, labels=None, machine_type=None, metadata=None, name=None, network=None, nic_type=None, no_proxy_access=None, no_public_ip=None, no_remove_data_disk=None, post_startup_script=None, proxy_uri=None, reservation_affinity=None, service_account=None, service_account_scopes=None, shielded_instance_config=None, state=None, subnet=None, tags=None, update_time=None, upgrade_history=None, vm_image=None):
         if accelerator_config and not isinstance(accelerator_config, dict):
             raise TypeError("Expected argument 'accelerator_config' to be a dict")
         pulumi.set(__self__, "accelerator_config", accelerator_config)
@@ -34,6 +34,9 @@ class GetInstanceResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if creator and not isinstance(creator, str):
+            raise TypeError("Expected argument 'creator' to be a str")
+        pulumi.set(__self__, "creator", creator)
         if custom_gpu_driver_path and not isinstance(custom_gpu_driver_path, str):
             raise TypeError("Expected argument 'custom_gpu_driver_path' to be a str")
         pulumi.set(__self__, "custom_gpu_driver_path", custom_gpu_driver_path)
@@ -161,6 +164,14 @@ class GetInstanceResult:
         Instance creation time.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> str:
+        """
+        Email address of entity that sent original CreateInstance request.
+        """
+        return pulumi.get(self, "creator")
 
     @property
     @pulumi.getter(name="customGpuDriverPath")
@@ -406,6 +417,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             boot_disk_type=self.boot_disk_type,
             container_image=self.container_image,
             create_time=self.create_time,
+            creator=self.creator,
             custom_gpu_driver_path=self.custom_gpu_driver_path,
             data_disk_size_gb=self.data_disk_size_gb,
             data_disk_type=self.data_disk_type,
@@ -460,6 +472,7 @@ def get_instance(instance_id: Optional[str] = None,
         boot_disk_type=__ret__.boot_disk_type,
         container_image=__ret__.container_image,
         create_time=__ret__.create_time,
+        creator=__ret__.creator,
         custom_gpu_driver_path=__ret__.custom_gpu_driver_path,
         data_disk_size_gb=__ret__.data_disk_size_gb,
         data_disk_type=__ret__.data_disk_type,

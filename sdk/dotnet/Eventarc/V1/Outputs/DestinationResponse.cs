@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
     public sealed class DestinationResponse
     {
         /// <summary>
-        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
         /// </summary>
         public readonly string CloudFunction;
         /// <summary>

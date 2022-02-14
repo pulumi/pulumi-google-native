@@ -11,27 +11,98 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'ApplianceVersionResponse',
     'AppliedLicenseResponse',
+    'AvailableUpdatesResponse',
     'CloneJobResponse',
     'ComputeEngineTargetDefaultsResponse',
     'ComputeEngineTargetDetailsResponse',
     'ComputeSchedulingResponse',
     'CutoverJobResponse',
-    'CycleStepResponse',
-    'InitializingReplicationStepResponse',
     'NetworkInterfaceResponse',
-    'PostProcessingStepResponse',
-    'ReplicatingStepResponse',
     'ReplicationCycleResponse',
     'ReplicationSyncResponse',
     'SchedulePolicyResponse',
     'SchedulingNodeAffinityResponse',
     'StatusResponse',
+    'UpgradeStatusResponse',
     'VmUtilizationInfoResponse',
     'VmUtilizationMetricsResponse',
     'VmwareSourceDetailsResponse',
     'VmwareVmDetailsResponse',
 ]
+
+@pulumi.output_type
+class ApplianceVersionResponse(dict):
+    """
+    Describes an appliance version.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "releaseNotesUri":
+            suggest = "release_notes_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplianceVersionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplianceVersionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplianceVersionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 critical: bool,
+                 release_notes_uri: str,
+                 uri: str,
+                 version: str):
+        """
+        Describes an appliance version.
+        :param bool critical: Determine whether it's critical to upgrade the appliance to this version.
+        :param str release_notes_uri: Link to a page that contains the version release notes.
+        :param str uri: A link for downloading the version.
+        :param str version: The appliance version.
+        """
+        pulumi.set(__self__, "critical", critical)
+        pulumi.set(__self__, "release_notes_uri", release_notes_uri)
+        pulumi.set(__self__, "uri", uri)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> bool:
+        """
+        Determine whether it's critical to upgrade the appliance to this version.
+        """
+        return pulumi.get(self, "critical")
+
+    @property
+    @pulumi.getter(name="releaseNotesUri")
+    def release_notes_uri(self) -> str:
+        """
+        Link to a page that contains the version release notes.
+        """
+        return pulumi.get(self, "release_notes_uri")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        A link for downloading the version.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The appliance version.
+        """
+        return pulumi.get(self, "version")
+
 
 @pulumi.output_type
 class AppliedLicenseResponse(dict):
@@ -81,6 +152,58 @@ class AppliedLicenseResponse(dict):
         The license type that was used in OS adaptation.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class AvailableUpdatesResponse(dict):
+    """
+    Holds informatiom about the available versions for upgrade.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inPlaceUpdate":
+            suggest = "in_place_update"
+        elif key == "newDeployableAppliance":
+            suggest = "new_deployable_appliance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AvailableUpdatesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AvailableUpdatesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AvailableUpdatesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 in_place_update: 'outputs.ApplianceVersionResponse',
+                 new_deployable_appliance: 'outputs.ApplianceVersionResponse'):
+        """
+        Holds informatiom about the available versions for upgrade.
+        :param 'ApplianceVersionResponse' in_place_update: The latest version for in place update. The current appliance can be updated to this version using the API or m4c CLI.
+        :param 'ApplianceVersionResponse' new_deployable_appliance: The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance.
+        """
+        pulumi.set(__self__, "in_place_update", in_place_update)
+        pulumi.set(__self__, "new_deployable_appliance", new_deployable_appliance)
+
+    @property
+    @pulumi.getter(name="inPlaceUpdate")
+    def in_place_update(self) -> 'outputs.ApplianceVersionResponse':
+        """
+        The latest version for in place update. The current appliance can be updated to this version using the API or m4c CLI.
+        """
+        return pulumi.get(self, "in_place_update")
+
+    @property
+    @pulumi.getter(name="newDeployableAppliance")
+    def new_deployable_appliance(self) -> 'outputs.ApplianceVersionResponse':
+        """
+        The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance.
+        """
+        return pulumi.get(self, "new_deployable_appliance")
 
 
 @pulumi.output_type
@@ -884,107 +1007,6 @@ class CutoverJobResponse(dict):
 
 
 @pulumi.output_type
-class CycleStepResponse(dict):
-    """
-    CycleStep hold information about a step progress.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endTime":
-            suggest = "end_time"
-        elif key == "initializingReplication":
-            suggest = "initializing_replication"
-        elif key == "postProcessing":
-            suggest = "post_processing"
-        elif key == "startTime":
-            suggest = "start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CycleStepResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CycleStepResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CycleStepResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 end_time: str,
-                 initializing_replication: 'outputs.InitializingReplicationStepResponse',
-                 post_processing: 'outputs.PostProcessingStepResponse',
-                 replicating: 'outputs.ReplicatingStepResponse',
-                 start_time: str):
-        """
-        CycleStep hold information about a step progress.
-        :param str end_time: The time the cycle step has ended.
-        :param 'InitializingReplicationStepResponse' initializing_replication: Initializing replication step.
-        :param 'PostProcessingStepResponse' post_processing: Post processing step.
-        :param 'ReplicatingStepResponse' replicating: Replicating step.
-        :param str start_time: The time the cycle step has started.
-        """
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "initializing_replication", initializing_replication)
-        pulumi.set(__self__, "post_processing", post_processing)
-        pulumi.set(__self__, "replicating", replicating)
-        pulumi.set(__self__, "start_time", start_time)
-
-    @property
-    @pulumi.getter(name="endTime")
-    def end_time(self) -> str:
-        """
-        The time the cycle step has ended.
-        """
-        return pulumi.get(self, "end_time")
-
-    @property
-    @pulumi.getter(name="initializingReplication")
-    def initializing_replication(self) -> 'outputs.InitializingReplicationStepResponse':
-        """
-        Initializing replication step.
-        """
-        return pulumi.get(self, "initializing_replication")
-
-    @property
-    @pulumi.getter(name="postProcessing")
-    def post_processing(self) -> 'outputs.PostProcessingStepResponse':
-        """
-        Post processing step.
-        """
-        return pulumi.get(self, "post_processing")
-
-    @property
-    @pulumi.getter
-    def replicating(self) -> 'outputs.ReplicatingStepResponse':
-        """
-        Replicating step.
-        """
-        return pulumi.get(self, "replicating")
-
-    @property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> str:
-        """
-        The time the cycle step has started.
-        """
-        return pulumi.get(self, "start_time")
-
-
-@pulumi.output_type
-class InitializingReplicationStepResponse(dict):
-    """
-    InitializingReplicationStep contains specific step details.
-    """
-    def __init__(__self__):
-        """
-        InitializingReplicationStep contains specific step details.
-        """
-        pass
-
-
-@pulumi.output_type
 class NetworkInterfaceResponse(dict):
     """
     NetworkInterface represents a NIC of a VM.
@@ -1059,96 +1081,6 @@ class NetworkInterfaceResponse(dict):
 
 
 @pulumi.output_type
-class PostProcessingStepResponse(dict):
-    """
-    PostProcessingStep contains specific step details.
-    """
-    def __init__(__self__):
-        """
-        PostProcessingStep contains specific step details.
-        """
-        pass
-
-
-@pulumi.output_type
-class ReplicatingStepResponse(dict):
-    """
-    ReplicatingStep contains specific step details.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastThirtyMinutesAverageBytesPerSecond":
-            suggest = "last_thirty_minutes_average_bytes_per_second"
-        elif key == "lastTwoMinutesAverageBytesPerSecond":
-            suggest = "last_two_minutes_average_bytes_per_second"
-        elif key == "replicatedBytes":
-            suggest = "replicated_bytes"
-        elif key == "totalBytes":
-            suggest = "total_bytes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReplicatingStepResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReplicatingStepResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReplicatingStepResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 last_thirty_minutes_average_bytes_per_second: str,
-                 last_two_minutes_average_bytes_per_second: str,
-                 replicated_bytes: str,
-                 total_bytes: str):
-        """
-        ReplicatingStep contains specific step details.
-        :param str last_thirty_minutes_average_bytes_per_second: The source disks replication rate for the last 30 minutes in bytes per second.
-        :param str last_two_minutes_average_bytes_per_second: The source disks replication rate for the last 2 minutes in bytes per second.
-        :param str replicated_bytes: Replicated bytes in the step.
-        :param str total_bytes: Total bytes to be handled in the step.
-        """
-        pulumi.set(__self__, "last_thirty_minutes_average_bytes_per_second", last_thirty_minutes_average_bytes_per_second)
-        pulumi.set(__self__, "last_two_minutes_average_bytes_per_second", last_two_minutes_average_bytes_per_second)
-        pulumi.set(__self__, "replicated_bytes", replicated_bytes)
-        pulumi.set(__self__, "total_bytes", total_bytes)
-
-    @property
-    @pulumi.getter(name="lastThirtyMinutesAverageBytesPerSecond")
-    def last_thirty_minutes_average_bytes_per_second(self) -> str:
-        """
-        The source disks replication rate for the last 30 minutes in bytes per second.
-        """
-        return pulumi.get(self, "last_thirty_minutes_average_bytes_per_second")
-
-    @property
-    @pulumi.getter(name="lastTwoMinutesAverageBytesPerSecond")
-    def last_two_minutes_average_bytes_per_second(self) -> str:
-        """
-        The source disks replication rate for the last 2 minutes in bytes per second.
-        """
-        return pulumi.get(self, "last_two_minutes_average_bytes_per_second")
-
-    @property
-    @pulumi.getter(name="replicatedBytes")
-    def replicated_bytes(self) -> str:
-        """
-        Replicated bytes in the step.
-        """
-        return pulumi.get(self, "replicated_bytes")
-
-    @property
-    @pulumi.getter(name="totalBytes")
-    def total_bytes(self) -> str:
-        """
-        Total bytes to be handled in the step.
-        """
-        return pulumi.get(self, "total_bytes")
-
-
-@pulumi.output_type
 class ReplicationCycleResponse(dict):
     """
     ReplicationCycle contains information about the current replication cycle status.
@@ -1156,9 +1088,7 @@ class ReplicationCycleResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "endTime":
-            suggest = "end_time"
-        elif key == "progressPercent":
+        if key == "progressPercent":
             suggest = "progress_percent"
         elif key == "startTime":
             suggest = "start_time"
@@ -1177,35 +1107,21 @@ class ReplicationCycleResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 end_time: str,
                  progress: int,
                  progress_percent: int,
                  start_time: str,
-                 steps: Sequence['outputs.CycleStepResponse'],
                  total_pause_duration: str):
         """
         ReplicationCycle contains information about the current replication cycle status.
-        :param str end_time: The time the replication cycle has ended.
         :param int progress: The current progress in percentage of this cycle.
         :param int progress_percent: The current progress in percentage of this cycle.
         :param str start_time: The time the replication cycle has started.
-        :param Sequence['CycleStepResponse'] steps: The cycle's steps list reflecting its progress.
         :param str total_pause_duration: The accumulated duration the replication cycle was paused.
         """
-        pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "progress", progress)
         pulumi.set(__self__, "progress_percent", progress_percent)
         pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "steps", steps)
         pulumi.set(__self__, "total_pause_duration", total_pause_duration)
-
-    @property
-    @pulumi.getter(name="endTime")
-    def end_time(self) -> str:
-        """
-        The time the replication cycle has ended.
-        """
-        return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter
@@ -1230,14 +1146,6 @@ class ReplicationCycleResponse(dict):
         The time the replication cycle has started.
         """
         return pulumi.get(self, "start_time")
-
-    @property
-    @pulumi.getter
-    def steps(self) -> Sequence['outputs.CycleStepResponse']:
-        """
-        The cycle's steps list reflecting its progress.
-        """
-        return pulumi.get(self, "steps")
 
     @property
     @pulumi.getter(name="totalPauseDuration")
@@ -1425,6 +1333,91 @@ class StatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class UpgradeStatusResponse(dict):
+    """
+    UpgradeStatus contains information about upgradeAppliance operation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "previousVersion":
+            suggest = "previous_version"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UpgradeStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UpgradeStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UpgradeStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error: 'outputs.StatusResponse',
+                 previous_version: str,
+                 start_time: str,
+                 state: str,
+                 version: str):
+        """
+        UpgradeStatus contains information about upgradeAppliance operation.
+        :param 'StatusResponse' error: Provides details on the state of the upgrade operation in case of an error.
+        :param str previous_version: The version from which we upgraded.
+        :param str start_time: The time the operation was started.
+        :param str state: The state of the upgradeAppliance operation.
+        :param str version: The version to upgrade to.
+        """
+        pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "previous_version", previous_version)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.StatusResponse':
+        """
+        Provides details on the state of the upgrade operation in case of an error.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="previousVersion")
+    def previous_version(self) -> str:
+        """
+        The version from which we upgraded.
+        """
+        return pulumi.get(self, "previous_version")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The time the operation was started.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the upgradeAppliance operation.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The version to upgrade to.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -1864,7 +1857,7 @@ class VmwareVmDetailsResponse(dict):
         :param str datacenter_id: The id of the vCenter's datacenter this VM is contained in.
         :param int disk_count: The number of disks the VM has.
         :param str display_name: The display name of the VM. Note that this is not necessarily unique.
-        :param str guest_description: The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+        :param str guest_description: The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
         :param int memory_mb: The size of the memory of the VM in MB.
         :param str power_state: The power state of the VM at the moment list was taken.
         :param str uuid: The unique identifier of the VM in vCenter.
@@ -1952,7 +1945,7 @@ class VmwareVmDetailsResponse(dict):
     @pulumi.getter(name="guestDescription")
     def guest_description(self) -> str:
         """
-        The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+        The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
         """
         return pulumi.get(self, "guest_description")
 

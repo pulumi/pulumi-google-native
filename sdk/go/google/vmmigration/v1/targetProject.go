@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new TargetProject in a given project. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
+// Auto-naming is currently not supported for this resource.
 type TargetProject struct {
 	pulumi.CustomResourceState
 
@@ -72,8 +73,6 @@ type targetProjectArgs struct {
 	// The target project's description.
 	Description *string `pulumi:"description"`
 	Location    *string `pulumi:"location"`
-	// The name of the target project.
-	Name *string `pulumi:"name"`
 	// The target project ID (number) or project name.
 	Project         *string `pulumi:"project"`
 	RequestId       *string `pulumi:"requestId"`
@@ -85,8 +84,6 @@ type TargetProjectArgs struct {
 	// The target project's description.
 	Description pulumi.StringPtrInput
 	Location    pulumi.StringPtrInput
-	// The name of the target project.
-	Name pulumi.StringPtrInput
 	// The target project ID (number) or project name.
 	Project         pulumi.StringPtrInput
 	RequestId       pulumi.StringPtrInput

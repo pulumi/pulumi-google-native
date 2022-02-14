@@ -206,6 +206,9 @@ class DatacenterConnector(pulumi.CustomResource):
                 raise TypeError("Missing required property 'source_id'")
             __props__.__dict__["source_id"] = source_id
             __props__.__dict__["version"] = version
+            __props__.__dict__["appliance_infrastructure_version"] = None
+            __props__.__dict__["appliance_software_version"] = None
+            __props__.__dict__["available_versions"] = None
             __props__.__dict__["bucket"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["error"] = None
@@ -213,6 +216,7 @@ class DatacenterConnector(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["state_time"] = None
             __props__.__dict__["update_time"] = None
+            __props__.__dict__["upgrade_status"] = None
         super(DatacenterConnector, __self__).__init__(
             'google-native:vmmigration/v1:DatacenterConnector',
             resource_name,
@@ -235,6 +239,9 @@ class DatacenterConnector(pulumi.CustomResource):
 
         __props__ = DatacenterConnectorArgs.__new__(DatacenterConnectorArgs)
 
+        __props__.__dict__["appliance_infrastructure_version"] = None
+        __props__.__dict__["appliance_software_version"] = None
+        __props__.__dict__["available_versions"] = None
         __props__.__dict__["bucket"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["error"] = None
@@ -244,8 +251,33 @@ class DatacenterConnector(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["state_time"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["upgrade_status"] = None
         __props__.__dict__["version"] = None
         return DatacenterConnector(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="applianceInfrastructureVersion")
+    def appliance_infrastructure_version(self) -> pulumi.Output[str]:
+        """
+        Appliance OVA version. This is the OVA which is manually installed by the user and contains the infrastructure for the automatically updatable components on the appliance.
+        """
+        return pulumi.get(self, "appliance_infrastructure_version")
+
+    @property
+    @pulumi.getter(name="applianceSoftwareVersion")
+    def appliance_software_version(self) -> pulumi.Output[str]:
+        """
+        Appliance last installed update bundle version. This is the version of the automatically updatable components on the appliance.
+        """
+        return pulumi.get(self, "appliance_software_version")
+
+    @property
+    @pulumi.getter(name="availableVersions")
+    def available_versions(self) -> pulumi.Output['outputs.AvailableUpdatesResponse']:
+        """
+        The available versions for updating this appliance.
+        """
+        return pulumi.get(self, "available_versions")
 
     @property
     @pulumi.getter
@@ -318,6 +350,14 @@ class DatacenterConnector(pulumi.CustomResource):
         The last time the connector was updated with an API call.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="upgradeStatus")
+    def upgrade_status(self) -> pulumi.Output['outputs.UpgradeStatusResponse']:
+        """
+        The status of the current / last upgradeAppliance operation.
+        """
+        return pulumi.get(self, "upgrade_status")
 
     @property
     @pulumi.getter

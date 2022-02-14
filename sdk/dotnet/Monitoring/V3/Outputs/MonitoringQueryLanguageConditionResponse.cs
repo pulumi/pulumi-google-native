@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         /// </summary>
         public readonly string Duration;
         /// <summary>
+        /// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+        /// </summary>
+        public readonly string EvaluationMissingData;
+        /// <summary>
         /// Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.
         /// </summary>
         public readonly string Query;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         private MonitoringQueryLanguageConditionResponse(
             string duration,
 
+            string evaluationMissingData,
+
             string query,
 
             Outputs.TriggerResponse trigger)
         {
             Duration = duration;
+            EvaluationMissingData = evaluationMissingData;
             Query = query;
             Trigger = trigger;
         }

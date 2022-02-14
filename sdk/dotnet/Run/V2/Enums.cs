@@ -221,7 +221,7 @@ namespace Pulumi.GoogleNative.Run.V2
     }
 
     /// <summary>
-    /// The launch stage as defined by [Google Cloud Platform Launch Stages](http://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+    /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
     /// </summary>
     [EnumType]
     public readonly struct ServiceLaunchStage : IEquatable<ServiceLaunchStage>
@@ -250,7 +250,7 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         public static ServiceLaunchStage EarlyAccess { get; } = new ServiceLaunchStage("EARLY_ACCESS");
         /// <summary>
-        /// Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects allowlisted. Alpha releases don’t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.
+        /// Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects allowlisted. Alpha releases don't have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.
         /// </summary>
         public static ServiceLaunchStage Alpha { get; } = new ServiceLaunchStage("ALPHA");
         /// <summary>
@@ -262,7 +262,7 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         public static ServiceLaunchStage Ga { get; } = new ServiceLaunchStage("GA");
         /// <summary>
-        /// Deprecated features are scheduled to be shut down and removed. For more information, see the “Deprecation Policy” section of our [Terms of Service](https://cloud.google.com/terms/) and the [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation) documentation.
+        /// Deprecated features are scheduled to be shut down and removed. For more information, see the "Deprecation Policy" section of our [Terms of Service](https://cloud.google.com/terms/) and the [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation) documentation.
         /// </summary>
         public static ServiceLaunchStage Deprecated { get; } = new ServiceLaunchStage("DEPRECATED");
 

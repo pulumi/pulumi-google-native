@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new Group in a given project and location.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Group extends pulumi.CustomResource {
     /**
@@ -49,7 +50,7 @@ export class Group extends pulumi.CustomResource {
     /**
      * The Group name.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The update time timestamp.
      */
@@ -73,10 +74,10 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
@@ -104,10 +105,6 @@ export interface GroupArgs {
     displayName?: pulumi.Input<string>;
     groupId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
-    /**
-     * The Group name.
-     */
-    name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
 }

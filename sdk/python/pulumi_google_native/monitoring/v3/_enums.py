@@ -17,6 +17,8 @@ __all__ = [
     'MetricDescriptorMetricKind',
     'MetricDescriptorValueType',
     'MetricThresholdComparison',
+    'MetricThresholdEvaluationMissingData',
+    'MonitoringQueryLanguageConditionEvaluationMissingData',
     'NotificationChannelVerificationStatus',
     'ResourceGroupResourceType',
     'ServiceLevelObjectiveCalendarPeriod',
@@ -410,6 +412,50 @@ class MetricThresholdComparison(str, Enum):
     COMPARISON_NE = "COMPARISON_NE"
     """
     True if the left argument is not equal to the right argument.
+    """
+
+
+class MetricThresholdEvaluationMissingData(str, Enum):
+    """
+    A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+    """
+    EVALUATION_MISSING_DATA_UNSPECIFIED = "EVALUATION_MISSING_DATA_UNSPECIFIED"
+    """
+    An unspecified evaluation missing data option, if used, it will default to EVALUATION_MISSING_DATA_ACTIVE.
+    """
+    EVALUATION_MISSING_DATA_INACTIVE = "EVALUATION_MISSING_DATA_INACTIVE"
+    """
+    If there is no data to evaluate the condition, then evaluate the condition as false.
+    """
+    EVALUATION_MISSING_DATA_ACTIVE = "EVALUATION_MISSING_DATA_ACTIVE"
+    """
+    If there is no data to evaluate the condition, then evaluate the condition as true. The default for conditions with a duration value.
+    """
+    EVALUATION_MISSING_DATA_NO_OP = "EVALUATION_MISSING_DATA_NO_OP"
+    """
+    Do not evaluate the condition to any value if there is no data.
+    """
+
+
+class MonitoringQueryLanguageConditionEvaluationMissingData(str, Enum):
+    """
+    A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+    """
+    EVALUATION_MISSING_DATA_UNSPECIFIED = "EVALUATION_MISSING_DATA_UNSPECIFIED"
+    """
+    An unspecified evaluation missing data option, if used, it will default to EVALUATION_MISSING_DATA_ACTIVE.
+    """
+    EVALUATION_MISSING_DATA_INACTIVE = "EVALUATION_MISSING_DATA_INACTIVE"
+    """
+    If there is no data to evaluate the condition, then evaluate the condition as false.
+    """
+    EVALUATION_MISSING_DATA_ACTIVE = "EVALUATION_MISSING_DATA_ACTIVE"
+    """
+    If there is no data to evaluate the condition, then evaluate the condition as true. The default for conditions with a duration value.
+    """
+    EVALUATION_MISSING_DATA_NO_OP = "EVALUATION_MISSING_DATA_NO_OP"
+    """
+    Do not evaluate the condition to any value if there is no data.
     """
 
 

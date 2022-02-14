@@ -29,6 +29,7 @@ class ClusterArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 identity_service_config: Optional[pulumi.Input['IdentityServiceConfigArgs']] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['IPAllocationPolicyArgs']] = None,
                  legacy_abac: Optional[pulumi.Input['LegacyAbacArgs']] = None,
@@ -74,6 +75,7 @@ class ClusterArgs:
         :param pulumi.Input[str] description: An optional description of this cluster.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1alpha1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
         :param pulumi.Input[bool] enable_tpu: Enable the ability to use Cloud TPUs in this cluster.
+        :param pulumi.Input['IdentityServiceConfigArgs'] identity_service_config: Configuration for Identity Service component.
         :param pulumi.Input[str] initial_cluster_version: The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
         :param pulumi.Input['IPAllocationPolicyArgs'] ip_allocation_policy: Configuration for cluster IP allocation.
         :param pulumi.Input['LegacyAbacArgs'] legacy_abac: Configuration for the legacy ABAC authorization mode.
@@ -129,6 +131,8 @@ class ClusterArgs:
             pulumi.set(__self__, "enable_kubernetes_alpha", enable_kubernetes_alpha)
         if enable_tpu is not None:
             pulumi.set(__self__, "enable_tpu", enable_tpu)
+        if identity_service_config is not None:
+            pulumi.set(__self__, "identity_service_config", identity_service_config)
         if initial_cluster_version is not None:
             pulumi.set(__self__, "initial_cluster_version", initial_cluster_version)
         if ip_allocation_policy is not None:
@@ -345,6 +349,18 @@ class ClusterArgs:
     @enable_tpu.setter
     def enable_tpu(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_tpu", value)
+
+    @property
+    @pulumi.getter(name="identityServiceConfig")
+    def identity_service_config(self) -> Optional[pulumi.Input['IdentityServiceConfigArgs']]:
+        """
+        Configuration for Identity Service component.
+        """
+        return pulumi.get(self, "identity_service_config")
+
+    @identity_service_config.setter
+    def identity_service_config(self, value: Optional[pulumi.Input['IdentityServiceConfigArgs']]):
+        pulumi.set(self, "identity_service_config", value)
 
     @property
     @pulumi.getter(name="initialClusterVersion")
@@ -719,6 +735,7 @@ class Cluster(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 identity_service_config: Optional[pulumi.Input[pulumi.InputType['IdentityServiceConfigArgs']]] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']]] = None,
                  legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
@@ -768,6 +785,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this cluster.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1alpha1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
         :param pulumi.Input[bool] enable_tpu: Enable the ability to use Cloud TPUs in this cluster.
+        :param pulumi.Input[pulumi.InputType['IdentityServiceConfigArgs']] identity_service_config: Configuration for Identity Service component.
         :param pulumi.Input[str] initial_cluster_version: The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
         :param pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']] ip_allocation_policy: Configuration for cluster IP allocation.
         :param pulumi.Input[pulumi.InputType['LegacyAbacArgs']] legacy_abac: Configuration for the legacy ABAC authorization mode.
@@ -834,6 +852,7 @@ class Cluster(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 identity_service_config: Optional[pulumi.Input[pulumi.InputType['IdentityServiceConfigArgs']]] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']]] = None,
                  legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
@@ -889,6 +908,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_kubernetes_alpha"] = enable_kubernetes_alpha
             __props__.__dict__["enable_tpu"] = enable_tpu
+            __props__.__dict__["identity_service_config"] = identity_service_config
             __props__.__dict__["initial_cluster_version"] = initial_cluster_version
             __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
             __props__.__dict__["legacy_abac"] = legacy_abac
@@ -970,6 +990,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["enable_tpu"] = None
         __props__.__dict__["endpoint"] = None
         __props__.__dict__["expire_time"] = None
+        __props__.__dict__["identity_service_config"] = None
         __props__.__dict__["initial_cluster_version"] = None
         __props__.__dict__["ip_allocation_policy"] = None
         __props__.__dict__["label_fingerprint"] = None
@@ -1149,6 +1170,14 @@ class Cluster(pulumi.CustomResource):
         [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         """
         return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter(name="identityServiceConfig")
+    def identity_service_config(self) -> pulumi.Output['outputs.IdentityServiceConfigResponse']:
+        """
+        Configuration for Identity Service component.
+        """
+        return pulumi.get(self, "identity_service_config")
 
     @property
     @pulumi.getter(name="initialClusterVersion")

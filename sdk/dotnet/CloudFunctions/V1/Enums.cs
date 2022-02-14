@@ -53,6 +53,47 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
     }
 
     /// <summary>
+    /// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+    /// </summary>
+    [EnumType]
+    public readonly struct FunctionDockerRegistry : IEquatable<FunctionDockerRegistry>
+    {
+        private readonly string _value;
+
+        private FunctionDockerRegistry(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified.
+        /// </summary>
+        public static FunctionDockerRegistry DockerRegistryUnspecified { get; } = new FunctionDockerRegistry("DOCKER_REGISTRY_UNSPECIFIED");
+        /// <summary>
+        /// Docker images will be stored in multi-regional Container Registry repositories named `gcf`.
+        /// </summary>
+        public static FunctionDockerRegistry ContainerRegistry { get; } = new FunctionDockerRegistry("CONTAINER_REGISTRY");
+        /// <summary>
+        /// Docker images will be stored in regional Artifact Registry repositories. By default, GCF will create and use repositories named `gcf-artifacts` in every region in which a function is deployed. But the repository to use can also be specified by the user using the `docker_repository` field.
+        /// </summary>
+        public static FunctionDockerRegistry ArtifactRegistry { get; } = new FunctionDockerRegistry("ARTIFACT_REGISTRY");
+
+        public static bool operator ==(FunctionDockerRegistry left, FunctionDockerRegistry right) => left.Equals(right);
+        public static bool operator !=(FunctionDockerRegistry left, FunctionDockerRegistry right) => !left.Equals(right);
+
+        public static explicit operator string(FunctionDockerRegistry value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FunctionDockerRegistry other && Equals(other);
+        public bool Equals(FunctionDockerRegistry other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The ingress settings for the function, controlling what traffic can reach it.
     /// </summary>
     [EnumType]

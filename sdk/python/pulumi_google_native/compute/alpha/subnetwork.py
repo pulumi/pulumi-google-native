@@ -524,6 +524,7 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["external_ipv6_prefix"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["gateway_address"] = None
+            __props__.__dict__["internal_ipv6_prefix"] = None
             __props__.__dict__["ipv6_cidr_range"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
@@ -561,6 +562,7 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["flow_sampling"] = None
         __props__.__dict__["gateway_address"] = None
+        __props__.__dict__["internal_ipv6_prefix"] = None
         __props__.__dict__["ip_cidr_range"] = None
         __props__.__dict__["ipv6_access_type"] = None
         __props__.__dict__["ipv6_cidr_range"] = None
@@ -662,6 +664,14 @@ class Subnetwork(pulumi.CustomResource):
         The gateway address for default routes to reach destination addresses outside this subnetwork.
         """
         return pulumi.get(self, "gateway_address")
+
+    @property
+    @pulumi.getter(name="internalIpv6Prefix")
+    def internal_ipv6_prefix(self) -> pulumi.Output[str]:
+        """
+        The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
+        """
+        return pulumi.get(self, "internal_ipv6_prefix")
 
     @property
     @pulumi.getter(name="ipCidrRange")

@@ -63,6 +63,10 @@ export interface GetEntryResult {
      */
     readonly displayName: string;
     /**
+     * Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
+     */
+    readonly filesetSpec: outputs.datacatalog.v1.GoogleCloudDatacatalogV1FilesetSpecResponse;
+    /**
      * Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
      */
     readonly fullyQualifiedName: string;

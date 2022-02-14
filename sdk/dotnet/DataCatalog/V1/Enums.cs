@@ -57,6 +57,14 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public static EntryType Routine { get; } = new EntryType("ROUTINE");
         /// <summary>
+        /// A Dataproc Metastore lake.
+        /// </summary>
+        public static EntryType Lake { get; } = new EntryType("LAKE");
+        /// <summary>
+        /// A Dataproc Metastore zone.
+        /// </summary>
+        public static EntryType Zone { get; } = new EntryType("ZONE");
+        /// <summary>
         /// A service, for example, a Dataproc Metastore service.
         /// </summary>
         public static EntryType Service { get; } = new EntryType("SERVICE");
@@ -188,6 +196,55 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudDatacatalogV1DatabaseTableSpecType other && Equals(other);
         public bool Equals(GoogleCloudDatacatalogV1DatabaseTableSpecType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Service in which the external table is registered.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDatacatalogV1DataplexExternalTableSystem : IEquatable<GoogleCloudDatacatalogV1DataplexExternalTableSystem>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDatacatalogV1DataplexExternalTableSystem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default unknown system.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1DataplexExternalTableSystem IntegratedSystemUnspecified { get; } = new GoogleCloudDatacatalogV1DataplexExternalTableSystem("INTEGRATED_SYSTEM_UNSPECIFIED");
+        /// <summary>
+        /// BigQuery.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1DataplexExternalTableSystem Bigquery { get; } = new GoogleCloudDatacatalogV1DataplexExternalTableSystem("BIGQUERY");
+        /// <summary>
+        /// Cloud Pub/Sub.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1DataplexExternalTableSystem CloudPubsub { get; } = new GoogleCloudDatacatalogV1DataplexExternalTableSystem("CLOUD_PUBSUB");
+        /// <summary>
+        /// Dataproc Metastore.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1DataplexExternalTableSystem DataprocMetastore { get; } = new GoogleCloudDatacatalogV1DataplexExternalTableSystem("DATAPROC_METASTORE");
+        /// <summary>
+        /// Dataplex.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1DataplexExternalTableSystem Dataplex { get; } = new GoogleCloudDatacatalogV1DataplexExternalTableSystem("DATAPLEX");
+
+        public static bool operator ==(GoogleCloudDatacatalogV1DataplexExternalTableSystem left, GoogleCloudDatacatalogV1DataplexExternalTableSystem right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDatacatalogV1DataplexExternalTableSystem left, GoogleCloudDatacatalogV1DataplexExternalTableSystem right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDatacatalogV1DataplexExternalTableSystem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDatacatalogV1DataplexExternalTableSystem other && Equals(other);
+        public bool Equals(GoogleCloudDatacatalogV1DataplexExternalTableSystem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

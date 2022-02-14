@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a new budget. See Quotas and limits for more information on the limits of the number of budgets you can create.
+// Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more information on the limits of the number of budgets you can create.
 // Auto-naming is currently not supported for this resource.
 type Budget struct {
 	pulumi.CustomResourceState

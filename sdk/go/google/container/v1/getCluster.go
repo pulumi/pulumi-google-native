@@ -63,6 +63,8 @@ type LookupClusterResult struct {
 	Endpoint string `pulumi:"endpoint"`
 	// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	ExpireTime string `pulumi:"expireTime"`
+	// Configuration for Identity Service component.
+	IdentityServiceConfig IdentityServiceConfigResponse `pulumi:"identityServiceConfig"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion string `pulumi:"initialClusterVersion"`
 	// Configuration for cluster IP allocation.
@@ -254,6 +256,11 @@ func (o LookupClusterResultOutput) Endpoint() pulumi.StringOutput {
 // [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 func (o LookupClusterResultOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// Configuration for Identity Service component.
+func (o LookupClusterResultOutput) IdentityServiceConfig() IdentityServiceConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) IdentityServiceConfigResponse { return v.IdentityServiceConfig }).(IdentityServiceConfigResponseOutput)
 }
 
 // The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
