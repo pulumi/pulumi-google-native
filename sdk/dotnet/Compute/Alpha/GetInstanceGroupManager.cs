@@ -114,10 +114,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
-        /// </summary>
-        public readonly string ListManagedInstancesResults;
-        /// <summary>
         /// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         /// </summary>
         public readonly string Name;
@@ -210,8 +206,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string kind,
 
-            string listManagedInstancesResults,
-
             string name,
 
             ImmutableArray<Outputs.NamedPortResponse> namedPorts,
@@ -257,7 +251,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             InstanceLifecyclePolicy = instanceLifecyclePolicy;
             InstanceTemplate = instanceTemplate;
             Kind = kind;
-            ListManagedInstancesResults = listManagedInstancesResults;
             Name = name;
             NamedPorts = namedPorts;
             Region = region;

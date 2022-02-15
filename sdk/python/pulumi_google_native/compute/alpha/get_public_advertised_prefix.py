@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetPublicAdvertisedPrefixResult:
-    def __init__(__self__, creation_timestamp=None, description=None, dns_verification_ip=None, fingerprint=None, ip_cidr_range=None, kind=None, name=None, pdp_scope=None, public_delegated_prefixs=None, self_link=None, self_link_with_id=None, shared_secret=None, status=None):
+    def __init__(__self__, creation_timestamp=None, description=None, dns_verification_ip=None, fingerprint=None, ip_cidr_range=None, kind=None, name=None, public_delegated_prefixs=None, self_link=None, self_link_with_id=None, shared_secret=None, status=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -40,9 +40,6 @@ class GetPublicAdvertisedPrefixResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if pdp_scope and not isinstance(pdp_scope, str):
-            raise TypeError("Expected argument 'pdp_scope' to be a str")
-        pulumi.set(__self__, "pdp_scope", pdp_scope)
         if public_delegated_prefixs and not isinstance(public_delegated_prefixs, list):
             raise TypeError("Expected argument 'public_delegated_prefixs' to be a list")
         pulumi.set(__self__, "public_delegated_prefixs", public_delegated_prefixs)
@@ -116,14 +113,6 @@ class GetPublicAdvertisedPrefixResult:
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="pdpScope")
-    def pdp_scope(self) -> str:
-        """
-        Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
-        """
-        return pulumi.get(self, "pdp_scope")
-
-    @property
     @pulumi.getter(name="publicDelegatedPrefixs")
     def public_delegated_prefixs(self) -> Sequence['outputs.PublicAdvertisedPrefixPublicDelegatedPrefixResponse']:
         """
@@ -177,7 +166,6 @@ class AwaitableGetPublicAdvertisedPrefixResult(GetPublicAdvertisedPrefixResult):
             ip_cidr_range=self.ip_cidr_range,
             kind=self.kind,
             name=self.name,
-            pdp_scope=self.pdp_scope,
             public_delegated_prefixs=self.public_delegated_prefixs,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
@@ -208,7 +196,6 @@ def get_public_advertised_prefix(project: Optional[str] = None,
         ip_cidr_range=__ret__.ip_cidr_range,
         kind=__ret__.kind,
         name=__ret__.name,
-        pdp_scope=__ret__.pdp_scope,
         public_delegated_prefixs=__ret__.public_delegated_prefixs,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,

@@ -85,7 +85,6 @@ __all__ = [
     'InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck',
     'InstanceGroupManagerAutoHealingPolicyUpdateInstances',
     'InstanceGroupManagerFailoverAction',
-    'InstanceGroupManagerListManagedInstancesResults',
     'InstanceGroupManagerUpdatePolicyInstanceRedistributionType',
     'InstanceGroupManagerUpdatePolicyMinimalAction',
     'InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction',
@@ -124,7 +123,6 @@ __all__ = [
     'OrganizationSecurityPolicyType',
     'PacketMirroringEnable',
     'PacketMirroringFilterDirection',
-    'PublicAdvertisedPrefixPdpScope',
     'PublicAdvertisedPrefixStatus',
     'RegionBackendServiceCompressionMode',
     'RegionBackendServiceLoadBalancingScheme',
@@ -138,7 +136,6 @@ __all__ = [
     'RegionHealthCheckServiceHealthStatusAggregationPolicy',
     'RegionHealthCheckType',
     'RegionInstanceGroupManagerFailoverAction',
-    'RegionInstanceGroupManagerListManagedInstancesResults',
     'RegionNetworkEndpointGroupNetworkEndpointType',
     'RegionNetworkEndpointGroupType',
     'RegionNetworkFirewallPolicyVpcNetworkScope',
@@ -1331,7 +1328,7 @@ class GlobalForwardingRulePscConnectionStatus(str, Enum):
 
 class GlobalNetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
-    Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+    Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     """
     GCE_VM_IP = "GCE_VM_IP"
     """
@@ -1379,7 +1376,7 @@ class GlobalNetworkEndpointGroupType(str, Enum):
 
 class GuestOsFeatureType(str, Enum):
     """
-    The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+    The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
     """
     BARE_METAL_LINUX_COMPATIBLE = "BARE_METAL_LINUX_COMPATIBLE"
     FEATURE_TYPE_UNSPECIFIED = "FEATURE_TYPE_UNSPECIFIED"
@@ -1627,20 +1624,6 @@ class InstanceGroupManagerFailoverAction(str, Enum):
     """
     NO_FAILOVER = "NO_FAILOVER"
     UNKNOWN = "UNKNOWN"
-
-
-class InstanceGroupManagerListManagedInstancesResults(str, Enum):
-    """
-    Pagination behavior of listManagedInstances API method for this Managed Instance Group.
-    """
-    PAGELESS = "PAGELESS"
-    """
-    (Default) Pagination is disabled for listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
-    """
-    PAGINATED = "PAGINATED"
-    """
-    Pagination is enabled for listManagedInstances API method. maxResults and pageToken query parameters are respected.
-    """
 
 
 class InstanceGroupManagerUpdatePolicyInstanceRedistributionType(str, Enum):
@@ -2030,7 +2013,7 @@ class MetadataFilterFilterMatchCriteria(str, Enum):
 
 class NetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
-    Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+    Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     """
     GCE_VM_IP = "GCE_VM_IP"
     """
@@ -2120,6 +2103,7 @@ class NetworkInterfaceStackType(str, Enum):
     """
     The network interface will be assigned IPv4 address.
     """
+    UNSPECIFIED_STACK_TYPE = "UNSPECIFIED_STACK_TYPE"
 
 
 class NetworkInterfaceSubInterfaceIpAllocationMode(str, Enum):
@@ -2135,9 +2119,6 @@ class NetworkInterfaceSubInterfaceIpAllocationMode(str, Enum):
 
 
 class NetworkNetworkFirewallPolicyEnforcementOrder(str, Enum):
-    """
-    The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
-    """
     AFTER_CLASSIC_FIREWALL = "AFTER_CLASSIC_FIREWALL"
     BEFORE_CLASSIC_FIREWALL = "BEFORE_CLASSIC_FIREWALL"
 
@@ -2216,7 +2197,7 @@ class NodeTemplateCpuOvercommitType(str, Enum):
 
 class OrganizationSecurityPolicyType(str, Enum):
     """
-    The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. 
+    The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
@@ -2250,31 +2231,9 @@ class PacketMirroringFilterDirection(str, Enum):
     """
 
 
-class PublicAdvertisedPrefixPdpScope(str, Enum):
-    """
-    Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
-    """
-    GLOBAL_ = "GLOBAL"
-    """
-    The public delegated prefix is global only. The provisioning will take ~4 weeks.
-    """
-    GLOBAL_AND_REGIONAL = "GLOBAL_AND_REGIONAL"
-    """
-    The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2.
-    """
-    REGIONAL = "REGIONAL"
-    """
-    The public delegated prefix is regional only. The provisioning will take a few minutes.
-    """
-
-
 class PublicAdvertisedPrefixStatus(str, Enum):
     """
     The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed. 
-    """
-    ANNOUNCED_TO_INTERNET = "ANNOUNCED_TO_INTERNET"
-    """
-    The prefix is announced to Internet.
     """
     INITIAL = "INITIAL"
     """
@@ -2295,10 +2254,6 @@ class PublicAdvertisedPrefixStatus(str, Enum):
     PTR_CONFIGURED = "PTR_CONFIGURED"
     """
     User has configured the PTR.
-    """
-    READY_TO_ANNOUNCE = "READY_TO_ANNOUNCE"
-    """
-    The prefix is currently withdrawn but ready to be announced.
     """
     REVERSE_DNS_LOOKUP_FAILED = "REVERSE_DNS_LOOKUP_FAILED"
     """
@@ -2548,23 +2503,9 @@ class RegionInstanceGroupManagerFailoverAction(str, Enum):
     UNKNOWN = "UNKNOWN"
 
 
-class RegionInstanceGroupManagerListManagedInstancesResults(str, Enum):
-    """
-    Pagination behavior of listManagedInstances API method for this Managed Instance Group.
-    """
-    PAGELESS = "PAGELESS"
-    """
-    (Default) Pagination is disabled for listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
-    """
-    PAGINATED = "PAGINATED"
-    """
-    Pagination is enabled for listManagedInstances API method. maxResults and pageToken query parameters are respected.
-    """
-
-
 class RegionNetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
-    Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+    Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     """
     GCE_VM_IP = "GCE_VM_IP"
     """
@@ -2625,16 +2566,13 @@ class RegionNetworkFirewallPolicyVpcNetworkScope(str, Enum):
 
 
 class RegionNetworkNetworkFirewallPolicyEnforcementOrder(str, Enum):
-    """
-    The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
-    """
     AFTER_CLASSIC_FIREWALL = "AFTER_CLASSIC_FIREWALL"
     BEFORE_CLASSIC_FIREWALL = "BEFORE_CLASSIC_FIREWALL"
 
 
 class RegionSecurityPolicyType(str, Enum):
     """
-    The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. 
+    The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
@@ -3172,7 +3110,7 @@ class SecurityPolicyRuleMatcherVersionedExpr(str, Enum):
 
 class SecurityPolicyRuleRateLimitOptionsEnforceOnKey(str, Enum):
     """
-    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
     """
     ALL = "ALL"
     ALL_IPS = "ALL_IPS"
@@ -3192,7 +3130,7 @@ class SecurityPolicyRuleRedirectOptionsType(str, Enum):
 
 class SecurityPolicyType(str, Enum):
     """
-    The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. 
+    The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
@@ -3349,6 +3287,10 @@ class SubnetworkIpv6AccessType(str, Enum):
     """
     VMs on this subnet will be assigned IPv6 addresses that are only accessible over the VPC network.
     """
+    UNSPECIFIED_IPV6_ACCESS_TYPE = "UNSPECIFIED_IPV6_ACCESS_TYPE"
+    """
+    IPv6 access type not set. Means this subnet hasn't been turned on IPv6 yet.
+    """
 
 
 class SubnetworkLogConfigAggregationInterval(str, Enum):
@@ -3470,6 +3412,7 @@ class SubnetworkStackType(str, Enum):
     """
     New VMs in this subnet will only be assigned IPv4 addresses.
     """
+    UNSPECIFIED_STACK_TYPE = "UNSPECIFIED_STACK_TYPE"
 
 
 class SubsettingPolicy(str, Enum):

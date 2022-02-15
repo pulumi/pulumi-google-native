@@ -84,10 +84,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
-        /// </summary>
-        public readonly string PdpScope;
-        /// <summary>
         /// The list of public delegated prefixes that exist for this public advertised prefix.
         /// </summary>
         public readonly ImmutableArray<Outputs.PublicAdvertisedPrefixPublicDelegatedPrefixResponse> PublicDelegatedPrefixs;
@@ -124,8 +120,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string name,
 
-            string pdpScope,
-
             ImmutableArray<Outputs.PublicAdvertisedPrefixPublicDelegatedPrefixResponse> publicDelegatedPrefixs,
 
             string selfLink,
@@ -143,7 +137,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             IpCidrRange = ipCidrRange;
             Kind = kind;
             Name = name;
-            PdpScope = pdpScope;
             PublicDelegatedPrefixs = publicDelegatedPrefixs;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;

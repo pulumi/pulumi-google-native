@@ -49,7 +49,7 @@ type LookupInterconnectAttachmentResult struct {
 	CustomerRouterIpv6Address string `pulumi:"customerRouterIpv6Address"`
 	// If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
 	CustomerRouterIpv6InterfaceId string `pulumi:"customerRouterIpv6InterfaceId"`
-	// Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+	// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
 	DataplaneVersion int `pulumi:"dataplaneVersion"`
 	// An optional description of this resource.
 	Description string `pulumi:"description"`
@@ -189,7 +189,7 @@ func (o LookupInterconnectAttachmentResultOutput) CustomerRouterIpv6InterfaceId(
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.CustomerRouterIpv6InterfaceId }).(pulumi.StringOutput)
 }
 
-// Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
 func (o LookupInterconnectAttachmentResultOutput) DataplaneVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) int { return v.DataplaneVersion }).(pulumi.IntOutput)
 }

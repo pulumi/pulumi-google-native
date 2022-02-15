@@ -47,8 +47,6 @@ type LookupSubnetworkResult struct {
 	FlowSampling float64 `pulumi:"flowSampling"`
 	// The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress string `pulumi:"gatewayAddress"`
-	// The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
-	InternalIpv6Prefix string `pulumi:"internalIpv6Prefix"`
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
@@ -172,11 +170,6 @@ func (o LookupSubnetworkResultOutput) FlowSampling() pulumi.Float64Output {
 // The gateway address for default routes to reach destination addresses outside this subnetwork.
 func (o LookupSubnetworkResultOutput) GatewayAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.GatewayAddress }).(pulumi.StringOutput)
-}
-
-// The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
-func (o LookupSubnetworkResultOutput) InternalIpv6Prefix() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.InternalIpv6Prefix }).(pulumi.StringOutput)
 }
 
 // The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.

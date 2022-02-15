@@ -6558,6 +6558,520 @@ export namespace cloudfunctions {
         }
 
     }
+
+    export namespace v2alpha {
+        /**
+         * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+         */
+        export interface AuditConfigArgs {
+            /**
+             * The configuration for logging of each type of permission.
+             */
+            auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.v2alpha.AuditLogConfigArgs>[]>;
+            /**
+             * Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+             */
+            service?: pulumi.Input<string>;
+        }
+
+        /**
+         * Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+         */
+        export interface AuditLogConfigArgs {
+            /**
+             * Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+             */
+            exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The log type that this config enables.
+             */
+            logType?: pulumi.Input<enums.cloudfunctions.v2alpha.AuditLogConfigLogType>;
+        }
+
+        /**
+         * Associates `members`, or principals, with a `role`.
+         */
+        export interface BindingArgs {
+            /**
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             */
+            condition?: pulumi.Input<inputs.cloudfunctions.v2alpha.ExprArgs>;
+            /**
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             */
+            members?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             */
+            role?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes the Build step of the function that builds a container from the given source.
+         */
+        export interface BuildConfigArgs {
+            /**
+             * Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+             */
+            dockerRepository?: pulumi.Input<string>;
+            /**
+             * The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+             */
+            entryPoint?: pulumi.Input<string>;
+            /**
+             * User-provided build-time environment variables for the function
+             */
+            environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
+             */
+            runtime?: pulumi.Input<string>;
+            /**
+             * The location of the function source code.
+             */
+            source?: pulumi.Input<inputs.cloudfunctions.v2alpha.SourceArgs>;
+            /**
+             * Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
+             */
+            workerPool?: pulumi.Input<string>;
+        }
+
+        /**
+         * Filters events based on exact matches on the CloudEvents attributes.
+         */
+        export interface EventFilterArgs {
+            /**
+             * The name of a CloudEvents attribute.
+             */
+            attribute: pulumi.Input<string>;
+            /**
+             * The value for the attribute.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes EventTrigger, used to request events to be sent from another service.
+         */
+        export interface EventTriggerArgs {
+            /**
+             * Criteria used to filter events.
+             */
+            eventFilters?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.v2alpha.EventFilterArgs>[]>;
+            /**
+             * The type of event to observe. For example: `google.cloud.audit.log.v1.written` or `google.cloud.pubsub.topic.v1.messagePublished`.
+             */
+            eventType: pulumi.Input<string>;
+            /**
+             * Optional. The name of a Pub/Sub topic in the same project that will be used as the transport topic for the event delivery. Format: `projects/{project}/topics/{topic}`. This is only valid for events of type `google.cloud.pubsub.topic.v1.messagePublished`. The topic provided here will not be deleted at function deletion.
+             */
+            pubsubTopic?: pulumi.Input<string>;
+            /**
+             * Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
+             */
+            retryPolicy?: pulumi.Input<enums.cloudfunctions.v2alpha.EventTriggerRetryPolicy>;
+            /**
+             * Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
+             */
+            serviceAccountEmail?: pulumi.Input<string>;
+            /**
+             * The region that the trigger will be in. The trigger will only receive events originating in this region. It can be the same region as the function, a different region or multi-region, or the global region. If not provided, defaults to the same region as the function.
+             */
+            triggerRegion?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+         */
+        export interface ExprArgs {
+            /**
+             * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Textual representation of an expression in Common Expression Language syntax.
+             */
+            expression?: pulumi.Input<string>;
+            /**
+             * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+             */
+            title?: pulumi.Input<string>;
+        }
+
+        /**
+         * Location of the source in a Google Cloud Source Repository.
+         */
+        export interface RepoSourceArgs {
+            /**
+             * Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+             */
+            branchName?: pulumi.Input<string>;
+            /**
+             * Explicit commit SHA to build.
+             */
+            commitSha?: pulumi.Input<string>;
+            /**
+             * Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution. eg. helloworld (no leading slash allowed)
+             */
+            dir?: pulumi.Input<string>;
+            /**
+             * Only trigger a build if the revision regex does NOT match the revision regex.
+             */
+            invertRegex?: pulumi.Input<boolean>;
+            /**
+             * ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
+             */
+            project?: pulumi.Input<string>;
+            /**
+             * Name of the Cloud Source Repository.
+             */
+            repoName?: pulumi.Input<string>;
+            /**
+             * Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+             */
+            tagName?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
+         */
+        export interface ServiceConfigArgs {
+            /**
+             * Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
+             */
+            allTrafficOnLatestRevision?: pulumi.Input<boolean>;
+            /**
+             * The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
+             */
+            availableMemory?: pulumi.Input<string>;
+            /**
+             * Environment variables that shall be available during function execution.
+             */
+            environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * The ingress settings for the function, controlling what traffic can reach it.
+             */
+            ingressSettings?: pulumi.Input<enums.cloudfunctions.v2alpha.ServiceConfigIngressSettings>;
+            /**
+             * The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
+             */
+            maxInstanceCount?: pulumi.Input<number>;
+            /**
+             * The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
+             */
+            minInstanceCount?: pulumi.Input<number>;
+            /**
+             * The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
+             */
+            serviceAccountEmail?: pulumi.Input<string>;
+            /**
+             * The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
+             */
+            timeoutSeconds?: pulumi.Input<number>;
+            /**
+             * The Serverless VPC Access connector that this cloud function can connect to. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
+             */
+            vpcConnector?: pulumi.Input<string>;
+            /**
+             * The egress settings for the connector, controlling what traffic is diverted through it.
+             */
+            vpcConnectorEgressSettings?: pulumi.Input<enums.cloudfunctions.v2alpha.ServiceConfigVpcConnectorEgressSettings>;
+        }
+
+        /**
+         * The location of the function source code.
+         */
+        export interface SourceArgs {
+            /**
+             * If provided, get the source from this location in a Cloud Source Repository.
+             */
+            repoSource?: pulumi.Input<inputs.cloudfunctions.v2alpha.RepoSourceArgs>;
+            /**
+             * If provided, get the source from this location in Google Cloud Storage.
+             */
+            storageSource?: pulumi.Input<inputs.cloudfunctions.v2alpha.StorageSourceArgs>;
+        }
+
+        /**
+         * Location of the source in an archive file in Google Cloud Storage.
+         */
+        export interface StorageSourceArgs {
+            /**
+             * Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+             */
+            bucket?: pulumi.Input<string>;
+            /**
+             * Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+             */
+            generation?: pulumi.Input<string>;
+            /**
+             * Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+             */
+            object?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v2beta {
+        /**
+         * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+         */
+        export interface AuditConfigArgs {
+            /**
+             * The configuration for logging of each type of permission.
+             */
+            auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.v2beta.AuditLogConfigArgs>[]>;
+            /**
+             * Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+             */
+            service?: pulumi.Input<string>;
+        }
+
+        /**
+         * Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+         */
+        export interface AuditLogConfigArgs {
+            /**
+             * Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+             */
+            exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The log type that this config enables.
+             */
+            logType?: pulumi.Input<enums.cloudfunctions.v2beta.AuditLogConfigLogType>;
+        }
+
+        /**
+         * Associates `members`, or principals, with a `role`.
+         */
+        export interface BindingArgs {
+            /**
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             */
+            condition?: pulumi.Input<inputs.cloudfunctions.v2beta.ExprArgs>;
+            /**
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             */
+            members?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             */
+            role?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes the Build step of the function that builds a container from the given source.
+         */
+        export interface BuildConfigArgs {
+            /**
+             * Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+             */
+            dockerRepository?: pulumi.Input<string>;
+            /**
+             * The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+             */
+            entryPoint?: pulumi.Input<string>;
+            /**
+             * User-provided build-time environment variables for the function
+             */
+            environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
+             */
+            runtime?: pulumi.Input<string>;
+            /**
+             * The location of the function source code.
+             */
+            source?: pulumi.Input<inputs.cloudfunctions.v2beta.SourceArgs>;
+            /**
+             * Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
+             */
+            workerPool?: pulumi.Input<string>;
+        }
+
+        /**
+         * Filters events based on exact matches on the CloudEvents attributes.
+         */
+        export interface EventFilterArgs {
+            /**
+             * The name of a CloudEvents attribute.
+             */
+            attribute: pulumi.Input<string>;
+            /**
+             * The value for the attribute.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes EventTrigger, used to request events to be sent from another service.
+         */
+        export interface EventTriggerArgs {
+            /**
+             * Criteria used to filter events.
+             */
+            eventFilters?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.v2beta.EventFilterArgs>[]>;
+            /**
+             * The type of event to observe. For example: `google.cloud.audit.log.v1.written` or `google.cloud.pubsub.topic.v1.messagePublished`.
+             */
+            eventType: pulumi.Input<string>;
+            /**
+             * Optional. The name of a Pub/Sub topic in the same project that will be used as the transport topic for the event delivery. Format: `projects/{project}/topics/{topic}`. This is only valid for events of type `google.cloud.pubsub.topic.v1.messagePublished`. The topic provided here will not be deleted at function deletion.
+             */
+            pubsubTopic?: pulumi.Input<string>;
+            /**
+             * Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
+             */
+            retryPolicy?: pulumi.Input<enums.cloudfunctions.v2beta.EventTriggerRetryPolicy>;
+            /**
+             * Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
+             */
+            serviceAccountEmail?: pulumi.Input<string>;
+            /**
+             * The region that the trigger will be in. The trigger will only receive events originating in this region. It can be the same region as the function, a different region or multi-region, or the global region. If not provided, defaults to the same region as the function.
+             */
+            triggerRegion?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+         */
+        export interface ExprArgs {
+            /**
+             * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Textual representation of an expression in Common Expression Language syntax.
+             */
+            expression?: pulumi.Input<string>;
+            /**
+             * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+             */
+            title?: pulumi.Input<string>;
+        }
+
+        /**
+         * Location of the source in a Google Cloud Source Repository.
+         */
+        export interface RepoSourceArgs {
+            /**
+             * Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+             */
+            branchName?: pulumi.Input<string>;
+            /**
+             * Explicit commit SHA to build.
+             */
+            commitSha?: pulumi.Input<string>;
+            /**
+             * Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution. eg. helloworld (no leading slash allowed)
+             */
+            dir?: pulumi.Input<string>;
+            /**
+             * Only trigger a build if the revision regex does NOT match the revision regex.
+             */
+            invertRegex?: pulumi.Input<boolean>;
+            /**
+             * ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
+             */
+            project?: pulumi.Input<string>;
+            /**
+             * Name of the Cloud Source Repository.
+             */
+            repoName?: pulumi.Input<string>;
+            /**
+             * Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+             */
+            tagName?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
+         */
+        export interface ServiceConfigArgs {
+            /**
+             * Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
+             */
+            allTrafficOnLatestRevision?: pulumi.Input<boolean>;
+            /**
+             * The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
+             */
+            availableMemory?: pulumi.Input<string>;
+            /**
+             * Environment variables that shall be available during function execution.
+             */
+            environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * The ingress settings for the function, controlling what traffic can reach it.
+             */
+            ingressSettings?: pulumi.Input<enums.cloudfunctions.v2beta.ServiceConfigIngressSettings>;
+            /**
+             * The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
+             */
+            maxInstanceCount?: pulumi.Input<number>;
+            /**
+             * The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
+             */
+            minInstanceCount?: pulumi.Input<number>;
+            /**
+             * The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
+             */
+            serviceAccountEmail?: pulumi.Input<string>;
+            /**
+             * The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
+             */
+            timeoutSeconds?: pulumi.Input<number>;
+            /**
+             * The Serverless VPC Access connector that this cloud function can connect to. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
+             */
+            vpcConnector?: pulumi.Input<string>;
+            /**
+             * The egress settings for the connector, controlling what traffic is diverted through it.
+             */
+            vpcConnectorEgressSettings?: pulumi.Input<enums.cloudfunctions.v2beta.ServiceConfigVpcConnectorEgressSettings>;
+        }
+
+        /**
+         * The location of the function source code.
+         */
+        export interface SourceArgs {
+            /**
+             * If provided, get the source from this location in a Cloud Source Repository.
+             */
+            repoSource?: pulumi.Input<inputs.cloudfunctions.v2beta.RepoSourceArgs>;
+            /**
+             * If provided, get the source from this location in Google Cloud Storage.
+             */
+            storageSource?: pulumi.Input<inputs.cloudfunctions.v2beta.StorageSourceArgs>;
+        }
+
+        /**
+         * Location of the source in an archive file in Google Cloud Storage.
+         */
+        export interface StorageSourceArgs {
+            /**
+             * Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+             */
+            bucket?: pulumi.Input<string>;
+            /**
+             * Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+             */
+            generation?: pulumi.Input<string>;
+            /**
+             * Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+             */
+            object?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace cloudidentity {
@@ -9642,6 +10156,10 @@ export namespace compute {
              */
             auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.compute.alpha.AuditLogConfigArgs>[]>;
             /**
+             * This is deprecated and has no effect. Do not use.
+             */
+            exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
              * Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
              */
             service?: pulumi.Input<string>;
@@ -10193,11 +10711,11 @@ export namespace compute {
              */
             connectTimeout?: pulumi.Input<inputs.compute.alpha.DurationArgs>;
             /**
-             * The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
              */
             maxConnections?: pulumi.Input<number>;
             /**
-             * The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
              */
             maxPendingRequests?: pulumi.Input<number>;
             /**
@@ -10205,11 +10723,11 @@ export namespace compute {
              */
             maxRequests?: pulumi.Input<number>;
             /**
-             * Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
              */
             maxRequestsPerConnection?: pulumi.Input<number>;
             /**
-             * The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
              */
             maxRetries?: pulumi.Input<number>;
         }
@@ -10381,13 +10899,6 @@ export namespace compute {
              * The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
              */
             stateOverride?: pulumi.Input<inputs.compute.alpha.RolloutPolicyArgs>;
-        }
-
-        export interface DiskAsyncReplicationArgs {
-            /**
-             * The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
-             */
-            disk?: pulumi.Input<string>;
         }
 
         /**
@@ -10581,10 +11092,6 @@ export namespace compute {
              */
             priority?: pulumi.Input<number>;
             /**
-             * An optional name for the rule. This field is not a unique identifier and can be updated.
-             */
-            ruleName?: pulumi.Input<string>;
-            /**
              * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
              */
             targetResources?: pulumi.Input<pulumi.Input<string>[]>;
@@ -10756,7 +11263,7 @@ export namespace compute {
          */
         export interface GuestOsFeatureArgs {
             /**
-             * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+             * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
              */
             type?: pulumi.Input<enums.compute.alpha.GuestOsFeatureType>;
         }
@@ -11781,7 +12288,7 @@ export namespace compute {
              */
             tag?: pulumi.Input<string>;
             /**
-             * A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+             * A template to parse service and tag fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
              */
             urlMask?: pulumi.Input<string>;
         }
@@ -12225,7 +12732,7 @@ export namespace compute {
          */
         export interface ResourcePolicyDailyCycleArgs {
             /**
-             * Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
+             * Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
              */
             daysInCycle?: pulumi.Input<number>;
             /**
@@ -13144,7 +13651,7 @@ export namespace compute {
              */
             conformAction?: pulumi.Input<string>;
             /**
-             * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+             * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
              */
             enforceOnKey?: pulumi.Input<enums.compute.alpha.SecurityPolicyRuleRateLimitOptionsEnforceOnKey>;
             /**
@@ -13152,7 +13659,7 @@ export namespace compute {
              */
             enforceOnKeyName?: pulumi.Input<string>;
             /**
-             * Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+             * Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
              */
             exceedAction?: pulumi.Input<string>;
             /**
@@ -13406,7 +13913,7 @@ export namespace compute {
              */
             enable?: pulumi.Input<boolean>;
             /**
-             * Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
+             * Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
              */
             filterExpr?: pulumi.Input<string>;
             /**
@@ -30963,6 +31470,596 @@ export namespace datapipelines {
              * Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
              */
             dataflowLaunchTemplateRequest?: pulumi.Input<inputs.datapipelines.v1.GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs>;
+        }
+
+    }
+}
+
+export namespace dataplex {
+    export namespace v1 {
+        /**
+         * Settings to manage the metadata discovery and publishing for an asset.
+         */
+        export interface GoogleCloudDataplexV1AssetDiscoverySpecArgs {
+            /**
+             * Optional. Configuration for CSV data.
+             */
+            csvOptions?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsArgs>;
+            /**
+             * Optional. Whether discovery is enabled.
+             */
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+             */
+            excludePatterns?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+             */
+            includePatterns?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Optional. Configuration for Json data.
+             */
+            jsonOptions?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs>;
+            /**
+             * Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+             */
+            schedule?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describe CSV and similar semi-structured data formats.
+         */
+        export interface GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsArgs {
+            /**
+             * Optional. The delimiter being used to separate values. This defaults to ','.
+             */
+            delimiter?: pulumi.Input<string>;
+            /**
+             * Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
+             */
+            disableTypeInference?: pulumi.Input<boolean>;
+            /**
+             * Optional. The character encoding of the data. The default is UTF-8.
+             */
+            encoding?: pulumi.Input<string>;
+            /**
+             * Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+             */
+            headerRows?: pulumi.Input<number>;
+        }
+
+        /**
+         * Describe JSON data format.
+         */
+        export interface GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs {
+            /**
+             * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+             */
+            disableTypeInference?: pulumi.Input<boolean>;
+            /**
+             * Optional. The character encoding of the data. The default is UTF-8.
+             */
+            encoding?: pulumi.Input<string>;
+        }
+
+        /**
+         * Identifies the cloud resource that is referenced by this asset.
+         */
+        export interface GoogleCloudDataplexV1AssetResourceSpecArgs {
+            /**
+             * Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: projects/{project_number}/buckets/{bucket_id} projects/{project_number}/datasets/{dataset_id}
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Immutable. Type of resource.
+             */
+            type: pulumi.Input<enums.dataplex.v1.GoogleCloudDataplexV1AssetResourceSpecType>;
+        }
+
+        /**
+         * Configuration for Notebook content.
+         */
+        export interface GoogleCloudDataplexV1ContentNotebookArgs {
+            /**
+             * Kernel Type of the notebook.
+             */
+            kernelType: pulumi.Input<enums.dataplex.v1.GoogleCloudDataplexV1ContentNotebookKernelType>;
+        }
+
+        /**
+         * Configuration for the Sql Script content.
+         */
+        export interface GoogleCloudDataplexV1ContentSqlScriptArgs {
+            /**
+             * Query Engine to be used for the Sql Query.
+             */
+            engine: pulumi.Input<enums.dataplex.v1.GoogleCloudDataplexV1ContentSqlScriptEngine>;
+        }
+
+        /**
+         * Configuration for the underlying infrastructure used to run workloads.
+         */
+        export interface GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs {
+            /**
+             * Optional. Compute resources needed for analyze interactive workloads.
+             */
+            compute?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs>;
+            /**
+             * Software Runtime Configuration for analyze interactive workloads.
+             */
+            osImage: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeArgs>;
+        }
+
+        /**
+         * Compute resources associated with the analyze interactive workloads.
+         */
+        export interface GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs {
+            /**
+             * Optional. Size in GB of the disk. Default is 100 GB.
+             */
+            diskSizeGb?: pulumi.Input<number>;
+            /**
+             * Optional. Max configurable nodes. If max_node_count > node_count, then auto-scaling is enabled.
+             */
+            maxNodeCount?: pulumi.Input<number>;
+            /**
+             * Optional. Total number of nodes in the sessions created for this environment.
+             */
+            nodeCount?: pulumi.Input<number>;
+        }
+
+        /**
+         * Software Runtime Configuration to run Analyze.
+         */
+        export interface GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeArgs {
+            /**
+             * Dataplex Image version.
+             */
+            imageVersion: pulumi.Input<string>;
+            /**
+             * Optional. List of Java jars to be included in the runtime environment. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+             */
+            javaLibraries?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Optional. Spark properties to provide configuration for use in sessions created for this environment. The properties to set on daemon config files. Property keys are specified in prefix:property format. The prefix must be "spark".
+             */
+            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Optional. A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+             */
+            pythonPackages?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        export interface GoogleCloudDataplexV1EnvironmentSessionSpecArgs {
+            /**
+             * Optional. If True, this causes sessions to be pre-created and available for faster startup to enable interactive exploration use-cases. This defaults to False to avoid additional billed charges. These can only be set to True for the environment with name set to "default", and with default configuration.
+             */
+            enableFastStartup?: pulumi.Input<boolean>;
+            /**
+             * Optional. The idle time configuration of the session. The session will be auto-terminated at the end of this period.
+             */
+            maxIdleDuration?: pulumi.Input<string>;
+        }
+
+        /**
+         * Settings to manage association of Dataproc Metastore with a lake.
+         */
+        export interface GoogleCloudDataplexV1LakeMetastoreArgs {
+            /**
+             * Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: projects/{project_id}/locations/{location_id}/services/{service_id}
+             */
+            service?: pulumi.Input<string>;
+        }
+
+        /**
+         * Schema information describing the structure and layout of the data.
+         */
+        export interface GoogleCloudDataplexV1SchemaArgs {
+            /**
+             * Optional. The sequence of fields describing data in table entities.
+             */
+            fields?: pulumi.Input<pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1SchemaSchemaFieldArgs>[]>;
+            /**
+             * Optional. The sequence of fields describing the partition structure in entities. If this field is empty, there are no partitions within the data.
+             */
+            partitionFields?: pulumi.Input<pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1SchemaPartitionFieldArgs>[]>;
+            /**
+             * Optional. The structure of paths containing partition data within the entity.
+             */
+            partitionStyle?: pulumi.Input<enums.dataplex.v1.GoogleCloudDataplexV1SchemaPartitionStyle>;
+            /**
+             * Whether the schema is user-managed or managed by the service. - Set user_manage to false if you would like Dataplex to help you manage the schema. You will get the full service provided by Dataplex discovery, including new data discovery, schema inference and schema evolution. You can still provide input the schema of the entities, for example renaming a schema field, changing CSV or Json options if you think the discovered values are not as accurate. Dataplex will consider your input as the initial schema (as if they were produced by the previous discovery run), and will evolve schema or flag actions based on that. - Set user_manage to true if you would like to fully manage the entity schema by yourself. This is useful when you would like to manually specify the schema for a table. In this case, the schema defined by the user is guaranteed to be kept unchanged and would not be overwritten. But this also means Dataplex will not provide schema evolution management for you. Dataplex will still be able to manage partition registration (i.e., keeping the list of partitions up to date) when Dataplex discovery is turned on and user_managed is set to true.
+             */
+            userManaged: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration.
+         */
+        export interface GoogleCloudDataplexV1SchemaPartitionFieldArgs {
+            /**
+             * Partition name is editable if only the partition style is not HIVE compatible. The maximum length allowed is 767 characters.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * Immutable. The type of field.
+             */
+            type: pulumi.Input<enums.dataplex.v1.GoogleCloudDataplexV1SchemaPartitionFieldType>;
+        }
+
+        /**
+         * Represents a column field within a table schema.
+         */
+        export interface GoogleCloudDataplexV1SchemaSchemaFieldArgs {
+            /**
+             * Optional. User friendly field description. Must be less than or equal to 1024 characters.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Optional. Any nested field for complex types.
+             */
+            fields?: pulumi.Input<pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1SchemaSchemaFieldArgs>[]>;
+            /**
+             * Additional field semantics.
+             */
+            mode: pulumi.Input<enums.dataplex.v1.GoogleCloudDataplexV1SchemaSchemaFieldMode>;
+            /**
+             * The name of the field. The maximum length is 767 characters. The name must begins with a letter and not contains : and ..
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The type of field.
+             */
+            type: pulumi.Input<enums.dataplex.v1.GoogleCloudDataplexV1SchemaSchemaFieldType>;
+        }
+
+        /**
+         * Describes the format of the data within its storage location.
+         */
+        export interface GoogleCloudDataplexV1StorageFormatArgs {
+            /**
+             * Optional. The compression type associated with the stored data. If unspecified, the data is uncompressed.
+             */
+            compressionFormat?: pulumi.Input<enums.dataplex.v1.GoogleCloudDataplexV1StorageFormatCompressionFormat>;
+            /**
+             * Optional. Additional information about CSV formatted data.
+             */
+            csv?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1StorageFormatCsvOptionsArgs>;
+            /**
+             * Optional. Additional information about CSV formatted data.
+             */
+            json?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1StorageFormatJsonOptionsArgs>;
+            /**
+             * The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: - application/x-parquet - application/x-avro - application/x-orc - application/x-tfrecord - application/json - application/{subtypes} - text/csv - text/ - image/{image subtype} - video/{video subtype} - audio/{audio subtype}
+             */
+            mimeType: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes CSV and similar semi-structured data formats.
+         */
+        export interface GoogleCloudDataplexV1StorageFormatCsvOptionsArgs {
+            /**
+             * Optional. The delimiter used to separate values. Defaults to ','.
+             */
+            delimiter?: pulumi.Input<string>;
+            /**
+             * Optional. The character encoding of the data. Accepts "US-ASCII", "UTF-8", and "ISO-8859-1". Defaults to UTF-8 if unspecified.
+             */
+            encoding?: pulumi.Input<string>;
+            /**
+             * Optional. The number of rows to interpret as header rows that should be skipped when reading data rows. Defaults to 0.
+             */
+            headerRows?: pulumi.Input<number>;
+            /**
+             * Optional. The character used to quote column values. Accepts '"' and '''. Defaults to '"' if unspecified.
+             */
+            quote?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes JSON data format.
+         */
+        export interface GoogleCloudDataplexV1StorageFormatJsonOptionsArgs {
+            /**
+             * Optional. The character encoding of the data. Accepts "US-ASCII", "UTF-8" and "ISO-8859-1". Defaults to UTF-8 if not specified.
+             */
+            encoding?: pulumi.Input<string>;
+        }
+
+        /**
+         * Execution related settings, like retry and service_account.
+         */
+        export interface GoogleCloudDataplexV1TaskExecutionSpecArgs {
+            /**
+             * Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument.
+             */
+            args?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Optional. The maximum duration after which the job execution is expired.
+             */
+            maxJobExecutionLifetime?: pulumi.Input<string>;
+            /**
+             * Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
+             */
+            serviceAccount: pulumi.Input<string>;
+        }
+
+        /**
+         * Configuration for the underlying infrastructure used to run workloads.
+         */
+        export interface GoogleCloudDataplexV1TaskInfrastructureSpecArgs {
+            /**
+             * Compute resources needed for a Task when using Dataproc Serverless.
+             */
+            batch?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs>;
+            /**
+             * Container Image Runtime Configuration.
+             */
+            containerImage?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs>;
+            /**
+             * Vpc network.
+             */
+            vpcNetwork?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs>;
+        }
+
+        /**
+         * Batch compute resources associated with the task.
+         */
+        export interface GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs {
+            /**
+             * Optional. Total number of job executors.
+             */
+            executorsCount?: pulumi.Input<number>;
+            /**
+             * Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled.
+             */
+            maxExecutorsCount?: pulumi.Input<number>;
+        }
+
+        /**
+         * Container Image Runtime Configuration used with Batch execution.
+         */
+        export interface GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs {
+            /**
+             * Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+             */
+            javaJars?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Optional. Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+             */
+            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Optional. A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+             */
+            pythonPackages?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Cloud VPC Network used to run the infrastructure.
+         */
+        export interface GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs {
+            /**
+             * Optional. The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+             */
+            network?: pulumi.Input<string>;
+            /**
+             * Optional. List of network tags to apply to the job.
+             */
+            networkTags?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Optional. The Cloud VPC sub-network in which the job is run.
+             */
+            subNetwork?: pulumi.Input<string>;
+        }
+
+        /**
+         * User-specified config for running a Spark task.
+         */
+        export interface GoogleCloudDataplexV1TaskSparkTaskConfigArgs {
+            /**
+             * Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+             */
+            archiveUris?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
+             */
+            fileUris?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Optional. Infrastructure specification for the execution.
+             */
+            infrastructureSpec?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1TaskInfrastructureSpecArgs>;
+            /**
+             * The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris. The execution args are passed in as a sequence of named process arguments (--key=value).
+             */
+            mainClass?: pulumi.Input<string>;
+            /**
+             * The Cloud Storage URI of the jar file that contains the main class. The execution args are passed in as a sequence of named process arguments (--key=value).
+             */
+            mainJarFileUri?: pulumi.Input<string>;
+            /**
+             * The Gcloud Storage URI of the main Python file to use as the driver. Must be a .py file. The execution args are passed in as a sequence of named process arguments (--key=value).
+             */
+            pythonScriptFile?: pulumi.Input<string>;
+            /**
+             * The query text. The execution args are used to declare a set of script variables (set key="value";).
+             */
+            sqlScript?: pulumi.Input<string>;
+            /**
+             * A reference to a query file. This can be the Cloud Storage URI of the query file or it can the path to a SqlScript Content. The execution args are used to declare a set of script variables (set key="value";).
+             */
+            sqlScriptFile?: pulumi.Input<string>;
+        }
+
+        /**
+         * Task scheduling and trigger settings.
+         */
+        export interface GoogleCloudDataplexV1TaskTriggerSpecArgs {
+            /**
+             * Optional. Prevent the task from executing. This does not cancel already running tasks. It is intended to temporarily disable RECURRING tasks.
+             */
+            disabled?: pulumi.Input<boolean>;
+            /**
+             * Optional. Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
+             */
+            maxRetries?: pulumi.Input<number>;
+            /**
+             * Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *". This field is required for RECURRING tasks.
+             */
+            schedule?: pulumi.Input<string>;
+            /**
+             * Optional. The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+             */
+            startTime?: pulumi.Input<string>;
+            /**
+             * Immutable. Trigger type of the user-specified Task.
+             */
+            type: pulumi.Input<enums.dataplex.v1.GoogleCloudDataplexV1TaskTriggerSpecType>;
+        }
+
+        /**
+         * Settings to manage the metadata discovery and publishing in a zone.
+         */
+        export interface GoogleCloudDataplexV1ZoneDiscoverySpecArgs {
+            /**
+             * Optional. Configuration for CSV data.
+             */
+            csvOptions?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs>;
+            /**
+             * Whether discovery is enabled.
+             */
+            enabled: pulumi.Input<boolean>;
+            /**
+             * Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+             */
+            excludePatterns?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+             */
+            includePatterns?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Optional. Configuration for Json data.
+             */
+            jsonOptions?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsArgs>;
+            /**
+             * Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+             */
+            schedule?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describe CSV and similar semi-structured data formats.
+         */
+        export interface GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs {
+            /**
+             * Optional. The delimiter being used to separate values. This defaults to ','.
+             */
+            delimiter?: pulumi.Input<string>;
+            /**
+             * Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
+             */
+            disableTypeInference?: pulumi.Input<boolean>;
+            /**
+             * Optional. The character encoding of the data. The default is UTF-8.
+             */
+            encoding?: pulumi.Input<string>;
+            /**
+             * Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+             */
+            headerRows?: pulumi.Input<number>;
+        }
+
+        /**
+         * Describe JSON data format.
+         */
+        export interface GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsArgs {
+            /**
+             * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+             */
+            disableTypeInference?: pulumi.Input<boolean>;
+            /**
+             * Optional. The character encoding of the data. The default is UTF-8.
+             */
+            encoding?: pulumi.Input<string>;
+        }
+
+        /**
+         * Settings for resources attached as assets within a zone.
+         */
+        export interface GoogleCloudDataplexV1ZoneResourceSpecArgs {
+            /**
+             * Immutable. The location type of the resources that are allowed to be attached to the assets within this zone.
+             */
+            locationType: pulumi.Input<enums.dataplex.v1.GoogleCloudDataplexV1ZoneResourceSpecLocationType>;
+        }
+
+        /**
+         * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs.If there are AuditConfigs for both allServices and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted.Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+         */
+        export interface GoogleIamV1AuditConfigArgs {
+            /**
+             * The configuration for logging of each type of permission.
+             */
+            auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.dataplex.v1.GoogleIamV1AuditLogConfigArgs>[]>;
+            /**
+             * Specifies a service that will be enabled for audit logging. For example, storage.googleapis.com, cloudsql.googleapis.com. allServices is a special value that covers all services.
+             */
+            service?: pulumi.Input<string>;
+        }
+
+        /**
+         * Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+         */
+        export interface GoogleIamV1AuditLogConfigArgs {
+            /**
+             * Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+             */
+            exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The log type that this config enables.
+             */
+            logType?: pulumi.Input<enums.dataplex.v1.GoogleIamV1AuditLogConfigLogType>;
+        }
+
+        /**
+         * Associates members, or principals, with a role.
+         */
+        export interface GoogleIamV1BindingArgs {
+            /**
+             * The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+             */
+            condition?: pulumi.Input<inputs.dataplex.v1.GoogleTypeExprArgs>;
+            /**
+             * Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+             */
+            members?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
+             */
+            role?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+         */
+        export interface GoogleTypeExprArgs {
+            /**
+             * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Textual representation of an expression in Common Expression Language syntax.
+             */
+            expression?: pulumi.Input<string>;
+            /**
+             * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+             */
+            title?: pulumi.Input<string>;
         }
 
     }

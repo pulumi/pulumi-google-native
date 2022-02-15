@@ -66,14 +66,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Architecture;
         /// <summary>
-        /// Disk asynchronously replicated into this disk.
-        /// </summary>
-        public readonly Outputs.DiskAsyncReplicationResponse AsyncPrimaryDisk;
-        /// <summary>
-        /// A list of disks this disk is asynchronously replicated to.
-        /// </summary>
-        public readonly ImmutableDictionary<string, string> AsyncSecondaryDisks;
-        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -162,10 +154,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
-        /// Status information for the disk resource.
-        /// </summary>
-        public readonly Outputs.DiskResourceStatusResponse ResourceStatus;
-        /// <summary>
         /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
@@ -181,14 +169,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
         /// </summary>
         public readonly string SizeGb;
-        /// <summary>
-        /// URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
-        /// </summary>
-        public readonly string SourceConsistencyGroupPolicy;
-        /// <summary>
-        /// ID of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
-        /// </summary>
-        public readonly string SourceConsistencyGroupPolicyId;
         /// <summary>
         /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
         /// </summary>
@@ -258,10 +238,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         private GetRegionDiskResult(
             string architecture,
 
-            Outputs.DiskAsyncReplicationResponse asyncPrimaryDisk,
-
-            ImmutableDictionary<string, string> asyncSecondaryDisks,
-
             string creationTimestamp,
 
             string description,
@@ -306,8 +282,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             ImmutableArray<string> resourcePolicies,
 
-            Outputs.DiskResourceStatusResponse resourceStatus,
-
             bool satisfiesPzs,
 
             string selfLink,
@@ -315,10 +289,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             string selfLinkWithId,
 
             string sizeGb,
-
-            string sourceConsistencyGroupPolicy,
-
-            string sourceConsistencyGroupPolicyId,
 
             string sourceDisk,
 
@@ -353,8 +323,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             string zone)
         {
             Architecture = architecture;
-            AsyncPrimaryDisk = asyncPrimaryDisk;
-            AsyncSecondaryDisks = asyncSecondaryDisks;
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskEncryptionKey = diskEncryptionKey;
@@ -377,13 +345,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Region = region;
             ReplicaZones = replicaZones;
             ResourcePolicies = resourcePolicies;
-            ResourceStatus = resourceStatus;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
             SizeGb = sizeGb;
-            SourceConsistencyGroupPolicy = sourceConsistencyGroupPolicy;
-            SourceConsistencyGroupPolicyId = sourceConsistencyGroupPolicyId;
             SourceDisk = sourceDisk;
             SourceDiskId = sourceDiskId;
             SourceImage = sourceImage;

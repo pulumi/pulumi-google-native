@@ -40,8 +40,6 @@ type InstanceGroupManager struct {
 	InstanceTemplate pulumi.StringOutput `pulumi:"instanceTemplate"`
 	// The resource type, which is always compute#instanceGroupManager for managed instance groups.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
-	ListManagedInstancesResults pulumi.StringOutput `pulumi:"listManagedInstancesResults"`
 	// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
@@ -131,8 +129,6 @@ type instanceGroupManagerArgs struct {
 	InstanceLifecyclePolicy *InstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate *string `pulumi:"instanceTemplate"`
-	// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
-	ListManagedInstancesResults *InstanceGroupManagerListManagedInstancesResults `pulumi:"listManagedInstancesResults"`
 	// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name *string `pulumi:"name"`
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
@@ -178,8 +174,6 @@ type InstanceGroupManagerArgs struct {
 	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyPtrInput
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate pulumi.StringPtrInput
-	// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
-	ListManagedInstancesResults InstanceGroupManagerListManagedInstancesResultsPtrInput
 	// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name pulumi.StringPtrInput
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.

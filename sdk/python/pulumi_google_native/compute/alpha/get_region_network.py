@@ -154,9 +154,6 @@ class GetRegionNetworkResult:
     @property
     @pulumi.getter(name="networkFirewallPolicyEnforcementOrder")
     def network_firewall_policy_enforcement_order(self) -> str:
-        """
-        The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
-        """
         return pulumi.get(self, "network_firewall_policy_enforcement_order")
 
     @property

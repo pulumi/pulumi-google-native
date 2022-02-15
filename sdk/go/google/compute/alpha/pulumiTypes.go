@@ -2633,6 +2633,8 @@ func (o AttachedDiskResponseArrayOutput) Index(i pulumi.IntInput) AttachedDiskRe
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs []AuditLogConfig `pulumi:"auditLogConfigs"`
+	// This is deprecated and has no effect. Do not use.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
 	Service *string `pulumi:"service"`
 }
@@ -2652,6 +2654,8 @@ type AuditConfigInput interface {
 type AuditConfigArgs struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs AuditLogConfigArrayInput `pulumi:"auditLogConfigs"`
+	// This is deprecated and has no effect. Do not use.
+	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
@@ -2713,6 +2717,11 @@ func (o AuditConfigOutput) AuditLogConfigs() AuditLogConfigArrayOutput {
 	return o.ApplyT(func(v AuditConfig) []AuditLogConfig { return v.AuditLogConfigs }).(AuditLogConfigArrayOutput)
 }
 
+// This is deprecated and has no effect. Do not use.
+func (o AuditConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditConfig) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
 // Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
 func (o AuditConfigOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuditConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
@@ -2742,6 +2751,8 @@ func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
 type AuditConfigResponse struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs []AuditLogConfigResponse `pulumi:"auditLogConfigs"`
+	// This is deprecated and has no effect. Do not use.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
 	Service string `pulumi:"service"`
 }
@@ -2764,6 +2775,11 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
+}
+
+// This is deprecated and has no effect. Do not use.
+func (o AuditConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
 }
 
 // Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
@@ -8584,15 +8600,15 @@ func (o ChannelCredentialsResponseOutput) ChannelCredentialType() pulumi.StringO
 type CircuitBreakers struct {
 	// The timeout for new network connections to hosts.
 	ConnectTimeout *Duration `pulumi:"connectTimeout"`
-	// The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	MaxConnections *int `pulumi:"maxConnections"`
-	// The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	MaxPendingRequests *int `pulumi:"maxPendingRequests"`
 	// The maximum number of parallel requests that allowed to the backend service. If not specified, there is no limit.
 	MaxRequests *int `pulumi:"maxRequests"`
-	// Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	MaxRequestsPerConnection *int `pulumi:"maxRequestsPerConnection"`
-	// The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	MaxRetries *int `pulumi:"maxRetries"`
 }
 
@@ -8611,15 +8627,15 @@ type CircuitBreakersInput interface {
 type CircuitBreakersArgs struct {
 	// The timeout for new network connections to hosts.
 	ConnectTimeout DurationPtrInput `pulumi:"connectTimeout"`
-	// The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
-	// The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	MaxPendingRequests pulumi.IntPtrInput `pulumi:"maxPendingRequests"`
 	// The maximum number of parallel requests that allowed to the backend service. If not specified, there is no limit.
 	MaxRequests pulumi.IntPtrInput `pulumi:"maxRequests"`
-	// Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	MaxRequestsPerConnection pulumi.IntPtrInput `pulumi:"maxRequestsPerConnection"`
-	// The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
 }
 
@@ -8706,12 +8722,12 @@ func (o CircuitBreakersOutput) ConnectTimeout() DurationPtrOutput {
 	return o.ApplyT(func(v CircuitBreakers) *Duration { return v.ConnectTimeout }).(DurationPtrOutput)
 }
 
-// The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o CircuitBreakersOutput) MaxConnections() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CircuitBreakers) *int { return v.MaxConnections }).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o CircuitBreakersOutput) MaxPendingRequests() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CircuitBreakers) *int { return v.MaxPendingRequests }).(pulumi.IntPtrOutput)
 }
@@ -8721,12 +8737,12 @@ func (o CircuitBreakersOutput) MaxRequests() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CircuitBreakers) *int { return v.MaxRequests }).(pulumi.IntPtrOutput)
 }
 
-// Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o CircuitBreakersOutput) MaxRequestsPerConnection() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CircuitBreakers) *int { return v.MaxRequestsPerConnection }).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o CircuitBreakersOutput) MaxRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CircuitBreakers) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
 }
@@ -8765,7 +8781,7 @@ func (o CircuitBreakersPtrOutput) ConnectTimeout() DurationPtrOutput {
 	}).(DurationPtrOutput)
 }
 
-// The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o CircuitBreakersPtrOutput) MaxConnections() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CircuitBreakers) *int {
 		if v == nil {
@@ -8775,7 +8791,7 @@ func (o CircuitBreakersPtrOutput) MaxConnections() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o CircuitBreakersPtrOutput) MaxPendingRequests() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CircuitBreakers) *int {
 		if v == nil {
@@ -8795,7 +8811,7 @@ func (o CircuitBreakersPtrOutput) MaxRequests() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o CircuitBreakersPtrOutput) MaxRequestsPerConnection() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CircuitBreakers) *int {
 		if v == nil {
@@ -8805,7 +8821,7 @@ func (o CircuitBreakersPtrOutput) MaxRequestsPerConnection() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o CircuitBreakersPtrOutput) MaxRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CircuitBreakers) *int {
 		if v == nil {
@@ -8819,15 +8835,15 @@ func (o CircuitBreakersPtrOutput) MaxRetries() pulumi.IntPtrOutput {
 type CircuitBreakersResponse struct {
 	// The timeout for new network connections to hosts.
 	ConnectTimeout DurationResponse `pulumi:"connectTimeout"`
-	// The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	MaxConnections int `pulumi:"maxConnections"`
-	// The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	MaxPendingRequests int `pulumi:"maxPendingRequests"`
 	// The maximum number of parallel requests that allowed to the backend service. If not specified, there is no limit.
 	MaxRequests int `pulumi:"maxRequests"`
-	// Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	MaxRequestsPerConnection int `pulumi:"maxRequestsPerConnection"`
-	// The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	MaxRetries int `pulumi:"maxRetries"`
 }
 
@@ -8851,12 +8867,12 @@ func (o CircuitBreakersResponseOutput) ConnectTimeout() DurationResponseOutput {
 	return o.ApplyT(func(v CircuitBreakersResponse) DurationResponse { return v.ConnectTimeout }).(DurationResponseOutput)
 }
 
-// The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o CircuitBreakersResponseOutput) MaxConnections() pulumi.IntOutput {
 	return o.ApplyT(func(v CircuitBreakersResponse) int { return v.MaxConnections }).(pulumi.IntOutput)
 }
 
-// The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o CircuitBreakersResponseOutput) MaxPendingRequests() pulumi.IntOutput {
 	return o.ApplyT(func(v CircuitBreakersResponse) int { return v.MaxPendingRequests }).(pulumi.IntOutput)
 }
@@ -8866,12 +8882,12 @@ func (o CircuitBreakersResponseOutput) MaxRequests() pulumi.IntOutput {
 	return o.ApplyT(func(v CircuitBreakersResponse) int { return v.MaxRequests }).(pulumi.IntOutput)
 }
 
-// Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o CircuitBreakersResponseOutput) MaxRequestsPerConnection() pulumi.IntOutput {
 	return o.ApplyT(func(v CircuitBreakersResponse) int { return v.MaxRequestsPerConnection }).(pulumi.IntOutput)
 }
 
-// The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o CircuitBreakersResponseOutput) MaxRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v CircuitBreakersResponse) int { return v.MaxRetries }).(pulumi.IntOutput)
 }
@@ -10748,174 +10764,6 @@ func (o DeprecationStatusResponseOutput) StateOverride() RolloutPolicyResponseOu
 	return o.ApplyT(func(v DeprecationStatusResponse) RolloutPolicyResponse { return v.StateOverride }).(RolloutPolicyResponseOutput)
 }
 
-type DiskAsyncReplication struct {
-	// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
-	Disk *string `pulumi:"disk"`
-}
-
-// DiskAsyncReplicationInput is an input type that accepts DiskAsyncReplicationArgs and DiskAsyncReplicationOutput values.
-// You can construct a concrete instance of `DiskAsyncReplicationInput` via:
-//
-//          DiskAsyncReplicationArgs{...}
-type DiskAsyncReplicationInput interface {
-	pulumi.Input
-
-	ToDiskAsyncReplicationOutput() DiskAsyncReplicationOutput
-	ToDiskAsyncReplicationOutputWithContext(context.Context) DiskAsyncReplicationOutput
-}
-
-type DiskAsyncReplicationArgs struct {
-	// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
-	Disk pulumi.StringPtrInput `pulumi:"disk"`
-}
-
-func (DiskAsyncReplicationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskAsyncReplication)(nil)).Elem()
-}
-
-func (i DiskAsyncReplicationArgs) ToDiskAsyncReplicationOutput() DiskAsyncReplicationOutput {
-	return i.ToDiskAsyncReplicationOutputWithContext(context.Background())
-}
-
-func (i DiskAsyncReplicationArgs) ToDiskAsyncReplicationOutputWithContext(ctx context.Context) DiskAsyncReplicationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskAsyncReplicationOutput)
-}
-
-func (i DiskAsyncReplicationArgs) ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput {
-	return i.ToDiskAsyncReplicationPtrOutputWithContext(context.Background())
-}
-
-func (i DiskAsyncReplicationArgs) ToDiskAsyncReplicationPtrOutputWithContext(ctx context.Context) DiskAsyncReplicationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskAsyncReplicationOutput).ToDiskAsyncReplicationPtrOutputWithContext(ctx)
-}
-
-// DiskAsyncReplicationPtrInput is an input type that accepts DiskAsyncReplicationArgs, DiskAsyncReplicationPtr and DiskAsyncReplicationPtrOutput values.
-// You can construct a concrete instance of `DiskAsyncReplicationPtrInput` via:
-//
-//          DiskAsyncReplicationArgs{...}
-//
-//  or:
-//
-//          nil
-type DiskAsyncReplicationPtrInput interface {
-	pulumi.Input
-
-	ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput
-	ToDiskAsyncReplicationPtrOutputWithContext(context.Context) DiskAsyncReplicationPtrOutput
-}
-
-type diskAsyncReplicationPtrType DiskAsyncReplicationArgs
-
-func DiskAsyncReplicationPtr(v *DiskAsyncReplicationArgs) DiskAsyncReplicationPtrInput {
-	return (*diskAsyncReplicationPtrType)(v)
-}
-
-func (*diskAsyncReplicationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DiskAsyncReplication)(nil)).Elem()
-}
-
-func (i *diskAsyncReplicationPtrType) ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput {
-	return i.ToDiskAsyncReplicationPtrOutputWithContext(context.Background())
-}
-
-func (i *diskAsyncReplicationPtrType) ToDiskAsyncReplicationPtrOutputWithContext(ctx context.Context) DiskAsyncReplicationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskAsyncReplicationPtrOutput)
-}
-
-type DiskAsyncReplicationOutput struct{ *pulumi.OutputState }
-
-func (DiskAsyncReplicationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskAsyncReplication)(nil)).Elem()
-}
-
-func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationOutput() DiskAsyncReplicationOutput {
-	return o
-}
-
-func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationOutputWithContext(ctx context.Context) DiskAsyncReplicationOutput {
-	return o
-}
-
-func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput {
-	return o.ToDiskAsyncReplicationPtrOutputWithContext(context.Background())
-}
-
-func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationPtrOutputWithContext(ctx context.Context) DiskAsyncReplicationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskAsyncReplication) *DiskAsyncReplication {
-		return &v
-	}).(DiskAsyncReplicationPtrOutput)
-}
-
-// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
-func (o DiskAsyncReplicationOutput) Disk() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DiskAsyncReplication) *string { return v.Disk }).(pulumi.StringPtrOutput)
-}
-
-type DiskAsyncReplicationPtrOutput struct{ *pulumi.OutputState }
-
-func (DiskAsyncReplicationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DiskAsyncReplication)(nil)).Elem()
-}
-
-func (o DiskAsyncReplicationPtrOutput) ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput {
-	return o
-}
-
-func (o DiskAsyncReplicationPtrOutput) ToDiskAsyncReplicationPtrOutputWithContext(ctx context.Context) DiskAsyncReplicationPtrOutput {
-	return o
-}
-
-func (o DiskAsyncReplicationPtrOutput) Elem() DiskAsyncReplicationOutput {
-	return o.ApplyT(func(v *DiskAsyncReplication) DiskAsyncReplication {
-		if v != nil {
-			return *v
-		}
-		var ret DiskAsyncReplication
-		return ret
-	}).(DiskAsyncReplicationOutput)
-}
-
-// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
-func (o DiskAsyncReplicationPtrOutput) Disk() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DiskAsyncReplication) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Disk
-	}).(pulumi.StringPtrOutput)
-}
-
-type DiskAsyncReplicationResponse struct {
-	// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
-	Disk string `pulumi:"disk"`
-	// The unique ID of the other disk asynchronously replicated to or from the current disk. This value identifies the exact disk that was used to create this replication. For example, if you started replicating the persistent disk from a disk that was later deleted and recreated under the same name, the disk ID would identify the exact version of the disk that was used.
-	DiskId string `pulumi:"diskId"`
-}
-
-type DiskAsyncReplicationResponseOutput struct{ *pulumi.OutputState }
-
-func (DiskAsyncReplicationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskAsyncReplicationResponse)(nil)).Elem()
-}
-
-func (o DiskAsyncReplicationResponseOutput) ToDiskAsyncReplicationResponseOutput() DiskAsyncReplicationResponseOutput {
-	return o
-}
-
-func (o DiskAsyncReplicationResponseOutput) ToDiskAsyncReplicationResponseOutputWithContext(ctx context.Context) DiskAsyncReplicationResponseOutput {
-	return o
-}
-
-// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
-func (o DiskAsyncReplicationResponseOutput) Disk() pulumi.StringOutput {
-	return o.ApplyT(func(v DiskAsyncReplicationResponse) string { return v.Disk }).(pulumi.StringOutput)
-}
-
-// The unique ID of the other disk asynchronously replicated to or from the current disk. This value identifies the exact disk that was used to create this replication. For example, if you started replicating the persistent disk from a disk that was later deleted and recreated under the same name, the disk ID would identify the exact version of the disk that was used.
-func (o DiskAsyncReplicationResponseOutput) DiskId() pulumi.StringOutput {
-	return o.ApplyT(func(v DiskAsyncReplicationResponse) string { return v.DiskId }).(pulumi.StringOutput)
-}
-
 // A specification of the desired way to instantiate a disk in the instance template when its created from a source instance.
 type DiskInstantiationConfig struct {
 	// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
@@ -11108,59 +10956,6 @@ func (o DiskInstantiationConfigResponseArrayOutput) Index(i pulumi.IntInput) Dis
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskInstantiationConfigResponse {
 		return vs[0].([]DiskInstantiationConfigResponse)[vs[1].(int)]
 	}).(DiskInstantiationConfigResponseOutput)
-}
-
-type DiskResourceStatusAsyncReplicationStatusResponse struct {
-	State string `pulumi:"state"`
-}
-
-type DiskResourceStatusAsyncReplicationStatusResponseOutput struct{ *pulumi.OutputState }
-
-func (DiskResourceStatusAsyncReplicationStatusResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskResourceStatusAsyncReplicationStatusResponse)(nil)).Elem()
-}
-
-func (o DiskResourceStatusAsyncReplicationStatusResponseOutput) ToDiskResourceStatusAsyncReplicationStatusResponseOutput() DiskResourceStatusAsyncReplicationStatusResponseOutput {
-	return o
-}
-
-func (o DiskResourceStatusAsyncReplicationStatusResponseOutput) ToDiskResourceStatusAsyncReplicationStatusResponseOutputWithContext(ctx context.Context) DiskResourceStatusAsyncReplicationStatusResponseOutput {
-	return o
-}
-
-func (o DiskResourceStatusAsyncReplicationStatusResponseOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v DiskResourceStatusAsyncReplicationStatusResponse) string { return v.State }).(pulumi.StringOutput)
-}
-
-type DiskResourceStatusResponse struct {
-	AsyncPrimaryDisk DiskResourceStatusAsyncReplicationStatusResponse `pulumi:"asyncPrimaryDisk"`
-	// Key: disk, value: AsyncReplicationStatus message
-	AsyncSecondaryDisks map[string]string `pulumi:"asyncSecondaryDisks"`
-}
-
-type DiskResourceStatusResponseOutput struct{ *pulumi.OutputState }
-
-func (DiskResourceStatusResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskResourceStatusResponse)(nil)).Elem()
-}
-
-func (o DiskResourceStatusResponseOutput) ToDiskResourceStatusResponseOutput() DiskResourceStatusResponseOutput {
-	return o
-}
-
-func (o DiskResourceStatusResponseOutput) ToDiskResourceStatusResponseOutputWithContext(ctx context.Context) DiskResourceStatusResponseOutput {
-	return o
-}
-
-func (o DiskResourceStatusResponseOutput) AsyncPrimaryDisk() DiskResourceStatusAsyncReplicationStatusResponseOutput {
-	return o.ApplyT(func(v DiskResourceStatusResponse) DiskResourceStatusAsyncReplicationStatusResponse {
-		return v.AsyncPrimaryDisk
-	}).(DiskResourceStatusAsyncReplicationStatusResponseOutput)
-}
-
-// Key: disk, value: AsyncReplicationStatus message
-func (o DiskResourceStatusResponseOutput) AsyncSecondaryDisks() pulumi.StringMapOutput {
-	return o.ApplyT(func(v DiskResourceStatusResponse) map[string]string { return v.AsyncSecondaryDisks }).(pulumi.StringMapOutput)
 }
 
 // A set of Display Device options
@@ -13200,8 +12995,6 @@ type FirewallPolicyRule struct {
 	Match *FirewallPolicyRuleMatcher `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority *int `pulumi:"priority"`
-	// An optional name for the rule. This field is not a unique identifier and can be updated.
-	RuleName *string `pulumi:"ruleName"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
 	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -13237,8 +13030,6 @@ type FirewallPolicyRuleArgs struct {
 	Match FirewallPolicyRuleMatcherPtrInput `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// An optional name for the rule. This field is not a unique identifier and can be updated.
-	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput `pulumi:"targetResources"`
 	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -13332,11 +13123,6 @@ func (o FirewallPolicyRuleOutput) Match() FirewallPolicyRuleMatcherPtrOutput {
 // An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 func (o FirewallPolicyRuleOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
-}
-
-// An optional name for the rule. This field is not a unique identifier and can be updated.
-func (o FirewallPolicyRuleOutput) RuleName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FirewallPolicyRule) *string { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
 // A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
@@ -13953,8 +13739,6 @@ type FirewallPolicyRuleResponse struct {
 	Match FirewallPolicyRuleMatcherResponse `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority int `pulumi:"priority"`
-	// An optional name for the rule. This field is not a unique identifier and can be updated.
-	RuleName string `pulumi:"ruleName"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount int `pulumi:"ruleTupleCount"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
@@ -14018,11 +13802,6 @@ func (o FirewallPolicyRuleResponseOutput) Match() FirewallPolicyRuleMatcherRespo
 // An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 func (o FirewallPolicyRuleResponseOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleResponse) int { return v.Priority }).(pulumi.IntOutput)
-}
-
-// An optional name for the rule. This field is not a unique identifier and can be updated.
-func (o FirewallPolicyRuleResponseOutput) RuleName() pulumi.StringOutput {
-	return o.ApplyT(func(v FirewallPolicyRuleResponse) string { return v.RuleName }).(pulumi.StringOutput)
 }
 
 // Calculation of the complexity of a single firewall policy rule.
@@ -15488,7 +15267,7 @@ func (o GrpcServiceConfigResponseOutput) TargetUri() pulumi.StringOutput {
 
 // Guest OS features.
 type GuestOsFeature struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
 	Type *GuestOsFeatureType `pulumi:"type"`
 }
 
@@ -15505,7 +15284,7 @@ type GuestOsFeatureInput interface {
 
 // Guest OS features.
 type GuestOsFeatureArgs struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
 	Type GuestOsFeatureTypePtrInput `pulumi:"type"`
 }
 
@@ -15561,7 +15340,7 @@ func (o GuestOsFeatureOutput) ToGuestOsFeatureOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureOutput) Type() GuestOsFeatureTypePtrOutput {
 	return o.ApplyT(func(v GuestOsFeature) *GuestOsFeatureType { return v.Type }).(GuestOsFeatureTypePtrOutput)
 }
@@ -15588,7 +15367,7 @@ func (o GuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GuestOsFeatureOutput
 
 // Guest OS features.
 type GuestOsFeatureResponse struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
 	Type string `pulumi:"type"`
 }
 
@@ -15607,7 +15386,7 @@ func (o GuestOsFeatureResponseOutput) ToGuestOsFeatureResponseOutputWithContext(
 	return o
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestOsFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -27317,7 +27096,7 @@ type NetworkEndpointGroupCloudRun struct {
 	Service *string `pulumi:"service"`
 	// Optional Cloud Run tag represents the "named-revision" to provide additional fine-grained traffic routing information. The tag must be 1-63 characters long, and comply with RFC1035. Example value: "revision-0010".
 	Tag *string `pulumi:"tag"`
-	// A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+	// A template to parse service and tag fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
 	UrlMask *string `pulumi:"urlMask"`
 }
 
@@ -27338,7 +27117,7 @@ type NetworkEndpointGroupCloudRunArgs struct {
 	Service pulumi.StringPtrInput `pulumi:"service"`
 	// Optional Cloud Run tag represents the "named-revision" to provide additional fine-grained traffic routing information. The tag must be 1-63 characters long, and comply with RFC1035. Example value: "revision-0010".
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
-	// A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+	// A template to parse service and tag fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
 	UrlMask pulumi.StringPtrInput `pulumi:"urlMask"`
 }
 
@@ -27430,7 +27209,7 @@ func (o NetworkEndpointGroupCloudRunOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudRun) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
-// A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+// A template to parse service and tag fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
 func (o NetworkEndpointGroupCloudRunOutput) UrlMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudRun) *string { return v.UrlMask }).(pulumi.StringPtrOutput)
 }
@@ -27479,7 +27258,7 @@ func (o NetworkEndpointGroupCloudRunPtrOutput) Tag() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+// A template to parse service and tag fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
 func (o NetworkEndpointGroupCloudRunPtrOutput) UrlMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroupCloudRun) *string {
 		if v == nil {
@@ -27495,7 +27274,7 @@ type NetworkEndpointGroupCloudRunResponse struct {
 	Service string `pulumi:"service"`
 	// Optional Cloud Run tag represents the "named-revision" to provide additional fine-grained traffic routing information. The tag must be 1-63 characters long, and comply with RFC1035. Example value: "revision-0010".
 	Tag string `pulumi:"tag"`
-	// A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+	// A template to parse service and tag fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
 	UrlMask string `pulumi:"urlMask"`
 }
 
@@ -27524,7 +27303,7 @@ func (o NetworkEndpointGroupCloudRunResponseOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudRunResponse) string { return v.Tag }).(pulumi.StringOutput)
 }
 
-// A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+// A template to parse service and tag fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
 func (o NetworkEndpointGroupCloudRunResponseOutput) UrlMask() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudRunResponse) string { return v.UrlMask }).(pulumi.StringOutput)
 }
@@ -32829,7 +32608,7 @@ func (o ResourceCommitmentResponseArrayOutput) Index(i pulumi.IntInput) Resource
 
 // Time window specified for daily operations.
 type ResourcePolicyDailyCycle struct {
-	// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
+	// Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
 	DaysInCycle *int `pulumi:"daysInCycle"`
 	// Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
 	StartTime *string `pulumi:"startTime"`
@@ -32848,7 +32627,7 @@ type ResourcePolicyDailyCycleInput interface {
 
 // Time window specified for daily operations.
 type ResourcePolicyDailyCycleArgs struct {
-	// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
+	// Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
 	DaysInCycle pulumi.IntPtrInput `pulumi:"daysInCycle"`
 	// Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
@@ -32932,7 +32711,7 @@ func (o ResourcePolicyDailyCycleOutput) ToResourcePolicyDailyCyclePtrOutputWithC
 	}).(ResourcePolicyDailyCyclePtrOutput)
 }
 
-// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
+// Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
 func (o ResourcePolicyDailyCycleOutput) DaysInCycle() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourcePolicyDailyCycle) *int { return v.DaysInCycle }).(pulumi.IntPtrOutput)
 }
@@ -32966,7 +32745,7 @@ func (o ResourcePolicyDailyCyclePtrOutput) Elem() ResourcePolicyDailyCycleOutput
 	}).(ResourcePolicyDailyCycleOutput)
 }
 
-// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
+// Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
 func (o ResourcePolicyDailyCyclePtrOutput) DaysInCycle() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicyDailyCycle) *int {
 		if v == nil {
@@ -32988,7 +32767,7 @@ func (o ResourcePolicyDailyCyclePtrOutput) StartTime() pulumi.StringPtrOutput {
 
 // Time window specified for daily operations.
 type ResourcePolicyDailyCycleResponse struct {
-	// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
+	// Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
 	DaysInCycle int `pulumi:"daysInCycle"`
 	// [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
 	Duration string `pulumi:"duration"`
@@ -33011,7 +32790,7 @@ func (o ResourcePolicyDailyCycleResponseOutput) ToResourcePolicyDailyCycleRespon
 	return o
 }
 
-// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
+// Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
 func (o ResourcePolicyDailyCycleResponseOutput) DaysInCycle() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourcePolicyDailyCycleResponse) int { return v.DaysInCycle }).(pulumi.IntOutput)
 }
@@ -43262,11 +43041,11 @@ type SecurityPolicyRuleRateLimitOptions struct {
 	BanThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction *string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 	EnforceOnKey *SecurityPolicyRuleRateLimitOptionsEnforceOnKey `pulumi:"enforceOnKey"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
 	ExceedAction *string `pulumi:"exceedAction"`
 	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
 	ExceedRedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"exceedRedirectOptions"`
@@ -43292,11 +43071,11 @@ type SecurityPolicyRuleRateLimitOptionsArgs struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction pulumi.StringPtrInput `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 	EnforceOnKey SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput `pulumi:"enforceOnKey"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
 	ExceedAction pulumi.StringPtrInput `pulumi:"exceedAction"`
 	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
 	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"exceedRedirectOptions"`
@@ -43398,7 +43177,7 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) ConformAction() pulumi.StringP
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ConformAction }).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
 		return v.EnforceOnKey
@@ -43410,7 +43189,7 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKeyName() pulumi.Stri
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.EnforceOnKeyName }).(pulumi.StringPtrOutput)
 }
 
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ExceedAction }).(pulumi.StringPtrOutput)
 }
@@ -43483,7 +43262,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ConformAction() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
 		if v == nil {
@@ -43503,7 +43282,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKeyName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
 		if v == nil {
@@ -43540,11 +43319,11 @@ type SecurityPolicyRuleRateLimitOptionsResponse struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 	EnforceOnKey string `pulumi:"enforceOnKey"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
 	ExceedAction string `pulumi:"exceedAction"`
 	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
 	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"exceedRedirectOptions"`
@@ -43583,7 +43362,7 @@ func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ConformAction() pulumi
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ConformAction }).(pulumi.StringOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKey() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKey }).(pulumi.StringOutput)
 }
@@ -43593,7 +43372,7 @@ func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyName() pul
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
 }
 
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedAction() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ExceedAction }).(pulumi.StringOutput)
 }
@@ -47402,7 +47181,7 @@ type SubnetworkLogConfig struct {
 	AggregationInterval *SubnetworkLogConfigAggregationInterval `pulumi:"aggregationInterval"`
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
 	Enable *bool `pulumi:"enable"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
+	// Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
 	FilterExpr *string `pulumi:"filterExpr"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 	FlowSampling *float64 `pulumi:"flowSampling"`
@@ -47429,7 +47208,7 @@ type SubnetworkLogConfigArgs struct {
 	AggregationInterval SubnetworkLogConfigAggregationIntervalPtrInput `pulumi:"aggregationInterval"`
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
+	// Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
 	FilterExpr pulumi.StringPtrInput `pulumi:"filterExpr"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 	FlowSampling pulumi.Float64PtrInput `pulumi:"flowSampling"`
@@ -47527,7 +47306,7 @@ func (o SubnetworkLogConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
+// Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
 func (o SubnetworkLogConfigOutput) FilterExpr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.FilterExpr }).(pulumi.StringPtrOutput)
 }
@@ -47591,7 +47370,7 @@ func (o SubnetworkLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
+// Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
 func (o SubnetworkLogConfigPtrOutput) FilterExpr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubnetworkLogConfig) *string {
 		if v == nil {
@@ -47637,7 +47416,7 @@ type SubnetworkLogConfigResponse struct {
 	AggregationInterval string `pulumi:"aggregationInterval"`
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
 	Enable bool `pulumi:"enable"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
+	// Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
 	FilterExpr string `pulumi:"filterExpr"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 	FlowSampling float64 `pulumi:"flowSampling"`
@@ -47672,7 +47451,7 @@ func (o SubnetworkLogConfigResponseOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v SubnetworkLogConfigResponse) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
-// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
+// Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
 func (o SubnetworkLogConfigResponseOutput) FilterExpr() pulumi.StringOutput {
 	return o.ApplyT(func(v SubnetworkLogConfigResponse) string { return v.FilterExpr }).(pulumi.StringOutput)
 }
@@ -50707,8 +50486,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyPtrInput)(nil)).Elem(), CustomerEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusInput)(nil)).Elem(), DeprecationStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusPtrInput)(nil)).Elem(), DeprecationStatusArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DiskAsyncReplicationInput)(nil)).Elem(), DiskAsyncReplicationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DiskAsyncReplicationPtrInput)(nil)).Elem(), DiskAsyncReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigInput)(nil)).Elem(), DiskInstantiationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigArrayInput)(nil)).Elem(), DiskInstantiationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDeviceInput)(nil)).Elem(), DisplayDeviceArgs{})
@@ -51215,15 +50992,10 @@ func init() {
 	pulumi.RegisterOutputType(DeprecationStatusOutput{})
 	pulumi.RegisterOutputType(DeprecationStatusPtrOutput{})
 	pulumi.RegisterOutputType(DeprecationStatusResponseOutput{})
-	pulumi.RegisterOutputType(DiskAsyncReplicationOutput{})
-	pulumi.RegisterOutputType(DiskAsyncReplicationPtrOutput{})
-	pulumi.RegisterOutputType(DiskAsyncReplicationResponseOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigArrayOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigResponseOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(DiskResourceStatusAsyncReplicationStatusResponseOutput{})
-	pulumi.RegisterOutputType(DiskResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(DisplayDeviceOutput{})
 	pulumi.RegisterOutputType(DisplayDevicePtrOutput{})
 	pulumi.RegisterOutputType(DisplayDeviceResponseOutput{})

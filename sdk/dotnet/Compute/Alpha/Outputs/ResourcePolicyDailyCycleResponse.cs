@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class ResourcePolicyDailyCycleResponse
     {
         /// <summary>
-        /// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
+        /// Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
         /// </summary>
         public readonly int DaysInCycle;
         /// <summary>

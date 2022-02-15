@@ -75,9 +75,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
-        /// </summary>
         [Output("networkFirewallPolicyEnforcementOrder")]
         public Output<string> NetworkFirewallPolicyEnforcementOrder { get; private set; } = null!;
 
@@ -198,9 +195,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
-        /// </summary>
         [Input("networkFirewallPolicyEnforcementOrder")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.RegionNetworkNetworkFirewallPolicyEnforcementOrder>? NetworkFirewallPolicyEnforcementOrder { get; set; }
 

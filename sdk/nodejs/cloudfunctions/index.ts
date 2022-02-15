@@ -3,7 +3,11 @@
 
 // Export sub-modules:
 import * as v1 from "./v1";
+import * as v2alpha from "./v2alpha";
+import * as v2beta from "./v2beta";
 
 export {
     v1,
+    v2alpha,
+    v2beta,
 };

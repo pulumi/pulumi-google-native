@@ -23,6 +23,7 @@ class InterconnectAttachmentArgs:
                  candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cloud_router_ipv6_interface_id: Optional[pulumi.Input[str]] = None,
                  customer_router_ipv6_interface_id: Optional[pulumi.Input[str]] = None,
+                 dataplane_version: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_availability_domain: Optional[pulumi.Input['InterconnectAttachmentEdgeAvailabilityDomain']] = None,
                  encryption: Optional[pulumi.Input['InterconnectAttachmentEncryption']] = None,
@@ -49,6 +50,7 @@ class InterconnectAttachmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
         :param pulumi.Input[str] cloud_router_ipv6_interface_id: If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
         :param pulumi.Input[str] customer_router_ipv6_interface_id: If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        :param pulumi.Input[int] dataplane_version: [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input['InterconnectAttachmentEdgeAvailabilityDomain'] edge_availability_domain: Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
         :param pulumi.Input['InterconnectAttachmentEncryption'] encryption: Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly. 
@@ -78,6 +80,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "cloud_router_ipv6_interface_id", cloud_router_ipv6_interface_id)
         if customer_router_ipv6_interface_id is not None:
             pulumi.set(__self__, "customer_router_ipv6_interface_id", customer_router_ipv6_interface_id)
+        if dataplane_version is not None:
+            pulumi.set(__self__, "dataplane_version", dataplane_version)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if edge_availability_domain is not None:
@@ -195,6 +199,18 @@ class InterconnectAttachmentArgs:
     @customer_router_ipv6_interface_id.setter
     def customer_router_ipv6_interface_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "customer_router_ipv6_interface_id", value)
+
+    @property
+    @pulumi.getter(name="dataplaneVersion")
+    def dataplane_version(self) -> Optional[pulumi.Input[int]]:
+        """
+        [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+        """
+        return pulumi.get(self, "dataplane_version")
+
+    @dataplane_version.setter
+    def dataplane_version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "dataplane_version", value)
 
     @property
     @pulumi.getter
@@ -415,6 +431,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cloud_router_ipv6_interface_id: Optional[pulumi.Input[str]] = None,
                  customer_router_ipv6_interface_id: Optional[pulumi.Input[str]] = None,
+                 dataplane_version: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_availability_domain: Optional[pulumi.Input['InterconnectAttachmentEdgeAvailabilityDomain']] = None,
                  encryption: Optional[pulumi.Input['InterconnectAttachmentEncryption']] = None,
@@ -446,6 +463,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
         :param pulumi.Input[str] cloud_router_ipv6_interface_id: If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
         :param pulumi.Input[str] customer_router_ipv6_interface_id: If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        :param pulumi.Input[int] dataplane_version: [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input['InterconnectAttachmentEdgeAvailabilityDomain'] edge_availability_domain: Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
         :param pulumi.Input['InterconnectAttachmentEncryption'] encryption: Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly. 
@@ -492,6 +510,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cloud_router_ipv6_interface_id: Optional[pulumi.Input[str]] = None,
                  customer_router_ipv6_interface_id: Optional[pulumi.Input[str]] = None,
+                 dataplane_version: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_availability_domain: Optional[pulumi.Input['InterconnectAttachmentEdgeAvailabilityDomain']] = None,
                  encryption: Optional[pulumi.Input['InterconnectAttachmentEncryption']] = None,
@@ -529,6 +548,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["candidate_subnets"] = candidate_subnets
             __props__.__dict__["cloud_router_ipv6_interface_id"] = cloud_router_ipv6_interface_id
             __props__.__dict__["customer_router_ipv6_interface_id"] = customer_router_ipv6_interface_id
+            __props__.__dict__["dataplane_version"] = dataplane_version
             __props__.__dict__["description"] = description
             __props__.__dict__["edge_availability_domain"] = edge_availability_domain
             __props__.__dict__["encryption"] = encryption
@@ -555,7 +575,6 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["customer_router_ip_address"] = None
             __props__.__dict__["customer_router_ipv6_address"] = None
-            __props__.__dict__["dataplane_version"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["operational_status"] = None
@@ -716,7 +735,7 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter(name="dataplaneVersion")
     def dataplane_version(self) -> pulumi.Output[int]:
         """
-        Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+        [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
         """
         return pulumi.get(self, "dataplane_version")
 

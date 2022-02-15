@@ -9,6 +9,12 @@ import typing
 if typing.TYPE_CHECKING:
     import pulumi_google_native.cloudfunctions.v1 as __v1
     v1 = __v1
+    import pulumi_google_native.cloudfunctions.v2alpha as __v2alpha
+    v2alpha = __v2alpha
+    import pulumi_google_native.cloudfunctions.v2beta as __v2beta
+    v2beta = __v2beta
 else:
     v1 = _utilities.lazy_import('pulumi_google_native.cloudfunctions.v1')
+    v2alpha = _utilities.lazy_import('pulumi_google_native.cloudfunctions.v2alpha')
+    v2beta = _utilities.lazy_import('pulumi_google_native.cloudfunctions.v2beta')
 

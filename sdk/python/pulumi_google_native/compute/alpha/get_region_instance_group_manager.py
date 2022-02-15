@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionInstanceGroupManagerResult:
-    def __init__(__self__, all_instances_config=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, failover_action=None, fingerprint=None, instance_group=None, instance_lifecycle_policy=None, instance_template=None, kind=None, list_managed_instances_results=None, name=None, named_ports=None, region=None, self_link=None, self_link_with_id=None, service_account=None, standby_policy=None, stateful_policy=None, status=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policy=None, versions=None, zone=None):
+    def __init__(__self__, all_instances_config=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, failover_action=None, fingerprint=None, instance_group=None, instance_lifecycle_policy=None, instance_template=None, kind=None, name=None, named_ports=None, region=None, self_link=None, self_link_with_id=None, service_account=None, standby_policy=None, stateful_policy=None, status=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policy=None, versions=None, zone=None):
         if all_instances_config and not isinstance(all_instances_config, dict):
             raise TypeError("Expected argument 'all_instances_config' to be a dict")
         pulumi.set(__self__, "all_instances_config", all_instances_config)
@@ -58,9 +58,6 @@ class GetRegionInstanceGroupManagerResult:
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
-        if list_managed_instances_results and not isinstance(list_managed_instances_results, str):
-            raise TypeError("Expected argument 'list_managed_instances_results' to be a str")
-        pulumi.set(__self__, "list_managed_instances_results", list_managed_instances_results)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -215,14 +212,6 @@ class GetRegionInstanceGroupManagerResult:
         return pulumi.get(self, "kind")
 
     @property
-    @pulumi.getter(name="listManagedInstancesResults")
-    def list_managed_instances_results(self) -> str:
-        """
-        Pagination behavior of listManagedInstances API method for this Managed Instance Group.
-        """
-        return pulumi.get(self, "list_managed_instances_results")
-
-    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -370,7 +359,6 @@ class AwaitableGetRegionInstanceGroupManagerResult(GetRegionInstanceGroupManager
             instance_lifecycle_policy=self.instance_lifecycle_policy,
             instance_template=self.instance_template,
             kind=self.kind,
-            list_managed_instances_results=self.list_managed_instances_results,
             name=self.name,
             named_ports=self.named_ports,
             region=self.region,
@@ -420,7 +408,6 @@ def get_region_instance_group_manager(instance_group_manager: Optional[str] = No
         instance_lifecycle_policy=__ret__.instance_lifecycle_policy,
         instance_template=__ret__.instance_template,
         kind=__ret__.kind,
-        list_managed_instances_results=__ret__.list_managed_instances_results,
         name=__ret__.name,
         named_ports=__ret__.named_ports,
         region=__ret__.region,

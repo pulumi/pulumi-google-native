@@ -24,7 +24,6 @@ class InstanceGroupManagerArgs:
                  failover_action: Optional[pulumi.Input['InstanceGroupManagerFailoverAction']] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
-                 list_managed_instances_results: Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['NamedPortArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -49,7 +48,6 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input['InstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
         :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: Instance lifecycle policy for this Instance Group Manager.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
-        :param pulumi.Input['InstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of listManagedInstances API method for this Managed Instance Group.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input['NamedPortArgs']]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
         :param pulumi.Input[str] service_account: The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
@@ -78,8 +76,6 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "instance_lifecycle_policy", instance_lifecycle_policy)
         if instance_template is not None:
             pulumi.set(__self__, "instance_template", instance_template)
-        if list_managed_instances_results is not None:
-            pulumi.set(__self__, "list_managed_instances_results", list_managed_instances_results)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if named_ports is not None:
@@ -204,18 +200,6 @@ class InstanceGroupManagerArgs:
     @instance_template.setter
     def instance_template(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_template", value)
-
-    @property
-    @pulumi.getter(name="listManagedInstancesResults")
-    def list_managed_instances_results(self) -> Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']]:
-        """
-        Pagination behavior of listManagedInstances API method for this Managed Instance Group.
-        """
-        return pulumi.get(self, "list_managed_instances_results")
-
-    @list_managed_instances_results.setter
-    def list_managed_instances_results(self, value: Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']]):
-        pulumi.set(self, "list_managed_instances_results", value)
 
     @property
     @pulumi.getter
@@ -390,7 +374,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                  failover_action: Optional[pulumi.Input['InstanceGroupManagerFailoverAction']] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
-                 list_managed_instances_results: Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -419,7 +402,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input['InstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']] instance_lifecycle_policy: Instance lifecycle policy for this Instance Group Manager.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
-        :param pulumi.Input['InstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of listManagedInstances API method for this Managed Instance Group.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
         :param pulumi.Input[str] service_account: The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
@@ -464,7 +446,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                  failover_action: Optional[pulumi.Input['InstanceGroupManagerFailoverAction']] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
-                 list_managed_instances_results: Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -499,7 +480,6 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["failover_action"] = failover_action
             __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
             __props__.__dict__["instance_template"] = instance_template
-            __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
             __props__.__dict__["name"] = name
             __props__.__dict__["named_ports"] = named_ports
             __props__.__dict__["project"] = project
@@ -558,7 +538,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["instance_lifecycle_policy"] = None
         __props__.__dict__["instance_template"] = None
         __props__.__dict__["kind"] = None
-        __props__.__dict__["list_managed_instances_results"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["named_ports"] = None
         __props__.__dict__["region"] = None
@@ -680,14 +659,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         The resource type, which is always compute#instanceGroupManager for managed instance groups.
         """
         return pulumi.get(self, "kind")
-
-    @property
-    @pulumi.getter(name="listManagedInstancesResults")
-    def list_managed_instances_results(self) -> pulumi.Output[str]:
-        """
-        Pagination behavior of listManagedInstances API method for this Managed Instance Group.
-        """
-        return pulumi.get(self, "list_managed_instances_results")
 
     @property
     @pulumi.getter

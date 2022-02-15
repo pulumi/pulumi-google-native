@@ -49,10 +49,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int Priority;
         /// <summary>
-        /// An optional name for the rule. This field is not a unique identifier and can be updated.
-        /// </summary>
-        public readonly string RuleName;
-        /// <summary>
         /// Calculation of the complexity of a single firewall policy rule.
         /// </summary>
         public readonly int RuleTupleCount;
@@ -87,8 +83,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             int priority,
 
-            string ruleName,
-
             int ruleTupleCount,
 
             ImmutableArray<string> targetResources,
@@ -105,7 +99,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             Kind = kind;
             Match = match;
             Priority = priority;
-            RuleName = ruleName;
             RuleTupleCount = ruleTupleCount;
             TargetResources = targetResources;
             TargetSecureTags = targetSecureTags;

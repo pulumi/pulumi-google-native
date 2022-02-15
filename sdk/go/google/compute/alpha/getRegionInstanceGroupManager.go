@@ -53,8 +53,6 @@ type LookupRegionInstanceGroupManagerResult struct {
 	InstanceTemplate string `pulumi:"instanceTemplate"`
 	// The resource type, which is always compute#instanceGroupManager for managed instance groups.
 	Kind string `pulumi:"kind"`
-	// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
-	ListManagedInstancesResults string `pulumi:"listManagedInstancesResults"`
 	// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name string `pulumi:"name"`
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
@@ -193,11 +191,6 @@ func (o LookupRegionInstanceGroupManagerResultOutput) InstanceTemplate() pulumi.
 // The resource type, which is always compute#instanceGroupManager for managed instance groups.
 func (o LookupRegionInstanceGroupManagerResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) string { return v.Kind }).(pulumi.StringOutput)
-}
-
-// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
-func (o LookupRegionInstanceGroupManagerResultOutput) ListManagedInstancesResults() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) string { return v.ListManagedInstancesResults }).(pulumi.StringOutput)
 }
 
 // The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.

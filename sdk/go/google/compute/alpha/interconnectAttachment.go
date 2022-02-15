@@ -37,7 +37,7 @@ type InterconnectAttachment struct {
 	CustomerRouterIpv6Address pulumi.StringOutput `pulumi:"customerRouterIpv6Address"`
 	// If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
 	CustomerRouterIpv6InterfaceId pulumi.StringOutput `pulumi:"customerRouterIpv6InterfaceId"`
-	// Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+	// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
 	DataplaneVersion pulumi.IntOutput `pulumi:"dataplaneVersion"`
 	// An optional description of this resource.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -143,6 +143,8 @@ type interconnectAttachmentArgs struct {
 	CloudRouterIpv6InterfaceId *string `pulumi:"cloudRouterIpv6InterfaceId"`
 	// If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
 	CustomerRouterIpv6InterfaceId *string `pulumi:"customerRouterIpv6InterfaceId"`
+	// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+	DataplaneVersion *int `pulumi:"dataplaneVersion"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
@@ -193,6 +195,8 @@ type InterconnectAttachmentArgs struct {
 	CloudRouterIpv6InterfaceId pulumi.StringPtrInput
 	// If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
 	CustomerRouterIpv6InterfaceId pulumi.StringPtrInput
+	// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+	DataplaneVersion pulumi.IntPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.

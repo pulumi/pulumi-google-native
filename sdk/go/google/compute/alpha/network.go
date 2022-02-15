@@ -33,8 +33,7 @@ type Network struct {
 	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
 	Mtu pulumi.IntOutput `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+	Name                                  pulumi.StringOutput `pulumi:"name"`
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringOutput `pulumi:"networkFirewallPolicyEnforcementOrder"`
 	// A list of network peerings for the resource.
 	Peerings NetworkPeeringResponseArrayOutput `pulumi:"peerings"`
@@ -100,8 +99,7 @@ type networkArgs struct {
 	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
 	Mtu *int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
-	Name *string `pulumi:"name"`
-	// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+	Name                                  *string                                       `pulumi:"name"`
 	NetworkFirewallPolicyEnforcementOrder *NetworkNetworkFirewallPolicyEnforcementOrder `pulumi:"networkFirewallPolicyEnforcementOrder"`
 	Project                               *string                                       `pulumi:"project"`
 	RequestId                             *string                                       `pulumi:"requestId"`
@@ -122,8 +120,7 @@ type NetworkArgs struct {
 	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
 	Mtu pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
-	Name pulumi.StringPtrInput
-	// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+	Name                                  pulumi.StringPtrInput
 	NetworkFirewallPolicyEnforcementOrder NetworkNetworkFirewallPolicyEnforcementOrderPtrInput
 	Project                               pulumi.StringPtrInput
 	RequestId                             pulumi.StringPtrInput

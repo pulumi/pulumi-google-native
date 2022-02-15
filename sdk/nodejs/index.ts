@@ -52,6 +52,7 @@ import * as datafusion from "./datafusion";
 import * as datalabeling from "./datalabeling";
 import * as datamigration from "./datamigration";
 import * as datapipelines from "./datapipelines";
+import * as dataplex from "./dataplex";
 import * as dataproc from "./dataproc";
 import * as datastore from "./datastore";
 import * as datastream from "./datastream";
@@ -172,6 +173,7 @@ export {
     datalabeling,
     datamigration,
     datapipelines,
+    dataplex,
     dataproc,
     datastore,
     datastream,

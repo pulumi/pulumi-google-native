@@ -97,6 +97,8 @@ if typing.TYPE_CHECKING:
     datamigration = __datamigration
     import pulumi_google_native.datapipelines as __datapipelines
     datapipelines = __datapipelines
+    import pulumi_google_native.dataplex as __dataplex
+    dataplex = __dataplex
     import pulumi_google_native.dataproc as __dataproc
     dataproc = __dataproc
     import pulumi_google_native.datastore as __datastore
@@ -288,6 +290,7 @@ else:
     datalabeling = _utilities.lazy_import('pulumi_google_native.datalabeling')
     datamigration = _utilities.lazy_import('pulumi_google_native.datamigration')
     datapipelines = _utilities.lazy_import('pulumi_google_native.datapipelines')
+    dataplex = _utilities.lazy_import('pulumi_google_native.dataplex')
     dataproc = _utilities.lazy_import('pulumi_google_native.dataproc')
     datastore = _utilities.lazy_import('pulumi_google_native.datastore')
     datastream = _utilities.lazy_import('pulumi_google_native.datastream')
@@ -733,6 +736,24 @@ _utilities.register(
   "classes": {
    "google-native:cloudfunctions/v1:Function": "Function",
    "google-native:cloudfunctions/v1:FunctionIamPolicy": "FunctionIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "cloudfunctions/v2alpha",
+  "fqn": "pulumi_google_native.cloudfunctions.v2alpha",
+  "classes": {
+   "google-native:cloudfunctions/v2alpha:Function": "Function",
+   "google-native:cloudfunctions/v2alpha:FunctionIamPolicy": "FunctionIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "cloudfunctions/v2beta",
+  "fqn": "pulumi_google_native.cloudfunctions.v2beta",
+  "classes": {
+   "google-native:cloudfunctions/v2beta:Function": "Function",
+   "google-native:cloudfunctions/v2beta:FunctionIamPolicy": "FunctionIamPolicy"
   }
  },
  {
@@ -1388,6 +1409,27 @@ _utilities.register(
   "fqn": "pulumi_google_native.datapipelines.v1",
   "classes": {
    "google-native:datapipelines/v1:Pipeline": "Pipeline"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "dataplex/v1",
+  "fqn": "pulumi_google_native.dataplex.v1",
+  "classes": {
+   "google-native:dataplex/v1:Asset": "Asset",
+   "google-native:dataplex/v1:Contentitem": "Contentitem",
+   "google-native:dataplex/v1:Entity": "Entity",
+   "google-native:dataplex/v1:Environment": "Environment",
+   "google-native:dataplex/v1:Lake": "Lake",
+   "google-native:dataplex/v1:LakeAssetIamPolicy": "LakeAssetIamPolicy",
+   "google-native:dataplex/v1:LakeContentIamPolicy": "LakeContentIamPolicy",
+   "google-native:dataplex/v1:LakeEnvironmentIamPolicy": "LakeEnvironmentIamPolicy",
+   "google-native:dataplex/v1:LakeIamPolicy": "LakeIamPolicy",
+   "google-native:dataplex/v1:LakeTaskIamPolicy": "LakeTaskIamPolicy",
+   "google-native:dataplex/v1:LakeZoneIamPolicy": "LakeZoneIamPolicy",
+   "google-native:dataplex/v1:Partition": "Partition",
+   "google-native:dataplex/v1:Task": "Task",
+   "google-native:dataplex/v1:Zone": "Zone"
   }
  },
  {
