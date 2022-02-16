@@ -948,7 +948,7 @@ func (o LinkedInterconnectAttachmentsResponseOutput) Uris() pulumi.StringArrayOu
 	return o.ApplyT(func(v LinkedInterconnectAttachmentsResponse) []string { return v.Uris }).(pulumi.StringArrayOutput)
 }
 
-// A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
+// A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
 type LinkedRouterApplianceInstances struct {
 	// The list of router appliance instances.
 	Instances []RouterApplianceInstance `pulumi:"instances"`
@@ -967,7 +967,7 @@ type LinkedRouterApplianceInstancesInput interface {
 	ToLinkedRouterApplianceInstancesOutputWithContext(context.Context) LinkedRouterApplianceInstancesOutput
 }
 
-// A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
+// A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
 type LinkedRouterApplianceInstancesArgs struct {
 	// The list of router appliance instances.
 	Instances RouterApplianceInstanceArrayInput `pulumi:"instances"`
@@ -1028,7 +1028,7 @@ func (i *linkedRouterApplianceInstancesPtrType) ToLinkedRouterApplianceInstances
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedRouterApplianceInstancesPtrOutput)
 }
 
-// A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
+// A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
 type LinkedRouterApplianceInstancesOutput struct{ *pulumi.OutputState }
 
 func (LinkedRouterApplianceInstancesOutput) ElementType() reflect.Type {
@@ -1107,7 +1107,7 @@ func (o LinkedRouterApplianceInstancesPtrOutput) SiteToSiteDataTransfer() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
+// A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
 type LinkedRouterApplianceInstancesResponse struct {
 	// The list of router appliance instances.
 	Instances []RouterApplianceInstanceResponse `pulumi:"instances"`
@@ -1115,7 +1115,7 @@ type LinkedRouterApplianceInstancesResponse struct {
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
 }
 
-// A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
+// A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
 type LinkedRouterApplianceInstancesResponseOutput struct{ *pulumi.OutputState }
 
 func (LinkedRouterApplianceInstancesResponseOutput) ElementType() reflect.Type {

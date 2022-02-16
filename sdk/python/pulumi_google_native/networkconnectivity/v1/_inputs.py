@@ -275,7 +275,7 @@ class LinkedRouterApplianceInstancesArgs:
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input['RouterApplianceInstanceArgs']]]] = None,
                  site_to_site_data_transfer: Optional[pulumi.Input[bool]] = None):
         """
-        A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
+        A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
         :param pulumi.Input[Sequence[pulumi.Input['RouterApplianceInstanceArgs']]] instances: The list of router appliance instances.
         :param pulumi.Input[bool] site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         """

@@ -276,7 +276,7 @@ class LinkedInterconnectAttachmentsResponse(dict):
 @pulumi.output_type
 class LinkedRouterApplianceInstancesResponse(dict):
     """
-    A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
+    A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -299,7 +299,7 @@ class LinkedRouterApplianceInstancesResponse(dict):
                  instances: Sequence['outputs.RouterApplianceInstanceResponse'],
                  site_to_site_data_transfer: bool):
         """
-        A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
+        A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
         :param Sequence['RouterApplianceInstanceResponse'] instances: The list of router appliance instances.
         :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         """

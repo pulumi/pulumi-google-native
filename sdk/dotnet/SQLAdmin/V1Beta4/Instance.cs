@@ -178,7 +178,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<Outputs.SqlScheduledMaintenanceResponse> ScheduledMaintenance { get; private set; } = null!;
 
         /// <summary>
-        /// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
+        /// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
         /// </summary>
         [Output("secondaryGceZone")]
         public Output<string> SecondaryGceZone { get; private set; } = null!;
@@ -433,7 +433,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Input<Inputs.SqlScheduledMaintenanceArgs>? ScheduledMaintenance { get; set; }
 
         /// <summary>
-        /// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
+        /// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
         /// </summary>
         [Input("secondaryGceZone")]
         public Input<string>? SecondaryGceZone { get; set; }

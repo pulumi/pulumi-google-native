@@ -851,7 +851,7 @@ class LocationPreferenceResponse(dict):
         Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
         :param str follow_gae_application: The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
         :param str kind: This is always `sql#locationPreference`.
-        :param str secondary_zone: The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
+        :param str secondary_zone: The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
         :param str zone: The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
         """
         pulumi.set(__self__, "follow_gae_application", follow_gae_application)
@@ -879,7 +879,7 @@ class LocationPreferenceResponse(dict):
     @pulumi.getter(name="secondaryZone")
     def secondary_zone(self) -> str:
         """
-        The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
+        The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
         """
         return pulumi.get(self, "secondary_zone")
 

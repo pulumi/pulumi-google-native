@@ -49766,7 +49766,7 @@ export namespace networkconnectivity {
         }
 
         /**
-         * A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
+         * A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
          */
         export interface LinkedRouterApplianceInstancesArgs {
             /**
@@ -60286,7 +60286,7 @@ export namespace sqladmin {
              */
             kind?: pulumi.Input<string>;
             /**
-             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
+             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
              */
             secondaryZone?: pulumi.Input<string>;
             /**
@@ -60946,7 +60946,7 @@ export namespace sqladmin {
              */
             kind?: pulumi.Input<string>;
             /**
-             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
+             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
              */
             secondaryZone?: pulumi.Input<string>;
             /**

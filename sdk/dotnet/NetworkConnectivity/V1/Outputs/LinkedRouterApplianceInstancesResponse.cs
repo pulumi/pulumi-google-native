@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
 {
 
     /// <summary>
-    /// A collection of router appliance instances. If you have multiple router appliance instances connected to the same site, they should all be attached to the same spoke.
+    /// A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
     /// </summary>
     [OutputType]
     public sealed class LinkedRouterApplianceInstancesResponse
