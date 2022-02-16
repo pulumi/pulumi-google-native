@@ -8,7 +8,6 @@ import (
 	"io/ioutil"
 	"net/url"
 	"os"
-	"path"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -25,7 +24,7 @@ import (
 const goBasePath = "github.com/pulumi/pulumi-google-native/sdk/go/google"
 
 // PulumiSchema will generate a Pulumi schema for the given Google Cloud discovery documents.
-func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
+func PulumiSchema(discoveryRoot string) (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	pkg := schema.PackageSpec{
 		Name:        "google-native",
 		DisplayName: "Google Cloud Native",
@@ -70,15 +69,15 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 				Type:        "object",
 				Properties: map[string]schema.PropertySpec{
 					"project": {
-						TypeSpec: schema.TypeSpec{Type: "string"},
+						TypeSpec:    schema.TypeSpec{Type: "string"},
 						Description: "The default project to manage resources in. If another project is specified on a resource, it will take precedence.",
 					},
 					"region": {
-						TypeSpec: schema.TypeSpec{Type: "string"},
+						TypeSpec:    schema.TypeSpec{Type: "string"},
 						Description: "The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.",
 					},
 					"zone": {
-						TypeSpec: schema.TypeSpec{Type: "string"},
+						TypeSpec:    schema.TypeSpec{Type: "string"},
 						Description: "The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.",
 					},
 				},
@@ -166,8 +165,10 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	golangImportAliases := map[string]string{}
 
 	var fileNames []string
-	root := path.Join(".", "discovery")
-	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk(discoveryRoot, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
 		if !info.IsDir() {
 			fileNames = append(fileNames, path)
 		}

@@ -38,7 +38,7 @@ func main() {
 		version = os.Args[2]
 	}
 
-	pkgSpec, meta, err := gen.PulumiSchema()
+	pkgSpec, meta, err := gen.PulumiSchema("discovery")
 	if err != nil {
 		panic(err)
 	}
