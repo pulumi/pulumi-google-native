@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCapacityCommitmentResult:
-    def __init__(__self__, commitment_end_time=None, commitment_start_time=None, failure_status=None, name=None, plan=None, renewal_plan=None, slot_count=None, state=None):
+    def __init__(__self__, commitment_end_time=None, commitment_start_time=None, failure_status=None, multi_region_auxiliary=None, name=None, plan=None, renewal_plan=None, slot_count=None, state=None):
         if commitment_end_time and not isinstance(commitment_end_time, str):
             raise TypeError("Expected argument 'commitment_end_time' to be a str")
         pulumi.set(__self__, "commitment_end_time", commitment_end_time)
@@ -28,6 +28,9 @@ class GetCapacityCommitmentResult:
         if failure_status and not isinstance(failure_status, dict):
             raise TypeError("Expected argument 'failure_status' to be a dict")
         pulumi.set(__self__, "failure_status", failure_status)
+        if multi_region_auxiliary and not isinstance(multi_region_auxiliary, bool):
+            raise TypeError("Expected argument 'multi_region_auxiliary' to be a bool")
+        pulumi.set(__self__, "multi_region_auxiliary", multi_region_auxiliary)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -69,10 +72,18 @@ class GetCapacityCommitmentResult:
         return pulumi.get(self, "failure_status")
 
     @property
+    @pulumi.getter(name="multiRegionAuxiliary")
+    def multi_region_auxiliary(self) -> bool:
+        """
+        Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+        """
+        return pulumi.get(self, "multi_region_auxiliary")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
+        The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` For the commitment id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
         """
         return pulumi.get(self, "name")
 
@@ -118,6 +129,7 @@ class AwaitableGetCapacityCommitmentResult(GetCapacityCommitmentResult):
             commitment_end_time=self.commitment_end_time,
             commitment_start_time=self.commitment_start_time,
             failure_status=self.failure_status,
+            multi_region_auxiliary=self.multi_region_auxiliary,
             name=self.name,
             plan=self.plan,
             renewal_plan=self.renewal_plan,
@@ -146,6 +158,7 @@ def get_capacity_commitment(capacity_commitment_id: Optional[str] = None,
         commitment_end_time=__ret__.commitment_end_time,
         commitment_start_time=__ret__.commitment_start_time,
         failure_status=__ret__.failure_status,
+        multi_region_auxiliary=__ret__.multi_region_auxiliary,
         name=__ret__.name,
         plan=__ret__.plan,
         renewal_plan=__ret__.renewal_plan,

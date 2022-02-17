@@ -60286,7 +60286,7 @@ export namespace sqladmin {
              */
             kind?: pulumi.Input<string>;
             /**
-             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
              */
             secondaryZone?: pulumi.Input<string>;
             /**
@@ -60946,7 +60946,7 @@ export namespace sqladmin {
              */
             kind?: pulumi.Input<string>;
             /**
-             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
              */
             secondaryZone?: pulumi.Input<string>;
             /**
@@ -62080,6 +62080,10 @@ export namespace storagetransfer {
              * Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
              */
             temporaryHold?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsTemporaryHold>;
+            /**
+             * Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+             */
+            timeCreated?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsTimeCreated>;
             /**
              * Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
              */

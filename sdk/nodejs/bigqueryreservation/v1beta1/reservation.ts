@@ -43,7 +43,11 @@ export class Reservation extends pulumi.CustomResource {
      */
     public readonly ignoreIdleSlots!: pulumi.Output<boolean>;
     /**
-     * The resource name of the reservation, e.g., `projects/*&#47;locations/*&#47;reservations/team1-prod`.
+     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+     */
+    public readonly multiRegionAuxiliary!: pulumi.Output<boolean>;
+    /**
+     * The resource name of the reservation, e.g., `projects/*&#47;locations/*&#47;reservations/team1-prod`. For the reservation id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -68,6 +72,7 @@ export class Reservation extends pulumi.CustomResource {
         if (!opts.id) {
             resourceInputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["multiRegionAuxiliary"] = args ? args.multiRegionAuxiliary : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["reservationId"] = args ? args.reservationId : undefined;
@@ -77,6 +82,7 @@ export class Reservation extends pulumi.CustomResource {
         } else {
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["ignoreIdleSlots"] = undefined /*out*/;
+            resourceInputs["multiRegionAuxiliary"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["slotCapacity"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -96,7 +102,11 @@ export interface ReservationArgs {
     ignoreIdleSlots?: pulumi.Input<boolean>;
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the reservation, e.g., `projects/*&#47;locations/*&#47;reservations/team1-prod`.
+     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+     */
+    multiRegionAuxiliary?: pulumi.Input<boolean>;
+    /**
+     * The resource name of the reservation, e.g., `projects/*&#47;locations/*&#47;reservations/team1-prod`. For the reservation id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

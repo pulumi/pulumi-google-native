@@ -14,6 +14,7 @@ __all__ = [
     'MetadataOptionsStorageClass',
     'MetadataOptionsSymlink',
     'MetadataOptionsTemporaryHold',
+    'MetadataOptionsTimeCreated',
     'MetadataOptionsUid',
     'NotificationConfigEventTypesItem',
     'NotificationConfigPayloadFormat',
@@ -194,6 +195,24 @@ class MetadataOptionsTemporaryHold(str, Enum):
     TEMPORARY_HOLD_PRESERVE = "TEMPORARY_HOLD_PRESERVE"
     """
     Preserve the object's original temporary hold status.
+    """
+
+
+class MetadataOptionsTimeCreated(str, Enum):
+    """
+    Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+    """
+    TIME_CREATED_UNSPECIFIED = "TIME_CREATED_UNSPECIFIED"
+    """
+    TimeCreated behavior is unspecified.
+    """
+    TIME_CREATED_SKIP = "TIME_CREATED_SKIP"
+    """
+    Do not preserve the `timeCreated` metadata from the source object.
+    """
+    TIME_CREATED_PRESERVE_AS_CUSTOM_TIME = "TIME_CREATED_PRESERVE_AS_CUSTOM_TIME"
+    """
+    Preserves the source object's `timeCreated` metadata in the `customTime` field in the destination object. Note that any value stored in the source object's `customTime` field will not be propagated to the destination object.
     """
 
 

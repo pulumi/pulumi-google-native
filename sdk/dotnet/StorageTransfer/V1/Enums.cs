@@ -391,6 +391,47 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
     /// <summary>
+    /// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+    /// </summary>
+    [EnumType]
+    public readonly struct MetadataOptionsTimeCreated : IEquatable<MetadataOptionsTimeCreated>
+    {
+        private readonly string _value;
+
+        private MetadataOptionsTimeCreated(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// TimeCreated behavior is unspecified.
+        /// </summary>
+        public static MetadataOptionsTimeCreated TimeCreatedUnspecified { get; } = new MetadataOptionsTimeCreated("TIME_CREATED_UNSPECIFIED");
+        /// <summary>
+        /// Do not preserve the `timeCreated` metadata from the source object.
+        /// </summary>
+        public static MetadataOptionsTimeCreated TimeCreatedSkip { get; } = new MetadataOptionsTimeCreated("TIME_CREATED_SKIP");
+        /// <summary>
+        /// Preserves the source object's `timeCreated` metadata in the `customTime` field in the destination object. Note that any value stored in the source object's `customTime` field will not be propagated to the destination object.
+        /// </summary>
+        public static MetadataOptionsTimeCreated TimeCreatedPreserveAsCustomTime { get; } = new MetadataOptionsTimeCreated("TIME_CREATED_PRESERVE_AS_CUSTOM_TIME");
+
+        public static bool operator ==(MetadataOptionsTimeCreated left, MetadataOptionsTimeCreated right) => left.Equals(right);
+        public static bool operator !=(MetadataOptionsTimeCreated left, MetadataOptionsTimeCreated right) => !left.Equals(right);
+
+        public static explicit operator string(MetadataOptionsTimeCreated value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MetadataOptionsTimeCreated other && Equals(other);
+        public bool Equals(MetadataOptionsTimeCreated other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
     /// </summary>
     [EnumType]

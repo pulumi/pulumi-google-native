@@ -49,7 +49,11 @@ export class CapacityCommitment extends pulumi.CustomResource {
      */
     public /*out*/ readonly failureStatus!: pulumi.Output<outputs.bigqueryreservation.v1.StatusResponse>;
     /**
-     * The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
+     * Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+     */
+    public readonly multiRegionAuxiliary!: pulumi.Output<boolean>;
+    /**
+     * The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` For the commitment id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -83,6 +87,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
             resourceInputs["capacityCommitmentId"] = args ? args.capacityCommitmentId : undefined;
             resourceInputs["enforceSingleAdminProjectPerOrg"] = args ? args.enforceSingleAdminProjectPerOrg : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["multiRegionAuxiliary"] = args ? args.multiRegionAuxiliary : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["renewalPlan"] = args ? args.renewalPlan : undefined;
@@ -96,6 +101,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
             resourceInputs["commitmentEndTime"] = undefined /*out*/;
             resourceInputs["commitmentStartTime"] = undefined /*out*/;
             resourceInputs["failureStatus"] = undefined /*out*/;
+            resourceInputs["multiRegionAuxiliary"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["plan"] = undefined /*out*/;
             resourceInputs["renewalPlan"] = undefined /*out*/;
@@ -114,6 +120,10 @@ export interface CapacityCommitmentArgs {
     capacityCommitmentId?: pulumi.Input<string>;
     enforceSingleAdminProjectPerOrg?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
+    /**
+     * Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+     */
+    multiRegionAuxiliary?: pulumi.Input<boolean>;
     /**
      * Capacity commitment commitment plan.
      */

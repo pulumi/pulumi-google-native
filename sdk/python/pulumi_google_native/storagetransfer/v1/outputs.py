@@ -523,6 +523,8 @@ class MetadataOptionsResponse(dict):
             suggest = "storage_class"
         elif key == "temporaryHold":
             suggest = "temporary_hold"
+        elif key == "timeCreated":
+            suggest = "time_created"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MetadataOptionsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -543,6 +545,7 @@ class MetadataOptionsResponse(dict):
                  storage_class: str,
                  symlink: str,
                  temporary_hold: str,
+                 time_created: str,
                  uid: str):
         """
         Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX filesystem and are ignored for other transfers.
@@ -553,6 +556,7 @@ class MetadataOptionsResponse(dict):
         :param str storage_class: Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
         :param str symlink: Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
         :param str temporary_hold: Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+        :param str time_created: Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
         :param str uid: Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
         """
         pulumi.set(__self__, "acl", acl)
@@ -562,6 +566,7 @@ class MetadataOptionsResponse(dict):
         pulumi.set(__self__, "storage_class", storage_class)
         pulumi.set(__self__, "symlink", symlink)
         pulumi.set(__self__, "temporary_hold", temporary_hold)
+        pulumi.set(__self__, "time_created", time_created)
         pulumi.set(__self__, "uid", uid)
 
     @property
@@ -619,6 +624,14 @@ class MetadataOptionsResponse(dict):
         Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
         """
         return pulumi.get(self, "temporary_hold")
+
+    @property
+    @pulumi.getter(name="timeCreated")
+    def time_created(self) -> str:
+        """
+        Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+        """
+        return pulumi.get(self, "time_created")
 
     @property
     @pulumi.getter

@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public Input<Pulumi.GoogleNative.StorageTransfer.V1.MetadataOptionsTemporaryHold>? TemporaryHold { get; set; }
 
         /// <summary>
+        /// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+        /// </summary>
+        [Input("timeCreated")]
+        public Input<Pulumi.GoogleNative.StorageTransfer.V1.MetadataOptionsTimeCreated>? TimeCreated { get; set; }
+
+        /// <summary>
         /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
         /// </summary>
         [Input("uid")]

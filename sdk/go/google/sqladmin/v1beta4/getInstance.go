@@ -80,7 +80,7 @@ type LookupInstanceResult struct {
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// The start time of any upcoming scheduled maintenance for this instance.
 	ScheduledMaintenance SqlScheduledMaintenanceResponse `pulumi:"scheduledMaintenance"`
-	// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
+	// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
 	SecondaryGceZone string `pulumi:"secondaryGceZone"`
 	// The URI of this resource.
 	SelfLink string `pulumi:"selfLink"`
@@ -263,7 +263,7 @@ func (o LookupInstanceResultOutput) ScheduledMaintenance() SqlScheduledMaintenan
 	return o.ApplyT(func(v LookupInstanceResult) SqlScheduledMaintenanceResponse { return v.ScheduledMaintenance }).(SqlScheduledMaintenanceResponseOutput)
 }
 
-// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
+// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
 func (o LookupInstanceResultOutput) SecondaryGceZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.SecondaryGceZone }).(pulumi.StringOutput)
 }

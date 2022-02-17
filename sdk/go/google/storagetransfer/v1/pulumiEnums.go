@@ -1629,6 +1629,175 @@ func (in *metadataOptionsTemporaryHoldPtr) ToMetadataOptionsTemporaryHoldPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsTemporaryHoldPtrOutput)
 }
 
+// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+type MetadataOptionsTimeCreated string
+
+const (
+	// TimeCreated behavior is unspecified.
+	MetadataOptionsTimeCreatedTimeCreatedUnspecified = MetadataOptionsTimeCreated("TIME_CREATED_UNSPECIFIED")
+	// Do not preserve the `timeCreated` metadata from the source object.
+	MetadataOptionsTimeCreatedTimeCreatedSkip = MetadataOptionsTimeCreated("TIME_CREATED_SKIP")
+	// Preserves the source object's `timeCreated` metadata in the `customTime` field in the destination object. Note that any value stored in the source object's `customTime` field will not be propagated to the destination object.
+	MetadataOptionsTimeCreatedTimeCreatedPreserveAsCustomTime = MetadataOptionsTimeCreated("TIME_CREATED_PRESERVE_AS_CUSTOM_TIME")
+)
+
+func (MetadataOptionsTimeCreated) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataOptionsTimeCreated)(nil)).Elem()
+}
+
+func (e MetadataOptionsTimeCreated) ToMetadataOptionsTimeCreatedOutput() MetadataOptionsTimeCreatedOutput {
+	return pulumi.ToOutput(e).(MetadataOptionsTimeCreatedOutput)
+}
+
+func (e MetadataOptionsTimeCreated) ToMetadataOptionsTimeCreatedOutputWithContext(ctx context.Context) MetadataOptionsTimeCreatedOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MetadataOptionsTimeCreatedOutput)
+}
+
+func (e MetadataOptionsTimeCreated) ToMetadataOptionsTimeCreatedPtrOutput() MetadataOptionsTimeCreatedPtrOutput {
+	return e.ToMetadataOptionsTimeCreatedPtrOutputWithContext(context.Background())
+}
+
+func (e MetadataOptionsTimeCreated) ToMetadataOptionsTimeCreatedPtrOutputWithContext(ctx context.Context) MetadataOptionsTimeCreatedPtrOutput {
+	return MetadataOptionsTimeCreated(e).ToMetadataOptionsTimeCreatedOutputWithContext(ctx).ToMetadataOptionsTimeCreatedPtrOutputWithContext(ctx)
+}
+
+func (e MetadataOptionsTimeCreated) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetadataOptionsTimeCreated) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetadataOptionsTimeCreated) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MetadataOptionsTimeCreated) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MetadataOptionsTimeCreatedOutput struct{ *pulumi.OutputState }
+
+func (MetadataOptionsTimeCreatedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataOptionsTimeCreated)(nil)).Elem()
+}
+
+func (o MetadataOptionsTimeCreatedOutput) ToMetadataOptionsTimeCreatedOutput() MetadataOptionsTimeCreatedOutput {
+	return o
+}
+
+func (o MetadataOptionsTimeCreatedOutput) ToMetadataOptionsTimeCreatedOutputWithContext(ctx context.Context) MetadataOptionsTimeCreatedOutput {
+	return o
+}
+
+func (o MetadataOptionsTimeCreatedOutput) ToMetadataOptionsTimeCreatedPtrOutput() MetadataOptionsTimeCreatedPtrOutput {
+	return o.ToMetadataOptionsTimeCreatedPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsTimeCreatedOutput) ToMetadataOptionsTimeCreatedPtrOutputWithContext(ctx context.Context) MetadataOptionsTimeCreatedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataOptionsTimeCreated) *MetadataOptionsTimeCreated {
+		return &v
+	}).(MetadataOptionsTimeCreatedPtrOutput)
+}
+
+func (o MetadataOptionsTimeCreatedOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsTimeCreatedOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetadataOptionsTimeCreated) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MetadataOptionsTimeCreatedOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsTimeCreatedOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetadataOptionsTimeCreated) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetadataOptionsTimeCreatedPtrOutput struct{ *pulumi.OutputState }
+
+func (MetadataOptionsTimeCreatedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataOptionsTimeCreated)(nil)).Elem()
+}
+
+func (o MetadataOptionsTimeCreatedPtrOutput) ToMetadataOptionsTimeCreatedPtrOutput() MetadataOptionsTimeCreatedPtrOutput {
+	return o
+}
+
+func (o MetadataOptionsTimeCreatedPtrOutput) ToMetadataOptionsTimeCreatedPtrOutputWithContext(ctx context.Context) MetadataOptionsTimeCreatedPtrOutput {
+	return o
+}
+
+func (o MetadataOptionsTimeCreatedPtrOutput) Elem() MetadataOptionsTimeCreatedOutput {
+	return o.ApplyT(func(v *MetadataOptionsTimeCreated) MetadataOptionsTimeCreated {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataOptionsTimeCreated
+		return ret
+	}).(MetadataOptionsTimeCreatedOutput)
+}
+
+func (o MetadataOptionsTimeCreatedPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsTimeCreatedPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MetadataOptionsTimeCreated) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MetadataOptionsTimeCreatedInput is an input type that accepts MetadataOptionsTimeCreatedArgs and MetadataOptionsTimeCreatedOutput values.
+// You can construct a concrete instance of `MetadataOptionsTimeCreatedInput` via:
+//
+//          MetadataOptionsTimeCreatedArgs{...}
+type MetadataOptionsTimeCreatedInput interface {
+	pulumi.Input
+
+	ToMetadataOptionsTimeCreatedOutput() MetadataOptionsTimeCreatedOutput
+	ToMetadataOptionsTimeCreatedOutputWithContext(context.Context) MetadataOptionsTimeCreatedOutput
+}
+
+var metadataOptionsTimeCreatedPtrType = reflect.TypeOf((**MetadataOptionsTimeCreated)(nil)).Elem()
+
+type MetadataOptionsTimeCreatedPtrInput interface {
+	pulumi.Input
+
+	ToMetadataOptionsTimeCreatedPtrOutput() MetadataOptionsTimeCreatedPtrOutput
+	ToMetadataOptionsTimeCreatedPtrOutputWithContext(context.Context) MetadataOptionsTimeCreatedPtrOutput
+}
+
+type metadataOptionsTimeCreatedPtr string
+
+func MetadataOptionsTimeCreatedPtr(v string) MetadataOptionsTimeCreatedPtrInput {
+	return (*metadataOptionsTimeCreatedPtr)(&v)
+}
+
+func (*metadataOptionsTimeCreatedPtr) ElementType() reflect.Type {
+	return metadataOptionsTimeCreatedPtrType
+}
+
+func (in *metadataOptionsTimeCreatedPtr) ToMetadataOptionsTimeCreatedPtrOutput() MetadataOptionsTimeCreatedPtrOutput {
+	return pulumi.ToOutput(in).(MetadataOptionsTimeCreatedPtrOutput)
+}
+
+func (in *metadataOptionsTimeCreatedPtr) ToMetadataOptionsTimeCreatedPtrOutputWithContext(ctx context.Context) MetadataOptionsTimeCreatedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsTimeCreatedPtrOutput)
+}
+
 // Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
 type MetadataOptionsUid string
 
@@ -2374,6 +2543,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsSymlinkPtrInput)(nil)).Elem(), MetadataOptionsSymlink("SYMLINK_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsTemporaryHoldInput)(nil)).Elem(), MetadataOptionsTemporaryHold("TEMPORARY_HOLD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsTemporaryHoldPtrInput)(nil)).Elem(), MetadataOptionsTemporaryHold("TEMPORARY_HOLD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsTimeCreatedInput)(nil)).Elem(), MetadataOptionsTimeCreated("TIME_CREATED_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsTimeCreatedPtrInput)(nil)).Elem(), MetadataOptionsTimeCreated("TIME_CREATED_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsUidInput)(nil)).Elem(), MetadataOptionsUid("UID_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsUidPtrInput)(nil)).Elem(), MetadataOptionsUid("UID_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigEventTypesItemInput)(nil)).Elem(), NotificationConfigEventTypesItem("EVENT_TYPE_UNSPECIFIED"))
@@ -2403,6 +2574,8 @@ func init() {
 	pulumi.RegisterOutputType(MetadataOptionsSymlinkPtrOutput{})
 	pulumi.RegisterOutputType(MetadataOptionsTemporaryHoldOutput{})
 	pulumi.RegisterOutputType(MetadataOptionsTemporaryHoldPtrOutput{})
+	pulumi.RegisterOutputType(MetadataOptionsTimeCreatedOutput{})
+	pulumi.RegisterOutputType(MetadataOptionsTimeCreatedPtrOutput{})
 	pulumi.RegisterOutputType(MetadataOptionsUidOutput{})
 	pulumi.RegisterOutputType(MetadataOptionsUidPtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigEventTypesItemOutput{})

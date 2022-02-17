@@ -439,6 +439,7 @@ class MetadataOptionsArgs:
                  storage_class: Optional[pulumi.Input['MetadataOptionsStorageClass']] = None,
                  symlink: Optional[pulumi.Input['MetadataOptionsSymlink']] = None,
                  temporary_hold: Optional[pulumi.Input['MetadataOptionsTemporaryHold']] = None,
+                 time_created: Optional[pulumi.Input['MetadataOptionsTimeCreated']] = None,
                  uid: Optional[pulumi.Input['MetadataOptionsUid']] = None):
         """
         Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX filesystem and are ignored for other transfers.
@@ -449,6 +450,7 @@ class MetadataOptionsArgs:
         :param pulumi.Input['MetadataOptionsStorageClass'] storage_class: Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
         :param pulumi.Input['MetadataOptionsSymlink'] symlink: Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
         :param pulumi.Input['MetadataOptionsTemporaryHold'] temporary_hold: Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+        :param pulumi.Input['MetadataOptionsTimeCreated'] time_created: Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
         :param pulumi.Input['MetadataOptionsUid'] uid: Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
         """
         if acl is not None:
@@ -465,6 +467,8 @@ class MetadataOptionsArgs:
             pulumi.set(__self__, "symlink", symlink)
         if temporary_hold is not None:
             pulumi.set(__self__, "temporary_hold", temporary_hold)
+        if time_created is not None:
+            pulumi.set(__self__, "time_created", time_created)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
 
@@ -551,6 +555,18 @@ class MetadataOptionsArgs:
     @temporary_hold.setter
     def temporary_hold(self, value: Optional[pulumi.Input['MetadataOptionsTemporaryHold']]):
         pulumi.set(self, "temporary_hold", value)
+
+    @property
+    @pulumi.getter(name="timeCreated")
+    def time_created(self) -> Optional[pulumi.Input['MetadataOptionsTimeCreated']]:
+        """
+        Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+        """
+        return pulumi.get(self, "time_created")
+
+    @time_created.setter
+    def time_created(self, value: Optional[pulumi.Input['MetadataOptionsTimeCreated']]):
+        pulumi.set(self, "time_created", value)
 
     @property
     @pulumi.getter

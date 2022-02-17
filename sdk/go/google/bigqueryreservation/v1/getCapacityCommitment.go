@@ -33,7 +33,9 @@ type LookupCapacityCommitmentResult struct {
 	CommitmentStartTime string `pulumi:"commitmentStartTime"`
 	// For FAILED commitment plan, provides the reason of failure.
 	FailureStatus StatusResponse `pulumi:"failureStatus"`
-	// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
+	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+	MultiRegionAuxiliary bool `pulumi:"multiRegionAuxiliary"`
+	// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` For the commitment id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
 	Name string `pulumi:"name"`
 	// Capacity commitment commitment plan.
 	Plan string `pulumi:"plan"`
@@ -93,7 +95,12 @@ func (o LookupCapacityCommitmentResultOutput) FailureStatus() StatusResponseOutp
 	return o.ApplyT(func(v LookupCapacityCommitmentResult) StatusResponse { return v.FailureStatus }).(StatusResponseOutput)
 }
 
-// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
+// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+func (o LookupCapacityCommitmentResultOutput) MultiRegionAuxiliary() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupCapacityCommitmentResult) bool { return v.MultiRegionAuxiliary }).(pulumi.BoolOutput)
+}
+
+// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` For the commitment id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
 func (o LookupCapacityCommitmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCapacityCommitmentResult) string { return v.Name }).(pulumi.StringOutput)
 }

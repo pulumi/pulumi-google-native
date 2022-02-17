@@ -144,7 +144,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly scheduledMaintenance!: pulumi.Output<outputs.sqladmin.v1.SqlScheduledMaintenanceResponse>;
     /**
-     * The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
+     * The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
      */
     public readonly secondaryGceZone!: pulumi.Output<string>;
     /**
@@ -363,7 +363,7 @@ export interface InstanceArgs {
      */
     scheduledMaintenance?: pulumi.Input<inputs.sqladmin.v1.SqlScheduledMaintenanceArgs>;
     /**
-     * The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
+     * The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
      */
     secondaryGceZone?: pulumi.Input<string>;
     /**

@@ -17,13 +17,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetReservationResult:
-    def __init__(__self__, creation_time=None, ignore_idle_slots=None, name=None, slot_capacity=None, update_time=None):
+    def __init__(__self__, creation_time=None, ignore_idle_slots=None, multi_region_auxiliary=None, name=None, slot_capacity=None, update_time=None):
         if creation_time and not isinstance(creation_time, str):
             raise TypeError("Expected argument 'creation_time' to be a str")
         pulumi.set(__self__, "creation_time", creation_time)
         if ignore_idle_slots and not isinstance(ignore_idle_slots, bool):
             raise TypeError("Expected argument 'ignore_idle_slots' to be a bool")
         pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
+        if multi_region_auxiliary and not isinstance(multi_region_auxiliary, bool):
+            raise TypeError("Expected argument 'multi_region_auxiliary' to be a bool")
+        pulumi.set(__self__, "multi_region_auxiliary", multi_region_auxiliary)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -51,10 +54,18 @@ class GetReservationResult:
         return pulumi.get(self, "ignore_idle_slots")
 
     @property
+    @pulumi.getter(name="multiRegionAuxiliary")
+    def multi_region_auxiliary(self) -> bool:
+        """
+        Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        """
+        return pulumi.get(self, "multi_region_auxiliary")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+        The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. For the reservation id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
         """
         return pulumi.get(self, "name")
 
@@ -83,6 +94,7 @@ class AwaitableGetReservationResult(GetReservationResult):
         return GetReservationResult(
             creation_time=self.creation_time,
             ignore_idle_slots=self.ignore_idle_slots,
+            multi_region_auxiliary=self.multi_region_auxiliary,
             name=self.name,
             slot_capacity=self.slot_capacity,
             update_time=self.update_time)
@@ -108,6 +120,7 @@ def get_reservation(location: Optional[str] = None,
     return AwaitableGetReservationResult(
         creation_time=__ret__.creation_time,
         ignore_idle_slots=__ret__.ignore_idle_slots,
+        multi_region_auxiliary=__ret__.multi_region_auxiliary,
         name=__ret__.name,
         slot_capacity=__ret__.slot_capacity,
         update_time=__ret__.update_time)

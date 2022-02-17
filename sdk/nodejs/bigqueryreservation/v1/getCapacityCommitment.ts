@@ -41,7 +41,11 @@ export interface GetCapacityCommitmentResult {
      */
     readonly failureStatus: outputs.bigqueryreservation.v1.StatusResponse;
     /**
-     * The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
+     * Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+     */
+    readonly multiRegionAuxiliary: boolean;
+    /**
+     * The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` For the commitment id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
      */
     readonly name: string;
     /**

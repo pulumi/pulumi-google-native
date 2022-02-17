@@ -70,7 +70,11 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         public readonly bool IgnoreIdleSlots;
         /// <summary>
-        /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+        /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        /// </summary>
+        public readonly bool MultiRegionAuxiliary;
+        /// <summary>
+        /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. For the reservation id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -88,6 +92,8 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
 
             bool ignoreIdleSlots,
 
+            bool multiRegionAuxiliary,
+
             string name,
 
             string slotCapacity,
@@ -96,6 +102,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         {
             CreationTime = creationTime;
             IgnoreIdleSlots = ignoreIdleSlots;
+            MultiRegionAuxiliary = multiRegionAuxiliary;
             Name = name;
             SlotCapacity = slotCapacity;
             UpdateTime = updateTime;

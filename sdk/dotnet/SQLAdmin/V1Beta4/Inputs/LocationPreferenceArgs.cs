@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+        /// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
         /// </summary>
         [Input("secondaryZone")]
         public Input<string>? SecondaryZone { get; set; }

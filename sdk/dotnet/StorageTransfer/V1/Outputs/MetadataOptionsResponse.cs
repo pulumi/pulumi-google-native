@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly string TemporaryHold;
         /// <summary>
+        /// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+        /// </summary>
+        public readonly string TimeCreated;
+        /// <summary>
         /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
         /// </summary>
         public readonly string Uid;
@@ -65,6 +69,8 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 
             string temporaryHold,
 
+            string timeCreated,
+
             string uid)
         {
             Acl = acl;
@@ -74,6 +80,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
             StorageClass = storageClass;
             Symlink = symlink;
             TemporaryHold = temporaryHold;
+            TimeCreated = timeCreated;
             Uid = uid;
         }
     }

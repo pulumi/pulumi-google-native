@@ -1832,6 +1832,8 @@ type MetadataOptions struct {
 	Symlink *MetadataOptionsSymlink `pulumi:"symlink"`
 	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
 	TemporaryHold *MetadataOptionsTemporaryHold `pulumi:"temporaryHold"`
+	// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+	TimeCreated *MetadataOptionsTimeCreated `pulumi:"timeCreated"`
 	// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
 	Uid *MetadataOptionsUid `pulumi:"uid"`
 }
@@ -1863,6 +1865,8 @@ type MetadataOptionsArgs struct {
 	Symlink MetadataOptionsSymlinkPtrInput `pulumi:"symlink"`
 	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
 	TemporaryHold MetadataOptionsTemporaryHoldPtrInput `pulumi:"temporaryHold"`
+	// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+	TimeCreated MetadataOptionsTimeCreatedPtrInput `pulumi:"timeCreated"`
 	// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
 	Uid MetadataOptionsUidPtrInput `pulumi:"uid"`
 }
@@ -1980,6 +1984,11 @@ func (o MetadataOptionsOutput) TemporaryHold() MetadataOptionsTemporaryHoldPtrOu
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsTemporaryHold { return v.TemporaryHold }).(MetadataOptionsTemporaryHoldPtrOutput)
 }
 
+// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+func (o MetadataOptionsOutput) TimeCreated() MetadataOptionsTimeCreatedPtrOutput {
+	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsTimeCreated { return v.TimeCreated }).(MetadataOptionsTimeCreatedPtrOutput)
+}
+
 // Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
 func (o MetadataOptionsOutput) Uid() MetadataOptionsUidPtrOutput {
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsUid { return v.Uid }).(MetadataOptionsUidPtrOutput)
@@ -2079,6 +2088,16 @@ func (o MetadataOptionsPtrOutput) TemporaryHold() MetadataOptionsTemporaryHoldPt
 	}).(MetadataOptionsTemporaryHoldPtrOutput)
 }
 
+// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+func (o MetadataOptionsPtrOutput) TimeCreated() MetadataOptionsTimeCreatedPtrOutput {
+	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsTimeCreated {
+		if v == nil {
+			return nil
+		}
+		return v.TimeCreated
+	}).(MetadataOptionsTimeCreatedPtrOutput)
+}
+
 // Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
 func (o MetadataOptionsPtrOutput) Uid() MetadataOptionsUidPtrOutput {
 	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsUid {
@@ -2105,6 +2124,8 @@ type MetadataOptionsResponse struct {
 	Symlink string `pulumi:"symlink"`
 	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
 	TemporaryHold string `pulumi:"temporaryHold"`
+	// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+	TimeCreated string `pulumi:"timeCreated"`
 	// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
 	Uid string `pulumi:"uid"`
 }
@@ -2157,6 +2178,11 @@ func (o MetadataOptionsResponseOutput) Symlink() pulumi.StringOutput {
 // Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
 func (o MetadataOptionsResponseOutput) TemporaryHold() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.TemporaryHold }).(pulumi.StringOutput)
+}
+
+// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+func (o MetadataOptionsResponseOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
 // Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.

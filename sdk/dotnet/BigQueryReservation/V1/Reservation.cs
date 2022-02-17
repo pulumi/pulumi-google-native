@@ -28,7 +28,13 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         public Output<bool> IgnoreIdleSlots { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+        /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        /// </summary>
+        [Output("multiRegionAuxiliary")]
+        public Output<bool> MultiRegionAuxiliary { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. For the reservation id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -100,7 +106,13 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+        /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        /// </summary>
+        [Input("multiRegionAuxiliary")]
+        public Input<bool>? MultiRegionAuxiliary { get; set; }
+
+        /// <summary>
+        /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. For the reservation id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

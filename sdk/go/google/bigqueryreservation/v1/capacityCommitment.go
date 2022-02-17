@@ -21,7 +21,9 @@ type CapacityCommitment struct {
 	CommitmentStartTime pulumi.StringOutput `pulumi:"commitmentStartTime"`
 	// For FAILED commitment plan, provides the reason of failure.
 	FailureStatus StatusResponseOutput `pulumi:"failureStatus"`
-	// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
+	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+	MultiRegionAuxiliary pulumi.BoolOutput `pulumi:"multiRegionAuxiliary"`
+	// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` For the commitment id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Capacity commitment commitment plan.
 	Plan pulumi.StringOutput `pulumi:"plan"`
@@ -75,6 +77,8 @@ type capacityCommitmentArgs struct {
 	CapacityCommitmentId            *string `pulumi:"capacityCommitmentId"`
 	EnforceSingleAdminProjectPerOrg *string `pulumi:"enforceSingleAdminProjectPerOrg"`
 	Location                        *string `pulumi:"location"`
+	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+	MultiRegionAuxiliary *bool `pulumi:"multiRegionAuxiliary"`
 	// Capacity commitment commitment plan.
 	Plan    *CapacityCommitmentPlan `pulumi:"plan"`
 	Project *string                 `pulumi:"project"`
@@ -89,6 +93,8 @@ type CapacityCommitmentArgs struct {
 	CapacityCommitmentId            pulumi.StringPtrInput
 	EnforceSingleAdminProjectPerOrg pulumi.StringPtrInput
 	Location                        pulumi.StringPtrInput
+	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+	MultiRegionAuxiliary pulumi.BoolPtrInput
 	// Capacity commitment commitment plan.
 	Plan    CapacityCommitmentPlanPtrInput
 	Project pulumi.StringPtrInput

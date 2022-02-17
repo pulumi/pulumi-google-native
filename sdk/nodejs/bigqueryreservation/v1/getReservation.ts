@@ -36,7 +36,11 @@ export interface GetReservationResult {
      */
     readonly ignoreIdleSlots: boolean;
     /**
-     * The resource name of the reservation, e.g., `projects/*&#47;locations/*&#47;reservations/team1-prod`.
+     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+     */
+    readonly multiRegionAuxiliary: boolean;
+    /**
+     * The resource name of the reservation, e.g., `projects/*&#47;locations/*&#47;reservations/team1-prod`. For the reservation id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
      */
     readonly name: string;
     /**

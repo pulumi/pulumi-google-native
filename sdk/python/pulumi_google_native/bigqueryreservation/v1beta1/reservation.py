@@ -15,6 +15,7 @@ class ReservationArgs:
     def __init__(__self__, *,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_id: Optional[pulumi.Input[str]] = None,
@@ -22,13 +23,16 @@ class ReservationArgs:
         """
         The set of arguments for constructing a Reservation resource.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
-        :param pulumi.Input[str] name: The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        :param pulumi.Input[str] name: The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. For the reservation id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
         :param pulumi.Input[str] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the project's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the project's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. NOTE: for reservations in US or EU multi-regions slot capacity constraints are checked separately for default and auxiliary regions. See multi_region_auxiliary flag for more details.
         """
         if ignore_idle_slots is not None:
             pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if multi_region_auxiliary is not None:
+            pulumi.set(__self__, "multi_region_auxiliary", multi_region_auxiliary)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -60,10 +64,22 @@ class ReservationArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="multiRegionAuxiliary")
+    def multi_region_auxiliary(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        """
+        return pulumi.get(self, "multi_region_auxiliary")
+
+    @multi_region_auxiliary.setter
+    def multi_region_auxiliary(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multi_region_auxiliary", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+        The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. For the reservation id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
         """
         return pulumi.get(self, "name")
 
@@ -109,6 +125,7 @@ class Reservation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_id: Optional[pulumi.Input[str]] = None,
@@ -120,7 +137,8 @@ class Reservation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
-        :param pulumi.Input[str] name: The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        :param pulumi.Input[str] name: The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. For the reservation id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
         :param pulumi.Input[str] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the project's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the project's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. NOTE: for reservations in US or EU multi-regions slot capacity constraints are checked separately for default and auxiliary regions. See multi_region_auxiliary flag for more details.
         """
         ...
@@ -149,6 +167,7 @@ class Reservation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_id: Optional[pulumi.Input[str]] = None,
@@ -167,6 +186,7 @@ class Reservation(pulumi.CustomResource):
 
             __props__.__dict__["ignore_idle_slots"] = ignore_idle_slots
             __props__.__dict__["location"] = location
+            __props__.__dict__["multi_region_auxiliary"] = multi_region_auxiliary
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["reservation_id"] = reservation_id
@@ -197,6 +217,7 @@ class Reservation(pulumi.CustomResource):
 
         __props__.__dict__["creation_time"] = None
         __props__.__dict__["ignore_idle_slots"] = None
+        __props__.__dict__["multi_region_auxiliary"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["slot_capacity"] = None
         __props__.__dict__["update_time"] = None
@@ -219,10 +240,18 @@ class Reservation(pulumi.CustomResource):
         return pulumi.get(self, "ignore_idle_slots")
 
     @property
+    @pulumi.getter(name="multiRegionAuxiliary")
+    def multi_region_auxiliary(self) -> pulumi.Output[bool]:
+        """
+        Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        """
+        return pulumi.get(self, "multi_region_auxiliary")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+        The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. For the reservation id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
         """
         return pulumi.get(self, "name")
 

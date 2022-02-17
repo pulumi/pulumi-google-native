@@ -18,12 +18,14 @@ class CapacityCommitmentArgs:
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input['CapacityCommitmentPlan']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  renewal_plan: Optional[pulumi.Input['CapacityCommitmentRenewalPlan']] = None,
                  slot_count: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CapacityCommitment resource.
+        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
         :param pulumi.Input['CapacityCommitmentPlan'] plan: Capacity commitment commitment plan.
         :param pulumi.Input['CapacityCommitmentRenewalPlan'] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
         :param pulumi.Input[str] slot_count: Number of slots in this commitment.
@@ -34,6 +36,8 @@ class CapacityCommitmentArgs:
             pulumi.set(__self__, "enforce_single_admin_project_per_org", enforce_single_admin_project_per_org)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if multi_region_auxiliary is not None:
+            pulumi.set(__self__, "multi_region_auxiliary", multi_region_auxiliary)
         if plan is not None:
             pulumi.set(__self__, "plan", plan)
         if project is not None:
@@ -69,6 +73,18 @@ class CapacityCommitmentArgs:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="multiRegionAuxiliary")
+    def multi_region_auxiliary(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+        """
+        return pulumi.get(self, "multi_region_auxiliary")
+
+    @multi_region_auxiliary.setter
+    def multi_region_auxiliary(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multi_region_auxiliary", value)
 
     @property
     @pulumi.getter
@@ -124,6 +140,7 @@ class CapacityCommitment(pulumi.CustomResource):
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input['CapacityCommitmentPlan']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  renewal_plan: Optional[pulumi.Input['CapacityCommitmentRenewalPlan']] = None,
@@ -135,6 +152,7 @@ class CapacityCommitment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
         :param pulumi.Input['CapacityCommitmentPlan'] plan: Capacity commitment commitment plan.
         :param pulumi.Input['CapacityCommitmentRenewalPlan'] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
         :param pulumi.Input[str] slot_count: Number of slots in this commitment.
@@ -167,6 +185,7 @@ class CapacityCommitment(pulumi.CustomResource):
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input['CapacityCommitmentPlan']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  renewal_plan: Optional[pulumi.Input['CapacityCommitmentRenewalPlan']] = None,
@@ -186,6 +205,7 @@ class CapacityCommitment(pulumi.CustomResource):
             __props__.__dict__["capacity_commitment_id"] = capacity_commitment_id
             __props__.__dict__["enforce_single_admin_project_per_org"] = enforce_single_admin_project_per_org
             __props__.__dict__["location"] = location
+            __props__.__dict__["multi_region_auxiliary"] = multi_region_auxiliary
             __props__.__dict__["plan"] = plan
             __props__.__dict__["project"] = project
             __props__.__dict__["renewal_plan"] = renewal_plan
@@ -220,6 +240,7 @@ class CapacityCommitment(pulumi.CustomResource):
         __props__.__dict__["commitment_end_time"] = None
         __props__.__dict__["commitment_start_time"] = None
         __props__.__dict__["failure_status"] = None
+        __props__.__dict__["multi_region_auxiliary"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["plan"] = None
         __props__.__dict__["renewal_plan"] = None
@@ -252,10 +273,18 @@ class CapacityCommitment(pulumi.CustomResource):
         return pulumi.get(self, "failure_status")
 
     @property
+    @pulumi.getter(name="multiRegionAuxiliary")
+    def multi_region_auxiliary(self) -> pulumi.Output[bool]:
+        """
+        Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+        """
+        return pulumi.get(self, "multi_region_auxiliary")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
+        The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` For the commitment id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
         """
         return pulumi.get(self, "name")
 

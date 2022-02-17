@@ -2628,7 +2628,7 @@ type LocationPreference struct {
 	FollowGaeApplication *string `pulumi:"followGaeApplication"`
 	// This is always `sql#locationPreference`.
 	Kind *string `pulumi:"kind"`
-	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
 	SecondaryZone *string `pulumi:"secondaryZone"`
 	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
 	Zone *string `pulumi:"zone"`
@@ -2651,7 +2651,7 @@ type LocationPreferenceArgs struct {
 	FollowGaeApplication pulumi.StringPtrInput `pulumi:"followGaeApplication"`
 	// This is always `sql#locationPreference`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
 	SecondaryZone pulumi.StringPtrInput `pulumi:"secondaryZone"`
 	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
@@ -2745,7 +2745,7 @@ func (o LocationPreferenceOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocationPreference) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
 func (o LocationPreferenceOutput) SecondaryZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocationPreference) *string { return v.SecondaryZone }).(pulumi.StringPtrOutput)
 }
@@ -2799,7 +2799,7 @@ func (o LocationPreferencePtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
 func (o LocationPreferencePtrOutput) SecondaryZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocationPreference) *string {
 		if v == nil {
@@ -2825,7 +2825,7 @@ type LocationPreferenceResponse struct {
 	FollowGaeApplication string `pulumi:"followGaeApplication"`
 	// This is always `sql#locationPreference`.
 	Kind string `pulumi:"kind"`
-	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
 	SecondaryZone string `pulumi:"secondaryZone"`
 	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
 	Zone string `pulumi:"zone"`
@@ -2856,7 +2856,7 @@ func (o LocationPreferenceResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LocationPreferenceResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
 func (o LocationPreferenceResponseOutput) SecondaryZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LocationPreferenceResponse) string { return v.SecondaryZone }).(pulumi.StringOutput)
 }
