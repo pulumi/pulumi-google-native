@@ -15,10 +15,10 @@ __all__ = ['ImportJobArgs', 'ImportJob']
 @pulumi.input_type
 class ImportJobArgs:
     def __init__(__self__, *,
-                 import_job_id: pulumi.Input[str],
                  import_method: pulumi.Input['ImportJobImportMethod'],
                  key_ring_id: pulumi.Input[str],
                  protection_level: pulumi.Input['ImportJobProtectionLevel'],
+                 import_job_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -26,23 +26,15 @@ class ImportJobArgs:
         :param pulumi.Input['ImportJobImportMethod'] import_method: Immutable. The wrapping method to be used for incoming key material.
         :param pulumi.Input['ImportJobProtectionLevel'] protection_level: Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
         """
-        pulumi.set(__self__, "import_job_id", import_job_id)
         pulumi.set(__self__, "import_method", import_method)
         pulumi.set(__self__, "key_ring_id", key_ring_id)
         pulumi.set(__self__, "protection_level", protection_level)
+        if import_job_id is not None:
+            pulumi.set(__self__, "import_job_id", import_job_id)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter(name="importJobId")
-    def import_job_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "import_job_id")
-
-    @import_job_id.setter
-    def import_job_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "import_job_id", value)
 
     @property
     @pulumi.getter(name="importMethod")
@@ -78,6 +70,15 @@ class ImportJobArgs:
         pulumi.set(self, "protection_level", value)
 
     @property
+    @pulumi.getter(name="importJobId")
+    def import_job_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "import_job_id")
+
+    @import_job_id.setter
+    def import_job_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "import_job_id", value)
+
+    @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "location")
@@ -110,7 +111,6 @@ class ImportJob(pulumi.CustomResource):
                  __props__=None):
         """
         Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
-        Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -127,7 +127,6 @@ class ImportJob(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
-        Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -164,8 +163,6 @@ class ImportJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ImportJobArgs.__new__(ImportJobArgs)
 
-            if import_job_id is None and not opts.urn:
-                raise TypeError("Missing required property 'import_job_id'")
             __props__.__dict__["import_job_id"] = import_job_id
             if import_method is None and not opts.urn:
                 raise TypeError("Missing required property 'import_method'")

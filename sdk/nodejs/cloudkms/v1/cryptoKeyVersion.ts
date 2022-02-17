@@ -7,7 +7,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
- * Auto-naming is currently not supported for this resource.
  * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
  * on Google Cloud even though it will be deleted from Pulumi state.
  */
@@ -106,9 +105,6 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.cryptoKeyId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cryptoKeyId'");
-            }
             if ((!args || args.keyRingId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRingId'");
             }
@@ -155,7 +151,7 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
  * The set of arguments for constructing a CryptoKeyVersion resource.
  */
 export interface CryptoKeyVersionArgs {
-    cryptoKeyId: pulumi.Input<string>;
+    cryptoKeyId?: pulumi.Input<string>;
     /**
      * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
      */

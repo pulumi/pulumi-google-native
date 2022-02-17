@@ -7,7 +7,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
- * Auto-naming is currently not supported for this resource.
  * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
  * on Google Cloud even though it will be deleted from Pulumi state.
  */
@@ -90,9 +89,6 @@ export class ImportJob extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.importJobId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'importJobId'");
-            }
             if ((!args || args.importMethod === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'importMethod'");
             }
@@ -137,7 +133,7 @@ export class ImportJob extends pulumi.CustomResource {
  * The set of arguments for constructing a ImportJob resource.
  */
 export interface ImportJobArgs {
-    importJobId: pulumi.Input<string>;
+    importJobId?: pulumi.Input<string>;
     /**
      * Immutable. The wrapping method to be used for incoming key material.
      */

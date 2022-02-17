@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 {
     /// <summary>
     /// Creates a new EkmConnection in a given Project and Location.
-    /// Auto-naming is currently not supported for this resource.
     /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
@@ -50,7 +49,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public EkmConnection(string name, EkmConnectionArgs args, CustomResourceOptions? options = null)
+        public EkmConnection(string name, EkmConnectionArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:cloudkms/v1:EkmConnection", name, args ?? new EkmConnectionArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -87,8 +86,8 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 
     public sealed class EkmConnectionArgs : Pulumi.ResourceArgs
     {
-        [Input("ekmConnectionId", required: true)]
-        public Input<string> EkmConnectionId { get; set; } = null!;
+        [Input("ekmConnectionId")]
+        public Input<string>? EkmConnectionId { get; set; }
 
         /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.

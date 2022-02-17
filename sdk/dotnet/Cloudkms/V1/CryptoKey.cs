@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 {
     /// <summary>
     /// Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
-    /// Auto-naming is currently not supported for this resource.
     /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
@@ -135,8 +134,8 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [Input("cryptoKeyBackend")]
         public Input<string>? CryptoKeyBackend { get; set; }
 
-        [Input("cryptoKeyId", required: true)]
-        public Input<string> CryptoKeyId { get; set; } = null!;
+        [Input("cryptoKeyId")]
+        public Input<string>? CryptoKeyId { get; set; }
 
         /// <summary>
         /// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.

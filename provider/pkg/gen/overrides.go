@@ -1,4 +1,16 @@
-// Copyright 2016-2021, Pulumi Corporation.
+// Copyright 2016-2022, Pulumi Corporation.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 package gen
 
@@ -105,6 +117,16 @@ var resourceNamePropertyOverrides = map[string]string{
 	"run/v1alpha1:Job.jobsId":                                 "metadata.name",
 	"run/v1:DomainMapping.domainmappingsId":                   "metadata.name",
 	"run/v1:Service.servicesId":                               "metadata.name",
+}
+
+// autonameOverrides is a map of exceptions to the property used for auto-naming.
+// The key is the resource token, and the value is the property to use for auto-naming.
+var autonameOverrides = map[string]string{
+	"cloudkms/v1:CryptoKey":        "cryptoKeyId",
+	"cloudkms/v1:CryptoKeyVersion": "cryptoKeyId",
+	"cloudkms/v1:EkmConnection":    "ekmConnectionId",
+	"cloudkms/v1:ImportJob":        "importJobId",
+	"cloudkms/v1:KeyRing":          "keyRingId",
 }
 
 // csharpNamespaceOverrides is a map of canonical C# namespaces per lowercase module name. It only lists the ones

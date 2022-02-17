@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 {
     /// <summary>
     /// Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
-    /// Auto-naming is currently not supported for this resource.
     /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
@@ -123,8 +122,8 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 
     public sealed class ImportJobArgs : Pulumi.ResourceArgs
     {
-        [Input("importJobId", required: true)]
-        public Input<string> ImportJobId { get; set; } = null!;
+        [Input("importJobId")]
+        public Input<string>? ImportJobId { get; set; }
 
         /// <summary>
         /// Immutable. The wrapping method to be used for incoming key material.

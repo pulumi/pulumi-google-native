@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 {
     /// <summary>
     /// Create a new KeyRing in a given Project and Location.
-    /// Auto-naming is currently not supported for this resource.
     /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
@@ -38,7 +37,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public KeyRing(string name, KeyRingArgs args, CustomResourceOptions? options = null)
+        public KeyRing(string name, KeyRingArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:cloudkms/v1:KeyRing", name, args ?? new KeyRingArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -75,8 +74,8 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 
     public sealed class KeyRingArgs : Pulumi.ResourceArgs
     {
-        [Input("keyRingId", required: true)]
-        public Input<string> KeyRingId { get; set; } = null!;
+        [Input("keyRingId")]
+        public Input<string>? KeyRingId { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

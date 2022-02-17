@@ -7,12 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Creates a new EkmConnection in a given Project and Location.
-// Auto-naming is currently not supported for this resource.
 // Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 // on Google Cloud even though it will be deleted from Pulumi state.
 type EkmConnection struct {
@@ -32,12 +30,9 @@ type EkmConnection struct {
 func NewEkmConnection(ctx *pulumi.Context,
 	name string, args *EkmConnectionArgs, opts ...pulumi.ResourceOption) (*EkmConnection, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &EkmConnectionArgs{}
 	}
 
-	if args.EkmConnectionId == nil {
-		return nil, errors.New("invalid value for required argument 'EkmConnectionId'")
-	}
 	var resource EkmConnection
 	err := ctx.RegisterResource("google-native:cloudkms/v1:EkmConnection", name, args, &resource, opts...)
 	if err != nil {
@@ -70,7 +65,7 @@ func (EkmConnectionState) ElementType() reflect.Type {
 }
 
 type ekmConnectionArgs struct {
-	EkmConnectionId string `pulumi:"ekmConnectionId"`
+	EkmConnectionId *string `pulumi:"ekmConnectionId"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
 	Etag     *string `pulumi:"etag"`
 	Location *string `pulumi:"location"`
@@ -81,7 +76,7 @@ type ekmConnectionArgs struct {
 
 // The set of arguments for constructing a EkmConnection resource.
 type EkmConnectionArgs struct {
-	EkmConnectionId pulumi.StringInput
+	EkmConnectionId pulumi.StringPtrInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
 	Etag     pulumi.StringPtrInput
 	Location pulumi.StringPtrInput

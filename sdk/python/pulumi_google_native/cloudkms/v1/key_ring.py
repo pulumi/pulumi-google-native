@@ -13,13 +13,14 @@ __all__ = ['KeyRingArgs', 'KeyRing']
 @pulumi.input_type
 class KeyRingArgs:
     def __init__(__self__, *,
-                 key_ring_id: pulumi.Input[str],
+                 key_ring_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a KeyRing resource.
         """
-        pulumi.set(__self__, "key_ring_id", key_ring_id)
+        if key_ring_id is not None:
+            pulumi.set(__self__, "key_ring_id", key_ring_id)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if project is not None:
@@ -27,11 +28,11 @@ class KeyRingArgs:
 
     @property
     @pulumi.getter(name="keyRingId")
-    def key_ring_id(self) -> pulumi.Input[str]:
+    def key_ring_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "key_ring_id")
 
     @key_ring_id.setter
-    def key_ring_id(self, value: pulumi.Input[str]):
+    def key_ring_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key_ring_id", value)
 
     @property
@@ -64,7 +65,6 @@ class KeyRing(pulumi.CustomResource):
                  __props__=None):
         """
         Create a new KeyRing in a given Project and Location.
-        Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -75,11 +75,10 @@ class KeyRing(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: KeyRingArgs,
+                 args: Optional[KeyRingArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a new KeyRing in a given Project and Location.
-        Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -113,8 +112,6 @@ class KeyRing(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = KeyRingArgs.__new__(KeyRingArgs)
 
-            if key_ring_id is None and not opts.urn:
-                raise TypeError("Missing required property 'key_ring_id'")
             __props__.__dict__["key_ring_id"] = key_ring_id
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
