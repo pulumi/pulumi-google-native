@@ -43,7 +43,7 @@ type LookupServiceResult struct {
 	Creator string `pulumi:"creator"`
 	// The deletion time.
 	DeleteTime string `pulumi:"deleteTime"`
-	// User-provided description of the Service.
+	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description string `pulumi:"description"`
 	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag string `pulumi:"etag"`
@@ -160,7 +160,7 @@ func (o LookupServiceResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// User-provided description of the Service.
+// User-provided description of the Service. This field currently has a 512-character limit.
 func (o LookupServiceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Description }).(pulumi.StringOutput)
 }

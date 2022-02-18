@@ -778,6 +778,172 @@ func (o ChartOptionsResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v ChartOptionsResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
 
+// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+type CollapsibleGroup struct {
+	// The collapsed state of the widget on first page load.
+	Collapsed *bool `pulumi:"collapsed"`
+}
+
+// CollapsibleGroupInput is an input type that accepts CollapsibleGroupArgs and CollapsibleGroupOutput values.
+// You can construct a concrete instance of `CollapsibleGroupInput` via:
+//
+//          CollapsibleGroupArgs{...}
+type CollapsibleGroupInput interface {
+	pulumi.Input
+
+	ToCollapsibleGroupOutput() CollapsibleGroupOutput
+	ToCollapsibleGroupOutputWithContext(context.Context) CollapsibleGroupOutput
+}
+
+// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+type CollapsibleGroupArgs struct {
+	// The collapsed state of the widget on first page load.
+	Collapsed pulumi.BoolPtrInput `pulumi:"collapsed"`
+}
+
+func (CollapsibleGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollapsibleGroup)(nil)).Elem()
+}
+
+func (i CollapsibleGroupArgs) ToCollapsibleGroupOutput() CollapsibleGroupOutput {
+	return i.ToCollapsibleGroupOutputWithContext(context.Background())
+}
+
+func (i CollapsibleGroupArgs) ToCollapsibleGroupOutputWithContext(ctx context.Context) CollapsibleGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollapsibleGroupOutput)
+}
+
+func (i CollapsibleGroupArgs) ToCollapsibleGroupPtrOutput() CollapsibleGroupPtrOutput {
+	return i.ToCollapsibleGroupPtrOutputWithContext(context.Background())
+}
+
+func (i CollapsibleGroupArgs) ToCollapsibleGroupPtrOutputWithContext(ctx context.Context) CollapsibleGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollapsibleGroupOutput).ToCollapsibleGroupPtrOutputWithContext(ctx)
+}
+
+// CollapsibleGroupPtrInput is an input type that accepts CollapsibleGroupArgs, CollapsibleGroupPtr and CollapsibleGroupPtrOutput values.
+// You can construct a concrete instance of `CollapsibleGroupPtrInput` via:
+//
+//          CollapsibleGroupArgs{...}
+//
+//  or:
+//
+//          nil
+type CollapsibleGroupPtrInput interface {
+	pulumi.Input
+
+	ToCollapsibleGroupPtrOutput() CollapsibleGroupPtrOutput
+	ToCollapsibleGroupPtrOutputWithContext(context.Context) CollapsibleGroupPtrOutput
+}
+
+type collapsibleGroupPtrType CollapsibleGroupArgs
+
+func CollapsibleGroupPtr(v *CollapsibleGroupArgs) CollapsibleGroupPtrInput {
+	return (*collapsibleGroupPtrType)(v)
+}
+
+func (*collapsibleGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollapsibleGroup)(nil)).Elem()
+}
+
+func (i *collapsibleGroupPtrType) ToCollapsibleGroupPtrOutput() CollapsibleGroupPtrOutput {
+	return i.ToCollapsibleGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *collapsibleGroupPtrType) ToCollapsibleGroupPtrOutputWithContext(ctx context.Context) CollapsibleGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollapsibleGroupPtrOutput)
+}
+
+// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+type CollapsibleGroupOutput struct{ *pulumi.OutputState }
+
+func (CollapsibleGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollapsibleGroup)(nil)).Elem()
+}
+
+func (o CollapsibleGroupOutput) ToCollapsibleGroupOutput() CollapsibleGroupOutput {
+	return o
+}
+
+func (o CollapsibleGroupOutput) ToCollapsibleGroupOutputWithContext(ctx context.Context) CollapsibleGroupOutput {
+	return o
+}
+
+func (o CollapsibleGroupOutput) ToCollapsibleGroupPtrOutput() CollapsibleGroupPtrOutput {
+	return o.ToCollapsibleGroupPtrOutputWithContext(context.Background())
+}
+
+func (o CollapsibleGroupOutput) ToCollapsibleGroupPtrOutputWithContext(ctx context.Context) CollapsibleGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CollapsibleGroup) *CollapsibleGroup {
+		return &v
+	}).(CollapsibleGroupPtrOutput)
+}
+
+// The collapsed state of the widget on first page load.
+func (o CollapsibleGroupOutput) Collapsed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CollapsibleGroup) *bool { return v.Collapsed }).(pulumi.BoolPtrOutput)
+}
+
+type CollapsibleGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (CollapsibleGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollapsibleGroup)(nil)).Elem()
+}
+
+func (o CollapsibleGroupPtrOutput) ToCollapsibleGroupPtrOutput() CollapsibleGroupPtrOutput {
+	return o
+}
+
+func (o CollapsibleGroupPtrOutput) ToCollapsibleGroupPtrOutputWithContext(ctx context.Context) CollapsibleGroupPtrOutput {
+	return o
+}
+
+func (o CollapsibleGroupPtrOutput) Elem() CollapsibleGroupOutput {
+	return o.ApplyT(func(v *CollapsibleGroup) CollapsibleGroup {
+		if v != nil {
+			return *v
+		}
+		var ret CollapsibleGroup
+		return ret
+	}).(CollapsibleGroupOutput)
+}
+
+// The collapsed state of the widget on first page load.
+func (o CollapsibleGroupPtrOutput) Collapsed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CollapsibleGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Collapsed
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+type CollapsibleGroupResponse struct {
+	// The collapsed state of the widget on first page load.
+	Collapsed bool `pulumi:"collapsed"`
+}
+
+// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+type CollapsibleGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (CollapsibleGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollapsibleGroupResponse)(nil)).Elem()
+}
+
+func (o CollapsibleGroupResponseOutput) ToCollapsibleGroupResponseOutput() CollapsibleGroupResponseOutput {
+	return o
+}
+
+func (o CollapsibleGroupResponseOutput) ToCollapsibleGroupResponseOutputWithContext(ctx context.Context) CollapsibleGroupResponseOutput {
+	return o
+}
+
+// The collapsed state of the widget on first page load.
+func (o CollapsibleGroupResponseOutput) Collapsed() pulumi.BoolOutput {
+	return o.ApplyT(func(v CollapsibleGroupResponse) bool { return v.Collapsed }).(pulumi.BoolOutput)
+}
+
 // Defines the layout properties and content for a column.
 type Column struct {
 	// The relative weight of this column. The column weight is used to adjust the width of columns on the screen (relative to peers). Greater the weight, greater the width of the column on the screen. If omitted, a value of 1 is used while rendering.
@@ -5274,6 +5440,8 @@ type Widget struct {
 	AlertChart *AlertChart `pulumi:"alertChart"`
 	// A blank space.
 	Blank *Empty `pulumi:"blank"`
+	// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+	CollapsibleGroup *CollapsibleGroup `pulumi:"collapsibleGroup"`
 	// A widget that shows a stream of logs.
 	LogsPanel *LogsPanel `pulumi:"logsPanel"`
 	// A scorecard summarizing time series data.
@@ -5305,6 +5473,8 @@ type WidgetArgs struct {
 	AlertChart AlertChartPtrInput `pulumi:"alertChart"`
 	// A blank space.
 	Blank EmptyPtrInput `pulumi:"blank"`
+	// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+	CollapsibleGroup CollapsibleGroupPtrInput `pulumi:"collapsibleGroup"`
 	// A widget that shows a stream of logs.
 	LogsPanel LogsPanelPtrInput `pulumi:"logsPanel"`
 	// A scorecard summarizing time series data.
@@ -5432,6 +5602,11 @@ func (o WidgetOutput) Blank() EmptyPtrOutput {
 	return o.ApplyT(func(v Widget) *Empty { return v.Blank }).(EmptyPtrOutput)
 }
 
+// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+func (o WidgetOutput) CollapsibleGroup() CollapsibleGroupPtrOutput {
+	return o.ApplyT(func(v Widget) *CollapsibleGroup { return v.CollapsibleGroup }).(CollapsibleGroupPtrOutput)
+}
+
 // A widget that shows a stream of logs.
 func (o WidgetOutput) LogsPanel() LogsPanelPtrOutput {
 	return o.ApplyT(func(v Widget) *LogsPanel { return v.LogsPanel }).(LogsPanelPtrOutput)
@@ -5504,6 +5679,16 @@ func (o WidgetPtrOutput) Blank() EmptyPtrOutput {
 		}
 		return v.Blank
 	}).(EmptyPtrOutput)
+}
+
+// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+func (o WidgetPtrOutput) CollapsibleGroup() CollapsibleGroupPtrOutput {
+	return o.ApplyT(func(v *Widget) *CollapsibleGroup {
+		if v == nil {
+			return nil
+		}
+		return v.CollapsibleGroup
+	}).(CollapsibleGroupPtrOutput)
 }
 
 // A widget that shows a stream of logs.
@@ -5592,6 +5777,8 @@ type WidgetResponse struct {
 	AlertChart AlertChartResponse `pulumi:"alertChart"`
 	// A blank space.
 	Blank EmptyResponse `pulumi:"blank"`
+	// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+	CollapsibleGroup CollapsibleGroupResponse `pulumi:"collapsibleGroup"`
 	// A widget that shows a stream of logs.
 	LogsPanel LogsPanelResponse `pulumi:"logsPanel"`
 	// A scorecard summarizing time series data.
@@ -5629,6 +5816,11 @@ func (o WidgetResponseOutput) AlertChart() AlertChartResponseOutput {
 // A blank space.
 func (o WidgetResponseOutput) Blank() EmptyResponseOutput {
 	return o.ApplyT(func(v WidgetResponse) EmptyResponse { return v.Blank }).(EmptyResponseOutput)
+}
+
+// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+func (o WidgetResponseOutput) CollapsibleGroup() CollapsibleGroupResponseOutput {
+	return o.ApplyT(func(v WidgetResponse) CollapsibleGroupResponse { return v.CollapsibleGroup }).(CollapsibleGroupResponseOutput)
 }
 
 // A widget that shows a stream of logs.
@@ -6012,6 +6204,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AxisPtrInput)(nil)).Elem(), AxisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChartOptionsInput)(nil)).Elem(), ChartOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChartOptionsPtrInput)(nil)).Elem(), ChartOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollapsibleGroupInput)(nil)).Elem(), CollapsibleGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollapsibleGroupPtrInput)(nil)).Elem(), CollapsibleGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ColumnInput)(nil)).Elem(), ColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ColumnArrayInput)(nil)).Elem(), ColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ColumnLayoutInput)(nil)).Elem(), ColumnLayoutArgs{})
@@ -6075,6 +6269,9 @@ func init() {
 	pulumi.RegisterOutputType(ChartOptionsOutput{})
 	pulumi.RegisterOutputType(ChartOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ChartOptionsResponseOutput{})
+	pulumi.RegisterOutputType(CollapsibleGroupOutput{})
+	pulumi.RegisterOutputType(CollapsibleGroupPtrOutput{})
+	pulumi.RegisterOutputType(CollapsibleGroupResponseOutput{})
 	pulumi.RegisterOutputType(ColumnOutput{})
 	pulumi.RegisterOutputType(ColumnArrayOutput{})
 	pulumi.RegisterOutputType(ColumnLayoutOutput{})

@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly Outputs.EmptyResponse Blank;
         /// <summary>
+        /// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+        /// </summary>
+        public readonly Outputs.CollapsibleGroupResponse CollapsibleGroup;
+        /// <summary>
         /// A widget that shows a stream of logs.
         /// </summary>
         public readonly Outputs.LogsPanelResponse LogsPanel;
@@ -55,6 +59,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             Outputs.EmptyResponse blank,
 
+            Outputs.CollapsibleGroupResponse collapsibleGroup,
+
             Outputs.LogsPanelResponse logsPanel,
 
             Outputs.ScorecardResponse scorecard,
@@ -69,6 +75,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         {
             AlertChart = alertChart;
             Blank = blank;
+            CollapsibleGroup = collapsibleGroup;
             LogsPanel = logsPanel;
             Scorecard = scorecard;
             Text = text;

@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     public static class GetMetricDescriptor
     {
         /// <summary>
-        /// Gets a single metric descriptor. This method does not require a Workspace.
+        /// Gets a single metric descriptor.
         /// </summary>
         public static Task<GetMetricDescriptorResult> InvokeAsync(GetMetricDescriptorArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMetricDescriptorResult>("google-native:monitoring/v3:getMetricDescriptor", args ?? new GetMetricDescriptorArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets a single metric descriptor. This method does not require a Workspace.
+        /// Gets a single metric descriptor.
         /// </summary>
         public static Output<GetMetricDescriptorResult> Invoke(GetMetricDescriptorInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetMetricDescriptorResult>("google-native:monitoring/v3:getMetricDescriptor", args ?? new GetMetricDescriptorInvokeArgs(), options.WithDefaults());

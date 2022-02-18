@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Run.V2
         public Output<string> DeleteTime { get; private set; } = null!;
 
         /// <summary>
-        /// User-provided description of the Service.
+        /// User-provided description of the Service. This field currently has a 512-character limit.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -259,7 +259,7 @@ namespace Pulumi.GoogleNative.Run.V2
         public Input<string>? ClientVersion { get; set; }
 
         /// <summary>
-        /// User-provided description of the Service.
+        /// User-provided description of the Service. This field currently has a 512-character limit.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

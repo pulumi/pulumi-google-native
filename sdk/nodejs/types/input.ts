@@ -6154,7 +6154,7 @@ export namespace cloudchannel {
              */
             recipients?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+             * CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
              */
             regionCode: pulumi.Input<string>;
             /**
@@ -48544,6 +48544,16 @@ export namespace monitoring {
         }
 
         /**
+         * A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+         */
+        export interface CollapsibleGroupArgs {
+            /**
+             * The collapsed state of the widget on first page load.
+             */
+            collapsed?: pulumi.Input<boolean>;
+        }
+
+        /**
          * Defines the layout properties and content for a column.
          */
         export interface ColumnArgs {
@@ -48934,6 +48944,10 @@ export namespace monitoring {
              */
             blank?: pulumi.Input<inputs.monitoring.v1.EmptyArgs>;
             /**
+             * A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+             */
+            collapsibleGroup?: pulumi.Input<inputs.monitoring.v1.CollapsibleGroupArgs>;
+            /**
              * A widget that shows a stream of logs.
              */
             logsPanel?: pulumi.Input<inputs.monitoring.v1.LogsPanelArgs>;
@@ -49189,7 +49203,7 @@ export namespace monitoring {
          */
         export interface DocumentationArgs {
             /**
-             * The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+             * The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
              */
             content?: pulumi.Input<string>;
             /**
@@ -60286,7 +60300,7 @@ export namespace sqladmin {
              */
             kind?: pulumi.Input<string>;
             /**
-             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
+             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
              */
             secondaryZone?: pulumi.Input<string>;
             /**
@@ -60946,7 +60960,7 @@ export namespace sqladmin {
              */
             kind?: pulumi.Input<string>;
             /**
-             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
+             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
              */
             secondaryZone?: pulumi.Input<string>;
             /**

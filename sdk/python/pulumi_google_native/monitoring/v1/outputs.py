@@ -15,6 +15,7 @@ __all__ = [
     'AlertChartResponse',
     'AxisResponse',
     'ChartOptionsResponse',
+    'CollapsibleGroupResponse',
     'ColumnLayoutResponse',
     'ColumnResponse',
     'DataSetResponse',
@@ -195,6 +196,28 @@ class ChartOptionsResponse(dict):
         The chart mode.
         """
         return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class CollapsibleGroupResponse(dict):
+    """
+    A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+    """
+    def __init__(__self__, *,
+                 collapsed: bool):
+        """
+        A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+        :param bool collapsed: The collapsed state of the widget on first page load.
+        """
+        pulumi.set(__self__, "collapsed", collapsed)
+
+    @property
+    @pulumi.getter
+    def collapsed(self) -> bool:
+        """
+        The collapsed state of the widget on first page load.
+        """
+        return pulumi.get(self, "collapsed")
 
 
 @pulumi.output_type
@@ -1395,6 +1418,8 @@ class WidgetResponse(dict):
         suggest = None
         if key == "alertChart":
             suggest = "alert_chart"
+        elif key == "collapsibleGroup":
+            suggest = "collapsible_group"
         elif key == "logsPanel":
             suggest = "logs_panel"
         elif key == "timeSeriesTable":
@@ -1416,6 +1441,7 @@ class WidgetResponse(dict):
     def __init__(__self__, *,
                  alert_chart: 'outputs.AlertChartResponse',
                  blank: 'outputs.EmptyResponse',
+                 collapsible_group: 'outputs.CollapsibleGroupResponse',
                  logs_panel: 'outputs.LogsPanelResponse',
                  scorecard: 'outputs.ScorecardResponse',
                  text: 'outputs.TextResponse',
@@ -1426,6 +1452,7 @@ class WidgetResponse(dict):
         Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
         :param 'AlertChartResponse' alert_chart: A chart of alert policy data.
         :param 'EmptyResponse' blank: A blank space.
+        :param 'CollapsibleGroupResponse' collapsible_group: A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
         :param 'LogsPanelResponse' logs_panel: A widget that shows a stream of logs.
         :param 'ScorecardResponse' scorecard: A scorecard summarizing time series data.
         :param 'TextResponse' text: A raw string or markdown displaying textual content.
@@ -1435,6 +1462,7 @@ class WidgetResponse(dict):
         """
         pulumi.set(__self__, "alert_chart", alert_chart)
         pulumi.set(__self__, "blank", blank)
+        pulumi.set(__self__, "collapsible_group", collapsible_group)
         pulumi.set(__self__, "logs_panel", logs_panel)
         pulumi.set(__self__, "scorecard", scorecard)
         pulumi.set(__self__, "text", text)
@@ -1457,6 +1485,14 @@ class WidgetResponse(dict):
         A blank space.
         """
         return pulumi.get(self, "blank")
+
+    @property
+    @pulumi.getter(name="collapsibleGroup")
+    def collapsible_group(self) -> 'outputs.CollapsibleGroupResponse':
+        """
+        A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+        """
+        return pulumi.get(self, "collapsible_group")
 
     @property
     @pulumi.getter(name="logsPanel")

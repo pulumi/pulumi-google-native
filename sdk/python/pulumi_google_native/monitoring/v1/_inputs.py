@@ -14,6 +14,7 @@ __all__ = [
     'AlertChartArgs',
     'AxisArgs',
     'ChartOptionsArgs',
+    'CollapsibleGroupArgs',
     'ColumnLayoutArgs',
     'ColumnArgs',
     'DataSetArgs',
@@ -198,6 +199,30 @@ class ChartOptionsArgs:
     @mode.setter
     def mode(self, value: Optional[pulumi.Input['ChartOptionsMode']]):
         pulumi.set(self, "mode", value)
+
+
+@pulumi.input_type
+class CollapsibleGroupArgs:
+    def __init__(__self__, *,
+                 collapsed: Optional[pulumi.Input[bool]] = None):
+        """
+        A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+        :param pulumi.Input[bool] collapsed: The collapsed state of the widget on first page load.
+        """
+        if collapsed is not None:
+            pulumi.set(__self__, "collapsed", collapsed)
+
+    @property
+    @pulumi.getter
+    def collapsed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The collapsed state of the widget on first page load.
+        """
+        return pulumi.get(self, "collapsed")
+
+    @collapsed.setter
+    def collapsed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "collapsed", value)
 
 
 @pulumi.input_type
@@ -1343,6 +1368,7 @@ class WidgetArgs:
     def __init__(__self__, *,
                  alert_chart: Optional[pulumi.Input['AlertChartArgs']] = None,
                  blank: Optional[pulumi.Input['EmptyArgs']] = None,
+                 collapsible_group: Optional[pulumi.Input['CollapsibleGroupArgs']] = None,
                  logs_panel: Optional[pulumi.Input['LogsPanelArgs']] = None,
                  scorecard: Optional[pulumi.Input['ScorecardArgs']] = None,
                  text: Optional[pulumi.Input['TextArgs']] = None,
@@ -1353,6 +1379,7 @@ class WidgetArgs:
         Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
         :param pulumi.Input['AlertChartArgs'] alert_chart: A chart of alert policy data.
         :param pulumi.Input['EmptyArgs'] blank: A blank space.
+        :param pulumi.Input['CollapsibleGroupArgs'] collapsible_group: A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
         :param pulumi.Input['LogsPanelArgs'] logs_panel: A widget that shows a stream of logs.
         :param pulumi.Input['ScorecardArgs'] scorecard: A scorecard summarizing time series data.
         :param pulumi.Input['TextArgs'] text: A raw string or markdown displaying textual content.
@@ -1364,6 +1391,8 @@ class WidgetArgs:
             pulumi.set(__self__, "alert_chart", alert_chart)
         if blank is not None:
             pulumi.set(__self__, "blank", blank)
+        if collapsible_group is not None:
+            pulumi.set(__self__, "collapsible_group", collapsible_group)
         if logs_panel is not None:
             pulumi.set(__self__, "logs_panel", logs_panel)
         if scorecard is not None:
@@ -1400,6 +1429,18 @@ class WidgetArgs:
     @blank.setter
     def blank(self, value: Optional[pulumi.Input['EmptyArgs']]):
         pulumi.set(self, "blank", value)
+
+    @property
+    @pulumi.getter(name="collapsibleGroup")
+    def collapsible_group(self) -> Optional[pulumi.Input['CollapsibleGroupArgs']]:
+        """
+        A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+        """
+        return pulumi.get(self, "collapsible_group")
+
+    @collapsible_group.setter
+    def collapsible_group(self, value: Optional[pulumi.Input['CollapsibleGroupArgs']]):
+        pulumi.set(self, "collapsible_group", value)
 
     @property
     @pulumi.getter(name="logsPanel")

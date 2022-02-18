@@ -165,7 +165,7 @@ def get_metric_descriptor(metric_descriptor_id: Optional[str] = None,
                           project: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMetricDescriptorResult:
     """
-    Gets a single metric descriptor. This method does not require a Workspace.
+    Gets a single metric descriptor.
     """
     __args__ = dict()
     __args__['metricDescriptorId'] = metric_descriptor_id
@@ -195,6 +195,6 @@ def get_metric_descriptor_output(metric_descriptor_id: Optional[pulumi.Input[str
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetricDescriptorResult]:
     """
-    Gets a single metric descriptor. This method does not require a Workspace.
+    Gets a single metric descriptor.
     """
     ...

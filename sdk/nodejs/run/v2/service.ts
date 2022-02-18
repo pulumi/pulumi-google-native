@@ -68,7 +68,7 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
-     * User-provided description of the Service.
+     * User-provided description of the Service. This field currently has a 512-character limit.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -253,7 +253,7 @@ export interface ServiceArgs {
      */
     clientVersion?: pulumi.Input<string>;
     /**
-     * User-provided description of the Service.
+     * User-provided description of the Service. This field currently has a 512-character limit.
      */
     description?: pulumi.Input<string>;
     /**

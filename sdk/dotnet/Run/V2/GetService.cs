@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         public readonly string DeleteTime;
         /// <summary>
-        /// User-provided description of the Service.
+        /// User-provided description of the Service. This field currently has a 512-character limit.
         /// </summary>
         public readonly string Description;
         /// <summary>

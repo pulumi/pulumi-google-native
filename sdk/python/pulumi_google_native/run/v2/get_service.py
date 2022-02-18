@@ -172,7 +172,7 @@ class GetServiceResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        User-provided description of the Service.
+        User-provided description of the Service. This field currently has a 512-character limit.
         """
         return pulumi.get(self, "description")
 

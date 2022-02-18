@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Gets a single metric descriptor. This method does not require a Workspace.
+ * Gets a single metric descriptor.
  */
 export function getMetricDescriptor(args: GetMetricDescriptorArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricDescriptorResult> {
     if (!opts) {

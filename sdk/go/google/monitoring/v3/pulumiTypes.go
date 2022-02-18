@@ -2298,7 +2298,7 @@ func (o DistributionCutResponseOutput) Range() GoogleMonitoringV3RangeResponseOu
 
 // A content string and a MIME type that describes the content string's format.
 type Documentation struct {
-	// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+	// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 	Content *string `pulumi:"content"`
 	// The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
 	MimeType *string `pulumi:"mimeType"`
@@ -2317,7 +2317,7 @@ type DocumentationInput interface {
 
 // A content string and a MIME type that describes the content string's format.
 type DocumentationArgs struct {
-	// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+	// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
 	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
@@ -2401,7 +2401,7 @@ func (o DocumentationOutput) ToDocumentationPtrOutputWithContext(ctx context.Con
 	}).(DocumentationPtrOutput)
 }
 
-// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 func (o DocumentationOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Documentation) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
@@ -2435,7 +2435,7 @@ func (o DocumentationPtrOutput) Elem() DocumentationOutput {
 	}).(DocumentationOutput)
 }
 
-// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 func (o DocumentationPtrOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Documentation) *string {
 		if v == nil {
@@ -2457,7 +2457,7 @@ func (o DocumentationPtrOutput) MimeType() pulumi.StringPtrOutput {
 
 // A content string and a MIME type that describes the content string's format.
 type DocumentationResponse struct {
-	// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+	// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 	Content string `pulumi:"content"`
 	// The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
 	MimeType string `pulumi:"mimeType"`
@@ -2478,7 +2478,7 @@ func (o DocumentationResponseOutput) ToDocumentationResponseOutputWithContext(ct
 	return o
 }
 
-// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 func (o DocumentationResponseOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentationResponse) string { return v.Content }).(pulumi.StringOutput)
 }

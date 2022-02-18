@@ -620,7 +620,7 @@ class DocumentationArgs:
                  mime_type: Optional[pulumi.Input[str]] = None):
         """
         A content string and a MIME type that describes the content string's format.
-        :param pulumi.Input[str] content: The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+        :param pulumi.Input[str] content: The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
         :param pulumi.Input[str] mime_type: The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
         """
         if content is not None:
@@ -632,7 +632,7 @@ class DocumentationArgs:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
-        The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+        The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
         """
         return pulumi.get(self, "content")
 

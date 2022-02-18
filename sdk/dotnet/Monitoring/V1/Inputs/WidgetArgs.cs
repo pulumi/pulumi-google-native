@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<Inputs.EmptyArgs>? Blank { get; set; }
 
         /// <summary>
+        /// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+        /// </summary>
+        [Input("collapsibleGroup")]
+        public Input<Inputs.CollapsibleGroupArgs>? CollapsibleGroup { get; set; }
+
+        /// <summary>
         /// A widget that shows a stream of logs.
         /// </summary>
         [Input("logsPanel")]

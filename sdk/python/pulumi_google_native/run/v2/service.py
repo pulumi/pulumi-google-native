@@ -38,7 +38,7 @@ class ServiceArgs:
         :param pulumi.Input['GoogleCloudRunOpV2BinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[str] description: User-provided description of the Service.
+        :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input['ServiceIngress'] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         :param pulumi.Input['ServiceLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
@@ -147,7 +147,7 @@ class ServiceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        User-provided description of the Service.
+        User-provided description of the Service. This field currently has a 512-character limit.
         """
         return pulumi.get(self, "description")
 
@@ -273,7 +273,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudRunOpV2BinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[str] description: User-provided description of the Service.
+        :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input['ServiceIngress'] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         :param pulumi.Input['ServiceLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
@@ -488,7 +488,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        User-provided description of the Service.
+        User-provided description of the Service. This field currently has a 512-character limit.
         """
         return pulumi.get(self, "description")
 

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets a single metric descriptor. This method does not require a Workspace.
+// Gets a single metric descriptor.
 func LookupMetricDescriptor(ctx *pulumi.Context, args *LookupMetricDescriptorArgs, opts ...pulumi.InvokeOption) (*LookupMetricDescriptorResult, error) {
 	var rv LookupMetricDescriptorResult
 	err := ctx.Invoke("google-native:monitoring/v3:getMetricDescriptor", args, &rv, opts...)

@@ -31,7 +31,7 @@ type Service struct {
 	Creator pulumi.StringOutput `pulumi:"creator"`
 	// The deletion time.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
-	// User-provided description of the Service.
+	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -126,7 +126,7 @@ type serviceArgs struct {
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion *string `pulumi:"clientVersion"`
-	// User-provided description of the Service.
+	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description *string `pulumi:"description"`
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 	Ingress *ServiceIngress `pulumi:"ingress"`
@@ -156,7 +156,7 @@ type ServiceArgs struct {
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
 	ClientVersion pulumi.StringPtrInput
-	// User-provided description of the Service.
+	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description pulumi.StringPtrInput
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 	Ingress ServiceIngressPtrInput

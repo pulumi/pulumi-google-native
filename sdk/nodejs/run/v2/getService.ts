@@ -61,7 +61,7 @@ export interface GetServiceResult {
      */
     readonly deleteTime: string;
     /**
-     * User-provided description of the Service.
+     * User-provided description of the Service. This field currently has a 512-character limit.
      */
     readonly description: string;
     /**
