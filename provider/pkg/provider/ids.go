@@ -114,8 +114,7 @@ func buildUrl(uriTemplate string, params []resources.CloudAPIResourceParam, inpu
 // and other properties.
 func getDefaultName(urn resource.URN, pattern string,
 	olds, news resource.PropertyMap) resource.PropertyValue {
-	key := pattern[1 : len(pattern)-1]
-	if v, ok := olds[resource.PropertyKey(key)]; ok {
+	if v, ok := olds[resource.PropertyKey("name")]; ok {
 		return v
 	}
 
@@ -125,7 +124,7 @@ func getDefaultName(urn resource.URN, pattern string,
 	random, err := resource.NewUniqueHex(name+"-", 7, 0)
 	contract.AssertNoError(err)
 
-	result := strings.Replace(pattern, pattern, random, 1)
+	result := strings.Replace(pattern, "{name}", random, 1)
 	for key, value := range news {
 		if !value.HasValue() || !value.IsString() {
 			continue
