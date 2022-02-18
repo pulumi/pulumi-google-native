@@ -252,12 +252,9 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 	}
 
 	// Auto-naming.
-	if res.AutoNamePattern != "" {
-		name := res.AutoNamePattern[1 : len(res.AutoNamePattern)-1]
-		nameKey := resource.PropertyKey(name)
-		if !news.HasValue(nameKey) {
-			news[nameKey] = getDefaultName(urn, res.AutoNamePattern, olds, news)
-		}
+	nameKey := resource.PropertyKey("name")
+	if res.AutoNamePattern != "" && !news.HasValue(nameKey) {
+		news[nameKey] = getDefaultName(urn, res.AutoNamePattern, olds, news)
 	}
 
 	// Apply property patterns.
