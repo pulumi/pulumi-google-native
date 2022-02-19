@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 {
     /// <summary>
     /// Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
-    /// Auto-naming is currently not supported for this resource.
     /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
@@ -147,8 +146,8 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 
     public sealed class CryptoKeyVersionArgs : Pulumi.ResourceArgs
     {
-        [Input("cryptoKeyId", required: true)]
-        public Input<string> CryptoKeyId { get; set; } = null!;
+        [Input("cryptoKeyId")]
+        public Input<string>? CryptoKeyId { get; set; }
 
         /// <summary>
         /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.

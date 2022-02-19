@@ -15,7 +15,7 @@ __all__ = ['EkmConnectionArgs', 'EkmConnection']
 @pulumi.input_type
 class EkmConnectionArgs:
     def __init__(__self__, *,
-                 ekm_connection_id: pulumi.Input[str],
+                 ekm_connection_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -25,7 +25,8 @@ class EkmConnectionArgs:
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceResolverArgs']]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
         """
-        pulumi.set(__self__, "ekm_connection_id", ekm_connection_id)
+        if ekm_connection_id is not None:
+            pulumi.set(__self__, "ekm_connection_id", ekm_connection_id)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if location is not None:
@@ -37,11 +38,11 @@ class EkmConnectionArgs:
 
     @property
     @pulumi.getter(name="ekmConnectionId")
-    def ekm_connection_id(self) -> pulumi.Input[str]:
+    def ekm_connection_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "ekm_connection_id")
 
     @ekm_connection_id.setter
-    def ekm_connection_id(self, value: pulumi.Input[str]):
+    def ekm_connection_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ekm_connection_id", value)
 
     @property
@@ -100,7 +101,6 @@ class EkmConnection(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new EkmConnection in a given Project and Location.
-        Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -113,11 +113,10 @@ class EkmConnection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EkmConnectionArgs,
+                 args: Optional[EkmConnectionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new EkmConnection in a given Project and Location.
-        Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -153,8 +152,6 @@ class EkmConnection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EkmConnectionArgs.__new__(EkmConnectionArgs)
 
-            if ekm_connection_id is None and not opts.urn:
-                raise TypeError("Missing required property 'ekm_connection_id'")
             __props__.__dict__["ekm_connection_id"] = ekm_connection_id
             __props__.__dict__["etag"] = etag
             __props__.__dict__["location"] = location

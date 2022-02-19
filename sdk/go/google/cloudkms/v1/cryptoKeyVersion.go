@@ -12,7 +12,6 @@ import (
 )
 
 // Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
-// Auto-naming is currently not supported for this resource.
 // Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 // on Google Cloud even though it will be deleted from Pulumi state.
 type CryptoKeyVersion struct {
@@ -55,9 +54,6 @@ func NewCryptoKeyVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CryptoKeyId == nil {
-		return nil, errors.New("invalid value for required argument 'CryptoKeyId'")
-	}
 	if args.KeyRingId == nil {
 		return nil, errors.New("invalid value for required argument 'KeyRingId'")
 	}
@@ -93,7 +89,7 @@ func (CryptoKeyVersionState) ElementType() reflect.Type {
 }
 
 type cryptoKeyVersionArgs struct {
-	CryptoKeyId string `pulumi:"cryptoKeyId"`
+	CryptoKeyId *string `pulumi:"cryptoKeyId"`
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	ExternalProtectionLevelOptions *ExternalProtectionLevelOptions `pulumi:"externalProtectionLevelOptions"`
 	KeyRingId                      string                          `pulumi:"keyRingId"`
@@ -105,7 +101,7 @@ type cryptoKeyVersionArgs struct {
 
 // The set of arguments for constructing a CryptoKeyVersion resource.
 type CryptoKeyVersionArgs struct {
-	CryptoKeyId pulumi.StringInput
+	CryptoKeyId pulumi.StringPtrInput
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsPtrInput
 	KeyRingId                      pulumi.StringInput

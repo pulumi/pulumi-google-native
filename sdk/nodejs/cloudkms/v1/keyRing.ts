@@ -6,7 +6,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Create a new KeyRing in a given Project and Location.
- * Auto-naming is currently not supported for this resource.
  * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
  * on Google Cloud even though it will be deleted from Pulumi state.
  */
@@ -53,13 +52,10 @@ export class KeyRing extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: KeyRingArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: KeyRingArgs, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.keyRingId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'keyRingId'");
-            }
             resourceInputs["keyRingId"] = args ? args.keyRingId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -78,7 +74,7 @@ export class KeyRing extends pulumi.CustomResource {
  * The set of arguments for constructing a KeyRing resource.
  */
 export interface KeyRingArgs {
-    keyRingId: pulumi.Input<string>;
+    keyRingId?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

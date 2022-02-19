@@ -12,7 +12,6 @@ import (
 )
 
 // Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
-// Auto-naming is currently not supported for this resource.
 // Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 // on Google Cloud even though it will be deleted from Pulumi state.
 type ImportJob struct {
@@ -47,9 +46,6 @@ func NewImportJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ImportJobId == nil {
-		return nil, errors.New("invalid value for required argument 'ImportJobId'")
-	}
 	if args.ImportMethod == nil {
 		return nil, errors.New("invalid value for required argument 'ImportMethod'")
 	}
@@ -91,7 +87,7 @@ func (ImportJobState) ElementType() reflect.Type {
 }
 
 type importJobArgs struct {
-	ImportJobId string `pulumi:"importJobId"`
+	ImportJobId *string `pulumi:"importJobId"`
 	// Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod ImportJobImportMethod `pulumi:"importMethod"`
 	KeyRingId    string                `pulumi:"keyRingId"`
@@ -103,7 +99,7 @@ type importJobArgs struct {
 
 // The set of arguments for constructing a ImportJob resource.
 type ImportJobArgs struct {
-	ImportJobId pulumi.StringInput
+	ImportJobId pulumi.StringPtrInput
 	// Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod ImportJobImportMethodInput
 	KeyRingId    pulumi.StringInput

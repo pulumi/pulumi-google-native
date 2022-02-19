@@ -16,8 +16,8 @@ __all__ = ['CryptoKeyVersionArgs', 'CryptoKeyVersion']
 @pulumi.input_type
 class CryptoKeyVersionArgs:
     def __init__(__self__, *,
-                 crypto_key_id: pulumi.Input[str],
                  key_ring_id: pulumi.Input[str],
+                 crypto_key_id: Optional[pulumi.Input[str]] = None,
                  external_protection_level_options: Optional[pulumi.Input['ExternalProtectionLevelOptionsArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -27,8 +27,9 @@ class CryptoKeyVersionArgs:
         :param pulumi.Input['ExternalProtectionLevelOptionsArgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         :param pulumi.Input['CryptoKeyVersionState'] state: The current state of the CryptoKeyVersion.
         """
-        pulumi.set(__self__, "crypto_key_id", crypto_key_id)
         pulumi.set(__self__, "key_ring_id", key_ring_id)
+        if crypto_key_id is not None:
+            pulumi.set(__self__, "crypto_key_id", crypto_key_id)
         if external_protection_level_options is not None:
             pulumi.set(__self__, "external_protection_level_options", external_protection_level_options)
         if location is not None:
@@ -39,15 +40,6 @@ class CryptoKeyVersionArgs:
             pulumi.set(__self__, "state", state)
 
     @property
-    @pulumi.getter(name="cryptoKeyId")
-    def crypto_key_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "crypto_key_id")
-
-    @crypto_key_id.setter
-    def crypto_key_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "crypto_key_id", value)
-
-    @property
     @pulumi.getter(name="keyRingId")
     def key_ring_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "key_ring_id")
@@ -55,6 +47,15 @@ class CryptoKeyVersionArgs:
     @key_ring_id.setter
     def key_ring_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "key_ring_id", value)
+
+    @property
+    @pulumi.getter(name="cryptoKeyId")
+    def crypto_key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "crypto_key_id")
+
+    @crypto_key_id.setter
+    def crypto_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "crypto_key_id", value)
 
     @property
     @pulumi.getter(name="externalProtectionLevelOptions")
@@ -113,7 +114,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
                  __props__=None):
         """
         Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
-        Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -130,7 +130,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
-        Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -167,8 +166,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CryptoKeyVersionArgs.__new__(CryptoKeyVersionArgs)
 
-            if crypto_key_id is None and not opts.urn:
-                raise TypeError("Missing required property 'crypto_key_id'")
             __props__.__dict__["crypto_key_id"] = crypto_key_id
             __props__.__dict__["external_protection_level_options"] = external_protection_level_options
             if key_ring_id is None and not opts.urn:

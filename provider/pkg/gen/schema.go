@@ -1,4 +1,16 @@
-// Copyright 2016-2021, Pulumi Corporation.
+// Copyright 2016-2022, Pulumi Corporation.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 package gen
 
@@ -70,15 +82,15 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 				Type:        "object",
 				Properties: map[string]schema.PropertySpec{
 					"project": {
-						TypeSpec: schema.TypeSpec{Type: "string"},
+						TypeSpec:    schema.TypeSpec{Type: "string"},
 						Description: "The default project to manage resources in. If another project is specified on a resource, it will take precedence.",
 					},
 					"region": {
-						TypeSpec: schema.TypeSpec{Type: "string"},
+						TypeSpec:    schema.TypeSpec{Type: "string"},
 						Description: "The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.",
 					},
 					"zone": {
-						TypeSpec: schema.TypeSpec{Type: "string"},
+						TypeSpec:    schema.TypeSpec{Type: "string"},
 						Description: "The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.",
 					},
 				},
@@ -511,6 +523,9 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		if err == nil {
 			requiredInputProperties.Delete("name")
 			resourceMeta.AutoNamePattern = namePattern
+		} else if name, ok := autonameOverrides[fmt.Sprintf("%s:%s", g.mod, typeName)]; ok {
+			requiredInputProperties.Delete(name)
+			resourceMeta.AutoNamePattern = fmt.Sprintf("{%s}", name)
 		} else {
 			description += "\nAuto-naming is currently not supported for this resource."
 		}

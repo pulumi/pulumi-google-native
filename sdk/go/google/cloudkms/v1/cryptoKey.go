@@ -12,7 +12,6 @@ import (
 )
 
 // Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
-// Auto-naming is currently not supported for this resource.
 // Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 // on Google Cloud even though it will be deleted from Pulumi state.
 type CryptoKey struct {
@@ -49,9 +48,6 @@ func NewCryptoKey(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CryptoKeyId == nil {
-		return nil, errors.New("invalid value for required argument 'CryptoKeyId'")
-	}
 	if args.KeyRingId == nil {
 		return nil, errors.New("invalid value for required argument 'KeyRingId'")
 	}
@@ -89,7 +85,7 @@ func (CryptoKeyState) ElementType() reflect.Type {
 type cryptoKeyArgs struct {
 	// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
 	CryptoKeyBackend *string `pulumi:"cryptoKeyBackend"`
-	CryptoKeyId      string  `pulumi:"cryptoKeyId"`
+	CryptoKeyId      *string `pulumi:"cryptoKeyId"`
 	// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
 	// Immutable. Whether this key may contain imported versions only.
@@ -114,7 +110,7 @@ type cryptoKeyArgs struct {
 type CryptoKeyArgs struct {
 	// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
 	CryptoKeyBackend pulumi.StringPtrInput
-	CryptoKeyId      pulumi.StringInput
+	CryptoKeyId      pulumi.StringPtrInput
 	// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringPtrInput
 	// Immutable. Whether this key may contain imported versions only.

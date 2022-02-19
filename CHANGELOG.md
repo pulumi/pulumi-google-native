@@ -3,6 +3,11 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+Improvements:
+
+- Update to support the latest resource definitions and the latest Pulumi SDK
+- Implement auto-naming for KMS resources [#351](https://github.com/pulumi/pulumi-google-native/pull/351)
+
 ## 0.14.0 (2022-02-02)
 
 - Update minimum supported Go version to 1.16

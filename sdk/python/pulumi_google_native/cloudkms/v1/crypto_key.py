@@ -16,9 +16,9 @@ __all__ = ['CryptoKeyArgs', 'CryptoKey']
 @pulumi.input_type
 class CryptoKeyArgs:
     def __init__(__self__, *,
-                 crypto_key_id: pulumi.Input[str],
                  key_ring_id: pulumi.Input[str],
                  crypto_key_backend: Optional[pulumi.Input[str]] = None,
+                 crypto_key_id: Optional[pulumi.Input[str]] = None,
                  destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
                  import_only: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -40,10 +40,11 @@ class CryptoKeyArgs:
         :param pulumi.Input[str] rotation_period: next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
         """
-        pulumi.set(__self__, "crypto_key_id", crypto_key_id)
         pulumi.set(__self__, "key_ring_id", key_ring_id)
         if crypto_key_backend is not None:
             pulumi.set(__self__, "crypto_key_backend", crypto_key_backend)
+        if crypto_key_id is not None:
+            pulumi.set(__self__, "crypto_key_id", crypto_key_id)
         if destroy_scheduled_duration is not None:
             pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
         if import_only is not None:
@@ -66,15 +67,6 @@ class CryptoKeyArgs:
             pulumi.set(__self__, "version_template", version_template)
 
     @property
-    @pulumi.getter(name="cryptoKeyId")
-    def crypto_key_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "crypto_key_id")
-
-    @crypto_key_id.setter
-    def crypto_key_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "crypto_key_id", value)
-
-    @property
     @pulumi.getter(name="keyRingId")
     def key_ring_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "key_ring_id")
@@ -94,6 +86,15 @@ class CryptoKeyArgs:
     @crypto_key_backend.setter
     def crypto_key_backend(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "crypto_key_backend", value)
+
+    @property
+    @pulumi.getter(name="cryptoKeyId")
+    def crypto_key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "crypto_key_id")
+
+    @crypto_key_id.setter
+    def crypto_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "crypto_key_id", value)
 
     @property
     @pulumi.getter(name="destroyScheduledDuration")
@@ -228,7 +229,6 @@ class CryptoKey(pulumi.CustomResource):
                  __props__=None):
         """
         Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
-        Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -251,7 +251,6 @@ class CryptoKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
-        Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -296,8 +295,6 @@ class CryptoKey(pulumi.CustomResource):
             __props__ = CryptoKeyArgs.__new__(CryptoKeyArgs)
 
             __props__.__dict__["crypto_key_backend"] = crypto_key_backend
-            if crypto_key_id is None and not opts.urn:
-                raise TypeError("Missing required property 'crypto_key_id'")
             __props__.__dict__["crypto_key_id"] = crypto_key_id
             __props__.__dict__["destroy_scheduled_duration"] = destroy_scheduled_duration
             __props__.__dict__["import_only"] = import_only

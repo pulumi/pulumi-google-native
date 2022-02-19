@@ -7,12 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Create a new KeyRing in a given Project and Location.
-// Auto-naming is currently not supported for this resource.
 // Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 // on Google Cloud even though it will be deleted from Pulumi state.
 type KeyRing struct {
@@ -28,12 +26,9 @@ type KeyRing struct {
 func NewKeyRing(ctx *pulumi.Context,
 	name string, args *KeyRingArgs, opts ...pulumi.ResourceOption) (*KeyRing, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &KeyRingArgs{}
 	}
 
-	if args.KeyRingId == nil {
-		return nil, errors.New("invalid value for required argument 'KeyRingId'")
-	}
 	var resource KeyRing
 	err := ctx.RegisterResource("google-native:cloudkms/v1:KeyRing", name, args, &resource, opts...)
 	if err != nil {
@@ -66,14 +61,14 @@ func (KeyRingState) ElementType() reflect.Type {
 }
 
 type keyRingArgs struct {
-	KeyRingId string  `pulumi:"keyRingId"`
+	KeyRingId *string `pulumi:"keyRingId"`
 	Location  *string `pulumi:"location"`
 	Project   *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a KeyRing resource.
 type KeyRingArgs struct {
-	KeyRingId pulumi.StringInput
+	KeyRingId pulumi.StringPtrInput
 	Location  pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput
 }

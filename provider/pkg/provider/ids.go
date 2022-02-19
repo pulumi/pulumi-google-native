@@ -3,12 +3,13 @@ package provider
 
 import (
 	"fmt"
+	"net/url"
+	"strings"
+
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
-	"net/url"
-	"strings"
 )
 
 func calculateResourceId(res resources.CloudAPIResource, inputs map[string]interface{}, outputs map[string]interface{}) (string, error) {
@@ -49,7 +50,7 @@ func evalPropertyValue(values map[string]interface{}, path string) (string, bool
 	parts := strings.Split(path, ".")
 	for idx, part := range parts {
 		value := current[part]
-		if idx == len(parts) - 1 {
+		if idx == len(parts)-1 {
 			if str, ok := value.(string); ok {
 				return str, true
 			}

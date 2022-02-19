@@ -7,7 +7,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
- * Auto-naming is currently not supported for this resource.
  * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
  * on Google Cloud even though it will be deleted from Pulumi state.
  */
@@ -94,9 +93,6 @@ export class CryptoKey extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.cryptoKeyId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cryptoKeyId'");
-            }
             if ((!args || args.keyRingId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRingId'");
             }
@@ -142,7 +138,7 @@ export interface CryptoKeyArgs {
      * Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*&#47;locations/*&#47;ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
      */
     cryptoKeyBackend?: pulumi.Input<string>;
-    cryptoKeyId: pulumi.Input<string>;
+    cryptoKeyId?: pulumi.Input<string>;
     /**
      * Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
      */
