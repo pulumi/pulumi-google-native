@@ -32,9 +32,9 @@ const (
 	EntryTypeDataSourceConnection = EntryType("DATA_SOURCE_CONNECTION")
 	// Output only. Routine, for example, a BigQuery routine.
 	EntryTypeRoutine = EntryType("ROUTINE")
-	// A Dataproc Metastore lake.
+	// A Dataplex lake.
 	EntryTypeLake = EntryType("LAKE")
-	// A Dataproc Metastore zone.
+	// A Dataplex zone.
 	EntryTypeZone = EntryType("ZONE")
 	// A service, for example, a Dataproc Metastore service.
 	EntryTypeService = EntryType("SERVICE")

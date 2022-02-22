@@ -40,11 +40,11 @@ export const EntryType = {
      */
     Routine: "ROUTINE",
     /**
-     * A Dataproc Metastore lake.
+     * A Dataplex lake.
      */
     Lake: "LAKE",
     /**
-     * A Dataproc Metastore zone.
+     * A Dataplex zone.
      */
     Zone: "ZONE",
     /**

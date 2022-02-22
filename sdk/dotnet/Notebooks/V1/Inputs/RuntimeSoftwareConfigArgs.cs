@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public Input<int>? IdleShutdownTimeout { get; set; }
 
         /// <summary>
-        /// Install Nvidia Driver automatically.
+        /// Install Nvidia Driver automatically. Default: True
         /// </summary>
         [Input("installGpuDriver")]
         public Input<bool>? InstallGpuDriver { get; set; }

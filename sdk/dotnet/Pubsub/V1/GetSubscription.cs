@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// </summary>
         public readonly bool Detached;
         /// <summary>
+        /// If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
+        /// </summary>
+        public readonly bool EnableExactlyOnceDelivery;
+        /// <summary>
         /// If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
         /// </summary>
         public readonly bool EnableMessageOrdering;
@@ -124,6 +128,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1
 
             bool detached,
 
+            bool enableExactlyOnceDelivery,
+
             bool enableMessageOrdering,
 
             Outputs.ExpirationPolicyResponse expirationPolicy,
@@ -151,6 +157,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
             AckDeadlineSeconds = ackDeadlineSeconds;
             DeadLetterPolicy = deadLetterPolicy;
             Detached = detached;
+            EnableExactlyOnceDelivery = enableExactlyOnceDelivery;
             EnableMessageOrdering = enableMessageOrdering;
             ExpirationPolicy = expirationPolicy;
             Filter = filter;

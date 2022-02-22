@@ -48,6 +48,10 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly detached!: pulumi.Output<boolean>;
     /**
+     * If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
+     */
+    public readonly enableExactlyOnceDelivery!: pulumi.Output<boolean>;
+    /**
      * If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
      */
     public readonly enableMessageOrdering!: pulumi.Output<boolean>;
@@ -116,6 +120,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
             resourceInputs["deadLetterPolicy"] = args ? args.deadLetterPolicy : undefined;
             resourceInputs["detached"] = args ? args.detached : undefined;
+            resourceInputs["enableExactlyOnceDelivery"] = args ? args.enableExactlyOnceDelivery : undefined;
             resourceInputs["enableMessageOrdering"] = args ? args.enableMessageOrdering : undefined;
             resourceInputs["expirationPolicy"] = args ? args.expirationPolicy : undefined;
             resourceInputs["filter"] = args ? args.filter : undefined;
@@ -134,6 +139,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["ackDeadlineSeconds"] = undefined /*out*/;
             resourceInputs["deadLetterPolicy"] = undefined /*out*/;
             resourceInputs["detached"] = undefined /*out*/;
+            resourceInputs["enableExactlyOnceDelivery"] = undefined /*out*/;
             resourceInputs["enableMessageOrdering"] = undefined /*out*/;
             resourceInputs["expirationPolicy"] = undefined /*out*/;
             resourceInputs["filter"] = undefined /*out*/;
@@ -168,6 +174,10 @@ export interface SubscriptionArgs {
      * Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
      */
     detached?: pulumi.Input<boolean>;
+    /**
+     * If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
+     */
+    enableExactlyOnceDelivery?: pulumi.Input<boolean>;
     /**
      * If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
      */

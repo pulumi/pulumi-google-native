@@ -50903,6 +50903,10 @@ export namespace notebooks {
              */
             serviceAccount?: pulumi.Input<string>;
             /**
+             * The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
+             */
+            tensorboard?: pulumi.Input<string>;
+            /**
              * Parameters used in Vertex AI JobType executions.
              */
             vertexAiParameters?: pulumi.Input<inputs.notebooks.v1.VertexAIParametersArgs>;
@@ -51067,7 +51071,7 @@ export namespace notebooks {
              */
             idleShutdownTimeout?: pulumi.Input<number>;
             /**
-             * Install Nvidia Driver automatically.
+             * Install Nvidia Driver automatically. Default: True
              */
             installGpuDriver?: pulumi.Input<boolean>;
             /**

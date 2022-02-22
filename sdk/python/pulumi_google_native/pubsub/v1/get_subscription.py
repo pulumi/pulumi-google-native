@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSubscriptionResult:
-    def __init__(__self__, ack_deadline_seconds=None, dead_letter_policy=None, detached=None, enable_message_ordering=None, expiration_policy=None, filter=None, labels=None, message_retention_duration=None, name=None, push_config=None, retain_acked_messages=None, retry_policy=None, state=None, topic=None, topic_message_retention_duration=None):
+    def __init__(__self__, ack_deadline_seconds=None, dead_letter_policy=None, detached=None, enable_exactly_once_delivery=None, enable_message_ordering=None, expiration_policy=None, filter=None, labels=None, message_retention_duration=None, name=None, push_config=None, retain_acked_messages=None, retry_policy=None, state=None, topic=None, topic_message_retention_duration=None):
         if ack_deadline_seconds and not isinstance(ack_deadline_seconds, int):
             raise TypeError("Expected argument 'ack_deadline_seconds' to be a int")
         pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
@@ -28,6 +28,9 @@ class GetSubscriptionResult:
         if detached and not isinstance(detached, bool):
             raise TypeError("Expected argument 'detached' to be a bool")
         pulumi.set(__self__, "detached", detached)
+        if enable_exactly_once_delivery and not isinstance(enable_exactly_once_delivery, bool):
+            raise TypeError("Expected argument 'enable_exactly_once_delivery' to be a bool")
+        pulumi.set(__self__, "enable_exactly_once_delivery", enable_exactly_once_delivery)
         if enable_message_ordering and not isinstance(enable_message_ordering, bool):
             raise TypeError("Expected argument 'enable_message_ordering' to be a bool")
         pulumi.set(__self__, "enable_message_ordering", enable_message_ordering)
@@ -88,6 +91,14 @@ class GetSubscriptionResult:
         Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
         """
         return pulumi.get(self, "detached")
+
+    @property
+    @pulumi.getter(name="enableExactlyOnceDelivery")
+    def enable_exactly_once_delivery(self) -> bool:
+        """
+        If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
+        """
+        return pulumi.get(self, "enable_exactly_once_delivery")
 
     @property
     @pulumi.getter(name="enableMessageOrdering")
@@ -195,6 +206,7 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
             ack_deadline_seconds=self.ack_deadline_seconds,
             dead_letter_policy=self.dead_letter_policy,
             detached=self.detached,
+            enable_exactly_once_delivery=self.enable_exactly_once_delivery,
             enable_message_ordering=self.enable_message_ordering,
             expiration_policy=self.expiration_policy,
             filter=self.filter,
@@ -228,6 +240,7 @@ def get_subscription(project: Optional[str] = None,
         ack_deadline_seconds=__ret__.ack_deadline_seconds,
         dead_letter_policy=__ret__.dead_letter_policy,
         detached=__ret__.detached,
+        enable_exactly_once_delivery=__ret__.enable_exactly_once_delivery,
         enable_message_ordering=__ret__.enable_message_ordering,
         expiration_policy=__ret__.expiration_policy,
         filter=__ret__.filter,

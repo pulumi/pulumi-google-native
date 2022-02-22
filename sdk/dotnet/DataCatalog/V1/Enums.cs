@@ -57,11 +57,11 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public static EntryType Routine { get; } = new EntryType("ROUTINE");
         /// <summary>
-        /// A Dataproc Metastore lake.
+        /// A Dataplex lake.
         /// </summary>
         public static EntryType Lake { get; } = new EntryType("LAKE");
         /// <summary>
-        /// A Dataproc Metastore zone.
+        /// A Dataplex zone.
         /// </summary>
         public static EntryType Zone { get; } = new EntryType("ZONE");
         /// <summary>

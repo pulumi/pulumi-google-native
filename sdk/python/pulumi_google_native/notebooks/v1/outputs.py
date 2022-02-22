@@ -585,6 +585,7 @@ class ExecutionTemplateResponse(dict):
                  parameters: str,
                  params_yaml_file: str,
                  service_account: str,
+                 tensorboard: str,
                  vertex_ai_parameters: 'outputs.VertexAIParametersResponse'):
         """
         The description a notebook execution workload.
@@ -600,6 +601,7 @@ class ExecutionTemplateResponse(dict):
         :param str parameters: Parameters used within the 'input_notebook_file' notebook.
         :param str params_yaml_file: Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
         :param str service_account: The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
+        :param str tensorboard: The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
         :param 'VertexAIParametersResponse' vertex_ai_parameters: Parameters used in Vertex AI JobType executions.
         """
         pulumi.set(__self__, "accelerator_config", accelerator_config)
@@ -614,6 +616,7 @@ class ExecutionTemplateResponse(dict):
         pulumi.set(__self__, "parameters", parameters)
         pulumi.set(__self__, "params_yaml_file", params_yaml_file)
         pulumi.set(__self__, "service_account", service_account)
+        pulumi.set(__self__, "tensorboard", tensorboard)
         pulumi.set(__self__, "vertex_ai_parameters", vertex_ai_parameters)
 
     @property
@@ -711,6 +714,14 @@ class ExecutionTemplateResponse(dict):
         The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
         """
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter
+    def tensorboard(self) -> str:
+        """
+        The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
+        """
+        return pulumi.get(self, "tensorboard")
 
     @property
     @pulumi.getter(name="vertexAiParameters")
@@ -1403,7 +1414,7 @@ class RuntimeSoftwareConfigResponse(dict):
         :param bool enable_health_monitoring: Verifies core internal services are running. Default: True
         :param bool idle_shutdown: Runtime will automatically shutdown after idle_shutdown_time. Default: True
         :param int idle_shutdown_timeout: Time in minutes to wait before shutting down runtime. Default: 180 minutes
-        :param bool install_gpu_driver: Install Nvidia Driver automatically.
+        :param bool install_gpu_driver: Install Nvidia Driver automatically. Default: True
         :param Sequence['ContainerImageResponse'] kernels: Optional. Use a list of container images to use as Kernels in the notebook instance.
         :param str notebook_upgrade_schedule: Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         :param str post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
@@ -1455,7 +1466,7 @@ class RuntimeSoftwareConfigResponse(dict):
     @pulumi.getter(name="installGpuDriver")
     def install_gpu_driver(self) -> bool:
         """
-        Install Nvidia Driver automatically.
+        Install Nvidia Driver automatically. Default: True
         """
         return pulumi.get(self, "install_gpu_driver")
 

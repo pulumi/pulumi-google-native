@@ -94,6 +94,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
+        /// The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
+        /// </summary>
+        [Input("tensorboard")]
+        public Input<string>? Tensorboard { get; set; }
+
+        /// <summary>
         /// Parameters used in Vertex AI JobType executions.
         /// </summary>
         [Input("vertexAiParameters")]

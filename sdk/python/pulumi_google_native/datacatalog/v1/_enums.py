@@ -58,11 +58,11 @@ class EntryType(str, Enum):
     """
     LAKE = "LAKE"
     """
-    A Dataproc Metastore lake.
+    A Dataplex lake.
     """
     ZONE = "ZONE"
     """
-    A Dataproc Metastore zone.
+    A Dataplex zone.
     """
     SERVICE = "SERVICE"
     """

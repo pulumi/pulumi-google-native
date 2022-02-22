@@ -1220,6 +1220,8 @@ type ExecutionTemplate struct {
 	ParamsYamlFile *string `pulumi:"paramsYamlFile"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
+	Tensorboard *string `pulumi:"tensorboard"`
 	// Parameters used in Vertex AI JobType executions.
 	VertexAiParameters *VertexAIParameters `pulumi:"vertexAiParameters"`
 }
@@ -1261,6 +1263,8 @@ type ExecutionTemplateArgs struct {
 	ParamsYamlFile pulumi.StringPtrInput `pulumi:"paramsYamlFile"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
+	Tensorboard pulumi.StringPtrInput `pulumi:"tensorboard"`
 	// Parameters used in Vertex AI JobType executions.
 	VertexAiParameters VertexAIParametersPtrInput `pulumi:"vertexAiParameters"`
 }
@@ -1401,6 +1405,11 @@ func (o ExecutionTemplateOutput) ParamsYamlFile() pulumi.StringPtrOutput {
 // The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 func (o ExecutionTemplateOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionTemplate) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
+func (o ExecutionTemplateOutput) Tensorboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExecutionTemplate) *string { return v.Tensorboard }).(pulumi.StringPtrOutput)
 }
 
 // Parameters used in Vertex AI JobType executions.
@@ -1552,6 +1561,16 @@ func (o ExecutionTemplatePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
+func (o ExecutionTemplatePtrOutput) Tensorboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tensorboard
+	}).(pulumi.StringPtrOutput)
+}
+
 // Parameters used in Vertex AI JobType executions.
 func (o ExecutionTemplatePtrOutput) VertexAiParameters() VertexAIParametersPtrOutput {
 	return o.ApplyT(func(v *ExecutionTemplate) *VertexAIParameters {
@@ -1588,6 +1607,8 @@ type ExecutionTemplateResponse struct {
 	ParamsYamlFile string `pulumi:"paramsYamlFile"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount string `pulumi:"serviceAccount"`
+	// The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
+	Tensorboard string `pulumi:"tensorboard"`
 	// Parameters used in Vertex AI JobType executions.
 	VertexAiParameters VertexAIParametersResponse `pulumi:"vertexAiParameters"`
 }
@@ -1665,6 +1686,11 @@ func (o ExecutionTemplateResponseOutput) ParamsYamlFile() pulumi.StringOutput {
 // The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 func (o ExecutionTemplateResponseOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
+func (o ExecutionTemplateResponseOutput) Tensorboard() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.Tensorboard }).(pulumi.StringOutput)
 }
 
 // Parameters used in Vertex AI JobType executions.
@@ -3462,7 +3488,7 @@ type RuntimeSoftwareConfig struct {
 	IdleShutdown *bool `pulumi:"idleShutdown"`
 	// Time in minutes to wait before shutting down runtime. Default: 180 minutes
 	IdleShutdownTimeout *int `pulumi:"idleShutdownTimeout"`
-	// Install Nvidia Driver automatically.
+	// Install Nvidia Driver automatically. Default: True
 	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
 	// Optional. Use a list of container images to use as Kernels in the notebook instance.
 	Kernels []ContainerImage `pulumi:"kernels"`
@@ -3493,7 +3519,7 @@ type RuntimeSoftwareConfigArgs struct {
 	IdleShutdown pulumi.BoolPtrInput `pulumi:"idleShutdown"`
 	// Time in minutes to wait before shutting down runtime. Default: 180 minutes
 	IdleShutdownTimeout pulumi.IntPtrInput `pulumi:"idleShutdownTimeout"`
-	// Install Nvidia Driver automatically.
+	// Install Nvidia Driver automatically. Default: True
 	InstallGpuDriver pulumi.BoolPtrInput `pulumi:"installGpuDriver"`
 	// Optional. Use a list of container images to use as Kernels in the notebook instance.
 	Kernels ContainerImageArrayInput `pulumi:"kernels"`
@@ -3601,7 +3627,7 @@ func (o RuntimeSoftwareConfigOutput) IdleShutdownTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *int { return v.IdleShutdownTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Install Nvidia Driver automatically.
+// Install Nvidia Driver automatically. Default: True
 func (o RuntimeSoftwareConfigOutput) InstallGpuDriver() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *bool { return v.InstallGpuDriver }).(pulumi.BoolPtrOutput)
 }
@@ -3685,7 +3711,7 @@ func (o RuntimeSoftwareConfigPtrOutput) IdleShutdownTimeout() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Install Nvidia Driver automatically.
+// Install Nvidia Driver automatically. Default: True
 func (o RuntimeSoftwareConfigPtrOutput) InstallGpuDriver() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RuntimeSoftwareConfig) *bool {
 		if v == nil {
@@ -3735,7 +3761,7 @@ type RuntimeSoftwareConfigResponse struct {
 	IdleShutdown bool `pulumi:"idleShutdown"`
 	// Time in minutes to wait before shutting down runtime. Default: 180 minutes
 	IdleShutdownTimeout int `pulumi:"idleShutdownTimeout"`
-	// Install Nvidia Driver automatically.
+	// Install Nvidia Driver automatically. Default: True
 	InstallGpuDriver bool `pulumi:"installGpuDriver"`
 	// Optional. Use a list of container images to use as Kernels in the notebook instance.
 	Kernels []ContainerImageResponse `pulumi:"kernels"`
@@ -3782,7 +3808,7 @@ func (o RuntimeSoftwareConfigResponseOutput) IdleShutdownTimeout() pulumi.IntOut
 	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) int { return v.IdleShutdownTimeout }).(pulumi.IntOutput)
 }
 
-// Install Nvidia Driver automatically.
+// Install Nvidia Driver automatically. Default: True
 func (o RuntimeSoftwareConfigResponseOutput) InstallGpuDriver() pulumi.BoolOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) bool { return v.InstallGpuDriver }).(pulumi.BoolOutput)
 }

@@ -231,6 +231,7 @@ class ExecutionTemplateArgs:
                  parameters: Optional[pulumi.Input[str]] = None,
                  params_yaml_file: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 tensorboard: Optional[pulumi.Input[str]] = None,
                  vertex_ai_parameters: Optional[pulumi.Input['VertexAIParametersArgs']] = None):
         """
         The description a notebook execution workload.
@@ -246,6 +247,7 @@ class ExecutionTemplateArgs:
         :param pulumi.Input[str] parameters: Parameters used within the 'input_notebook_file' notebook.
         :param pulumi.Input[str] params_yaml_file: Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
         :param pulumi.Input[str] service_account: The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
+        :param pulumi.Input[str] tensorboard: The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
         :param pulumi.Input['VertexAIParametersArgs'] vertex_ai_parameters: Parameters used in Vertex AI JobType executions.
         """
         if accelerator_config is not None:
@@ -272,6 +274,8 @@ class ExecutionTemplateArgs:
             pulumi.set(__self__, "params_yaml_file", params_yaml_file)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if tensorboard is not None:
+            pulumi.set(__self__, "tensorboard", tensorboard)
         if vertex_ai_parameters is not None:
             pulumi.set(__self__, "vertex_ai_parameters", vertex_ai_parameters)
 
@@ -418,6 +422,18 @@ class ExecutionTemplateArgs:
     @service_account.setter
     def service_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter
+    def tensorboard(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
+        """
+        return pulumi.get(self, "tensorboard")
+
+    @tensorboard.setter
+    def tensorboard(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tensorboard", value)
 
     @property
     @pulumi.getter(name="vertexAiParameters")
@@ -889,7 +905,7 @@ class RuntimeSoftwareConfigArgs:
         :param pulumi.Input[bool] enable_health_monitoring: Verifies core internal services are running. Default: True
         :param pulumi.Input[bool] idle_shutdown: Runtime will automatically shutdown after idle_shutdown_time. Default: True
         :param pulumi.Input[int] idle_shutdown_timeout: Time in minutes to wait before shutting down runtime. Default: 180 minutes
-        :param pulumi.Input[bool] install_gpu_driver: Install Nvidia Driver automatically.
+        :param pulumi.Input[bool] install_gpu_driver: Install Nvidia Driver automatically. Default: True
         :param pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]] kernels: Optional. Use a list of container images to use as Kernels in the notebook instance.
         :param pulumi.Input[str] notebook_upgrade_schedule: Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
@@ -963,7 +979,7 @@ class RuntimeSoftwareConfigArgs:
     @pulumi.getter(name="installGpuDriver")
     def install_gpu_driver(self) -> Optional[pulumi.Input[bool]]:
         """
-        Install Nvidia Driver automatically.
+        Install Nvidia Driver automatically. Default: True
         """
         return pulumi.get(self, "install_gpu_driver")
 

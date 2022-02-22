@@ -65,6 +65,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly string ServiceAccount;
         /// <summary>
+        /// The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
+        /// </summary>
+        public readonly string Tensorboard;
+        /// <summary>
         /// Parameters used in Vertex AI JobType executions.
         /// </summary>
         public readonly Outputs.VertexAIParametersResponse VertexAiParameters;
@@ -95,6 +99,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 
             string serviceAccount,
 
+            string tensorboard,
+
             Outputs.VertexAIParametersResponse vertexAiParameters)
         {
             AcceleratorConfig = acceleratorConfig;
@@ -109,6 +115,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
             Parameters = parameters;
             ParamsYamlFile = paramsYamlFile;
             ServiceAccount = serviceAccount;
+            Tensorboard = tensorboard;
             VertexAiParameters = vertexAiParameters;
         }
     }

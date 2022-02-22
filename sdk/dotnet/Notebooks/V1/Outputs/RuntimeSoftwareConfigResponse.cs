@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly int IdleShutdownTimeout;
         /// <summary>
-        /// Install Nvidia Driver automatically.
+        /// Install Nvidia Driver automatically. Default: True
         /// </summary>
         public readonly bool InstallGpuDriver;
         /// <summary>
