@@ -1213,7 +1213,7 @@
       }
     }
   },
-  "revision": "20220212",
+  "revision": "20220217",
   "rootUrl": "https://artifactregistry.googleapis.com/",
   "schemas": {
     "Binding": {
