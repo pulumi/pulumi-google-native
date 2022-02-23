@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
     public partial class ServingConfig : Pulumi.CustomResource
     {
         /// <summary>
-        /// Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 10. Notice that if both ServingConfig.boost_control_ids and [SearchRequest.boost_spec] are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        /// Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 100. Notice that if both ServingConfig.boost_control_ids and [SearchRequest.boost_spec] are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         /// </summary>
         [Output("boostControlIds")]
         public Output<ImmutableArray<string>> BoostControlIds { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Output<string> PriceRerankingLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        /// Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 1000. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         /// </summary>
         [Output("redirectControlIds")]
         public Output<ImmutableArray<string>> RedirectControlIds { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         private InputList<string>? _boostControlIds;
 
         /// <summary>
-        /// Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 10. Notice that if both ServingConfig.boost_control_ids and [SearchRequest.boost_spec] are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        /// Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 100. Notice that if both ServingConfig.boost_control_ids and [SearchRequest.boost_spec] are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         /// </summary>
         public InputList<string> BoostControlIds
         {
@@ -290,7 +290,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         private InputList<string>? _redirectControlIds;
 
         /// <summary>
-        /// Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        /// Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 1000. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         /// </summary>
         public InputList<string> RedirectControlIds
         {
