@@ -1,4 +1,16 @@
-// Copyright 2016-2021, Pulumi Corporation.
+// Copyright 2016-2022, Pulumi Corporation.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 package googleclient
 
@@ -103,7 +115,7 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 	}
 	req.Header = reqHeaders
 
-	debugBody, _ := httputil.DumpRequest(req, true)
+	debugBody, _ := httputil.DumpRequestOut(req, true)
 	logging.V(9).Infof(requestFormat, req.Method, req.URL, prettyPrintJsonLines(debugBody))
 
 	res, err = c.http.Do(req)
@@ -112,7 +124,7 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 	}
 
 	// TODO: Re-enable response dump when https://github.com/golang/go/issues/49366 fix
-	// propagates to our current Go version.
+	// propagates to our current Go version. This fix will be in Go 1.18.
 	debugResp, _ := httputil.DumpResponse(res, false)
 	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJsonLines(debugResp))
 
