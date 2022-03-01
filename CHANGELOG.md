@@ -2,11 +2,91 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+(None)
 
+## 0.15.0 (2022-02-28)
 Improvements:
 
 - Update to support the latest resource definitions and the latest Pulumi SDK
 - Implement auto-naming for KMS resources [#351](https://github.com/pulumi/pulumi-google-native/pull/351)
+
+#### Breaking Changes:
+Resource "google-native:vmmigration/v1:CloneJob" missing input "name"
+Resource "google-native:vmmigration/v1:Group" missing input "name"
+Resource "google-native:vmmigration/v1alpha1:CloneJob" missing input "name"
+Resource "google-native:vmmigration/v1alpha1:Group" missing input "name"
+Resource "google-native:vmmigration/v1:TargetProject" missing input "name"
+Resource "google-native:vmmigration/v1alpha1:TargetProject" missing input "name"
+Type "google-native:vmmigration/v1alpha1:ReplicatingStepResponse" missing
+Type "google-native:vmmigration/v1alpha1:PostProcessingStepResponse" missing
+Type "google-native:gameservices/v1:AuditConfigResponse" missing property "exemptedMembers"
+Type "google-native:vmmigration/v1alpha1:InitializingReplicationStepResponse" missing
+Type "google-native:gameservices/v1beta:AuditConfig" missing property "exemptedMembers"
+Type "google-native:vmmigration/v1alpha1:CycleStepResponse" missing
+Type "google-native:vmmigration/v1alpha1:ReplicationCycleResponse" missing property "steps"
+Type "google-native:vmmigration/v1alpha1:ReplicationCycleResponse" missing property "endTime"
+Type "google-native:gameservices/v1beta:AuditConfigResponse" missing property "exemptedMembers"
+Type "google-native:gameservices/v1:AuditConfig" missing property "exemptedMembers"
+
+#### New resources:
+
+- `apigee/v1.EndpointAttachment`
+- `certificatemanager/v1.Certificate`
+- `certificatemanager/v1.CertificateMap`
+- `certificatemanager/v1.CertificateMapEntry`
+- `certificatemanager/v1.DnsAuthorization`
+- `cloudfunctions/v2alpha.Function`
+- `cloudfunctions/v2alpha.FunctionIamPolicy`
+- `cloudfunctions/v2beta.Function`
+- `cloudfunctions/v2beta.FunctionIamPolicy`
+- `dataplex/v1.Asset`
+- `dataplex/v1.Contentitem`
+- `dataplex/v1.Entity`
+- `dataplex/v1.Environment`
+- `dataplex/v1.Lake`
+- `dataplex/v1.LakeAssetIamPolicy`
+- `dataplex/v1.LakeContentIamPolicy`
+- `dataplex/v1.LakeEnvironmentIamPolicy`
+- `dataplex/v1.LakeIamPolicy`
+- `dataplex/v1.LakeTaskIamPolicy`
+- `dataplex/v1.LakeZoneIamPolicy`
+- `dataplex/v1.Partition`
+- `dataplex/v1.Task`
+- `dataplex/v1.Zone`
+- `gkehub/v2alpha.Feature`
+- `gkehub/v2alpha.FeatureConfig`
+- `metastore/v1beta.ServiceDatabaseIamPolicy`
+- `metastore/v1beta.ServiceDatabaseTableIamPolicy`
+
+#### New functions:
+
+- `apigee/v1.getEndpointAttachment`
+- `certificatemanager/v1.getCertificate`
+- `certificatemanager/v1.getCertificateMap`
+- `certificatemanager/v1.getCertificateMapEntry`
+- `certificatemanager/v1.getDnsAuthorization`
+- `cloudfunctions/v2alpha.getFunction`
+- `cloudfunctions/v2alpha.getFunctionIamPolicy`
+- `cloudfunctions/v2beta.getFunction`
+- `cloudfunctions/v2beta.getFunctionIamPolicy`
+- `dataplex/v1.getAsset`
+- `dataplex/v1.getContentitem`
+- `dataplex/v1.getEntity`
+- `dataplex/v1.getEnvironment`
+- `dataplex/v1.getLake`
+- `dataplex/v1.getLakeAssetIamPolicy`
+- `dataplex/v1.getLakeContentIamPolicy`
+- `dataplex/v1.getLakeEnvironmentIamPolicy`
+- `dataplex/v1.getLakeIamPolicy`
+- `dataplex/v1.getLakeTaskIamPolicy`
+- `dataplex/v1.getLakeZoneIamPolicy`
+- `dataplex/v1.getPartition`
+- `dataplex/v1.getTask`
+- `dataplex/v1.getZone`
+- `gkehub/v2alpha.getFeature`
+- `gkehub/v2alpha.getFeatureConfig`
+- `metastore/v1beta.getServiceDatabaseIamPolicy`
+- `metastore/v1beta.getServiceDatabaseTableIamPolicy`
 
 ## 0.14.0 (2022-02-02)
 
