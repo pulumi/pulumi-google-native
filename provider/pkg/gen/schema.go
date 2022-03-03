@@ -345,24 +345,24 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		RootURL: g.rest.BaseUrl,
 		Create: resources.CloudAPIOperation{
 			Endpoint: resources.CloudAPIEndpoint{
-				Template: methodPath(dd.createMethod),
+				Template: g.rest.BaseUrl + methodPath(dd.createMethod),
 			},
 			Verb: dd.createMethod.HttpMethod,
 		},
 		Delete: resources.CloudAPIOperation{
 			Endpoint: resources.CloudAPIEndpoint{
-				Template: methodPath(dd.deleteMethod),
+				Template: g.rest.BaseUrl + methodPath(dd.deleteMethod),
 			},
 		},
 		Read: resources.CloudAPIOperation{
 			Endpoint: resources.CloudAPIEndpoint{
-				Template: methodPath(dd.getMethod),
+				Template: g.rest.BaseUrl + methodPath(dd.getMethod),
 			},
 			Verb: dd.getMethod.HttpMethod,
 		},
 		Update: resources.CloudAPIOperation{
 			Endpoint: resources.CloudAPIEndpoint{
-				Template: methodPath(dd.getMethod),
+				Template: g.rest.BaseUrl + methodPath(dd.getMethod),
 			},
 		},
 	}
