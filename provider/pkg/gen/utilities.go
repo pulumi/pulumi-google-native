@@ -1,4 +1,16 @@
-// Copyright 2016-2021, Pulumi Corporation.
+// Copyright 2016-2022, Pulumi Corporation.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 package gen
 
@@ -12,8 +24,6 @@ import (
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 )
-
-var s = codegen.NewStringSet()
 
 // apiParamNameToSdkName returns an SDK name for a given API parameter name.
 // In particular, it converts pluralized ID names to singular ID names.
@@ -49,6 +59,7 @@ func apiPropNameToSdkName(typeName string, name string) string {
 // propertyFormatRegexes is a list of regular expressions to match property formats in property descriptions.
 var propertyFormatRegexes = []*regexp.Regexp{
 	// Example: "The resource name in the format `foo/*`"
+	// nolint: lll
 	regexp.MustCompile(`(?:Format|format|form|forms|formatted|pattern|Example|example|e\.g\.|such|Structured)(?: (?:of|is|as|like|will be))?[^\w]+(\w+(?:/[\w\{\}\*-\[\]]*)+)`),
 	// Example: "Must be in `projects/{project}/locations/{location}/triggers/{trigger}` format"
 	regexp.MustCompile(`in[^\w]+(\w+(?:/[\w\{\}\*-\[\]]*)+)[^\w]+format`),

@@ -72,19 +72,19 @@ type CloudAPIResource struct {
 	Update CloudAPIOperation `json:"update,omitempty"`
 	Delete CloudAPIOperation `json:"delete,omitempty"`
 
-	// RootUrl is the root URL of the REST API.
+	// RootURL is the root URL of the REST API.
 	// Example: `https://cloudkms.googleapis.com/`
-	RootUrl     string `json:"rootUrl"`
+	RootURL     string `json:"rootUrl"`
 	AssetUpload bool   `json:"assetUpload,omitempty"`
 	// TODO: abstract ID property details
-	// IdProperty contains the name of the output property that represents resource ID (a self link).
+	// IDProperty contains the name of the output property that represents resource ID (a self link).
 	// Example: `selfLink`
-	IdProperty string `json:"idProperty,omitempty"`
-	// IdPath is the template for building resource ID with ID parameter values. It should only
-	// be defined if IdProperty is missing.
+	IDProperty string `json:"idProperty,omitempty"`
+	// IDPath is the template for building resource ID with ID parameter values. It should only
+	// be defined if IDProperty is missing.
 	// Example: `projects/{project}/global/backendBuckets/{resource}/getIamPolicy`
-	IdPath   string            `json:"idPath,omitempty"`
-	IdParams map[string]string `json:"idParams,omitempty"`
+	IDPath   string            `json:"idPath,omitempty"`
+	IDParams map[string]string `json:"idParams,omitempty"`
 	// AutoNamePattern contains a string pattern when a default name should be automatically generated if a user hasn't
 	// explicitly specified one.
 	// Example: `projects/{project}/locations/{location}/functions/{name}`
@@ -93,7 +93,7 @@ type CloudAPIResource struct {
 
 // CloudAPIFunction is a function in Google Cloud REST API.
 type CloudAPIFunction struct {
-	Url  CloudAPIEndpoint `json:"url"`
+	URL  CloudAPIEndpoint `json:"url"`
 	Verb string           `json:"verb"`
 }
 
@@ -109,17 +109,17 @@ type CloudAPIResourceParam struct {
 	Kind string `json:"kind"`
 }
 
-// ResourceUrl returns the resource API URL by joining the base URL with the resource path.
-func (r *CloudAPIResource) ResourceUrl(path string) string {
-	return CombineUrl(r.RootUrl, path)
+// ResourceURL returns the resource API URL by joining the base URL with the resource path.
+func (r *CloudAPIResource) ResourceURL(path string) string {
+	return CombineURL(r.RootURL, path)
 }
 
-// CombineUrl concats a base URL of the service with a path of an endpoint.
-func CombineUrl(baseUrl, path string) string {
+// CombineURL concatenates a base URL of the service with a path of an endpoint.
+func CombineURL(baseURL, path string) string {
 	if strings.HasPrefix(path, "https://") {
 		return path
 	}
-	return fmt.Sprintf("%s/%s", strings.TrimRight(baseUrl, "/"), strings.TrimLeft(path, "/"))
+	return fmt.Sprintf("%s/%s", strings.TrimRight(baseURL, "/"), strings.TrimLeft(path, "/"))
 }
 
 // CloudAPIProperty is a property of a body of an API call payload.

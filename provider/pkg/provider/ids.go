@@ -25,17 +25,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
-func calculateResourceId(res resources.CloudAPIResource, inputs map[string]interface{}, outputs map[string]interface{}) (string, error) {
-	if res.IdProperty != "" {
-		v, ok := outputs[res.IdProperty].(string)
+func calculateResourceID(
+	res resources.CloudAPIResource,
+	inputs map[string]interface{},
+	outputs map[string]interface{},
+) (string, error) {
+	if res.IDProperty != "" {
+		v, ok := outputs[res.IDProperty].(string)
 		if !ok {
-			return "", errors.Errorf("ID property %q not found", res.IdProperty)
+			return "", errors.Errorf("ID property %q not found", res.IDProperty)
 		}
-		return strings.TrimPrefix(v, res.RootUrl), nil
+		return strings.TrimPrefix(v, res.RootURL), nil
 	}
 
-	id := res.IdPath
-	idParams := res.IdParams
+	id := res.IDPath
+	idParams := res.IDParams
 	for name, alias := range idParams {
 		var propValue string
 		if v, has := evalPropertyValue(inputs, alias); has {
@@ -78,16 +82,20 @@ func evalPropertyValue(values map[string]interface{}, path string) (string, bool
 	return "", false
 }
 
-// buildCreateUrl composes the URL to invoke to create a resource with given inputs.
-func buildCreateUrl(res resources.CloudAPIResource, inputs resource.PropertyMap) (string, error) {
-	return buildUrl(res.Create.Endpoint.Template, res.Create.Endpoint.Values, inputs)
+// buildCreateURL composes the URL to invoke to create a resource with given inputs.
+func buildCreateURL(res resources.CloudAPIResource, inputs resource.PropertyMap) (string, error) {
+	return buildURL(res.Create.Endpoint.Template, res.Create.Endpoint.Values, inputs)
 }
 
-func buildFunctionUrl(res resources.CloudAPIFunction, inputs resource.PropertyMap) (string, error) {
-	return buildUrl(res.Url.Template, res.Url.Values, inputs)
+func buildFunctionURL(res resources.CloudAPIFunction, inputs resource.PropertyMap) (string, error) {
+	return buildURL(res.URL.Template, res.URL.Values, inputs)
 }
 
-func buildUrl(uriTemplate string, params []resources.CloudAPIResourceParam, inputs resource.PropertyMap) (string, error) {
+func buildURL(
+	uriTemplate string,
+	params []resources.CloudAPIResourceParam,
+	inputs resource.PropertyMap,
+) (string, error) {
 	queryMap := map[string]string{}
 	uriString := uriTemplate
 	for _, param := range params {

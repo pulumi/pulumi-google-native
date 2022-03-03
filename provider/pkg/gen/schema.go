@@ -342,7 +342,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	createPath := methodPath(dd.createMethod)
 
 	resourceMeta := resources.CloudAPIResource{
-		RootUrl: g.rest.RootUrl,
+		RootURL: g.rest.RootUrl,
 		Create: resources.CloudAPIOperation{
 			Endpoint: resources.CloudAPIEndpoint{
 				Template: methodPath(dd.createMethod),
@@ -492,13 +492,13 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		// Option 1: it's directly returned from the API in the "self" property.
 		for _, p := range []string{"selfLink", "self"} {
 			if _, has := response.Properties[p]; has {
-				resourceMeta.IdProperty = p
+				resourceMeta.IDProperty = p
 				break
 			}
 		}
 
 		// Option 2: the provider has to manually build it from the GET method path.
-		if resourceMeta.IdProperty == "" {
+		if resourceMeta.IDProperty == "" {
 			idPath := methodPath(dd.getMethod)
 			queryParams := url.Values{}
 			for param, details := range dd.getMethod.Parameters {
@@ -530,15 +530,15 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				})
 			}
 			resourceMeta.Read.Endpoint.Values = idVals
-			resourceMeta.IdPath = idPath
-			resourceMeta.IdParams = v
+			resourceMeta.IDPath = idPath
+			resourceMeta.IDParams = v
 		}
 	}
 
 	// Detect resources that support media upload as mark them as such.
 	if dd.createMethod.MediaUpload != nil && dd.createMethod.MediaUpload.Protocols != nil &&
 		dd.createMethod.MediaUpload.Protocols.Simple != nil {
-		resourceMeta.Create.Endpoint.Template = resources.CombineUrl(
+		resourceMeta.Create.Endpoint.Template = resources.CombineURL(
 			g.rest.RootUrl, dd.createMethod.MediaUpload.Protocols.Simple.Path)
 		resourceMeta.AssetUpload = true
 		inputProperties["source"] = schema.PropertySpec{
@@ -550,7 +550,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 	// TODO: add delete support
 	if dd.deleteMethod != nil {
-		resourceMeta.Delete.Endpoint.Template = resourceMeta.IdPath
+		resourceMeta.Delete.Endpoint.Template = resourceMeta.IDPath
 		resourceMeta.Delete.Verb = dd.deleteMethod.HttpMethod
 	}
 
@@ -612,8 +612,8 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 		httpMethod = "GET"
 	}
 	functionMeta := resources.CloudAPIFunction{
-		Url: resources.CloudAPIEndpoint{
-			Template: resources.CombineUrl(g.rest.BaseUrl, getPath),
+		URL: resources.CloudAPIEndpoint{
+			Template: resources.CombineURL(g.rest.BaseUrl, getPath),
 		},
 		Verb: httpMethod,
 	}
@@ -633,7 +633,7 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 		if sdkName != name {
 			p.SdkName = sdkName
 		}
-		functionMeta.Url.Values = append(functionMeta.Url.Values, p)
+		functionMeta.URL.Values = append(functionMeta.URL.Values, p)
 
 		inputProperties[sdkName] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{Type: "string"},
@@ -661,7 +661,7 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 		if sdkName != name {
 			p.SdkName = sdkName
 		}
-		functionMeta.Url.Values = append(functionMeta.Url.Values, p)
+		functionMeta.URL.Values = append(functionMeta.URL.Values, p)
 		requiredInputProperties.Add(sdkName)
 	}
 
