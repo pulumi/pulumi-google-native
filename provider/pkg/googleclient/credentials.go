@@ -140,7 +140,7 @@ func getCredentials(ctx context.Context, c Config) (*google.Credentials, error) 
 				return nil, err
 			}
 
-			glog.V(9).Info("" +
+			glog.V(9).Info(
 				"Authenticating using configured Google JSON Credentials and Impersonate Service Account...")
 			glog.V(9).Infof("   -- Scopes: %s", c.Scopes)
 			return creds, nil

@@ -515,17 +515,17 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				}
 			}
 
-			v, err := g.buildIdParams(typeName, idPath, inputProperties, &response)
+			vals, err := g.buildIdParams(typeName, idPath, inputProperties, &response)
 			if err != nil {
 				fmt.Printf("Failed to build ID params for resource %s: %v\n", resourceTok, err)
 				return nil
 			}
 			resourceMeta.Read.Endpoint.Template = idPath
 			var idVals []resources.CloudAPIResourceParam
-			for _, k := range codegen.SortedKeys(v) {
+			for _, k := range codegen.SortedKeys(vals) {
 				idVals = append(idVals, resources.CloudAPIResourceParam{
 					Name:    k,
-					SdkName: v[k],
+					SdkName: vals[k],
 					Kind:    "path",
 				})
 			}
@@ -535,7 +535,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 	}
 
-	// Detect resources that support media upload as mark them as such.
+	// Detect resources that support media upload and mark them as such.
 	if dd.createMethod.MediaUpload != nil && dd.createMethod.MediaUpload.Protocols != nil &&
 		dd.createMethod.MediaUpload.Protocols.Simple != nil {
 		resourceMeta.Create.Endpoint.Template = resources.CombineURL(
