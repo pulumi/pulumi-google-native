@@ -330,16 +330,41 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	inputProperties := map[string]schema.PropertySpec{}
 	requiredInputProperties := codegen.NewStringSet()
 
-	createPath := dd.createMethod.FlatPath
-	if createPath == "" {
-		createPath = dd.createMethod.Path
+	methodPath := func(method *discovery.RestMethod) string {
+		if method == nil {
+			return ""
+		}
+		if len(method.FlatPath) > 0 {
+			return method.FlatPath
+		}
+		return method.Path
 	}
+	createPath := methodPath(dd.createMethod)
 
 	resourceMeta := resources.CloudAPIResource{
-		BaseUrl:    g.rest.BaseUrl,
-		CreatePath: createPath,
-		CreateVerb: dd.createMethod.HttpMethod,
-		NoDelete:   dd.deleteMethod == nil,
+		RootUrl: g.rest.RootUrl,
+		Create: resources.CloudAPIOperation{
+			Endpoint: resources.CloudAPIEndpoint{
+				Template: methodPath(dd.createMethod),
+			},
+			Verb: dd.createMethod.HttpMethod,
+		},
+		Delete: resources.CloudAPIOperation{
+			Endpoint: resources.CloudAPIEndpoint{
+				Template: methodPath(dd.deleteMethod),
+			},
+		},
+		Read: resources.CloudAPIOperation{
+			Endpoint: resources.CloudAPIEndpoint{
+				Template: methodPath(dd.getMethod),
+			},
+			Verb: dd.getMethod.HttpMethod,
+		},
+		Update: resources.CloudAPIOperation{
+			Endpoint: resources.CloudAPIEndpoint{
+				Template: methodPath(dd.getMethod),
+			},
+		},
 	}
 	patternParams := codegen.NewStringSet()
 
@@ -351,14 +376,14 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 
 		p := resources.CloudAPIResourceParam{
-			Name:     name,
-			Location: "query",
+			Name: name,
+			Kind: "query",
 		}
 		sdkName := ToLowerCamel(name)
 		if sdkName != name {
 			p.SdkName = sdkName
 		}
-		resourceMeta.CreateParams = append(resourceMeta.CreateParams, p)
+		resourceMeta.Create.Endpoint.Values = append(resourceMeta.Create.Endpoint.Values, p)
 		patternParams.Add(sdkName)
 
 		inputProperties[sdkName] = schema.PropertySpec{
@@ -380,14 +405,14 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		inputProperties[sdkName] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{Type: "string"},
 		}
-		param := resources.CloudAPIResourceParam{
-			Name:     name,
-			Location: "path",
+		p := resources.CloudAPIResourceParam{
+			Name: name,
+			Kind: "path",
 		}
 		if sdkName != name {
-			param.SdkName = sdkName
+			p.SdkName = sdkName
 		}
-		resourceMeta.CreateParams = append(resourceMeta.CreateParams, param)
+		resourceMeta.Create.Endpoint.Values = append(resourceMeta.Create.Endpoint.Values, p)
 		patternParams.Add(sdkName)
 		requiredInputProperties.Add(sdkName)
 	}
@@ -418,10 +443,10 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		for name := range bodyBag.requiredSpecs {
 			requiredInputProperties.Add(name)
 		}
-		resourceMeta.CreateProperties = bodyBag.properties
+		resourceMeta.Create.SDKProperties = bodyBag.properties
 
 		if dd.updateMethod != nil {
-			resourceMeta.UpdateVerb = dd.updateMethod.HttpMethod
+			resourceMeta.Update.Verb = dd.updateMethod.HttpMethod
 			var updateFlatten string
 			updateRequest := g.rest.Schemas[dd.updateMethod.Request.Ref]
 			if dd.updateMethod.Request.Ref != dd.getMethod.Response.Ref {
@@ -432,7 +457,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 					}
 				}
 			}
-			resourceMeta.UpdateProperties = map[string]resources.CloudAPIProperty{}
+			resourceMeta.Update.SDKProperties = map[string]resources.CloudAPIProperty{}
 			updateBag, err := g.genProperties(typeName, &updateRequest, updateFlatten, false, nil)
 			if err != nil {
 				return err
@@ -440,7 +465,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 			for name, value := range updateBag.properties {
 				if _, has := bodyBag.properties[name]; has {
-					resourceMeta.UpdateProperties[name] = value
+					resourceMeta.Update.SDKProperties[name] = value
 				} else {
 					// TODO: do we need to handle masks?
 					if !strings.HasSuffix(name, "Mask") {
@@ -468,15 +493,13 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		for _, p := range []string{"selfLink", "self"} {
 			if _, has := response.Properties[p]; has {
 				resourceMeta.IdProperty = p
+				break
 			}
 		}
 
 		// Option 2: the provider has to manually build it from the GET method path.
 		if resourceMeta.IdProperty == "" {
-			idPath := dd.getMethod.FlatPath
-			if idPath == "" {
-				idPath = dd.getMethod.Path
-			}
+			idPath := methodPath(dd.getMethod)
 			queryParams := url.Values{}
 			for param, details := range dd.getMethod.Parameters {
 				if details.Location != "query" || !details.Required {
@@ -497,6 +520,16 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				fmt.Printf("Failed to build ID params for resource %s: %v\n", resourceTok, err)
 				return nil
 			}
+			resourceMeta.Read.Endpoint.Template = idPath
+			var idVals []resources.CloudAPIResourceParam
+			for k, v := range v {
+				idVals = append(idVals, resources.CloudAPIResourceParam{
+					Name:    k,
+					SdkName: v,
+					Kind:    "path",
+				})
+			}
+			resourceMeta.Read.Endpoint.Values = idVals
 			resourceMeta.IdPath = idPath
 			resourceMeta.IdParams = v
 		}
@@ -505,13 +538,20 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	// Detect resources that support media upload as mark them as such.
 	if dd.createMethod.MediaUpload != nil && dd.createMethod.MediaUpload.Protocols != nil &&
 		dd.createMethod.MediaUpload.Protocols.Simple != nil {
-		resourceMeta.CreatePath = resources.CombineUrl(g.rest.RootUrl, dd.createMethod.MediaUpload.Protocols.Simple.Path)
+		resourceMeta.Create.Endpoint.Template = resources.CombineUrl(
+			g.rest.RootUrl, dd.createMethod.MediaUpload.Protocols.Simple.Path)
 		resourceMeta.AssetUpload = true
 		inputProperties["source"] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{
 				Ref: "pulumi.json#/Asset",
 			},
 		}
+	}
+
+	// TODO: add delete support
+	if dd.deleteMethod != nil {
+		resourceMeta.Delete.Endpoint.Template = resourceMeta.IdPath
+		resourceMeta.Delete.Verb = dd.deleteMethod.HttpMethod
 	}
 
 	description := dd.createMethod.Description
@@ -531,7 +571,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 	}
 
-	if resourceMeta.NoDelete {
+	if resourceMeta.Delete.Undefined() {
 		description += "\nNote - this resource's API doesn't support deletion. When deleted, the resource will persist\n" +
 			"on Google Cloud even though it will be deleted from Pulumi state."
 	}
@@ -572,7 +612,9 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 		httpMethod = "GET"
 	}
 	functionMeta := resources.CloudAPIFunction{
-		Url:  resources.CombineUrl(g.rest.BaseUrl, getPath),
+		Url: resources.CloudAPIEndpoint{
+			Template: resources.CombineUrl(g.rest.BaseUrl, getPath),
+		},
 		Verb: httpMethod,
 	}
 
@@ -584,14 +626,14 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 		}
 
 		p := resources.CloudAPIResourceParam{
-			Name:     name,
-			Location: "query",
+			Name: name,
+			Kind: "query",
 		}
 		sdkName := ToLowerCamel(name)
 		if sdkName != name {
 			p.SdkName = sdkName
 		}
-		functionMeta.Params = append(functionMeta.Params, p)
+		functionMeta.Url.Values = append(functionMeta.Url.Values, p)
 
 		inputProperties[sdkName] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{Type: "string"},
@@ -612,14 +654,14 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 		inputProperties[sdkName] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{Type: "string"},
 		}
-		param := resources.CloudAPIResourceParam{
-			Name:     name,
-			Location: "path",
+		p := resources.CloudAPIResourceParam{
+			Name: name,
+			Kind: "path",
 		}
 		if sdkName != name {
-			param.SdkName = sdkName
+			p.SdkName = sdkName
 		}
-		functionMeta.Params = append(functionMeta.Params, param)
+		functionMeta.Url.Values = append(functionMeta.Url.Values, p)
 		requiredInputProperties.Add(sdkName)
 	}
 

@@ -1,9 +1,23 @@
-// Copyright 2016-2021, Pulumi Corporation.
+// Copyright 2016-2022, Pulumi Corporation.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 package resources
 
 import (
+	"bytes"
 	"fmt"
+	"net/http"
 	"strings"
 )
 
@@ -14,45 +28,90 @@ type CloudAPIMetadata struct {
 	Functions map[string]CloudAPIFunction `json:"functions"`
 }
 
-// CloudAPIResource is a resource in Google Cloud REST API.
+// CloudAPIEndpoint is an endpoint template and the values needed to instantiate the template.
+type CloudAPIEndpoint struct {
+	// Template is the template string for a REST endpoint.
+	// Example: v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}
+	Template string `json:"template,omitempty"`
+	// Values are the concrete values needed to instantiate the template.
+	Values []CloudAPIResourceParam `json:"values,omitempty"`
+}
+
+// CloudAPIOperation is a resource operation in the Google Cloud REST API.
+type CloudAPIOperation struct {
+	// Endpoint is the REST endpoint for the operation.
+	Endpoint CloudAPIEndpoint `json:"endpoint,omitempty"`
+	// SDKProperties define metadata about the SDK representation of this resource.
+	SDKProperties map[string]CloudAPIProperty `json:"sdkProperties,omitempty"`
+	// Verb is the REST verb to use for API calls.
+	Verb string `json:"verb,omitempty"`
+
+	// Optional handler function for more complex operations.
+	// If a handler is defined, the endpoint and verb are ignored.
+	// TODO: probably need resource state -- figure this out later
+	//Handler func() error `json:"handler,omitempty"`
+}
+
+func (o CloudAPIOperation) Undefined() bool {
+	return len(o.Verb) == 0
+}
+
+func (o CloudAPIOperation) Request() (*http.Request, error) {
+	// TODO: refactor logic from http.RequestWithTimeout
+	// TODO: expand endpoint template
+	// TODO: marshal body
+	body := bytes.Buffer{}
+	endpoint := ""
+	return http.NewRequest(o.Verb, endpoint, &body)
+}
+
+// CloudAPIResource is a resource in the Google Cloud REST API.
 type CloudAPIResource struct {
-	BaseUrl          string                      `json:"baseUrl"`
-	CreatePath       string                      `json:"createPath"`
-	CreateParams     []CloudAPIResourceParam     `json:"createParams"`
-	CreateVerb       string                      `json:"createVerb,omitempty"`
-	CreateProperties map[string]CloudAPIProperty `json:"createProperties,omitempty"`
-	UpdateVerb       string                      `json:"updateVerb,omitempty"`
-	UpdateProperties map[string]CloudAPIProperty `json:"updateProperties,omitempty"`
-	NoDelete         bool                        `json:"noDelete,omitempty"`
-	AssetUpload      bool                        `json:"assetUpload,omitempty"`
+	Create CloudAPIOperation `json:"create,omitempty"`
+	Read   CloudAPIOperation `json:"read,omitempty"`
+	Update CloudAPIOperation `json:"update,omitempty"`
+	Delete CloudAPIOperation `json:"delete,omitempty"`
+
+	// RootUrl is the root URL of the REST API.
+	// Example: `https://cloudkms.googleapis.com/`
+	RootUrl     string `json:"rootUrl"`
+	AssetUpload bool   `json:"assetUpload,omitempty"`
+	// TODO: abstract ID property details
 	// IdProperty contains the name of the output property that represents resource ID (a self link).
+	// Example: `selfLink`
 	IdProperty string `json:"idProperty,omitempty"`
 	// IdPath is the template for building resource ID with ID parameter values. It should only
 	// be defined if IdProperty is missing.
+	// Example: `projects/{project}/global/backendBuckets/{resource}/getIamPolicy`
 	IdPath   string            `json:"idPath,omitempty"`
 	IdParams map[string]string `json:"idParams,omitempty"`
 	// AutoNamePattern contains a string pattern when a default name should be automatically generated if a user hasn't
-	// explicitly specified one. Example: projects/{project}/locations/{location}/functions/{name}.
+	// explicitly specified one.
+	// Example: `projects/{project}/locations/{location}/functions/{name}`
 	AutoNamePattern string `json:"autoNamePattern,omitempty"`
 }
 
 // CloudAPIFunction is a function in Google Cloud REST API.
 type CloudAPIFunction struct {
-	Url    string                  `json:"url"`
-	Params []CloudAPIResourceParam `json:"params"`
-	Verb   string                  `json:"verb"`
+	Url  CloudAPIEndpoint `json:"url"`
+	Verb string           `json:"verb"`
 }
 
 // CloudAPIResourceParam is a URL parameter of an API resource.
 type CloudAPIResourceParam struct {
-	Name     string `json:"name"`
-	SdkName  string `json:"sdkName,omitempty"`
-	Location string `json:"location"`
+	// Name is the value of the parameter in the REST API.
+	// Example: `projectsId`
+	Name string `json:"name"`
+	// SdkName is the value of the parameter in the Pulumi SDK.
+	// Example: `project`
+	SdkName string `json:"sdkName,omitempty"`
+	// Kind is the kind of parameter, either "path" or "query"
+	Kind string `json:"kind"`
 }
 
 // ResourceUrl returns the resource API URL by joining the base URL with the resource path.
 func (r *CloudAPIResource) ResourceUrl(path string) string {
-	return CombineUrl(r.BaseUrl, path)
+	return CombineUrl(r.RootUrl, path)
 }
 
 // CombineUrl concats a base URL of the service with a path of an endpoint.

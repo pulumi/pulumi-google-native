@@ -12,7 +12,7 @@ import (
 
 func TestCalculateResourceId_IdProperty(t *testing.T) {
 	res := resources.CloudAPIResource{
-		BaseUrl:    "https://myapi.google.com",
+		RootUrl:    "https://myapi.google.com",
 		IdProperty: "selfLink",
 	}
 	inputs := map[string]interface{}{
@@ -30,7 +30,7 @@ func TestCalculateResourceId_IdProperty(t *testing.T) {
 
 func TestCalculateResourceId_IdPath(t *testing.T) {
 	res := resources.CloudAPIResource{
-		BaseUrl: "https://myapi.google.com",
+		RootUrl: "https://myapi.google.com",
 		IdPath:  "/v1/myparent/{parentsId}/myresource/{myresourcesId}",
 		IdParams: map[string]string{
 			"parentsId":     "parentId",

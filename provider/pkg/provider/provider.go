@@ -1,4 +1,16 @@
-// Copyright 2016-2021, Pulumi Corporation.
+// Copyright 2016-2022, Pulumi Corporation.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 package provider
 
@@ -150,7 +162,7 @@ func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) 
 	}
 
 	// Apply default config values.
-	for _, param := range inv.Params {
+	for _, param := range inv.Url.Values {
 		sdkName := param.Name
 		if param.SdkName != "" {
 			sdkName = param.SdkName
@@ -225,7 +237,7 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 
 	// Apply default config values.
 	var failures []*rpc.CheckFailure
-	for _, param := range res.CreateParams {
+	for _, param := range res.Create.Endpoint.Values {
 		sdkName := param.Name
 		if param.SdkName != "" {
 			sdkName = param.SdkName
@@ -258,7 +270,7 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 	}
 
 	// Apply property patterns.
-	for name, prop := range res.CreateProperties {
+	for name, prop := range res.Create.SDKProperties {
 		key := resource.PropertyKey(name)
 		if prop.SdkName != "" {
 			key = resource.PropertyKey(prop.SdkName)
@@ -386,7 +398,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	if err != nil {
 		return nil, err
 	}
-	body := p.prepareAPIInputs(inputs, nil, res.CreateProperties)
+	body := p.prepareAPIInputs(inputs, nil, res.Create.SDKProperties)
 
 	var op map[string]interface{}
 	if res.AssetUpload {
@@ -401,18 +413,18 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			return nil, err
 		}
 
-		op, err = p.client.UploadWithTimeout(res.CreateVerb, uri, body, content, 0)
+		op, err = p.client.UploadWithTimeout(res.Create.Verb, uri, body, content, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending upload request: %s: %q %+v %d", err, uri, inputs.Mappable(), len(content))
 		}
 	} else {
-		op, err = p.client.RequestWithTimeout(res.CreateVerb, uri, body, 0)
+		op, err = p.client.RequestWithTimeout(res.Create.Verb, uri, body, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
 		}
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.BaseUrl, op)
+	resp, err := p.waitForResourceOpCompletion(res.RootUrl, op)
 	if err != nil {
 		if resp == nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
@@ -456,10 +468,9 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 
 func (p *googleCloudProvider) prepareAPIInputs(
 	inputs, state resource.PropertyMap,
-	properties map[string]resources.CloudAPIProperty) map[string]interface{} {
-	inputsMap := inputs.Mappable()
-	stateMap := state.Mappable()
-	return p.converter.SdkPropertiesToRequestBody(properties, inputsMap, stateMap)
+	properties map[string]resources.CloudAPIProperty,
+) map[string]interface{} {
+	return p.converter.SdkPropertiesToRequestBody(properties, inputs.Mappable(), state.Mappable())
 }
 
 // waitForResourceOpCompletion keeps polling the resource or operation URL until it gets
@@ -639,19 +650,19 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
-	body := p.prepareAPIInputs(inputs, oldState, res.UpdateProperties)
+	body := p.prepareAPIInputs(inputs, oldState, res.Update.SDKProperties)
 
 	uri := res.ResourceUrl(req.GetId())
 	if strings.HasSuffix(uri, ":getIamPolicy") {
 		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
 	}
 
-	op, err := p.client.RequestWithTimeout(res.UpdateVerb, uri, body, 0)
+	op, err := p.client.RequestWithTimeout(res.Update.Verb, uri, body, 0)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.BaseUrl, op)
+	resp, err := p.waitForResourceOpCompletion(res.RootUrl, op)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}
@@ -689,7 +700,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 
 	uri := res.ResourceUrl(req.GetId())
 
-	if res.NoDelete {
+	if res.Delete.Undefined() {
 		// At the time of writing, the classic GCP provider has the same behavior and warning for 10 resources.
 		logging.V(1).Infof("%q resources"+
 			" cannot be deleted from Google Cloud. The resource %s will be removed from Pulumi"+
@@ -697,12 +708,15 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return &empty.Empty{}, nil
 	}
 
+	// TODO: special handling for CryptoKey
+	//p.client.RequestWithTimeout("POST", "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions/{cryptoKeyVersionsId}:destroy")
+
 	resp, err := p.client.RequestWithTimeout("DELETE", uri, nil, 0)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
-	_, err = p.waitForResourceOpCompletion(res.BaseUrl, resp)
+	_, err = p.waitForResourceOpCompletion(res.RootUrl, resp)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}
