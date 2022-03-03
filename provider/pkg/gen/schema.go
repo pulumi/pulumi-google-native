@@ -539,7 +539,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	if dd.createMethod.MediaUpload != nil && dd.createMethod.MediaUpload.Protocols != nil &&
 		dd.createMethod.MediaUpload.Protocols.Simple != nil {
 		resourceMeta.Create.Endpoint.Template = resources.CombineURL(
-			g.rest.RootUrl, dd.createMethod.MediaUpload.Protocols.Simple.Path)
+			g.rest.BaseUrl, dd.createMethod.MediaUpload.Protocols.Simple.Path)
 		resourceMeta.AssetUpload = true
 		inputProperties["source"] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{
