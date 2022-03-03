@@ -342,7 +342,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	createPath := methodPath(dd.createMethod)
 
 	resourceMeta := resources.CloudAPIResource{
-		RootURL: g.rest.RootUrl,
+		RootURL: g.rest.BaseUrl,
 		Create: resources.CloudAPIOperation{
 			Endpoint: resources.CloudAPIEndpoint{
 				Template: methodPath(dd.createMethod),
