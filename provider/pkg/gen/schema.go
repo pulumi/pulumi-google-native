@@ -341,28 +341,29 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	}
 	createPath := methodPath(dd.createMethod)
 
+	baseURL := resources.CombineURL(g.rest.RootUrl, g.rest.BasePath)
 	resourceMeta := resources.CloudAPIResource{
 		RootURL: g.rest.BaseUrl,
 		Create: resources.CloudAPIOperation{
 			Endpoint: resources.CloudAPIEndpoint{
-				Template: g.rest.BaseUrl + methodPath(dd.createMethod),
+				Template: resources.CombineURL(baseURL, methodPath(dd.createMethod)),
 			},
 			Verb: dd.createMethod.HttpMethod,
 		},
 		Delete: resources.CloudAPIOperation{
 			Endpoint: resources.CloudAPIEndpoint{
-				Template: g.rest.BaseUrl + methodPath(dd.deleteMethod),
+				Template: resources.CombineURL(baseURL, methodPath(dd.deleteMethod)),
 			},
 		},
 		Read: resources.CloudAPIOperation{
 			Endpoint: resources.CloudAPIEndpoint{
-				Template: g.rest.BaseUrl + methodPath(dd.getMethod),
+				Template: resources.CombineURL(baseURL, methodPath(dd.getMethod)),
 			},
 			Verb: dd.getMethod.HttpMethod,
 		},
 		Update: resources.CloudAPIOperation{
 			Endpoint: resources.CloudAPIEndpoint{
-				Template: g.rest.BaseUrl + methodPath(dd.getMethod),
+				Template: resources.CombineURL(baseURL, methodPath(dd.getMethod)),
 			},
 		},
 	}
@@ -539,7 +540,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	if dd.createMethod.MediaUpload != nil && dd.createMethod.MediaUpload.Protocols != nil &&
 		dd.createMethod.MediaUpload.Protocols.Simple != nil {
 		resourceMeta.Create.Endpoint.Template = resources.CombineURL(
-			g.rest.BaseUrl, dd.createMethod.MediaUpload.Protocols.Simple.Path)
+			g.rest.RootUrl, dd.createMethod.MediaUpload.Protocols.Simple.Path)
 		resourceMeta.AssetUpload = true
 		inputProperties["source"] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{
