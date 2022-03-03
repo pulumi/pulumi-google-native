@@ -531,7 +531,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			}
 			resourceMeta.Read.Endpoint.Values = idVals
 			resourceMeta.IDPath = idPath
-			resourceMeta.IDParams = v
+			resourceMeta.IDParams = vals
 		}
 	}
 
