@@ -522,10 +522,10 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			}
 			resourceMeta.Read.Endpoint.Template = idPath
 			var idVals []resources.CloudAPIResourceParam
-			for k, v := range v {
+			for _, k := range codegen.SortedKeys(v) {
 				idVals = append(idVals, resources.CloudAPIResourceParam{
 					Name:    k,
-					SdkName: v,
+					SdkName: v[k],
 					Kind:    "path",
 				})
 			}
@@ -700,7 +700,12 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 
 // buildIdParams creates a map of parameters that are needed to build resource IDs from an ID path template.
 // Keys are API parameter names, values are SDK property names (that may be equal to keys, or not).
-func (g *packageGenerator) buildIdParams(typeName string, idPath string, inputProperties map[string]schema.PropertySpec, response *discovery.JsonSchema) (map[string]string, error) {
+func (g *packageGenerator) buildIdParams(
+	typeName string,
+	idPath string,
+	inputProperties map[string]schema.PropertySpec,
+	response *discovery.JsonSchema,
+) (map[string]string, error) {
 	result := map[string]string{}
 
 	u, err := url.Parse(idPath)
