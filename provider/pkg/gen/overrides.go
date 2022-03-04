@@ -93,8 +93,11 @@ var resourceNameByPathOverrides = map[string]string{
 	"v1beta1/organizations/{organizationsId}/locations/{locationsId}/replays": "OrganizationReplay",
 
 	// Security Center.
-	"v1/folders/{foldersId}/muteConfigs":             "",
-	"v1/organizations/{organizationsId}/muteConfigs": "OrganizationMuteConfig",
+	"v1/folders/{foldersId}/muteConfigs":                 "",
+	"v1/folders/{foldersId}/bigQueryExports":             "FolderBigQueryExport",
+	"v1/organizations/{organizationsId}/bigQueryExports": "OrganizationBigQueryExport",
+	"v1/projects/{projectsId}/bigQueryExports":           "ProjectBigQueryExport",
+	"v1/organizations/{organizationsId}/muteConfigs":     "OrganizationMuteConfig",
 
 	// Storage.
 	"b/{bucket}/o": "BucketObject",
